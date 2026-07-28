@@ -23,7 +23,7 @@
         "target": "com.azure.developerhub#GeneratePreviewArtifactsRequest"
       },
       "output": {
-        "target": "com.azure.developerhub#GeneratePreviewArtifactsResponse"
+        "target": "com.azure.developerhub#GeneratePreviewArtifactsResponse2"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,11 +36,11 @@
         "com.distilled.openapi#apiVersion": "2023-08-01"
       }
     },
-    "com.azure.developerhub#GeneratePreviewArtifactsResponse": {
+    "com.azure.developerhub#GeneratePreviewArtifactsResponse2": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.developerhub#GeneratePreviewArtifactsResponse",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -49,6 +49,18 @@
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.azure.developerhub#GeneratePreviewArtifactsResponse": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dockerfile and manifest artifacts generated as a preview are returned as a map<path string,content string>"
       }
     },
     "com.azure.developerhub#GeneratePreviewArtifactsRequest": {
@@ -70,16 +82,221 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "generationLanguage": {
+          "target": "com.azure.developerhub#GenerationLanguage"
+        },
+        "languageVersion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The version of the language image used for execution in the generated dockerfile."
+          }
+        },
+        "builderVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the language image used for building the code in the generated dockerfile."
+          }
+        },
+        "port": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port the application is exposed on."
+          }
+        },
+        "appName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app."
+          }
+        },
+        "dockerfileOutputDirectory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The directory to output the generated Dockerfile to."
+          }
+        },
+        "manifestOutputDirectory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The directory to output the generated manifests to."
+          }
+        },
+        "dockerfileGenerationMode": {
+          "target": "com.azure.developerhub#DockerfileGenerationMode"
+        },
+        "manifestGenerationMode": {
+          "target": "com.azure.developerhub#ManifestGenerationMode"
+        },
+        "manifestType": {
+          "target": "com.azure.developerhub#GenerationManifestType"
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the image to be generated."
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The namespace to deploy the application to."
+          }
+        },
+        "imageTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to apply to the generated image."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.developerhub#GenerationManifestType": {
+      "type": "enum",
+      "members": {
+        "HELM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "helm"
+          }
+        },
+        "KUBE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kube"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Determines the type of manifests to be generated."
+      }
+    },
+    "com.azure.developerhub#ManifestGenerationMode": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of generation to be used for generating Manifest."
+      }
+    },
+    "com.azure.developerhub#DockerfileGenerationMode": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of generation to be used for generating Dockerfiles."
+      }
+    },
+    "com.azure.developerhub#GenerationLanguage": {
+      "type": "enum",
+      "members": {
+        "CLOJURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clojure"
+          }
+        },
+        "CSHARP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csharp"
+          }
+        },
+        "ERLANG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "erlang"
+          }
+        },
+        "GO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "go"
+          }
+        },
+        "GOMODULE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gomodule"
+          }
+        },
+        "GRADLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gradle"
+          }
+        },
+        "JAVA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "java"
+          }
+        },
+        "JAVASCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "javascript"
+          }
+        },
+        "PHP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "php"
+          }
+        },
+        "PYTHON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "python"
+          }
+        },
+        "RUBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ruby"
+          }
+        },
+        "RUST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rust"
+          }
+        },
+        "SWIFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "swift"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The programming language used."
       }
     },
     "com.azure.developerhub#WorkflowDelete": {
@@ -309,152 +526,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties used for generating artifacts such as Dockerfiles and manifests."
-      }
-    },
-    "com.azure.developerhub#GenerationManifestType": {
-      "type": "enum",
-      "members": {
-        "HELM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "helm"
-          }
-        },
-        "KUBE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "kube"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Determines the type of manifests to be generated."
-      }
-    },
-    "com.azure.developerhub#ManifestGenerationMode": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The mode of generation to be used for generating Manifest."
-      }
-    },
-    "com.azure.developerhub#DockerfileGenerationMode": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The mode of generation to be used for generating Dockerfiles."
-      }
-    },
-    "com.azure.developerhub#GenerationLanguage": {
-      "type": "enum",
-      "members": {
-        "CLOJURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "clojure"
-          }
-        },
-        "CSHARP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "csharp"
-          }
-        },
-        "ERLANG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "erlang"
-          }
-        },
-        "GO": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "go"
-          }
-        },
-        "GOMODULE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gomodule"
-          }
-        },
-        "GRADLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gradle"
-          }
-        },
-        "JAVA": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "java"
-          }
-        },
-        "JAVASCRIPT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "javascript"
-          }
-        },
-        "PHP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "php"
-          }
-        },
-        "PYTHON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "python"
-          }
-        },
-        "RUBY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ruby"
-          }
-        },
-        "RUST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "rust"
-          }
-        },
-        "SWIFT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "swift"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The programming language used."
       }
     },
     "com.azure.developerhub#GitHubWorkflowProfile": {
@@ -925,17 +996,23 @@
             "smithy.api#documentation": "The name of the workflow resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "tags": {
+          "target": "com.azure.developerhub#WorkflowUpdateTagsRequestTagsMap"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.developerhub#WorkflowUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.developerhub#WorkflowCreateOrUpdate": {
       "type": "operation",
@@ -1046,16 +1123,154 @@
             "smithy.api#documentation": "The name of the workflow resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.developerhub#WorkflowCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.developerhub#WorkflowPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a workflow."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.developerhub#WorkflowPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "githubWorkflowProfile": {
+          "target": "com.azure.developerhub#GitHubWorkflowProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Profile of a github workflow."
+          }
+        },
+        "artifactGenerationProperties": {
+          "target": "com.azure.developerhub#ArtifactGenerationProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for generating artifacts like dockerfile and manifests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workflow properties"
+      }
+    },
+    "com.azure.developerhub#GitHubWorkflowProfileInput": {
+      "type": "structure",
+      "members": {
+        "repositoryOwner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository Owner"
+          }
+        },
+        "repositoryName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository Name"
+          }
+        },
+        "branchName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository Branch Name"
+          }
+        },
+        "dockerfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to the Dockerfile within the repository."
+          }
+        },
+        "dockerBuildContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to Dockerfile Build Context within the repository."
+          }
+        },
+        "deploymentProperties": {
+          "target": "com.azure.developerhub#DeploymentProperties"
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kubernetes namespace the application is deployed to."
+          }
+        },
+        "acr": {
+          "target": "com.azure.developerhub#ACR"
+        },
+        "oidcCredentials": {
+          "target": "com.azure.developerhub#GitHubWorkflowProfileInputOidcCredentials",
+          "traits": {
+            "smithy.api#documentation": "The fields needed for OIDC with GitHub."
+          }
+        },
+        "aksResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Kubernetes Cluster Resource the application will be deployed to."
+          }
+        },
+        "lastWorkflowRun": {
+          "target": "com.azure.developerhub#WorkflowRunInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GitHub Workflow Profile"
+      }
+    },
+    "com.azure.developerhub#WorkflowRunInput": {
+      "type": "structure",
+      "members": {
+        "workflowRunStatus": {
+          "target": "com.azure.developerhub#WorkflowRunStatus"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.developerhub#GitHubWorkflowProfileInputOidcCredentials": {
+      "type": "structure",
+      "members": {
+        "azureClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Application Client ID"
+          }
+        },
+        "azureTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Directory (tenant) ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The fields needed for OIDC with GitHub."
+      }
+    },
+    "com.azure.developerhub#WorkflowCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.developerhub#WorkflowGet": {
@@ -1622,10 +1837,10 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "redirectUrl": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The URL the client will redirect to on successful authentication. If empty, no redirect will occur."
           }
         }
       },

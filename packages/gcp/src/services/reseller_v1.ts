@@ -97,7 +97,7 @@ export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "RenewalSettings",
 }) as any as S.Schema<RenewalSettings>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -351,8 +351,7 @@ export const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteSubscriptionsDeletionTypeEnum =
   | "deletion_type_undefined"
   | "cancel"
-  | "transfer_to_direct"
-  | (string & {});
+  | "transfer_to_direct";
 export const DeleteSubscriptionsDeletionTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteSubscriptionsRequest {
@@ -445,8 +444,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 export type CustomerCustomerTypeEnum =
   | "customerTypeUnspecified"
   | "domain"
-  | "team"
-  | (string & {});
+  | "team";
 export const CustomerCustomerTypeEnum = /*@__PURE__*/ S.String;
 
 /** JSON template for primary admin in case of TEAM customers */
@@ -574,8 +572,7 @@ export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertSubscriptionsActionEnum =
   | "actionUnspecified"
   | "buy"
-  | "switch"
-  | (string & {});
+  | "switch";
 export const InsertSubscriptionsActionEnum = /*@__PURE__*/ S.String;
 
 export interface InsertSubscriptionsRequest {
@@ -638,7 +635,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;

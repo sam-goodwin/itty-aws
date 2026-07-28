@@ -334,11 +334,17 @@
             "smithy.api#documentation": "The subscription identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the IoT Central application instance to check.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the IoT Central resource to query."
           }
         }
       },
@@ -376,11 +382,17 @@
             "smithy.api#documentation": "The subscription identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the IoT Central application instance to check.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the IoT Central resource to query."
           }
         }
       },
@@ -903,16 +915,85 @@
             "smithy.api#documentation": "The ARM resource name of the IoT Central application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.iotcentral#AppsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "sku": {
+          "target": "com.azure.iotcentral#AppSkuInfo",
+          "traits": {
+            "smithy.api#documentation": "A valid instance SKU."
+          }
+        },
+        "properties": {
+          "target": "com.azure.iotcentral#AppPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The common properties of an IoT Central application."
+          }
+        },
+        "identity": {
+          "target": "com.azure.iotcentral#AppsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotcentral#AppsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.iotcentral#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.iotcentral#AppPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the application."
+          }
+        },
+        "subdomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subdomain of the application."
+          }
+        },
+        "template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an IoT Central application."
+      }
+    },
+    "com.azure.iotcentral#AppsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.iotcentral#AppsCreateOrUpdate": {
@@ -1057,16 +1138,67 @@
             "smithy.api#documentation": "The ARM resource name of the IoT Central application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.iotcentral#AppsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.iotcentral#AppPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The common properties of an IoT Central application."
+          }
+        },
+        "sku": {
+          "target": "com.azure.iotcentral#AppSkuInfo",
+          "traits": {
+            "smithy.api#documentation": "A valid instance SKU.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.iotcentral#AppsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotcentral#AppsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.iotcentral#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.iotcentral#AppsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.iotcentral#AppsGet": {

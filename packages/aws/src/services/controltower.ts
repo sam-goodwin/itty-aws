@@ -134,7 +134,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type LandingZoneVersion = string;
-export type RemediationType = "INHERITANCE_DRIFT" | (string & {});
+export type RemediationType = "INHERITANCE_DRIFT";
 export const RemediationType = /*@__PURE__*/ S.String;
 
 export type RemediationTypes = RemediationType[];
@@ -417,15 +417,10 @@ export type BaselineOperationType =
   | "ENABLE_BASELINE"
   | "DISABLE_BASELINE"
   | "UPDATE_ENABLED_BASELINE"
-  | "RESET_ENABLED_BASELINE"
-  | (string & {});
+  | "RESET_ENABLED_BASELINE";
 export const BaselineOperationType = /*@__PURE__*/ S.String;
 
-export type BaselineOperationStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type BaselineOperationStatus = "SUCCEEDED" | "FAILED" | "IN_PROGRESS";
 export const BaselineOperationStatus = /*@__PURE__*/ S.String;
 
 export interface BaselineOperation {
@@ -479,15 +474,10 @@ export type ControlOperationType =
   | "ENABLE_CONTROL"
   | "DISABLE_CONTROL"
   | "UPDATE_ENABLED_CONTROL"
-  | "RESET_ENABLED_CONTROL"
-  | (string & {});
+  | "RESET_ENABLED_CONTROL";
 export const ControlOperationType = /*@__PURE__*/ S.String;
 
-export type ControlOperationStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type ControlOperationStatus = "SUCCEEDED" | "FAILED" | "IN_PROGRESS";
 export const ControlOperationStatus = /*@__PURE__*/ S.String;
 
 export interface ControlOperation {
@@ -543,7 +533,7 @@ export const GetEnabledBaselineInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnabledBaselineInput",
 }) as any as S.Schema<GetEnabledBaselineInput>;
-export type EnabledBaselineDriftStatus = "IN_SYNC" | "DRIFTED" | (string & {});
+export type EnabledBaselineDriftStatus = "IN_SYNC" | "DRIFTED";
 export const EnabledBaselineDriftStatus = /*@__PURE__*/ S.String;
 
 export interface EnabledBaselineInheritanceDrift {
@@ -570,11 +560,7 @@ export const EnabledBaselineDriftStatusSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnabledBaselineDriftStatusSummary",
 }) as any as S.Schema<EnabledBaselineDriftStatusSummary>;
-export type EnablementStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "UNDER_CHANGE"
-  | (string & {});
+export type EnablementStatus = "SUCCEEDED" | "FAILED" | "UNDER_CHANGE";
 export const EnablementStatus = /*@__PURE__*/ S.String;
 
 export interface EnablementStatusSummary {
@@ -652,12 +638,7 @@ export const GetEnabledControlInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnabledControlInput",
 }) as any as S.Schema<GetEnabledControlInput>;
-export type DriftStatus =
-  | "DRIFTED"
-  | "IN_SYNC"
-  | "NOT_CHECKING"
-  | "UNKNOWN"
-  | (string & {});
+export type DriftStatus = "DRIFTED" | "IN_SYNC" | "NOT_CHECKING" | "UNKNOWN";
 export const DriftStatus = /*@__PURE__*/ S.String;
 
 export interface EnabledControlInheritanceDrift {
@@ -772,14 +753,10 @@ export const GetLandingZoneInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLandingZoneInput",
 }) as any as S.Schema<GetLandingZoneInput>;
-export type LandingZoneStatus =
-  | "ACTIVE"
-  | "PROCESSING"
-  | "FAILED"
-  | (string & {});
+export type LandingZoneStatus = "ACTIVE" | "PROCESSING" | "FAILED";
 export const LandingZoneStatus = /*@__PURE__*/ S.String;
 
-export type LandingZoneDriftStatus = "DRIFTED" | "IN_SYNC" | (string & {});
+export type LandingZoneDriftStatus = "DRIFTED" | "IN_SYNC";
 export const LandingZoneDriftStatus = /*@__PURE__*/ S.String;
 
 export interface LandingZoneDriftStatusSummary {
@@ -837,19 +814,10 @@ export const GetLandingZoneOperationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLandingZoneOperationInput",
 }) as any as S.Schema<GetLandingZoneOperationInput>;
-export type LandingZoneOperationType =
-  | "DELETE"
-  | "CREATE"
-  | "UPDATE"
-  | "RESET"
-  | (string & {});
+export type LandingZoneOperationType = "DELETE" | "CREATE" | "UPDATE" | "RESET";
 export const LandingZoneOperationType = /*@__PURE__*/ S.String;
 
-export type LandingZoneOperationStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type LandingZoneOperationStatus = "SUCCEEDED" | "FAILED" | "IN_PROGRESS";
 export const LandingZoneOperationStatus = /*@__PURE__*/ S.String;
 
 export interface LandingZoneOperationDetail {

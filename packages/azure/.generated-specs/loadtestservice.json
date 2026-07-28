@@ -669,16 +669,95 @@
             "smithy.api#documentation": "Load Test name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.loadtestservice#LoadTestsUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.loadtestservice#LoadTestsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.loadtestservice#LoadTestResourceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtestservice#LoadTestResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the resource."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.loadtestservice#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "CMK Encryption property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the LoadTestResource."
+      }
+    },
+    "com.azure.loadtestservice#LoadTestsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.loadtestservice#LoadTestsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.loadtestservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.loadtestservice#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.loadtestservice#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.loadtestservice#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.loadtestservice#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.loadtestservice#LoadTestsCreateOrUpdate": {
@@ -825,16 +904,83 @@
             "smithy.api#documentation": "Load Test name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.loadtestservice#LoadTestsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.loadtestservice#LoadTestPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.loadtestservice#LoadTestsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtestservice#LoadTestsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.loadtestservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.loadtestservice#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.loadtestservice#LoadTestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the resource."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.loadtestservice#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "CMK Encryption property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "LoadTest resource properties."
+      }
+    },
+    "com.azure.loadtestservice#LoadTestsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.loadtestservice#LoadTestsGet": {
@@ -1371,16 +1517,67 @@
             "smithy.api#documentation": "The quota name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.loadtestservice#QuotaBucketRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request object of new quota for a quota bucket."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtestservice#QuotaBucketRequestProperties": {
+      "type": "structure",
+      "members": {
+        "currentUsage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Current quota usage of the quota bucket."
+          }
+        },
+        "currentQuota": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Current quota limit of the quota bucket."
+          }
+        },
+        "newQuota": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "New quota limit of the quota bucket."
+          }
+        },
+        "dimensions": {
+          "target": "com.azure.loadtestservice#QuotaBucketRequestPropertiesDimensions",
+          "traits": {
+            "smithy.api#documentation": "Dimensions for new quota request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "New quota request request properties."
+      }
+    },
+    "com.azure.loadtestservice#QuotaBucketRequestPropertiesDimensions": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription Id dimension for new quota request of the quota bucket."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location dimension for new quota request of the quota bucket."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dimensions for new quota request."
       }
     },
     "com.azure.loadtestservice#QuotasGet": {
@@ -2375,16 +2572,73 @@
             "smithy.api#documentation": "The name of the PlaywrightWorkspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspaceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspaceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "regionalAffinity": {
+          "target": "com.azure.loadtestservice#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created."
+          }
+        },
+        "localAuth": {
+          "target": "com.azure.loadtestservice#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "Enables the workspace to use local authentication through service access tokens for operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the PlaywrightWorkspace."
+      }
+    },
+    "com.azure.loadtestservice#EnablementStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The enablement status of a feature."
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.loadtestservice#PlaywrightWorkspacesCreateOrUpdate": {
@@ -2496,16 +2750,100 @@
             "smithy.api#documentation": "The name of the PlaywrightWorkspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "regionalAffinity": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInputRegionalAffinity",
+          "traits": {
+            "smithy.api#documentation": "Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created."
+          }
+        },
+        "localAuth": {
+          "target": "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInputLocalAuth",
+          "traits": {
+            "smithy.api#documentation": "Enables the workspace to use local authentication through service access tokens for operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Playwright workspace resource properties."
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInputLocalAuth": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enables the workspace to use local authentication through service access tokens for operations."
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspacePropertiesInputRegionalAffinity": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created."
+      }
+    },
+    "com.azure.loadtestservice#PlaywrightWorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.loadtestservice#PlaywrightWorkspacesGet": {
@@ -3149,11 +3487,16 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

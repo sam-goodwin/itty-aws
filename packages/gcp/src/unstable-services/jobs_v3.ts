@@ -100,7 +100,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -108,16 +108,14 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type CompleteProjectsScopeEnum =
   | "COMPLETION_SCOPE_UNSPECIFIED"
   | "TENANT"
-  | "PUBLIC"
-  | (string & {});
+  | "PUBLIC";
 export const CompleteProjectsScopeEnum = /*@__PURE__*/ S.String;
 
 export type CompleteProjectsTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
-  | "COMBINED"
-  | (string & {});
+  | "COMBINED";
 export const CompleteProjectsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface CompleteProjectsRequest {
@@ -163,8 +161,7 @@ export type CompletionResultTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
-  | "COMBINED"
-  | (string & {});
+  | "COMBINED";
 export const CompletionResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Resource that represents completion results. */
@@ -186,7 +183,7 @@ export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompletionResult",
 }) as any as S.Schema<CompletionResult>;
 
-export type CompletionResultList = CompletionResult[];
+export type CompletionResultList = ReadonlyArray<CompletionResult>;
 export const CompletionResultList = /*@__PURE__*/ S.Array(
   CompletionResult,
 ) as any as S.Schema<CompletionResultList>;
@@ -243,8 +240,7 @@ export type JobEventTypeEnum =
   | "HIRED"
   | "SENT_CV"
   | "INTERVIEW_GRANTED"
-  | "NOT_INTERESTED"
-  | (string & {});
+  | "NOT_INTERESTED";
 export const JobEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
@@ -346,8 +342,7 @@ export type LocationLocationTypeEnum =
   | "SUB_LOCALITY_1"
   | "SUB_LOCALITY_2"
   | "NEIGHBORHOOD"
-  | "STREET_ADDRESS"
-  | (string & {});
+  | "STREET_ADDRESS";
 export const LocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
@@ -432,8 +427,7 @@ export type CompanySizeEnum =
   | "MEDIUM"
   | "BIG"
   | "BIGGER"
-  | "GIANT"
-  | (string & {});
+  | "GIANT";
 export const CompanySizeEnum = /*@__PURE__*/ S.String;
 
 /** A Company resource represents a company in the service. A company is the entity that owns job postings, that is, the hiring entity responsible for employing applicants for the job position. */
@@ -577,8 +571,7 @@ export type CompensationEntryUnitEnum =
   | "MONTHLY"
   | "YEARLY"
   | "ONE_TIME"
-  | "OTHER_COMPENSATION_UNIT"
-  | (string & {});
+  | "OTHER_COMPENSATION_UNIT";
 export const CompensationEntryUnitEnum = /*@__PURE__*/ S.String;
 
 export type CompensationEntryTypeEnum =
@@ -590,8 +583,7 @@ export type CompensationEntryTypeEnum =
   | "PROFIT_SHARING"
   | "COMMISSIONS"
   | "TIPS"
-  | "OTHER_COMPENSATION_TYPE"
-  | (string & {});
+  | "OTHER_COMPENSATION_TYPE";
 export const CompensationEntryTypeEnum = /*@__PURE__*/ S.String;
 
 /** A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year. */
@@ -622,7 +614,7 @@ export const CompensationEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompensationEntry",
 }) as any as S.Schema<CompensationEntry>;
 
-export type CompensationEntryList = CompensationEntry[];
+export type CompensationEntryList = ReadonlyArray<CompensationEntry>;
 export const CompensationEntryList = /*@__PURE__*/ S.Array(
   CompensationEntry,
 ) as any as S.Schema<CompensationEntryList>;
@@ -657,11 +649,11 @@ export type JobEmploymentTypesItemEnum =
   | "VOLUNTEER"
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
-  | "OTHER_EMPLOYMENT_TYPE"
-  | (string & {});
+  | "OTHER_EMPLOYMENT_TYPE";
 export const JobEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobEmploymentTypesItemEnumList = JobEmploymentTypesItemEnum[];
+export type JobEmploymentTypesItemEnumList =
+  ReadonlyArray<JobEmploymentTypesItemEnum>;
 export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
   JobEmploymentTypesItemEnum,
 ) as any as S.Schema<JobEmploymentTypesItemEnumList>;
@@ -694,8 +686,7 @@ export const CustomAttributeMap = /*@__PURE__*/ S.Record(
 export type ProcessingOptionsHtmlSanitizationEnum =
   | "HTML_SANITIZATION_UNSPECIFIED"
   | "HTML_SANITIZATION_DISABLED"
-  | "SIMPLE_FORMATTING_ONLY"
-  | (string & {});
+  | "SIMPLE_FORMATTING_ONLY";
 export const ProcessingOptionsHtmlSanitizationEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Options for job processing. */
@@ -723,16 +714,15 @@ export type JobDegreeTypesItemEnum =
   | "ASSOCIATES_OR_EQUIVALENT"
   | "BACHELORS_OR_EQUIVALENT"
   | "MASTERS_OR_EQUIVALENT"
-  | "DOCTORAL_OR_EQUIVALENT"
-  | (string & {});
+  | "DOCTORAL_OR_EQUIVALENT";
 export const JobDegreeTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobDegreeTypesItemEnumList = JobDegreeTypesItemEnum[];
+export type JobDegreeTypesItemEnumList = ReadonlyArray<JobDegreeTypesItemEnum>;
 export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(
   JobDegreeTypesItemEnum,
 ) as any as S.Schema<JobDegreeTypesItemEnumList>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -768,12 +758,11 @@ export type JobDerivedInfoJobCategoriesItemEnum =
   | "SCIENCE_AND_ENGINEERING"
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
-  | "TRANSPORTATION_AND_LOGISTICS"
-  | (string & {});
+  | "TRANSPORTATION_AND_LOGISTICS";
 export const JobDerivedInfoJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobDerivedInfoJobCategoriesItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnum[];
+  ReadonlyArray<JobDerivedInfoJobCategoriesItemEnum>;
 export const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   JobDerivedInfoJobCategoriesItemEnum,
 ) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
@@ -796,8 +785,7 @@ export type JobVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "ACCOUNT_ONLY"
   | "SHARED_WITH_GOOGLE"
-  | "SHARED_WITH_PUBLIC"
-  | (string & {});
+  | "SHARED_WITH_PUBLIC";
 export const JobVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type JobJobLevelEnum =
@@ -806,16 +794,14 @@ export type JobJobLevelEnum =
   | "EXPERIENCED"
   | "MANAGER"
   | "DIRECTOR"
-  | "EXECUTIVE"
-  | (string & {});
+  | "EXECUTIVE";
 export const JobJobLevelEnum = /*@__PURE__*/ S.String;
 
 export type JobPostingRegionEnum =
   | "POSTING_REGION_UNSPECIFIED"
   | "ADMINISTRATIVE_AREA"
   | "NATION"
-  | "TELECOMMUTE"
-  | (string & {});
+  | "TELECOMMUTE";
 export const JobPostingRegionEnum = /*@__PURE__*/ S.String;
 
 export type JobJobBenefitsItemEnum =
@@ -830,11 +816,10 @@ export type JobJobBenefitsItemEnum =
   | "RETIREMENT_PLAN"
   | "SICK_DAYS"
   | "VACATION"
-  | "VISION"
-  | (string & {});
+  | "VISION";
 export const JobJobBenefitsItemEnum = /*@__PURE__*/ S.String;
 
-export type JobJobBenefitsItemEnumList = JobJobBenefitsItemEnum[];
+export type JobJobBenefitsItemEnumList = ReadonlyArray<JobJobBenefitsItemEnum>;
 export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
   JobJobBenefitsItemEnum,
 ) as any as S.Schema<JobJobBenefitsItemEnumList>;
@@ -1070,7 +1055,7 @@ export const ListProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsCompaniesRequest",
 }) as any as S.Schema<ListProjectsCompaniesRequest>;
 
-export type CompanyList = Company[];
+export type CompanyList = ReadonlyArray<Company>;
 export const CompanyList = /*@__PURE__*/ S.Array(
   Company,
 ) as any as S.Schema<CompanyList>;
@@ -1099,8 +1084,7 @@ export type ListProjectsJobsJobViewEnum =
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
-  | "JOB_VIEW_FULL"
-  | (string & {});
+  | "JOB_VIEW_FULL";
 export const ListProjectsJobsJobViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobsRequest {
@@ -1133,7 +1117,7 @@ export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsJobsRequest",
 }) as any as S.Schema<ListProjectsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Output only. List jobs response. */
@@ -1236,8 +1220,7 @@ export type DeviceInfoDeviceTypeEnum =
   | "ANDROID"
   | "IOS"
   | "BOT"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const DeviceInfoDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device information collected from the job seeker, candidate, or other entity conducting the job search. Providing this information improves the quality of the search results across devices. */
@@ -1279,8 +1262,7 @@ export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
 export type SearchJobsRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "JOB_SEARCH"
-  | "FEATURED_JOB_SEARCH"
-  | (string & {});
+  | "FEATURED_JOB_SEARCH";
 export const SearchJobsRequestSearchModeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a period of time between two timestamps. */
@@ -1301,8 +1283,7 @@ export type LocationFilterTelecommutePreferenceEnum =
   | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
   | "TELECOMMUTE_EXCLUDED"
   | "TELECOMMUTE_ALLOWED"
-  | "TELECOMMUTE_JOBS_EXCLUDED"
-  | (string & {});
+  | "TELECOMMUTE_JOBS_EXCLUDED";
 export const LocationFilterTelecommutePreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Geographic region of the search. */
@@ -1328,7 +1309,7 @@ export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
-export type LocationFilterList = LocationFilter[];
+export type LocationFilterList = ReadonlyArray<LocationFilter>;
 export const LocationFilterList = /*@__PURE__*/ S.Array(
   LocationFilter,
 ) as any as S.Schema<LocationFilterList>;
@@ -1344,12 +1325,11 @@ export type JobQueryEmploymentTypesItemEnum =
   | "VOLUNTEER"
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
-  | "OTHER_EMPLOYMENT_TYPE"
-  | (string & {});
+  | "OTHER_EMPLOYMENT_TYPE";
 export const JobQueryEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobQueryEmploymentTypesItemEnumList =
-  JobQueryEmploymentTypesItemEnum[];
+  ReadonlyArray<JobQueryEmploymentTypesItemEnum>;
 export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
   JobQueryEmploymentTypesItemEnum,
 ) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
@@ -1359,8 +1339,7 @@ export type CompensationFilterTypeEnum =
   | "UNIT_ONLY"
   | "UNIT_AND_AMOUNT"
   | "ANNUALIZED_BASE_AMOUNT"
-  | "ANNUALIZED_TOTAL_AMOUNT"
-  | (string & {});
+  | "ANNUALIZED_TOTAL_AMOUNT";
 export const CompensationFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type CompensationFilterUnitsItemEnum =
@@ -1371,12 +1350,11 @@ export type CompensationFilterUnitsItemEnum =
   | "MONTHLY"
   | "YEARLY"
   | "ONE_TIME"
-  | "OTHER_COMPENSATION_UNIT"
-  | (string & {});
+  | "OTHER_COMPENSATION_UNIT";
 export const CompensationFilterUnitsItemEnum = /*@__PURE__*/ S.String;
 
 export type CompensationFilterUnitsItemEnumList =
-  CompensationFilterUnitsItemEnum[];
+  ReadonlyArray<CompensationFilterUnitsItemEnum>;
 export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(
   CompensationFilterUnitsItemEnum,
 ) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
@@ -1406,15 +1384,13 @@ export const CompensationFilter = /*@__PURE__*/ S.suspend(() =>
 export type CommuteFilterRoadTrafficEnum =
   | "ROAD_TRAFFIC_UNSPECIFIED"
   | "TRAFFIC_FREE"
-  | "BUSY_HOUR"
-  | (string & {});
+  | "BUSY_HOUR";
 export const CommuteFilterRoadTrafficEnum = /*@__PURE__*/ S.String;
 
 export type CommuteFilterCommuteMethodEnum =
   | "COMMUTE_METHOD_UNSPECIFIED"
   | "DRIVING"
-  | "TRANSIT"
-  | (string & {});
+  | "TRANSIT";
 export const CommuteFilterCommuteMethodEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1494,11 +1470,11 @@ export type JobQueryJobCategoriesItemEnum =
   | "SCIENCE_AND_ENGINEERING"
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
-  | "TRANSPORTATION_AND_LOGISTICS"
-  | (string & {});
+  | "TRANSPORTATION_AND_LOGISTICS";
 export const JobQueryJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobQueryJobCategoriesItemEnumList = JobQueryJobCategoriesItemEnum[];
+export type JobQueryJobCategoriesItemEnumList =
+  ReadonlyArray<JobQueryJobCategoriesItemEnum>;
 export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   JobQueryJobCategoriesItemEnum,
 ) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
@@ -1554,11 +1530,10 @@ export type CompensationHistogramRequestTypeEnum =
   | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
   | "BASE"
   | "ANNUALIZED_BASE"
-  | "ANNUALIZED_TOTAL"
-  | (string & {});
+  | "ANNUALIZED_TOTAL";
 export const CompensationHistogramRequestTypeEnum = /*@__PURE__*/ S.String;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1595,7 +1570,8 @@ export const CompensationHistogramRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompensationHistogramRequest",
 }) as any as S.Schema<CompensationHistogramRequest>;
 
-export type CompensationHistogramRequestList = CompensationHistogramRequest[];
+export type CompensationHistogramRequestList =
+  ReadonlyArray<CompensationHistogramRequest>;
 export const CompensationHistogramRequestList = /*@__PURE__*/ S.Array(
   CompensationHistogramRequest,
 ) as any as S.Schema<CompensationHistogramRequestList>;
@@ -1617,13 +1593,12 @@ export type HistogramFacetsSimpleHistogramFacetsItemEnum =
   | "CITY_COORDINATE"
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
-  | "BASE_COMPENSATION_UNIT"
-  | (string & {});
+  | "BASE_COMPENSATION_UNIT";
 export const HistogramFacetsSimpleHistogramFacetsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type HistogramFacetsSimpleHistogramFacetsItemEnumList =
-  HistogramFacetsSimpleHistogramFacetsItemEnum[];
+  ReadonlyArray<HistogramFacetsSimpleHistogramFacetsItemEnum>;
 export const HistogramFacetsSimpleHistogramFacetsItemEnumList =
   /*@__PURE__*/ S.Array(
     HistogramFacetsSimpleHistogramFacetsItemEnum,
@@ -1649,7 +1624,7 @@ export const CustomAttributeHistogramRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomAttributeHistogramRequest>;
 
 export type CustomAttributeHistogramRequestList =
-  CustomAttributeHistogramRequest[];
+  ReadonlyArray<CustomAttributeHistogramRequest>;
 export const CustomAttributeHistogramRequestList = /*@__PURE__*/ S.Array(
   CustomAttributeHistogramRequest,
 ) as any as S.Schema<CustomAttributeHistogramRequestList>;
@@ -1680,8 +1655,7 @@ export const HistogramFacets = /*@__PURE__*/ S.suspend(() =>
 export type SearchJobsRequestDiversificationLevelEnum =
   | "DIVERSIFICATION_LEVEL_UNSPECIFIED"
   | "DISABLED"
-  | "SIMPLE"
-  | (string & {});
+  | "SIMPLE";
 export const SearchJobsRequestDiversificationLevelEnum = /*@__PURE__*/ S.String;
 
 export type SearchJobsRequestJobViewEnum =
@@ -1689,8 +1663,7 @@ export type SearchJobsRequestJobViewEnum =
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
-  | "JOB_VIEW_FULL"
-  | (string & {});
+  | "JOB_VIEW_FULL";
 export const SearchJobsRequestJobViewEnum = /*@__PURE__*/ S.String;
 
 /** Input only. The Request body of the `SearchJobs` call. */
@@ -1800,7 +1773,7 @@ export const MatchingJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MatchingJob" }) as any as S.Schema<MatchingJob>;
 
-export type MatchingJobList = MatchingJob[];
+export type MatchingJobList = ReadonlyArray<MatchingJob>;
 export const MatchingJobList = /*@__PURE__*/ S.Array(
   MatchingJob,
 ) as any as S.Schema<MatchingJobList>;
@@ -1838,8 +1811,7 @@ export type HistogramResultSearchTypeEnum =
   | "CITY_COORDINATE"
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
-  | "BASE_COMPENSATION_UNIT"
-  | (string & {});
+  | "BASE_COMPENSATION_UNIT";
 export const HistogramResultSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type IntegerMap = { [key: string]: number | undefined };
@@ -1864,7 +1836,7 @@ export const HistogramResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistogramResult",
 }) as any as S.Schema<HistogramResult>;
 
-export type HistogramResultList = HistogramResult[];
+export type HistogramResultList = ReadonlyArray<HistogramResult>;
 export const HistogramResultList = /*@__PURE__*/ S.Array(
   HistogramResult,
 ) as any as S.Schema<HistogramResultList>;
@@ -1899,7 +1871,7 @@ export const BucketizedCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketizedCount",
 }) as any as S.Schema<BucketizedCount>;
 
-export type BucketizedCountList = BucketizedCount[];
+export type BucketizedCountList = ReadonlyArray<BucketizedCount>;
 export const BucketizedCountList = /*@__PURE__*/ S.Array(
   BucketizedCount,
 ) as any as S.Schema<BucketizedCountList>;
@@ -1943,7 +1915,7 @@ export const CustomAttributeHistogramResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomAttributeHistogramResult>;
 
 export type CustomAttributeHistogramResultList =
-  CustomAttributeHistogramResult[];
+  ReadonlyArray<CustomAttributeHistogramResult>;
 export const CustomAttributeHistogramResultList = /*@__PURE__*/ S.Array(
   CustomAttributeHistogramResult,
 ) as any as S.Schema<CustomAttributeHistogramResultList>;
@@ -1952,8 +1924,7 @@ export type CompensationHistogramResultTypeEnum =
   | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
   | "BASE"
   | "ANNUALIZED_BASE"
-  | "ANNUALIZED_TOTAL"
-  | (string & {});
+  | "ANNUALIZED_TOTAL";
 export const CompensationHistogramResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Compensation based histogram result. */
@@ -1972,7 +1943,8 @@ export const CompensationHistogramResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompensationHistogramResult",
 }) as any as S.Schema<CompensationHistogramResult>;
 
-export type CompensationHistogramResultList = CompensationHistogramResult[];
+export type CompensationHistogramResultList =
+  ReadonlyArray<CompensationHistogramResult>;
 export const CompensationHistogramResultList = /*@__PURE__*/ S.Array(
   CompensationHistogramResult,
 ) as any as S.Schema<CompensationHistogramResultList>;

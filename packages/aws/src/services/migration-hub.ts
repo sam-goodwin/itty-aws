@@ -292,11 +292,7 @@ export const DescribeApplicationStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationStateRequest",
 }) as any as S.Schema<DescribeApplicationStateRequest>;
-export type ApplicationStatus =
-  | "NOT_STARTED"
-  | "IN_PROGRESS"
-  | "COMPLETED"
-  | (string & {});
+export type ApplicationStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type UpdateDateTime = Date;
@@ -328,12 +324,7 @@ export const DescribeMigrationTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMigrationTaskRequest",
 }) as any as S.Schema<DescribeMigrationTaskRequest>;
-export type Status =
-  | "NOT_STARTED"
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "COMPLETED"
-  | (string & {});
+export type Status = "NOT_STARTED" | "IN_PROGRESS" | "FAILED" | "COMPLETED";
 export const Status = /*@__PURE__*/ S.String;
 
 export type ProgressPercent = number;
@@ -359,8 +350,7 @@ export type ResourceAttributeType =
   | "VM_NAME"
   | "VM_PATH"
   | "BIOS_ID"
-  | "MOTHERBOARD_SERIAL_NUMBER"
-  | (string & {});
+  | "MOTHERBOARD_SERIAL_NUMBER";
 export const ResourceAttributeType = /*@__PURE__*/ S.String;
 
 export type ResourceAttributeValue = string;
@@ -681,7 +671,7 @@ export const ListMigrationTaskUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMigrationTaskUpdatesRequest",
 }) as any as S.Schema<ListMigrationTaskUpdatesRequest>;
-export type UpdateType = "MIGRATION_TASK_STATE_UPDATED" | (string & {});
+export type UpdateType = "MIGRATION_TASK_STATE_UPDATED";
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export interface MigrationTaskUpdate {

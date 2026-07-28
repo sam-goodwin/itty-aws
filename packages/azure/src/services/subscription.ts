@@ -12,15 +12,78 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The workload type of the subscription. It can be either Production or DevTest. */
+export type Workload = "Production" | "DevTest";
+export const Workload = /*@__PURE__*/ S.String;
+
+/** Tags for the subscription */
+export type PutAliasRequestAdditionalPropertiesTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PutAliasRequestAdditionalPropertiesTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PutAliasRequestAdditionalPropertiesTagsMap>;
+
+/** Put subscription additional properties. */
+export interface PutAliasRequestAdditionalProperties {
+  /** Management group Id for the subscription. */
+  managementGroupId?: string;
+  /** Tenant Id of the subscription */
+  subscriptionTenantId?: string;
+  /** Owner Id of the subscription */
+  subscriptionOwnerId?: string;
+  /** Tags for the subscription */
+  tags?: PutAliasRequestAdditionalPropertiesTagsMap;
+}
+export const PutAliasRequestAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managementGroupId: S.optional(S.String),
+    subscriptionTenantId: S.optional(S.String),
+    subscriptionOwnerId: S.optional(S.String),
+    tags: S.optional(PutAliasRequestAdditionalPropertiesTagsMap),
+  }),
+).annotate({
+  identifier: "PutAliasRequestAdditionalProperties",
+}) as any as S.Schema<PutAliasRequestAdditionalProperties>;
+
+/** Put subscription properties. */
+export interface PutAliasRequestProperties {
+  /** The friendly name of the subscription. */
+  displayName?: string;
+  workload?: Workload;
+  billingScope?: string;
+  /** This parameter can be used to create alias for existing subscription Id */
+  subscriptionId?: string;
+  /** Reseller Id */
+  resellerId?: string;
+  /** Put alias request additional properties. */
+  additionalProperties?: PutAliasRequestAdditionalProperties;
+}
+export const PutAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    workload: S.optional(Workload),
+    billingScope: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    resellerId: S.optional(S.String),
+    additionalProperties: S.optional(PutAliasRequestAdditionalProperties),
+  }),
+).annotate({
+  identifier: "PutAliasRequestProperties",
+}) as any as S.Schema<PutAliasRequestProperties>;
+
 export interface AliasCreateRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
-  body: unknown;
+  /** Put alias request properties. */
+  properties?: PutAliasRequestProperties;
 }
 export const AliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PutAliasRequestProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -37,22 +100,13 @@ export const AliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionAliasResponsePropertiesProvisioningState =
   | "Accepted"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SubscriptionAliasResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The accept ownership state of the resource. */
-export type AcceptOwnershipState =
-  | "Pending"
-  | "Completed"
-  | "Expired"
-  | (string & {});
+export type AcceptOwnershipState = "Pending" | "Completed" | "Expired";
 export const AcceptOwnershipState = /*@__PURE__*/ S.String;
-
-/** The workload type of the subscription. It can be either Production or DevTest. */
-export type Workload = "Production" | "DevTest" | (string & {});
-export const Workload = /*@__PURE__*/ S.String;
 
 /** Tags for the subscription */
 export type SubscriptionAliasResponsePropertiesTagsMap = {
@@ -114,8 +168,7 @@ export type SubscriptionAliasResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SubscriptionAliasResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -124,8 +177,7 @@ export type SubscriptionAliasResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SubscriptionAliasResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -244,7 +296,8 @@ export const AliasListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AliasListRequest>;
 
 /** The list of alias. */
-export type SubscriptionAliasListResultValueList = SubscriptionAliasResponse[];
+export type SubscriptionAliasListResultValueList =
+  ReadonlyArray<SubscriptionAliasResponse>;
 export const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionAliasResponse,
 ) as any as S.Schema<SubscriptionAliasListResultValueList>;
@@ -302,7 +355,7 @@ export const ServiceTenantResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Service tenant for the billing account. */
 export type BillingAccountPoliciesResponsePropertiesServiceTenantsList =
-  ServiceTenantResponse[];
+  ReadonlyArray<ServiceTenantResponse>;
 export const BillingAccountPoliciesResponsePropertiesServiceTenantsList =
   /*@__PURE__*/ S.Array(
     ServiceTenantResponse,
@@ -332,8 +385,7 @@ export type BillingAccountPoliciesResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BillingAccountPoliciesResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -342,8 +394,7 @@ export type BillingAccountPoliciesResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BillingAccountPoliciesResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -459,7 +510,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -480,15 +531,44 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Tags for the subscription */
+export type AcceptOwnershipRequestPropertiesTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AcceptOwnershipRequestPropertiesTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AcceptOwnershipRequestPropertiesTagsMap>;
+
+/** Accept subscription ownership request properties. */
+export interface AcceptOwnershipRequestProperties {
+  /** The friendly name of the subscription. */
+  displayName: string;
+  /** Management group Id for the subscription. */
+  managementGroupId?: string;
+  /** Tags for the subscription */
+  tags?: AcceptOwnershipRequestPropertiesTagsMap;
+}
+export const AcceptOwnershipRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.String,
+    managementGroupId: S.optional(S.String),
+    tags: S.optional(AcceptOwnershipRequestPropertiesTagsMap),
+  }),
+).annotate({
+  identifier: "AcceptOwnershipRequestProperties",
+}) as any as S.Schema<AcceptOwnershipRequestProperties>;
+
 export interface SubscriptionAcceptOwnershipRequest {
   /** Subscription Id. */
   subscriptionId: string;
-  body: unknown;
+  /** Accept subscription ownership request properties. */
+  properties?: AcceptOwnershipRequestProperties;
 }
 export const SubscriptionAcceptOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AcceptOwnershipRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -529,11 +609,7 @@ export const SubscriptionAcceptOwnershipStatusRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubscriptionAcceptOwnershipStatusRequest>;
 
 /** The provisioning state of the resource. */
-export type ProvisioningState =
-  | "Pending"
-  | "Accepted"
-  | "Succeeded"
-  | (string & {});
+export type ProvisioningState = "Pending" | "Accepted" | "Succeeded";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Tags for the subscription */
@@ -670,13 +746,30 @@ export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionCreationResult",
 }) as any as S.Schema<SubscriptionCreationResult>;
 
+/** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+  ReadonlyArray<string>;
+export const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList>;
+
 export interface SubscriptionPolicyAddUpdatePolicyForTenantRequest {
-  body: unknown;
+  /** Blocks the leaving of subscriptions from user's tenant. */
+  blockSubscriptionsLeavingTenant?: boolean;
+  /** Blocks the entering of subscriptions into user's tenant. */
+  blockSubscriptionsIntoTenant?: boolean;
+  /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+  exemptedPrincipals?: SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList;
 }
 export const SubscriptionPolicyAddUpdatePolicyForTenantRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
+      blockSubscriptionsIntoTenant: S.optional(S.Boolean),
+      exemptedPrincipals: S.optional(
+        SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -690,7 +783,7 @@ export const SubscriptionPolicyAddUpdatePolicyForTenantRequest =
   }) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>;
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-export type TenantPolicyExemptedPrincipalsList = string[];
+export type TenantPolicyExemptedPrincipalsList = ReadonlyArray<string>;
 export const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
@@ -720,8 +813,7 @@ export type GetTenantPolicyResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GetTenantPolicyResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -730,8 +822,7 @@ export type GetTenantPolicyResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const GetTenantPolicyResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -821,7 +912,8 @@ export const SubscriptionPolicyListPolicyForTenantRequest =
   }) as any as S.Schema<SubscriptionPolicyListPolicyForTenantRequest>;
 
 /** The list of tenant policies. */
-export type GetTenantPolicyListResponseValueList = GetTenantPolicyResponse[];
+export type GetTenantPolicyListResponseValueList =
+  ReadonlyArray<GetTenantPolicyResponse>;
 export const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   GetTenantPolicyResponse,
 ) as any as S.Schema<GetTenantPolicyListResponseValueList>;
@@ -845,12 +937,13 @@ export const GetTenantPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SubscriptionRenameRequest {
   /** Subscription Id. */
   subscriptionId: string;
-  body: unknown;
+  /** New subscription name */
+  subscriptionName?: string;
 }
 export const SubscriptionRenameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    subscriptionName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",

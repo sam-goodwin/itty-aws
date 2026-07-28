@@ -48,13 +48,12 @@ export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS"
-  | (string & {});
+  | "BUSINESS_FOOD_MENU_CLICKS";
 export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
   /*@__PURE__*/ S.String;
 
 export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
-  FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum[];
+  ReadonlyArray<FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum>;
 export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
   /*@__PURE__*/ S.Array(
     FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum,
@@ -116,8 +115,7 @@ export type DailyMetricTimeSeriesDailyMetricEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS"
-  | (string & {});
+  | "BUSINESS_FOOD_MENU_CLICKS";
 export const DailyMetricTimeSeriesDailyMetricEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -153,7 +151,7 @@ export const DatedValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatedValue" }) as any as S.Schema<DatedValue>;
 
-export type DatedValueList = DatedValue[];
+export type DatedValueList = ReadonlyArray<DatedValue>;
 export const DatedValueList = /*@__PURE__*/ S.Array(
   DatedValue,
 ) as any as S.Schema<DatedValueList>;
@@ -177,8 +175,7 @@ export type DailySubEntityTypeDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DailySubEntityTypeDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -236,7 +233,7 @@ export const DailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "DailyMetricTimeSeries",
 }) as any as S.Schema<DailyMetricTimeSeries>;
 
-export type DailyMetricTimeSeriesList = DailyMetricTimeSeries[];
+export type DailyMetricTimeSeriesList = ReadonlyArray<DailyMetricTimeSeries>;
 export const DailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
   DailyMetricTimeSeries,
 ) as any as S.Schema<DailyMetricTimeSeriesList>;
@@ -254,7 +251,8 @@ export const MultiDailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiDailyMetricTimeSeries",
 }) as any as S.Schema<MultiDailyMetricTimeSeries>;
 
-export type MultiDailyMetricTimeSeriesList = MultiDailyMetricTimeSeries[];
+export type MultiDailyMetricTimeSeriesList =
+  ReadonlyArray<MultiDailyMetricTimeSeries>;
 export const MultiDailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
   MultiDailyMetricTimeSeries,
 ) as any as S.Schema<MultiDailyMetricTimeSeriesList>;
@@ -281,8 +279,7 @@ export type GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
     | "THURSDAY"
     | "FRIDAY"
     | "SATURDAY"
-    | "SUNDAY"
-    | (string & {});
+    | "SUNDAY";
 export const GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
   /*@__PURE__*/ S.String;
 
@@ -298,8 +295,7 @@ export type GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
   | "WEBSITE_CLICKS"
   | "BUSINESS_BOOKINGS"
   | "BUSINESS_FOOD_ORDERS"
-  | "BUSINESS_FOOD_MENU_CLICKS"
-  | (string & {});
+  | "BUSINESS_FOOD_MENU_CLICKS";
 export const GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -458,7 +454,7 @@ export const SearchKeywordCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchKeywordCount",
 }) as any as S.Schema<SearchKeywordCount>;
 
-export type SearchKeywordCountList = SearchKeywordCount[];
+export type SearchKeywordCountList = ReadonlyArray<SearchKeywordCount>;
 export const SearchKeywordCountList = /*@__PURE__*/ S.Array(
   SearchKeywordCount,
 ) as any as S.Schema<SearchKeywordCountList>;

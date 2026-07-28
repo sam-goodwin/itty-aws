@@ -65,8 +65,7 @@ export type GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclus
     | "VALIDATED_VERSION_USED"
     | "USER_VERSION_USED"
     | "UNVALIDATED_VERSION_USED"
-    | "UNUSED"
-    | (string & {});
+    | "UNUSED";
 export const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum =
   /*@__PURE__*/ S.String;
 
@@ -133,7 +132,7 @@ export const GoogleMapsAddressvalidationV1LanguageOptions =
     identifier: "GoogleMapsAddressvalidationV1LanguageOptions",
   }) as any as S.Schema<GoogleMapsAddressvalidationV1LanguageOptions>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -469,8 +468,7 @@ export type GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum =
     | "CONFIRMATION_LEVEL_UNSPECIFIED"
     | "CONFIRMED"
     | "UNCONFIRMED_BUT_PLAUSIBLE"
-    | "UNCONFIRMED_AND_SUSPICIOUS"
-    | (string & {});
+    | "UNCONFIRMED_AND_SUSPICIOUS";
 export const GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -526,7 +524,7 @@ export const GoogleMapsAddressvalidationV1AddressComponent =
   }) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponent>;
 
 export type GoogleMapsAddressvalidationV1AddressComponentList =
-  GoogleMapsAddressvalidationV1AddressComponent[];
+  ReadonlyArray<GoogleMapsAddressvalidationV1AddressComponent>;
 export const GoogleMapsAddressvalidationV1AddressComponentList =
   /*@__PURE__*/ S.Array(
     GoogleMapsAddressvalidationV1AddressComponent,
@@ -588,8 +586,7 @@ export type GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum =
   | "FIX"
   | "CONFIRM_ADD_SUBPREMISES"
   | "CONFIRM"
-  | "ACCEPT"
-  | (string & {});
+  | "ACCEPT";
 export const GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -600,8 +597,7 @@ export type GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
   | "PREMISE_PROXIMITY"
   | "BLOCK"
   | "ROUTE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -612,8 +608,7 @@ export type GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
   | "PREMISE_PROXIMITY"
   | "BLOCK"
   | "ROUTE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -624,8 +619,7 @@ export type GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
   | "PREMISE_PROXIMITY"
   | "BLOCK"
   | "ROUTE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
   /*@__PURE__*/ S.String;
 

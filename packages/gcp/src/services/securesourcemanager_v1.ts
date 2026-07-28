@@ -104,8 +104,7 @@ export type ReviewActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "COMMENT"
   | "CHANGE_REQUESTED"
-  | "APPROVED"
-  | (string & {});
+  | "APPROVED";
 export const ReviewActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The review summary comment. */
@@ -181,7 +180,7 @@ export const CreatePullRequestCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePullRequestCommentRequest>;
 
 export type CreatePullRequestCommentRequestList =
-  CreatePullRequestCommentRequest[];
+  ReadonlyArray<CreatePullRequestCommentRequest>;
 export const CreatePullRequestCommentRequestList = /*@__PURE__*/ S.Array(
   CreatePullRequestCommentRequest,
 ) as any as S.Schema<CreatePullRequestCommentRequestList>;
@@ -231,7 +230,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -416,18 +415,16 @@ export type InstanceStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "PAUSED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateNoteEnum =
   | "STATE_NOTE_UNSPECIFIED"
   | "PAUSED_CMEK_UNAVAILABLE"
-  | "INSTANCE_RESUMING"
-  | (string & {});
+  | "INSTANCE_RESUMING";
 export const InstanceStateNoteEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -695,7 +692,7 @@ export const Check = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 
-export type CheckList = Check[];
+export type CheckList = ReadonlyArray<Check>;
 export const CheckList = /*@__PURE__*/ S.Array(
   Check,
 ) as any as S.Schema<CheckList>;
@@ -789,14 +786,10 @@ export const PushOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PushOption" }) as any as S.Schema<PushOption>;
 
-export type HookEventsItemEnum =
-  | "UNSPECIFIED"
-  | "PUSH"
-  | "PULL_REQUEST"
-  | (string & {});
+export type HookEventsItemEnum = "UNSPECIFIED" | "PUSH" | "PULL_REQUEST";
 export const HookEventsItemEnum = /*@__PURE__*/ S.String;
 
-export type HookEventsItemEnumList = HookEventsItemEnum[];
+export type HookEventsItemEnumList = ReadonlyArray<HookEventsItemEnum>;
 export const HookEventsItemEnumList = /*@__PURE__*/ S.Array(
   HookEventsItemEnum,
 ) as any as S.Schema<HookEventsItemEnumList>;
@@ -861,11 +854,7 @@ export const CreateProjectsLocationsRepositoriesHooksRequest =
     identifier: "CreateProjectsLocationsRepositoriesHooksRequest",
   }) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>;
 
-export type IssueStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "OPEN"
-  | "CLOSED"
-  | (string & {});
+export type IssueStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED";
 export const IssueStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an Issue. */
@@ -982,8 +971,7 @@ export type PullRequestStateEnum =
   | "STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
-  | "MERGED"
-  | (string & {});
+  | "MERGED";
 export const PullRequestStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a PullRequest. PullRequest is the request from a user to merge a branch (head) into another branch (base). */
@@ -1274,8 +1262,7 @@ export const FetchBlobResponse = /*@__PURE__*/ S.suspend(() =>
 export type FetchRefsProjectsLocationsRepositoriesTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG"
-  | (string & {});
+  | "REF_TYPE_TAG";
 export const FetchRefsProjectsLocationsRepositoriesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1312,8 +1299,7 @@ export const FetchRefsProjectsLocationsRepositoriesRequest =
 export type RefTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "REF_TYPE_BRANCH"
-  | "REF_TYPE_TAG"
-  | (string & {});
+  | "REF_TYPE_TAG";
 export const RefTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ref represents a git reference within a repository. */
@@ -1333,7 +1319,7 @@ export const Ref = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Ref" }) as any as S.Schema<Ref>;
 
-export type RefList = Ref[];
+export type RefList = ReadonlyArray<Ref>;
 export const RefList = /*@__PURE__*/ S.Array(Ref) as any as S.Schema<RefList>;
 
 /** Response message containing a list of git references. */
@@ -1387,8 +1373,7 @@ export type TreeEntryTypeEnum =
   | "OBJECT_TYPE_UNSPECIFIED"
   | "TREE"
   | "BLOB"
-  | "COMMIT"
-  | (string & {});
+  | "COMMIT";
 export const TreeEntryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an entry within a tree structure (like a Git tree). */
@@ -1414,7 +1399,7 @@ export const TreeEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TreeEntry" }) as any as S.Schema<TreeEntry>;
 
-export type TreeEntryList = TreeEntry[];
+export type TreeEntryList = ReadonlyArray<TreeEntry>;
 export const TreeEntryList = /*@__PURE__*/ S.Array(
   TreeEntry,
 ) as any as S.Schema<TreeEntryList>;
@@ -1494,7 +1479,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1503,8 +1488,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1521,7 +1505,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1540,7 +1524,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1829,8 +1813,7 @@ export type FileDiffActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ADDED"
   | "MODIFIED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const FileDiffActionEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of a FileDiff. FileDiff represents a single file diff in a pull request. */
@@ -1853,7 +1836,7 @@ export const FileDiff = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileDiff" }) as any as S.Schema<FileDiff>;
 
-export type FileDiffList = FileDiff[];
+export type FileDiffList = ReadonlyArray<FileDiff>;
 export const FileDiffList = /*@__PURE__*/ S.Array(
   FileDiff,
 ) as any as S.Schema<FileDiffList>;
@@ -1904,7 +1887,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1956,7 +1939,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2010,7 +1993,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2065,7 +2048,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
-export type RepositoryList = Repository[];
+export type RepositoryList = ReadonlyArray<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -2109,7 +2092,7 @@ export const ListProjectsLocationsRepositoriesBranchRulesRequest =
     identifier: "ListProjectsLocationsRepositoriesBranchRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesBranchRulesRequest>;
 
-export type BranchRuleList = BranchRule[];
+export type BranchRuleList = ReadonlyArray<BranchRule>;
 export const BranchRuleList = /*@__PURE__*/ S.Array(
   BranchRule,
 ) as any as S.Schema<BranchRuleList>;
@@ -2155,7 +2138,7 @@ export const ListProjectsLocationsRepositoriesHooksRequest =
     identifier: "ListProjectsLocationsRepositoriesHooksRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesHooksRequest>;
 
-export type HookList = Hook[];
+export type HookList = ReadonlyArray<Hook>;
 export const HookList = /*@__PURE__*/ S.Array(
   Hook,
 ) as any as S.Schema<HookList>;
@@ -2204,7 +2187,7 @@ export const ListProjectsLocationsRepositoriesIssuesRequest =
     identifier: "ListProjectsLocationsRepositoriesIssuesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesRequest>;
 
-export type IssueList = Issue[];
+export type IssueList = ReadonlyArray<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -2250,7 +2233,7 @@ export const ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest =
     identifier: "ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest>;
 
-export type IssueCommentList = IssueComment[];
+export type IssueCommentList = ReadonlyArray<IssueComment>;
 export const IssueCommentList = /*@__PURE__*/ S.Array(
   IssueComment,
 ) as any as S.Schema<IssueCommentList>;
@@ -2296,7 +2279,7 @@ export const ListProjectsLocationsRepositoriesPullRequestsRequest =
     identifier: "ListProjectsLocationsRepositoriesPullRequestsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsRequest>;
 
-export type PullRequestList = PullRequest[];
+export type PullRequestList = ReadonlyArray<PullRequest>;
 export const PullRequestList = /*@__PURE__*/ S.Array(
   PullRequest,
 ) as any as S.Schema<PullRequestList>;
@@ -2343,7 +2326,7 @@ export const ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsReq
       "ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>;
 
-export type PullRequestCommentList = PullRequestComment[];
+export type PullRequestCommentList = ReadonlyArray<PullRequestComment>;
 export const PullRequestCommentList = /*@__PURE__*/ S.Array(
   PullRequestComment,
 ) as any as S.Schema<PullRequestCommentList>;

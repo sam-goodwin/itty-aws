@@ -157,7 +157,7 @@ export const GoogleAdsHomeservicesLocalservicesV1AccountReport =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
 
 export type GoogleAdsHomeservicesLocalservicesV1AccountReportList =
-  GoogleAdsHomeservicesLocalservicesV1AccountReport[];
+  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
 export const GoogleAdsHomeservicesLocalservicesV1AccountReportList =
   /*@__PURE__*/ S.Array(
     GoogleAdsHomeservicesLocalservicesV1AccountReport,
@@ -249,11 +249,7 @@ export const GoogleAdsHomeservicesLocalservicesV1MessageLead =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
-    | "LEAD_TYPE_UNSPECIFIED"
-    | "MESSAGE"
-    | "PHONE_CALL"
-    | "BOOKING"
-    | (string & {});
+  "LEAD_TYPE_UNSPECIFIED" | "MESSAGE" | "PHONE_CALL" | "BOOKING";
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -274,7 +270,7 @@ export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleTypeTimeZone>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
-  "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED" | (string & {});
+  "CHARGE_STATUS_UNSPECIFIED" | "CHARGED" | "NOT_CHARGED";
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -393,7 +389,7 @@ export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport =
   }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
-  GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport[];
+  ReadonlyArray<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
   /*@__PURE__*/ S.Array(
     GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport,

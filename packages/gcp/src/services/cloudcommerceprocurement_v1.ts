@@ -187,8 +187,7 @@ export const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProvidersAccountsViewEnum =
   | "ACCOUNT_VIEW_UNSPECIFIED"
   | "ACCOUNT_VIEW_BASIC"
-  | "ACCOUNT_VIEW_FULL"
-  | (string & {});
+  | "ACCOUNT_VIEW_FULL";
 export const GetProvidersAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProvidersAccountsRequest {
@@ -216,8 +215,7 @@ export type ApprovalStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const ApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** An approval for some action on an account. */
@@ -240,7 +238,7 @@ export const Approval = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Approval" }) as any as S.Schema<Approval>;
 
-export type ApprovalList = Approval[];
+export type ApprovalList = ReadonlyArray<Approval>;
 export const ApprovalList = /*@__PURE__*/ S.Array(
   Approval,
 ) as any as S.Schema<ApprovalList>;
@@ -254,8 +252,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
 export type AccountStateEnum =
   | "ACCOUNT_STATE_UNSPECIFIED"
   | "ACCOUNT_ACTIVATION_REQUESTED"
-  | "ACCOUNT_ACTIVE"
-  | (string & {});
+  | "ACCOUNT_ACTIVE";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an account that was established by the customer on the service provider's system. */
@@ -316,11 +313,10 @@ export type EntitlementStateEnum =
   | "ENTITLEMENT_CANCELLED"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
-  | "ENTITLEMENT_SUSPENDED"
-  | (string & {});
+  | "ENTITLEMENT_SUSPENDED";
 export const EntitlementStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -336,7 +332,7 @@ export const Consumer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
-export type ConsumerList = Consumer[];
+export type ConsumerList = ReadonlyArray<Consumer>;
 export const ConsumerList = /*@__PURE__*/ S.Array(
   Consumer,
 ) as any as S.Schema<ConsumerList>;
@@ -451,7 +447,7 @@ export const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProvidersAccountsRequest",
 }) as any as S.Schema<ListProvidersAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -499,7 +495,7 @@ export const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProvidersEntitlementsRequest",
 }) as any as S.Schema<ListProvidersEntitlementsRequest>;
 
-export type EntitlementList = Entitlement[];
+export type EntitlementList = ReadonlyArray<Entitlement>;
 export const EntitlementList = /*@__PURE__*/ S.Array(
   Entitlement,
 ) as any as S.Schema<EntitlementList>;

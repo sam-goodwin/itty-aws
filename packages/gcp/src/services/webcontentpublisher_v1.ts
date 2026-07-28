@@ -125,7 +125,7 @@ export const DomainProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainProperty" }) as any as S.Schema<DomainProperty>;
 
-export type DomainPropertyList = DomainProperty[];
+export type DomainPropertyList = ReadonlyArray<DomainProperty>;
 export const DomainPropertyList = /*@__PURE__*/ S.Array(
   DomainProperty,
 ) as any as S.Schema<DomainPropertyList>;
@@ -134,16 +134,14 @@ export type PublicationOnboardingStateEnum =
   | "ONBOARDING_STATE_UNSPECIFIED"
   | "ACTION_REQUIRED"
   | "PENDING_VERIFICATION"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const PublicationOnboardingStateEnum = /*@__PURE__*/ S.String;
 
 export type PublicationPaymentOptionEnum =
   | "PAYMENT_OPTION_UNSPECIFIED"
   | "NONE"
   | "SUBSCRIPTIONS"
-  | "CONTRIBUTIONS"
-  | (string & {});
+  | "CONTRIBUTIONS";
 export const PublicationPaymentOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about the acceptance of the Terms of Service (TOS). */
@@ -187,8 +185,7 @@ export type ContentPolicyStatusStateEnum =
   | "VIOLATION_ACTIVE"
   | "ORGANIZATION_VIOLATION_GRACE_PERIOD"
   | "ORGANIZATION_VIOLATION_ACTIVE"
-  | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE"
-  | (string & {});
+  | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
 export const ContentPolicyStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The content policy status of the publication, indicating any violations. */
@@ -207,7 +204,7 @@ export const ContentPolicyStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentPolicyStatus",
 }) as any as S.Schema<ContentPolicyStatus>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -293,17 +290,10 @@ export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateOrganizationsPublicationsRequest",
 }) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
 
-export type CtaTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NEWSLETTER_SIGNUP"
-  | (string & {});
+export type CtaTypeEnum = "TYPE_UNSPECIFIED" | "NEWSLETTER_SIGNUP";
 export const CtaTypeEnum = /*@__PURE__*/ S.String;
 
-export type CtaStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "DRAFT"
-  | "ACTIVE"
-  | (string & {});
+export type CtaStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE";
 export const CtaStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for newsletter signup calls-to-action (CTAs). */
@@ -441,7 +431,7 @@ export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsPublicationsRequest",
 }) as any as S.Schema<ListOrganizationsPublicationsRequest>;
 
-export type PublicationList = Publication[];
+export type PublicationList = ReadonlyArray<Publication>;
 export const PublicationList = /*@__PURE__*/ S.Array(
   Publication,
 ) as any as S.Schema<PublicationList>;
@@ -487,7 +477,7 @@ export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsPublicationsCtasRequest",
 }) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
 
-export type CtaList = Cta[];
+export type CtaList = ReadonlyArray<Cta>;
 export const CtaList = /*@__PURE__*/ S.Array(Cta) as any as S.Schema<CtaList>;
 
 /** Response message for `ListCtas`. */

@@ -57,7 +57,7 @@ export const DashboardTemplatesCopyBetweenProjectsCreateRequest =
     identifier: "DashboardTemplatesCopyBetweenProjectsCreateRequest",
   }) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>;
 
-export type DashboardTemplateTagsList = string[];
+export type DashboardTemplateTagsList = ReadonlyArray<string>;
 export const DashboardTemplateTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplateTagsList>;
@@ -77,11 +77,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -118,21 +117,20 @@ export type DashboardTemplateScopeEnum =
   | "team"
   | "organization"
   | "global"
-  | "feature_flag"
-  | (string & {});
+  | "feature_flag";
 export const DashboardTemplateScopeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
 export const DashboardTemplateScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplateScope>;
 
-export type DashboardTemplateAvailabilityContextsList = string[];
+export type DashboardTemplateAvailabilityContextsList = ReadonlyArray<string>;
 export const DashboardTemplateAvailabilityContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
 
 /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
-export type NonPortableReferencesWarehouseTablesList = string[];
+export type NonPortableReferencesWarehouseTablesList = ReadonlyArray<string>;
 export const NonPortableReferencesWarehouseTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
@@ -165,7 +163,7 @@ export interface DashboardTemplate {
   variables?: unknown;
   deleted?: boolean | null;
   created_at?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   image_url?: string | null;
   team_id?: number | null;
   scope?: DashboardTemplateScope | null;
@@ -186,7 +184,7 @@ export const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
     variables: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
     created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     image_url: S.optional(S.NullOr(S.String)),
     team_id: S.optional(S.NullOr(S.Number)),
     scope: S.optional(S.NullOr(DashboardTemplateScope)),
@@ -200,7 +198,7 @@ export const DashboardTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplate",
 }) as any as S.Schema<DashboardTemplate>;
 
-export type DashboardTemplatesCreateRequestTagsList = string[];
+export type DashboardTemplatesCreateRequestTagsList = ReadonlyArray<string>;
 export const DashboardTemplatesCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplatesCreateRequestTagsList>;
@@ -211,7 +209,8 @@ export type DashboardTemplatesCreateRequestScope =
 export const DashboardTemplatesCreateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesCreateRequestScope>;
 
-export type DashboardTemplatesCreateRequestAvailabilityContextsList = string[];
+export type DashboardTemplatesCreateRequestAvailabilityContextsList =
+  ReadonlyArray<string>;
 export const DashboardTemplatesCreateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -220,7 +219,6 @@ export const DashboardTemplatesCreateRequestAvailabilityContextsList =
 export interface DashboardTemplatesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   template_name?: string | null;
   dashboard_description?: string | null;
   dashboard_filters?: unknown;
@@ -228,21 +226,15 @@ export interface DashboardTemplatesCreateRequest {
   tiles?: unknown;
   variables?: unknown;
   deleted?: boolean | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   image_url?: string | null;
-  team_id?: number | null;
   scope?: DashboardTemplatesCreateRequestScope | null;
   availability_contexts?: DashboardTemplatesCreateRequestAvailabilityContextsList | null;
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
-  /** Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here. */
-  non_portable_references?: NonPortableReferences;
 }
 export const DashboardTemplatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     template_name: S.optional(S.NullOr(S.String)),
     dashboard_description: S.optional(S.NullOr(S.String)),
     dashboard_filters: S.optional(S.Unknown),
@@ -250,16 +242,12 @@ export const DashboardTemplatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tiles: S.optional(S.Unknown),
     variables: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
     image_url: S.optional(S.NullOr(S.String)),
-    team_id: S.optional(S.NullOr(S.Number)),
     scope: S.optional(S.NullOr(DashboardTemplatesCreateRequestScope)),
     availability_contexts: S.optional(
       S.NullOr(DashboardTemplatesCreateRequestAvailabilityContextsList),
     ),
     is_featured: S.optional(S.Boolean),
-    non_portable_references: S.optional(NonPortableReferences),
   }).pipe(
     T.Http({
       method: "POST",
@@ -303,16 +291,14 @@ export type DashboardTemplatesListRequestOrdering =
   | "-created_at"
   | "-template_name"
   | "created_at"
-  | "template_name"
-  | (string & {});
+  | "template_name";
 export const DashboardTemplatesListRequestOrdering = /*@__PURE__*/ S.String;
 
 export type DashboardTemplatesListRequestScope =
   | "feature_flag"
   | "global"
   | "organization"
-  | "team"
-  | (string & {});
+  | "team";
 export const DashboardTemplatesListRequestScope = /*@__PURE__*/ S.String;
 
 export interface DashboardTemplatesListRequest {
@@ -351,7 +337,8 @@ export const DashboardTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplatesListRequest",
 }) as any as S.Schema<DashboardTemplatesListRequest>;
 
-export type PaginatedDashboardTemplateListResultsList = DashboardTemplate[];
+export type PaginatedDashboardTemplateListResultsList =
+  ReadonlyArray<DashboardTemplate>;
 export const PaginatedDashboardTemplateListResultsList = /*@__PURE__*/ S.Array(
   DashboardTemplate,
 ) as any as S.Schema<PaginatedDashboardTemplateListResultsList>;
@@ -373,7 +360,8 @@ export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDashboardTemplateList",
 }) as any as S.Schema<PaginatedDashboardTemplateList>;
 
-export type DashboardTemplatesPartialUpdateRequestTagsList = string[];
+export type DashboardTemplatesPartialUpdateRequestTagsList =
+  ReadonlyArray<string>;
 export const DashboardTemplatesPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -386,7 +374,7 @@ export const DashboardTemplatesPartialUpdateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesPartialUpdateRequestScope>;
 
 export type DashboardTemplatesPartialUpdateRequestAvailabilityContextsList =
-  string[];
+  ReadonlyArray<string>;
 export const DashboardTemplatesPartialUpdateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -404,16 +392,11 @@ export interface DashboardTemplatesPartialUpdateRequest {
   tiles?: unknown;
   variables?: unknown;
   deleted?: boolean | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   image_url?: string | null;
-  team_id?: number | null;
   scope?: DashboardTemplatesPartialUpdateRequestScope | null;
   availability_contexts?: DashboardTemplatesPartialUpdateRequestAvailabilityContextsList | null;
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
-  /** Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here. */
-  non_portable_references?: NonPortableReferences;
 }
 export const DashboardTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -429,10 +412,7 @@ export const DashboardTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       tiles: S.optional(S.Unknown),
       variables: S.optional(S.Unknown),
       deleted: S.optional(S.NullOr(S.Boolean)),
-      created_at: S.optional(S.NullOr(S.String)),
-      created_by: S.optional(UserBasic),
       image_url: S.optional(S.NullOr(S.String)),
-      team_id: S.optional(S.NullOr(S.Number)),
       scope: S.optional(S.NullOr(DashboardTemplatesPartialUpdateRequestScope)),
       availability_contexts: S.optional(
         S.NullOr(
@@ -440,7 +420,6 @@ export const DashboardTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
         ),
       ),
       is_featured: S.optional(S.Boolean),
-      non_portable_references: S.optional(NonPortableReferences),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -473,7 +452,7 @@ export const DashboardTemplatesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardTemplatesRetrieveRequest",
 }) as any as S.Schema<DashboardTemplatesRetrieveRequest>;
 
-export type DashboardTemplatesUpdateRequestTagsList = string[];
+export type DashboardTemplatesUpdateRequestTagsList = ReadonlyArray<string>;
 export const DashboardTemplatesUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DashboardTemplatesUpdateRequestTagsList>;
@@ -484,7 +463,8 @@ export type DashboardTemplatesUpdateRequestScope =
 export const DashboardTemplatesUpdateRequestScope =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardTemplatesUpdateRequestScope>;
 
-export type DashboardTemplatesUpdateRequestAvailabilityContextsList = string[];
+export type DashboardTemplatesUpdateRequestAvailabilityContextsList =
+  ReadonlyArray<string>;
 export const DashboardTemplatesUpdateRequestAvailabilityContextsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -502,16 +482,11 @@ export interface DashboardTemplatesUpdateRequest {
   tiles?: unknown;
   variables?: unknown;
   deleted?: boolean | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   image_url?: string | null;
-  team_id?: number | null;
   scope?: DashboardTemplatesUpdateRequestScope | null;
   availability_contexts?: DashboardTemplatesUpdateRequestAvailabilityContextsList | null;
   /** Manually curated; used to highlight templates in the UI. */
   is_featured?: boolean;
-  /** Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here. */
-  non_portable_references?: NonPortableReferences;
 }
 export const DashboardTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -524,16 +499,12 @@ export const DashboardTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tiles: S.optional(S.Unknown),
     variables: S.optional(S.Unknown),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
     image_url: S.optional(S.NullOr(S.String)),
-    team_id: S.optional(S.NullOr(S.Number)),
     scope: S.optional(S.NullOr(DashboardTemplatesUpdateRequestScope)),
     availability_contexts: S.optional(
       S.NullOr(DashboardTemplatesUpdateRequestAvailabilityContextsList),
     ),
     is_featured: S.optional(S.Boolean),
-    non_portable_references: S.optional(NonPortableReferences),
   }).pipe(
     T.Http({
       method: "PUT",

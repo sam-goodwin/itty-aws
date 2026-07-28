@@ -115,16 +115,75 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "secretType": {
+          "target": "com.azure.cdn#SecretType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The secret type.",
             "smithy.api#required": {}
+          }
+        },
+        "secretSource": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}",
+            "smithy.api#required": {}
+          }
+        },
+        "secretVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secret version, if customer is using a specific version."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#ResourceReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
+      }
+    },
+    "com.azure.cdn#SecretType": {
+      "type": "enum",
+      "members": {
+        "URLSIGNINGKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UrlSigningKey"
+          }
+        },
+        "CUSTOMERCERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomerCertificate"
+          }
+        },
+        "MANAGEDCERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagedCertificate"
+          }
+        },
+        "AZUREFIRSTPARTYMANAGEDCERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureFirstPartyManagedCertificate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the secret resource."
       }
     },
     "com.azure.cdn#AFDProfilesListResourceUsage": {
@@ -1015,16 +1074,47 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "wafMappingList": {
+          "target": "com.azure.cdn#AFDProfilesUpgradeRequestWafMappingListList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Web Application Firewall (WAF) and security policy mapping for the profile upgrade",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDProfilesUpgradeRequestWafMappingListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ProfileChangeSkuWafMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Web Application Firewall (WAF) and security policy mapping for the profile upgrade"
+      }
+    },
+    "com.azure.cdn#ProfileChangeSkuWafMapping": {
+      "type": "structure",
+      "members": {
+        "securityPolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The security policy name.",
+            "smithy.api#required": {}
+          }
+        },
+        "changeToWafPolicy": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "The new waf resource for the security policy to use.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters required for profile upgrade."
       }
     },
     "com.azure.cdn#SecurityPoliciesDelete": {
@@ -1304,16 +1394,29 @@
             "smithy.api#documentation": "Name of the security policy under the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#SecurityPolicyUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The json object that contains properties required to update a security policy"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#SecurityPolicyUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.azure.cdn#SecurityPolicyPropertiesParameters",
+          "traits": {
+            "smithy.api#documentation": "object which contains security policy parameters"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The json object that contains properties required to update a security policy"
       }
     },
     "com.azure.cdn#SecurityPoliciesCreate": {
@@ -1408,16 +1511,29 @@
             "smithy.api#documentation": "Name of the security policy under the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#SecurityPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The json object that contains properties required to create a security policy"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#SecurityPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.azure.cdn#SecurityPolicyPropertiesParameters",
+          "traits": {
+            "smithy.api#documentation": "object which contains security policy parameters"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The json object that contains properties required to create a security policy"
       }
     },
     "com.azure.cdn#SecurityPoliciesGet": {
@@ -1796,38 +1912,6 @@
         "smithy.api#documentation": "The json object containing secret parameters"
       }
     },
-    "com.azure.cdn#SecretType": {
-      "type": "enum",
-      "members": {
-        "URLSIGNINGKEY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UrlSigningKey"
-          }
-        },
-        "CUSTOMERCERTIFICATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CustomerCertificate"
-          }
-        },
-        "MANAGEDCERTIFICATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ManagedCertificate"
-          }
-        },
-        "AZUREFIRSTPARTYMANAGEDCERTIFICATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AzureFirstPartyManagedCertificate"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The type of the secret resource."
-      }
-    },
     "com.azure.cdn#SecretsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1863,16 +1947,29 @@
             "smithy.api#documentation": "Name of the Secret under the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#SecretPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the Secret to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#SecretPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.azure.cdn#SecretParameters",
+          "traits": {
+            "smithy.api#documentation": "object which contains secret parameters"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the Secret to create."
       }
     },
     "com.azure.cdn#SecretsGet": {
@@ -2616,16 +2713,85 @@
             "smithy.api#documentation": "Name of the delivery rule which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#RuleUpdatePropertiesParametersInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the rule to update."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#RuleUpdatePropertiesParametersInput": {
+      "type": "structure",
+      "members": {
+        "order": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied."
+          }
+        },
+        "conditions": {
+          "target": "com.azure.cdn#RuleUpdatePropertiesParametersInputConditionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
+          }
+        },
+        "actions": {
+          "target": "com.azure.cdn#RuleUpdatePropertiesParametersInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+          }
+        },
+        "matchProcessingBehavior": {
+          "target": "com.azure.cdn#RuleUpdatePropertiesParametersInputMatchProcessingBehavior",
+          "traits": {
+            "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the rule to update."
+      }
+    },
+    "com.azure.cdn#RuleUpdatePropertiesParametersInputMatchProcessingBehavior": {
+      "type": "enum",
+      "members": {
+        "CONTINUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Continue"
+          }
+        },
+        "STOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+      }
+    },
+    "com.azure.cdn#RuleUpdatePropertiesParametersInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+      }
+    },
+    "com.azure.cdn#RuleUpdatePropertiesParametersInputConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleCondition"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
     "com.azure.cdn#RulesCreate": {
@@ -2728,16 +2894,85 @@
             "smithy.api#documentation": "Name of the delivery rule which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#RulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the Rules to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#RulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "order": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied."
+          }
+        },
+        "conditions": {
+          "target": "com.azure.cdn#RulePropertiesInputConditionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
+          }
+        },
+        "actions": {
+          "target": "com.azure.cdn#RulePropertiesInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+          }
+        },
+        "matchProcessingBehavior": {
+          "target": "com.azure.cdn#RulePropertiesInputMatchProcessingBehavior",
+          "traits": {
+            "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the Rules to create."
+      }
+    },
+    "com.azure.cdn#RulePropertiesInputMatchProcessingBehavior": {
+      "type": "enum",
+      "members": {
+        "CONTINUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Continue"
+          }
+        },
+        "STOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+      }
+    },
+    "com.azure.cdn#RulePropertiesInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+      }
+    },
+    "com.azure.cdn#RulePropertiesInputConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleCondition"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
     "com.azure.cdn#RulesGet": {
@@ -3250,15 +3485,121 @@
             "smithy.api#documentation": "Name of the rule set under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#RuleSetPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the Rule Set to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#RuleSetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "batchMode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set.\nWhen batch mode is disabled, rules would need to be processed independently.\nThis property can only be set during rule set creation and cannot be updated later.\nFor switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set."
+          }
+        },
+        "rules": {
+          "target": "com.azure.cdn#RuleSetPropertiesInputRulesList",
+          "traits": {
+            "smithy.api#documentation": "A list of rules that are part of this rule set provided the rule set is in batch mode.\nThis property will be ignored if the rule set is not in batch mode."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the Rule Set to create."
+      }
+    },
+    "com.azure.cdn#RuleSetPropertiesInputRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#BatchRulePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of rules that are part of this rule set provided the rule set is in batch mode.\nThis property will be ignored if the rule set is not in batch mode."
+      }
+    },
+    "com.azure.cdn#BatchRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "order": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied."
+          }
+        },
+        "conditions": {
+          "target": "com.azure.cdn#BatchRulePropertiesInputConditionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
+          }
+        },
+        "actions": {
+          "target": "com.azure.cdn#BatchRulePropertiesInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+          }
+        },
+        "matchProcessingBehavior": {
+          "target": "com.azure.cdn#BatchRulePropertiesInputMatchProcessingBehavior",
+          "traits": {
+            "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains a rule with its name for batch mode operations."
+      }
+    },
+    "com.azure.cdn#BatchRulePropertiesInputMatchProcessingBehavior": {
+      "type": "enum",
+      "members": {
+        "CONTINUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Continue"
+          }
+        },
+        "STOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue."
+      }
+    },
+    "com.azure.cdn#BatchRulePropertiesInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of actions that are executed when all the conditions of a rule are satisfied."
+      }
+    },
+    "com.azure.cdn#BatchRulePropertiesInputConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeliveryRuleCondition"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
     "com.azure.cdn#RuleSetsGet": {
@@ -3839,20 +4180,6 @@
         "smithy.api#documentation": "Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout."
       }
     },
-    "com.azure.cdn#ResourceReference": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resource ID."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Reference to another resource."
-      }
-    },
     "com.azure.cdn#AFDOriginsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -3896,16 +4223,83 @@
             "smithy.api#documentation": "Name of the origin which is unique within the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDOriginUpdatePropertiesParametersInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDOriginUpdatePropertiesParametersInput": {
+      "type": "structure",
+      "members": {
+        "azureOrigin": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure origin resource."
+          }
+        },
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint."
+          }
+        },
+        "httpPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTP port. Must be between 1 and 65535."
+          }
+        },
+        "httpsPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTPS port. Must be between 1 and 65535."
+          }
+        },
+        "originHostHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5"
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the origin in given origin group for load balancing. Must be between 1 and 1000"
+          }
+        },
+        "sharedPrivateLinkResource": {
+          "target": "com.azure.cdn#SharedPrivateLinkResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the private link resource for private origin."
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool."
+          }
+        },
+        "enforceCertificateNameCheck": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable certificate name check at origin level"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin."
       }
     },
     "com.azure.cdn#AFDOriginsCreate": {
@@ -4008,16 +4402,83 @@
             "smithy.api#documentation": "Name of the origin which is unique within the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDOriginPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDOriginPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "azureOrigin": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure origin resource."
+          }
+        },
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint."
+          }
+        },
+        "httpPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTP port. Must be between 1 and 65535."
+          }
+        },
+        "httpsPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTPS port. Must be between 1 and 65535."
+          }
+        },
+        "originHostHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5"
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the origin in given origin group for load balancing. Must be between 1 and 1000"
+          }
+        },
+        "sharedPrivateLinkResource": {
+          "target": "com.azure.cdn#SharedPrivateLinkResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the private link resource for private origin."
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool."
+          }
+        },
+        "enforceCertificateNameCheck": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable certificate name check at origin level"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin."
       }
     },
     "com.azure.cdn#AFDOriginsGet": {
@@ -4612,16 +5073,53 @@
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDOriginGroupUpdatePropertiesParametersInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDOriginGroupUpdatePropertiesParametersInput": {
+      "type": "structure",
+      "members": {
+        "loadBalancingSettings": {
+          "target": "com.azure.cdn#LoadBalancingSettingsParameters",
+          "traits": {
+            "smithy.api#documentation": "Load balancing settings for a backend pool"
+          }
+        },
+        "healthProbeSettings": {
+          "target": "com.azure.cdn#HealthProbeParameters",
+          "traits": {
+            "smithy.api#documentation": "Health probe settings to the origin that is used to determine the health of the origin."
+          }
+        },
+        "trafficRestorationTimeToHealedOrNewEndpointsInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported."
+          }
+        },
+        "sessionAffinityState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'"
+          }
+        },
+        "authentication": {
+          "target": "com.azure.cdn#OriginAuthenticationProperties",
+          "traits": {
+            "smithy.api#documentation": "Authentication settings for origin in origin group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
       }
     },
     "com.azure.cdn#AFDOriginGroupsCreate": {
@@ -4716,16 +5214,53 @@
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDOriginGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDOriginGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "loadBalancingSettings": {
+          "target": "com.azure.cdn#LoadBalancingSettingsParameters",
+          "traits": {
+            "smithy.api#documentation": "Load balancing settings for a backend pool"
+          }
+        },
+        "healthProbeSettings": {
+          "target": "com.azure.cdn#HealthProbeParameters",
+          "traits": {
+            "smithy.api#documentation": "Health probe settings to the origin that is used to determine the health of the origin."
+          }
+        },
+        "trafficRestorationTimeToHealedOrNewEndpointsInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported."
+          }
+        },
+        "sessionAffinityState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'"
+          }
+        },
+        "authentication": {
+          "target": "com.azure.cdn#OriginAuthenticationProperties",
+          "traits": {
+            "smithy.api#documentation": "Authentication settings for origin in origin group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
       }
     },
     "com.azure.cdn#AFDOriginGroupsGet": {
@@ -6876,10 +7411,10 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "hostName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The host name of the custom domain. Must be a domain name.",
             "smithy.api#required": {}
           }
         }
@@ -8046,16 +8581,25 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contentPaths": {
+          "target": "com.azure.cdn#EndpointsPurgeContentRequestContentPathsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#EndpointsPurgeContentRequestContentPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
     "com.azure.cdn#OriginsDelete": {
@@ -8382,16 +8926,89 @@
             "smithy.api#documentation": "Name of the origin which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#OriginUpdatePropertiesParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#OriginUpdatePropertiesParameters": {
+      "type": "structure",
+      "members": {
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint."
+          }
+        },
+        "httpPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTP port. Must be between 1 and 65535."
+          }
+        },
+        "httpsPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value of the HTTPS port. Must be between 1 and 65535."
+          }
+        },
+        "originHostHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5"
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the origin in given origin group for load balancing. Must be between 1 and 1000"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Origin is enabled for load balancing or not"
+          }
+        },
+        "privateLinkAlias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'"
+          }
+        },
+        "privateLinkResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'"
+          }
+        },
+        "privateLinkLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated"
+          }
+        },
+        "privateLinkApprovalMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A custom message to be included in the approval request to connect to the Private Link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin."
       }
     },
     "com.azure.cdn#OriginsCreate": {
@@ -8494,11 +9111,10 @@
             "smithy.api#documentation": "Name of the origin which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#OriginProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin."
           }
         }
       },
@@ -9022,16 +9638,56 @@
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#OriginGroupUpdatePropertiesParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#OriginGroupUpdatePropertiesParameters": {
+      "type": "structure",
+      "members": {
+        "healthProbeSettings": {
+          "target": "com.azure.cdn#HealthProbeParameters",
+          "traits": {
+            "smithy.api#documentation": "Health probe settings to the origin that is used to determine the health of the origin."
+          }
+        },
+        "origins": {
+          "target": "com.azure.cdn#OriginGroupUpdatePropertiesParametersOriginsList",
+          "traits": {
+            "smithy.api#documentation": "The source of the content being delivered via CDN within given origin group."
+          }
+        },
+        "trafficRestorationTimeToHealedOrNewEndpointsInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported."
+          }
+        },
+        "responseBasedOriginErrorDetectionSettings": {
+          "target": "com.azure.cdn#ResponseBasedOriginErrorDetectionParameters",
+          "traits": {
+            "smithy.api#documentation": "The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
+      }
+    },
+    "com.azure.cdn#OriginGroupUpdatePropertiesParametersOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ResourceReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source of the content being delivered via CDN within given origin group."
       }
     },
     "com.azure.cdn#OriginGroupsCreate": {
@@ -9134,11 +9790,10 @@
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#OriginGroupProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
           }
         }
       },
@@ -9432,16 +10087,25 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contentPaths": {
+          "target": "com.azure.cdn#EndpointsLoadContentRequestContentPathsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The path to the content to be loaded. Path should be a relative file URL of the origin.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#EndpointsLoadContentRequestContentPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The path to the content to be loaded. Path should be a relative file URL of the origin."
       }
     },
     "com.azure.cdn#CustomDomainsEnableCustomHttps": {
@@ -9821,10 +10485,24 @@
             "smithy.api#documentation": "Name of the custom domain within an endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "certificateSource": {
+          "target": "com.azure.cdn#CertificateSource",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Defines the source of the SSL certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "protocolType": {
+          "target": "com.azure.cdn#ProtocolType",
+          "traits": {
+            "smithy.api#documentation": "Defines the TLS extension protocol that is used for secure delivery.",
+            "smithy.api#required": {}
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.cdn#MinimumTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "TLS protocol version that will be used for Https"
           }
         }
       },
@@ -10104,16 +10782,30 @@
             "smithy.api#documentation": "Name of the custom domain within an endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#CustomDomainPropertiesParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the custom domain to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#CustomDomainPropertiesParameters": {
+      "type": "structure",
+      "members": {
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host name of the custom domain. Must be a domain name.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the custom domain to create."
       }
     },
     "com.azure.cdn#CustomDomainsGet": {
@@ -10659,16 +11351,184 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#EndpointsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Endpoint tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The JSON object containing endpoint update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "originPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath."
+          }
+        },
+        "contentTypesToCompress": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersContentTypesToCompressList",
+          "traits": {
+            "smithy.api#documentation": "List of content types on which compression applies. The value should be a valid MIME type."
+          }
+        },
+        "originHostHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default."
+          }
+        },
+        "isCompressionEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB."
+          }
+        },
+        "isHttpAllowed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed."
+          }
+        },
+        "isHttpsAllowed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed."
+          }
+        },
+        "queryStringCachingBehavior": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersQueryStringCachingBehavior",
+          "traits": {
+            "smithy.api#documentation": "Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL."
+          }
+        },
+        "optimizationType": {
+          "target": "com.azure.cdn#OptimizationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization."
+          }
+        },
+        "probePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin."
+          }
+        },
+        "geoFilters": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersGeoFiltersList",
+          "traits": {
+            "smithy.api#documentation": "List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/"
+          }
+        },
+        "defaultOriginGroup": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to the origin group."
+          }
+        },
+        "urlSigningKeys": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersUrlSigningKeysList",
+          "traits": {
+            "smithy.api#documentation": "List of keys used to validate the signed URL hashes."
+          }
+        },
+        "deliveryPolicy": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersDeliveryPolicy",
+          "traits": {
+            "smithy.api#documentation": "A policy that specifies the delivery rules to be used for an endpoint."
+          }
+        },
+        "webApplicationFirewallPolicyLink": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink",
+          "traits": {
+            "smithy.api#documentation": "Defines the Web Application Firewall policy for the endpoint (if applicable)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object containing endpoint update parameters."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesUpdateParametersUrlSigningKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#UrlSigningKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of keys used to validate the signed URL hashes."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesUpdateParametersGeoFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#GeoFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/"
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesUpdateParametersQueryStringCachingBehavior": {
+      "type": "enum",
+      "members": {
+        "IGNOREQUERYSTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IgnoreQueryString"
+          }
+        },
+        "BYPASSCACHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BypassCaching"
+          }
+        },
+        "USEQUERYSTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UseQueryString"
+          }
+        },
+        "NOTSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesUpdateParametersContentTypesToCompressList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of content types on which compression applies. The value should be a valid MIME type."
+      }
+    },
+    "com.azure.cdn#EndpointsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint tags."
       }
     },
     "com.azure.cdn#EndpointsCreate": {
@@ -10788,16 +11648,222 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#EndpointsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#EndpointPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "originPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath."
+          }
+        },
+        "contentTypesToCompress": {
+          "target": "com.azure.cdn#EndpointPropertiesInputContentTypesToCompressList",
+          "traits": {
+            "smithy.api#documentation": "List of content types on which compression applies. The value should be a valid MIME type."
+          }
+        },
+        "originHostHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default."
+          }
+        },
+        "isCompressionEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB."
+          }
+        },
+        "isHttpAllowed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed."
+          }
+        },
+        "isHttpsAllowed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed."
+          }
+        },
+        "queryStringCachingBehavior": {
+          "target": "com.azure.cdn#EndpointPropertiesInputQueryStringCachingBehavior",
+          "traits": {
+            "smithy.api#documentation": "Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL."
+          }
+        },
+        "optimizationType": {
+          "target": "com.azure.cdn#OptimizationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization."
+          }
+        },
+        "probePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin."
+          }
+        },
+        "geoFilters": {
+          "target": "com.azure.cdn#EndpointPropertiesInputGeoFiltersList",
+          "traits": {
+            "smithy.api#documentation": "List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/"
+          }
+        },
+        "defaultOriginGroup": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to the origin group."
+          }
+        },
+        "urlSigningKeys": {
+          "target": "com.azure.cdn#EndpointPropertiesInputUrlSigningKeysList",
+          "traits": {
+            "smithy.api#documentation": "List of keys used to validate the signed URL hashes."
+          }
+        },
+        "deliveryPolicy": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersDeliveryPolicy",
+          "traits": {
+            "smithy.api#documentation": "A policy that specifies the delivery rules to be used for an endpoint."
+          }
+        },
+        "webApplicationFirewallPolicyLink": {
+          "target": "com.azure.cdn#EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink",
+          "traits": {
+            "smithy.api#documentation": "Defines the Web Application Firewall policy for the endpoint (if applicable)"
+          }
+        },
+        "origins": {
+          "target": "com.azure.cdn#EndpointPropertiesInputOriginsList",
+          "traits": {
+            "smithy.api#documentation": "The source of the content being delivered via CDN.",
+            "smithy.api#required": {}
+          }
+        },
+        "originGroups": {
+          "target": "com.azure.cdn#EndpointPropertiesInputOriginGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The origin groups comprising of origins that are used for load balancing the traffic based on availability."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputOriginGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeepCreatedOriginGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "The origin groups comprising of origins that are used for load balancing the traffic based on availability."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#DeepCreatedOrigin"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source of the content being delivered via CDN."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputUrlSigningKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#UrlSigningKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of keys used to validate the signed URL hashes."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputGeoFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#GeoFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/"
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputQueryStringCachingBehavior": {
+      "type": "enum",
+      "members": {
+        "IGNOREQUERYSTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IgnoreQueryString"
+          }
+        },
+        "BYPASSCACHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BypassCaching"
+          }
+        },
+        "USEQUERYSTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UseQueryString"
+          }
+        },
+        "NOTSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL."
+      }
+    },
+    "com.azure.cdn#EndpointPropertiesInputContentTypesToCompressList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of content types on which compression applies. The value should be a valid MIME type."
+      }
+    },
+    "com.azure.cdn#EndpointsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cdn#EndpointsGet": {
@@ -11657,16 +12723,41 @@
             "smithy.api#documentation": "Name of the domain under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDDomainUpdatePropertiesParametersInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDDomainUpdatePropertiesParametersInput": {
+      "type": "structure",
+      "members": {
+        "tlsSettings": {
+          "target": "com.azure.cdn#AFDDomainHttpsParameters",
+          "traits": {
+            "smithy.api#documentation": "The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default."
+          }
+        },
+        "azureDnsZone": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure DNS zone"
+          }
+        },
+        "preValidatedCustomDomainResourceId": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure resource where custom domain ownership was prevalidated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
       }
     },
     "com.azure.cdn#AFDCustomDomainsCreate": {
@@ -11761,16 +12852,66 @@
             "smithy.api#documentation": "Name of the domain under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#AFDDomainPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDDomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tlsSettings": {
+          "target": "com.azure.cdn#AFDDomainHttpsParameters",
+          "traits": {
+            "smithy.api#documentation": "The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default."
+          }
+        },
+        "azureDnsZone": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure DNS zone"
+          }
+        },
+        "preValidatedCustomDomainResourceId": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference to the Azure resource where custom domain ownership was prevalidated"
+          }
+        },
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host name of the domain. Must be a domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedProperties": {
+          "target": "com.azure.cdn#AFDDomainPropertiesInputExtendedPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Key-Value pair representing migration properties for domains."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
+      }
+    },
+    "com.azure.cdn#AFDDomainPropertiesInputExtendedPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-Value pair representing migration properties for domains."
       }
     },
     "com.azure.cdn#AFDCustomDomainsGet": {
@@ -12112,10 +13253,10 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "hostName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The host name to validate.",
             "smithy.api#required": {}
           }
         }
@@ -12202,16 +13343,81 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cdn#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoGeneratedDomainNameLabelScope": {
+          "target": "com.azure.cdn#AutoGeneratedDomainNameLabelScope",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint name reuse scope. The default value is TenantReuse."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AutoGeneratedDomainNameLabelScope": {
+      "type": "enum",
+      "members": {
+        "TENANTREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TenantReuse"
+          }
+        },
+        "SUBSCRIPTIONREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SubscriptionReuse"
+          }
+        },
+        "RESOURCEGROUPREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroupReuse"
+          }
+        },
+        "NOREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoReuse"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the endpoint name reuse scope. The default value is TenantReuse."
+      }
+    },
+    "com.azure.cdn#ResourceType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_CDN_PROFILES_ENDPOINTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Cdn/Profiles/Endpoints"
+          }
+        },
+        "MICROSOFT_CDN_PROFILES_AFDENDPOINTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Cdn/Profiles/AfdEndpoints"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of CDN resource used in CheckNameAvailability."
       }
     },
     "com.azure.cdn#ProfilesCdnMigrateToAfd": {
@@ -12295,16 +13501,51 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.cdn#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Sku for the migration",
             "smithy.api#required": {}
+          }
+        },
+        "migrationEndpointMappings": {
+          "target": "com.azure.cdn#ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList",
+          "traits": {
+            "smithy.api#documentation": "A name map between classic CDN endpoints and AFD Premium/Standard endpoints."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#MigrationEndpointMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "A name map between classic CDN endpoints and AFD Premium/Standard endpoints."
+      }
+    },
+    "com.azure.cdn#MigrationEndpointMapping": {
+      "type": "structure",
+      "members": {
+        "migratedFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the classic CDN profile endpoint."
+          }
+        },
+        "migratedTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the newly created migrated Azure Frontdoor Standard/Premium profile endpoint. This name will replace the name of the classic CDN endpoint resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CDN Endpoint Mapping."
       }
     },
     "com.azure.cdn#ProfilesCdnCanMigrateToAfd": {
@@ -12515,10 +13756,10 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "hostName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The host name of the custom domain. Must be a domain name.",
             "smithy.api#required": {}
           }
         }
@@ -13071,16 +14312,205 @@
             "smithy.api#documentation": "Name of the routing rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInput": {
+      "type": "structure",
+      "members": {
+        "customDomains": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Domains referenced by this endpoint."
+          }
+        },
+        "originGroup": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to the origin group."
+          }
+        },
+        "originPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath."
+          }
+        },
+        "ruleSets": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputRuleSetsList",
+          "traits": {
+            "smithy.api#documentation": "rule sets referenced by this endpoint."
+          }
+        },
+        "supportedProtocols": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputSupportedProtocolsList",
+          "traits": {
+            "smithy.api#documentation": "List of supported protocols for this route."
+          }
+        },
+        "patternsToMatch": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputPatternsToMatchList",
+          "traits": {
+            "smithy.api#documentation": "The route patterns of the rule."
+          }
+        },
+        "cacheConfiguration": {
+          "target": "com.azure.cdn#AfdRouteCacheConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object."
+          }
+        },
+        "forwardingProtocol": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputForwardingProtocol",
+          "traits": {
+            "smithy.api#documentation": "Protocol this rule will use when forwarding traffic to backends."
+          }
+        },
+        "linkToDefaultDomain": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputLinkToDefaultDomain",
+          "traits": {
+            "smithy.api#documentation": "whether this route will be linked to the default endpoint domain."
+          }
+        },
+        "httpsRedirect": {
+          "target": "com.azure.cdn#RouteUpdatePropertiesParametersInputHttpsRedirect",
+          "traits": {
+            "smithy.api#documentation": "Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed."
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputHttpsRedirect": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputLinkToDefaultDomain": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "whether this route will be linked to the default endpoint domain."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputForwardingProtocol": {
+      "type": "enum",
+      "members": {
+        "HTTPONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HttpOnly"
+          }
+        },
+        "HTTPSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HttpsOnly"
+          }
+        },
+        "MATCHREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MatchRequest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protocol this rule will use when forwarding traffic to backends."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputPatternsToMatchList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The route patterns of the rule."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputSupportedProtocolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#AFDEndpointProtocols"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of supported protocols for this route."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputRuleSetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ResourceReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "rule sets referenced by this endpoint."
+      }
+    },
+    "com.azure.cdn#RouteUpdatePropertiesParametersInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ActivatedResourceReferenceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Domains referenced by this endpoint."
+      }
+    },
+    "com.azure.cdn#ActivatedResourceReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource along with its state."
       }
     },
     "com.azure.cdn#RoutesCreate": {
@@ -13183,16 +14613,191 @@
             "smithy.api#documentation": "Name of the routing rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cdn#RoutePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The JSON object that contains the properties of the Routes to create."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customDomains": {
+          "target": "com.azure.cdn#RoutePropertiesInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Domains referenced by this endpoint."
+          }
+        },
+        "originGroup": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to the origin group."
+          }
+        },
+        "originPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath."
+          }
+        },
+        "ruleSets": {
+          "target": "com.azure.cdn#RoutePropertiesInputRuleSetsList",
+          "traits": {
+            "smithy.api#documentation": "rule sets referenced by this endpoint."
+          }
+        },
+        "supportedProtocols": {
+          "target": "com.azure.cdn#RoutePropertiesInputSupportedProtocolsList",
+          "traits": {
+            "smithy.api#documentation": "List of supported protocols for this route."
+          }
+        },
+        "patternsToMatch": {
+          "target": "com.azure.cdn#RoutePropertiesInputPatternsToMatchList",
+          "traits": {
+            "smithy.api#documentation": "The route patterns of the rule."
+          }
+        },
+        "cacheConfiguration": {
+          "target": "com.azure.cdn#AfdRouteCacheConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object."
+          }
+        },
+        "forwardingProtocol": {
+          "target": "com.azure.cdn#RoutePropertiesInputForwardingProtocol",
+          "traits": {
+            "smithy.api#documentation": "Protocol this rule will use when forwarding traffic to backends."
+          }
+        },
+        "linkToDefaultDomain": {
+          "target": "com.azure.cdn#RoutePropertiesInputLinkToDefaultDomain",
+          "traits": {
+            "smithy.api#documentation": "whether this route will be linked to the default endpoint domain."
+          }
+        },
+        "httpsRedirect": {
+          "target": "com.azure.cdn#RoutePropertiesInputHttpsRedirect",
+          "traits": {
+            "smithy.api#documentation": "Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed."
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties of the Routes to create."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputHttpsRedirect": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputLinkToDefaultDomain": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "whether this route will be linked to the default endpoint domain."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputForwardingProtocol": {
+      "type": "enum",
+      "members": {
+        "HTTPONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HttpOnly"
+          }
+        },
+        "HTTPSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HttpsOnly"
+          }
+        },
+        "MATCHREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MatchRequest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protocol this rule will use when forwarding traffic to backends."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputPatternsToMatchList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The route patterns of the rule."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputSupportedProtocolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#AFDEndpointProtocols"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of supported protocols for this route."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputRuleSetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ResourceReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "rule sets referenced by this endpoint."
+      }
+    },
+    "com.azure.cdn#RoutePropertiesInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#ActivatedResourceReferenceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Domains referenced by this endpoint."
       }
     },
     "com.azure.cdn#RoutesGet": {
@@ -13481,16 +15086,40 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contentPaths": {
+          "target": "com.azure.cdn#AFDEndpointsPurgeContentRequestContentPathsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory.",
             "smithy.api#required": {}
+          }
+        },
+        "domains": {
+          "target": "com.azure.cdn#AFDEndpointsPurgeContentRequestDomainsList",
+          "traits": {
+            "smithy.api#documentation": "List of domains."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDEndpointsPurgeContentRequestDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of domains."
+      }
+    },
+    "com.azure.cdn#AFDEndpointsPurgeContentRequestContentPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
     "com.azure.cdn#AFDEndpointsDelete": {
@@ -13663,38 +15292,6 @@
         "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
       }
     },
-    "com.azure.cdn#AutoGeneratedDomainNameLabelScope": {
-      "type": "enum",
-      "members": {
-        "TENANTREUSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "TenantReuse"
-          }
-        },
-        "SUBSCRIPTIONREUSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SubscriptionReuse"
-          }
-        },
-        "RESOURCEGROUPREUSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ResourceGroupReuse"
-          }
-        },
-        "NOREUSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NoReuse"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Indicates the endpoint name reuse scope. The default value is TenantReuse."
-      }
-    },
     "com.azure.cdn#AFDEndpointsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
@@ -13742,16 +15339,47 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#AFDEndpointsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Endpoint tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#AFDEndpointPropertiesUpdateParametersInput",
+          "traits": {
+            "smithy.api#documentation": "The JSON object containing endpoint update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDEndpointPropertiesUpdateParametersInput": {
+      "type": "structure",
+      "members": {
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object containing endpoint update parameters."
+      }
+    },
+    "com.azure.cdn#AFDEndpointsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint tags."
       }
     },
     "com.azure.cdn#AFDEndpointsCreate": {
@@ -13871,16 +15499,60 @@
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#AFDEndpointsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#AFDEndpointPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#AFDEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabledState": {
+          "target": "com.azure.cdn#EnabledState",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'"
+          }
+        },
+        "autoGeneratedDomainNameLabelScope": {
+          "target": "com.azure.cdn#AutoGeneratedDomainNameLabelScope",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint name reuse scope. The default value is TenantReuse."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
+      }
+    },
+    "com.azure.cdn#AFDEndpointsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cdn#AFDEndpointsGet": {
@@ -14372,16 +16044,98 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#ProfilesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Profile tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.cdn#ProfilesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#ProfilePropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The JSON object containing profile update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#ProfilePropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "originResponseTimeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns."
+          }
+        },
+        "logScrubbing": {
+          "target": "com.azure.cdn#ProfileLogScrubbing",
+          "traits": {
+            "smithy.api#documentation": "Defines rules to scrub sensitive fields in logs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object containing profile update parameters."
+      }
+    },
+    "com.azure.cdn#ProfilesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cdn#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.cdn#ProfilesUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.cdn#ProfilesUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cdn#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.cdn#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.cdn#ProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile tags"
       }
     },
     "com.azure.cdn#ProfilesCreate": {
@@ -14556,16 +16310,105 @@
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#ProfilesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#ProfilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The JSON object that contains the properties required to create a profile."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cdn#Sku",
+          "traits": {
+            "smithy.api#documentation": "The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.cdn#ProfilesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#ProfilesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cdn#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.cdn#ProfilesCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.cdn#ProfilesCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cdn#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.cdn#ProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "originResponseTimeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns."
+          }
+        },
+        "logScrubbing": {
+          "target": "com.azure.cdn#ProfileLogScrubbing",
+          "traits": {
+            "smithy.api#documentation": "Defines rules that scrub sensitive fields in the Azure Front Door profile logs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties required to create a profile."
+      }
+    },
+    "com.azure.cdn#ProfilesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cdn#ProfilesGet": {
@@ -14982,16 +16825,65 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.cdn#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Sku for the migration",
             "smithy.api#required": {}
+          }
+        },
+        "classicResourceReference": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Resource reference of the classic cdn profile or classic frontdoor that need to be migrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "profileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the new profile that need to be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "migrationWebApplicationFirewallMappings": {
+          "target": "com.azure.cdn#ProfilesMigrateRequestMigrationWebApplicationFirewallMappingsList",
+          "traits": {
+            "smithy.api#documentation": "Waf mapping for the migrated profile"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#ProfilesMigrateRequestMigrationWebApplicationFirewallMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cdn#MigrationWebApplicationFirewallMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Waf mapping for the migrated profile"
+      }
+    },
+    "com.azure.cdn#MigrationWebApplicationFirewallMapping": {
+      "type": "structure",
+      "members": {
+        "migratedFrom": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Migration From Waf policy"
+          }
+        },
+        "migratedTo": {
+          "target": "com.azure.cdn#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "Migration to Waf policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Web Application Firewall Mapping"
       }
     },
     "com.azure.cdn#CheckEndpointNameAvailability": {
@@ -15032,11 +16924,24 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cdn#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoGeneratedDomainNameLabelScope": {
+          "target": "com.azure.cdn#AutoGeneratedDomainNameLabelScope",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint name reuse scope. The default value is TenantReuse."
           }
         }
       },
@@ -15969,7 +17874,7 @@
           }
         },
         "defaultCustomBlockResponseStatusCode": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.cdn#PolicySettingsDefaultCustomBlockResponseStatusCode",
           "traits": {
             "smithy.api#documentation": "If the action type is block, this field defines the default customer overridable http response status code."
           }
@@ -15983,6 +17888,44 @@
       },
       "traits": {
         "smithy.api#documentation": "Defines contents of a web application firewall global configuration"
+      }
+    },
+    "com.azure.cdn#PolicySettingsDefaultCustomBlockResponseStatusCode": {
+      "type": "intEnum",
+      "members": {
+        "_200": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 200
+          }
+        },
+        "_403": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 403
+          }
+        },
+        "_405": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 405
+          }
+        },
+        "_406": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 406
+          }
+        },
+        "_429": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 429
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If the action type is block, this field defines the default customer overridable http response status code."
       }
     },
     "com.azure.cdn#PolicyMode": {
@@ -16064,16 +18007,27 @@
             "smithy.api#documentation": "The name of the CdnWebApplicationFirewallPolicy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#PoliciesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "CdnWebApplicationFirewallPolicy tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#PoliciesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "CdnWebApplicationFirewallPolicy tags"
       }
     },
     "com.azure.cdn#PoliciesCreateOrUpdate": {
@@ -16198,16 +18152,103 @@
             "smithy.api#documentation": "The name of the CdnWebApplicationFirewallPolicy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cdn#PoliciesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cdn#CdnWebApplicationFirewallPolicyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the web application firewall policy."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets a unique read-only string that changes whenever the resource is updated."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cdn#Sku",
+          "traits": {
+            "smithy.api#documentation": "The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cdn#CdnWebApplicationFirewallPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policySettings": {
+          "target": "com.azure.cdn#PolicySettings",
+          "traits": {
+            "smithy.api#documentation": "Describes  policySettings for policy"
+          }
+        },
+        "rateLimitRules": {
+          "target": "com.azure.cdn#RateLimitRuleList",
+          "traits": {
+            "smithy.api#documentation": "Describes rate limit rules inside the policy."
+          }
+        },
+        "customRules": {
+          "target": "com.azure.cdn#CustomRuleList",
+          "traits": {
+            "smithy.api#documentation": "Describes custom rules inside the policy."
+          }
+        },
+        "managedRules": {
+          "target": "com.azure.cdn#ManagedRuleSetList",
+          "traits": {
+            "smithy.api#documentation": "Describes managed rules inside the policy."
+          }
+        },
+        "extendedProperties": {
+          "target": "com.azure.cdn#CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Key-Value pair representing additional properties for Web Application Firewall policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines CDN web application firewall policy properties."
+      }
+    },
+    "com.azure.cdn#CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-Value pair representing additional properties for Web Application Firewall policy."
+      }
+    },
+    "com.azure.cdn#PoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cdn#PoliciesGet": {
@@ -16524,10 +18565,10 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "classicResourceReference": {
+          "target": "com.azure.cdn#ResourceReference",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource reference of the classic cdn profile or classic frontdoor that need to be migrated.",
             "smithy.api#required": {}
           }
         }
@@ -16592,10 +18633,10 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "probeURL": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The probe URL to validate.",
             "smithy.api#required": {}
           }
         }
@@ -16704,10 +18745,17 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cdn#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
             "smithy.api#required": {}
           }
         }
@@ -17462,10 +19510,17 @@
     "com.azure.cdn#CheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cdn#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
             "smithy.api#required": {}
           }
         }

@@ -446,16 +446,186 @@
     "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "reportType": {
+          "target": "com.azure.carbon#ReportTypeEnum",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The ReportType requested for carbon emissions data. Required. Specifies how data is aggregated and displayed in the output, as explained in the ReportTypeEnum.",
+            "smithy.api#required": {}
+          }
+        },
+        "dateRange": {
+          "target": "com.azure.carbon#DateRange",
+          "traits": {
+            "smithy.api#documentation": "The start and end dates for carbon emissions data. Required. For ItemDetailsReport and TopItemsSummaryReport, only one month of data is supported at a time, so start and end dates should be equal within DateRange (e.g., start: 2024-06-01 and end: 2024-06-01).",
+            "smithy.api#required": {}
+          }
+        },
+        "subscriptionList": {
+          "target": "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList",
+          "traits": {
+            "smithy.api#documentation": "List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceGroupUrlList": {
+          "target": "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList",
+          "traits": {
+            "smithy.api#documentation": "List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase."
+          }
+        },
+        "resourceTypeList": {
+          "target": "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList",
+          "traits": {
+            "smithy.api#documentation": "List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'."
+          }
+        },
+        "locationList": {
+          "target": "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestLocationListList",
+          "traits": {
+            "smithy.api#documentation": "List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names."
+          }
+        },
+        "carbonScopeList": {
+          "target": "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList",
+          "traits": {
+            "smithy.api#documentation": "List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.carbon#EmissionScopeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes."
+      }
+    },
+    "com.azure.carbon#EmissionScopeEnum": {
+      "type": "enum",
+      "members": {
+        "SCOPE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scope1"
+          }
+        },
+        "SCOPE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scope2"
+          }
+        },
+        "SCOPE3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scope3"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported carbon emission scopes to be used with QueryParameter, as defined by the GHG Protocol. At least one scope must be specified. The output will return a total of all specified scopes."
+      }
+    },
+    "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestLocationListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names."
+      }
+    },
+    "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'."
+      }
+    },
+    "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase."
+      }
+    },
+    "com.azure.carbon#CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100."
+      }
+    },
+    "com.azure.carbon#DateRange": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date parameter in yyyy-MM-01 format. Only the first day of each month is accepted.",
+            "smithy.api#required": {}
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date parameter in yyyy-MM-01 format. Only the first day of each month is accepted.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Date range to be used with QueryParameter, it should be within 12 months between start and end date. In certain cases, start and end dates must be the same date."
+      }
+    },
+    "com.azure.carbon#ReportTypeEnum": {
+      "type": "enum",
+      "members": {
+        "OVERALLSUMMARYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OverallSummaryReport"
+          }
+        },
+        "MONTHLYSUMMARYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MonthlySummaryReport"
+          }
+        },
+        "TOPITEMSSUMMARYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TopItemsSummaryReport"
+          }
+        },
+        "TOPITEMSMONTHLYSUMMARYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TopItemsMonthlySummaryReport"
+          }
+        },
+        "ITEMDETAILSREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ItemDetailsReport"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum for Report Type, specifying different report formats for carbon emissions data. Each report type returns different aggregations of carbon emissions across various categories, date range, emissions scope, and other parameters."
       }
     },
     "com.azure.carbon#Carbon": {

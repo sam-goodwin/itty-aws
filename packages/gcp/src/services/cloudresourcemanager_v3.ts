@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type FolderStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED"
-  | (string & {});
+  | "DELETE_REQUESTED";
 export const FolderStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -73,7 +72,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -143,7 +142,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -235,8 +234,7 @@ export const CreateLiensRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED"
-  | (string & {});
+  | "DELETE_REQUESTED";
 export const ProjectStateEnum = /*@__PURE__*/ S.String;
 
 /** A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. */
@@ -345,8 +343,7 @@ export const CreateTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TagKeyPurposeEnum =
   | "PURPOSE_UNSPECIFIED"
   | "GCE_FIREWALL"
-  | "DATA_GOVERNANCE"
-  | (string & {});
+  | "DATA_GOVERNANCE";
 export const TagKeyPurposeEnum = /*@__PURE__*/ S.String;
 
 /** A TagKey, used to group a set of TagValues. */
@@ -826,7 +823,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -835,8 +832,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -853,7 +849,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -872,7 +868,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1153,8 +1149,7 @@ export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED"
-  | (string & {});
+  | "DELETE_REQUESTED";
 export const OrganizationStateEnum = /*@__PURE__*/ S.String;
 
 /** The root node in the resource hierarchy to which a particular entity's (a company, for example) resources belong. */
@@ -1293,7 +1288,7 @@ export const EffectiveTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EffectiveTag" }) as any as S.Schema<EffectiveTag>;
 
-export type EffectiveTagList = EffectiveTag[];
+export type EffectiveTagList = ReadonlyArray<EffectiveTag>;
 export const EffectiveTagList = /*@__PURE__*/ S.Array(
   EffectiveTag,
 ) as any as S.Schema<EffectiveTagList>;
@@ -1341,7 +1336,7 @@ export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersRequest",
 }) as any as S.Schema<ListFoldersRequest>;
 
-export type FolderList = Folder[];
+export type FolderList = ReadonlyArray<Folder>;
 export const FolderList = /*@__PURE__*/ S.Array(
   Folder,
 ) as any as S.Schema<FolderList>;
@@ -1386,7 +1381,7 @@ export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiensRequest",
 }) as any as S.Schema<ListLiensRequest>;
 
-export type LienList = Lien[];
+export type LienList = ReadonlyArray<Lien>;
 export const LienList = /*@__PURE__*/ S.Array(
   Lien,
 ) as any as S.Schema<LienList>;
@@ -1434,7 +1429,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type ProjectList = Project[];
+export type ProjectList = ReadonlyArray<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;
@@ -1479,7 +1474,7 @@ export const ListTagBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagBindingsRequest",
 }) as any as S.Schema<ListTagBindingsRequest>;
 
-export type TagBindingList = TagBinding[];
+export type TagBindingList = ReadonlyArray<TagBinding>;
 export const TagBindingList = /*@__PURE__*/ S.Array(
   TagBinding,
 ) as any as S.Schema<TagBindingList>;
@@ -1524,7 +1519,7 @@ export const ListTagKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagKeysRequest",
 }) as any as S.Schema<ListTagKeysRequest>;
 
-export type TagKeyList = TagKey[];
+export type TagKeyList = ReadonlyArray<TagKey>;
 export const TagKeyList = /*@__PURE__*/ S.Array(
   TagKey,
 ) as any as S.Schema<TagKeyList>;
@@ -1569,7 +1564,7 @@ export const ListTagValuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagValuesRequest",
 }) as any as S.Schema<ListTagValuesRequest>;
 
-export type TagValueList = TagValue[];
+export type TagValueList = ReadonlyArray<TagValue>;
 export const TagValueList = /*@__PURE__*/ S.Array(
   TagValue,
 ) as any as S.Schema<TagValueList>;
@@ -1617,7 +1612,7 @@ export const ListTagValuesTagHoldsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagValuesTagHoldsRequest",
 }) as any as S.Schema<ListTagValuesTagHoldsRequest>;
 
-export type TagHoldList = TagHold[];
+export type TagHoldList = ReadonlyArray<TagHold>;
 export const TagHoldList = /*@__PURE__*/ S.Array(
   TagHold,
 ) as any as S.Schema<TagHoldList>;
@@ -1921,7 +1916,7 @@ export const SearchOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchOrganizationsRequest",
 }) as any as S.Schema<SearchOrganizationsRequest>;
 
-export type OrganizationList = Organization[];
+export type OrganizationList = ReadonlyArray<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;

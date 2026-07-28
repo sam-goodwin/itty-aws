@@ -675,16 +675,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vi#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.vi#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.vi#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.vi#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.vi#PrivateEndpointConnectionsGet": {
@@ -963,15 +990,61 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "scope": {
+          "target": "com.azure.vi#GenerateExtensionRestrictedViewerAccessTokenRequestScope",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The requested media type",
+            "smithy.api#required": {}
+          }
+        },
+        "extensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The extension's resource ID",
+            "smithy.api#required": {}
+          }
+        },
+        "videoId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The video ID"
+          }
+        },
+        "tokenLifetimeInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lifetime of the access token (in seconds). Default value: 3600 (1 hour), Max value: 43200 (12 hours). Setting this value is enabled for tokens in 'Video' scope."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#GenerateExtensionRestrictedViewerAccessTokenRequestScope": {
+      "type": "enum",
+      "members": {
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Video"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Account"
+          }
+        },
+        "PROJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Project"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested media type"
       }
     },
     "com.azure.vi#GenerateExtensionAccessToken": {
@@ -1020,15 +1093,88 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "permissionType": {
+          "target": "com.azure.vi#GenerateExtensionAccessTokenRequestPermissionType",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The requested permission",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "com.azure.vi#GenerateExtensionAccessTokenRequestScope",
+          "traits": {
+            "smithy.api#documentation": "The requested media type",
+            "smithy.api#required": {}
+          }
+        },
+        "extensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The extension's resource ID",
+            "smithy.api#required": {}
+          }
+        },
+        "videoId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The video ID"
+          }
+        },
+        "tokenLifetimeInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lifetime of the access token (in seconds). Default value: 3600 (1 hour), Max value: 43200 (12 hours). Setting this value is enabled for tokens in 'Video' scope."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#GenerateExtensionAccessTokenRequestScope": {
+      "type": "enum",
+      "members": {
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Video"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Account"
+          }
+        },
+        "PROJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Project"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested media type"
+      }
+    },
+    "com.azure.vi#GenerateExtensionAccessTokenRequestPermissionType": {
+      "type": "enum",
+      "members": {
+        "CONTRIBUTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Contributor"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested permission"
       }
     },
     "com.azure.vi#GenerateRestrictedViewerAccessToken": {
@@ -1077,15 +1223,54 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "scope": {
+          "target": "com.azure.vi#GenerateRestrictedViewerAccessTokenRequestScope",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The requested media type",
+            "smithy.api#required": {}
+          }
+        },
+        "videoId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The video ID"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project ID"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#GenerateRestrictedViewerAccessTokenRequestScope": {
+      "type": "enum",
+      "members": {
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Video"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Account"
+          }
+        },
+        "PROJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Project"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested media type"
       }
     },
     "com.azure.vi#GenerateAccessToken": {
@@ -1134,15 +1319,81 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "permissionType": {
+          "target": "com.azure.vi#GenerateAccessTokenRequestPermissionType",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The requested permission",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "com.azure.vi#GenerateAccessTokenRequestScope",
+          "traits": {
+            "smithy.api#documentation": "The requested media type",
+            "smithy.api#required": {}
+          }
+        },
+        "videoId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The video ID"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project ID"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#GenerateAccessTokenRequestScope": {
+      "type": "enum",
+      "members": {
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Video"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Account"
+          }
+        },
+        "PROJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Project"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested media type"
+      }
+    },
+    "com.azure.vi#GenerateAccessTokenRequestPermissionType": {
+      "type": "enum",
+      "members": {
+        "CONTRIBUTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Contributor"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested permission"
       }
     },
     "com.azure.vi#AccountsDelete": {
@@ -1626,15 +1877,187 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.vi#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.vi#AccountPropertiesForPatchRequestInput",
+          "traits": {
+            "smithy.api#documentation": "List of account properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.vi#AccountsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#AccountsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.vi#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.vi#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.vi#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.vi#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.vi#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPatchRequestInput": {
+      "type": "structure",
+      "members": {
+        "storageServices": {
+          "target": "com.azure.vi#StorageServicesForPatchRequest",
+          "traits": {
+            "smithy.api#documentation": "The storage services details"
+          }
+        },
+        "openAiServices": {
+          "target": "com.azure.vi#OpenAiServicesForPatchRequest",
+          "traits": {
+            "smithy.api#documentation": "The openAi services details"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.vi#AccountPropertiesForPatchRequestInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the account."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.vi#AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections associated with the account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Video Indexer account properties"
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vi#AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections associated with the account."
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsItem": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.vi#PrivateEndpointConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection resource."
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPatchRequestInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network access is allowed for the account."
+      }
+    },
+    "com.azure.vi#OpenAiServicesForPatchRequest": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The openAi services resource id"
+          }
+        },
+        "userAssignedIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user assigned identity to be used to grant permissions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The openAi services details"
+      }
+    },
+    "com.azure.vi#StorageServicesForPatchRequest": {
+      "type": "structure",
+      "members": {
+        "userAssignedIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user assigned identity to be used to grant permissions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage services details"
+      }
+    },
+    "com.azure.vi#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.vi#AccountsCreateOrUpdate": {
@@ -1784,15 +2207,147 @@
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.vi#AccountsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.vi#AccountPropertiesForPutRequestInput",
+          "traits": {
+            "smithy.api#documentation": "List of account properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.vi#AccountsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#AccountsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.vi#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.vi#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPutRequestInput": {
+      "type": "structure",
+      "members": {
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account's data-plane ID. This can be set only when connecting an existing classic account"
+          }
+        },
+        "storageServices": {
+          "target": "com.azure.vi#StorageServicesForPutRequest",
+          "traits": {
+            "smithy.api#documentation": "The storage services details"
+          }
+        },
+        "openAiServices": {
+          "target": "com.azure.vi#OpenAiServicesForPutRequest",
+          "traits": {
+            "smithy.api#documentation": "The openAi services details"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.vi#AccountPropertiesForPutRequestInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the account."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.vi#AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections associated with the account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Video Indexer account properties"
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vi#AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections associated with the account."
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.vi#PrivateEndpointConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection resource."
+      }
+    },
+    "com.azure.vi#AccountPropertiesForPutRequestInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network access is allowed for the account."
+      }
+    },
+    "com.azure.vi#AccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.vi#AccountsGet": {
@@ -2225,16 +2780,37 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The VideoIndexer account name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.vi#AccountsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.VideoIndexer/accounts",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vi#AccountsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_VIDEOINDEXER_ACCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.VideoIndexer/accounts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.VideoIndexer/accounts"
       }
     },
     "com.azure.vi#OperationsList": {

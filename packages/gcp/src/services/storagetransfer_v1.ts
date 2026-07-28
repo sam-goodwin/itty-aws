@@ -110,8 +110,7 @@ export type AgentPoolStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "CREATED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const AgentPoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an agent pool. */
@@ -162,12 +161,11 @@ export type LoggingConfigLogActionStatesItemEnum =
   | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionStatesItemEnumList =
-  LoggingConfigLogActionStatesItemEnum[];
+  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
 export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionStatesItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
@@ -176,12 +174,11 @@ export type LoggingConfigLogActionsItemEnum =
   | "LOGGABLE_ACTION_UNSPECIFIED"
   | "FIND"
   | "DELETE"
-  | "COPY"
-  | (string & {});
+  | "COPY";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionsItemEnumList =
-  LoggingConfigLogActionsItemEnum[];
+  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
 export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionsItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
@@ -269,8 +266,7 @@ export type TransferJobStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const TransferJobStatusEnum = /*@__PURE__*/ S.String;
 
 /** An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer. */
@@ -351,64 +347,55 @@ export type MetadataOptionsStorageClassEnum =
   | "STORAGE_CLASS_STANDARD"
   | "STORAGE_CLASS_NEARLINE"
   | "STORAGE_CLASS_COLDLINE"
-  | "STORAGE_CLASS_ARCHIVE"
-  | (string & {});
+  | "STORAGE_CLASS_ARCHIVE";
 export const MetadataOptionsStorageClassEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsTemporaryHoldEnum =
   | "TEMPORARY_HOLD_UNSPECIFIED"
   | "TEMPORARY_HOLD_SKIP"
-  | "TEMPORARY_HOLD_PRESERVE"
-  | (string & {});
+  | "TEMPORARY_HOLD_PRESERVE";
 export const MetadataOptionsTemporaryHoldEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "MODE_SKIP"
-  | "MODE_PRESERVE"
-  | (string & {});
+  | "MODE_PRESERVE";
 export const MetadataOptionsModeEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsGidEnum =
   | "GID_UNSPECIFIED"
   | "GID_SKIP"
-  | "GID_NUMBER"
-  | (string & {});
+  | "GID_NUMBER";
 export const MetadataOptionsGidEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsAclEnum =
   | "ACL_UNSPECIFIED"
   | "ACL_DESTINATION_BUCKET_DEFAULT"
-  | "ACL_PRESERVE"
-  | (string & {});
+  | "ACL_PRESERVE";
 export const MetadataOptionsAclEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsKmsKeyEnum =
   | "KMS_KEY_UNSPECIFIED"
   | "KMS_KEY_DESTINATION_BUCKET_DEFAULT"
-  | "KMS_KEY_PRESERVE"
-  | (string & {});
+  | "KMS_KEY_PRESERVE";
 export const MetadataOptionsKmsKeyEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsUidEnum =
   | "UID_UNSPECIFIED"
   | "UID_SKIP"
-  | "UID_NUMBER"
-  | (string & {});
+  | "UID_NUMBER";
 export const MetadataOptionsUidEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsSymlinkEnum =
   | "SYMLINK_UNSPECIFIED"
   | "SYMLINK_SKIP"
-  | "SYMLINK_PRESERVE"
-  | (string & {});
+  | "SYMLINK_PRESERVE";
 export const MetadataOptionsSymlinkEnum = /*@__PURE__*/ S.String;
 
 export type MetadataOptionsTimeCreatedEnum =
   | "TIME_CREATED_UNSPECIFIED"
   | "TIME_CREATED_SKIP"
-  | "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME"
-  | (string & {});
+  | "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME";
 export const MetadataOptionsTimeCreatedEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the metadata options for running a transfer. */
@@ -452,8 +439,7 @@ export type TransferOptionsOverwriteWhenEnum =
   | "OVERWRITE_WHEN_UNSPECIFIED"
   | "DIFFERENT"
   | "NEVER"
-  | "ALWAYS"
-  | (string & {});
+  | "ALWAYS";
 export const TransferOptionsOverwriteWhenEnum = /*@__PURE__*/ S.String;
 
 /** TransferOptions define the actions to be performed on objects in a transfer. */
@@ -522,7 +508,7 @@ export const HdfsData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HdfsData" }) as any as S.Schema<HdfsData>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -564,29 +550,25 @@ export const ObjectConditions = /*@__PURE__*/ S.suspend(() =>
 export type S3CompatibleMetadataProtocolEnum =
   | "NETWORK_PROTOCOL_UNSPECIFIED"
   | "NETWORK_PROTOCOL_HTTPS"
-  | "NETWORK_PROTOCOL_HTTP"
-  | (string & {});
+  | "NETWORK_PROTOCOL_HTTP";
 export const S3CompatibleMetadataProtocolEnum = /*@__PURE__*/ S.String;
 
 export type S3CompatibleMetadataListApiEnum =
   | "LIST_API_UNSPECIFIED"
   | "LIST_OBJECTS_V2"
-  | "LIST_OBJECTS"
-  | (string & {});
+  | "LIST_OBJECTS";
 export const S3CompatibleMetadataListApiEnum = /*@__PURE__*/ S.String;
 
 export type S3CompatibleMetadataRequestModelEnum =
   | "REQUEST_MODEL_UNSPECIFIED"
   | "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"
-  | "REQUEST_MODEL_PATH_STYLE"
-  | (string & {});
+  | "REQUEST_MODEL_PATH_STYLE";
 export const S3CompatibleMetadataRequestModelEnum = /*@__PURE__*/ S.String;
 
 export type S3CompatibleMetadataAuthMethodEnum =
   | "AUTH_METHOD_UNSPECIFIED"
   | "AUTH_METHOD_AWS_SIGNATURE_V4"
-  | "AUTH_METHOD_AWS_SIGNATURE_V2"
-  | (string & {});
+  | "AUTH_METHOD_AWS_SIGNATURE_V2";
 export const S3CompatibleMetadataAuthMethodEnum = /*@__PURE__*/ S.String;
 
 /** S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers. */
@@ -790,20 +772,18 @@ export const EventStream = /*@__PURE__*/ S.suspend(() =>
 export type NotificationConfigPayloadFormatEnum =
   | "PAYLOAD_FORMAT_UNSPECIFIED"
   | "NONE"
-  | "JSON"
-  | (string & {});
+  | "JSON";
 export const NotificationConfigPayloadFormatEnum = /*@__PURE__*/ S.String;
 
 export type NotificationConfigEventTypesItemEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "TRANSFER_OPERATION_SUCCESS"
   | "TRANSFER_OPERATION_FAILED"
-  | "TRANSFER_OPERATION_ABORTED"
-  | (string & {});
+  | "TRANSFER_OPERATION_ABORTED";
 export const NotificationConfigEventTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type NotificationConfigEventTypesItemEnumList =
-  NotificationConfigEventTypesItemEnum[];
+  ReadonlyArray<NotificationConfigEventTypesItemEnum>;
 export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
   NotificationConfigEventTypesItemEnum,
 ) as any as S.Schema<NotificationConfigEventTypesItemEnumList>;
@@ -1034,7 +1014,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1106,7 +1086,7 @@ export const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAgentPoolsRequest",
 }) as any as S.Schema<ListProjectsAgentPoolsRequest>;
 
-export type AgentPoolList = AgentPool[];
+export type AgentPoolList = ReadonlyArray<AgentPool>;
 export const AgentPoolList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolList>;
@@ -1151,7 +1131,7 @@ export const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTransferJobsRequest",
 }) as any as S.Schema<ListTransferJobsRequest>;
 
-export type TransferJobList = TransferJob[];
+export type TransferJobList = ReadonlyArray<TransferJob>;
 export const TransferJobList = /*@__PURE__*/ S.Array(
   TransferJob,
 ) as any as S.Schema<TransferJobList>;
@@ -1202,7 +1182,7 @@ export const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTransferOperationsRequest",
 }) as any as S.Schema<ListTransferOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

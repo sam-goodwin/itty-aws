@@ -254,7 +254,7 @@ export const RegionalServicesPrefixBindingsListResultItem =
   }) as any as S.Schema<RegionalServicesPrefixBindingsListResultItem>;
 
 export type RegionalServicesPrefixBindingsListResultList =
-  RegionalServicesPrefixBindingsListResultItem[];
+  ReadonlyArray<RegionalServicesPrefixBindingsListResultItem>;
 export const RegionalServicesPrefixBindingsListResultList =
   /*@__PURE__*/ S.Array(
     RegionalServicesPrefixBindingsListResultItem,
@@ -278,7 +278,7 @@ export const ListRegionalServicePrefixBindingsResponse =
     identifier: "ListRegionalServicePrefixBindingsResponse",
   }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
 
-export type RegionsListRequestType = "managed" | "custom" | (string & {});
+export type RegionsListRequestType = "managed" | "custom";
 export const RegionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRegionsRequest {
@@ -332,7 +332,7 @@ export const RegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionsListResultItem",
 }) as any as S.Schema<RegionsListResultItem>;
 
-export type RegionsListResultList = RegionsListResultItem[];
+export type RegionsListResultList = ReadonlyArray<RegionsListResultItem>;
 export const RegionsListResultList = /*@__PURE__*/ S.Array(
   RegionsListResultItem,
 ) as any as S.Schema<RegionsListResultList>;

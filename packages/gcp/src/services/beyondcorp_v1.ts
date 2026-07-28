@@ -124,15 +124,13 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "TCP_PROXY"
-  | (string & {});
+  | "TCP_PROXY";
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "GCP_REGIONAL_MIG"
-  | (string & {});
+  | "GCP_REGIONAL_MIG";
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -182,7 +180,7 @@ export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoi
       "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint",
   }) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -193,8 +191,7 @@ export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN"
-  | (string & {});
+  | "DOWN";
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -301,7 +298,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -387,13 +384,12 @@ export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN"
-  | (string & {});
+  | "DOWN";
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList =
-  GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo[];
+  ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
 export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo),
@@ -404,8 +400,7 @@ export type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "UNRESPONSIVE"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -520,14 +515,10 @@ export type AppGatewayStateEnum =
   | "CREATED"
   | "UPDATING"
   | "DELETING"
-  | "DOWN"
-  | (string & {});
+  | "DOWN";
 export const AppGatewayStateEnum = /*@__PURE__*/ S.String;
 
-export type AppGatewayTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TCP_PROXY"
-  | (string & {});
+export type AppGatewayTypeEnum = "TYPE_UNSPECIFIED" | "TCP_PROXY";
 export const AppGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allocated connection of the AppGateway. */
@@ -546,15 +537,14 @@ export const AllocatedConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "AllocatedConnection",
 }) as any as S.Schema<AllocatedConnection>;
 
-export type AllocatedConnectionList = AllocatedConnection[];
+export type AllocatedConnectionList = ReadonlyArray<AllocatedConnection>;
 export const AllocatedConnectionList = /*@__PURE__*/ S.Array(
   AllocatedConnection,
 ) as any as S.Schema<AllocatedConnectionList>;
 
 export type AppGatewayHostTypeEnum =
   | "HOST_TYPE_UNSPECIFIED"
-  | "GCP_REGIONAL_MIG"
-  | (string & {});
+  | "GCP_REGIONAL_MIG";
 export const AppGatewayHostTypeEnum = /*@__PURE__*/ S.String;
 
 /** A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates all the necessary GCP components needed for creating a BeyondCorp protected AppGateway. Multiple connectors can be authorised for a single AppGateway. */
@@ -649,8 +639,7 @@ export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   | "DELETING"
   | "RUNNING"
   | "DOWN"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -703,12 +692,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum =
-  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME" | (string & {});
+  "GATEWAY_IDENTITY_UNSPECIFIED" | "RESOURCE_NAME";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfigGatewayIdentityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -730,7 +719,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUs
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -752,12 +741,12 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGr
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
-  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE" | (string & {});
+  "OUTPUT_TYPE_UNSPECIFIED" | "PROTOBUF" | "JSON" | "NONE";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfoOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -960,7 +949,7 @@ export const CreateProjectsLocationsSecurityGatewaysRequest =
     identifier: "CreateProjectsLocationsSecurityGatewaysRequest",
   }) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysRequest>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -983,7 +972,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList =
-  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher[];
+  ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher,
@@ -992,8 +981,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcherList =
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum =
   | "SCHEMA_UNSPECIFIED"
   | "PROXY_GATEWAY"
-  | "API_GATEWAY"
-  | (string & {});
+  | "API_GATEWAY";
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationSchemaEnum =
   /*@__PURE__*/ S.String;
 
@@ -1015,7 +1003,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList =
-  GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint[];
+  ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint,
@@ -1099,7 +1087,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream =
   }) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList =
-  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream[];
+  ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream,
@@ -1397,7 +1385,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -1406,8 +1394,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1426,7 +1413,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -1447,7 +1435,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -1770,7 +1758,8 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1825,7 +1814,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = GoogleCloudLocationLocation[];
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -1879,7 +1869,7 @@ export const ListProjectsLocationsAppConnectionsRequest =
   }) as any as S.Schema<ListProjectsLocationsAppConnectionsRequest>;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList =
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnection[];
+  ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
@@ -1940,7 +1930,7 @@ export const ListProjectsLocationsAppConnectorsRequest =
   }) as any as S.Schema<ListProjectsLocationsAppConnectorsRequest>;
 
 export type GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList =
-  GoogleCloudBeyondcorpAppconnectorsV1AppConnector[];
+  ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
 export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
@@ -1999,7 +1989,7 @@ export const ListProjectsLocationsAppGatewaysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAppGatewaysRequest",
 }) as any as S.Schema<ListProjectsLocationsAppGatewaysRequest>;
 
-export type AppGatewayList = AppGateway[];
+export type AppGatewayList = ReadonlyArray<AppGateway>;
 export const AppGatewayList = /*@__PURE__*/ S.Array(
   AppGateway,
 ) as any as S.Schema<AppGatewayList>;
@@ -2086,7 +2076,7 @@ export const ListProjectsLocationsSecurityGatewaysRequest =
   }) as any as S.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList =
-  GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway[];
+  ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
 export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway,
@@ -2147,7 +2137,7 @@ export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
   }) as any as S.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
 export type GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList =
-  GoogleCloudBeyondcorpSecuritygatewaysV1Application[];
+  ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpSecuritygatewaysV1Application,
@@ -2514,7 +2504,7 @@ export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseA
   }) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
 
 export type GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList =
-  GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails[];
+  ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
 export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,

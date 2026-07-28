@@ -123,64 +123,48 @@ export type JobsCreateForAccountRequestDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsCreateForAccountRequestDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type JobsCreateForAccountRequestFrequency = "high" | "low";
 export const JobsCreateForAccountRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountRequestKind = "" | "edge" | (string & {});
+export type JobsCreateForAccountRequestKind = "" | "edge";
 export const JobsCreateForAccountRequestKind = /*@__PURE__*/ S.String;
 
-export interface JobsCreateForAccountRequestMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountRequestMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountRequestMaxUploadBytes",
-  }) as any as S.Schema<JobsCreateForAccountRequestMaxUploadBytes>;
-
-export interface JobsCreateForAccountRequestMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountRequestMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountRequestMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsCreateForAccountRequestMaxUploadIntervalSeconds>;
-
-export interface JobsCreateForAccountRequestMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountRequestMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountRequestMaxUploadRecords",
-  }) as any as S.Schema<JobsCreateForAccountRequestMaxUploadRecords>;
-
-export type JobsCreateForAccountRequestOutputOptionsFieldNamesList = string[];
+export type JobsCreateForAccountRequestOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsCreateForAccountRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188,8 +172,7 @@ export const JobsCreateForAccountRequestOutputOptionsFieldNamesList =
 
 export type JobsCreateForAccountRequestOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const JobsCreateForAccountRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -197,7 +180,8 @@ export type JobsCreateForAccountRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsCreateForAccountRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -280,11 +264,11 @@ export interface CreateJobForAccountRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsCreateForAccountRequestMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsCreateForAccountRequestMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsCreateForAccountRequestMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -302,21 +286,11 @@ export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     frequency: S.optional(JobsCreateForAccountRequestFrequency),
     kind: S.optional(JobsCreateForAccountRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsCreateForAccountRequestMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsCreateForAccountRequestMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsCreateForAccountRequestMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsCreateForAccountRequestOutputOptions.pipe(T.Body("output_options")),
@@ -341,64 +315,48 @@ export type JobsCreateForAccountResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsCreateForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type JobsCreateForAccountResponseFrequency = "high" | "low";
 export const JobsCreateForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForAccountResponseKind = "" | "edge" | (string & {});
+export type JobsCreateForAccountResponseKind = "" | "edge";
 export const JobsCreateForAccountResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsCreateForAccountResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountResponseMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountResponseMaxUploadBytes",
-  }) as any as S.Schema<JobsCreateForAccountResponseMaxUploadBytes>;
-
-export interface JobsCreateForAccountResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsCreateForAccountResponseMaxUploadIntervalSeconds>;
-
-export interface JobsCreateForAccountResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForAccountResponseMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForAccountResponseMaxUploadRecords",
-  }) as any as S.Schema<JobsCreateForAccountResponseMaxUploadRecords>;
-
-export type JobsCreateForAccountResponseOutputOptionsFieldNamesList = string[];
+export type JobsCreateForAccountResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsCreateForAccountResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -406,8 +364,7 @@ export const JobsCreateForAccountResponseOutputOptionsFieldNamesList =
 
 export type JobsCreateForAccountResponseOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const JobsCreateForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -415,7 +372,8 @@ export type JobsCreateForAccountResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsCreateForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -503,11 +461,11 @@ export interface CreateJobForAccountResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsCreateForAccountResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsCreateForAccountResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsCreateForAccountResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -525,21 +483,11 @@ export const CreateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsCreateForAccountResponseMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsCreateForAccountResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsCreateForAccountResponseMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsCreateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
@@ -553,70 +501,54 @@ export type JobsCreateForZoneRequestDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsCreateForZoneRequestDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneRequestFrequency = "high" | "low" | (string & {});
+export type JobsCreateForZoneRequestFrequency = "high" | "low";
 export const JobsCreateForZoneRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneRequestKind = "" | "edge" | (string & {});
+export type JobsCreateForZoneRequestKind = "" | "edge";
 export const JobsCreateForZoneRequestKind = /*@__PURE__*/ S.String;
 
-export interface JobsCreateForZoneRequestMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneRequestMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsCreateForZoneRequestMaxUploadBytes",
-}) as any as S.Schema<JobsCreateForZoneRequestMaxUploadBytes>;
-
-export interface JobsCreateForZoneRequestMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneRequestMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForZoneRequestMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsCreateForZoneRequestMaxUploadIntervalSeconds>;
-
-export interface JobsCreateForZoneRequestMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneRequestMaxUploadRecords = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsCreateForZoneRequestMaxUploadRecords",
-}) as any as S.Schema<JobsCreateForZoneRequestMaxUploadRecords>;
-
-export type JobsCreateForZoneRequestOutputOptionsFieldNamesList = string[];
+export type JobsCreateForZoneRequestOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsCreateForZoneRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsCreateForZoneRequestOutputOptionsFieldNamesList>;
 
-export type JobsCreateForZoneRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsCreateForZoneRequestOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsCreateForZoneRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -624,7 +556,8 @@ export type JobsCreateForZoneRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsCreateForZoneRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -707,11 +640,11 @@ export interface CreateJobForZoneRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsCreateForZoneRequestMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsCreateForZoneRequestMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsCreateForZoneRequestMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -729,19 +662,11 @@ export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     frequency: S.optional(JobsCreateForZoneRequestFrequency),
     kind: S.optional(JobsCreateForZoneRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsCreateForZoneRequestMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsCreateForZoneRequestMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsCreateForZoneRequestMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsCreateForZoneRequestOutputOptions.pipe(T.Body("output_options")),
@@ -766,70 +691,54 @@ export type JobsCreateForZoneResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsCreateForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneResponseFrequency = "high" | "low" | (string & {});
+export type JobsCreateForZoneResponseFrequency = "high" | "low";
 export const JobsCreateForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsCreateForZoneResponseKind = "" | "edge" | (string & {});
+export type JobsCreateForZoneResponseKind = "" | "edge";
 export const JobsCreateForZoneResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsCreateForZoneResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneResponseMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsCreateForZoneResponseMaxUploadBytes",
-}) as any as S.Schema<JobsCreateForZoneResponseMaxUploadBytes>;
-
-export interface JobsCreateForZoneResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForZoneResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsCreateForZoneResponseMaxUploadIntervalSeconds>;
-
-export interface JobsCreateForZoneResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsCreateForZoneResponseMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsCreateForZoneResponseMaxUploadRecords",
-  }) as any as S.Schema<JobsCreateForZoneResponseMaxUploadRecords>;
-
-export type JobsCreateForZoneResponseOutputOptionsFieldNamesList = string[];
+export type JobsCreateForZoneResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsCreateForZoneResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsCreateForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsCreateForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsCreateForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsCreateForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -837,7 +746,8 @@ export type JobsCreateForZoneResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsCreateForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -925,11 +835,11 @@ export interface CreateJobForZoneResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsCreateForZoneResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsCreateForZoneResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsCreateForZoneResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -947,19 +857,11 @@ export const CreateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsCreateForZoneResponseMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsCreateForZoneResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsCreateForZoneResponseMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsCreateForZoneResponseOutputOptions.pipe(T.Body("output_options")),
@@ -1273,7 +1175,38 @@ export type DatasetsFieldsGetForAccountRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsFieldsGetForAccountRequestDatasetId =
   /*@__PURE__*/ S.String;
 
@@ -1313,7 +1246,38 @@ export type DatasetsFieldsGetForZoneRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsFieldsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetFieldForZoneRequest {
@@ -1352,7 +1316,38 @@ export type DatasetsJobsGetForAccountRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsJobsGetForAccountRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetJobForAccountRequest {
@@ -1384,70 +1379,50 @@ export type DatasetsJobsGetForAccountResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsJobsGetForAccountResultItemDataset =
   /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type DatasetsJobsGetForAccountResultItemFrequency = "high" | "low";
 export const DatasetsJobsGetForAccountResultItemFrequency =
   /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForAccountResultItemKind =
-  | ""
-  | "edge"
-  | (string & {});
+export type DatasetsJobsGetForAccountResultItemKind = "" | "edge";
 export const DatasetsJobsGetForAccountResultItemKind = /*@__PURE__*/ S.String;
 
-export interface DatasetsJobsGetForAccountResultItemMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForAccountResultItemMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForAccountResultItemMaxUploadBytes",
-  }) as any as S.Schema<DatasetsJobsGetForAccountResultItemMaxUploadBytes>;
-
-export interface DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds",
-  }) as any as S.Schema<DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds>;
-
-export interface DatasetsJobsGetForAccountResultItemMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForAccountResultItemMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForAccountResultItemMaxUploadRecords",
-  }) as any as S.Schema<DatasetsJobsGetForAccountResultItemMaxUploadRecords>;
-
 export type DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1455,8 +1430,7 @@ export const DatasetsJobsGetForAccountResultItemOutputOptionsFieldNamesList =
 
 export type DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const DatasetsJobsGetForAccountResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -1464,7 +1438,8 @@ export type DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const DatasetsJobsGetForAccountResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -1551,11 +1526,11 @@ export interface DatasetsJobsGetForAccountResultItem {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: DatasetsJobsGetForAccountResultItemMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: DatasetsJobsGetForAccountResultItemMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -1573,21 +1548,11 @@ export const DatasetsJobsGetForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      DatasetsJobsGetForAccountResultItemMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      DatasetsJobsGetForAccountResultItemMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       DatasetsJobsGetForAccountResultItemOutputOptions.pipe(
@@ -1600,7 +1565,7 @@ export const DatasetsJobsGetForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsJobsGetForAccountResultItem>;
 
 export type DatasetsJobsGetForAccountResultList =
-  DatasetsJobsGetForAccountResultItem[];
+  ReadonlyArray<DatasetsJobsGetForAccountResultItem>;
 export const DatasetsJobsGetForAccountResultList = /*@__PURE__*/ S.Array(
   DatasetsJobsGetForAccountResultItem,
 ) as any as S.Schema<DatasetsJobsGetForAccountResultList>;
@@ -1624,7 +1589,38 @@ export type DatasetsJobsGetForZoneRequestDatasetId =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsJobsGetForZoneRequestDatasetId = /*@__PURE__*/ S.String;
 
 export interface GetDatasetJobForZoneRequest {
@@ -1656,65 +1652,48 @@ export type DatasetsJobsGetForZoneResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const DatasetsJobsGetForZoneResultItemDataset = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForZoneResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type DatasetsJobsGetForZoneResultItemFrequency = "high" | "low";
 export const DatasetsJobsGetForZoneResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type DatasetsJobsGetForZoneResultItemKind = "" | "edge" | (string & {});
+export type DatasetsJobsGetForZoneResultItemKind = "" | "edge";
 export const DatasetsJobsGetForZoneResultItemKind = /*@__PURE__*/ S.String;
 
-export interface DatasetsJobsGetForZoneResultItemMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForZoneResultItemMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForZoneResultItemMaxUploadBytes",
-  }) as any as S.Schema<DatasetsJobsGetForZoneResultItemMaxUploadBytes>;
-
-export interface DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds",
-  }) as any as S.Schema<DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds>;
-
-export interface DatasetsJobsGetForZoneResultItemMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const DatasetsJobsGetForZoneResultItemMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsJobsGetForZoneResultItemMaxUploadRecords",
-  }) as any as S.Schema<DatasetsJobsGetForZoneResultItemMaxUploadRecords>;
-
 export type DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1722,8 +1701,7 @@ export const DatasetsJobsGetForZoneResultItemOutputOptionsFieldNamesList =
 
 export type DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const DatasetsJobsGetForZoneResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -1731,7 +1709,8 @@ export type DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const DatasetsJobsGetForZoneResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -1818,11 +1797,11 @@ export interface DatasetsJobsGetForZoneResultItem {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: DatasetsJobsGetForZoneResultItemMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: DatasetsJobsGetForZoneResultItemMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -1840,21 +1819,11 @@ export const DatasetsJobsGetForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      DatasetsJobsGetForZoneResultItemMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      DatasetsJobsGetForZoneResultItemMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       DatasetsJobsGetForZoneResultItemOutputOptions.pipe(
@@ -1867,7 +1836,7 @@ export const DatasetsJobsGetForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsJobsGetForZoneResultItem>;
 
 export type DatasetsJobsGetForZoneResultList =
-  DatasetsJobsGetForZoneResultItem[];
+  ReadonlyArray<DatasetsJobsGetForZoneResultItem>;
 export const DatasetsJobsGetForZoneResultList = /*@__PURE__*/ S.Array(
   DatasetsJobsGetForZoneResultItem,
 ) as any as S.Schema<DatasetsJobsGetForZoneResultList>;
@@ -1929,7 +1898,7 @@ export const EdgeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EdgeGetResultItem",
 }) as any as S.Schema<EdgeGetResultItem>;
 
-export type EdgeGetResultList = EdgeGetResultItem[];
+export type EdgeGetResultList = ReadonlyArray<EdgeGetResultItem>;
 export const EdgeGetResultList = /*@__PURE__*/ S.Array(
   EdgeGetResultItem,
 ) as any as S.Schema<EdgeGetResultList>;
@@ -1976,70 +1945,54 @@ export type JobsGetForAccountResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsGetForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseFrequency = "high" | "low" | (string & {});
+export type JobsGetForAccountResponseFrequency = "high" | "low";
 export const JobsGetForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsGetForAccountResponseKind = "" | "edge" | (string & {});
+export type JobsGetForAccountResponseKind = "" | "edge";
 export const JobsGetForAccountResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsGetForAccountResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForAccountResponseMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsGetForAccountResponseMaxUploadBytes",
-}) as any as S.Schema<JobsGetForAccountResponseMaxUploadBytes>;
-
-export interface JobsGetForAccountResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForAccountResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsGetForAccountResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsGetForAccountResponseMaxUploadIntervalSeconds>;
-
-export interface JobsGetForAccountResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForAccountResponseMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsGetForAccountResponseMaxUploadRecords",
-  }) as any as S.Schema<JobsGetForAccountResponseMaxUploadRecords>;
-
-export type JobsGetForAccountResponseOutputOptionsFieldNamesList = string[];
+export type JobsGetForAccountResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsGetForAccountResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsGetForAccountResponseOutputOptionsFieldNamesList>;
 
-export type JobsGetForAccountResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsGetForAccountResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsGetForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2047,7 +2000,8 @@ export type JobsGetForAccountResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsGetForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2135,11 +2089,11 @@ export interface GetJobForAccountResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsGetForAccountResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsGetForAccountResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsGetForAccountResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -2157,19 +2111,11 @@ export const GetJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsGetForAccountResponseMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsGetForAccountResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsGetForAccountResponseMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsGetForAccountResponseOutputOptions.pipe(T.Body("output_options")),
@@ -2206,70 +2152,54 @@ export type JobsGetForZoneResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsGetForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsGetForZoneResponseFrequency = "high" | "low" | (string & {});
+export type JobsGetForZoneResponseFrequency = "high" | "low";
 export const JobsGetForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsGetForZoneResponseKind = "" | "edge" | (string & {});
+export type JobsGetForZoneResponseKind = "" | "edge";
 export const JobsGetForZoneResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsGetForZoneResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForZoneResponseMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsGetForZoneResponseMaxUploadBytes",
-}) as any as S.Schema<JobsGetForZoneResponseMaxUploadBytes>;
-
-export interface JobsGetForZoneResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForZoneResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsGetForZoneResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsGetForZoneResponseMaxUploadIntervalSeconds>;
-
-export interface JobsGetForZoneResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsGetForZoneResponseMaxUploadRecords = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsGetForZoneResponseMaxUploadRecords",
-}) as any as S.Schema<JobsGetForZoneResponseMaxUploadRecords>;
-
-export type JobsGetForZoneResponseOutputOptionsFieldNamesList = string[];
+export type JobsGetForZoneResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsGetForZoneResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsGetForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsGetForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsGetForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsGetForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2277,7 +2207,8 @@ export type JobsGetForZoneResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsGetForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2362,11 +2293,11 @@ export interface GetJobForZoneResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsGetForZoneResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsGetForZoneResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsGetForZoneResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -2384,17 +2315,11 @@ export const GetJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsGetForZoneResponseMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsGetForZoneResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsGetForZoneResponseMaxUploadRecords.pipe(T.Body("max_upload_records")),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsGetForZoneResponseOutputOptions.pipe(T.Body("output_options")),
@@ -2428,64 +2353,48 @@ export type JobsListForAccountResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsListForAccountResultItemDataset = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type JobsListForAccountResultItemFrequency = "high" | "low";
 export const JobsListForAccountResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type JobsListForAccountResultItemKind = "" | "edge" | (string & {});
+export type JobsListForAccountResultItemKind = "" | "edge";
 export const JobsListForAccountResultItemKind = /*@__PURE__*/ S.String;
 
-export interface JobsListForAccountResultItemMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForAccountResultItemMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsListForAccountResultItemMaxUploadBytes",
-  }) as any as S.Schema<JobsListForAccountResultItemMaxUploadBytes>;
-
-export interface JobsListForAccountResultItemMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForAccountResultItemMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsListForAccountResultItemMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsListForAccountResultItemMaxUploadIntervalSeconds>;
-
-export interface JobsListForAccountResultItemMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForAccountResultItemMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsListForAccountResultItemMaxUploadRecords",
-  }) as any as S.Schema<JobsListForAccountResultItemMaxUploadRecords>;
-
-export type JobsListForAccountResultItemOutputOptionsFieldNamesList = string[];
+export type JobsListForAccountResultItemOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsListForAccountResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2493,8 +2402,7 @@ export const JobsListForAccountResultItemOutputOptionsFieldNamesList =
 
 export type JobsListForAccountResultItemOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const JobsListForAccountResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2502,7 +2410,8 @@ export type JobsListForAccountResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsListForAccountResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2589,11 +2498,11 @@ export interface JobsListForAccountResultItem {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsListForAccountResultItemMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsListForAccountResultItemMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsListForAccountResultItemMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -2611,21 +2520,11 @@ export const JobsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsListForAccountResultItemMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsListForAccountResultItemMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsListForAccountResultItemMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsListForAccountResultItemOutputOptions.pipe(T.Body("output_options")),
@@ -2635,7 +2534,8 @@ export const JobsListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListForAccountResultItem",
 }) as any as S.Schema<JobsListForAccountResultItem>;
 
-export type JobsListForAccountResultList = JobsListForAccountResultItem[];
+export type JobsListForAccountResultList =
+  ReadonlyArray<JobsListForAccountResultItem>;
 export const JobsListForAccountResultList = /*@__PURE__*/ S.Array(
   JobsListForAccountResultItem,
 ) as any as S.Schema<JobsListForAccountResultList>;
@@ -2679,70 +2579,54 @@ export type JobsListForZoneResultItemDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsListForZoneResultItemDataset = /*@__PURE__*/ S.String;
 
-export type JobsListForZoneResultItemFrequency = "high" | "low" | (string & {});
+export type JobsListForZoneResultItemFrequency = "high" | "low";
 export const JobsListForZoneResultItemFrequency = /*@__PURE__*/ S.String;
 
-export type JobsListForZoneResultItemKind = "" | "edge" | (string & {});
+export type JobsListForZoneResultItemKind = "" | "edge";
 export const JobsListForZoneResultItemKind = /*@__PURE__*/ S.String;
 
-export interface JobsListForZoneResultItemMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForZoneResultItemMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsListForZoneResultItemMaxUploadBytes",
-}) as any as S.Schema<JobsListForZoneResultItemMaxUploadBytes>;
-
-export interface JobsListForZoneResultItemMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForZoneResultItemMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsListForZoneResultItemMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsListForZoneResultItemMaxUploadIntervalSeconds>;
-
-export interface JobsListForZoneResultItemMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsListForZoneResultItemMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsListForZoneResultItemMaxUploadRecords",
-  }) as any as S.Schema<JobsListForZoneResultItemMaxUploadRecords>;
-
-export type JobsListForZoneResultItemOutputOptionsFieldNamesList = string[];
+export type JobsListForZoneResultItemOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsListForZoneResultItemOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsListForZoneResultItemOutputOptionsFieldNamesList>;
 
-export type JobsListForZoneResultItemOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsListForZoneResultItemOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsListForZoneResultItemOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -2750,7 +2634,8 @@ export type JobsListForZoneResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsListForZoneResultItemOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -2837,11 +2722,11 @@ export interface JobsListForZoneResultItem {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsListForZoneResultItemMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsListForZoneResultItemMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsListForZoneResultItemMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -2859,19 +2744,11 @@ export const JobsListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsListForZoneResultItemMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsListForZoneResultItemMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsListForZoneResultItemMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsListForZoneResultItemOutputOptions.pipe(T.Body("output_options")),
@@ -2881,7 +2758,8 @@ export const JobsListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListForZoneResultItem",
 }) as any as S.Schema<JobsListForZoneResultItem>;
 
-export type JobsListForZoneResultList = JobsListForZoneResultItem[];
+export type JobsListForZoneResultList =
+  ReadonlyArray<JobsListForZoneResultItem>;
 export const JobsListForZoneResultList = /*@__PURE__*/ S.Array(
   JobsListForZoneResultItem,
 ) as any as S.Schema<JobsListForZoneResultList>;
@@ -2975,61 +2853,14 @@ export const OriginValidateForZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginValidateForZoneResponse",
 }) as any as S.Schema<OriginValidateForZoneResponse>;
 
-export type JobsUpdateForAccountRequestFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type JobsUpdateForAccountRequestFrequency = "high" | "low";
 export const JobsUpdateForAccountRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountRequestKind = "" | "edge" | (string & {});
+export type JobsUpdateForAccountRequestKind = "" | "edge";
 export const JobsUpdateForAccountRequestKind = /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForAccountRequestMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountRequestMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountRequestMaxUploadBytes",
-  }) as any as S.Schema<JobsUpdateForAccountRequestMaxUploadBytes>;
-
-export interface JobsUpdateForAccountRequestMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountRequestMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountRequestMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsUpdateForAccountRequestMaxUploadIntervalSeconds>;
-
-export interface JobsUpdateForAccountRequestMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountRequestMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountRequestMaxUploadRecords",
-  }) as any as S.Schema<JobsUpdateForAccountRequestMaxUploadRecords>;
-
-export type JobsUpdateForAccountRequestOutputOptionsFieldNamesList = string[];
+export type JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3037,8 +2868,7 @@ export const JobsUpdateForAccountRequestOutputOptionsFieldNamesList =
 
 export type JobsUpdateForAccountRequestOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const JobsUpdateForAccountRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3046,7 +2876,8 @@ export type JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsUpdateForAccountRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3129,11 +2960,11 @@ export interface UpdateJobForAccountRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsUpdateForAccountRequestMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsUpdateForAccountRequestMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsUpdateForAccountRequestMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -3151,21 +2982,11 @@ export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     frequency: S.optional(JobsUpdateForAccountRequestFrequency),
     kind: S.optional(JobsUpdateForAccountRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsUpdateForAccountRequestMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsUpdateForAccountRequestMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsUpdateForAccountRequestMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsUpdateForAccountRequestOutputOptions.pipe(T.Body("output_options")),
@@ -3190,64 +3011,48 @@ export type JobsUpdateForAccountResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsUpdateForAccountResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseFrequency =
-  | "high"
-  | "low"
-  | (string & {});
+export type JobsUpdateForAccountResponseFrequency = "high" | "low";
 export const JobsUpdateForAccountResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForAccountResponseKind = "" | "edge" | (string & {});
+export type JobsUpdateForAccountResponseKind = "" | "edge";
 export const JobsUpdateForAccountResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForAccountResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountResponseMaxUploadBytes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountResponseMaxUploadBytes",
-  }) as any as S.Schema<JobsUpdateForAccountResponseMaxUploadBytes>;
-
-export interface JobsUpdateForAccountResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsUpdateForAccountResponseMaxUploadIntervalSeconds>;
-
-export interface JobsUpdateForAccountResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForAccountResponseMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForAccountResponseMaxUploadRecords",
-  }) as any as S.Schema<JobsUpdateForAccountResponseMaxUploadRecords>;
-
-export type JobsUpdateForAccountResponseOutputOptionsFieldNamesList = string[];
+export type JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3255,8 +3060,7 @@ export const JobsUpdateForAccountResponseOutputOptionsFieldNamesList =
 
 export type JobsUpdateForAccountResponseOutputOptionsOutputType =
   | "ndjson"
-  | "csv"
-  | (string & {});
+  | "csv";
 export const JobsUpdateForAccountResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3264,7 +3068,8 @@ export type JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsUpdateForAccountResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3352,11 +3157,11 @@ export interface UpdateJobForAccountResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsUpdateForAccountResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsUpdateForAccountResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsUpdateForAccountResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -3374,21 +3179,11 @@ export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsUpdateForAccountResponseMaxUploadBytes.pipe(
-        T.Body("max_upload_bytes"),
-      ),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsUpdateForAccountResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsUpdateForAccountResponseMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsUpdateForAccountResponseOutputOptions.pipe(T.Body("output_options")),
@@ -3398,67 +3193,20 @@ export const UpdateJobForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateJobForAccountResponse",
 }) as any as S.Schema<UpdateJobForAccountResponse>;
 
-export type JobsUpdateForZoneRequestFrequency = "high" | "low" | (string & {});
+export type JobsUpdateForZoneRequestFrequency = "high" | "low";
 export const JobsUpdateForZoneRequestFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneRequestKind = "" | "edge" | (string & {});
+export type JobsUpdateForZoneRequestKind = "" | "edge";
 export const JobsUpdateForZoneRequestKind = /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForZoneRequestMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneRequestMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsUpdateForZoneRequestMaxUploadBytes",
-}) as any as S.Schema<JobsUpdateForZoneRequestMaxUploadBytes>;
-
-export interface JobsUpdateForZoneRequestMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneRequestMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForZoneRequestMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsUpdateForZoneRequestMaxUploadIntervalSeconds>;
-
-export interface JobsUpdateForZoneRequestMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneRequestMaxUploadRecords = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsUpdateForZoneRequestMaxUploadRecords",
-}) as any as S.Schema<JobsUpdateForZoneRequestMaxUploadRecords>;
-
-export type JobsUpdateForZoneRequestOutputOptionsFieldNamesList = string[];
+export type JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsUpdateForZoneRequestOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsUpdateForZoneRequestOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForZoneRequestOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsUpdateForZoneRequestOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsUpdateForZoneRequestOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3466,7 +3214,8 @@ export type JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsUpdateForZoneRequestOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3549,11 +3298,11 @@ export interface UpdateJobForZoneRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsUpdateForZoneRequestMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsUpdateForZoneRequestMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsUpdateForZoneRequestMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -3571,19 +3320,11 @@ export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     frequency: S.optional(JobsUpdateForZoneRequestFrequency),
     kind: S.optional(JobsUpdateForZoneRequestKind),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsUpdateForZoneRequestMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsUpdateForZoneRequestMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsUpdateForZoneRequestMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsUpdateForZoneRequestOutputOptions.pipe(T.Body("output_options")),
@@ -3608,70 +3349,54 @@ export type JobsUpdateForZoneResponseDataset =
   | "access_requests"
   | "audit_logs"
   | "audit_logs_v2"
-  | (string & {});
+  | "biso_user_actions"
+  | "casb_findings"
+  | "device_posture_results"
+  | "dex_application_tests"
+  | "dex_device_state_events"
+  | "dlp_forensic_copies"
+  | "dns_firewall_logs"
+  | "dns_logs"
+  | "email_security_alerts"
+  | "email_security_post_delivery_events"
+  | "firewall_events"
+  | "gateway_dns"
+  | "gateway_http"
+  | "gateway_network"
+  | "http_requests"
+  | "ipsec_logs"
+  | "magic_ids_detections"
+  | "mcp_portal_logs"
+  | "mnm_flow_logs"
+  | "nel_reports"
+  | "network_analytics_logs"
+  | "page_shield_events"
+  | "sinkhole_http_logs"
+  | "spectrum_events"
+  | "ssh_logs"
+  | "turnstile_events"
+  | "warp_config_changes"
+  | "warp_toggle_changes"
+  | "websocket_analytics"
+  | "workers_trace_events"
+  | "zaraz_events"
+  | "zero_trust_network_sessions";
 export const JobsUpdateForZoneResponseDataset = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneResponseFrequency = "high" | "low" | (string & {});
+export type JobsUpdateForZoneResponseFrequency = "high" | "low";
 export const JobsUpdateForZoneResponseFrequency = /*@__PURE__*/ S.String;
 
-export type JobsUpdateForZoneResponseKind = "" | "edge" | (string & {});
+export type JobsUpdateForZoneResponseKind = "" | "edge";
 export const JobsUpdateForZoneResponseKind = /*@__PURE__*/ S.String;
 
-export interface JobsUpdateForZoneResponseMaxUploadBytes {
-  /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneResponseMaxUploadBytes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-).annotate({
-  identifier: "JobsUpdateForZoneResponseMaxUploadBytes",
-}) as any as S.Schema<JobsUpdateForZoneResponseMaxUploadBytes>;
-
-export interface JobsUpdateForZoneResponseMaxUploadIntervalSeconds {
-  /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneResponseMaxUploadIntervalSeconds =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForZoneResponseMaxUploadIntervalSeconds",
-  }) as any as S.Schema<JobsUpdateForZoneResponseMaxUploadIntervalSeconds>;
-
-export interface JobsUpdateForZoneResponseMaxUploadRecords {
-  /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  "0": unknown;
-  number: unknown;
-}
-export const JobsUpdateForZoneResponseMaxUploadRecords =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "0": S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "JobsUpdateForZoneResponseMaxUploadRecords",
-  }) as any as S.Schema<JobsUpdateForZoneResponseMaxUploadRecords>;
-
-export type JobsUpdateForZoneResponseOutputOptionsFieldNamesList = string[];
+export type JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
+  ReadonlyArray<string>;
 export const JobsUpdateForZoneResponseOutputOptionsFieldNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<JobsUpdateForZoneResponseOutputOptionsFieldNamesList>;
 
-export type JobsUpdateForZoneResponseOutputOptionsOutputType =
-  | "ndjson"
-  | "csv"
-  | (string & {});
+export type JobsUpdateForZoneResponseOutputOptionsOutputType = "ndjson" | "csv";
 export const JobsUpdateForZoneResponseOutputOptionsOutputType =
   /*@__PURE__*/ S.String;
 
@@ -3679,7 +3404,8 @@ export type JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
-  | (string & {});
+  | "rfc3339ms"
+  | "rfc3339ns";
 export const JobsUpdateForZoneResponseOutputOptionsTimestampFormat =
   /*@__PURE__*/ S.String;
 
@@ -3767,11 +3493,11 @@ export interface UpdateJobForZoneResponse {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: JobsUpdateForZoneResponseMaxUploadBytes;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: JobsUpdateForZoneResponseMaxUploadIntervalSeconds;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: JobsUpdateForZoneResponseMaxUploadRecords;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
@@ -3789,19 +3515,11 @@ export const UpdateJobForZoneResponse = /*@__PURE__*/ S.suspend(() =>
     lastComplete: S.optional(S.String.pipe(T.Body("last_complete"))),
     lastError: S.optional(S.String.pipe(T.Body("last_error"))),
     logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-    maxUploadBytes: S.optional(
-      JobsUpdateForZoneResponseMaxUploadBytes.pipe(T.Body("max_upload_bytes")),
-    ),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      JobsUpdateForZoneResponseMaxUploadIntervalSeconds.pipe(
-        T.Body("max_upload_interval_seconds"),
-      ),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      JobsUpdateForZoneResponseMaxUploadRecords.pipe(
-        T.Body("max_upload_records"),
-      ),
-    ),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
     name: S.optional(S.String),
     outputOptions: S.optional(
       JobsUpdateForZoneResponseOutputOptions.pipe(T.Body("output_options")),

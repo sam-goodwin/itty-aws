@@ -1317,16 +1317,27 @@
             "smithy.api#documentation": "The name of ResourceGuard"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dataprotection#ResourceGuardsPatchRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource Guard tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#ResourceGuardsPatchRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Guard tags."
       }
     },
     "com.azure.dataprotection#ResourceGuardsPut": {
@@ -1444,16 +1455,67 @@
             "smithy.api#documentation": "The name of ResourceGuard"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dataprotection#ResourceGuardsPutRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dataprotection#ResourceGuardInput",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardResource properties"
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional ETag."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#ResourceGuardInput": {
+      "type": "structure",
+      "members": {
+        "vaultCriticalOperationExclusionList": {
+          "target": "com.azure.dataprotection#ResourceGuardInputVaultCriticalOperationExclusionListList",
+          "traits": {
+            "smithy.api#documentation": "List of critical operations which are not protected by this resourceGuard"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.dataprotection#ResourceGuardInputVaultCriticalOperationExclusionListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of critical operations which are not protected by this resourceGuard"
+      }
+    },
+    "com.azure.dataprotection#ResourceGuardsPutRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dataprotection#ResourceGuardsGet": {
@@ -1972,16 +2034,190 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restoreRequestObject": {
+          "target": "com.azure.dataprotection#AzureBackupRestoreRequest",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the restore request object.",
+            "smithy.api#required": {}
+          }
+        },
+        "crossRegionRestoreDetails": {
+          "target": "com.azure.dataprotection#CrossRegionRestoreDetails",
+          "traits": {
+            "smithy.api#documentation": "Cross region restore details.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#CrossRegionRestoreDetails": {
+      "type": "structure",
+      "members": {
+        "sourceRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sourceBackupInstanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cross Region Restore details"
+      }
+    },
+    "com.azure.dataprotection#AzureBackupRestoreRequest": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "restoreTargetInfo": {
+          "target": "com.azure.dataprotection#RestoreTargetInfoBase",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the restore target information.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceDataStoreType": {
+          "target": "com.azure.dataprotection#SourceDataStoreType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of the source data store.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified Azure Resource Manager ID of the datasource which is being recovered."
+          }
+        },
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#AzureBackupRestoreRequestResourceGuardOperationRequestsList",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+          }
+        },
+        "identityDetails": {
+          "target": "com.azure.dataprotection#IdentityDetails",
+          "traits": {
+            "smithy.api#documentation": "Contains information of the Identity Details for the BI.\nIf it is null, default will be considered as System Assigned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure backup restore request"
+      }
+    },
+    "com.azure.dataprotection#IdentityDetails": {
+      "type": "structure",
+      "members": {
+        "useSystemAssignedIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the BI is protected by System Identity."
+          }
+        },
+        "userAssignedIdentityArmUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM URL for User Assigned Identity."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.dataprotection#AzureBackupRestoreRequestResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+      }
+    },
+    "com.azure.dataprotection#SourceDataStoreType": {
+      "type": "enum",
+      "members": {
+        "ARCHIVESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ArchiveStore"
+          }
+        },
+        "SNAPSHOTSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SnapshotStore"
+          }
+        },
+        "OPERATIONALSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OperationalStore"
+          }
+        },
+        "VAULTSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VaultStore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the type of the source data store."
+      }
+    },
+    "com.azure.dataprotection#RestoreTargetInfoBase": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of Datasource object, used to initialize the right inherited type",
+            "smithy.api#required": {}
+          }
+        },
+        "recoveryOption": {
+          "target": "com.azure.dataprotection#RecoveryOption",
+          "traits": {
+            "smithy.api#documentation": "Recovery Option",
+            "smithy.api#required": {}
+          }
+        },
+        "restoreLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Restore region"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class common to RestoreTargetInfo and RestoreFilesTargetInfo"
+      }
+    },
+    "com.azure.dataprotection#RecoveryOption": {
+      "type": "enum",
+      "members": {
+        "FAILIFEXISTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FailIfExists"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery Option"
       }
     },
     "com.azure.dataprotection#FetchSecondaryRecoveryPointsList": {
@@ -2125,11 +2361,16 @@
             "smithy.api#documentation": "skipToken Filter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceRegion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Source region in which BackupInstance is located"
+          }
+        },
+        "sourceBackupInstanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Path of BackupInstance"
           }
         }
       },
@@ -2776,10 +3017,15 @@
             "smithy.api#documentation": "OData filter options."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceRegion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        },
+        "sourceBackupVaultId": {
+          "target": "smithy.api#String",
+          "traits": {
             "smithy.api#required": {}
           }
         }
@@ -2872,10 +3118,21 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceRegion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        },
+        "sourceBackupVaultId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
             "smithy.api#required": {}
           }
         }
@@ -2951,10 +3208,17 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restoreRequestObject": {
+          "target": "com.azure.dataprotection#AzureBackupRestoreRequest",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the restore request object.",
+            "smithy.api#required": {}
+          }
+        },
+        "crossRegionRestoreDetails": {
+          "target": "com.azure.dataprotection#CrossRegionRestoreDetails",
+          "traits": {
+            "smithy.api#documentation": "Cross region restore details.",
             "smithy.api#required": {}
           }
         }
@@ -3035,11 +3299,16 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name for which availability needs to be checked"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes the Resource type: Microsoft.DataProtection/BackupVaults"
           }
         }
       },
@@ -3114,16 +3383,388 @@
             "smithy.api#documentation": "The name of the BackupVaultResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupInstance": {
+          "target": "com.azure.dataprotection#BackupInstanceInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Backup Instance",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupInstanceInput": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Backup Instance friendly name."
+          }
+        },
+        "dataSourceInfo": {
+          "target": "com.azure.dataprotection#Datasource",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the data source information.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataSourceSetInfo": {
+          "target": "com.azure.dataprotection#DatasourceSet",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the data source set information."
+          }
+        },
+        "policyInfo": {
+          "target": "com.azure.dataprotection#PolicyInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the policy information.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#BackupInstanceInputResourceGuardOperationRequestsList",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+          }
+        },
+        "datasourceAuthCredentials": {
+          "target": "com.azure.dataprotection#AuthCredentials",
+          "traits": {
+            "smithy.api#documentation": "Credentials to use to authenticate with data source provider."
+          }
+        },
+        "validationType": {
+          "target": "com.azure.dataprotection#ValidationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again."
+          }
+        },
+        "identityDetails": {
+          "target": "com.azure.dataprotection#IdentityDetails",
+          "traits": {
+            "smithy.api#documentation": "Contains information of the Identity Details for the BI.\nIf it is null, default will be considered as System Assigned."
+          }
+        },
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Instance"
+      }
+    },
+    "com.azure.dataprotection#ValidationType": {
+      "type": "enum",
+      "members": {
+        "SHALLOWVALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ShallowValidation"
+          }
+        },
+        "DEEPVALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeepValidation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again."
+      }
+    },
+    "com.azure.dataprotection#AuthCredentials": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for different types of authentication credentials."
+      }
+    },
+    "com.azure.dataprotection#BackupInstanceInputResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+      }
+    },
+    "com.azure.dataprotection#PolicyInfoInput": {
+      "type": "structure",
+      "members": {
+        "policyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "policyParameters": {
+          "target": "com.azure.dataprotection#PolicyParameters",
+          "traits": {
+            "smithy.api#documentation": "Policy parameters for the backup instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy Info in backupInstance"
+      }
+    },
+    "com.azure.dataprotection#PolicyParameters": {
+      "type": "structure",
+      "members": {
+        "dataStoreParametersList": {
+          "target": "com.azure.dataprotection#PolicyParametersDataStoreParametersListList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the DataStore Parameters"
+          }
+        },
+        "backupDatasourceParametersList": {
+          "target": "com.azure.dataprotection#PolicyParametersBackupDatasourceParametersListList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Backup Data Source Parameters"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters in Policy"
+      }
+    },
+    "com.azure.dataprotection#PolicyParametersBackupDatasourceParametersListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dataprotection#BackupDatasourceParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Backup Data Source Parameters"
+      }
+    },
+    "com.azure.dataprotection#BackupDatasourceParameters": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters for Backup Datasource"
+      }
+    },
+    "com.azure.dataprotection#PolicyParametersDataStoreParametersListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dataprotection#DataStoreParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the DataStore Parameters"
+      }
+    },
+    "com.azure.dataprotection#DataStoreParameters": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
+            "smithy.api#required": {}
+          }
+        },
+        "dataStoreType": {
+          "target": "com.azure.dataprotection#DataStoreTypes",
+          "traits": {
+            "smithy.api#documentation": "type of datastore; Operational/Vault/Archive",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters for DataStore"
+      }
+    },
+    "com.azure.dataprotection#DataStoreTypes": {
+      "type": "enum",
+      "members": {
+        "OPERATIONALSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OperationalStore"
+          }
+        },
+        "VAULTSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VaultStore"
+          }
+        },
+        "ARCHIVESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ArchiveStore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "type of datastore; Operational/Vault/Archive"
+      }
+    },
+    "com.azure.dataprotection#DatasourceSet": {
+      "type": "structure",
+      "members": {
+        "datasourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DatasourceType of the resource."
+          }
+        },
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of Datasource object, used to initialize the right inherited type"
+          }
+        },
+        "resourceID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of datasource."
+          }
+        },
+        "resourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier of the resource in the context of parent."
+          }
+        },
+        "resourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Type of Datasource."
+          }
+        },
+        "resourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri of the resource."
+          }
+        },
+        "resourceProperties": {
+          "target": "com.azure.dataprotection#BaseResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to data source set"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DatasourceSet details of datasource to be backed up"
+      }
+    },
+    "com.azure.dataprotection#BaseResourceProperties": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "com.azure.dataprotection#ResourcePropertiesObjectType",
+          "traits": {
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties which are specific to datasource/datasourceSets"
+      }
+    },
+    "com.azure.dataprotection#ResourcePropertiesObjectType": {
+      "type": "enum",
+      "members": {
+        "DEFAULTRESOURCEPROPERTIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DefaultResourceProperties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the specific object - used for deserializing"
+      }
+    },
+    "com.azure.dataprotection#Datasource": {
+      "type": "structure",
+      "members": {
+        "datasourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DatasourceType of the resource."
+          }
+        },
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of Datasource object, used to initialize the right inherited type"
+          }
+        },
+        "resourceID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of datasource."
+          }
+        },
+        "resourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier of the resource in the context of parent."
+          }
+        },
+        "resourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Type of Datasource."
+          }
+        },
+        "resourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri of the resource."
+          }
+        },
+        "resourceProperties": {
+          "target": "com.azure.dataprotection#BaseResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to data source"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Datasource to be backed up"
       }
     },
     "com.azure.dataprotection#OperationStatusBackupVaultContextGet": {
@@ -4413,59 +5054,6 @@
         "smithy.api#documentation": "Deletion Info"
       }
     },
-    "com.azure.dataprotection#IdentityDetails": {
-      "type": "structure",
-      "members": {
-        "useSystemAssignedIdentity": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Specifies if the BI is protected by System Identity."
-          }
-        },
-        "userAssignedIdentityArmUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ARM URL for User Assigned Identity."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.azure.dataprotection#ValidationType": {
-      "type": "enum",
-      "members": {
-        "SHALLOWVALIDATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ShallowValidation"
-          }
-        },
-        "DEEPVALIDATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DeepValidation"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again."
-      }
-    },
-    "com.azure.dataprotection#AuthCredentials": {
-      "type": "structure",
-      "members": {
-        "objectType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Type of the specific object - used for deserializing",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Base class for different types of authentication credentials."
-      }
-    },
     "com.azure.dataprotection#CurrentProtectionState": {
       "type": "enum",
       "members": {
@@ -4640,250 +5228,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Policy Info in backupInstance"
-      }
-    },
-    "com.azure.dataprotection#PolicyParameters": {
-      "type": "structure",
-      "members": {
-        "dataStoreParametersList": {
-          "target": "com.azure.dataprotection#PolicyParametersDataStoreParametersListList",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the DataStore Parameters"
-          }
-        },
-        "backupDatasourceParametersList": {
-          "target": "com.azure.dataprotection#PolicyParametersBackupDatasourceParametersListList",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the Backup Data Source Parameters"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters in Policy"
-      }
-    },
-    "com.azure.dataprotection#PolicyParametersBackupDatasourceParametersListList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.dataprotection#BackupDatasourceParameters"
-      },
-      "traits": {
-        "smithy.api#documentation": "Gets or sets the Backup Data Source Parameters"
-      }
-    },
-    "com.azure.dataprotection#BackupDatasourceParameters": {
-      "type": "structure",
-      "members": {
-        "objectType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Type of the specific object - used for deserializing",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters for Backup Datasource"
-      }
-    },
-    "com.azure.dataprotection#PolicyParametersDataStoreParametersListList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.dataprotection#DataStoreParameters"
-      },
-      "traits": {
-        "smithy.api#documentation": "Gets or sets the DataStore Parameters"
-      }
-    },
-    "com.azure.dataprotection#DataStoreParameters": {
-      "type": "structure",
-      "members": {
-        "objectType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Type of the specific object - used for deserializing",
-            "smithy.api#required": {}
-          }
-        },
-        "dataStoreType": {
-          "target": "com.azure.dataprotection#DataStoreTypes",
-          "traits": {
-            "smithy.api#documentation": "type of datastore; Operational/Vault/Archive",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters for DataStore"
-      }
-    },
-    "com.azure.dataprotection#DataStoreTypes": {
-      "type": "enum",
-      "members": {
-        "OPERATIONALSTORE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OperationalStore"
-          }
-        },
-        "VAULTSTORE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VaultStore"
-          }
-        },
-        "ARCHIVESTORE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ArchiveStore"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "type of datastore; Operational/Vault/Archive"
-      }
-    },
-    "com.azure.dataprotection#DatasourceSet": {
-      "type": "structure",
-      "members": {
-        "datasourceType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "DatasourceType of the resource."
-          }
-        },
-        "objectType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Type of Datasource object, used to initialize the right inherited type"
-          }
-        },
-        "resourceID": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.",
-            "smithy.api#required": {}
-          }
-        },
-        "resourceLocation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Location of datasource."
-          }
-        },
-        "resourceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier of the resource in the context of parent."
-          }
-        },
-        "resourceType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resource Type of Datasource."
-          }
-        },
-        "resourceUri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Uri of the resource."
-          }
-        },
-        "resourceProperties": {
-          "target": "com.azure.dataprotection#BaseResourceProperties",
-          "traits": {
-            "smithy.api#documentation": "Properties specific to data source set"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "DatasourceSet details of datasource to be backed up"
-      }
-    },
-    "com.azure.dataprotection#BaseResourceProperties": {
-      "type": "structure",
-      "members": {
-        "objectType": {
-          "target": "com.azure.dataprotection#ResourcePropertiesObjectType",
-          "traits": {
-            "smithy.api#documentation": "Type of the specific object - used for deserializing",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties which are specific to datasource/datasourceSets"
-      }
-    },
-    "com.azure.dataprotection#ResourcePropertiesObjectType": {
-      "type": "enum",
-      "members": {
-        "DEFAULTRESOURCEPROPERTIES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DefaultResourceProperties"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Type of the specific object - used for deserializing"
-      }
-    },
-    "com.azure.dataprotection#Datasource": {
-      "type": "structure",
-      "members": {
-        "datasourceType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "DatasourceType of the resource."
-          }
-        },
-        "objectType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Type of Datasource object, used to initialize the right inherited type"
-          }
-        },
-        "resourceID": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.",
-            "smithy.api#required": {}
-          }
-        },
-        "resourceLocation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Location of datasource."
-          }
-        },
-        "resourceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier of the resource in the context of parent."
-          }
-        },
-        "resourceType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resource Type of Datasource."
-          }
-        },
-        "resourceUri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Uri of the resource."
-          }
-        },
-        "resourceProperties": {
-          "target": "com.azure.dataprotection#BaseResourceProperties",
-          "traits": {
-            "smithy.api#documentation": "Properties specific to data source"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Datasource to be backed up"
       }
     },
     "com.azure.dataprotection#DeletedBackupInstancesGetRequest": {
@@ -5112,16 +5456,27 @@
             "smithy.api#documentation": "name of the resource guard proxy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
           }
+        },
+        "resourceToBeDeleted": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
       }
     },
     "com.azure.dataprotection#DppResourceGuardProxyDelete": {
@@ -5316,11 +5671,10 @@
             "smithy.api#documentation": "name of the resource guard proxy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dataprotection#ResourceGuardProxyBase",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ResourceGuardProxyBaseResource properties"
           }
         }
       },
@@ -5722,11 +6076,10 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dataprotection#BaseBackupPolicy",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "BaseBackupPolicyResource properties"
           }
         }
       },
@@ -6291,10 +6644,10 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restoreRequestObject": {
+          "target": "com.azure.dataprotection#AzureBackupRestoreRequest",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the restore request object.",
             "smithy.api#required": {}
           }
         }
@@ -6357,10 +6710,10 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupInstance": {
+          "target": "com.azure.dataprotection#BackupInstanceInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Backup Instance",
             "smithy.api#required": {}
           }
         }
@@ -6423,16 +6776,35 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "syncType": {
+          "target": "com.azure.dataprotection#SyncType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Field indicating sync type e.g. to sync only in case of failure or in all cases"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#SyncType": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "FORCERESYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForceResync"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Field indicating sync type e.g. to sync only in case of failure or in all cases"
       }
     },
     "com.azure.dataprotection#BackupInstancesSuspendBackups": {
@@ -6489,15 +6861,24 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#BackupInstancesSuspendBackupsRequestResourceGuardOperationRequestsList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupInstancesSuspendBackupsRequestResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
       }
     },
     "com.azure.dataprotection#BackupInstancesStopProtection": {
@@ -6554,15 +6935,24 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#BackupInstancesStopProtectionRequestResourceGuardOperationRequestsList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupInstancesStopProtectionRequestResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
       }
     },
     "com.azure.dataprotection#BackupInstancesResumeProtection": {
@@ -6758,16 +7148,56 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "objectType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
+          }
+        },
+        "restoreTargetInfo": {
+          "target": "com.azure.dataprotection#RestoreTargetInfoBase",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the restore target information.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceDataStoreType": {
+          "target": "com.azure.dataprotection#SourceDataStoreType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of the source data store.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified Azure Resource Manager ID of the datasource which is being recovered."
+          }
+        },
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+          }
+        },
+        "identityDetails": {
+          "target": "com.azure.dataprotection#IdentityDetails",
+          "traits": {
+            "smithy.api#documentation": "Contains information of the Identity Details for the BI.\nIf it is null, default will be considered as System Assigned."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
       }
     },
     "com.azure.dataprotection#BackupInstancesTriggerRehydrate": {
@@ -6824,16 +7254,55 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "recoveryPointId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Id of the recovery point to be recovered",
+            "smithy.api#required": {}
+          }
+        },
+        "rehydrationPriority": {
+          "target": "com.azure.dataprotection#RehydrationPriority",
+          "traits": {
+            "smithy.api#documentation": "Priority to be used for rehydration. Values High or Standard"
+          }
+        },
+        "rehydrationRetentionDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Retention duration in ISO 8601 format i.e P10D .",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#RehydrationPriority": {
+      "type": "enum",
+      "members": {
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Invalid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Priority to be used for rehydration. Values High or Standard"
       }
     },
     "com.azure.dataprotection#RecoveryPointsGet": {
@@ -7510,16 +7979,54 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceDataStoreType": {
+          "target": "com.azure.dataprotection#RestoreSourceDataStoreType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the type of the source data store.",
             "smithy.api#required": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time for the List Restore Ranges request. ISO 8601 format."
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time for the List Restore Ranges request. ISO 8601 format."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#RestoreSourceDataStoreType": {
+      "type": "enum",
+      "members": {
+        "OPERATIONALSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OperationalStore"
+          }
+        },
+        "VAULTSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VaultStore"
+          }
+        },
+        "ARCHIVESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ArchiveStore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the type of the source data store."
       }
     },
     "com.azure.dataprotection#BackupInstancesAdhocBackup": {
@@ -7597,16 +8104,48 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupRuleOptions": {
+          "target": "com.azure.dataprotection#AdHocBackupRuleOptions",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name for the Rule of the Policy which needs to be applied for this backup",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#AdHocBackupRuleOptions": {
+      "type": "structure",
+      "members": {
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "triggerOption": {
+          "target": "com.azure.dataprotection#AdhocBackupTriggerOption",
+          "traits": {
+            "smithy.api#documentation": "Adhoc backup trigger option",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Adhoc backup rules"
+      }
+    },
+    "com.azure.dataprotection#AdhocBackupTriggerOption": {
+      "type": "structure",
+      "members": {
+        "retentionTagOverride": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Adhoc backup trigger option"
       }
     },
     "com.azure.dataprotection#BackupInstancesDelete": {
@@ -7778,16 +8317,33 @@
             "smithy.api#documentation": "The name of the BackupInstanceResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dataprotection#BackupInstanceInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "BackupInstanceResource properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.dataprotection#BackupInstancesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Proxy Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupInstancesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Proxy Resource tags."
       }
     },
     "com.azure.dataprotection#BackupInstancesGet": {
@@ -8214,16 +8770,119 @@
             "smithy.api#documentation": "The name of the BackupVaultResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.dataprotection#DppIdentityDetailsInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Input Managed Identity Details"
+          }
+        },
+        "properties": {
+          "target": "com.azure.dataprotection#PatchBackupVaultInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.dataprotection#BackupVaultsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupVaultsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.dataprotection#PatchBackupVaultInput": {
+      "type": "structure",
+      "members": {
+        "monitoringSettings": {
+          "target": "com.azure.dataprotection#MonitoringSettings",
+          "traits": {
+            "smithy.api#documentation": "Monitoring Settings"
+          }
+        },
+        "securitySettings": {
+          "target": "com.azure.dataprotection#SecuritySettings",
+          "traits": {
+            "smithy.api#documentation": "Security Settings"
+          }
+        },
+        "featureSettings": {
+          "target": "com.azure.dataprotection#FeatureSettings",
+          "traits": {
+            "smithy.api#documentation": "Feature Settings"
+          }
+        },
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#PatchBackupVaultInputResourceGuardOperationRequestsList",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Vault Contract for Patch Backup Vault API."
+      }
+    },
+    "com.azure.dataprotection#PatchBackupVaultInputResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+      }
+    },
+    "com.azure.dataprotection#DppIdentityDetailsInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None"
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.dataprotection#DppIdentityDetailsInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the user assigned identities."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity details"
+      }
+    },
+    "com.azure.dataprotection#DppIdentityDetailsInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.dataprotection#DppIdentityDetailsInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the user assigned identities."
+      }
+    },
+    "com.azure.dataprotection#DppIdentityDetailsInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.dataprotection#BackupVaultsCreateOrUpdate": {
@@ -8348,16 +9007,124 @@
             "smithy.api#documentation": "The name of the BackupVaultResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dataprotection#BackupVaultsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dataprotection#BackupVaultInput",
+          "traits": {
+            "smithy.api#documentation": "BackupVaultResource properties",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.dataprotection#DppIdentityDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Input Managed Identity Details"
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional ETag."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dataprotection#BackupVaultInput": {
+      "type": "structure",
+      "members": {
+        "monitoringSettings": {
+          "target": "com.azure.dataprotection#MonitoringSettings",
+          "traits": {
+            "smithy.api#documentation": "Monitoring Settings"
+          }
+        },
+        "securitySettings": {
+          "target": "com.azure.dataprotection#SecuritySettings",
+          "traits": {
+            "smithy.api#documentation": "Security Settings"
+          }
+        },
+        "storageSettings": {
+          "target": "com.azure.dataprotection#BackupVaultInputStorageSettingsList",
+          "traits": {
+            "smithy.api#documentation": "Storage Settings"
+          }
+        },
+        "featureSettings": {
+          "target": "com.azure.dataprotection#FeatureSettings",
+          "traits": {
+            "smithy.api#documentation": "Feature Settings"
+          }
+        },
+        "resourceGuardOperationRequests": {
+          "target": "com.azure.dataprotection#BackupVaultInputResourceGuardOperationRequestsList",
+          "traits": {
+            "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+          }
+        },
+        "replicatedRegions": {
+          "target": "com.azure.dataprotection#BackupVaultInputReplicatedRegionsList",
+          "traits": {
+            "smithy.api#documentation": "List of replicated regions for Backup Vault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Vault"
+      }
+    },
+    "com.azure.dataprotection#BackupVaultInputReplicatedRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of replicated regions for Backup Vault"
+      }
+    },
+    "com.azure.dataprotection#BackupVaultInputResourceGuardOperationRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ResourceGuardOperationRequests on which LAC check will be performed"
+      }
+    },
+    "com.azure.dataprotection#BackupVaultInputStorageSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dataprotection#StorageSetting"
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Settings"
+      }
+    },
+    "com.azure.dataprotection#BackupVaultsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dataprotection#BackupVaultsGet": {
@@ -9234,10 +10001,10 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "objectType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
             "smithy.api#required": {}
           }
         }

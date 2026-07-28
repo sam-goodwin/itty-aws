@@ -98,7 +98,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -154,7 +154,7 @@ export const SourceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceInfo" }) as any as S.Schema<SourceInfo>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -182,8 +182,7 @@ export type BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   | "UNSET_BEHAVIOR"
   | "THROW_EXCEPTION"
   | "BLOCK"
-  | "IGNORE"
-  | (string & {});
+  | "IGNORE";
 export const BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -279,7 +278,7 @@ export const MethodSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodSettings" }) as any as S.Schema<MethodSettings>;
 
-export type MethodSettingsList = MethodSettings[];
+export type MethodSettingsList = ReadonlyArray<MethodSettings>;
 export const MethodSettingsList = /*@__PURE__*/ S.Array(
   MethodSettings,
 ) as any as S.Schema<MethodSettingsList>;
@@ -293,20 +292,18 @@ export type PublishingOrganizationEnum =
   | "SHOPPING"
   | "GEO"
   | "GENERATIVE_AI"
-  | "HEALTH"
-  | (string & {});
+  | "HEALTH";
 export const PublishingOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type CommonLanguageSettingsDestinationsItemEnum =
   | "CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"
   | "GITHUB"
-  | "PACKAGE_MANAGER"
-  | (string & {});
+  | "PACKAGE_MANAGER";
 export const CommonLanguageSettingsDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type CommonLanguageSettingsDestinationsItemEnumList =
-  CommonLanguageSettingsDestinationsItemEnum[];
+  ReadonlyArray<CommonLanguageSettingsDestinationsItemEnum>;
 export const CommonLanguageSettingsDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     CommonLanguageSettingsDestinationsItemEnum,
@@ -410,8 +407,7 @@ export type ClientLibrarySettingsLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const ClientLibrarySettingsLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -545,7 +541,7 @@ export const ClientLibrarySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClientLibrarySettings",
 }) as any as S.Schema<ClientLibrarySettings>;
 
-export type ClientLibrarySettingsList = ClientLibrarySettings[];
+export type ClientLibrarySettingsList = ReadonlyArray<ClientLibrarySettings>;
 export const ClientLibrarySettingsList = /*@__PURE__*/ S.Array(
   ClientLibrarySettings,
 ) as any as S.Schema<ClientLibrarySettingsList>;
@@ -605,7 +601,7 @@ export const Mixin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
-export type MixinList = Mixin[];
+export type MixinList = ReadonlyArray<Mixin>;
 export const MixinList = /*@__PURE__*/ S.Array(
   Mixin,
 ) as any as S.Schema<MixinList>;
@@ -613,8 +609,7 @@ export const MixinList = /*@__PURE__*/ S.Array(
 export type MethodSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -631,7 +626,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = Option[];
+export type OptionList = ReadonlyArray<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -668,7 +663,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
-export type MethodList = Method[];
+export type MethodList = ReadonlyArray<Method>;
 export const MethodList = /*@__PURE__*/ S.Array(
   Method,
 ) as any as S.Schema<MethodList>;
@@ -676,8 +671,7 @@ export const MethodList = /*@__PURE__*/ S.Array(
 export type ApiSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
@@ -723,7 +717,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
-export type ApiList = Api[];
+export type ApiList = ReadonlyArray<Api>;
 export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 export type BackendRuleMap = { [key: string]: BackendRule | undefined };
@@ -735,8 +729,7 @@ export const BackendRuleMap = /*@__PURE__*/ S.Record(
 export type BackendRulePathTranslationEnum =
   | "PATH_TRANSLATION_UNSPECIFIED"
   | "CONSTANT_ADDRESS"
-  | "APPEND_PATH_TO_ADDRESS"
-  | (string & {});
+  | "APPEND_PATH_TO_ADDRESS";
 export const BackendRulePathTranslationEnum = /*@__PURE__*/ S.String;
 
 /** A backend rule provides configuration for an individual API element. */
@@ -780,7 +773,7 @@ export const BackendRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackendRule" }) as any as S.Schema<BackendRule>;
 
-export type BackendRuleList = BackendRule[];
+export type BackendRuleList = ReadonlyArray<BackendRule>;
 export const BackendRuleList = /*@__PURE__*/ S.Array(
   BackendRule,
 ) as any as S.Schema<BackendRuleList>;
@@ -834,7 +827,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
-export type QuotaLimitList = QuotaLimit[];
+export type QuotaLimitList = ReadonlyArray<QuotaLimit>;
 export const QuotaLimitList = /*@__PURE__*/ S.Array(
   QuotaLimit,
 ) as any as S.Schema<QuotaLimitList>;
@@ -853,7 +846,7 @@ export const MetricRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
-export type MetricRuleList = MetricRule[];
+export type MetricRuleList = ReadonlyArray<MetricRule>;
 export const MetricRuleList = /*@__PURE__*/ S.Array(
   MetricRule,
 ) as any as S.Schema<MetricRuleList>;
@@ -901,7 +894,7 @@ export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthRequirement",
 }) as any as S.Schema<AuthRequirement>;
 
-export type AuthRequirementList = AuthRequirement[];
+export type AuthRequirementList = ReadonlyArray<AuthRequirement>;
 export const AuthRequirementList = /*@__PURE__*/ S.Array(
   AuthRequirement,
 ) as any as S.Schema<AuthRequirementList>;
@@ -928,7 +921,7 @@ export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationRule",
 }) as any as S.Schema<AuthenticationRule>;
 
-export type AuthenticationRuleList = AuthenticationRule[];
+export type AuthenticationRuleList = ReadonlyArray<AuthenticationRule>;
 export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
   AuthenticationRule,
 ) as any as S.Schema<AuthenticationRuleList>;
@@ -953,7 +946,7 @@ export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
-export type JwtLocationList = JwtLocation[];
+export type JwtLocationList = ReadonlyArray<JwtLocation>;
 export const JwtLocationList = /*@__PURE__*/ S.Array(
   JwtLocation,
 ) as any as S.Schema<JwtLocationList>;
@@ -984,7 +977,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
-export type AuthProviderList = AuthProvider[];
+export type AuthProviderList = ReadonlyArray<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -1006,8 +999,7 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
 export type EnumSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const EnumSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1027,7 +1019,7 @@ export const EnumValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EnumValue" }) as any as S.Schema<EnumValue>;
 
-export type EnumValueList = EnumValue[];
+export type EnumValueList = ReadonlyArray<EnumValue>;
 export const EnumValueList = /*@__PURE__*/ S.Array(
   EnumValue,
 ) as any as S.Schema<EnumValueList>;
@@ -1058,7 +1050,7 @@ export const Enum = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Enum" }) as any as S.Schema<Enum>;
 
-export type EnumList = Enum[];
+export type EnumList = ReadonlyArray<Enum>;
 export const EnumList = /*@__PURE__*/ S.Array(
   Enum,
 ) as any as S.Schema<EnumList>;
@@ -1080,7 +1072,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type PageList = Page[];
+export type PageList = ReadonlyArray<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -1107,7 +1099,7 @@ export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentationRule",
 }) as any as S.Schema<DocumentationRule>;
 
-export type DocumentationRuleList = DocumentationRule[];
+export type DocumentationRuleList = ReadonlyArray<DocumentationRule>;
 export const DocumentationRuleList = /*@__PURE__*/ S.Array(
   DocumentationRule,
 ) as any as S.Schema<DocumentationRuleList>;
@@ -1144,11 +1136,7 @@ export const Documentation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Documentation" }) as any as S.Schema<Documentation>;
 
-export type LabelDescriptorValueTypeEnum =
-  | "STRING"
-  | "BOOL"
-  | "INT64"
-  | (string & {});
+export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -1170,7 +1158,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = LabelDescriptor[];
+export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -1195,7 +1183,7 @@ export const LogDescriptor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogDescriptor" }) as any as S.Schema<LogDescriptor>;
 
-export type LogDescriptorList = LogDescriptor[];
+export type LogDescriptorList = ReadonlyArray<LogDescriptor>;
 export const LogDescriptorList = /*@__PURE__*/ S.Array(
   LogDescriptor,
 ) as any as S.Schema<LogDescriptorList>;
@@ -1219,16 +1207,14 @@ export type FieldKindEnum =
   | "TYPE_SFIXED32"
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
-  | "TYPE_SINT64"
-  | (string & {});
+  | "TYPE_SINT64";
 export const FieldKindEnum = /*@__PURE__*/ S.String;
 
 export type FieldCardinalityEnum =
   | "CARDINALITY_UNKNOWN"
   | "CARDINALITY_OPTIONAL"
   | "CARDINALITY_REQUIRED"
-  | "CARDINALITY_REPEATED"
-  | (string & {});
+  | "CARDINALITY_REPEATED";
 export const FieldCardinalityEnum = /*@__PURE__*/ S.String;
 
 /** A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1269,7 +1255,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = Field[];
+export type FieldList = ReadonlyArray<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -1277,8 +1263,7 @@ export const FieldList = /*@__PURE__*/ S.Array(
 export type TypeSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const TypeSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
@@ -1310,7 +1295,7 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
-export type TypeList = Type[];
+export type TypeList = ReadonlyArray<Type>;
 export const TypeList = /*@__PURE__*/ S.Array(
   Type,
 ) as any as S.Schema<TypeList>;
@@ -1323,21 +1308,19 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MetricDescriptorMetadataLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
-  | "FOLDER"
-  | (string & {});
+  | "FOLDER";
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum[];
+  ReadonlyArray<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum>;
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
   /*@__PURE__*/ S.Array(
     MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
@@ -1375,8 +1358,7 @@ export type MetricDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MetricDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorValueTypeEnum =
@@ -1386,16 +1368,14 @@ export type MetricDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY"
-  | (string & {});
+  | "MONEY";
 export const MetricDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE"
-  | (string & {});
+  | "CUMULATIVE";
 export const MetricDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
@@ -1441,7 +1421,7 @@ export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricDescriptor",
 }) as any as S.Schema<MetricDescriptor>;
 
-export type MetricDescriptorList = MetricDescriptor[];
+export type MetricDescriptorList = ReadonlyArray<MetricDescriptor>;
 export const MetricDescriptorList = /*@__PURE__*/ S.Array(
   MetricDescriptor,
 ) as any as S.Schema<MetricDescriptorList>;
@@ -1460,7 +1440,7 @@ export const AspectRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AspectRule" }) as any as S.Schema<AspectRule>;
 
-export type AspectRuleList = AspectRule[];
+export type AspectRuleList = ReadonlyArray<AspectRule>;
 export const AspectRuleList = /*@__PURE__*/ S.Array(
   AspectRule,
 ) as any as S.Schema<AspectRuleList>;
@@ -1482,7 +1462,7 @@ export const Aspect = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aspect" }) as any as S.Schema<Aspect>;
 
-export type AspectList = Aspect[];
+export type AspectList = ReadonlyArray<Aspect>;
 export const AspectList = /*@__PURE__*/ S.Array(
   Aspect,
 ) as any as S.Schema<AspectList>;
@@ -1506,7 +1486,7 @@ export const SystemParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SystemParameter",
 }) as any as S.Schema<SystemParameter>;
 
-export type SystemParameterList = SystemParameter[];
+export type SystemParameterList = ReadonlyArray<SystemParameter>;
 export const SystemParameterList = /*@__PURE__*/ S.Array(
   SystemParameter,
 ) as any as S.Schema<SystemParameterList>;
@@ -1527,7 +1507,7 @@ export const SystemParameterRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "SystemParameterRule",
 }) as any as S.Schema<SystemParameterRule>;
 
-export type SystemParameterRuleList = SystemParameterRule[];
+export type SystemParameterRuleList = ReadonlyArray<SystemParameterRule>;
 export const SystemParameterRuleList = /*@__PURE__*/ S.Array(
   SystemParameterRule,
 ) as any as S.Schema<SystemParameterRuleList>;
@@ -1561,7 +1541,7 @@ export const BillingDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingDestination",
 }) as any as S.Schema<BillingDestination>;
 
-export type BillingDestinationList = BillingDestination[];
+export type BillingDestinationList = ReadonlyArray<BillingDestination>;
 export const BillingDestinationList = /*@__PURE__*/ S.Array(
   BillingDestination,
 ) as any as S.Schema<BillingDestinationList>;
@@ -1593,7 +1573,7 @@ export const CustomErrorRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomErrorRule",
 }) as any as S.Schema<CustomErrorRule>;
 
-export type CustomErrorRuleList = CustomErrorRule[];
+export type CustomErrorRuleList = ReadonlyArray<CustomErrorRule>;
 export const CustomErrorRuleList = /*@__PURE__*/ S.Array(
   CustomErrorRule,
 ) as any as S.Schema<CustomErrorRuleList>;
@@ -1628,7 +1608,7 @@ export const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoggingDestination",
 }) as any as S.Schema<LoggingDestination>;
 
-export type LoggingDestinationList = LoggingDestination[];
+export type LoggingDestinationList = ReadonlyArray<LoggingDestination>;
 export const LoggingDestinationList = /*@__PURE__*/ S.Array(
   LoggingDestination,
 ) as any as S.Schema<LoggingDestinationList>;
@@ -1655,8 +1635,7 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1688,7 +1667,8 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResourceDescriptor",
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
-export type MonitoredResourceDescriptorList = MonitoredResourceDescriptor[];
+export type MonitoredResourceDescriptorList =
+  ReadonlyArray<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -1709,7 +1689,7 @@ export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoringDestination",
 }) as any as S.Schema<MonitoringDestination>;
 
-export type MonitoringDestinationList = MonitoringDestination[];
+export type MonitoringDestinationList = ReadonlyArray<MonitoringDestination>;
 export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
   MonitoringDestination,
 ) as any as S.Schema<MonitoringDestinationList>;
@@ -1745,7 +1725,7 @@ export const FieldPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldPolicy" }) as any as S.Schema<FieldPolicy>;
 
-export type FieldPolicyList = FieldPolicy[];
+export type FieldPolicyList = ReadonlyArray<FieldPolicy>;
 export const FieldPolicyList = /*@__PURE__*/ S.Array(
   FieldPolicy,
 ) as any as S.Schema<FieldPolicyList>;
@@ -1764,7 +1744,7 @@ export const MethodPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodPolicy" }) as any as S.Schema<MethodPolicy>;
 
-export type MethodPolicyList = MethodPolicy[];
+export type MethodPolicyList = ReadonlyArray<MethodPolicy>;
 export const MethodPolicyList = /*@__PURE__*/ S.Array(
   MethodPolicy,
 ) as any as S.Schema<MethodPolicyList>;
@@ -1803,7 +1783,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type EndpointList = Endpoint[];
+export type EndpointList = ReadonlyArray<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -1825,7 +1805,7 @@ export const UsageRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
-export type UsageRuleList = UsageRule[];
+export type UsageRuleList = ReadonlyArray<UsageRule>;
 export const UsageRuleList = /*@__PURE__*/ S.Array(
   UsageRule,
 ) as any as S.Schema<UsageRuleList>;
@@ -1901,7 +1881,7 @@ export const HttpRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpRule" }) as any as S.Schema<HttpRule>;
 
-export type HttpRuleList = HttpRule[];
+export type HttpRuleList = ReadonlyArray<HttpRule>;
 export const HttpRuleList = /*@__PURE__*/ S.Array(
   HttpRule,
 ) as any as S.Schema<HttpRuleList>;
@@ -1943,7 +1923,7 @@ export const ContextRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContextRule" }) as any as S.Schema<ContextRule>;
 
-export type ContextRuleList = ContextRule[];
+export type ContextRuleList = ReadonlyArray<ContextRule>;
 export const ContextRuleList = /*@__PURE__*/ S.Array(
   ContextRule,
 ) as any as S.Schema<ContextRuleList>;
@@ -2109,8 +2089,7 @@ export type RolloutStatusEnum =
   | "CANCELLED"
   | "FAILED"
   | "PENDING"
-  | "FAILED_ROLLED_BACK"
-  | (string & {});
+  | "FAILED_ROLLED_BACK";
 export const RolloutStatusEnum = /*@__PURE__*/ S.String;
 
 /** A rollout resource that defines how service configuration versions are pushed to control plane systems. Typically, you create a new version of the service config, and then create a Rollout to push the service config. */
@@ -2226,7 +2205,7 @@ export const Advice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Advice" }) as any as S.Schema<Advice>;
 
-export type AdviceList = Advice[];
+export type AdviceList = ReadonlyArray<Advice>;
 export const AdviceList = /*@__PURE__*/ S.Array(
   Advice,
 ) as any as S.Schema<AdviceList>;
@@ -2235,8 +2214,7 @@ export type ConfigChangeChangeTypeEnum =
   | "CHANGE_TYPE_UNSPECIFIED"
   | "ADDED"
   | "REMOVED"
-  | "MODIFIED"
-  | (string & {});
+  | "MODIFIED";
 export const ConfigChangeChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output generated from semantically comparing two versions of a service configuration. Includes detailed information about a field that have changed with applicable advice about potential consequences for the change, such as backwards-incompatibility. */
@@ -2262,7 +2240,7 @@ export const ConfigChange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConfigChange" }) as any as S.Schema<ConfigChange>;
 
-export type ConfigChangeList = ConfigChange[];
+export type ConfigChangeList = ReadonlyArray<ConfigChange>;
 export const ConfigChangeList = /*@__PURE__*/ S.Array(
   ConfigChange,
 ) as any as S.Schema<ConfigChangeList>;
@@ -2278,12 +2256,12 @@ export const ChangeReport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChangeReport" }) as any as S.Schema<ChangeReport>;
 
-export type ChangeReportList = ChangeReport[];
+export type ChangeReportList = ReadonlyArray<ChangeReport>;
 export const ChangeReportList = /*@__PURE__*/ S.Array(
   ChangeReport,
 ) as any as S.Schema<ChangeReportList>;
 
-export type DiagnosticKindEnum = "WARNING" | "ERROR" | (string & {});
+export type DiagnosticKindEnum = "WARNING" | "ERROR";
 export const DiagnosticKindEnum = /*@__PURE__*/ S.String;
 
 /** Represents a diagnostic message (error or warning) */
@@ -2303,7 +2281,7 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
-export type DiagnosticList = Diagnostic[];
+export type DiagnosticList = ReadonlyArray<Diagnostic>;
 export const DiagnosticList = /*@__PURE__*/ S.Array(
   Diagnostic,
 ) as any as S.Schema<DiagnosticList>;
@@ -2330,7 +2308,7 @@ export const GenerateConfigReportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateConfigReportResponse",
 }) as any as S.Schema<GenerateConfigReportResponse>;
 
-export type GetConfigServicesViewEnum = "BASIC" | "FULL" | (string & {});
+export type GetConfigServicesViewEnum = "BASIC" | "FULL";
 export const GetConfigServicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetConfigServicesRequest {
@@ -2408,8 +2386,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2426,7 +2403,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2445,7 +2422,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2487,7 +2464,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2570,7 +2547,7 @@ export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetServicesRequest",
 }) as any as S.Schema<GetServicesRequest>;
 
-export type GetServicesConfigsViewEnum = "BASIC" | "FULL" | (string & {});
+export type GetServicesConfigsViewEnum = "BASIC" | "FULL";
 export const GetServicesConfigsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConfigsRequest {
@@ -2648,7 +2625,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2699,7 +2676,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesRequest",
 }) as any as S.Schema<ListServicesRequest>;
 
-export type ManagedServiceList = ManagedService[];
+export type ManagedServiceList = ReadonlyArray<ManagedService>;
 export const ManagedServiceList = /*@__PURE__*/ S.Array(
   ManagedService,
 ) as any as S.Schema<ManagedServiceList>;
@@ -2744,7 +2721,7 @@ export const ListServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesConfigsRequest",
 }) as any as S.Schema<ListServicesConfigsRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -2792,7 +2769,7 @@ export const ListServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesRolloutsRequest",
 }) as any as S.Schema<ListServicesRolloutsRequest>;
 
-export type RolloutList = Rollout[];
+export type RolloutList = ReadonlyArray<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -2878,8 +2855,7 @@ export type ConfigFileFileTypeEnum =
   | "OPEN_API_JSON"
   | "OPEN_API_YAML"
   | "FILE_DESCRIPTOR_SET_PROTO"
-  | "PROTO_FILE"
-  | (string & {});
+  | "PROTO_FILE";
 export const ConfigFileFileTypeEnum = /*@__PURE__*/ S.String;
 
 /** Generic specification of a source configuration file */
@@ -2899,7 +2875,7 @@ export const ConfigFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConfigFile" }) as any as S.Schema<ConfigFile>;
 
-export type ConfigFileList = ConfigFile[];
+export type ConfigFileList = ReadonlyArray<ConfigFile>;
 export const ConfigFileList = /*@__PURE__*/ S.Array(
   ConfigFile,
 ) as any as S.Schema<ConfigFileList>;

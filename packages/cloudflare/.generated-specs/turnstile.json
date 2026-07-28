@@ -54,6 +54,18 @@
           "traits": {
             "smithy.api#enumValue": "name"
           }
+        },
+        "CREATED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_on"
+          }
+        },
+        "MODIFIED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "modified_on"
+          }
         }
       }
     },
@@ -871,6 +883,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "name"
+          }
+        },
+        "CREATED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_on"
+          }
+        },
+        "MODIFIED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "modified_on"
           }
         }
       }

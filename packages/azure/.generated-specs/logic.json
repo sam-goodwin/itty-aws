@@ -1962,16 +1962,101 @@
             "smithy.api#documentation": "The api name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentManagedApisPutRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentManagedApiPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment managed api properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentManagedApiPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "integrationServiceEnvironment": {
+          "target": "com.azure.logic#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment reference."
+          }
+        },
+        "deploymentParameters": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentManagedApiDeploymentParametersInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment managed api deployment parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment managed api properties."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentManagedApiDeploymentParametersInput": {
+      "type": "structure",
+      "members": {
+        "contentLinkDefinition": {
+          "target": "com.azure.logic#ContentLinkInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment managed api content link for deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment managed api deployment parameters."
+      }
+    },
+    "com.azure.logic#ContentLinkInput": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content link URI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The content link."
+      }
+    },
+    "com.azure.logic#ResourceReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource reference."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentManagedApisPutRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationServiceEnvironmentManagedApisGet": {
@@ -2248,7 +2333,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkHealth",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -2257,6 +2342,363 @@
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkHealth": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.logic#IntegrationServiceEnvironmentSubnetNetworkHealth"
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment network health of all the subnets."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentSubnetNetworkHealth": {
+      "type": "structure",
+      "members": {
+        "outboundNetworkDependencies": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "The outbound network dependencies."
+          }
+        },
+        "outboundNetworkHealth": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyHealth",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment network health."
+          }
+        },
+        "networkDependencyHealthState": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkEndPointAccessibilityState",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment network health state.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment subnet network health."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkEndPointAccessibilityState": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Available"
+          }
+        },
+        "NOTAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotAvailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment network endpoint accessibility state."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyHealth": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.logic#ExtendedErrorInfo",
+          "traits": {
+            "smithy.api#documentation": "The error if any occurred during the operation."
+          }
+        },
+        "state": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyHealthState",
+          "traits": {
+            "smithy.api#documentation": "The network dependency health state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment subnet network health."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyHealthState": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Healthy"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unhealthy"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment network dependency health state."
+      }
+    },
+    "com.azure.logic#ExtendedErrorInfo": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.logic#ErrorResponseCode",
+          "traits": {
+            "smithy.api#documentation": "The error code.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "com.azure.logic#ExtendedErrorInfoDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error message details."
+          }
+        },
+        "innerError": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The extended error info."
+      }
+    },
+    "com.azure.logic#ExtendedErrorInfoDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#ExtendedErrorInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error message details."
+      }
+    },
+    "com.azure.logic#ErrorResponseCode": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "INTEGRATIONSERVICEENVIRONMENTNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IntegrationServiceEnvironmentNotFound"
+          }
+        },
+        "INTERNALSERVERERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InternalServerError"
+          }
+        },
+        "INVALIDOPERATIONID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidOperationId"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error response code."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkDependency"
+      },
+      "traits": {
+        "smithy.api#documentation": "The outbound network dependencies."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkDependency": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyCategoryType",
+          "traits": {
+            "smithy.api#documentation": "The network dependency category type."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The endpoints."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The azure async operation resource."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkEndpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The endpoints."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkEndpoint": {
+      "type": "structure",
+      "members": {
+        "accessibility": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkEndPointAccessibilityState",
+          "traits": {
+            "smithy.api#documentation": "The accessibility state."
+          }
+        },
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name."
+          }
+        },
+        "ports": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentNetworkEndpointPortsList",
+          "traits": {
+            "smithy.api#documentation": "The ports."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network endpoint."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkEndpointPortsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ports."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentNetworkDependencyCategoryType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "AZURESTORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureStorage"
+          }
+        },
+        "AZUREMANAGEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureManagement"
+          }
+        },
+        "AZUREACTIVEDIRECTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureActiveDirectory"
+          }
+        },
+        "SSLCERTIFICATEVERIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSLCertificateVerification"
+          }
+        },
+        "DIAGNOSTICLOGSANDMETRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DiagnosticLogsAndMetrics"
+          }
+        },
+        "INTEGRATIONSERVICEENVIRONMENTCONNECTORS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IntegrationServiceEnvironmentConnectors"
+          }
+        },
+        "REDISCACHE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RedisCache"
+          }
+        },
+        "ACCESSENDPOINTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AccessEndpoints"
+          }
+        },
+        "RECOVERYSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoveryService"
+          }
+        },
+        "SQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL"
+          }
+        },
+        "REGIONALSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RegionalService"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment network dependency category type."
       }
     },
     "com.azure.logic#IntegrationServiceEnvironmentNetworkHealthGetRequest": {
@@ -3100,16 +3542,233 @@
             "smithy.api#documentation": "The integration service environment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentSku",
+          "traits": {
+            "smithy.api#documentation": "The sku."
+          }
+        },
+        "identity": {
+          "target": "com.azure.logic#ManagedServiceIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#ManagedServiceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.logic#ManagedServiceIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.logic#ManagedServiceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity properties."
+      }
+    },
+    "com.azure.logic#ManagedServiceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.logic#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
+      }
+    },
+    "com.azure.logic#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User Assigned identity properties."
+      }
+    },
+    "com.azure.logic#ManagedServiceIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.logic#WorkflowProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The provisioning state."
+          }
+        },
+        "state": {
+          "target": "com.azure.logic#WorkflowState",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment state."
+          }
+        },
+        "integrationServiceEnvironmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the tracking id."
+          }
+        },
+        "endpointsConfiguration": {
+          "target": "com.azure.logic#FlowEndpointsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The endpoints configuration."
+          }
+        },
+        "networkConfiguration": {
+          "target": "com.azure.logic#NetworkConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "The network configuration."
+          }
+        },
+        "encryptionConfiguration": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmenEncryptionConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration service environment properties."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmenEncryptionConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "encryptionKeyReference": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmenEncryptionKeyReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption key reference."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption configuration for the integration service environment."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmenEncryptionKeyReferenceInput": {
+      "type": "structure",
+      "members": {
+        "keyVault": {
+          "target": "com.azure.logic#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The key vault reference."
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the key name in the Key Vault."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the version of the key specified in the keyName property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption key details for the integration service environment."
+      }
+    },
+    "com.azure.logic#NetworkConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "virtualNetworkAddressSpace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the virtual network address space."
+          }
+        },
+        "accessEndpoint": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentAccessEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The access endpoint."
+          }
+        },
+        "subnets": {
+          "target": "com.azure.logic#NetworkConfigurationInputSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "The subnets."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network configuration."
+      }
+    },
+    "com.azure.logic#NetworkConfigurationInputSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#ResourceReferenceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The subnets."
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationServiceEnvironmentsCreateOrUpdate": {
@@ -3223,16 +3882,48 @@
             "smithy.api#documentation": "The integration service environment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.logic#IntegrationServiceEnvironmentSku",
+          "traits": {
+            "smithy.api#documentation": "The sku."
+          }
+        },
+        "identity": {
+          "target": "com.azure.logic#ManagedServiceIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationServiceEnvironmentsGet": {
@@ -3728,16 +4419,54 @@
             "smithy.api#documentation": "The integration account session name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountSessionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountSessionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account session properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountSessionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The session content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account session properties."
+      }
+    },
+    "com.azure.logic#IntegrationAccountSessionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountSessionsGet": {
@@ -4269,16 +4998,108 @@
             "smithy.api#documentation": "The integration account certificate name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountCertificatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account certificate properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountCertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        },
+        "key": {
+          "target": "com.azure.logic#KeyVaultKeyReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The key details in the key vault."
+          }
+        },
+        "publicCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account certificate properties."
+      }
+    },
+    "com.azure.logic#KeyVaultKeyReferenceInput": {
+      "type": "structure",
+      "members": {
+        "keyVault": {
+          "target": "com.azure.logic#KeyVaultKeyReferenceInputKeyVault",
+          "traits": {
+            "smithy.api#documentation": "The key vault reference.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private key name in key vault.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private key version in key vault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The reference to the key vault key."
+      }
+    },
+    "com.azure.logic#KeyVaultKeyReferenceInputKeyVault": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key vault reference."
+      }
+    },
+    "com.azure.logic#IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountCertificatesGet": {
@@ -4687,16 +5508,47 @@
             "smithy.api#documentation": "The integration account agreement name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#KeyType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key type."
       }
     },
     "com.azure.logic#IntegrationAccountAgreementsDelete": {
@@ -7989,16 +8841,96 @@
             "smithy.api#documentation": "The integration account agreement name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountAgreementPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account agreement properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountAgreementPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        },
+        "agreementType": {
+          "target": "com.azure.logic#AgreementType",
+          "traits": {
+            "smithy.api#documentation": "The agreement type.",
+            "smithy.api#required": {}
+          }
+        },
+        "hostPartner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The integration account partner that is set as host partner for this agreement.",
+            "smithy.api#required": {}
+          }
+        },
+        "guestPartner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The integration account partner that is set as guest partner for this agreement.",
+            "smithy.api#required": {}
+          }
+        },
+        "hostIdentity": {
+          "target": "com.azure.logic#BusinessIdentity",
+          "traits": {
+            "smithy.api#documentation": "The business identity of the host partner.",
+            "smithy.api#required": {}
+          }
+        },
+        "guestIdentity": {
+          "target": "com.azure.logic#BusinessIdentity",
+          "traits": {
+            "smithy.api#documentation": "The business identity of the guest partner.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "com.azure.logic#AgreementContent",
+          "traits": {
+            "smithy.api#documentation": "The agreement content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account agreement properties."
+      }
+    },
+    "com.azure.logic#IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountAgreementsGet": {
@@ -8322,11 +9254,16 @@
             "smithy.api#documentation": "The integration account partner name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -8601,16 +9538,68 @@
             "smithy.api#documentation": "The integration account partner name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountPartnersCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountPartnerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account partner properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountPartnerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerType": {
+          "target": "com.azure.logic#PartnerType",
+          "traits": {
+            "smithy.api#documentation": "The partner type.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        },
+        "content": {
+          "target": "com.azure.logic#PartnerContent",
+          "traits": {
+            "smithy.api#documentation": "The partner content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account partner properties."
+      }
+    },
+    "com.azure.logic#IntegrationAccountPartnersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountPartnersGet": {
@@ -8934,11 +9923,16 @@
             "smithy.api#documentation": "The integration account map name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -9225,16 +10219,93 @@
             "smithy.api#documentation": "The integration account map name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountMapsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountMapPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account map properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountMapPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "mapType": {
+          "target": "com.azure.logic#MapType",
+          "traits": {
+            "smithy.api#documentation": "The map type.",
+            "smithy.api#required": {}
+          }
+        },
+        "parametersSchema": {
+          "target": "com.azure.logic#IntegrationAccountMapPropertiesInputParametersSchema",
+          "traits": {
+            "smithy.api#documentation": "The parameters schema of integration account map."
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The content."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account map."
+      }
+    },
+    "com.azure.logic#IntegrationAccountMapPropertiesInputParametersSchema": {
+      "type": "structure",
+      "members": {
+        "ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reference name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters schema of integration account map."
+      }
+    },
+    "com.azure.logic#IntegrationAccountMapsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountMapsGet": {
@@ -9558,11 +10629,16 @@
             "smithy.api#documentation": "The integration account schema name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -9829,16 +10905,91 @@
             "smithy.api#documentation": "The integration account schema name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountSchemasCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountSchemaPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account schema properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountSchemaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "schemaType": {
+          "target": "com.azure.logic#SchemaType",
+          "traits": {
+            "smithy.api#documentation": "The schema type.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target namespace of the schema."
+          }
+        },
+        "documentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The document name."
+          }
+        },
+        "fileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file name."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The content."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account schema properties."
+      }
+    },
+    "com.azure.logic#IntegrationAccountSchemasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountSchemasGet": {
@@ -10283,11 +11434,10 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -10341,16 +11491,267 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The source type.",
+            "smithy.api#required": {}
+          }
+        },
+        "trackEventsOptions": {
+          "target": "com.azure.logic#TrackEventsOperationOptions",
+          "traits": {
+            "smithy.api#documentation": "The track events options."
+          }
+        },
+        "events": {
+          "target": "com.azure.logic#IntegrationAccountsLogTrackingEventsRequestEventsList",
+          "traits": {
+            "smithy.api#documentation": "The events.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountsLogTrackingEventsRequestEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#TrackingEvent"
+      },
+      "traits": {
+        "smithy.api#documentation": "The events."
+      }
+    },
+    "com.azure.logic#TrackingEvent": {
+      "type": "structure",
+      "members": {
+        "eventLevel": {
+          "target": "com.azure.logic#EventLevel",
+          "traits": {
+            "smithy.api#documentation": "The event level.",
+            "smithy.api#required": {}
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The event time.",
+            "smithy.api#required": {}
+          }
+        },
+        "recordType": {
+          "target": "com.azure.logic#TrackingRecordType",
+          "traits": {
+            "smithy.api#documentation": "The record type.",
+            "smithy.api#required": {}
+          }
+        },
+        "record": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The record."
+          }
+        },
+        "error": {
+          "target": "com.azure.logic#TrackingEventErrorInfo",
+          "traits": {
+            "smithy.api#documentation": "The error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The tracking event."
+      }
+    },
+    "com.azure.logic#TrackingEventErrorInfo": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The message."
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The code."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The tracking event error info."
+      }
+    },
+    "com.azure.logic#TrackingRecordType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        },
+        "AS2MESSAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AS2Message"
+          }
+        },
+        "AS2MDN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AS2MDN"
+          }
+        },
+        "X12INTERCHANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12Interchange"
+          }
+        },
+        "X12FUNCTIONALGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12FunctionalGroup"
+          }
+        },
+        "X12TRANSACTIONSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12TransactionSet"
+          }
+        },
+        "X12INTERCHANGEACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12InterchangeAcknowledgment"
+          }
+        },
+        "X12FUNCTIONALGROUPACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12FunctionalGroupAcknowledgment"
+          }
+        },
+        "X12TRANSACTIONSETACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "X12TransactionSetAcknowledgment"
+          }
+        },
+        "EDIFACTINTERCHANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactInterchange"
+          }
+        },
+        "EDIFACTFUNCTIONALGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactFunctionalGroup"
+          }
+        },
+        "EDIFACTTRANSACTIONSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactTransactionSet"
+          }
+        },
+        "EDIFACTINTERCHANGEACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactInterchangeAcknowledgment"
+          }
+        },
+        "EDIFACTFUNCTIONALGROUPACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactFunctionalGroupAcknowledgment"
+          }
+        },
+        "EDIFACTTRANSACTIONSETACKNOWLEDGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EdifactTransactionSetAcknowledgment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The tracking record type."
+      }
+    },
+    "com.azure.logic#EventLevel": {
+      "type": "enum",
+      "members": {
+        "LOGALWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LogAlways"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Critical"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Error"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "INFORMATIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Informational"
+          }
+        },
+        "VERBOSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Verbose"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event level."
+      }
+    },
+    "com.azure.logic#TrackEventsOperationOptions": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "DISABLESOURCEINFOENRICH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DisableSourceInfoEnrich"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The track events operation options."
       }
     },
     "com.azure.logic#IntegrationAccountsListKeyVaultKeys": {
@@ -10474,16 +11875,36 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyVault": {
+          "target": "com.azure.logic#KeyVaultReferenceInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The key vault reference.",
             "smithy.api#required": {}
+          }
+        },
+        "skipToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The skip token."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#KeyVaultReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key vault reference."
       }
     },
     "com.azure.logic#IntegrationAccountsListCallbackUrl": {
@@ -10546,11 +11967,16 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -11092,16 +12518,40 @@
             "smithy.api#documentation": "The batch configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#BatchConfigurationProperties",
+          "traits": {
+            "smithy.api#documentation": "The batch configuration properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountBatchConfigurationsGet": {
@@ -11638,16 +13088,103 @@
             "smithy.api#documentation": "The assembly artifact name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#AssemblyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The assembly properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#AssemblyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact creation time."
+          }
+        },
+        "changedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact changed time."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        },
+        "content": {
+          "target": "smithy.api#Document"
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type."
+          }
+        },
+        "contentLink": {
+          "target": "com.azure.logic#ContentLinkInput",
+          "traits": {
+            "smithy.api#documentation": "The content link."
+          }
+        },
+        "assemblyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The assembly name.",
+            "smithy.api#required": {}
+          }
+        },
+        "assemblyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The assembly version."
+          }
+        },
+        "assemblyCulture": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The assembly culture."
+          }
+        },
+        "assemblyPublicKeyToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The assembly public key token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The assembly properties definition."
+      }
+    },
+    "com.azure.logic#IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountAssembliesGet": {
@@ -12051,16 +13588,65 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.logic#IntegrationAccountSku",
+          "traits": {
+            "smithy.api#documentation": "The sku."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "integrationServiceEnvironment": {
+          "target": "com.azure.logic#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment."
+          }
+        },
+        "state": {
+          "target": "com.azure.logic#WorkflowState",
+          "traits": {
+            "smithy.api#documentation": "The workflow state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The integration account properties."
+      }
+    },
+    "com.azure.logic#IntegrationAccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountsCreateOrUpdate": {
@@ -12171,16 +13757,45 @@
             "smithy.api#documentation": "The integration account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.logic#IntegrationAccountsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#IntegrationAccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.logic#IntegrationAccountSku",
+          "traits": {
+            "smithy.api#documentation": "The sku."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#IntegrationAccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#IntegrationAccountsGet": {
@@ -12533,16 +14148,356 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.logic#WorkflowsValidateByLocationRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.logic#WorkflowPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The workflow properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.logic#ManagedServiceIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#WorkflowPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.logic#WorkflowState",
+          "traits": {
+            "smithy.api#documentation": "The state."
+          }
+        },
+        "endpointsConfiguration": {
+          "target": "com.azure.logic#FlowEndpointsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The endpoints configuration."
+          }
+        },
+        "accessControl": {
+          "target": "com.azure.logic#FlowAccessControlConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The access control configuration."
+          }
+        },
+        "integrationAccount": {
+          "target": "com.azure.logic#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The integration account."
+          }
+        },
+        "integrationServiceEnvironment": {
+          "target": "com.azure.logic#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The integration service environment."
+          }
+        },
+        "definition": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The definition."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.logic#WorkflowPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "The parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The workflow properties."
+      }
+    },
+    "com.azure.logic#WorkflowPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.logic#WorkflowParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters."
+      }
+    },
+    "com.azure.logic#WorkflowParameter": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.logic#ParameterType",
+          "traits": {
+            "smithy.api#documentation": "The type."
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The value."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The metadata."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The workflow parameters."
+      }
+    },
+    "com.azure.logic#ParameterType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "String"
+          }
+        },
+        "SECURESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecureString"
+          }
+        },
+        "INT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Int"
+          }
+        },
+        "FLOAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Float"
+          }
+        },
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bool"
+          }
+        },
+        "ARRAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Array"
+          }
+        },
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Object"
+          }
+        },
+        "SECUREOBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecureObject"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameter type."
+      }
+    },
+    "com.azure.logic#FlowAccessControlConfiguration": {
+      "type": "structure",
+      "members": {
+        "triggers": {
+          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access control configuration for invoking workflow triggers."
+          }
+        },
+        "contents": {
+          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access control configuration for accessing workflow run contents."
+          }
+        },
+        "actions": {
+          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access control configuration for workflow actions."
+          }
+        },
+        "workflowManagement": {
+          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access control configuration for workflow management."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access control configuration."
+      }
+    },
+    "com.azure.logic#FlowAccessControlConfigurationPolicy": {
+      "type": "structure",
+      "members": {
+        "allowedCallerIpAddresses": {
+          "target": "com.azure.logic#FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList",
+          "traits": {
+            "smithy.api#documentation": "The allowed caller IP address ranges."
+          }
+        },
+        "openAuthenticationPolicies": {
+          "target": "com.azure.logic#OpenAuthenticationAccessPolicies",
+          "traits": {
+            "smithy.api#documentation": "The authentication policies for workflow."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access control configuration policy."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationAccessPolicies": {
+      "type": "structure",
+      "members": {
+        "policies": {
+          "target": "com.azure.logic#OpenAuthenticationAccessPoliciesPoliciesMap",
+          "traits": {
+            "smithy.api#documentation": "Open authentication policies."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AuthenticationPolicy of type Open."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationAccessPoliciesPoliciesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.logic#OpenAuthenticationAccessPolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Open authentication policies."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationAccessPolicy": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.logic#OpenAuthenticationProviderType",
+          "traits": {
+            "smithy.api#documentation": "Type of provider for OAuth."
+          }
+        },
+        "claims": {
+          "target": "com.azure.logic#OpenAuthenticationAccessPolicyClaimsList",
+          "traits": {
+            "smithy.api#documentation": "The access policy claims."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Open authentication access policy defined by user."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationAccessPolicyClaimsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#OpenAuthenticationPolicyClaim"
+      },
+      "traits": {
+        "smithy.api#documentation": "The access policy claims."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationPolicyClaim": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the claim."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the claim."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Open authentication policy claim."
+      }
+    },
+    "com.azure.logic#OpenAuthenticationProviderType": {
+      "type": "enum",
+      "members": {
+        "AAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Open authentication policy provider type."
+      }
+    },
+    "com.azure.logic#FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.logic#IpAddressRange"
+      },
+      "traits": {
+        "smithy.api#documentation": "The allowed caller IP address ranges."
+      }
+    },
+    "com.azure.logic#IpAddressRange": {
+      "type": "structure",
+      "members": {
+        "addressRange": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address range."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The ip address range."
+      }
+    },
+    "com.azure.logic#WorkflowsValidateByLocationRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#WorkflowRunOperationsGet": {
@@ -12916,68 +14871,6 @@
       },
       "traits": {
         "smithy.api#documentation": "The workflow output parameter."
-      }
-    },
-    "com.azure.logic#ParameterType": {
-      "type": "enum",
-      "members": {
-        "NOTSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NotSpecified"
-          }
-        },
-        "STRING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "String"
-          }
-        },
-        "SECURESTRING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SecureString"
-          }
-        },
-        "INT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Int"
-          }
-        },
-        "FLOAT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Float"
-          }
-        },
-        "BOOL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Bool"
-          }
-        },
-        "ARRAY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Array"
-          }
-        },
-        "OBJECT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Object"
-          }
-        },
-        "SECUREOBJECT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SecureObject"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The parameter type."
       }
     },
     "com.azure.logic#WorkflowRunOperationsGetRequest": {
@@ -15639,10 +17532,16 @@
             "smithy.api#documentation": "The workflow trigger name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -15763,16 +17662,42 @@
             "smithy.api#documentation": "The workflow trigger name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "source": {
+          "target": "com.azure.logic#WorkflowTriggerReferenceInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The source.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#WorkflowTriggerReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id."
+          }
+        },
+        "flowName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workflow name."
+          }
+        },
+        "triggerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workflow trigger name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The workflow trigger reference."
       }
     },
     "com.azure.logic#WorkflowTriggersGetSchemaJson": {
@@ -16522,38 +18447,6 @@
         "smithy.api#documentation": "The parameters."
       }
     },
-    "com.azure.logic#WorkflowParameter": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.azure.logic#ParameterType",
-          "traits": {
-            "smithy.api#documentation": "The type."
-          }
-        },
-        "value": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The value."
-          }
-        },
-        "metadata": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The metadata."
-          }
-        },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The description."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The workflow parameters."
-      }
-    },
     "com.azure.logic#Sku": {
       "type": "structure",
       "members": {
@@ -16617,170 +18510,6 @@
       },
       "traits": {
         "smithy.api#documentation": "The sku name."
-      }
-    },
-    "com.azure.logic#FlowAccessControlConfiguration": {
-      "type": "structure",
-      "members": {
-        "triggers": {
-          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
-          "traits": {
-            "smithy.api#documentation": "The access control configuration for invoking workflow triggers."
-          }
-        },
-        "contents": {
-          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
-          "traits": {
-            "smithy.api#documentation": "The access control configuration for accessing workflow run contents."
-          }
-        },
-        "actions": {
-          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
-          "traits": {
-            "smithy.api#documentation": "The access control configuration for workflow actions."
-          }
-        },
-        "workflowManagement": {
-          "target": "com.azure.logic#FlowAccessControlConfigurationPolicy",
-          "traits": {
-            "smithy.api#documentation": "The access control configuration for workflow management."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The access control configuration."
-      }
-    },
-    "com.azure.logic#FlowAccessControlConfigurationPolicy": {
-      "type": "structure",
-      "members": {
-        "allowedCallerIpAddresses": {
-          "target": "com.azure.logic#FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList",
-          "traits": {
-            "smithy.api#documentation": "The allowed caller IP address ranges."
-          }
-        },
-        "openAuthenticationPolicies": {
-          "target": "com.azure.logic#OpenAuthenticationAccessPolicies",
-          "traits": {
-            "smithy.api#documentation": "The authentication policies for workflow."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The access control configuration policy."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationAccessPolicies": {
-      "type": "structure",
-      "members": {
-        "policies": {
-          "target": "com.azure.logic#OpenAuthenticationAccessPoliciesPoliciesMap",
-          "traits": {
-            "smithy.api#documentation": "Open authentication policies."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "AuthenticationPolicy of type Open."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationAccessPoliciesPoliciesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.azure.logic#OpenAuthenticationAccessPolicy"
-      },
-      "traits": {
-        "smithy.api#documentation": "Open authentication policies."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationAccessPolicy": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.azure.logic#OpenAuthenticationProviderType",
-          "traits": {
-            "smithy.api#documentation": "Type of provider for OAuth."
-          }
-        },
-        "claims": {
-          "target": "com.azure.logic#OpenAuthenticationAccessPolicyClaimsList",
-          "traits": {
-            "smithy.api#documentation": "The access policy claims."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Open authentication access policy defined by user."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationAccessPolicyClaimsList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.logic#OpenAuthenticationPolicyClaim"
-      },
-      "traits": {
-        "smithy.api#documentation": "The access policy claims."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationPolicyClaim": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the claim."
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The value of the claim."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Open authentication policy claim."
-      }
-    },
-    "com.azure.logic#OpenAuthenticationProviderType": {
-      "type": "enum",
-      "members": {
-        "AAD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AAD"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Open authentication policy provider type."
-      }
-    },
-    "com.azure.logic#FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.logic#IpAddressRange"
-      },
-      "traits": {
-        "smithy.api#documentation": "The allowed caller IP address ranges."
-      }
-    },
-    "com.azure.logic#IpAddressRange": {
-      "type": "structure",
-      "members": {
-        "addressRange": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The IP address range."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The ip address range."
       }
     },
     "com.azure.logic#WorkflowVersionsGetResponseTagsMap": {
@@ -17024,16 +18753,42 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.logic#WorkflowsValidateByResourceGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#WorkflowPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The workflow properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.logic#ManagedServiceIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#WorkflowsValidateByResourceGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#WorkflowsRegenerateAccessKey": {
@@ -17082,11 +18837,10 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -17140,11 +18894,10 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource id."
           }
         }
       },
@@ -17264,11 +19017,16 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "notAfter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The expiry time."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.logic#KeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type."
           }
         }
       },
@@ -17337,11 +19095,10 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetSchemaVersion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The target schema version."
           }
         }
       },
@@ -17815,16 +19572,42 @@
             "smithy.api#documentation": "The workflow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.logic#WorkflowsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.logic#WorkflowPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The workflow properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.logic#ManagedServiceIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.logic#WorkflowsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.logic#WorkflowsGet": {

@@ -77,7 +77,7 @@ export const GoogleCloudMlV1_Measurement_Metric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudMlV1_Measurement_Metric>;
 
 export type GoogleCloudMlV1_Measurement_MetricList =
-  GoogleCloudMlV1_Measurement_Metric[];
+  ReadonlyArray<GoogleCloudMlV1_Measurement_Metric>;
 export const GoogleCloudMlV1_Measurement_MetricList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1_Measurement_Metric,
 ) as any as S.Schema<GoogleCloudMlV1_Measurement_MetricList>;
@@ -162,7 +162,7 @@ export const GoogleCloudMlV1_Trial_Parameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudMlV1_Trial_Parameter>;
 
 export type GoogleCloudMlV1_Trial_ParameterList =
-  GoogleCloudMlV1_Trial_Parameter[];
+  ReadonlyArray<GoogleCloudMlV1_Trial_Parameter>;
 export const GoogleCloudMlV1_Trial_ParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1_Trial_Parameter,
 ) as any as S.Schema<GoogleCloudMlV1_Trial_ParameterList>;
@@ -172,11 +172,11 @@ export type GoogleCloudMlV1__TrialStateEnum =
   | "REQUESTED"
   | "ACTIVE"
   | "COMPLETED"
-  | "STOPPING"
-  | (string & {});
+  | "STOPPING";
 export const GoogleCloudMlV1__TrialStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__MeasurementList = GoogleCloudMlV1__Measurement[];
+export type GoogleCloudMlV1__MeasurementList =
+  ReadonlyArray<GoogleCloudMlV1__Measurement>;
 export const GoogleCloudMlV1__MeasurementList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Measurement,
 ) as any as S.Schema<GoogleCloudMlV1__MeasurementList>;
@@ -332,7 +332,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -447,7 +447,7 @@ export const GoogleCloudMlV1__PredictionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudMlV1__PredictionOutput",
 }) as any as S.Schema<GoogleCloudMlV1__PredictionOutput>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -458,8 +458,7 @@ export type GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
   | "TEXT"
   | "TF_RECORD"
   | "TF_RECORD_GZIP"
-  | "CSV"
-  | (string & {});
+  | "CSV";
 export const GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -469,8 +468,7 @@ export type GoogleCloudMlV1__PredictionInputDataFormatEnum =
   | "TEXT"
   | "TF_RECORD"
   | "TF_RECORD_GZIP"
-  | "CSV"
-  | (string & {});
+  | "CSV";
 export const GoogleCloudMlV1__PredictionInputDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -569,7 +567,7 @@ export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric =
   }) as any as S.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
 
 export type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList =
-  GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric[];
+  ReadonlyArray<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
 export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric,
@@ -583,8 +581,7 @@ export type GoogleCloudMlV1__HyperparameterOutputStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const GoogleCloudMlV1__HyperparameterOutputStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -636,7 +633,7 @@ export const GoogleCloudMlV1__HyperparameterOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutput>;
 
 export type GoogleCloudMlV1__HyperparameterOutputList =
-  GoogleCloudMlV1__HyperparameterOutput[];
+  ReadonlyArray<GoogleCloudMlV1__HyperparameterOutput>;
 export const GoogleCloudMlV1__HyperparameterOutputList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__HyperparameterOutput,
 ) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutputList>;
@@ -697,8 +694,7 @@ export const GoogleCloudMlV1__Scheduling = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "GRID_SEARCH"
-  | "RANDOM_SEARCH"
-  | (string & {});
+  | "RANDOM_SEARCH";
 export const GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -706,12 +702,11 @@ export type GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
   | "NONE"
   | "UNIT_LINEAR_SCALE"
   | "UNIT_LOG_SCALE"
-  | "UNIT_REVERSE_LOG_SCALE"
-  | (string & {});
+  | "UNIT_REVERSE_LOG_SCALE";
 export const GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -721,8 +716,7 @@ export type GoogleCloudMlV1__ParameterSpecTypeEnum =
   | "DOUBLE"
   | "INTEGER"
   | "CATEGORICAL"
-  | "DISCRETE"
-  | (string & {});
+  | "DISCRETE";
 export const GoogleCloudMlV1__ParameterSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single hyperparameter to optimize. */
@@ -757,7 +751,7 @@ export const GoogleCloudMlV1__ParameterSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudMlV1__ParameterSpec>;
 
 export type GoogleCloudMlV1__ParameterSpecList =
-  GoogleCloudMlV1__ParameterSpec[];
+  ReadonlyArray<GoogleCloudMlV1__ParameterSpec>;
 export const GoogleCloudMlV1__ParameterSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__ParameterSpec,
 ) as any as S.Schema<GoogleCloudMlV1__ParameterSpecList>;
@@ -765,8 +759,7 @@ export const GoogleCloudMlV1__ParameterSpecList = /*@__PURE__*/ S.Array(
 export type GoogleCloudMlV1__HyperparameterSpecGoalEnum =
   | "GOAL_TYPE_UNSPECIFIED"
   | "MAXIMIZE"
-  | "MINIMIZE"
-  | (string & {});
+  | "MINIMIZE";
 export const GoogleCloudMlV1__HyperparameterSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -835,8 +828,7 @@ export type GoogleCloudMlV1__AcceleratorConfigTypeEnum =
   | "TPU_V3"
   | "TPU_V2_POD"
   | "TPU_V3_POD"
-  | "TPU_V4_POD"
-  | (string & {});
+  | "TPU_V4_POD";
 export const GoogleCloudMlV1__AcceleratorConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -903,8 +895,7 @@ export type GoogleCloudMlV1__TrainingInputScaleTierEnum =
   | "PREMIUM_1"
   | "BASIC_GPU"
   | "BASIC_TPU"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const GoogleCloudMlV1__TrainingInputScaleTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -1004,8 +995,7 @@ export type GoogleCloudMlV1__JobStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const GoogleCloudMlV1__JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a training or prediction job. */
@@ -1082,8 +1072,7 @@ export type GoogleCloudMlV1__StudyStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const GoogleCloudMlV1__StudyStateEnum = /*@__PURE__*/ S.String;
 
 /** The median automated stopping rule stops a pending trial if the trial's best objective_value is strictly below the median 'performance' of all completed trials reported up to the trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the trial in each measurement. */
@@ -1139,8 +1128,7 @@ export type GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
   | "DOUBLE"
   | "INTEGER"
   | "CATEGORICAL"
-  | "DISCRETE"
-  | (string & {});
+  | "DISCRETE";
 export const GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1148,8 +1136,7 @@ export type GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
   | "SCALE_TYPE_UNSPECIFIED"
   | "UNIT_LINEAR_SCALE"
   | "UNIT_LOG_SCALE"
-  | "UNIT_REVERSE_LOG_SCALE"
-  | (string & {});
+  | "UNIT_REVERSE_LOG_SCALE";
 export const GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1316,7 +1303,7 @@ export const GoogleCloudMlV1_StudyConfig_ParameterSpec =
   }) as any as S.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
 
 export type GoogleCloudMlV1_StudyConfig_ParameterSpecList =
-  GoogleCloudMlV1_StudyConfig_ParameterSpec[];
+  ReadonlyArray<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
 export const GoogleCloudMlV1_StudyConfig_ParameterSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudMlV1_StudyConfig_ParameterSpec,
@@ -1326,15 +1313,13 @@ export type GoogleCloudMlV1__StudyConfigAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "GAUSSIAN_PROCESS_BANDIT"
   | "GRID_SEARCH"
-  | "RANDOM_SEARCH"
-  | (string & {});
+  | "RANDOM_SEARCH";
 export const GoogleCloudMlV1__StudyConfigAlgorithmEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
   | "GOAL_TYPE_UNSPECIFIED"
   | "MAXIMIZE"
-  | "MINIMIZE"
-  | (string & {});
+  | "MINIMIZE";
 export const GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -1356,7 +1341,7 @@ export const GoogleCloudMlV1_StudyConfig_MetricSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpec>;
 
 export type GoogleCloudMlV1_StudyConfig_MetricSpecList =
-  GoogleCloudMlV1_StudyConfig_MetricSpec[];
+  ReadonlyArray<GoogleCloudMlV1_StudyConfig_MetricSpec>;
 export const GoogleCloudMlV1_StudyConfig_MetricSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1_StudyConfig_MetricSpec,
 ) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpecList>;
@@ -1460,8 +1445,7 @@ export const CreateProjectsLocationsStudiesTrialsRequest =
 export type GoogleCloudMlV1__MetricSpecNameEnum =
   | "METRIC_NAME_UNSPECIFIED"
   | "CPU_USAGE"
-  | "GPU_DUTY_CYCLE"
-  | (string & {});
+  | "GPU_DUTY_CYCLE";
 export const GoogleCloudMlV1__MetricSpecNameEnum = /*@__PURE__*/ S.String;
 
 /** MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled. */
@@ -1480,7 +1464,8 @@ export const GoogleCloudMlV1__MetricSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudMlV1__MetricSpec",
 }) as any as S.Schema<GoogleCloudMlV1__MetricSpec>;
 
-export type GoogleCloudMlV1__MetricSpecList = GoogleCloudMlV1__MetricSpec[];
+export type GoogleCloudMlV1__MetricSpecList =
+  ReadonlyArray<GoogleCloudMlV1__MetricSpec>;
 export const GoogleCloudMlV1__MetricSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__MetricSpec,
 ) as any as S.Schema<GoogleCloudMlV1__MetricSpecList>;
@@ -1591,8 +1576,7 @@ export type GoogleCloudMlV1__VersionStateEnum =
   | "CREATING"
   | "FAILED"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const GoogleCloudMlV1__VersionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an environment variable to be made available in a container. This message is a subset of the [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core). */
@@ -1611,7 +1595,8 @@ export const GoogleCloudMlV1__EnvVar = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudMlV1__EnvVar",
 }) as any as S.Schema<GoogleCloudMlV1__EnvVar>;
 
-export type GoogleCloudMlV1__EnvVarList = GoogleCloudMlV1__EnvVar[];
+export type GoogleCloudMlV1__EnvVarList =
+  ReadonlyArray<GoogleCloudMlV1__EnvVar>;
 export const GoogleCloudMlV1__EnvVarList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__EnvVar,
 ) as any as S.Schema<GoogleCloudMlV1__EnvVarList>;
@@ -1630,7 +1615,7 @@ export const GoogleCloudMlV1__ContainerPort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudMlV1__ContainerPort>;
 
 export type GoogleCloudMlV1__ContainerPortList =
-  GoogleCloudMlV1__ContainerPort[];
+  ReadonlyArray<GoogleCloudMlV1__ContainerPort>;
 export const GoogleCloudMlV1__ContainerPortList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__ContainerPort,
 ) as any as S.Schema<GoogleCloudMlV1__ContainerPortList>;
@@ -1664,8 +1649,7 @@ export type GoogleCloudMlV1__VersionFrameworkEnum =
   | "FRAMEWORK_UNSPECIFIED"
   | "TENSORFLOW"
   | "SCIKIT_LEARN"
-  | "XGBOOST"
-  | (string & {});
+  | "XGBOOST";
 export const GoogleCloudMlV1__VersionFrameworkEnum = /*@__PURE__*/ S.String;
 
 /** Options for manually scaling a model. */
@@ -2061,8 +2045,7 @@ export type GoogleIamV1__AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1__AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2081,7 +2064,8 @@ export const GoogleIamV1__AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1__AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1__AuditLogConfig>;
 
-export type GoogleIamV1__AuditLogConfigList = GoogleIamV1__AuditLogConfig[];
+export type GoogleIamV1__AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1__AuditLogConfig>;
 export const GoogleIamV1__AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1__AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1__AuditLogConfigList>;
@@ -2102,7 +2086,8 @@ export const GoogleIamV1__AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1__AuditConfig",
 }) as any as S.Schema<GoogleIamV1__AuditConfig>;
 
-export type GoogleIamV1__AuditConfigList = GoogleIamV1__AuditConfig[];
+export type GoogleIamV1__AuditConfigList =
+  ReadonlyArray<GoogleIamV1__AuditConfig>;
 export const GoogleIamV1__AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1__AuditConfig,
 ) as any as S.Schema<GoogleIamV1__AuditConfigList>;
@@ -2148,7 +2133,7 @@ export const GoogleIamV1__Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1__Binding",
 }) as any as S.Schema<GoogleIamV1__Binding>;
 
-export type GoogleIamV1__BindingList = GoogleIamV1__Binding[];
+export type GoogleIamV1__BindingList = ReadonlyArray<GoogleIamV1__Binding>;
 export const GoogleIamV1__BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1__Binding,
 ) as any as S.Schema<GoogleIamV1__BindingList>;
@@ -2236,8 +2221,7 @@ export type GoogleCloudMlV1__CapabilityTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TRAINING"
   | "BATCH_PREDICTION"
-  | "ONLINE_PREDICTION"
-  | (string & {});
+  | "ONLINE_PREDICTION";
 export const GoogleCloudMlV1__CapabilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
@@ -2252,13 +2236,12 @@ export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
   | "TPU_V3"
   | "TPU_V2_POD"
   | "TPU_V3_POD"
-  | "TPU_V4_POD"
-  | (string & {});
+  | "TPU_V4_POD";
 export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList =
-  GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum[];
+  ReadonlyArray<GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum>;
 export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum,
@@ -2280,7 +2263,8 @@ export const GoogleCloudMlV1__Capability = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudMlV1__Capability",
 }) as any as S.Schema<GoogleCloudMlV1__Capability>;
 
-export type GoogleCloudMlV1__CapabilityList = GoogleCloudMlV1__Capability[];
+export type GoogleCloudMlV1__CapabilityList =
+  ReadonlyArray<GoogleCloudMlV1__Capability>;
 export const GoogleCloudMlV1__CapabilityList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Capability,
 ) as any as S.Schema<GoogleCloudMlV1__CapabilityList>;
@@ -2440,7 +2424,7 @@ export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest =
     identifier: "ListOptimalTrialsProjectsLocationsStudiesTrialsRequest",
   }) as any as S.Schema<ListOptimalTrialsProjectsLocationsStudiesTrialsRequest>;
 
-export type GoogleCloudMlV1__TrialList = GoogleCloudMlV1__Trial[];
+export type GoogleCloudMlV1__TrialList = ReadonlyArray<GoogleCloudMlV1__Trial>;
 export const GoogleCloudMlV1__TrialList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Trial,
 ) as any as S.Schema<GoogleCloudMlV1__TrialList>;
@@ -2486,7 +2470,7 @@ export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsJobsRequest",
 }) as any as S.Schema<ListProjectsJobsRequest>;
 
-export type GoogleCloudMlV1__JobList = GoogleCloudMlV1__Job[];
+export type GoogleCloudMlV1__JobList = ReadonlyArray<GoogleCloudMlV1__Job>;
 export const GoogleCloudMlV1__JobList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Job,
 ) as any as S.Schema<GoogleCloudMlV1__JobList>;
@@ -2531,7 +2515,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudMlV1__LocationList = GoogleCloudMlV1__Location[];
+export type GoogleCloudMlV1__LocationList =
+  ReadonlyArray<GoogleCloudMlV1__Location>;
 export const GoogleCloudMlV1__LocationList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Location,
 ) as any as S.Schema<GoogleCloudMlV1__LocationList>;
@@ -2570,7 +2555,7 @@ export const ListProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsStudiesRequest",
 }) as any as S.Schema<ListProjectsLocationsStudiesRequest>;
 
-export type GoogleCloudMlV1__StudyList = GoogleCloudMlV1__Study[];
+export type GoogleCloudMlV1__StudyList = ReadonlyArray<GoogleCloudMlV1__Study>;
 export const GoogleCloudMlV1__StudyList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Study,
 ) as any as S.Schema<GoogleCloudMlV1__StudyList>;
@@ -2647,7 +2632,7 @@ export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsModelsRequest",
 }) as any as S.Schema<ListProjectsModelsRequest>;
 
-export type GoogleCloudMlV1__ModelList = GoogleCloudMlV1__Model[];
+export type GoogleCloudMlV1__ModelList = ReadonlyArray<GoogleCloudMlV1__Model>;
 export const GoogleCloudMlV1__ModelList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Model,
 ) as any as S.Schema<GoogleCloudMlV1__ModelList>;
@@ -2695,7 +2680,8 @@ export const ListProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsModelsVersionsRequest",
 }) as any as S.Schema<ListProjectsModelsVersionsRequest>;
 
-export type GoogleCloudMlV1__VersionList = GoogleCloudMlV1__Version[];
+export type GoogleCloudMlV1__VersionList =
+  ReadonlyArray<GoogleCloudMlV1__Version>;
 export const GoogleCloudMlV1__VersionList = /*@__PURE__*/ S.Array(
   GoogleCloudMlV1__Version,
 ) as any as S.Schema<GoogleCloudMlV1__VersionList>;
@@ -2747,7 +2733,8 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type GoogleLongrunning__OperationList = GoogleLongrunning__Operation[];
+export type GoogleLongrunning__OperationList =
+  ReadonlyArray<GoogleLongrunning__Operation>;
 export const GoogleLongrunning__OperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunning__Operation,
 ) as any as S.Schema<GoogleLongrunning__OperationList>;

@@ -36,7 +36,7 @@ export const DeleteOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteOriginTlsComplianceModeRequest",
 }) as any as S.Schema<DeleteOriginTlsComplianceModeRequest>;
 
-export type DeleteResponseId = "origin_tls_compliance_modes" | (string & {});
+export type DeleteResponseId = "origin_tls_compliance_modes";
 export const DeleteResponseId = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -79,10 +79,10 @@ export const GetOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOriginTlsComplianceModeRequest",
 }) as any as S.Schema<GetOriginTlsComplianceModeRequest>;
 
-export type GetResponseId = "origin_tls_compliance_modes" | (string & {});
+export type GetResponseId = "origin_tls_compliance_modes";
 export const GetResponseId = /*@__PURE__*/ S.String;
 
-export type GetResponseValueList = string[];
+export type GetResponseValueList = ReadonlyArray<string>;
 export const GetResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseValueList>;
@@ -109,7 +109,7 @@ export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOriginTlsComplianceModeResponse",
 }) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
 
-export type EditRequestValueList = string[];
+export type EditRequestValueList = ReadonlyArray<string>;
 export const EditRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestValueList>;
@@ -137,10 +137,10 @@ export const PatchOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchOriginTlsComplianceModeRequest",
 }) as any as S.Schema<PatchOriginTlsComplianceModeRequest>;
 
-export type EditResponseId = "origin_tls_compliance_modes" | (string & {});
+export type EditResponseId = "origin_tls_compliance_modes";
 export const EditResponseId = /*@__PURE__*/ S.String;
 
-export type EditResponseValueList = string[];
+export type EditResponseValueList = ReadonlyArray<string>;
 export const EditResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseValueList>;
@@ -168,7 +168,7 @@ export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
   identifier: "PatchOriginTlsComplianceModeResponse",
 }) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
 
-export type UpdateRequestValueList = string[];
+export type UpdateRequestValueList = ReadonlyArray<string>;
 export const UpdateRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestValueList>;
@@ -196,10 +196,10 @@ export const PutOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutOriginTlsComplianceModeRequest",
 }) as any as S.Schema<PutOriginTlsComplianceModeRequest>;
 
-export type UpdateResponseId = "origin_tls_compliance_modes" | (string & {});
+export type UpdateResponseId = "origin_tls_compliance_modes";
 export const UpdateResponseId = /*@__PURE__*/ S.String;
 
-export type UpdateResponseValueList = string[];
+export type UpdateResponseValueList = ReadonlyArray<string>;
 export const UpdateResponseValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseValueList>;

@@ -35,12 +35,29 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface SessionGroupSummariesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const SessionGroupSummariesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/session_group_summaries/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SessionGroupSummariesCreateRequest",
+}) as any as S.Schema<SessionGroupSummariesCreateRequest>;
+
 /** List of session replay IDs included in this group summary */
-export type SessionGroupSummariesCreateRequestSessionIdsList = string[];
-export const SessionGroupSummariesCreateRequestSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionGroupSummariesCreateRequestSessionIdsList>;
+export type SessionGroupSummarySessionIdsList = ReadonlyArray<string>;
+export const SessionGroupSummarySessionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SessionGroupSummarySessionIdsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -57,11 +74,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -93,53 +109,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface SessionGroupSummariesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  /** Title of the group session summary */
-  title?: string;
-  /** List of session replay IDs included in this group summary */
-  session_ids?: SessionGroupSummariesCreateRequestSessionIdsList;
-  /** Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema) */
-  summary?: unknown;
-  /** Additional context passed to the summary (ExtraSummaryContext schema) */
-  extra_summary_context?: unknown;
-  /** Summary run metadata (SessionSummaryRunMeta schema) */
-  run_metadata?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  team?: number;
-}
-export const SessionGroupSummariesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    title: S.optional(S.String),
-    session_ids: S.optional(SessionGroupSummariesCreateRequestSessionIdsList),
-    summary: S.optional(S.Unknown),
-    extra_summary_context: S.optional(S.Unknown),
-    run_metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/session_group_summaries/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SessionGroupSummariesCreateRequest",
-}) as any as S.Schema<SessionGroupSummariesCreateRequest>;
-
-/** List of session replay IDs included in this group summary */
-export type SessionGroupSummarySessionIdsList = string[];
-export const SessionGroupSummarySessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionGroupSummarySessionIdsList>;
-
 export interface SessionGroupSummary {
   id?: string;
   /** Title of the group session summary */
@@ -153,7 +122,7 @@ export interface SessionGroupSummary {
   /** Summary run metadata (SessionSummaryRunMeta schema) */
   run_metadata?: unknown;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   team?: number;
 }
 export const SessionGroupSummary = /*@__PURE__*/ S.suspend(() =>
@@ -165,7 +134,7 @@ export const SessionGroupSummary = /*@__PURE__*/ S.suspend(() =>
     extra_summary_context: S.optional(S.Unknown),
     run_metadata: S.optional(S.Unknown),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     team: S.optional(S.Number),
   }),
 ).annotate({
@@ -230,7 +199,7 @@ export interface SessionGroupSummaryMinimal {
   title?: string;
   session_count?: number;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
 }
 export const SessionGroupSummaryMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -238,14 +207,14 @@ export const SessionGroupSummaryMinimal = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.String),
     session_count: S.optional(S.Number),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
   }),
 ).annotate({
   identifier: "SessionGroupSummaryMinimal",
 }) as any as S.Schema<SessionGroupSummaryMinimal>;
 
 export type PaginatedSessionGroupSummaryMinimalListResultsList =
-  SessionGroupSummaryMinimal[];
+  ReadonlyArray<SessionGroupSummaryMinimal>;
 export const PaginatedSessionGroupSummaryMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     SessionGroupSummaryMinimal,
@@ -269,47 +238,17 @@ export const PaginatedSessionGroupSummaryMinimalList = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedSessionGroupSummaryMinimalList",
 }) as any as S.Schema<PaginatedSessionGroupSummaryMinimalList>;
 
-/** List of session replay IDs included in this group summary */
-export type SessionGroupSummariesPartialUpdateRequestSessionIdsList = string[];
-export const SessionGroupSummariesPartialUpdateRequestSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionGroupSummariesPartialUpdateRequestSessionIdsList>;
-
 export interface SessionGroupSummariesPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this session group summary. */
   id: string;
-  /** Title of the group session summary */
-  title?: string;
-  /** List of session replay IDs included in this group summary */
-  session_ids?: SessionGroupSummariesPartialUpdateRequestSessionIdsList;
-  /** Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema) */
-  summary?: unknown;
-  /** Additional context passed to the summary (ExtraSummaryContext schema) */
-  extra_summary_context?: unknown;
-  /** Summary run metadata (SessionSummaryRunMeta schema) */
-  run_metadata?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const SessionGroupSummariesPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      title: S.optional(S.String),
-      session_ids: S.optional(
-        SessionGroupSummariesPartialUpdateRequestSessionIdsList,
-      ),
-      summary: S.optional(S.Unknown),
-      extra_summary_context: S.optional(S.Unknown),
-      run_metadata: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      team: S.optional(S.Number),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -343,44 +282,16 @@ export const SessionGroupSummariesRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "SessionGroupSummariesRetrieveRequest",
 }) as any as S.Schema<SessionGroupSummariesRetrieveRequest>;
 
-/** List of session replay IDs included in this group summary */
-export type SessionGroupSummariesUpdateRequestSessionIdsList = string[];
-export const SessionGroupSummariesUpdateRequestSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionGroupSummariesUpdateRequestSessionIdsList>;
-
 export interface SessionGroupSummariesUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this session group summary. */
   id: string;
-  /** Title of the group session summary */
-  title?: string;
-  /** List of session replay IDs included in this group summary */
-  session_ids?: SessionGroupSummariesUpdateRequestSessionIdsList;
-  /** Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema) */
-  summary?: unknown;
-  /** Additional context passed to the summary (ExtraSummaryContext schema) */
-  extra_summary_context?: unknown;
-  /** Summary run metadata (SessionSummaryRunMeta schema) */
-  run_metadata?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const SessionGroupSummariesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    title: S.optional(S.String),
-    session_ids: S.optional(SessionGroupSummariesUpdateRequestSessionIdsList),
-    summary: S.optional(S.Unknown),
-    extra_summary_context: S.optional(S.Unknown),
-    run_metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PUT",

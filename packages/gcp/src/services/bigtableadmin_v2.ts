@@ -177,7 +177,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -225,15 +225,10 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type InstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum =
-  | "STATE_NOT_KNOWN"
-  | "READY"
-  | "CREATING"
-  | (string & {});
+export type InstanceStateEnum = "STATE_NOT_KNOWN" | "READY" | "CREATING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -245,8 +240,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type InstanceTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRODUCTION"
-  | "DEVELOPMENT"
-  | (string & {});
+  | "DEVELOPMENT";
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all Clusters in the instance. */
@@ -293,15 +287,13 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 export type ClusterNodeScalingFactorEnum =
   | "NODE_SCALING_FACTOR_UNSPECIFIED"
   | "NODE_SCALING_FACTOR_1X"
-  | "NODE_SCALING_FACTOR_2X"
-  | (string & {});
+  | "NODE_SCALING_FACTOR_2X";
 export const ClusterNodeScalingFactorEnum = /*@__PURE__*/ S.String;
 
 export type ClusterDefaultStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "SSD"
-  | "HDD"
-  | (string & {});
+  | "HDD";
 export const ClusterDefaultStorageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Limits for the number of nodes a Cluster can autoscale up/down to. */
@@ -368,8 +360,7 @@ export type ClusterStateEnum =
   | "READY"
   | "CREATING"
   | "RESIZING"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster. */
@@ -472,7 +463,7 @@ export const RowAffinity = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "RowAffinity" },
 ) as any as S.Schema<RowAffinity>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -513,16 +504,14 @@ export type AppProfilePriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+  | "PRIORITY_HIGH";
 export const AppProfilePriorityEnum = /*@__PURE__*/ S.String;
 
 export type StandardIsolationPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+  | "PRIORITY_HIGH";
 export const StandardIsolationPriorityEnum = /*@__PURE__*/ S.String;
 
 /** If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. MemoryConfig can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled. */
@@ -549,8 +538,7 @@ export const StandardIsolation = /*@__PURE__*/ S.suspend(() =>
 
 export type DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
   | "COMPUTE_BILLING_OWNER_UNSPECIFIED"
-  | "HOST_PAYS"
-  | (string & {});
+  | "HOST_PAYS";
 export const DataBoostIsolationReadOnlyComputeBillingOwnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -654,25 +642,19 @@ export const CreateProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsInstancesClustersRequest",
 }) as any as S.Schema<CreateProjectsInstancesClustersRequest>;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "HOT"
-  | (string & {});
+  | "HOT";
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status. */
@@ -804,7 +786,7 @@ export const CreateProjectsInstancesLogicalViewsRequest =
   }) as any as S.Schema<CreateProjectsInstancesLogicalViewsRequest>;
 
 export type GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
-  "STATE_NOT_KNOWN" | "INITIALIZING" | "READY" | (string & {});
+  "STATE_NOT_KNOWN" | "INITIALIZING" | "READY";
 export const GoogleBigtableAdminV2MaterializedViewClusterStateReplicationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -913,8 +895,7 @@ export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type RestoreInfoSourceTypeEnum =
   | "RESTORE_SOURCE_TYPE_UNSPECIFIED"
-  | "BACKUP"
-  | (string & {});
+  | "BACKUP";
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a table restore. */
@@ -1403,7 +1384,7 @@ export const GoogleBigtableAdminV2TypeStructField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleBigtableAdminV2TypeStructField>;
 
 export type GoogleBigtableAdminV2TypeStructFieldList =
-  GoogleBigtableAdminV2TypeStructField[];
+  ReadonlyArray<GoogleBigtableAdminV2TypeStructField>;
 export const GoogleBigtableAdminV2TypeStructFieldList = /*@__PURE__*/ S.Array(
   GoogleBigtableAdminV2TypeStructField,
 ) as any as S.Schema<GoogleBigtableAdminV2TypeStructFieldList>;
@@ -1476,7 +1457,7 @@ export const GoogleBigtableAdminV2TypeStruct = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleBigtableAdminV2TypeStruct",
 }) as any as S.Schema<GoogleBigtableAdminV2TypeStruct>;
 
-export type GcRuleList = GcRule[];
+export type GcRuleList = ReadonlyArray<GcRule>;
 export const GcRuleList = /*@__PURE__*/ S.Array(
   S.suspend(() => GcRule),
 ) as any as S.Schema<GcRuleList>;
@@ -1597,11 +1578,10 @@ export type ClusterStateReplicationStateEnum =
   | "PLANNED_MAINTENANCE"
   | "UNPLANNED_MAINTENANCE"
   | "READY"
-  | "READY_OPTIMIZING"
-  | (string & {});
+  | "READY_OPTIMIZING";
 export const ClusterStateReplicationStateEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoList = EncryptionInfo[];
+export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
 export const EncryptionInfoList = /*@__PURE__*/ S.Array(
   EncryptionInfo,
 ) as any as S.Schema<EncryptionInfoList>;
@@ -1648,8 +1628,7 @@ export const TableStats = /*@__PURE__*/ S.suspend(() =>
 
 export type TableGranularityEnum =
   | "TIMESTAMP_GRANULARITY_UNSPECIFIED"
-  | "MILLIS"
-  | (string & {});
+  | "MILLIS";
 export const TableGranularityEnum = /*@__PURE__*/ S.String;
 
 /** Change stream configuration. */
@@ -1736,7 +1715,7 @@ export const Split = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Split" }) as any as S.Schema<Split>;
 
-export type SplitList = Split[];
+export type SplitList = ReadonlyArray<Split>;
 export const SplitList = /*@__PURE__*/ S.Array(
   Split,
 ) as any as S.Schema<SplitList>;
@@ -2249,8 +2228,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2267,7 +2245,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2286,7 +2264,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2328,7 +2306,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2509,8 +2487,7 @@ export type MemoryLayerStateEnum =
   | "READY"
   | "ENABLING"
   | "RESIZING"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const MemoryLayerStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a memory layer. */
@@ -2662,8 +2639,7 @@ export type GetProjectsInstancesMaterializedViewsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SCHEMA_VIEW"
   | "REPLICATION_VIEW"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsInstancesMaterializedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2698,8 +2674,7 @@ export type GetProjectsInstancesTablesViewEnum =
   | "REPLICATION_VIEW"
   | "ENCRYPTION_VIEW"
   | "STATS_VIEW"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsInstancesTablesRequest {
@@ -2727,8 +2702,7 @@ export type GetProjectsInstancesTablesAuthorizedViewsViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsInstancesTablesAuthorizedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2806,7 +2780,7 @@ export const ListOperationsProjectsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOperationsProjectsOperationsRequest",
 }) as any as S.Schema<ListOperationsProjectsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2851,7 +2825,7 @@ export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesRequest",
 }) as any as S.Schema<ListProjectsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2900,7 +2874,7 @@ export const ListProjectsInstancesAppProfilesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesAppProfilesRequest",
 }) as any as S.Schema<ListProjectsInstancesAppProfilesRequest>;
 
-export type AppProfileList = AppProfile[];
+export type AppProfileList = ReadonlyArray<AppProfile>;
 export const AppProfileList = /*@__PURE__*/ S.Array(
   AppProfile,
 ) as any as S.Schema<AppProfileList>;
@@ -2946,7 +2920,7 @@ export const ListProjectsInstancesClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesClustersRequest",
 }) as any as S.Schema<ListProjectsInstancesClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -3001,7 +2975,7 @@ export const ListProjectsInstancesClustersBackupsRequest =
     identifier: "ListProjectsInstancesClustersBackupsRequest",
   }) as any as S.Schema<ListProjectsInstancesClustersBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -3082,7 +3056,7 @@ export const HotTablet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HotTablet" }) as any as S.Schema<HotTablet>;
 
-export type HotTabletList = HotTablet[];
+export type HotTabletList = ReadonlyArray<HotTablet>;
 export const HotTabletList = /*@__PURE__*/ S.Array(
   HotTablet,
 ) as any as S.Schema<HotTabletList>;
@@ -3128,7 +3102,7 @@ export const ListProjectsInstancesClustersMemoryLayersRequest =
     identifier: "ListProjectsInstancesClustersMemoryLayersRequest",
   }) as any as S.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
 
-export type MemoryLayerList = MemoryLayer[];
+export type MemoryLayerList = ReadonlyArray<MemoryLayer>;
 export const MemoryLayerList = /*@__PURE__*/ S.Array(
   MemoryLayer,
 ) as any as S.Schema<MemoryLayerList>;
@@ -3177,7 +3151,7 @@ export const ListProjectsInstancesLogicalViewsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesLogicalViewsRequest",
 }) as any as S.Schema<ListProjectsInstancesLogicalViewsRequest>;
 
-export type LogicalViewList = LogicalView[];
+export type LogicalViewList = ReadonlyArray<LogicalView>;
 export const LogicalViewList = /*@__PURE__*/ S.Array(
   LogicalView,
 ) as any as S.Schema<LogicalViewList>;
@@ -3202,8 +3176,7 @@ export type ListProjectsInstancesMaterializedViewsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SCHEMA_VIEW"
   | "REPLICATION_VIEW"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsInstancesMaterializedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3237,7 +3210,7 @@ export const ListProjectsInstancesMaterializedViewsRequest =
     identifier: "ListProjectsInstancesMaterializedViewsRequest",
   }) as any as S.Schema<ListProjectsInstancesMaterializedViewsRequest>;
 
-export type MaterializedViewList = MaterializedView[];
+export type MaterializedViewList = ReadonlyArray<MaterializedView>;
 export const MaterializedViewList = /*@__PURE__*/ S.Array(
   MaterializedView,
 ) as any as S.Schema<MaterializedViewList>;
@@ -3265,8 +3238,7 @@ export type ListProjectsInstancesTablesViewEnum =
   | "REPLICATION_VIEW"
   | "ENCRYPTION_VIEW"
   | "STATS_VIEW"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsInstancesTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInstancesTablesRequest {
@@ -3296,7 +3268,7 @@ export const ListProjectsInstancesTablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesTablesRequest",
 }) as any as S.Schema<ListProjectsInstancesTablesRequest>;
 
-export type TableList = Table[];
+export type TableList = ReadonlyArray<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -3321,8 +3293,7 @@ export type ListProjectsInstancesTablesAuthorizedViewsViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsInstancesTablesAuthorizedViewsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3356,7 +3327,7 @@ export const ListProjectsInstancesTablesAuthorizedViewsRequest =
     identifier: "ListProjectsInstancesTablesAuthorizedViewsRequest",
   }) as any as S.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
 
-export type AuthorizedViewList = AuthorizedView[];
+export type AuthorizedViewList = ReadonlyArray<AuthorizedView>;
 export const AuthorizedViewList = /*@__PURE__*/ S.Array(
   AuthorizedView,
 ) as any as S.Schema<AuthorizedViewList>;
@@ -3381,8 +3352,7 @@ export type ListProjectsInstancesTablesSchemaBundlesViewEnum =
   | "SCHEMA_BUNDLE_VIEW_UNSPECIFIED"
   | "NAME_ONLY"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsInstancesTablesSchemaBundlesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3416,7 +3386,7 @@ export const ListProjectsInstancesTablesSchemaBundlesRequest =
     identifier: "ListProjectsInstancesTablesSchemaBundlesRequest",
   }) as any as S.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
 
-export type SchemaBundleList = SchemaBundle[];
+export type SchemaBundleList = ReadonlyArray<SchemaBundle>;
 export const SchemaBundleList = /*@__PURE__*/ S.Array(
   SchemaBundle,
 ) as any as S.Schema<SchemaBundleList>;
@@ -3490,7 +3460,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3534,7 +3504,7 @@ export const Modification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Modification" }) as any as S.Schema<Modification>;
 
-export type ModificationList = Modification[];
+export type ModificationList = ReadonlyArray<Modification>;
 export const ModificationList = /*@__PURE__*/ S.Array(
   Modification,
 ) as any as S.Schema<ModificationList>;

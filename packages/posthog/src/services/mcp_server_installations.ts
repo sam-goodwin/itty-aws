@@ -14,8 +14,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 export type McpServerInstallationsAuthorizeRetrieveRequestInstallSource =
   | "posthog"
-  | "posthog-code"
-  | (string & {});
+  | "posthog-code";
 export const McpServerInstallationsAuthorizeRetrieveRequestInstallSource =
   /*@__PURE__*/ S.String;
 
@@ -58,63 +57,26 @@ export const McpServerInstallationsAuthorizeRetrieveResponse =
   }) as any as S.Schema<McpServerInstallationsAuthorizeRetrieveResponse>;
 
 /** * `api_key` - API Key * `oauth` - OAuth */
-export type MCPAuthTypeEnum = "api_key" | "oauth" | (string & {});
+export type MCPAuthTypeEnum = "api_key" | "oauth";
 export const MCPAuthTypeEnum = /*@__PURE__*/ S.String;
-
-/** * `personal` - Personal * `shared` - Shared */
-export type MCPServerInstallationScopeEnum =
-  | "personal"
-  | "shared"
-  | (string & {});
-export const MCPServerInstallationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
-  template_id?: string | null;
-  name?: string;
-  /** Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template). */
-  icon_key?: string;
-  /** Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template). */
-  icon_domain?: string;
   display_name?: string;
   url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
   is_enabled?: boolean;
-  scope?: MCPServerInstallationScopeEnum;
-  /** True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s. */
-  is_owner?: boolean;
-  needs_reauth?: boolean;
-  pending_oauth?: boolean;
-  proxy_url?: string;
-  /** Number of live (non-removed) tools exposed by this installation. */
-  tool_count?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const McpServerInstallationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    template_id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.String),
-    icon_key: S.optional(S.String),
-    icon_domain: S.optional(S.String),
     display_name: S.optional(S.String),
     url: S.optional(S.String),
     description: S.optional(S.String),
     auth_type: S.optional(MCPAuthTypeEnum),
     is_enabled: S.optional(S.Boolean),
-    scope: S.optional(MCPServerInstallationScopeEnum),
-    is_owner: S.optional(S.Boolean),
-    needs_reauth: S.optional(S.Boolean),
-    pending_oauth: S.optional(S.Boolean),
-    proxy_url: S.optional(S.String),
-    tool_count: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -125,6 +87,10 @@ export const McpServerInstallationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "McpServerInstallationsCreateRequest",
 }) as any as S.Schema<McpServerInstallationsCreateRequest>;
+
+/** * `personal` - Personal * `shared` - Shared */
+export type MCPServerInstallationScopeEnum = "personal" | "shared";
+export const MCPServerInstallationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface MCPServerInstallation {
   id?: string;
@@ -205,15 +171,15 @@ export const McpServerInstallationsDestroyResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<McpServerInstallationsDestroyResponse>;
 
 /** * `api_key` - api_key * `oauth` - oauth */
-export type InstallCustomAuthTypeEnum = "api_key" | "oauth" | (string & {});
+export type InstallCustomAuthTypeEnum = "api_key" | "oauth";
 export const InstallCustomAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `posthog` - posthog * `posthog-code` - posthog-code */
-export type InstallSourceEnum = "posthog" | "posthog-code" | (string & {});
+export type InstallSourceEnum = "posthog" | "posthog-code";
 export const InstallSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `personal` - personal * `shared` - shared */
-export type MCPInstallationScopeEnum = "personal" | "shared" | (string & {});
+export type MCPInstallationScopeEnum = "personal" | "shared";
 export const MCPInstallationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsInstallCustomCreateRequest {
@@ -322,7 +288,7 @@ export const McpServerInstallationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpServerInstallationsListRequest>;
 
 export type PaginatedMCPServerInstallationListResultsList =
-  MCPServerInstallation[];
+  ReadonlyArray<MCPServerInstallation>;
 export const PaginatedMCPServerInstallationListResultsList =
   /*@__PURE__*/ S.Array(
     MCPServerInstallation,
@@ -378,50 +344,22 @@ export interface McpServerInstallationsProxyCreateRequest {
   project_id: string;
   /** A UUID string identifying this mcp server installation. */
   id: string;
-  template_id?: string | null;
-  name?: string;
-  /** Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template). */
-  icon_key?: string;
-  /** Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template). */
-  icon_domain?: string;
   display_name?: string;
   url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
   is_enabled?: boolean;
-  scope?: MCPServerInstallationScopeEnum;
-  /** True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s. */
-  is_owner?: boolean;
-  needs_reauth?: boolean;
-  pending_oauth?: boolean;
-  proxy_url?: string;
-  /** Number of live (non-removed) tools exposed by this installation. */
-  tool_count?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const McpServerInstallationsProxyCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      template_id: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.String),
-      icon_key: S.optional(S.String),
-      icon_domain: S.optional(S.String),
       display_name: S.optional(S.String),
       url: S.optional(S.String),
       description: S.optional(S.String),
       auth_type: S.optional(MCPAuthTypeEnum),
       is_enabled: S.optional(S.Boolean),
-      scope: S.optional(MCPServerInstallationScopeEnum),
-      is_owner: S.optional(S.Boolean),
-      needs_reauth: S.optional(S.Boolean),
-      pending_oauth: S.optional(S.Boolean),
-      proxy_url: S.optional(S.String),
-      tool_count: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -487,8 +425,7 @@ export const McpServerInstallationsShareCreateRequest = /*@__PURE__*/ S.suspend(
 export type ToolApprovalUpdateApprovalStateEnum =
   | "approved"
   | "needs_approval"
-  | "do_not_use"
-  | (string & {});
+  | "do_not_use";
 export const ToolApprovalUpdateApprovalStateEnum = /*@__PURE__*/ S.String;
 
 export interface McpServerInstallationsToolsPartialUpdateRequest {
@@ -521,8 +458,7 @@ export const McpServerInstallationsToolsPartialUpdateRequest =
 export type MCPServerInstallationToolApprovalStateEnum =
   | "approved"
   | "needs_approval"
-  | "do_not_use"
-  | (string & {});
+  | "do_not_use";
 export const MCPServerInstallationToolApprovalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -560,50 +496,22 @@ export interface McpServerInstallationsToolsRefreshCreateRequest {
   project_id: string;
   /** A UUID string identifying this mcp server installation. */
   id: string;
-  template_id?: string | null;
-  name?: string;
-  /** Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template). */
-  icon_key?: string;
-  /** Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template). */
-  icon_domain?: string;
   display_name?: string;
   url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
   is_enabled?: boolean;
-  scope?: MCPServerInstallationScopeEnum;
-  /** True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s. */
-  is_owner?: boolean;
-  needs_reauth?: boolean;
-  pending_oauth?: boolean;
-  proxy_url?: string;
-  /** Number of live (non-removed) tools exposed by this installation. */
-  tool_count?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const McpServerInstallationsToolsRefreshCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      template_id: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.String),
-      icon_key: S.optional(S.String),
-      icon_domain: S.optional(S.String),
       display_name: S.optional(S.String),
       url: S.optional(S.String),
       description: S.optional(S.String),
       auth_type: S.optional(MCPAuthTypeEnum),
       is_enabled: S.optional(S.Boolean),
-      scope: S.optional(MCPServerInstallationScopeEnum),
-      is_owner: S.optional(S.Boolean),
-      needs_reauth: S.optional(S.Boolean),
-      pending_oauth: S.optional(S.Boolean),
-      proxy_url: S.optional(S.String),
-      tool_count: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -616,7 +524,7 @@ export const McpServerInstallationsToolsRefreshCreateRequest =
   }) as any as S.Schema<McpServerInstallationsToolsRefreshCreateRequest>;
 
 export type PaginatedMCPServerInstallationToolListResultsList =
-  MCPServerInstallationTool[];
+  ReadonlyArray<MCPServerInstallationTool>;
 export const PaginatedMCPServerInstallationToolListResultsList =
   /*@__PURE__*/ S.Array(
     MCPServerInstallationTool,
@@ -689,49 +597,21 @@ export interface McpServerInstallationsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this mcp server installation. */
   id: string;
-  template_id?: string | null;
-  name?: string;
-  /** Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template). */
-  icon_key?: string;
-  /** Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template). */
-  icon_domain?: string;
   display_name?: string;
   url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
   is_enabled?: boolean;
-  scope?: MCPServerInstallationScopeEnum;
-  /** True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s. */
-  is_owner?: boolean;
-  needs_reauth?: boolean;
-  pending_oauth?: boolean;
-  proxy_url?: string;
-  /** Number of live (non-removed) tools exposed by this installation. */
-  tool_count?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const McpServerInstallationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    template_id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.String),
-    icon_key: S.optional(S.String),
-    icon_domain: S.optional(S.String),
     display_name: S.optional(S.String),
     url: S.optional(S.String),
     description: S.optional(S.String),
     auth_type: S.optional(MCPAuthTypeEnum),
     is_enabled: S.optional(S.Boolean),
-    scope: S.optional(MCPServerInstallationScopeEnum),
-    is_owner: S.optional(S.Boolean),
-    needs_reauth: S.optional(S.Boolean),
-    pending_oauth: S.optional(S.Boolean),
-    proxy_url: S.optional(S.String),
-    tool_count: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

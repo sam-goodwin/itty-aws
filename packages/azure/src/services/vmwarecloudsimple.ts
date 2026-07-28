@@ -47,8 +47,7 @@ export type CustomizationHostNameType =
   | "PREFIX_BASED"
   | "FIXED"
   | "VIRTUAL_MACHINE_NAME"
-  | "CUSTOM_NAME"
-  | (string & {});
+  | "CUSTOM_NAME";
 export const CustomizationHostNameType = /*@__PURE__*/ S.String;
 
 /** Host name model */
@@ -68,11 +67,7 @@ export const CustomizationHostName = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationHostName>;
 
 /** Identity type */
-export type CustomizationIdentityType =
-  | "WINDOWS_TEXT"
-  | "WINDOWS"
-  | "LINUX"
-  | (string & {});
+export type CustomizationIdentityType = "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
 export const CustomizationIdentityType = /*@__PURE__*/ S.String;
 
 /** Windows Identity. User data customization */
@@ -110,7 +105,7 @@ export const CustomizationIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationIdentity>;
 
 /** The list of gateways */
-export type CustomizationIPSettingsGatewayList = string[];
+export type CustomizationIPSettingsGatewayList = ReadonlyArray<string>;
 export const CustomizationIPSettingsGatewayList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomizationIPSettingsGatewayList>;
@@ -120,8 +115,7 @@ export type CustomizationIPAddressType =
   | "CUSTOM"
   | "DHCP_IP"
   | "FIXED_IP"
-  | "USER_DEFINED"
-  | (string & {});
+  | "USER_DEFINED";
 export const CustomizationIPAddressType = /*@__PURE__*/ S.String;
 
 export interface CustomizationIPAddress {
@@ -177,7 +171,7 @@ export const CustomizationNicSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Network interface settings */
 export type CustomizationSpecificationNicSettingsList =
-  CustomizationNicSetting[];
+  ReadonlyArray<CustomizationNicSetting>;
 export const CustomizationSpecificationNicSettingsList = /*@__PURE__*/ S.Array(
   CustomizationNicSetting,
 ) as any as S.Schema<CustomizationSpecificationNicSettingsList>;
@@ -199,10 +193,7 @@ export const CustomizationSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationSpecification>;
 
 /** The type of customization (Linux or Windows) */
-export type CustomizationPolicyPropertiesType =
-  | "LINUX"
-  | "WINDOWS"
-  | (string & {});
+export type CustomizationPolicyPropertiesType = "LINUX" | "WINDOWS";
 export const CustomizationPolicyPropertiesType = /*@__PURE__*/ S.String;
 
 /** The properties of Customization policy */
@@ -283,7 +274,8 @@ export const CustomizationPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationPoliciesListRequest>;
 
 /** List of the customization policies */
-export type CustomizationPoliciesListResponseValueList = CustomizationPolicy[];
+export type CustomizationPoliciesListResponseValueList =
+  ReadonlyArray<CustomizationPolicy>;
 export const CustomizationPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
   CustomizationPolicy,
 ) as any as S.Schema<CustomizationPoliciesListResponseValueList>;
@@ -304,34 +296,6 @@ export const CustomizationPoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomizationPoliciesListResponse",
 }) as any as S.Schema<CustomizationPoliciesListResponse>;
 
-export interface DedicatedCloudNodesCreateOrUpdateRequest {
-  /** The subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group */
-  resourceGroupName: string;
-  /** dedicated cloud node name */
-  dedicatedCloudNodeName: string;
-  body: unknown;
-}
-export const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dedicatedCloudNodeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
-        code: 200,
-        apiVersion: "2019-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "DedicatedCloudNodesCreateOrUpdateRequest",
-}) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>;
-
 /** The purchase SKU for CloudSimple paid resources */
 export interface SkuDescription {
   /** SKU's id */
@@ -346,11 +310,101 @@ export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkuDescription" }) as any as S.Schema<SkuDescription>;
 
+/** Properties of dedicated cloud node */
+export interface DedicatedCloudNodePropertiesInput {
+  /** Availability Zone id, e.g. "az1" */
+  availabilityZoneId: string;
+  /** count of nodes to create */
+  nodesCount: number;
+  /** Placement Group id, e.g. "n1" */
+  placementGroupId: string;
+  /** purchase id */
+  purchaseId: string;
+  /** Dedicated Cloud Nodes SKU's description */
+  skuDescription?: SkuDescription;
+}
+export const DedicatedCloudNodePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    availabilityZoneId: S.String,
+    nodesCount: S.Number,
+    placementGroupId: S.String,
+    purchaseId: S.String,
+    skuDescription: S.optional(SkuDescription),
+  }),
+).annotate({
+  identifier: "DedicatedCloudNodePropertiesInput",
+}) as any as S.Schema<DedicatedCloudNodePropertiesInput>;
+
+/** The purchase SKU for CloudSimple paid resources */
+export interface Sku {
+  /** The capacity of the SKU */
+  capacity?: string;
+  /** dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon® Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200 2400MHz DDR4 ECC Registered DIMM, ... */
+  description?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here */
+  family?: string;
+  /** The name of the SKU for VMWare CloudSimple Node */
+  name: string;
+  /** The tier of the SKU */
+  tier?: string;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacity: S.optional(S.String),
+    description: S.optional(S.String),
+    family: S.optional(S.String),
+    name: S.String,
+    tier: S.optional(S.String),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+/** Tags model */
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Tags>;
+
+export interface DedicatedCloudNodesCreateOrUpdateRequest {
+  /** The subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group */
+  resourceGroupName: string;
+  /** dedicated cloud node name */
+  dedicatedCloudNodeName: string;
+  /** Azure region */
+  location: string;
+  /** Dedicated Cloud Nodes properties */
+  properties?: DedicatedCloudNodePropertiesInput;
+  /** Dedicated Cloud Nodes SKU */
+  sku?: Sku;
+  /** Dedicated Cloud Nodes tags */
+  tags?: Tags;
+}
+export const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dedicatedCloudNodeName: S.String.pipe(T.Label()),
+      location: S.String,
+      properties: S.optional(DedicatedCloudNodePropertiesInput),
+      sku: S.optional(Sku),
+      tags: S.optional(Tags),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
+        code: 200,
+        apiVersion: "2019-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "DedicatedCloudNodesCreateOrUpdateRequest",
+}) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>;
+
 /** Node status, indicates is private cloud set up on this node or not */
-export type DedicatedCloudNodePropertiesStatus =
-  | "unused"
-  | "used"
-  | (string & {});
+export type DedicatedCloudNodePropertiesStatus = "unused" | "used";
 export const DedicatedCloudNodePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Properties of dedicated cloud node */
@@ -404,36 +458,6 @@ export const DedicatedCloudNodeProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DedicatedCloudNodeProperties",
 }) as any as S.Schema<DedicatedCloudNodeProperties>;
-
-/** The purchase SKU for CloudSimple paid resources */
-export interface Sku {
-  /** The capacity of the SKU */
-  capacity?: string;
-  /** dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon® Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200 2400MHz DDR4 ECC Registered DIMM, ... */
-  description?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here */
-  family?: string;
-  /** The name of the SKU for VMWare CloudSimple Node */
-  name: string;
-  /** The tier of the SKU */
-  tier?: string;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacity: S.optional(S.String),
-    description: S.optional(S.String),
-    family: S.optional(S.String),
-    name: S.String,
-    tier: S.optional(S.String),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
-/** Tags model */
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Tags>;
 
 /** Dedicated cloud node model */
 export interface DedicatedCloudNode {
@@ -556,7 +580,8 @@ export const DedicatedCloudNodesListByResourceGroupRequest =
   }) as any as S.Schema<DedicatedCloudNodesListByResourceGroupRequest>;
 
 /** Results of the DedicatedCloudNode list */
-export type DedicatedCloudNodeListResponseValueList = DedicatedCloudNode[];
+export type DedicatedCloudNodeListResponseValueList =
+  ReadonlyArray<DedicatedCloudNode>;
 export const DedicatedCloudNodeListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudNode,
 ) as any as S.Schema<DedicatedCloudNodeListResponseValueList>;
@@ -613,14 +638,15 @@ export interface DedicatedCloudNodesUpdateRequest {
   resourceGroupName: string;
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
-  body: unknown;
+  /** The tags key:value pairs */
+  tags?: Tags;
 }
 export const DedicatedCloudNodesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dedicatedCloudNodeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -633,6 +659,20 @@ export const DedicatedCloudNodesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DedicatedCloudNodesUpdateRequest",
 }) as any as S.Schema<DedicatedCloudNodesUpdateRequest>;
 
+/** Properties of dedicated cloud service */
+export interface DedicatedCloudServicePropertiesInput {
+  /** gateway Subnet for the account. It will collect the subnet address and always treat it as /28 */
+  gatewaySubnet: string;
+}
+export const DedicatedCloudServicePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      gatewaySubnet: S.String,
+    }),
+).annotate({
+  identifier: "DedicatedCloudServicePropertiesInput",
+}) as any as S.Schema<DedicatedCloudServicePropertiesInput>;
+
 export interface DedicatedCloudServicesCreateOrUpdateRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -640,7 +680,12 @@ export interface DedicatedCloudServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** dedicated cloud Service name */
   dedicatedCloudServiceName: string;
-  body: unknown;
+  /** Azure region */
+  location: string;
+  /** The properties of Dedicated Node Service */
+  properties?: DedicatedCloudServicePropertiesInput;
+  /** The list of tags */
+  tags?: Tags;
 }
 export const DedicatedCloudServicesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -648,7 +693,9 @@ export const DedicatedCloudServicesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dedicatedCloudServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: S.optional(DedicatedCloudServicePropertiesInput),
+      tags: S.optional(Tags),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -666,8 +713,7 @@ export type DedicatedCloudServicePropertiesIsAccountOnboarded =
   | "notOnBoarded"
   | "onBoarded"
   | "onBoardingFailed"
-  | "onBoarding"
-  | (string & {});
+  | "onBoarding";
 export const DedicatedCloudServicePropertiesIsAccountOnboarded =
   /*@__PURE__*/ S.String;
 
@@ -814,7 +860,7 @@ export const DedicatedCloudServicesListByResourceGroupRequest =
 
 /** Results of the DedicatedCloudService list */
 export type DedicatedCloudServiceListResponseValueList =
-  DedicatedCloudService[];
+  ReadonlyArray<DedicatedCloudService>;
 export const DedicatedCloudServiceListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudService,
 ) as any as S.Schema<DedicatedCloudServiceListResponseValueList>;
@@ -871,14 +917,15 @@ export interface DedicatedCloudServicesUpdateRequest {
   resourceGroupName: string;
   /** dedicated cloud service name */
   dedicatedCloudServiceName: string;
-  body: unknown;
+  /** The tags key:value pairs */
+  tags?: Tags;
 }
 export const DedicatedCloudServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dedicatedCloudServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -995,16 +1042,12 @@ export const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableOperationDisplay>;
 
 /** The origin of operation */
-export type AvailableOperationOrigin =
-  | "user"
-  | "system"
-  | "user,system"
-  | (string & {});
+export type AvailableOperationOrigin = "user" | "system" | "user,system";
 export const AvailableOperationOrigin = /*@__PURE__*/ S.String;
 
 /** Metric's aggregation type for e.g. (Average, Total) */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
-  "Average" | "Total" | (string & {});
+  "Average" | "Total";
 export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
   /*@__PURE__*/ S.String;
 
@@ -1038,7 +1081,7 @@ export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem =
 
 /** Metric specifications of operation */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
-  AvailableOperationDisplayPropertyServiceSpecificationMetricsItem[];
+  ReadonlyArray<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
 export const AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     AvailableOperationDisplayPropertyServiceSpecificationMetricsItem,
@@ -1105,7 +1148,8 @@ export const AvailableOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableOperation>;
 
 /** Returns a list of available operations */
-export type AvailableOperationsListResponseValueList = AvailableOperation[];
+export type AvailableOperationsListResponseValueList =
+  ReadonlyArray<AvailableOperation>;
 export const AvailableOperationsListResponseValueList = /*@__PURE__*/ S.Array(
   AvailableOperation,
 ) as any as S.Schema<AvailableOperationsListResponseValueList>;
@@ -1152,7 +1196,7 @@ export const PrivateCloudsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsGetRequest>;
 
 /** Array of DNS servers */
-export type PrivateCloudPropertiesDnsServersList = string[];
+export type PrivateCloudPropertiesDnsServersList = ReadonlyArray<string>;
 export const PrivateCloudPropertiesDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
@@ -1197,7 +1241,8 @@ export const ResourcePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcePool" }) as any as S.Schema<ResourcePool>;
 
 /** The list of Resource Pools */
-export type PrivateCloudPropertiesResourcePoolsList = ResourcePool[];
+export type PrivateCloudPropertiesResourcePoolsList =
+  ReadonlyArray<ResourcePool>;
 export const PrivateCloudPropertiesResourcePoolsList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<PrivateCloudPropertiesResourcePoolsList>;
@@ -1226,7 +1271,7 @@ export const VirtualDiskController = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disk Controllers */
 export type VirtualMachineTemplatePropertiesControllersList =
-  VirtualDiskController[];
+  ReadonlyArray<VirtualDiskController>;
 export const VirtualMachineTemplatePropertiesControllersList =
   /*@__PURE__*/ S.Array(
     VirtualDiskController,
@@ -1236,8 +1281,7 @@ export const VirtualMachineTemplatePropertiesControllersList =
 export type VirtualDiskIndependenceMode =
   | "persistent"
   | "independent_persistent"
-  | "independent_nonpersistent"
-  | (string & {});
+  | "independent_nonpersistent";
 export const VirtualDiskIndependenceMode = /*@__PURE__*/ S.String;
 
 /** Virtual disk model */
@@ -1264,26 +1308,24 @@ export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualDisk" }) as any as S.Schema<VirtualDisk>;
 
 /** The list of Virtual Disks */
-export type VirtualMachineTemplatePropertiesDisksList = VirtualDisk[];
+export type VirtualMachineTemplatePropertiesDisksList =
+  ReadonlyArray<VirtualDisk>;
 export const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
 
 /** IP address allocation method */
-export type GuestOSNICCustomizationAllocation =
-  | "static"
-  | "dynamic"
-  | (string & {});
+export type GuestOSNICCustomizationAllocation = "static" | "dynamic";
 export const GuestOSNICCustomizationAllocation = /*@__PURE__*/ S.String;
 
 /** List of dns servers to use */
-export type GuestOSNICCustomizationDnsServersList = string[];
+export type GuestOSNICCustomizationDnsServersList = ReadonlyArray<string>;
 export const GuestOSNICCustomizationDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
 
 /** Gateway addresses assigned to nic */
-export type GuestOSNICCustomizationGatewayList = string[];
+export type GuestOSNICCustomizationGatewayList = ReadonlyArray<string>;
 export const GuestOSNICCustomizationGatewayList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSNICCustomizationGatewayList>;
@@ -1320,7 +1362,7 @@ export const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestOSNICCustomization>;
 
 /** NIC ip address */
-export type VirtualNicIpAddressesList = string[];
+export type VirtualNicIpAddressesList = ReadonlyArray<string>;
 export const VirtualNicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualNicIpAddressesList>;
@@ -1371,8 +1413,7 @@ export type VirtualNicNicType =
   | "PCNET32"
   | "VMXNET"
   | "VMXNET2"
-  | "VMXNET3"
-  | (string & {});
+  | "VMXNET3";
 export const VirtualNicNicType = /*@__PURE__*/ S.String;
 
 /** Virtual NIC model */
@@ -1408,20 +1449,23 @@ export const VirtualNic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualNic" }) as any as S.Schema<VirtualNic>;
 
 /** The list of Virtual NICs */
-export type VirtualMachineTemplatePropertiesNicsList = VirtualNic[];
+export type VirtualMachineTemplatePropertiesNicsList =
+  ReadonlyArray<VirtualNic>;
 export const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ S.Array(
   VirtualNic,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesNicsList>;
 
 /** The list of VSphere networks */
-export type VirtualMachineTemplatePropertiesVSphereNetworksList = string[];
+export type VirtualMachineTemplatePropertiesVSphereNetworksList =
+  ReadonlyArray<string>;
 export const VirtualMachineTemplatePropertiesVSphereNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
 
 /** The tags from VSphere */
-export type VirtualMachineTemplatePropertiesVSphereTagsList = string[];
+export type VirtualMachineTemplatePropertiesVSphereTagsList =
+  ReadonlyArray<string>;
 export const VirtualMachineTemplatePropertiesVSphereTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1508,14 +1552,15 @@ export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Machine Templates */
 export type PrivateCloudPropertiesVirtualMachineTemplatesList =
-  VirtualMachineTemplate[];
+  ReadonlyArray<VirtualMachineTemplate>;
 export const PrivateCloudPropertiesVirtualMachineTemplatesList =
   /*@__PURE__*/ S.Array(
     VirtualMachineTemplate,
   ) as any as S.Schema<PrivateCloudPropertiesVirtualMachineTemplatesList>;
 
 /** The list of Virtual Networks */
-export type PrivateCloudPropertiesVirtualNetworksList = VirtualNetwork[];
+export type PrivateCloudPropertiesVirtualNetworksList =
+  ReadonlyArray<VirtualNetwork>;
 export const PrivateCloudPropertiesVirtualNetworksList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<PrivateCloudPropertiesVirtualNetworksList>;
@@ -1605,9 +1650,7 @@ export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudProperties>;
 
 /** Azure Resource type */
-export type PrivateCloudType =
-  | "Microsoft.VMwareCloudSimple/privateClouds"
-  | (string & {});
+export type PrivateCloudType = "Microsoft.VMwareCloudSimple/privateClouds";
 export const PrivateCloudType = /*@__PURE__*/ S.String;
 
 /** Private cloud model */
@@ -1656,7 +1699,7 @@ export const PrivateCloudsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudsListRequest>;
 
 /** the list of private clouds */
-export type PrivateCloudListValueList = PrivateCloud[];
+export type PrivateCloudListValueList = ReadonlyArray<PrivateCloud>;
 export const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudListValueList>;
@@ -1731,7 +1774,7 @@ export const ResourcePoolsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePoolsListRequest>;
 
 /** Results of the Resource pools list */
-export type ResourcePoolsListResponseValueList = ResourcePool[];
+export type ResourcePoolsListResponseValueList = ReadonlyArray<ResourcePool>;
 export const ResourcePoolsListResponseValueList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<ResourcePoolsListResponseValueList>;
@@ -1812,7 +1855,8 @@ export const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuAvailability>;
 
 /** Results of the DedicatedPlacementGroupSkuAvailability list */
-export type SkuAvailabilityListResponseValueList = SkuAvailability[];
+export type SkuAvailabilityListResponseValueList =
+  ReadonlyArray<SkuAvailability>;
 export const SkuAvailabilityListResponseValueList = /*@__PURE__*/ S.Array(
   SkuAvailability,
 ) as any as S.Schema<SkuAvailabilityListResponseValueList>;
@@ -1879,8 +1923,7 @@ export type UsageUnit =
   | "Seconds"
   | "Percent"
   | "CountPerSecond"
-  | "BytesPerSecond"
-  | (string & {});
+  | "BytesPerSecond";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** Usage model */
@@ -1904,7 +1947,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages */
-export type UsageListResponseValueList = Usage[];
+export type UsageListResponseValueList = ReadonlyArray<Usage>;
 export const UsageListResponseValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResponseValueList>;
@@ -1925,42 +1968,8 @@ export const UsageListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageListResponse",
 }) as any as S.Schema<UsageListResponse>;
 
-export interface VirtualMachinesCreateOrUpdateRequest {
-  /** The subscription ID. */
-  subscriptionId: string;
-  /** The name of the resource group */
-  resourceGroupName: string;
-  /** virtual machine name */
-  virtualMachineName: string;
-  body: unknown;
-}
-export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      virtualMachineName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
-        code: 200,
-        apiVersion: "2019-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "VirtualMachinesCreateOrUpdateRequest",
-}) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>;
-
-/** The list of Virtual Disks' Controllers */
-export type VirtualMachinePropertiesControllersList = VirtualDiskController[];
-export const VirtualMachinePropertiesControllersList = /*@__PURE__*/ S.Array(
-  VirtualDiskController,
-) as any as S.Schema<VirtualMachinePropertiesControllersList>;
-
 /** List of dns servers to use */
-export type GuestOSCustomizationDnsServersList = string[];
+export type GuestOSCustomizationDnsServersList = ReadonlyArray<string>;
 export const GuestOSCustomizationDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GuestOSCustomizationDnsServersList>;
@@ -1990,22 +1999,254 @@ export const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestOSCustomization",
 }) as any as S.Schema<GuestOSCustomization>;
 
+/** Disk's independence mode type */
+export type VirtualDiskInputIndependenceMode =
+  | "persistent"
+  | "independent_persistent"
+  | "independent_nonpersistent";
+export const VirtualDiskInputIndependenceMode = /*@__PURE__*/ S.String;
+
+/** Virtual disk model */
+export interface VirtualDiskInput {
+  /** Disk's Controller id */
+  controllerId: string;
+  /** Disk's independence mode type */
+  independenceMode: VirtualDiskInputIndependenceMode;
+  /** Disk's total size */
+  totalSize: number;
+  /** Disk's id */
+  virtualDiskId?: string;
+}
+export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    controllerId: S.String,
+    independenceMode: VirtualDiskInputIndependenceMode,
+    totalSize: S.Number,
+    virtualDiskId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualDiskInput",
+}) as any as S.Schema<VirtualDiskInput>;
+
 /** The list of Virtual Disks */
-export type VirtualMachinePropertiesDisksList = VirtualDisk[];
+export type VirtualMachinePropertiesInputDisksList =
+  ReadonlyArray<VirtualDiskInput>;
+export const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ S.Array(
+  VirtualDiskInput,
+) as any as S.Schema<VirtualMachinePropertiesInputDisksList>;
+
+/** NIC ip address */
+export type VirtualNicInputIpAddressesList = ReadonlyArray<string>;
+export const VirtualNicInputIpAddressesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VirtualNicInputIpAddressesList>;
+
+/** Properties of virtual network */
+export interface VirtualNetworkPropertiesInput {}
+export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "VirtualNetworkPropertiesInput",
+}) as any as S.Schema<VirtualNetworkPropertiesInput>;
+
+/** Virtual network model */
+export interface VirtualNetworkInput {
+  /** virtual network id (privateCloudId:vsphereId) */
+  id: string;
+  /** Virtual Network properties */
+  properties?: VirtualNetworkPropertiesInput;
+}
+export const VirtualNetworkInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    properties: S.optional(VirtualNetworkPropertiesInput),
+  }),
+).annotate({
+  identifier: "VirtualNetworkInput",
+}) as any as S.Schema<VirtualNetworkInput>;
+
+/** NIC type */
+export type VirtualNicInputNicType =
+  | "E1000"
+  | "E1000E"
+  | "PCNET32"
+  | "VMXNET"
+  | "VMXNET2"
+  | "VMXNET3";
+export const VirtualNicInputNicType = /*@__PURE__*/ S.String;
+
+/** Virtual NIC model */
+export interface VirtualNicInput {
+  /** guest OS customization for nic */
+  customization?: GuestOSNICCustomization;
+  /** NIC ip address */
+  ipAddresses?: VirtualNicInputIpAddressesList;
+  /** NIC MAC address */
+  macAddress?: string;
+  /** Virtual Network */
+  network: VirtualNetworkInput;
+  /** NIC type */
+  nicType: VirtualNicInputNicType;
+  /** Is NIC powered on/off on boot */
+  powerOnBoot?: boolean;
+  /** NIC id */
+  virtualNicId?: string;
+}
+export const VirtualNicInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customization: S.optional(GuestOSNICCustomization),
+    ipAddresses: S.optional(VirtualNicInputIpAddressesList),
+    macAddress: S.optional(S.String),
+    network: VirtualNetworkInput,
+    nicType: VirtualNicInputNicType,
+    powerOnBoot: S.optional(S.Boolean),
+    virtualNicId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualNicInput",
+}) as any as S.Schema<VirtualNicInput>;
+
+/** The list of Virtual NICs */
+export type VirtualMachinePropertiesInputNicsList =
+  ReadonlyArray<VirtualNicInput>;
+export const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ S.Array(
+  VirtualNicInput,
+) as any as S.Schema<VirtualMachinePropertiesInputNicsList>;
+
+/** Properties of resource pool */
+export interface ResourcePoolPropertiesInput {}
+export const ResourcePoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResourcePoolPropertiesInput",
+}) as any as S.Schema<ResourcePoolPropertiesInput>;
+
+/** Resource pool model */
+export interface ResourcePoolInput {
+  /** resource pool id (privateCloudId:vsphereId) */
+  id: string;
+  /** Resource pool properties */
+  properties?: ResourcePoolPropertiesInput;
+}
+export const ResourcePoolInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    properties: S.optional(ResourcePoolPropertiesInput),
+  }),
+).annotate({
+  identifier: "ResourcePoolInput",
+}) as any as S.Schema<ResourcePoolInput>;
+
+/** The list of Virtual VSphere Networks */
+export type VirtualMachinePropertiesInputVSphereNetworksList =
+  ReadonlyArray<string>;
+export const VirtualMachinePropertiesInputVSphereNetworksList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VirtualMachinePropertiesInputVSphereNetworksList>;
+
+/** Properties of virtual machine */
+export interface VirtualMachinePropertiesInput {
+  /** The amount of memory */
+  amountOfRam: number;
+  /** Virtual machine properties */
+  customization?: GuestOSCustomization;
+  /** The list of Virtual Disks */
+  disks?: VirtualMachinePropertiesInputDisksList;
+  /** Expose Guest OS or not */
+  exposeToGuestVM?: boolean;
+  /** The list of Virtual NICs */
+  nics?: VirtualMachinePropertiesInputNicsList;
+  /** The number of CPU cores */
+  numberOfCores: number;
+  /** Password for login. Deprecated - use customization property */
+  password?: string | Redacted.Redacted<string>;
+  /** Private Cloud Id */
+  privateCloudId: string;
+  /** Virtual Machines Resource Pool */
+  resourcePool?: ResourcePoolInput;
+  /** Virtual Machine Template Id */
+  templateId?: string;
+  /** Username for login. Deprecated - use customization property */
+  username?: string;
+  /** The list of Virtual VSphere Networks */
+  vSphereNetworks?: VirtualMachinePropertiesInputVSphereNetworksList;
+}
+export const VirtualMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amountOfRam: S.Number,
+    customization: S.optional(GuestOSCustomization),
+    disks: S.optional(VirtualMachinePropertiesInputDisksList),
+    exposeToGuestVM: S.optional(S.Boolean),
+    nics: S.optional(VirtualMachinePropertiesInputNicsList),
+    numberOfCores: S.Number,
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    privateCloudId: S.String,
+    resourcePool: S.optional(ResourcePoolInput),
+    templateId: S.optional(S.String),
+    username: S.optional(S.String),
+    vSphereNetworks: S.optional(
+      VirtualMachinePropertiesInputVSphereNetworksList,
+    ),
+  }),
+).annotate({
+  identifier: "VirtualMachinePropertiesInput",
+}) as any as S.Schema<VirtualMachinePropertiesInput>;
+
+export interface VirtualMachinesCreateOrUpdateRequest {
+  /** The subscription ID. */
+  subscriptionId: string;
+  /** The name of the resource group */
+  resourceGroupName: string;
+  /** virtual machine name */
+  virtualMachineName: string;
+  /** Azure region */
+  location: string;
+  /** Virtual machine properties */
+  properties?: VirtualMachinePropertiesInput;
+  /** The list of tags */
+  tags?: Tags;
+}
+export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      virtualMachineName: S.String.pipe(T.Label()),
+      location: S.String,
+      properties: S.optional(VirtualMachinePropertiesInput),
+      tags: S.optional(Tags),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
+        code: 200,
+        apiVersion: "2019-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "VirtualMachinesCreateOrUpdateRequest",
+}) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>;
+
+/** The list of Virtual Disks' Controllers */
+export type VirtualMachinePropertiesControllersList =
+  ReadonlyArray<VirtualDiskController>;
+export const VirtualMachinePropertiesControllersList = /*@__PURE__*/ S.Array(
+  VirtualDiskController,
+) as any as S.Schema<VirtualMachinePropertiesControllersList>;
+
+/** The list of Virtual Disks */
+export type VirtualMachinePropertiesDisksList = ReadonlyArray<VirtualDisk>;
 export const VirtualMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachinePropertiesDisksList>;
 
 /** The Guest OS type */
-export type VirtualMachinePropertiesGuestOSType =
-  | "linux"
-  | "windows"
-  | "other"
-  | (string & {});
+export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
 export const VirtualMachinePropertiesGuestOSType = /*@__PURE__*/ S.String;
 
 /** The list of Virtual NICs */
-export type VirtualMachinePropertiesNicsList = VirtualNic[];
+export type VirtualMachinePropertiesNicsList = ReadonlyArray<VirtualNic>;
 export const VirtualMachinePropertiesNicsList = /*@__PURE__*/ S.Array(
   VirtualNic,
 ) as any as S.Schema<VirtualMachinePropertiesNicsList>;
@@ -2017,12 +2258,11 @@ export type VirtualMachinePropertiesStatus =
   | "poweredoff"
   | "updating"
   | "deallocating"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const VirtualMachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The list of Virtual VSphere Networks */
-export type VirtualMachinePropertiesVSphereNetworksList = string[];
+export type VirtualMachinePropertiesVSphereNetworksList = ReadonlyArray<string>;
 export const VirtualMachinePropertiesVSphereNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2220,7 +2460,7 @@ export const VirtualMachinesListByResourceGroupRequest =
   }) as any as S.Schema<VirtualMachinesListByResourceGroupRequest>;
 
 /** Results of the VirtualMachine list */
-export type VirtualMachineListResponseValueList = VirtualMachine[];
+export type VirtualMachineListResponseValueList = ReadonlyArray<VirtualMachine>;
 export const VirtualMachineListResponseValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachineListResponseValueList>;
@@ -2306,8 +2546,7 @@ export type VirtualMachinesStopRequestMode =
   | "reboot"
   | "suspend"
   | "shutdown"
-  | "poweroff"
-  | (string & {});
+  | "poweroff";
 export const VirtualMachinesStopRequestMode = /*@__PURE__*/ S.String;
 
 export interface VirtualMachinesStopRequest {
@@ -2319,7 +2558,6 @@ export interface VirtualMachinesStopRequest {
   virtualMachineName: string;
   /** query stop mode parameter (reboot, shutdown, etc...) */
   mode?: VirtualMachinesStopRequestMode;
-  body?: unknown;
 }
 export const VirtualMachinesStopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2327,7 +2565,6 @@ export const VirtualMachinesStopRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     virtualMachineName: S.String.pipe(T.Label()),
     mode: S.optional(VirtualMachinesStopRequestMode.pipe(T.Query())),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2354,14 +2591,15 @@ export interface VirtualMachinesUpdateRequest {
   resourceGroupName: string;
   /** virtual machine name */
   virtualMachineName: string;
-  body: unknown;
+  /** The tags key:value pairs */
+  tags?: Tags;
 }
 export const VirtualMachinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     virtualMachineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2432,7 +2670,7 @@ export const VirtualMachineTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList =
-  VirtualMachineTemplate[];
+  ReadonlyArray<VirtualMachineTemplate>;
 export const VirtualMachineTemplateListResponseValueList =
   /*@__PURE__*/ S.Array(
     VirtualMachineTemplate,
@@ -2511,7 +2749,7 @@ export const VirtualNetworksListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworksListRequest>;
 
 /** Results of the VirtualNetwork list */
-export type VirtualNetworkListResponseValueList = VirtualNetwork[];
+export type VirtualNetworkListResponseValueList = ReadonlyArray<VirtualNetwork>;
 export const VirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListResponseValueList>;

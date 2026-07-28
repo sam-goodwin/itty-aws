@@ -51,8 +51,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -60,8 +59,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -100,16 +98,14 @@ export type BackupManagementType =
   | "AzureSql"
   | "AzureStorage"
   | "AzureWorkload"
-  | "DefaultBackup"
-  | (string & {});
+  | "DefaultBackup";
 export const BackupManagementType = /*@__PURE__*/ S.String;
 
 /** Type of the backup engine. */
 export type BackupEngineType =
   | "Invalid"
   | "DpmBackupEngine"
-  | "AzureBackupServerEngine"
-  | (string & {});
+  | "AzureBackupServerEngine";
 export const BackupEngineType = /*@__PURE__*/ S.String;
 
 /** Additional information on backup engine. */
@@ -312,7 +308,8 @@ export const BackupEngineBaseResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupEngineBaseResource>;
 
 /** List of resources. */
-export type BackupEnginesListResponseValueList = BackupEngineBaseResource[];
+export type BackupEnginesListResponseValueList =
+  ReadonlyArray<BackupEngineBaseResource>;
 export const BackupEnginesListResponseValueList = /*@__PURE__*/ S.Array(
   BackupEngineBaseResource,
 ) as any as S.Schema<BackupEnginesListResponseValueList>;
@@ -435,7 +432,7 @@ export const JobResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobResource" }) as any as S.Schema<JobResource>;
 
 /** List of resources. */
-export type BackupJobsListResponseValueList = JobResource[];
+export type BackupJobsListResponseValueList = ReadonlyArray<JobResource>;
 export const BackupJobsListResponseValueList = /*@__PURE__*/ S.Array(
   JobResource,
 ) as any as S.Schema<BackupJobsListResponseValueList>;
@@ -524,8 +521,7 @@ export type OperationStatusValues =
   | "InProgress"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const OperationStatusValues = /*@__PURE__*/ S.String;
 
 /** Error information associated with operation status call. */
@@ -617,7 +613,8 @@ export const BackupPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupPoliciesListRequest>;
 
 /** ResourceGuard Operation Requests */
-export type ProtectionPolicyResourceGuardOperationRequestsList = string[];
+export type ProtectionPolicyResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
 export const ProtectionPolicyResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -688,7 +685,8 @@ export const ProtectionPolicyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectionPolicyResource>;
 
 /** List of resources. */
-export type BackupPoliciesListResponseValueList = ProtectionPolicyResource[];
+export type BackupPoliciesListResponseValueList =
+  ReadonlyArray<ProtectionPolicyResource>;
 export const BackupPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
   ProtectionPolicyResource,
 ) as any as S.Schema<BackupPoliciesListResponseValueList>;
@@ -754,8 +752,7 @@ export type ProtectionStatus =
   | "NotProtected"
   | "Protecting"
   | "Protected"
-  | "ProtectionFailed"
-  | (string & {});
+  | "ProtectionFailed";
 export const ProtectionStatus = /*@__PURE__*/ S.String;
 
 /** Base class for backup item. Workload-specific backup items are derived from this class. */
@@ -819,7 +816,7 @@ export const WorkloadProtectableItemResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupProtectableItemsListResponseValueList =
-  WorkloadProtectableItemResource[];
+  ReadonlyArray<WorkloadProtectableItemResource>;
 export const BackupProtectableItemsListResponseValueList =
   /*@__PURE__*/ S.Array(
     WorkloadProtectableItemResource,
@@ -888,16 +885,16 @@ export type DataSourceType =
   | "AzureFileShare"
   | "SAPHanaDatabase"
   | "SAPAseDatabase"
-  | "SAPHanaDBInstance"
-  | (string & {});
+  | "SAPHanaDBInstance";
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 /** Create mode to indicate recovery of existing soft deleted data source or creation of new data source. */
-export type CreateMode = "Invalid" | "Default" | "Recover" | (string & {});
+export type CreateMode = "Invalid" | "Default" | "Recover";
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type ProtectedItemResourceGuardOperationRequestsList = string[];
+export type ProtectedItemResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
 export const ProtectedItemResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1014,7 +1011,8 @@ export const ProtectedItemResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectedItemResource>;
 
 /** List of resources. */
-export type BackupProtectedItemsListResponseValueList = ProtectedItemResource[];
+export type BackupProtectedItemsListResponseValueList =
+  ReadonlyArray<ProtectedItemResource>;
 export const BackupProtectedItemsListResponseValueList = /*@__PURE__*/ S.Array(
   ProtectedItemResource,
 ) as any as S.Schema<BackupProtectedItemsListResponseValueList>;
@@ -1082,8 +1080,7 @@ export type ProtectableContainerType =
   | "GenericContainer"
   | "Microsoft.ClassicCompute/virtualMachines"
   | "Microsoft.Compute/virtualMachines"
-  | "AzureWorkloadContainer"
-  | (string & {});
+  | "AzureWorkloadContainer";
 export const ProtectableContainerType = /*@__PURE__*/ S.String;
 
 /** Base class for container with backup items. Containers with specific workloads are derived from this class. */
@@ -1159,7 +1156,7 @@ export const ProtectionContainerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupProtectionContainersListResponseValueList =
-  ProtectionContainerResource[];
+  ReadonlyArray<ProtectionContainerResource>;
 export const BackupProtectionContainersListResponseValueList =
   /*@__PURE__*/ S.Array(
     ProtectionContainerResource,
@@ -1219,8 +1216,7 @@ export type ProtectionIntentItemType =
   | "RecoveryServiceVaultItem"
   | "AzureWorkloadContainerAutoProtectionIntent"
   | "AzureWorkloadAutoProtectionIntent"
-  | "AzureWorkloadSQLAutoProtectionIntent"
-  | (string & {});
+  | "AzureWorkloadSQLAutoProtectionIntent";
 export const ProtectionIntentItemType = /*@__PURE__*/ S.String;
 
 /** Base class for backup ProtectionIntent. */
@@ -1296,7 +1292,7 @@ export const ProtectionIntentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type BackupProtectionIntentListResponseValueList =
-  ProtectionIntentResource[];
+  ReadonlyArray<ProtectionIntentResource>;
 export const BackupProtectionIntentListResponseValueList =
   /*@__PURE__*/ S.Array(
     ProtectionIntentResource,
@@ -1347,8 +1343,7 @@ export const BackupResourceEncryptionConfigsGetRequest =
 export type EncryptionAtRestType =
   | "Invalid"
   | "MicrosoftManaged"
-  | "CustomerManaged"
-  | (string & {});
+  | "CustomerManaged";
 export const EncryptionAtRestType = /*@__PURE__*/ S.String;
 
 export type LastUpdateStatus =
@@ -1359,15 +1354,10 @@ export type LastUpdateStatus =
   | "Failed"
   | "Succeeded"
   | "Initialized"
-  | "FirstInitialization"
-  | (string & {});
+  | "FirstInitialization";
 export const LastUpdateStatus = /*@__PURE__*/ S.String;
 
-export type InfrastructureEncryptionState =
-  | "Invalid"
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
+export type InfrastructureEncryptionState = "Invalid" | "Disabled" | "Enabled";
 export const InfrastructureEncryptionState = /*@__PURE__*/ S.String;
 
 export interface BackupResourceEncryptionConfigExtended {
@@ -1443,6 +1433,38 @@ export const BackupResourceEncryptionConfigsGetResponse =
     identifier: "BackupResourceEncryptionConfigsGetResponse",
   }) as any as S.Schema<BackupResourceEncryptionConfigsGetResponse>;
 
+export interface BackupResourceEncryptionConfig {
+  /** Encryption At Rest Type */
+  encryptionAtRestType?: EncryptionAtRestType;
+  /** Key Vault Key URI */
+  keyUri?: string;
+  /** Key Vault Subscription Id */
+  subscriptionId?: string;
+  lastUpdateStatus?: LastUpdateStatus;
+  infrastructureEncryptionState?: InfrastructureEncryptionState;
+}
+export const BackupResourceEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionAtRestType: S.optional(EncryptionAtRestType),
+    keyUri: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    lastUpdateStatus: S.optional(LastUpdateStatus),
+    infrastructureEncryptionState: S.optional(InfrastructureEncryptionState),
+  }),
+).annotate({
+  identifier: "BackupResourceEncryptionConfig",
+}) as any as S.Schema<BackupResourceEncryptionConfig>;
+
+/** Resource tags. */
+export type BackupResourceEncryptionConfigsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupResourceEncryptionConfigsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BackupResourceEncryptionConfigsUpdateRequestTagsMap>;
+
 export interface BackupResourceEncryptionConfigsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1450,7 +1472,14 @@ export interface BackupResourceEncryptionConfigsUpdateRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** The properties of the backup resource encryption config */
+  properties?: BackupResourceEncryptionConfig;
+  /** Resource tags. */
+  tags?: BackupResourceEncryptionConfigsUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const BackupResourceEncryptionConfigsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1458,7 +1487,10 @@ export const BackupResourceEncryptionConfigsUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BackupResourceEncryptionConfig),
+      tags: S.optional(BackupResourceEncryptionConfigsUpdateRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1509,24 +1541,19 @@ export type StorageType =
   | "GeoRedundant"
   | "LocallyRedundant"
   | "ZoneRedundant"
-  | "ReadAccessGeoZoneRedundant"
-  | (string & {});
+  | "ReadAccessGeoZoneRedundant";
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** Locked or Unlocked. Once a machine is registered against a resource, the storageTypeState is always Locked. */
-export type StorageTypeState =
-  | "Invalid"
-  | "Locked"
-  | "Unlocked"
-  | (string & {});
+export type StorageTypeState = "Invalid" | "Locked" | "Unlocked";
 export const StorageTypeState = /*@__PURE__*/ S.String;
 
 /** Vault Dedup state */
-export type DedupState = "Invalid" | "Enabled" | "Disabled" | (string & {});
+export type DedupState = "Invalid" | "Enabled" | "Disabled";
 export const DedupState = /*@__PURE__*/ S.String;
 
 /** Vault x-cool state */
-export type XcoolState = "Invalid" | "Enabled" | "Disabled" | (string & {});
+export type XcoolState = "Invalid" | "Enabled" | "Disabled";
 export const XcoolState = /*@__PURE__*/ S.String;
 
 /** The resource storage details. */
@@ -1601,6 +1628,16 @@ export const BackupResourceStorageConfigsNonCRRGetResponse =
     identifier: "BackupResourceStorageConfigsNonCRRGetResponse",
   }) as any as S.Schema<BackupResourceStorageConfigsNonCRRGetResponse>;
 
+/** Resource tags. */
+export type BackupResourceStorageConfigsNonCRRPatchRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupResourceStorageConfigsNonCRRPatchRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BackupResourceStorageConfigsNonCRRPatchRequestTagsMap>;
+
 export interface BackupResourceStorageConfigsNonCRRPatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1608,7 +1645,14 @@ export interface BackupResourceStorageConfigsNonCRRPatchRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** BackupResourceConfigResource properties */
+  properties?: BackupResourceConfig;
+  /** Resource tags. */
+  tags?: BackupResourceStorageConfigsNonCRRPatchRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const BackupResourceStorageConfigsNonCRRPatchRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1616,7 +1660,10 @@ export const BackupResourceStorageConfigsNonCRRPatchRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BackupResourceConfig),
+      tags: S.optional(BackupResourceStorageConfigsNonCRRPatchRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1635,6 +1682,16 @@ export const BackupResourceStorageConfigsNonCRRPatchResponse =
     identifier: "BackupResourceStorageConfigsNonCRRPatchResponse",
   }) as any as S.Schema<BackupResourceStorageConfigsNonCRRPatchResponse>;
 
+/** Resource tags. */
+export type BackupResourceStorageConfigsNonCRRUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupResourceStorageConfigsNonCRRUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BackupResourceStorageConfigsNonCRRUpdateRequestTagsMap>;
+
 export interface BackupResourceStorageConfigsNonCRRUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1642,7 +1699,14 @@ export interface BackupResourceStorageConfigsNonCRRUpdateRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** BackupResourceConfigResource properties */
+  properties?: BackupResourceConfig;
+  /** Resource tags. */
+  tags?: BackupResourceStorageConfigsNonCRRUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const BackupResourceStorageConfigsNonCRRUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1650,7 +1714,10 @@ export const BackupResourceStorageConfigsNonCRRUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BackupResourceConfig),
+      tags: S.optional(BackupResourceStorageConfigsNonCRRUpdateRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1734,11 +1801,7 @@ export const BackupResourceVaultConfigsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackupResourceVaultConfigsGetRequest>;
 
 /** Enabled or Disabled. */
-export type EnhancedSecurityState =
-  | "Invalid"
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type EnhancedSecurityState = "Invalid" | "Enabled" | "Disabled";
 export const EnhancedSecurityState = /*@__PURE__*/ S.String;
 
 /** Soft Delete feature state */
@@ -1746,13 +1809,12 @@ export type SoftDeleteFeatureState =
   | "Invalid"
   | "Enabled"
   | "Disabled"
-  | "AlwaysON"
-  | (string & {});
+  | "AlwaysON";
 export const SoftDeleteFeatureState = /*@__PURE__*/ S.String;
 
 /** ResourceGuard Operation Requests */
 export type BackupResourceVaultConfigResourceGuardOperationRequestsList =
-  string[];
+  ReadonlyArray<string>;
 export const BackupResourceVaultConfigResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1838,6 +1900,16 @@ export const BackupResourceVaultConfigsGetResponse = /*@__PURE__*/ S.suspend(
   identifier: "BackupResourceVaultConfigsGetResponse",
 }) as any as S.Schema<BackupResourceVaultConfigsGetResponse>;
 
+/** Resource tags. */
+export type BackupResourceVaultConfigsPutRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupResourceVaultConfigsPutRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BackupResourceVaultConfigsPutRequestTagsMap>;
+
 export interface BackupResourceVaultConfigsPutRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1845,7 +1917,14 @@ export interface BackupResourceVaultConfigsPutRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** BackupResourceVaultConfigResource properties */
+  properties?: BackupResourceVaultConfig;
+  /** Resource tags. */
+  tags?: BackupResourceVaultConfigsPutRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const BackupResourceVaultConfigsPutRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1853,7 +1932,10 @@ export const BackupResourceVaultConfigsPutRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BackupResourceVaultConfig),
+      tags: S.optional(BackupResourceVaultConfigsPutRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1910,6 +1992,16 @@ export const BackupResourceVaultConfigsPutResponse = /*@__PURE__*/ S.suspend(
   identifier: "BackupResourceVaultConfigsPutResponse",
 }) as any as S.Schema<BackupResourceVaultConfigsPutResponse>;
 
+/** Resource tags. */
+export type BackupResourceVaultConfigsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupResourceVaultConfigsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BackupResourceVaultConfigsUpdateRequestTagsMap>;
+
 export interface BackupResourceVaultConfigsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1917,7 +2009,14 @@ export interface BackupResourceVaultConfigsUpdateRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** BackupResourceVaultConfigResource properties */
+  properties?: BackupResourceVaultConfig;
+  /** Resource tags. */
+  tags?: BackupResourceVaultConfigsUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const BackupResourceVaultConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1925,7 +2024,10 @@ export const BackupResourceVaultConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BackupResourceVaultConfig),
+      tags: S.optional(BackupResourceVaultConfigsUpdateRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1987,13 +2089,20 @@ export interface BackupStatusGetRequest {
   subscriptionId: string;
   /** Azure region to hit Api */
   azureRegion: string;
-  body: unknown;
+  /** Container Type - VM, SQLPaaS, DPM, AzureFileShare... */
+  resourceType?: DataSourceType;
+  /** Entire ARM resource id of the resource */
+  resourceId?: string;
+  /** Protectable Item Logical Name */
+  poLogicalName?: string;
 }
 export const BackupStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     azureRegion: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    resourceType: S.optional(DataSourceType),
+    resourceId: S.optional(S.String),
+    poLogicalName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2007,14 +2116,11 @@ export const BackupStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupStatusGetRequest>;
 
 /** Specifies the fabric name - Azure or AD */
-export type FabricName = "Invalid" | "Azure" | (string & {});
+export type FabricName = "Invalid" | "Azure";
 export const FabricName = /*@__PURE__*/ S.String;
 
 /** Whether storage account lock is to be acquired for this container or not. */
-export type AcquireStorageAccountLock =
-  | "Acquire"
-  | "NotAcquire"
-  | (string & {});
+export type AcquireStorageAccountLock = "Acquire" | "NotAcquire";
 export const AcquireStorageAccountLock = /*@__PURE__*/ S.String;
 
 /** BackupStatus response. */
@@ -2060,6 +2166,26 @@ export const BackupStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupStatusResponse",
 }) as any as S.Schema<BackupStatusResponse>;
 
+/** Resource tags. */
+export type BackupsTriggerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BackupsTriggerRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BackupsTriggerRequestTagsMap>;
+
+/** Base class for backup request. Workload-specific backup requests are derived from this class. */
+export interface BackupRequest {
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
+}
+export const BackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+  }),
+).annotate({ identifier: "BackupRequest" }) as any as S.Schema<BackupRequest>;
+
 export interface BackupsTriggerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2073,7 +2199,14 @@ export interface BackupsTriggerRequest {
   containerName: string;
   /** Backed up item name whose details are to be fetched. */
   protectedItemName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: BackupsTriggerRequestTagsMap;
+  /** Optional ETag. */
+  eTag?: string;
+  /** BackupRequestResource properties */
+  properties?: BackupRequest;
 }
 export const BackupsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2083,7 +2216,10 @@ export const BackupsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
     fabricName: S.String.pipe(T.Label()),
     containerName: S.String.pipe(T.Label()),
     protectedItemName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(BackupsTriggerRequestTagsMap),
+    eTag: S.optional(S.String),
+    properties: S.optional(BackupRequest),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2141,8 +2277,7 @@ export type UsagesUnit =
   | "Seconds"
   | "Percent"
   | "CountPerSecond"
-  | "BytesPerSecond"
-  | (string & {});
+  | "BytesPerSecond";
 export const UsagesUnit = /*@__PURE__*/ S.String;
 
 /** The name of usage. */
@@ -2188,7 +2323,8 @@ export const BackupManagementUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupManagementUsage>;
 
 /** The list of backup management usages for the given vault. */
-export type BackupUsageSummariesListResponseValueList = BackupManagementUsage[];
+export type BackupUsageSummariesListResponseValueList =
+  ReadonlyArray<BackupManagementUsage>;
 export const BackupUsageSummariesListResponseValueList = /*@__PURE__*/ S.Array(
   BackupManagementUsage,
 ) as any as S.Schema<BackupUsageSummariesListResponseValueList>;
@@ -2310,7 +2446,8 @@ export const WorkloadItemResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadItemResource>;
 
 /** List of resources. */
-export type BackupWorkloadItemsListResponseValueList = WorkloadItemResource[];
+export type BackupWorkloadItemsListResponseValueList =
+  ReadonlyArray<WorkloadItemResource>;
 export const BackupWorkloadItemsListResponseValueList = /*@__PURE__*/ S.Array(
   WorkloadItemResource,
 ) as any as S.Schema<BackupWorkloadItemsListResponseValueList>;
@@ -2330,6 +2467,18 @@ export const BackupWorkloadItemsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupWorkloadItemsListResponse",
 }) as any as S.Schema<BackupWorkloadItemsListResponse>;
 
+/** DataMove Level */
+export type DataMoveLevel = "Invalid" | "Vault" | "Container";
+export const DataMoveLevel = /*@__PURE__*/ S.String;
+
+/** Source Container ArmIds This needs to be populated only if DataMoveLevel is set to container */
+export type BMSPrepareDataMoveRequestSourceContainerArmIdsList =
+  ReadonlyArray<string>;
+export const BMSPrepareDataMoveRequestSourceContainerArmIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BMSPrepareDataMoveRequestSourceContainerArmIdsList>;
+
 export interface BMSPrepareDataMoveRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2337,14 +2486,29 @@ export interface BMSPrepareDataMoveRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** ARM Id of target vault */
+  targetResourceId: string;
+  /** Target Region */
+  targetRegion: string;
+  /** DataMove Level */
+  dataMoveLevel: DataMoveLevel;
+  /** Source Container ArmIds This needs to be populated only if DataMoveLevel is set to container */
+  sourceContainerArmIds?: BMSPrepareDataMoveRequestSourceContainerArmIdsList;
+  /** Ignore the artifacts which are already moved. */
+  ignoreMoved?: boolean;
 }
 export const BMSPrepareDataMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetResourceId: S.String,
+    targetRegion: S.String,
+    dataMoveLevel: DataMoveLevel,
+    sourceContainerArmIds: S.optional(
+      BMSPrepareDataMoveRequestSourceContainerArmIdsList,
+    ),
+    ignoreMoved: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2407,6 +2571,14 @@ export const VaultStorageConfigOperationResultResponse =
     identifier: "VaultStorageConfigOperationResultResponse",
   }) as any as S.Schema<VaultStorageConfigOperationResultResponse>;
 
+/** Source Container ArmIds */
+export type BMSTriggerDataMoveRequestSourceContainerArmIdsList =
+  ReadonlyArray<string>;
+export const BMSTriggerDataMoveRequestSourceContainerArmIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BMSTriggerDataMoveRequestSourceContainerArmIdsList>;
+
 export interface BMSTriggerDataMoveRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2414,14 +2586,32 @@ export interface BMSTriggerDataMoveRequest {
   resourceGroupName: string;
   /** The name of the VaultResource */
   vaultName: string;
-  body: unknown;
+  /** ARM Id of source vault */
+  sourceResourceId: string;
+  /** Source Region */
+  sourceRegion: string;
+  /** DataMove Level */
+  dataMoveLevel: DataMoveLevel;
+  /** Correlation Id */
+  correlationId: string;
+  /** Source Container ArmIds */
+  sourceContainerArmIds?: BMSTriggerDataMoveRequestSourceContainerArmIdsList;
+  /** Pause GC */
+  pauseGC?: boolean;
 }
 export const BMSTriggerDataMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sourceResourceId: S.String,
+    sourceRegion: S.String,
+    dataMoveLevel: DataMoveLevel,
+    correlationId: S.String,
+    sourceContainerArmIds: S.optional(
+      BMSTriggerDataMoveRequestSourceContainerArmIdsList,
+    ),
+    pauseGC: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2472,7 +2662,7 @@ export const DeletedProtectionContainersListRequest = /*@__PURE__*/ S.suspend(
 
 /** List of resources. */
 export type DeletedProtectionContainersListResponseValueList =
-  ProtectionContainerResource[];
+  ReadonlyArray<ProtectionContainerResource>;
 export const DeletedProtectionContainersListResponseValueList =
   /*@__PURE__*/ S.Array(
     ProtectionContainerResource,
@@ -2571,11 +2761,11 @@ export type HttpStatusCode =
   | "BadGateway"
   | "ServiceUnavailable"
   | "GatewayTimeout"
-  | "HttpVersionNotSupported"
-  | (string & {});
+  | "HttpVersionNotSupported";
 export const HttpStatusCode = /*@__PURE__*/ S.String;
 
-export type ExportJobsOperationResultsGetResponseHeadersValueList = string[];
+export type ExportJobsOperationResultsGetResponseHeadersValueList =
+  ReadonlyArray<string>;
 export const ExportJobsOperationResultsGetResponseHeadersValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2630,13 +2820,14 @@ export interface FeatureSupportValidateRequest {
   subscriptionId: string;
   /** Azure region to hit Api */
   azureRegion: string;
-  body: unknown;
+  /** backup support feature type. */
+  featureType: string;
 }
 export const FeatureSupportValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     azureRegion: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    featureType: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2655,8 +2846,7 @@ export type SupportStatus =
   | "Supported"
   | "DefaultOFF"
   | "DefaultON"
-  | "NotSupported"
-  | (string & {});
+  | "NotSupported";
 export const SupportStatus = /*@__PURE__*/ S.String;
 
 /** Response for feature support requests for Azure IaasVm */
@@ -2673,6 +2863,14 @@ export const AzureVMResourceFeatureSupportResponse = /*@__PURE__*/ S.suspend(
   identifier: "AzureVMResourceFeatureSupportResponse",
 }) as any as S.Schema<AzureVMResourceFeatureSupportResponse>;
 
+/** Recovery point tier type. */
+export type RecoveryPointTierType =
+  | "Invalid"
+  | "InstantRP"
+  | "HardenedRP"
+  | "ArchivedRP";
+export const RecoveryPointTierType = /*@__PURE__*/ S.String;
+
 export interface FetchTieringCostPostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2680,14 +2878,21 @@ export interface FetchTieringCostPostRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   vaultName: string;
-  body: unknown;
+  /** Source tier for the request */
+  sourceTierType: RecoveryPointTierType;
+  /** target tier for the request */
+  targetTierType: RecoveryPointTierType;
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
 }
 export const FetchTieringCostPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sourceTierType: RecoveryPointTierType,
+    targetTierType: RecoveryPointTierType,
+    objectType: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2769,6 +2974,27 @@ export const GetTieringCostOperationResultGetRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetTieringCostOperationResultGetRequest",
 }) as any as S.Schema<GetTieringCostOperationResultGetRequest>;
 
+/** Resource tags. */
+export type ItemLevelRecoveryConnectionsProvisionRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ItemLevelRecoveryConnectionsProvisionRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ItemLevelRecoveryConnectionsProvisionRequestTagsMap>;
+
+/** Parameters to Provision ILR API. */
+export interface ILRRequest {
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
+}
+export const ILRRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+  }),
+).annotate({ identifier: "ILRRequest" }) as any as S.Schema<ILRRequest>;
+
 export interface ItemLevelRecoveryConnectionsProvisionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2784,7 +3010,14 @@ export interface ItemLevelRecoveryConnectionsProvisionRequest {
   protectedItemName: string;
   /** RecoveryPointID represents the backed up data to be fetched. */
   recoveryPointId: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: ItemLevelRecoveryConnectionsProvisionRequestTagsMap;
+  /** Optional ETag. */
+  eTag?: string;
+  /** ILRRequestResource properties */
+  properties?: ILRRequest;
 }
 export const ItemLevelRecoveryConnectionsProvisionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2796,7 +3029,10 @@ export const ItemLevelRecoveryConnectionsProvisionRequest =
       containerName: S.String.pipe(T.Label()),
       protectedItemName: S.String.pipe(T.Label()),
       recoveryPointId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(ItemLevelRecoveryConnectionsProvisionRequestTagsMap),
+      eTag: S.optional(S.String),
+      properties: S.optional(ILRRequest),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3052,7 +3288,12 @@ export interface MoveRecoveryPointRequest {
   protectedItemName: string;
   /** RecoveryPointID represents the backed up data to be fetched. */
   recoveryPointId: string;
-  body: unknown;
+  /** Gets the class type. */
+  objectType?: string;
+  /** Source tier from where RP needs to be moved */
+  sourceTierType?: RecoveryPointTierType;
+  /** Target tier where RP needs to be moved */
+  targetTierType?: RecoveryPointTierType;
 }
 export const MoveRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3063,7 +3304,9 @@ export const MoveRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
     containerName: S.String.pipe(T.Label()),
     protectedItemName: S.String.pipe(T.Label()),
     recoveryPointId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    objectType: S.optional(S.String),
+    sourceTierType: S.optional(RecoveryPointTierType),
+    targetTierType: S.optional(RecoveryPointTierType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3140,7 +3383,7 @@ export const ClientDiscoveryForLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** List of log specifications of this operation. */
 export type ClientDiscoveryForServiceSpecificationLogSpecificationsList =
-  ClientDiscoveryForLogSpecification[];
+  ReadonlyArray<ClientDiscoveryForLogSpecification>;
 export const ClientDiscoveryForServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     ClientDiscoveryForLogSpecification,
@@ -3199,7 +3442,7 @@ export const ClientDiscoveryValueForSingleApi = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available operations. */
 export type ClientDiscoveryResponseValueList =
-  ClientDiscoveryValueForSingleApi[];
+  ReadonlyArray<ClientDiscoveryValueForSingleApi>;
 export const ClientDiscoveryResponseValueList = /*@__PURE__*/ S.Array(
   ClientDiscoveryValueForSingleApi,
 ) as any as S.Schema<ClientDiscoveryResponseValueList>;
@@ -3220,6 +3463,19 @@ export const ClientDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClientDiscoveryResponse",
 }) as any as S.Schema<ClientDiscoveryResponse>;
 
+/** Base class for validate operation request. */
+export interface ValidateOperationRequest {
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
+}
+export const ValidateOperationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+  }),
+).annotate({
+  identifier: "ValidateOperationRequest",
+}) as any as S.Schema<ValidateOperationRequest>;
+
 export interface OperationValidateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3227,14 +3483,18 @@ export interface OperationValidateRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   vaultName: string;
-  body: unknown;
+  /** Recovery point ID. */
+  id: string;
+  /** ValidateOperationRequestResource properties */
+  properties: ValidateOperationRequest;
 }
 export const OperationValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    properties: ValidateOperationRequest,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3248,7 +3508,7 @@ export const OperationValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationValidateRequest>;
 
 /** List of recommendation strings. */
-export type ErrorDetailRecommendationsList = string[];
+export type ErrorDetailRecommendationsList = ReadonlyArray<string>;
 export const ErrorDetailRecommendationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ErrorDetailRecommendationsList>;
@@ -3271,7 +3531,8 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** Gets the validation result */
-export type ValidateOperationResponseValidationResultsList = ErrorDetail[];
+export type ValidateOperationResponseValidationResultsList =
+  ReadonlyArray<ErrorDetail>;
 export const ValidateOperationResponseValidationResultsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -3369,12 +3630,7 @@ export const PrivateEndpointConnectionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointConnectionGetRequest>;
 
 /** Gets or sets provisioning state of the private endpoint connection */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Deleting"
-  | "Failed"
-  | "Pending"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Deleting" | "Failed" | "Pending";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint network resource that is linked to the Private Endpoint connection */
@@ -3394,12 +3650,12 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type VaultSubResourceType =
   | "AzureBackup"
   | "AzureBackup_secondary"
-  | "AzureSiteRecovery"
-  | (string & {});
+  | "AzureSiteRecovery";
 export const VaultSubResourceType = /*@__PURE__*/ S.String;
 
 /** Group Ids for the Private Endpoint */
-export type PrivateEndpointConnectionGroupIdsList = VaultSubResourceType[];
+export type PrivateEndpointConnectionGroupIdsList =
+  ReadonlyArray<VaultSubResourceType>;
 export const PrivateEndpointConnectionGroupIdsList = /*@__PURE__*/ S.Array(
   VaultSubResourceType,
 ) as any as S.Schema<PrivateEndpointConnectionGroupIdsList>;
@@ -3409,8 +3665,7 @@ export type PrivateEndpointConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateEndpointConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Private Link Service Connection State */
@@ -3500,6 +3755,16 @@ export const PrivateEndpointConnectionGetResponse = /*@__PURE__*/ S.suspend(
   identifier: "PrivateEndpointConnectionGetResponse",
 }) as any as S.Schema<PrivateEndpointConnectionGetResponse>;
 
+/** Resource tags. */
+export type PrivateEndpointConnectionPutRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateEndpointConnectionPutRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPutRequestTagsMap>;
+
 export interface PrivateEndpointConnectionPutRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3509,7 +3774,14 @@ export interface PrivateEndpointConnectionPutRequest {
   vaultName: string;
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** PrivateEndpointConnectionResource properties */
+  properties?: PrivateEndpointConnection;
+  /** Resource tags. */
+  tags?: PrivateEndpointConnectionPutRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const PrivateEndpointConnectionPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3517,7 +3789,10 @@ export const PrivateEndpointConnectionPutRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
     privateEndpointConnectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PrivateEndpointConnection),
+    tags: S.optional(PrivateEndpointConnectionPutRequestTagsMap),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3706,7 +3981,7 @@ export const ProtectableContainerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ProtectableContainersListResponseValueList =
-  ProtectableContainerResource[];
+  ReadonlyArray<ProtectableContainerResource>;
 export const ProtectableContainersListResponseValueList = /*@__PURE__*/ S.Array(
   ProtectableContainerResource,
 ) as any as S.Schema<ProtectableContainersListResponseValueList>;
@@ -3846,6 +4121,84 @@ export const ProtectedItemOperationStatusesGetRequest = /*@__PURE__*/ S.suspend(
   identifier: "ProtectedItemOperationStatusesGetRequest",
 }) as any as S.Schema<ProtectedItemOperationStatusesGetRequest>;
 
+/** ResourceGuardOperationRequests on which LAC check will be performed */
+export type ProtectedItemInputResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
+export const ProtectedItemInputResourceGuardOperationRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProtectedItemInputResourceGuardOperationRequestsList>;
+
+/** Base class for backup items. */
+export interface ProtectedItemInput {
+  /** backup item type. */
+  protectedItemType: string;
+  /** Unique name of container */
+  containerName?: string;
+  /** ARM ID of the resource to be backed up. */
+  sourceResourceId?: string;
+  /** ID of the backup policy with which this item is backed up. */
+  policyId?: string;
+  /** Timestamp when the last (latest) backup copy was created for this backup item. */
+  lastRecoveryPoint?: string;
+  /** Name of the backup set the backup item belongs to */
+  backupSetName?: string;
+  /** Create mode to indicate recovery of existing soft deleted data source or creation of new data source. */
+  createMode?: CreateMode;
+  /** Time for deferred deletion in UTC */
+  deferredDeleteTimeInUTC?: string;
+  /** Flag to identify whether the DS is scheduled for deferred delete */
+  isScheduledForDeferredDelete?: boolean;
+  /** Time remaining before the DS marked for deferred delete is permanently deleted */
+  deferredDeleteTimeRemaining?: string;
+  /** Flag to identify whether the deferred deleted DS is to be purged soon */
+  isDeferredDeleteScheduleUpcoming?: boolean;
+  /** Flag to identify that deferred deleted DS is to be moved into Pause state */
+  isRehydrate?: boolean;
+  /** ResourceGuardOperationRequests on which LAC check will be performed */
+  resourceGuardOperationRequests?: ProtectedItemInputResourceGuardOperationRequestsList;
+  /** Flag to identify whether datasource is protected in archive */
+  isArchiveEnabled?: boolean;
+  /** Name of the policy used for protection */
+  policyName?: string;
+  /** Soft delete retention period in days */
+  softDeleteRetentionPeriodInDays?: number;
+}
+export const ProtectedItemInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protectedItemType: S.String,
+    containerName: S.optional(S.String),
+    sourceResourceId: S.optional(S.String),
+    policyId: S.optional(S.String),
+    lastRecoveryPoint: S.optional(S.String),
+    backupSetName: S.optional(S.String),
+    createMode: S.optional(CreateMode),
+    deferredDeleteTimeInUTC: S.optional(S.String),
+    isScheduledForDeferredDelete: S.optional(S.Boolean),
+    deferredDeleteTimeRemaining: S.optional(S.String),
+    isDeferredDeleteScheduleUpcoming: S.optional(S.Boolean),
+    isRehydrate: S.optional(S.Boolean),
+    resourceGuardOperationRequests: S.optional(
+      ProtectedItemInputResourceGuardOperationRequestsList,
+    ),
+    isArchiveEnabled: S.optional(S.Boolean),
+    policyName: S.optional(S.String),
+    softDeleteRetentionPeriodInDays: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProtectedItemInput",
+}) as any as S.Schema<ProtectedItemInput>;
+
+/** Resource tags. */
+export type ProtectedItemsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProtectedItemsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProtectedItemsCreateOrUpdateRequestTagsMap>;
+
 export interface ProtectedItemsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3859,7 +4212,14 @@ export interface ProtectedItemsCreateOrUpdateRequest {
   containerName: string;
   /** Backed up item name whose details are to be fetched. */
   protectedItemName: string;
-  body: unknown;
+  /** ProtectedItemResource properties */
+  properties?: ProtectedItemInput;
+  /** Resource tags. */
+  tags?: ProtectedItemsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const ProtectedItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3869,7 +4229,10 @@ export const ProtectedItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     fabricName: S.String.pipe(T.Label()),
     containerName: S.String.pipe(T.Label()),
     protectedItemName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ProtectedItemInput),
+    tags: S.optional(ProtectedItemsCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4315,6 +4678,16 @@ export const ProtectionContainersRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProtectionContainersRefreshResponse",
 }) as any as S.Schema<ProtectionContainersRefreshResponse>;
 
+/** Resource tags. */
+export type ProtectionContainersRegisterRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProtectionContainersRegisterRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProtectionContainersRegisterRequestTagsMap>;
+
 export interface ProtectionContainersRegisterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4326,7 +4699,14 @@ export interface ProtectionContainersRegisterRequest {
   fabricName: string;
   /** Name of the container whose details need to be fetched. */
   containerName: string;
-  body: unknown;
+  /** ProtectionContainerResource properties */
+  properties?: ProtectionContainer;
+  /** Resource tags. */
+  tags?: ProtectionContainersRegisterRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const ProtectionContainersRegisterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4335,7 +4715,10 @@ export const ProtectionContainersRegisterRequest = /*@__PURE__*/ S.suspend(() =>
     vaultName: S.String.pipe(T.Label()),
     fabricName: S.String.pipe(T.Label()),
     containerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ProtectionContainer),
+    tags: S.optional(ProtectionContainersRegisterRequestTagsMap),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4431,6 +4814,16 @@ export const ProtectionContainersUnregisterResponse = /*@__PURE__*/ S.suspend(
   identifier: "ProtectionContainersUnregisterResponse",
 }) as any as S.Schema<ProtectionContainersUnregisterResponse>;
 
+/** Resource tags. */
+export type ProtectionIntentCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProtectionIntentCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProtectionIntentCreateOrUpdateRequestTagsMap>;
+
 export interface ProtectionIntentCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4442,7 +4835,14 @@ export interface ProtectionIntentCreateOrUpdateRequest {
   fabricName: string;
   /** Backed up item name whose details are to be fetched. */
   intentObjectName: string;
-  body: unknown;
+  /** ProtectionIntentResource properties */
+  properties?: ProtectionIntent;
+  /** Resource tags. */
+  tags?: ProtectionIntentCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const ProtectionIntentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4452,7 +4852,10 @@ export const ProtectionIntentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       vaultName: S.String.pipe(T.Label()),
       fabricName: S.String.pipe(T.Label()),
       intentObjectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProtectionIntent),
+      tags: S.optional(ProtectionIntentCreateOrUpdateRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4625,13 +5028,23 @@ export interface ProtectionIntentValidateRequest {
   subscriptionId: string;
   /** Azure region to hit Api */
   azureRegion: string;
-  body: unknown;
+  /** ProtectedItem Type- VM, SqlDataBase, AzureFileShare etc */
+  resourceType?: DataSourceType;
+  /** ARM Virtual Machine Id */
+  resourceId?: string;
+  /** ARM id of the Recovery Services Vault */
+  vaultId?: string;
+  /** Configuration of VM if any needs to be validated like OS type etc */
+  properties?: string;
 }
 export const ProtectionIntentValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     azureRegion: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    resourceType: S.optional(DataSourceType),
+    resourceId: S.optional(S.String),
+    vaultId: S.optional(S.String),
+    properties: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4645,11 +5058,7 @@ export const ProtectionIntentValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectionIntentValidateRequest>;
 
 /** Validation Status */
-export type ValidationStatus =
-  | "Invalid"
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type ValidationStatus = "Invalid" | "Succeeded" | "Failed";
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 /** Response contract for enable backup validation request */
@@ -4680,6 +5089,16 @@ export const PreValidateEnableBackupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreValidateEnableBackupResponse",
 }) as any as S.Schema<PreValidateEnableBackupResponse>;
 
+/** Resource tags. */
+export type ProtectionPoliciesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProtectionPoliciesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProtectionPoliciesCreateOrUpdateRequestTagsMap>;
+
 export interface ProtectionPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4689,7 +5108,14 @@ export interface ProtectionPoliciesCreateOrUpdateRequest {
   vaultName: string;
   /** Backup policy information to be fetched. */
   policyName: string;
-  body: unknown;
+  /** ProtectionPolicyResource properties */
+  properties?: ProtectionPolicy;
+  /** Resource tags. */
+  tags?: ProtectionPoliciesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const ProtectionPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4698,7 +5124,10 @@ export const ProtectionPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
       policyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProtectionPolicy),
+      tags: S.optional(ProtectionPoliciesCreateOrUpdateRequestTagsMap),
+      location: S.optional(S.String),
+      eTag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5139,7 +5568,8 @@ export const RecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPointResource>;
 
 /** List of resources. */
-export type RecoveryPointsListResponseValueList = RecoveryPointResource[];
+export type RecoveryPointsListResponseValueList =
+  ReadonlyArray<RecoveryPointResource>;
 export const RecoveryPointsListResponseValueList = /*@__PURE__*/ S.Array(
   RecoveryPointResource,
 ) as any as S.Schema<RecoveryPointsListResponseValueList>;
@@ -5159,6 +5589,14 @@ export const RecoveryPointsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecoveryPointsListResponse",
 }) as any as S.Schema<RecoveryPointsListResponse>;
 
+/** List of Recovery Points excluded from Move */
+export type RecoveryPointsRecommendedForMoveListRequestExcludedRPListList =
+  ReadonlyArray<string>;
+export const RecoveryPointsRecommendedForMoveListRequestExcludedRPListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecoveryPointsRecommendedForMoveListRequestExcludedRPListList>;
+
 export interface RecoveryPointsRecommendedForMoveListRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5172,7 +5610,10 @@ export interface RecoveryPointsRecommendedForMoveListRequest {
   containerName: string;
   /** Backed up item name whose details are to be fetched. */
   protectedItemName: string;
-  body: unknown;
+  /** Gets the class type. */
+  objectType?: string;
+  /** List of Recovery Points excluded from Move */
+  excludedRPList?: RecoveryPointsRecommendedForMoveListRequestExcludedRPListList;
 }
 export const RecoveryPointsRecommendedForMoveListRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5183,7 +5624,10 @@ export const RecoveryPointsRecommendedForMoveListRequest =
       fabricName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
       protectedItemName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      objectType: S.optional(S.String),
+      excludedRPList: S.optional(
+        RecoveryPointsRecommendedForMoveListRequestExcludedRPListList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5198,7 +5642,7 @@ export const RecoveryPointsRecommendedForMoveListRequest =
 
 /** List of resources. */
 export type RecoveryPointsRecommendedForMoveListResponseValueList =
-  RecoveryPointResource[];
+  ReadonlyArray<RecoveryPointResource>;
 export const RecoveryPointsRecommendedForMoveListResponseValueList =
   /*@__PURE__*/ S.Array(
     RecoveryPointResource,
@@ -5259,7 +5703,7 @@ export const ResourceGuardOperationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGuardOperationDetail>;
 
 export type ResourceGuardProxyBaseResourceGuardOperationDetailsList =
-  ResourceGuardOperationDetail[];
+  ReadonlyArray<ResourceGuardOperationDetail>;
 export const ResourceGuardProxyBaseResourceGuardOperationDetailsList =
   /*@__PURE__*/ S.Array(
     ResourceGuardOperationDetail,
@@ -5328,7 +5772,7 @@ export const ResourceGuardProxyBaseResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ResourceGuardProxiesGetResponseValueList =
-  ResourceGuardProxyBaseResource[];
+  ReadonlyArray<ResourceGuardProxyBaseResource>;
 export const ResourceGuardProxiesGetResponseValueList = /*@__PURE__*/ S.Array(
   ResourceGuardProxyBaseResource,
 ) as any as S.Schema<ResourceGuardProxiesGetResponseValueList>;
@@ -5451,6 +5895,15 @@ export const ResourceGuardProxyGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceGuardProxyGetResponse",
 }) as any as S.Schema<ResourceGuardProxyGetResponse>;
 
+/** Resource tags. */
+export type ResourceGuardProxyPutRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourceGuardProxyPutRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourceGuardProxyPutRequestTagsMap>;
+
 export interface ResourceGuardProxyPutRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5459,7 +5912,14 @@ export interface ResourceGuardProxyPutRequest {
   /** The name of the VaultResource */
   vaultName: string;
   resourceGuardProxyName: string;
-  body: unknown;
+  /** ResourceGuardProxyBaseResource properties */
+  properties?: ResourceGuardProxyBase;
+  /** Resource tags. */
+  tags?: ResourceGuardProxyPutRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Optional ETag. */
+  eTag?: string;
 }
 export const ResourceGuardProxyPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5467,7 +5927,10 @@ export const ResourceGuardProxyPutRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
     resourceGuardProxyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ResourceGuardProxyBase),
+    tags: S.optional(ResourceGuardProxyPutRequestTagsMap),
+    location: S.optional(S.String),
+    eTag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5522,6 +5985,13 @@ export const ResourceGuardProxyPutResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceGuardProxyPutResponse",
 }) as any as S.Schema<ResourceGuardProxyPutResponse>;
 
+export type ResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
+export const ResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList>;
+
 export interface ResourceGuardProxyUnlockDeleteRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5530,7 +6000,8 @@ export interface ResourceGuardProxyUnlockDeleteRequest {
   /** The name of the VaultResource */
   vaultName: string;
   resourceGuardProxyName: string;
-  body: unknown;
+  resourceGuardOperationRequests?: ResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList;
+  resourceToBeDeleted?: string;
 }
 export const ResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5539,7 +6010,10 @@ export const ResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
       resourceGuardProxyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceGuardOperationRequests: S.optional(
+        ResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList,
+      ),
+      resourceToBeDeleted: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5565,6 +6039,39 @@ export const UnlockDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnlockDeleteResponse",
 }) as any as S.Schema<UnlockDeleteResponse>;
 
+/** Resource tags. */
+export type RestoresTriggerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RestoresTriggerRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RestoresTriggerRequestTagsMap>;
+
+/** ResourceGuardOperationRequests on which LAC check will be performed */
+export type RestoreRequestResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
+export const RestoreRequestResourceGuardOperationRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RestoreRequestResourceGuardOperationRequestsList>;
+
+/** Base class for restore request. Workload-specific restore requests are derived from this class. */
+export interface RestoreRequest {
+  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
+  objectType: string;
+  /** ResourceGuardOperationRequests on which LAC check will be performed */
+  resourceGuardOperationRequests?: RestoreRequestResourceGuardOperationRequestsList;
+}
+export const RestoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+    resourceGuardOperationRequests: S.optional(
+      RestoreRequestResourceGuardOperationRequestsList,
+    ),
+  }),
+).annotate({ identifier: "RestoreRequest" }) as any as S.Schema<RestoreRequest>;
+
 export interface RestoresTriggerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5580,7 +6087,14 @@ export interface RestoresTriggerRequest {
   protectedItemName: string;
   /** RecoveryPointID represents the backed up data to be fetched. */
   recoveryPointId: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: RestoresTriggerRequestTagsMap;
+  /** Optional ETag. */
+  eTag?: string;
+  /** RestoreRequestResource properties */
+  properties?: RestoreRequest;
 }
 export const RestoresTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5591,7 +6105,10 @@ export const RestoresTriggerRequest = /*@__PURE__*/ S.suspend(() =>
     containerName: S.String.pipe(T.Label()),
     protectedItemName: S.String.pipe(T.Label()),
     recoveryPointId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(RestoresTriggerRequestTagsMap),
+    eTag: S.optional(S.String),
+    properties: S.optional(RestoreRequest),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5611,6 +6128,14 @@ export const RestoresTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoresTriggerResponse",
 }) as any as S.Schema<RestoresTriggerResponse>;
 
+/** ResourceGuard Operation Requests */
+export type SecurityPINsGetRequestResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
+export const SecurityPINsGetRequestResourceGuardOperationRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SecurityPINsGetRequestResourceGuardOperationRequestsList>;
+
 export interface SecurityPINsGetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5618,14 +6143,17 @@ export interface SecurityPINsGetRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   vaultName: string;
-  body?: unknown;
+  /** ResourceGuard Operation Requests */
+  resourceGuardOperationRequests?: SecurityPINsGetRequestResourceGuardOperationRequestsList;
 }
 export const SecurityPINsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    resourceGuardOperationRequests: S.optional(
+      SecurityPINsGetRequestResourceGuardOperationRequestsList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5748,14 +6276,18 @@ export interface ValidateOperationTriggerRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   vaultName: string;
-  body: unknown;
+  /** Recovery point ID. */
+  id: string;
+  /** ValidateOperationRequestResource properties */
+  properties: ValidateOperationRequest;
 }
 export const ValidateOperationTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    properties: ValidateOperationRequest,
   }).pipe(
     T.Http({
       method: "POST",

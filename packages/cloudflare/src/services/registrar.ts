@@ -68,7 +68,7 @@ export class RegistrarUpdateNotAllowed extends T.applyErrorMatchers(
   [{ status: 422 }],
 ) {}
 
-export type CheckRequestDomainsList = string[];
+export type CheckRequestDomainsList = ReadonlyArray<string>;
 export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckRequestDomainsList>;
@@ -118,13 +118,11 @@ export type CheckResponseDomainsItemReason =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
   | "extension_disallows_registration"
-  | (string & {});
+  | "domain_premium"
+  | "domain_unavailable";
 export const CheckResponseDomainsItemReason = /*@__PURE__*/ S.String;
 
-export type CheckResponseDomainsItemTier =
-  | "standard"
-  | "premium"
-  | (string & {});
+export type CheckResponseDomainsItemTier = "standard" | "premium";
 export const CheckResponseDomainsItemTier = /*@__PURE__*/ S.String;
 
 export interface CheckResponseDomainsItem {
@@ -151,7 +149,7 @@ export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckResponseDomainsItem",
 }) as any as S.Schema<CheckResponseDomainsItem>;
 
-export type CheckResponseDomainsList = CheckResponseDomainsItem[];
+export type CheckResponseDomainsList = ReadonlyArray<CheckResponseDomainsItem>;
 export const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
   CheckResponseDomainsItem,
 ) as any as S.Schema<CheckResponseDomainsList>;
@@ -241,7 +239,9 @@ export type RegistrationStatusGetResponseState =
   | "pending"
   | "in_progress"
   | "action_required"
-  | (string & {});
+  | "blocked"
+  | "succeeded"
+  | "failed";
 export const RegistrationStatusGetResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationStatusGetResponseContextMap = {
@@ -337,7 +337,9 @@ export type UpdateStatusGetResponseState =
   | "pending"
   | "in_progress"
   | "action_required"
-  | (string & {});
+  | "blocked"
+  | "succeeded"
+  | "failed";
 export const UpdateStatusGetResponseState = /*@__PURE__*/ S.String;
 
 export type UpdateStatusGetResponseContextMap = {
@@ -460,25 +462,23 @@ export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(
   identifier: "DomainsListResultItemRegistrantContact",
 }) as any as S.Schema<DomainsListResultItemRegistrantContact>;
 
-export type DomainsListResultItemTransferInAcceptFoa =
-  | "needed"
-  | "ok"
-  | (string & {});
+export type DomainsListResultItemTransferInAcceptFoa = "needed" | "ok";
 export const DomainsListResultItemTransferInAcceptFoa = /*@__PURE__*/ S.String;
 
 export type DomainsListResultItemTransferInApproveTransfer =
   | "needed"
   | "ok"
   | "pending"
-  | (string & {});
+  | "trying"
+  | "rejected"
+  | "unknown";
 export const DomainsListResultItemTransferInApproveTransfer =
   /*@__PURE__*/ S.String;
 
 export type DomainsListResultItemTransferInDisablePrivacy =
   | "needed"
   | "ok"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DomainsListResultItemTransferInDisablePrivacy =
   /*@__PURE__*/ S.String;
 
@@ -486,7 +486,8 @@ export type DomainsListResultItemTransferInEnterAuthCode =
   | "needed"
   | "ok"
   | "pending"
-  | (string & {});
+  | "trying"
+  | "rejected";
 export const DomainsListResultItemTransferInEnterAuthCode =
   /*@__PURE__*/ S.String;
 
@@ -494,7 +495,8 @@ export type DomainsListResultItemTransferInUnlockDomain =
   | "needed"
   | "ok"
   | "pending"
-  | (string & {});
+  | "trying"
+  | "unknown";
 export const DomainsListResultItemTransferInUnlockDomain =
   /*@__PURE__*/ S.String;
 
@@ -568,6 +570,12 @@ export interface DomainsListResultItem {
   transferIn?: DomainsListResultItemTransferIn;
   /** Last updated. */
   updatedAt?: string;
+  /** Domain name. */
+  name?: string | null;
+  /** Whether the domain auto-renews. */
+  autoRenew?: boolean | null;
+  /** Whether WHOIS privacy is enabled. */
+  privacy?: boolean | null;
 }
 export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -587,12 +595,15 @@ export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
       DomainsListResultItemTransferIn.pipe(T.Body("transfer_in")),
     ),
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    name: S.optional(S.NullOr(S.String)),
+    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
+    privacy: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
   identifier: "DomainsListResultItem",
 }) as any as S.Schema<DomainsListResultItem>;
 
-export type DomainsListResultList = DomainsListResultItem[];
+export type DomainsListResultList = ReadonlyArray<DomainsListResultItem>;
 export const DomainsListResultList = /*@__PURE__*/ S.Array(
   DomainsListResultItem,
 ) as any as S.Schema<DomainsListResultList>;
@@ -731,7 +742,7 @@ export const RegistrationsCreateRequestContacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsCreateRequestContacts",
 }) as any as S.Schema<RegistrationsCreateRequestContacts>;
 
-export type RegistrationsCreateRequestPrivacyMode = "redaction" | (string & {});
+export type RegistrationsCreateRequestPrivacyMode = "redaction";
 export const RegistrationsCreateRequestPrivacyMode = /*@__PURE__*/ S.String;
 
 export interface RegistrationsCreateRequest {
@@ -792,7 +803,9 @@ export type RegistrationsCreateResponseState =
   | "pending"
   | "in_progress"
   | "action_required"
-  | (string & {});
+  | "blocked"
+  | "succeeded"
+  | "failed";
 export const RegistrationsCreateResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationsCreateResponseContextMap = {
@@ -846,7 +859,7 @@ export const RegistrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsCreateResponse",
 }) as any as S.Schema<RegistrationsCreateResponse>;
 
-export type RegistrationsEditRequestPrefer = "respond-async" | (string & {});
+export type RegistrationsEditRequestPrefer = "respond-async";
 export const RegistrationsEditRequestPrefer = /*@__PURE__*/ S.String;
 
 export interface RegistrationsEditRequest {
@@ -896,7 +909,9 @@ export type RegistrationsEditResponseState =
   | "pending"
   | "in_progress"
   | "action_required"
-  | (string & {});
+  | "blocked"
+  | "succeeded"
+  | "failed";
 export const RegistrationsEditResponseState = /*@__PURE__*/ S.String;
 
 export type RegistrationsEditResponseContextMap = {
@@ -973,14 +988,16 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsGetRequest",
 }) as any as S.Schema<RegistrationsGetRequest>;
 
-export type RegistrationsGetResponsePrivacyMode = "redaction" | (string & {});
+export type RegistrationsGetResponsePrivacyMode = "redaction";
 export const RegistrationsGetResponsePrivacyMode = /*@__PURE__*/ S.String;
 
 export type RegistrationsGetResponseStatus =
   | "active"
   | "registration_pending"
   | "expired"
-  | (string & {});
+  | "suspended"
+  | "redemption_period"
+  | "pending_delete";
 export const RegistrationsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1016,14 +1033,13 @@ export const RegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsGetResponse",
 }) as any as S.Schema<RegistrationsGetResponse>;
 
-export type RegistrationsListRequestDirection = "asc" | "desc" | (string & {});
+export type RegistrationsListRequestDirection = "asc" | "desc";
 export const RegistrationsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type RegistrationsListRequestSortBy =
   | "registry_created_at"
   | "registry_expires_at"
-  | "name"
-  | (string & {});
+  | "name";
 export const RegistrationsListRequestSortBy = /*@__PURE__*/ S.String;
 
 export interface RegistrationsListRequest {
@@ -1058,16 +1074,16 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListRequest",
 }) as any as S.Schema<RegistrationsListRequest>;
 
-export type RegistrationsListResultItemPrivacyMode =
-  | "redaction"
-  | (string & {});
+export type RegistrationsListResultItemPrivacyMode = "redaction";
 export const RegistrationsListResultItemPrivacyMode = /*@__PURE__*/ S.String;
 
 export type RegistrationsListResultItemStatus =
   | "active"
   | "registration_pending"
   | "expired"
-  | (string & {});
+  | "suspended"
+  | "redemption_period"
+  | "pending_delete";
 export const RegistrationsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface RegistrationsListResultItem {
@@ -1102,7 +1118,8 @@ export const RegistrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListResultItem",
 }) as any as S.Schema<RegistrationsListResultItem>;
 
-export type RegistrationsListResultList = RegistrationsListResultItem[];
+export type RegistrationsListResultList =
+  ReadonlyArray<RegistrationsListResultItem>;
 export const RegistrationsListResultList = /*@__PURE__*/ S.Array(
   RegistrationsListResultItem,
 ) as any as S.Schema<RegistrationsListResultList>;
@@ -1114,7 +1131,7 @@ export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;
 
-export type SearchRequestExtensionsList = string[];
+export type SearchRequestExtensionsList = ReadonlyArray<string>;
 export const SearchRequestExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchRequestExtensionsList>;
@@ -1170,13 +1187,11 @@ export type SearchResponseDomainsItemReason =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
   | "extension_disallows_registration"
-  | (string & {});
+  | "domain_premium"
+  | "domain_unavailable";
 export const SearchResponseDomainsItemReason = /*@__PURE__*/ S.String;
 
-export type SearchResponseDomainsItemTier =
-  | "standard"
-  | "premium"
-  | (string & {});
+export type SearchResponseDomainsItemTier = "standard" | "premium";
 export const SearchResponseDomainsItemTier = /*@__PURE__*/ S.String;
 
 export interface SearchResponseDomainsItem {
@@ -1203,7 +1218,8 @@ export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchResponseDomainsItem",
 }) as any as S.Schema<SearchResponseDomainsItem>;
 
-export type SearchResponseDomainsList = SearchResponseDomainsItem[];
+export type SearchResponseDomainsList =
+  ReadonlyArray<SearchResponseDomainsItem>;
 export const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
   SearchResponseDomainsItem,
 ) as any as S.Schema<SearchResponseDomainsList>;

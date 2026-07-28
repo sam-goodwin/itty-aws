@@ -99,8 +99,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type BinaryAuthorizationEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "PROJECT_SINGLETON_POLICY_ENFORCE"
-  | (string & {});
+  | "PROJECT_SINGLETON_POLICY_ENFORCE";
 export const BinaryAuthorizationEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Binary Authorization. */
@@ -146,7 +145,7 @@ export const BareMetalAdminApiServerArgument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalAdminApiServerArgument>;
 
 export type BareMetalAdminApiServerArgumentList =
-  BareMetalAdminApiServerArgument[];
+  ReadonlyArray<BareMetalAdminApiServerArgument>;
 export const BareMetalAdminApiServerArgumentList = /*@__PURE__*/ S.Array(
   BareMetalAdminApiServerArgument,
 ) as any as S.Schema<BareMetalAdminApiServerArgumentList>;
@@ -173,7 +172,7 @@ export const BareMetalNodeConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalNodeConfig",
 }) as any as S.Schema<BareMetalNodeConfig>;
 
-export type BareMetalNodeConfigList = BareMetalNodeConfig[];
+export type BareMetalNodeConfigList = ReadonlyArray<BareMetalNodeConfig>;
 export const BareMetalNodeConfigList = /*@__PURE__*/ S.Array(
   BareMetalNodeConfig,
 ) as any as S.Schema<BareMetalNodeConfigList>;
@@ -199,8 +198,7 @@ export const BareMetalKubeletConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type BareMetalNodePoolConfigOperatingSystemEnum =
   | "OPERATING_SYSTEM_UNSPECIFIED"
-  | "LINUX"
-  | (string & {});
+  | "LINUX";
 export const BareMetalNodePoolConfigOperatingSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -208,8 +206,7 @@ export type NodeTaintEffectEnum =
   | "EFFECT_UNSPECIFIED"
   | "NO_SCHEDULE"
   | "PREFER_NO_SCHEDULE"
-  | "NO_EXECUTE"
-  | (string & {});
+  | "NO_EXECUTE";
 export const NodeTaintEffectEnum = /*@__PURE__*/ S.String;
 
 /** NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent. */
@@ -229,7 +226,7 @@ export const NodeTaint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeTaint" }) as any as S.Schema<NodeTaint>;
 
-export type NodeTaintList = NodeTaint[];
+export type NodeTaintList = ReadonlyArray<NodeTaint>;
 export const NodeTaintList = /*@__PURE__*/ S.Array(
   NodeTaint,
 ) as any as S.Schema<NodeTaintList>;
@@ -291,7 +288,7 @@ export const BareMetalAdminControlPlaneConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalAdminControlPlaneConfig",
 }) as any as S.Schema<BareMetalAdminControlPlaneConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -338,7 +335,8 @@ export const BareMetalAdminDrainingMachine = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalAdminDrainingMachine",
 }) as any as S.Schema<BareMetalAdminDrainingMachine>;
 
-export type BareMetalAdminDrainingMachineList = BareMetalAdminDrainingMachine[];
+export type BareMetalAdminDrainingMachineList =
+  ReadonlyArray<BareMetalAdminDrainingMachine>;
 export const BareMetalAdminDrainingMachineList = /*@__PURE__*/ S.Array(
   BareMetalAdminDrainingMachine,
 ) as any as S.Schema<BareMetalAdminDrainingMachineList>;
@@ -356,7 +354,8 @@ export const BareMetalAdminDrainedMachine = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalAdminDrainedMachine",
 }) as any as S.Schema<BareMetalAdminDrainedMachine>;
 
-export type BareMetalAdminDrainedMachineList = BareMetalAdminDrainedMachine[];
+export type BareMetalAdminDrainedMachineList =
+  ReadonlyArray<BareMetalAdminDrainedMachine>;
 export const BareMetalAdminDrainedMachineList = /*@__PURE__*/ S.Array(
   BareMetalAdminDrainedMachine,
 ) as any as S.Schema<BareMetalAdminDrainedMachineList>;
@@ -462,7 +461,8 @@ export const BareMetalAdminBgpPeerConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalAdminBgpPeerConfig",
 }) as any as S.Schema<BareMetalAdminBgpPeerConfig>;
 
-export type BareMetalAdminBgpPeerConfigList = BareMetalAdminBgpPeerConfig[];
+export type BareMetalAdminBgpPeerConfigList =
+  ReadonlyArray<BareMetalAdminBgpPeerConfig>;
 export const BareMetalAdminBgpPeerConfigList = /*@__PURE__*/ S.Array(
   BareMetalAdminBgpPeerConfig,
 ) as any as S.Schema<BareMetalAdminBgpPeerConfigList>;
@@ -491,7 +491,7 @@ export const BareMetalAdminLoadBalancerAddressPool = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BareMetalAdminLoadBalancerAddressPool>;
 
 export type BareMetalAdminLoadBalancerAddressPoolList =
-  BareMetalAdminLoadBalancerAddressPool[];
+  ReadonlyArray<BareMetalAdminLoadBalancerAddressPool>;
 export const BareMetalAdminLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(
   BareMetalAdminLoadBalancerAddressPool,
 ) as any as S.Schema<BareMetalAdminLoadBalancerAddressPoolList>;
@@ -655,7 +655,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -675,8 +675,7 @@ export type ResourceConditionStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_TRUE"
   | "STATE_FALSE"
-  | "STATE_UNKNOWN"
-  | (string & {});
+  | "STATE_UNKNOWN";
 export const ResourceConditionStateEnum = /*@__PURE__*/ S.String;
 
 /** ResourceCondition provides a standard mechanism for higher-level status reporting from controller. */
@@ -704,7 +703,7 @@ export const ResourceCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceCondition",
 }) as any as S.Schema<ResourceCondition>;
 
-export type ResourceConditionList = ResourceCondition[];
+export type ResourceConditionList = ReadonlyArray<ResourceCondition>;
 export const ResourceConditionList = /*@__PURE__*/ S.Array(
   ResourceCondition,
 ) as any as S.Schema<ResourceConditionList>;
@@ -736,8 +735,7 @@ export type BareMetalAdminClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const BareMetalAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalAdminClusterOperationsConfig specifies the admin cluster's observability infrastructure. */
@@ -797,8 +795,7 @@ export const BareMetalAdminWorkloadNodeConfig = /*@__PURE__*/ S.suspend(() =>
 export type ValidationCheckOptionEnum =
   | "OPTIONS_UNSPECIFIED"
   | "SKIP_VALIDATION_CHECK_BLOCKING"
-  | "SKIP_VALIDATION_ALL"
-  | (string & {});
+  | "SKIP_VALIDATION_ALL";
 export const ValidationCheckOptionEnum = /*@__PURE__*/ S.String;
 
 export type ValidationCheckResultStateEnum =
@@ -806,8 +803,7 @@ export type ValidationCheckResultStateEnum =
   | "STATE_FAILURE"
   | "STATE_SKIPPED"
   | "STATE_FATAL"
-  | "STATE_WARNING"
-  | (string & {});
+  | "STATE_WARNING";
 export const ValidationCheckResultStateEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheckResult defines the details about the validation check. */
@@ -835,7 +831,7 @@ export const ValidationCheckResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidationCheckResult",
 }) as any as S.Schema<ValidationCheckResult>;
 
-export type ValidationCheckResultList = ValidationCheckResult[];
+export type ValidationCheckResultList = ReadonlyArray<ValidationCheckResult>;
 export const ValidationCheckResultList = /*@__PURE__*/ S.Array(
   ValidationCheckResult,
 ) as any as S.Schema<ValidationCheckResultList>;
@@ -856,8 +852,7 @@ export const ValidationCheckStatus = /*@__PURE__*/ S.suspend(() =>
 export type ValidationCheckScenarioEnum =
   | "SCENARIO_UNSPECIFIED"
   | "CREATE"
-  | "UPDATE"
-  | (string & {});
+  | "UPDATE";
 export const ValidationCheckScenarioEnum = /*@__PURE__*/ S.String;
 
 /** ValidationCheck represents the result of preflight check. */
@@ -890,7 +885,7 @@ export const ClusterUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClusterUser" }) as any as S.Schema<ClusterUser>;
 
-export type ClusterUserList = ClusterUser[];
+export type ClusterUserList = ReadonlyArray<ClusterUser>;
 export const ClusterUserList = /*@__PURE__*/ S.Array(
   ClusterUser,
 ) as any as S.Schema<ClusterUserList>;
@@ -1053,7 +1048,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1134,14 +1129,12 @@ export type BareMetalClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const BareMetalClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type BareMetalWorkloadNodeConfigContainerRuntimeEnum =
   | "CONTAINER_RUNTIME_UNSPECIFIED"
-  | "CONTAINERD"
-  | (string & {});
+  | "CONTAINERD";
 export const BareMetalWorkloadNodeConfigContainerRuntimeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1179,8 +1172,7 @@ export const BareMetalSecurityConfig = /*@__PURE__*/ S.suspend(() =>
 export type BareMetalClusterUpgradePolicyPolicyEnum =
   | "NODE_POOL_POLICY_UNSPECIFIED"
   | "SERIAL"
-  | "CONCURRENT"
-  | (string & {});
+  | "CONCURRENT";
 export const BareMetalClusterUpgradePolicyPolicyEnum = /*@__PURE__*/ S.String;
 
 /** BareMetalClusterUpgradePolicy defines the cluster upgrade policy. */
@@ -1308,7 +1300,8 @@ export const BareMetalDrainingMachine = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalDrainingMachine",
 }) as any as S.Schema<BareMetalDrainingMachine>;
 
-export type BareMetalDrainingMachineList = BareMetalDrainingMachine[];
+export type BareMetalDrainingMachineList =
+  ReadonlyArray<BareMetalDrainingMachine>;
 export const BareMetalDrainingMachineList = /*@__PURE__*/ S.Array(
   BareMetalDrainingMachine,
 ) as any as S.Schema<BareMetalDrainingMachineList>;
@@ -1326,7 +1319,8 @@ export const BareMetalDrainedMachine = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalDrainedMachine",
 }) as any as S.Schema<BareMetalDrainedMachine>;
 
-export type BareMetalDrainedMachineList = BareMetalDrainedMachine[];
+export type BareMetalDrainedMachineList =
+  ReadonlyArray<BareMetalDrainedMachine>;
 export const BareMetalDrainedMachineList = /*@__PURE__*/ S.Array(
   BareMetalDrainedMachine,
 ) as any as S.Schema<BareMetalDrainedMachineList>;
@@ -1396,7 +1390,7 @@ export const BareMetalLoadBalancerAddressPool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BareMetalLoadBalancerAddressPool>;
 
 export type BareMetalLoadBalancerAddressPoolList =
-  BareMetalLoadBalancerAddressPool[];
+  ReadonlyArray<BareMetalLoadBalancerAddressPool>;
 export const BareMetalLoadBalancerAddressPoolList = /*@__PURE__*/ S.Array(
   BareMetalLoadBalancerAddressPool,
 ) as any as S.Schema<BareMetalLoadBalancerAddressPoolList>;
@@ -1436,7 +1430,7 @@ export const BareMetalBgpPeerConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalBgpPeerConfig",
 }) as any as S.Schema<BareMetalBgpPeerConfig>;
 
-export type BareMetalBgpPeerConfigList = BareMetalBgpPeerConfig[];
+export type BareMetalBgpPeerConfigList = ReadonlyArray<BareMetalBgpPeerConfig>;
 export const BareMetalBgpPeerConfigList = /*@__PURE__*/ S.Array(
   BareMetalBgpPeerConfig,
 ) as any as S.Schema<BareMetalBgpPeerConfigList>;
@@ -1588,7 +1582,8 @@ export const BareMetalApiServerArgument = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalApiServerArgument",
 }) as any as S.Schema<BareMetalApiServerArgument>;
 
-export type BareMetalApiServerArgumentList = BareMetalApiServerArgument[];
+export type BareMetalApiServerArgumentList =
+  ReadonlyArray<BareMetalApiServerArgument>;
 export const BareMetalApiServerArgumentList = /*@__PURE__*/ S.Array(
   BareMetalApiServerArgument,
 ) as any as S.Schema<BareMetalApiServerArgumentList>;
@@ -1785,8 +1780,7 @@ export type BareMetalNodePoolStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const BareMetalNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a bare metal node pool. */
@@ -2064,7 +2058,7 @@ export const VmwareHostIp = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VmwareHostIp" }) as any as S.Schema<VmwareHostIp>;
 
-export type VmwareHostIpList = VmwareHostIp[];
+export type VmwareHostIpList = ReadonlyArray<VmwareHostIp>;
 export const VmwareHostIpList = /*@__PURE__*/ S.Array(
   VmwareHostIp,
 ) as any as S.Schema<VmwareHostIpList>;
@@ -2086,7 +2080,7 @@ export const VmwareIpBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VmwareIpBlock" }) as any as S.Schema<VmwareIpBlock>;
 
-export type VmwareIpBlockList = VmwareIpBlock[];
+export type VmwareIpBlockList = ReadonlyArray<VmwareIpBlock>;
 export const VmwareIpBlockList = /*@__PURE__*/ S.Array(
   VmwareIpBlock,
 ) as any as S.Schema<VmwareIpBlockList>;
@@ -2275,7 +2269,7 @@ export const VmwareBundleConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareBundleConfig",
 }) as any as S.Schema<VmwareBundleConfig>;
 
-export type VmwareBundleConfigList = VmwareBundleConfig[];
+export type VmwareBundleConfigList = ReadonlyArray<VmwareBundleConfig>;
 export const VmwareBundleConfigList = /*@__PURE__*/ S.Array(
   VmwareBundleConfig,
 ) as any as S.Schema<VmwareBundleConfigList>;
@@ -2325,8 +2319,7 @@ export type VmwareAdminClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const VmwareAdminClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** VmwareAdminAuthorizationConfig represents configuration for admin cluster authorization. */
@@ -2630,7 +2623,7 @@ export const VmwareAddressPool = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareAddressPool",
 }) as any as S.Schema<VmwareAddressPool>;
 
-export type VmwareAddressPoolList = VmwareAddressPool[];
+export type VmwareAddressPoolList = ReadonlyArray<VmwareAddressPool>;
 export const VmwareAddressPoolList = /*@__PURE__*/ S.Array(
   VmwareAddressPool,
 ) as any as S.Schema<VmwareAddressPoolList>;
@@ -2800,8 +2793,7 @@ export type VmwareClusterStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const VmwareClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that represents a VMware user cluster. ## */
@@ -2952,8 +2944,7 @@ export type VmwareNodePoolStateEnum =
   | "RECONCILING"
   | "STOPPING"
   | "ERROR"
-  | "DEGRADED"
-  | (string & {});
+  | "DEGRADED";
 export const VmwareNodePoolStateEnum = /*@__PURE__*/ S.String;
 
 /** NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool. */
@@ -2988,7 +2979,7 @@ export const VmwareVsphereTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareVsphereTag",
 }) as any as S.Schema<VmwareVsphereTag>;
 
-export type VmwareVsphereTagList = VmwareVsphereTag[];
+export type VmwareVsphereTagList = ReadonlyArray<VmwareVsphereTag>;
 export const VmwareVsphereTagList = /*@__PURE__*/ S.Array(
   VmwareVsphereTag,
 ) as any as S.Schema<VmwareVsphereTagList>;
@@ -3577,7 +3568,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3755,8 +3746,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBareMetalAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsBareMetalAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3809,8 +3799,7 @@ export const GetProjectsLocationsBareMetalAdminClustersOperationsRequest =
 export type GetProjectsLocationsBareMetalClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsBareMetalClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3844,8 +3833,7 @@ export const GetProjectsLocationsBareMetalClustersRequest =
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3937,8 +3925,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsVmwareAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsVmwareAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3991,8 +3978,7 @@ export const GetProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type GetProjectsLocationsVmwareClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsVmwareClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4045,8 +4031,7 @@ export const GetProjectsLocationsVmwareClustersOperationsRequest =
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4126,7 +4111,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4150,8 +4135,7 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsBareMetalAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4188,7 +4172,7 @@ export const ListProjectsLocationsBareMetalAdminClustersRequest =
     identifier: "ListProjectsLocationsBareMetalAdminClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersRequest>;
 
-export type BareMetalAdminClusterList = BareMetalAdminCluster[];
+export type BareMetalAdminClusterList = ReadonlyArray<BareMetalAdminCluster>;
 export const BareMetalAdminClusterList = /*@__PURE__*/ S.Array(
   BareMetalAdminCluster,
 ) as any as S.Schema<BareMetalAdminClusterList>;
@@ -4243,7 +4227,7 @@ export const ListProjectsLocationsBareMetalAdminClustersOperationsRequest =
     identifier: "ListProjectsLocationsBareMetalAdminClustersOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsBareMetalAdminClustersOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4270,8 +4254,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsBareMetalClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4311,7 +4294,7 @@ export const ListProjectsLocationsBareMetalClustersRequest =
     identifier: "ListProjectsLocationsBareMetalClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsBareMetalClustersRequest>;
 
-export type BareMetalClusterList = BareMetalCluster[];
+export type BareMetalClusterList = ReadonlyArray<BareMetalCluster>;
 export const BareMetalClusterList = /*@__PURE__*/ S.Array(
   BareMetalCluster,
 ) as any as S.Schema<BareMetalClusterList>;
@@ -4338,8 +4321,7 @@ export const ListBareMetalClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4376,7 +4358,7 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest =
       "ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest",
   }) as any as S.Schema<ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest>;
 
-export type BareMetalNodePoolList = BareMetalNodePool[];
+export type BareMetalNodePoolList = ReadonlyArray<BareMetalNodePool>;
 export const BareMetalNodePoolList = /*@__PURE__*/ S.Array(
   BareMetalNodePool,
 ) as any as S.Schema<BareMetalNodePoolList>;
@@ -4497,8 +4479,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type ListProjectsLocationsVmwareAdminClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsVmwareAdminClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4535,7 +4516,7 @@ export const ListProjectsLocationsVmwareAdminClustersRequest =
     identifier: "ListProjectsLocationsVmwareAdminClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsVmwareAdminClustersRequest>;
 
-export type VmwareAdminClusterList = VmwareAdminCluster[];
+export type VmwareAdminClusterList = ReadonlyArray<VmwareAdminCluster>;
 export const VmwareAdminClusterList = /*@__PURE__*/ S.Array(
   VmwareAdminCluster,
 ) as any as S.Schema<VmwareAdminClusterList>;
@@ -4593,8 +4574,7 @@ export const ListProjectsLocationsVmwareAdminClustersOperationsRequest =
 export type ListProjectsLocationsVmwareClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsVmwareClustersViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4634,7 +4614,7 @@ export const ListProjectsLocationsVmwareClustersRequest =
     identifier: "ListProjectsLocationsVmwareClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsVmwareClustersRequest>;
 
-export type VmwareClusterList = VmwareCluster[];
+export type VmwareClusterList = ReadonlyArray<VmwareCluster>;
 export const VmwareClusterList = /*@__PURE__*/ S.Array(
   VmwareCluster,
 ) as any as S.Schema<VmwareClusterList>;
@@ -4692,8 +4672,7 @@ export const ListProjectsLocationsVmwareClustersOperationsRequest =
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   | "NODE_POOL_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsVmwareClustersVmwareNodePoolsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4729,7 +4708,7 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest =
     identifier: "ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest",
   }) as any as S.Schema<ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest>;
 
-export type VmwareNodePoolList = VmwareNodePool[];
+export type VmwareNodePoolList = ReadonlyArray<VmwareNodePool>;
 export const VmwareNodePoolList = /*@__PURE__*/ S.Array(
   VmwareNodePool,
 ) as any as S.Schema<VmwareNodePoolList>;
@@ -5010,7 +4989,7 @@ export const UpgradeDependency = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeDependency",
 }) as any as S.Schema<UpgradeDependency>;
 
-export type UpgradeDependencyList = UpgradeDependency[];
+export type UpgradeDependencyList = ReadonlyArray<UpgradeDependency>;
 export const UpgradeDependencyList = /*@__PURE__*/ S.Array(
   UpgradeDependency,
 ) as any as S.Schema<UpgradeDependencyList>;
@@ -5034,7 +5013,7 @@ export const BareMetalVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "BareMetalVersionInfo",
 }) as any as S.Schema<BareMetalVersionInfo>;
 
-export type BareMetalVersionInfoList = BareMetalVersionInfo[];
+export type BareMetalVersionInfoList = ReadonlyArray<BareMetalVersionInfo>;
 export const BareMetalVersionInfoList = /*@__PURE__*/ S.Array(
   BareMetalVersionInfo,
 ) as any as S.Schema<BareMetalVersionInfoList>;
@@ -5148,7 +5127,7 @@ export const VmwareVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareVersionInfo",
 }) as any as S.Schema<VmwareVersionInfo>;
 
-export type VmwareVersionInfoList = VmwareVersionInfo[];
+export type VmwareVersionInfoList = ReadonlyArray<VmwareVersionInfo>;
 export const VmwareVersionInfoList = /*@__PURE__*/ S.Array(
   VmwareVersionInfo,
 ) as any as S.Schema<VmwareVersionInfoList>;

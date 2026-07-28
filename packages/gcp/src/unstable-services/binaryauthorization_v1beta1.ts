@@ -80,8 +80,7 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "EC_SIGN_P384_SHA384"
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
-  | "ML_DSA_65"
-  | (string & {});
+  | "ML_DSA_65";
 export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format. */
@@ -120,7 +119,7 @@ export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestorPublicKey",
 }) as any as S.Schema<AttestorPublicKey>;
 
-export type AttestorPublicKeyList = AttestorPublicKey[];
+export type AttestorPublicKeyList = ReadonlyArray<AttestorPublicKey>;
 export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
   AttestorPublicKey,
 ) as any as S.Schema<AttestorPublicKeyList>;
@@ -257,7 +256,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -279,7 +278,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -353,7 +352,8 @@ export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdmissionWhitelistPattern",
 }) as any as S.Schema<AdmissionWhitelistPattern>;
 
-export type AdmissionWhitelistPatternList = AdmissionWhitelistPattern[];
+export type AdmissionWhitelistPatternList =
+  ReadonlyArray<AdmissionWhitelistPattern>;
 export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
   AdmissionWhitelistPattern,
 ) as any as S.Schema<AdmissionWhitelistPatternList>;
@@ -362,15 +362,13 @@ export type AdmissionRuleEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
-  | "ALWAYS_DENY"
-  | (string & {});
+  | "ALWAYS_DENY";
 export const AdmissionRuleEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
-  | "DRYRUN_AUDIT_LOG_ONLY"
-  | (string & {});
+  | "DRYRUN_AUDIT_LOG_ONLY";
 export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
@@ -398,8 +396,7 @@ export const AdmissionRuleMap = /*@__PURE__*/ S.Record(
 export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
-  | "DISABLE"
-  | (string & {});
+  | "DISABLE";
 export const PolicyGlobalPolicyEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** A policy for Binary Authorization. */
@@ -505,7 +502,7 @@ export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAttestorsRequest",
 }) as any as S.Schema<ListProjectsAttestorsRequest>;
 
-export type AttestorList = Attestor[];
+export type AttestorList = ReadonlyArray<Attestor>;
 export const AttestorList = /*@__PURE__*/ S.Array(
   Attestor,
 ) as any as S.Schema<AttestorList>;
@@ -704,7 +701,7 @@ export const Jwt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
-export type JwtList = Jwt[];
+export type JwtList = ReadonlyArray<Jwt>;
 export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
@@ -721,7 +718,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
-export type SignatureList = Signature[];
+export type SignatureList = ReadonlyArray<Signature>;
 export const SignatureList = /*@__PURE__*/ S.Array(
   Signature,
 ) as any as S.Schema<SignatureList>;
@@ -790,8 +787,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
 export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
-  | "ATTESTATION_NOT_VERIFIABLE"
-  | (string & {});
+  | "ATTESTATION_NOT_VERIFIABLE";
 export const ValidateAttestationOccurrenceResponseResultEnum =
   /*@__PURE__*/ S.String;
 

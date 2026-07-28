@@ -1106,16 +1106,101 @@
             "smithy.api#documentation": "The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.storageactions#StorageTasksUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.storageactions#StorageTasksUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storageactions#StorageTaskUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the storage task."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storageactions#StorageTaskUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Storage Task is enabled when set to true and disabled when set to false"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text that describes the purpose of the storage task"
+          }
+        },
+        "action": {
+          "target": "com.azure.storageactions#StorageTaskAction",
+          "traits": {
+            "smithy.api#documentation": "The storage task action that is executed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the storage task."
+      }
+    },
+    "com.azure.storageactions#StorageTasksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
+      }
+    },
+    "com.azure.storageactions#StorageTasksUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storageactions#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storageactions#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storageactions#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.storageactions#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.storageactions#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.storageactions#StorageTasksCreate": {
@@ -1264,16 +1349,94 @@
             "smithy.api#documentation": "The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storageactions#StorageTasksCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storageactions#StorageTaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the storage task.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.storageactions#StorageTasksCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storageactions#StorageTasksCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storageactions#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storageactions#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storageactions#StorageTaskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Storage Task is enabled when set to true and disabled when set to false",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text that describes the purpose of the storage task",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.azure.storageactions#StorageTaskAction",
+          "traits": {
+            "smithy.api#documentation": "The storage task action that is executed",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the storage task."
+      }
+    },
+    "com.azure.storageactions#StorageTasksCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storageactions#StorageTasksGet": {
@@ -1769,42 +1932,10 @@
           "traits": {
             "smithy.api#documentation": "tags key value pairs to be tested for a match against the provided condition."
           }
-        },
-        "matchedBlock": {
-          "target": "com.azure.storageactions#MatchedBlockName",
-          "traits": {
-            "smithy.api#documentation": "Represents the condition block name that matched blob properties."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Storage task preview container properties"
-      }
-    },
-    "com.azure.storageactions#MatchedBlockName": {
-      "type": "enum",
-      "members": {
-        "IF": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "If"
-          }
-        },
-        "ELSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Else"
-          }
-        },
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "None"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Represents the condition block name that matched blob properties."
       }
     },
     "com.azure.storageactions#StorageTaskPreviewBlobPropertiesTagsList": {
@@ -1902,10 +2033,10 @@
             "smithy.api#documentation": "Represents an Azure geography region where supported resource providers live."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storageactions#StorageTaskPreviewActionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the storage task preview.",
             "smithy.api#required": {}
           }
         }

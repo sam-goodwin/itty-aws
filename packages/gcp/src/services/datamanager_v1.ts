@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type PartnerLinkFeatureSetEnum =
   | "FEATURE_SET_UNSPECIFIED"
   | "FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT"
-  | "FEATURE_SET_AD_EVENT_MANAGEMENT"
-  | (string & {});
+  | "FEATURE_SET_AD_EVENT_MANAGEMENT";
 export const PartnerLinkFeatureSetEnum = /*@__PURE__*/ S.String;
 
 /** Represents a customer account in the partner's system. */
@@ -86,7 +85,7 @@ export const PartnerCustomerAccount = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartnerCustomerAccount",
 }) as any as S.Schema<PartnerCustomerAccount>;
 
-export type PartnerCustomerAccountList = PartnerCustomerAccount[];
+export type PartnerCustomerAccountList = ReadonlyArray<PartnerCustomerAccount>;
 export const PartnerCustomerAccountList = /*@__PURE__*/ S.Array(
   PartnerCustomerAccount,
 ) as any as S.Schema<PartnerCustomerAccountList>;
@@ -109,8 +108,7 @@ export type ProductAccountProductEnum =
   | "GOOGLE_ADS"
   | "DISPLAY_VIDEO_PARTNER"
   | "DISPLAY_VIDEO_ADVERTISER"
-  | "DATA_PARTNER"
-  | (string & {});
+  | "DATA_PARTNER";
 export const ProductAccountProductEnum = /*@__PURE__*/ S.String;
 
 export type ProductAccountAccountTypeEnum =
@@ -121,8 +119,7 @@ export type ProductAccountAccountTypeEnum =
   | "DATA_PARTNER"
   | "GOOGLE_ANALYTICS_PROPERTY"
   | "GOOGLE_AD_MANAGER_AUDIENCE_LINK"
-  | "FLOODLIGHT_CONFIG"
-  | (string & {});
+  | "FLOODLIGHT_CONFIG";
 export const ProductAccountAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a specific account. */
@@ -222,16 +219,14 @@ export type UserListLicensePricingCostTypeEnum =
   | "USER_LIST_PRICING_COST_TYPE_UNSPECIFIED"
   | "CPC"
   | "CPM"
-  | "MEDIA_SHARE"
-  | (string & {});
+  | "MEDIA_SHARE";
 export const UserListLicensePricingCostTypeEnum = /*@__PURE__*/ S.String;
 
 export type UserListLicensePricingBuyerApprovalStateEnum =
   | "USER_LIST_PRICING_BUYER_APPROVAL_STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const UserListLicensePricingBuyerApprovalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -279,19 +274,17 @@ export type UserListDirectLicenseClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
-  | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK"
-  | (string & {});
+  | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
 export const UserListDirectLicenseClientAccountTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type UserListDirectLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
-  | "USER_LIST_LICENSE_STATUS_DISABLED"
-  | (string & {});
+  | "USER_LIST_LICENSE_STATUS_DISABLED";
 export const UserListDirectLicenseStatusEnum = /*@__PURE__*/ S.String;
 
-export type UserListLicensePricingList = UserListLicensePricing[];
+export type UserListLicensePricingList = ReadonlyArray<UserListLicensePricing>;
 export const UserListLicensePricingList = /*@__PURE__*/ S.Array(
   UserListLicensePricing,
 ) as any as S.Schema<UserListLicensePricingList>;
@@ -362,15 +355,13 @@ export type UserListGlobalLicenseLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
-  | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE"
-  | (string & {});
+  | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
 export const UserListGlobalLicenseLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 export type UserListGlobalLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
-  | "USER_LIST_LICENSE_STATUS_DISABLED"
-  | (string & {});
+  | "USER_LIST_LICENSE_STATUS_DISABLED";
 export const UserListGlobalLicenseStatusEnum = /*@__PURE__*/ S.String;
 
 /** A user list global license. This feature is only available to data partners. */
@@ -432,8 +423,7 @@ export const CreateAccountTypesAccountsUserListGlobalLicensesRequest =
 export type UserListAccountAccessStatusEnum =
   | "ACCESS_STATUS_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const UserListAccountAccessStatusEnum = /*@__PURE__*/ S.String;
 
 export type UserListAccessReasonEnum =
@@ -442,8 +432,7 @@ export type UserListAccessReasonEnum =
   | "SHARED"
   | "LICENSED"
   | "SUBSCRIBED"
-  | "AFFILIATED"
-  | (string & {});
+  | "AFFILIATED";
 export const UserListAccessReasonEnum = /*@__PURE__*/ S.String;
 
 export type MobileIdInfoDataSourceTypeEnum =
@@ -451,15 +440,13 @@ export type MobileIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
-  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA"
-  | (string & {});
+  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
 export const MobileIdInfoDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type MobileIdInfoKeySpaceEnum =
   | "KEY_SPACE_UNSPECIFIED"
   | "IOS"
-  | "ANDROID"
-  | (string & {});
+  | "ANDROID";
 export const MobileIdInfoKeySpaceEnum = /*@__PURE__*/ S.String;
 
 /** Additional information when `MOBILE_ID` is one of the `upload_key_types`. */
@@ -483,8 +470,7 @@ export type PartnerAudienceInfoPartnerAudienceSourceEnum =
   | "PARTNER_AUDIENCE_SOURCE_UNSPECIFIED"
   | "COMMERCE_AUDIENCE"
   | "LINEAR_TV_AUDIENCE"
-  | "AGENCY_PROVIDER_AUDIENCE"
-  | (string & {});
+  | "AGENCY_PROVIDER_AUDIENCE";
 export const PartnerAudienceInfoPartnerAudienceSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -511,8 +497,7 @@ export type ContactIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
-  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA"
-  | (string & {});
+  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
 export const ContactIdInfoDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional information when `CONTACT_ID` is one of the `upload_key_types`. */
@@ -556,8 +541,7 @@ export type PseudonymousIdInfoSyncStatusEnum =
   | "SYNC_STATUS_UNSPECIFIED"
   | "CREATED"
   | "READY_FOR_USE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PseudonymousIdInfoSyncStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional information when `PSEUDONYMOUS_ID` is one of the `upload_key_types`. */
@@ -582,13 +566,12 @@ export type IngestedUserListInfoUploadKeyTypesItemEnum =
   | "MOBILE_ID"
   | "USER_ID"
   | "PAIR_ID"
-  | "PSEUDONYMOUS_ID"
-  | (string & {});
+  | "PSEUDONYMOUS_ID";
 export const IngestedUserListInfoUploadKeyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type IngestedUserListInfoUploadKeyTypesItemEnumList =
-  IngestedUserListInfoUploadKeyTypesItemEnum[];
+  ReadonlyArray<IngestedUserListInfoUploadKeyTypesItemEnum>;
 export const IngestedUserListInfoUploadKeyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     IngestedUserListInfoUploadKeyTypesItemEnum,
@@ -599,8 +582,7 @@ export type UserIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
-  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA"
-  | (string & {});
+  | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
 export const UserIdInfoDataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional information when `USER_ID` is one of the `upload_key_types`. */
@@ -645,10 +627,7 @@ export const IngestedUserListInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "IngestedUserListInfo",
 }) as any as S.Schema<IngestedUserListInfo>;
 
-export type UserListClosingReasonEnum =
-  | "CLOSING_REASON_UNSPECIFIED"
-  | "UNUSED"
-  | (string & {});
+export type UserListClosingReasonEnum = "CLOSING_REASON_UNSPECIFIED" | "UNUSED";
 export const UserListClosingReasonEnum = /*@__PURE__*/ S.String;
 
 /** Eligibility information for different target networks. */
@@ -690,8 +669,7 @@ export const SizeInfo = /*@__PURE__*/ S.suspend(() =>
 export type UserListMembershipStatusEnum =
   | "MEMBERSHIP_STATUS_UNSPECIFIED"
   | "OPEN"
-  | "CLOSED"
-  | (string & {});
+  | "CLOSED";
 export const UserListMembershipStatusEnum = /*@__PURE__*/ S.String;
 
 /** A user list resource. */
@@ -876,8 +854,7 @@ export const GetAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(
 export type AdEventAttributionHintEnum =
   | "ATTRIBUTION_HINT_UNSPECIFIED"
   | "ATTRIBUTION_HINT_CONVERTED"
-  | "ATTRIBUTION_HINT_NOT_CONVERTED"
-  | (string & {});
+  | "ATTRIBUTION_HINT_NOT_CONVERTED";
 export const AdEventAttributionHintEnum = /*@__PURE__*/ S.String;
 
 export type AdEventTargetingTypeEnum =
@@ -889,8 +866,7 @@ export type AdEventTargetingTypeEnum =
   | "TARGETING_TYPE_GEO"
   | "TARGETING_TYPE_INTEREST"
   | "TARGETING_TYPE_PURCHASE_INTENT"
-  | "TARGETING_TYPE_REMARKETING"
-  | (string & {});
+  | "TARGETING_TYPE_REMARKETING";
 export const AdEventTargetingTypeEnum = /*@__PURE__*/ S.String;
 
 export type AdEventAdPlacementEnum =
@@ -903,8 +879,7 @@ export type AdEventAdPlacementEnum =
   | "AD_PLACEMENT_IN_CONTENT"
   | "AD_PLACEMENT_PROMOTED"
   | "AD_PLACEMENT_SEARCH"
-  | "AD_PLACEMENT_STORY"
-  | (string & {});
+  | "AD_PLACEMENT_STORY";
 export const AdEventAdPlacementEnum = /*@__PURE__*/ S.String;
 
 export type ViewabilityInfoMediaQuartileEnum =
@@ -913,15 +888,13 @@ export type ViewabilityInfoMediaQuartileEnum =
   | "MEDIA_QUARTILE_FIRST_QUARTILE"
   | "MEDIA_QUARTILE_MIDPOINT"
   | "MEDIA_QUARTILE_THIRD_QUARTILE"
-  | "MEDIA_QUARTILE_COMPLETE"
-  | (string & {});
+  | "MEDIA_QUARTILE_COMPLETE";
 export const ViewabilityInfoMediaQuartileEnum = /*@__PURE__*/ S.String;
 
 export type ViewabilityInfoViewTypeEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "VIEW_TYPE_MRC_VIEWED"
-  | "VIEW_TYPE_MRC_RENDERED"
-  | (string & {});
+  | "VIEW_TYPE_MRC_RENDERED";
 export const ViewabilityInfoViewTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of the viewability of the ad served. */
@@ -961,8 +934,7 @@ export const ViewabilityInfo = /*@__PURE__*/ S.suspend(() =>
 export type AdEventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "EVENT_TYPE_VIEW"
-  | "EVENT_TYPE_CLICK"
-  | (string & {});
+  | "EVENT_TYPE_CLICK";
 export const AdEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Address information for the user. */
@@ -1002,7 +974,7 @@ export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserIdentifier" }) as any as S.Schema<UserIdentifier>;
 
-export type UserIdentifierList = UserIdentifier[];
+export type UserIdentifierList = ReadonlyArray<UserIdentifier>;
 export const UserIdentifierList = /*@__PURE__*/ S.Array(
   UserIdentifier,
 ) as any as S.Schema<UserIdentifierList>;
@@ -1026,8 +998,7 @@ export type AdEventAdTypeEnum =
   | "AD_TYPE_RICH_MEDIA"
   | "AD_TYPE_HTML"
   | "AD_TYPE_AUDIO"
-  | "AD_TYPE_VIDEO"
-  | (string & {});
+  | "AD_TYPE_VIDEO";
 export const AdEventAdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device being used (if any) when the event happened. */
@@ -1080,16 +1051,14 @@ export type AdEventPlatformTypeEnum =
   | "PLATFORM_TYPE_DESKTOP"
   | "PLATFORM_TYPE_CTV"
   | "PLATFORM_TYPE_PHONE"
-  | "PLATFORM_TYPE_TABLET"
-  | (string & {});
+  | "PLATFORM_TYPE_TABLET";
 export const AdEventPlatformTypeEnum = /*@__PURE__*/ S.String;
 
 export type AdEventPlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "PLATFORM_IOS"
   | "PLATFORM_ANDROID"
-  | "PLATFORM_WEB"
-  | (string & {});
+  | "PLATFORM_WEB";
 export const AdEventPlatformEnum = /*@__PURE__*/ S.String;
 
 export type AdEventAdFormatEnum =
@@ -1111,8 +1080,7 @@ export type AdEventAdFormatEnum =
   | "AD_FORMAT_SHORTS"
   | "AD_FORMAT_STORY"
   | "AD_FORMAT_SPONSORED"
-  | "AD_FORMAT_VIDEO"
-  | (string & {});
+  | "AD_FORMAT_VIDEO";
 export const AdEventAdFormatEnum = /*@__PURE__*/ S.String;
 
 export type AdEventEventSubtypeEnum =
@@ -1120,8 +1088,7 @@ export type AdEventEventSubtypeEnum =
   | "EVENT_SUBTYPE_IMPRESSION"
   | "EVENT_SUBTYPE_ENGAGED_VIEW"
   | "EVENT_SUBTYPE_ONSITE_CLICK"
-  | "EVENT_SUBTYPE_OUTBOUND_CLICK"
-  | (string & {});
+  | "EVENT_SUBTYPE_OUTBOUND_CLICK";
 export const AdEventEventSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** An ad event. */
@@ -1231,15 +1198,14 @@ export const AdEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdEvent" }) as any as S.Schema<AdEvent>;
 
-export type AdEventList = AdEvent[];
+export type AdEventList = ReadonlyArray<AdEvent>;
 export const AdEventList = /*@__PURE__*/ S.Array(
   AdEvent,
 ) as any as S.Schema<AdEventList>;
 
 export type AwsWrappedKeyInfoKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
-  | "XCHACHA20_POLY1305"
-  | (string & {});
+  | "XCHACHA20_POLY1305";
 export const AwsWrappedKeyInfoKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** A data encryption key wrapped by an AWS KMS key. */
@@ -1266,8 +1232,7 @@ export const AwsWrappedKeyInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type GcpWrappedKeyInfoKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
-  | "XCHACHA20_POLY1305"
-  | (string & {});
+  | "XCHACHA20_POLY1305";
 export const GcpWrappedKeyInfoKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the Google Cloud Platform wrapped key. */
@@ -1390,7 +1355,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = Destination[];
+export type DestinationList = ReadonlyArray<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
@@ -1398,15 +1363,13 @@ export const DestinationList = /*@__PURE__*/ S.Array(
 export type IngestAudienceMembersRequestEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "HEX"
-  | "BASE64"
-  | (string & {});
+  | "BASE64";
 export const IngestAudienceMembersRequestEncodingEnum = /*@__PURE__*/ S.String;
 
 export type TermsOfServiceCustomerMatchTermsOfServiceStatusEnum =
   | "TERMS_OF_SERVICE_STATUS_UNSPECIFIED"
   | "ACCEPTED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const TermsOfServiceCustomerMatchTermsOfServiceStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1423,7 +1386,7 @@ export const TermsOfService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TermsOfService" }) as any as S.Schema<TermsOfService>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1456,7 +1419,7 @@ export const IpData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpData" }) as any as S.Schema<IpData>;
 
-export type IpDataList = IpData[];
+export type IpDataList = ReadonlyArray<IpData>;
 export const IpDataList = /*@__PURE__*/ S.Array(
   IpData,
 ) as any as S.Schema<IpDataList>;
@@ -1478,15 +1441,13 @@ export const CompositeData = /*@__PURE__*/ S.suspend(() =>
 export type ConsentAdPersonalizationEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
-  | "CONSENT_DENIED"
-  | (string & {});
+  | "CONSENT_DENIED";
 export const ConsentAdPersonalizationEnum = /*@__PURE__*/ S.String;
 
 export type ConsentAdUserDataEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
-  | "CONSENT_DENIED"
-  | (string & {});
+  | "CONSENT_DENIED";
 export const ConsentAdUserDataEnum = /*@__PURE__*/ S.String;
 
 /** [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en) consent settings for the user. */
@@ -1568,7 +1529,7 @@ export const AudienceMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudienceMember" }) as any as S.Schema<AudienceMember>;
 
-export type AudienceMemberList = AudienceMember[];
+export type AudienceMemberList = ReadonlyArray<AudienceMember>;
 export const AudienceMemberList = /*@__PURE__*/ S.Array(
   AudienceMember,
 ) as any as S.Schema<AudienceMemberList>;
@@ -1654,7 +1615,7 @@ export const ItemCustomVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemCustomVariable",
 }) as any as S.Schema<ItemCustomVariable>;
 
-export type ItemCustomVariableList = ItemCustomVariable[];
+export type ItemCustomVariableList = ReadonlyArray<ItemCustomVariable>;
 export const ItemCustomVariableList = /*@__PURE__*/ S.Array(
   ItemCustomVariable,
 ) as any as S.Schema<ItemCustomVariableList>;
@@ -1673,7 +1634,7 @@ export const ItemParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemParameter" }) as any as S.Schema<ItemParameter>;
 
-export type ItemParameterList = ItemParameter[];
+export type ItemParameterList = ReadonlyArray<ItemParameter>;
 export const ItemParameterList = /*@__PURE__*/ S.Array(
   ItemParameter,
 ) as any as S.Schema<ItemParameterList>;
@@ -1716,7 +1677,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
-export type ItemList = Item[];
+export type ItemList = ReadonlyArray<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -1764,7 +1725,7 @@ export const CustomVariable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomVariable" }) as any as S.Schema<CustomVariable>;
 
-export type CustomVariableList = CustomVariable[];
+export type CustomVariableList = ReadonlyArray<CustomVariable>;
 export const CustomVariableList = /*@__PURE__*/ S.Array(
   CustomVariable,
 ) as any as S.Schema<CustomVariableList>;
@@ -1783,7 +1744,7 @@ export const EventParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventParameter" }) as any as S.Schema<EventParameter>;
 
-export type EventParameterList = EventParameter[];
+export type EventParameterList = ReadonlyArray<EventParameter>;
 export const EventParameterList = /*@__PURE__*/ S.Array(
   EventParameter,
 ) as any as S.Schema<EventParameterList>;
@@ -1795,24 +1756,21 @@ export type EventEventSourceEnum =
   | "IN_STORE"
   | "PHONE"
   | "MESSAGE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const EventEventSourceEnum = /*@__PURE__*/ S.String;
 
 export type UserPropertiesCustomerTypeEnum =
   | "CUSTOMER_TYPE_UNSPECIFIED"
   | "NEW"
   | "RETURNING"
-  | "REENGAGED"
-  | (string & {});
+  | "REENGAGED";
 export const UserPropertiesCustomerTypeEnum = /*@__PURE__*/ S.String;
 
 export type UserPropertiesCustomerValueBucketEnum =
   | "CUSTOMER_VALUE_BUCKET_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const UserPropertiesCustomerValueBucketEnum = /*@__PURE__*/ S.String;
 
 /** A bucket of any additional [user properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for the user associated with this event. */
@@ -1829,7 +1787,7 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserProperty" }) as any as S.Schema<UserProperty>;
 
-export type UserPropertyList = UserProperty[];
+export type UserPropertyList = ReadonlyArray<UserProperty>;
 export const UserPropertyList = /*@__PURE__*/ S.Array(
   UserProperty,
 ) as any as S.Schema<UserPropertyList>;
@@ -1880,8 +1838,7 @@ export const EventLocation = /*@__PURE__*/ S.suspend(() =>
 export type EncryptedUserIdSourceEnum =
   | "ENCRYPTION_SOURCE_UNSPECIFIED"
   | "AD_SERVING"
-  | "DATA_TRANSFER"
-  | (string & {});
+  | "DATA_TRANSFER";
 export const EncryptedUserIdSourceEnum = /*@__PURE__*/ S.String;
 
 export type EncryptedUserIdEntityTypeEnum =
@@ -1891,8 +1848,7 @@ export type EncryptedUserIdEntityTypeEnum =
   | "DISPLAY_VIDEO_PARTNER"
   | "DISPLAY_VIDEO_ADVERTISER"
   | "GOOGLE_ADS_CUSTOMER"
-  | "GOOGLE_AD_MANAGER_NETWORK_CODE"
-  | (string & {});
+  | "GOOGLE_AD_MANAGER_NETWORK_CODE";
 export const EncryptedUserIdEntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** A user identifier issued to be used for attribution. All fields are required if this is used. */
@@ -1917,7 +1873,7 @@ export const EncryptedUserId = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptedUserId",
 }) as any as S.Schema<EncryptedUserId>;
 
-export type EncryptedUserIdList = EncryptedUserId[];
+export type EncryptedUserIdList = ReadonlyArray<EncryptedUserId>;
 export const EncryptedUserIdList = /*@__PURE__*/ S.Array(
   EncryptedUserId,
 ) as any as S.Schema<EncryptedUserIdList>;
@@ -1976,7 +1932,7 @@ export const ExperimentalField = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentalField",
 }) as any as S.Schema<ExperimentalField>;
 
-export type ExperimentalFieldList = ExperimentalField[];
+export type ExperimentalFieldList = ReadonlyArray<ExperimentalField>;
 export const ExperimentalFieldList = /*@__PURE__*/ S.Array(
   ExperimentalField,
 ) as any as S.Schema<ExperimentalFieldList>;
@@ -2058,7 +2014,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
-export type EventList = Event[];
+export type EventList = ReadonlyArray<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -2066,8 +2022,7 @@ export const EventList = /*@__PURE__*/ S.Array(
 export type IngestEventsRequestEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "HEX"
-  | "BASE64"
-  | (string & {});
+  | "BASE64";
 export const IngestEventsRequestEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Request to upload audience members to the provided destinations. Returns an IngestEventsResponse. */
@@ -2157,7 +2112,7 @@ export const ListAccountTypesAccountsUserListDirectLicensesRequest =
     identifier: "ListAccountTypesAccountsUserListDirectLicensesRequest",
   }) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
 
-export type UserListDirectLicenseList = UserListDirectLicense[];
+export type UserListDirectLicenseList = ReadonlyArray<UserListDirectLicense>;
 export const UserListDirectLicenseList = /*@__PURE__*/ S.Array(
   UserListDirectLicense,
 ) as any as S.Schema<UserListDirectLicenseList>;
@@ -2206,7 +2161,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesRequest =
     identifier: "ListAccountTypesAccountsUserListGlobalLicensesRequest",
   }) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
 
-export type UserListGlobalLicenseList = UserListGlobalLicense[];
+export type UserListGlobalLicenseList = ReadonlyArray<UserListGlobalLicense>;
 export const UserListGlobalLicenseList = /*@__PURE__*/ S.Array(
   UserListGlobalLicense,
 ) as any as S.Schema<UserListGlobalLicenseList>;
@@ -2261,8 +2216,7 @@ export type UserListGlobalLicenseCustomerInfoClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
-  | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK"
-  | (string & {});
+  | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
 export const UserListGlobalLicenseCustomerInfoClientAccountTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2270,16 +2224,14 @@ export type UserListGlobalLicenseCustomerInfoLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
-  | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE"
-  | (string & {});
+  | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
 export const UserListGlobalLicenseCustomerInfoLicenseTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type UserListGlobalLicenseCustomerInfoStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
-  | "USER_LIST_LICENSE_STATUS_DISABLED"
-  | (string & {});
+  | "USER_LIST_LICENSE_STATUS_DISABLED";
 export const UserListGlobalLicenseCustomerInfoStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2329,7 +2281,7 @@ export const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListGlobalLicenseCustomerInfo>;
 
 export type UserListGlobalLicenseCustomerInfoList =
-  UserListGlobalLicenseCustomerInfo[];
+  ReadonlyArray<UserListGlobalLicenseCustomerInfo>;
 export const UserListGlobalLicenseCustomerInfoList = /*@__PURE__*/ S.Array(
   UserListGlobalLicenseCustomerInfo,
 ) as any as S.Schema<UserListGlobalLicenseCustomerInfoList>;
@@ -2381,7 +2333,7 @@ export const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountTypesAccountsUserListsRequest",
 }) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>;
 
-export type UserListList = UserList[];
+export type UserListList = ReadonlyArray<UserList>;
 export const UserListList = /*@__PURE__*/ S.Array(
   UserList,
 ) as any as S.Schema<UserListList>;
@@ -2483,8 +2435,7 @@ export const PatchAccountTypesAccountsUserListsRequest =
 export type RemoveAudienceMembersRequestEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "HEX"
-  | "BASE64"
-  | (string & {});
+  | "BASE64";
 export const RemoveAudienceMembersRequestEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Request to remove users from an audience in the provided destinations. Returns a RemoveAudienceMembersResponse. */
@@ -2614,8 +2565,7 @@ export type MarketingDataInsightsAttributeAgeRangeEnum =
   | "AGE_RANGE_35_44"
   | "AGE_RANGE_45_54"
   | "AGE_RANGE_55_64"
-  | "AGE_RANGE_65_UP"
-  | (string & {});
+  | "AGE_RANGE_65_UP";
 export const MarketingDataInsightsAttributeAgeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2623,8 +2573,7 @@ export type MarketingDataInsightsAttributeGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_UNKNOWN"
   | "GENDER_MALE"
-  | "GENDER_FEMALE"
-  | (string & {});
+  | "GENDER_FEMALE";
 export const MarketingDataInsightsAttributeGenderEnum = /*@__PURE__*/ S.String;
 
 /** Insights for a collection of related attributes of the same dimension. */
@@ -2650,7 +2599,7 @@ export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketingDataInsightsAttribute>;
 
 export type MarketingDataInsightsAttributeList =
-  MarketingDataInsightsAttribute[];
+  ReadonlyArray<MarketingDataInsightsAttribute>;
 export const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
   MarketingDataInsightsAttribute,
 ) as any as S.Schema<MarketingDataInsightsAttributeList>;
@@ -2661,8 +2610,7 @@ export type MarketingDataInsightDimensionEnum =
   | "AFFINITY_USER_INTEREST"
   | "IN_MARKET_USER_INTEREST"
   | "AGE_RANGE"
-  | "GENDER"
-  | (string & {});
+  | "GENDER";
 export const MarketingDataInsightDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Insights for marketing data. This feature is only available to data partners. */
@@ -2681,7 +2629,7 @@ export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingDataInsight",
 }) as any as S.Schema<MarketingDataInsight>;
 
-export type MarketingDataInsightList = MarketingDataInsight[];
+export type MarketingDataInsightList = ReadonlyArray<MarketingDataInsight>;
 export const MarketingDataInsightList = /*@__PURE__*/ S.Array(
   MarketingDataInsight,
 ) as any as S.Schema<MarketingDataInsightList>;
@@ -2783,8 +2731,7 @@ export type DataTypeCountTypeEnum =
   | "EMAIL"
   | "PHONE_NUMBER"
   | "ADDRESS"
-  | "IP_ADDRESS"
-  | (string & {});
+  | "IP_ADDRESS";
 export const DataTypeCountTypeEnum = /*@__PURE__*/ S.String;
 
 /** The count for a specific data type. */
@@ -2801,7 +2748,7 @@ export const DataTypeCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTypeCount" }) as any as S.Schema<DataTypeCount>;
 
-export type DataTypeCountList = DataTypeCount[];
+export type DataTypeCountList = ReadonlyArray<DataTypeCount>;
 export const DataTypeCountList = /*@__PURE__*/ S.Array(
   DataTypeCount,
 ) as any as S.Schema<DataTypeCountList>;
@@ -2909,8 +2856,7 @@ export type IngestCompositeDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_61_TO_70"
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
-  | "MATCH_RATE_RANGE_91_TO_100"
-  | (string & {});
+  | "MATCH_RATE_RANGE_91_TO_100";
 export const IngestCompositeDataStatusUploadMatchRateRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2994,8 +2940,7 @@ export type IngestUserDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_61_TO_70"
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
-  | "MATCH_RATE_RANGE_91_TO_100"
-  | (string & {});
+  | "MATCH_RATE_RANGE_91_TO_100";
 export const IngestUserDataStatusUploadMatchRateRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3093,8 +3038,7 @@ export type ErrorCountReasonEnum =
   | "PROCESSING_ERROR_REASON_INVALID_CLICK"
   | "PROCESSING_ERROR_REASON_INVALID_OPERATING_ACCOUNT_FOR_CLICK"
   | "PROCESSING_ERROR_REASON_CLICK_NOT_FOUND"
-  | "PROCESSING_ERROR_REASON_EXTERNAL_ATTRIBUTION_DATA_MISSING"
-  | (string & {});
+  | "PROCESSING_ERROR_REASON_EXTERNAL_ATTRIBUTION_DATA_MISSING";
 export const ErrorCountReasonEnum = /*@__PURE__*/ S.String;
 
 /** The error count for a given error reason. */
@@ -3111,7 +3055,7 @@ export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
 
-export type ErrorCountList = ErrorCount[];
+export type ErrorCountList = ReadonlyArray<ErrorCount>;
 export const ErrorCountList = /*@__PURE__*/ S.Array(
   ErrorCount,
 ) as any as S.Schema<ErrorCountList>;
@@ -3137,8 +3081,7 @@ export type WarningCountReasonEnum =
   | "PROCESSING_WARNING_REASON_INVALID_KEK"
   | "PROCESSING_WARNING_REASON_USER_IDENTIFIER_DECRYPTION_ERROR"
   | "PROCESSING_WARNING_REASON_INTERNAL_ERROR"
-  | "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED"
-  | (string & {});
+  | "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED";
 export const WarningCountReasonEnum = /*@__PURE__*/ S.String;
 
 /** The warning count for a given warning reason. */
@@ -3155,7 +3098,7 @@ export const WarningCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WarningCount" }) as any as S.Schema<WarningCount>;
 
-export type WarningCountList = WarningCount[];
+export type WarningCountList = ReadonlyArray<WarningCount>;
 export const WarningCountList = /*@__PURE__*/ S.Array(
   WarningCount,
 ) as any as S.Schema<WarningCountList>;
@@ -3176,8 +3119,7 @@ export type RequestStatusPerDestinationRequestStatusEnum =
   | "SUCCESS"
   | "PROCESSING"
   | "FAILED"
-  | "PARTIAL_SUCCESS"
-  | (string & {});
+  | "PARTIAL_SUCCESS";
 export const RequestStatusPerDestinationRequestStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3212,7 +3154,8 @@ export const RequestStatusPerDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestStatusPerDestination",
 }) as any as S.Schema<RequestStatusPerDestination>;
 
-export type RequestStatusPerDestinationList = RequestStatusPerDestination[];
+export type RequestStatusPerDestinationList =
+  ReadonlyArray<RequestStatusPerDestination>;
 export const RequestStatusPerDestinationList = /*@__PURE__*/ S.Array(
   RequestStatusPerDestination,
 ) as any as S.Schema<RequestStatusPerDestinationList>;
@@ -3258,7 +3201,7 @@ export const SearchAccountTypesAccountsPartnerLinksRequest =
     identifier: "SearchAccountTypesAccountsPartnerLinksRequest",
   }) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
 
-export type PartnerLinkList = PartnerLink[];
+export type PartnerLinkList = ReadonlyArray<PartnerLink>;
 export const PartnerLinkList = /*@__PURE__*/ S.Array(
   PartnerLink,
 ) as any as S.Schema<PartnerLinkList>;

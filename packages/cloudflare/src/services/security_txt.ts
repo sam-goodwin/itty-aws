@@ -81,32 +81,32 @@ export const GetSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSecurityTxtRequest",
 }) as any as S.Schema<GetSecurityTxtRequest>;
 
-export type GetResponseAcknowledgmentsList = string[];
+export type GetResponseAcknowledgmentsList = ReadonlyArray<string>;
 export const GetResponseAcknowledgmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseAcknowledgmentsList>;
 
-export type GetResponseCanonicalList = string[];
+export type GetResponseCanonicalList = ReadonlyArray<string>;
 export const GetResponseCanonicalList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseCanonicalList>;
 
-export type GetResponseContactList = string[];
+export type GetResponseContactList = ReadonlyArray<string>;
 export const GetResponseContactList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseContactList>;
 
-export type GetResponseEncryptionList = string[];
+export type GetResponseEncryptionList = ReadonlyArray<string>;
 export const GetResponseEncryptionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseEncryptionList>;
 
-export type GetResponseHiringList = string[];
+export type GetResponseHiringList = ReadonlyArray<string>;
 export const GetResponseHiringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHiringList>;
 
-export type GetResponsePolicyList = string[];
+export type GetResponsePolicyList = ReadonlyArray<string>;
 export const GetResponsePolicyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePolicyList>;
@@ -148,32 +148,32 @@ export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSecurityTxtResponse",
 }) as any as S.Schema<GetSecurityTxtResponse>;
 
-export type UpdateRequestAcknowledgmentsList = string[];
+export type UpdateRequestAcknowledgmentsList = ReadonlyArray<string>;
 export const UpdateRequestAcknowledgmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestAcknowledgmentsList>;
 
-export type UpdateRequestCanonicalList = string[];
+export type UpdateRequestCanonicalList = ReadonlyArray<string>;
 export const UpdateRequestCanonicalList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestCanonicalList>;
 
-export type UpdateRequestContactList = string[];
+export type UpdateRequestContactList = ReadonlyArray<string>;
 export const UpdateRequestContactList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestContactList>;
 
-export type UpdateRequestEncryptionList = string[];
+export type UpdateRequestEncryptionList = ReadonlyArray<string>;
 export const UpdateRequestEncryptionList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestEncryptionList>;
 
-export type UpdateRequestHiringList = string[];
+export type UpdateRequestHiringList = ReadonlyArray<string>;
 export const UpdateRequestHiringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestHiringList>;
 
-export type UpdateRequestPolicyList = string[];
+export type UpdateRequestPolicyList = ReadonlyArray<string>;
 export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestPolicyList>;

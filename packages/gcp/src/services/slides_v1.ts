@@ -96,16 +96,11 @@ export const DuplicateObjectRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdatePageElementTransformRequestApplyModeEnum =
   | "APPLY_MODE_UNSPECIFIED"
   | "RELATIVE"
-  | "ABSOLUTE"
-  | (string & {});
+  | "ABSOLUTE";
 export const UpdatePageElementTransformRequestApplyModeEnum =
   /*@__PURE__*/ S.String;
 
-export type AffineTransformUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "EMU"
-  | "PT"
-  | (string & {});
+export type AffineTransformUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
 export const AffineTransformUnitEnum = /*@__PURE__*/ S.String;
 
 /** AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements. */
@@ -158,11 +153,7 @@ export const UpdatePageElementTransformRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePageElementTransformRequest",
 }) as any as S.Schema<UpdatePageElementTransformRequest>;
 
-export type DimensionUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "EMU"
-  | "PT"
-  | (string & {});
+export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
 export const DimensionUnitEnum = /*@__PURE__*/ S.String;
 
 /** A magnitude in a single direction in the specified units. */
@@ -214,8 +205,7 @@ export const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateSheetsChartRequestLinkingModeEnum =
   | "NOT_LINKED_IMAGE"
-  | "LINKED"
-  | (string & {});
+  | "LINKED";
 export const CreateSheetsChartRequestLinkingModeEnum = /*@__PURE__*/ S.String;
 
 /** Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes. */
@@ -246,8 +236,7 @@ export const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
 export type TableCellBackgroundFillPropertyStateEnum =
   | "RENDERED"
   | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+  | "INHERIT";
 export const TableCellBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
 export type OpaqueColorThemeColorEnum =
@@ -267,8 +256,7 @@ export type OpaqueColorThemeColorEnum =
   | "TEXT1"
   | "BACKGROUND1"
   | "TEXT2"
-  | "BACKGROUND2"
-  | (string & {});
+  | "BACKGROUND2";
 export const OpaqueColorThemeColorEnum = /*@__PURE__*/ S.String;
 
 /** An RGB color. */
@@ -337,8 +325,7 @@ export type TableCellPropertiesContentAlignmentEnum =
   | "CONTENT_ALIGNMENT_UNSUPPORTED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const TableCellPropertiesContentAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The properties of the TableCell. */
@@ -415,8 +402,7 @@ export const UpdateTableCellPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReplaceImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
   | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
+  | "CENTER_CROP";
 export const ReplaceImageRequestImageReplaceMethodEnum = /*@__PURE__*/ S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image. */
@@ -438,7 +424,7 @@ export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplaceImageRequest",
 }) as any as S.Schema<ReplaceImageRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -476,7 +462,7 @@ export const ColorStop = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColorStop" }) as any as S.Schema<ColorStop>;
 
-export type ColorStopList = ColorStop[];
+export type ColorStopList = ReadonlyArray<ColorStop>;
 export const ColorStopList = /*@__PURE__*/ S.Array(
   ColorStop,
 ) as any as S.Schema<ColorStopList>;
@@ -506,8 +492,7 @@ export type RecolorNameEnum =
   | "GRAYSCALE"
   | "NEGATIVE"
   | "SEPIA"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const RecolorNameEnum = /*@__PURE__*/ S.String;
 
 /** A recolor effect applied on an image. */
@@ -524,10 +509,7 @@ export const Recolor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recolor" }) as any as S.Schema<Recolor>;
 
-export type ShadowTypeEnum =
-  | "SHADOW_TYPE_UNSPECIFIED"
-  | "OUTER"
-  | (string & {});
+export type ShadowTypeEnum = "SHADOW_TYPE_UNSPECIFIED" | "OUTER";
 export const ShadowTypeEnum = /*@__PURE__*/ S.String;
 
 export type ShadowAlignmentEnum =
@@ -540,15 +522,10 @@ export type ShadowAlignmentEnum =
   | "RIGHT_CENTER"
   | "BOTTOM_LEFT"
   | "BOTTOM_CENTER"
-  | "BOTTOM_RIGHT"
-  | (string & {});
+  | "BOTTOM_RIGHT";
 export const ShadowAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type ShadowPropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type ShadowPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const ShadowPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The shadow properties of a page element. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
@@ -624,15 +601,10 @@ export type OutlineDashStyleEnum =
   | "DASH"
   | "DASH_DOT"
   | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+  | "LONG_DASH_DOT";
 export const OutlineDashStyleEnum = /*@__PURE__*/ S.String;
 
-export type OutlinePropertyStateEnum =
-  | "RENDERED"
-  | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+export type OutlinePropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
 export const OutlinePropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
@@ -660,8 +632,7 @@ export type LinkRelativeLinkEnum =
   | "NEXT_SLIDE"
   | "PREVIOUS_SLIDE"
   | "FIRST_SLIDE"
-  | "LAST_SLIDE"
-  | (string & {});
+  | "LAST_SLIDE";
 export const LinkRelativeLinkEnum = /*@__PURE__*/ S.String;
 
 /** A hypertext link. */
@@ -793,8 +764,7 @@ export type CreateParagraphBulletsRequestBulletPresetEnum =
   | "NUMBERED_DIGIT_NESTED"
   | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
   | "NUMBERED_UPPERROMAN_UPPERALPHA_DIGIT"
-  | "NUMBERED_ZERODIGIT_ALPHA_ROMAN"
-  | (string & {});
+  | "NUMBERED_ZERODIGIT_ALPHA_ROMAN";
 export const CreateParagraphBulletsRequestBulletPresetEnum =
   /*@__PURE__*/ S.String;
 
@@ -802,8 +772,7 @@ export type RangeTypeEnum =
   | "RANGE_TYPE_UNSPECIFIED"
   | "FIXED_RANGE"
   | "FROM_START_INDEX"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const RangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies a contiguous range of an indexed collection, such as characters in text. */
@@ -900,8 +869,7 @@ export type TextStyleBaselineOffsetEnum =
   | "BASELINE_OFFSET_UNSPECIFIED"
   | "NONE"
   | "SUPERSCRIPT"
-  | "SUBSCRIPT"
-  | (string & {});
+  | "SUBSCRIPT";
 export const TextStyleBaselineOffsetEnum = /*@__PURE__*/ S.String;
 
 /** Represents a font family and weight used to style a TextRun. */
@@ -1003,8 +971,7 @@ export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
 export type PageBackgroundFillPropertyStateEnum =
   | "RENDERED"
   | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+  | "INHERIT";
 export const PageBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The stretched picture fill. The page or page element is filled entirely with the specified picture. The picture is stretched to fit its container. */
@@ -1059,8 +1026,7 @@ export type ThemeColorPairTypeEnum =
   | "TEXT1"
   | "BACKGROUND1"
   | "TEXT2"
-  | "BACKGROUND2"
-  | (string & {});
+  | "BACKGROUND2";
 export const ThemeColorPairTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pair mapping a theme color type to the concrete color it represents. */
@@ -1077,7 +1043,7 @@ export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
-export type ThemeColorPairList = ThemeColorPair[];
+export type ThemeColorPairList = ReadonlyArray<ThemeColorPair>;
 export const ThemeColorPairList = /*@__PURE__*/ S.Array(
   ThemeColorPair,
 ) as any as S.Schema<ThemeColorPairList>;
@@ -1203,8 +1169,7 @@ export const GroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ParagraphStyleDirectionEnum =
   | "TEXT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT"
-  | (string & {});
+  | "RIGHT_TO_LEFT";
 export const ParagraphStyleDirectionEnum = /*@__PURE__*/ S.String;
 
 export type ParagraphStyleAlignmentEnum =
@@ -1212,15 +1177,13 @@ export type ParagraphStyleAlignmentEnum =
   | "START"
   | "CENTER"
   | "END"
-  | "JUSTIFIED"
-  | (string & {});
+  | "JUSTIFIED";
 export const ParagraphStyleAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type ParagraphStyleSpacingModeEnum =
   | "SPACING_MODE_UNSPECIFIED"
   | "NEVER_COLLAPSE"
-  | "COLLAPSE_LISTS"
-  | (string & {});
+  | "COLLAPSE_LISTS";
 export const ParagraphStyleSpacingModeEnum = /*@__PURE__*/ S.String;
 
 /** Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent. Which paragraph styles are inherited depend on the nesting level of lists: * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0 nesting level of the list inside the parent placeholder. * A paragraph in a list will inherit its paragraph style from the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited paragraph styles are represented as unset fields in this message. */
@@ -1377,15 +1340,13 @@ export type ShapePropertiesContentAlignmentEnum =
   | "CONTENT_ALIGNMENT_UNSUPPORTED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const ShapePropertiesContentAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type ShapeBackgroundFillPropertyStateEnum =
   | "RENDERED"
   | "NOT_RENDERED"
-  | "INHERIT"
-  | (string & {});
+  | "INHERIT";
 export const ShapeBackgroundFillPropertyStateEnum = /*@__PURE__*/ S.String;
 
 /** The shape background fill. */
@@ -1408,8 +1369,7 @@ export type AutofitAutofitTypeEnum =
   | "AUTOFIT_TYPE_UNSPECIFIED"
   | "NONE"
   | "TEXT_AUTOFIT"
-  | "SHAPE_AUTOFIT"
-  | (string & {});
+  | "SHAPE_AUTOFIT";
 export const AutofitAutofitTypeEnum = /*@__PURE__*/ S.String;
 
 /** The autofit properties of a Shape. This property is only set for shapes that allow text. */
@@ -1495,7 +1455,7 @@ export const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateImageRequest",
 }) as any as S.Schema<CreateImageRequest>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1535,19 +1495,14 @@ export const UpdateTableRowPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTableRowPropertiesRequest",
 }) as any as S.Schema<UpdateTableRowPropertiesRequest>;
 
-export type CreateLineRequestLineCategoryEnum =
-  | "STRAIGHT"
-  | "BENT"
-  | "CURVED"
-  | (string & {});
+export type CreateLineRequestLineCategoryEnum = "STRAIGHT" | "BENT" | "CURVED";
 export const CreateLineRequestLineCategoryEnum = /*@__PURE__*/ S.String;
 
 export type CreateLineRequestCategoryEnum =
   | "LINE_CATEGORY_UNSPECIFIED"
   | "STRAIGHT"
   | "BENT"
-  | "CURVED"
-  | (string & {});
+  | "CURVED";
 export const CreateLineRequestCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Creates a line. */
@@ -1601,8 +1556,7 @@ export type LinePropertiesDashStyleEnum =
   | "DASH"
   | "DASH_DOT"
   | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+  | "LONG_DASH_DOT";
 export const LinePropertiesDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** The properties for one end of a Line connection. */
@@ -1630,8 +1584,7 @@ export type LinePropertiesStartArrowEnum =
   | "OPEN_ARROW"
   | "OPEN_CIRCLE"
   | "OPEN_SQUARE"
-  | "OPEN_DIAMOND"
-  | (string & {});
+  | "OPEN_DIAMOND";
 export const LinePropertiesStartArrowEnum = /*@__PURE__*/ S.String;
 
 export type LinePropertiesEndArrowEnum =
@@ -1645,8 +1598,7 @@ export type LinePropertiesEndArrowEnum =
   | "OPEN_ARROW"
   | "OPEN_CIRCLE"
   | "OPEN_SQUARE"
-  | "OPEN_DIAMOND"
-  | (string & {});
+  | "OPEN_DIAMOND";
 export const LinePropertiesEndArrowEnum = /*@__PURE__*/ S.String;
 
 /** The fill of the line. */
@@ -1720,8 +1672,7 @@ export type UpdateTableBorderPropertiesRequestBorderPositionEnum =
   | "LEFT"
   | "OUTER"
   | "RIGHT"
-  | "TOP"
-  | (string & {});
+  | "TOP";
 export const UpdateTableBorderPropertiesRequestBorderPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1732,8 +1683,7 @@ export type TableBorderPropertiesDashStyleEnum =
   | "DASH"
   | "DASH_DOT"
   | "LONG_DASH"
-  | "LONG_DASH_DOT"
-  | (string & {});
+  | "LONG_DASH_DOT";
 export const TableBorderPropertiesDashStyleEnum = /*@__PURE__*/ S.String;
 
 /** The fill of the border. */
@@ -1800,8 +1750,7 @@ export type PagePageTypeEnum =
   | "MASTER"
   | "LAYOUT"
   | "NOTES"
-  | "NOTES_MASTER"
-  | (string & {});
+  | "NOTES_MASTER";
 export const PagePageTypeEnum = /*@__PURE__*/ S.String;
 
 /** The properties of Page are only relevant for pages with page_type LAYOUT. */
@@ -1849,11 +1798,7 @@ export const NotesProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotesProperties",
 }) as any as S.Schema<NotesProperties>;
 
-export type VideoSourceEnum =
-  | "SOURCE_UNSPECIFIED"
-  | "YOUTUBE"
-  | "DRIVE"
-  | (string & {});
+export type VideoSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
 export const VideoSourceEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a video. */
@@ -1887,16 +1832,14 @@ export type LineLineTypeEnum =
   | "CURVED_CONNECTOR_3"
   | "CURVED_CONNECTOR_4"
   | "CURVED_CONNECTOR_5"
-  | "STRAIGHT_LINE"
-  | (string & {});
+  | "STRAIGHT_LINE";
 export const LineLineTypeEnum = /*@__PURE__*/ S.String;
 
 export type LineLineCategoryEnum =
   | "LINE_CATEGORY_UNSPECIFIED"
   | "STRAIGHT"
   | "BENT"
-  | "CURVED"
-  | (string & {});
+  | "CURVED";
 export const LineLineCategoryEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector. */
@@ -1933,8 +1876,7 @@ export type PlaceholderTypeEnum =
   | "SUBTITLE"
   | "TABLE"
   | "TITLE"
-  | "SLIDE_IMAGE"
-  | (string & {});
+  | "SLIDE_IMAGE";
 export const PlaceholderTypeEnum = /*@__PURE__*/ S.String;
 
 /** The placeholder information that uniquely identifies a placeholder shape. */
@@ -1974,10 +1916,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type AutoTextTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SLIDE_NUMBER"
-  | (string & {});
+export type AutoTextTypeEnum = "TYPE_UNSPECIFIED" | "SLIDE_NUMBER";
 export const AutoTextTypeEnum = /*@__PURE__*/ S.String;
 
 /** A TextElement kind that represents auto text. */
@@ -2070,7 +2009,7 @@ export const TextElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextElement" }) as any as S.Schema<TextElement>;
 
-export type TextElementList = TextElement[];
+export type TextElementList = ReadonlyArray<TextElement>;
 export const TextElementList = /*@__PURE__*/ S.Array(
   TextElement,
 ) as any as S.Schema<TextElementList>;
@@ -2269,8 +2208,7 @@ export type ShapeShapeTypeEnum =
   | "ELLIPSE_RIBBON"
   | "ELLIPSE_RIBBON_2"
   | "CLOUD_CALLOUT"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const ShapeShapeTypeEnum = /*@__PURE__*/ S.String;
 
 /** A PageElement kind representing a generic shape that doesn't have a more specific classification. For more information, see [Size and position page elements](https://developers.google.com/workspace/slides/api/guides/transform). */
@@ -2390,7 +2328,7 @@ export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableColumnProperties",
 }) as any as S.Schema<TableColumnProperties>;
 
-export type TableColumnPropertiesList = TableColumnProperties[];
+export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
 export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
@@ -2411,7 +2349,7 @@ export const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableBorderCell",
 }) as any as S.Schema<TableBorderCell>;
 
-export type TableBorderCellList = TableBorderCell[];
+export type TableBorderCellList = ReadonlyArray<TableBorderCell>;
 export const TableBorderCellList = /*@__PURE__*/ S.Array(
   TableBorderCell,
 ) as any as S.Schema<TableBorderCellList>;
@@ -2427,7 +2365,7 @@ export const TableBorderRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableBorderRow" }) as any as S.Schema<TableBorderRow>;
 
-export type TableBorderRowList = TableBorderRow[];
+export type TableBorderRowList = ReadonlyArray<TableBorderRow>;
 export const TableBorderRowList = /*@__PURE__*/ S.Array(
   TableBorderRow,
 ) as any as S.Schema<TableBorderRowList>;
@@ -2455,7 +2393,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
-export type TableCellList = TableCell[];
+export type TableCellList = ReadonlyArray<TableCell>;
 export const TableCellList = /*@__PURE__*/ S.Array(
   TableCell,
 ) as any as S.Schema<TableCellList>;
@@ -2477,7 +2415,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
-export type TableRowList = TableRow[];
+export type TableRowList = ReadonlyArray<TableRow>;
 export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
@@ -2558,7 +2496,7 @@ export const PageElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PageElement" }) as any as S.Schema<PageElement>;
 
-export type PageElementList = PageElement[];
+export type PageElementList = ReadonlyArray<PageElement>;
 export const PageElementList = /*@__PURE__*/ S.Array(
   PageElement,
 ) as any as S.Schema<PageElementList>;
@@ -2641,16 +2579,14 @@ export const UpdateSlidePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplaceAllShapesWithImageRequestReplaceMethodEnum =
   | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
+  | "CENTER_CROP";
 export const ReplaceAllShapesWithImageRequestReplaceMethodEnum =
   /*@__PURE__*/ S.String;
 
 export type ReplaceAllShapesWithImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
   | "CENTER_INSIDE"
-  | "CENTER_CROP"
-  | (string & {});
+  | "CENTER_CROP";
 export const ReplaceAllShapesWithImageRequestImageReplaceMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2685,8 +2621,7 @@ export const ReplaceAllShapesWithImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum =
   | "NOT_LINKED_IMAGE"
-  | "LINKED"
-  | (string & {});
+  | "LINKED";
 export const ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2722,8 +2657,7 @@ export type UpdateLineCategoryRequestLineCategoryEnum =
   | "LINE_CATEGORY_UNSPECIFIED"
   | "STRAIGHT"
   | "BENT"
-  | "CURVED"
-  | (string & {});
+  | "CURVED";
 export const UpdateLineCategoryRequestLineCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Updates the category of a line. */
@@ -2745,8 +2679,7 @@ export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateVideoRequestSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "YOUTUBE"
-  | "DRIVE"
-  | (string & {});
+  | "DRIVE";
 export const CreateVideoRequestSourceEnum = /*@__PURE__*/ S.String;
 
 /** Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive, drive.readonly, or drive.file OAuth scopes. */
@@ -2783,8 +2716,7 @@ export type LayoutReferencePredefinedLayoutEnum =
   | "SECTION_TITLE_AND_DESCRIPTION"
   | "ONE_COLUMN_TEXT"
   | "MAIN_POINT"
-  | "BIG_NUMBER"
-  | (string & {});
+  | "BIG_NUMBER";
 export const LayoutReferencePredefinedLayoutEnum = /*@__PURE__*/ S.String;
 
 /** Slide layout reference. This may reference either: - A predefined layout - One of the layouts in the presentation. */
@@ -2822,7 +2754,8 @@ export const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "LayoutPlaceholderIdMapping",
 }) as any as S.Schema<LayoutPlaceholderIdMapping>;
 
-export type LayoutPlaceholderIdMappingList = LayoutPlaceholderIdMapping[];
+export type LayoutPlaceholderIdMappingList =
+  ReadonlyArray<LayoutPlaceholderIdMapping>;
 export const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(
   LayoutPlaceholderIdMapping,
 ) as any as S.Schema<LayoutPlaceholderIdMappingList>;
@@ -2917,8 +2850,7 @@ export type UpdatePageElementsZOrderRequestOperationEnum =
   | "BRING_TO_FRONT"
   | "BRING_FORWARD"
   | "SEND_BACKWARD"
-  | "SEND_TO_BACK"
-  | (string & {});
+  | "SEND_TO_BACK";
 export const UpdatePageElementsZOrderRequestOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -3081,8 +3013,7 @@ export type CreateShapeRequestShapeTypeEnum =
   | "ELLIPSE_RIBBON"
   | "ELLIPSE_RIBBON_2"
   | "CLOUD_CALLOUT"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const CreateShapeRequestShapeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creates a new shape. */
@@ -3287,7 +3218,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = Request[];
+export type RequestList = ReadonlyArray<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -3532,7 +3463,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = Response[];
+export type ResponseList = ReadonlyArray<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -3556,7 +3487,7 @@ export const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdatePresentationResponse",
 }) as any as S.Schema<BatchUpdatePresentationResponse>;
 
-export type PageList = Page[];
+export type PageList = ReadonlyArray<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -3654,18 +3585,12 @@ export const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPresentationsPagesRequest>;
 
 export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
-  | "PNG"
-  | (string & {});
+  "PNG";
 export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
-    | "THUMBNAIL_SIZE_UNSPECIFIED"
-    | "LARGE"
-    | "MEDIUM"
-    | "SMALL"
-    | "WIDTH2000_PX"
-    | (string & {});
+  "THUMBNAIL_SIZE_UNSPECIFIED" | "LARGE" | "MEDIUM" | "SMALL" | "WIDTH2000_PX";
 export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum =
   /*@__PURE__*/ S.String;
 

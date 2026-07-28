@@ -127,8 +127,7 @@ export type CancelTestMatrixResponseTestStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const CancelTestMatrixResponseTestStateEnum = /*@__PURE__*/ S.String;
 
 /** Response containing the current state of the specified test matrix. */
@@ -152,8 +151,7 @@ export type SessionStateEventSessionStateEnum =
   | "EXPIRED"
   | "FINISHED"
   | "UNAVAILABLE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const SessionStateEventSessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A message encapsulating a series of Session states and the time that the DeviceSession first entered those states. */
@@ -175,7 +173,7 @@ export const SessionStateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionStateEvent",
 }) as any as S.Schema<SessionStateEvent>;
 
-export type SessionStateEventList = SessionStateEvent[];
+export type SessionStateEventList = ReadonlyArray<SessionStateEvent>;
 export const SessionStateEventList = /*@__PURE__*/ S.Array(
   SessionStateEvent,
 ) as any as S.Schema<SessionStateEventList>;
@@ -188,8 +186,7 @@ export type DeviceSessionStateEnum =
   | "EXPIRED"
   | "FINISHED"
   | "UNAVAILABLE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const DeviceSessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A single Android device. */
@@ -310,8 +307,7 @@ export type TestMatrixInvalidMatrixDetailsEnum =
   | "MATRIX_TOO_LARGE"
   | "TEST_QUOTA_EXCEEDED"
   | "SERVICE_NOT_ACTIVATED"
-  | "UNKNOWN_PERMISSION_ERROR"
-  | (string & {});
+  | "UNKNOWN_PERMISSION_ERROR";
 export const TestMatrixInvalidMatrixDetailsEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a file, used for user inputs. */
@@ -325,7 +321,7 @@ export const FileReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileReference" }) as any as S.Schema<FileReference>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -350,8 +346,7 @@ export const IosTestLoop = /*@__PURE__*/ S.suspend(() =>
 export type AndroidInstrumentationTestOrchestratorOptionEnum =
   | "ORCHESTRATOR_OPTION_UNSPECIFIED"
   | "USE_ORCHESTRATOR"
-  | "DO_NOT_USE_ORCHESTRATOR"
-  | (string & {});
+  | "DO_NOT_USE_ORCHESTRATOR";
 export const AndroidInstrumentationTestOrchestratorOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -379,7 +374,7 @@ export const SmartSharding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SmartSharding" }) as any as S.Schema<SmartSharding>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -397,7 +392,7 @@ export const TestTargetsForShard = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestTargetsForShard",
 }) as any as S.Schema<TestTargetsForShard>;
 
-export type TestTargetsForShardList = TestTargetsForShard[];
+export type TestTargetsForShardList = ReadonlyArray<TestTargetsForShard>;
 export const TestTargetsForShardList = /*@__PURE__*/ S.Array(
   TestTargetsForShard,
 ) as any as S.Schema<TestTargetsForShardList>;
@@ -430,7 +425,7 @@ export const ShardingOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShardingOption" }) as any as S.Schema<ShardingOption>;
 
-export type FileReferenceList = FileReference[];
+export type FileReferenceList = ReadonlyArray<FileReference>;
 export const FileReferenceList = /*@__PURE__*/ S.Array(
   FileReference,
 ) as any as S.Schema<FileReferenceList>;
@@ -515,7 +510,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentVariable",
 }) as any as S.Schema<EnvironmentVariable>;
 
-export type EnvironmentVariableList = EnvironmentVariable[];
+export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
 export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
@@ -589,7 +584,7 @@ export const DeviceFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceFile" }) as any as S.Schema<DeviceFile>;
 
-export type DeviceFileList = DeviceFile[];
+export type DeviceFileList = ReadonlyArray<DeviceFile>;
 export const DeviceFileList = /*@__PURE__*/ S.Array(
   DeviceFile,
 ) as any as S.Schema<DeviceFileList>;
@@ -608,7 +603,7 @@ export const Apk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
-export type ApkList = Apk[];
+export type ApkList = ReadonlyArray<Apk>;
 export const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
 
 /** A description of how to set up the Android device prior to running the test. */
@@ -675,8 +670,7 @@ export type RoboDirectiveActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "SINGLE_CLICK"
   | "ENTER_TEXT"
-  | "IGNORE"
-  | (string & {});
+  | "IGNORE";
 export const RoboDirectiveActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click. */
@@ -696,7 +690,7 @@ export const RoboDirective = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoboDirective" }) as any as S.Schema<RoboDirective>;
 
-export type RoboDirectiveList = RoboDirective[];
+export type RoboDirectiveList = ReadonlyArray<RoboDirective>;
 export const RoboDirectiveList = /*@__PURE__*/ S.Array(
   RoboDirective,
 ) as any as S.Schema<RoboDirectiveList>;
@@ -758,7 +752,7 @@ export const RoboStartingIntent = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoboStartingIntent",
 }) as any as S.Schema<RoboStartingIntent>;
 
-export type RoboStartingIntentList = RoboStartingIntent[];
+export type RoboStartingIntentList = ReadonlyArray<RoboStartingIntent>;
 export const RoboStartingIntentList = /*@__PURE__*/ S.Array(
   RoboStartingIntent,
 ) as any as S.Schema<RoboStartingIntentList>;
@@ -766,8 +760,7 @@ export const RoboStartingIntentList = /*@__PURE__*/ S.Array(
 export type AndroidRoboTestRoboModeEnum =
   | "ROBO_MODE_UNSPECIFIED"
   | "ROBO_VERSION_1"
-  | "ROBO_VERSION_2"
-  | (string & {});
+  | "ROBO_VERSION_2";
 export const AndroidRoboTestRoboModeEnum = /*@__PURE__*/ S.String;
 
 /** A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes. */
@@ -827,7 +820,7 @@ export const IosDeviceFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosDeviceFile" }) as any as S.Schema<IosDeviceFile>;
 
-export type IosDeviceFileList = IosDeviceFile[];
+export type IosDeviceFileList = ReadonlyArray<IosDeviceFile>;
 export const IosDeviceFileList = /*@__PURE__*/ S.Array(
   IosDeviceFile,
 ) as any as S.Schema<IosDeviceFileList>;
@@ -940,8 +933,7 @@ export type TestMatrixOutcomeSummaryEnum =
   | "SUCCESS"
   | "FAILURE"
   | "INCONCLUSIVE"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const TestMatrixOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 export type TestMatrixStateEnum =
@@ -955,8 +947,7 @@ export type TestMatrixStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const TestMatrixStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single error or issue with a matrix. */
@@ -975,12 +966,12 @@ export const MatrixErrorDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatrixErrorDetail",
 }) as any as S.Schema<MatrixErrorDetail>;
 
-export type MatrixErrorDetailList = MatrixErrorDetail[];
+export type MatrixErrorDetailList = ReadonlyArray<MatrixErrorDetail>;
 export const MatrixErrorDetailList = /*@__PURE__*/ S.Array(
   MatrixErrorDetail,
 ) as any as S.Schema<MatrixErrorDetailList>;
 
-export type AndroidDeviceList_ = AndroidDevice[];
+export type AndroidDeviceList_ = ReadonlyArray<AndroidDevice>;
 export const AndroidDeviceList_ = /*@__PURE__*/ S.Array(
   AndroidDevice,
 ) as any as S.Schema<AndroidDeviceList_>;
@@ -1038,7 +1029,7 @@ export const IosDevice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosDevice" }) as any as S.Schema<IosDevice>;
 
-export type IosDeviceList_ = IosDevice[];
+export type IosDeviceList_ = ReadonlyArray<IosDevice>;
 export const IosDeviceList_ = /*@__PURE__*/ S.Array(
   IosDevice,
 ) as any as S.Schema<IosDeviceList_>;
@@ -1152,8 +1143,7 @@ export type TestExecutionStateEnum =
   | "INCOMPATIBLE_ENVIRONMENT"
   | "INCOMPATIBLE_ARCHITECTURE"
   | "CANCELLED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const TestExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** The environment in which the test is run. */
@@ -1264,7 +1254,7 @@ export const TestExecution = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestExecution" }) as any as S.Schema<TestExecution>;
 
-export type TestExecutionList = TestExecution[];
+export type TestExecutionList = ReadonlyArray<TestExecution>;
 export const TestExecutionList = /*@__PURE__*/ S.Array(
   TestExecution,
 ) as any as S.Schema<TestExecutionList>;
@@ -1285,7 +1275,7 @@ export const ClientInfoDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClientInfoDetail",
 }) as any as S.Schema<ClientInfoDetail>;
 
-export type ClientInfoDetailList = ClientInfoDetail[];
+export type ClientInfoDetailList = ReadonlyArray<ClientInfoDetail>;
 export const ClientInfoDetailList = /*@__PURE__*/ S.Array(
   ClientInfoDetail,
 ) as any as S.Schema<ClientInfoDetailList>;
@@ -1414,7 +1404,7 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
-export type MetadataList = Metadata[];
+export type MetadataList = ReadonlyArray<Metadata>;
 export const MetadataList = /*@__PURE__*/ S.Array(
   Metadata,
 ) as any as S.Schema<MetadataList>;
@@ -1433,7 +1423,7 @@ export const UsesFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsesFeature" }) as any as S.Schema<UsesFeature>;
 
-export type UsesFeatureList = UsesFeature[];
+export type UsesFeatureList = ReadonlyArray<UsesFeature>;
 export const UsesFeatureList = /*@__PURE__*/ S.Array(
   UsesFeature,
 ) as any as S.Schema<UsesFeatureList>;
@@ -1454,7 +1444,7 @@ export const UsesPermissionTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsesPermissionTag",
 }) as any as S.Schema<UsesPermissionTag>;
 
-export type UsesPermissionTagList = UsesPermissionTag[];
+export type UsesPermissionTagList = ReadonlyArray<UsesPermissionTag>;
 export const UsesPermissionTagList = /*@__PURE__*/ S.Array(
   UsesPermissionTag,
 ) as any as S.Schema<UsesPermissionTagList>;
@@ -1476,7 +1466,7 @@ export const IntentFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntentFilter" }) as any as S.Schema<IntentFilter>;
 
-export type IntentFilterList = IntentFilter[];
+export type IntentFilterList = ReadonlyArray<IntentFilter>;
 export const IntentFilterList = /*@__PURE__*/ S.Array(
   IntentFilter,
 ) as any as S.Schema<IntentFilterList>;
@@ -1495,7 +1485,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1613,8 +1603,7 @@ export type GetTestEnvironmentCatalogEnvironmentTypeEnum =
   | "IOS"
   | "NETWORK_CONFIGURATION"
   | "PROVIDED_SOFTWARE"
-  | "DEVICE_IP_BLOCKS"
-  | (string & {});
+  | "DEVICE_IP_BLOCKS";
 export const GetTestEnvironmentCatalogEnvironmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1646,12 +1635,11 @@ export const GetTestEnvironmentCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AndroidModelAccessDeniedReasonsItemEnum =
   | "ACCESS_DENIED_REASON_UNSPECIFIED"
-  | "EULA_NOT_ACCEPTED"
-  | (string & {});
+  | "EULA_NOT_ACCEPTED";
 export const AndroidModelAccessDeniedReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type AndroidModelAccessDeniedReasonsItemEnumList =
-  AndroidModelAccessDeniedReasonsItemEnum[];
+  ReadonlyArray<AndroidModelAccessDeniedReasonsItemEnum>;
 export const AndroidModelAccessDeniedReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     AndroidModelAccessDeniedReasonsItemEnum,
@@ -1678,8 +1666,7 @@ export type PerAndroidVersionInfoDeviceCapacityEnum =
   | "DEVICE_CAPACITY_HIGH"
   | "DEVICE_CAPACITY_MEDIUM"
   | "DEVICE_CAPACITY_LOW"
-  | "DEVICE_CAPACITY_NONE"
-  | (string & {});
+  | "DEVICE_CAPACITY_NONE";
 export const PerAndroidVersionInfoDeviceCapacityEnum = /*@__PURE__*/ S.String;
 
 /** A version-specific information of an Android model. */
@@ -1704,7 +1691,7 @@ export const PerAndroidVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerAndroidVersionInfo",
 }) as any as S.Schema<PerAndroidVersionInfo>;
 
-export type PerAndroidVersionInfoList = PerAndroidVersionInfo[];
+export type PerAndroidVersionInfoList = ReadonlyArray<PerAndroidVersionInfo>;
 export const PerAndroidVersionInfoList = /*@__PURE__*/ S.Array(
   PerAndroidVersionInfo,
 ) as any as S.Schema<PerAndroidVersionInfoList>;
@@ -1717,16 +1704,14 @@ export type AndroidModelFormFactorEnum =
   | "TV"
   | "AUTOMOTIVE"
   | "DESKTOP"
-  | "XR"
-  | (string & {});
+  | "XR";
 export const AndroidModelFormFactorEnum = /*@__PURE__*/ S.String;
 
 export type AndroidModelFormEnum =
   | "DEVICE_FORM_UNSPECIFIED"
   | "VIRTUAL"
   | "PHYSICAL"
-  | "EMULATOR"
-  | (string & {});
+  | "EMULATOR";
 export const AndroidModelFormEnum = /*@__PURE__*/ S.String;
 
 /** Lab specific information for a device. */
@@ -1807,7 +1792,7 @@ export const AndroidModel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AndroidModel" }) as any as S.Schema<AndroidModel>;
 
-export type AndroidModelList = AndroidModel[];
+export type AndroidModelList = ReadonlyArray<AndroidModel>;
 export const AndroidModelList = /*@__PURE__*/ S.Array(
   AndroidModel,
 ) as any as S.Schema<AndroidModelList>;
@@ -1832,7 +1817,7 @@ export const Locale = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Locale" }) as any as S.Schema<Locale>;
 
-export type LocaleList = Locale[];
+export type LocaleList = ReadonlyArray<Locale>;
 export const LocaleList = /*@__PURE__*/ S.Array(
   Locale,
 ) as any as S.Schema<LocaleList>;
@@ -1854,7 +1839,7 @@ export const Orientation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Orientation" }) as any as S.Schema<Orientation>;
 
-export type OrientationList = Orientation[];
+export type OrientationList = ReadonlyArray<Orientation>;
 export const OrientationList = /*@__PURE__*/ S.Array(
   Orientation,
 ) as any as S.Schema<OrientationList>;
@@ -1935,7 +1920,7 @@ export const AndroidVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AndroidVersion" }) as any as S.Schema<AndroidVersion>;
 
-export type AndroidVersionList = AndroidVersion[];
+export type AndroidVersionList = ReadonlyArray<AndroidVersion>;
 export const AndroidVersionList = /*@__PURE__*/ S.Array(
   AndroidVersion,
 ) as any as S.Schema<AndroidVersionList>;
@@ -2000,7 +1985,7 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
 
-export type NetworkConfigurationList = NetworkConfiguration[];
+export type NetworkConfigurationList = ReadonlyArray<NetworkConfiguration>;
 export const NetworkConfigurationList = /*@__PURE__*/ S.Array(
   NetworkConfiguration,
 ) as any as S.Schema<NetworkConfigurationList>;
@@ -2020,8 +2005,7 @@ export type DeviceIpBlockFormEnum =
   | "DEVICE_FORM_UNSPECIFIED"
   | "VIRTUAL"
   | "PHYSICAL"
-  | "EMULATOR"
-  | (string & {});
+  | "EMULATOR";
 export const DeviceIpBlockFormEnum = /*@__PURE__*/ S.String;
 
 /** A single device IP block */
@@ -2041,7 +2025,7 @@ export const DeviceIpBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceIpBlock" }) as any as S.Schema<DeviceIpBlock>;
 
-export type DeviceIpBlockList = DeviceIpBlock[];
+export type DeviceIpBlockList = ReadonlyArray<DeviceIpBlock>;
 export const DeviceIpBlockList = /*@__PURE__*/ S.Array(
   DeviceIpBlock,
 ) as any as S.Schema<DeviceIpBlockList>;
@@ -2067,8 +2051,7 @@ export type IosModelFormFactorEnum =
   | "TV"
   | "AUTOMOTIVE"
   | "DESKTOP"
-  | "XR"
-  | (string & {});
+  | "XR";
 export const IosModelFormFactorEnum = /*@__PURE__*/ S.String;
 
 export type PerIosVersionInfoDeviceCapacityEnum =
@@ -2076,8 +2059,7 @@ export type PerIosVersionInfoDeviceCapacityEnum =
   | "DEVICE_CAPACITY_HIGH"
   | "DEVICE_CAPACITY_MEDIUM"
   | "DEVICE_CAPACITY_LOW"
-  | "DEVICE_CAPACITY_NONE"
-  | (string & {});
+  | "DEVICE_CAPACITY_NONE";
 export const PerIosVersionInfoDeviceCapacityEnum = /*@__PURE__*/ S.String;
 
 /** A version-specific information of an iOS model. */
@@ -2096,7 +2078,7 @@ export const PerIosVersionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerIosVersionInfo",
 }) as any as S.Schema<PerIosVersionInfo>;
 
-export type PerIosVersionInfoList = PerIosVersionInfo[];
+export type PerIosVersionInfoList = ReadonlyArray<PerIosVersionInfo>;
 export const PerIosVersionInfoList = /*@__PURE__*/ S.Array(
   PerIosVersionInfo,
 ) as any as S.Schema<PerIosVersionInfoList>;
@@ -2139,7 +2121,7 @@ export const IosModel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosModel" }) as any as S.Schema<IosModel>;
 
-export type IosModelList = IosModel[];
+export type IosModelList = ReadonlyArray<IosModel>;
 export const IosModelList = /*@__PURE__*/ S.Array(
   IosModel,
 ) as any as S.Schema<IosModelList>;
@@ -2158,7 +2140,7 @@ export const XcodeVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "XcodeVersion" }) as any as S.Schema<XcodeVersion>;
 
-export type XcodeVersionList = XcodeVersion[];
+export type XcodeVersionList = ReadonlyArray<XcodeVersion>;
 export const XcodeVersionList = /*@__PURE__*/ S.Array(
   XcodeVersion,
 ) as any as S.Schema<XcodeVersionList>;
@@ -2186,7 +2168,7 @@ export const IosVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IosVersion" }) as any as S.Schema<IosVersion>;
 
-export type IosVersionList = IosVersion[];
+export type IosVersionList = ReadonlyArray<IosVersion>;
 export const IosVersionList = /*@__PURE__*/ S.Array(
   IosVersion,
 ) as any as S.Schema<IosVersionList>;
@@ -2297,7 +2279,7 @@ export const ListProjectsDeviceSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDeviceSessionsRequest",
 }) as any as S.Schema<ListProjectsDeviceSessionsRequest>;
 
-export type DeviceSessionList = DeviceSession[];
+export type DeviceSessionList = ReadonlyArray<DeviceSession>;
 export const DeviceSessionList = /*@__PURE__*/ S.Array(
   DeviceSession,
 ) as any as S.Schema<DeviceSessionList>;

@@ -76,17 +76,16 @@ export type MediationReportSpecDimensionsItemEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const MediationReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
 export type MediationReportSpecDimensionsItemEnumList =
-  MediationReportSpecDimensionsItemEnum[];
+  ReadonlyArray<MediationReportSpecDimensionsItemEnum>;
 export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
   MediationReportSpecDimensionsItemEnum,
 ) as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
 
-export type StringList_ = string[];
+export type StringList_ = ReadonlyArray<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -118,8 +117,7 @@ export type MediationReportSpecDimensionFilterDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const MediationReportSpecDimensionFilterDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -140,7 +138,7 @@ export const MediationReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecDimensionFilter>;
 
 export type MediationReportSpecDimensionFilterList =
-  MediationReportSpecDimensionFilter[];
+  ReadonlyArray<MediationReportSpecDimensionFilter>;
 export const MediationReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   MediationReportSpecDimensionFilter,
 ) as any as S.Schema<MediationReportSpecDimensionFilterList>;
@@ -161,8 +159,7 @@ export type MediationReportSpecSortConditionDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const MediationReportSpecSortConditionDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -175,16 +172,14 @@ export type MediationReportSpecSortConditionMetricEnum =
   | "IMPRESSION_CTR"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "OBSERVED_ECPM"
-  | (string & {});
+  | "OBSERVED_ECPM";
 export const MediationReportSpecSortConditionMetricEnum =
   /*@__PURE__*/ S.String;
 
 export type MediationReportSpecSortConditionOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const MediationReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
@@ -207,7 +202,7 @@ export const MediationReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MediationReportSpecSortCondition>;
 
 export type MediationReportSpecSortConditionList =
-  MediationReportSpecSortCondition[];
+  ReadonlyArray<MediationReportSpecSortCondition>;
 export const MediationReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   MediationReportSpecSortCondition,
 ) as any as S.Schema<MediationReportSpecSortConditionList>;
@@ -221,12 +216,11 @@ export type MediationReportSpecMetricsItemEnum =
   | "IMPRESSION_CTR"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "OBSERVED_ECPM"
-  | (string & {});
+  | "OBSERVED_ECPM";
 export const MediationReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type MediationReportSpecMetricsItemEnumList =
-  MediationReportSpecMetricsItemEnum[];
+  ReadonlyArray<MediationReportSpecMetricsItemEnum>;
 export const MediationReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
   MediationReportSpecMetricsItemEnum,
 ) as any as S.Schema<MediationReportSpecMetricsItemEnumList>;
@@ -352,8 +346,7 @@ export type ReportWarningTypeEnum =
   | "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE"
   | "DATA_DELAYED"
   | "OTHER"
-  | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY"
-  | (string & {});
+  | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY";
 export const ReportWarningTypeEnum = /*@__PURE__*/ S.String;
 
 /** Warnings associated with generation of the report. */
@@ -370,7 +363,7 @@ export const ReportWarning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportWarning" }) as any as S.Schema<ReportWarning>;
 
-export type ReportWarningList = ReportWarning[];
+export type ReportWarningList = ReadonlyArray<ReportWarning>;
 export const ReportWarningList = /*@__PURE__*/ S.Array(
   ReportWarning,
 ) as any as S.Schema<ReportWarningList>;
@@ -500,12 +493,11 @@ export type NetworkReportSpecMetricsItemEnum =
   | "IMPRESSION_RPM"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "SHOW_RATE"
-  | (string & {});
+  | "SHOW_RATE";
 export const NetworkReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecMetricsItemEnumList =
-  NetworkReportSpecMetricsItemEnum[];
+  ReadonlyArray<NetworkReportSpecMetricsItemEnum>;
 export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
   NetworkReportSpecMetricsItemEnum,
 ) as any as S.Schema<NetworkReportSpecMetricsItemEnumList>;
@@ -524,8 +516,7 @@ export type NetworkReportSpecDimensionFilterDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const NetworkReportSpecDimensionFilterDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -546,7 +537,7 @@ export const NetworkReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecDimensionFilter>;
 
 export type NetworkReportSpecDimensionFilterList =
-  NetworkReportSpecDimensionFilter[];
+  ReadonlyArray<NetworkReportSpecDimensionFilter>;
 export const NetworkReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
   NetworkReportSpecDimensionFilter,
 ) as any as S.Schema<NetworkReportSpecDimensionFilterList>;
@@ -565,8 +556,7 @@ export type NetworkReportSpecSortConditionDimensionEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const NetworkReportSpecSortConditionDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -580,15 +570,13 @@ export type NetworkReportSpecSortConditionMetricEnum =
   | "IMPRESSION_RPM"
   | "MATCHED_REQUESTS"
   | "MATCH_RATE"
-  | "SHOW_RATE"
-  | (string & {});
+  | "SHOW_RATE";
 export const NetworkReportSpecSortConditionMetricEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecSortConditionOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const NetworkReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
@@ -611,7 +599,7 @@ export const NetworkReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkReportSpecSortCondition>;
 
 export type NetworkReportSpecSortConditionList =
-  NetworkReportSpecSortCondition[];
+  ReadonlyArray<NetworkReportSpecSortCondition>;
 export const NetworkReportSpecSortConditionList = /*@__PURE__*/ S.Array(
   NetworkReportSpecSortCondition,
 ) as any as S.Schema<NetworkReportSpecSortConditionList>;
@@ -630,12 +618,11 @@ export type NetworkReportSpecDimensionsItemEnum =
   | "MOBILE_OS_VERSION"
   | "GMA_SDK_VERSION"
   | "APP_VERSION_NAME"
-  | "SERVING_RESTRICTION"
-  | (string & {});
+  | "SERVING_RESTRICTION";
 export const NetworkReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
 export type NetworkReportSpecDimensionsItemEnumList =
-  NetworkReportSpecDimensionsItemEnum[];
+  ReadonlyArray<NetworkReportSpecDimensionsItemEnum>;
 export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
   NetworkReportSpecDimensionsItemEnum,
 ) as any as S.Schema<NetworkReportSpecDimensionsItemEnumList>;
@@ -789,7 +776,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type PublisherAccountList = PublisherAccount[];
+export type PublisherAccountList = ReadonlyArray<PublisherAccount>;
 export const PublisherAccountList = /*@__PURE__*/ S.Array(
   PublisherAccount,
 ) as any as S.Schema<PublisherAccountList>;
@@ -860,7 +847,7 @@ export const AdUnit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdUnit" }) as any as S.Schema<AdUnit>;
 
-export type AdUnitList = AdUnit[];
+export type AdUnitList = ReadonlyArray<AdUnit>;
 export const AdUnitList = /*@__PURE__*/ S.Array(
   AdUnit,
 ) as any as S.Schema<AdUnitList>;
@@ -938,8 +925,7 @@ export type AppAppApprovalStateEnum =
   | "APP_APPROVAL_STATE_UNSPECIFIED"
   | "ACTION_REQUIRED"
   | "IN_REVIEW"
-  | "APPROVED"
-  | (string & {});
+  | "APPROVED";
 export const AppAppApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes an AdMob app for a specific platform (For example: Android or iOS). */
@@ -968,7 +954,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
-export type AppList = App[];
+export type AppList = ReadonlyArray<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response for the apps list request. */

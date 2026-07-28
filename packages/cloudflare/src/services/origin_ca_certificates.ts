@@ -68,33 +68,26 @@ export class HostnameNotAuthorized extends T.applyErrorMatchers(
   [{ code: 1010 }],
 ) {}
 
-export type CreateRequestHostnamesList = string[];
+export type CreateRequestHostnamesList = ReadonlyArray<string>;
 export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHostnamesList>;
 
-export interface CreateRequestRequestedValidity {
-  "7": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-  "730": unknown;
-  "1095": unknown;
-  "5475": unknown;
-}
-export const CreateRequestRequestedValidity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "7": S.Unknown,
-    "30": S.Unknown,
-    "90": S.Unknown,
-    "365": S.Unknown,
-    "730": S.Unknown,
-    "1095": S.Unknown,
-    "5475": S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateRequestRequestedValidity",
-}) as any as S.Schema<CreateRequestRequestedValidity>;
+export type CreateRequestRequestType =
+  | "origin-rsa"
+  | "origin-ecc"
+  | "keyless-certificate";
+export const CreateRequestRequestType = /*@__PURE__*/ S.String;
+
+export type CreateRequestRequestedValidity =
+  | 7
+  | 30
+  | 90
+  | 365
+  | 730
+  | 1095
+  | 5475;
+export const CreateRequestRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -102,7 +95,7 @@ export interface CreateOriginCaCertificateRequest {
   /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: CreateRequestHostnamesList;
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: unknown;
+  requestType: CreateRequestRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity?: CreateRequestRequestedValidity;
 }
@@ -110,7 +103,7 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateRequestHostnamesList,
-    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestType: CreateRequestRequestType.pipe(T.Body("request_type")),
     requestedValidity: S.optional(
       CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
     ),
@@ -121,33 +114,26 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOriginCaCertificateRequest",
 }) as any as S.Schema<CreateOriginCaCertificateRequest>;
 
-export type CreateResponseHostnamesList = string[];
+export type CreateResponseHostnamesList = ReadonlyArray<string>;
 export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHostnamesList>;
 
-export interface CreateResponseRequestedValidity {
-  "7": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-  "730": unknown;
-  "1095": unknown;
-  "5475": unknown;
-}
-export const CreateResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "7": S.Unknown,
-    "30": S.Unknown,
-    "90": S.Unknown,
-    "365": S.Unknown,
-    "730": S.Unknown,
-    "1095": S.Unknown,
-    "5475": S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateResponseRequestedValidity",
-}) as any as S.Schema<CreateResponseRequestedValidity>;
+export type CreateResponseRequestType =
+  | "origin-rsa"
+  | "origin-ecc"
+  | "keyless-certificate";
+export const CreateResponseRequestType = /*@__PURE__*/ S.String;
+
+export type CreateResponseRequestedValidity =
+  | 7
+  | 30
+  | 90
+  | 365
+  | 730
+  | 1095
+  | 5475;
+export const CreateResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginCaCertificateResponse {
@@ -156,7 +142,7 @@ export interface CreateOriginCaCertificateResponse {
   /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: CreateResponseHostnamesList;
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: unknown;
+  requestType: CreateResponseRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: CreateResponseRequestedValidity;
   /** Identifier. */
@@ -172,7 +158,7 @@ export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateResponseHostnamesList,
-    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestType: CreateResponseRequestType.pipe(T.Body("request_type")),
     requestedValidity: CreateResponseRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
@@ -241,33 +227,26 @@ export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOriginCaCertificateRequest",
 }) as any as S.Schema<GetOriginCaCertificateRequest>;
 
-export type GetResponseHostnamesList = string[];
+export type GetResponseHostnamesList = ReadonlyArray<string>;
 export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHostnamesList>;
 
-export interface GetResponseRequestedValidity {
-  "7": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-  "730": unknown;
-  "1095": unknown;
-  "5475": unknown;
-}
-export const GetResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "7": S.Unknown,
-    "30": S.Unknown,
-    "90": S.Unknown,
-    "365": S.Unknown,
-    "730": S.Unknown,
-    "1095": S.Unknown,
-    "5475": S.Unknown,
-  }),
-).annotate({
-  identifier: "GetResponseRequestedValidity",
-}) as any as S.Schema<GetResponseRequestedValidity>;
+export type GetResponseRequestType =
+  | "origin-rsa"
+  | "origin-ecc"
+  | "keyless-certificate";
+export const GetResponseRequestType = /*@__PURE__*/ S.String;
+
+export type GetResponseRequestedValidity =
+  | 7
+  | 30
+  | 90
+  | 365
+  | 730
+  | 1095
+  | 5475;
+export const GetResponseRequestedValidity = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginCaCertificateResponse {
@@ -276,7 +255,7 @@ export interface GetOriginCaCertificateResponse {
   /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: GetResponseHostnamesList;
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: unknown;
+  requestType: GetResponseRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: GetResponseRequestedValidity;
   /** Identifier. */
@@ -292,7 +271,7 @@ export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: GetResponseHostnamesList,
-    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestType: GetResponseRequestType.pipe(T.Body("request_type")),
     requestedValidity: GetResponseRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
@@ -331,33 +310,26 @@ export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOriginCaCertificatesRequest",
 }) as any as S.Schema<ListOriginCaCertificatesRequest>;
 
-export type ListResultItemHostnamesList = string[];
+export type ListResultItemHostnamesList = ReadonlyArray<string>;
 export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHostnamesList>;
 
-export interface ListResultItemRequestedValidity {
-  "7": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-  "730": unknown;
-  "1095": unknown;
-  "5475": unknown;
-}
-export const ListResultItemRequestedValidity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "7": S.Unknown,
-    "30": S.Unknown,
-    "90": S.Unknown,
-    "365": S.Unknown,
-    "730": S.Unknown,
-    "1095": S.Unknown,
-    "5475": S.Unknown,
-  }),
-).annotate({
-  identifier: "ListResultItemRequestedValidity",
-}) as any as S.Schema<ListResultItemRequestedValidity>;
+export type ListResultItemRequestType =
+  | "origin-rsa"
+  | "origin-ecc"
+  | "keyless-certificate";
+export const ListResultItemRequestType = /*@__PURE__*/ S.String;
+
+export type ListResultItemRequestedValidity =
+  | 7
+  | 30
+  | 90
+  | 365
+  | 730
+  | 1095
+  | 5475;
+export const ListResultItemRequestedValidity = /*@__PURE__*/ S.Number;
 
 export interface ListResultItem {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -365,7 +337,7 @@ export interface ListResultItem {
   /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: ListResultItemHostnamesList;
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
-  requestType: unknown;
+  requestType: ListResultItemRequestType;
   /** The number of days for which the certificate should be valid. */
   requestedValidity: ListResultItemRequestedValidity;
   /** Identifier. */
@@ -381,7 +353,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: ListResultItemHostnamesList,
-    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestType: ListResultItemRequestType.pipe(T.Body("request_type")),
     requestedValidity: ListResultItemRequestedValidity.pipe(
       T.Body("requested_validity"),
     ),
@@ -392,7 +364,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

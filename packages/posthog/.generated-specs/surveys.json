@@ -196,7 +196,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
+          "target": "com.posthog.surveys#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -2521,9 +2524,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -2549,9 +2549,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -2570,12 +2567,6 @@
           "traits": {
             "smithy.api#documentation": "An existing targeting flag to use for this survey."
           }
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "com.posthog.surveys#FeatureFlagFiltersSchema",
@@ -2611,12 +2602,6 @@
             "smithy.api#documentation": "Survey appearance customization.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -2737,7 +2722,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveySerializerCreateUpdateOnly": {
+    "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -2761,35 +2746,11 @@
         "linked_flag": {
           "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
-        "linked_flag_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "linked_insight_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "targeting_flag_id": {
-          "target": "smithy.api#Integer"
-        },
         "targeting_flag": {
           "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "internal_targeting_flag": {
           "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "targeting_flag_filters": {
-          "target": "smithy.api#Document"
-        },
-        "remove_targeting_flag": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "questions": {
           "target": "smithy.api#Document",
@@ -2807,7 +2768,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
+          "target": "com.posthog.surveys#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -2843,7 +2807,7 @@
           }
         },
         "iteration_start_dates": {
-          "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyIterationStartDatesList",
+          "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -2867,7 +2831,7 @@
           }
         },
         "response_sampling_interval_type": {
-          "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyResponseSamplingIntervalType",
+          "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -2908,23 +2872,20 @@
         "translations": {
           "target": "smithy.api#Document"
         },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
         "form_content": {
           "target": "smithy.api#Document"
         }
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveySerializerCreateUpdateOnlyIterationStartDatesList": {
+    "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutputIterationStartDatesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveySerializerCreateUpdateOnlyResponseSamplingIntervalType": {
+    "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutputResponseSamplingIntervalType": {
       "type": "union",
       "members": {
         "ResponseSamplingIntervalTypeEnum": {
@@ -2942,7 +2903,7 @@
         "target": "com.posthog.surveys#SurveysCreateRequest"
       },
       "output": {
-        "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnly"
+        "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutput"
       },
       "errors": [
         {
@@ -3011,33 +2972,6 @@
         }
       }
     },
-    "com.posthog.surveys#SurveysUpdateRequestConditionsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.surveys#SurveysUpdateRequestFeatureFlagKeysItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.surveys#SurveysUpdateRequestFeatureFlagKeysList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.surveys#SurveysUpdateRequestFeatureFlagKeysItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.surveys#SurveysUpdateRequestIterationStartDatesList": {
       "type": "list",
       "member": {
@@ -3091,9 +3025,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -3106,32 +3037,14 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "questions": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "\n        The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.\n\n        Basic (open-ended question)\n        - `id`: The question ID\n        - `type`: `open`\n        - `question`: The text of the question.\n        - `description`: Optional description of the question.\n        - `descriptionContentType`: Content type of the description (`html` or `text`).\n        - `optional`: Whether the question is optional (`boolean`).\n        - `buttonText`: Text displayed on the submit button.\n        - `branching`: Branching logic for the question. See branching types below for details.\n\n        Link (a question with a link)\n        - `id`: The question ID\n        - `type`: `link`\n        - `question`: The text of the question.\n        - `description`: Optional description of the question.\n        - `descriptionContentType`: Content type of the description (`html` or `text`).\n        - `optional`: Whether the question is optional (`boolean`).\n        - `buttonText`: Text displayed on the submit button.\n        - `link`: The URL associated with the question.\n        - `branching`: Branching logic for the question. See branching types below for details.\n\n        Rating (a question with a rating scale)\n        - `id`: The question ID\n        - `type`: `rating`\n        - `question`: The text of the question.\n        - `description`: Optional description of the question.\n        - `descriptionContentType`: Content type of the description (`html` or `text`).\n        - `optional`: Whether the question is optional (`boolean`).\n        - `buttonText`: Text displayed on the submit button.\n        - `display`: Display style of the rating (`number` or `emoji`).\n        - `scale`: The scale of the rating (`number`).\n        - `lowerBoundLabel`: Label for the lower bound of the scale.\n        - `upperBoundLabel`: Label for the upper bound of the scale.\n        - `isNpsQuestion`: Whether the question is an NPS rating.\n        - `branching`: Branching logic for the question. See branching types below for details.\n\n        Multiple choice\n        - `id`: The question ID\n        - `type`: `single_choice` or `multiple_choice`\n        - `question`: The text of the question.\n        - `description`: Optional description of the question.\n        - `descriptionContentType`: Content type of the description (`html` or `text`).\n        - `optional`: Whether the question is optional (`boolean`).\n        - `buttonText`: Text displayed on the submit button.\n        - `choices`: An array of choices for the question.\n        - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`).\n        - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`).\n        - `branching`: Branching logic for the question. See branching types below for details.\n\n        Branching logic can be one of the following types:\n\n        Next question: Proceeds to the next question\n        ```json\n        {\n            \"type\": \"next_question\"\n        }\n        ```\n\n        End: Ends the survey, optionally displaying a confirmation message.\n        ```json\n        {\n            \"type\": \"end\"\n        }\n        ```\n\n        Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types.\n        ```json\n        {\n            \"type\": \"response_based\",\n            \"responseValues\": {\n                \"responseKey\": \"value\"\n            }\n        }\n        ```\n\n        Specific question: Proceeds to a specific question by index.\n        ```json\n        {\n            \"type\": \"specific_question\",\n            \"index\": 2\n        }\n        ```\n\n        Translations: Each question can include inline translations.\n        - `translations`: Object mapping language codes to translated fields.\n        - Language codes: Canonical BCP-47-ish strings (e.g., \"es\", \"es-MX\", \"zh-CN\"). Aliases like \"english\" or \"default\" are rejected. The survey's `base_language` (default \"en\") declares the language of the untranslated text and cannot also appear as a translation key.\n        - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link`\n\n        Example with translations:\n        ```json\n        {\n            \"id\": \"uuid\",\n            \"type\": \"rating\",\n            \"question\": \"How satisfied are you?\",\n            \"lowerBoundLabel\": \"Not satisfied\",\n            \"upperBoundLabel\": \"Very satisfied\",\n            \"translations\": {\n                \"es\": {\n                    \"question\": \"¿Qué tan satisfecho estás?\",\n                    \"lowerBoundLabel\": \"No satisfecho\",\n                    \"upperBoundLabel\": \"Muy satisfecho\"\n                },\n                \"fr\": {\n                    \"question\": \"Dans quelle mesure êtes-vous satisfait?\"\n                }\n            }\n        }\n        ```\n        "
           }
         },
-        "conditions": {
-          "target": "com.posthog.surveys#SurveysUpdateRequestConditionsMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "appearance": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -3153,9 +3066,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "feature_flag_keys": {
-          "target": "com.posthog.surveys#SurveysUpdateRequestFeatureFlagKeysList"
         },
         "iteration_count": {
           "target": "smithy.api#Integer",
@@ -3235,22 +3145,8 @@
         "translations": {
           "target": "smithy.api#Document"
         },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "form_content": {
           "target": "smithy.api#Document"
-        },
-        "search_match_type": {
-          "target": "com.posthog.surveys#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3356,9 +3252,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -3377,12 +3270,6 @@
           "traits": {
             "smithy.api#documentation": "An existing targeting flag to use for this survey."
           }
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "com.posthog.surveys#FeatureFlagFiltersSchema",
@@ -3418,12 +3305,6 @@
             "smithy.api#documentation": "Survey appearance customization.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -3550,7 +3431,7 @@
         "target": "com.posthog.surveys#SurveysPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnly"
+        "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutput"
       },
       "errors": [
         {
@@ -3769,9 +3650,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -3786,12 +3664,6 @@
         },
         "targeting_flag_id": {
           "target": "smithy.api#Integer"
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "smithy.api#Document"
@@ -3813,12 +3685,6 @@
         },
         "appearance": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -4620,9 +4486,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -4637,12 +4500,6 @@
         },
         "targeting_flag_id": {
           "target": "smithy.api#Integer"
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "smithy.api#Document"
@@ -4664,12 +4521,6 @@
         },
         "appearance": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -4869,9 +4720,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -4886,12 +4734,6 @@
         },
         "targeting_flag_id": {
           "target": "smithy.api#Integer"
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "smithy.api#Document"
@@ -4913,12 +4755,6 @@
         },
         "appearance": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",
@@ -5374,9 +5210,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "linked_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -5391,12 +5224,6 @@
         },
         "targeting_flag_id": {
           "target": "smithy.api#Integer"
-        },
-        "targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.surveys#MinimalFeatureFlag"
         },
         "targeting_flag_filters": {
           "target": "smithy.api#Document"
@@ -5418,12 +5245,6 @@
         },
         "appearance": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.surveys#UserBasic"
         },
         "start_date": {
           "target": "smithy.api#String",

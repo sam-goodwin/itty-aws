@@ -122,8 +122,7 @@ export type GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponseAc
     | "GRANTED"
     | "NOT_GRANTED"
     | "UNKNOWN_CONDITIONAL"
-    | "UNKNOWN_INFO_DENIED"
-    | (string & {});
+    | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponseAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -132,8 +131,7 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -161,23 +159,22 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissio
     | "ROLE_PERMISSION_UNSPECIFIED"
     | "ROLE_PERMISSION_INCLUDED"
     | "ROLE_PERMISSION_NOT_INCLUDED"
-    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
-    | (string & {});
+    | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -186,8 +183,7 @@ export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMemb
     | "MEMBERSHIP_INCLUDED"
     | "MEMBERSHIP_NOT_INCLUDED"
     | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
-    | (string & {});
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
@@ -268,7 +264,7 @@ export const GoogleCloudPolicytroubleshooterV1betaBindingExplanation =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1betaBindingExplanation>;
 
 export type GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
-  GoogleCloudPolicytroubleshooterV1betaBindingExplanation[];
+  ReadonlyArray<GoogleCloudPolicytroubleshooterV1betaBindingExplanation>;
 export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterV1betaBindingExplanation,
@@ -277,8 +273,7 @@ export const GoogleCloudPolicytroubleshooterV1betaBindingExplanationList =
 export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -287,8 +282,7 @@ export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -296,11 +290,10 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -321,7 +314,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -342,7 +336,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -366,7 +360,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -426,7 +420,7 @@ export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicy =
   }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>;
 
 export type GoogleCloudPolicytroubleshooterV1betaExplainedPolicyList =
-  GoogleCloudPolicytroubleshooterV1betaExplainedPolicy[];
+  ReadonlyArray<GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>;
 export const GoogleCloudPolicytroubleshooterV1betaExplainedPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicytroubleshooterV1betaExplainedPolicy,

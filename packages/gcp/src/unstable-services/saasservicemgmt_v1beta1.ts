@@ -71,8 +71,7 @@ export type FlagAttributeValueTypeEnum =
   | "BOOLEAN"
   | "INTEGER"
   | "STRING"
-  | "DOUBLE"
-  | (string & {});
+  | "DOUBLE";
 export const FlagAttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type FlagAttributeAttributeValueTypeEnum =
@@ -80,8 +79,7 @@ export type FlagAttributeAttributeValueTypeEnum =
   | "FLAG_ATTRIBUTE_VALUE_TYPE_BOOLEAN"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_INTEGER"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_STRING"
-  | "FLAG_ATTRIBUTE_VALUE_TYPE_DOUBLE"
-  | (string & {});
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_DOUBLE";
 export const FlagAttributeAttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** FlagAttribute defines a custom property in the evaluation context. */
@@ -153,7 +151,7 @@ export const CreateProjectsLocationsFlagAttributesRequest =
     identifier: "CreateProjectsLocationsFlagAttributesRequest",
   }) as any as S.Schema<CreateProjectsLocationsFlagAttributesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -292,7 +290,7 @@ export const Variant = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
 
-export type VariantList = Variant[];
+export type VariantList = ReadonlyArray<Variant>;
 export const VariantList = /*@__PURE__*/ S.Array(
   Variant,
 ) as any as S.Schema<VariantList>;
@@ -320,7 +318,7 @@ export const EvaluationRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EvaluationRule" }) as any as S.Schema<EvaluationRule>;
 
-export type EvaluationRuleList = EvaluationRule[];
+export type EvaluationRuleList = ReadonlyArray<EvaluationRule>;
 export const EvaluationRuleList = /*@__PURE__*/ S.Array(
   EvaluationRule,
 ) as any as S.Schema<EvaluationRuleList>;
@@ -339,7 +337,7 @@ export const AllocationSlot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AllocationSlot" }) as any as S.Schema<AllocationSlot>;
 
-export type AllocationSlotList = AllocationSlot[];
+export type AllocationSlotList = ReadonlyArray<AllocationSlot>;
 export const AllocationSlotList = /*@__PURE__*/ S.Array(
   AllocationSlot,
 ) as any as S.Schema<AllocationSlotList>;
@@ -364,7 +362,7 @@ export const Allocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Allocation" }) as any as S.Schema<Allocation>;
 
-export type AllocationList = Allocation[];
+export type AllocationList = ReadonlyArray<Allocation>;
 export const AllocationList = /*@__PURE__*/ S.Array(
   Allocation,
 ) as any as S.Schema<AllocationList>;
@@ -397,8 +395,7 @@ export type FlagFlagValueTypeEnum =
   | "FLAG_VALUE_TYPE_BOOLEAN"
   | "FLAG_VALUE_TYPE_INTEGER"
   | "FLAG_VALUE_TYPE_STRING"
-  | "FLAG_VALUE_TYPE_DOUBLE"
-  | (string & {});
+  | "FLAG_VALUE_TYPE_DOUBLE";
 export const FlagFlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type FlagStateEnum =
@@ -406,8 +403,7 @@ export type FlagStateEnum =
   | "FLAG_STATE_IN_DEVELOPMENT"
   | "FLAG_STATE_ACTIVE"
   | "FLAG_STATE_SUNSETTING"
-  | "FLAG_STATE_CLEANUP"
-  | (string & {});
+  | "FLAG_STATE_CLEANUP";
 export const FlagStateEnum = /*@__PURE__*/ S.String;
 
 /** Variant is an identifier for a value (name assigned to a value). */
@@ -439,7 +435,7 @@ export const FlagVariant = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlagVariant" }) as any as S.Schema<FlagVariant>;
 
-export type FlagVariantList = FlagVariant[];
+export type FlagVariantList = ReadonlyArray<FlagVariant>;
 export const FlagVariantList = /*@__PURE__*/ S.Array(
   FlagVariant,
 ) as any as S.Schema<FlagVariantList>;
@@ -449,8 +445,7 @@ export type FlagValueTypeEnum =
   | "FLAG_VALUE_TYPE_BOOL"
   | "FLAG_VALUE_TYPE_INT"
   | "FLAG_VALUE_TYPE_STRING"
-  | "FLAG_VALUE_TYPE_DOUBLE"
-  | (string & {});
+  | "FLAG_VALUE_TYPE_DOUBLE";
 export const FlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single Flag. */
@@ -614,8 +609,7 @@ export type UnitVariableTypeEnum =
   | "INT"
   | "BOOL"
   | "STRUCT"
-  | "LIST"
-  | (string & {});
+  | "LIST";
 export const UnitVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitVariable describes a parameter for a Unit. */
@@ -635,7 +629,7 @@ export const UnitVariable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UnitVariable" }) as any as S.Schema<UnitVariable>;
 
-export type UnitVariableList = UnitVariable[];
+export type UnitVariableList = ReadonlyArray<UnitVariable>;
 export const UnitVariableList = /*@__PURE__*/ S.Array(
   UnitVariable,
 ) as any as S.Schema<UnitVariableList>;
@@ -815,8 +809,7 @@ export const UnitUpdatePacing = /*@__PURE__*/ S.suspend(() =>
 export type RolloutKindUpdateUnitKindStrategyEnum =
   | "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED"
   | "UPDATE_UNIT_KIND_STRATEGY_ON_START"
-  | "UPDATE_UNIT_KIND_STRATEGY_NEVER"
-  | (string & {});
+  | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
 export const RolloutKindUpdateUnitKindStrategyEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for error budget. If the number of failed units exceeds max(allowed_count, allowed_ratio * total_units), the rollout will be paused. */
@@ -921,8 +914,7 @@ export type RolloutStateEnum =
   | "ROLLOUT_STATE_WAITING"
   | "ROLLOUT_STATE_CANCELLING"
   | "ROLLOUT_STATE_RESUMING"
-  | "ROLLOUT_STATE_PAUSING"
-  | (string & {});
+  | "ROLLOUT_STATE_PAUSING";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the aggregation of a set of population of like records by a certain group. For example, a collection of unit counts can be aggregated and grouped by their state. */
@@ -939,7 +931,7 @@ export const Aggregate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregate" }) as any as S.Schema<Aggregate>;
 
-export type AggregateList = Aggregate[];
+export type AggregateList = ReadonlyArray<Aggregate>;
 export const AggregateList = /*@__PURE__*/ S.Array(
   Aggregate,
 ) as any as S.Schema<AggregateList>;
@@ -975,8 +967,7 @@ export type RolloutControlActionEnum =
   | "ROLLOUT_ACTION_UNSPECIFIED"
   | "ROLLOUT_ACTION_RUN"
   | "ROLLOUT_ACTION_PAUSE"
-  | "ROLLOUT_ACTION_CANCEL"
-  | (string & {});
+  | "ROLLOUT_ACTION_CANCEL";
 export const RolloutControlActionEnum = /*@__PURE__*/ S.String;
 
 /** RolloutControl provides a way to request a change to the execution of a Rollout by pausing or canceling it. */
@@ -1107,7 +1098,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1132,16 +1123,14 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 export type SaasConditionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_READY"
-  | "TYPE_SYNCHRONIZED"
-  | (string & {});
+  | "TYPE_SYNCHRONIZED";
 export const SaasConditionTypeEnum = /*@__PURE__*/ S.String;
 
 export type SaasConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE"
-  | (string & {});
+  | "STATUS_FALSE";
 export const SaasConditionStatusEnum = /*@__PURE__*/ S.String;
 
 /** SaasCondition describes the status of a Saas. */
@@ -1167,7 +1156,7 @@ export const SaasCondition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SaasCondition" }) as any as S.Schema<SaasCondition>;
 
-export type SaasConditionList = SaasCondition[];
+export type SaasConditionList = ReadonlyArray<SaasCondition>;
 export const SaasConditionList = /*@__PURE__*/ S.Array(
   SaasCondition,
 ) as any as S.Schema<SaasConditionList>;
@@ -1183,7 +1172,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1192,8 +1181,7 @@ export type SaasStateEnum =
   | "STATE_TYPE_UNSPECIFIED"
   | "STATE_ACTIVE"
   | "STATE_RUNNING"
-  | "STATE_FAILED"
-  | (string & {});
+  | "STATE_FAILED";
 export const SaasStateEnum = /*@__PURE__*/ S.String;
 
 /** Saas is a representation of a SaaS service managed by the Producer. */
@@ -1535,7 +1523,7 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
-export type DependencyList = Dependency[];
+export type DependencyList = ReadonlyArray<Dependency>;
 export const DependencyList = /*@__PURE__*/ S.Array(
   Dependency,
 ) as any as S.Schema<DependencyList>;
@@ -1590,7 +1578,7 @@ export const VariableMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "VariableMapping",
 }) as any as S.Schema<VariableMapping>;
 
-export type VariableMappingList = VariableMapping[];
+export type VariableMappingList = ReadonlyArray<VariableMapping>;
 export const VariableMappingList = /*@__PURE__*/ S.Array(
   VariableMapping,
 ) as any as S.Schema<VariableMappingList>;
@@ -1598,15 +1586,13 @@ export const VariableMappingList = /*@__PURE__*/ S.Array(
 export type UnitKindBoundaryTypeEnum =
   | "BOUNDARY_TYPE_UNSPECIFIED"
   | "BOUNDARY_TYPE_TENANT_PROJECT"
-  | "BOUNDARY_TYPE_MANAGED_PROJECT"
-  | (string & {});
+  | "BOUNDARY_TYPE_MANAGED_PROJECT";
 export const UnitKindBoundaryTypeEnum = /*@__PURE__*/ S.String;
 
 export type ScopeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_REGIONAL"
-  | "TYPE_GLOBAL"
-  | (string & {});
+  | "TYPE_GLOBAL";
 export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of an application. */
@@ -1728,8 +1714,7 @@ export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_RUNNING"
   | "UNIT_OPERATION_STATE_SUCCEEDED"
   | "UNIT_OPERATION_STATE_FAILED"
-  | "UNIT_OPERATION_STATE_CANCELLED"
-  | (string & {});
+  | "UNIT_OPERATION_STATE_CANCELLED";
 export const UnitOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** Provision is the unit operation that provision the underlying resources represented by a Unit. Can only execute if the Unit is not currently provisioned. */
@@ -1781,8 +1766,7 @@ export type UnitOperationConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE"
-  | (string & {});
+  | "STATUS_FALSE";
 export const UnitOperationConditionStatusEnum = /*@__PURE__*/ S.String;
 
 export type UnitOperationConditionTypeEnum =
@@ -1793,8 +1777,7 @@ export type UnitOperationConditionTypeEnum =
   | "TYPE_CANCELLED"
   | "TYPE_APP_CREATED"
   | "TYPE_APP_COMPONENTS_REGISTERED"
-  | "TYPE_WORKLOAD_SUCCEEDED"
-  | (string & {});
+  | "TYPE_WORKLOAD_SUCCEEDED";
 export const UnitOperationConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitOperationCondition describes the status of an Unit Operation. UnitOperationCondition is individual components that contribute to an overall state. */
@@ -1822,7 +1805,7 @@ export const UnitOperationCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnitOperationCondition",
 }) as any as S.Schema<UnitOperationCondition>;
 
-export type UnitOperationConditionList = UnitOperationCondition[];
+export type UnitOperationConditionList = ReadonlyArray<UnitOperationCondition>;
 export const UnitOperationConditionList = /*@__PURE__*/ S.Array(
   UnitOperationCondition,
 ) as any as S.Schema<UnitOperationConditionList>;
@@ -1844,8 +1827,7 @@ export type UnitOperationErrorCategoryEnum =
   | "FATAL"
   | "RETRIABLE"
   | "IGNORABLE"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const UnitOperationErrorCategoryEnum = /*@__PURE__*/ S.String;
 
 /** UnitOperation encapsulates the intent of changing/interacting with the service component represented by the specific Unit. Multiple UnitOperations can be created (requested) and scheduled in the future, however only one will be allowed to execute at a time (that can change in the future for non-mutating operations). UnitOperations allow different actors interacting with the same unit to focus only on the change they have requested. This is a base object that contains the common fields in all unit operations. Next: 22 */
@@ -1957,8 +1939,7 @@ export type UnitStateEnum =
   | "UNIT_STATE_UPDATING"
   | "UNIT_STATE_DEPROVISIONING"
   | "UNIT_STATE_READY"
-  | "UNIT_STATE_ERROR"
-  | (string & {});
+  | "UNIT_STATE_ERROR";
 export const UnitStateEnum = /*@__PURE__*/ S.String;
 
 /** Captures requested directives for performing future maintenance on the unit. This includes a request for the unit to skip maintenance for a period of time and remain pinned to its current release as well as controls for postponing maintenance scheduled in future. */
@@ -1988,7 +1969,7 @@ export const UnitDependency = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UnitDependency" }) as any as S.Schema<UnitDependency>;
 
-export type UnitDependencyList = UnitDependency[];
+export type UnitDependencyList = ReadonlyArray<UnitDependency>;
 export const UnitDependencyList = /*@__PURE__*/ S.Array(
   UnitDependency,
 ) as any as S.Schema<UnitDependencyList>;
@@ -1997,15 +1978,13 @@ export type UnitSystemManagedStateEnum =
   | "SYSTEM_MANAGED_STATE_UNSPECIFIED"
   | "SYSTEM_MANAGED_STATE_ACTIVE"
   | "SYSTEM_MANAGED_STATE_INACTIVE"
-  | "SYSTEM_MANAGED_STATE_DECOMMISSIONED"
-  | (string & {});
+  | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
 export const UnitSystemManagedStateEnum = /*@__PURE__*/ S.String;
 
 export type UnitManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "MANAGEMENT_MODE_USER"
-  | "MANAGEMENT_MODE_SYSTEM"
-  | (string & {});
+  | "MANAGEMENT_MODE_SYSTEM";
 export const UnitManagementModeEnum = /*@__PURE__*/ S.String;
 
 export type UnitConditionTypeEnum =
@@ -2016,16 +1995,14 @@ export type UnitConditionTypeEnum =
   | "TYPE_OPERATION_ERROR"
   | "TYPE_FLAGS_CONFIG_INITIALIZED"
   | "TYPE_APP_CREATED_OR_ALREADY_EXISTS"
-  | "TYPE_APP_COMPONENTS_REGISTERED"
-  | (string & {});
+  | "TYPE_APP_COMPONENTS_REGISTERED";
 export const UnitConditionTypeEnum = /*@__PURE__*/ S.String;
 
 export type UnitConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
-  | "STATUS_FALSE"
-  | (string & {});
+  | "STATUS_FALSE";
 export const UnitConditionStatusEnum = /*@__PURE__*/ S.String;
 
 /** UnitCondition describes the status of an Unit. UnitCondition is individual components that contribute to an overall state. */
@@ -2051,7 +2028,7 @@ export const UnitCondition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UnitCondition" }) as any as S.Schema<UnitCondition>;
 
-export type UnitConditionList = UnitCondition[];
+export type UnitConditionList = ReadonlyArray<UnitCondition>;
 export const UnitConditionList = /*@__PURE__*/ S.Array(
   UnitCondition,
 ) as any as S.Schema<UnitConditionList>;
@@ -2956,7 +2933,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = GoogleCloudLocationLocation[];
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -3008,7 +2986,7 @@ export const ListProjectsLocationsFlagAttributesRequest =
     identifier: "ListProjectsLocationsFlagAttributesRequest",
   }) as any as S.Schema<ListProjectsLocationsFlagAttributesRequest>;
 
-export type FlagAttributeList = FlagAttribute[];
+export type FlagAttributeList = ReadonlyArray<FlagAttribute>;
 export const FlagAttributeList = /*@__PURE__*/ S.Array(
   FlagAttribute,
 ) as any as S.Schema<FlagAttributeList>;
@@ -3063,7 +3041,7 @@ export const ListProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFlagReleasesRequest",
 }) as any as S.Schema<ListProjectsLocationsFlagReleasesRequest>;
 
-export type FlagReleaseList = FlagRelease[];
+export type FlagReleaseList = ReadonlyArray<FlagRelease>;
 export const FlagReleaseList = /*@__PURE__*/ S.Array(
   FlagRelease,
 ) as any as S.Schema<FlagReleaseList>;
@@ -3118,7 +3096,7 @@ export const ListProjectsLocationsFlagRevisionsRequest =
     identifier: "ListProjectsLocationsFlagRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsFlagRevisionsRequest>;
 
-export type FlagRevisionList_ = FlagRevision[];
+export type FlagRevisionList_ = ReadonlyArray<FlagRevision>;
 export const FlagRevisionList_ = /*@__PURE__*/ S.Array(
   FlagRevision,
 ) as any as S.Schema<FlagRevisionList_>;
@@ -3172,7 +3150,7 @@ export const ListProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsFlagsRequest",
 }) as any as S.Schema<ListProjectsLocationsFlagsRequest>;
 
-export type FlagList = Flag[];
+export type FlagList = ReadonlyArray<Flag>;
 export const FlagList = /*@__PURE__*/ S.Array(
   Flag,
 ) as any as S.Schema<FlagList>;
@@ -3227,7 +3205,7 @@ export const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsReleasesRequest",
 }) as any as S.Schema<ListProjectsLocationsReleasesRequest>;
 
-export type ReleaseList = Release[];
+export type ReleaseList = ReadonlyArray<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;
@@ -3282,7 +3260,7 @@ export const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRolloutKindsRequest",
 }) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>;
 
-export type RolloutKindList = RolloutKind[];
+export type RolloutKindList = ReadonlyArray<RolloutKind>;
 export const RolloutKindList = /*@__PURE__*/ S.Array(
   RolloutKind,
 ) as any as S.Schema<RolloutKindList>;
@@ -3337,7 +3315,7 @@ export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRolloutsRequest",
 }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
-export type RolloutList = Rollout[];
+export type RolloutList = ReadonlyArray<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -3391,7 +3369,7 @@ export const ListProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSaasRequest",
 }) as any as S.Schema<ListProjectsLocationsSaasRequest>;
 
-export type SaasList = Saas[];
+export type SaasList = ReadonlyArray<Saas>;
 export const SaasList = /*@__PURE__*/ S.Array(
   Saas,
 ) as any as S.Schema<SaasList>;
@@ -3446,7 +3424,7 @@ export const ListProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSaasReleasesRequest",
 }) as any as S.Schema<ListProjectsLocationsSaasReleasesRequest>;
 
-export type SaasReleaseList = SaasRelease[];
+export type SaasReleaseList = ReadonlyArray<SaasRelease>;
 export const SaasReleaseList = /*@__PURE__*/ S.Array(
   SaasRelease,
 ) as any as S.Schema<SaasReleaseList>;
@@ -3500,7 +3478,7 @@ export const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsTenantsRequest",
 }) as any as S.Schema<ListProjectsLocationsTenantsRequest>;
 
-export type TenantList = Tenant[];
+export type TenantList = ReadonlyArray<Tenant>;
 export const TenantList = /*@__PURE__*/ S.Array(
   Tenant,
 ) as any as S.Schema<TenantList>;
@@ -3555,7 +3533,7 @@ export const ListProjectsLocationsUnitGroupOperationsRequest =
     identifier: "ListProjectsLocationsUnitGroupOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsUnitGroupOperationsRequest>;
 
-export type UnitGroupOperationList = UnitGroupOperation[];
+export type UnitGroupOperationList = ReadonlyArray<UnitGroupOperation>;
 export const UnitGroupOperationList = /*@__PURE__*/ S.Array(
   UnitGroupOperation,
 ) as any as S.Schema<UnitGroupOperationList>;
@@ -3610,7 +3588,7 @@ export const ListProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsUnitGroupsRequest",
 }) as any as S.Schema<ListProjectsLocationsUnitGroupsRequest>;
 
-export type UnitGroupList = UnitGroup[];
+export type UnitGroupList = ReadonlyArray<UnitGroup>;
 export const UnitGroupList = /*@__PURE__*/ S.Array(
   UnitGroup,
 ) as any as S.Schema<UnitGroupList>;
@@ -3665,7 +3643,7 @@ export const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsUnitKindsRequest",
 }) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>;
 
-export type UnitKindList = UnitKind[];
+export type UnitKindList = ReadonlyArray<UnitKind>;
 export const UnitKindList = /*@__PURE__*/ S.Array(
   UnitKind,
 ) as any as S.Schema<UnitKindList>;
@@ -3720,7 +3698,7 @@ export const ListProjectsLocationsUnitOperationsRequest =
     identifier: "ListProjectsLocationsUnitOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>;
 
-export type UnitOperationList = UnitOperation[];
+export type UnitOperationList = ReadonlyArray<UnitOperation>;
 export const UnitOperationList = /*@__PURE__*/ S.Array(
   UnitOperation,
 ) as any as S.Schema<UnitOperationList>;
@@ -3774,7 +3752,7 @@ export const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsUnitsRequest",
 }) as any as S.Schema<ListProjectsLocationsUnitsRequest>;
 
-export type UnitList = Unit[];
+export type UnitList = ReadonlyArray<Unit>;
 export const UnitList = /*@__PURE__*/ S.Array(
   Unit,
 ) as any as S.Schema<UnitList>;

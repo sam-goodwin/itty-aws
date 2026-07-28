@@ -65,15 +65,13 @@ export type CustomerOnboardingStepCompletionStateEnum =
   | "PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const CustomerOnboardingStepCompletionStateEnum = /*@__PURE__*/ S.String;
 
 export type CustomerOnboardingStepStepEnum =
   | "STEP_UNSPECIFIED"
   | "KAJ_ENROLLMENT"
-  | "CUSTOMER_ENVIRONMENT"
-  | (string & {});
+  | "CUSTOMER_ENVIRONMENT";
 export const CustomerOnboardingStepStepEnum = /*@__PURE__*/ S.String;
 
 /** Container for customer onboarding information */
@@ -98,7 +96,7 @@ export const CustomerOnboardingStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerOnboardingStep",
 }) as any as S.Schema<CustomerOnboardingStep>;
 
-export type CustomerOnboardingStepList = CustomerOnboardingStep[];
+export type CustomerOnboardingStepList = ReadonlyArray<CustomerOnboardingStep>;
 export const CustomerOnboardingStepList = /*@__PURE__*/ S.Array(
   CustomerOnboardingStep,
 ) as any as S.Schema<CustomerOnboardingStepList>;
@@ -214,8 +212,7 @@ export type EkmConnectionConnectionStateEnum =
   | "AVAILABLE"
   | "NOT_AVAILABLE"
   | "ERROR"
-  | "PERMISSION_DENIED"
-  | (string & {});
+  | "PERMISSION_DENIED";
 export const EkmConnectionConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** Information around the error that occurred if the connection state is anything other than available or unspecified */
@@ -251,7 +248,7 @@ export const EkmConnection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EkmConnection" }) as any as S.Schema<EkmConnection>;
 
-export type EkmConnectionList = EkmConnection[];
+export type EkmConnectionList = ReadonlyArray<EkmConnection>;
 export const EkmConnectionList = /*@__PURE__*/ S.Array(
   EkmConnection,
 ) as any as S.Schema<EkmConnectionList>;
@@ -311,8 +308,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsRequest =
 export type WorkloadOnboardingStepStepEnum =
   | "STEP_UNSPECIFIED"
   | "EKM_PROVISIONED"
-  | "SIGNED_ACCESS_APPROVAL_CONFIGURED"
-  | (string & {});
+  | "SIGNED_ACCESS_APPROVAL_CONFIGURED";
 export const WorkloadOnboardingStepStepEnum = /*@__PURE__*/ S.String;
 
 export type WorkloadOnboardingStepCompletionStateEnum =
@@ -320,8 +316,7 @@ export type WorkloadOnboardingStepCompletionStateEnum =
   | "PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const WorkloadOnboardingStepCompletionStateEnum = /*@__PURE__*/ S.String;
 
 /** Container for workload onboarding information. */
@@ -346,7 +341,7 @@ export const WorkloadOnboardingStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkloadOnboardingStep",
 }) as any as S.Schema<WorkloadOnboardingStep>;
 
-export type WorkloadOnboardingStepList = WorkloadOnboardingStep[];
+export type WorkloadOnboardingStepList = ReadonlyArray<WorkloadOnboardingStep>;
 export const WorkloadOnboardingStepList = /*@__PURE__*/ S.Array(
   WorkloadOnboardingStep,
 ) as any as S.Schema<WorkloadOnboardingStepList>;
@@ -372,8 +367,7 @@ export type WorkloadPartnerEnum =
   | "PARTNER_SOVEREIGN_CONTROLS_BY_PSN"
   | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT"
   | "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
-  | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
-  | (string & {});
+  | "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA";
 export const WorkloadPartnerEnum = /*@__PURE__*/ S.String;
 
 /** Contains metadata around the [Workload resource](https://cloud.google.com/assured-workloads/docs/reference/rest/Shared.Types/Workload) in the Assured Workloads API. */
@@ -430,7 +424,7 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest",
   }) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -441,8 +435,7 @@ export type RemediationRemediationTypeEnum =
   | "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION"
   | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION"
   | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
-  | "REMEDIATION_RESOURCE_VIOLATION"
-  | (string & {});
+  | "REMEDIATION_RESOURCE_VIOLATION";
 export const RemediationRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remediation instructions to resolve violation via gcloud cli */
@@ -514,8 +507,7 @@ export type ViolationStateEnum =
   | "STATE_UNSPECIFIED"
   | "RESOLVED"
   | "UNRESOLVED"
-  | "EXCEPTION"
-  | (string & {});
+  | "EXCEPTION";
 export const ViolationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of resource Violation */
@@ -580,8 +572,7 @@ export type EkmMetadataEkmSolutionEnum =
   | "FORTANIX"
   | "FUTUREX"
   | "THALES"
-  | "VIRTRU"
-  | (string & {});
+  | "VIRTRU";
 export const EkmMetadataEkmSolutionEnum = /*@__PURE__*/ S.String;
 
 /** Holds information needed by Mudbray to use partner EKMs for workloads. */
@@ -598,7 +589,7 @@ export const EkmMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EkmMetadata" }) as any as S.Schema<EkmMetadata>;
 
-export type EkmMetadataList = EkmMetadata[];
+export type EkmMetadataList = ReadonlyArray<EkmMetadata>;
 export const EkmMetadataList = /*@__PURE__*/ S.Array(
   EkmMetadata,
 ) as any as S.Schema<EkmMetadataList>;
@@ -617,7 +608,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
-export type SkuList = Sku[];
+export type SkuList = ReadonlyArray<Sku>;
 export const SkuList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuList>;
 
 /** Message describing Partner resource */
@@ -675,13 +666,12 @@ export type PartnerPermissionsPartnerPermissionsItemEnum =
   | "ASSURED_WORKLOADS_MONITORING"
   | "ACCESS_APPROVAL_REQUESTS"
   | "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS"
-  | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
-  | (string & {});
+  | "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER";
 export const PartnerPermissionsPartnerPermissionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PartnerPermissionsPartnerPermissionsItemEnumList =
-  PartnerPermissionsPartnerPermissionsItemEnum[];
+  ReadonlyArray<PartnerPermissionsPartnerPermissionsItemEnum>;
 export const PartnerPermissionsPartnerPermissionsItemEnumList =
   /*@__PURE__*/ S.Array(
     PartnerPermissionsPartnerPermissionsItemEnum,
@@ -736,7 +726,7 @@ export const ListOrganizationsLocationsCustomersRequest =
     identifier: "ListOrganizationsLocationsCustomersRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>;
 
-export type CustomerList = Customer[];
+export type CustomerList = ReadonlyArray<Customer>;
 export const CustomerList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<CustomerList>;
@@ -791,7 +781,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsRequest =
     identifier: "ListOrganizationsLocationsCustomersWorkloadsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>;
 
-export type WorkloadList = Workload[];
+export type WorkloadList = ReadonlyArray<Workload>;
 export const WorkloadList = /*@__PURE__*/ S.Array(
   Workload,
 ) as any as S.Schema<WorkloadList>;
@@ -854,8 +844,7 @@ export type AccessReasonTypeEnum =
   | "GOOGLE_INITIATED_REVIEW"
   | "THIRD_PARTY_DATA_REQUEST"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-  | "CLOUD_INITIATED_ACCESS"
-  | (string & {});
+  | "CLOUD_INITIATED_ACCESS";
 export const AccessReasonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reason for the access. */
@@ -894,7 +883,7 @@ export const AccessApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessApprovalRequest",
 }) as any as S.Schema<AccessApprovalRequest>;
 
-export type AccessApprovalRequestList = AccessApprovalRequest[];
+export type AccessApprovalRequestList = ReadonlyArray<AccessApprovalRequest>;
 export const AccessApprovalRequestList = /*@__PURE__*/ S.Array(
   AccessApprovalRequest,
 ) as any as S.Schema<AccessApprovalRequestList>;
@@ -955,7 +944,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsRequest =
     identifier: "ListOrganizationsLocationsCustomersWorkloadsViolationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>;
 
-export type ViolationList = Violation[];
+export type ViolationList = ReadonlyArray<Violation>;
 export const ViolationList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ViolationList>;

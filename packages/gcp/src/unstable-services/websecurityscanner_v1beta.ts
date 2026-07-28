@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type ScanConfigRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "NORMAL"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const ScanConfigRiskLevelEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnum =
@@ -72,17 +71,16 @@ export type ScanConfigTargetPlatformsItemEnum =
   | "APP_ENGINE"
   | "COMPUTE"
   | "CLOUD_RUN"
-  | "CLOUD_FUNCTIONS"
-  | (string & {});
+  | "CLOUD_FUNCTIONS";
 export const ScanConfigTargetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnumList =
-  ScanConfigTargetPlatformsItemEnum[];
+  ReadonlyArray<ScanConfigTargetPlatformsItemEnum>;
 export const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   ScanConfigTargetPlatformsItemEnum,
 ) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -163,8 +161,7 @@ export type ScanConfigUserAgentEnum =
   | "USER_AGENT_UNSPECIFIED"
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
-  | "SAFARI_IPHONE"
-  | (string & {});
+  | "SAFARI_IPHONE";
 export const ScanConfigUserAgentEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunWarningTraceCodeEnum =
@@ -173,8 +170,7 @@ export type ScanRunWarningTraceCodeEnum =
   | "TOO_MANY_CRAWL_RESULTS"
   | "TOO_MANY_FUZZ_TASKS"
   | "BLOCKED_BY_IAP"
-  | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN"
-  | (string & {});
+  | "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN";
 export const ScanRunWarningTraceCodeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective. */
@@ -190,7 +186,7 @@ export const ScanRunWarningTrace = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScanRunWarningTrace",
 }) as any as S.Schema<ScanRunWarningTrace>;
 
-export type ScanRunWarningTraceList = ScanRunWarningTrace[];
+export type ScanRunWarningTraceList = ReadonlyArray<ScanRunWarningTrace>;
 export const ScanRunWarningTraceList = /*@__PURE__*/ S.Array(
   ScanRunWarningTrace,
 ) as any as S.Schema<ScanRunWarningTraceList>;
@@ -199,16 +195,14 @@ export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
-  | "FINISHED"
-  | (string & {});
+  | "FINISHED";
 export const ScanRunExecutionStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunResultStateEnum =
   | "RESULT_STATE_UNSPECIFIED"
   | "SUCCESS"
   | "ERROR"
-  | "KILLED"
-  | (string & {});
+  | "KILLED";
 export const ScanRunResultStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunErrorTraceCodeEnum =
@@ -219,8 +213,7 @@ export type ScanRunErrorTraceCodeEnum =
   | "TIMED_OUT_WHILE_SCANNING"
   | "TOO_MANY_REDIRECTS"
   | "TOO_MANY_HTTP_ERRORS"
-  | "STARTING_URLS_CRAWL_HTTP_ERRORS"
-  | (string & {});
+  | "STARTING_URLS_CRAWL_HTTP_ERRORS";
 export const ScanRunErrorTraceCodeEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigErrorCodeEnum =
@@ -266,8 +259,7 @@ export type ScanConfigErrorCodeEnum =
   | "UNSUPPORTED_FILTER"
   | "UNSUPPORTED_FINDING_TYPE"
   | "UNSUPPORTED_URL_SCHEME"
-  | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND"
-  | (string & {});
+  | "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND";
 export const ScanConfigErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error. */
@@ -349,8 +341,7 @@ export const ScanRun = /*@__PURE__*/ S.suspend(() =>
 export type ScanConfigExportToSecurityCommandCenterEnum =
   | "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ScanConfigExportToSecurityCommandCenterEnum =
   /*@__PURE__*/ S.String;
 
@@ -558,14 +549,12 @@ export type FindingSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const FindingSeverityEnum = /*@__PURE__*/ S.String;
 
 export type XxePayloadLocationEnum =
   | "LOCATION_UNSPECIFIED"
-  | "COMPLETE_REQUEST_BODY"
-  | (string & {});
+  | "COMPLETE_REQUEST_BODY";
 export const XxePayloadLocationEnum = /*@__PURE__*/ S.String;
 
 /** Information reported for an XXE. */
@@ -610,7 +599,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = Header[];
+export type HeaderList = ReadonlyArray<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -750,7 +739,7 @@ export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsScanConfigsRequest",
 }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
-export type ScanConfigList = ScanConfig[];
+export type ScanConfigList = ReadonlyArray<ScanConfig>;
 export const ScanConfigList = /*@__PURE__*/ S.Array(
   ScanConfig,
 ) as any as S.Schema<ScanConfigList>;
@@ -796,7 +785,7 @@ export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsScanConfigsScanRunsRequest",
 }) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
-export type ScanRunList = ScanRun[];
+export type ScanRunList = ReadonlyArray<ScanRun>;
 export const ScanRunList = /*@__PURE__*/ S.Array(
   ScanRun,
 ) as any as S.Schema<ScanRunList>;
@@ -859,7 +848,7 @@ export const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CrawledUrl" }) as any as S.Schema<CrawledUrl>;
 
-export type CrawledUrlList = CrawledUrl[];
+export type CrawledUrlList = ReadonlyArray<CrawledUrl>;
 export const CrawledUrlList = /*@__PURE__*/ S.Array(
   CrawledUrl,
 ) as any as S.Schema<CrawledUrlList>;
@@ -908,7 +897,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
     identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
   }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
-export type FindingList = Finding[];
+export type FindingList = ReadonlyArray<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;
@@ -964,7 +953,7 @@ export const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "FindingTypeStats",
 }) as any as S.Schema<FindingTypeStats>;
 
-export type FindingTypeStatsList = FindingTypeStats[];
+export type FindingTypeStatsList = ReadonlyArray<FindingTypeStats>;
 export const FindingTypeStatsList = /*@__PURE__*/ S.Array(
   FindingTypeStats,
 ) as any as S.Schema<FindingTypeStatsList>;

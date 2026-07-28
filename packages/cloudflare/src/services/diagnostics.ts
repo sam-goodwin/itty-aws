@@ -64,7 +64,7 @@ export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
   [{ code: 1002 }],
 ) {}
 
-export type EndpointHealthchecksCreateRequestCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksCreateRequestCheckType = "icmp";
 export const EndpointHealthchecksCreateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -99,9 +99,7 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEndpointHealthcheckRequest",
 }) as any as S.Schema<CreateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksCreateResponseCheckType =
-  | "icmp"
-  | (string & {});
+export type EndpointHealthchecksCreateResponseCheckType = "icmp";
 export const EndpointHealthchecksCreateResponseCheckType =
   /*@__PURE__*/ S.String;
 
@@ -129,12 +127,12 @@ export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEndpointHealthcheckResponse",
 }) as any as S.Schema<CreateEndpointHealthcheckResponse>;
 
-export type TraceroutesCreateRequestTargetsList = string[];
+export type TraceroutesCreateRequestTargetsList = ReadonlyArray<string>;
 export const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceroutesCreateRequestTargetsList>;
 
-export type TraceroutesCreateRequestColosList = string[];
+export type TraceroutesCreateRequestColosList = ReadonlyArray<string>;
 export const TraceroutesCreateRequestColosList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceroutesCreateRequestColosList>;
@@ -143,7 +141,8 @@ export type TraceroutesCreateRequestOptionsPacketType =
   | "icmp"
   | "tcp"
   | "udp"
-  | (string & {});
+  | "gre"
+  | "gre+icmp";
 export const TraceroutesCreateRequestOptionsPacketType = /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateRequestOptions {
@@ -219,11 +218,12 @@ export type TraceroutesCreateResultItemColosItemError =
   | ""
   | "Could not gather traceroute data: Code 1"
   | "Could not gather traceroute data: Code 2"
-  | (string & {});
+  | "Could not gather traceroute data: Code 3"
+  | "Could not gather traceroute data: Code 4";
 export const TraceroutesCreateResultItemColosItemError = /*@__PURE__*/ S.String;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
-  string[];
+  ReadonlyArray<string>;
 export const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -269,7 +269,7 @@ export const TraceroutesCreateResultItemColosItemHopsItemNodesItem =
   }) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
 
 export type TraceroutesCreateResultItemColosItemHopsItemNodesList =
-  TraceroutesCreateResultItemColosItemHopsItemNodesItem[];
+  ReadonlyArray<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
 export const TraceroutesCreateResultItemColosItemHopsItemNodesList =
   /*@__PURE__*/ S.Array(
     TraceroutesCreateResultItemColosItemHopsItemNodesItem,
@@ -298,7 +298,7 @@ export const TraceroutesCreateResultItemColosItemHopsItem =
   }) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItem>;
 
 export type TraceroutesCreateResultItemColosItemHopsList =
-  TraceroutesCreateResultItemColosItemHopsItem[];
+  ReadonlyArray<TraceroutesCreateResultItemColosItemHopsItem>;
 export const TraceroutesCreateResultItemColosItemHopsList =
   /*@__PURE__*/ S.Array(
     TraceroutesCreateResultItemColosItemHopsItem,
@@ -328,7 +328,7 @@ export const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TraceroutesCreateResultItemColosItem>;
 
 export type TraceroutesCreateResultItemColosList =
-  TraceroutesCreateResultItemColosItem[];
+  ReadonlyArray<TraceroutesCreateResultItemColosItem>;
 export const TraceroutesCreateResultItemColosList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItemColosItem,
 ) as any as S.Schema<TraceroutesCreateResultItemColosList>;
@@ -347,7 +347,8 @@ export const TraceroutesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TraceroutesCreateResultItem",
 }) as any as S.Schema<TraceroutesCreateResultItem>;
 
-export type TraceroutesCreateResultList = TraceroutesCreateResultItem[];
+export type TraceroutesCreateResultList =
+  ReadonlyArray<TraceroutesCreateResultItem>;
 export const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItem,
 ) as any as S.Schema<TraceroutesCreateResultList>;
@@ -420,7 +421,7 @@ export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEndpointHealthcheckRequest",
 }) as any as S.Schema<GetEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksGetResponseCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksGetResponseCheckType = "icmp";
 export const EndpointHealthchecksGetResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -467,7 +468,7 @@ export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksRequest",
 }) as any as S.Schema<ListEndpointHealthchecksRequest>;
 
-export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksListResponseCheckType = "icmp";
 export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -494,7 +495,8 @@ export const ListEndpointHealthchecksItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksItem",
 }) as any as S.Schema<ListEndpointHealthchecksItem>;
 
-export type ListEndpointHealthchecksItemsList = ListEndpointHealthchecksItem[];
+export type ListEndpointHealthchecksItemsList =
+  ReadonlyArray<ListEndpointHealthchecksItem>;
 export const ListEndpointHealthchecksItemsList = /*@__PURE__*/ S.Array(
   ListEndpointHealthchecksItem,
 ) as any as S.Schema<ListEndpointHealthchecksItemsList>;
@@ -507,7 +509,7 @@ export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEndpointHealthchecksResponse",
 }) as any as S.Schema<ListEndpointHealthchecksResponse>;
 
-export type EndpointHealthchecksUpdateRequestCheckType = "icmp" | (string & {});
+export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
 export const EndpointHealthchecksUpdateRequestCheckType =
   /*@__PURE__*/ S.String;
 
@@ -545,9 +547,7 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEndpointHealthcheckRequest",
 }) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
 
-export type EndpointHealthchecksUpdateResponseCheckType =
-  | "icmp"
-  | (string & {});
+export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
 export const EndpointHealthchecksUpdateResponseCheckType =
   /*@__PURE__*/ S.String;
 

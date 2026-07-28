@@ -64,8 +64,7 @@ export type CapacityCommitmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const CapacityCommitmentStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -74,7 +73,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -106,8 +105,7 @@ export type CapacityCommitmentPlanEnum =
   | "ANNUAL"
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const CapacityCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 export type CapacityCommitmentRenewalPlanEnum =
@@ -120,16 +118,14 @@ export type CapacityCommitmentRenewalPlanEnum =
   | "ANNUAL"
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const CapacityCommitmentRenewalPlanEnum = /*@__PURE__*/ S.String;
 
 export type CapacityCommitmentEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const CapacityCommitmentEditionEnum = /*@__PURE__*/ S.String;
 
 /** Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project. */
@@ -262,16 +258,14 @@ export type ReservationScalingModeEnum =
   | "SCALING_MODE_UNSPECIFIED"
   | "AUTOSCALE_ONLY"
   | "IDLE_SLOTS_ONLY"
-  | "ALL_SLOTS"
-  | (string & {});
+  | "ALL_SLOTS";
 export const ReservationScalingModeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const ReservationEditionEnum = /*@__PURE__*/ S.String;
 
 /** Disaster Recovery(DR) replication status of the reservation. */
@@ -414,15 +408,10 @@ export type AssignmentJobTypeEnum =
   | "CONTINUOUS"
   | "BACKGROUND_CHANGE_DATA_CAPTURE"
   | "BACKGROUND_COLUMN_METADATA_INDEX"
-  | "BACKGROUND_SEARCH_INDEX_REFRESH"
-  | (string & {});
+  | "BACKGROUND_SEARCH_INDEX_REFRESH";
 export const AssignmentJobTypeEnum = /*@__PURE__*/ S.String;
 
-export type AssignmentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "ACTIVE"
-  | (string & {});
+export type AssignmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE";
 export const AssignmentStateEnum = /*@__PURE__*/ S.String;
 
 /** An assignment allows a project to submit jobs of a certain type using slots from the specified reservation. */
@@ -567,8 +556,7 @@ export const DeleteProjectsLocationsReservationsAssignmentsRequest =
 export type FailoverReservationRequestFailoverModeEnum =
   | "FAILOVER_MODE_UNSPECIFIED"
   | "SOFT"
-  | "HARD"
-  | (string & {});
+  | "HARD";
 export const FailoverReservationRequestFailoverModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -643,7 +631,7 @@ export const TableReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableReference" }) as any as S.Schema<TableReference>;
 
-export type TableReferenceList = TableReference[];
+export type TableReferenceList = ReadonlyArray<TableReference>;
 export const TableReferenceList = /*@__PURE__*/ S.Array(
   TableReference,
 ) as any as S.Schema<TableReferenceList>;
@@ -690,7 +678,7 @@ export const GetIamPolicyProjectsLocationsReservationsRequest =
     identifier: "GetIamPolicyProjectsLocationsReservationsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -699,8 +687,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -717,7 +704,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -736,7 +723,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -778,7 +765,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -907,7 +894,7 @@ export const ListProjectsLocationsCapacityCommitmentsRequest =
     identifier: "ListProjectsLocationsCapacityCommitmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
 
-export type CapacityCommitmentList = CapacityCommitment[];
+export type CapacityCommitmentList = ReadonlyArray<CapacityCommitment>;
 export const CapacityCommitmentList = /*@__PURE__*/ S.Array(
   CapacityCommitment,
 ) as any as S.Schema<CapacityCommitmentList>;
@@ -953,7 +940,7 @@ export const ListProjectsLocationsReservationGroupsRequest =
     identifier: "ListProjectsLocationsReservationGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>;
 
-export type ReservationGroupList = ReservationGroup[];
+export type ReservationGroupList = ReadonlyArray<ReservationGroup>;
 export const ReservationGroupList = /*@__PURE__*/ S.Array(
   ReservationGroup,
 ) as any as S.Schema<ReservationGroupList>;
@@ -999,7 +986,7 @@ export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsReservationsRequest",
 }) as any as S.Schema<ListProjectsLocationsReservationsRequest>;
 
-export type ReservationList = Reservation[];
+export type ReservationList = ReadonlyArray<Reservation>;
 export const ReservationList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList>;
@@ -1045,7 +1032,7 @@ export const ListProjectsLocationsReservationsAssignmentsRequest =
     identifier: "ListProjectsLocationsReservationsAssignmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
 
-export type AssignmentList = Assignment[];
+export type AssignmentList = ReadonlyArray<Assignment>;
 export const AssignmentList = /*@__PURE__*/ S.Array(
   Assignment,
 ) as any as S.Schema<AssignmentList>;

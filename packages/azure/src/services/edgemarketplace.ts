@@ -18,13 +18,35 @@ export interface OffersGenerateAccessTokenRequest {
   resourceUri: string;
   /** Id of the offer */
   offerId: string;
-  body: unknown;
+  /** The name of the publisher. */
+  publisherName?: string;
+  /** The region where the disk will be created. */
+  edgeMarketPlaceRegion: string;
+  /** The region where the disk will be created. */
+  egeMarketPlaceResourceId?: string;
+  /** The hyperv version. */
+  hypervGeneration?: string;
+  /** The marketplace sku. */
+  marketPlaceSku?: string;
+  /** The marketplace sku version. */
+  marketPlaceSkuVersion?: string;
+  /** The device sku. */
+  deviceSku?: string;
+  /** The device sku version. */
+  deviceVersion?: string;
 }
 export const OffersGenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    publisherName: S.optional(S.String),
+    edgeMarketPlaceRegion: S.String,
+    egeMarketPlaceResourceId: S.optional(S.String),
+    hypervGeneration: S.optional(S.String),
+    marketPlaceSku: S.optional(S.String),
+    marketPlaceSkuVersion: S.optional(S.String),
+    deviceSku: S.optional(S.String),
+    deviceVersion: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -83,8 +105,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -92,8 +113,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -137,11 +157,11 @@ export const OfferPublisher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OfferPublisher" }) as any as S.Schema<OfferPublisher>;
 
 /** OfferAvailability Enum */
-export type OfferAvailability = "Private" | "Public" | (string & {});
+export type OfferAvailability = "Private" | "Public";
 export const OfferAvailability = /*@__PURE__*/ S.String;
 
 /** Offer release type Enum */
-export type OfferReleaseType = "Preview" | "GA" | (string & {});
+export type OfferReleaseType = "Preview" | "GA";
 export const OfferReleaseType = /*@__PURE__*/ S.String;
 
 /** Icon files */
@@ -184,13 +204,13 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TermsAndConditions>;
 
 /** The category ids */
-export type OfferContentCategoryIdsList = string[];
+export type OfferContentCategoryIdsList = ReadonlyArray<string>;
 export const OfferContentCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferContentCategoryIdsList>;
 
 /** The operating systems */
-export type OfferContentOperatingSystemsList = string[];
+export type OfferContentOperatingSystemsList = ReadonlyArray<string>;
 export const OfferContentOperatingSystemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferContentOperatingSystemsList>;
@@ -252,8 +272,7 @@ export const OfferContent = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -277,7 +296,7 @@ export const SkuOperatingSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuOperatingSystem>;
 
 /** Offer launch type Enum */
-export type OfferLaunchType = "Trusted" | "Unknown" | (string & {});
+export type OfferLaunchType = "Trusted" | "Unknown";
 export const OfferLaunchType = /*@__PURE__*/ S.String;
 
 /** The marketplace sku version */
@@ -306,7 +325,8 @@ export const MarketplaceSkuVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketplaceSkuVersion>;
 
 /** The marketplace sku version */
-export type MarketplaceSkuMarketplaceSkuVersionsList = MarketplaceSkuVersion[];
+export type MarketplaceSkuMarketplaceSkuVersionsList =
+  ReadonlyArray<MarketplaceSkuVersion>;
 export const MarketplaceSkuMarketplaceSkuVersionsList = /*@__PURE__*/ S.Array(
   MarketplaceSkuVersion,
 ) as any as S.Schema<MarketplaceSkuMarketplaceSkuVersionsList>;
@@ -355,7 +375,7 @@ export const MarketplaceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketplaceSku" }) as any as S.Schema<MarketplaceSku>;
 
 /** The marketplace skus */
-export type OfferPropertiesMarketplaceSkusList = MarketplaceSku[];
+export type OfferPropertiesMarketplaceSkusList = ReadonlyArray<MarketplaceSku>;
 export const OfferPropertiesMarketplaceSkusList = /*@__PURE__*/ S.Array(
   MarketplaceSku,
 ) as any as S.Schema<OfferPropertiesMarketplaceSkusList>;
@@ -416,13 +436,14 @@ export interface OffersGetAccessTokenRequest {
   resourceUri: string;
   /** Id of the offer */
   offerId: string;
-  body: unknown;
+  /** The name of the publisher. */
+  requestId: string;
 }
 export const OffersGetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    requestId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -493,7 +514,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
-export type OfferListResultValueList = Offer[];
+export type OfferListResultValueList = ReadonlyArray<Offer>;
 export const OfferListResultValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResultValueList>;
@@ -570,11 +591,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -601,7 +622,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -740,7 +761,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
 /** The Publisher items on this page */
-export type PublisherListResultValueList = Publisher[];
+export type PublisherListResultValueList = ReadonlyArray<Publisher>;
 export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;

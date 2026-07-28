@@ -69,14 +69,16 @@ export class ZoneNotFound extends T.applyErrorMatchers(
   [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
 ) {}
 
-export type CreateRequestDeploy = "staging" | "production" | (string & {});
+export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;
+
+export type CreateRequestDeploy = "staging" | "production";
 export const CreateRequestDeploy = /*@__PURE__*/ S.String;
 
 export type CreateRequestGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CreateRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateRequestGeoRestrictions {
@@ -90,7 +92,7 @@ export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestGeoRestrictions",
 }) as any as S.Schema<CreateRequestGeoRestrictions>;
 
-export type CreateRequestType = "legacy_custom" | "sni_custom" | (string & {});
+export type CreateRequestType = "legacy_custom" | "sni_custom";
 export const CreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomCertificateRequest {
@@ -99,7 +101,7 @@ export interface CreateCustomCertificateRequest {
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: CreateRequestBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** The environment to deploy the certificate to, defaults to production. */
@@ -117,7 +119,9 @@ export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      CreateRequestBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     deploy: S.optional(CreateRequestDeploy),
     geoRestrictions: S.optional(
@@ -139,11 +143,13 @@ export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomCertificateRequest",
 }) as any as S.Schema<CreateCustomCertificateRequest>;
 
+export type CreateResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+export const CreateResponseBundleMethod = /*@__PURE__*/ S.String;
+
 export type CreateResponseGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CreateResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface CreateResponseGeoRestrictions {
@@ -157,20 +163,17 @@ export const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseGeoRestrictions",
 }) as any as S.Schema<CreateResponseGeoRestrictions>;
 
-export type CreateResponseHostsList = string[];
+export type CreateResponseHostsList = ReadonlyArray<string>;
 export const CreateResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHostsList>;
 
-export type CreateResponseKeylessServerPermissionsList = string[];
+export type CreateResponseKeylessServerPermissionsList = ReadonlyArray<string>;
 export const CreateResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
 
-export type CreateResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type CreateResponseKeylessServerStatus = "active" | "deleted";
 export const CreateResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseKeylessServerTunnel {
@@ -231,7 +234,8 @@ export type CreateResponseStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -241,7 +245,7 @@ export interface CreateCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: CreateResponseBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** When the certificate from the authority expires. */
@@ -269,7 +273,9 @@ export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      CreateResponseBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
@@ -352,11 +358,10 @@ export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCertificateRequest",
 }) as any as S.Schema<GetCustomCertificateRequest>;
 
-export type GetResponseGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type GetResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+export const GetResponseBundleMethod = /*@__PURE__*/ S.String;
+
+export type GetResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const GetResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface GetResponseGeoRestrictions {
@@ -370,20 +375,17 @@ export const GetResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseGeoRestrictions",
 }) as any as S.Schema<GetResponseGeoRestrictions>;
 
-export type GetResponseHostsList = string[];
+export type GetResponseHostsList = ReadonlyArray<string>;
 export const GetResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseHostsList>;
 
-export type GetResponseKeylessServerPermissionsList = string[];
+export type GetResponseKeylessServerPermissionsList = ReadonlyArray<string>;
 export const GetResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseKeylessServerPermissionsList>;
 
-export type GetResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type GetResponseKeylessServerStatus = "active" | "deleted";
 export const GetResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseKeylessServerTunnel {
@@ -444,7 +446,8 @@ export type GetResponseStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -454,7 +457,7 @@ export interface GetCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: GetResponseBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** When the certificate from the authority expires. */
@@ -482,7 +485,9 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      GetResponseBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
@@ -506,14 +511,15 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCertificateResponse",
 }) as any as S.Schema<GetCustomCertificateResponse>;
 
-export type ListRequestMatch = "any" | "all" | (string & {});
+export type ListRequestMatch = "any" | "all";
 export const ListRequestMatch = /*@__PURE__*/ S.String;
 
 export type ListRequestStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListCustomCertificatesRequest {
@@ -548,11 +554,13 @@ export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCertificatesRequest",
 }) as any as S.Schema<ListCustomCertificatesRequest>;
 
+export type ListResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
+export const ListResultItemBundleMethod = /*@__PURE__*/ S.String;
+
 export type ListResultItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const ListResultItemGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface ListResultItemGeoRestrictions {
@@ -566,20 +574,17 @@ export const ListResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemGeoRestrictions",
 }) as any as S.Schema<ListResultItemGeoRestrictions>;
 
-export type ListResultItemHostsList = string[];
+export type ListResultItemHostsList = ReadonlyArray<string>;
 export const ListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemHostsList>;
 
-export type ListResultItemKeylessServerPermissionsList = string[];
+export type ListResultItemKeylessServerPermissionsList = ReadonlyArray<string>;
 export const ListResultItemKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
 
-export type ListResultItemKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type ListResultItemKeylessServerStatus = "active" | "deleted";
 export const ListResultItemKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemKeylessServerTunnel {
@@ -640,7 +645,8 @@ export type ListResultItemStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
@@ -649,7 +655,7 @@ export interface ListResultItem {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: ListResultItemBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** When the certificate from the authority expires. */
@@ -677,7 +683,9 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      ListResultItemBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
@@ -699,7 +707,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -719,14 +727,13 @@ export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCertificatesResponse",
 }) as any as S.Schema<ListCustomCertificatesResponse>;
 
-export type EditRequestDeploy = "staging" | "production" | (string & {});
+export type EditRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+export const EditRequestBundleMethod = /*@__PURE__*/ S.String;
+
+export type EditRequestDeploy = "staging" | "production";
 export const EditRequestDeploy = /*@__PURE__*/ S.String;
 
-export type EditRequestGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type EditRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditRequestGeoRestrictions {
@@ -746,7 +753,7 @@ export interface PatchCustomCertificateRequest {
   /** Identifier. */
   customCertificateId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: EditRequestBundleMethod;
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
   /** The identifier for the Custom CSR that was used. */
@@ -764,7 +771,9 @@ export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      EditRequestBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     certificate: S.optional(S.String),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     deploy: S.optional(EditRequestDeploy),
@@ -786,11 +795,10 @@ export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCustomCertificateRequest",
 }) as any as S.Schema<PatchCustomCertificateRequest>;
 
-export type EditResponseGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
+export type EditResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+export const EditResponseBundleMethod = /*@__PURE__*/ S.String;
+
+export type EditResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export const EditResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
 
 export interface EditResponseGeoRestrictions {
@@ -804,20 +812,17 @@ export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseGeoRestrictions",
 }) as any as S.Schema<EditResponseGeoRestrictions>;
 
-export type EditResponseHostsList = string[];
+export type EditResponseHostsList = ReadonlyArray<string>;
 export const EditResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseHostsList>;
 
-export type EditResponseKeylessServerPermissionsList = string[];
+export type EditResponseKeylessServerPermissionsList = ReadonlyArray<string>;
 export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
 
-export type EditResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
+export type EditResponseKeylessServerStatus = "active" | "deleted";
 export const EditResponseKeylessServerStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseKeylessServerTunnel {
@@ -878,7 +883,8 @@ export type EditResponseStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -888,7 +894,7 @@ export interface PatchCustomCertificateResponse {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: EditResponseBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** When the certificate from the authority expires. */
@@ -916,7 +922,9 @@ export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      EditResponseBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
@@ -957,7 +965,7 @@ export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrioritizeUpdateRequestCertificatesItem>;
 
 export type PrioritizeUpdateRequestCertificatesList =
-  PrioritizeUpdateRequestCertificatesItem[];
+  ReadonlyArray<PrioritizeUpdateRequestCertificatesItem>;
 export const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateRequestCertificatesItem,
 ) as any as S.Schema<PrioritizeUpdateRequestCertificatesList>;
@@ -985,11 +993,16 @@ export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutPrioritizeRequest",
 }) as any as S.Schema<PutPrioritizeRequest>;
 
+export type PrioritizeUpdateResultItemBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force";
+export const PrioritizeUpdateResultItemBundleMethod = /*@__PURE__*/ S.String;
+
 export type PrioritizeUpdateResultItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const PrioritizeUpdateResultItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -1005,12 +1018,13 @@ export const PrioritizeUpdateResultItemGeoRestrictions =
     identifier: "PrioritizeUpdateResultItemGeoRestrictions",
   }) as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
 
-export type PrioritizeUpdateResultItemHostsList = string[];
+export type PrioritizeUpdateResultItemHostsList = ReadonlyArray<string>;
 export const PrioritizeUpdateResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
 
-export type PrioritizeUpdateResultItemKeylessServerPermissionsList = string[];
+export type PrioritizeUpdateResultItemKeylessServerPermissionsList =
+  ReadonlyArray<string>;
 export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1018,8 +1032,7 @@ export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
 
 export type PrioritizeUpdateResultItemKeylessServerStatus =
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const PrioritizeUpdateResultItemKeylessServerStatus =
   /*@__PURE__*/ S.String;
 
@@ -1083,7 +1096,8 @@ export type PrioritizeUpdateResultItemStatus =
   | "active"
   | "expired"
   | "deleted"
-  | (string & {});
+  | "pending"
+  | "initializing";
 export const PrioritizeUpdateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface PrioritizeUpdateResultItem {
@@ -1092,7 +1106,7 @@ export interface PrioritizeUpdateResultItem {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: PrioritizeUpdateResultItemBundleMethod;
   /** The identifier for the Custom CSR that was used. */
   customCsrId?: string;
   /** When the certificate from the authority expires. */
@@ -1120,7 +1134,9 @@ export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      PrioritizeUpdateResultItemBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     geoRestrictions: S.optional(
@@ -1146,7 +1162,8 @@ export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrioritizeUpdateResultItem",
 }) as any as S.Schema<PrioritizeUpdateResultItem>;
 
-export type PrioritizeUpdateResultList = PrioritizeUpdateResultItem[];
+export type PrioritizeUpdateResultList =
+  ReadonlyArray<PrioritizeUpdateResultItem>;
 export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateResultItem,
 ) as any as S.Schema<PrioritizeUpdateResultList>;

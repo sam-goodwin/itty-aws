@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type DeviceIdentifierDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "DEVICE_TYPE_ANDROID"
-  | "DEVICE_TYPE_CHROME_OS"
-  | (string & {});
+  | "DEVICE_TYPE_CHROME_OS";
 export const DeviceIdentifierDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
@@ -167,8 +166,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type PartnerClaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const PartnerClaimSectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -220,7 +218,7 @@ export const PartnerClaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartnerClaim" }) as any as S.Schema<PartnerClaim>;
 
-export type PartnerClaimList = PartnerClaim[];
+export type PartnerClaimList = ReadonlyArray<PartnerClaim>;
 export const PartnerClaimList = /*@__PURE__*/ S.Array(
   PartnerClaim,
 ) as any as S.Schema<PartnerClaimList>;
@@ -265,7 +263,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -313,8 +311,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type ClaimDeviceRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const ClaimDeviceRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message to claim a device on behalf of a customer. */
@@ -451,7 +448,7 @@ export const CreateCustomersConfigurationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateCustomersConfigurationsRequest",
 }) as any as S.Schema<CreateCustomersConfigurationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -476,8 +473,7 @@ export type CompanyTermsStatusEnum =
   | "TERMS_STATUS_UNSPECIFIED"
   | "TERMS_STATUS_NOT_ACCEPTED"
   | "TERMS_STATUS_ACCEPTED"
-  | "TERMS_STATUS_STALE"
-  | (string & {});
+  | "TERMS_STATUS_STALE";
 export const CompanyTermsStatusEnum = /*@__PURE__*/ S.String;
 
 /** A reseller, vendor, or customer in the zero-touch reseller and customer APIs. */
@@ -613,14 +609,12 @@ export const FindByIdentifierPartnersDevicesRequest = /*@__PURE__*/ S.suspend(
 export type DeviceClaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const DeviceClaimSectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeviceClaimAdditionalServiceEnum =
   | "ADDITIONAL_SERVICE_UNSPECIFIED"
-  | "DEVICE_PROTECTION"
-  | (string & {});
+  | "DEVICE_PROTECTION";
 export const DeviceClaimAdditionalServiceEnum = /*@__PURE__*/ S.String;
 
 /** A record of a device claimed by a reseller for a customer. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for customers](/zero-touch/guides/how-it-works#claim). */
@@ -652,7 +646,7 @@ export const DeviceClaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceClaim" }) as any as S.Schema<DeviceClaim>;
 
-export type DeviceClaimList = DeviceClaim[];
+export type DeviceClaimList = ReadonlyArray<DeviceClaim>;
 export const DeviceClaimList = /*@__PURE__*/ S.Array(
   DeviceClaim,
 ) as any as S.Schema<DeviceClaimList>;
@@ -683,7 +677,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
-export type DeviceList = Device[];
+export type DeviceList = ReadonlyArray<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -711,8 +705,7 @@ export const FindDevicesByDeviceIdentifierResponse = /*@__PURE__*/ S.suspend(
 export type FindDevicesByOwnerRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const FindDevicesByOwnerRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request to find devices by customers. */
@@ -891,8 +884,7 @@ export type GetDeviceSimLockStateResponseSimLockStateEnum =
   | "SIM_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED_TO_PARTNER"
-  | "LOCKED_TO_OTHER_PARTNER"
-  | (string & {});
+  | "LOCKED_TO_OTHER_PARTNER";
 export const GetDeviceSimLockStateResponseSimLockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -929,7 +921,7 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersRequest",
 }) as any as S.Schema<ListCustomersRequest>;
 
-export type CompanyList = Company[];
+export type CompanyList = ReadonlyArray<Company>;
 export const CompanyList = /*@__PURE__*/ S.Array(
   Company,
 ) as any as S.Schema<CompanyList>;
@@ -968,7 +960,7 @@ export const ListCustomersConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersConfigurationsRequest",
 }) as any as S.Schema<ListCustomersConfigurationsRequest>;
 
-export type ConfigurationList = Configuration[];
+export type ConfigurationList = ReadonlyArray<Configuration>;
 export const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
@@ -1061,7 +1053,7 @@ export const Dpc = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dpc" }) as any as S.Schema<Dpc>;
 
-export type DpcList = Dpc[];
+export type DpcList = ReadonlyArray<Dpc>;
 export const DpcList = /*@__PURE__*/ S.Array(Dpc) as any as S.Schema<DpcList>;
 
 /** Response message of customer's listing DPCs. */
@@ -1305,8 +1297,7 @@ export const RemoveConfigurationCustomersDevicesRequest =
 export type PartnerUnclaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const PartnerUnclaimSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Identifies one unclaim request. */
@@ -1332,7 +1323,7 @@ export const PartnerUnclaim = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartnerUnclaim" }) as any as S.Schema<PartnerUnclaim>;
 
-export type PartnerUnclaimList = PartnerUnclaim[];
+export type PartnerUnclaimList = ReadonlyArray<PartnerUnclaim>;
 export const PartnerUnclaimList = /*@__PURE__*/ S.Array(
   PartnerUnclaim,
 ) as any as S.Schema<PartnerUnclaimList>;
@@ -1408,8 +1399,7 @@ export const UnclaimCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type UnclaimDeviceRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
-  | "SECTION_TYPE_ZERO_TOUCH"
-  | (string & {});
+  | "SECTION_TYPE_ZERO_TOUCH";
 export const UnclaimDeviceRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message to unclaim a device. */
@@ -1477,7 +1467,8 @@ export const UpdateMetadataArguments = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMetadataArguments",
 }) as any as S.Schema<UpdateMetadataArguments>;
 
-export type UpdateMetadataArgumentsList = UpdateMetadataArguments[];
+export type UpdateMetadataArgumentsList =
+  ReadonlyArray<UpdateMetadataArguments>;
 export const UpdateMetadataArgumentsList = /*@__PURE__*/ S.Array(
   UpdateMetadataArguments,
 ) as any as S.Schema<UpdateMetadataArgumentsList>;

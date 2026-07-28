@@ -357,6 +357,7 @@
   },
   "scripts": {
     "download-api-docs": "bun scripts/download-api-docs.ts",
+    "convert": "bun scripts/spec-to-smithy.ts",
     "spec-to-smithy": "bun scripts/spec-to-smithy.ts",
     "generate": "bun scripts/generate.ts",
     "typecheck": "tsc -p tsconfig.json",

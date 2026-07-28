@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -71,8 +71,7 @@ export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   | "IAM_POLICY"
   | "ORG_POLICY"
   | "ACCESS_POLICY"
-  | "RELATIONSHIP"
-  | (string & {});
+  | "RELATIONSHIP";
 export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -96,8 +95,7 @@ export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
-  | "REQUEST_TIME"
-  | (string & {});
+  | "REQUEST_TIME";
 export const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   /*@__PURE__*/ S.String;
 
@@ -219,7 +217,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

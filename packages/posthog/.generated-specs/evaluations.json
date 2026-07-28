@@ -282,7 +282,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.evaluations#UserBasic"
+          "target": "com.posthog.evaluations#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -952,6 +955,27 @@
         "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
       }
     },
+    "com.posthog.evaluations#ModelConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "provider": {
+          "target": "com.posthog.evaluations#LLMProviderEnum"
+        },
+        "model": {
+          "target": "smithy.api#String"
+        },
+        "provider_key_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Nested serializer for model configuration."
+      }
+    },
     "com.posthog.evaluations#EvaluationsCreateRequest": {
       "type": "structure",
       "members": {
@@ -962,9 +986,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String",
@@ -982,22 +1003,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the evaluation runs automatically on new $ai_generation events."
-          }
-        },
-        "status": {
-          "target": "com.posthog.evaluations#EvaluationStatusEnum"
-        },
-        "status_reason": {
-          "target": "com.posthog.evaluations#StatusReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "status_reason_detail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Additional detail for the current system-disabled status. This is only populated when the detail is safe to show in the evaluation UI.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "evaluation_type": {
@@ -1043,20 +1048,11 @@
           }
         },
         "model_configuration": {
-          "target": "com.posthog.evaluations#ModelConfiguration",
+          "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
             "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.evaluations#UserBasic"
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -1268,22 +1264,6 @@
             "smithy.api#documentation": "Whether the evaluation runs automatically on new $ai_generation events."
           }
         },
-        "status": {
-          "target": "com.posthog.evaluations#EvaluationStatusEnum"
-        },
-        "status_reason": {
-          "target": "com.posthog.evaluations#StatusReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "status_reason_detail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Additional detail for the current system-disabled status. This is only populated when the detail is safe to show in the evaluation UI.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
@@ -1327,20 +1307,11 @@
           }
         },
         "model_configuration": {
-          "target": "com.posthog.evaluations#ModelConfiguration",
+          "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
             "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.evaluations#UserBasic"
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -1512,22 +1483,6 @@
             "smithy.api#documentation": "Whether the evaluation runs automatically on new $ai_generation events."
           }
         },
-        "status": {
-          "target": "com.posthog.evaluations#EvaluationStatusEnum"
-        },
-        "status_reason": {
-          "target": "com.posthog.evaluations#StatusReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "status_reason_detail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Additional detail for the current system-disabled status. This is only populated when the detail is safe to show in the evaluation UI.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "evaluation_type": {
           "target": "com.posthog.evaluations#EvaluationTypeEnum",
           "traits": {
@@ -1571,20 +1526,11 @@
           }
         },
         "model_configuration": {
-          "target": "com.posthog.evaluations#ModelConfiguration",
+          "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
             "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.evaluations#UserBasic"
         },
         "deleted": {
           "target": "smithy.api#Boolean",

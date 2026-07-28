@@ -70,8 +70,7 @@ export type ParameterFormatEnum =
   | "PARAMETER_FORMAT_UNSPECIFIED"
   | "UNFORMATTED"
   | "YAML"
-  | "JSON"
-  | (string & {});
+  | "JSON";
 export const ParameterFormatEnum = /*@__PURE__*/ S.String;
 
 /** Output-only policy member strings of a Google Cloud resource's built-in identity. */
@@ -219,8 +218,7 @@ export const CreateProjectsLocationsParametersVersionsRequest =
 export type TemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
-  | "TEMPLATE_FORMAT_JSON"
-  | (string & {});
+  | "TEMPLATE_FORMAT_JSON";
 export const TemplateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Template resource */
@@ -503,8 +501,7 @@ export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsParametersVersionsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsParametersVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -554,8 +551,7 @@ export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsTemplatesVersionsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsTemplatesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -583,7 +579,7 @@ export const GetProjectsLocationsTemplatesVersionsRequest =
     identifier: "GetProjectsLocationsTemplatesVersionsRequest",
   }) as any as S.Schema<GetProjectsLocationsTemplatesVersionsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -618,7 +614,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -670,7 +666,7 @@ export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsParametersRequest",
 }) as any as S.Schema<ListProjectsLocationsParametersRequest>;
 
-export type ParameterList = Parameter[];
+export type ParameterList = ReadonlyArray<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -725,7 +721,7 @@ export const ListProjectsLocationsParametersVersionsRequest =
     identifier: "ListProjectsLocationsParametersVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsParametersVersionsRequest>;
 
-export type ParameterVersionList = ParameterVersion[];
+export type ParameterVersionList = ReadonlyArray<ParameterVersion>;
 export const ParameterVersionList = /*@__PURE__*/ S.Array(
   ParameterVersion,
 ) as any as S.Schema<ParameterVersionList>;
@@ -780,7 +776,7 @@ export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTemplatesRequest",
 }) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
 
-export type TemplateList = Template[];
+export type TemplateList = ReadonlyArray<Template>;
 export const TemplateList = /*@__PURE__*/ S.Array(
   Template,
 ) as any as S.Schema<TemplateList>;
@@ -835,7 +831,7 @@ export const ListProjectsLocationsTemplatesVersionsRequest =
     identifier: "ListProjectsLocationsTemplatesVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTemplatesVersionsRequest>;
 
-export type TemplateVersionList = TemplateVersion[];
+export type TemplateVersionList = ReadonlyArray<TemplateVersion>;
 export const TemplateVersionList = /*@__PURE__*/ S.Array(
   TemplateVersion,
 ) as any as S.Schema<TemplateVersionList>;
@@ -1034,8 +1030,7 @@ export const RenderProjectsLocationsTemplatesVersionsRequest =
 export type RenderTemplateVersionResponseTemplateFormatEnum =
   | "TEMPLATE_FORMAT_UNSPECIFIED"
   | "TEMPLATE_FORMAT_YAML"
-  | "TEMPLATE_FORMAT_JSON"
-  | (string & {});
+  | "TEMPLATE_FORMAT_JSON";
 export const RenderTemplateVersionResponseTemplateFormatEnum =
   /*@__PURE__*/ S.String;
 

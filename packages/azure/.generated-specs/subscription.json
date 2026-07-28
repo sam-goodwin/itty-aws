@@ -504,16 +504,36 @@
     "com.azure.subscription#SubscriptionPolicyAddUpdatePolicyForTenantRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "blockSubscriptionsLeavingTenant": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Blocks the leaving of subscriptions from user's tenant."
+          }
+        },
+        "blockSubscriptionsIntoTenant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Blocks the entering of subscriptions into user's tenant."
+          }
+        },
+        "exemptedPrincipals": {
+          "target": "com.azure.subscription#SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList",
+          "traits": {
+            "smithy.api#documentation": "List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.subscription#SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant."
       }
     },
     "com.azure.subscription#SubscriptionPolicyGetPolicyForTenant": {
@@ -708,16 +728,54 @@
             "smithy.api#documentation": "Subscription Id."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.subscription#AcceptOwnershipRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Accept subscription ownership request properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.subscription#AcceptOwnershipRequestProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the subscription.",
+            "smithy.api#required": {}
+          }
+        },
+        "managementGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Management group Id for the subscription."
+          }
+        },
+        "tags": {
+          "target": "com.azure.subscription#AcceptOwnershipRequestPropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for the subscription"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Accept subscription ownership request properties."
+      }
+    },
+    "com.azure.subscription#AcceptOwnershipRequestPropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for the subscription"
       }
     },
     "com.azure.subscription#AliasList": {
@@ -1108,16 +1166,97 @@
             "smithy.api#documentation": "AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.subscription#PutAliasRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Put alias request properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.subscription#PutAliasRequestProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the subscription."
+          }
+        },
+        "workload": {
+          "target": "com.azure.subscription#Workload"
+        },
+        "billingScope": {
+          "target": "smithy.api#String"
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This parameter can be used to create alias for existing subscription Id"
+          }
+        },
+        "resellerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reseller Id"
+          }
+        },
+        "additionalProperties": {
+          "target": "com.azure.subscription#PutAliasRequestAdditionalProperties",
+          "traits": {
+            "smithy.api#documentation": "Put alias request additional properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Put subscription properties."
+      }
+    },
+    "com.azure.subscription#PutAliasRequestAdditionalProperties": {
+      "type": "structure",
+      "members": {
+        "managementGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Management group Id for the subscription."
+          }
+        },
+        "subscriptionTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant Id of the subscription"
+          }
+        },
+        "subscriptionOwnerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Owner Id of the subscription"
+          }
+        },
+        "tags": {
+          "target": "com.azure.subscription#PutAliasRequestAdditionalPropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for the subscription"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Put subscription additional properties."
+      }
+    },
+    "com.azure.subscription#PutAliasRequestAdditionalPropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for the subscription"
       }
     },
     "com.azure.subscription#AliasGet": {
@@ -1403,11 +1542,10 @@
             "smithy.api#documentation": "Subscription Id."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "subscriptionName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "New subscription name"
           }
         }
       },

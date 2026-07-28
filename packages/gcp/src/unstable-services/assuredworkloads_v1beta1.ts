@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequestAcknowledgeTypeEnum =
     | "ACKNOWLEDGE_TYPE_UNSPECIFIED"
     | "SINGLE_VIOLATION"
-    | "EXISTING_CHILD_RESOURCE_VIOLATIONS"
-    | (string & {});
+    | "EXISTING_CHILD_RESOURCE_VIOLATIONS";
 export const GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequestAcknowledgeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -152,7 +151,7 @@ export const AggregateFoldersLocationsDbFrameworkComplianceReportsRequest =
     identifier: "AggregateFoldersLocationsDbFrameworkComplianceReportsRequest",
   }) as any as S.Schema<AggregateFoldersLocationsDbFrameworkComplianceReportsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -212,7 +211,7 @@ export const GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>;
 
 export type GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReportList =
-  GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>;
 export const GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport,
@@ -329,7 +328,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -368,7 +367,7 @@ export const GoogleCloudAssuredworkloadsV1beta1MoveImpact =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1MoveImpact>;
 
 export type GoogleCloudAssuredworkloadsV1beta1MoveImpactList =
-  GoogleCloudAssuredworkloadsV1beta1MoveImpact[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1MoveImpact>;
 export const GoogleCloudAssuredworkloadsV1beta1MoveImpactList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1MoveImpact,
@@ -414,7 +413,7 @@ export const GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>;
 
 export type GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroupList =
-  GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup>;
 export const GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup,
@@ -443,7 +442,7 @@ export const GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>;
 
 export type GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysisList =
-  GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis>;
 export const GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysisList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis,
@@ -469,7 +468,7 @@ export const GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>;
 
 export type GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequestActionEnum =
-  "WORKLOAD_UPDATE_ACTION_UNSPECIFIED" | "APPLY" | (string & {});
+  "WORKLOAD_UPDATE_ACTION_UNSPECIFIED" | "APPLY";
 export const GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateRequestActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -611,8 +610,7 @@ export const GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse =
 export type GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequestAcknowledgeTypeEnum =
     | "ACKNOWLEDGE_TYPE_UNSPECIFIED"
     | "SINGLE_VIOLATION"
-    | "EXISTING_CHILD_RESOURCE_VIOLATIONS"
-    | (string & {});
+    | "EXISTING_CHILD_RESOURCE_VIOLATIONS";
 export const GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequestAcknowledgeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -735,10 +733,7 @@ export const BatchAcknowledgeViolationsOrganizationsViolationsRequest =
   }) as any as S.Schema<BatchAcknowledgeViolationsOrganizationsViolationsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupStatusEnum =
-    | "SETUP_STATE_UNSPECIFIED"
-    | "STATUS_PENDING"
-    | "STATUS_COMPLETE"
-    | (string & {});
+  "SETUP_STATE_UNSPECIFIED" | "STATUS_PENDING" | "STATUS_COMPLETE";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -747,13 +742,12 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetup
     | "ERROR_INVALID_BASE_SETUP"
     | "ERROR_MISSING_EXTERNAL_SIGNING_KEY"
     | "ERROR_NOT_ALL_SERVICES_ENROLLED"
-    | "ERROR_SETUP_CHECK_FAILED"
-    | (string & {});
+    | "ERROR_SETUP_CHECK_FAILED";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseSetupErrorsItemEnum,
@@ -821,9 +815,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StringMap>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptionsKajEnrollmentTypeEnum =
-    | "KAJ_ENROLLMENT_TYPE_UNSPECIFIED"
-    | "KEY_ACCESS_TRANSPARENCY_OFF"
-    | (string & {});
+  "KAJ_ENROLLMENT_TYPE_UNSPECIFIED" | "KEY_ACCESS_TRANSPARENCY_OFF";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadWorkloadOptionsKajEnrollmentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -849,8 +841,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkm
     | "GOOGLE_SERVER_ERROR"
     | "EXTERNAL_USER_ERROR"
     | "EXTERNAL_PARTNER_ERROR"
-    | "TIMEOUT_ERROR"
-    | (string & {});
+    | "TIMEOUT_ERROR";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainEnum =
   /*@__PURE__*/ S.String;
 
@@ -858,8 +849,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkm
     | "EKM_PROVISIONING_STATE_UNSPECIFIED"
     | "EKM_PROVISIONING_STATE_PENDING"
     | "EKM_PROVISIONING_STATE_FAILED"
-    | "EKM_PROVISIONING_STATE_COMPLETED"
-    | (string & {});
+    | "EKM_PROVISIONING_STATE_COMPLETED";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -867,8 +857,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkm
     | "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED"
     | "INVALID_SERVICE_ACCOUNT"
     | "MISSING_METRICS_SCOPE_ADMIN_PERMISSION"
-    | "MISSING_EKM_CONNECTION_ADMIN_PERMISSION"
-    | (string & {});
+    | "MISSING_EKM_CONNECTION_ADMIN_PERMISSION";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingEnum =
   /*@__PURE__*/ S.String;
 
@@ -1000,16 +989,14 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceRegimeEnum =
   | "JP_REGIONS_AND_SUPPORT"
   | "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS"
   | "REGIONAL_CONTROLS"
-  | "US_REGIONAL_ACCESS"
-  | (string & {});
+  | "US_REGIONAL_ACCESS";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceRegimeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadKajEnrollmentStateEnum =
   | "KAJ_ENROLLMENT_STATE_UNSPECIFIED"
   | "KAJ_ENROLLMENT_STATE_PENDING"
-  | "KAJ_ENROLLMENT_STATE_COMPLETE"
-  | (string & {});
+  | "KAJ_ENROLLMENT_STATE_COMPLETE";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadKajEnrollmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1035,8 +1022,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResourceTypeEn
     | "CONSUMER_PROJECT"
     | "CONSUMER_FOLDER"
     | "ENCRYPTION_KEYS_PROJECT"
-    | "KEYRING"
-    | (string & {});
+    | "KEYRING";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1060,7 +1046,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoList =
-  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo,
@@ -1094,8 +1080,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTy
     | "CONSUMER_PROJECT"
     | "CONSUMER_FOLDER"
     | "ENCRYPTION_KEYS_PROJECT"
-    | "KEYRING"
-    | (string & {});
+    | "KEYRING";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1122,7 +1107,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsList =
-  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings,
@@ -1136,8 +1121,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerEnum =
   | "SOVEREIGN_CONTROLS_BY_PSN"
   | "SOVEREIGN_CONTROLS_BY_CNTXT"
   | "SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM"
-  | "SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
-  | (string & {});
+  | "SPAIN_DATA_BOUNDARY_BY_TELEFONICA";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerEnum =
   /*@__PURE__*/ S.String;
 
@@ -1407,12 +1391,12 @@ export const FetchFoldersLocationsDbFrameworkComplianceReportsRequest =
   }) as any as S.Schema<FetchFoldersLocationsDbFrameworkComplianceReportsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum =
-  "CLOUD_PROVIDER_UNSPECIFIED" | "AWS" | "AZURE" | "GCP" | (string & {});
+  "CLOUD_PROVIDER_UNSPECIFIED" | "AWS" | "AZURE" | "GCP";
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseSupportedCloudProvidersItemEnum,
@@ -1451,7 +1435,7 @@ export const GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>;
 
 export type GoogleCloudAssuredworkloadsV1beta1TargetResourceDetailsList =
-  GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>;
 export const GoogleCloudAssuredworkloadsV1beta1TargetResourceDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails,
@@ -1463,20 +1447,19 @@ export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportRe
     | "ASSURED_WORKLOADS"
     | "DATA_SECURITY"
     | "GOOGLE_BEST_PRACTICES"
-    | "CUSTOM_FRAMEWORK"
-    | (string & {});
+    | "CUSTOM_FRAMEWORK";
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnum,
   ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkCategoriesItemEnumList>;
 
 export type GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkTypeEnum =
-  "FRAMEWORK_TYPE_UNSPECIFIED" | "BUILT_IN" | "CUSTOM" | (string & {});
+  "FRAMEWORK_TYPE_UNSPECIFIED" | "BUILT_IN" | "CUSTOM";
 export const GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponseFrameworkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1717,8 +1700,7 @@ export type GoogleCloudAssuredworkloadsV1beta1ViolationRemediationRemediationTyp
     | "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION"
     | "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
     | "REMEDIATION_RESOURCE_VIOLATION"
-    | "REMEDIATION_RESOURCE_VIOLATION_NON_CMEK_SERVICES"
-    | (string & {});
+    | "REMEDIATION_RESOURCE_VIOLATION_NON_CMEK_SERVICES";
 export const GoogleCloudAssuredworkloadsV1beta1ViolationRemediationRemediationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1767,7 +1749,7 @@ export const GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>;
 
 export type GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContextList =
-  GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>;
 export const GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext,
@@ -1776,8 +1758,7 @@ export const GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContextList =
 export type GoogleCloudAssuredworkloadsV1beta1ViolationViolationTypeEnum =
   | "VIOLATION_TYPE_UNSPECIFIED"
   | "ORG_POLICY"
-  | "RESOURCE"
-  | (string & {});
+  | "RESOURCE";
 export const GoogleCloudAssuredworkloadsV1beta1ViolationViolationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1785,8 +1766,7 @@ export type GoogleCloudAssuredworkloadsV1beta1ViolationStateEnum =
   | "STATE_UNSPECIFIED"
   | "RESOLVED"
   | "UNRESOLVED"
-  | "EXCEPTION"
-  | (string & {});
+  | "EXCEPTION";
 export const GoogleCloudAssuredworkloadsV1beta1ViolationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1905,8 +1885,7 @@ export type GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryFindingClassEnum =
     | "POSTURE_VIOLATION"
     | "TOXIC_COMBINATION"
     | "SENSITIVE_DATA_RISK"
-    | "CHOKEPOINT"
-    | (string & {});
+    | "CHOKEPOINT";
 export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryFindingClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -1915,8 +1894,7 @@ export type GoogleCloudAssuredworkloadsV1beta1DbFindingSummarySeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummarySeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1957,7 +1935,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryList =
-  GoogleCloudAssuredworkloadsV1beta1DbFindingSummary[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFindingSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFindingSummary,
@@ -2016,8 +1994,7 @@ export type GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryControlR
     | "REGULATORY_CONTROL_RESPONSIBILITY_TYPE_UNSPECIFIED"
     | "GOOGLE"
     | "CUSTOMER"
-    | "SHARED"
-    | (string & {});
+    | "SHARED";
 export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryControlResponsibilityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2025,8 +2002,7 @@ export type GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryOverallE
     | "EVALUATION_STATE_UNSPECIFIED"
     | "EVALUATION_STATE_PASSED"
     | "EVALUATION_STATE_FAILED"
-    | "EVALUATION_STATE_NOT_ASSESSED"
-    | (string & {});
+    | "EVALUATION_STATE_NOT_ASSESSED";
 export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryOverallEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2048,24 +2024,19 @@ export const GoogleCloudAssuredworkloadsV1beta1SimilarControls =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1SimilarControls>;
 
 export type GoogleCloudAssuredworkloadsV1beta1SimilarControlsList =
-  GoogleCloudAssuredworkloadsV1beta1SimilarControls[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1SimilarControls>;
 export const GoogleCloudAssuredworkloadsV1beta1SimilarControlsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1SimilarControls,
   ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1SimilarControlsList>;
 
 export type GoogleCloudAssuredworkloadsV1beta1CloudControlReportFindingSeverityEnum =
-    | "SEVERITY_UNSPECIFIED"
-    | "CRITICAL"
-    | "HIGH"
-    | "MEDIUM"
-    | "LOW"
-    | (string & {});
+  "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlReportFindingSeverityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1CloudControlReportCloudControlTypeEnum =
-  "TYPE_UNSPECIFIED" | "CUSTOM" | "BUILT_IN" | (string & {});
+  "TYPE_UNSPECIFIED" | "CUSTOM" | "BUILT_IN";
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlReportCloudControlTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2073,13 +2044,12 @@ export type GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum =
   | "RULE_ACTION_TYPE_UNSPECIFIED"
   | "RULE_ACTION_TYPE_PREVENTIVE"
   | "RULE_ACTION_TYPE_DETECTIVE"
-  | "RULE_ACTION_TYPE_AUDIT"
-  | (string & {});
+  | "RULE_ACTION_TYPE_AUDIT";
 export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1RuleRuleActionTypesItemEnum,
@@ -2143,17 +2113,13 @@ export const GoogleCloudAssuredworkloadsV1beta1Rule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1Rule>;
 
 export type GoogleCloudAssuredworkloadsV1beta1RuleList =
-  GoogleCloudAssuredworkloadsV1beta1Rule[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Rule>;
 export const GoogleCloudAssuredworkloadsV1beta1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudAssuredworkloadsV1beta1Rule,
 ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1RuleList>;
 
 export type GoogleCloudAssuredworkloadsV1beta1CloudControlReportEnforcementModeEnum =
-    | "ENFORCEMENT_MODE_UNSPECIFIED"
-    | "PREVENTIVE"
-    | "DETECTIVE"
-    | "AUDIT"
-    | (string & {});
+  "ENFORCEMENT_MODE_UNSPECIFIED" | "PREVENTIVE" | "DETECTIVE" | "AUDIT";
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlReportEnforcementModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2161,8 +2127,7 @@ export type GoogleCloudAssuredworkloadsV1beta1CloudControlAssessmentDetailsEvalu
     | "EVALUATION_STATE_UNSPECIFIED"
     | "EVALUATION_STATE_PASSED"
     | "EVALUATION_STATE_FAILED"
-    | "EVALUATION_STATE_NOT_ASSESSED"
-    | (string & {});
+    | "EVALUATION_STATE_NOT_ASSESSED";
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlAssessmentDetailsEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2273,7 +2238,7 @@ export const GoogleCloudAssuredworkloadsV1beta1CloudControlReport =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1CloudControlReport>;
 
 export type GoogleCloudAssuredworkloadsV1beta1CloudControlReportList =
-  GoogleCloudAssuredworkloadsV1beta1CloudControlReport[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1CloudControlReport>;
 export const GoogleCloudAssuredworkloadsV1beta1CloudControlReportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1CloudControlReport,
@@ -2332,7 +2297,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryList =
-  GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary,
@@ -2361,8 +2326,7 @@ export const GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesR
 export type ListFoldersLocationsDbFrameworkComplianceSummariesViewEnum =
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED"
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC"
-  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
-  | (string & {});
+  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL";
 export const ListFoldersLocationsDbFrameworkComplianceSummariesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2402,19 +2366,19 @@ export const ListFoldersLocationsDbFrameworkComplianceSummariesRequest =
   }) as any as S.Schema<ListFoldersLocationsDbFrameworkComplianceSummariesRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum =
-  "CLOUD_PROVIDER_UNSPECIFIED" | "AWS" | "AZURE" | "GCP" | (string & {});
+  "CLOUD_PROVIDER_UNSPECIFIED" | "AWS" | "AZURE" | "GCP";
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnum,
   ) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummarySupportedCloudProvidersItemEnumList>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkTypeEnum =
-  "FRAMEWORK_TYPE_UNSPECIFIED" | "BUILT_IN" | "CUSTOM" | (string & {});
+  "FRAMEWORK_TYPE_UNSPECIFIED" | "BUILT_IN" | "CUSTOM";
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2441,13 +2405,12 @@ export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFramew
     | "ASSURED_WORKLOADS"
     | "DATA_SECURITY"
     | "GOOGLE_BEST_PRACTICES"
-    | "CUSTOM_FRAMEWORK"
-    | (string & {});
+    | "CUSTOM_FRAMEWORK";
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
-  GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryFrameworkCategoriesItemEnum,
@@ -2512,7 +2475,7 @@ export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>;
 
 export type GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryList =
-  GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>;
 export const GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary,
@@ -2598,8 +2561,7 @@ export const ListOrganizationsLocationsDbFrameworkComplianceReportsDbControlComp
 export type ListOrganizationsLocationsDbFrameworkComplianceSummariesViewEnum =
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED"
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC"
-  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
-  | (string & {});
+  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL";
 export const ListOrganizationsLocationsDbFrameworkComplianceSummariesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2670,7 +2632,8 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -2724,7 +2687,7 @@ export const ListOrganizationsLocationsWorkloadsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsWorkloadsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadList =
-  GoogleCloudAssuredworkloadsV1beta1Workload[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Workload>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1Workload,
@@ -2776,8 +2739,7 @@ export type GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateStateEnum =
   | "STATE_UNSPECIFIED"
   | "AVAILABLE"
   | "APPLIED"
-  | "WITHDRAWN"
-  | (string & {});
+  | "WITHDRAWN";
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2912,7 +2874,7 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate =
   }) as any as S.Schema<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>;
 
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateList =
-  GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate>;
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadUpdateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1WorkloadUpdate,
@@ -2975,7 +2937,7 @@ export const ListOrganizationsLocationsWorkloadsViolationsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsWorkloadsViolationsRequest>;
 
 export type GoogleCloudAssuredworkloadsV1beta1ViolationList =
-  GoogleCloudAssuredworkloadsV1beta1Violation[];
+  ReadonlyArray<GoogleCloudAssuredworkloadsV1beta1Violation>;
 export const GoogleCloudAssuredworkloadsV1beta1ViolationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssuredworkloadsV1beta1Violation,
@@ -3061,8 +3023,7 @@ export const ListProjectsLocationsDbFrameworkComplianceReportsDbControlComplianc
 export type ListProjectsLocationsDbFrameworkComplianceSummariesViewEnum =
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED"
   | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC"
-  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
-  | (string & {});
+  | "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL";
 export const ListProjectsLocationsDbFrameworkComplianceSummariesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3132,8 +3093,7 @@ export type GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequestRes
     | "RESTRICTION_TYPE_UNSPECIFIED"
     | "ALLOW_ALL_GCP_RESOURCES"
     | "ALLOW_COMPLIANT_RESOURCES"
-    | "APPEND_COMPLIANT_RESOURCES"
-    | (string & {});
+    | "APPEND_COMPLIANT_RESOURCES";
 export const GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesRequestRestrictionTypeEnum =
   /*@__PURE__*/ S.String;
 

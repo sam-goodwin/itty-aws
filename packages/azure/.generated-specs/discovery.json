@@ -406,16 +406,62 @@
             "smithy.api#documentation": "The name of the Project"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ProjectsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "storageContainerIds": {
+          "target": "com.azure.discovery#ProjectPropertiesInputStorageContainerIdsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed StorageContainers (Control plane resource references)."
+          }
+        },
+        "settings": {
+          "target": "com.azure.discovery#ProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project properties"
+      }
+    },
+    "com.azure.discovery#ProjectPropertiesInputStorageContainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed StorageContainers (Control plane resource references)."
+      }
+    },
+    "com.azure.discovery#ProjectsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ProjectsCreateOrUpdate": {
@@ -535,16 +581,40 @@
             "smithy.api#documentation": "The name of the Project"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ProjectsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ProjectsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ProjectsGet": {
@@ -1408,16 +1478,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.discovery#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.discovery#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.discovery#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.discovery#WorkspacePrivateEndpointConnectionsGet": {
@@ -1942,16 +2039,47 @@
             "smithy.api#documentation": "The name of the ChatModelDeployment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ChatModelDeploymentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ChatModelDeploymentPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ChatModelDeploymentPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Provisioned SKU capacity units for this chat model deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines a deployment binding a specific model family to a user-defined deployment name for chat inference."
+      }
+    },
+    "com.azure.discovery#ChatModelDeploymentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ChatModelDeploymentsCreateOrUpdate": {
@@ -2071,16 +2199,80 @@
             "smithy.api#documentation": "The name of the ChatModelDeployment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ChatModelDeploymentsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ChatModelDeploymentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ChatModelDeploymentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "modelFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model format as published by the provider. Verify supported formats per region using the Model Catalog API.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Canonical provider model name available in the selected region. Verify supported values per region using the Model Catalog API.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provider-published version of the selected model."
+          }
+        },
+        "skuName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SKU tier used by this chat model deployment."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Provisioned SKU capacity units for this chat model deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines a deployment binding a specific model family to a user-defined deployment name for chat inference."
+      }
+    },
+    "com.azure.discovery#ChatModelDeploymentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ChatModelDeploymentsGet": {
@@ -2838,16 +3030,88 @@
             "smithy.api#documentation": "The name of the Workspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#WorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#WorkspacePropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#WorkspacePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "supercomputerIds": {
+          "target": "com.azure.discovery#WorkspacePropertiesUpdateSupercomputerIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of linked SuperComputers."
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.discovery#KeyVaultPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The key to use for encrypting data at rest when customer managed keys are enabled."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.discovery#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace properties"
+      }
+    },
+    "com.azure.discovery#KeyVaultPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Key Name in Key Vault"
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Key Version in Key Vault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "For Key Vault Key references"
+      }
+    },
+    "com.azure.discovery#WorkspacePropertiesUpdateSupercomputerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of linked SuperComputers."
+      }
+    },
+    "com.azure.discovery#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#WorkspacesCreateOrUpdate": {
@@ -2959,16 +3223,112 @@
             "smithy.api#documentation": "The name of the Workspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#WorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "supercomputerIds": {
+          "target": "com.azure.discovery#WorkspacePropertiesInputSupercomputerIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of linked SuperComputers."
+          }
+        },
+        "workspaceIdentity": {
+          "target": "com.azure.discovery#Identity",
+          "traits": {
+            "smithy.api#documentation": "Identity IDs used for leveraging Workspace resources.",
+            "smithy.api#required": {}
+          }
+        },
+        "customerManagedKeys": {
+          "target": "com.azure.discovery#CustomerManagedKeys",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to use a customer managed key when encrypting data at rest"
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.discovery#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "The key to use for encrypting data at rest when customer managed keys are enabled."
+          }
+        },
+        "logAnalyticsClusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.discovery#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible."
+          }
+        },
+        "agentSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Agent Subnet ID for agent resources."
+          }
+        },
+        "privateEndpointSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Endpoint Subnet ID for private endpoint connections."
+          }
+        },
+        "workspaceSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Function Subnet ID for workspace resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace properties"
+      }
+    },
+    "com.azure.discovery#WorkspacePropertiesInputSupercomputerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of linked SuperComputers."
+      }
+    },
+    "com.azure.discovery#WorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#WorkspacesGet": {
@@ -3439,16 +3799,83 @@
             "smithy.api#documentation": "The name of the Tool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ToolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ToolPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ToolPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of a resource definition"
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.discovery#ToolPropertiesUpdateEnvironmentVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Environment variables to make available"
+          }
+        },
+        "definitionContent": {
+          "target": "com.azure.discovery#ToolPropertiesUpdateDefinitionContentMap",
+          "traits": {
+            "smithy.api#documentation": "The JSON content for defining a resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discovery Tool list item properties"
+      }
+    },
+    "com.azure.discovery#ToolPropertiesUpdateDefinitionContentMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON content for defining a resource"
+      }
+    },
+    "com.azure.discovery#ToolPropertiesUpdateEnvironmentVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Environment variables to make available"
+      }
+    },
+    "com.azure.discovery#ToolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ToolsCreateOrUpdate": {
@@ -3560,16 +3987,92 @@
             "smithy.api#documentation": "The name of the Tool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#ToolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#ToolPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#ToolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of a resource definition",
+            "smithy.api#required": {}
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.discovery#ToolPropertiesInputEnvironmentVariablesMap",
+          "traits": {
+            "smithy.api#documentation": "Environment variables to make available"
+          }
+        },
+        "definitionContent": {
+          "target": "com.azure.discovery#ToolPropertiesInputDefinitionContentMap",
+          "traits": {
+            "smithy.api#documentation": "The JSON content for defining a resource",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discovery Tool list item properties"
+      }
+    },
+    "com.azure.discovery#ToolPropertiesInputDefinitionContentMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON content for defining a resource"
+      }
+    },
+    "com.azure.discovery#ToolPropertiesInputEnvironmentVariablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Environment variables to make available"
+      }
+    },
+    "com.azure.discovery#ToolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#ToolsGet": {
@@ -4175,16 +4678,53 @@
             "smithy.api#documentation": "The name of the NodePool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#NodePoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#NodePoolPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#NodePoolPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "maxNodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes."
+          }
+        },
+        "minNodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NodePool properties"
+      }
+    },
+    "com.azure.discovery#NodePoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#NodePoolsCreateOrUpdate": {
@@ -4304,16 +4844,119 @@
             "smithy.api#documentation": "The name of the NodePool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#NodePoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#NodePoolPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#NodePoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The node pool subnet.",
+            "smithy.api#required": {}
+          }
+        },
+        "vmSize": {
+          "target": "com.azure.discovery#VmSize",
+          "traits": {
+            "smithy.api#documentation": "The size of the underlying Azure VM.",
+            "smithy.api#required": {}
+          }
+        },
+        "maxNodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes.",
+            "smithy.api#required": {}
+          }
+        },
+        "minNodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes."
+          }
+        },
+        "scaleSetPriority": {
+          "target": "com.azure.discovery#NodePoolPropertiesInputScaleSetPriority",
+          "traits": {
+            "smithy.api#documentation": "The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'."
+          }
+        },
+        "osDiskSizeGb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of the OS disk in GB. If not specified, the default is 120 GB."
+          }
+        },
+        "imageCacheLowerThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageCacheUpperThreshold. The default is 40%"
+          }
+        },
+        "imageCacheUpperThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The percent of disk usage after which image garbage collection is guaranteed to run. The default is 60%"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NodePool properties"
+      }
+    },
+    "com.azure.discovery#NodePoolPropertiesInputScaleSetPriority": {
+      "type": "enum",
+      "members": {
+        "REGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Regular"
+          }
+        },
+        "SPOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Spot"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'."
+      }
+    },
+    "com.azure.discovery#NodePoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#NodePoolsGet": {
@@ -4976,16 +5619,120 @@
             "smithy.api#documentation": "The name of the Supercomputer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#SupercomputersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#SupercomputerPropertiesUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.discovery#AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate",
+          "traits": {
+            "smithy.api#documentation": "The managed service identities assigned to this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.discovery#AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity (either system assigned, or none)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.discovery#AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity (either system assigned, or none)."
+      }
+    },
+    "com.azure.discovery#SupercomputerPropertiesUpdateInput": {
+      "type": "structure",
+      "members": {
+        "identities": {
+          "target": "com.azure.discovery#SupercomputerIdentitiesUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of identity properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supercomputer properties"
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesUpdateInput": {
+      "type": "structure",
+      "members": {
+        "workloadIdentities": {
+          "target": "com.azure.discovery#SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of identity properties for the Supercomputer."
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.discovery#SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource."
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.discovery#SupercomputersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#SupercomputersCreateOrUpdate": {
@@ -5129,16 +5876,185 @@
             "smithy.api#documentation": "The name of the Supercomputer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#SupercomputersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#SupercomputerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.discovery#SupercomputersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#SupercomputersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.discovery#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.discovery#SupercomputerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "System Subnet ID associated with managed NodePool for system resources.\n    It should have connectivity to the child NodePool subnets.",
+            "smithy.api#required": {}
+          }
+        },
+        "managementSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "System Subnet ID associated with AKS apiserver. Must be delegated to Microsoft.ContainerService/managedClusters.\n    It should have connectivity to the system subnet and nodepool subnets."
+          }
+        },
+        "outboundType": {
+          "target": "com.azure.discovery#SupercomputerPropertiesInputOutboundType",
+          "traits": {
+            "smithy.api#documentation": "Network egress type provisioned for the supercomputer workloads.\n    Defaults to LoadBalancer if not specified.\n    If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality."
+          }
+        },
+        "systemSku": {
+          "target": "com.azure.discovery#SystemSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU to use for the system node pool."
+          }
+        },
+        "identities": {
+          "target": "com.azure.discovery#SupercomputerIdentitiesInput",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of identity properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "customerManagedKeys": {
+          "target": "com.azure.discovery#CustomerManagedKeys",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to use a customer managed key when encrypting data at rest"
+          }
+        },
+        "diskEncryptionSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Disk Encryption Set ID to use for Customer Managed Keys encryption. Required if Customer Managed Keys is enabled."
+          }
+        },
+        "logAnalyticsClusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supercomputer properties"
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesInput": {
+      "type": "structure",
+      "members": {
+        "clusterIdentity": {
+          "target": "com.azure.discovery#Identity",
+          "traits": {
+            "smithy.api#documentation": "Cluster identity ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "kubeletIdentity": {
+          "target": "com.azure.discovery#Identity",
+          "traits": {
+            "smithy.api#documentation": "Kubelet identity ID used by the supercomputer.\n      This identity is used by the supercomputer at node level to access Azure resources.\n      This identity must have ManagedIdentityOperator role on the clusterIdentity.",
+            "smithy.api#required": {}
+          }
+        },
+        "workloadIdentities": {
+          "target": "com.azure.discovery#SupercomputerIdentitiesInputWorkloadIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of identity properties for the Supercomputer."
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesInputWorkloadIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.discovery#SupercomputerIdentitiesInputWorkloadIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource."
+      }
+    },
+    "com.azure.discovery#SupercomputerIdentitiesInputWorkloadIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.discovery#SupercomputerPropertiesInputOutboundType": {
+      "type": "enum",
+      "members": {
+        "LOADBALANCER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LoadBalancer"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network egress type provisioned for the supercomputer workloads.\n    Defaults to LoadBalancer if not specified.\n    If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality."
+      }
+    },
+    "com.azure.discovery#SupercomputersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#SupercomputersGet": {
@@ -5658,16 +6574,47 @@
             "smithy.api#documentation": "The name of the StorageAsset"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#StorageAssetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#StorageAssetPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#StorageAssetPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Asset properties"
+      }
+    },
+    "com.azure.discovery#StorageAssetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#StorageAssetsCreateOrUpdate": {
@@ -5787,16 +6734,61 @@
             "smithy.api#documentation": "The name of the StorageAsset"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#StorageAssetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#StorageAssetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#StorageAssetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the data within its parent container. This should be relative to the root of the parent container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Asset properties"
+      }
+    },
+    "com.azure.discovery#StorageAssetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#StorageAssetsGet": {
@@ -6281,16 +7273,33 @@
             "smithy.api#documentation": "The name of the StorageContainer"
           }
         },
-        "body": {
+        "tags": {
+          "target": "com.azure.discovery#StorageContainersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#StorageContainersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#StorageContainersCreateOrUpdate": {
@@ -6402,16 +7411,55 @@
             "smithy.api#documentation": "The name of the StorageContainer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#StorageContainersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#StorageContainerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#StorageContainerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "storageStore": {
+          "target": "com.azure.discovery#StorageStore",
+          "traits": {
+            "smithy.api#documentation": "Storage store properties",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Container properties"
+      }
+    },
+    "com.azure.discovery#StorageContainersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#StorageContainersGet": {
@@ -7161,16 +8209,36 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.discovery#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.discovery#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
       }
     },
     "com.azure.discovery#BookshelfPrivateEndpointConnectionsGet": {
@@ -7827,16 +8895,73 @@
             "smithy.api#documentation": "The name of the Bookshelf"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#BookshelvesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#BookshelfPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#BookshelfPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "keyVaultProperties": {
+          "target": "com.azure.discovery#BookshelfKeyVaultPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.discovery#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bookshelf properties"
+      }
+    },
+    "com.azure.discovery#BookshelfKeyVaultPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Key Name in Key Vault"
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Key Version in Key Vault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Key Vault Properties with clientId selection"
+      }
+    },
+    "com.azure.discovery#BookshelvesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#BookshelvesCreateOrUpdate": {
@@ -7948,16 +9073,109 @@
             "smithy.api#documentation": "The name of the Bookshelf"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.discovery#BookshelvesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.discovery#BookshelfPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery#BookshelfPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "workloadIdentities": {
+          "target": "com.azure.discovery#BookshelfPropertiesInputWorkloadIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource."
+          }
+        },
+        "customerManagedKeys": {
+          "target": "com.azure.discovery#CustomerManagedKeys",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to use a customer managed key when encrypting data at rest"
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.discovery#BookshelfKeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled."
+          }
+        },
+        "logAnalyticsClusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.discovery#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible."
+          }
+        },
+        "privateEndpointSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Endpoint Subnet ID for private endpoint connections."
+          }
+        },
+        "searchSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Search Subnet ID for search resources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bookshelf properties"
+      }
+    },
+    "com.azure.discovery#BookshelfPropertiesInputWorkloadIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.discovery#BookshelfPropertiesInputWorkloadIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource."
+      }
+    },
+    "com.azure.discovery#BookshelfPropertiesInputWorkloadIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.discovery#BookshelvesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.discovery#BookshelvesGet": {

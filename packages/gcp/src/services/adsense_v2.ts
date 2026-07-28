@@ -60,11 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type AdUnitStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "ARCHIVED"
-  | (string & {});
+export type AdUnitStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED";
 export const AdUnitStateEnum = /*@__PURE__*/ S.String;
 
 export type ContentAdsSettingsTypeEnum =
@@ -73,8 +69,7 @@ export type ContentAdsSettingsTypeEnum =
   | "FEED"
   | "ARTICLE"
   | "MATCHED_CONTENT"
-  | "LINK"
-  | (string & {});
+  | "LINK";
 export const ContentAdsSettingsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to content ads (AFC). */
@@ -242,17 +237,16 @@ export type GenerateAccountsReportsMetricsEnum =
   | "FUNNEL_REQUESTS"
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM"
-  | (string & {});
+  | "FUNNEL_RPM";
 export const GenerateAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsMetricsEnumList =
-  GenerateAccountsReportsMetricsEnum[];
+  ReadonlyArray<GenerateAccountsReportsMetricsEnum>;
 export const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
   GenerateAccountsReportsMetricsEnum,
 ) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -314,12 +308,11 @@ export type GenerateAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_NAME"
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE"
-  | (string & {});
+  | "WEBVIEW_TYPE_CODE";
 export const GenerateAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsDimensionsEnumList =
-  GenerateAccountsReportsDimensionsEnum[];
+  ReadonlyArray<GenerateAccountsReportsDimensionsEnum>;
 export const GenerateAccountsReportsDimensionsEnumList = /*@__PURE__*/ S.Array(
   GenerateAccountsReportsDimensionsEnum,
 ) as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
@@ -332,15 +325,13 @@ export type GenerateAccountsReportsDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+  | "LAST_30_DAYS";
 export const GenerateAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
+  | "GOOGLE_TIME_ZONE";
 export const GenerateAccountsReportsReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -418,8 +409,7 @@ export type HeaderTypeEnum =
   | "METRIC_RATIO"
   | "METRIC_CURRENCY"
   | "METRIC_MILLISECONDS"
-  | "METRIC_DECIMAL"
-  | (string & {});
+  | "METRIC_DECIMAL";
 export const HeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** The header information of the columns requested in the report. */
@@ -439,7 +429,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = Header[];
+export type HeaderList = ReadonlyArray<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -455,7 +445,7 @@ export const Cell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cell" }) as any as S.Schema<Cell>;
 
-export type CellList = Cell[];
+export type CellList = ReadonlyArray<Cell>;
 export const CellList = /*@__PURE__*/ S.Array(
   Cell,
 ) as any as S.Schema<CellList>;
@@ -488,7 +478,7 @@ export const Adsense_Date = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Adsense_Date" }) as any as S.Schema<Adsense_Date>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Result of a generated report. */
@@ -531,15 +521,13 @@ export type GenerateAccountsReportsSavedDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+  | "LAST_30_DAYS";
 export const GenerateAccountsReportsSavedDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
+  | "GOOGLE_TIME_ZONE";
 export const GenerateAccountsReportsSavedReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -603,8 +591,7 @@ export type GenerateCsvAccountsReportsDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+  | "LAST_30_DAYS";
 export const GenerateCsvAccountsReportsDateRangeEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsMetricsEnum =
@@ -644,12 +631,11 @@ export type GenerateCsvAccountsReportsMetricsEnum =
   | "FUNNEL_REQUESTS"
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
-  | "FUNNEL_RPM"
-  | (string & {});
+  | "FUNNEL_RPM";
 export const GenerateCsvAccountsReportsMetricsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsMetricsEnumList =
-  GenerateCsvAccountsReportsMetricsEnum[];
+  ReadonlyArray<GenerateCsvAccountsReportsMetricsEnum>;
 export const GenerateCsvAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
   GenerateCsvAccountsReportsMetricsEnum,
 ) as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
@@ -711,12 +697,11 @@ export type GenerateCsvAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_NAME"
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
-  | "WEBVIEW_TYPE_CODE"
-  | (string & {});
+  | "WEBVIEW_TYPE_CODE";
 export const GenerateCsvAccountsReportsDimensionsEnum = /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsDimensionsEnumList =
-  GenerateCsvAccountsReportsDimensionsEnum[];
+  ReadonlyArray<GenerateCsvAccountsReportsDimensionsEnum>;
 export const GenerateCsvAccountsReportsDimensionsEnumList =
   /*@__PURE__*/ S.Array(
     GenerateCsvAccountsReportsDimensionsEnum,
@@ -725,8 +710,7 @@ export const GenerateCsvAccountsReportsDimensionsEnumList =
 export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
+  | "GOOGLE_TIME_ZONE";
 export const GenerateCsvAccountsReportsReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -807,7 +791,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -837,16 +821,14 @@ export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "MONTH_TO_DATE"
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
-  | "LAST_30_DAYS"
-  | (string & {});
+  | "LAST_30_DAYS";
 export const GenerateCsvAccountsReportsSavedDateRangeEnum =
   /*@__PURE__*/ S.String;
 
 export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
-  | "GOOGLE_TIME_ZONE"
-  | (string & {});
+  | "GOOGLE_TIME_ZONE";
 export const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -939,8 +921,7 @@ export type AccountStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "NEEDS_ATTENTION"
-  | "CLOSED"
-  | (string & {});
+  | "CLOSED";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an account. */
@@ -994,8 +975,7 @@ export type AdClientStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "GETTING_READY"
-  | "REQUIRES_REVIEW"
-  | (string & {});
+  | "REQUIRES_REVIEW";
 export const AdClientStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an ad client. An ad client represents a user's subscription with a specific AdSense product. */
@@ -1113,8 +1093,7 @@ export type PolicyIssueEntityTypeEnum =
   | "ENTITY_TYPE_UNSPECIFIED"
   | "SITE"
   | "SITE_SECTION"
-  | "PAGE"
-  | (string & {});
+  | "PAGE";
 export const PolicyIssueEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type PolicyIssueActionEnum =
@@ -1123,16 +1102,14 @@ export type PolicyIssueActionEnum =
   | "AD_SERVING_RESTRICTED"
   | "AD_SERVING_DISABLED"
   | "AD_SERVED_WITH_CLICK_CONFIRMATION"
-  | "AD_PERSONALIZATION_RESTRICTED"
-  | (string & {});
+  | "AD_PERSONALIZATION_RESTRICTED";
 export const PolicyIssueActionEnum = /*@__PURE__*/ S.String;
 
 export type PolicyTopicTypeEnum =
   | "POLICY_TOPIC_TYPE_UNSPECIFIED"
   | "POLICY"
   | "ADVERTISER_PREFERENCE"
-  | "REGULATORY"
-  | (string & {});
+  | "REGULATORY";
 export const PolicyTopicTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a particular policy topic. A policy topic represents a single class of policy issue that can impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single policy issue can have multiple policy topics for a single entity. */
@@ -1152,7 +1129,7 @@ export const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyTopic" }) as any as S.Schema<PolicyTopic>;
 
-export type PolicyTopicList = PolicyTopic[];
+export type PolicyTopicList = ReadonlyArray<PolicyTopic>;
 export const PolicyTopicList = /*@__PURE__*/ S.Array(
   PolicyTopic,
 ) as any as S.Schema<PolicyTopicList>;
@@ -1224,8 +1201,7 @@ export type SiteStateEnum =
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
-  | "NEEDS_ATTENTION"
-  | (string & {});
+  | "NEEDS_ATTENTION";
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -1404,7 +1380,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -1449,7 +1425,7 @@ export const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdclientsRequest",
 }) as any as S.Schema<ListAccountsAdclientsRequest>;
 
-export type AdClientList = AdClient[];
+export type AdClientList = ReadonlyArray<AdClient>;
 export const AdClientList = /*@__PURE__*/ S.Array(
   AdClient,
 ) as any as S.Schema<AdClientList>;
@@ -1494,7 +1470,7 @@ export const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdclientsAdunitsRequest",
 }) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
 
-export type AdUnitList = AdUnit[];
+export type AdUnitList = ReadonlyArray<AdUnit>;
 export const AdUnitList = /*@__PURE__*/ S.Array(
   AdUnit,
 ) as any as S.Schema<AdUnitList>;
@@ -1540,7 +1516,7 @@ export const ListAccountsAdclientsCustomchannelsRequest =
     identifier: "ListAccountsAdclientsCustomchannelsRequest",
   }) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
 
-export type CustomChannelList = CustomChannel[];
+export type CustomChannelList = ReadonlyArray<CustomChannel>;
 export const CustomChannelList = /*@__PURE__*/ S.Array(
   CustomChannel,
 ) as any as S.Schema<CustomChannelList>;
@@ -1586,7 +1562,7 @@ export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsAdclientsUrlchannelsRequest",
 }) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
 
-export type UrlChannelList = UrlChannel[];
+export type UrlChannelList = ReadonlyArray<UrlChannel>;
 export const UrlChannelList = /*@__PURE__*/ S.Array(
   UrlChannel,
 ) as any as S.Schema<UrlChannelList>;
@@ -1632,8 +1608,7 @@ export type AlertSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "SEVERE"
-  | (string & {});
+  | "SEVERE";
 export const AlertSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an alert. */
@@ -1656,7 +1631,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
-export type AlertList = Alert[];
+export type AlertList = ReadonlyArray<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -1709,7 +1684,7 @@ export const Payment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
-export type PaymentList = Payment[];
+export type PaymentList = ReadonlyArray<Payment>;
 export const PaymentList = /*@__PURE__*/ S.Array(
   Payment,
 ) as any as S.Schema<PaymentList>;
@@ -1751,7 +1726,7 @@ export const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPolicyIssuesRequest",
 }) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
 
-export type PolicyIssueList = PolicyIssue[];
+export type PolicyIssueList = ReadonlyArray<PolicyIssue>;
 export const PolicyIssueList = /*@__PURE__*/ S.Array(
   PolicyIssue,
 ) as any as S.Schema<PolicyIssueList>;
@@ -1796,7 +1771,7 @@ export const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsReportsSavedRequest",
 }) as any as S.Schema<ListAccountsReportsSavedRequest>;
 
-export type SavedReportList = SavedReport[];
+export type SavedReportList = ReadonlyArray<SavedReport>;
 export const SavedReportList = /*@__PURE__*/ S.Array(
   SavedReport,
 ) as any as S.Schema<SavedReportList>;
@@ -1841,7 +1816,7 @@ export const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsSitesRequest",
 }) as any as S.Schema<ListAccountsSitesRequest>;
 
-export type SiteList = Site[];
+export type SiteList = ReadonlyArray<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;

@@ -12,89 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ApiDefinitionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the API. */
-  apiName: string;
-  /** The name of the API version. */
-  versionName: string;
-  /** The name of the API definition. */
-  definitionName: string;
-  body: unknown;
-}
-export const ApiDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    apiName: S.String.pipe(T.Label()),
-    versionName: S.String.pipe(T.Label()),
-    definitionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "ApiDefinitionsCreateOrUpdateRequest",
-}) as any as S.Schema<ApiDefinitionsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** API specification details. */
 export interface ApiDefinitionPropertiesSpecification {
   /** Specification name. */
@@ -130,6 +47,88 @@ export const ApiDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiDefinitionProperties",
 }) as any as S.Schema<ApiDefinitionProperties>;
+
+export interface ApiDefinitionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the API. */
+  apiName: string;
+  /** The name of the API version. */
+  versionName: string;
+  /** The name of the API definition. */
+  definitionName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ApiDefinitionProperties;
+}
+export const ApiDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    apiName: S.String.pipe(T.Label()),
+    versionName: S.String.pipe(T.Label()),
+    definitionName: S.String.pipe(T.Label()),
+    properties: S.optional(ApiDefinitionProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}/definitions/{definitionName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "ApiDefinitionsCreateOrUpdateRequest",
+}) as any as S.Schema<ApiDefinitionsCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 export interface ApiDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -239,7 +238,7 @@ export const ApiDefinitionsExportSpecificationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApiDefinitionsExportSpecificationRequest>;
 
 /** Result format for exported Api spec */
-export type ApiSpecExportResultFormat = "inline" | "link" | (string & {});
+export type ApiSpecExportResultFormat = "inline" | "link";
 export const ApiSpecExportResultFormat = /*@__PURE__*/ S.String;
 
 /** The API specification export result. */
@@ -319,6 +318,26 @@ export const ApiDefinitionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiDefinitionsGetResponse",
 }) as any as S.Schema<ApiDefinitionsGetResponse>;
 
+/** Source format for imported Api spec */
+export type ApiSpecImportSourceFormat = "inline" | "link";
+export const ApiSpecImportSourceFormat = /*@__PURE__*/ S.String;
+
+/** API specification details. */
+export interface ApiSpecImportRequestSpecification {
+  /** Specification name. */
+  name?: string;
+  /** Specification version. */
+  version?: string;
+}
+export const ApiSpecImportRequestSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApiSpecImportRequestSpecification",
+}) as any as S.Schema<ApiSpecImportRequestSpecification>;
+
 export interface ApiDefinitionsImportSpecificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -334,7 +353,12 @@ export interface ApiDefinitionsImportSpecificationRequest {
   versionName: string;
   /** The name of the API definition. */
   definitionName: string;
-  body: unknown;
+  /** Value of the API specification source. */
+  value?: string;
+  /** Format of the API specification source. */
+  format?: ApiSpecImportSourceFormat;
+  /** API specification details. */
+  specification?: ApiSpecImportRequestSpecification;
 }
 export const ApiDefinitionsImportSpecificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -346,7 +370,9 @@ export const ApiDefinitionsImportSpecificationRequest = /*@__PURE__*/ S.suspend(
       apiName: S.String.pipe(T.Label()),
       versionName: S.String.pipe(T.Label()),
       definitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(S.String),
+      format: S.optional(ApiSpecImportSourceFormat),
+      specification: S.optional(ApiSpecImportRequestSpecification),
     }).pipe(
       T.Http({
         method: "POST",
@@ -426,7 +452,7 @@ export const ApiDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiDefinition" }) as any as S.Schema<ApiDefinition>;
 
 /** The ApiDefinition items on this page */
-export type ApiDefinitionListResultValueList = ApiDefinition[];
+export type ApiDefinitionListResultValueList = ReadonlyArray<ApiDefinition>;
 export const ApiDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApiDefinition,
 ) as any as S.Schema<ApiDefinitionListResultValueList>;
@@ -447,39 +473,6 @@ export const ApiDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiDefinitionListResult",
 }) as any as S.Schema<ApiDefinitionListResult>;
 
-export interface ApisCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the API. */
-  apiName: string;
-  body: unknown;
-}
-export const ApisCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    apiName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "ApisCreateOrUpdateRequest",
-}) as any as S.Schema<ApisCreateOrUpdateRequest>;
-
 /** The kind of the API */
 export type ApiKind =
   | "rest"
@@ -487,8 +480,7 @@ export type ApiKind =
   | "grpc"
   | "soap"
   | "webhook"
-  | "websocket"
-  | (string & {});
+  | "websocket";
 export const ApiKind = /*@__PURE__*/ S.String;
 
 /** The stage of the Api development lifecycle */
@@ -499,8 +491,7 @@ export type LifecycleStage =
   | "preview"
   | "production"
   | "deprecated"
-  | "retired"
-  | (string & {});
+  | "retired";
 export const LifecycleStage = /*@__PURE__*/ S.String;
 
 /** Terms of service for the API. */
@@ -534,7 +525,8 @@ export const ExternalDocumentation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDocumentation>;
 
 /** The set of external documentation */
-export type ApiPropertiesExternalDocumentationList = ExternalDocumentation[];
+export type ApiPropertiesExternalDocumentationList =
+  ReadonlyArray<ExternalDocumentation>;
 export const ApiPropertiesExternalDocumentationList = /*@__PURE__*/ S.Array(
   ExternalDocumentation,
 ) as any as S.Schema<ApiPropertiesExternalDocumentationList>;
@@ -557,7 +549,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 
 /** The set of contacts */
-export type ApiPropertiesContactsList = Contact[];
+export type ApiPropertiesContactsList = ReadonlyArray<Contact>;
 export const ApiPropertiesContactsList = /*@__PURE__*/ S.Array(
   Contact,
 ) as any as S.Schema<ApiPropertiesContactsList>;
@@ -616,6 +608,40 @@ export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
     customProperties: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "ApiProperties" }) as any as S.Schema<ApiProperties>;
+
+export interface ApisCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the API. */
+  apiName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ApiProperties;
+}
+export const ApisCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    apiName: S.String.pipe(T.Label()),
+    properties: S.optional(ApiProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "ApisCreateOrUpdateRequest",
+}) as any as S.Schema<ApisCreateOrUpdateRequest>;
 
 export interface ApisCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -787,7 +813,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
 /** The Api items on this page */
-export type ApiListResultValueList = Api[];
+export type ApiListResultValueList = ReadonlyArray<Api>;
 export const ApiListResultValueList = /*@__PURE__*/ S.Array(
   Api,
 ) as any as S.Schema<ApiListResultValueList>;
@@ -806,42 +832,6 @@ export const ApiListResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiListResult" }) as any as S.Schema<ApiListResult>;
 
-export interface ApiVersionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the API. */
-  apiName: string;
-  /** The name of the API version. */
-  versionName: string;
-  body: unknown;
-}
-export const ApiVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    apiName: S.String.pipe(T.Label()),
-    versionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "ApiVersionsCreateOrUpdateRequest",
-}) as any as S.Schema<ApiVersionsCreateOrUpdateRequest>;
-
 /** API version properties entity. */
 export interface ApiVersionProperties {
   /** API version title. */
@@ -857,6 +847,43 @@ export const ApiVersionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiVersionProperties",
 }) as any as S.Schema<ApiVersionProperties>;
+
+export interface ApiVersionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the API. */
+  apiName: string;
+  /** The name of the API version. */
+  versionName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ApiVersionProperties;
+}
+export const ApiVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    apiName: S.String.pipe(T.Label()),
+    versionName: S.String.pipe(T.Label()),
+    properties: S.optional(ApiVersionProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/versions/{versionName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "ApiVersionsCreateOrUpdateRequest",
+}) as any as S.Schema<ApiVersionsCreateOrUpdateRequest>;
 
 export interface ApiVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1039,7 +1066,7 @@ export const ApiVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiVersion" }) as any as S.Schema<ApiVersion>;
 
 /** The ApiVersion items on this page */
-export type ApiVersionListResultValueList = ApiVersion[];
+export type ApiVersionListResultValueList = ReadonlyArray<ApiVersion>;
 export const ApiVersionListResultValueList = /*@__PURE__*/ S.Array(
   ApiVersion,
 ) as any as S.Schema<ApiVersionListResultValueList>;
@@ -1060,48 +1087,12 @@ export const ApiVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiVersionListResult",
 }) as any as S.Schema<ApiVersionListResult>;
 
-export interface DeploymentsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the API. */
-  apiName: string;
-  /** The name of the API deployment. */
-  deploymentName: string;
-  body: unknown;
-}
-export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    apiName: S.String.pipe(T.Label()),
-    deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "DeploymentsCreateOrUpdateRequest",
-}) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
-
 /** State of the Deployment */
-export type DeploymentState = "active" | "inactive" | (string & {});
+export type DeploymentState = "active" | "inactive";
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 /** Base runtime URLs for this deployment. */
-export type DeploymentServerRuntimeUriList = string[];
+export type DeploymentServerRuntimeUriList = ReadonlyArray<string>;
 export const DeploymentServerRuntimeUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentServerRuntimeUriList>;
@@ -1149,6 +1140,43 @@ export const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentProperties",
 }) as any as S.Schema<DeploymentProperties>;
+
+export interface DeploymentsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the API. */
+  apiName: string;
+  /** The name of the API deployment. */
+  deploymentName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DeploymentProperties;
+}
+export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    apiName: S.String.pipe(T.Label()),
+    deploymentName: S.String.pipe(T.Label()),
+    properties: S.optional(DeploymentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/apis/{apiName}/deployments/{deploymentName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeploymentsCreateOrUpdateRequest",
+}) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
 
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1331,7 +1359,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
-export type DeploymentListResultValueList = Deployment[];
+export type DeploymentListResultValueList = ReadonlyArray<Deployment>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -1352,46 +1380,12 @@ export const DeploymentListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentListResult",
 }) as any as S.Schema<DeploymentListResult>;
 
-export interface EnvironmentsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the environment. */
-  environmentName: string;
-  body: unknown;
-}
-export const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    environmentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentsCreateOrUpdateRequest",
-}) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>;
-
 /** The kind of environment */
 export type EnvironmentKind =
   | "development"
   | "testing"
   | "staging"
-  | "production"
-  | (string & {});
+  | "production";
 export const EnvironmentKind = /*@__PURE__*/ S.String;
 
 /** The type of environment server */
@@ -1402,12 +1396,11 @@ export type EnvironmentServerType =
   | "AWS API Gateway"
   | "Kong API Gateway"
   | "Kubernetes"
-  | "MuleSoft API Management"
-  | (string & {});
+  | "MuleSoft API Management";
 export const EnvironmentServerType = /*@__PURE__*/ S.String;
 
 /** The location of the management portal */
-export type EnvironmentServerManagementPortalUriList = string[];
+export type EnvironmentServerManagementPortalUriList = ReadonlyArray<string>;
 export const EnvironmentServerManagementPortalUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EnvironmentServerManagementPortalUriList>;
@@ -1429,7 +1422,7 @@ export const EnvironmentServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentServer>;
 
 /** The location of the development portal */
-export type OnboardingDeveloperPortalUriList = string[];
+export type OnboardingDeveloperPortalUriList = ReadonlyArray<string>;
 export const OnboardingDeveloperPortalUriList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnboardingDeveloperPortalUriList>;
@@ -1475,6 +1468,40 @@ export const EnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentProperties",
 }) as any as S.Schema<EnvironmentProperties>;
+
+export interface EnvironmentsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the environment. */
+  environmentName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: EnvironmentProperties;
+}
+export const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    environmentName: S.String.pipe(T.Label()),
+    properties: S.optional(EnvironmentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "EnvironmentsCreateOrUpdateRequest",
+}) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>;
 
 export interface EnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1648,7 +1675,7 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 /** The Environment items on this page */
-export type EnvironmentListResultValueList = Environment[];
+export type EnvironmentListResultValueList = ReadonlyArray<Environment>;
 export const EnvironmentListResultValueList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentListResultValueList>;
@@ -1669,43 +1696,8 @@ export const EnvironmentListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentListResult",
 }) as any as S.Schema<EnvironmentListResult>;
 
-export interface MetadataSchemasCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the metadata schema. */
-  metadataSchemaName: string;
-  body: unknown;
-}
-export const MetadataSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      metadataSchemaName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
-        code: 200,
-        apiVersion: "2024-03-01",
-      }),
-    ),
-).annotate({
-  identifier: "MetadataSchemasCreateOrUpdateRequest",
-}) as any as S.Schema<MetadataSchemasCreateOrUpdateRequest>;
-
 /** Assignment entity for Metadata */
-export type MetadataAssignmentEntity =
-  | "api"
-  | "environment"
-  | "deployment"
-  | (string & {});
+export type MetadataAssignmentEntity = "api" | "environment" | "deployment";
 export const MetadataAssignmentEntity = /*@__PURE__*/ S.String;
 
 /** Assignment metadata */
@@ -1728,7 +1720,8 @@ export const MetadataAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataAssignment>;
 
 /** The assignees */
-export type MetadataSchemaPropertiesAssignedToList = MetadataAssignment[];
+export type MetadataSchemaPropertiesAssignedToList =
+  ReadonlyArray<MetadataAssignment>;
 export const MetadataSchemaPropertiesAssignedToList = /*@__PURE__*/ S.Array(
   MetadataAssignment,
 ) as any as S.Schema<MetadataSchemaPropertiesAssignedToList>;
@@ -1748,6 +1741,38 @@ export const MetadataSchemaProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MetadataSchemaProperties",
 }) as any as S.Schema<MetadataSchemaProperties>;
+
+export interface MetadataSchemasCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the metadata schema. */
+  metadataSchemaName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: MetadataSchemaProperties;
+}
+export const MetadataSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      serviceName: S.String.pipe(T.Label()),
+      metadataSchemaName: S.String.pipe(T.Label()),
+      properties: S.optional(MetadataSchemaProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
+        code: 200,
+        apiVersion: "2024-03-01",
+      }),
+    ),
+).annotate({
+  identifier: "MetadataSchemasCreateOrUpdateRequest",
+}) as any as S.Schema<MetadataSchemasCreateOrUpdateRequest>;
 
 export interface MetadataSchemasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1913,7 +1938,7 @@ export const MetadataSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataSchema" }) as any as S.Schema<MetadataSchema>;
 
 /** The MetadataSchema items on this page */
-export type MetadataSchemaListResultValueList = MetadataSchema[];
+export type MetadataSchemaListResultValueList = ReadonlyArray<MetadataSchema>;
 export const MetadataSchemaListResultValueList = /*@__PURE__*/ S.Array(
   MetadataSchema,
 ) as any as S.Schema<MetadataSchemaListResultValueList>;
@@ -1971,11 +1996,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2002,7 +2027,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2022,6 +2047,63 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Resource tags. */
+export type ServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
+/** The properties of the service. */
+export interface ServicePropertiesInput {}
+export const ServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ServicePropertiesInput",
+}) as any as S.Schema<ServicePropertiesInput>;
+
+/** The type of managed service identity */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ServicesCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ServicesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "ServicesCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<ServicesCreateOrUpdateRequestIdentity>;
+
 export interface ServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2029,14 +2111,24 @@ export interface ServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of Azure API Center service. */
   serviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ServicePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ServicesCreateOrUpdateRequestIdentity;
 }
 export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ServicePropertiesInput),
+    identity: S.optional(ServicesCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2059,11 +2151,7 @@ export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 /** The provisioning state of the resource */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Failed" | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of the service. */
@@ -2078,15 +2166,6 @@ export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceProperties",
 }) as any as S.Schema<ServiceProperties>;
-
-/** The type of managed service identity */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -2206,14 +2285,15 @@ export interface ServicesExportMetadataSchemaRequest {
   resourceGroupName: string;
   /** The name of Azure API Center service. */
   serviceName: string;
-  body: unknown;
+  /** An entity the metadata schema is requested for. */
+  assignedTo?: MetadataAssignmentEntity;
 }
 export const ServicesExportMetadataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    assignedTo: S.optional(MetadataAssignmentEntity),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2227,7 +2307,7 @@ export const ServicesExportMetadataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesExportMetadataSchemaRequest>;
 
 /** The format for schema export */
-export type MetadataSchemaExportFormat = "inline" | "link" | (string & {});
+export type MetadataSchemaExportFormat = "inline" | "link";
 export const MetadataSchemaExportFormat = /*@__PURE__*/ S.String;
 
 /** The metadata schema export result. */
@@ -2413,7 +2493,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 /** The Service items on this page */
-export type ServiceListResultValueList = Service[];
+export type ServiceListResultValueList = ReadonlyArray<Service>;
 export const ServiceListResultValueList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceListResultValueList>;
@@ -2453,6 +2533,29 @@ export const ServicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesListBySubscriptionRequest",
 }) as any as S.Schema<ServicesListBySubscriptionRequest>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ServicesUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "ServicesUpdateRequestIdentity",
+}) as any as S.Schema<ServicesUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type ServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateRequestTagsMap>;
+
 export interface ServicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2460,14 +2563,18 @@ export interface ServicesUpdateRequest {
   resourceGroupName: string;
   /** The name of Azure API Center service. */
   serviceName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ServicesUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: ServicesUpdateRequestTagsMap;
 }
 export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(ServicesUpdateRequestIdentity),
+    tags: S.optional(ServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2542,36 +2649,6 @@ export const ServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesUpdateResponse",
 }) as any as S.Schema<ServicesUpdateResponse>;
 
-export interface WorkspacesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure API Center service. */
-  serviceName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  body: unknown;
-}
-export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequest",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
-
 /** Workspace properties. */
 export interface WorkspaceProperties {
   /** Workspace title. */
@@ -2587,6 +2664,37 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceProperties",
 }) as any as S.Schema<WorkspaceProperties>;
+
+export interface WorkspacesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure API Center service. */
+  serviceName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkspaceProperties;
+}
+export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    properties: S.optional(WorkspaceProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "WorkspacesCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
 
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2751,7 +2859,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = Workspace[];
+export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;

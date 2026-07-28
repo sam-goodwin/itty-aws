@@ -144,8 +144,7 @@ export type SecretVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DESTROYED"
-  | (string & {});
+  | "DESTROYED";
 export const SecretVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A secret version resource in the Secret Manager API. */
@@ -185,7 +184,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
-export type ReplicaList = Replica[];
+export type ReplicaList = ReadonlyArray<Replica>;
 export const ReplicaList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaList>;
@@ -407,11 +406,10 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -430,7 +428,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -449,7 +447,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -491,7 +489,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -629,7 +627,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -674,7 +672,7 @@ export const ListProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSecretsRequest",
 }) as any as S.Schema<ListProjectsSecretsRequest>;
 
-export type SecretList = Secret[];
+export type SecretList = ReadonlyArray<Secret>;
 export const SecretList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretList>;
@@ -722,7 +720,7 @@ export const ListProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSecretsVersionsRequest",
 }) as any as S.Schema<ListProjectsSecretsVersionsRequest>;
 
-export type SecretVersionList = SecretVersion[];
+export type SecretVersionList = ReadonlyArray<SecretVersion>;
 export const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;

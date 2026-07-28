@@ -760,16 +760,27 @@
             "smithy.api#documentation": "The name of the ServiceEndpoint resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#Tags": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdate": {
@@ -1029,16 +1040,54 @@
             "smithy.api#documentation": "The name of the ServiceEndpoint resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "ServiceEndpoint resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "preAllocatedCapacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ServiceEndpoint resource properties."
+      }
+    },
+    "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recommendationsservice#ServiceEndpointsGet": {
@@ -2001,16 +2050,35 @@
             "smithy.api#documentation": "The name of the Modeling resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.recommendationsservice#ModelingUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Modeling resource properties to update."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#ModelingUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "inputData": {
+          "target": "com.azure.recommendationsservice#ModelingInputData",
+          "traits": {
+            "smithy.api#documentation": "The configuration to raw CDM data to be used as Modeling resource input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modeling resource properties to update."
       }
     },
     "com.azure.recommendationsservice#ModelingCreateOrUpdate": {
@@ -2354,16 +2422,150 @@
             "smithy.api#documentation": "The name of the Modeling resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Modeling resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "features": {
+          "target": "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesFeatures",
+          "traits": {
+            "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
+          }
+        },
+        "frequency": {
+          "target": "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesFrequency",
+          "traits": {
+            "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
+          }
+        },
+        "size": {
+          "target": "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesSize",
+          "traits": {
+            "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
+          }
+        },
+        "inputData": {
+          "target": "com.azure.recommendationsservice#ModelingInputData",
+          "traits": {
+            "smithy.api#documentation": "The configuration to raw CDM data to be used as Modeling resource input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modeling resource properties."
+      }
+    },
+    "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesSize": {
+      "type": "enum",
+      "members": {
+        "SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Small"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Large"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
+      }
+    },
+    "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesFrequency": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
+      }
+    },
+    "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestPropertiesFeatures": {
+      "type": "enum",
+      "members": {
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
+      }
+    },
+    "com.azure.recommendationsservice#ModelingCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recommendationsservice#ModelingGet": {
@@ -3673,16 +3875,47 @@
             "smithy.api#documentation": "The name of the RecommendationsService Account resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.recommendationsservice#AccountsUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Account resource patch properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#AccountsUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "endpointAuthentications": {
+          "target": "com.azure.recommendationsservice#EndpointAuthenticationsList",
+          "traits": {
+            "smithy.api#documentation": "The list of service endpoints authentication details."
+          }
+        },
+        "cors": {
+          "target": "com.azure.recommendationsservice#CorsRuleList",
+          "traits": {
+            "smithy.api#documentation": "The list of CORS details."
+          }
+        },
+        "reportsConnectionString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection string to write Accounts reports to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Account resource patch properties."
       }
     },
     "com.azure.recommendationsservice#AccountsCreateOrUpdate": {
@@ -3960,16 +4193,92 @@
             "smithy.api#documentation": "The name of the RecommendationsService Account resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Account resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "configuration": {
+          "target": "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestPropertiesConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
+          }
+        },
+        "endpointAuthentications": {
+          "target": "com.azure.recommendationsservice#EndpointAuthenticationsList",
+          "traits": {
+            "smithy.api#documentation": "The list of service endpoints authentication details."
+          }
+        },
+        "cors": {
+          "target": "com.azure.recommendationsservice#CorsRuleList",
+          "traits": {
+            "smithy.api#documentation": "The list of CORS details."
+          }
+        },
+        "reportsConnectionString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection string to write Accounts reports to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Account resource properties."
+      }
+    },
+    "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestPropertiesConfiguration": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Free"
+          }
+        },
+        "CAPACITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Capacity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
+      }
+    },
+    "com.azure.recommendationsservice#AccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recommendationsservice#AccountsGet": {
@@ -4664,11 +4973,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

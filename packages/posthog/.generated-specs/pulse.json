@@ -400,12 +400,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -441,27 +435,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.pulse#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the config.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -580,27 +553,6 @@
           "traits": {
             "smithy.api#documentation": "Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.pulse#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the config.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -676,22 +628,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.pulse#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the config.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

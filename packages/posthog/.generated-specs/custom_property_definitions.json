@@ -660,15 +660,6 @@
         "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types."
       }
     },
-    "com.posthog.custom_property_definitions#CustomPropertyDefinitionsCreateRequestReferencesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.custom_property_definitions#CustomPropertyReference"
-      },
-      "traits": {
-        "smithy.api#documentation": "Workflows that use this property, resolved by definition id."
-      }
-    },
     "com.posthog.custom_property_definitions#CustomPropertyDefinitionsCreateRequest": {
       "type": "structure",
       "members": {
@@ -678,12 +669,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "name": {
@@ -731,41 +716,6 @@
           "traits": {
             "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "source": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertySource",
-          "traits": {
-            "smithy.api#documentation": "The data-warehouse view-sync binding feeding this property, or null when values are set manually.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "references": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertyDefinitionsCreateRequestReferencesList",
-          "traits": {
-            "smithy.api#documentation": "Workflows that use this property, resolved by definition id.",
-            "smithy.api#required": {}
           }
         }
       },
@@ -837,15 +787,6 @@
         "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types."
       }
     },
-    "com.posthog.custom_property_definitions#CustomPropertyDefinitionsUpdateRequestReferencesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.custom_property_definitions#CustomPropertyReference"
-      },
-      "traits": {
-        "smithy.api#documentation": "Workflows that use this property, resolved by definition id."
-      }
-    },
     "com.posthog.custom_property_definitions#CustomPropertyDefinitionsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -910,41 +851,6 @@
             "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "source": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertySource",
-          "traits": {
-            "smithy.api#documentation": "The data-warehouse view-sync binding feeding this property, or null when values are set manually.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "references": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertyDefinitionsUpdateRequestReferencesList",
-          "traits": {
-            "smithy.api#documentation": "Workflows that use this property, resolved by definition id.",
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -974,15 +880,6 @@
       },
       "traits": {
         "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types."
-      }
-    },
-    "com.posthog.custom_property_definitions#CustomPropertyDefinitionsPartialUpdateRequestReferencesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.custom_property_definitions#CustomPropertyReference"
-      },
-      "traits": {
-        "smithy.api#documentation": "Workflows that use this property, resolved by definition id."
       }
     },
     "com.posthog.custom_property_definitions#CustomPropertyDefinitionsPartialUpdateRequest": {
@@ -1046,34 +943,6 @@
           "traits": {
             "smithy.api#documentation": "For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "source": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertySource",
-          "traits": {
-            "smithy.api#documentation": "The data-warehouse view-sync binding feeding this property, or null when values are set manually.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "references": {
-          "target": "com.posthog.custom_property_definitions#CustomPropertyDefinitionsPartialUpdateRequestReferencesList",
-          "traits": {
-            "smithy.api#documentation": "Workflows that use this property, resolved by definition id."
           }
         }
       },

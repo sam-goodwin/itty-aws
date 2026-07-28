@@ -456,16 +456,89 @@
             "smithy.api#documentation": "Name of Postgres Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#PostgresInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#PostgresInstancePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#PostgresInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dataControllerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data controller id"
+          }
+        },
+        "admin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance admin"
+          }
+        },
+        "basicLoginInformation": {
+          "target": "com.azure.azurearcdata#PostgresInstancePropertiesInputBasicLoginInformation",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "k8sRaw": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The raw kubernetes information"
+          }
+        },
+        "lastUploadedDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last uploaded date from Kubernetes cluster. Defaults to current date time"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Postgres Instance properties."
+      }
+    },
+    "com.azure.azurearcdata#PostgresInstancePropertiesInputBasicLoginInformation": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
+      }
+    },
+    "com.azure.azurearcdata#PostgresInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#PostgresInstancesCreate": {
@@ -610,16 +683,73 @@
             "smithy.api#documentation": "Name of Postgres Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#PostgresInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurearcdata#PostgresInstancesCreateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#PostgresInstancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.azurearcdata#PostgresInstanceSku",
+          "traits": {
+            "smithy.api#documentation": "Resource sku."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#PostgresInstancesCreateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurearcdata#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurearcdata#PostgresInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#PostgresInstancesGet": {
@@ -1400,16 +1530,64 @@
             "smithy.api#documentation": "The name of the Active Directory connector instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurearcdata#ActiveDirectoryConnectorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "null",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#ActiveDirectoryConnectorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "domainServiceAccountLoginInformation": {
+          "target": "com.azure.azurearcdata#ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "spec": {
+          "target": "com.azure.azurearcdata#ActiveDirectoryConnectorSpec",
+          "traits": {
+            "smithy.api#documentation": "null",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.azurearcdata#ActiveDirectoryConnectorStatus",
+          "traits": {
+            "smithy.api#documentation": "null"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an Active Directory connector resource"
+      }
+    },
+    "com.azure.azurearcdata#ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
       }
     },
     "com.azure.azurearcdata#ActiveDirectoryConnectorsGet": {
@@ -2107,16 +2285,211 @@
             "smithy.api#documentation": "The name of the data controller"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#DataControllersPatchDataControllerRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The data controller's properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#DataControllerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "infrastructure": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInputInfrastructure",
+          "traits": {
+            "smithy.api#documentation": "The infrastructure the data controller is running on."
+          }
+        },
+        "onPremiseProperty": {
+          "target": "com.azure.azurearcdata#OnPremiseProperty"
+        },
+        "k8sRaw": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The raw kubernetes information"
+          }
+        },
+        "uploadWatermark": {
+          "target": "com.azure.azurearcdata#UploadWatermark"
+        },
+        "lastUploadedDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last uploaded date from Kubernetes cluster. Defaults to current date time"
+          }
+        },
+        "basicLoginInformation": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInputBasicLoginInformation",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "metricsDashboardCredential": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInputMetricsDashboardCredential",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "logsDashboardCredential": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInputLogsDashboardCredential",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "logAnalyticsWorkspaceConfig": {
+          "target": "com.azure.azurearcdata#LogAnalyticsWorkspaceConfig"
+        },
+        "uploadServicePrincipal": {
+          "target": "com.azure.azurearcdata#UploadServicePrincipal",
+          "traits": {
+            "smithy.api#documentation": "Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity."
+          }
+        },
+        "clusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to."
+          }
+        },
+        "extensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data controller properties."
+      }
+    },
+    "com.azure.azurearcdata#DataControllerPropertiesInputLogsDashboardCredential": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
+      }
+    },
+    "com.azure.azurearcdata#DataControllerPropertiesInputMetricsDashboardCredential": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
+      }
+    },
+    "com.azure.azurearcdata#DataControllerPropertiesInputBasicLoginInformation": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
+      }
+    },
+    "com.azure.azurearcdata#DataControllerPropertiesInputInfrastructure": {
+      "type": "enum",
+      "members": {
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azure"
+          }
+        },
+        "GCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcp"
+          }
+        },
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "ALIBABA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alibaba"
+          }
+        },
+        "ONPREMISES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onpremises"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The infrastructure the data controller is running on."
+      }
+    },
+    "com.azure.azurearcdata#DataControllersPatchDataControllerRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurearcdata#DataControllersPutDataController": {
@@ -2255,16 +2628,67 @@
             "smithy.api#documentation": "The name of the data controller"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#DataControllersPutDataControllerRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurearcdata#DataControllersPutDataControllerRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#DataControllerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The data controller's properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#DataControllersPutDataControllerRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurearcdata#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurearcdata#DataControllersPutDataControllerRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#DataControllersGetDataController": {
@@ -2936,16 +3360,151 @@
             "smithy.api#documentation": "Name of SQL Server License"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerLicensesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingPlan": {
+          "target": "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputBillingPlan",
+          "traits": {
+            "smithy.api#documentation": "SQL Server license type."
+          }
+        },
+        "physicalCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the license covers."
+          }
+        },
+        "licenseCategory": {
+          "target": "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputLicenseCategory",
+          "traits": {
+            "smithy.api#documentation": "This property represents the choice between SQL Server Core and ESU licenses."
+          }
+        },
+        "activationState": {
+          "target": "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputActivationState",
+          "traits": {
+            "smithy.api#documentation": "The activation state of the license."
+          }
+        },
+        "scopeType": {
+          "target": "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputScopeType",
+          "traits": {
+            "smithy.api#documentation": "The Azure scope to which the license will apply."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of update SqlServerLicense."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputScopeType": {
+      "type": "enum",
+      "members": {
+        "TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tenant"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscription"
+          }
+        },
+        "RESOURCEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure scope to which the license will apply."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputActivationState": {
+      "type": "enum",
+      "members": {
+        "ACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Activated"
+          }
+        },
+        "DEACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deactivated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The activation state of the license."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputLicenseCategory": {
+      "type": "enum",
+      "members": {
+        "CORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Core"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property represents the choice between SQL Server Core and ESU licenses."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicenseUpdatePropertiesInputBillingPlan": {
+      "type": "enum",
+      "members": {
+        "PAYG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAYG"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server license type."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerLicensesCreate": {
@@ -3058,16 +3617,164 @@
             "smithy.api#documentation": "Name of SQL Server License"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerLicensesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerLicensePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "SQL Server license properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingPlan": {
+          "target": "com.azure.azurearcdata#SqlServerLicensePropertiesInputBillingPlan",
+          "traits": {
+            "smithy.api#documentation": "SQL Server license type.",
+            "smithy.api#required": {}
+          }
+        },
+        "physicalCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the license covers.",
+            "smithy.api#required": {}
+          }
+        },
+        "licenseCategory": {
+          "target": "com.azure.azurearcdata#SqlServerLicensePropertiesInputLicenseCategory",
+          "traits": {
+            "smithy.api#documentation": "This property represents the choice between SQL Server Core and ESU licenses.",
+            "smithy.api#required": {}
+          }
+        },
+        "activationState": {
+          "target": "com.azure.azurearcdata#SqlServerLicensePropertiesInputActivationState",
+          "traits": {
+            "smithy.api#documentation": "The activation state of the license.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopeType": {
+          "target": "com.azure.azurearcdata#SqlServerLicensePropertiesInputScopeType",
+          "traits": {
+            "smithy.api#documentation": "The Azure scope to which the license will apply.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of SQL Server License."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensePropertiesInputScopeType": {
+      "type": "enum",
+      "members": {
+        "TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tenant"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscription"
+          }
+        },
+        "RESOURCEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure scope to which the license will apply."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensePropertiesInputActivationState": {
+      "type": "enum",
+      "members": {
+        "ACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Activated"
+          }
+        },
+        "DEACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deactivated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The activation state of the license."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensePropertiesInputLicenseCategory": {
+      "type": "enum",
+      "members": {
+        "CORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Core"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property represents the choice between SQL Server Core and ESU licenses."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensePropertiesInputBillingPlan": {
+      "type": "enum",
+      "members": {
+        "PAYG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAYG"
+          }
+        },
+        "PAID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Paid"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server license type."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerLicensesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerLicensesGet": {
@@ -3598,16 +4305,93 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "azureManagedInstanceResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Azure SQL Managed Instance resource ID to link with the SQL Server instance.",
             "smithy.api#required": {}
+          }
+        },
+        "azureManagedInstanceRole": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole",
+          "traits": {
+            "smithy.api#documentation": "The role of managed instance in a distributed availability group, can be Primary or Secondary."
+          }
+        },
+        "databaseNames": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the availability group to be used for the database replication.",
+            "smithy.api#required": {}
+          }
+        },
+        "distributedAvailabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the DAG to be used for the database replication. Also referred to as Link Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "assessmentCategories": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run."
+          }
+        },
+        "sqlServerIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the SQL Server instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurearcdata#MiLinkAssessmentCategory"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role of managed instance in a distributed availability group, can be Primary or Secondary."
       }
     },
     "com.azure.azurearcdata#SqlServerInstancesPostUpgrade": {
@@ -5168,7 +5952,7 @@
           }
         },
         "differentialBackupHours": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.azurearcdata#BackupPolicyDifferentialBackupHours",
           "traits": {
             "smithy.api#documentation": "The differential backup interval in hours."
           }
@@ -5182,6 +5966,26 @@
       },
       "traits": {
         "smithy.api#documentation": "The backup profile for the SQL server."
+      }
+    },
+    "com.azure.azurearcdata#BackupPolicyDifferentialBackupHours": {
+      "type": "intEnum",
+      "members": {
+        "_12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 12
+          }
+        },
+        "_24": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 24
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The differential backup interval in hours."
       }
     },
     "com.azure.azurearcdata#FailoverCluster": {
@@ -6418,10 +7222,16 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "featureName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the feature to retrieve the job status for."
+          }
+        },
+        "jobType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the job to retrieve the status for."
           }
         }
       },
@@ -6878,16 +7688,47 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "reportType": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesGetBestPracticesAssessmentRequestReportType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The report type that needs to be fetched. If not specified, the default is AssessmentSummary."
+          }
+        },
+        "reportId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The GUID of the report to return best practices assessment results for. If not specified, summaries for all reports will be returned."
+          }
+        },
+        "skipToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesGetBestPracticesAssessmentRequestReportType": {
+      "type": "enum",
+      "members": {
+        "ASSESSMENTDATAPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AssessmentDataPoint"
+          }
+        },
+        "ASSESSMENTSUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AssessmentSummary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The report type that needs to be fetched. If not specified, the default is AssessmentSummary."
       }
     },
     "com.azure.azurearcdata#SqlServerInstancesGetTelemetry": {
@@ -7067,16 +7908,93 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "datasetName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the telemetry dataset to retrieve.",
             "smithy.api#required": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used."
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end time for the time range to fetch telemetry for. If not specified, the current time is used."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time granularity to fetch telemetry for. This is an ISO8601 duration. Examples: PT15M, PT1H, P1D"
+          }
+        },
+        "aggregationType": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesGetTelemetryRequestAggregationType",
+          "traits": {
+            "smithy.api#documentation": "The aggregation type to use for the numerical columns in the dataset."
+          }
+        },
+        "databaseNames": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesGetTelemetryRequestDatabaseNamesList",
+          "traits": {
+            "smithy.api#documentation": "The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesGetTelemetryRequestDatabaseNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesGetTelemetryRequestAggregationType": {
+      "type": "enum",
+      "members": {
+        "AVERAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Average"
+          }
+        },
+        "MINIMUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Minimum"
+          }
+        },
+        "MAXIMUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Maximum"
+          }
+        },
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sum"
+          }
+        },
+        "COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Count"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The aggregation type to use for the numerical columns in the dataset."
       }
     },
     "com.azure.azurearcdata#SqlServerInstancesDelete": {
@@ -7239,16 +8157,548 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputVersion",
+          "traits": {
+            "smithy.api#documentation": "SQL Server version."
+          }
+        },
+        "edition": {
+          "target": "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputEdition",
+          "traits": {
+            "smithy.api#documentation": "SQL Server edition."
+          }
+        },
+        "cores": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance."
+          }
+        },
+        "instanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL Server instance name."
+          }
+        },
+        "hostType": {
+          "target": "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputHostType",
+          "traits": {
+            "smithy.api#documentation": "Type of host for Azure Arc SQL Server"
+          }
+        },
+        "failoverCluster": {
+          "target": "com.azure.azurearcdata#FailoverClusterInput",
+          "traits": {
+            "smithy.api#documentation": "Failover Cluster Instance properties."
+          }
+        },
+        "backupPolicy": {
+          "target": "com.azure.azurearcdata#BackupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The backup profile for the SQL server."
+          }
+        },
+        "upgradeLockedUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty."
+          }
+        },
+        "monitoring": {
+          "target": "com.azure.azurearcdata#Monitoring",
+          "traits": {
+            "smithy.api#documentation": "The monitoring configuration."
+          }
+        },
+        "migration": {
+          "target": "com.azure.azurearcdata#MigrationInput",
+          "traits": {
+            "smithy.api#documentation": "Migration related configuration."
+          }
+        },
+        "bestPracticesAssessment": {
+          "target": "com.azure.azurearcdata#BestPracticesAssessment",
+          "traits": {
+            "smithy.api#documentation": "The configuration related to SQL best practices assessment."
+          }
+        },
+        "clientConnection": {
+          "target": "com.azure.azurearcdata#ClientConnection",
+          "traits": {
+            "smithy.api#documentation": "Client connection related configuration."
+          }
+        },
+        "serviceType": {
+          "target": "com.azure.azurearcdata#ServiceType",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host."
+          }
+        },
+        "authentication": {
+          "target": "com.azure.azurearcdata#Authentication",
+          "traits": {
+            "smithy.api#documentation": "Authentication related configuration for the SQL Server Instance."
+          }
+        },
+        "databaseMirroringEndpoint": {
+          "target": "com.azure.azurearcdata#DBMEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "Database mirroring endpoint related properties."
+          }
+        },
+        "isMicrosoftPkiCertTrustConfigured": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains."
+          }
+        },
+        "isDigiCertPkiCertTrustConfigured": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains."
+          }
+        },
+        "maxServerMemoryMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "maximum server memory (MB) value configured for this instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of update SqlServerInstance."
+      }
+    },
+    "com.azure.azurearcdata#DBMEndpointInput": {
+      "type": "structure",
+      "members": {
+        "encryptionAlgorithm": {
+          "target": "com.azure.azurearcdata#DBMEndpointInputEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The encryption algorithm(s) used by the endpoint."
+          }
+        },
+        "connectionAuth": {
+          "target": "com.azure.azurearcdata#DBMEndpointInputConnectionAuth",
+          "traits": {
+            "smithy.api#documentation": "The endpoint connection authentication type(s)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database mirroring endpoint related properties."
+      }
+    },
+    "com.azure.azurearcdata#DBMEndpointInputConnectionAuth": {
+      "type": "enum",
+      "members": {
+        "WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM"
+          }
+        },
+        "WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos"
+          }
+        },
+        "WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "WINDOWS_NTLM_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM_Certificate"
+          }
+        },
+        "WINDOWS_KERBEROS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos_Certificate"
+          }
+        },
+        "WINDOWS_NEGOTIATE_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate_Certificate"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_NTLM"
+          }
+        },
+        "CERTIFICATE_WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Kerberos"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Negotiate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The endpoint connection authentication type(s)."
+      }
+    },
+    "com.azure.azurearcdata#DBMEndpointInputEncryptionAlgorithm": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        },
+        "RC4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RC4"
+          }
+        },
+        "AES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AES"
+          }
+        },
+        "NONE_RC4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE, RC4"
+          }
+        },
+        "NONE_AES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE, AES"
+          }
+        },
+        "RC4_AES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RC4, AES"
+          }
+        },
+        "AES_RC4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AES, RC4"
+          }
+        },
+        "NONE_RC4_AES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE, RC4, AES"
+          }
+        },
+        "NONE_AES_RC4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE, AES, RC4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption algorithm(s) used by the endpoint."
+      }
+    },
+    "com.azure.azurearcdata#MigrationInput": {
+      "type": "structure",
+      "members": {
+        "assessment": {
+          "target": "com.azure.azurearcdata#MigrationAssessmentInput",
+          "traits": {
+            "smithy.api#documentation": "Migration assessments related configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migration related configuration."
+      }
+    },
+    "com.azure.azurearcdata#MigrationAssessmentInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if migration assessment is enabled for this SQL Server instance."
+          }
+        },
+        "settings": {
+          "target": "com.azure.azurearcdata#MigrationAssessmentSettings"
+        },
+        "impactedObjectsSummary": {
+          "target": "com.azure.azurearcdata#MigrationAssessmentInputImpactedObjectsSummary",
+          "traits": {
+            "smithy.api#documentation": "Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The migration assessment related configuration."
+      }
+    },
+    "com.azure.azurearcdata#MigrationAssessmentInputImpactedObjectsSummary": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets"
+      }
+    },
+    "com.azure.azurearcdata#FailoverClusterInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Failover Cluster Instance properties."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputHostType": {
+      "type": "enum",
+      "members": {
+        "AZURE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure Virtual Machine"
+          }
+        },
+        "AZURE_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure VMWare Virtual Machine"
+          }
+        },
+        "AZURE_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure Kubernetes Service"
+          }
+        },
+        "AWS_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS VMWare Virtual Machine"
+          }
+        },
+        "AWS_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS Kubernetes Service"
+          }
+        },
+        "GCP_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP VMWare Virtual Machine"
+          }
+        },
+        "GCP_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP Kubernetes Service"
+          }
+        },
+        "CONTAINER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Container"
+          }
+        },
+        "VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Virtual Machine"
+          }
+        },
+        "PHYSICAL_SERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Physical Server"
+          }
+        },
+        "AWS_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS Virtual Machine"
+          }
+        },
+        "GCP_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP Virtual Machine"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of host for Azure Arc SQL Server"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputEdition": {
+      "type": "enum",
+      "members": {
+        "EVALUATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Evaluation"
+          }
+        },
+        "ENTERPRISE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enterprise"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "WEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Web"
+          }
+        },
+        "DEVELOPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Developer"
+          }
+        },
+        "EXPRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Express"
+          }
+        },
+        "BUSINESS_INTELLIGENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Business Intelligence"
+          }
+        },
+        "STANDARD_DEVELOPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard Developer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server edition."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstanceUpdatePropertiesInputVersion": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "SQL_SERVER_2012": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2012"
+          }
+        },
+        "SQL_SERVER_2014": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2014"
+          }
+        },
+        "SQL_SERVER_2016": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2016"
+          }
+        },
+        "SQL_SERVER_2017": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2017"
+          }
+        },
+        "SQL_SERVER_2019": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2019"
+          }
+        },
+        "SQL_SERVER_2022": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2022"
+          }
+        },
+        "SQL_SERVER_2025": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2025"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server version."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerInstancesCreate": {
@@ -7360,16 +8810,336 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerInstancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.azure.azurearcdata#SqlServerInstancePropertiesInputVersion",
+          "traits": {
+            "smithy.api#documentation": "SQL Server version."
+          }
+        },
+        "edition": {
+          "target": "com.azure.azurearcdata#SqlServerInstancePropertiesInputEdition",
+          "traits": {
+            "smithy.api#documentation": "SQL Server edition."
+          }
+        },
+        "cores": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance."
+          }
+        },
+        "instanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL Server instance name."
+          }
+        },
+        "hostType": {
+          "target": "com.azure.azurearcdata#SqlServerInstancePropertiesInputHostType",
+          "traits": {
+            "smithy.api#documentation": "Type of host for Azure Arc SQL Server"
+          }
+        },
+        "databaseMirroringEndpoint": {
+          "target": "com.azure.azurearcdata#DBMEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "Database mirroring endpoint related properties."
+          }
+        },
+        "failoverCluster": {
+          "target": "com.azure.azurearcdata#FailoverClusterInput",
+          "traits": {
+            "smithy.api#documentation": "Failover Cluster Instance properties."
+          }
+        },
+        "backupPolicy": {
+          "target": "com.azure.azurearcdata#BackupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The backup profile for the SQL server."
+          }
+        },
+        "upgradeLockedUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty."
+          }
+        },
+        "monitoring": {
+          "target": "com.azure.azurearcdata#Monitoring",
+          "traits": {
+            "smithy.api#documentation": "The monitoring configuration."
+          }
+        },
+        "migration": {
+          "target": "com.azure.azurearcdata#MigrationInput",
+          "traits": {
+            "smithy.api#documentation": "Migration related configuration."
+          }
+        },
+        "bestPracticesAssessment": {
+          "target": "com.azure.azurearcdata#BestPracticesAssessment",
+          "traits": {
+            "smithy.api#documentation": "The configuration related to SQL best practices assessment."
+          }
+        },
+        "clientConnection": {
+          "target": "com.azure.azurearcdata#ClientConnection",
+          "traits": {
+            "smithy.api#documentation": "Client connection related configuration."
+          }
+        },
+        "serviceType": {
+          "target": "com.azure.azurearcdata#ServiceType",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host."
+          }
+        },
+        "authentication": {
+          "target": "com.azure.azurearcdata#Authentication",
+          "traits": {
+            "smithy.api#documentation": "Authentication related configuration for the SQL Server Instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of SqlServerInstance."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancePropertiesInputHostType": {
+      "type": "enum",
+      "members": {
+        "AZURE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure Virtual Machine"
+          }
+        },
+        "AZURE_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure VMWare Virtual Machine"
+          }
+        },
+        "AZURE_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure Kubernetes Service"
+          }
+        },
+        "AWS_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS VMWare Virtual Machine"
+          }
+        },
+        "AWS_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS Kubernetes Service"
+          }
+        },
+        "GCP_VMWARE_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP VMWare Virtual Machine"
+          }
+        },
+        "GCP_KUBERNETES_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP Kubernetes Service"
+          }
+        },
+        "CONTAINER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Container"
+          }
+        },
+        "VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Virtual Machine"
+          }
+        },
+        "PHYSICAL_SERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Physical Server"
+          }
+        },
+        "AWS_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AWS Virtual Machine"
+          }
+        },
+        "GCP_VIRTUAL_MACHINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GCP Virtual Machine"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of host for Azure Arc SQL Server"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancePropertiesInputEdition": {
+      "type": "enum",
+      "members": {
+        "EVALUATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Evaluation"
+          }
+        },
+        "ENTERPRISE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enterprise"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "WEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Web"
+          }
+        },
+        "DEVELOPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Developer"
+          }
+        },
+        "EXPRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Express"
+          }
+        },
+        "BUSINESS_INTELLIGENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Business Intelligence"
+          }
+        },
+        "STANDARD_DEVELOPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard Developer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server edition."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancePropertiesInputVersion": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "SQL_SERVER_2012": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2012"
+          }
+        },
+        "SQL_SERVER_2014": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2014"
+          }
+        },
+        "SQL_SERVER_2016": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2016"
+          }
+        },
+        "SQL_SERVER_2017": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2017"
+          }
+        },
+        "SQL_SERVER_2019": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2019"
+          }
+        },
+        "SQL_SERVER_2022": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2022"
+          }
+        },
+        "SQL_SERVER_2025": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2025"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server version."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerInstancesGet": {
@@ -8006,16 +9776,44 @@
             "smithy.api#documentation": "The name of the Failover Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurearcdata#FailoverGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "null",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#FailoverGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerManagedInstanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the partner SQL managed instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.azure.azurearcdata#FailoverGroupSpec",
+          "traits": {
+            "smithy.api#documentation": "The specifications of the failover group resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The status of the failover group custom resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a failover group resource."
       }
     },
     "com.azure.azurearcdata#FailoverGroupsGet": {
@@ -8901,16 +10699,27 @@
             "smithy.api#documentation": "Name of SQL Managed Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlManagedInstancesCreate": {
@@ -9055,16 +10864,194 @@
             "smithy.api#documentation": "Name of SQL Managed Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancesCreateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "sku": {
+          "target": "com.azure.azurearcdata#SqlManagedInstanceSku",
+          "traits": {
+            "smithy.api#documentation": "Resource sku."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancesCreateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurearcdata#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dataControllerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "null"
+          }
+        },
+        "admin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance admin user"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance end time"
+          }
+        },
+        "k8sRaw": {
+          "target": "com.azure.azurearcdata#SqlManagedInstanceK8sRaw",
+          "traits": {
+            "smithy.api#documentation": "The raw kubernetes information"
+          }
+        },
+        "basicLoginInformation": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancePropertiesInputBasicLoginInformation",
+          "traits": {
+            "smithy.api#documentation": "Username and password for basic login authentication."
+          }
+        },
+        "lastUploadedDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last uploaded date from Kubernetes cluster. Defaults to current date time"
+          }
+        },
+        "activeDirectoryInformation": {
+          "target": "com.azure.azurearcdata#ActiveDirectoryInformation",
+          "traits": {
+            "smithy.api#documentation": "Active Directory information related to this SQL Managed Instance."
+          }
+        },
+        "licenseType": {
+          "target": "com.azure.azurearcdata#SqlManagedInstancePropertiesInputLicenseType",
+          "traits": {
+            "smithy.api#documentation": "The license type to apply for this managed instance."
+          }
+        },
+        "clusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to."
+          }
+        },
+        "extensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of sqlManagedInstance."
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancePropertiesInputLicenseType": {
+      "type": "enum",
+      "members": {
+        "BASEPRICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BasePrice"
+          }
+        },
+        "LICENSEINCLUDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LicenseIncluded"
+          }
+        },
+        "DISASTERRECOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DisasterRecovery"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The license type to apply for this managed instance."
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancePropertiesInputBasicLoginInformation": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login username."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Username and password for basic login authentication."
+      }
+    },
+    "com.azure.azurearcdata#SqlManagedInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlManagedInstancesGet": {
@@ -10666,16 +12653,24 @@
             "smithy.api#documentation": "Name of SQL Availability Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "values": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of database names."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of database names."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsDeleteMiLink": {
@@ -10855,11 +12850,16 @@
             "smithy.api#documentation": "Name of SQL Availability Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "managedInstanceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Azure resource id for the sql managed instance."
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to perform a Force Failover as opposed to just a regular Failover."
           }
         }
       },
@@ -10985,16 +12985,24 @@
             "smithy.api#documentation": "Name of SQL Availability Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "values": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsAddDatabasesRequestValuesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of database names."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsAddDatabasesRequestValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of database names."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateManagedInstanceLink": {
@@ -11107,16 +13115,712 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "availabilityGroup": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfiguration",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The configuration for the SQL Server availability group resource."
+          }
+        },
+        "distributedAvailabilityGroup": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The distributed availability group configuration for the MI link."
+          }
+        },
+        "miLinkConfiguration": {
+          "target": "com.azure.azurearcdata#MiLinkCreateUpdateConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The MI Link specific distributed availability group configuration."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#MiLinkCreateUpdateConfiguration": {
+      "type": "structure",
+      "members": {
+        "instanceAvailabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the availability group to be created on the Managed Instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The MI Link specific configuration."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateConfiguration": {
+      "type": "structure",
+      "members": {
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the availability group."
+          }
+        },
+        "primaryAvailabilityGroup": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The initial primary availability group for the distributed availability group."
+          }
+        },
+        "secondaryAvailabilityGroup": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The initial secondary availability group for the distributed availability group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options used in creating a distributed availability group."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration": {
+      "type": "structure",
+      "members": {
+        "availabilityGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The azure resource identifier for the availability group."
+          }
+        },
+        "listenerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The listener URL of the availability group."
+          }
+        },
+        "availabilityMode": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode",
+          "traits": {
+            "smithy.api#documentation": "The availability mode of the availability group."
+          }
+        },
+        "failoverMode": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode",
+          "traits": {
+            "smithy.api#documentation": "The failover mode of the availability group."
+          }
+        },
+        "seedingMode": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode",
+          "traits": {
+            "smithy.api#documentation": "The seeding mode of the availability group."
+          }
+        },
+        "certificateConfiguration": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The certificate configuration for the availability group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability group configuration specification for a distributed availability group."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration": {
+      "type": "structure",
+      "members": {
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability group certificate configuration."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The seeding mode of the availability group."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The failover mode of the availability group."
+      }
+    },
+    "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode": {
+      "type": "enum",
+      "members": {
+        "SYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SYNCHRONOUS_COMMIT"
+          }
+        },
+        "ASYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASYNCHRONOUS_COMMIT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability mode of the availability group."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfiguration": {
+      "type": "structure",
+      "members": {
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the availability group."
+          }
+        },
+        "replicas": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationReplicasList",
+          "traits": {
+            "smithy.api#documentation": "List of availability group replicas."
+          }
+        },
+        "databases": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDatabasesList",
+          "traits": {
+            "smithy.api#documentation": "List of databases to include in the availability group."
+          }
+        },
+        "automatedBackupPreference": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference",
+          "traits": {
+            "smithy.api#documentation": "Preferred replica for running automated backups."
+          }
+        },
+        "failureConditionLevel": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel",
+          "traits": {
+            "smithy.api#documentation": "User-defined failure condition level under which an automatic failover must be triggered."
+          }
+        },
+        "healthCheckTimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding."
+          }
+        },
+        "dbFailover": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDbFailover",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the availability group supports failover for database health conditions."
+          }
+        },
+        "dtcSupport": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDtcSupport",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether DTC support has been enabled for this availability group."
+          }
+        },
+        "requiredSynchronizedSecondariesToCommit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of secondary replicas that must be in a synchronized state for a commit to complete."
+          }
+        },
+        "clusterType": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationClusterType",
+          "traits": {
+            "smithy.api#documentation": "Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination."
+          }
+        },
+        "listener": {
+          "target": "com.azure.azurearcdata#SqlAvailabilityGroupStaticIPListenerProperties",
+          "traits": {
+            "smithy.api#documentation": "The listener for the sql server availability group"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options used in creating an availability group"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationClusterType": {
+      "type": "enum",
+      "members": {
+        "WSFC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WSFC"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDtcSupport": {
+      "type": "enum",
+      "members": {
+        "PER_DB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PER_DB"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether DTC support has been enabled for this availability group."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDbFailover": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ON"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFF"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether the availability group supports failover for database health conditions."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User-defined failure condition level under which an automatic failover must be triggered."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRIMARY"
+          }
+        },
+        "SECONDARY_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SECONDARY_ONLY"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SECONDARY"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Preferred replica for running automated backups."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationDatabasesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of databases to include in the availability group."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateConfigurationReplicasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of availability group replicas."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfiguration": {
+      "type": "structure",
+      "members": {
+        "serverInstance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the server instance hosting the replica."
+          }
+        },
+        "endpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the database mirroring endpoint URL for the availability group replica"
+          }
+        },
+        "endpointUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database mirroring endpoint URL of availability group replica"
+          }
+        },
+        "endpointAuthenticationMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode",
+          "traits": {
+            "smithy.api#documentation": "The endpoint connection authentication type(s)."
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified."
+          }
+        },
+        "endpointConnectLogin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The login which will connect to the mirroring endpoint"
+          }
+        },
+        "availabilityMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode",
+          "traits": {
+            "smithy.api#documentation": "Property that determines whether a given availability replica can run in synchronous-commit mode"
+          }
+        },
+        "failoverMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode",
+          "traits": {
+            "smithy.api#documentation": "Property to set the failover mode of the availability group replica"
+          }
+        },
+        "seedingMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica."
+          }
+        },
+        "backupPriority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group."
+          }
+        },
+        "secondaryRoleAllowConnections": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections",
+          "traits": {
+            "smithy.api#documentation": "Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections."
+          }
+        },
+        "secondaryRoleReadOnlyRoutingUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connectivity endpoint (URL) of the read only availability replica."
+          }
+        },
+        "primaryRoleAllowConnections": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections",
+          "traits": {
+            "smithy.api#documentation": "Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)"
+          }
+        },
+        "primaryRoleReadOnlyRoutingList": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList",
+          "traits": {
+            "smithy.api#documentation": "List of read only routing URLs."
+          }
+        },
+        "sessionTimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time-out period of availability group session replica, in seconds."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The specifications of the availability group replica configuration"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of read only routing URLs."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL"
+          }
+        },
+        "READ_WRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READ_WRITE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections": {
+      "type": "enum",
+      "members": {
+        "NO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NO"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL"
+          }
+        },
+        "READ_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READ_ONLY"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property to set the failover mode of the availability group replica"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode": {
+      "type": "enum",
+      "members": {
+        "SYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SYNCHRONOUS_COMMIT"
+          }
+        },
+        "ASYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASYNCHRONOUS_COMMIT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property that determines whether a given availability replica can run in synchronous-commit mode"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode": {
+      "type": "enum",
+      "members": {
+        "WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM"
+          }
+        },
+        "WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos"
+          }
+        },
+        "WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "WINDOWS_NTLM_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM_Certificate"
+          }
+        },
+        "WINDOWS_KERBEROS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos_Certificate"
+          }
+        },
+        "WINDOWS_NEGOTIATE_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate_Certificate"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_NTLM"
+          }
+        },
+        "CERTIFICATE_WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Kerberos"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Negotiate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The endpoint connection authentication type(s)."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup": {
@@ -11229,11 +13933,22 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the availability group."
+          }
+        },
+        "primaryAvailabilityGroup": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The initial primary availability group for the distributed availability group."
+          }
+        },
+        "secondaryAvailabilityGroup": {
+          "target": "com.azure.azurearcdata#DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The initial secondary availability group for the distributed availability group."
           }
         }
       },
@@ -11351,16 +14066,223 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the availability group."
+          }
+        },
+        "replicas": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList",
+          "traits": {
+            "smithy.api#documentation": "List of availability group replicas."
+          }
+        },
+        "databases": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList",
+          "traits": {
+            "smithy.api#documentation": "List of databases to include in the availability group."
+          }
+        },
+        "automatedBackupPreference": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference",
+          "traits": {
+            "smithy.api#documentation": "Preferred replica for running automated backups."
+          }
+        },
+        "failureConditionLevel": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel",
+          "traits": {
+            "smithy.api#documentation": "User-defined failure condition level under which an automatic failover must be triggered."
+          }
+        },
+        "healthCheckTimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding."
+          }
+        },
+        "dbFailover": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the availability group supports failover for database health conditions."
+          }
+        },
+        "dtcSupport": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether DTC support has been enabled for this availability group."
+          }
+        },
+        "requiredSynchronizedSecondariesToCommit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of secondary replicas that must be in a synchronized state for a commit to complete."
+          }
+        },
+        "clusterType": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType",
+          "traits": {
+            "smithy.api#documentation": "Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination."
+          }
+        },
+        "listener": {
+          "target": "com.azure.azurearcdata#SqlAvailabilityGroupStaticIPListenerProperties",
+          "traits": {
+            "smithy.api#documentation": "The listener for the sql server availability group"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType": {
+      "type": "enum",
+      "members": {
+        "WSFC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WSFC"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport": {
+      "type": "enum",
+      "members": {
+        "PER_DB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PER_DB"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether DTC support has been enabled for this availability group."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ON"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFF"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether the availability group supports failover for database health conditions."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User-defined failure condition level under which an automatic failover must be triggered."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRIMARY"
+          }
+        },
+        "SECONDARY_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SECONDARY_ONLY"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SECONDARY"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Preferred replica for running automated backups."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of databases to include in the availability group."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurearcdata#AvailabilityGroupCreateUpdateReplicaConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of availability group replicas."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsForceFailoverAllowDataLoss": {
@@ -11655,15 +14577,71 @@
             "smithy.api#documentation": "Name of SQL Server Instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
-          }
+        "availabilityGroupTypeFilter": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupTypeFilter"
+        },
+        "replicationPartnerTypeFilter": {
+          "target": "com.azure.azurearcdata#ReplicationPartnerType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#ReplicationPartnerType": {
+      "type": "enum",
+      "members": {
+        "SQLSERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQLServer"
+          }
+        },
+        "AZURESQLVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureSQLVM"
+          }
+        },
+        "AZURESQLMANAGEDINSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureSQLManagedInstance"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurearcdata#AvailabilityGroupTypeFilter": {
+      "type": "enum",
+      "members": {
+        "CONTAINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONTAINED"
+          }
+        },
+        "DISTRIBUTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISTRIBUTED"
+          }
+        },
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DEFAULT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter retrieval based on availability group type."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsDetailView": {
@@ -11966,16 +14944,498 @@
             "smithy.api#documentation": "Name of SQL Availability Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The Server Availability Group's properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "info": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Availability Group Info"
+          }
+        },
+        "replicas": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputReplicas",
+          "traits": {
+            "smithy.api#documentation": "A list of Availability Group Replicas."
+          }
+        },
+        "databases": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputDatabases",
+          "traits": {
+            "smithy.api#documentation": "A list of Availability Group Database Replicas."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Arc Sql Server availability group resource"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputDatabases": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList",
+          "traits": {
+            "smithy.api#documentation": "Array of Availability Group Database Replicas."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Availability Group Database Replicas."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurearcdata#SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of Availability Group Database Replicas."
+      }
+    },
+    "com.azure.azurearcdata#SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the database name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Arc Sql availability group database replica resource"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputReplicas": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList",
+          "traits": {
+            "smithy.api#documentation": "Array of Availability Group Replicas."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Availability Group Replicas."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurearcdata#SqlAvailabilityGroupReplicaResourcePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of Availability Group Replicas."
+      }
+    },
+    "com.azure.azurearcdata#SqlAvailabilityGroupReplicaResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "replicaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The replica name."
+          }
+        },
+        "replicaResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG."
+          }
+        },
+        "configure": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInput",
+          "traits": {
+            "smithy.api#documentation": "null"
+          }
+        },
+        "state": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupStateInput",
+          "traits": {
+            "smithy.api#documentation": "null"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Arc Sql availability group replica resource"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupStateInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The specifications of the availability group state"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInput": {
+      "type": "structure",
+      "members": {
+        "endpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the mirroring endpoint URL"
+          }
+        },
+        "endpointUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mirroring endpoint URL of availability group replica"
+          }
+        },
+        "endpointAuthenticationMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputEndpointAuthenticationMode",
+          "traits": {
+            "smithy.api#documentation": "The endpoint connection authentication type(s)."
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified."
+          }
+        },
+        "endpointConnectLogin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The login which will connect to the mirroring endpoint."
+          }
+        },
+        "availabilityMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputAvailabilityMode",
+          "traits": {
+            "smithy.api#documentation": "Property that determines whether a given availability replica can run in synchronous-commit mode"
+          }
+        },
+        "failoverMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputFailoverMode",
+          "traits": {
+            "smithy.api#documentation": "Property to set the failover mode of the availability group replica"
+          }
+        },
+        "sessionTimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time-out period of availability group session replica, in seconds."
+          }
+        },
+        "primaryAllowConnections": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputPrimaryAllowConnections",
+          "traits": {
+            "smithy.api#documentation": "Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)"
+          }
+        },
+        "secondaryAllowConnections": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputSecondaryAllowConnections",
+          "traits": {
+            "smithy.api#documentation": "Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections."
+          }
+        },
+        "backupPriority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group."
+          }
+        },
+        "readOnlyRoutingUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connectivity endpoint (URL) of the read only availability replica."
+          }
+        },
+        "readWriteRoutingUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connectivity endpoint (URL) of the read write availability replica."
+          }
+        },
+        "seedingMode": {
+          "target": "com.azure.azurearcdata#AvailabilityGroupConfigureInputSeedingMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The specifications of the availability group replica configuration"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputSeedingMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputSecondaryAllowConnections": {
+      "type": "enum",
+      "members": {
+        "NO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NO"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL"
+          }
+        },
+        "READ_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READ_ONLY"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputPrimaryAllowConnections": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL"
+          }
+        },
+        "READ_WRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "READ_WRITE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputFailoverMode": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOMATIC"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MANUAL"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property to set the failover mode of the availability group replica"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputAvailabilityMode": {
+      "type": "enum",
+      "members": {
+        "SYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SYNCHRONOUS_COMMIT"
+          }
+        },
+        "ASYNCHRONOUS_COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASYNCHRONOUS_COMMIT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property that determines whether a given availability replica can run in synchronous-commit mode"
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupConfigureInputEndpointAuthenticationMode": {
+      "type": "enum",
+      "members": {
+        "WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM"
+          }
+        },
+        "WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos"
+          }
+        },
+        "WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "WINDOWS_NTLM_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_NTLM_Certificate"
+          }
+        },
+        "WINDOWS_KERBEROS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Kerberos_Certificate"
+          }
+        },
+        "WINDOWS_NEGOTIATE_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows_Negotiate_Certificate"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NTLM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_NTLM"
+          }
+        },
+        "CERTIFICATE_WINDOWS_KERBEROS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Kerberos"
+          }
+        },
+        "CERTIFICATE_WINDOWS_NEGOTIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate_Windows_Negotiate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The endpoint connection authentication type(s)."
+      }
+    },
+    "com.azure.azurearcdata#AvailabilityGroupInfoInput": {
+      "type": "structure",
+      "members": {
+        "failureConditionLevel": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "User-defined failure condition level under which an automatic failover must be triggered."
+          }
+        },
+        "healthCheckTimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding."
+          }
+        },
+        "basicFeatures": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this is a basic availability group."
+          }
+        },
+        "dtcSupport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether DTC support has been enabled for this availability group."
+          }
+        },
+        "dbFailover": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the availability group supports failover for database health conditions."
+          }
+        },
+        "isDistributed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this is a distributed availability group."
+          }
+        },
+        "requiredSynchronizedSecondariesToCommit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of secondary replicas that must be in a synchronized state for a commit to complete."
+          }
+        },
+        "isContained": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "SQL Server availability group contained system databases."
+          }
+        },
+        "listener": {
+          "target": "com.azure.azurearcdata#SqlAvailabilityGroupStaticIPListenerProperties",
+          "traits": {
+            "smithy.api#documentation": "The listener for the sql server availability group"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The specifications of the availability group state"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreate": {
@@ -12096,16 +15556,41 @@
             "smithy.api#documentation": "Name of SQL Availability Group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerAvailabilityGroupResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerAvailabilityGroupsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerAvailabilityGroupsGet": {
@@ -13162,16 +16647,328 @@
             "smithy.api#documentation": "Name of the database"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerDatabasesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The data controller's properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "collationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Collation of the database."
+          }
+        },
+        "databaseCreationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Creation date of the database."
+          }
+        },
+        "compatibilityLevel": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Compatibility level of the database"
+          }
+        },
+        "sizeMB": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the database."
+          }
+        },
+        "logFileSizeMB": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total size in MB for the log (ldf) files for this database."
+          }
+        },
+        "dataFileSizeMB": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total size in MB for the data (mdf and ndf) files for this database."
+          }
+        },
+        "spaceAvailableMB": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Space left of the database."
+          }
+        },
+        "state": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "State of the database."
+          }
+        },
+        "isReadOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the database is read only or not."
+          }
+        },
+        "recoveryMode": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputRecoveryMode",
+          "traits": {
+            "smithy.api#documentation": "Status of the database."
+          }
+        },
+        "databaseOptions": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputDatabaseOptions",
+          "traits": {
+            "smithy.api#documentation": "List of features that are enabled for the database"
+          }
+        },
+        "backupInformation": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputBackupInformation"
+        },
+        "backupPolicy": {
+          "target": "com.azure.azurearcdata#BackupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The backup profile for the SQL server."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified."
+          }
+        },
+        "sourceDatabaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the source database associated with create operation of this database."
+          }
+        },
+        "restorePointInTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database."
+          }
+        },
+        "migration": {
+          "target": "com.azure.azurearcdata#DataBaseMigrationInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Arc Sql Server database resource"
+      }
+    },
+    "com.azure.azurearcdata#DataBaseMigrationInput": {
+      "type": "structure",
+      "members": {
+        "assessment": {
+          "target": "com.azure.azurearcdata#DataBaseMigrationAssessmentInput",
+          "traits": {
+            "smithy.api#documentation": "Migration assessments related configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migration related configuration."
+      }
+    },
+    "com.azure.azurearcdata#DataBaseMigrationAssessmentInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The migration assessment related configuration."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "POINTINTIMERESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PointInTimeRestore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputBackupInformation": {
+      "type": "structure",
+      "members": {
+        "lastFullBackup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date time of last full backup."
+          }
+        },
+        "lastLogBackup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date time of last log backup."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputDatabaseOptions": {
+      "type": "structure",
+      "members": {
+        "isAutoCloseOn": {
+          "target": "smithy.api#Boolean"
+        },
+        "isAutoShrinkOn": {
+          "target": "smithy.api#Boolean"
+        },
+        "isAutoCreateStatsOn": {
+          "target": "smithy.api#Boolean"
+        },
+        "isAutoUpdateStatsOn": {
+          "target": "smithy.api#Boolean"
+        },
+        "isRemoteDataArchiveEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMemoryOptimizationEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "isEncrypted": {
+          "target": "smithy.api#Boolean"
+        },
+        "isTrustworthyOn": {
+          "target": "smithy.api#Boolean"
+        },
+        "isHekatonFilesOn": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the database uses the In-Memory OLTP feature for storing in-memory objects."
+          }
+        },
+        "numberOfHekatonFiles": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How many Hekaton files the DB has on disk, if it uses in-memory OLTP objects."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of features that are enabled for the database"
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputRecoveryMode": {
+      "type": "enum",
+      "members": {
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Full"
+          }
+        },
+        "BULK_LOGGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bulk-logged"
+          }
+        },
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Simple"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the database."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "ONLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Online"
+          }
+        },
+        "RESTORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restoring"
+          }
+        },
+        "RECOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recovering"
+          }
+        },
+        "RECOVERYPENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoveryPending"
+          }
+        },
+        "SUSPECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Suspect"
+          }
+        },
+        "EMERGENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Emergency"
+          }
+        },
+        "OFFLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Offline"
+          }
+        },
+        "COPYING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Copying"
+          }
+        },
+        "OFFLINESECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OfflineSecondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the database."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabasesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerDatabasesCreate": {
@@ -13292,16 +17089,41 @@
             "smithy.api#documentation": "Name of the database"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerDatabasesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerDatabaseResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of Arc Sql Server database",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerDatabasesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerDatabasesGet": {
@@ -13741,16 +17563,157 @@
             "smithy.api#documentation": "Name of SQL Server ESU License"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "null"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingPlan": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputBillingPlan",
+          "traits": {
+            "smithy.api#documentation": "SQL Server ESU license type."
+          }
+        },
+        "version": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputVersion",
+          "traits": {
+            "smithy.api#documentation": "The SQL Server version the license covers."
+          }
+        },
+        "physicalCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the license covers."
+          }
+        },
+        "activationState": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputActivationState",
+          "traits": {
+            "smithy.api#documentation": "The activation state of the license."
+          }
+        },
+        "scopeType": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputScopeType",
+          "traits": {
+            "smithy.api#documentation": "The Azure scope to which the license will apply."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of update SqlServerEsuLicense."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputScopeType": {
+      "type": "enum",
+      "members": {
+        "TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tenant"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscription"
+          }
+        },
+        "RESOURCEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure scope to which the license will apply."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputActivationState": {
+      "type": "enum",
+      "members": {
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "TERMINATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Terminated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The activation state of the license."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputVersion": {
+      "type": "enum",
+      "members": {
+        "SQL_SERVER_2012": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2012"
+          }
+        },
+        "SQL_SERVER_2014": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2014"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SQL Server version the license covers."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicenseUpdatePropertiesInputBillingPlan": {
+      "type": "enum",
+      "members": {
+        "PAYG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAYG"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server ESU license type."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerEsuLicensesCreate": {
@@ -13863,16 +17826,170 @@
             "smithy.api#documentation": "Name of SQL Server ESU License"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "SQL Server ESU license properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingPlan": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputBillingPlan",
+          "traits": {
+            "smithy.api#documentation": "SQL Server ESU license type.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputVersion",
+          "traits": {
+            "smithy.api#documentation": "The SQL Server version the license covers.",
+            "smithy.api#required": {}
+          }
+        },
+        "physicalCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of total cores of the license covers.",
+            "smithy.api#required": {}
+          }
+        },
+        "activationState": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputActivationState",
+          "traits": {
+            "smithy.api#documentation": "The activation state of the license.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopeType": {
+          "target": "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputScopeType",
+          "traits": {
+            "smithy.api#documentation": "The Azure scope to which the license will apply.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of SQL Server ESU license."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputScopeType": {
+      "type": "enum",
+      "members": {
+        "TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tenant"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscription"
+          }
+        },
+        "RESOURCEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure scope to which the license will apply."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputActivationState": {
+      "type": "enum",
+      "members": {
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "TERMINATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Terminated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The activation state of the license."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputVersion": {
+      "type": "enum",
+      "members": {
+        "SQL_SERVER_2012": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2012"
+          }
+        },
+        "SQL_SERVER_2014": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQL Server 2014"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SQL Server version the license covers."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensePropertiesInputBillingPlan": {
+      "type": "enum",
+      "members": {
+        "PAYG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAYG"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Server ESU license type."
+      }
+    },
+    "com.azure.azurearcdata#SqlServerEsuLicensesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurearcdata#SqlServerEsuLicensesGet": {

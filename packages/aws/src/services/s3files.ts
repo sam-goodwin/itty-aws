@@ -169,8 +169,7 @@ export type LifeCycleState =
   | "deleting"
   | "deleted"
   | "error"
-  | "updating"
-  | (string & {});
+  | "updating";
 export const LifeCycleState = /*@__PURE__*/ S.String;
 
 export type AwsAccountId = string;
@@ -277,11 +276,7 @@ export const CreateFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
 export type SubnetId = string;
 export type Ipv4Address = string;
 export type Ipv6Address = string;
-export type IpAddressType =
-  | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | "DUAL_STACK"
-  | (string & {});
+export type IpAddressType = "IPV4_ONLY" | "IPV6_ONLY" | "DUAL_STACK";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type SecurityGroup = string;
@@ -650,10 +645,7 @@ export const GetSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetSynchronizationConfigurationRequest",
 }) as any as S.Schema<GetSynchronizationConfigurationRequest>;
-export type ImportTrigger =
-  | "ON_DIRECTORY_FIRST_ACCESS"
-  | "ON_FILE_ACCESS"
-  | (string & {});
+export type ImportTrigger = "ON_DIRECTORY_FIRST_ACCESS" | "ON_FILE_ACCESS";
 export const ImportTrigger = /*@__PURE__*/ S.String;
 
 export interface ImportDataRule {

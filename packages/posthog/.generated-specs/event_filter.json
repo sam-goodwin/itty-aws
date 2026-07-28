@@ -117,9 +117,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "mode": {
           "target": "com.posthog.event_filter#EventFilterConfigModeEnum"
         },
@@ -134,12 +131,6 @@
           "traits": {
             "smithy.api#documentation": "Test events to validate the filter. Each: {\"event_name\": \"...\", \"distinct_id\": \"...\", \"expected_result\": \"drop\"|\"ingest\"}"
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

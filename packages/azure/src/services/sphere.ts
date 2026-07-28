@@ -49,6 +49,23 @@ export const CatalogsCountDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogsCountDevicesResponse",
 }) as any as S.Schema<CatalogsCountDevicesResponse>;
 
+/** Resource tags. */
+export type CatalogsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CatalogsCreateOrUpdateRequestTagsMap>;
+
+/** Catalog properties */
+export interface CatalogPropertiesInput {}
+export const CatalogPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CatalogPropertiesInput",
+}) as any as S.Schema<CatalogPropertiesInput>;
+
 export interface CatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -56,14 +73,21 @@ export interface CatalogsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of catalog */
   catalogName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: CatalogsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CatalogPropertiesInput;
 }
 export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(CatalogsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CatalogPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -81,8 +105,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -90,8 +113,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -137,8 +159,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Catalog properties */
@@ -340,7 +361,7 @@ export const Catalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 /** The Catalog items on this page */
-export type CatalogListResultValueList = Catalog[];
+export type CatalogListResultValueList = ReadonlyArray<Catalog>;
 export const CatalogListResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogListResultValueList>;
@@ -418,7 +439,7 @@ export const CatalogsListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsListDeploymentsRequest>;
 
 /** Regional data boundary values. */
-export type RegionalDataBoundary = "None" | "EU" | (string & {});
+export type RegionalDataBoundary = "None" | "EU";
 export const RegionalDataBoundary = /*@__PURE__*/ S.String;
 
 /** Image type values. */
@@ -446,8 +467,7 @@ export type ImageType =
   | "CustomerUpdateManifest"
   | "RecoveryManifest"
   | "ManifestSet"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const ImageType = /*@__PURE__*/ S.String;
 
 /** The properties of image */
@@ -511,7 +531,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Images deployed */
-export type DeploymentPropertiesDeployedImagesList = Image[];
+export type DeploymentPropertiesDeployedImagesList = ReadonlyArray<Image>;
 export const DeploymentPropertiesDeployedImagesList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<DeploymentPropertiesDeployedImagesList>;
@@ -562,7 +582,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
-export type DeploymentListResultValueList = Deployment[];
+export type DeploymentListResultValueList = ReadonlyArray<Deployment>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -598,7 +618,8 @@ export interface CatalogsListDeviceGroupsRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
-  body: unknown;
+  /** Device Group name. */
+  deviceGroupName?: string;
 }
 export const CatalogsListDeviceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -609,7 +630,7 @@ export const CatalogsListDeviceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
     _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
     _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
-    body: S.Unknown.pipe(T.HttpBody()),
+    deviceGroupName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -623,15 +644,15 @@ export const CatalogsListDeviceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogsListDeviceGroupsRequest>;
 
 /** OS feed type values. */
-export type OSFeedType = "Retail" | "RetailEval" | (string & {});
+export type OSFeedType = "Retail" | "RetailEval";
 export const OSFeedType = /*@__PURE__*/ S.String;
 
 /** Update policy values. */
-export type UpdatePolicy = "UpdateAll" | "No3rdPartyAppUpdates" | (string & {});
+export type UpdatePolicy = "UpdateAll" | "No3rdPartyAppUpdates";
 export const UpdatePolicy = /*@__PURE__*/ S.String;
 
 /** Allow crash dumps values. */
-export type AllowCrashDumpCollection = "Enabled" | "Disabled" | (string & {});
+export type AllowCrashDumpCollection = "Enabled" | "Disabled";
 export const AllowCrashDumpCollection = /*@__PURE__*/ S.String;
 
 /** The properties of deviceGroup */
@@ -689,7 +710,7 @@ export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
 /** The DeviceGroup items on this page */
-export type DeviceGroupListResultValueList = DeviceGroup[];
+export type DeviceGroupListResultValueList = ReadonlyArray<DeviceGroup>;
 export const DeviceGroupListResultValueList = /*@__PURE__*/ S.Array(
   DeviceGroup,
 ) as any as S.Schema<DeviceGroupListResultValueList>;
@@ -780,7 +801,7 @@ export const DeviceInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceInsight" }) as any as S.Schema<DeviceInsight>;
 
 /** The DeviceInsight items on this page */
-export type PagedDeviceInsightValueList = DeviceInsight[];
+export type PagedDeviceInsightValueList = ReadonlyArray<DeviceInsight>;
 export const PagedDeviceInsightValueList = /*@__PURE__*/ S.Array(
   DeviceInsight,
 ) as any as S.Schema<PagedDeviceInsightValueList>;
@@ -893,7 +914,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 /** The Device items on this page */
-export type DeviceListResultValueList = Device[];
+export type DeviceListResultValueList = ReadonlyArray<Device>;
 export const DeviceListResultValueList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceListResultValueList>;
@@ -914,6 +935,15 @@ export const DeviceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceListResult",
 }) as any as S.Schema<DeviceListResult>;
 
+/** Resource tags. */
+export type CatalogsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CatalogsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CatalogsUpdateRequestTagsMap>;
+
 export interface CatalogsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -921,14 +951,15 @@ export interface CatalogsUpdateRequest {
   resourceGroupName: string;
   /** Name of catalog */
   catalogName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: CatalogsUpdateRequestTagsMap;
 }
 export const CatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(CatalogsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -980,6 +1011,25 @@ export const CatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogsUpdateResponse",
 }) as any as S.Schema<CatalogsUpdateResponse>;
 
+/** The properties of image */
+export interface ImagePropertiesInput {
+  /** Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads. */
+  image?: string;
+  /** Image ID */
+  imageId?: string;
+  /** Regional data boundary for an image */
+  regionalDataBoundary?: RegionalDataBoundary;
+}
+export const ImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(S.String),
+    imageId: S.optional(S.String),
+    regionalDataBoundary: S.optional(RegionalDataBoundary),
+  }),
+).annotate({
+  identifier: "ImagePropertiesInput",
+}) as any as S.Schema<ImagePropertiesInput>;
+
 export interface CatalogsUploadImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -987,14 +1037,15 @@ export interface CatalogsUploadImageRequest {
   resourceGroupName: string;
   /** Name of catalog */
   catalogName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ImagePropertiesInput;
 }
 export const CatalogsUploadImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ImagePropertiesInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1043,12 +1094,7 @@ export const CertificatesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatesGetRequest>;
 
 /** Certificate status values. */
-export type CertificateStatus =
-  | "Active"
-  | "Inactive"
-  | "Expired"
-  | "Revoked"
-  | (string & {});
+export type CertificateStatus = "Active" | "Inactive" | "Expired" | "Revoked";
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 /** The properties of certificate */
@@ -1167,7 +1213,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
-export type CertificateListResultValueList = Certificate[];
+export type CertificateListResultValueList = ReadonlyArray<Certificate>;
 export const CertificateListResultValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateListResultValueList>;
@@ -1239,7 +1285,8 @@ export interface CertificatesRetrieveProofOfPossessionNonceRequest {
   catalogName: string;
   /** Serial number of the certificate. Use '.default' to get current active certificate. */
   serialNumber: string;
-  body: unknown;
+  /** The proof of possession nonce */
+  proofOfPossessionNonce: string;
 }
 export const CertificatesRetrieveProofOfPossessionNonceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1248,7 +1295,7 @@ export const CertificatesRetrieveProofOfPossessionNonceRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       catalogName: S.String.pipe(T.Label()),
       serialNumber: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      proofOfPossessionNonce: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1292,6 +1339,41 @@ export const CertificatesRetrieveProofOfPossessionNonceResponse =
     identifier: "CertificatesRetrieveProofOfPossessionNonceResponse",
   }) as any as S.Schema<CertificatesRetrieveProofOfPossessionNonceResponse>;
 
+/** An image resource belonging to a catalog resource. */
+export interface ImageInput {
+  /** The resource-specific properties for this resource. */
+  properties?: ImagePropertiesInput;
+}
+export const ImageInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(ImagePropertiesInput),
+  }),
+).annotate({ identifier: "ImageInput" }) as any as S.Schema<ImageInput>;
+
+/** Images deployed */
+export type DeploymentPropertiesInputDeployedImagesList =
+  ReadonlyArray<ImageInput>;
+export const DeploymentPropertiesInputDeployedImagesList =
+  /*@__PURE__*/ S.Array(
+    ImageInput,
+  ) as any as S.Schema<DeploymentPropertiesInputDeployedImagesList>;
+
+/** The properties of deployment */
+export interface DeploymentPropertiesInput {
+  /** Deployment ID */
+  deploymentId?: string;
+  /** Images deployed */
+  deployedImages?: DeploymentPropertiesInputDeployedImagesList;
+}
+export const DeploymentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deploymentId: S.optional(S.String),
+    deployedImages: S.optional(DeploymentPropertiesInputDeployedImagesList),
+  }),
+).annotate({
+  identifier: "DeploymentPropertiesInput",
+}) as any as S.Schema<DeploymentPropertiesInput>;
+
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1305,7 +1387,8 @@ export interface DeploymentsCreateOrUpdateRequest {
   deviceGroupName: string;
   /** Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group. */
   deploymentName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DeploymentPropertiesInput;
 }
 export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1315,7 +1398,7 @@ export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DeploymentPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1494,6 +1577,14 @@ export const DeploymentsListByDeviceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentsListByDeviceGroupRequest",
 }) as any as S.Schema<DeploymentsListByDeviceGroupRequest>;
 
+/** Device identifiers of the devices to be claimed. */
+export type DeviceGroupsClaimDevicesRequestDeviceIdentifiersList =
+  ReadonlyArray<string>;
+export const DeviceGroupsClaimDevicesRequestDeviceIdentifiersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DeviceGroupsClaimDevicesRequestDeviceIdentifiersList>;
+
 export interface DeviceGroupsClaimDevicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1505,7 +1596,8 @@ export interface DeviceGroupsClaimDevicesRequest {
   productName: string;
   /** Name of device group. */
   deviceGroupName: string;
-  body: unknown;
+  /** Device identifiers of the devices to be claimed. */
+  deviceIdentifiers: DeviceGroupsClaimDevicesRequestDeviceIdentifiersList;
 }
 export const DeviceGroupsClaimDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1514,7 +1606,7 @@ export const DeviceGroupsClaimDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     catalogName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    deviceIdentifiers: DeviceGroupsClaimDevicesRequestDeviceIdentifiersList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1577,6 +1669,31 @@ export const DeviceGroupsCountDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceGroupsCountDevicesResponse",
 }) as any as S.Schema<DeviceGroupsCountDevicesResponse>;
 
+/** The properties of deviceGroup */
+export interface DeviceGroupPropertiesInput {
+  /** Description of the device group. */
+  description?: string;
+  /** Operating system feed type of the device group. */
+  osFeedType?: OSFeedType;
+  /** Update policy of the device group. */
+  updatePolicy?: UpdatePolicy;
+  /** Flag to define if the user allows for crash dump collection. */
+  allowCrashDumpsCollection?: AllowCrashDumpCollection;
+  /** Regional data boundary for the device group. */
+  regionalDataBoundary?: RegionalDataBoundary;
+}
+export const DeviceGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    osFeedType: S.optional(OSFeedType),
+    updatePolicy: S.optional(UpdatePolicy),
+    allowCrashDumpsCollection: S.optional(AllowCrashDumpCollection),
+    regionalDataBoundary: S.optional(RegionalDataBoundary),
+  }),
+).annotate({
+  identifier: "DeviceGroupPropertiesInput",
+}) as any as S.Schema<DeviceGroupPropertiesInput>;
+
 export interface DeviceGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1588,7 +1705,8 @@ export interface DeviceGroupsCreateOrUpdateRequest {
   productName: string;
   /** Name of device group. */
   deviceGroupName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DeviceGroupPropertiesInput;
 }
 export const DeviceGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1597,7 +1715,7 @@ export const DeviceGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     catalogName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DeviceGroupPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1767,6 +1885,31 @@ export const DeviceGroupsListByProductRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceGroupsListByProductRequest",
 }) as any as S.Schema<DeviceGroupsListByProductRequest>;
 
+/** The updatable properties of the DeviceGroup. */
+export interface DeviceGroupUpdateProperties {
+  /** Description of the device group. */
+  description?: string;
+  /** Operating system feed type of the device group. */
+  osFeedType?: OSFeedType;
+  /** Update policy of the device group. */
+  updatePolicy?: UpdatePolicy;
+  /** Flag to define if the user allows for crash dump collection. */
+  allowCrashDumpsCollection?: AllowCrashDumpCollection;
+  /** Regional data boundary for the device group. */
+  regionalDataBoundary?: RegionalDataBoundary;
+}
+export const DeviceGroupUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    osFeedType: S.optional(OSFeedType),
+    updatePolicy: S.optional(UpdatePolicy),
+    allowCrashDumpsCollection: S.optional(AllowCrashDumpCollection),
+    regionalDataBoundary: S.optional(RegionalDataBoundary),
+  }),
+).annotate({
+  identifier: "DeviceGroupUpdateProperties",
+}) as any as S.Schema<DeviceGroupUpdateProperties>;
+
 export interface DeviceGroupsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1778,7 +1921,8 @@ export interface DeviceGroupsUpdateRequest {
   productName: string;
   /** Name of device group. */
   deviceGroupName: string;
-  body: unknown;
+  /** The updatable properties of the DeviceGroup. */
+  properties?: DeviceGroupUpdateProperties;
 }
 export const DeviceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1787,7 +1931,7 @@ export const DeviceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     catalogName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DeviceGroupUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1824,6 +1968,19 @@ export const DeviceGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceGroupsUpdateResponse",
 }) as any as S.Schema<DeviceGroupsUpdateResponse>;
 
+/** The properties of device */
+export interface DevicePropertiesInput {
+  /** Device ID */
+  deviceId?: string;
+}
+export const DevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DevicePropertiesInput",
+}) as any as S.Schema<DevicePropertiesInput>;
+
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1837,7 +1994,8 @@ export interface DevicesCreateOrUpdateRequest {
   deviceGroupName: string;
   /** Device name */
   deviceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DevicePropertiesInput;
 }
 export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1847,7 +2005,7 @@ export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DevicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1925,6 +2083,18 @@ export const DevicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevicesDeleteResponse",
 }) as any as S.Schema<DevicesDeleteResponse>;
 
+/** Capability image type */
+export type CapabilityType = "ApplicationDevelopment" | "FieldServicing";
+export const CapabilityType = /*@__PURE__*/ S.String;
+
+/** List of capabilities to create */
+export type DevicesGenerateCapabilityImageRequestCapabilitiesList =
+  ReadonlyArray<CapabilityType>;
+export const DevicesGenerateCapabilityImageRequestCapabilitiesList =
+  /*@__PURE__*/ S.Array(
+    CapabilityType,
+  ) as any as S.Schema<DevicesGenerateCapabilityImageRequestCapabilitiesList>;
+
 export interface DevicesGenerateCapabilityImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1938,7 +2108,8 @@ export interface DevicesGenerateCapabilityImageRequest {
   deviceGroupName: string;
   /** Device name */
   deviceName: string;
-  body: unknown;
+  /** List of capabilities to create */
+  capabilities: DevicesGenerateCapabilityImageRequestCapabilitiesList;
 }
 export const DevicesGenerateCapabilityImageRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1949,7 +2120,7 @@ export const DevicesGenerateCapabilityImageRequest = /*@__PURE__*/ S.suspend(
       productName: S.String.pipe(T.Label()),
       deviceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      capabilities: DevicesGenerateCapabilityImageRequestCapabilitiesList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2064,6 +2235,19 @@ export const DevicesListByDeviceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevicesListByDeviceGroupRequest",
 }) as any as S.Schema<DevicesListByDeviceGroupRequest>;
 
+/** The updatable properties of the Device. */
+export interface DeviceUpdateProperties {
+  /** Device group id */
+  deviceGroupId?: string;
+}
+export const DeviceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceGroupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeviceUpdateProperties",
+}) as any as S.Schema<DeviceUpdateProperties>;
+
 export interface DevicesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2077,7 +2261,8 @@ export interface DevicesUpdateRequest {
   deviceGroupName: string;
   /** Device name */
   deviceName: string;
-  body: unknown;
+  /** The updatable properties of the Device. */
+  properties?: DeviceUpdateProperties;
 }
 export const DevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2087,7 +2272,7 @@ export const DevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DeviceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2133,7 +2318,8 @@ export interface ImagesCreateOrUpdateRequest {
   catalogName: string;
   /** Image name. Use an image GUID for GA versions of the API. */
   imageName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ImagePropertiesInput;
 }
 export const ImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2141,7 +2327,7 @@ export const ImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
     imageName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ImagePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2303,7 +2489,7 @@ export const ImagesListByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagesListByCatalogRequest>;
 
 /** The Image items on this page */
-export type ImageListResultValueList = Image[];
+export type ImageListResultValueList = ReadonlyArray<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -2361,11 +2547,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2392,7 +2578,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2452,36 +2638,6 @@ export const ProductsCountDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductsCountDevicesResponse",
 }) as any as S.Schema<ProductsCountDevicesResponse>;
 
-export interface ProductsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of catalog */
-  catalogName: string;
-  /** Name of product. */
-  productName: string;
-  body: unknown;
-}
-export const ProductsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    catalogName: S.String.pipe(T.Label()),
-    productName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProductsCreateOrUpdateRequest",
-}) as any as S.Schema<ProductsCreateOrUpdateRequest>;
-
 /** The properties of product */
 export interface ProductProperties {
   /** Description of the product */
@@ -2497,6 +2653,37 @@ export const ProductProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductProperties",
 }) as any as S.Schema<ProductProperties>;
+
+export interface ProductsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of catalog */
+  catalogName: string;
+  /** Name of product. */
+  productName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ProductProperties;
+}
+export const ProductsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    productName: S.String.pipe(T.Label()),
+    properties: S.optional(ProductProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ProductsCreateOrUpdateRequest",
+}) as any as S.Schema<ProductsCreateOrUpdateRequest>;
 
 export interface ProductsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2687,7 +2874,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** The Product items on this page */
-export type ProductListResultValueList = Product[];
+export type ProductListResultValueList = ReadonlyArray<Product>;
 export const ProductListResultValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListResultValueList>;
@@ -2708,6 +2895,19 @@ export const ProductListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductListResult",
 }) as any as S.Schema<ProductListResult>;
 
+/** The updatable properties of the Product. */
+export interface ProductUpdateProperties {
+  /** Description of the product */
+  description?: string;
+}
+export const ProductUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProductUpdateProperties",
+}) as any as S.Schema<ProductUpdateProperties>;
+
 export interface ProductsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2717,7 +2917,8 @@ export interface ProductsUpdateRequest {
   catalogName: string;
   /** Name of product. */
   productName: string;
-  body: unknown;
+  /** The updatable properties of the Product. */
+  properties?: ProductUpdateProperties;
 }
 export const ProductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2725,7 +2926,7 @@ export const ProductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ProductUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

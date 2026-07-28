@@ -65,7 +65,8 @@ export const MetricDimensions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimensions>;
 
 /** The dimensions of metric. */
-export type MetricSpecificationsDimensionsList = MetricDimensions[];
+export type MetricSpecificationsDimensionsList =
+  ReadonlyArray<MetricDimensions>;
 export const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensions,
 ) as any as S.Schema<MetricSpecificationsDimensionsList>;
@@ -100,7 +101,7 @@ export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The metric specifications. */
 export type OperationPropertiesServiceSpecificationMetricSpecificationsList =
-  MetricSpecifications[];
+  ReadonlyArray<MetricSpecifications>;
 export const OperationPropertiesServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecifications,
@@ -127,7 +128,7 @@ export const LogSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The log specifications. */
 export type OperationPropertiesServiceSpecificationLogSpecificationsList =
-  LogSpecifications[];
+  ReadonlyArray<LogSpecifications>;
 export const OperationPropertiesServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecifications,
@@ -188,7 +189,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of analysis services operations supported by the Microsoft.AnalysisServices resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -214,13 +215,17 @@ export interface ServersCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The region name which the operation will lookup into. */
   location: string;
-  body: unknown;
+  /** Name for checking availability. */
+  name?: string;
+  /** The resource type of azure analysis services. */
+  type?: string;
 }
 export const ServersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -252,39 +257,8 @@ export const CheckServerNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckServerNameAvailabilityResult",
 }) as any as S.Schema<CheckServerNameAvailabilityResult>;
 
-export interface ServersCreateRequest {
-  /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90. */
-  resourceGroupName: string;
-  /** The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63. */
-  serverName: string;
-  body: unknown;
-}
-export const ServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
-      code: 200,
-      apiVersion: "2017-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServersCreateRequest",
-}) as any as S.Schema<ServersCreateRequest>;
-
 /** The name of the Azure pricing tier to which the SKU applies. */
-export type ResourceSkuTier =
-  | "Development"
-  | "Basic"
-  | "Standard"
-  | (string & {});
+export type ResourceSkuTier = "Development" | "Basic" | "Standard";
 export const ResourceSkuTier = /*@__PURE__*/ S.String;
 
 /** Represents the SKU name and Azure pricing tier for Analysis Services resource. */
@@ -305,16 +279,14 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** Key-value pairs of additional resource provisioning properties. */
-export type ServersCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export type ServersCreateRequestTagsMap = { [key: string]: string | undefined };
+export const ServersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ServersCreateResponseTagsMap>;
+) as any as S.Schema<ServersCreateRequestTagsMap>;
 
 /** An array of administrator user identities. */
-export type ServerAdministratorsMembersList = string[];
+export type ServerAdministratorsMembersList = ReadonlyArray<string>;
 export const ServerAdministratorsMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerAdministratorsMembersList>;
@@ -333,21 +305,17 @@ export const ServerAdministrators = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerAdministrators>;
 
 /** The gateway details. */
-export interface GatewayDetails {
+export interface GatewayDetailsInput {
   /** Gateway resource to be associated with the server. */
   gatewayResourceId?: string;
-  /** Gateway object id from in the DMTS cluster for the gateway resource. */
-  gatewayObjectId?: string;
-  /** Uri of the DMTS cluster. */
-  dmtsClusterUri?: string;
 }
-export const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
+export const GatewayDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayResourceId: S.optional(S.String),
-    gatewayObjectId: S.optional(S.String),
-    dmtsClusterUri: S.optional(S.String),
   }),
-).annotate({ identifier: "GatewayDetails" }) as any as S.Schema<GatewayDetails>;
+).annotate({
+  identifier: "GatewayDetailsInput",
+}) as any as S.Schema<GatewayDetailsInput>;
 
 /** The detail of firewall rule. */
 export interface IPv4FirewallRule {
@@ -369,7 +337,8 @@ export const IPv4FirewallRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPv4FirewallRule>;
 
 /** An array of firewall rules. */
-export type IPv4FirewallSettingsFirewallRulesList = IPv4FirewallRule[];
+export type IPv4FirewallSettingsFirewallRulesList =
+  ReadonlyArray<IPv4FirewallRule>;
 export const IPv4FirewallSettingsFirewallRulesList = /*@__PURE__*/ S.Array(
   IPv4FirewallRule,
 ) as any as S.Schema<IPv4FirewallSettingsFirewallRulesList>;
@@ -391,12 +360,140 @@ export const IPv4FirewallSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPv4FirewallSettings>;
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
+export type AnalysisServicesServerPropertiesInputQuerypoolConnectionMode =
+  | "All"
+  | "ReadOnly";
+export const AnalysisServicesServerPropertiesInputQuerypoolConnectionMode =
+  /*@__PURE__*/ S.String;
+
+/** The managed mode of the server (0 = not managed, 1 = managed). */
+export type AnalysisServicesServerPropertiesInputManagedMode = 0 | 1;
+export const AnalysisServicesServerPropertiesInputManagedMode =
+  /*@__PURE__*/ S.Number;
+
+/** The server monitor mode for AS server */
+export type AnalysisServicesServerPropertiesInputServerMonitorMode = 0 | 1;
+export const AnalysisServicesServerPropertiesInputServerMonitorMode =
+  /*@__PURE__*/ S.Number;
+
+/** Properties of Analysis Services resource. */
+export interface AnalysisServicesServerPropertiesInput {
+  /** A collection of AS server administrators */
+  asAdministrators?: ServerAdministrators;
+  /** The SAS container URI to the backup container. */
+  backupBlobContainerUri?: string;
+  /** The gateway details configured for the AS server. */
+  gatewayDetails?: GatewayDetailsInput;
+  /** The firewall settings for the AS server. */
+  ipV4FirewallSettings?: IPv4FirewallSettings;
+  /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
+  querypoolConnectionMode?: AnalysisServicesServerPropertiesInputQuerypoolConnectionMode;
+  /** The managed mode of the server (0 = not managed, 1 = managed). */
+  managedMode?: AnalysisServicesServerPropertiesInputManagedMode;
+  /** The server monitor mode for AS server */
+  serverMonitorMode?: AnalysisServicesServerPropertiesInputServerMonitorMode;
+  /** The SKU of the Analysis Services resource. */
+  sku?: ResourceSku;
+}
+export const AnalysisServicesServerPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      asAdministrators: S.optional(ServerAdministrators),
+      backupBlobContainerUri: S.optional(S.String),
+      gatewayDetails: S.optional(GatewayDetailsInput),
+      ipV4FirewallSettings: S.optional(IPv4FirewallSettings),
+      querypoolConnectionMode: S.optional(
+        AnalysisServicesServerPropertiesInputQuerypoolConnectionMode,
+      ),
+      managedMode: S.optional(AnalysisServicesServerPropertiesInputManagedMode),
+      serverMonitorMode: S.optional(
+        AnalysisServicesServerPropertiesInputServerMonitorMode,
+      ),
+      sku: S.optional(ResourceSku),
+    }),
+).annotate({
+  identifier: "AnalysisServicesServerPropertiesInput",
+}) as any as S.Schema<AnalysisServicesServerPropertiesInput>;
+
+export interface ServersCreateRequest {
+  /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90. */
+  resourceGroupName: string;
+  /** The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63. */
+  serverName: string;
+  /** Location of the Analysis Services resource. */
+  location: string;
+  /** The SKU of the Analysis Services resource. */
+  sku: ResourceSku;
+  /** Key-value pairs of additional resource provisioning properties. */
+  tags?: ServersCreateRequestTagsMap;
+  /** Properties of the provision operation request. */
+  properties?: AnalysisServicesServerPropertiesInput;
+}
+export const ServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serverName: S.String.pipe(T.Label()),
+    location: S.String,
+    sku: ResourceSku,
+    tags: S.optional(ServersCreateRequestTagsMap),
+    properties: S.optional(AnalysisServicesServerPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
+      code: 200,
+      apiVersion: "2017-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ServersCreateRequest",
+}) as any as S.Schema<ServersCreateRequest>;
+
+/** Key-value pairs of additional resource provisioning properties. */
+export type ServersCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServersCreateResponseTagsMap>;
+
+/** The gateway details. */
+export interface GatewayDetails {
+  /** Gateway resource to be associated with the server. */
+  gatewayResourceId?: string;
+  /** Gateway object id from in the DMTS cluster for the gateway resource. */
+  gatewayObjectId?: string;
+  /** Uri of the DMTS cluster. */
+  dmtsClusterUri?: string;
+}
+export const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayResourceId: S.optional(S.String),
+    gatewayObjectId: S.optional(S.String),
+    dmtsClusterUri: S.optional(S.String),
+  }),
+).annotate({ identifier: "GatewayDetails" }) as any as S.Schema<GatewayDetails>;
+
+/** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesQuerypoolConnectionMode =
   | "All"
-  | "ReadOnly"
-  | (string & {});
+  | "ReadOnly";
 export const AnalysisServicesServerPropertiesQuerypoolConnectionMode =
   /*@__PURE__*/ S.String;
+
+/** The managed mode of the server (0 = not managed, 1 = managed). */
+export type AnalysisServicesServerPropertiesManagedMode = 0 | 1;
+export const AnalysisServicesServerPropertiesManagedMode =
+  /*@__PURE__*/ S.Number;
+
+/** The server monitor mode for AS server */
+export type AnalysisServicesServerPropertiesServerMonitorMode = 0 | 1;
+export const AnalysisServicesServerPropertiesServerMonitorMode =
+  /*@__PURE__*/ S.Number;
 
 /** The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning. */
 export type AnalysisServicesServerPropertiesState =
@@ -411,8 +508,7 @@ export type AnalysisServicesServerPropertiesState =
   | "Pausing"
   | "Resuming"
   | "Preparing"
-  | "Scaling"
-  | (string & {});
+  | "Scaling";
 export const AnalysisServicesServerPropertiesState = /*@__PURE__*/ S.String;
 
 /** The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning. */
@@ -428,8 +524,7 @@ export type AnalysisServicesServerPropertiesProvisioningState =
   | "Pausing"
   | "Resuming"
   | "Preparing"
-  | "Scaling"
-  | (string & {});
+  | "Scaling";
 export const AnalysisServicesServerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -446,9 +541,9 @@ export interface AnalysisServicesServerProperties {
   /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
   querypoolConnectionMode?: AnalysisServicesServerPropertiesQuerypoolConnectionMode;
   /** The managed mode of the server (0 = not managed, 1 = managed). */
-  managedMode?: number;
+  managedMode?: AnalysisServicesServerPropertiesManagedMode;
   /** The server monitor mode for AS server */
-  serverMonitorMode?: number;
+  serverMonitorMode?: AnalysisServicesServerPropertiesServerMonitorMode;
   /** The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning. */
   state?: AnalysisServicesServerPropertiesState;
   /** The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning. */
@@ -467,8 +562,10 @@ export const AnalysisServicesServerProperties = /*@__PURE__*/ S.suspend(() =>
     querypoolConnectionMode: S.optional(
       AnalysisServicesServerPropertiesQuerypoolConnectionMode,
     ),
-    managedMode: S.optional(S.Number),
-    serverMonitorMode: S.optional(S.Number),
+    managedMode: S.optional(AnalysisServicesServerPropertiesManagedMode),
+    serverMonitorMode: S.optional(
+      AnalysisServicesServerPropertiesServerMonitorMode,
+    ),
     state: S.optional(AnalysisServicesServerPropertiesState),
     provisioningState: S.optional(
       AnalysisServicesServerPropertiesProvisioningState,
@@ -698,7 +795,8 @@ export const AnalysisServicesServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisServicesServer>;
 
 /** An array of Analysis Services resources. */
-export type AnalysisServicesServersValueList = AnalysisServicesServer[];
+export type AnalysisServicesServersValueList =
+  ReadonlyArray<AnalysisServicesServer>;
 export const AnalysisServicesServersValueList = /*@__PURE__*/ S.Array(
   AnalysisServicesServer,
 ) as any as S.Schema<AnalysisServicesServersValueList>;
@@ -763,14 +861,18 @@ export const ServersListGatewayStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServersListGatewayStatusRequest",
 }) as any as S.Schema<ServersListGatewayStatusRequest>;
 
+/** Live message of list gateway. Status: 0 - Live */
+export type GatewayListStatusLiveStatus = 0;
+export const GatewayListStatusLiveStatus = /*@__PURE__*/ S.Number;
+
 /** Status of gateway is live. */
 export interface GatewayListStatusLive {
   /** Live message of list gateway. Status: 0 - Live */
-  status?: number;
+  status?: GatewayListStatusLiveStatus;
 }
 export const GatewayListStatusLive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status: S.optional(S.Number),
+    status: S.optional(GatewayListStatusLiveStatus),
   }),
 ).annotate({
   identifier: "GatewayListStatusLive",
@@ -834,7 +936,7 @@ export const ServersListOperationStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersListOperationStatusesRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -856,7 +958,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -964,7 +1066,7 @@ export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for existing resources. */
 export type SkuEnumerationForExistingResourceResultValueList =
-  SkuDetailsForExistingResource[];
+  ReadonlyArray<SkuDetailsForExistingResource>;
 export const SkuEnumerationForExistingResourceResultValueList =
   /*@__PURE__*/ S.Array(
     SkuDetailsForExistingResource,
@@ -1004,7 +1106,8 @@ export const ServersListSkusForNewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersListSkusForNewRequest>;
 
 /** The collection of available SKUs for new resources. */
-export type SkuEnumerationForNewResourceResultValueList = ResourceSku[];
+export type SkuEnumerationForNewResourceResultValueList =
+  ReadonlyArray<ResourceSku>;
 export const SkuEnumerationForNewResourceResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceSku,
@@ -1087,6 +1190,69 @@ export const ServersSuspendResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServersSuspendResponse",
 }) as any as S.Schema<ServersSuspendResponse>;
 
+/** Key-value pairs of additional provisioning properties. */
+export type ServersUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const ServersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServersUpdateRequestTagsMap>;
+
+/** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
+export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
+  "All" | "ReadOnly";
+export const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
+  /*@__PURE__*/ S.String;
+
+/** The managed mode of the server (0 = not managed, 1 = managed). */
+export type AnalysisServicesServerMutablePropertiesInputManagedMode = 0 | 1;
+export const AnalysisServicesServerMutablePropertiesInputManagedMode =
+  /*@__PURE__*/ S.Number;
+
+/** The server monitor mode for AS server */
+export type AnalysisServicesServerMutablePropertiesInputServerMonitorMode =
+  | 0
+  | 1;
+export const AnalysisServicesServerMutablePropertiesInputServerMonitorMode =
+  /*@__PURE__*/ S.Number;
+
+/** An object that represents a set of mutable Analysis Services resource properties. */
+export interface AnalysisServicesServerMutablePropertiesInput {
+  /** A collection of AS server administrators */
+  asAdministrators?: ServerAdministrators;
+  /** The SAS container URI to the backup container. */
+  backupBlobContainerUri?: string;
+  /** The gateway details configured for the AS server. */
+  gatewayDetails?: GatewayDetailsInput;
+  /** The firewall settings for the AS server. */
+  ipV4FirewallSettings?: IPv4FirewallSettings;
+  /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
+  querypoolConnectionMode?: AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode;
+  /** The managed mode of the server (0 = not managed, 1 = managed). */
+  managedMode?: AnalysisServicesServerMutablePropertiesInputManagedMode;
+  /** The server monitor mode for AS server */
+  serverMonitorMode?: AnalysisServicesServerMutablePropertiesInputServerMonitorMode;
+}
+export const AnalysisServicesServerMutablePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      asAdministrators: S.optional(ServerAdministrators),
+      backupBlobContainerUri: S.optional(S.String),
+      gatewayDetails: S.optional(GatewayDetailsInput),
+      ipV4FirewallSettings: S.optional(IPv4FirewallSettings),
+      querypoolConnectionMode: S.optional(
+        AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode,
+      ),
+      managedMode: S.optional(
+        AnalysisServicesServerMutablePropertiesInputManagedMode,
+      ),
+      serverMonitorMode: S.optional(
+        AnalysisServicesServerMutablePropertiesInputServerMonitorMode,
+      ),
+    }),
+  ).annotate({
+    identifier: "AnalysisServicesServerMutablePropertiesInput",
+  }) as any as S.Schema<AnalysisServicesServerMutablePropertiesInput>;
+
 export interface ServersUpdateRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1094,14 +1260,21 @@ export interface ServersUpdateRequest {
   resourceGroupName: string;
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
-  body: unknown;
+  /** The SKU of the Analysis Services resource. */
+  sku?: ResourceSku;
+  /** Key-value pairs of additional provisioning properties. */
+  tags?: ServersUpdateRequestTagsMap;
+  /** Properties of the provision operation request. */
+  properties?: AnalysisServicesServerMutablePropertiesInput;
 }
 export const ServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(ResourceSku),
+    tags: S.optional(ServersUpdateRequestTagsMap),
+    properties: S.optional(AnalysisServicesServerMutablePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

@@ -65,7 +65,7 @@ export const FlagValueItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlagValueItem" }) as any as S.Schema<FlagValueItem>;
 
-export type FlagValueResponseResultsList = FlagValueItem[];
+export type FlagValueResponseResultsList = ReadonlyArray<FlagValueItem>;
 export const FlagValueResponseResultsList = /*@__PURE__*/ S.Array(
   FlagValueItem,
 ) as any as S.Schema<FlagValueResponseResultsList>;

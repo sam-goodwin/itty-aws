@@ -566,10 +566,10 @@
             "smithy.api#documentation": "The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#ManagementLockProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the lock.",
             "smithy.api#required": {}
           }
         }
@@ -782,10 +782,10 @@
             "smithy.api#documentation": "The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#ManagementLockProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the lock.",
             "smithy.api#required": {}
           }
         }
@@ -958,10 +958,10 @@
             "smithy.api#documentation": "The name of lock."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#ManagementLockProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the lock.",
             "smithy.api#required": {}
           }
         }
@@ -1110,10 +1110,10 @@
             "smithy.api#documentation": "The lock name. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#ManagementLockProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the lock.",
             "smithy.api#required": {}
           }
         }
@@ -2530,16 +2530,50 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operation": {
+          "target": "com.azure.resources#PolicyTokenOperation",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource operation to acquire a token for.",
             "smithy.api#required": {}
+          }
+        },
+        "changeReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The change reference."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#PolicyTokenOperation": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request URI of the resource operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "httpMethod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The http method of the resource operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The payload of the resource operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource operation to acquire a token for."
       }
     },
     "com.azure.resources#PolicyAssignmentsListForResource": {
@@ -3132,16 +3166,162 @@
             "smithy.api#documentation": "The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicySetDefinitionVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy set definition version properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policyType": {
+          "target": "com.azure.resources#PolicyType",
+          "traits": {
+            "smithy.api#documentation": "The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the policy set definition."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition description."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#PolicySetDefinitionVersionPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition parameters that can be used in policy definition references."
+          }
+        },
+        "policyDefinitions": {
+          "target": "com.azure.resources#PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList",
+          "traits": {
+            "smithy.api#documentation": "An array of policy definition references.",
+            "smithy.api#required": {}
+          }
+        },
+        "policyDefinitionGroups": {
+          "target": "com.azure.resources#PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The metadata describing groups of policy definition references within the policy set definition."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition version in #.#.# format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy set definition properties."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#PolicyDefinitionGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata describing groups of policy definition references within the policy set definition."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#PolicyDefinitionReferenceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of policy definition references."
+      }
+    },
+    "com.azure.resources#PolicyDefinitionReferenceInput": {
+      "type": "structure",
+      "members": {
+        "policyDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the policy definition or policy set definition.",
+            "smithy.api#required": {}
+          }
+        },
+        "definitionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the policy definition to use."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#PolicyDefinitionReferenceInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "The parameter values for the referenced policy rule. The keys are the parameter names."
+          }
+        },
+        "policyDefinitionReferenceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique id (within the policy set definition) for this policy definition reference."
+          }
+        },
+        "groupNames": {
+          "target": "com.azure.resources#PolicyDefinitionReferenceInputGroupNamesList",
+          "traits": {
+            "smithy.api#documentation": "The name of the groups that this policy definition reference belongs to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy definition reference."
+      }
+    },
+    "com.azure.resources#PolicyDefinitionReferenceInputGroupNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the groups that this policy definition reference belongs to."
+      }
+    },
+    "com.azure.resources#PolicyDefinitionReferenceInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#ParameterValuesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameter values for the referenced policy rule. The keys are the parameter names."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionVersionPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#ParameterDefinitionsValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy set definition parameters that can be used in policy definition references."
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsGet": {
@@ -3586,16 +3766,117 @@
             "smithy.api#documentation": "The name of the policy set definition to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy set definition properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policyType": {
+          "target": "com.azure.resources#PolicyType",
+          "traits": {
+            "smithy.api#documentation": "The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the policy set definition."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition description."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition parameters that can be used in policy definition references."
+          }
+        },
+        "policyDefinitions": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInputPolicyDefinitionsList",
+          "traits": {
+            "smithy.api#documentation": "An array of policy definition references.",
+            "smithy.api#required": {}
+          }
+        },
+        "policyDefinitionGroups": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The metadata describing groups of policy definition references within the policy set definition."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition version in #.#.# format."
+          }
+        },
+        "versions": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInputVersionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of available versions for this policy set definition."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy set definition properties."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionPropertiesInputVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of available versions for this policy set definition."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#PolicyDefinitionGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata describing groups of policy definition references within the policy set definition."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionPropertiesInputPolicyDefinitionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#PolicyDefinitionReferenceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of policy definition references."
+      }
+    },
+    "com.azure.resources#PolicySetDefinitionPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#ParameterDefinitionsValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy set definition parameters that can be used in policy definition references."
       }
     },
     "com.azure.resources#PolicySetDefinitionsGet": {
@@ -4080,11 +4361,10 @@
             "smithy.api#documentation": "The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyDefinitionVersionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy definition version properties."
           }
         }
       },
@@ -4507,11 +4787,10 @@
             "smithy.api#documentation": "The name of the policy definition to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyDefinitionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy definition properties."
           }
         }
       },
@@ -4873,11 +5152,17 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operation": {
+          "target": "com.azure.resources#PolicyTokenOperation",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource operation to acquire a token for.",
             "smithy.api#required": {}
+          }
+        },
+        "changeReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The change reference."
           }
         }
       },
@@ -5020,11 +5305,10 @@
             "smithy.api#documentation": "The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicySetDefinitionVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy set definition version properties."
           }
         }
       },
@@ -5304,11 +5588,10 @@
             "smithy.api#documentation": "The name of the policy set definition to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicySetDefinitionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy set definition properties."
           }
         }
       },
@@ -5595,11 +5878,10 @@
             "smithy.api#documentation": "The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyDefinitionVersionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy definition version properties."
           }
         }
       },
@@ -5865,11 +6147,10 @@
             "smithy.api#documentation": "The name of the policy definition to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyDefinitionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy definition properties."
           }
         }
       },
@@ -6163,11 +6444,17 @@
             "smithy.api#documentation": "The name of the management group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operation": {
+          "target": "com.azure.resources#PolicyTokenOperation",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource operation to acquire a token for.",
             "smithy.api#required": {}
+          }
+        },
+        "changeReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The change reference."
           }
         }
       },
@@ -7547,16 +7834,108 @@
             "smithy.api#documentation": "The name of the policy assignment to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyAssignmentUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The policy assignment properties for Patch request."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the policy assignment. Only required when utilizing managed identity."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity associated with the policy assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type. This is the only required field when adding a system or user assigned identity to a resource."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.resources#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource.  Policy assignments support a maximum of one identity.  That is either a system assigned identity or a single user assigned identity."
+      }
+    },
+    "com.azure.resources#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#UserAssignedIdentitiesValueInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.resources#UserAssignedIdentitiesValueInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.resources#PolicyAssignmentUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resourceSelectors": {
+          "target": "com.azure.resources#PolicyAssignmentUpdatePropertiesResourceSelectorsList",
+          "traits": {
+            "smithy.api#documentation": "The resource selector list to filter policies by resource properties."
+          }
+        },
+        "overrides": {
+          "target": "com.azure.resources#PolicyAssignmentUpdatePropertiesOverridesList",
+          "traits": {
+            "smithy.api#documentation": "The policy property value override."
+          }
+        },
+        "selfServeExemptionSettings": {
+          "target": "com.azure.resources#SelfServeExemptionSettings",
+          "traits": {
+            "smithy.api#documentation": "The self-serve exemption settings for the policy assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy assignment properties for Patch request."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentUpdatePropertiesOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#Override"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy property value override."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentUpdatePropertiesResourceSelectorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#ResourceSelector"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource selector list to filter policies by resource properties."
       }
     },
     "com.azure.resources#PolicyAssignmentsCreate": {
@@ -7647,16 +8026,187 @@
             "smithy.api#documentation": "The name of the policy assignment to get."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for the policy assignment."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the policy assignment. Only required when utilizing managed identity."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity associated with the policy assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the policy assignment."
+          }
+        },
+        "policyDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the policy definition or policy set definition being assigned."
+          }
+        },
+        "definitionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the policy definition to use."
+          }
+        },
+        "notScopes": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputNotScopesList",
+          "traits": {
+            "smithy.api#documentation": "The policy's excluded scopes."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "The parameter values for the assigned policy rule. The keys are the parameter names."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This message will be part of response in case of policy violation."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs."
+          }
+        },
+        "enforcementMode": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputEnforcementMode",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll"
+          }
+        },
+        "nonComplianceMessages": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputNonComplianceMessagesList",
+          "traits": {
+            "smithy.api#documentation": "The messages that describe why a resource is non-compliant with the policy."
+          }
+        },
+        "resourceSelectors": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputResourceSelectorsList",
+          "traits": {
+            "smithy.api#documentation": "The resource selector list to filter policies by resource properties."
+          }
+        },
+        "overrides": {
+          "target": "com.azure.resources#PolicyAssignmentPropertiesInputOverridesList",
+          "traits": {
+            "smithy.api#documentation": "The policy property value override."
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.resources#AssignmentType",
+          "traits": {
+            "smithy.api#documentation": "The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable."
+          }
+        },
+        "selfServeExemptionSettings": {
+          "target": "com.azure.resources#SelfServeExemptionSettings",
+          "traits": {
+            "smithy.api#documentation": "The self-serve exemption settings for the policy assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy assignment properties."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#Override"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy property value override."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputResourceSelectorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#ResourceSelector"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource selector list to filter policies by resource properties."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputNonComplianceMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#NonComplianceMessage"
+      },
+      "traits": {
+        "smithy.api#documentation": "The messages that describe why a resource is non-compliant with the policy."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputEnforcementMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "DONOTENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoNotEnforce"
+          }
+        },
+        "ENROLL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enroll"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll"
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#ParameterValuesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameter values for the assigned policy rule. The keys are the parameter names."
+      }
+    },
+    "com.azure.resources#PolicyAssignmentPropertiesInputNotScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy's excluded scopes."
       }
     },
     "com.azure.resources#PolicyAssignmentsGet": {
@@ -8009,11 +8559,10 @@
             "smithy.api#documentation": "The name of the resource management private link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "the region to create private link association."
           }
         }
       },
@@ -8288,17 +8837,49 @@
             "smithy.api#documentation": "The ID of the PLA"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#PrivateLinkAssociationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the PrivateLinkAssociation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.resources#PrivateLinkAssociationProperties": {
+      "type": "structure",
+      "members": {
+        "privateLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The rmpl Resource ID."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.resources#PrivateLinkAssociationPropertiesPublicNetworkAccess"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.resources#PrivateLinkAssociationPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.resources#PrivateLinkAssociationGet": {
       "type": "operation",
@@ -8993,15 +9574,114 @@
             "smithy.api#documentation": "The feature name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
-          }
+        "properties": {
+          "target": "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState",
+          "traits": {
+            "smithy.api#documentation": "The state."
+          }
+        },
+        "authorizationProfile": {
+          "target": "com.azure.resources#AuthorizationProfileInput"
+        },
+        "metadata": {
+          "target": "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs for meta data."
+          }
+        },
+        "shouldFeatureDisplayInPortal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether feature should be displayed in Portal."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feature description."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs for meta data."
+      }
+    },
+    "com.azure.resources#AuthorizationProfileInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Authorization Profile"
+      }
+    },
+    "com.azure.resources#SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "NOTREGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotRegistered"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "REGISTERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Registering"
+          }
+        },
+        "REGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Registered"
+          }
+        },
+        "UNREGISTERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unregistering"
+          }
+        },
+        "UNREGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unregistered"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state."
       }
     },
     "com.azure.resources#SubscriptionFeatureRegistrationsGet": {
@@ -9740,10 +10420,10 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "template": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The ARM json template to be decompiled into a Bicep file",
             "smithy.api#required": {}
           }
         }
@@ -10503,11 +11183,10 @@
             "smithy.api#documentation": "Default string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DataBoundaryProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Data boundary properties"
           }
         }
       },
@@ -11186,15 +11865,27 @@
             "smithy.api#documentation": "Name of the deployment script."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#DeploymentScriptsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentScriptsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags to be updated."
       }
     },
     "com.azure.resources#DeploymentScriptsCreate": {
@@ -11313,16 +12004,86 @@
             "smithy.api#documentation": "Name of the deployment script."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#DeploymentScriptsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.resources#ScriptType",
+          "traits": {
+            "smithy.api#documentation": "Type of the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ManagedServiceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of the managed identity."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.resources#ManagedServiceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the managed identities for an Azure resource."
+      }
+    },
+    "com.azure.resources#ManagedServiceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity."
+      }
+    },
+    "com.azure.resources#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User-assigned managed identity."
+      }
+    },
+    "com.azure.resources#DeploymentScriptsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentScriptsGet": {
@@ -13513,16 +14274,246 @@
             "smithy.api#documentation": "Name of the deployment stack what-if result."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        },
+        "template": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputTemplateMap",
+          "traits": {
+            "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "templateLink": {
+          "target": "com.azure.resources#DeploymentStacksTemplateLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of the template. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "parametersLink": {
+          "target": "com.azure.resources#DeploymentStacksParametersLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "extensionConfigs": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap",
+          "traits": {
+            "smithy.api#documentation": "The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template."
+          }
+        },
+        "externalInputs": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap",
+          "traits": {
+            "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+          }
+        },
+        "externalInputDefinitions": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+          }
+        },
+        "actionOnUnmanage": {
+          "target": "com.azure.resources#ActionOnUnmanage",
+          "traits": {
+            "smithy.api#documentation": "Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugSetting": {
+          "target": "com.azure.resources#DeploymentStacksDebugSetting",
+          "traits": {
+            "smithy.api#documentation": "The debug setting of the deployment."
+          }
+        },
+        "deploymentScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}')."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment stack description. Max length of 4096 characters."
+          }
+        },
+        "denySettings": {
+          "target": "com.azure.resources#DenySettings",
+          "traits": {
+            "smithy.api#documentation": "Defines how resources deployed by the stack are locked.",
+            "smithy.api#required": {}
+          }
+        },
+        "validationLevel": {
+          "target": "com.azure.resources#ValidationLevel",
+          "traits": {
+            "smithy.api#documentation": "The validation level of the deployment stack"
+          }
+        },
+        "deploymentStackResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The deployment stack id to use as the basis for comparison.",
+            "smithy.api#required": {}
+          }
+        },
+        "retentionInterval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The interval to persist the deployment stack what-if result in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DeploymentStack WhatIfResult Properties"
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInputDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExtensionConfigInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template."
+      }
+    },
+    "com.azure.resources#DeploymentExtensionConfigInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExtensionConfigItemInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration of a deployment extension. The keys of this object should align with the extension config schema."
+      }
+    },
+    "com.azure.resources#DeploymentExtensionConfigItemInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The value of the config item. The type is determined by the extension config schema."
+          }
+        },
+        "keyVaultReference": {
+          "target": "com.azure.resources#KeyVaultParameterReference",
+          "traits": {
+            "smithy.api#documentation": "The key vault reference of the config item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The value or how to get a value for an extension config property."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputTemplateMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
       }
     },
     "com.azure.resources#DeploymentStacksWhatIfResultsAtResourceGroupGet": {
@@ -14175,16 +15166,206 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksValidateStackAtResourceGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksValidateStackAtResourceGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        },
+        "template": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputTemplateMap",
+          "traits": {
+            "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "templateLink": {
+          "target": "com.azure.resources#DeploymentStacksTemplateLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of the template. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "parametersLink": {
+          "target": "com.azure.resources#DeploymentStacksParametersLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "extensionConfigs": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputExtensionConfigsMap",
+          "traits": {
+            "smithy.api#documentation": "The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template."
+          }
+        },
+        "externalInputs": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputExternalInputsMap",
+          "traits": {
+            "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+          }
+        },
+        "externalInputDefinitions": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInputExternalInputDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+          }
+        },
+        "actionOnUnmanage": {
+          "target": "com.azure.resources#ActionOnUnmanage",
+          "traits": {
+            "smithy.api#documentation": "Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugSetting": {
+          "target": "com.azure.resources#DeploymentStacksDebugSetting",
+          "traits": {
+            "smithy.api#documentation": "The debug setting of the deployment."
+          }
+        },
+        "deploymentScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}')."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment stack description. Max length of 4096 characters."
+          }
+        },
+        "denySettings": {
+          "target": "com.azure.resources#DenySettings",
+          "traits": {
+            "smithy.api#documentation": "Defines how resources deployed by the stack are locked.",
+            "smithy.api#required": {}
+          }
+        },
+        "validationLevel": {
+          "target": "com.azure.resources#ValidationLevel",
+          "traits": {
+            "smithy.api#documentation": "The validation level of the deployment stack"
+          }
+        },
+        "bypassStackOutOfSyncError": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to bypass service errors that indicate the stack resource list is not correctly synchronized."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment stack properties."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputExternalInputDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInputDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputExternalInputsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputExtensionConfigsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExtensionConfigInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputTemplateMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+      }
+    },
+    "com.azure.resources#DeploymentStackPropertiesInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
       }
     },
     "com.azure.resources#DeploymentStacksExportTemplateAtResourceGroup": {
@@ -15119,16 +16300,39 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksGetAtResourceGroup": {
@@ -15734,16 +16938,39 @@
             "smithy.api#documentation": "Name of the deployment stack what-if result."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksWhatIfResultsAtSubscriptionGet": {
@@ -15924,16 +17151,39 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksValidateStackAtSubscriptionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksValidateStackAtSubscriptionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksExportTemplateAtSubscription": {
@@ -16229,16 +17479,39 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksGetAtSubscription": {
@@ -16736,16 +18009,39 @@
             "smithy.api#documentation": "Name of the deployment stack what-if result."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksWhatIfResultsAtManagementGroupGet": {
@@ -16926,16 +18222,39 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksValidateStackAtManagementGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksValidateStackAtManagementGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksExportTemplateAtManagementGroup": {
@@ -17231,16 +18550,39 @@
             "smithy.api#documentation": "Name of the deployment stack."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#DeploymentStackPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deployment stack properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#DeploymentStacksGetAtManagementGroup": {
@@ -18056,16 +19398,400 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentWhatIfProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfProperties": {
+      "type": "structure",
+      "members": {
+        "template": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "templateLink": {
+          "target": "com.azure.resources#TemplateLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of the template. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#DeploymentWhatIfPropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string."
+          }
+        },
+        "externalInputs": {
+          "target": "com.azure.resources#DeploymentWhatIfPropertiesExternalInputsMap",
+          "traits": {
+            "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+          }
+        },
+        "externalInputDefinitions": {
+          "target": "com.azure.resources#DeploymentWhatIfPropertiesExternalInputDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+          }
+        },
+        "parametersLink": {
+          "target": "com.azure.resources#ParametersLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "extensionConfigs": {
+          "target": "com.azure.resources#DeploymentWhatIfPropertiesExtensionConfigsMap",
+          "traits": {
+            "smithy.api#documentation": "The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template."
+          }
+        },
+        "mode": {
+          "target": "com.azure.resources#DeploymentMode",
+          "traits": {
+            "smithy.api#documentation": "The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugSetting": {
+          "target": "com.azure.resources#DebugSetting",
+          "traits": {
+            "smithy.api#documentation": "The debug setting of the deployment."
+          }
+        },
+        "onErrorDeployment": {
+          "target": "com.azure.resources#OnErrorDeployment",
+          "traits": {
+            "smithy.api#documentation": "The deployment on error behavior."
+          }
+        },
+        "expressionEvaluationOptions": {
+          "target": "com.azure.resources#ExpressionEvaluationOptions",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer."
+          }
+        },
+        "validationLevel": {
+          "target": "com.azure.resources#ValidationLevel",
+          "traits": {
+            "smithy.api#documentation": "The validation level of the deployment"
+          }
+        },
+        "whatIfSettings": {
+          "target": "com.azure.resources#DeploymentWhatIfSettings",
+          "traits": {
+            "smithy.api#documentation": "Optional What-If operation settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment What-if properties."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfSettings": {
+      "type": "structure",
+      "members": {
+        "resultFormat": {
+          "target": "com.azure.resources#WhatIfResultFormat",
+          "traits": {
+            "smithy.api#documentation": "The format of the What-If results"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment What-If operation settings."
+      }
+    },
+    "com.azure.resources#WhatIfResultFormat": {
+      "type": "enum",
+      "members": {
+        "RESOURCEIDONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceIdOnly"
+          }
+        },
+        "FULLRESOURCEPAYLOADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FullResourcePayloads"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The format of the What-If results"
+      }
+    },
+    "com.azure.resources#ExpressionEvaluationOptions": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "com.azure.resources#ExpressionEvaluationOptionsScopeType",
+          "traits": {
+            "smithy.api#documentation": "The scope to be used for evaluation of parameters, variables and functions in a nested template."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether template expressions are evaluated within the scope of the parent template or nested template."
+      }
+    },
+    "com.azure.resources#ExpressionEvaluationOptionsScopeType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "OUTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Outer"
+          }
+        },
+        "INNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inner"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The scope to be used for evaluation of parameters, variables and functions in a nested template."
+      }
+    },
+    "com.azure.resources#OnErrorDeployment": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#OnErrorDeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The deployment to be used on error case."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment on error behavior."
+      }
+    },
+    "com.azure.resources#OnErrorDeploymentType": {
+      "type": "enum",
+      "members": {
+        "LASTSUCCESSFUL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LastSuccessful"
+          }
+        },
+        "SPECIFICDEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SpecificDeployment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment."
+      }
+    },
+    "com.azure.resources#DebugSetting": {
+      "type": "structure",
+      "members": {
+        "detailLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The debug setting."
+      }
+    },
+    "com.azure.resources#DeploymentMode": {
+      "type": "enum",
+      "members": {
+        "INCREMENTAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Incremental"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Complete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfPropertiesExtensionConfigsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentWhatIfPropertiesExtensionConfigsValueMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfPropertiesExtensionConfigsValueMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExtensionConfigItem_2"
+      },
+      "traits": {}
+    },
+    "com.azure.resources#ParametersLink": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the parameters file.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If included, must match the ContentVersion in the template."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Entity representing the reference to the deployment parameters."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfPropertiesExternalInputDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInputDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfPropertiesExternalInputsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+      }
+    },
+    "com.azure.resources#DeploymentWhatIfPropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentParameter_2"
+      },
+      "traits": {
+        "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string."
+      }
+    },
+    "com.azure.resources#DeploymentParameter_2": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Input value to the parameter ."
+          }
+        },
+        "reference": {
+          "target": "com.azure.resources#KeyVaultParameterReference_2",
+          "traits": {
+            "smithy.api#documentation": "Azure Key Vault parameter reference."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Input expression to the parameter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment parameter for the template."
+      }
+    },
+    "com.azure.resources#TemplateLink": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the template to deploy. Use either the uri or id property, but not both."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of a Template Spec. Use either the id or uri property, but not both."
+          }
+        },
+        "relativePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs"
+          }
+        },
+        "contentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If included, must match the ContentVersion in the template."
+          }
+        },
+        "queryString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query string (for example, a SAS token) to be used with the templateLink URI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Entity representing the reference to the template."
       }
     },
     "com.azure.resources#DeploymentsValidate": {
@@ -18344,60 +20070,6 @@
         "smithy.api#documentation": "Deployment on error behavior with additional details."
       }
     },
-    "com.azure.resources#OnErrorDeploymentType": {
-      "type": "enum",
-      "members": {
-        "LASTSUCCESSFUL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LastSuccessful"
-          }
-        },
-        "SPECIFICDEPLOYMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SpecificDeployment"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment."
-      }
-    },
-    "com.azure.resources#DebugSetting": {
-      "type": "structure",
-      "members": {
-        "detailLevel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The debug setting."
-      }
-    },
-    "com.azure.resources#DeploymentMode": {
-      "type": "enum",
-      "members": {
-        "INCREMENTAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Incremental"
-          }
-        },
-        "COMPLETE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Complete"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources."
-      }
-    },
     "com.azure.resources#DeploymentPropertiesExtendedExtensionsList": {
       "type": "list",
       "member": {
@@ -18405,65 +20077,6 @@
       },
       "traits": {
         "smithy.api#documentation": "The extensions used in this deployment."
-      }
-    },
-    "com.azure.resources#ParametersLink": {
-      "type": "structure",
-      "members": {
-        "uri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URI of the parameters file.",
-            "smithy.api#required": {}
-          }
-        },
-        "contentVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "If included, must match the ContentVersion in the template."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Entity representing the reference to the deployment parameters."
-      }
-    },
-    "com.azure.resources#TemplateLink": {
-      "type": "structure",
-      "members": {
-        "uri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The URI of the template to deploy. Use either the uri or id property, but not both."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The resource id of a Template Spec. Use either the id or uri property, but not both."
-          }
-        },
-        "relativePath": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs"
-          }
-        },
-        "contentVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "If included, must match the ContentVersion in the template."
-          }
-        },
-        "queryString": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The query string (for example, a SAS token) to be used with the templateLink URI."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Entity representing the reference to the template."
       }
     },
     "com.azure.resources#DeploymentPropertiesExtendedDependenciesList": {
@@ -19096,16 +20709,245 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsValidateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#DeploymentIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.resources#DeploymentIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Managed Identity configuration for a deployment."
+      }
+    },
+    "com.azure.resources#DeploymentIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentIdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource."
+      }
+    },
+    "com.azure.resources#DeploymentIdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.resources#DeploymentIdentityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.resources#DeploymentsValidateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
+      }
+    },
+    "com.azure.resources#DeploymentProperties": {
+      "type": "structure",
+      "members": {
+        "template": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "templateLink": {
+          "target": "com.azure.resources#TemplateLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of the template. Use either the templateLink property or the template property, but not both."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.resources#DeploymentPropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string."
+          }
+        },
+        "externalInputs": {
+          "target": "com.azure.resources#DeploymentPropertiesExternalInputsMap",
+          "traits": {
+            "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+          }
+        },
+        "externalInputDefinitions": {
+          "target": "com.azure.resources#DeploymentPropertiesExternalInputDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+          }
+        },
+        "parametersLink": {
+          "target": "com.azure.resources#ParametersLink",
+          "traits": {
+            "smithy.api#documentation": "The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both."
+          }
+        },
+        "extensionConfigs": {
+          "target": "com.azure.resources#DeploymentPropertiesExtensionConfigsMap",
+          "traits": {
+            "smithy.api#documentation": "The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template."
+          }
+        },
+        "mode": {
+          "target": "com.azure.resources#DeploymentMode",
+          "traits": {
+            "smithy.api#documentation": "The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugSetting": {
+          "target": "com.azure.resources#DebugSetting",
+          "traits": {
+            "smithy.api#documentation": "The debug setting of the deployment."
+          }
+        },
+        "onErrorDeployment": {
+          "target": "com.azure.resources#OnErrorDeployment",
+          "traits": {
+            "smithy.api#documentation": "The deployment on error behavior."
+          }
+        },
+        "expressionEvaluationOptions": {
+          "target": "com.azure.resources#ExpressionEvaluationOptions",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer."
+          }
+        },
+        "validationLevel": {
+          "target": "com.azure.resources#ValidationLevel",
+          "traits": {
+            "smithy.api#documentation": "The validation level of the deployment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment properties."
+      }
+    },
+    "com.azure.resources#DeploymentPropertiesExtensionConfigsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentPropertiesExtensionConfigsValueMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template."
+      }
+    },
+    "com.azure.resources#DeploymentPropertiesExtensionConfigsValueMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExtensionConfigItem_2"
+      },
+      "traits": {}
+    },
+    "com.azure.resources#DeploymentPropertiesExternalInputDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInputDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input definitions, used by external tooling to define expected external input values."
+      }
+    },
+    "com.azure.resources#DeploymentPropertiesExternalInputsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentExternalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "External input values, used by external tooling for parameter evaluation."
+      }
+    },
+    "com.azure.resources#DeploymentPropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#DeploymentParameter_2"
+      },
+      "traits": {
+        "smithy.api#documentation": "Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string."
       }
     },
     "com.azure.resources#DeploymentsExportTemplate": {
@@ -19383,16 +21225,46 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentsGet": {
@@ -20088,10 +21960,16 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentWhatIfProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
           }
         }
@@ -20138,16 +22016,46 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsValidateAtSubscriptionScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsValidateAtSubscriptionScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentOperationsGetAtSubscriptionScope": {
@@ -20480,16 +22388,46 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentsGetAtSubscriptionScope": {
@@ -20676,10 +22614,17 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentWhatIfProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
           }
         }
@@ -20718,16 +22663,41 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsValidateAtTenantScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsValidateAtTenantScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentOperationsGetAtTenantScope": {
@@ -21012,16 +22982,41 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentsGetAtTenantScope": {
@@ -21165,7 +23160,7 @@
     "com.azure.resources#DeploymentsCalculateTemplateHash": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resources#DeploymentsCalculateTemplateHashRequest"
+        "target": "smithy.api#Unit"
       },
       "output": {
         "target": "com.azure.resources#TemplateHashResult"
@@ -21199,21 +23194,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Result of the request to calculate template hash. It contains a string of minified template and its hash."
-      }
-    },
-    "com.azure.resources#DeploymentsCalculateTemplateHashRequest": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
       }
     },
     "com.azure.resources#DeploymentsWhatIfAtManagementGroupScope": {
@@ -21254,10 +23234,17 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentWhatIfProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
           }
         }
@@ -21304,16 +23291,41 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsValidateAtManagementGroupScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsValidateAtManagementGroupScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentOperationsGetAtManagementGroupScope": {
@@ -21646,16 +23658,41 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentsGetAtManagementGroupScope": {
@@ -21850,16 +23887,46 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsValidateAtScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsValidateAtScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentOperationsGetAtScope": {
@@ -22192,16 +24259,46 @@
             "smithy.api#documentation": "The name of the deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location to store the deployment data."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#DeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#DeploymentsCreateOrUpdateAtScopeRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deployment tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#DeploymentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity configuration for a deployment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#DeploymentsCreateOrUpdateAtScopeRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment tags"
       }
     },
     "com.azure.resources#DeploymentsGetAtScope": {
@@ -22608,16 +24705,36 @@
             "smithy.api#documentation": "The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#ResourceLinkPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for resource link."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourceLinkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID of the target resource in the link.",
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Notes about the resource link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource link properties."
       }
     },
     "com.azure.resources#ResourceLinksGet": {
@@ -22716,16 +24833,105 @@
     "com.azure.resources#ResourceValidatorValidateResourcesRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "provider": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource provider namespace of the resources being validated",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resources being validated",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The optional location for the resources being validated"
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of the resources being validated",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.resources#ResourceValidatorValidateResourcesRequestResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The list of resources to validate. Each resource in the list must have the same namespace, type, and location.\nThe namespace and type on each resource must match the corresponding values in the top-level request.\nThe location on each resource must match the top-level location in the request if specified.",
+            "smithy.api#required": {}
+          }
+        },
+        "validationType": {
+          "target": "com.azure.resources#ResourceValidationType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource validation to perform"
+          }
+        },
+        "performPreflightWithoutRbacWriteCheck": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, the validation will be performed without checking RBAC write permissions."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourceValidationType": {
+      "type": "enum",
+      "members": {
+        "ARMFULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ArmFull"
+          }
+        },
+        "ARMPARTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ArmPartial"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource validation"
+      }
+    },
+    "com.azure.resources#ResourceValidatorValidateResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#ResourceValidationRequestResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of resources to validate. Each resource in the list must have the same namespace, type, and location.\nThe namespace and type on each resource must match the corresponding values in the top-level request.\nThe location on each resource must match the top-level location in the request if specified."
+      }
+    },
+    "com.azure.resources#ResourceValidationRequestResource": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API version to use with this resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "onlyIfNotExists": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this to true if this resource is meant to be provisioned only if it does not exist."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The body of the resource to validate. In most cases, this should be the exact same resource body as on an ARM resource PUT request plus the apiVersion property."
       }
     },
     "com.azure.resources#TagsDeleteValue": {
@@ -23518,16 +25724,30 @@
             "smithy.api#documentation": "The name of the resource group to get. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resources": {
+          "target": "com.azure.resources#ResourcesValidateMoveResourcesRequestResourcesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The IDs of the resources."
+          }
+        },
+        "targetResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target resource group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourcesValidateMoveResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the resources."
       }
     },
     "com.azure.resources#ResourcesListByResourceGroup": {
@@ -23837,17 +26057,113 @@
             "smithy.api#documentation": "The name of the resource to check whether it exists."
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan",
+          "traits": {
+            "smithy.api#documentation": "The plan of the resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the resource."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_2",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.resources#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Resource extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ResourcesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.resources#ResourcesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.resources#IdentityInput_2": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#ResourceIdentityType_2",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.resources#IdentityInputUserAssignedIdentitiesMap_2",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.resources#IdentityInputUserAssignedIdentitiesMap_2": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#IdentityUserAssignedIdentitiesValueInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.resources#IdentityUserAssignedIdentitiesValueInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
     },
     "com.azure.resources#ResourcesCreateOrUpdate": {
       "type": "operation",
@@ -24017,16 +26333,75 @@
             "smithy.api#documentation": "The name of the resource to check whether it exists."
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan",
+          "traits": {
+            "smithy.api#documentation": "The plan of the resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the resource."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_2",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.resources#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Resource extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ResourcesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourcesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ResourcesGet": {
@@ -24240,16 +26615,30 @@
             "smithy.api#documentation": "The name of the resource group to get. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resources": {
+          "target": "com.azure.resources#ResourcesMoveResourcesRequestResourcesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The IDs of the resources."
+          }
+        },
+        "targetResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target resource group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourcesMoveResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the resources."
       }
     },
     "com.azure.resources#ResourceGroupsExportTemplate": {
@@ -24372,16 +26761,56 @@
             "smithy.api#documentation": "The name of the resource group to get. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resources": {
+          "target": "com.azure.resources#ResourceGroupsExportTemplateRequestResourcesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'."
+          }
+        },
+        "options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The export template options. A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization'"
+          }
+        },
+        "outputFormat": {
+          "target": "com.azure.resources#ExportTemplateOutputFormat",
+          "traits": {
+            "smithy.api#documentation": "The output format for the exported resources."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ExportTemplateOutputFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Json"
+          }
+        },
+        "BICEP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bicep"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The output format for the exported resources."
+      }
+    },
+    "com.azure.resources#ResourceGroupsExportTemplateRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'."
       }
     },
     "com.azure.resources#ResourceGroupsDelete": {
@@ -24555,16 +26984,52 @@
             "smithy.api#documentation": "The name of the resource group to get. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource group."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ResourceGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource group properties."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource that manages this resource group."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ResourceGroupsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags attached to the resource group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourceGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags attached to the resource group."
+      }
+    },
+    "com.azure.resources#ResourceGroupPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The resource group properties."
       }
     },
     "com.azure.resources#ResourceGroupsCreateOrUpdate": {
@@ -24674,16 +27139,46 @@
             "smithy.api#documentation": "The name of the resource group to get. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#ResourceGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ResourceGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource group properties."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource that manages this resource group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourceGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#ResourceGroupsGet": {
@@ -25256,15 +27751,29 @@
             "smithy.api#documentation": "The namespace of the resource provider to register."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "thirdPartyProviderConsent": {
+          "target": "com.azure.resources#ProviderConsentDefinition",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The provider consent."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ProviderConsentDefinition": {
+      "type": "structure",
+      "members": {
+        "consentToAuthorization": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether authorization is consented or not."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provider consent."
       }
     },
     "com.azure.resources#ProvidersProviderPermissions": {
@@ -25866,16 +28375,47 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operation": {
+          "target": "com.azure.resources#TagsPatchOperation",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The operation type for the patch API."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#Tags",
+          "traits": {
+            "smithy.api#documentation": "The set of tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#TagsPatchOperation": {
+      "type": "enum",
+      "members": {
+        "REPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Replace"
+          }
+        },
+        "MERGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Merge"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operation type for the patch API."
       }
     },
     "com.azure.resources#TagsCreateOrUpdateAtScope": {
@@ -25947,10 +28487,10 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.resources#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The set of tags.",
             "smithy.api#required": {}
           }
         }
@@ -26194,16 +28734,75 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan",
+          "traits": {
+            "smithy.api#documentation": "The plan of the resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the resource."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_2",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.resources#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Resource extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ResourcesUpdateByIdRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourcesUpdateByIdRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ResourcesCreateOrUpdateById": {
@@ -26333,16 +28932,75 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan",
+          "traits": {
+            "smithy.api#documentation": "The plan of the resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the resource."
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_2",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.resources#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Resource extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ResourcesCreateOrUpdateByIdRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ResourcesCreateOrUpdateByIdRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ResourcesGetById": {
@@ -26743,16 +29401,30 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Microsoft location."
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.azure.resources#SubscriptionsCheckZonePeersRequestSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "The peer Microsoft Azure subscription ID."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#SubscriptionsCheckZonePeersRequestSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The peer Microsoft Azure subscription ID."
       }
     },
     "com.azure.resources#SubscriptionsListLocations": {
@@ -27413,10 +30085,18 @@
     "com.azure.resources#CheckResourceNameRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name of the resource",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource",
+            "smithy.api#required": {}
           }
         }
       },
@@ -28821,15 +31501,27 @@
             "smithy.api#documentation": "The version of the Template Spec."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#TemplateSpecVersionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#TemplateSpecVersionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#TemplateSpecVersionsCreateOrUpdate": {
@@ -29058,16 +31750,41 @@
             "smithy.api#documentation": "The version of the Template Spec."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the Template Spec Version. It must match the location of the parent Template Spec.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#TemplateSpecVersionProperties",
+          "traits": {
+            "smithy.api#documentation": "Template Spec Version properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#TemplateSpecVersionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#TemplateSpecVersionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#TemplateSpecVersionsGet": {
@@ -29685,15 +32402,27 @@
             "smithy.api#documentation": "Name of the Template Spec."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#TemplateSpecsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#TemplateSpecsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resources#TemplateSpecsCreateOrUpdate": {
@@ -29913,16 +32642,66 @@
             "smithy.api#documentation": "Name of the Template Spec."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#TemplateSpecPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Template Spec properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#TemplateSpecsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#TemplateSpecsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.resources#TemplateSpecPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Template Spec description."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Template Spec display name."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The Template Spec metadata. Metadata is an open-ended object and is typically a collection of key-value pairs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Template Spec properties."
       }
     },
     "com.azure.resources#TemplateSpecsGet": {
@@ -30839,16 +33618,27 @@
             "smithy.api#documentation": "The name of the JIT request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resources#JitRequestsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Jit request tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#JitRequestsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Jit request tags"
       }
     },
     "com.azure.resources#JitRequestsCreateOrUpdate": {
@@ -30953,16 +33743,98 @@
             "smithy.api#documentation": "The name of the JIT request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#JitRequestsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#JitRequestPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The JIT request properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#JitRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "applicationResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parent application id.",
+            "smithy.api#required": {}
+          }
+        },
+        "jitAuthorizationPolicies": {
+          "target": "com.azure.resources#JitRequestPropertiesInputJitAuthorizationPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "The JIT authorization policies.",
+            "smithy.api#required": {}
+          }
+        },
+        "jitSchedulingPolicy": {
+          "target": "com.azure.resources#JitSchedulingPolicyInput",
+          "traits": {
+            "smithy.api#documentation": "The JIT request properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about JIT request properties"
+      }
+    },
+    "com.azure.resources#JitSchedulingPolicyInput": {
+      "type": "structure",
+      "members": {
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time of the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JIT scheduling policies."
+      }
+    },
+    "com.azure.resources#JitRequestPropertiesInputJitAuthorizationPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#JitAuthorizationPolicies"
+      },
+      "traits": {
+        "smithy.api#documentation": "The JIT authorization policies."
+      }
+    },
+    "com.azure.resources#JitRequestsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#JitRequestsGet": {
@@ -31836,15 +34708,174 @@
             "smithy.api#documentation": "The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ApplicationsUpdateByIdRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku_2",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ApplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The managed application properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan_2",
+          "traits": {
+            "smithy.api#documentation": "The plan information."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_3",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#IdentityInput_3": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resources#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.resources#IdentityInputUserAssignedIdentitiesMap_3",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.resources#IdentityInputUserAssignedIdentitiesMap_3": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.resources#UserAssignedResourceIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.resources#UserAssignedResourceIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity"
+      }
+    },
+    "com.azure.resources#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned, UserAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.resources#ApplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managedResourceGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The managed resource group Id."
+          }
+        },
+        "applicationDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified path of managed application definition Id."
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string."
+          }
+        },
+        "jitAccessPolicy": {
+          "target": "com.azure.resources#ApplicationJitAccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "The managed application Jit access policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed application properties."
+      }
+    },
+    "com.azure.resources#ApplicationsUpdateByIdRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ApplicationsCreateOrUpdateById": {
@@ -31965,16 +34996,71 @@
             "smithy.api#documentation": "The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ApplicationsCreateOrUpdateByIdRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku_2",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ApplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The managed application properties.",
             "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan_2",
+          "traits": {
+            "smithy.api#documentation": "The plan information."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_3",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ApplicationsCreateOrUpdateByIdRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ApplicationsGetById": {
@@ -32967,16 +36053,52 @@
             "smithy.api#documentation": "The name of the managed application definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ApplicationDefinitionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku_2",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ApplicationDefinitionProperties",
+          "traits": {
+            "smithy.api#documentation": "The managed application definition properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ApplicationDefinitionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ApplicationDefinitionsGet": {
@@ -33284,15 +36406,107 @@
             "smithy.api#documentation": "The name of the managed application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ApplicationsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku_2",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ApplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The managed application properties."
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#PlanPatchable",
+          "traits": {
+            "smithy.api#documentation": "The plan information."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_3",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#PlanPatchable": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plan name."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher ID."
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product code."
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The promotion code."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plan's version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the managed application."
+      }
+    },
+    "com.azure.resources#ApplicationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ApplicationsCreateOrUpdate": {
@@ -33429,16 +36643,71 @@
             "smithy.api#documentation": "The name of the managed application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.resources#ApplicationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the resource that manages this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.resources#Sku_2",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.resources#ApplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The managed application properties.",
             "smithy.api#required": {}
+          }
+        },
+        "plan": {
+          "target": "com.azure.resources#Plan_2",
+          "traits": {
+            "smithy.api#documentation": "The plan information."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.resources#IdentityInput_3",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resources#ApplicationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resources#ApplicationsGet": {

@@ -717,16 +717,73 @@
             "smithy.api#documentation": "Custom Locations name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.extendedlocation#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.extendedlocation#CustomLocationProperties",
+          "traits": {
+            "smithy.api#documentation": "The Custom Locations patchable properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.extendedlocation#CustomLocationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.extendedlocation#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.extendedlocation#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.extendedlocation#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
       }
     },
     "com.azure.extendedlocation#CustomLocationsCreateOrUpdate": {
@@ -952,16 +1009,46 @@
             "smithy.api#documentation": "Custom Locations name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.extendedlocation#CustomLocationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.extendedlocation#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.extendedlocation#CustomLocationProperties",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to a Custom Location"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.extendedlocation#CustomLocationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.extendedlocation#CustomLocationsGet": {

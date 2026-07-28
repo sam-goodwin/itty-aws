@@ -576,16 +576,30 @@
             "smithy.api#documentation": "The name of the trigger."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.datashare#TriggersCreateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Kind of synchronization on trigger.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#TriggersCreateRequestKind": {
+      "type": "enum",
+      "members": {
+        "SCHEDULEBASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScheduleBased"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of synchronization on trigger."
       }
     },
     "com.azure.datashare#TriggersGet": {
@@ -1039,16 +1053,30 @@
             "smithy.api#documentation": "The name of the synchronizationSetting."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.datashare#SynchronizationSettingsCreateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Kind of synchronization setting.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#SynchronizationSettingsCreateRequestKind": {
+      "type": "enum",
+      "members": {
+        "SCHEDULEBASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScheduleBased"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of synchronization setting."
       }
     },
     "com.azure.datashare#SynchronizationSettingsGet": {
@@ -1654,16 +1682,44 @@
             "smithy.api#documentation": "The name of the shareSubscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#ShareSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties on the share subscription",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#ShareSubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date of the share subscription."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The invitation id.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceShareLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source share location.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Share subscription property bag."
       }
     },
     "com.azure.datashare#ShareSubscriptionsGet": {
@@ -1889,16 +1945,35 @@
             "smithy.api#documentation": "The name of share subscription"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "synchronizationMode": {
+          "target": "com.azure.datashare#ShareSubscriptionsSynchronizeRequestSynchronizationMode",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Mode of synchronization used in triggers and snapshot sync. Incremental by default"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#ShareSubscriptionsSynchronizeRequestSynchronizationMode": {
+      "type": "enum",
+      "members": {
+        "INCREMENTAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Incremental"
+          }
+        },
+        "FULLSYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FullSync"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mode of synchronization used in triggers and snapshot sync. Incremental by default"
       }
     },
     "com.azure.datashare#ShareSubscriptionsListSynchronizations": {
@@ -2306,10 +2381,10 @@
             "smithy.api#documentation": "Sorts the results using OData syntax."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "synchronizationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Synchronization id",
             "smithy.api#required": {}
           }
         }
@@ -2761,10 +2836,10 @@
             "smithy.api#documentation": "The name of the shareSubscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "synchronizationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Synchronization id",
             "smithy.api#required": {}
           }
         }
@@ -3172,16 +3247,61 @@
             "smithy.api#documentation": "The name of the share."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#SharePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties on the share"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#SharePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Share description."
+          }
+        },
+        "shareKind": {
+          "target": "com.azure.datashare#SharePropertiesInputShareKind",
+          "traits": {
+            "smithy.api#documentation": "Share kind."
+          }
+        },
+        "terms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Share terms."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Share property bag."
+      }
+    },
+    "com.azure.datashare#SharePropertiesInputShareKind": {
+      "type": "enum",
+      "members": {
+        "COPYBASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CopyBased"
+          }
+        },
+        "INPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InPlace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Share kind."
       }
     },
     "com.azure.datashare#SharesGet": {
@@ -3825,16 +3945,29 @@
             "smithy.api#documentation": "To locate shareSubscription"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#ProviderShareSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "properties of providerShareSubscription"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#ProviderShareSubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration date of the share subscription in UTC format"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider share subscription properties"
       }
     },
     "com.azure.datashare#ProviderShareSubscriptionsAdjust": {
@@ -3937,11 +4070,10 @@
             "smithy.api#documentation": "To locate shareSubscription"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#ProviderShareSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "properties of providerShareSubscription"
           }
         }
       },
@@ -4222,11 +4354,58 @@
             "smithy.api#documentation": "Sorts the results using OData syntax."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "consumerEmail": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Email of the user who created the synchronization"
+          }
+        },
+        "consumerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the user who created the synchronization"
+          }
+        },
+        "consumerTenantName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant name of the consumer who created the synchronization"
+          }
+        },
+        "durationMs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "synchronization duration"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time of synchronization"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "message of synchronization"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time of synchronization"
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Raw Status"
+          }
+        },
+        "synchronizationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Synchronization id"
           }
         }
       },
@@ -4967,16 +5146,47 @@
             "smithy.api#documentation": "The name of the invitation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#InvitationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties on the Invitation"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#InvitationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date for the invitation and share subscription."
+          }
+        },
+        "targetActiveDirectoryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target Azure AD Id. Can't be combined with email."
+          }
+        },
+        "targetEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email the invitation is directed to."
+          }
+        },
+        "targetObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target user or application Id that invitation is being sent to.\r\nMust be specified along TargetActiveDirectoryId. This enables sending\r\ninvitations to specific users or applications in an AD tenant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Invitation property bag."
       }
     },
     "com.azure.datashare#InvitationsGet": {
@@ -5213,11 +5423,10 @@
             "smithy.api#documentation": "Location of the activation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "activationCode": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Activation code for the registration"
           }
         }
       },
@@ -5702,16 +5911,96 @@
             "smithy.api#documentation": "The name of the data set mapping to be created."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.datashare#DataSetMappingsCreateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Kind of data set mapping.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#DataSetMappingsCreateRequestKind": {
+      "type": "enum",
+      "members": {
+        "BLOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Blob"
+          }
+        },
+        "CONTAINER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Container"
+          }
+        },
+        "BLOBFOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlobFolder"
+          }
+        },
+        "ADLSGEN2FILESYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2FileSystem"
+          }
+        },
+        "ADLSGEN2FOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2Folder"
+          }
+        },
+        "ADLSGEN2FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2File"
+          }
+        },
+        "KUSTOCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoCluster"
+          }
+        },
+        "KUSTODATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoDatabase"
+          }
+        },
+        "KUSTOTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoTable"
+          }
+        },
+        "SQLDBTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDBTable"
+          }
+        },
+        "SQLDWTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDWTable"
+          }
+        },
+        "SYNAPSEWORKSPACESQLPOOLTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SynapseWorkspaceSqlPoolTable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of data set mapping."
       }
     },
     "com.azure.datashare#DataSetMappingsGet": {
@@ -6401,16 +6690,108 @@
             "smithy.api#documentation": "The name of the dataSet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.datashare#DataSetsCreateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Kind of data set.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#DataSetsCreateRequestKind": {
+      "type": "enum",
+      "members": {
+        "BLOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Blob"
+          }
+        },
+        "CONTAINER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Container"
+          }
+        },
+        "BLOBFOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlobFolder"
+          }
+        },
+        "ADLSGEN2FILESYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2FileSystem"
+          }
+        },
+        "ADLSGEN2FOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2Folder"
+          }
+        },
+        "ADLSGEN2FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen2File"
+          }
+        },
+        "ADLSGEN1FOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen1Folder"
+          }
+        },
+        "ADLSGEN1FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdlsGen1File"
+          }
+        },
+        "KUSTOCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoCluster"
+          }
+        },
+        "KUSTODATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoDatabase"
+          }
+        },
+        "KUSTOTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KustoTable"
+          }
+        },
+        "SQLDBTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDBTable"
+          }
+        },
+        "SQLDWTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDWTable"
+          }
+        },
+        "SYNAPSEWORKSPACESQLPOOLTABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SynapseWorkspaceSqlPoolTable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of data set."
       }
     },
     "com.azure.datashare#DataSetsGet": {
@@ -6811,16 +7192,31 @@
             "smithy.api#documentation": "Location of the invitation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datashare#ConsumerInvitationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties on the account",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#ConsumerInvitationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id of the invitation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of consumer invitation"
       }
     },
     "com.azure.datashare#ConsumerInvitationsGet": {
@@ -7433,16 +7829,27 @@
             "smithy.api#documentation": "The name of the share account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datashare#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags on the azure resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags on the azure resource."
       }
     },
     "com.azure.datashare#AccountsCreate": {
@@ -7560,16 +7967,81 @@
             "smithy.api#documentation": "The name of the share account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the azure resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.datashare#AccountsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags on the azure resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.datashare#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity Info on the Account",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datashare#AccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties on the account"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datashare#AccountPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Account property bag."
+      }
+    },
+    "com.azure.datashare#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.datashare#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "Identity Type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity of resource"
+      }
+    },
+    "com.azure.datashare#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity Type"
+      }
+    },
+    "com.azure.datashare#AccountsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags on the azure resource."
       }
     },
     "com.azure.datashare#AccountsGet": {

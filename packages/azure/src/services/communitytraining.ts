@@ -13,85 +13,14 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface CommunityTrainingsCreateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Community Training Resource */
-  communityTrainingName: string;
-  body: unknown;
-}
-export const CommunityTrainingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    communityTrainingName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
-      code: 200,
-      apiVersion: "2023-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "CommunityTrainingsCreateRequest",
-}) as any as S.Schema<CommunityTrainingsCreateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type CommunityTrainingsCreateResponseTagsMap = {
+export type CommunityTrainingsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CommunityTrainingsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const CommunityTrainingsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<CommunityTrainingsCreateResponseTagsMap>;
+) as any as S.Schema<CommunityTrainingsCreateRequestTagsMap>;
 
 /** Details of the Community CommunityTraining Identity Configuration */
 export interface IdentityConfigurationProperties {
@@ -138,8 +67,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Details of the Community CommunityTraining. */
@@ -177,8 +105,120 @@ export const CommunityTrainingProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunityTrainingProperties>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
 export const SkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU */
+export interface CommunityTrainingsCreateRequestSku {
+  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const CommunityTrainingsCreateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CommunityTrainingsCreateRequestSku",
+}) as any as S.Schema<CommunityTrainingsCreateRequestSku>;
+
+export interface CommunityTrainingsCreateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Community Training Resource */
+  communityTrainingName: string;
+  /** Resource tags. */
+  tags?: CommunityTrainingsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CommunityTrainingProperties;
+  /** The resource model definition representing SKU */
+  sku?: CommunityTrainingsCreateRequestSku;
+}
+export const CommunityTrainingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    communityTrainingName: S.String.pipe(T.Label()),
+    tags: S.optional(CommunityTrainingsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CommunityTrainingProperties),
+    sku: S.optional(CommunityTrainingsCreateRequestSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+      code: 200,
+      apiVersion: "2023-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "CommunityTrainingsCreateRequest",
+}) as any as S.Schema<CommunityTrainingsCreateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type CommunityTrainingsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CommunityTrainingsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CommunityTrainingsCreateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export interface CommunityTrainingsCreateResponseSku {
@@ -449,7 +489,8 @@ export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunityTraining>;
 
 /** The CommunityTraining items on this page */
-export type CommunityTrainingListResultValueList = CommunityTraining[];
+export type CommunityTrainingListResultValueList =
+  ReadonlyArray<CommunityTraining>;
 export const CommunityTrainingListResultValueList = /*@__PURE__*/ S.Array(
   CommunityTraining,
 ) as any as S.Schema<CommunityTrainingListResultValueList>;
@@ -490,6 +531,90 @@ export const CommunityTrainingsListBySubscriptionRequest =
     identifier: "CommunityTrainingsListBySubscriptionRequest",
   }) as any as S.Schema<CommunityTrainingsListBySubscriptionRequest>;
 
+/** The resource model definition representing SKU */
+export interface CommunityTrainingsUpdateRequestSku {
+  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const CommunityTrainingsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CommunityTrainingsUpdateRequestSku",
+}) as any as S.Schema<CommunityTrainingsUpdateRequestSku>;
+
+/** Resource tags. */
+export type CommunityTrainingsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CommunityTrainingsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CommunityTrainingsUpdateRequestTagsMap>;
+
+/** Details of the Community CommunityTraining Identity Configuration */
+export interface IdentityConfigurationPropertiesUpdate {
+  /** The identity type of the Community Training Resource */
+  identityType?: string;
+  /** To indicate whether the Community Training Resource has Teams enabled */
+  teamsEnabled?: boolean;
+  /** The tenantId of the selected identity provider for the Community Training Resource */
+  tenantId?: string;
+  /** The domain name of the selected identity provider for the Community Training Resource */
+  domainName?: string;
+  /** The clientId of the application registered in the selected identity provider for the Community Training Resource */
+  clientId?: string;
+  /** The client secret of the application registered in the selected identity provider for the Community Training Resource */
+  clientSecret?: string | Redacted.Redacted<string>;
+  /** The name of the authentication policy registered in ADB2C for the Community Training Resource */
+  b2cAuthenticationPolicy?: string;
+  /** The name of the password reset policy registered in ADB2C for the Community Training Resource */
+  b2cPasswordResetPolicy?: string | Redacted.Redacted<string>;
+  /** The custom login parameters for the Community Training Resource */
+  customLoginParameters?: string;
+}
+export const IdentityConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      identityType: S.optional(S.String),
+      teamsEnabled: S.optional(S.Boolean),
+      tenantId: S.optional(S.String),
+      domainName: S.optional(S.String),
+      clientId: S.optional(S.String),
+      clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      b2cAuthenticationPolicy: S.optional(S.String),
+      b2cPasswordResetPolicy: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      customLoginParameters: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "IdentityConfigurationPropertiesUpdate",
+}) as any as S.Schema<IdentityConfigurationPropertiesUpdate>;
+
+/** The updatable properties of the CommunityTraining. */
+export interface CommunityTrainingUpdateProperties {
+  /** The identity configuration of the Community Training resource */
+  identityConfiguration?: IdentityConfigurationPropertiesUpdate;
+}
+export const CommunityTrainingUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityConfiguration: S.optional(IdentityConfigurationPropertiesUpdate),
+  }),
+).annotate({
+  identifier: "CommunityTrainingUpdateProperties",
+}) as any as S.Schema<CommunityTrainingUpdateProperties>;
+
 export interface CommunityTrainingsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -497,14 +622,21 @@ export interface CommunityTrainingsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Community Training Resource */
   communityTrainingName: string;
-  body: unknown;
+  /** The resource model definition representing SKU */
+  sku?: CommunityTrainingsUpdateRequestSku;
+  /** Resource tags. */
+  tags?: CommunityTrainingsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: CommunityTrainingUpdateProperties;
 }
 export const CommunityTrainingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     communityTrainingName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(CommunityTrainingsUpdateRequestSku),
+    tags: S.optional(CommunityTrainingsUpdateRequestTagsMap),
+    properties: S.optional(CommunityTrainingUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -620,11 +752,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -651,7 +783,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

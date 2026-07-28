@@ -111,8 +111,7 @@ export const Buyer = /*@__PURE__*/ S.suspend(() =>
 export type NoteCreatorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER"
-  | (string & {});
+  | "SELLER";
 export const NoteCreatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** A proposal may be associated to several notes. */
@@ -138,7 +137,7 @@ export const Note = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
-export type NoteList = Note[];
+export type NoteList = ReadonlyArray<Note>;
 export const NoteList = /*@__PURE__*/ S.Array(
   Note,
 ) as any as S.Schema<NoteList>;
@@ -146,8 +145,7 @@ export const NoteList = /*@__PURE__*/ S.Array(
 export type ProposalLastUpdaterOrCommentorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER"
-  | (string & {});
+  | "SELLER";
 export const ProposalLastUpdaterOrCommentorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Buyers are allowed to store certain types of private data in a proposal/deal. */
@@ -191,7 +189,7 @@ export const ContactInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContactInformation",
 }) as any as S.Schema<ContactInformation>;
 
-export type ContactInformationList = ContactInformation[];
+export type ContactInformationList = ReadonlyArray<ContactInformation>;
 export const ContactInformationList = /*@__PURE__*/ S.Array(
   ContactInformation,
 ) as any as S.Schema<ContactInformationList>;
@@ -199,8 +197,7 @@ export const ContactInformationList = /*@__PURE__*/ S.Array(
 export type DealTermsBrandingTypeEnum =
   | "BRANDING_TYPE_UNSPECIFIED"
   | "BRANDED"
-  | "SEMI_TRANSPARENT"
-  | (string & {});
+  | "SEMI_TRANSPARENT";
 export const DealTermsBrandingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -223,8 +220,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export type PricePricingTypeEnum =
   | "PRICING_TYPE_UNSPECIFIED"
   | "COST_PER_MILLE"
-  | "COST_PER_DAY"
-  | (string & {});
+  | "COST_PER_DAY";
 export const PricePricingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a price and a pricing type for a product / deal. */
@@ -244,12 +240,11 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 export type GuaranteedFixedPriceTermsReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "SPONSORSHIP"
-  | (string & {});
+  | "SPONSORSHIP";
 export const GuaranteedFixedPriceTermsReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -271,7 +266,7 @@ export const PricePerBuyer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PricePerBuyer" }) as any as S.Schema<PricePerBuyer>;
 
-export type PricePerBuyerList = PricePerBuyer[];
+export type PricePerBuyerList = ReadonlyArray<PricePerBuyer>;
 export const PricePerBuyerList = /*@__PURE__*/ S.Array(
   PricePerBuyer,
 ) as any as S.Schema<PricePerBuyerList>;
@@ -373,15 +368,13 @@ export type DealSyndicationProductEnum =
   | "CONTENT"
   | "MOBILE"
   | "VIDEO"
-  | "GAMES"
-  | (string & {});
+  | "GAMES";
 export const DealSyndicationProductEnum = /*@__PURE__*/ S.String;
 
 export type CreativeRestrictionsCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "DISPLAY"
-  | "VIDEO"
-  | (string & {});
+  | "VIDEO";
 export const CreativeRestrictionsCreativeFormatEnum = /*@__PURE__*/ S.String;
 
 export type AdSizeSizeTypeEnum =
@@ -389,8 +382,7 @@ export type AdSizeSizeTypeEnum =
   | "PIXEL"
   | "INTERSTITIAL"
   | "NATIVE"
-  | "FLUID"
-  | (string & {});
+  | "FLUID";
 export const AdSizeSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -410,7 +402,7 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
-export type AdSizeList = AdSize[];
+export type AdSizeList = ReadonlyArray<AdSize>;
 export const AdSizeList = /*@__PURE__*/ S.Array(
   AdSize,
 ) as any as S.Schema<AdSizeList>;
@@ -431,7 +423,7 @@ export const CreativeSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeSpecification",
 }) as any as S.Schema<CreativeSpecification>;
 
-export type CreativeSpecificationList = CreativeSpecification[];
+export type CreativeSpecificationList = ReadonlyArray<CreativeSpecification>;
 export const CreativeSpecificationList = /*@__PURE__*/ S.Array(
   CreativeSpecification,
 ) as any as S.Schema<CreativeSpecificationList>;
@@ -440,8 +432,7 @@ export type CreativeRestrictionsSkippableAdTypeEnum =
   | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
   | "SKIPPABLE"
   | "INSTREAM_SELECT"
-  | "NOT_SKIPPABLE"
-  | (string & {});
+  | "NOT_SKIPPABLE";
 export const CreativeRestrictionsSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in Ad Manager. This doesn't apply to Private Auction and AdX Preferred Deals. */
@@ -466,8 +457,7 @@ export type DeliveryControlDeliveryRateTypeEnum =
   | "DELIVERY_RATE_TYPE_UNSPECIFIED"
   | "EVENLY"
   | "FRONT_LOADED"
-  | "AS_FAST_AS_POSSIBLE"
-  | (string & {});
+  | "AS_FAST_AS_POSSIBLE";
 export const DeliveryControlDeliveryRateTypeEnum = /*@__PURE__*/ S.String;
 
 export type FrequencyCapTimeUnitTypeEnum =
@@ -479,8 +469,7 @@ export type FrequencyCapTimeUnitTypeEnum =
   | "MONTH"
   | "LIFETIME"
   | "POD"
-  | "STREAM"
-  | (string & {});
+  | "STREAM";
 export const FrequencyCapTimeUnitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Frequency cap. */
@@ -500,7 +489,7 @@ export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
-export type FrequencyCapList = FrequencyCap[];
+export type FrequencyCapList = ReadonlyArray<FrequencyCap>;
 export const FrequencyCapList = /*@__PURE__*/ S.Array(
   FrequencyCap,
 ) as any as S.Schema<FrequencyCapList>;
@@ -508,8 +497,7 @@ export const FrequencyCapList = /*@__PURE__*/ S.Array(
 export type DeliveryControlCreativeBlockingLevelEnum =
   | "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED"
   | "PUBLISHER_BLOCKING_RULES"
-  | "ADX_POLICY_BLOCKING_ONLY"
-  | (string & {});
+  | "ADX_POLICY_BLOCKING_ONLY";
 export const DeliveryControlCreativeBlockingLevelEnum = /*@__PURE__*/ S.String;
 
 /** Message contains details about how the deals will be paced. */
@@ -534,22 +522,19 @@ export const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
 export type DealCreativeSafeFrameCompatibilityEnum =
   | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
   | "COMPATIBLE"
-  | "INCOMPATIBLE"
-  | (string & {});
+  | "INCOMPATIBLE";
 export const DealCreativeSafeFrameCompatibilityEnum = /*@__PURE__*/ S.String;
 
 export type DealCreativePreApprovalPolicyEnum =
   | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
   | "SELLER_PRE_APPROVAL_REQUIRED"
-  | "SELLER_PRE_APPROVAL_NOT_REQUIRED"
-  | (string & {});
+  | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
 export const DealCreativePreApprovalPolicyEnum = /*@__PURE__*/ S.String;
 
 export type DealPauseStatusFirstPausedByEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER"
-  | (string & {});
+  | "SELLER";
 export const DealPauseStatusFirstPausedByEnum = /*@__PURE__*/ S.String;
 
 /** Tracks which parties (if any) have paused a deal. The deal is considered paused if either hasBuyerPaused or hasSellPaused is true. */
@@ -705,13 +690,12 @@ export type VideoTargetingTargetedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "PREROLL"
   | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
+  | "POSTROLL";
 export const VideoTargetingTargetedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VideoTargetingTargetedPositionTypesItemEnumList =
-  VideoTargetingTargetedPositionTypesItemEnum[];
+  ReadonlyArray<VideoTargetingTargetedPositionTypesItemEnum>;
 export const VideoTargetingTargetedPositionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoTargetingTargetedPositionTypesItemEnum,
@@ -721,13 +705,12 @@ export type VideoTargetingExcludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "PREROLL"
   | "MIDROLL"
-  | "POSTROLL"
-  | (string & {});
+  | "POSTROLL";
 export const VideoTargetingExcludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VideoTargetingExcludedPositionTypesItemEnumList =
-  VideoTargetingExcludedPositionTypesItemEnum[];
+  ReadonlyArray<VideoTargetingExcludedPositionTypesItemEnum>;
 export const VideoTargetingExcludedPositionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoTargetingExcludedPositionTypesItemEnum,
@@ -795,8 +778,7 @@ export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
 export type DealProgrammaticCreativeSourceEnum =
   | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
   | "ADVERTISER"
-  | "PUBLISHER"
-  | (string & {});
+  | "PUBLISHER";
 export const DealProgrammaticCreativeSourceEnum = /*@__PURE__*/ S.String;
 
 export type CreativeSizeCreativeSizeTypeEnum =
@@ -804,8 +786,7 @@ export type CreativeSizeCreativeSizeTypeEnum =
   | "REGULAR"
   | "INTERSTITIAL"
   | "VIDEO"
-  | "NATIVE"
-  | (string & {});
+  | "NATIVE";
 export const CreativeSizeCreativeSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message depicting the size of the creative. The units of width and height depend on the type of the targeting. */
@@ -822,19 +803,16 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
-export type SizeList = Size[];
+export type SizeList = ReadonlyArray<Size>;
 export const SizeList = /*@__PURE__*/ S.Array(
   Size,
 ) as any as S.Schema<SizeList>;
 
-export type CreativeSizeAllowedFormatsItemEnum =
-  | "UNKNOWN"
-  | "AUDIO"
-  | (string & {});
+export type CreativeSizeAllowedFormatsItemEnum = "UNKNOWN" | "AUDIO";
 export const CreativeSizeAllowedFormatsItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeSizeAllowedFormatsItemEnumList =
-  CreativeSizeAllowedFormatsItemEnum[];
+  ReadonlyArray<CreativeSizeAllowedFormatsItemEnum>;
 export const CreativeSizeAllowedFormatsItemEnumList = /*@__PURE__*/ S.Array(
   CreativeSizeAllowedFormatsItemEnum,
 ) as any as S.Schema<CreativeSizeAllowedFormatsItemEnumList>;
@@ -843,8 +821,7 @@ export type CreativeSizeSkippableAdTypeEnum =
   | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
   | "GENERIC"
   | "INSTREAM_SELECT"
-  | "NOT_SKIPPABLE"
-  | (string & {});
+  | "NOT_SKIPPABLE";
 export const CreativeSizeSkippableAdTypeEnum = /*@__PURE__*/ S.String;
 
 export type CreativeSizeNativeTemplateEnum =
@@ -852,8 +829,7 @@ export type CreativeSizeNativeTemplateEnum =
   | "NATIVE_CONTENT_AD"
   | "NATIVE_APP_INSTALL_AD"
   | "NATIVE_VIDEO_CONTENT_AD"
-  | "NATIVE_VIDEO_APP_INSTALL_AD"
-  | (string & {});
+  | "NATIVE_VIDEO_APP_INSTALL_AD";
 export const CreativeSizeNativeTemplateEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the size of the creative. */
@@ -910,8 +886,7 @@ export type DayPartDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DayPartDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Daypart targeting message that specifies if the ad can be shown only during certain parts of a day/week. */
@@ -931,7 +906,7 @@ export const DayPart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DayPart" }) as any as S.Schema<DayPart>;
 
-export type DayPartList = DayPart[];
+export type DayPartList = ReadonlyArray<DayPart>;
 export const DayPartList = /*@__PURE__*/ S.Array(
   DayPart,
 ) as any as S.Schema<DayPartList>;
@@ -939,8 +914,7 @@ export const DayPartList = /*@__PURE__*/ S.Array(
 export type DayPartTargetingTimeZoneTypeEnum =
   | "TIME_ZONE_SOURCE_UNSPECIFIED"
   | "PUBLISHER"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const DayPartTargetingTimeZoneTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the day part targeting criteria. */
@@ -979,7 +953,7 @@ export const TargetingValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetingValue" }) as any as S.Schema<TargetingValue>;
 
-export type TargetingValueList = TargetingValue[];
+export type TargetingValueList = ReadonlyArray<TargetingValue>;
 export const TargetingValueList = /*@__PURE__*/ S.Array(
   TargetingValue,
 ) as any as S.Schema<TargetingValueList>;
@@ -1003,7 +977,7 @@ export const TargetingCriteria = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetingCriteria",
 }) as any as S.Schema<TargetingCriteria>;
 
-export type TargetingCriteriaList = TargetingCriteria[];
+export type TargetingCriteriaList = ReadonlyArray<TargetingCriteria>;
 export const TargetingCriteriaList = /*@__PURE__*/ S.Array(
   TargetingCriteria,
 ) as any as S.Schema<TargetingCriteriaList>;
@@ -1093,7 +1067,7 @@ export const Deal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Deal" }) as any as S.Schema<Deal>;
 
-export type DealList = Deal[];
+export type DealList = ReadonlyArray<Deal>;
 export const DealList = /*@__PURE__*/ S.Array(
   Deal,
 ) as any as S.Schema<DealList>;
@@ -1104,15 +1078,13 @@ export type ProposalProposalStateEnum =
   | "BUYER_ACCEPTED"
   | "SELLER_ACCEPTED"
   | "CANCELED"
-  | "FINALIZED"
-  | (string & {});
+  | "FINALIZED";
 export const ProposalProposalStateEnum = /*@__PURE__*/ S.String;
 
 export type ProposalOriginatorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
-  | "SELLER"
-  | (string & {});
+  | "SELLER";
 export const ProposalOriginatorRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Note: You can't update, create, or otherwise modify Private Auction deals through the API. Fields are updatable unless noted otherwise. */
@@ -1354,16 +1326,14 @@ export const CompleteSetupAccountsProposalsRequest = /*@__PURE__*/ S.suspend(
 export type ClientStatusEnum =
   | "CLIENT_STATUS_UNSPECIFIED"
   | "DISABLED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ClientStatusEnum = /*@__PURE__*/ S.String;
 
 export type ClientRoleEnum =
   | "CLIENT_ROLE_UNSPECIFIED"
   | "CLIENT_DEAL_VIEWER"
   | "CLIENT_DEAL_NEGOTIATOR"
-  | "CLIENT_DEAL_APPROVER"
-  | (string & {});
+  | "CLIENT_DEAL_APPROVER";
 export const ClientRoleEnum = /*@__PURE__*/ S.String;
 
 export type ClientEntityTypeEnum =
@@ -1371,8 +1341,7 @@ export type ClientEntityTypeEnum =
   | "ADVERTISER"
   | "BRAND"
   | "AGENCY"
-  | "ENTITY_TYPE_UNCLASSIFIED"
-  | (string & {});
+  | "ENTITY_TYPE_UNCLASSIFIED";
 export const ClientEntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** A client resource represents a client buyer—an agency, a brand, or an advertiser customer of the sponsor buyer. Users associated with the client buyer have restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the client buyer. All fields are required unless otherwise specified. */
@@ -1477,8 +1446,7 @@ export const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(
 
 export type CreateAccountsCreativesDuplicateIdModeEnum =
   | "NO_DUPLICATES"
-  | "FORCE_ENABLE_DUPLICATE_IDS"
-  | (string & {});
+  | "FORCE_ENABLE_DUPLICATE_IDS";
 export const CreateAccountsCreativesDuplicateIdModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1553,8 +1521,7 @@ export type CreativeDealsStatusEnum =
   | "APPROVED"
   | "DISAPPROVED"
   | "PENDING_REVIEW"
-  | "STATUS_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_TYPE_UNSPECIFIED";
 export const CreativeDealsStatusEnum = /*@__PURE__*/ S.String;
 
 /** Video content for a creative. */
@@ -1578,8 +1545,7 @@ export type CreativeOpenAuctionStatusEnum =
   | "APPROVED"
   | "DISAPPROVED"
   | "PENDING_REVIEW"
-  | "STATUS_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_TYPE_UNSPECIFIED";
 export const CreativeOpenAuctionStatusEnum = /*@__PURE__*/ S.String;
 
 export type CreativeAttributesItemEnum =
@@ -1621,28 +1587,27 @@ export type CreativeAttributesItemEnum =
   | "IN_BANNER_VIDEO"
   | "RENDERING_SIZELESS_ADX"
   | "OMSDK_1_0"
-  | "RENDERING_PLAYABLE"
-  | (string & {});
+  | "RENDERING_PLAYABLE";
 export const CreativeAttributesItemEnum = /*@__PURE__*/ S.String;
 
-export type CreativeAttributesItemEnumList = CreativeAttributesItemEnum[];
+export type CreativeAttributesItemEnumList =
+  ReadonlyArray<CreativeAttributesItemEnum>;
 export const CreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeAttributesItemEnum,
 ) as any as S.Schema<CreativeAttributesItemEnumList>;
 
 export type CreativeRestrictedCategoriesItemEnum =
   | "NO_RESTRICTED_CATEGORIES"
-  | "ALCOHOL"
-  | (string & {});
+  | "ALCOHOL";
 export const CreativeRestrictedCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeRestrictedCategoriesItemEnumList =
-  CreativeRestrictedCategoriesItemEnum[];
+  ReadonlyArray<CreativeRestrictedCategoriesItemEnum>;
 export const CreativeRestrictedCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeRestrictedCategoriesItemEnum,
 ) as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1680,13 +1645,14 @@ export const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdTechnologyProviders",
 }) as any as S.Schema<AdTechnologyProviders>;
 
-export type ServingContextAllEnum = "SIMPLE_CONTEXT" | (string & {});
+export type ServingContextAllEnum = "SIMPLE_CONTEXT";
 export const ServingContextAllEnum = /*@__PURE__*/ S.String;
 
-export type AppContextAppTypesItemEnum = "NATIVE" | "WEB" | (string & {});
+export type AppContextAppTypesItemEnum = "NATIVE" | "WEB";
 export const AppContextAppTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type AppContextAppTypesItemEnumList = AppContextAppTypesItemEnum[];
+export type AppContextAppTypesItemEnumList =
+  ReadonlyArray<AppContextAppTypesItemEnum>;
 export const AppContextAppTypesItemEnumList = /*@__PURE__*/ S.Array(
   AppContextAppTypesItemEnum,
 ) as any as S.Schema<AppContextAppTypesItemEnumList>;
@@ -1704,12 +1670,11 @@ export const AppContext = /*@__PURE__*/ S.suspend(() =>
 
 export type AuctionContextAuctionTypesItemEnum =
   | "OPEN_AUCTION"
-  | "DIRECT_DEALS"
-  | (string & {});
+  | "DIRECT_DEALS";
 export const AuctionContextAuctionTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type AuctionContextAuctionTypesItemEnumList =
-  AuctionContextAuctionTypesItemEnum[];
+  ReadonlyArray<AuctionContextAuctionTypesItemEnum>;
 export const AuctionContextAuctionTypesItemEnumList = /*@__PURE__*/ S.Array(
   AuctionContextAuctionTypesItemEnum,
 ) as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
@@ -1725,14 +1690,11 @@ export const AuctionContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuctionContext" }) as any as S.Schema<AuctionContext>;
 
-export type SecurityContextSecuritiesItemEnum =
-  | "INSECURE"
-  | "SSL"
-  | (string & {});
+export type SecurityContextSecuritiesItemEnum = "INSECURE" | "SSL";
 export const SecurityContextSecuritiesItemEnum = /*@__PURE__*/ S.String;
 
 export type SecurityContextSecuritiesItemEnumList =
-  SecurityContextSecuritiesItemEnum[];
+  ReadonlyArray<SecurityContextSecuritiesItemEnum>;
 export const SecurityContextSecuritiesItemEnumList = /*@__PURE__*/ S.Array(
   SecurityContextSecuritiesItemEnum,
 ) as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
@@ -1750,15 +1712,11 @@ export const SecurityContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecurityContext",
 }) as any as S.Schema<SecurityContext>;
 
-export type PlatformContextPlatformsItemEnum =
-  | "DESKTOP"
-  | "ANDROID"
-  | "IOS"
-  | (string & {});
+export type PlatformContextPlatformsItemEnum = "DESKTOP" | "ANDROID" | "IOS";
 export const PlatformContextPlatformsItemEnum = /*@__PURE__*/ S.String;
 
 export type PlatformContextPlatformsItemEnumList =
-  PlatformContextPlatformsItemEnum[];
+  ReadonlyArray<PlatformContextPlatformsItemEnum>;
 export const PlatformContextPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   PlatformContextPlatformsItemEnum,
 ) as any as S.Schema<PlatformContextPlatformsItemEnumList>;
@@ -1815,7 +1773,7 @@ export const ServingContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServingContext" }) as any as S.Schema<ServingContext>;
 
-export type ServingContextList = ServingContext[];
+export type ServingContextList = ReadonlyArray<ServingContext>;
 export const ServingContextList = /*@__PURE__*/ S.Array(
   ServingContext,
 ) as any as S.Schema<ServingContextList>;
@@ -1823,8 +1781,7 @@ export const ServingContextList = /*@__PURE__*/ S.Array(
 export type ServingRestrictionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "DISAPPROVAL"
-  | "PENDING_REVIEW"
-  | (string & {});
+  | "PENDING_REVIEW";
 export const ServingRestrictionStatusEnum = /*@__PURE__*/ S.String;
 
 export type DisapprovalReasonEnum =
@@ -1929,8 +1886,7 @@ export type DisapprovalReasonEnum =
   | "NON_SSL_COMPLIANT"
   | "TEMPORARY_PAUSE"
   | "BAIL_BONDS"
-  | "EXPERIMENTAL_MEDICAL_TREATMENT"
-  | (string & {});
+  | "EXPERIMENTAL_MEDICAL_TREATMENT";
 export const DisapprovalReasonEnum = /*@__PURE__*/ S.String;
 
 /** Output only. The reason and details for a disapproval. */
@@ -1947,7 +1903,7 @@ export const Disapproval = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disapproval" }) as any as S.Schema<Disapproval>;
 
-export type DisapprovalList = Disapproval[];
+export type DisapprovalList = ReadonlyArray<Disapproval>;
 export const DisapprovalList = /*@__PURE__*/ S.Array(
   Disapproval,
 ) as any as S.Schema<DisapprovalList>;
@@ -1974,7 +1930,7 @@ export const ServingRestriction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServingRestriction",
 }) as any as S.Schema<ServingRestriction>;
 
-export type ServingRestrictionList = ServingRestriction[];
+export type ServingRestrictionList = ReadonlyArray<ServingRestriction>;
 export const ServingRestrictionList = /*@__PURE__*/ S.Array(
   ServingRestriction,
 ) as any as S.Schema<ServingRestrictionList>;
@@ -1991,8 +1947,7 @@ export type CorrectionTypeEnum =
   | "IN_BANNER_VIDEO_ATTRIBUTE_ADDED"
   | "MRAID_ATTRIBUTE_ADDED"
   | "FLASH_ATTRIBUTE_REMOVED"
-  | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED"
-  | (string & {});
+  | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED";
 export const CorrectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Shows any corrections that were applied to this creative. */
@@ -2012,7 +1967,7 @@ export const Correction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Correction" }) as any as S.Schema<Correction>;
 
-export type CorrectionList = Correction[];
+export type CorrectionList = ReadonlyArray<Correction>;
 export const CorrectionList = /*@__PURE__*/ S.Array(
   Correction,
 ) as any as S.Schema<CorrectionList>;
@@ -2182,19 +2137,18 @@ export const RealtimeTimeRange = /*@__PURE__*/ S.suspend(() =>
 export type FilterSetEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "WEB"
-  | "APP"
-  | (string & {});
+  | "APP";
 export const FilterSetEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type FilterSetPlatformsItemEnum =
   | "PLATFORM_UNSPECIFIED"
   | "DESKTOP"
   | "TABLET"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const FilterSetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetPlatformsItemEnumList = FilterSetPlatformsItemEnum[];
+export type FilterSetPlatformsItemEnumList =
+  ReadonlyArray<FilterSetPlatformsItemEnum>;
 export const FilterSetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   FilterSetPlatformsItemEnum,
 ) as any as S.Schema<FilterSetPlatformsItemEnumList>;
@@ -2202,8 +2156,7 @@ export const FilterSetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
 export type FilterSetTimeSeriesGranularityEnum =
   | "TIME_SERIES_GRANULARITY_UNSPECIFIED"
   | "HOURLY"
-  | "DAILY"
-  | (string & {});
+  | "DAILY";
 export const FilterSetTimeSeriesGranularityEnum = /*@__PURE__*/ S.String;
 
 export type FilterSetFormatEnum =
@@ -2211,8 +2164,7 @@ export type FilterSetFormatEnum =
   | "NATIVE_DISPLAY"
   | "NATIVE_VIDEO"
   | "NON_NATIVE_DISPLAY"
-  | "NON_NATIVE_VIDEO"
-  | (string & {});
+  | "NON_NATIVE_VIDEO";
 export const FilterSetFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -2252,12 +2204,11 @@ export const AbsoluteDateRange = /*@__PURE__*/ S.suspend(() =>
 
 export type FilterSetBreakdownDimensionsItemEnum =
   | "BREAKDOWN_DIMENSION_UNSPECIFIED"
-  | "PUBLISHER_IDENTIFIER"
-  | (string & {});
+  | "PUBLISHER_IDENTIFIER";
 export const FilterSetBreakdownDimensionsItemEnum = /*@__PURE__*/ S.String;
 
 export type FilterSetBreakdownDimensionsItemEnumList =
-  FilterSetBreakdownDimensionsItemEnum[];
+  ReadonlyArray<FilterSetBreakdownDimensionsItemEnum>;
 export const FilterSetBreakdownDimensionsItemEnumList = /*@__PURE__*/ S.Array(
   FilterSetBreakdownDimensionsItemEnum,
 ) as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
@@ -2267,11 +2218,11 @@ export type FilterSetFormatsItemEnum =
   | "NATIVE_DISPLAY"
   | "NATIVE_VIDEO"
   | "NON_NATIVE_DISPLAY"
-  | "NON_NATIVE_VIDEO"
-  | (string & {});
+  | "NON_NATIVE_VIDEO";
 export const FilterSetFormatsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterSetFormatsItemEnumList = FilterSetFormatsItemEnum[];
+export type FilterSetFormatsItemEnumList =
+  ReadonlyArray<FilterSetFormatsItemEnum>;
 export const FilterSetFormatsItemEnumList = /*@__PURE__*/ S.Array(
   FilterSetFormatsItemEnum,
 ) as any as S.Schema<FilterSetFormatsItemEnumList>;
@@ -2528,8 +2479,7 @@ export type ClientUserStatusEnum =
   | "USER_STATUS_UNSPECIFIED"
   | "PENDING"
   | "ACTIVE"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ClientUserStatusEnum = /*@__PURE__*/ S.String;
 
 /** A client user is created under a client buyer and has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client buyer. The only way a new client user can be created is through accepting an email invitation (see the accounts.clients.invitations.create method). All fields are required unless otherwise specified. */
@@ -2599,8 +2549,7 @@ export type ProductSyndicationProductEnum =
   | "CONTENT"
   | "MOBILE"
   | "VIDEO"
-  | "GAMES"
-  | (string & {});
+  | "GAMES";
 export const ProductSyndicationProductEnum = /*@__PURE__*/ S.String;
 
 /** A product is a segment of inventory that a seller wants to sell. It is associated with certain terms and targeting information which helps the buyer know more about the inventory. */
@@ -2712,8 +2661,7 @@ export type PublisherProfileMobileApplicationAppStoreEnum =
   | "SAMSUNG"
   | "VIVO"
   | "XIAOMI"
-  | "LG_TV"
-  | (string & {});
+  | "LG_TV";
 export const PublisherProfileMobileApplicationAppStoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -2737,7 +2685,7 @@ export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublisherProfileMobileApplication>;
 
 export type PublisherProfileMobileApplicationList =
-  PublisherProfileMobileApplication[];
+  ReadonlyArray<PublisherProfileMobileApplication>;
 export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
   PublisherProfileMobileApplication,
 ) as any as S.Schema<PublisherProfileMobileApplicationList>;
@@ -2884,7 +2832,7 @@ export const ListAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsClientsRequest",
 }) as any as S.Schema<ListAccountsClientsRequest>;
 
-export type ClientList = Client[];
+export type ClientList = ReadonlyArray<Client>;
 export const ClientList = /*@__PURE__*/ S.Array(
   Client,
 ) as any as S.Schema<ClientList>;
@@ -2932,7 +2880,7 @@ export const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsClientsInvitationsRequest",
 }) as any as S.Schema<ListAccountsClientsInvitationsRequest>;
 
-export type ClientUserInvitationList = ClientUserInvitation[];
+export type ClientUserInvitationList = ReadonlyArray<ClientUserInvitation>;
 export const ClientUserInvitationList = /*@__PURE__*/ S.Array(
   ClientUserInvitation,
 ) as any as S.Schema<ClientUserInvitationList>;
@@ -2979,7 +2927,7 @@ export const ListAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsClientsUsersRequest",
 }) as any as S.Schema<ListAccountsClientsUsersRequest>;
 
-export type ClientUserList = ClientUser[];
+export type ClientUserList = ReadonlyArray<ClientUser>;
 export const ClientUserList = /*@__PURE__*/ S.Array(
   ClientUser,
 ) as any as S.Schema<ClientUserList>;
@@ -3026,7 +2974,7 @@ export const ListAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsCreativesRequest",
 }) as any as S.Schema<ListAccountsCreativesRequest>;
 
-export type CreativeList = Creative[];
+export type CreativeList = ReadonlyArray<Creative>;
 export const CreativeList = /*@__PURE__*/ S.Array(
   Creative,
 ) as any as S.Schema<CreativeList>;
@@ -3078,7 +3026,8 @@ export const ListAccountsCreativesDealAssociationsRequest =
     identifier: "ListAccountsCreativesDealAssociationsRequest",
   }) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>;
 
-export type CreativeDealAssociationList = CreativeDealAssociation[];
+export type CreativeDealAssociationList =
+  ReadonlyArray<CreativeDealAssociation>;
 export const CreativeDealAssociationList = /*@__PURE__*/ S.Array(
   CreativeDealAssociation,
 ) as any as S.Schema<CreativeDealAssociationList>;
@@ -3102,8 +3051,7 @@ export const ListDealAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAccountsFinalizedProposalsFilterSyntaxEnum =
   | "FILTER_SYNTAX_UNSPECIFIED"
   | "PQL"
-  | "LIST_FILTER"
-  | (string & {});
+  | "LIST_FILTER";
 export const ListAccountsFinalizedProposalsFilterSyntaxEnum =
   /*@__PURE__*/ S.String;
 
@@ -3140,7 +3088,7 @@ export const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsFinalizedProposalsRequest",
 }) as any as S.Schema<ListAccountsFinalizedProposalsRequest>;
 
-export type ProposalList = Proposal[];
+export type ProposalList = ReadonlyArray<Proposal>;
 export const ProposalList = /*@__PURE__*/ S.Array(
   Proposal,
 ) as any as S.Schema<ProposalList>;
@@ -3188,7 +3136,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -3212,8 +3160,7 @@ export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAccountsProposalsFilterSyntaxEnum =
   | "FILTER_SYNTAX_UNSPECIFIED"
   | "PQL"
-  | "LIST_FILTER"
-  | (string & {});
+  | "LIST_FILTER";
 export const ListAccountsProposalsFilterSyntaxEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsProposalsRequest {
@@ -3273,7 +3220,7 @@ export const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsPublisherProfilesRequest",
 }) as any as S.Schema<ListAccountsPublisherProfilesRequest>;
 
-export type PublisherProfileList = PublisherProfile[];
+export type PublisherProfileList = ReadonlyArray<PublisherProfile>;
 export const PublisherProfileList = /*@__PURE__*/ S.Array(
   PublisherProfile,
 ) as any as S.Schema<PublisherProfileList>;
@@ -3319,7 +3266,7 @@ export const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListBiddersAccountsFilterSetsRequest",
 }) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>;
 
-export type FilterSetList = FilterSet[];
+export type FilterSetList = ReadonlyArray<FilterSet>;
 export const FilterSetList = /*@__PURE__*/ S.Array(
   FilterSet,
 ) as any as S.Schema<FilterSetList>;
@@ -3439,7 +3386,7 @@ export const BidMetricsRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BidMetricsRow" }) as any as S.Schema<BidMetricsRow>;
 
-export type BidMetricsRowList = BidMetricsRow[];
+export type BidMetricsRowList = ReadonlyArray<BidMetricsRow>;
 export const BidMetricsRowList = /*@__PURE__*/ S.Array(
   BidMetricsRow,
 ) as any as S.Schema<BidMetricsRowList>;
@@ -3504,7 +3451,7 @@ export const CalloutStatusRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "CalloutStatusRow",
 }) as any as S.Schema<CalloutStatusRow>;
 
-export type CalloutStatusRowList = CalloutStatusRow[];
+export type CalloutStatusRowList = ReadonlyArray<CalloutStatusRow>;
 export const CalloutStatusRowList = /*@__PURE__*/ S.Array(
   CalloutStatusRow,
 ) as any as S.Schema<CalloutStatusRowList>;
@@ -3554,8 +3501,7 @@ export type BidResponseWithoutBidsStatusRowStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "RESPONSES_WITHOUT_BIDS"
   | "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT"
-  | "RESPONSES_WITHOUT_BIDS_FOR_DEAL"
-  | (string & {});
+  | "RESPONSES_WITHOUT_BIDS_FOR_DEAL";
 export const BidResponseWithoutBidsStatusRowStatusEnum = /*@__PURE__*/ S.String;
 
 /** The number of impressions with the specified dimension values that were considered to have no applicable bids, as described by the specified status. */
@@ -3578,7 +3524,7 @@ export const BidResponseWithoutBidsStatusRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BidResponseWithoutBidsStatusRow>;
 
 export type BidResponseWithoutBidsStatusRowList =
-  BidResponseWithoutBidsStatusRow[];
+  ReadonlyArray<BidResponseWithoutBidsStatusRow>;
 export const BidResponseWithoutBidsStatusRowList = /*@__PURE__*/ S.Array(
   BidResponseWithoutBidsStatusRow,
 ) as any as S.Schema<BidResponseWithoutBidsStatusRowList>;
@@ -3686,7 +3632,7 @@ export const CreativeStatusRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeStatusRow",
 }) as any as S.Schema<CreativeStatusRow>;
 
-export type CreativeStatusRowList = CreativeStatusRow[];
+export type CreativeStatusRowList = ReadonlyArray<CreativeStatusRow>;
 export const CreativeStatusRowList = /*@__PURE__*/ S.Array(
   CreativeStatusRow,
 ) as any as S.Schema<CreativeStatusRowList>;
@@ -3754,7 +3700,7 @@ export const FilteredBidCreativeRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilteredBidCreativeRow",
 }) as any as S.Schema<FilteredBidCreativeRow>;
 
-export type FilteredBidCreativeRowList = FilteredBidCreativeRow[];
+export type FilteredBidCreativeRowList = ReadonlyArray<FilteredBidCreativeRow>;
 export const FilteredBidCreativeRowList = /*@__PURE__*/ S.Array(
   FilteredBidCreativeRow,
 ) as any as S.Schema<FilteredBidCreativeRowList>;
@@ -3814,8 +3760,7 @@ export type ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum =
   | "POLICY_TOPIC"
   | "ATP_VENDOR"
   | "VENDOR_DOMAIN"
-  | "GVL_ID"
-  | (string & {});
+  | "GVL_ID";
 export const ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3841,7 +3786,7 @@ export const FilteredBidDetailRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilteredBidDetailRow",
 }) as any as S.Schema<FilteredBidDetailRow>;
 
-export type FilteredBidDetailRowList = FilteredBidDetailRow[];
+export type FilteredBidDetailRowList = ReadonlyArray<FilteredBidDetailRow>;
 export const FilteredBidDetailRowList = /*@__PURE__*/ S.Array(
   FilteredBidDetailRow,
 ) as any as S.Schema<FilteredBidDetailRowList>;
@@ -3921,7 +3866,7 @@ export const ImpressionMetricsRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImpressionMetricsRow",
 }) as any as S.Schema<ImpressionMetricsRow>;
 
-export type ImpressionMetricsRowList = ImpressionMetricsRow[];
+export type ImpressionMetricsRowList = ReadonlyArray<ImpressionMetricsRow>;
 export const ImpressionMetricsRowList = /*@__PURE__*/ S.Array(
   ImpressionMetricsRow,
 ) as any as S.Schema<ImpressionMetricsRowList>;
@@ -4014,8 +3959,7 @@ export type NonBillableWinningBidStatusRowStatusEnum =
   | "INVALID_IMPRESSION"
   | "FATAL_VAST_ERROR"
   | "LOST_IN_MEDIATION"
-  | "OVERDELIVERED_IMPRESSION"
-  | (string & {});
+  | "OVERDELIVERED_IMPRESSION";
 export const NonBillableWinningBidStatusRowStatusEnum = /*@__PURE__*/ S.String;
 
 /** The number of winning bids with the specified dimension values for which the buyer was not billed, as described by the specified status. */
@@ -4038,7 +3982,7 @@ export const NonBillableWinningBidStatusRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NonBillableWinningBidStatusRow>;
 
 export type NonBillableWinningBidStatusRowList =
-  NonBillableWinningBidStatusRow[];
+  ReadonlyArray<NonBillableWinningBidStatusRow>;
 export const NonBillableWinningBidStatusRowList = /*@__PURE__*/ S.Array(
   NonBillableWinningBidStatusRow,
 ) as any as S.Schema<NonBillableWinningBidStatusRowList>;

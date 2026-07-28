@@ -48,7 +48,7 @@ export const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisCreateRequestMagic",
 }) as any as S.Schema<CnisCreateRequestMagic>;
 
-export type CnisCreateRequestBgpExtraPrefixesList = string[];
+export type CnisCreateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
 export const CnisCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisCreateRequestBgpExtraPrefixesList>;
@@ -117,7 +117,7 @@ export const CnisCreateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisCreateResponseMagic",
 }) as any as S.Schema<CnisCreateResponseMagic>;
 
-export type CnisCreateResponseBgpExtraPrefixesList = string[];
+export type CnisCreateResponseBgpExtraPrefixesList = ReadonlyArray<string>;
 export const CnisCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisCreateResponseBgpExtraPrefixesList>;
@@ -190,7 +190,18 @@ export const InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody =
   }) as any as S.Schema<InterconnectsCreateRequestBodyNscInterconnectCreatePhysicalBody>;
 
 export type InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth =
-  "50M" | "100M" | "200M" | (string & {});
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G";
 export const InterconnectsCreateRequestBodyNscInterconnectCreateGcpPartnerBodyBandwidth =
   /*@__PURE__*/ S.String;
 
@@ -248,50 +259,10 @@ export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInterconnectRequest",
 }) as any as S.Schema<CreateInterconnectRequest>;
 
-export type InterconnectsCreateResponseFacilityAddressList = string[];
-export const InterconnectsCreateResponseFacilityAddressList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InterconnectsCreateResponseFacilityAddressList>;
-
-export interface InterconnectsCreateResponseFacility {
-  address: InterconnectsCreateResponseFacilityAddressList;
-  name: string;
-}
-export const InterconnectsCreateResponseFacility = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: InterconnectsCreateResponseFacilityAddressList,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "InterconnectsCreateResponseFacility",
-}) as any as S.Schema<InterconnectsCreateResponseFacility>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface CreateInterconnectResponse {
-  account?: string;
-  facility?: InterconnectsCreateResponseFacility;
-  name?: string;
-  /** A Cloudflare site name. */
-  site?: string;
-  slotId?: string;
-  speed?: string;
-  type?: string;
-  owner?: string;
-  region?: string;
-}
+export interface CreateInterconnectResponse {}
 export const CreateInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-    facility: S.optional(InterconnectsCreateResponseFacility),
-    name: S.optional(S.String),
-    site: S.optional(S.String),
-    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
-    speed: S.optional(S.String),
-    type: S.optional(S.String),
-    owner: S.optional(S.String),
-    region: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInterconnectResponse",
 }) as any as S.Schema<CreateInterconnectResponse>;
@@ -389,7 +360,7 @@ export const CnisGetResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisGetResponseMagic",
 }) as any as S.Schema<CnisGetResponseMagic>;
 
-export type CnisGetResponseBgpExtraPrefixesList = string[];
+export type CnisGetResponseBgpExtraPrefixesList = ReadonlyArray<string>;
 export const CnisGetResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisGetResponseBgpExtraPrefixesList>;
@@ -462,50 +433,10 @@ export const GetInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInterconnectRequest",
 }) as any as S.Schema<GetInterconnectRequest>;
 
-export type InterconnectsGetResponseFacilityAddressList = string[];
-export const InterconnectsGetResponseFacilityAddressList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InterconnectsGetResponseFacilityAddressList>;
-
-export interface InterconnectsGetResponseFacility {
-  address: InterconnectsGetResponseFacilityAddressList;
-  name: string;
-}
-export const InterconnectsGetResponseFacility = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: InterconnectsGetResponseFacilityAddressList,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "InterconnectsGetResponseFacility",
-}) as any as S.Schema<InterconnectsGetResponseFacility>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetInterconnectResponse {
-  account?: string;
-  facility?: InterconnectsGetResponseFacility;
-  name?: string;
-  /** A Cloudflare site name. */
-  site?: string;
-  slotId?: string;
-  speed?: string;
-  type?: string;
-  owner?: string;
-  region?: string;
-}
+export interface GetInterconnectResponse {}
 export const GetInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-    facility: S.optional(InterconnectsGetResponseFacility),
-    name: S.optional(S.String),
-    site: S.optional(S.String),
-    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
-    speed: S.optional(S.String),
-    type: S.optional(S.String),
-    owner: S.optional(S.String),
-    region: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetInterconnectResponse",
 }) as any as S.Schema<GetInterconnectResponse>;
@@ -561,7 +492,7 @@ export const GetSlotRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSlotRequest" }) as any as S.Schema<GetSlotRequest>;
 
-export type SlotsGetResponseFacilityAddressList = string[];
+export type SlotsGetResponseFacilityAddressList = ReadonlyArray<string>;
 export const SlotsGetResponseFacilityAddressList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SlotsGetResponseFacilityAddressList>;
@@ -649,7 +580,8 @@ export const CnisListResponseItemsItemMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisListResponseItemsItemMagic",
 }) as any as S.Schema<CnisListResponseItemsItemMagic>;
 
-export type CnisListResponseItemsItemBgpExtraPrefixesList = string[];
+export type CnisListResponseItemsItemBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const CnisListResponseItemsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -702,7 +634,8 @@ export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisListResponseItemsItem",
 }) as any as S.Schema<CnisListResponseItemsItem>;
 
-export type CnisListResponseItemsList = CnisListResponseItemsItem[];
+export type CnisListResponseItemsList =
+  ReadonlyArray<CnisListResponseItemsItem>;
 export const CnisListResponseItemsList = /*@__PURE__*/ S.Array(
   CnisListResponseItemsItem,
 ) as any as S.Schema<CnisListResponseItemsList>;
@@ -751,56 +684,111 @@ export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectsRequest",
 }) as any as S.Schema<ListInterconnectsRequest>;
 
-export type InterconnectsListResponseItemsItemFacilityAddressList = string[];
-export const InterconnectsListResponseItemsItemFacilityAddressList =
+export type InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
+  ReadonlyArray<string>;
+export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<InterconnectsListResponseItemsItemFacilityAddressList>;
+  ) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList>;
 
-export interface InterconnectsListResponseItemsItemFacility {
-  address: InterconnectsListResponseItemsItemFacilityAddressList;
+export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility {
+  address: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList;
   name: string;
 }
-export const InterconnectsListResponseItemsItemFacility =
+export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      address: InterconnectsListResponseItemsItemFacilityAddressList,
+      address:
+        InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList,
       name: S.String,
     }),
   ).annotate({
-    identifier: "InterconnectsListResponseItemsItemFacility",
-  }) as any as S.Schema<InterconnectsListResponseItemsItemFacility>;
+    identifier:
+      "InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility",
+  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility>;
 
-export interface InterconnectsListResponseItemsItem {
-  account?: string;
-  facility?: InterconnectsListResponseItemsItemFacility;
-  name?: string;
+export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBody {
+  account: string;
+  facility: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility;
+  name: string;
   /** A Cloudflare site name. */
-  site?: string;
-  slotId?: string;
-  speed?: string;
-  type?: string;
+  site: string;
+  slotId: string;
+  speed: string;
+  type: string;
   owner?: string;
-  region?: string;
 }
-export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-    facility: S.optional(InterconnectsListResponseItemsItemFacility),
-    name: S.optional(S.String),
-    site: S.optional(S.String),
-    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
-    speed: S.optional(S.String),
-    type: S.optional(S.String),
-    owner: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InterconnectsListResponseItemsItem",
-}) as any as S.Schema<InterconnectsListResponseItemsItem>;
+export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBody =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      account: S.String,
+      facility:
+        InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility,
+      name: S.String,
+      site: S.String,
+      slotId: S.String.pipe(T.Body("slot_id")),
+      speed: S.String,
+      type: S.String,
+      owner: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InterconnectsListResponseItemsItemNscInterconnectPhysicalBody",
+  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBody>;
+
+export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G";
+export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
+  /*@__PURE__*/ S.String;
+
+export interface InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody {
+  account: string;
+  name: string;
+  region: string;
+  type: string;
+  owner?: string;
+  /** Bandwidth structure as visible through the customer-facing API. */
+  speed?: InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed;
+}
+export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      account: S.String,
+      name: S.String,
+      region: S.String,
+      type: S.String,
+      owner: S.optional(S.String),
+      speed: S.optional(
+        InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody",
+  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody>;
+
+export type InterconnectsListResponseItemsItem =
+  | InterconnectsListResponseItemsItemNscInterconnectPhysicalBody
+  | InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody;
+export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["account", "facility", "name", "site", "slotId", "speed", "type", "owner"],
+    ["account", "name", "region", "type", "owner", "speed"],
+  ]),
+);
 
 export type InterconnectsListResponseItemsList =
-  InterconnectsListResponseItemsItem[];
+  ReadonlyArray<InterconnectsListResponseItemsItem>;
 export const InterconnectsListResponseItemsList = /*@__PURE__*/ S.Array(
   InterconnectsListResponseItemsItem,
 ) as any as S.Schema<InterconnectsListResponseItemsList>;
@@ -855,7 +843,8 @@ export const ListSlotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSlotsRequest",
 }) as any as S.Schema<ListSlotsRequest>;
 
-export type SlotsListResponseItemsItemFacilityAddressList = string[];
+export type SlotsListResponseItemsItemFacilityAddressList =
+  ReadonlyArray<string>;
 export const SlotsListResponseItemsItemFacilityAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -898,7 +887,8 @@ export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SlotsListResponseItemsItem",
 }) as any as S.Schema<SlotsListResponseItemsItem>;
 
-export type SlotsListResponseItemsList = SlotsListResponseItemsItem[];
+export type SlotsListResponseItemsList =
+  ReadonlyArray<SlotsListResponseItemsItem>;
 export const SlotsListResponseItemsList = /*@__PURE__*/ S.Array(
   SlotsListResponseItemsItem,
 ) as any as S.Schema<SlotsListResponseItemsList>;
@@ -1001,20 +991,10 @@ export const StatusInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusInterconnectRequest",
 }) as any as S.Schema<StatusInterconnectRequest>;
 
-export type InterconnectsStatusResponseState = "Pending" | (string & {});
-export const InterconnectsStatusResponseState = /*@__PURE__*/ S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface StatusInterconnectResponse {
-  state?: InterconnectsStatusResponseState;
-  /** Diagnostic information, if available */
-  reason?: string;
-}
+export interface StatusInterconnectResponse {}
 export const StatusInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(InterconnectsStatusResponseState),
-    reason: S.optional(S.String),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "StatusInterconnectResponse",
 }) as any as S.Schema<StatusInterconnectResponse>;
@@ -1034,7 +1014,7 @@ export const CnisUpdateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisUpdateRequestMagic",
 }) as any as S.Schema<CnisUpdateRequestMagic>;
 
-export type CnisUpdateRequestBgpExtraPrefixesList = string[];
+export type CnisUpdateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
 export const CnisUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisUpdateRequestBgpExtraPrefixesList>;
@@ -1114,7 +1094,7 @@ export const CnisUpdateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   identifier: "CnisUpdateResponseMagic",
 }) as any as S.Schema<CnisUpdateResponseMagic>;
 
-export type CnisUpdateResponseBgpExtraPrefixesList = string[];
+export type CnisUpdateResponseBgpExtraPrefixesList = ReadonlyArray<string>;
 export const CnisUpdateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisUpdateResponseBgpExtraPrefixesList>;

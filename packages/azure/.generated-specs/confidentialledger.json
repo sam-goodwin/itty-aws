@@ -77,10 +77,16 @@
             "smithy.api#documentation": "Name of the Confidential Ledger"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restoreRegion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The region where the exported ledger files will eventually be restored to."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SAS URI used to access the Fileshare for exporting ledger files.",
             "smithy.api#required": {}
           }
         }
@@ -749,16 +755,144 @@
             "smithy.api#documentation": "Name of the Confidential Ledger"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confidentialledger#LedgerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confidentialledger#LedgerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of Confidential Ledger Resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger#LedgerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "runningState": {
+          "target": "com.azure.confidentialledger#RunningState",
+          "traits": {
+            "smithy.api#documentation": "Object representing RunningState for Ledger."
+          }
+        },
+        "ledgerType": {
+          "target": "com.azure.confidentialledger#LedgerType",
+          "traits": {
+            "smithy.api#documentation": "Type of Confidential Ledger"
+          }
+        },
+        "ledgerSku": {
+          "target": "com.azure.confidentialledger#LedgerSku",
+          "traits": {
+            "smithy.api#documentation": "SKU associated with the ledger"
+          }
+        },
+        "aadBasedSecurityPrincipals": {
+          "target": "com.azure.confidentialledger#LedgerPropertiesInputAadBasedSecurityPrincipalsList",
+          "traits": {
+            "smithy.api#documentation": "Array of all AAD based Security Principals."
+          }
+        },
+        "certBasedSecurityPrincipals": {
+          "target": "com.azure.confidentialledger#LedgerPropertiesInputCertBasedSecurityPrincipalsList",
+          "traits": {
+            "smithy.api#documentation": "Array of all cert based Security Principals."
+          }
+        },
+        "hostLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CCF Property for the logging level for the untrusted host: Trace, Debug, Info, Fail, Fatal."
+          }
+        },
+        "maxBodySizeInMb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "CCF Property for the maximum size of the http request body: 1MB, 5MB, 10MB."
+          }
+        },
+        "subjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node."
+          }
+        },
+        "nodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of CCF nodes in the ACC Ledger."
+          }
+        },
+        "writeLBAddressPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix for the write load balancer. Example: write"
+          }
+        },
+        "workerThreads": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of additional threads processing incoming client requests in the enclave (modify with care!)"
+          }
+        },
+        "applicationType": {
+          "target": "com.azure.confidentialledger#ApplicationType",
+          "traits": {
+            "smithy.api#documentation": "Application type of the Confidential Ledger."
+          }
+        },
+        "scittConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SCITT Configuration that needs to be set for the Confidential Ledger."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Confidential Ledger properties."
+      }
+    },
+    "com.azure.confidentialledger#LedgerPropertiesInputCertBasedSecurityPrincipalsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger#CertBasedSecurityPrincipal"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of all cert based Security Principals."
+      }
+    },
+    "com.azure.confidentialledger#LedgerPropertiesInputAadBasedSecurityPrincipalsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger#AADBasedSecurityPrincipal"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of all AAD based Security Principals."
+      }
+    },
+    "com.azure.confidentialledger#LedgerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.confidentialledger#LedgerCreate": {
@@ -870,16 +1004,40 @@
             "smithy.api#documentation": "Name of the Confidential Ledger"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confidentialledger#LedgerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confidentialledger#LedgerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of Confidential Ledger Resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger#LedgerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.confidentialledger#LedgerGet": {
@@ -1257,11 +1415,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

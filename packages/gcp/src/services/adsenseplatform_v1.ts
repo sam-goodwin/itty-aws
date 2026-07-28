@@ -115,8 +115,7 @@ export type AccountStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNCHECKED"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an Account. */
@@ -224,8 +223,7 @@ export const EventInfo = /*@__PURE__*/ S.suspend(() =>
 export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
-  | "SIGN_UP_VIA_PLATFORM"
-  | (string & {});
+  | "SIGN_UP_VIA_PLATFORM";
 export const EventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** A platform sub-account event to record spam signals. */
@@ -272,8 +270,7 @@ export type SiteStateEnum =
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
-  | "NEEDS_ATTENTION"
-  | (string & {});
+  | "NEEDS_ATTENTION";
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -398,7 +395,7 @@ export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsRequest",
 }) as any as S.Schema<ListPlatformsAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -443,7 +440,7 @@ export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsSitesRequest",
 }) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
 
-export type SiteList = Site[];
+export type SiteList = ReadonlyArray<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;

@@ -669,15 +669,56 @@
             "smithy.api#documentation": "Unique resource name for insight resources"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.help#DiagnosticResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Diagnostic Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.help#DiagnosticResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "globalParameters": {
+          "target": "com.azure.help#DiagnosticResourcePropertiesInputGlobalParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Global parameters that can be passed to all solutionIds."
+          }
+        },
+        "insights": {
+          "target": "com.azure.help#DiagnosticResourcePropertiesInputInsightsList",
+          "traits": {
+            "smithy.api#documentation": "SolutionIds that are needed to be invoked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Diagnostic resource properties."
+      }
+    },
+    "com.azure.help#DiagnosticResourcePropertiesInputInsightsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.help#DiagnosticInvocation"
+      },
+      "traits": {
+        "smithy.api#documentation": "SolutionIds that are needed to be invoked."
+      }
+    },
+    "com.azure.help#DiagnosticResourcePropertiesInputGlobalParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Global parameters that can be passed to all solutionIds."
       }
     },
     "com.azure.help#DiagnosticsGet": {
@@ -817,10 +858,16 @@
             "smithy.api#documentation": "This is an extension resource provider and only resource level extension is supported at the moment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

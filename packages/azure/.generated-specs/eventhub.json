@@ -381,16 +381,42 @@
             "smithy.api#documentation": "The Schema Group name "
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.eventhub#SchemaGroupPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#SchemaGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "groupProperties": {
+          "target": "com.azure.eventhub#SchemaGroupPropertiesInputGroupPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "dictionary object for SchemaGroup group properties"
+          }
+        },
+        "schemaCompatibility": {
+          "target": "com.azure.eventhub#SchemaCompatibility"
+        },
+        "schemaType": {
+          "target": "com.azure.eventhub#SchemaType"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.eventhub#SchemaGroupPropertiesInputGroupPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "dictionary object for SchemaGroup group properties"
       }
     },
     "com.azure.eventhub#SchemaRegistryGet": {
@@ -1079,11 +1105,10 @@
             "smithy.api#documentation": "The PrivateEndpointConnection name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#PrivateEndpointConnectionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
           }
         }
       },
@@ -2312,11 +2337,10 @@
             "smithy.api#documentation": "The Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#NetworkRuleSetProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "NetworkRuleSet properties"
           }
         }
       },
@@ -2590,17 +2614,31 @@
             "smithy.api#documentation": "The Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.eventhub#FailOverProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.eventhub#FailOverProperties": {
+      "type": "structure",
+      "members": {
+        "primaryLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query parameter for the new primary location after failover."
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced failover is attempted with possible data loss."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.eventhub#ConsumerGroupsDelete": {
       "type": "operation",
@@ -2801,16 +2839,29 @@
             "smithy.api#documentation": "The consumer group name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#ConsumerGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Single item in List or Get Consumer group operation"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#ConsumerGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "userMetadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Single item in List or Get Consumer group operation"
       }
     },
     "com.azure.eventhub#ConsumerGroupsGet": {
@@ -3183,16 +3234,42 @@
             "smithy.api#documentation": "The authorization rule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.eventhub#KeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The access key to regenerate.",
             "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#KeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PrimaryKey"
+          }
+        },
+        "SECONDARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecondaryKey"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access key to regenerate."
       }
     },
     "com.azure.eventhub#EventHubsListKeys": {
@@ -3483,11 +3560,10 @@
             "smithy.api#documentation": "The authorization rule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#AuthorizationRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties supplied to create or update AuthorizationRule"
           }
         }
       },
@@ -4307,16 +4383,65 @@
             "smithy.api#documentation": "The Event Hub name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#EventhubPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties supplied to the Create Or Update Event Hub operation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#EventhubPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "messageRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of days to retain the events for this Event Hub, value should be 1 to 7 days"
+          }
+        },
+        "partitionCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions."
+          }
+        },
+        "status": {
+          "target": "com.azure.eventhub#EntityStatus",
+          "traits": {
+            "smithy.api#documentation": "Enumerates the possible values for the status of the Event Hub."
+          }
+        },
+        "captureDescription": {
+          "target": "com.azure.eventhub#CaptureDescription",
+          "traits": {
+            "smithy.api#documentation": "Properties of capture description"
+          }
+        },
+        "retentionDescription": {
+          "target": "com.azure.eventhub#RetentionDescription",
+          "traits": {
+            "smithy.api#documentation": "Event Hub retention settings"
+          }
+        },
+        "messageTimestampDescription": {
+          "target": "com.azure.eventhub#MessageTimestampDescription",
+          "traits": {
+            "smithy.api#documentation": "Properties of MessageTimestamp Description"
+          }
+        },
+        "userMetadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets and Sets Metadata of User."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties supplied to the Create Or Update Event Hub operation."
       }
     },
     "com.azure.eventhub#EventHubsGet": {
@@ -4677,10 +4802,10 @@
             "smithy.api#documentation": "The Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name to check the namespace name availability",
             "smithy.api#required": {}
           }
         }
@@ -5291,16 +5416,35 @@
             "smithy.api#documentation": "The Disaster Recovery configuration name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#ArmDisasterRecoveryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties required to the Create Or Update Alias(Disaster Recovery configurations)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#ArmDisasterRecoveryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing"
+          }
+        },
+        "alternateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alternate name specified when alias and namespace names are same."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties required to the Create Or Update Alias(Disaster Recovery configurations)"
       }
     },
     "com.azure.eventhub#DisasterRecoveryConfigsGet": {
@@ -5585,11 +5729,17 @@
             "smithy.api#documentation": "The authorization rule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.eventhub#KeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The access key to regenerate.",
             "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType"
           }
         }
       },
@@ -5813,11 +5963,10 @@
             "smithy.api#documentation": "The authorization rule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#AuthorizationRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties supplied to create or update AuthorizationRule"
           }
         }
       },
@@ -6203,12 +6352,8 @@
             "smithy.api#documentation": "The Application Group name "
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.eventhub#ApplicationGroupProperties"
         }
       },
       "traits": {
@@ -7207,16 +7352,283 @@
             "smithy.api#documentation": "The Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#EHNamespacePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Namespace properties supplied for create namespace operation."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventhub#Sku",
+          "traits": {
+            "smithy.api#documentation": "Properties of sku resource"
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventhub#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of BYOK Identity description"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventhub#NamespacesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#NamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.eventhub#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.eventhub#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.eventhub#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Properties for User Assigned Identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to configure Identity for Bring your Own Keys"
+      }
+    },
+    "com.azure.eventhub#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.eventhub#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for User Assigned Identities"
+      }
+    },
+    "com.azure.eventhub#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Recognized Dictionary value."
+      }
+    },
+    "com.azure.eventhub#EHNamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "minimumTlsVersion": {
+          "target": "com.azure.eventhub#TlsVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'"
+          }
+        },
+        "clusterArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cluster ARM ID of the Namespace."
+          }
+        },
+        "isAutoInflateEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Value that indicates whether AutoInflate is enabled for eventhub namespace."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventhub#EHNamespacePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled."
+          }
+        },
+        "maximumThroughputUnits": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)"
+          }
+        },
+        "kafkaEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Value that indicates whether Kafka is enabled for eventhub namespace."
+          }
+        },
+        "zoneRedundant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.eventhub#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Properties of BYOK Encryption description"
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.eventhub#EHNamespacePropertiesInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This property disables SAS authentication for the Event Hubs namespace."
+          }
+        },
+        "alternateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alternate name specified when alias and namespace names are same."
+          }
+        },
+        "platformCapabilities": {
+          "target": "com.azure.eventhub#PlatformCapabilities"
+        },
+        "geoDataReplication": {
+          "target": "com.azure.eventhub#GeoDataReplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Geo Data Replication settings for the namespace"
+          }
+        },
+        "ipAddressType": {
+          "target": "com.azure.eventhub#IpAddressType",
+          "traits": {
+            "smithy.api#documentation": "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Namespace properties supplied for create namespace operation."
+      }
+    },
+    "com.azure.eventhub#GeoDataReplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "maxReplicationLagDurationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day."
+          }
+        },
+        "locations": {
+          "target": "com.azure.eventhub#GeoDataReplicationPropertiesInputLocationsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions where replicas of the namespace are maintained."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GeoDR Replication properties"
+      }
+    },
+    "com.azure.eventhub#GeoDataReplicationPropertiesInputLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventhub#NamespaceReplicaLocationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of regions where replicas of the namespace are maintained."
+      }
+    },
+    "com.azure.eventhub#NamespaceReplicaLocationInput": {
+      "type": "structure",
+      "members": {
+        "locationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure regions where a replica of the namespace is maintained"
+          }
+        },
+        "roleType": {
+          "target": "com.azure.eventhub#GeoDRRoleType",
+          "traits": {
+            "smithy.api#documentation": "GeoDR Role Types"
+          }
+        },
+        "clusterArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Namespace replication properties"
+      }
+    },
+    "com.azure.eventhub#EHNamespacePropertiesInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventhub#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections."
+      }
+    },
+    "com.azure.eventhub#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.eventhub#PrivateEndpointConnectionProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
+      }
+    },
+    "com.azure.eventhub#EHNamespacePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled."
       }
     },
     "com.azure.eventhub#NamespacesCreateOrUpdate": {
@@ -7339,16 +7751,51 @@
             "smithy.api#documentation": "The Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#EHNamespacePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Namespace properties supplied for create namespace operation."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventhub#Sku",
+          "traits": {
+            "smithy.api#documentation": "Properties of sku resource"
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventhub#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of BYOK Identity description"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventhub#NamespacesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#NamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.eventhub#NamespacesGet": {
@@ -7695,16 +8142,27 @@
             "smithy.api#documentation": "The name of the Event Hubs Cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "settings": {
+          "target": "com.azure.eventhub#ConfigurationPatchRequestSettingsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#ConfigurationPatchRequestSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster."
       }
     },
     "com.azure.eventhub#ConfigurationGet": {
@@ -8155,16 +8613,68 @@
             "smithy.api#documentation": "The name of the Event Hubs Cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#ClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Event Hubs Cluster properties supplied in responses in List or Get operations."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventhub#ClusterSku",
+          "traits": {
+            "smithy.api#documentation": "Properties of the cluster SKU."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventhub#ClustersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.eventhub#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "supportsScaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value that indicates whether Scaling is Supported."
+          }
+        },
+        "platformCapabilities": {
+          "target": "com.azure.eventhub#PlatformCapabilities"
+        },
+        "zoneRedundant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value that indicates whether the cluster is zone redundant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Event Hubs Cluster properties supplied in responses in List or Get operations."
       }
     },
     "com.azure.eventhub#ClustersCreateOrUpdate": {
@@ -8281,16 +8791,45 @@
             "smithy.api#documentation": "The name of the Event Hubs Cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventhub#ClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Event Hubs Cluster properties supplied in responses in List or Get operations."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventhub#ClusterSku",
+          "traits": {
+            "smithy.api#documentation": "Properties of the cluster SKU."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventhub#ClustersCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventhub#ClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.eventhub#ClustersGet": {
@@ -8653,10 +9192,10 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name to check the namespace name availability",
             "smithy.api#required": {}
           }
         }

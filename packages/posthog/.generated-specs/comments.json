@@ -130,7 +130,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.comments#PaginatedCommentList": {
+    "com.posthog.comments#PaginatedCommentListOutput": {
       "type": "structure",
       "members": {
         "next": {
@@ -146,31 +146,28 @@
           }
         },
         "results": {
-          "target": "com.posthog.comments#PaginatedCommentListResultsList"
+          "target": "com.posthog.comments#PaginatedCommentListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.comments#Comment": {
+    "com.posthog.comments#CommentOutput": {
       "type": "structure",
       "members": {
         "id": {
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.comments#UserBasic"
+          "target": "com.posthog.comments#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "mentions": {
-          "target": "com.posthog.comments#CommentMentionsList"
-        },
-        "slug": {
-          "target": "smithy.api#String"
         },
         "is_task": {
           "target": "smithy.api#Boolean",
@@ -363,17 +360,10 @@
       },
       "traits": {}
     },
-    "com.posthog.comments#CommentMentionsList": {
+    "com.posthog.comments#PaginatedCommentListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.comments#PaginatedCommentListResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "traits": {}
     },
@@ -383,7 +373,7 @@
         "target": "com.posthog.comments#CommentsListRequest"
       },
       "output": {
-        "target": "com.posthog.comments#PaginatedCommentList"
+        "target": "com.posthog.comments#PaginatedCommentListOutput"
       },
       "errors": [
         {
@@ -422,12 +412,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.comments#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -446,13 +430,6 @@
             "smithy.api#documentation": "Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation."
           }
         },
-        "completed_by": {
-          "target": "com.posthog.comments#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "The user who marked this task complete. Null for open tasks and non-task comments.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "content": {
           "target": "smithy.api#String",
           "traits": {
@@ -461,12 +438,6 @@
         },
         "rich_content": {
           "target": "smithy.api#Document"
-        },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "item_id": {
           "target": "smithy.api#String",
@@ -479,13 +450,6 @@
         },
         "scope": {
           "target": "smithy.api#String"
-        },
-        "completed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH.",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "source_comment": {
           "target": "smithy.api#String",
@@ -504,7 +468,7 @@
         "target": "com.posthog.comments#CommentsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "errors": [
         {
@@ -555,7 +519,7 @@
         "target": "com.posthog.comments#CommentsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "errors": [
         {
@@ -599,9 +563,6 @@
             "smithy.api#documentation": "A UUID string identifying this comment."
           }
         },
-        "created_by": {
-          "target": "com.posthog.comments#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -620,13 +581,6 @@
             "smithy.api#documentation": "Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation."
           }
         },
-        "completed_by": {
-          "target": "com.posthog.comments#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "The user who marked this task complete. Null for open tasks and non-task comments.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "content": {
           "target": "smithy.api#String",
           "traits": {
@@ -635,12 +589,6 @@
         },
         "rich_content": {
           "target": "smithy.api#Document"
-        },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "item_id": {
           "target": "smithy.api#String",
@@ -653,13 +601,6 @@
         },
         "scope": {
           "target": "smithy.api#String"
-        },
-        "completed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH.",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "source_comment": {
           "target": "smithy.api#String",
@@ -678,7 +619,7 @@
         "target": "com.posthog.comments#CommentsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "errors": [
         {
@@ -725,9 +666,6 @@
             "smithy.api#documentation": "A UUID string identifying this comment."
           }
         },
-        "created_by": {
-          "target": "com.posthog.comments#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -746,13 +684,6 @@
             "smithy.api#documentation": "Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation."
           }
         },
-        "completed_by": {
-          "target": "com.posthog.comments#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "The user who marked this task complete. Null for open tasks and non-task comments.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "content": {
           "target": "smithy.api#String",
           "traits": {
@@ -761,12 +692,6 @@
         },
         "rich_content": {
           "target": "smithy.api#Document"
-        },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "item_id": {
           "target": "smithy.api#String",
@@ -779,13 +704,6 @@
         },
         "scope": {
           "target": "smithy.api#String"
-        },
-        "completed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH.",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "source_comment": {
           "target": "smithy.api#String",
@@ -804,7 +722,7 @@
         "target": "com.posthog.comments#CommentsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "errors": [
         {
@@ -904,7 +822,7 @@
         "target": "com.posthog.comments#CommentsCompleteCreateRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -945,7 +863,7 @@
         "target": "com.posthog.comments#CommentsReopenCreateRequest"
       },
       "output": {
-        "target": "com.posthog.comments#Comment"
+        "target": "com.posthog.comments#CommentOutput"
       },
       "traits": {
         "smithy.api#http": {

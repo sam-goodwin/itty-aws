@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type AnalyticsAccountLinkLinkVerificationStateEnum =
   | "LINK_VERIFICATION_STATE_UNSPECIFIED"
   | "LINK_VERIFICATION_STATE_VERIFIED"
-  | "LINK_VERIFICATION_STATE_NOT_VERIFIED"
-  | (string & {});
+  | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
 export const AnalyticsAccountLinkLinkVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -227,7 +226,7 @@ export const ClientData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
-export type ClientDataList = ClientData[];
+export type ClientDataList = ReadonlyArray<ClientData>;
 export const ClientDataList = /*@__PURE__*/ S.Array(
   ClientData,
 ) as any as S.Schema<ClientDataList>;
@@ -285,7 +284,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export type OrganizationList = Organization[];
+export type OrganizationList = ReadonlyArray<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;
@@ -331,7 +330,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
     identifier: "ListOrganizationsAnalyticsAccountLinksRequest",
   }) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
 
-export type AnalyticsAccountLinkList = AnalyticsAccountLink[];
+export type AnalyticsAccountLinkList = ReadonlyArray<AnalyticsAccountLink>;
 export const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(
   AnalyticsAccountLink,
 ) as any as S.Schema<AnalyticsAccountLinkList>;
@@ -390,16 +389,14 @@ export const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(
 export type PropertyUsageServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
-  | "ANALYTICS_SERVICE_LEVEL_360"
-  | (string & {});
+  | "ANALYTICS_SERVICE_LEVEL_360";
 export const PropertyUsageServiceLevelEnum = /*@__PURE__*/ S.String;
 
 export type PropertyUsagePropertyTypeEnum =
   | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
   | "ANALYTICS_PROPERTY_TYPE_ORDINARY"
   | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY"
-  | "ANALYTICS_PROPERTY_TYPE_ROLLUP"
-  | (string & {});
+  | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
 export const PropertyUsagePropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the count of events received by the property, along with metadata that influences the volume of `billable` events. */
@@ -431,7 +428,7 @@ export const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyUsage" }) as any as S.Schema<PropertyUsage>;
 
-export type PropertyUsageList = PropertyUsage[];
+export type PropertyUsageList = ReadonlyArray<PropertyUsage>;
 export const PropertyUsageList = /*@__PURE__*/ S.Array(
   PropertyUsage,
 ) as any as S.Schema<PropertyUsageList>;
@@ -492,8 +489,7 @@ export const ReportPropertyUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export type SetPropertyServiceLevelRequestServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
-  | "ANALYTICS_SERVICE_LEVEL_360"
-  | (string & {});
+  | "ANALYTICS_SERVICE_LEVEL_360";
 export const SetPropertyServiceLevelRequestServiceLevelEnum =
   /*@__PURE__*/ S.String;
 

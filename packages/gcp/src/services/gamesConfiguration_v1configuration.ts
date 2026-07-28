@@ -133,16 +133,14 @@ export const GetAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AchievementConfigurationAchievementTypeEnum =
   | "ACHIEVEMENT_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "INCREMENTAL"
-  | (string & {});
+  | "INCREMENTAL";
 export const AchievementConfigurationAchievementTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type AchievementConfigurationInitialStateEnum =
   | "INITIAL_STATE_UNSPECIFIED"
   | "HIDDEN"
-  | "REVEALED"
-  | (string & {});
+  | "REVEALED";
 export const AchievementConfigurationInitialStateEnum = /*@__PURE__*/ S.String;
 
 /** A localized string resource. */
@@ -164,7 +162,7 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedString",
 }) as any as S.Schema<LocalizedString>;
 
-export type LocalizedStringList = LocalizedString[];
+export type LocalizedStringList = ReadonlyArray<LocalizedString>;
 export const LocalizedStringList = /*@__PURE__*/ S.Array(
   LocalizedString,
 ) as any as S.Schema<LocalizedStringList>;
@@ -297,8 +295,7 @@ export type GamesNumberFormatConfigurationNumberFormatTypeEnum =
   | "NUMBER_FORMAT_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "TIME_DURATION"
-  | "CURRENCY"
-  | (string & {});
+  | "CURRENCY";
 export const GamesNumberFormatConfigurationNumberFormatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -354,8 +351,7 @@ export const LeaderboardConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
 export type LeaderboardConfigurationScoreOrderEnum =
   | "SCORE_ORDER_UNSPECIFIED"
   | "LARGER_IS_BETTER"
-  | "SMALLER_IS_BETTER"
-  | (string & {});
+  | "SMALLER_IS_BETTER";
 export const LeaderboardConfigurationScoreOrderEnum = /*@__PURE__*/ S.String;
 
 /** An leaderboard configuration resource. */
@@ -460,7 +456,8 @@ export const ListAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAchievementConfigurationsRequest",
 }) as any as S.Schema<ListAchievementConfigurationsRequest>;
 
-export type AchievementConfigurationList = AchievementConfiguration[];
+export type AchievementConfigurationList =
+  ReadonlyArray<AchievementConfiguration>;
 export const AchievementConfigurationList = /*@__PURE__*/ S.Array(
   AchievementConfiguration,
 ) as any as S.Schema<AchievementConfigurationList>;
@@ -510,7 +507,8 @@ export const ListLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListLeaderboardConfigurationsRequest",
 }) as any as S.Schema<ListLeaderboardConfigurationsRequest>;
 
-export type LeaderboardConfigurationList = LeaderboardConfiguration[];
+export type LeaderboardConfigurationList =
+  ReadonlyArray<LeaderboardConfiguration>;
 export const LeaderboardConfigurationList = /*@__PURE__*/ S.Array(
   LeaderboardConfiguration,
 ) as any as S.Schema<LeaderboardConfigurationList>;

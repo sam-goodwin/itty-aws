@@ -54,7 +54,8 @@ export const DriveBitLockerKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DriveBitLockerKey>;
 
 /** drive status */
-export type GetBitLockerKeysResponseValueList = DriveBitLockerKey[];
+export type GetBitLockerKeysResponseValueList =
+  ReadonlyArray<DriveBitLockerKey>;
 export const GetBitLockerKeysResponseValueList = /*@__PURE__*/ S.Array(
   DriveBitLockerKey,
 ) as any as S.Schema<GetBitLockerKeysResponseValueList>;
@@ -71,79 +72,6 @@ export const GetBitLockerKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBitLockerKeysResponse",
 }) as any as S.Schema<GetBitLockerKeysResponse>;
-
-export interface JobsCreateRequest {
-  /** The subscription ID for the Azure user. */
-  subscriptionId: string;
-  /** The resource group name uniquely identifies the resource group within the user subscription. */
-  resourceGroupName: string;
-  /** The name of the import/export job. */
-  jobName: string;
-  body: unknown;
-}
-export const JobsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    jobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
-      code: 200,
-      apiVersion: "2020-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "JobsCreateRequest",
-}) as any as S.Schema<JobsCreateRequest>;
-
-/** The type of identity that created the resource. */
-export type JobResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const JobResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type JobResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const JobResponseSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface JobResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: JobResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: JobResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const JobResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(JobResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(JobResponseSystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobResponseSystemData",
-}) as any as S.Schema<JobResponseSystemData>;
 
 /** Specifies the return address information for the job. */
 export interface ReturnAddress {
@@ -195,7 +123,7 @@ export const ReturnShipping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReturnShipping" }) as any as S.Schema<ReturnShipping>;
 
 /** Contains information about the Microsoft datacenter to which the drives should be shipped. */
-export interface ShippingInformation {
+export interface ShippingInformationInput {
   /** The name of the recipient who will receive the hard drives when they are returned. */
   recipientName?: string;
   /** The first line of the street address to use when returning the drives. */
@@ -212,10 +140,8 @@ export interface ShippingInformation {
   countryOrRegion?: string;
   /** Phone number of the recipient of the returned drives. */
   phone?: string;
-  /** Additional shipping information for customer, specific to datacenter to which customer should send their disks. */
-  additionalInformation?: string;
 }
-export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
+export const ShippingInformationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientName: S.optional(S.String),
     streetAddress1: S.optional(S.String),
@@ -225,11 +151,10 @@ export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
     postalCode: S.optional(S.String),
     countryOrRegion: S.optional(S.String),
     phone: S.optional(S.String),
-    additionalInformation: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ShippingInformation",
-}) as any as S.Schema<ShippingInformation>;
+  identifier: "ShippingInformationInput",
+}) as any as S.Schema<ShippingInformationInput>;
 
 /** Contains information about the delivery package being shipped by the customer to the Microsoft data center. */
 export interface DeliveryPackageInformation {
@@ -283,8 +208,7 @@ export type DriveStatusState =
   | "Transferring"
   | "Completed"
   | "CompletedMoreInfo"
-  | "ShippedBack"
-  | (string & {});
+  | "ShippedBack";
 export const DriveStatusState = /*@__PURE__*/ S.String;
 
 /** Provides information about the drive's status */
@@ -332,19 +256,19 @@ export const DriveStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DriveStatus" }) as any as S.Schema<DriveStatus>;
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
-export type JobDetailsDriveListList = DriveStatus[];
-export const JobDetailsDriveListList = /*@__PURE__*/ S.Array(
+export type JobDetailsInputDriveListList = ReadonlyArray<DriveStatus>;
+export const JobDetailsInputDriveListList = /*@__PURE__*/ S.Array(
   DriveStatus,
-) as any as S.Schema<JobDetailsDriveListList>;
+) as any as S.Schema<JobDetailsInputDriveListList>;
 
 /** A collection of blob-path strings. */
-export type ExportBlobListBlobPathList = string[];
+export type ExportBlobListBlobPathList = ReadonlyArray<string>;
 export const ExportBlobListBlobPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportBlobListBlobPathList>;
 
 /** A collection of blob-prefix strings. */
-export type ExportBlobListBlobPathPrefixList = string[];
+export type ExportBlobListBlobPathPrefixList = ReadonlyArray<string>;
 export const ExportBlobListBlobPathPrefixList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExportBlobListBlobPathPrefixList>;
@@ -380,8 +304,7 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
 /** The type of kek encryption key */
 export type EncryptionKeyDetailsKekType =
   | "MicrosoftManaged"
-  | "CustomerManaged"
-  | (string & {});
+  | "CustomerManaged";
 export const EncryptionKeyDetailsKekType = /*@__PURE__*/ S.String;
 
 /** Specifies the encryption key properties */
@@ -402,6 +325,191 @@ export const EncryptionKeyDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionKeyDetails",
 }) as any as S.Schema<EncryptionKeyDetails>;
+
+/** Specifies the job properties */
+export interface JobDetailsInput {
+  /** The resource identifier of the storage account where data will be imported to or exported from. */
+  storageAccountId?: string;
+  /** The type of job */
+  jobType?: string;
+  /** Specifies the return address information for the job. */
+  returnAddress?: ReturnAddress;
+  /** Specifies the return carrier and customer's account with the carrier. */
+  returnShipping?: ReturnShipping;
+  /** Contains information about the Microsoft datacenter to which the drives should be shipped. */
+  shippingInformation?: ShippingInformationInput;
+  /** Contains information about the package being shipped by the customer to the Microsoft data center. */
+  deliveryPackage?: DeliveryPackageInformation;
+  /** Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned. */
+  returnPackage?: PackageInformation;
+  /** The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored. */
+  diagnosticsPath?: string;
+  /** Default value is Error. Indicates whether error logging or verbose logging will be enabled. */
+  logLevel?: string;
+  /** Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs. */
+  backupDriveManifest?: boolean;
+  /** Current state of the job. */
+  state?: string;
+  /** Indicates whether a request has been submitted to cancel the job. */
+  cancelRequested?: boolean;
+  /** Overall percentage completed for the job. */
+  percentComplete?: number;
+  /** A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response. */
+  incompleteBlobListUri?: string;
+  /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
+  driveList?: JobDetailsInputDriveListList;
+  /** A property containing information about the blobs to be exported for an export job. This property is included for export jobs only. */
+  export?: Export;
+  /** Specifies the provisioning state of the job. */
+  provisioningState?: string;
+  /** Contains information about the encryption key. */
+  encryptionKey?: EncryptionKeyDetails;
+}
+export const JobDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageAccountId: S.optional(S.String),
+    jobType: S.optional(S.String),
+    returnAddress: S.optional(ReturnAddress),
+    returnShipping: S.optional(ReturnShipping),
+    shippingInformation: S.optional(ShippingInformationInput),
+    deliveryPackage: S.optional(DeliveryPackageInformation),
+    returnPackage: S.optional(PackageInformation),
+    diagnosticsPath: S.optional(S.String),
+    logLevel: S.optional(S.String),
+    backupDriveManifest: S.optional(S.Boolean),
+    state: S.optional(S.String),
+    cancelRequested: S.optional(S.Boolean),
+    percentComplete: S.optional(S.Number),
+    incompleteBlobListUri: S.optional(S.String),
+    driveList: S.optional(JobDetailsInputDriveListList),
+    export: S.optional(Export),
+    provisioningState: S.optional(S.String),
+    encryptionKey: S.optional(EncryptionKeyDetails),
+  }),
+).annotate({
+  identifier: "JobDetailsInput",
+}) as any as S.Schema<JobDetailsInput>;
+
+export interface JobsCreateRequest {
+  /** The subscription ID for the Azure user. */
+  subscriptionId: string;
+  /** The resource group name uniquely identifies the resource group within the user subscription. */
+  resourceGroupName: string;
+  /** The name of the import/export job. */
+  jobName: string;
+  /** Specifies the supported Azure location where the job should be created */
+  location?: string;
+  /** Specifies the tags that will be assigned to the job. */
+  tags?: unknown;
+  /** Specifies the job properties */
+  properties?: JobDetailsInput;
+}
+export const JobsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    jobName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(S.Unknown),
+    properties: S.optional(JobDetailsInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+      code: 200,
+      apiVersion: "2020-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "JobsCreateRequest",
+}) as any as S.Schema<JobsCreateRequest>;
+
+/** The type of identity that created the resource. */
+export type JobResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const JobResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type JobResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const JobResponseSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface JobResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: JobResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: JobResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const JobResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(JobResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(JobResponseSystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobResponseSystemData",
+}) as any as S.Schema<JobResponseSystemData>;
+
+/** Contains information about the Microsoft datacenter to which the drives should be shipped. */
+export interface ShippingInformation {
+  /** The name of the recipient who will receive the hard drives when they are returned. */
+  recipientName?: string;
+  /** The first line of the street address to use when returning the drives. */
+  streetAddress1?: string;
+  /** The second line of the street address to use when returning the drives. */
+  streetAddress2?: string;
+  /** The city name to use when returning the drives. */
+  city?: string;
+  /** The state or province to use when returning the drives. */
+  stateOrProvince?: string;
+  /** The postal code to use when returning the drives. */
+  postalCode?: string;
+  /** The country or region to use when returning the drives. */
+  countryOrRegion?: string;
+  /** Phone number of the recipient of the returned drives. */
+  phone?: string;
+  /** Additional shipping information for customer, specific to datacenter to which customer should send their disks. */
+  additionalInformation?: string;
+}
+export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recipientName: S.optional(S.String),
+    streetAddress1: S.optional(S.String),
+    streetAddress2: S.optional(S.String),
+    city: S.optional(S.String),
+    stateOrProvince: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    countryOrRegion: S.optional(S.String),
+    phone: S.optional(S.String),
+    additionalInformation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ShippingInformation",
+}) as any as S.Schema<ShippingInformation>;
+
+/** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
+export type JobDetailsDriveListList = ReadonlyArray<DriveStatus>;
+export const JobDetailsDriveListList = /*@__PURE__*/ S.Array(
+  DriveStatus,
+) as any as S.Schema<JobDetailsDriveListList>;
 
 /** Specifies the job properties */
 export interface JobDetails {
@@ -466,11 +574,7 @@ export const JobDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobDetails" }) as any as S.Schema<JobDetails>;
 
 /** The type of identity */
-export type IdentityDetailsType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type IdentityDetailsType = "None" | "SystemAssigned" | "UserAssigned";
 export const IdentityDetailsType = /*@__PURE__*/ S.String;
 
 /** Specifies the identity properties. */
@@ -608,7 +712,7 @@ export const JobsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListByResourceGroupRequest>;
 
 /** Job list */
-export type ListJobsResponseValueList = JobResponse[];
+export type ListJobsResponseValueList = ReadonlyArray<JobResponse>;
 export const ListJobsResponseValueList = /*@__PURE__*/ S.Array(
   JobResponse,
 ) as any as S.Schema<ListJobsResponseValueList>;
@@ -654,6 +758,47 @@ export const JobsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListBySubscriptionRequest",
 }) as any as S.Schema<JobsListBySubscriptionRequest>;
 
+/** List of drives that comprise the job. */
+export type JobsUpdateRequestPropertiesDriveListList =
+  ReadonlyArray<DriveStatus>;
+export const JobsUpdateRequestPropertiesDriveListList = /*@__PURE__*/ S.Array(
+  DriveStatus,
+) as any as S.Schema<JobsUpdateRequestPropertiesDriveListList>;
+
+/** Specifies the properties of a UpdateJob. */
+export interface JobsUpdateRequestProperties {
+  /** If specified, the value must be true. The service will attempt to cancel the job. */
+  cancelRequested?: boolean;
+  /** If specified, the value must be Shipping, which tells the Import/Export service that the package for the job has been shipped. The ReturnAddress and DeliveryPackage properties must have been set either in this request or in a previous request, otherwise the request will fail. */
+  state?: string;
+  /** Specifies the return address information for the job. */
+  returnAddress?: ReturnAddress;
+  /** Specifies the return carrier and customer's account with the carrier. */
+  returnShipping?: ReturnShipping;
+  /** Contains information about the package being shipped by the customer to the Microsoft data center. */
+  deliveryPackage?: DeliveryPackageInformation;
+  /** Indicates whether error logging or verbose logging is enabled. */
+  logLevel?: string;
+  /** Indicates whether the manifest files on the drives should be copied to block blobs. */
+  backupDriveManifest?: boolean;
+  /** List of drives that comprise the job. */
+  driveList?: JobsUpdateRequestPropertiesDriveListList;
+}
+export const JobsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cancelRequested: S.optional(S.Boolean),
+    state: S.optional(S.String),
+    returnAddress: S.optional(ReturnAddress),
+    returnShipping: S.optional(ReturnShipping),
+    deliveryPackage: S.optional(DeliveryPackageInformation),
+    logLevel: S.optional(S.String),
+    backupDriveManifest: S.optional(S.Boolean),
+    driveList: S.optional(JobsUpdateRequestPropertiesDriveListList),
+  }),
+).annotate({
+  identifier: "JobsUpdateRequestProperties",
+}) as any as S.Schema<JobsUpdateRequestProperties>;
+
 export interface JobsUpdateRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -661,14 +806,18 @@ export interface JobsUpdateRequest {
   resourceGroupName: string;
   /** The name of the import/export job. */
   jobName: string;
-  body: unknown;
+  /** Specifies the tags that will be assigned to the job */
+  tags?: unknown;
+  /** Specifies the properties of a UpdateJob. */
+  properties?: JobsUpdateRequestProperties;
 }
 export const JobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(S.Unknown),
+    properties: S.optional(JobsUpdateRequestProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -701,13 +850,13 @@ export const LocationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsGetRequest>;
 
 /** A list of carriers that are supported at this location. */
-export type LocationPropertiesSupportedCarriersList = string[];
+export type LocationPropertiesSupportedCarriersList = ReadonlyArray<string>;
 export const LocationPropertiesSupportedCarriersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocationPropertiesSupportedCarriersList>;
 
 /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
-export type LocationPropertiesAlternateLocationsList = string[];
+export type LocationPropertiesAlternateLocationsList = ReadonlyArray<string>;
 export const LocationPropertiesAlternateLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocationPropertiesAlternateLocationsList>;
@@ -790,7 +939,7 @@ export const LocationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsListRequest>;
 
 /** locations */
-export type LocationsResponseValueList = Location[];
+export type LocationsResponseValueList = ReadonlyArray<Location>;
 export const LocationsResponseValueList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationsResponseValueList>;
@@ -859,7 +1008,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** operations */
-export type ListOperationsResponseValueList = Operation[];
+export type ListOperationsResponseValueList = ReadonlyArray<Operation>;
 export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;

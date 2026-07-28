@@ -89,18 +89,13 @@ export type ErrorsCodeEnum =
   | "GONE"
   | "PRECONDITION_FAILED"
   | "INTERNAL_ERROR"
-  | "SERVICE_UNAVAILABLE"
-  | (string & {});
+  | "SERVICE_UNAVAILABLE";
 export const ErrorsCodeEnum = /*@__PURE__*/ S.String;
 
-export type ErrorProtoLocationTypeEnum =
-  | "PATH"
-  | "OTHER"
-  | "PARAMETER"
-  | (string & {});
+export type ErrorProtoLocationTypeEnum = "PATH" | "OTHER" | "PARAMETER";
 export const ErrorProtoLocationTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -133,7 +128,7 @@ export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
-export type ErrorProtoList = ErrorProto[];
+export type ErrorProtoList = ReadonlyArray<ErrorProto>;
 export const ErrorProtoList = /*@__PURE__*/ S.Array(
   ErrorProto,
 ) as any as S.Schema<ErrorProtoList>;
@@ -347,7 +342,7 @@ export const ListGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupItemsRequest",
 }) as any as S.Schema<ListGroupItemsRequest>;
 
-export type GroupItemList = GroupItem[];
+export type GroupItemList = ReadonlyArray<GroupItem>;
 export const GroupItemList = /*@__PURE__*/ S.Array(
   GroupItem,
 ) as any as S.Schema<GroupItemList>;
@@ -401,7 +396,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsRequest",
 }) as any as S.Schema<ListGroupsRequest>;
 
-export type GroupList = Group[];
+export type GroupList = ReadonlyArray<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -498,17 +493,18 @@ export const ResultTableColumnHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultTableColumnHeader",
 }) as any as S.Schema<ResultTableColumnHeader>;
 
-export type ResultTableColumnHeaderList = ResultTableColumnHeader[];
+export type ResultTableColumnHeaderList =
+  ReadonlyArray<ResultTableColumnHeader>;
 export const ResultTableColumnHeaderList = /*@__PURE__*/ S.Array(
   ResultTableColumnHeader,
 ) as any as S.Schema<ResultTableColumnHeaderList>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type DocumentListList = DocumentList[];
+export type DocumentListList = ReadonlyArray<DocumentList>;
 export const DocumentListList = /*@__PURE__*/ S.Array(
   DocumentList,
 ) as any as S.Schema<DocumentListList>;

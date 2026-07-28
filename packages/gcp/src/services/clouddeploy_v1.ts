@@ -98,7 +98,7 @@ export const AbandonReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbandonReleaseResponse",
 }) as any as S.Schema<AbandonReleaseResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -444,7 +444,7 @@ export const SkaffoldModules = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkaffoldModules",
 }) as any as S.Schema<SkaffoldModules>;
 
-export type SkaffoldModulesList = SkaffoldModules[];
+export type SkaffoldModulesList = ReadonlyArray<SkaffoldModules>;
 export const SkaffoldModulesList = /*@__PURE__*/ S.Array(
   SkaffoldModules,
 ) as any as S.Schema<SkaffoldModulesList>;
@@ -548,7 +548,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -712,7 +712,7 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
-export type TaskList = Task[];
+export type TaskList = ReadonlyArray<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;
@@ -756,7 +756,7 @@ export const Postdeploy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Postdeploy" }) as any as S.Schema<Postdeploy>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -780,7 +780,7 @@ export const AlertPolicyCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertPolicyCheck",
 }) as any as S.Schema<AlertPolicyCheck>;
 
-export type AlertPolicyCheckList = AlertPolicyCheck[];
+export type AlertPolicyCheckList = ReadonlyArray<AlertPolicyCheck>;
 export const AlertPolicyCheckList = /*@__PURE__*/ S.Array(
   AlertPolicyCheck,
 ) as any as S.Schema<AlertPolicyCheckList>;
@@ -815,7 +815,7 @@ export const CustomCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomCheck" }) as any as S.Schema<CustomCheck>;
 
-export type CustomCheckList = CustomCheck[];
+export type CustomCheckList = ReadonlyArray<CustomCheck>;
 export const CustomCheckList = /*@__PURE__*/ S.Array(
   CustomCheck,
 ) as any as S.Schema<CustomCheckList>;
@@ -897,7 +897,7 @@ export const PhaseConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhaseConfig" }) as any as S.Schema<PhaseConfig>;
 
-export type PhaseConfigList = PhaseConfig[];
+export type PhaseConfigList = ReadonlyArray<PhaseConfig>;
 export const PhaseConfigList = /*@__PURE__*/ S.Array(
   PhaseConfig,
 ) as any as S.Schema<PhaseConfigList>;
@@ -985,7 +985,7 @@ export const DeployParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeployParameters",
 }) as any as S.Schema<DeployParameters>;
 
-export type DeployParametersList = DeployParameters[];
+export type DeployParametersList = ReadonlyArray<DeployParameters>;
 export const DeployParametersList = /*@__PURE__*/ S.Array(
   DeployParameters,
 ) as any as S.Schema<DeployParametersList>;
@@ -1010,7 +1010,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
-export type StageList = Stage[];
+export type StageList = ReadonlyArray<Stage>;
 export const StageList = /*@__PURE__*/ S.Array(
   Stage,
 ) as any as S.Schema<StageList>;
@@ -1184,7 +1184,7 @@ export const Targets = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Targets" }) as any as S.Schema<Targets>;
 
-export type TargetsList = Targets[];
+export type TargetsList = ReadonlyArray<Targets>;
 export const TargetsList = /*@__PURE__*/ S.Array(
   Targets,
 ) as any as S.Schema<TargetsList>;
@@ -1224,8 +1224,7 @@ export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
 export type Clouddeploy_RetryBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
-  | "BACKOFF_MODE_EXPONENTIAL"
-  | (string & {});
+  | "BACKOFF_MODE_EXPONENTIAL";
 export const Clouddeploy_RetryBackoffModeEnum = /*@__PURE__*/ S.String;
 
 /** Retries the failed job. */
@@ -1277,7 +1276,7 @@ export const RepairPhaseConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepairPhaseConfig",
 }) as any as S.Schema<RepairPhaseConfig>;
 
-export type RepairPhaseConfigList = RepairPhaseConfig[];
+export type RepairPhaseConfigList = ReadonlyArray<RepairPhaseConfig>;
 export const RepairPhaseConfigList = /*@__PURE__*/ S.Array(
   RepairPhaseConfig,
 ) as any as S.Schema<RepairPhaseConfigList>;
@@ -1402,7 +1401,7 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AutomationRule" }) as any as S.Schema<AutomationRule>;
 
-export type AutomationRuleList = AutomationRule[];
+export type AutomationRuleList = ReadonlyArray<AutomationRule>;
 export const AutomationRuleList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRuleList>;
@@ -1423,7 +1422,7 @@ export const TargetAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetAttribute",
 }) as any as S.Schema<TargetAttribute>;
 
-export type TargetAttributeList = TargetAttribute[];
+export type TargetAttributeList = ReadonlyArray<TargetAttribute>;
 export const TargetAttributeList = /*@__PURE__*/ S.Array(
   TargetAttribute,
 ) as any as S.Schema<TargetAttributeList>;
@@ -1542,7 +1541,7 @@ export const ToolVersions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ToolVersions" }) as any as S.Schema<ToolVersions>;
 
-export type CustomTargetTypeList = CustomTargetType[];
+export type CustomTargetTypeList = ReadonlyArray<CustomTargetType>;
 export const CustomTargetTypeList = /*@__PURE__*/ S.Array(
   CustomTargetType,
 ) as any as S.Schema<CustomTargetTypeList>;
@@ -1551,16 +1550,14 @@ export type ReleaseRenderStateEnum =
   | "RENDER_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+  | "IN_PROGRESS";
 export const ReleaseRenderStateEnum = /*@__PURE__*/ S.String;
 
 export type ToolVersionSupportedConditionToolVersionSupportStateEnum =
   | "TOOL_VERSION_SUPPORT_STATE_UNSPECIFIED"
   | "TOOL_VERSION_SUPPORT_STATE_SUPPORTED"
   | "TOOL_VERSION_SUPPORT_STATE_MAINTENANCE_MODE"
-  | "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED"
-  | (string & {});
+  | "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED";
 export const ToolVersionSupportedConditionToolVersionSupportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1592,8 +1589,7 @@ export type SkaffoldSupportedConditionSkaffoldSupportStateEnum =
   | "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED"
   | "SKAFFOLD_SUPPORT_STATE_SUPPORTED"
   | "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE"
-  | "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED"
-  | (string & {});
+  | "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED";
 export const SkaffoldSupportedConditionSkaffoldSupportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1735,7 +1731,7 @@ export const BuildArtifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuildArtifact" }) as any as S.Schema<BuildArtifact>;
 
-export type BuildArtifactList = BuildArtifact[];
+export type BuildArtifactList = ReadonlyArray<BuildArtifact>;
 export const BuildArtifactList = /*@__PURE__*/ S.Array(
   BuildArtifact,
 ) as any as S.Schema<BuildArtifactList>;
@@ -1748,16 +1744,14 @@ export type TargetRenderFailureCauseEnum =
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CUSTOM_ACTION_NOT_FOUND"
   | "DEPLOYMENT_STRATEGY_NOT_SUPPORTED"
-  | "RENDER_FEATURE_NOT_SUPPORTED"
-  | (string & {});
+  | "RENDER_FEATURE_NOT_SUPPORTED";
 export const TargetRenderFailureCauseEnum = /*@__PURE__*/ S.String;
 
 export type TargetRenderRenderingStateEnum =
   | "TARGET_RENDER_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+  | "IN_PROGRESS";
 export const TargetRenderRenderingStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render. */
@@ -1924,12 +1918,12 @@ export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GkeCluster" }) as any as S.Schema<GkeCluster>;
 
-export type GkeClusterList = GkeCluster[];
+export type GkeClusterList = ReadonlyArray<GkeCluster>;
 export const GkeClusterList = /*@__PURE__*/ S.Array(
   GkeCluster,
 ) as any as S.Schema<GkeClusterList>;
 
-export type AnthosClusterList = AnthosCluster[];
+export type AnthosClusterList = ReadonlyArray<AnthosCluster>;
 export const AnthosClusterList = /*@__PURE__*/ S.Array(
   AnthosCluster,
 ) as any as S.Schema<AnthosClusterList>;
@@ -1982,11 +1976,11 @@ export type ExecutionConfigUsagesItemEnum =
   | "VERIFY"
   | "PREDEPLOY"
   | "POSTDEPLOY"
-  | "ANALYSIS"
-  | (string & {});
+  | "ANALYSIS";
 export const ExecutionConfigUsagesItemEnum = /*@__PURE__*/ S.String;
 
-export type ExecutionConfigUsagesItemEnumList = ExecutionConfigUsagesItemEnum[];
+export type ExecutionConfigUsagesItemEnumList =
+  ReadonlyArray<ExecutionConfigUsagesItemEnum>;
 export const ExecutionConfigUsagesItemEnumList = /*@__PURE__*/ S.Array(
   ExecutionConfigUsagesItemEnum,
 ) as any as S.Schema<ExecutionConfigUsagesItemEnumList>;
@@ -2039,7 +2033,7 @@ export const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionConfig",
 }) as any as S.Schema<ExecutionConfig>;
 
-export type ExecutionConfigList = ExecutionConfig[];
+export type ExecutionConfigList = ReadonlyArray<ExecutionConfig>;
 export const ExecutionConfigList = /*@__PURE__*/ S.Array(
   ExecutionConfig,
 ) as any as S.Schema<ExecutionConfigList>;
@@ -2106,7 +2100,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
-export type TargetList = Target[];
+export type TargetList = ReadonlyArray<Target>;
 export const TargetList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetList>;
@@ -2227,8 +2221,7 @@ export type RolloutApprovalStateEnum =
   | "NEEDS_APPROVAL"
   | "DOES_NOT_NEED_APPROVAL"
   | "APPROVED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const RolloutApprovalStateEnum = /*@__PURE__*/ S.String;
 
 export type RolloutDeployFailureCauseEnum =
@@ -2240,8 +2233,7 @@ export type RolloutDeployFailureCauseEnum =
   | "RELEASE_ABANDONED"
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CLOUD_BUILD_REQUEST_FAILED"
-  | "OPERATION_FEATURE_NOT_SUPPORTED"
-  | (string & {});
+  | "OPERATION_FEATURE_NOT_SUPPORTED";
 export const RolloutDeployFailureCauseEnum = /*@__PURE__*/ S.String;
 
 export type RolloutStateEnum =
@@ -2255,8 +2247,7 @@ export type RolloutStateEnum =
   | "PENDING_RELEASE"
   | "CANCELLING"
   | "CANCELLED"
-  | "HALTED"
-  | (string & {});
+  | "HALTED";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudRunMetadata contains information from a Cloud Run deployment. */
@@ -2377,8 +2368,7 @@ export type JobStateEnum =
   | "FAILED"
   | "ABORTED"
   | "SKIPPED"
-  | "IGNORED"
-  | (string & {});
+  | "IGNORED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** A predeploy Job. */
@@ -2485,11 +2475,10 @@ export type PhaseStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "ABORTED"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const PhaseStateEnum = /*@__PURE__*/ S.String;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** ChildRollouts job composition */
@@ -2531,7 +2520,7 @@ export const Phase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Phase" }) as any as S.Schema<Phase>;
 
-export type PhaseList = Phase[];
+export type PhaseList = ReadonlyArray<Phase>;
 export const PhaseList = /*@__PURE__*/ S.Array(
   Phase,
 ) as any as S.Schema<PhaseList>;
@@ -2683,7 +2672,8 @@ export const DeployPolicyResourceSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeployPolicyResourceSelector",
 }) as any as S.Schema<DeployPolicyResourceSelector>;
 
-export type DeployPolicyResourceSelectorList = DeployPolicyResourceSelector[];
+export type DeployPolicyResourceSelectorList =
+  ReadonlyArray<DeployPolicyResourceSelector>;
 export const DeployPolicyResourceSelectorList = /*@__PURE__*/ S.Array(
   DeployPolicyResourceSelector,
 ) as any as S.Schema<DeployPolicyResourceSelectorList>;
@@ -2697,12 +2687,11 @@ export type RolloutRestrictionActionsItemEnum =
   | "IGNORE_JOB"
   | "RETRY_JOB"
   | "ROLLBACK"
-  | "TERMINATE_JOBRUN"
-  | (string & {});
+  | "TERMINATE_JOBRUN";
 export const RolloutRestrictionActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type RolloutRestrictionActionsItemEnumList =
-  RolloutRestrictionActionsItemEnum[];
+  ReadonlyArray<RolloutRestrictionActionsItemEnum>;
 export const RolloutRestrictionActionsItemEnumList = /*@__PURE__*/ S.Array(
   RolloutRestrictionActionsItemEnum,
 ) as any as S.Schema<RolloutRestrictionActionsItemEnumList>;
@@ -2766,7 +2755,7 @@ export const OneTimeWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OneTimeWindow" }) as any as S.Schema<OneTimeWindow>;
 
-export type OneTimeWindowList = OneTimeWindow[];
+export type OneTimeWindowList = ReadonlyArray<OneTimeWindow>;
 export const OneTimeWindowList = /*@__PURE__*/ S.Array(
   OneTimeWindow,
 ) as any as S.Schema<OneTimeWindowList>;
@@ -2779,12 +2768,11 @@ export type WeeklyWindowDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyWindowDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyWindowDaysOfWeekItemEnumList =
-  WeeklyWindowDaysOfWeekItemEnum[];
+  ReadonlyArray<WeeklyWindowDaysOfWeekItemEnum>;
 export const WeeklyWindowDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   WeeklyWindowDaysOfWeekItemEnum,
 ) as any as S.Schema<WeeklyWindowDaysOfWeekItemEnumList>;
@@ -2806,7 +2794,7 @@ export const WeeklyWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WeeklyWindow" }) as any as S.Schema<WeeklyWindow>;
 
-export type WeeklyWindowList = WeeklyWindow[];
+export type WeeklyWindowList = ReadonlyArray<WeeklyWindow>;
 export const WeeklyWindowList = /*@__PURE__*/ S.Array(
   WeeklyWindow,
 ) as any as S.Schema<WeeklyWindowList>;
@@ -2831,12 +2819,11 @@ export const TimeWindows = /*@__PURE__*/ S.suspend(() =>
 export type RolloutRestrictionInvokersItemEnum =
   | "INVOKER_UNSPECIFIED"
   | "USER"
-  | "DEPLOY_AUTOMATION"
-  | (string & {});
+  | "DEPLOY_AUTOMATION";
 export const RolloutRestrictionInvokersItemEnum = /*@__PURE__*/ S.String;
 
 export type RolloutRestrictionInvokersItemEnumList =
-  RolloutRestrictionInvokersItemEnum[];
+  ReadonlyArray<RolloutRestrictionInvokersItemEnum>;
 export const RolloutRestrictionInvokersItemEnumList = /*@__PURE__*/ S.Array(
   RolloutRestrictionInvokersItemEnum,
 ) as any as S.Schema<RolloutRestrictionInvokersItemEnumList>;
@@ -2874,7 +2861,7 @@ export const PolicyRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyRule" }) as any as S.Schema<PolicyRule>;
 
-export type PolicyRuleList = PolicyRule[];
+export type PolicyRuleList = ReadonlyArray<PolicyRule>;
 export const PolicyRuleList = /*@__PURE__*/ S.Array(
   PolicyRule,
 ) as any as S.Schema<PolicyRuleList>;
@@ -3199,7 +3186,7 @@ export const SkaffoldVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkaffoldVersion",
 }) as any as S.Schema<SkaffoldVersion>;
 
-export type SkaffoldVersionList = SkaffoldVersion[];
+export type SkaffoldVersionList = ReadonlyArray<SkaffoldVersion>;
 export const SkaffoldVersionList = /*@__PURE__*/ S.Array(
   SkaffoldVersion,
 ) as any as S.Schema<SkaffoldVersionList>;
@@ -3250,8 +3237,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3268,7 +3254,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3287,7 +3273,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3329,7 +3315,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3525,8 +3511,7 @@ export type AutomationRunStateEnum =
   | "FAILED"
   | "IN_PROGRESS"
   | "PENDING"
-  | "ABORTED"
-  | (string & {});
+  | "ABORTED";
 export const AutomationRunStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains the information of an automated promote-release operation. */
@@ -3576,8 +3561,7 @@ export const AdvanceRolloutOperation = /*@__PURE__*/ S.suspend(() =>
 export type RetryPhaseBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
-  | "BACKOFF_MODE_EXPONENTIAL"
-  | (string & {});
+  | "BACKOFF_MODE_EXPONENTIAL";
 export const RetryPhaseBackoffModeEnum = /*@__PURE__*/ S.String;
 
 export type RetryAttemptStateEnum =
@@ -3587,8 +3571,7 @@ export type RetryAttemptStateEnum =
   | "REPAIR_STATE_FAILED"
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
-  | "REPAIR_STATE_ABORTED"
-  | (string & {});
+  | "REPAIR_STATE_ABORTED";
 export const RetryAttemptStateEnum = /*@__PURE__*/ S.String;
 
 /** RetryAttempt represents an action of retrying the failed Cloud Deploy job. */
@@ -3611,7 +3594,7 @@ export const RetryAttempt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RetryAttempt" }) as any as S.Schema<RetryAttempt>;
 
-export type RetryAttemptList = RetryAttempt[];
+export type RetryAttemptList = ReadonlyArray<RetryAttempt>;
 export const RetryAttemptList = /*@__PURE__*/ S.Array(
   RetryAttempt,
 ) as any as S.Schema<RetryAttemptList>;
@@ -3640,8 +3623,7 @@ export type RollbackAttemptStateEnum =
   | "REPAIR_STATE_FAILED"
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
-  | "REPAIR_STATE_ABORTED"
-  | (string & {});
+  | "REPAIR_STATE_ABORTED";
 export const RollbackAttemptStateEnum = /*@__PURE__*/ S.String;
 
 /** RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'. */
@@ -3683,7 +3665,7 @@ export const RepairPhase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RepairPhase" }) as any as S.Schema<RepairPhase>;
 
-export type RepairPhaseList = RepairPhase[];
+export type RepairPhaseList = ReadonlyArray<RepairPhase>;
 export const RepairPhaseList = /*@__PURE__*/ S.Array(
   RepairPhase,
 ) as any as S.Schema<RepairPhaseList>;
@@ -3751,7 +3733,7 @@ export const PolicyViolationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyViolationDetails",
 }) as any as S.Schema<PolicyViolationDetails>;
 
-export type PolicyViolationDetailsList = PolicyViolationDetails[];
+export type PolicyViolationDetailsList = ReadonlyArray<PolicyViolationDetails>;
 export const PolicyViolationDetailsList = /*@__PURE__*/ S.Array(
   PolicyViolationDetails,
 ) as any as S.Schema<PolicyViolationDetailsList>;
@@ -3934,8 +3916,7 @@ export type DeployJobRunFailureCauseEnum =
   | "DEADLINE_EXCEEDED"
   | "MISSING_RESOURCES_FOR_CANARY"
   | "CLOUD_BUILD_REQUEST_FAILED"
-  | "DEPLOY_FEATURE_NOT_SUPPORTED"
-  | (string & {});
+  | "DEPLOY_FEATURE_NOT_SUPPORTED";
 export const DeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** CustomTargetDeployMetadata contains information from a Custom Target deploy operation. */
@@ -4025,8 +4006,7 @@ export type PostdeployJobRunFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED"
-  | (string & {});
+  | "CLOUD_BUILD_REQUEST_FAILED";
 export const PostdeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** PostdeployJobRun contains information specific to a postdeploy `JobRun`. */
@@ -4085,8 +4065,7 @@ export type PredeployJobRunFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED"
-  | (string & {});
+  | "CLOUD_BUILD_REQUEST_FAILED";
 export const PredeployJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** PredeployJobRun contains information specific to a predeploy `JobRun`. */
@@ -4117,8 +4096,7 @@ export type JobRunStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "TERMINATING"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const JobRunStateEnum = /*@__PURE__*/ S.String;
 
 export type VerifyJobRunFailureCauseEnum =
@@ -4127,8 +4105,7 @@ export type VerifyJobRunFailureCauseEnum =
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
   | "VERIFICATION_CONFIG_NOT_FOUND"
-  | "CLOUD_BUILD_REQUEST_FAILED"
-  | (string & {});
+  | "CLOUD_BUILD_REQUEST_FAILED";
 export const VerifyJobRunFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** VerifyJobRunMetadata contains metadata about the verify `JobRun`. */
@@ -4175,8 +4152,7 @@ export type CustomCheckStatusFailureCauseEnum =
   | "CLOUD_BUILD_UNAVAILABLE"
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
-  | "CLOUD_BUILD_REQUEST_FAILED"
-  | (string & {});
+  | "CLOUD_BUILD_REQUEST_FAILED";
 export const CustomCheckStatusFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** CustomCheckStatus contains information specific to a single iteration of a custom analysis job. */
@@ -4210,7 +4186,7 @@ export const CustomCheckStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomCheckStatus",
 }) as any as S.Schema<CustomCheckStatus>;
 
-export type CustomCheckStatusList = CustomCheckStatus[];
+export type CustomCheckStatusList = ReadonlyArray<CustomCheckStatus>;
 export const CustomCheckStatusList = /*@__PURE__*/ S.Array(
   CustomCheckStatus,
 ) as any as S.Schema<CustomCheckStatusList>;
@@ -4231,7 +4207,7 @@ export const FailedAlertPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "FailedAlertPolicy",
 }) as any as S.Schema<FailedAlertPolicy>;
 
-export type FailedAlertPolicyList = FailedAlertPolicy[];
+export type FailedAlertPolicyList = ReadonlyArray<FailedAlertPolicy>;
 export const FailedAlertPolicyList = /*@__PURE__*/ S.Array(
   FailedAlertPolicy,
 ) as any as S.Schema<FailedAlertPolicyList>;
@@ -4261,7 +4237,7 @@ export const AlertPolicyCheckStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertPolicyCheckStatus",
 }) as any as S.Schema<AlertPolicyCheckStatus>;
 
-export type AlertPolicyCheckStatusList = AlertPolicyCheckStatus[];
+export type AlertPolicyCheckStatusList = ReadonlyArray<AlertPolicyCheckStatus>;
 export const AlertPolicyCheckStatusList = /*@__PURE__*/ S.Array(
   AlertPolicyCheckStatus,
 ) as any as S.Schema<AlertPolicyCheckStatusList>;
@@ -4475,7 +4451,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4577,7 +4553,7 @@ export const ListProjectsLocationsDeliveryPipelinesRequest =
     identifier: "ListProjectsLocationsDeliveryPipelinesRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesRequest>;
 
-export type DeliveryPipelineList = DeliveryPipeline[];
+export type DeliveryPipelineList = ReadonlyArray<DeliveryPipeline>;
 export const DeliveryPipelineList = /*@__PURE__*/ S.Array(
   DeliveryPipeline,
 ) as any as S.Schema<DeliveryPipelineList>;
@@ -4632,7 +4608,7 @@ export const ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest =
     identifier: "ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest>;
 
-export type AutomationRunList = AutomationRun[];
+export type AutomationRunList = ReadonlyArray<AutomationRun>;
 export const AutomationRunList = /*@__PURE__*/ S.Array(
   AutomationRun,
 ) as any as S.Schema<AutomationRunList>;
@@ -4687,7 +4663,7 @@ export const ListProjectsLocationsDeliveryPipelinesAutomationsRequest =
     identifier: "ListProjectsLocationsDeliveryPipelinesAutomationsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationsRequest>;
 
-export type AutomationList = Automation[];
+export type AutomationList = ReadonlyArray<Automation>;
 export const AutomationList = /*@__PURE__*/ S.Array(
   Automation,
 ) as any as S.Schema<AutomationList>;
@@ -4742,7 +4718,7 @@ export const ListProjectsLocationsDeliveryPipelinesReleasesRequest =
     identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRequest>;
 
-export type ReleaseList = Release[];
+export type ReleaseList = ReadonlyArray<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;
@@ -4797,7 +4773,7 @@ export const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
     identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
-export type RolloutList = Rollout[];
+export type RolloutList = ReadonlyArray<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -4853,7 +4829,7 @@ export const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsReques
       "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>;
 
-export type JobRunList = JobRun[];
+export type JobRunList = ReadonlyArray<JobRun>;
 export const JobRunList = /*@__PURE__*/ S.Array(
   JobRun,
 ) as any as S.Schema<JobRunList>;
@@ -4908,7 +4884,7 @@ export const ListProjectsLocationsDeployPoliciesRequest =
     identifier: "ListProjectsLocationsDeployPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsDeployPoliciesRequest>;
 
-export type DeployPolicyList = DeployPolicy[];
+export type DeployPolicyList = ReadonlyArray<DeployPolicy>;
 export const DeployPolicyList = /*@__PURE__*/ S.Array(
   DeployPolicy,
 ) as any as S.Schema<DeployPolicyList>;
@@ -4963,7 +4939,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

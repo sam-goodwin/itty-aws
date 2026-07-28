@@ -102,10 +102,20 @@ const enumMemberName = (value: string): string => {
 // Markdown parsing
 // ============================================================================
 
-/** A node in the indented `- \`name: type\`` field tree. */
+/**
+ * A node in the indented field tree. Docs render two kinds of bullet:
+ *   • field lines   `- \`name: type\``      (sep ":")
+ *   • union arms    `- \`"a"\``, `- \`number\``, `- \`1\``,
+ *                   `- \`Name object { … }\``, `- \`Name = type\`` (sep "=" / "bare")
+ * A field's arms are its children; an arm's own children are either that
+ * case's fields (object cases) or the full value list (truncated inline
+ * enums like `"1.0" or "1.1" or 3 more`).
+ */
 interface FieldNode {
   name: string;
   typeStr: string;
+  /** How the docs line was written — decides field vs union-arm handling. */
+  sep: ":" | "=" | "bare";
   doc?: string;
   binding?: "label" | "query" | "header" | "body";
   children: FieldNode[];
@@ -136,11 +146,31 @@ const stripOptional = (
   return { optional: false, core: t };
 };
 
+/** Index of the first top-level `:` (outside quotes/braces/brackets), or -1. */
+const topLevelColon = (s: string): number => {
+  let depth = 0;
+  let inStr = false;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (inStr) {
+      if (c === "\\") i++;
+      else if (c === '"') inStr = false;
+      continue;
+    }
+    if (c === '"') inStr = true;
+    else if (c === "{" || c === "[") depth++;
+    else if (c === "}" || c === "]") depth--;
+    else if (c === ":" && depth === 0) return i;
+  }
+  return -1;
+};
+
 /**
  * Parse the indented bullet list of a section (Path/Query/Body/Returns) into a
- * tree of FieldNodes. Items look like `- \`name: type\`` (or `- \`"literal"\``
- * for enum values, which we ignore — the inline `"a" or "b"` form is canonical).
- * Plain indented prose lines become the preceding item's documentation.
+ * tree of FieldNodes. `- \`name: type\`` lines are fields; every other
+ * backticked bullet (`- \`"lit"\``, `- \`number\``, `- \`Name object {…}\``,
+ * `- \`Name = type\``, `- \`"a" or "b" or 2 more\``) is a union arm of its
+ * parent. Plain indented prose lines become the preceding item's documentation.
  */
 const parseFieldTree = (lines: string[]): FieldNode[] => {
   const itemRe = /^(\s*)-\s+`([^`]+)`\s*$/;
@@ -153,25 +183,28 @@ const parseFieldTree = (lines: string[]): FieldNode[] => {
     if (m) {
       const indent = m[1].length;
       const content = m[2].trim();
-      // Skip bare enum-literal lines like `"asc"` (handled via inline parsing).
-      if (/^"(?:[^"\\]|\\.)*"$/.test(content)) {
-        continue;
-      }
-      const colon = content.indexOf(":");
-      // Some shared defs use `Name = type`; method pages use `name: type`.
       let name: string;
       let typeStr: string;
+      let sep: FieldNode["sep"];
+      const colon = /^"(?:[^"\\]|\\.)*"$/.test(content)
+        ? -1 // a bare quoted literal is an enum arm, never a field
+        : topLevelColon(content);
       if (colon >= 0) {
+        sep = ":";
         name = content.slice(0, colon).trim();
         typeStr = content.slice(colon + 1).trim();
       } else {
-        const eq = content.indexOf("=");
-        if (eq >= 0) {
-          name = content.slice(0, eq).trim();
-          typeStr = content.slice(eq + 1).trim();
+        // Named union-arm defs: `Name = type` (`AccessUUID2 = string`,
+        // `ARecord = ARecord`, `Struct =`). Anything else is a bare arm.
+        const eq = content.match(/^([A-Za-z_][A-Za-z0-9_]*)\s*=(.*)$/s);
+        if (eq) {
+          sep = "=";
+          name = eq[1];
+          typeStr = eq[2].trim() || "unknown";
         } else {
-          name = content.trim();
-          typeStr = "unknown";
+          sep = "bare";
+          name = "";
+          typeStr = content;
         }
       }
       // Header/param names are frequently written quoted in the docs
@@ -182,7 +215,7 @@ const parseFieldTree = (lines: string[]): FieldNode[] => {
       if (name.length >= 2 && name.startsWith('"') && name.endsWith('"')) {
         name = name.slice(1, -1);
       }
-      const node: FieldNode = { name, typeStr, children: [] };
+      const node: FieldNode = { name, typeStr, sep, children: [] };
       while (stack.length && stack[stack.length - 1].indent >= indent) {
         stack.pop();
       }
@@ -304,138 +337,512 @@ const addShape = (bag: Bag, base: string, def: any): string => {
   return id;
 };
 
-/** Resolve a type descriptor (with `optional ` already stripped) to a shape id. */
-const parseTypeCore = (
-  core: string,
-  node: FieldNode,
+/** A member's docs-declared nullability travels via this trait. */
+const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
+
+/** A resolved type: the smithy target plus whether the docs allow `null`. */
+interface Resolved {
+  target: string;
+  nullable: boolean;
+}
+
+/**
+ * One arm of a docs union. Literal / scalar arms stay symbolic so the
+ * grouping rules (closed enums, `number | 1` → number, `true or false` →
+ * boolean, open `"a" or string` → string) can apply before any shape is
+ * built; everything else resolves to a shape target.
+ */
+type Arm =
+  | { k: "str"; v: string }
+  | { k: "num"; v: number }
+  | { k: "bool" }
+  | { k: "null" }
+  | { k: "doc" }
+  | { k: "strScalar" }
+  | { k: "numScalar"; int: boolean }
+  | { k: "target"; target: string; caseName?: string };
+
+/** Split a descriptor on top-level ` or ` (outside quotes/braces/brackets). */
+const splitTopUnion = (s: string): { parts: string[]; truncated: boolean } => {
+  const parts: string[] = [];
+  let depth = 0;
+  let inStr = false;
+  let cur = "";
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (inStr) {
+      cur += c;
+      if (c === "\\" && i + 1 < s.length) {
+        cur += s[i + 1];
+        i++;
+      } else if (c === '"') inStr = false;
+      i++;
+      continue;
+    }
+    if (c === '"') {
+      inStr = true;
+      cur += c;
+      i++;
+      continue;
+    }
+    if (c === "{" || c === "[") depth++;
+    else if (c === "}" || c === "]") depth--;
+    if (depth === 0 && /\s/.test(c)) {
+      const m = s.slice(i).match(/^\s+or\s+/);
+      if (m) {
+        if (cur.trim()) parts.push(cur.trim());
+        cur = "";
+        i += m[0].length;
+        continue;
+      }
+    }
+    cur += c;
+    i++;
+  }
+  if (cur.trim()) parts.push(cur.trim());
+  let truncated = false;
+  if (parts.length > 1 && /^\d+\s+more$/.test(parts[parts.length - 1])) {
+    parts.pop();
+    truncated = true;
+  }
+  return { parts, truncated };
+};
+
+const isArmChild = (f: FieldNode): boolean => f.sep !== ":";
+
+/**
+ * Named shared types the current operation's page has already inlined
+ * (`lan_1: ACLConfiguration` carries the field tree; a later
+ * `lan_2: ACLConfiguration` is a bare reference to the same def). Reset per
+ * operation; consulted only where the converter would otherwise fall back
+ * to Document, so it can only ADD information.
+ */
+let namedTypeRegistry = new Map<string, string>();
+const NAMED_TYPE = /^[A-Z][A-Za-z0-9_]*$/;
+
+const FULL_QUOTED = /^"(?:[^"\\]|\\.)*"$/;
+const NUM_LIT = /^-?\d+(?:\.\d+)?$/;
+
+/** Build a structure shape from field children. */
+const structFrom = (bag: Bag, fields: FieldNode[], hint: string): string =>
+  addShape(bag, hint, {
+    type: "structure",
+    members: buildMembers(bag, fields, hint, "nested"),
+  });
+
+const listOf = (bag: Bag, item: string, hint: string): string =>
+  addShape(bag, `${hint}List`, { type: "list", member: { target: item } });
+
+const mapOf = (bag: Bag, value: string, hint: string): string =>
+  addShape(bag, `${hint}Map`, {
+    type: "map",
+    key: { target: PRELUDE.String },
+    value: { target: value },
+  });
+
+const enumOf = (
   bag: Bag,
+  literals: readonly string[],
   hint: string,
 ): string => {
-  const t = core.trim();
+  const members: Record<string, any> = {};
+  const used = new Set<string>();
+  for (const lit of literals) {
+    let mn = enumMemberName(lit);
+    let k = 2;
+    while (used.has(mn)) mn = `${enumMemberName(lit)}_${k++}`;
+    used.add(mn);
+    members[mn] = {
+      target: PRELUDE.Unit,
+      traits: { "smithy.api#enumValue": lit },
+    };
+  }
+  return addShape(bag, hint || "Enum", { type: "enum", members });
+};
 
-  // Enum: "a" or "b" or "c"
-  if (t.startsWith('"')) {
-    const literals = Array.from(t.matchAll(/"((?:[^"\\]|\\.)*)"/g)).map(
-      (m) => m[1],
+const intEnumOf = (
+  bag: Bag,
+  values: readonly number[],
+  hint: string,
+): string => {
+  const members: Record<string, any> = {};
+  const used = new Set<string>();
+  for (const v of values) {
+    let mn = enumMemberName(String(v));
+    let k = 2;
+    while (used.has(mn)) mn = `${enumMemberName(String(v))}_${k++}`;
+    used.add(mn);
+    members[mn] = {
+      target: PRELUDE.Unit,
+      traits: { "smithy.api#enumValue": v },
+    };
+  }
+  return addShape(bag, hint || "IntEnum", { type: "intEnum", members });
+};
+
+/**
+ * Collapse a list of arms into one target, applying the docs' union rules:
+ *   • `null` arms mark the type nullable and drop out
+ *   • `unknown` absorbs everything (Document)
+ *   • all string literals → closed enum; a bare `string` arm reopens to String
+ *   • all numeric literals → closed intEnum; a bare `number` arm → plain number
+ *   • `true` / `false` / `boolean` → Boolean
+ *   • all-map arms merge into one map with a union value (the docs' way of
+ *     writing map[valueA or valueB] across shared defs)
+ *   • anything left → a real smithy union of the case targets
+ */
+const armsToResolved = (bag: Bag, arms: Arm[], hint: string): Resolved => {
+  const nullable = arms.some((a) => a.k === "null");
+  const rest = arms.filter((a) => a.k !== "null");
+  if (rest.length === 0 || rest.some((a) => a.k === "doc")) {
+    return { target: PRELUDE.Document, nullable };
+  }
+
+  const strs: string[] = [];
+  const nums: number[] = [];
+  let hasBool = false;
+  let hasStrScalar = false;
+  let numScalar: { int: boolean } | undefined;
+  const targetArms: Array<{ target: string; caseName?: string }> = [];
+  for (const a of rest) {
+    if (a.k === "str") strs.push(a.v);
+    else if (a.k === "num") nums.push(a.v);
+    else if (a.k === "bool") hasBool = true;
+    else if (a.k === "strScalar") hasStrScalar = true;
+    else if (a.k === "numScalar") {
+      numScalar = { int: (numScalar?.int ?? true) && a.int };
+    } else if (a.k === "target") targetArms.push(a);
+  }
+
+  // Group the literal/scalar arms into targets.
+  const groups: string[] = [];
+  if (strs.length || hasStrScalar) {
+    groups.push(
+      hasStrScalar
+        ? PRELUDE.String
+        : enumOf(bag, dedupe(strs), targetArms.length ? `${hint}Enum` : hint),
     );
-    if (literals.length === 0) return PRELUDE.String;
-    const members: Record<string, any> = {};
-    const used = new Set<string>();
-    for (const lit of literals) {
-      let mn = enumMemberName(lit);
-      let k = 2;
-      while (used.has(mn)) mn = `${enumMemberName(lit)}_${k++}`;
-      used.add(mn);
-      members[mn] = {
-        target: PRELUDE.Unit,
-        traits: { "smithy.api#enumValue": lit },
-      };
-    }
-    return addShape(bag, hint || "Enum", { type: "enum", members });
+  }
+  if (nums.length || numScalar) {
+    groups.push(
+      numScalar
+        ? numScalar.int
+          ? PRELUDE.Integer
+          : PRELUDE.Double
+        : nums.every((n) => Number.isInteger(n))
+          ? intEnumOf(
+              bag,
+              dedupe(nums),
+              targetArms.length || groups.length ? `${hint}IntEnum` : hint,
+            )
+          : PRELUDE.Double,
+    );
+  }
+  if (hasBool) groups.push(PRELUDE.Boolean);
+
+  const allTargets = [
+    ...groups.map((target) => ({
+      target,
+      caseName: undefined as string | undefined,
+    })),
+    ...targetArms,
+  ];
+  const distinct: Array<{ target: string; caseName?: string }> = [];
+  const seen = new Set<string>();
+  for (const t of allTargets) {
+    if (seen.has(t.target)) continue;
+    seen.add(t.target);
+    distinct.push(t);
   }
 
-  // Object: real fields are the indented children.
-  if (t.startsWith("object")) {
-    if (!node.children.length) return PRELUDE.Document;
-    // Discriminated union of object cases (`object { a } or object { b }`):
-    // the docs render each case as a named child. Build a real union so
-    // consumers can pattern-match; flattening would merge all cases'
-    // discriminant keys into one struct and break `"key" in value` checks.
-    if (node.children.length > 1 && node.children.every(isUnionCase)) {
-      const caseMembers: Record<string, any> = {};
-      const usedCases = new Set<string>();
-      node.children.forEach((c, idx) => {
-        let cname = pascal(c.name.replace(/\s+object.*$/, "")) || `Case${idx}`;
-        while (usedCases.has(cname)) cname = `${cname}_`;
-        usedCases.add(cname);
-        caseMembers[cname] = {
-          target: addShape(bag, `${hint}${cname}`, {
-            type: "structure",
-            members: buildMembers(bag, c.children, `${hint}${cname}`, "nested"),
-          }),
-        };
-      });
-      return addShape(bag, hint, { type: "union", members: caseMembers });
-    }
-    const members = buildMembers(bag, node.children, hint, "nested");
-    return addShape(bag, hint, { type: "structure", members });
+  if (distinct.length === 0) return { target: PRELUDE.Document, nullable };
+  if (distinct.length === 1) return { target: distinct[0].target, nullable };
+
+  // All arms are maps → one map with a union value.
+  if (
+    groups.length === 0 &&
+    distinct.every((t) => bag.shapes[t.target]?.type === "map")
+  ) {
+    const valueTargets = dedupe(
+      distinct.map((t) => bag.shapes[t.target].value.target as string),
+    );
+    const value =
+      valueTargets.length === 1
+        ? valueTargets[0]
+        : addShape(bag, `${hint}Value`, {
+            type: "union",
+            members: Object.fromEntries(
+              valueTargets.map((vt, i) => [
+                caseMemberName(vt, undefined, i),
+                { target: vt },
+              ]),
+            ),
+          });
+    return { target: mapOf(bag, value, hint), nullable };
   }
 
-  // Array: `array of <subtype>` (or `array <subtype>`).
-  if (t.startsWith("array")) {
-    const sub = t
-      .replace(/^array\s+of\s+/, "")
-      .replace(/^array\s+/, "")
-      .trim();
-    let itemTarget: string;
-    if (sub === "") {
-      itemTarget = PRELUDE.Document;
-    } else if (sub.startsWith("object")) {
-      itemTarget = node.children.length
-        ? addShape(bag, `${hint}Item`, {
-            type: "structure",
-            members: buildMembers(bag, node.children, `${hint}Item`, "nested"),
-          })
-        : PRELUDE.Document;
-    } else {
-      itemTarget = parseTypeCore(sub, node, bag, `${hint}Item`);
-    }
-    return addShape(bag, `${hint}List`, {
-      type: "list",
-      member: { target: itemTarget },
-    });
+  const members: Record<string, any> = {};
+  const usedCases = new Set<string>();
+  distinct.forEach((t, idx) => {
+    let cname = caseMemberName(t.target, t.caseName, idx);
+    while (usedCases.has(cname)) cname = `${cname}_`;
+    usedCases.add(cname);
+    members[cname] = { target: t.target };
+  });
+  return {
+    target: addShape(bag, hint, { type: "union", members }),
+    nullable,
+  };
+};
+
+const dedupe = <T>(xs: readonly T[]): T[] => [...new Set(xs)];
+
+/** Stable member name for a union case. */
+const caseMemberName = (
+  target: string,
+  caseName: string | undefined,
+  idx: number,
+): string => {
+  if (caseName) return pascal(caseName);
+  const local = target.includes("#") ? target.split("#")[1] : target;
+  return local ? pascal(local) : `Case${idx}`;
+};
+
+/** Named object case arm: `Name object { … }` (fields are the children). */
+const NAMED_OBJECT_ARM = /^([A-Za-z_][A-Za-z0-9_]*)\s+object\b/;
+
+/** Parse one arm rendered as its own docs bullet (children in tow). */
+const parseArmNode = (
+  bag: Bag,
+  node: FieldNode,
+  hint: string,
+  idx: number,
+): Arm => {
+  const caseName = node.sep === "=" ? node.name : undefined;
+  const t = node.typeStr.trim();
+
+  if (FULL_QUOTED.test(t)) return { k: "str", v: JSON.parse(t) };
+  if (NUM_LIT.test(t)) return { k: "num", v: Number(t) };
+  if (t === "true" || t === "false" || t === "boolean") return { k: "bool" };
+  if (t === "null") return { k: "null" };
+  if (t === "unknown" || t === "any") return { k: "doc" };
+  if (t === "string") return { k: "strScalar" };
+  if (t === "number") return { k: "numScalar", int: false };
+  if (t === "integer" || t === "int") return { k: "numScalar", int: true };
+
+  // `Name object { … }` — a named case whose fields are the children.
+  const named = t.match(NAMED_OBJECT_ARM);
+  if (named) {
+    const cname = caseName ?? named[1];
+    return {
+      k: "target",
+      caseName: cname,
+      target: structFrom(
+        bag,
+        node.children.filter((c) => !isArmChild(c)),
+        `${hint}${pascal(cname)}`,
+      ),
+    };
   }
 
-  // Map: map[string]<value>
-  if (t.startsWith("map[")) {
-    const m = t.match(/^map\[[^\]]*\](.*)$/s);
-    const valueStr = (m ? m[1] : "").trim();
-    let valueTarget: string;
-    if (valueStr === "" || valueStr.includes(" or ")) {
-      valueTarget = PRELUDE.Document;
-    } else if (valueStr.startsWith("object")) {
-      valueTarget = node.children.length
-        ? addShape(bag, `${hint}Value`, {
-            type: "structure",
-            members: buildMembers(bag, node.children, `${hint}Value`, "nested"),
-          })
-        : PRELUDE.Document;
-    } else {
-      valueTarget = parseTypeCore(valueStr, node, bag, `${hint}Value`);
+  const sub = caseName ? `${hint}${pascal(caseName)}` : `${hint}Case${idx}`;
+  const r = resolveDesc(bag, t, node.children, sub);
+  if (r.target === PRELUDE.Document && !r.nullable) return { k: "doc" };
+  return { k: "target", target: r.target, caseName };
+};
+
+/** Parse one arm written inline (no dedicated bullet of its own). */
+const parseArmString = (
+  bag: Bag,
+  part: string,
+  fieldChildren: FieldNode[],
+  sharedStruct: { target?: string },
+  hint: string,
+  idx: number,
+): Arm => {
+  const t = part.trim();
+  if (FULL_QUOTED.test(t)) return { k: "str", v: JSON.parse(t) };
+  if (NUM_LIT.test(t)) return { k: "num", v: Number(t) };
+  if (t === "true" || t === "false" || t === "boolean") return { k: "bool" };
+  if (t === "null") return { k: "null" };
+  if (t === "unknown" || t === "any") return { k: "doc" };
+  if (t === "string") return { k: "strScalar" };
+  if (t === "number") return { k: "numScalar", int: false };
+  if (t === "integer" || t === "int") return { k: "numScalar", int: true };
+
+  if (/^object\b/.test(t) || NAMED_OBJECT_ARM.test(t)) {
+    // Inline object arms share the one field list the docs printed below the
+    // member — build a single struct and reuse it for every object arm.
+    if (!sharedStruct.target && fieldChildren.length) {
+      sharedStruct.target = structFrom(bag, fieldChildren, hint);
     }
-    return addShape(bag, `${hint}Map`, {
-      type: "map",
-      key: { target: PRELUDE.String },
-      value: { target: valueTarget },
-    });
+    return sharedStruct.target
+      ? { k: "target", target: sharedStruct.target }
+      : { k: "doc" };
+  }
+  if (/^array\b/.test(t) || t.startsWith("map[")) {
+    const r = resolveDesc(bag, t, fieldChildren, `${hint}Case${idx}`);
+    if (r.target === PRELUDE.Document) return { k: "doc" };
+    return { k: "target", target: r.target };
+  }
+  // A bare named type with no children of its own is opaque.
+  return { k: "doc" };
+};
+
+/** Extract the value descriptor from `map[<value>]` (brackets may nest). */
+const mapValueDesc = (t: string): string | undefined => {
+  if (!t.startsWith("map[")) return undefined;
+  let depth = 0;
+  for (let i = 3; i < t.length; i++) {
+    if (t[i] === "[") depth++;
+    else if (t[i] === "]") {
+      depth--;
+      if (depth === 0) return t.slice(4, i).trim();
+    }
+  }
+  return t.slice(4).trim();
+};
+
+/**
+ * Resolve a docs type descriptor (with its children) to a smithy target.
+ * The children — when they are union-arm bullets — are the authoritative,
+ * untruncated list of arms; the inline descriptor is only trusted when the
+ * docs printed no arm bullets.
+ */
+const resolveDesc = (
+  bag: Bag,
+  descRaw: string,
+  children: FieldNode[],
+  hint: string,
+): Resolved => {
+  const desc = stripOptional(descRaw).core.trim();
+  const armChildren = children.filter(isArmChild);
+  const fieldChildren = children.filter((c) => !isArmChild(c));
+  const { parts, truncated } = splitTopUnion(desc);
+  const isArrayDesc = /^array\b/.test(desc);
+
+  if (armChildren.length > 0) {
+    // `array of A or B` lists the ITEM cases as children — unless a child is
+    // itself an array arm, which means the union is at the top level
+    // (`array of string or boolean`).
+    const itemLevel =
+      isArrayDesc && !armChildren.some((c) => /^array\b/.test(c.typeStr));
+    const armHint = itemLevel ? `${hint}Item` : hint;
+    const arms = armChildren.map((c, i) => parseArmNode(bag, c, armHint, i));
+    const r = armsToResolved(bag, arms, armHint);
+    // A named def whose arms this page just enumerated (`ttl: TTL`,
+    // `value: SettingValue`) — remember it for later bare references.
+    if (!itemLevel && parts.length === 1 && NAMED_TYPE.test(desc)) {
+      namedTypeRegistry.set(desc, r.target);
+    }
+    return itemLevel
+      ? { target: listOf(bag, r.target, hint), nullable: false }
+      : r;
   }
 
-  // Scalars.
+  if (parts.length > 1) {
+    // Inline-only union. Object arms share the printed field list.
+    const itemLevel = isArrayDesc;
+    const armHint = itemLevel ? `${hint}Item` : hint;
+    const inlineParts = itemLevel
+      ? [parts[0].replace(/^array(\s+of)?\s+/, ""), ...parts.slice(1)]
+      : parts;
+    const sharedStruct: { target?: string } = {};
+    const arms = inlineParts.map((p, i) =>
+      parseArmString(bag, p, fieldChildren, sharedStruct, armHint, i),
+    );
+    // A truncated inline list with no arm bullets can't be enumerated —
+    // widen literals to their base scalar.
+    const widened = truncated
+      ? arms.map(
+          (a): Arm =>
+            a.k === "str"
+              ? { k: "strScalar" }
+              : a.k === "num"
+                ? { k: "numScalar", int: false }
+                : a,
+        )
+      : arms;
+    const r = armsToResolved(bag, widened, armHint);
+    return itemLevel
+      ? { target: listOf(bag, r.target, hint), nullable: false }
+      : r;
+  }
+
+  // Single descriptor.
+  const t = desc;
+  if (FULL_QUOTED.test(t)) {
+    return { target: enumOf(bag, [JSON.parse(t)], hint), nullable: false };
+  }
+  if (NUM_LIT.test(t)) {
+    const v = Number(t);
+    return {
+      target: Number.isInteger(v) ? intEnumOf(bag, [v], hint) : PRELUDE.Double,
+      nullable: false,
+    };
+  }
   switch (t) {
     case "string":
-      return PRELUDE.String;
+      return { target: PRELUDE.String, nullable: false };
     case "boolean":
     case "true":
     case "false":
-      return PRELUDE.Boolean;
+      return { target: PRELUDE.Boolean, nullable: false };
     case "number":
-      return PRELUDE.Double;
+      return { target: PRELUDE.Double, nullable: false };
     case "integer":
     case "int":
-      return PRELUDE.Integer;
+      return { target: PRELUDE.Integer, nullable: false };
+    case "null":
+      return { target: PRELUDE.Document, nullable: true };
     case "unknown":
     case "any":
-      return PRELUDE.Document;
-    default:
-      // Named shared type (e.g. `Namespace`, `ResponseInfo`). The docs inline
-      // the full field tree as indented children, so build a structure from
-      // them; only a bare name with no children is truly opaque.
-      if (node.children.length) {
-        const members = buildMembers(bag, node.children, hint, "nested");
-        return addShape(bag, hint, { type: "structure", members });
-      }
-      return PRELUDE.Document;
+    case "":
+      return { target: PRELUDE.Document, nullable: false };
   }
+
+  if (isArrayDesc) {
+    // Strip exactly ONE `array of ` / `array ` prefix (nested arrays recurse).
+    const sub = (
+      /^array\s+of\s+/.test(t)
+        ? t.replace(/^array\s+of\s+/, "")
+        : t.replace(/^array\s*/, "")
+    ).trim();
+    if (sub === "" || sub === "array") {
+      return { target: listOf(bag, PRELUDE.Document, hint), nullable: false };
+    }
+    const item = resolveDesc(bag, sub, children, `${hint}Item`);
+    return { target: listOf(bag, item.target, hint), nullable: false };
+  }
+
+  const mv = mapValueDesc(t);
+  if (mv !== undefined) {
+    const value = resolveDesc(bag, mv, children, `${hint}Value`);
+    return { target: mapOf(bag, value.target, hint), nullable: false };
+  }
+
+  if (/^object\b/.test(t)) {
+    if (!fieldChildren.length) {
+      return { target: PRELUDE.Document, nullable: false };
+    }
+    return { target: structFrom(bag, fieldChildren, hint), nullable: false };
+  }
+
+  // Named shared type (e.g. `Namespace`, `ResponseInfo`). The docs inline
+  // the full field tree as indented children; a bare name with no children
+  // is a reference — resolve it against the defs this page already inlined,
+  // and only a name the page never expands stays opaque.
+  if (fieldChildren.length) {
+    const target = structFrom(bag, fieldChildren, hint);
+    if (NAMED_TYPE.test(t)) namedTypeRegistry.set(t, target);
+    return { target, nullable: false };
+  }
+  if (NAMED_TYPE.test(t)) {
+    const known = namedTypeRegistry.get(t);
+    if (known) return { target: known, nullable: false };
+  }
+  return { target: PRELUDE.Document, nullable: false };
 };
 
 /**
@@ -452,13 +859,16 @@ const boundTarget = (
   allowList: boolean,
 ): string => {
   const t = core.trim();
-  if (t.startsWith('"')) return parseTypeCore(t, node, bag, hint); // enum is simple
+  if (t.startsWith('"')) {
+    return resolveDesc(bag, t, node.children, hint).target; // enum is simple
+  }
   if (t.startsWith("array")) {
     if (!allowList) return PRELUDE.String;
-    const sub = t
-      .replace(/^array\s+of\s+/, "")
-      .replace(/^array\s+/, "")
-      .trim();
+    const sub = (
+      /^array\s+of\s+/.test(t)
+        ? t.replace(/^array\s+of\s+/, "")
+        : t.replace(/^array\s*/, "")
+    ).trim();
     const subTarget =
       sub === "" ||
       sub.startsWith("object") ||
@@ -490,44 +900,6 @@ const boundTarget = (
 type Role = "input" | "output" | "nested";
 
 /** Build a structure's `members` map from a list of field nodes. */
-/**
- * A docs union case: a nameless variant line like
- * `Worker object { consumer_id, created_on, ... }` whose children are that
- * case's fields (the docs render `A | B` object unions this way).
- */
-const isUnionCase = (f: FieldNode): boolean =>
-  f.typeStr === "unknown" &&
-  f.children.length > 0 &&
-  /\bobject(\s*\{[^}]*\})?$/.test(f.name);
-
-/**
- * Flatten union-case nodes into their parent's member list: every case's
- * fields merge into one open structure (first occurrence wins), forced
- * optional since presence depends on the variant. Mirrors how the SDK's
- * union types read at runtime — any variant's field may be present.
- */
-const expandUnionCases = (fields: FieldNode[]): FieldNode[] => {
-  let current = fields;
-  while (current.some(isUnionCase)) {
-    const out: FieldNode[] = [];
-    const seen = new Set<string>();
-    for (const f of current) {
-      const expanded = isUnionCase(f) ? f.children : [f];
-      for (const c of expanded) {
-        if (seen.has(c.name)) continue;
-        seen.add(c.name);
-        out.push(
-          isUnionCase(f) && !c.typeStr.startsWith("optional")
-            ? { ...c, typeStr: `optional ${c.typeStr}` }
-            : c,
-        );
-      }
-    }
-    current = out;
-  }
-  return current;
-};
-
 const buildMembers = (
   bag: Bag,
   rawFields: FieldNode[],
@@ -536,7 +908,9 @@ const buildMembers = (
 ): Record<string, any> => {
   const members: Record<string, any> = {};
   const used = new Set<string>();
-  const fields = expandUnionCases(rawFields);
+  // Union-arm bullets are consumed by their parent's type resolution; only
+  // real `name: type` fields become members.
+  const fields = rawFields.filter((f) => f.sep === ":");
 
   for (const f of fields) {
     const { optional, core } = stripOptional(f.typeStr);
@@ -546,14 +920,20 @@ const buildMembers = (
     used.add(mname);
 
     const memberHint = `${hint}${pascal(f.name)}`;
-    const target =
-      f.binding === "label"
-        ? boundTarget(core, f, bag, memberHint, false)
-        : f.binding === "query" || f.binding === "header"
-          ? boundTarget(core, f, bag, memberHint, true)
-          : parseTypeCore(core, f, bag, memberHint);
+    let nullable = false;
+    let target: string;
+    if (f.binding === "label") {
+      target = boundTarget(core, f, bag, memberHint, false);
+    } else if (f.binding === "query" || f.binding === "header") {
+      target = boundTarget(core, f, bag, memberHint, true);
+    } else {
+      const r = resolveDesc(bag, core, f.children, memberHint);
+      target = r.target;
+      nullable = r.nullable;
+    }
     const traits: Record<string, any> = {};
     if (f.doc) traits["smithy.api#documentation"] = f.doc;
+    if (nullable) traits[NULLABLE_TRAIT] = {};
 
     switch (f.binding) {
       case "label":
@@ -616,6 +996,7 @@ const splitDualScope = (
         {
           name: idName,
           typeStr: "string",
+          sep: ":",
           doc: "Identifier.",
           children: [],
         } as FieldNode,
@@ -633,6 +1014,9 @@ const splitDualScope = (
 };
 
 const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
+  // Named-def references only resolve within the one page being converted.
+  namedTypeRegistry = new Map();
+
   // ---- Input ----
   const pathMap = new Map<string, FieldNode>();
   for (const p of parsed.pathParams) pathMap.set(p.name, p);
@@ -653,13 +1037,37 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
     inputFields.push({
       name: san,
       typeStr: pn ? pn.typeStr : "string",
+      sep: ":",
       doc: pn?.doc,
       children: pn?.children ?? [],
       binding: "label",
     });
   }
-  for (const q of parsed.queryParams)
+  for (const q of parsed.queryParams) {
+    // Deep-object query filters (`account: object { id, name }`) serialize
+    // as dotted params on the wire (`account.id=…`). One flat member per
+    // subfield keeps the type accurate AND the wire form correct — the old
+    // string coercion silently broke these filters.
+    const { optional, core } = stripOptional(q.typeStr);
+    const subFields = q.children.filter((c) => c.sep === ":");
+    if (/^object\b/.test(core.trim()) && subFields.length) {
+      for (const sub of subFields) {
+        const subType = stripOptional(sub.typeStr);
+        inputFields.push({
+          ...sub,
+          name: `${q.name}.${sub.name}`,
+          // The parent being optional makes every dotted param optional.
+          typeStr:
+            optional && !subType.optional
+              ? `optional ${subType.core}`
+              : sub.typeStr,
+          binding: "query",
+        });
+      }
+      continue;
+    }
     inputFields.push({ ...q, binding: "query" });
+  }
   for (const h of parsed.headerParams)
     inputFields.push({ ...h, binding: "header" });
   for (const b of parsed.bodyParams)
@@ -672,6 +1080,9 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
     // param literally named `body` (e.g. alerting silences POST an array,
     // KV bulk delete POSTs an array of keys). Mark it httpPayload so the
     // protocol sends the member's value AS the body instead of wrapping it.
+    // A schema-less `body: unknown` gets NO member at all — the runtime path
+    // for undocumented JSON bodies is the request root's opaque passthrough,
+    // and an `unknown` member would only force casts on consumers.
     const bodyMembers = Object.entries(members).filter(
       ([, m]: [string, any]) =>
         !m.traits?.["smithy.api#httpLabel"] &&
@@ -680,7 +1091,11 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
     );
     if (bodyMembers.length === 1 && bodyMembers[0]![0] === "body") {
       const m = bodyMembers[0]![1] as any;
-      m.traits = { ...m.traits, "smithy.api#httpPayload": {} };
+      if (m.target === PRELUDE.Document) {
+        delete members.body;
+      } else {
+        m.traits = { ...m.traits, "smithy.api#httpPayload": {} };
+      }
     }
     inputTarget = addShape(bag, `${opName}Request`, {
       type: "structure",
@@ -694,21 +1109,27 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   const resultNode = parsed.returns.find((n) => n.name === "result");
   if (resultNode) {
     const { core } = stripOptional(resultNode.typeStr);
-    // A named shared type (e.g. `Namespace`) inlines its field tree as
-    // children, exactly like `object` — treat both as an object result.
+    const fieldChildren = resultNode.children.filter((c) => !isArmChild(c));
+    const hasArmChildren = resultNode.children.some(isArmChild);
+    // A plain object result (an `object`, or a named shared type whose field
+    // tree is inlined as children) becomes the output structure itself. A
+    // union / array / map / scalar result instead rides in a single
+    // envelope-payload member.
     const objectLike =
-      core.startsWith("object") ||
-      (resultNode.children.length > 0 &&
-        !core.startsWith("array") &&
-        !core.startsWith("map[") &&
-        !core.startsWith('"') &&
-        !/^(string|boolean|true|false|number|integer|int|unknown|any)$/.test(
-          core.trim(),
-        ));
-    if (objectLike && resultNode.children.length) {
+      !hasArmChildren &&
+      splitTopUnion(core).parts.length === 1 &&
+      (core.startsWith("object") ||
+        (fieldChildren.length > 0 &&
+          !core.startsWith("array") &&
+          !core.startsWith("map[") &&
+          !core.startsWith('"') &&
+          !/^(string|boolean|true|false|number|integer|int|unknown|any)$/.test(
+            core.trim(),
+          )));
+    if (objectLike && fieldChildren.length) {
       const members = buildMembers(
         bag,
-        resultNode.children,
+        fieldChildren,
         `${opName}Response`,
         "output",
       );
@@ -722,14 +1143,14 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
         },
       });
     } else if (!objectLike) {
-      // Non-object result (array/scalar): one member carries the payload,
-      // tagged so it's clear this IS the envelope's `result`.
-      const payloadTarget = parseTypeCore(
-        core,
-        resultNode,
+      // Non-object result (union/array/scalar): one member carries the
+      // payload, tagged so it's clear this IS the envelope's `result`.
+      const payloadTarget = resolveDesc(
         bag,
+        core,
+        resultNode.children,
         `${opName}Result`,
-      );
+      ).target;
       outputTarget = addShape(bag, `${opName}Response`, {
         type: "structure",
         members: {

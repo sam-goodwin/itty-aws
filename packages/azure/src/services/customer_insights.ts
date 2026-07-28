@@ -12,6 +12,36 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Supported permission types. */
+export type PermissionTypes = "Read" | "Write" | "Manage";
+export const PermissionTypes = /*@__PURE__*/ S.String;
+
+/** The permissions associated with the policy. */
+export type AuthorizationPolicyInputPermissionsList =
+  ReadonlyArray<PermissionTypes>;
+export const AuthorizationPolicyInputPermissionsList = /*@__PURE__*/ S.Array(
+  PermissionTypes,
+) as any as S.Schema<AuthorizationPolicyInputPermissionsList>;
+
+/** The authorization policy. */
+export interface AuthorizationPolicyInput {
+  /** The permissions associated with the policy. */
+  permissions: AuthorizationPolicyInputPermissionsList;
+  /** Primary key associated with the policy. */
+  primaryKey?: string;
+  /** Secondary key associated with the policy. */
+  secondaryKey?: string;
+}
+export const AuthorizationPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissions: AuthorizationPolicyInputPermissionsList,
+    primaryKey: S.optional(S.String),
+    secondaryKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizationPolicyInput",
+}) as any as S.Schema<AuthorizationPolicyInput>;
+
 export interface AuthorizationPoliciesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -21,7 +51,7 @@ export interface AuthorizationPoliciesCreateOrUpdateRequest {
   hubName: string;
   /** The name of the policy. */
   authorizationPolicyName: string;
-  body: unknown;
+  properties?: AuthorizationPolicyInput;
 }
 export const AuthorizationPoliciesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30,7 +60,7 @@ export const AuthorizationPoliciesCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       hubName: S.String.pipe(T.Label()),
       authorizationPolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AuthorizationPolicyInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -43,12 +73,8 @@ export const AuthorizationPoliciesCreateOrUpdateRequest =
     identifier: "AuthorizationPoliciesCreateOrUpdateRequest",
   }) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateRequest>;
 
-/** Supported permission types. */
-export type PermissionTypes = "Read" | "Write" | "Manage" | (string & {});
-export const PermissionTypes = /*@__PURE__*/ S.String;
-
 /** The permissions associated with the policy. */
-export type AuthorizationPolicyPermissionsList = PermissionTypes[];
+export type AuthorizationPolicyPermissionsList = ReadonlyArray<PermissionTypes>;
 export const AuthorizationPolicyPermissionsList = /*@__PURE__*/ S.Array(
   PermissionTypes,
 ) as any as S.Schema<AuthorizationPolicyPermissionsList>;
@@ -193,7 +219,7 @@ export const AuthorizationPolicyResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type AuthorizationPolicyListResultValueList =
-  AuthorizationPolicyResourceFormat[];
+  ReadonlyArray<AuthorizationPolicyResourceFormat>;
 export const AuthorizationPolicyListResultValueList = /*@__PURE__*/ S.Array(
   AuthorizationPolicyResourceFormat,
 ) as any as S.Schema<AuthorizationPolicyListResultValueList>;
@@ -272,40 +298,6 @@ export const AuthorizationPoliciesRegenerateSecondaryKeyRequest =
     identifier: "AuthorizationPoliciesRegenerateSecondaryKeyRequest",
   }) as any as S.Schema<AuthorizationPoliciesRegenerateSecondaryKeyRequest>;
 
-export interface ConnectorMappingsCreateOrUpdateRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the connector. */
-  connectorName: string;
-  /** The name of the connector mapping. */
-  mappingName: string;
-  body: unknown;
-}
-export const ConnectorMappingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      hubName: S.String.pipe(T.Label()),
-      connectorName: S.String.pipe(T.Label()),
-      mappingName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
-        code: 200,
-        apiVersion: "2017-04-26",
-      }),
-    ),
-).annotate({
-  identifier: "ConnectorMappingsCreateOrUpdateRequest",
-}) as any as S.Schema<ConnectorMappingsCreateOrUpdateRequest>;
-
 /** Type of connector. */
 export type ConnectorType =
   | "None"
@@ -313,25 +305,22 @@ export type ConnectorType =
   | "AzureBlob"
   | "Salesforce"
   | "ExchangeOnline"
-  | "Outbound"
-  | (string & {});
+  | "Outbound";
 export const ConnectorType = /*@__PURE__*/ S.String;
 
 /** Defines which entity type the file should map to. */
-export type ConnectorMappingEntityType =
+export type ConnectorMappingInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
-export const ConnectorMappingEntityType = /*@__PURE__*/ S.String;
+  | "Relationship";
+export const ConnectorMappingInputEntityType = /*@__PURE__*/ S.String;
 
 /** The type of error management to use for the mapping. */
 export type ConnectorMappingErrorManagementErrorManagementType =
   | "RejectAndContinue"
   | "StopImport"
-  | "RejectUntilLimit"
-  | (string & {});
+  | "RejectUntilLimit";
 export const ConnectorMappingErrorManagementErrorManagementType =
   /*@__PURE__*/ S.String;
 
@@ -352,7 +341,7 @@ export const ConnectorMappingErrorManagement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorMappingErrorManagement>;
 
 /** The type mapping format. */
-export type ConnectorMappingFormatFormatType = "TextFormat" | (string & {});
+export type ConnectorMappingFormatFormatType = "TextFormat";
 export const ConnectorMappingFormatFormatType = /*@__PURE__*/ S.String;
 
 /** Connector mapping property format. */
@@ -389,8 +378,7 @@ export type ConnectorMappingAvailabilityFrequency =
   | "Hour"
   | "Day"
   | "Week"
-  | "Month"
-  | (string & {});
+  | "Month";
 export const ConnectorMappingAvailabilityFrequency = /*@__PURE__*/ S.String;
 
 /** Connector mapping property availability. */
@@ -433,7 +421,7 @@ export const ConnectorMappingStructure = /*@__PURE__*/ S.suspend(() =>
 
 /** Ingestion mapping information at property level. */
 export type ConnectorMappingPropertiesStructureList =
-  ConnectorMappingStructure[];
+  ReadonlyArray<ConnectorMappingStructure>;
 export const ConnectorMappingPropertiesStructureList = /*@__PURE__*/ S.Array(
   ConnectorMappingStructure,
 ) as any as S.Schema<ConnectorMappingPropertiesStructureList>;
@@ -442,8 +430,7 @@ export const ConnectorMappingPropertiesStructureList = /*@__PURE__*/ S.Array(
 export type ConnectorMappingCompleteOperationCompletionOperationType =
   | "DoNothing"
   | "DeleteFile"
-  | "MoveFile"
-  | (string & {});
+  | "MoveFile";
 export const ConnectorMappingCompleteOperationCompletionOperationType =
   /*@__PURE__*/ S.String;
 
@@ -499,6 +486,76 @@ export const ConnectorMappingProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorMappingProperties",
 }) as any as S.Schema<ConnectorMappingProperties>;
 
+/** The connector mapping definition. */
+export interface ConnectorMappingInput {
+  /** Type of connector. */
+  connectorType?: ConnectorType;
+  /** Defines which entity type the file should map to. */
+  entityType: ConnectorMappingInputEntityType;
+  /** The mapping entity name. */
+  entityTypeName: string;
+  /** Display name for the connector mapping. */
+  displayName?: string;
+  /** The description of the connector mapping. */
+  description?: string;
+  /** The properties of the mapping. */
+  mappingProperties: ConnectorMappingProperties;
+}
+export const ConnectorMappingInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorType: S.optional(ConnectorType),
+    entityType: ConnectorMappingInputEntityType,
+    entityTypeName: S.String,
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    mappingProperties: ConnectorMappingProperties,
+  }),
+).annotate({
+  identifier: "ConnectorMappingInput",
+}) as any as S.Schema<ConnectorMappingInput>;
+
+export interface ConnectorMappingsCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the connector. */
+  connectorName: string;
+  /** The name of the connector mapping. */
+  mappingName: string;
+  properties?: ConnectorMappingInput;
+}
+export const ConnectorMappingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      hubName: S.String.pipe(T.Label()),
+      connectorName: S.String.pipe(T.Label()),
+      mappingName: S.String.pipe(T.Label()),
+      properties: S.optional(ConnectorMappingInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings/{mappingName}",
+        code: 200,
+        apiVersion: "2017-04-26",
+      }),
+    ),
+).annotate({
+  identifier: "ConnectorMappingsCreateOrUpdateRequest",
+}) as any as S.Schema<ConnectorMappingsCreateOrUpdateRequest>;
+
+/** Defines which entity type the file should map to. */
+export type ConnectorMappingEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const ConnectorMappingEntityType = /*@__PURE__*/ S.String;
+
 /** State of connector mapping. */
 export type ConnectorMappingState =
   | "Creating"
@@ -507,8 +564,7 @@ export type ConnectorMappingState =
   | "Ready"
   | "Running"
   | "Stopped"
-  | "Expiring"
-  | (string & {});
+  | "Expiring";
 export const ConnectorMappingState = /*@__PURE__*/ S.String;
 
 /** The connector mapping definition. */
@@ -728,7 +784,7 @@ export const ConnectorMappingResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type ConnectorMappingListResultValueList =
-  ConnectorMappingResourceFormat[];
+  ReadonlyArray<ConnectorMappingResourceFormat>;
 export const ConnectorMappingListResultValueList = /*@__PURE__*/ S.Array(
   ConnectorMappingResourceFormat,
 ) as any as S.Schema<ConnectorMappingListResultValueList>;
@@ -749,6 +805,41 @@ export const ConnectorMappingListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorMappingListResult",
 }) as any as S.Schema<ConnectorMappingListResult>;
 
+/** The connector properties. */
+export type ConnectorInputConnectorPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConnectorInputConnectorPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConnectorInputConnectorPropertiesMap>;
+
+/** Properties of connector. */
+export interface ConnectorInput {
+  /** Name of the connector. */
+  connectorName?: string;
+  /** Type of connector. */
+  connectorType: ConnectorType;
+  /** Display name of the connector. */
+  displayName?: string;
+  /** Description of the connector. */
+  description?: string;
+  /** The connector properties. */
+  connectorProperties: ConnectorInputConnectorPropertiesMap;
+  /** If this is an internal connector. */
+  isInternal?: boolean;
+}
+export const ConnectorInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorName: S.optional(S.String),
+    connectorType: ConnectorType,
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    connectorProperties: ConnectorInputConnectorPropertiesMap,
+    isInternal: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ConnectorInput" }) as any as S.Schema<ConnectorInput>;
+
 export interface ConnectorsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -758,7 +849,7 @@ export interface ConnectorsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the connector. */
   connectorName: string;
-  body: unknown;
+  properties?: ConnectorInput;
 }
 export const ConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -766,7 +857,7 @@ export const ConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     connectorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ConnectorInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -795,8 +886,7 @@ export type ConnectorState =
   | "Ready"
   | "Expiring"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ConnectorState = /*@__PURE__*/ S.String;
 
 /** Properties of connector. */
@@ -990,7 +1080,8 @@ export const ConnectorResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorResourceFormat>;
 
 /** Results of the list operation. */
-export type ConnectorListResultValueList = ConnectorResourceFormat[];
+export type ConnectorListResultValueList =
+  ReadonlyArray<ConnectorResourceFormat>;
 export const ConnectorListResultValueList = /*@__PURE__*/ S.Array(
   ConnectorResourceFormat,
 ) as any as S.Schema<ConnectorListResultValueList>;
@@ -1011,6 +1102,50 @@ export const ConnectorListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorListResult",
 }) as any as S.Schema<ConnectorListResult>;
 
+/** Resource tags. */
+export type HubsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HubsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
+
+/** Hub billing info. */
+export interface HubBillingInfoFormat {
+  /** The sku name. */
+  skuName?: string;
+  /** The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions. */
+  minUnits?: number;
+  /** The maximum number of units can be used. One unit is 10,000 Profiles and 100,000 Interactions. */
+  maxUnits?: number;
+}
+export const HubBillingInfoFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skuName: S.optional(S.String),
+    minUnits: S.optional(S.Number),
+    maxUnits: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HubBillingInfoFormat",
+}) as any as S.Schema<HubBillingInfoFormat>;
+
+/** Properties of hub. */
+export interface HubPropertiesFormatInput {
+  /** The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0. */
+  tenantFeatures?: number;
+  /** Billing settings of the hub. */
+  hubBillingInfo?: HubBillingInfoFormat;
+}
+export const HubPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantFeatures: S.optional(S.Number),
+    hubBillingInfo: S.optional(HubBillingInfoFormat),
+  }),
+).annotate({
+  identifier: "HubPropertiesFormatInput",
+}) as any as S.Schema<HubPropertiesFormatInput>;
+
 export interface HubsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1018,14 +1153,20 @@ export interface HubsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Hub. */
   hubName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsCreateOrUpdateRequestTagsMap;
+  properties?: HubPropertiesFormatInput;
 }
 export const HubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(HubsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(HubPropertiesFormatInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1046,25 +1187,6 @@ export const HubsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
-
-/** Hub billing info. */
-export interface HubBillingInfoFormat {
-  /** The sku name. */
-  skuName?: string;
-  /** The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions. */
-  minUnits?: number;
-  /** The maximum number of units can be used. One unit is 10,000 Profiles and 100,000 Interactions. */
-  maxUnits?: number;
-}
-export const HubBillingInfoFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuName: S.optional(S.String),
-    minUnits: S.optional(S.Number),
-    maxUnits: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HubBillingInfoFormat",
-}) as any as S.Schema<HubBillingInfoFormat>;
 
 /** Properties of hub. */
 export interface HubPropertiesFormat {
@@ -1257,7 +1379,7 @@ export const Hub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hub" }) as any as S.Schema<Hub>;
 
 /** Results of the list operation. */
-export type HubListResultValueList = Hub[];
+export type HubListResultValueList = ReadonlyArray<Hub>;
 export const HubListResultValueList = /*@__PURE__*/ S.Array(
   Hub,
 ) as any as S.Schema<HubListResultValueList>;
@@ -1298,6 +1420,13 @@ export const HubsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HubsListByResourceGroupRequest",
 }) as any as S.Schema<HubsListByResourceGroupRequest>;
 
+/** Resource tags. */
+export type HubsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const HubsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HubsUpdateRequestTagsMap>;
+
 export interface HubsUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1305,14 +1434,20 @@ export interface HubsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Hub. */
   hubName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: HubsUpdateRequestTagsMap;
+  properties?: HubPropertiesFormatInput;
 }
 export const HubsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(HubsUpdateRequestTagsMap),
+    properties: S.optional(HubPropertiesFormatInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1365,14 +1500,21 @@ export interface ImagesGetUploadUrlForDataRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
-  body: unknown;
+  /** Type of entity. Can be Profile or Interaction. */
+  entityType?: string;
+  /** Name of the entity type. */
+  entityTypeName?: string;
+  /** Relative path of the image. */
+  relativePath?: string;
 }
 export const ImagesGetUploadUrlForDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    entityType: S.optional(S.String),
+    entityTypeName: S.optional(S.String),
+    relativePath: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1411,7 +1553,12 @@ export interface ImagesGetUploadUrlForEntityTypeRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
-  body: unknown;
+  /** Type of entity. Can be Profile or Interaction. */
+  entityType?: string;
+  /** Name of the entity type. */
+  entityTypeName?: string;
+  /** Relative path of the image. */
+  relativePath?: string;
 }
 export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1419,7 +1566,9 @@ export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       hubName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      entityType: S.optional(S.String),
+      entityTypeName: S.optional(S.String),
+      relativePath: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1432,6 +1581,330 @@ export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(
   identifier: "ImagesGetUploadUrlForEntityTypeRequest",
 }) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>;
 
+export type InteractionTypeDefinitionInputAttributesValueList =
+  ReadonlyArray<string>;
+export const InteractionTypeDefinitionInputAttributesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesValueList>;
+
+/** The attributes for the Type. */
+export type InteractionTypeDefinitionInputAttributesMap = {
+  [key: string]: InteractionTypeDefinitionInputAttributesValueList | undefined;
+};
+export const InteractionTypeDefinitionInputAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    InteractionTypeDefinitionInputAttributesValueList,
+  ) as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
+
+/** Localized descriptions for the property. */
+export type InteractionTypeDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputDescriptionMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
+
+/** Localized display names for the property. */
+export type InteractionTypeDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputDisplayNameMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
+
+export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
+  [key: string]: string | undefined;
+};
+export const InteractionTypeDefinitionInputLocalizedAttributesValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesValueMap>;
+
+/** Any custom localized attributes for the Type. */
+export type InteractionTypeDefinitionInputLocalizedAttributesMap = {
+  [key: string]:
+    | InteractionTypeDefinitionInputLocalizedAttributesValueMap
+    | undefined;
+};
+export const InteractionTypeDefinitionInputLocalizedAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    InteractionTypeDefinitionInputLocalizedAttributesValueMap,
+  ) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
+
+/** Type of entity. */
+export type InteractionTypeDefinitionInputEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const InteractionTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
+
+/** Localized names of the enum member. */
+export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
+
+/** Valid enum values in case of an enum property. */
+export interface ProfileEnumValidValuesFormat {
+  /** The integer value of the enum member. */
+  value?: number;
+  /** Localized names of the enum member. */
+  localizedValueNames?: ProfileEnumValidValuesFormatLocalizedValueNamesMap;
+}
+export const ProfileEnumValidValuesFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Number),
+    localizedValueNames: S.optional(
+      ProfileEnumValidValuesFormatLocalizedValueNamesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfileEnumValidValuesFormat",
+}) as any as S.Schema<ProfileEnumValidValuesFormat>;
+
+/** Describes valid values for an enum property. */
+export type PropertyDefinitionInputEnumValidValuesList =
+  ReadonlyArray<ProfileEnumValidValuesFormat>;
+export const PropertyDefinitionInputEnumValidValuesList = /*@__PURE__*/ S.Array(
+  ProfileEnumValidValuesFormat,
+) as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
+
+/** Property definition. */
+export interface PropertyDefinitionInput {
+  /** Array value separator for properties with isArray set. */
+  arrayValueSeparator?: string;
+  /** Describes valid values for an enum property. */
+  enumValidValues?: PropertyDefinitionInputEnumValidValuesList;
+  /** Name of the property. */
+  fieldName: string;
+  /** Type of the property. */
+  fieldType: string;
+  /** Indicates if the property is actually an array of the fieldType above on the data api. */
+  isArray?: boolean;
+  /** Indicates if the property is an enum. */
+  isEnum?: boolean;
+  /** Indicates if the property is an flag enum. */
+  isFlagEnum?: boolean;
+  /** Whether the property is an Image. */
+  isImage?: boolean;
+  /** Whether the property is a localized string. */
+  isLocalizedString?: boolean;
+  /** Whether the property is a name or a part of name. */
+  isName?: boolean;
+  /** Whether property value is required on instances, IsRequired field only for Interaction. Profile Instance will not check for required field. */
+  isRequired?: boolean;
+  /** The ID associated with the property. */
+  propertyId?: string;
+  /** URL encoded schema.org item prop link for the property. */
+  schemaItemPropLink?: string;
+  /** Max length of string. Used only if type is string. */
+  maxLength?: number;
+  /** Whether property is available in graph or not. */
+  isAvailableInGraph?: boolean;
+}
+export const PropertyDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arrayValueSeparator: S.optional(S.String),
+    enumValidValues: S.optional(PropertyDefinitionInputEnumValidValuesList),
+    fieldName: S.String,
+    fieldType: S.String,
+    isArray: S.optional(S.Boolean),
+    isEnum: S.optional(S.Boolean),
+    isFlagEnum: S.optional(S.Boolean),
+    isImage: S.optional(S.Boolean),
+    isLocalizedString: S.optional(S.Boolean),
+    isName: S.optional(S.Boolean),
+    isRequired: S.optional(S.Boolean),
+    propertyId: S.optional(S.String),
+    schemaItemPropLink: S.optional(S.String),
+    maxLength: S.optional(S.Number),
+    isAvailableInGraph: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PropertyDefinitionInput",
+}) as any as S.Schema<PropertyDefinitionInput>;
+
+/** The properties of the Profile. */
+export type InteractionTypeDefinitionInputFieldsList =
+  ReadonlyArray<PropertyDefinitionInput>;
+export const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinitionInput,
+) as any as S.Schema<InteractionTypeDefinitionInputFieldsList>;
+
+/** The id property names. Properties which uniquely identify an interaction instance. */
+export type InteractionTypeDefinitionInputIdPropertyNamesList =
+  ReadonlyArray<string>;
+export const InteractionTypeDefinitionInputIdPropertyNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
+
+/** The participant property reference. */
+export interface ParticipantPropertyReference {
+  /** The source property that maps to the target property. */
+  sourcePropertyName: string;
+  /** The target property that maps to the source property. */
+  targetPropertyName: string;
+}
+export const ParticipantPropertyReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourcePropertyName: S.String,
+    targetPropertyName: S.String,
+  }),
+).annotate({
+  identifier: "ParticipantPropertyReference",
+}) as any as S.Schema<ParticipantPropertyReference>;
+
+/** The property references. */
+export type ParticipantParticipantPropertyReferencesList =
+  ReadonlyArray<ParticipantPropertyReference>;
+export const ParticipantParticipantPropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantPropertyReference,
+  ) as any as S.Schema<ParticipantParticipantPropertyReferencesList>;
+
+/** Localized display name. */
+export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
+export const ParticipantDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ParticipantDisplayNameMap>;
+
+/** Localized descriptions. */
+export type ParticipantDescriptionMap = { [key: string]: string | undefined };
+export const ParticipantDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ParticipantDescriptionMap>;
+
+/** Describes a profile type participating in an interaction. */
+export interface Participant {
+  /** Profile type name. */
+  profileTypeName: string;
+  /** The property references. */
+  participantPropertyReferences: ParticipantParticipantPropertyReferencesList;
+  /** Participant name. */
+  participantName: string;
+  /** Localized display name. */
+  displayName?: ParticipantDisplayNameMap;
+  /** Localized descriptions. */
+  description?: ParticipantDescriptionMap;
+  /** The role that the participant is playing in the interaction. */
+  role?: string;
+}
+export const Participant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileTypeName: S.String,
+    participantPropertyReferences: ParticipantParticipantPropertyReferencesList,
+    participantName: S.String,
+    displayName: S.optional(ParticipantDisplayNameMap),
+    description: S.optional(ParticipantDescriptionMap),
+    role: S.optional(S.String),
+  }),
+).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
+
+/** Profiles that participated in the interaction. */
+export type InteractionTypeDefinitionInputParticipantProfilesList =
+  ReadonlyArray<Participant>;
+export const InteractionTypeDefinitionInputParticipantProfilesList =
+  /*@__PURE__*/ S.Array(
+    Participant,
+  ) as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
+
+/** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
+export interface DataSourceInput {}
+export const DataSourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DataSourceInput",
+}) as any as S.Schema<DataSourceInput>;
+
+/** The Interaction Type Definition */
+export interface InteractionTypeDefinitionInput {
+  /** The attributes for the Type. */
+  attributes?: InteractionTypeDefinitionInputAttributesMap;
+  /** Localized descriptions for the property. */
+  description?: InteractionTypeDefinitionInputDescriptionMap;
+  /** Localized display names for the property. */
+  displayName?: InteractionTypeDefinitionInputDisplayNameMap;
+  /** Any custom localized attributes for the Type. */
+  localizedAttributes?: InteractionTypeDefinitionInputLocalizedAttributesMap;
+  /** Small Image associated with the Property or EntityType. */
+  smallImage?: string;
+  /** Medium Image associated with the Property or EntityType. */
+  mediumImage?: string;
+  /** Large Image associated with the Property or EntityType. */
+  largeImage?: string;
+  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
+  apiEntitySetName?: string;
+  /** Type of entity. */
+  entityType?: InteractionTypeDefinitionInputEntityType;
+  /** The properties of the Profile. */
+  fields?: InteractionTypeDefinitionInputFieldsList;
+  /** The instance count. */
+  instancesCount?: number;
+  /** The schema org link. This helps ACI identify and suggest semantic models. */
+  schemaItemTypeLink?: string;
+  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
+  timestampFieldName?: string;
+  /** The name of the entity. */
+  typeName?: string;
+  /** The id property names. Properties which uniquely identify an interaction instance. */
+  idPropertyNames?: InteractionTypeDefinitionInputIdPropertyNamesList;
+  /** Profiles that participated in the interaction. */
+  participantProfiles?: InteractionTypeDefinitionInputParticipantProfilesList;
+  /** The primary participant property name for an interaction ,This is used to logically represent the agent of the interaction, Specify the participant name here from ParticipantName. */
+  primaryParticipantProfilePropertyName?: string;
+  /** Default data source is specifically used in cases where data source is not specified in an instance. */
+  defaultDataSource?: DataSourceInput;
+  /** An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level. */
+  isActivity?: boolean;
+}
+export const InteractionTypeDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: S.optional(InteractionTypeDefinitionInputAttributesMap),
+    description: S.optional(InteractionTypeDefinitionInputDescriptionMap),
+    displayName: S.optional(InteractionTypeDefinitionInputDisplayNameMap),
+    localizedAttributes: S.optional(
+      InteractionTypeDefinitionInputLocalizedAttributesMap,
+    ),
+    smallImage: S.optional(S.String),
+    mediumImage: S.optional(S.String),
+    largeImage: S.optional(S.String),
+    apiEntitySetName: S.optional(S.String),
+    entityType: S.optional(InteractionTypeDefinitionInputEntityType),
+    fields: S.optional(InteractionTypeDefinitionInputFieldsList),
+    instancesCount: S.optional(S.Number),
+    schemaItemTypeLink: S.optional(S.String),
+    timestampFieldName: S.optional(S.String),
+    typeName: S.optional(S.String),
+    idPropertyNames: S.optional(
+      InteractionTypeDefinitionInputIdPropertyNamesList,
+    ),
+    participantProfiles: S.optional(
+      InteractionTypeDefinitionInputParticipantProfilesList,
+    ),
+    primaryParticipantProfilePropertyName: S.optional(S.String),
+    defaultDataSource: S.optional(DataSourceInput),
+    isActivity: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InteractionTypeDefinitionInput",
+}) as any as S.Schema<InteractionTypeDefinitionInput>;
+
 export interface InteractionsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1441,7 +1914,7 @@ export interface InteractionsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the interaction. */
   interactionName: string;
-  body: unknown;
+  properties?: InteractionTypeDefinitionInput;
 }
 export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1449,7 +1922,7 @@ export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     interactionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InteractionTypeDefinitionInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1462,7 +1935,8 @@ export const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InteractionsCreateOrUpdateRequest",
 }) as any as S.Schema<InteractionsCreateOrUpdateRequest>;
 
-export type InteractionTypeDefinitionAttributesValueList = string[];
+export type InteractionTypeDefinitionAttributesValueList =
+  ReadonlyArray<string>;
 export const InteractionTypeDefinitionAttributesValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1521,41 +1995,12 @@ export type InteractionTypeDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
+  | "Relationship";
 export const InteractionTypeDefinitionEntityType = /*@__PURE__*/ S.String;
-
-/** Localized names of the enum member. */
-export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
-  [key: string]: string | undefined;
-};
-export const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
-
-/** Valid enum values in case of an enum property. */
-export interface ProfileEnumValidValuesFormat {
-  /** The integer value of the enum member. */
-  value?: number;
-  /** Localized names of the enum member. */
-  localizedValueNames?: ProfileEnumValidValuesFormatLocalizedValueNamesMap;
-}
-export const ProfileEnumValidValuesFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    localizedValueNames: S.optional(
-      ProfileEnumValidValuesFormatLocalizedValueNamesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfileEnumValidValuesFormat",
-}) as any as S.Schema<ProfileEnumValidValuesFormat>;
 
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionEnumValidValuesList =
-  ProfileEnumValidValuesFormat[];
+  ReadonlyArray<ProfileEnumValidValuesFormat>;
 export const PropertyDefinitionEnumValidValuesList = /*@__PURE__*/ S.Array(
   ProfileEnumValidValuesFormat,
 ) as any as S.Schema<PropertyDefinitionEnumValidValuesList>;
@@ -1564,12 +2009,11 @@ export const PropertyDefinitionEnumValidValuesList = /*@__PURE__*/ S.Array(
 export type DataSourceDataSourceType =
   | "Connector"
   | "LinkInteraction"
-  | "SystemDefault"
-  | (string & {});
+  | "SystemDefault";
 export const DataSourceDataSourceType = /*@__PURE__*/ S.String;
 
 /** The data source status. */
-export type DataSourceStatus = "None" | "Active" | "Deleted" | (string & {});
+export type DataSourceStatus = "None" | "Active" | "Deleted";
 export const DataSourceStatus = /*@__PURE__*/ S.String;
 
 /** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
@@ -1612,7 +2056,7 @@ export const DataSourcePrecedence = /*@__PURE__*/ S.suspend(() =>
 
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type PropertyDefinitionDataSourcePrecedenceRulesList =
-  DataSourcePrecedence[];
+  ReadonlyArray<DataSourcePrecedence>;
 export const PropertyDefinitionDataSourcePrecedenceRulesList =
   /*@__PURE__*/ S.Array(
     DataSourcePrecedence,
@@ -1679,7 +2123,8 @@ export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyDefinition>;
 
 /** The properties of the Profile. */
-export type InteractionTypeDefinitionFieldsList = PropertyDefinition[];
+export type InteractionTypeDefinitionFieldsList =
+  ReadonlyArray<PropertyDefinition>;
 export const InteractionTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<InteractionTypeDefinitionFieldsList>;
@@ -1691,83 +2136,20 @@ export type ProvisioningState =
   | "Expiring"
   | "Deleting"
   | "HumanIntervention"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
-export type InteractionTypeDefinitionIdPropertyNamesList = string[];
+export type InteractionTypeDefinitionIdPropertyNamesList =
+  ReadonlyArray<string>;
 export const InteractionTypeDefinitionIdPropertyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InteractionTypeDefinitionIdPropertyNamesList>;
 
-/** The participant property reference. */
-export interface ParticipantPropertyReference {
-  /** The source property that maps to the target property. */
-  sourcePropertyName: string;
-  /** The target property that maps to the source property. */
-  targetPropertyName: string;
-}
-export const ParticipantPropertyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePropertyName: S.String,
-    targetPropertyName: S.String,
-  }),
-).annotate({
-  identifier: "ParticipantPropertyReference",
-}) as any as S.Schema<ParticipantPropertyReference>;
-
-/** The property references. */
-export type ParticipantParticipantPropertyReferencesList =
-  ParticipantPropertyReference[];
-export const ParticipantParticipantPropertyReferencesList =
-  /*@__PURE__*/ S.Array(
-    ParticipantPropertyReference,
-  ) as any as S.Schema<ParticipantParticipantPropertyReferencesList>;
-
-/** Localized display name. */
-export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
-export const ParticipantDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDisplayNameMap>;
-
-/** Localized descriptions. */
-export type ParticipantDescriptionMap = { [key: string]: string | undefined };
-export const ParticipantDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDescriptionMap>;
-
-/** Describes a profile type participating in an interaction. */
-export interface Participant {
-  /** Profile type name. */
-  profileTypeName: string;
-  /** The property references. */
-  participantPropertyReferences: ParticipantParticipantPropertyReferencesList;
-  /** Participant name. */
-  participantName: string;
-  /** Localized display name. */
-  displayName?: ParticipantDisplayNameMap;
-  /** Localized descriptions. */
-  description?: ParticipantDescriptionMap;
-  /** The role that the participant is playing in the interaction. */
-  role?: string;
-}
-export const Participant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileTypeName: S.String,
-    participantPropertyReferences: ParticipantParticipantPropertyReferencesList,
-    participantName: S.String,
-    displayName: S.optional(ParticipantDisplayNameMap),
-    description: S.optional(ParticipantDescriptionMap),
-    role: S.optional(S.String),
-  }),
-).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
-
 /** Profiles that participated in the interaction. */
-export type InteractionTypeDefinitionParticipantProfilesList = Participant[];
+export type InteractionTypeDefinitionParticipantProfilesList =
+  ReadonlyArray<Participant>;
 export const InteractionTypeDefinitionParticipantProfilesList =
   /*@__PURE__*/ S.Array(
     Participant,
@@ -1775,7 +2157,7 @@ export const InteractionTypeDefinitionParticipantProfilesList =
 
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type InteractionTypeDefinitionDataSourcePrecedenceRulesList =
-  DataSourcePrecedence[];
+  ReadonlyArray<DataSourcePrecedence>;
 export const InteractionTypeDefinitionDataSourcePrecedenceRulesList =
   /*@__PURE__*/ S.Array(
     DataSourcePrecedence,
@@ -1987,7 +2369,8 @@ export const InteractionResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InteractionResourceFormat>;
 
 /** Results of the list operation. */
-export type InteractionListResultValueList = InteractionResourceFormat[];
+export type InteractionListResultValueList =
+  ReadonlyArray<InteractionResourceFormat>;
 export const InteractionListResultValueList = /*@__PURE__*/ S.Array(
   InteractionResourceFormat,
 ) as any as S.Schema<InteractionListResultValueList>;
@@ -2055,7 +2438,7 @@ export const ParticipantProfilePropertyReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The property references for the profile type. */
 export type RelationshipsLookupProfilePropertyReferencesList =
-  ParticipantProfilePropertyReference[];
+  ReadonlyArray<ParticipantProfilePropertyReference>;
 export const RelationshipsLookupProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -2063,7 +2446,7 @@ export const RelationshipsLookupProfilePropertyReferencesList =
 
 /** The property references for the related profile type. */
 export type RelationshipsLookupRelatedProfilePropertyReferencesList =
-  ParticipantProfilePropertyReference[];
+  ReadonlyArray<ParticipantProfilePropertyReference>;
 export const RelationshipsLookupRelatedProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -2100,7 +2483,7 @@ export const RelationshipsLookup = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested relationships for the type. */
 export type SuggestRelationshipLinksResponseSuggestedRelationshipsList =
-  RelationshipsLookup[];
+  ReadonlyArray<RelationshipsLookup>;
 export const SuggestRelationshipLinksResponseSuggestedRelationshipsList =
   /*@__PURE__*/ S.Array(
     RelationshipsLookup,
@@ -2124,71 +2507,43 @@ export const SuggestRelationshipLinksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuggestRelationshipLinksResponse",
 }) as any as S.Schema<SuggestRelationshipLinksResponse>;
 
-export interface KpiCreateOrUpdateRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the KPI. */
-  kpiName: string;
-  body: unknown;
-}
-export const KpiCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    kpiName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "KpiCreateOrUpdateRequest",
-}) as any as S.Schema<KpiCreateOrUpdateRequest>;
-
 /** The mapping entity type. */
-export type KpiDefinitionEntityType =
+export type KpiDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
-export const KpiDefinitionEntityType = /*@__PURE__*/ S.String;
+  | "Relationship";
+export const KpiDefinitionInputEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the KPI. */
-export type KpiDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const KpiDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+export type KpiDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const KpiDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<KpiDefinitionDisplayNameMap>;
+) as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
 
 /** Localized description for the KPI. */
-export type KpiDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const KpiDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+export type KpiDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const KpiDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<KpiDefinitionDescriptionMap>;
+) as any as S.Schema<KpiDefinitionInputDescriptionMap>;
 
 /** The calculation window. */
-export type KpiDefinitionCalculationWindow =
+export type KpiDefinitionInputCalculationWindow =
   | "Lifetime"
   | "Hour"
   | "Day"
   | "Week"
-  | "Month"
-  | (string & {});
-export const KpiDefinitionCalculationWindow = /*@__PURE__*/ S.String;
+  | "Month";
+export const KpiDefinitionInputCalculationWindow = /*@__PURE__*/ S.String;
 
 /** The computation function for the KPI. */
-export type KpiDefinitionFunction =
+export type KpiDefinitionInputFunction =
   | "Sum"
   | "Avg"
   | "Min"
@@ -2196,70 +2551,14 @@ export type KpiDefinitionFunction =
   | "Last"
   | "Count"
   | "None"
-  | "CountDistinct"
-  | (string & {});
-export const KpiDefinitionFunction = /*@__PURE__*/ S.String;
+  | "CountDistinct";
+export const KpiDefinitionInputFunction = /*@__PURE__*/ S.String;
 
 /** the group by properties for the KPI. */
-export type KpiDefinitionGroupByList = string[];
-export const KpiDefinitionGroupByList = /*@__PURE__*/ S.Array(
+export type KpiDefinitionInputGroupByList = ReadonlyArray<string>;
+export const KpiDefinitionInputGroupByList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<KpiDefinitionGroupByList>;
-
-/** The display name. */
-export type KpiGroupByMetadataDisplayNameMap = {
-  [key: string]: string | undefined;
-};
-export const KpiGroupByMetadataDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiGroupByMetadataDisplayNameMap>;
-
-/** The KPI GroupBy field metadata. */
-export interface KpiGroupByMetadata {
-  /** The display name. */
-  displayName?: KpiGroupByMetadataDisplayNameMap;
-  /** The name of the field. */
-  fieldName?: string;
-  /** The type of the field. */
-  fieldType?: string;
-}
-export const KpiGroupByMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(KpiGroupByMetadataDisplayNameMap),
-    fieldName: S.optional(S.String),
-    fieldType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KpiGroupByMetadata",
-}) as any as S.Schema<KpiGroupByMetadata>;
-
-/** The KPI GroupByMetadata. */
-export type KpiDefinitionGroupByMetadataList = KpiGroupByMetadata[];
-export const KpiDefinitionGroupByMetadataList = /*@__PURE__*/ S.Array(
-  KpiGroupByMetadata,
-) as any as S.Schema<KpiDefinitionGroupByMetadataList>;
-
-/** The KPI participant profile metadata. */
-export interface KpiParticipantProfilesMetadata {
-  /** Name of the type. */
-  typeName: string;
-}
-export const KpiParticipantProfilesMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    typeName: S.String,
-  }),
-).annotate({
-  identifier: "KpiParticipantProfilesMetadata",
-}) as any as S.Schema<KpiParticipantProfilesMetadata>;
-
-/** The participant profiles. */
-export type KpiDefinitionParticipantProfilesMetadataList =
-  KpiParticipantProfilesMetadata[];
-export const KpiDefinitionParticipantProfilesMetadataList =
-  /*@__PURE__*/ S.Array(
-    KpiParticipantProfilesMetadata,
-  ) as any as S.Schema<KpiDefinitionParticipantProfilesMetadataList>;
+) as any as S.Schema<KpiDefinitionInputGroupByList>;
 
 /** Defines the KPI Threshold limits. */
 export interface KpiThresholds {
@@ -2293,10 +2592,10 @@ export const KpiAlias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiAlias" }) as any as S.Schema<KpiAlias>;
 
 /** The aliases. */
-export type KpiDefinitionAliasesList = KpiAlias[];
-export const KpiDefinitionAliasesList = /*@__PURE__*/ S.Array(
+export type KpiDefinitionInputAliasesList = ReadonlyArray<KpiAlias>;
+export const KpiDefinitionInputAliasesList = /*@__PURE__*/ S.Array(
   KpiAlias,
-) as any as S.Schema<KpiDefinitionAliasesList>;
+) as any as S.Schema<KpiDefinitionInputAliasesList>;
 
 /** The KPI extract. */
 export interface KpiExtract {
@@ -2313,7 +2612,206 @@ export const KpiExtract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiExtract" }) as any as S.Schema<KpiExtract>;
 
 /** The KPI extracts. */
-export type KpiDefinitionExtractsList = KpiExtract[];
+export type KpiDefinitionInputExtractsList = ReadonlyArray<KpiExtract>;
+export const KpiDefinitionInputExtractsList = /*@__PURE__*/ S.Array(
+  KpiExtract,
+) as any as S.Schema<KpiDefinitionInputExtractsList>;
+
+/** Defines the KPI Threshold limits. */
+export interface KpiDefinitionInput {
+  /** The mapping entity type. */
+  entityType: KpiDefinitionInputEntityType;
+  /** The mapping entity name. */
+  entityTypeName: string;
+  /** Localized display name for the KPI. */
+  displayName?: KpiDefinitionInputDisplayNameMap;
+  /** Localized description for the KPI. */
+  description?: KpiDefinitionInputDescriptionMap;
+  /** The calculation window. */
+  calculationWindow: KpiDefinitionInputCalculationWindow;
+  /** Name of calculation window field. */
+  calculationWindowFieldName?: string;
+  /** The computation function for the KPI. */
+  function: KpiDefinitionInputFunction;
+  /** The computation expression for the KPI. */
+  expression: string;
+  /** The unit of measurement for the KPI. */
+  unit?: string;
+  /** The filter expression for the KPI. */
+  filter?: string;
+  /** the group by properties for the KPI. */
+  groupBy?: KpiDefinitionInputGroupByList;
+  /** The KPI thresholds. */
+  thresHolds?: KpiThresholds;
+  /** The aliases. */
+  aliases?: KpiDefinitionInputAliasesList;
+  /** The KPI extracts. */
+  extracts?: KpiDefinitionInputExtractsList;
+}
+export const KpiDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityType: KpiDefinitionInputEntityType,
+    entityTypeName: S.String,
+    displayName: S.optional(KpiDefinitionInputDisplayNameMap),
+    description: S.optional(KpiDefinitionInputDescriptionMap),
+    calculationWindow: KpiDefinitionInputCalculationWindow,
+    calculationWindowFieldName: S.optional(S.String),
+    function: KpiDefinitionInputFunction,
+    expression: S.String,
+    unit: S.optional(S.String),
+    filter: S.optional(S.String),
+    groupBy: S.optional(KpiDefinitionInputGroupByList),
+    thresHolds: S.optional(KpiThresholds),
+    aliases: S.optional(KpiDefinitionInputAliasesList),
+    extracts: S.optional(KpiDefinitionInputExtractsList),
+  }),
+).annotate({
+  identifier: "KpiDefinitionInput",
+}) as any as S.Schema<KpiDefinitionInput>;
+
+export interface KpiCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the KPI. */
+  kpiName: string;
+  properties?: KpiDefinitionInput;
+}
+export const KpiCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    kpiName: S.String.pipe(T.Label()),
+    properties: S.optional(KpiDefinitionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "KpiCreateOrUpdateRequest",
+}) as any as S.Schema<KpiCreateOrUpdateRequest>;
+
+/** The mapping entity type. */
+export type KpiDefinitionEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const KpiDefinitionEntityType = /*@__PURE__*/ S.String;
+
+/** Localized display name for the KPI. */
+export type KpiDefinitionDisplayNameMap = { [key: string]: string | undefined };
+export const KpiDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KpiDefinitionDisplayNameMap>;
+
+/** Localized description for the KPI. */
+export type KpiDefinitionDescriptionMap = { [key: string]: string | undefined };
+export const KpiDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KpiDefinitionDescriptionMap>;
+
+/** The calculation window. */
+export type KpiDefinitionCalculationWindow =
+  | "Lifetime"
+  | "Hour"
+  | "Day"
+  | "Week"
+  | "Month";
+export const KpiDefinitionCalculationWindow = /*@__PURE__*/ S.String;
+
+/** The computation function for the KPI. */
+export type KpiDefinitionFunction =
+  | "Sum"
+  | "Avg"
+  | "Min"
+  | "Max"
+  | "Last"
+  | "Count"
+  | "None"
+  | "CountDistinct";
+export const KpiDefinitionFunction = /*@__PURE__*/ S.String;
+
+/** the group by properties for the KPI. */
+export type KpiDefinitionGroupByList = ReadonlyArray<string>;
+export const KpiDefinitionGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<KpiDefinitionGroupByList>;
+
+/** The display name. */
+export type KpiGroupByMetadataDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const KpiGroupByMetadataDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<KpiGroupByMetadataDisplayNameMap>;
+
+/** The KPI GroupBy field metadata. */
+export interface KpiGroupByMetadata {
+  /** The display name. */
+  displayName?: KpiGroupByMetadataDisplayNameMap;
+  /** The name of the field. */
+  fieldName?: string;
+  /** The type of the field. */
+  fieldType?: string;
+}
+export const KpiGroupByMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(KpiGroupByMetadataDisplayNameMap),
+    fieldName: S.optional(S.String),
+    fieldType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KpiGroupByMetadata",
+}) as any as S.Schema<KpiGroupByMetadata>;
+
+/** The KPI GroupByMetadata. */
+export type KpiDefinitionGroupByMetadataList =
+  ReadonlyArray<KpiGroupByMetadata>;
+export const KpiDefinitionGroupByMetadataList = /*@__PURE__*/ S.Array(
+  KpiGroupByMetadata,
+) as any as S.Schema<KpiDefinitionGroupByMetadataList>;
+
+/** The KPI participant profile metadata. */
+export interface KpiParticipantProfilesMetadata {
+  /** Name of the type. */
+  typeName: string;
+}
+export const KpiParticipantProfilesMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    typeName: S.String,
+  }),
+).annotate({
+  identifier: "KpiParticipantProfilesMetadata",
+}) as any as S.Schema<KpiParticipantProfilesMetadata>;
+
+/** The participant profiles. */
+export type KpiDefinitionParticipantProfilesMetadataList =
+  ReadonlyArray<KpiParticipantProfilesMetadata>;
+export const KpiDefinitionParticipantProfilesMetadataList =
+  /*@__PURE__*/ S.Array(
+    KpiParticipantProfilesMetadata,
+  ) as any as S.Schema<KpiDefinitionParticipantProfilesMetadataList>;
+
+/** The aliases. */
+export type KpiDefinitionAliasesList = ReadonlyArray<KpiAlias>;
+export const KpiDefinitionAliasesList = /*@__PURE__*/ S.Array(
+  KpiAlias,
+) as any as S.Schema<KpiDefinitionAliasesList>;
+
+/** The KPI extracts. */
+export type KpiDefinitionExtractsList = ReadonlyArray<KpiExtract>;
 export const KpiDefinitionExtractsList = /*@__PURE__*/ S.Array(
   KpiExtract,
 ) as any as S.Schema<KpiDefinitionExtractsList>;
@@ -2531,7 +3029,7 @@ export const KpiResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KpiResourceFormat>;
 
 /** Results of the list operation. */
-export type KpiListResultValueList = KpiResourceFormat[];
+export type KpiListResultValueList = ReadonlyArray<KpiResourceFormat>;
 export const KpiListResultValueList = /*@__PURE__*/ S.Array(
   KpiResourceFormat,
 ) as any as S.Schema<KpiListResultValueList>;
@@ -2585,77 +3083,42 @@ export const KpiReprocessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "KpiReprocessResponse",
 }) as any as S.Schema<KpiReprocessResponse>;
 
-export interface LinksCreateOrUpdateRequest {
-  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the hub. */
-  hubName: string;
-  /** The name of the link. */
-  linkName: string;
-  body: unknown;
-}
-export const LinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hubName: S.String.pipe(T.Label()),
-    linkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
-      code: 200,
-      apiVersion: "2017-04-26",
-    }),
-  ),
-).annotate({
-  identifier: "LinksCreateOrUpdateRequest",
-}) as any as S.Schema<LinksCreateOrUpdateRequest>;
-
 /** Type of source entity. */
-export type LinkDefinitionSourceEntityType =
+export type LinkDefinitionInputSourceEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
-export const LinkDefinitionSourceEntityType = /*@__PURE__*/ S.String;
+  | "Relationship";
+export const LinkDefinitionInputSourceEntityType = /*@__PURE__*/ S.String;
 
 /** Type of target entity. */
-export type LinkDefinitionTargetEntityType =
+export type LinkDefinitionInputTargetEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
-export const LinkDefinitionTargetEntityType = /*@__PURE__*/ S.String;
+  | "Relationship";
+export const LinkDefinitionInputTargetEntityType = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Link. */
-export type LinkDefinitionDisplayNameMap = {
+export type LinkDefinitionInputDisplayNameMap = {
   [key: string]: string | undefined;
 };
-export const LinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+export const LinkDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<LinkDefinitionDisplayNameMap>;
+) as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
 
 /** Localized descriptions for the Link. */
-export type LinkDefinitionDescriptionMap = {
+export type LinkDefinitionInputDescriptionMap = {
   [key: string]: string | undefined;
 };
-export const LinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+export const LinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<LinkDefinitionDescriptionMap>;
+) as any as S.Schema<LinkDefinitionInputDescriptionMap>;
 
 /** Link type. */
-export type TypePropertiesMappingLinkType =
-  | "UpdateAlways"
-  | "CopyIfNull"
-  | (string & {});
+export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
 export const TypePropertiesMappingLinkType = /*@__PURE__*/ S.String;
 
 /** Metadata for a Link's property mapping. */
@@ -2678,21 +3141,145 @@ export const TypePropertiesMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TypePropertiesMapping>;
 
 /** The set of properties mappings between the source and target Types. */
-export type LinkDefinitionMappingsList = TypePropertiesMapping[];
+export type LinkDefinitionInputMappingsList =
+  ReadonlyArray<TypePropertiesMapping>;
+export const LinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
+  TypePropertiesMapping,
+) as any as S.Schema<LinkDefinitionInputMappingsList>;
+
+/** The properties that represent the participating profile. */
+export type LinkDefinitionInputParticipantPropertyReferencesList =
+  ReadonlyArray<ParticipantPropertyReference>;
+export const LinkDefinitionInputParticipantPropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantPropertyReference,
+  ) as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
+
+/** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
+export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
+export const LinkDefinitionInputOperationType = /*@__PURE__*/ S.String;
+
+/** The definition of Link. */
+export interface LinkDefinitionInput {
+  /** Type of source entity. */
+  sourceEntityType: LinkDefinitionInputSourceEntityType;
+  /** Type of target entity. */
+  targetEntityType: LinkDefinitionInputTargetEntityType;
+  /** Name of the source Entity Type. */
+  sourceEntityTypeName: string;
+  /** Name of the target Entity Type. */
+  targetEntityTypeName: string;
+  /** Localized display name for the Link. */
+  displayName?: LinkDefinitionInputDisplayNameMap;
+  /** Localized descriptions for the Link. */
+  description?: LinkDefinitionInputDescriptionMap;
+  /** The set of properties mappings between the source and target Types. */
+  mappings?: LinkDefinitionInputMappingsList;
+  /** The properties that represent the participating profile. */
+  participantPropertyReferences: LinkDefinitionInputParticipantPropertyReferencesList;
+  /** Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles. */
+  referenceOnly?: boolean;
+  /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
+  operationType?: LinkDefinitionInputOperationType;
+}
+export const LinkDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceEntityType: LinkDefinitionInputSourceEntityType,
+    targetEntityType: LinkDefinitionInputTargetEntityType,
+    sourceEntityTypeName: S.String,
+    targetEntityTypeName: S.String,
+    displayName: S.optional(LinkDefinitionInputDisplayNameMap),
+    description: S.optional(LinkDefinitionInputDescriptionMap),
+    mappings: S.optional(LinkDefinitionInputMappingsList),
+    participantPropertyReferences:
+      LinkDefinitionInputParticipantPropertyReferencesList,
+    referenceOnly: S.optional(S.Boolean),
+    operationType: S.optional(LinkDefinitionInputOperationType),
+  }),
+).annotate({
+  identifier: "LinkDefinitionInput",
+}) as any as S.Schema<LinkDefinitionInput>;
+
+export interface LinksCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the hub. */
+  hubName: string;
+  /** The name of the link. */
+  linkName: string;
+  properties?: LinkDefinitionInput;
+}
+export const LinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hubName: S.String.pipe(T.Label()),
+    linkName: S.String.pipe(T.Label()),
+    properties: S.optional(LinkDefinitionInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
+      code: 200,
+      apiVersion: "2017-04-26",
+    }),
+  ),
+).annotate({
+  identifier: "LinksCreateOrUpdateRequest",
+}) as any as S.Schema<LinksCreateOrUpdateRequest>;
+
+/** Type of source entity. */
+export type LinkDefinitionSourceEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const LinkDefinitionSourceEntityType = /*@__PURE__*/ S.String;
+
+/** Type of target entity. */
+export type LinkDefinitionTargetEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const LinkDefinitionTargetEntityType = /*@__PURE__*/ S.String;
+
+/** Localized display name for the Link. */
+export type LinkDefinitionDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const LinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LinkDefinitionDisplayNameMap>;
+
+/** Localized descriptions for the Link. */
+export type LinkDefinitionDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const LinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LinkDefinitionDescriptionMap>;
+
+/** The set of properties mappings between the source and target Types. */
+export type LinkDefinitionMappingsList = ReadonlyArray<TypePropertiesMapping>;
 export const LinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
   TypePropertiesMapping,
 ) as any as S.Schema<LinkDefinitionMappingsList>;
 
 /** The properties that represent the participating profile. */
 export type LinkDefinitionParticipantPropertyReferencesList =
-  ParticipantPropertyReference[];
+  ReadonlyArray<ParticipantPropertyReference>;
 export const LinkDefinitionParticipantPropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantPropertyReference,
   ) as any as S.Schema<LinkDefinitionParticipantPropertyReferencesList>;
 
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
-export type LinkDefinitionOperationType = "Upsert" | "Delete" | (string & {});
+export type LinkDefinitionOperationType = "Upsert" | "Delete";
 export const LinkDefinitionOperationType = /*@__PURE__*/ S.String;
 
 /** The definition of Link. */
@@ -2893,7 +3480,7 @@ export const LinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkResourceFormat>;
 
 /** Results of the list operation. */
-export type LinkListResultValueList = LinkResourceFormat[];
+export type LinkListResultValueList = ReadonlyArray<LinkResourceFormat>;
 export const LinkListResultValueList = /*@__PURE__*/ S.Array(
   LinkResourceFormat,
 ) as any as S.Schema<LinkListResultValueList>;
@@ -2960,7 +3547,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2981,6 +3568,142 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Description of the prediction. */
+export type PredictionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const PredictionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PredictionInputDescriptionMap>;
+
+/** Display name of the prediction. */
+export type PredictionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const PredictionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PredictionInputDisplayNameMap>;
+
+/** Interaction types involved in the prediction. */
+export type PredictionInputInvolvedInteractionTypesList = ReadonlyArray<string>;
+export const PredictionInputInvolvedInteractionTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
+
+/** KPI types involved in the prediction. */
+export type PredictionInputInvolvedKpiTypesList = ReadonlyArray<string>;
+export const PredictionInputInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
+
+/** Relationships involved in the prediction. */
+export type PredictionInputInvolvedRelationshipsList = ReadonlyArray<string>;
+export const PredictionInputInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
+
+/** Definition of the link mapping of prediction. */
+export interface PredictionInputMappings {
+  /** The score of the link mapping. */
+  score: string;
+  /** The grade of the link mapping. */
+  grade: string;
+  /** The reason of the link mapping. */
+  reason: string;
+}
+export const PredictionInputMappings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    score: S.String,
+    grade: S.String,
+    reason: S.String,
+  }),
+).annotate({
+  identifier: "PredictionInputMappings",
+}) as any as S.Schema<PredictionInputMappings>;
+
+/** The definition of a prediction grade. */
+export interface PredictionInputGradesItem {
+  /** Name of the grade. */
+  gradeName?: string;
+  /** Minimum score threshold. */
+  minScoreThreshold?: number;
+  /** Maximum score threshold. */
+  maxScoreThreshold?: number;
+}
+export const PredictionInputGradesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gradeName: S.optional(S.String),
+    minScoreThreshold: S.optional(S.Number),
+    maxScoreThreshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PredictionInputGradesItem",
+}) as any as S.Schema<PredictionInputGradesItem>;
+
+/** The prediction grades. */
+export type PredictionInputGradesList =
+  ReadonlyArray<PredictionInputGradesItem>;
+export const PredictionInputGradesList = /*@__PURE__*/ S.Array(
+  PredictionInputGradesItem,
+) as any as S.Schema<PredictionInputGradesList>;
+
+/** The prediction definition. */
+export interface PredictionInput {
+  /** Description of the prediction. */
+  description?: PredictionInputDescriptionMap;
+  /** Display name of the prediction. */
+  displayName?: PredictionInputDisplayNameMap;
+  /** Interaction types involved in the prediction. */
+  involvedInteractionTypes?: PredictionInputInvolvedInteractionTypesList;
+  /** KPI types involved in the prediction. */
+  involvedKpiTypes?: PredictionInputInvolvedKpiTypesList;
+  /** Relationships involved in the prediction. */
+  involvedRelationships?: PredictionInputInvolvedRelationshipsList;
+  /** Negative outcome expression. */
+  negativeOutcomeExpression: string;
+  /** Positive outcome expression. */
+  positiveOutcomeExpression: string;
+  /** Primary profile type. */
+  primaryProfileType: string;
+  /** Name of the prediction. */
+  predictionName?: string;
+  /** Scope expression. */
+  scopeExpression: string;
+  /** Whether do auto analyze. */
+  autoAnalyze: boolean;
+  /** Definition of the link mapping of prediction. */
+  mappings: PredictionInputMappings;
+  /** Score label. */
+  scoreLabel: string;
+  /** The prediction grades. */
+  grades?: PredictionInputGradesList;
+}
+export const PredictionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(PredictionInputDescriptionMap),
+    displayName: S.optional(PredictionInputDisplayNameMap),
+    involvedInteractionTypes: S.optional(
+      PredictionInputInvolvedInteractionTypesList,
+    ),
+    involvedKpiTypes: S.optional(PredictionInputInvolvedKpiTypesList),
+    involvedRelationships: S.optional(PredictionInputInvolvedRelationshipsList),
+    negativeOutcomeExpression: S.String,
+    positiveOutcomeExpression: S.String,
+    primaryProfileType: S.String,
+    predictionName: S.optional(S.String),
+    scopeExpression: S.String,
+    autoAnalyze: S.Boolean,
+    mappings: PredictionInputMappings,
+    scoreLabel: S.String,
+    grades: S.optional(PredictionInputGradesList),
+  }),
+).annotate({
+  identifier: "PredictionInput",
+}) as any as S.Schema<PredictionInput>;
+
 export interface PredictionsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2990,7 +3713,7 @@ export interface PredictionsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the Prediction. */
   predictionName: string;
-  body: unknown;
+  properties?: PredictionInput;
 }
 export const PredictionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2998,7 +3721,7 @@ export const PredictionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     predictionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PredictionInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3026,19 +3749,19 @@ export const PredictionDisplayNameMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PredictionDisplayNameMap>;
 
 /** Interaction types involved in the prediction. */
-export type PredictionInvolvedInteractionTypesList = string[];
+export type PredictionInvolvedInteractionTypesList = ReadonlyArray<string>;
 export const PredictionInvolvedInteractionTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedInteractionTypesList>;
 
 /** KPI types involved in the prediction. */
-export type PredictionInvolvedKpiTypesList = string[];
+export type PredictionInvolvedKpiTypesList = ReadonlyArray<string>;
 export const PredictionInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedKpiTypesList>;
 
 /** Relationships involved in the prediction. */
-export type PredictionInvolvedRelationshipsList = string[];
+export type PredictionInvolvedRelationshipsList = ReadonlyArray<string>;
 export const PredictionInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PredictionInvolvedRelationshipsList>;
@@ -3082,21 +3805,22 @@ export const PredictionGradesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionGradesItem>;
 
 /** The prediction grades. */
-export type PredictionGradesList = PredictionGradesItem[];
+export type PredictionGradesList = ReadonlyArray<PredictionGradesItem>;
 export const PredictionGradesList = /*@__PURE__*/ S.Array(
   PredictionGradesItem,
 ) as any as S.Schema<PredictionGradesList>;
 
 /** Generated interaction types. */
 export type PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList>;
 
 /** Generated links. */
-export type PredictionSystemGeneratedEntitiesGeneratedLinksList = string[];
+export type PredictionSystemGeneratedEntitiesGeneratedLinksList =
+  ReadonlyArray<string>;
 export const PredictionSystemGeneratedEntitiesGeneratedLinksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3348,8 +4072,7 @@ export type PredictionModelStatusStatus =
   | "Active"
   | "Deleted"
   | "HumanIntervention"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PredictionModelStatusStatus = /*@__PURE__*/ S.String;
 
 /** The prediction model status. */
@@ -3452,7 +4175,7 @@ export const PredictionDistributionDefinitionDistributionsItem =
 
 /** Distributions of the prediction. */
 export type PredictionDistributionDefinitionDistributionsList =
-  PredictionDistributionDefinitionDistributionsItem[];
+  ReadonlyArray<PredictionDistributionDefinitionDistributionsItem>;
 export const PredictionDistributionDefinitionDistributionsList =
   /*@__PURE__*/ S.Array(
     PredictionDistributionDefinitionDistributionsItem,
@@ -3484,8 +4207,7 @@ export type CanonicalProfileDefinitionPropertiesItemType =
   | "Numeric"
   | "Categorical"
   | "DerivedCategorical"
-  | "DerivedNumeric"
-  | (string & {});
+  | "DerivedNumeric";
 export const CanonicalProfileDefinitionPropertiesItemType =
   /*@__PURE__*/ S.String;
 
@@ -3517,7 +4239,7 @@ export const CanonicalProfileDefinitionPropertiesItem = /*@__PURE__*/ S.suspend(
 
 /** Properties of the canonical profile. */
 export type CanonicalProfileDefinitionPropertiesList =
-  CanonicalProfileDefinitionPropertiesItem[];
+  ReadonlyArray<CanonicalProfileDefinitionPropertiesItem>;
 export const CanonicalProfileDefinitionPropertiesList = /*@__PURE__*/ S.Array(
   CanonicalProfileDefinitionPropertiesItem,
 ) as any as S.Schema<CanonicalProfileDefinitionPropertiesList>;
@@ -3540,7 +4262,7 @@ export const CanonicalProfileDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Canonical profiles. */
 export type PredictionTrainingResultsCanonicalProfilesList =
-  CanonicalProfileDefinition[];
+  ReadonlyArray<CanonicalProfileDefinition>;
 export const PredictionTrainingResultsCanonicalProfilesList =
   /*@__PURE__*/ S.Array(
     CanonicalProfileDefinition,
@@ -3620,7 +4342,8 @@ export const PredictionResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionResourceFormat>;
 
 /** Results of the list operation. */
-export type PredictionListResultValueList = PredictionResourceFormat[];
+export type PredictionListResultValueList =
+  ReadonlyArray<PredictionResourceFormat>;
 export const PredictionListResultValueList = /*@__PURE__*/ S.Array(
   PredictionResourceFormat,
 ) as any as S.Schema<PredictionListResultValueList>;
@@ -3641,6 +4364,28 @@ export const PredictionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PredictionListResult",
 }) as any as S.Schema<PredictionListResult>;
 
+/** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
+export type PredictionsModelStatusRequestStatus =
+  | "New"
+  | "Provisioning"
+  | "ProvisioningFailed"
+  | "PendingDiscovering"
+  | "Discovering"
+  | "PendingFeaturing"
+  | "Featuring"
+  | "FeaturingFailed"
+  | "PendingTraining"
+  | "Training"
+  | "TrainingFailed"
+  | "Evaluating"
+  | "EvaluatingFailed"
+  | "PendingModelConfirmation"
+  | "Active"
+  | "Deleted"
+  | "HumanIntervention"
+  | "Failed";
+export const PredictionsModelStatusRequestStatus = /*@__PURE__*/ S.String;
+
 export interface PredictionsModelStatusRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3650,7 +4395,8 @@ export interface PredictionsModelStatusRequest {
   hubName: string;
   /** The name of the Prediction. */
   predictionName: string;
-  body: unknown;
+  /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
+  status: PredictionsModelStatusRequestStatus;
 }
 export const PredictionsModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3658,7 +4404,7 @@ export const PredictionsModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     predictionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    status: PredictionsModelStatusRequestStatus,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3678,6 +4424,179 @@ export const PredictionsModelStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PredictionsModelStatusResponse",
 }) as any as S.Schema<PredictionsModelStatusResponse>;
 
+export type ProfileTypeDefinitionInputAttributesValueList =
+  ReadonlyArray<string>;
+export const ProfileTypeDefinitionInputAttributesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProfileTypeDefinitionInputAttributesValueList>;
+
+/** The attributes for the Type. */
+export type ProfileTypeDefinitionInputAttributesMap = {
+  [key: string]: ProfileTypeDefinitionInputAttributesValueList | undefined;
+};
+export const ProfileTypeDefinitionInputAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ProfileTypeDefinitionInputAttributesValueList,
+) as any as S.Schema<ProfileTypeDefinitionInputAttributesMap>;
+
+/** Localized descriptions for the property. */
+export type ProfileTypeDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfileTypeDefinitionInputDescriptionMap>;
+
+/** Localized display names for the property. */
+export type ProfileTypeDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfileTypeDefinitionInputDisplayNameMap>;
+
+export type ProfileTypeDefinitionInputLocalizedAttributesValueMap = {
+  [key: string]: string | undefined;
+};
+export const ProfileTypeDefinitionInputLocalizedAttributesValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesValueMap>;
+
+/** Any custom localized attributes for the Type. */
+export type ProfileTypeDefinitionInputLocalizedAttributesMap = {
+  [key: string]:
+    | ProfileTypeDefinitionInputLocalizedAttributesValueMap
+    | undefined;
+};
+export const ProfileTypeDefinitionInputLocalizedAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ProfileTypeDefinitionInputLocalizedAttributesValueMap,
+  ) as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesMap>;
+
+/** Type of entity. */
+export type ProfileTypeDefinitionInputEntityType =
+  | "None"
+  | "Profile"
+  | "Interaction"
+  | "Relationship";
+export const ProfileTypeDefinitionInputEntityType = /*@__PURE__*/ S.String;
+
+/** The properties of the Profile. */
+export type ProfileTypeDefinitionInputFieldsList =
+  ReadonlyArray<PropertyDefinitionInput>;
+export const ProfileTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinitionInput,
+) as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
+
+/** The properties which make up the unique ID. */
+export type StrongIdKeyPropertyNamesList = ReadonlyArray<string>;
+export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StrongIdKeyPropertyNamesList>;
+
+/** Localized display name. */
+export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
+export const StrongIdDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StrongIdDisplayNameMap>;
+
+/** Localized descriptions. */
+export type StrongIdDescriptionMap = { [key: string]: string | undefined };
+export const StrongIdDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StrongIdDescriptionMap>;
+
+/** Property/Properties which represent a unique ID. */
+export interface StrongId {
+  /** The properties which make up the unique ID. */
+  keyPropertyNames: StrongIdKeyPropertyNamesList;
+  /** The Name identifying the strong ID. */
+  strongIdName: string;
+  /** Localized display name. */
+  displayName?: StrongIdDisplayNameMap;
+  /** Localized descriptions. */
+  description?: StrongIdDescriptionMap;
+}
+export const StrongId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyPropertyNames: StrongIdKeyPropertyNamesList,
+    strongIdName: S.String,
+    displayName: S.optional(StrongIdDisplayNameMap),
+    description: S.optional(StrongIdDescriptionMap),
+  }),
+).annotate({ identifier: "StrongId" }) as any as S.Schema<StrongId>;
+
+/** The strong IDs. */
+export type ProfileTypeDefinitionInputStrongIdsList = ReadonlyArray<StrongId>;
+export const ProfileTypeDefinitionInputStrongIdsList = /*@__PURE__*/ S.Array(
+  StrongId,
+) as any as S.Schema<ProfileTypeDefinitionInputStrongIdsList>;
+
+/** The profile type definition. */
+export interface ProfileTypeDefinitionInput {
+  /** The attributes for the Type. */
+  attributes?: ProfileTypeDefinitionInputAttributesMap;
+  /** Localized descriptions for the property. */
+  description?: ProfileTypeDefinitionInputDescriptionMap;
+  /** Localized display names for the property. */
+  displayName?: ProfileTypeDefinitionInputDisplayNameMap;
+  /** Any custom localized attributes for the Type. */
+  localizedAttributes?: ProfileTypeDefinitionInputLocalizedAttributesMap;
+  /** Small Image associated with the Property or EntityType. */
+  smallImage?: string;
+  /** Medium Image associated with the Property or EntityType. */
+  mediumImage?: string;
+  /** Large Image associated with the Property or EntityType. */
+  largeImage?: string;
+  /** The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object. */
+  apiEntitySetName?: string;
+  /** Type of entity. */
+  entityType?: ProfileTypeDefinitionInputEntityType;
+  /** The properties of the Profile. */
+  fields?: ProfileTypeDefinitionInputFieldsList;
+  /** The instance count. */
+  instancesCount?: number;
+  /** The schema org link. This helps ACI identify and suggest semantic models. */
+  schemaItemTypeLink?: string;
+  /** The timestamp property name. Represents the time when the interaction or profile update happened. */
+  timestampFieldName?: string;
+  /** The name of the entity. */
+  typeName?: string;
+  /** The strong IDs. */
+  strongIds?: ProfileTypeDefinitionInputStrongIdsList;
+}
+export const ProfileTypeDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: S.optional(ProfileTypeDefinitionInputAttributesMap),
+    description: S.optional(ProfileTypeDefinitionInputDescriptionMap),
+    displayName: S.optional(ProfileTypeDefinitionInputDisplayNameMap),
+    localizedAttributes: S.optional(
+      ProfileTypeDefinitionInputLocalizedAttributesMap,
+    ),
+    smallImage: S.optional(S.String),
+    mediumImage: S.optional(S.String),
+    largeImage: S.optional(S.String),
+    apiEntitySetName: S.optional(S.String),
+    entityType: S.optional(ProfileTypeDefinitionInputEntityType),
+    fields: S.optional(ProfileTypeDefinitionInputFieldsList),
+    instancesCount: S.optional(S.Number),
+    schemaItemTypeLink: S.optional(S.String),
+    timestampFieldName: S.optional(S.String),
+    typeName: S.optional(S.String),
+    strongIds: S.optional(ProfileTypeDefinitionInputStrongIdsList),
+  }),
+).annotate({
+  identifier: "ProfileTypeDefinitionInput",
+}) as any as S.Schema<ProfileTypeDefinitionInput>;
+
 export interface ProfilesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3687,7 +4606,7 @@ export interface ProfilesCreateOrUpdateRequest {
   hubName: string;
   /** The name of the profile. */
   profileName: string;
-  body: unknown;
+  properties?: ProfileTypeDefinitionInput;
 }
 export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3695,7 +4614,7 @@ export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ProfileTypeDefinitionInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3708,7 +4627,7 @@ export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesCreateOrUpdateRequest",
 }) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
 
-export type ProfileTypeDefinitionAttributesValueList = string[];
+export type ProfileTypeDefinitionAttributesValueList = ReadonlyArray<string>;
 export const ProfileTypeDefinitionAttributesValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
@@ -3764,58 +4683,17 @@ export type ProfileTypeDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
-  | "Relationship"
-  | (string & {});
+  | "Relationship";
 export const ProfileTypeDefinitionEntityType = /*@__PURE__*/ S.String;
 
 /** The properties of the Profile. */
-export type ProfileTypeDefinitionFieldsList = PropertyDefinition[];
+export type ProfileTypeDefinitionFieldsList = ReadonlyArray<PropertyDefinition>;
 export const ProfileTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<ProfileTypeDefinitionFieldsList>;
 
-/** The properties which make up the unique ID. */
-export type StrongIdKeyPropertyNamesList = string[];
-export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StrongIdKeyPropertyNamesList>;
-
-/** Localized display name. */
-export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
-export const StrongIdDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDisplayNameMap>;
-
-/** Localized descriptions. */
-export type StrongIdDescriptionMap = { [key: string]: string | undefined };
-export const StrongIdDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDescriptionMap>;
-
-/** Property/Properties which represent a unique ID. */
-export interface StrongId {
-  /** The properties which make up the unique ID. */
-  keyPropertyNames: StrongIdKeyPropertyNamesList;
-  /** The Name identifying the strong ID. */
-  strongIdName: string;
-  /** Localized display name. */
-  displayName?: StrongIdDisplayNameMap;
-  /** Localized descriptions. */
-  description?: StrongIdDescriptionMap;
-}
-export const StrongId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyPropertyNames: StrongIdKeyPropertyNamesList,
-    strongIdName: S.String,
-    displayName: S.optional(StrongIdDisplayNameMap),
-    description: S.optional(StrongIdDescriptionMap),
-  }),
-).annotate({ identifier: "StrongId" }) as any as S.Schema<StrongId>;
-
 /** The strong IDs. */
-export type ProfileTypeDefinitionStrongIdsList = StrongId[];
+export type ProfileTypeDefinitionStrongIdsList = ReadonlyArray<StrongId>;
 export const ProfileTypeDefinitionStrongIdsList = /*@__PURE__*/ S.Array(
   StrongId,
 ) as any as S.Schema<ProfileTypeDefinitionStrongIdsList>;
@@ -4023,7 +4901,8 @@ export const ProfilesGetEnrichingKpisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesGetEnrichingKpisRequest",
 }) as any as S.Schema<ProfilesGetEnrichingKpisRequest>;
 
-export type ProfilesGetEnrichingKpisResponseBodyList = KpiDefinition[];
+export type ProfilesGetEnrichingKpisResponseBodyList =
+  ReadonlyArray<KpiDefinition>;
 export const ProfilesGetEnrichingKpisResponseBodyList = /*@__PURE__*/ S.Array(
   KpiDefinition,
 ) as any as S.Schema<ProfilesGetEnrichingKpisResponseBodyList>;
@@ -4086,7 +4965,7 @@ export const ProfileResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfileResourceFormat>;
 
 /** Results of the list operation. */
-export type ProfileListResultValueList = ProfileResourceFormat[];
+export type ProfileListResultValueList = ReadonlyArray<ProfileResourceFormat>;
 export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
   ProfileResourceFormat,
 ) as any as S.Schema<ProfileListResultValueList>;
@@ -4107,6 +4986,108 @@ export const ProfileListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfileListResult",
 }) as any as S.Schema<ProfileListResult>;
 
+/** Localized display name for the Relationship Link. */
+export type RelationshipLinkDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipLinkDefinitionInputDisplayNameMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<RelationshipLinkDefinitionInputDisplayNameMap>;
+
+/** Localized descriptions for the Relationship Link. */
+export type RelationshipLinkDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipLinkDefinitionInputDescriptionMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<RelationshipLinkDefinitionInputDescriptionMap>;
+
+/** Link type. */
+export type RelationshipLinkFieldMappingLinkType =
+  | "UpdateAlways"
+  | "CopyIfNull";
+export const RelationshipLinkFieldMappingLinkType = /*@__PURE__*/ S.String;
+
+/** The fields mapping for Relationships. */
+export interface RelationshipLinkFieldMapping {
+  /** The field name on the Interaction Type. */
+  interactionFieldName: string;
+  /** Link type. */
+  linkType?: RelationshipLinkFieldMappingLinkType;
+  /** The field name on the Relationship metadata. */
+  relationshipFieldName: string;
+}
+export const RelationshipLinkFieldMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interactionFieldName: S.String,
+    linkType: S.optional(RelationshipLinkFieldMappingLinkType),
+    relationshipFieldName: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipLinkFieldMapping",
+}) as any as S.Schema<RelationshipLinkFieldMapping>;
+
+/** The mappings between Interaction and Relationship fields. */
+export type RelationshipLinkDefinitionInputMappingsList =
+  ReadonlyArray<RelationshipLinkFieldMapping>;
+export const RelationshipLinkDefinitionInputMappingsList =
+  /*@__PURE__*/ S.Array(
+    RelationshipLinkFieldMapping,
+  ) as any as S.Schema<RelationshipLinkDefinitionInputMappingsList>;
+
+/** The property references for the Profile of the Relationship. */
+export type RelationshipLinkDefinitionInputProfilePropertyReferencesList =
+  ReadonlyArray<ParticipantProfilePropertyReference>;
+export const RelationshipLinkDefinitionInputProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipLinkDefinitionInputProfilePropertyReferencesList>;
+
+/** The property references for the Related Profile of the Relationship. */
+export type RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
+  ReadonlyArray<ParticipantProfilePropertyReference>;
+export const RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
+  /*@__PURE__*/ S.Array(
+    ParticipantProfilePropertyReference,
+  ) as any as S.Schema<RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList>;
+
+/** The definition of relationship link. */
+export interface RelationshipLinkDefinitionInput {
+  /** Localized display name for the Relationship Link. */
+  displayName?: RelationshipLinkDefinitionInputDisplayNameMap;
+  /** Localized descriptions for the Relationship Link. */
+  description?: RelationshipLinkDefinitionInputDescriptionMap;
+  /** The InteractionType associated with the Relationship Link. */
+  interactionType: string;
+  /** The mappings between Interaction and Relationship fields. */
+  mappings?: RelationshipLinkDefinitionInputMappingsList;
+  /** The property references for the Profile of the Relationship. */
+  profilePropertyReferences: RelationshipLinkDefinitionInputProfilePropertyReferencesList;
+  /** The property references for the Related Profile of the Relationship. */
+  relatedProfilePropertyReferences: RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList;
+  /** The Relationship associated with the Link. */
+  relationshipName: string;
+}
+export const RelationshipLinkDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(RelationshipLinkDefinitionInputDisplayNameMap),
+    description: S.optional(RelationshipLinkDefinitionInputDescriptionMap),
+    interactionType: S.String,
+    mappings: S.optional(RelationshipLinkDefinitionInputMappingsList),
+    profilePropertyReferences:
+      RelationshipLinkDefinitionInputProfilePropertyReferencesList,
+    relatedProfilePropertyReferences:
+      RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList,
+    relationshipName: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipLinkDefinitionInput",
+}) as any as S.Schema<RelationshipLinkDefinitionInput>;
+
 export interface RelationshipLinksCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4116,7 +5097,7 @@ export interface RelationshipLinksCreateOrUpdateRequest {
   hubName: string;
   /** The name of the relationship link. */
   relationshipLinkName: string;
-  body: unknown;
+  properties?: RelationshipLinkDefinitionInput;
 }
 export const RelationshipLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4125,7 +5106,7 @@ export const RelationshipLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       hubName: S.String.pipe(T.Label()),
       relationshipLinkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RelationshipLinkDefinitionInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4156,42 +5137,16 @@ export const RelationshipLinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
 
-/** Link type. */
-export type RelationshipLinkFieldMappingLinkType =
-  | "UpdateAlways"
-  | "CopyIfNull"
-  | (string & {});
-export const RelationshipLinkFieldMappingLinkType = /*@__PURE__*/ S.String;
-
-/** The fields mapping for Relationships. */
-export interface RelationshipLinkFieldMapping {
-  /** The field name on the Interaction Type. */
-  interactionFieldName: string;
-  /** Link type. */
-  linkType?: RelationshipLinkFieldMappingLinkType;
-  /** The field name on the Relationship metadata. */
-  relationshipFieldName: string;
-}
-export const RelationshipLinkFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interactionFieldName: S.String,
-    linkType: S.optional(RelationshipLinkFieldMappingLinkType),
-    relationshipFieldName: S.String,
-  }),
-).annotate({
-  identifier: "RelationshipLinkFieldMapping",
-}) as any as S.Schema<RelationshipLinkFieldMapping>;
-
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionMappingsList =
-  RelationshipLinkFieldMapping[];
+  ReadonlyArray<RelationshipLinkFieldMapping>;
 export const RelationshipLinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
   RelationshipLinkFieldMapping,
 ) as any as S.Schema<RelationshipLinkDefinitionMappingsList>;
 
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionProfilePropertyReferencesList =
-  ParticipantProfilePropertyReference[];
+  ReadonlyArray<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -4199,7 +5154,7 @@ export const RelationshipLinkDefinitionProfilePropertyReferencesList =
 
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
-  ParticipantProfilePropertyReference[];
+  ReadonlyArray<ParticipantProfilePropertyReference>;
 export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
   /*@__PURE__*/ S.Array(
     ParticipantProfilePropertyReference,
@@ -4402,7 +5357,7 @@ export const RelationshipLinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the list operation. */
 export type RelationshipLinkListResultValueList =
-  RelationshipLinkResourceFormat[];
+  ReadonlyArray<RelationshipLinkResourceFormat>;
 export const RelationshipLinkListResultValueList = /*@__PURE__*/ S.Array(
   RelationshipLinkResourceFormat,
 ) as any as S.Schema<RelationshipLinkListResultValueList>;
@@ -4423,6 +5378,116 @@ export const RelationshipLinkListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipLinkListResult",
 }) as any as S.Schema<RelationshipLinkListResult>;
 
+/** The Relationship Cardinality. */
+export type RelationshipDefinitionInputCardinality =
+  | "OneToOne"
+  | "OneToMany"
+  | "ManyToMany";
+export const RelationshipDefinitionInputCardinality = /*@__PURE__*/ S.String;
+
+/** Localized display name for the Relationship. */
+export type RelationshipDefinitionInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipDefinitionInputDisplayNameMap>;
+
+/** Localized descriptions for the Relationship. */
+export type RelationshipDefinitionInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RelationshipDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RelationshipDefinitionInputDescriptionMap>;
+
+/** The properties of the Relationship. */
+export type RelationshipDefinitionInputFieldsList =
+  ReadonlyArray<PropertyDefinitionInput>;
+export const RelationshipDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
+  PropertyDefinitionInput,
+) as any as S.Schema<RelationshipDefinitionInputFieldsList>;
+
+/** Map a field of profile to its corresponding StrongId in Related Profile. */
+export interface RelationshipTypeFieldMapping {
+  /** Specifies the fieldName in profile. */
+  profileFieldName: string;
+  /** Specifies the KeyProperty (from StrongId) of the related profile. */
+  relatedProfileKeyProperty: string;
+}
+export const RelationshipTypeFieldMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileFieldName: S.String,
+    relatedProfileKeyProperty: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipTypeFieldMapping",
+}) as any as S.Schema<RelationshipTypeFieldMapping>;
+
+/** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
+export type RelationshipTypeMappingFieldMappingsList =
+  ReadonlyArray<RelationshipTypeFieldMapping>;
+export const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ S.Array(
+  RelationshipTypeFieldMapping,
+) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
+
+/** Maps fields in Profile to their corresponding StrongIds in Related Profile. */
+export interface RelationshipTypeMapping {
+  /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
+  fieldMappings: RelationshipTypeMappingFieldMappingsList;
+}
+export const RelationshipTypeMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fieldMappings: RelationshipTypeMappingFieldMappingsList,
+  }),
+).annotate({
+  identifier: "RelationshipTypeMapping",
+}) as any as S.Schema<RelationshipTypeMapping>;
+
+/** Optional property to be used to map fields in profile to their strong ids in related profile. */
+export type RelationshipDefinitionInputLookupMappingsList =
+  ReadonlyArray<RelationshipTypeMapping>;
+export const RelationshipDefinitionInputLookupMappingsList =
+  /*@__PURE__*/ S.Array(
+    RelationshipTypeMapping,
+  ) as any as S.Schema<RelationshipDefinitionInputLookupMappingsList>;
+
+/** The definition of Relationship. */
+export interface RelationshipDefinitionInput {
+  /** The Relationship Cardinality. */
+  cardinality?: RelationshipDefinitionInputCardinality;
+  /** Localized display name for the Relationship. */
+  displayName?: RelationshipDefinitionInputDisplayNameMap;
+  /** Localized descriptions for the Relationship. */
+  description?: RelationshipDefinitionInputDescriptionMap;
+  /** The expiry date time in UTC. */
+  expiryDateTimeUtc?: string;
+  /** The properties of the Relationship. */
+  fields?: RelationshipDefinitionInputFieldsList;
+  /** Optional property to be used to map fields in profile to their strong ids in related profile. */
+  lookupMappings?: RelationshipDefinitionInputLookupMappingsList;
+  /** Profile type. */
+  profileType: string;
+  /** Related profile being referenced. */
+  relatedProfileType: string;
+}
+export const RelationshipDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cardinality: S.optional(RelationshipDefinitionInputCardinality),
+    displayName: S.optional(RelationshipDefinitionInputDisplayNameMap),
+    description: S.optional(RelationshipDefinitionInputDescriptionMap),
+    expiryDateTimeUtc: S.optional(S.String),
+    fields: S.optional(RelationshipDefinitionInputFieldsList),
+    lookupMappings: S.optional(RelationshipDefinitionInputLookupMappingsList),
+    profileType: S.String,
+    relatedProfileType: S.String,
+  }),
+).annotate({
+  identifier: "RelationshipDefinitionInput",
+}) as any as S.Schema<RelationshipDefinitionInput>;
+
 export interface RelationshipsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4432,7 +5497,7 @@ export interface RelationshipsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the Relationship. */
   relationshipName: string;
-  body: unknown;
+  properties?: RelationshipDefinitionInput;
 }
 export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4440,7 +5505,7 @@ export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     relationshipName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(RelationshipDefinitionInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4457,8 +5522,7 @@ export const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export type RelationshipDefinitionCardinality =
   | "OneToOne"
   | "OneToMany"
-  | "ManyToMany"
-  | (string & {});
+  | "ManyToMany";
 export const RelationshipDefinitionCardinality = /*@__PURE__*/ S.String;
 
 /** Localized display name for the Relationship. */
@@ -4480,50 +5544,15 @@ export const RelationshipDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RelationshipDefinitionDescriptionMap>;
 
 /** The properties of the Relationship. */
-export type RelationshipDefinitionFieldsList = PropertyDefinition[];
+export type RelationshipDefinitionFieldsList =
+  ReadonlyArray<PropertyDefinition>;
 export const RelationshipDefinitionFieldsList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<RelationshipDefinitionFieldsList>;
 
-/** Map a field of profile to its corresponding StrongId in Related Profile. */
-export interface RelationshipTypeFieldMapping {
-  /** Specifies the fieldName in profile. */
-  profileFieldName: string;
-  /** Specifies the KeyProperty (from StrongId) of the related profile. */
-  relatedProfileKeyProperty: string;
-}
-export const RelationshipTypeFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileFieldName: S.String,
-    relatedProfileKeyProperty: S.String,
-  }),
-).annotate({
-  identifier: "RelationshipTypeFieldMapping",
-}) as any as S.Schema<RelationshipTypeFieldMapping>;
-
-/** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
-export type RelationshipTypeMappingFieldMappingsList =
-  RelationshipTypeFieldMapping[];
-export const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipTypeFieldMapping,
-) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
-
-/** Maps fields in Profile to their corresponding StrongIds in Related Profile. */
-export interface RelationshipTypeMapping {
-  /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
-  fieldMappings: RelationshipTypeMappingFieldMappingsList;
-}
-export const RelationshipTypeMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldMappings: RelationshipTypeMappingFieldMappingsList,
-  }),
-).annotate({
-  identifier: "RelationshipTypeMapping",
-}) as any as S.Schema<RelationshipTypeMapping>;
-
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionLookupMappingsList =
-  RelationshipTypeMapping[];
+  ReadonlyArray<RelationshipTypeMapping>;
 export const RelationshipDefinitionLookupMappingsList = /*@__PURE__*/ S.Array(
   RelationshipTypeMapping,
 ) as any as S.Schema<RelationshipDefinitionLookupMappingsList>;
@@ -4724,7 +5753,8 @@ export const RelationshipResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelationshipResourceFormat>;
 
 /** Results of the list operation. */
-export type RelationshipListResultValueList = RelationshipResourceFormat[];
+export type RelationshipListResultValueList =
+  ReadonlyArray<RelationshipResourceFormat>;
 export const RelationshipListResultValueList = /*@__PURE__*/ S.Array(
   RelationshipResourceFormat,
 ) as any as S.Schema<RelationshipListResultValueList>;
@@ -4745,6 +5775,158 @@ export const RelationshipListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipListResult",
 }) as any as S.Schema<RelationshipListResult>;
 
+/** Localized display names for the metadata. */
+export type RoleAssignmentInputDisplayNameMap = {
+  [key: string]: string | undefined;
+};
+export const RoleAssignmentInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoleAssignmentInputDisplayNameMap>;
+
+/** Localized description for the metadata. */
+export type RoleAssignmentInputDescriptionMap = {
+  [key: string]: string | undefined;
+};
+export const RoleAssignmentInputDescriptionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoleAssignmentInputDescriptionMap>;
+
+/** Type of roles. */
+export type RoleAssignmentInputRole =
+  | "Admin"
+  | "Reader"
+  | "ManageAdmin"
+  | "ManageReader"
+  | "DataAdmin"
+  | "DataReader";
+export const RoleAssignmentInputRole = /*@__PURE__*/ S.String;
+
+/** Other metadata for the principal. */
+export type AssignmentPrincipalPrincipalMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const AssignmentPrincipalPrincipalMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
+
+/** The AssignmentPrincipal */
+export interface AssignmentPrincipal {
+  /** The principal id being assigned to. */
+  principalId: string;
+  /** The Type of the principal ID. */
+  principalType: string;
+  /** Other metadata for the principal. */
+  principalMetadata?: AssignmentPrincipalPrincipalMetadataMap;
+}
+export const AssignmentPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    principalType: S.String,
+    principalMetadata: S.optional(AssignmentPrincipalPrincipalMetadataMap),
+  }),
+).annotate({
+  identifier: "AssignmentPrincipal",
+}) as any as S.Schema<AssignmentPrincipal>;
+
+/** The principals being assigned to. */
+export type RoleAssignmentInputPrincipalsList =
+  ReadonlyArray<AssignmentPrincipal>;
+export const RoleAssignmentInputPrincipalsList = /*@__PURE__*/ S.Array(
+  AssignmentPrincipal,
+) as any as S.Schema<RoleAssignmentInputPrincipalsList>;
+
+/** The elements included in the set. */
+export type ResourceSetDescriptionElementsList = ReadonlyArray<string>;
+export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSetDescriptionElementsList>;
+
+/** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
+export type ResourceSetDescriptionExceptionsList = ReadonlyArray<string>;
+export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
+
+/** The resource set description. */
+export interface ResourceSetDescription {
+  /** The elements included in the set. */
+  elements?: ResourceSetDescriptionElementsList;
+  /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
+  exceptions?: ResourceSetDescriptionExceptionsList;
+}
+export const ResourceSetDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    elements: S.optional(ResourceSetDescriptionElementsList),
+    exceptions: S.optional(ResourceSetDescriptionExceptionsList),
+  }),
+).annotate({
+  identifier: "ResourceSetDescription",
+}) as any as S.Schema<ResourceSetDescription>;
+
+/** The Role Assignment definition. */
+export interface RoleAssignmentInput {
+  /** Localized display names for the metadata. */
+  displayName?: RoleAssignmentInputDisplayNameMap;
+  /** Localized description for the metadata. */
+  description?: RoleAssignmentInputDescriptionMap;
+  /** Type of roles. */
+  role: RoleAssignmentInputRole;
+  /** The principals being assigned to. */
+  principals: RoleAssignmentInputPrincipalsList;
+  /** Profiles set for the assignment. */
+  profiles?: ResourceSetDescription;
+  /** Interactions set for the assignment. */
+  interactions?: ResourceSetDescription;
+  /** Links set for the assignment. */
+  links?: ResourceSetDescription;
+  /** Kpis set for the assignment. */
+  kpis?: ResourceSetDescription;
+  /** Sas Policies set for the assignment. */
+  sasPolicies?: ResourceSetDescription;
+  /** Connectors set for the assignment. */
+  connectors?: ResourceSetDescription;
+  /** Views set for the assignment. */
+  views?: ResourceSetDescription;
+  /** The Role assignments set for the relationship links. */
+  relationshipLinks?: ResourceSetDescription;
+  /** The Role assignments set for the relationships. */
+  relationships?: ResourceSetDescription;
+  /** Widget types set for the assignment. */
+  widgetTypes?: ResourceSetDescription;
+  /** The Role assignments set for the assignment. */
+  roleAssignments?: ResourceSetDescription;
+  /** Widget types set for the assignment. */
+  conflationPolicies?: ResourceSetDescription;
+  /** The Role assignments set for the assignment. */
+  segments?: ResourceSetDescription;
+}
+export const RoleAssignmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(RoleAssignmentInputDisplayNameMap),
+    description: S.optional(RoleAssignmentInputDescriptionMap),
+    role: RoleAssignmentInputRole,
+    principals: RoleAssignmentInputPrincipalsList,
+    profiles: S.optional(ResourceSetDescription),
+    interactions: S.optional(ResourceSetDescription),
+    links: S.optional(ResourceSetDescription),
+    kpis: S.optional(ResourceSetDescription),
+    sasPolicies: S.optional(ResourceSetDescription),
+    connectors: S.optional(ResourceSetDescription),
+    views: S.optional(ResourceSetDescription),
+    relationshipLinks: S.optional(ResourceSetDescription),
+    relationships: S.optional(ResourceSetDescription),
+    widgetTypes: S.optional(ResourceSetDescription),
+    roleAssignments: S.optional(ResourceSetDescription),
+    conflationPolicies: S.optional(ResourceSetDescription),
+    segments: S.optional(ResourceSetDescription),
+  }),
+).annotate({
+  identifier: "RoleAssignmentInput",
+}) as any as S.Schema<RoleAssignmentInput>;
+
 export interface RoleAssignmentsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4754,7 +5936,7 @@ export interface RoleAssignmentsCreateOrUpdateRequest {
   hubName: string;
   /** The assignment name */
   assignmentName: string;
-  body: unknown;
+  properties?: RoleAssignmentInput;
 }
 export const RoleAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4763,7 +5945,7 @@ export const RoleAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       hubName: S.String.pipe(T.Label()),
       assignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RoleAssignmentInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4801,71 +5983,14 @@ export type RoleAssignmentRole =
   | "ManageAdmin"
   | "ManageReader"
   | "DataAdmin"
-  | "DataReader"
-  | (string & {});
+  | "DataReader";
 export const RoleAssignmentRole = /*@__PURE__*/ S.String;
 
-/** Other metadata for the principal. */
-export type AssignmentPrincipalPrincipalMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const AssignmentPrincipalPrincipalMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
-
-/** The AssignmentPrincipal */
-export interface AssignmentPrincipal {
-  /** The principal id being assigned to. */
-  principalId: string;
-  /** The Type of the principal ID. */
-  principalType: string;
-  /** Other metadata for the principal. */
-  principalMetadata?: AssignmentPrincipalPrincipalMetadataMap;
-}
-export const AssignmentPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    principalType: S.String,
-    principalMetadata: S.optional(AssignmentPrincipalPrincipalMetadataMap),
-  }),
-).annotate({
-  identifier: "AssignmentPrincipal",
-}) as any as S.Schema<AssignmentPrincipal>;
-
 /** The principals being assigned to. */
-export type RoleAssignmentPrincipalsList = AssignmentPrincipal[];
+export type RoleAssignmentPrincipalsList = ReadonlyArray<AssignmentPrincipal>;
 export const RoleAssignmentPrincipalsList = /*@__PURE__*/ S.Array(
   AssignmentPrincipal,
 ) as any as S.Schema<RoleAssignmentPrincipalsList>;
-
-/** The elements included in the set. */
-export type ResourceSetDescriptionElementsList = string[];
-export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionElementsList>;
-
-/** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
-export type ResourceSetDescriptionExceptionsList = string[];
-export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
-
-/** The resource set description. */
-export interface ResourceSetDescription {
-  /** The elements included in the set. */
-  elements?: ResourceSetDescriptionElementsList;
-  /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
-  exceptions?: ResourceSetDescriptionExceptionsList;
-}
-export const ResourceSetDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elements: S.optional(ResourceSetDescriptionElementsList),
-    exceptions: S.optional(ResourceSetDescriptionExceptionsList),
-  }),
-).annotate({
-  identifier: "ResourceSetDescription",
-}) as any as S.Schema<ResourceSetDescription>;
 
 /** The Role Assignment definition. */
 export interface RoleAssignment {
@@ -5086,7 +6211,8 @@ export const RoleAssignmentResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleAssignmentResourceFormat>;
 
 /** Results of the list operation. */
-export type RoleAssignmentListResultValueList = RoleAssignmentResourceFormat[];
+export type RoleAssignmentListResultValueList =
+  ReadonlyArray<RoleAssignmentResourceFormat>;
 export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   RoleAssignmentResourceFormat,
 ) as any as S.Schema<RoleAssignmentListResultValueList>;
@@ -5168,7 +6294,7 @@ export const RoleResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleResourceFormat>;
 
 /** Results of the list operation. */
-export type RoleListResultValueList = RoleResourceFormat[];
+export type RoleListResultValueList = ReadonlyArray<RoleResourceFormat>;
 export const RoleListResultValueList = /*@__PURE__*/ S.Array(
   RoleResourceFormat,
 ) as any as S.Schema<RoleListResultValueList>;
@@ -5187,6 +6313,30 @@ export const RoleListResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoleListResult" }) as any as S.Schema<RoleListResult>;
 
+/** Localized display name for the view. */
+export type ViewInputDisplayNameMap = { [key: string]: string | undefined };
+export const ViewInputDisplayNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ViewInputDisplayNameMap>;
+
+/** The view in Customer 360 web application. */
+export interface ViewInput {
+  /** the user ID. */
+  userId?: string;
+  /** Localized display name for the view. */
+  displayName?: ViewInputDisplayNameMap;
+  /** View definition. */
+  definition: string;
+}
+export const ViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.optional(S.String),
+    displayName: S.optional(ViewInputDisplayNameMap),
+    definition: S.String,
+  }),
+).annotate({ identifier: "ViewInput" }) as any as S.Schema<ViewInput>;
+
 export interface ViewsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5196,7 +6346,7 @@ export interface ViewsCreateOrUpdateRequest {
   hubName: string;
   /** The name of the view. */
   viewName: string;
-  body: unknown;
+  properties?: ViewInput;
 }
 export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5204,7 +6354,7 @@ export const ViewsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hubName: S.String.pipe(T.Label()),
     viewName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ViewInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5412,7 +6562,7 @@ export const ViewResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ViewResourceFormat>;
 
 /** Results of the list operation. */
-export type ViewListResultValueList = ViewResourceFormat[];
+export type ViewListResultValueList = ReadonlyArray<ViewResourceFormat>;
 export const ViewListResultValueList = /*@__PURE__*/ S.Array(
   ViewResourceFormat,
 ) as any as S.Schema<ViewListResultValueList>;
@@ -5568,7 +6718,8 @@ export const WidgetTypeResourceFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetTypeResourceFormat>;
 
 /** Results of the list operation. */
-export type WidgetTypeListResultValueList = WidgetTypeResourceFormat[];
+export type WidgetTypeListResultValueList =
+  ReadonlyArray<WidgetTypeResourceFormat>;
 export const WidgetTypeListResultValueList = /*@__PURE__*/ S.Array(
   WidgetTypeResourceFormat,
 ) as any as S.Schema<WidgetTypeListResultValueList>;

@@ -572,16 +572,35 @@
             "smithy.api#documentation": "The name of the Volume."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elasticsan#VolumeUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Volume."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumeUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "sizeGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Volume size."
+          }
+        },
+        "managedBy": {
+          "target": "com.azure.elasticsan#ManagedByInfo",
+          "traits": {
+            "smithy.api#documentation": "Parent resource information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Volume response properties."
       }
     },
     "com.azure.elasticsan#VolumesCreate": {
@@ -685,16 +704,43 @@
             "smithy.api#documentation": "The name of the Volume."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elasticsan#VolumePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of Volume.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "creationData": {
+          "target": "com.azure.elasticsan#SourceCreationData",
+          "traits": {
+            "smithy.api#documentation": "State of the operation on the resource."
+          }
+        },
+        "sizeGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Volume size.",
+            "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "com.azure.elasticsan#ManagedByInfo",
+          "traits": {
+            "smithy.api#documentation": "Parent resource information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Volume response properties."
       }
     },
     "com.azure.elasticsan#VolumesGet": {
@@ -1147,16 +1193,31 @@
             "smithy.api#documentation": "The name of the volume snapshot within the given volume group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elasticsan#SnapshotPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of Volume Snapshot.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#SnapshotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "creationData": {
+          "target": "com.azure.elasticsan#SnapshotCreationData",
+          "traits": {
+            "smithy.api#documentation": "Data used when creating a volume snapshot.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for Snapshot."
       }
     },
     "com.azure.elasticsan#VolumeSnapshotsGet": {
@@ -1468,16 +1529,25 @@
             "smithy.api#documentation": "The name of the VolumeGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "diskSnapshotIds": {
+          "target": "com.azure.elasticsan#VolumesPreRestoreRequestDiskSnapshotIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "array of DiskSnapshot ARM IDs",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumesPreRestoreRequestDiskSnapshotIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "array of DiskSnapshot ARM IDs"
       }
     },
     "com.azure.elasticsan#VolumesPreBackup": {
@@ -1534,16 +1604,25 @@
             "smithy.api#documentation": "The name of the VolumeGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "volumeNames": {
+          "target": "com.azure.elasticsan#VolumesPreBackupRequestVolumeNamesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "array of volume names",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumesPreBackupRequestVolumeNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "array of volume names"
       }
     },
     "com.azure.elasticsan#VolumeGroupsDelete": {
@@ -2182,16 +2261,145 @@
             "smithy.api#documentation": "The name of the VolumeGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.elasticsan#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.elasticsan#VolumeGroupUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of VolumeGroup."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumeGroupUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "protocolType": {
+          "target": "com.azure.elasticsan#StorageTargetType",
+          "traits": {
+            "smithy.api#documentation": "Type of storage target"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.elasticsan#EncryptionType",
+          "traits": {
+            "smithy.api#documentation": "Type of encryption"
+          }
+        },
+        "encryptionProperties": {
+          "target": "com.azure.elasticsan#EncryptionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Encryption Properties describing Key Vault and Identity information"
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.elasticsan#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "A collection of rules governing the accessibility from specific network locations."
+          }
+        },
+        "enforceDataIntegrityCheckForIscsi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether or not Data Integrity Check is enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "VolumeGroup response properties."
+      }
+    },
+    "com.azure.elasticsan#EncryptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultProperties": {
+          "target": "com.azure.elasticsan#KeyVaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties provided by key vault."
+          }
+        },
+        "identity": {
+          "target": "com.azure.elasticsan#EncryptionIdentity",
+          "traits": {
+            "smithy.api#documentation": "The identity to be used with service-side encryption at rest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption settings on the volume group."
+      }
+    },
+    "com.azure.elasticsan#KeyVaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of KeyVault key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of KeyVault key."
+          }
+        },
+        "keyVaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Uri of KeyVault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of key vault."
+      }
+    },
+    "com.azure.elasticsan#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.elasticsan#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.elasticsan#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.elasticsan#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.elasticsan#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity."
+      }
+    },
+    "com.azure.elasticsan#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "UserAssignedIdentity for the resource."
       }
     },
     "com.azure.elasticsan#VolumeGroupsCreate": {
@@ -2292,16 +2500,59 @@
             "smithy.api#documentation": "The name of the VolumeGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.elasticsan#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.elasticsan#VolumeGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of VolumeGroup."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#VolumeGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "protocolType": {
+          "target": "com.azure.elasticsan#StorageTargetType",
+          "traits": {
+            "smithy.api#documentation": "Type of storage target"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.elasticsan#EncryptionType",
+          "traits": {
+            "smithy.api#documentation": "Type of encryption"
+          }
+        },
+        "encryptionProperties": {
+          "target": "com.azure.elasticsan#EncryptionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Encryption Properties describing Key Vault and Identity information"
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.elasticsan#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "A collection of rules governing the accessibility from specific network locations."
+          }
+        },
+        "enforceDataIntegrityCheckForIscsi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether or not Data Integrity Check is enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "VolumeGroup response properties."
       }
     },
     "com.azure.elasticsan#VolumeGroupsGet": {
@@ -2847,16 +3098,59 @@
             "smithy.api#documentation": "The name of the Private Endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elasticsan#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Private Endpoint Connection Properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.elasticsan#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "Private Endpoint resource"
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.elasticsan#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Private Link Service Connection State.",
+            "smithy.api#required": {}
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.elasticsan#PrivateEndpointConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of resources private endpoint is mapped"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response for PrivateEndpoint connection properties"
+      }
+    },
+    "com.azure.elasticsan#PrivateEndpointConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resources private endpoint is mapped"
+      }
+    },
+    "com.azure.elasticsan#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Response for PrivateEndpoint"
       }
     },
     "com.azure.elasticsan#PrivateEndpointConnectionsGet": {
@@ -3453,16 +3747,65 @@
             "smithy.api#documentation": "The name of the ElasticSan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elasticsan#ElasticSanUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of ElasticSan."
+          }
+        },
+        "tags": {
+          "target": "com.azure.elasticsan#ElasticSansUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Update tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#ElasticSansUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Update tags"
+      }
+    },
+    "com.azure.elasticsan#ElasticSanUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "baseSizeTiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Base size of the Elastic San appliance in TiB."
+          }
+        },
+        "extendedCapacitySizeTiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Extended size of the Elastic San appliance in TiB."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.elasticsan#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public network access to ElasticSan Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'."
+          }
+        },
+        "autoScaleProperties": {
+          "target": "com.azure.elasticsan#AutoScaleProperties",
+          "traits": {
+            "smithy.api#documentation": "Auto Scale Properties for Elastic San Appliance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Elastic San update properties."
       }
     },
     "com.azure.elasticsan#ElasticSansCreate": {
@@ -3575,16 +3918,97 @@
             "smithy.api#documentation": "The name of the ElasticSan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.elasticsan#ElasticSansCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.elasticsan#ElasticSanPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of ElasticSan.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elasticsan#ElasticSanPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.elasticsan#Sku",
+          "traits": {
+            "smithy.api#documentation": "resource sku",
+            "smithy.api#required": {}
+          }
+        },
+        "availabilityZones": {
+          "target": "com.azure.elasticsan#ElasticSanPropertiesInputAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "Logical zone for Elastic San resource; example: [\"1\"]."
+          }
+        },
+        "baseSizeTiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Base size of the Elastic San appliance in TiB.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedCapacitySizeTiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Extended size of the Elastic San appliance in TiB.",
+            "smithy.api#required": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.elasticsan#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'."
+          }
+        },
+        "autoScaleProperties": {
+          "target": "com.azure.elasticsan#AutoScaleProperties",
+          "traits": {
+            "smithy.api#documentation": "Auto Scale Properties for Elastic San Appliance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Elastic San response properties."
+      }
+    },
+    "com.azure.elasticsan#ElasticSanPropertiesInputAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Logical zone for Elastic San resource; example: [\"1\"]."
+      }
+    },
+    "com.azure.elasticsan#ElasticSansCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.elasticsan#ElasticSansGet": {

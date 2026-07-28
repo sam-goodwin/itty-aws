@@ -66,7 +66,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -285,7 +285,7 @@ export const PreprocessingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreprocessingConfig",
 }) as any as S.Schema<PreprocessingConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -312,7 +312,7 @@ export const TrackDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrackDefinition",
 }) as any as S.Schema<TrackDefinition>;
 
-export type TrackDefinitionList = TrackDefinition[];
+export type TrackDefinitionList = ReadonlyArray<TrackDefinition>;
 export const TrackDefinitionList = /*@__PURE__*/ S.Array(
   TrackDefinition,
 ) as any as S.Schema<TrackDefinitionList>;
@@ -350,7 +350,7 @@ export const Input = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Input" }) as any as S.Schema<Input>;
 
-export type InputList = Input[];
+export type InputList = ReadonlyArray<Input>;
 export const InputList = /*@__PURE__*/ S.Array(
   Input,
 ) as any as S.Schema<InputList>;
@@ -467,7 +467,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
-export type EncryptionList = Encryption[];
+export type EncryptionList = ReadonlyArray<Encryption>;
 export const EncryptionList = /*@__PURE__*/ S.Array(
   Encryption,
 ) as any as S.Schema<EncryptionList>;
@@ -539,7 +539,7 @@ export const MuxStream = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MuxStream" }) as any as S.Schema<MuxStream>;
 
-export type MuxStreamList = MuxStream[];
+export type MuxStreamList = ReadonlyArray<MuxStream>;
 export const MuxStreamList = /*@__PURE__*/ S.Array(
   MuxStream,
 ) as any as S.Schema<MuxStreamList>;
@@ -570,7 +570,7 @@ export const AudioMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AudioMapping" }) as any as S.Schema<AudioMapping>;
 
-export type AudioMappingList = AudioMapping[];
+export type AudioMappingList = ReadonlyArray<AudioMapping>;
 export const AudioMappingList = /*@__PURE__*/ S.Array(
   AudioMapping,
 ) as any as S.Schema<AudioMappingList>;
@@ -610,8 +610,7 @@ export const AudioStream = /*@__PURE__*/ S.suspend(() =>
 export type H265CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
+  | "DROP_DUPLICATE";
 export const H265CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -739,8 +738,7 @@ export const Vp9ColorFormatHLG = /*@__PURE__*/ S.suspend(() =>
 export type Vp9CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
+  | "DROP_DUPLICATE";
 export const Vp9CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -798,8 +796,7 @@ export const Vp9CodecSettings = /*@__PURE__*/ S.suspend(() =>
 export type H264CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
-  | "DROP_DUPLICATE"
-  | (string & {});
+  | "DROP_DUPLICATE";
 export const H264CodecSettingsFrameRateConversionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -934,7 +931,7 @@ export const TextMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextMapping" }) as any as S.Schema<TextMapping>;
 
-export type TextMappingList = TextMapping[];
+export type TextMappingList = ReadonlyArray<TextMapping>;
 export const TextMappingList = /*@__PURE__*/ S.Array(
   TextMapping,
 ) as any as S.Schema<TextMappingList>;
@@ -981,7 +978,7 @@ export const ElementaryStream = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementaryStream",
 }) as any as S.Schema<ElementaryStream>;
 
-export type ElementaryStreamList = ElementaryStream[];
+export type ElementaryStreamList = ReadonlyArray<ElementaryStream>;
 export const ElementaryStreamList = /*@__PURE__*/ S.Array(
   ElementaryStream,
 ) as any as S.Schema<ElementaryStreamList>;
@@ -1006,7 +1003,7 @@ export const EditAtom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EditAtom" }) as any as S.Schema<EditAtom>;
 
-export type EditAtomList = EditAtom[];
+export type EditAtomList = ReadonlyArray<EditAtom>;
 export const EditAtomList = /*@__PURE__*/ S.Array(
   EditAtom,
 ) as any as S.Schema<EditAtomList>;
@@ -1052,7 +1049,7 @@ export const SpriteSheet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpriteSheet" }) as any as S.Schema<SpriteSheet>;
 
-export type SpriteSheetList = SpriteSheet[];
+export type SpriteSheetList = ReadonlyArray<SpriteSheet>;
 export const SpriteSheetList = /*@__PURE__*/ S.Array(
   SpriteSheet,
 ) as any as S.Schema<SpriteSheetList>;
@@ -1060,8 +1057,7 @@ export const SpriteSheetList = /*@__PURE__*/ S.Array(
 export type DashConfigSegmentReferenceSchemeEnum =
   | "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"
   | "SEGMENT_LIST"
-  | "SEGMENT_TEMPLATE_NUMBER"
-  | (string & {});
+  | "SEGMENT_TEMPLATE_NUMBER";
 export const DashConfigSegmentReferenceSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `DASH` manifest configuration. */
@@ -1075,11 +1071,7 @@ export const DashConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DashConfig" }) as any as S.Schema<DashConfig>;
 
-export type ManifestTypeEnum =
-  | "MANIFEST_TYPE_UNSPECIFIED"
-  | "HLS"
-  | "DASH"
-  | (string & {});
+export type ManifestTypeEnum = "MANIFEST_TYPE_UNSPECIFIED" | "HLS" | "DASH";
 export const ManifestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Manifest configuration. */
@@ -1102,7 +1094,7 @@ export const Manifest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Manifest" }) as any as S.Schema<Manifest>;
 
-export type ManifestList = Manifest[];
+export type ManifestList = ReadonlyArray<Manifest>;
 export const ManifestList = /*@__PURE__*/ S.Array(
   Manifest,
 ) as any as S.Schema<ManifestList>;
@@ -1118,7 +1110,7 @@ export const AdBreak = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdBreak" }) as any as S.Schema<AdBreak>;
 
-export type AdBreakList = AdBreak[];
+export type AdBreakList = ReadonlyArray<AdBreak>;
 export const AdBreakList = /*@__PURE__*/ S.Array(
   AdBreak,
 ) as any as S.Schema<AdBreakList>;
@@ -1159,8 +1151,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 export type AnimationFadeFadeTypeEnum =
   | "FADE_TYPE_UNSPECIFIED"
   | "FADE_IN"
-  | "FADE_OUT"
-  | (string & {});
+  | "FADE_OUT";
 export const AnimationFadeFadeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Display overlay object with fade animation. */
@@ -1227,7 +1218,7 @@ export const Animation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Animation" }) as any as S.Schema<Animation>;
 
-export type AnimationList = Animation[];
+export type AnimationList = ReadonlyArray<Animation>;
 export const AnimationList = /*@__PURE__*/ S.Array(
   Animation,
 ) as any as S.Schema<AnimationList>;
@@ -1246,7 +1237,7 @@ export const Overlay = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Overlay" }) as any as S.Schema<Overlay>;
 
-export type OverlayList = Overlay[];
+export type OverlayList = ReadonlyArray<Overlay>;
 export const OverlayList = /*@__PURE__*/ S.Array(
   Overlay,
 ) as any as S.Schema<OverlayList>;
@@ -1295,8 +1286,7 @@ export const JobConfig = /*@__PURE__*/ S.suspend(() =>
 export type JobModeEnum =
   | "PROCESSING_MODE_UNSPECIFIED"
   | "PROCESSING_MODE_INTERACTIVE"
-  | "PROCESSING_MODE_BATCH"
-  | (string & {});
+  | "PROCESSING_MODE_BATCH";
 export const JobModeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -1310,15 +1300,13 @@ export type JobStateEnum =
   | "PENDING"
   | "RUNNING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 export type JobOptimizationEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "AUTODETECT"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const JobOptimizationEnum = /*@__PURE__*/ S.String;
 
 /** Transcoding job resource. */
@@ -1556,7 +1544,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response message for `TranscoderService.ListJobs`. */
@@ -1609,7 +1597,7 @@ export const ListProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsJobTemplatesRequest",
 }) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>;
 
-export type JobTemplateList = JobTemplate[];
+export type JobTemplateList = ReadonlyArray<JobTemplate>;
 export const JobTemplateList = /*@__PURE__*/ S.Array(
   JobTemplate,
 ) as any as S.Schema<JobTemplateList>;

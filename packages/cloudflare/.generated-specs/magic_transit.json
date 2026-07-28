@@ -439,41 +439,42 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#AppsListResultItemHostnamesList": {
+    "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppHostnamesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#AppsListResultItemIpSubnetsList": {
+    "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppIpSubnetsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#AppsListResultItemSourceSubnetsList": {
+    "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppSourceSubnetsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#AppsListResultItem": {
+    "com.cloudflare.magic_transit#AppsListResultItemMagicAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "hostnames": {
-          "target": "com.cloudflare.magic_transit#AppsListResultItemHostnamesList",
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppHostnamesList",
           "traits": {
             "smithy.api#documentation": "FQDNs to associate with traffic decisions."
           }
         },
         "ip_subnets": {
-          "target": "com.cloudflare.magic_transit#AppsListResultItemIpSubnetsList",
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppIpSubnetsList",
           "traits": {
             "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
           }
@@ -485,7 +486,7 @@
           }
         },
         "source_subnets": {
-          "target": "com.cloudflare.magic_transit#AppsListResultItemSourceSubnetsList",
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicAccountAppSourceSubnetsList",
           "traits": {
             "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
           }
@@ -495,12 +496,77 @@
           "traits": {
             "smithy.api#documentation": "Category of the app."
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppHostnamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppIpSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppSourceSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItemMagicManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
           }
+        },
+        "hostnames": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppHostnamesList",
+          "traits": {
+            "smithy.api#documentation": "FQDNs to associate with traffic decisions."
+          }
+        },
+        "ip_subnets": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppIpSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the app."
+          }
+        },
+        "source_subnets": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicManagedAppSourceSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Category of the app."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#AppsListResultItem": {
+      "type": "union",
+      "members": {
+        "MagicAccountApp": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicAccountApp"
+        },
+        "MagicManagedApp": {
+          "target": "com.cloudflare.magic_transit#AppsListResultItemMagicManagedApp"
         }
       }
     },
@@ -1330,6 +1396,41 @@
         "smithy.api#documentation": "Partially updates a specific CF1 Site for an account. Only the fields included in the request body are modified; omitted fields retain their existing values."
       }
     },
+    "com.cloudflare.magic_transit#Cf1SitesRampsCreateRequestBodyItemType": {
+      "type": "enum",
+      "members": {
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre_interconnect"
+          }
+        },
+        "MPLS_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mpls_interconnect"
+          }
+        },
+        "MCONN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mconn"
+          }
+        },
+        "IPSEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#Cf1SitesRampsCreateRequestBodyItem": {
       "type": "structure",
       "members": {
@@ -1341,7 +1442,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#Cf1SitesRampsCreateRequestBodyItemType",
           "traits": {
             "smithy.api#documentation": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
             "smithy.api#required": {}
@@ -1384,6 +1485,41 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.magic_transit#Cf1SitesRampsCreateResultItemType": {
+      "type": "enum",
+      "members": {
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre_interconnect"
+          }
+        },
+        "MPLS_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mpls_interconnect"
+          }
+        },
+        "MCONN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mconn"
+          }
+        },
+        "IPSEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec"
+          }
+        }
       }
     },
     "com.cloudflare.magic_transit#Cf1SitesRampsCreateResultItemGre": {
@@ -1471,7 +1607,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#Cf1SitesRampsCreateResultItemType",
           "traits": {
             "smithy.api#documentation": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
             "smithy.api#required": {}
@@ -1570,6 +1706,41 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#Cf1SitesRampsDeleteResponseType": {
+      "type": "enum",
+      "members": {
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre_interconnect"
+          }
+        },
+        "MPLS_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mpls_interconnect"
+          }
+        },
+        "MCONN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mconn"
+          }
+        },
+        "IPSEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#Cf1SitesRampsDeleteResponseGre": {
       "type": "structure",
       "members": {
@@ -1655,7 +1826,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#Cf1SitesRampsDeleteResponseType",
           "traits": {
             "smithy.api#documentation": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
             "smithy.api#required": {}
@@ -1736,6 +1907,41 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.magic_transit#Cf1SitesRampsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre_interconnect"
+          }
+        },
+        "MPLS_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mpls_interconnect"
+          }
+        },
+        "MCONN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mconn"
+          }
+        },
+        "IPSEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec"
+          }
+        }
       }
     },
     "com.cloudflare.magic_transit#Cf1SitesRampsGetResponseGre": {
@@ -1823,7 +2029,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#Cf1SitesRampsGetResponseType",
           "traits": {
             "smithy.api#documentation": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
             "smithy.api#required": {}
@@ -1896,6 +2102,41 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.magic_transit#Cf1SitesRampsListResultItemType": {
+      "type": "enum",
+      "members": {
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre_interconnect"
+          }
+        },
+        "MPLS_INTERCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mpls_interconnect"
+          }
+        },
+        "MCONN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mconn"
+          }
+        },
+        "IPSEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec"
+          }
+        }
       }
     },
     "com.cloudflare.magic_transit#Cf1SitesRampsListResultItemGre": {
@@ -1983,7 +2224,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#Cf1SitesRampsListResultItemType",
           "traits": {
             "smithy.api#documentation": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
             "smithy.api#required": {}
@@ -2067,13 +2308,6 @@
           "traits": {
             "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -2091,7 +2325,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -2105,11 +2362,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -2124,7 +2403,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -2136,7 +2415,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -2303,7 +2582,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckTarget": {
+    "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -2317,11 +2619,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -2336,7 +2660,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -2348,7 +2672,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -2498,7 +2822,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -2512,11 +2859,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -2531,7 +2900,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -2543,7 +2912,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -2677,7 +3046,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckTarget": {
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -2691,11 +3083,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -2710,7 +3124,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -2722,7 +3136,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -2815,7 +3229,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget": {
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -2829,11 +3266,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -2848,7 +3307,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -2860,7 +3319,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -3017,6 +3476,30 @@
           "traits": {
             "smithy.api#enumValue": "Tuesday"
           }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
         }
       }
     },
@@ -3107,6 +3590,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
           }
         }
       }
@@ -3303,6 +3810,30 @@
           "traits": {
             "smithy.api#enumValue": "Tuesday"
           }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
         }
       }
     },
@@ -3476,6 +4007,30 @@
           "traits": {
             "smithy.api#enumValue": "Tuesday"
           }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
         }
       }
     },
@@ -3572,6 +4127,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
           }
         }
       }
@@ -3767,6 +4346,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
           }
         }
       }
@@ -3981,6 +4584,30 @@
           "traits": {
             "smithy.api#enumValue": "Tuesday"
           }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
         }
       }
     },
@@ -4171,6 +4798,30 @@
           "traits": {
             "smithy.api#enumValue": "Tuesday"
           }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
         }
       }
     },
@@ -4267,6 +4918,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
           }
         }
       }
@@ -9431,13 +10106,6 @@
           "traits": {
             "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -9564,7 +10232,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -9578,11 +10269,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -9603,7 +10316,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -9615,7 +10328,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -9811,7 +10524,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -9825,11 +10561,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -9850,7 +10608,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -9862,7 +10620,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateRequestHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -10075,7 +10833,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -10089,11 +10870,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -10114,7 +10917,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -10126,7 +10929,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsCreateResponseHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -10395,7 +11198,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -10409,11 +11235,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -10434,7 +11282,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -10446,7 +11294,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -10727,7 +11575,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -10741,11 +11612,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -10766,7 +11659,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -10778,7 +11671,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -11048,7 +11941,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -11062,11 +11978,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -11087,7 +12025,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -11099,7 +12037,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -11250,7 +12188,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -11264,11 +12225,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -11289,7 +12272,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -11301,7 +12284,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateRequestHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -11519,7 +12502,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -11533,11 +12539,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -11558,7 +12586,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -11570,7 +12598,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -11717,13 +12745,6 @@
           "traits": {
             "smithy.api#httpHeader": "x-magic-new-hc-target"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -11861,7 +12882,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -11875,11 +12919,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -11900,7 +12966,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -11912,7 +12978,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -12138,7 +13204,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -12152,11 +13241,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -12177,7 +13288,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -12189,7 +13300,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -12415,7 +13526,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -12429,11 +13563,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -12454,7 +13610,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -12466,7 +13622,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -12765,7 +13921,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -12779,11 +13958,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -12804,7 +14005,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -12816,7 +14017,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -13127,7 +14328,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -13141,11 +14365,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -13166,7 +14412,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -13178,7 +14424,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -13478,7 +14724,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -13492,11 +14761,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -13517,7 +14808,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -13529,7 +14820,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -13700,13 +14991,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -13823,13 +15107,57 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata": {
+      "type": "structure",
+      "members": {
+        "last_generated_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the tunnel was last modified."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue": {
+      "type": "structure",
+      "members": {
+        "ipsec_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IKE identifier used for this tunnel on the Cloudflare edge.",
+            "smithy.api#required": {}
+          }
+        },
+        "ipsec_tunnel_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "psk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A randomly generated or provided string for use in the IPsec tunnel.",
+            "smithy.api#required": {}
+          }
+        },
+        "psk_metadata": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata",
+          "traits": {
+            "smithy.api#documentation": "The PSK metadata that includes when the PSK was generated.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue"
       }
     },
     "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponseUnappliedPsksMap": {
@@ -13838,7 +15166,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#IpsecTunnelsPskSetResponse": {
@@ -13949,7 +15277,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -13963,11 +15314,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -13988,7 +15361,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -14000,7 +15373,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -14234,7 +15607,30 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget": {
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mid"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget": {
       "type": "structure",
       "members": {
         "effective": {
@@ -14248,11 +15644,33 @@
           "traits": {
             "smithy.api#documentation": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used."
           }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
         },
-        "string": {
-          "target": "smithy.api#Document",
+        "MagicHealthCheckTarget": {
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType": {
+      "type": "enum",
+      "members": {
+        "REPLY": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#enumValue": "reply"
+          }
+        },
+        "REQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "request"
           }
         }
       }
@@ -14273,7 +15691,7 @@
           }
         },
         "rate": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate",
           "traits": {
             "smithy.api#documentation": "How frequent the health check is run. The default value is `mid`."
           }
@@ -14285,7 +15703,7 @@
           }
         },
         "type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType",
           "traits": {
             "smithy.api#documentation": "The type of healthcheck to run, reply or request. The default value is `reply`."
           }
@@ -14616,7 +16034,7 @@
           }
         },
         "filter_v1": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1",
           "traits": {
             "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
           }
@@ -14663,7 +16081,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateResponseFilterV1": {
+    "com.cloudflare.magic_transit#PcapsCreateResultPCAPFilterV1": {
       "type": "structure",
       "members": {
         "destination_address": {
@@ -14698,7 +16116,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateResponseStatus": {
+    "com.cloudflare.magic_transit#PcapsCreateResultPCAPStatus": {
       "type": "enum",
       "members": {
         "UNKNOWN": {
@@ -14718,10 +16136,40 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateResponseSystem": {
+    "com.cloudflare.magic_transit#PcapsCreateResultPCAPSystem": {
       "type": "enum",
       "members": {
         "MAGIC_TRANSIT": {
@@ -14732,7 +16180,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateResponseType": {
+    "com.cloudflare.magic_transit#PcapsCreateResultPCAPType": {
       "type": "enum",
       "members": {
         "SIMPLE": {
@@ -14749,7 +16197,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsCreateResponse": {
+    "com.cloudflare.magic_transit#PcapsCreateResultPCAP": {
       "type": "structure",
       "members": {
         "id": {
@@ -14759,7 +16207,7 @@
           }
         },
         "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateResponseFilterV1",
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAPFilterV1",
           "traits": {
             "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
           }
@@ -14771,7 +16219,7 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateResponseStatus",
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAPStatus",
           "traits": {
             "smithy.api#documentation": "The status of the packet capture request."
           }
@@ -14783,7 +16231,7 @@
           }
         },
         "system": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateResponseSystem",
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAPSystem",
           "traits": {
             "smithy.api#documentation": "The system used to collect packet captures."
           }
@@ -14795,9 +16243,101 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.magic_transit#PcapsCreateResponseType",
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAPType",
           "traits": {
             "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
         "byte_limit": {
@@ -14824,10 +16364,22 @@
             "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
           }
         },
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAPFilterV1",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
         "packets_captured": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
           }
         },
         "stop_requested": {
@@ -14835,11 +16387,57 @@
           "traits": {
             "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResult": {
+      "type": "union",
+      "members": {
+        "PCAP": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultPCAP"
+        },
+        "MagicVisibilityPCAPsPCAPsResponseFull": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#PcapsCreateResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#PcapsCreate": {
@@ -14883,7 +16481,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#PcapsGetResponseFilterV1": {
+    "com.cloudflare.magic_transit#PcapsGetResultPCAPFilterV1": {
       "type": "structure",
       "members": {
         "destination_address": {
@@ -14918,7 +16516,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsGetResponseStatus": {
+    "com.cloudflare.magic_transit#PcapsGetResultPCAPStatus": {
       "type": "enum",
       "members": {
         "UNKNOWN": {
@@ -14938,10 +16536,40 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsGetResponseSystem": {
+    "com.cloudflare.magic_transit#PcapsGetResultPCAPSystem": {
       "type": "enum",
       "members": {
         "MAGIC_TRANSIT": {
@@ -14952,7 +16580,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsGetResponseType": {
+    "com.cloudflare.magic_transit#PcapsGetResultPCAPType": {
       "type": "enum",
       "members": {
         "SIMPLE": {
@@ -14969,7 +16597,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsGetResponse": {
+    "com.cloudflare.magic_transit#PcapsGetResultPCAP": {
       "type": "structure",
       "members": {
         "id": {
@@ -14979,7 +16607,7 @@
           }
         },
         "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsGetResponseFilterV1",
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAPFilterV1",
           "traits": {
             "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
           }
@@ -14991,7 +16619,7 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.magic_transit#PcapsGetResponseStatus",
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAPStatus",
           "traits": {
             "smithy.api#documentation": "The status of the packet capture request."
           }
@@ -15003,7 +16631,7 @@
           }
         },
         "system": {
-          "target": "com.cloudflare.magic_transit#PcapsGetResponseSystem",
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAPSystem",
           "traits": {
             "smithy.api#documentation": "The system used to collect packet captures."
           }
@@ -15015,9 +16643,101 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.magic_transit#PcapsGetResponseType",
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAPType",
           "traits": {
             "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
         "byte_limit": {
@@ -15044,10 +16764,22 @@
             "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
           }
         },
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAPFilterV1",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
         "packets_captured": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
           }
         },
         "stop_requested": {
@@ -15055,11 +16787,57 @@
           "traits": {
             "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResult": {
+      "type": "union",
+      "members": {
+        "PCAP": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultPCAP"
+        },
+        "MagicVisibilityPCAPsPCAPsResponseFull": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#PcapsGetResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#PcapsGet": {
@@ -15096,7 +16874,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#PcapsListResultItemFilterV1": {
+    "com.cloudflare.magic_transit#PcapsListResultItemPCAPFilterV1": {
       "type": "structure",
       "members": {
         "destination_address": {
@@ -15131,7 +16909,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsListResultItemStatus": {
+    "com.cloudflare.magic_transit#PcapsListResultItemPCAPStatus": {
       "type": "enum",
       "members": {
         "UNKNOWN": {
@@ -15151,10 +16929,40 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsListResultItemSystem": {
+    "com.cloudflare.magic_transit#PcapsListResultItemPCAPSystem": {
       "type": "enum",
       "members": {
         "MAGIC_TRANSIT": {
@@ -15165,7 +16973,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsListResultItemType": {
+    "com.cloudflare.magic_transit#PcapsListResultItemPCAPType": {
       "type": "enum",
       "members": {
         "SIMPLE": {
@@ -15182,7 +16990,7 @@
         }
       }
     },
-    "com.cloudflare.magic_transit#PcapsListResultItem": {
+    "com.cloudflare.magic_transit#PcapsListResultItemPCAP": {
       "type": "structure",
       "members": {
         "id": {
@@ -15192,7 +17000,7 @@
           }
         },
         "filter_v1": {
-          "target": "com.cloudflare.magic_transit#PcapsListResultItemFilterV1",
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAPFilterV1",
           "traits": {
             "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
           }
@@ -15204,7 +17012,7 @@
           }
         },
         "status": {
-          "target": "com.cloudflare.magic_transit#PcapsListResultItemStatus",
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAPStatus",
           "traits": {
             "smithy.api#documentation": "The status of the packet capture request."
           }
@@ -15216,7 +17024,7 @@
           }
         },
         "system": {
-          "target": "com.cloudflare.magic_transit#PcapsListResultItemSystem",
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAPSystem",
           "traits": {
             "smithy.api#documentation": "The system used to collect packet captures."
           }
@@ -15228,9 +17036,101 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.magic_transit#PcapsListResultItemType",
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAPType",
           "traits": {
             "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "CONVERSION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_pending"
+          }
+        },
+        "CONVERSION_RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversion_running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem": {
+      "type": "enum",
+      "members": {
+        "MAGIC_TRANSIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic-transit"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType": {
+      "type": "enum",
+      "members": {
+        "SIMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simple"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for the packet capture."
           }
         },
         "byte_limit": {
@@ -15257,10 +17157,22 @@
             "smithy.api#documentation": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
           }
         },
+        "filter_v1": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAPFilterV1",
+          "traits": {
+            "smithy.api#documentation": "The packet capture filter. When this field is empty, all packets are captured."
+          }
+        },
         "packets_captured": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The number of packets captured."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the packet capture request."
           }
         },
         "stop_requested": {
@@ -15268,6 +17180,41 @@
           "traits": {
             "smithy.api#documentation": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures."
           }
+        },
+        "submitted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp when the packet capture was created."
+          }
+        },
+        "system": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem",
+          "traits": {
+            "smithy.api#documentation": "The system used to collect packet captures."
+          }
+        },
+        "time_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The packet capture duration in seconds."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType",
+          "traits": {
+            "smithy.api#documentation": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets."
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#PcapsListResultItem": {
+      "type": "union",
+      "members": {
+        "PCAP": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemPCAP"
+        },
+        "MagicVisibilityPCAPsPCAPsResponseFull": {
+          "target": "com.cloudflare.magic_transit#PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull"
         }
       }
     },
@@ -17879,10 +19826,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsCreateRequestProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsCreateRequestProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsCreateRequestProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsCreateRequest": {
@@ -17911,7 +19881,7 @@
           }
         },
         "lan_2": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.magic_transit#SitesAclsCreateRequestLan1",
           "traits": {
             "smithy.api#required": {}
           }
@@ -18003,10 +19973,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsCreateResponseProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsCreateResponseProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsCreateResponseProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsCreateResponse": {
@@ -18034,7 +20027,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsCreateResponseLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsCreateResponseLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18160,10 +20153,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsDeleteResponseProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsDeleteResponseProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsDeleteResponseProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsDeleteResponse": {
@@ -18191,7 +20207,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsDeleteResponseLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsDeleteResponseLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18286,10 +20302,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsEditRequestProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsEditRequestProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsEditRequestProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsEditRequest": {
@@ -18335,7 +20374,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsEditRequestLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsEditRequestLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18411,10 +20450,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsEditResponseProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsEditResponseProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsEditResponseProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsEditResponse": {
@@ -18442,7 +20504,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsEditResponseLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsEditResponseLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18568,10 +20630,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsGetResponseProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsGetResponseProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsGetResponseProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsGetResponse": {
@@ -18599,7 +20684,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsGetResponseLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsGetResponseLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18718,10 +20803,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsListResultItemProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsListResultItemProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsListResultItemProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsListResultItem": {
@@ -18749,7 +20857,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsListResultItemLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsListResultItemLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18861,10 +20969,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsUpdateRequestProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsUpdateRequestProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsUpdateRequestProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsUpdateRequest": {
@@ -18910,7 +21041,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsUpdateRequestLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsUpdateRequestLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -18986,10 +21117,33 @@
         }
       }
     },
+    "com.cloudflare.magic_transit#SitesAclsUpdateResponseProtocolsItem": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp"
+          }
+        },
+        "ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp"
+          }
+        }
+      }
+    },
     "com.cloudflare.magic_transit#SitesAclsUpdateResponseProtocolsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.magic_transit#SitesAclsUpdateResponseProtocolsItem"
       }
     },
     "com.cloudflare.magic_transit#SitesAclsUpdateResponse": {
@@ -19017,7 +21171,7 @@
           "target": "com.cloudflare.magic_transit#SitesAclsUpdateResponseLan1"
         },
         "lan_2": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesAclsUpdateResponseLan1"
         },
         "name": {
           "target": "smithy.api#String",
@@ -19172,19 +21326,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponsePreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponse": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "id": {
@@ -19200,7 +21355,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponsePreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -19216,17 +21371,81 @@
           "traits": {
             "smithy.api#documentation": "Identifier"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResult": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResultManagedApp"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationCreateResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#SitesAppConfigurationCreate": {
@@ -19278,19 +21497,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponsePreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponse": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "id": {
@@ -19306,7 +21526,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponsePreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -19322,17 +21542,81 @@
           "traits": {
             "smithy.api#documentation": "Identifier"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResult": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResultManagedApp"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationDeleteResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#SitesAppConfigurationDelete": {
@@ -19421,19 +21705,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationEditResponsePreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResultAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationEditResponse": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResultAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "id": {
@@ -19449,7 +21734,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResponsePreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResultAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -19465,17 +21750,81 @@
           "traits": {
             "smithy.api#documentation": "Identifier"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResultManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResultManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResultManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResult": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResultAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResultManagedApp"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationEditResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#SitesAppConfigurationEdit": {
@@ -19519,19 +21868,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemPreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItem": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "id": {
@@ -19547,7 +21897,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemPreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -19563,12 +21913,65 @@
           "traits": {
             "smithy.api#documentation": "Identifier"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
           }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationListResultItem": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationListResultItemManagedApp"
         }
       }
     },
@@ -19679,19 +22082,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponsePreferredWansList": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultAccountAppPreferredWansList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponse": {
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultAccountApp": {
       "type": "structure",
       "members": {
         "account_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Magic account app ID."
+            "smithy.api#documentation": "Magic account app ID.",
+            "smithy.api#required": {}
           }
         },
         "id": {
@@ -19707,7 +22111,7 @@
           }
         },
         "preferred_wans": {
-          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponsePreferredWansList",
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultAccountAppPreferredWansList",
           "traits": {
             "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
           }
@@ -19723,17 +22127,81 @@
           "traits": {
             "smithy.api#documentation": "Identifier"
           }
-        },
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultManagedAppPreferredWansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultManagedApp": {
+      "type": "structure",
+      "members": {
         "managed_app_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Managed app ID."
+            "smithy.api#documentation": "Managed app ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        },
+        "breakout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior."
+          }
+        },
+        "preferred_wans": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultManagedAppPreferredWansList",
+          "traits": {
+            "smithy.api#documentation": "WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported)"
+          }
+        },
+        "site_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResult": {
+      "type": "union",
+      "members": {
+        "AccountApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultAccountApp"
+        },
+        "ManagedApp": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResultManagedApp"
+        }
+      }
+    },
+    "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.magic_transit#SitesAppConfigurationUpdateResult",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.magic_transit#SitesAppConfigurationUpdate": {
@@ -19783,7 +22251,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansCreateRequestNat"
         }
       }
     },
@@ -19829,6 +22297,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -19877,7 +22363,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansCreateRequestStaticAddressingDhcpServer": {
@@ -20046,7 +22532,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansCreateResultItemNat"
         }
       }
     },
@@ -20092,6 +22578,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -20140,7 +22644,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansCreateResultItemStaticAddressingDhcpServer": {
@@ -20372,7 +22876,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansDeleteResponseNat"
         }
       }
     },
@@ -20418,6 +22922,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -20466,7 +22988,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansDeleteResponseStaticAddressingDhcpServer": {
@@ -20650,7 +23172,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansEditRequestNat"
         }
       }
     },
@@ -20696,6 +23218,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -20744,7 +23284,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansEditRequestStaticAddressingDhcpServer": {
@@ -20915,7 +23455,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansEditResponseNat"
         }
       }
     },
@@ -20961,6 +23501,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -21009,7 +23567,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansEditResponseStaticAddressingDhcpServer": {
@@ -21224,7 +23782,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansGetResponseNat"
         }
       }
     },
@@ -21270,6 +23828,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -21318,7 +23894,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansGetResponseStaticAddressingDhcpServer": {
@@ -21526,7 +24102,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansListResultItemNat"
         }
       }
     },
@@ -21572,6 +24148,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -21620,7 +24214,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansListResultItemStaticAddressingDhcpServer": {
@@ -21821,7 +24415,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansUpdateRequestNat"
         }
       }
     },
@@ -21867,6 +24461,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -21915,7 +24527,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansUpdateRequestStaticAddressingDhcpServer": {
@@ -22086,7 +24698,7 @@
           }
         },
         "nat": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.magic_transit#SitesLansUpdateResponseNat"
         }
       }
     },
@@ -22132,6 +24744,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ip"
+          }
+        },
+        "BYTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "byte"
+          }
+        },
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
           }
         }
       }
@@ -22180,7 +24810,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.magic_transit#SitesLansUpdateResponseStaticAddressingDhcpServer": {

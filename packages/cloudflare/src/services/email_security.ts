@@ -199,23 +199,30 @@ export type InvestigateMoveBulkRequestDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateMoveBulkRequestDestination = /*@__PURE__*/ S.String;
 
 export type InvestigateMoveBulkRequestExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateMoveBulkRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export type InvestigateMoveBulkRequestIdsList = string[];
+export type InvestigateMoveBulkRequestIdsList = ReadonlyArray<string>;
 export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateMoveBulkRequestIdsList>;
 
-export type InvestigateMoveBulkRequestPostfixIdsList = string[];
+export type InvestigateMoveBulkRequestPostfixIdsList = ReadonlyArray<string>;
 export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateMoveBulkRequestPostfixIdsList>;
@@ -294,7 +301,8 @@ export const InvestigateMoveBulkResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateMoveBulkResultItem",
 }) as any as S.Schema<InvestigateMoveBulkResultItem>;
 
-export type InvestigateMoveBulkResultList = InvestigateMoveBulkResultItem[];
+export type InvestigateMoveBulkResultList =
+  ReadonlyArray<InvestigateMoveBulkResultItem>;
 export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
   InvestigateMoveBulkResultItem,
 ) as any as S.Schema<InvestigateMoveBulkResultList>;
@@ -314,7 +322,7 @@ export const BulkInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateMoveResponse",
 }) as any as S.Schema<BulkInvestigateMoveResponse>;
 
-export type InvestigateReleaseBulkRequestBodyList = string[];
+export type InvestigateReleaseBulkRequestBodyList = ReadonlyArray<string>;
 export const InvestigateReleaseBulkRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateReleaseBulkRequestBodyList>;
@@ -341,18 +349,20 @@ export const BulkInvestigateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateReleaseRequest",
 }) as any as S.Schema<BulkInvestigateReleaseRequest>;
 
-export type InvestigateReleaseBulkResultItemDeliveredList = string[];
+export type InvestigateReleaseBulkResultItemDeliveredList =
+  ReadonlyArray<string>;
 export const InvestigateReleaseBulkResultItemDeliveredList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateReleaseBulkResultItemDeliveredList>;
 
-export type InvestigateReleaseBulkResultItemFailedList = string[];
+export type InvestigateReleaseBulkResultItemFailedList = ReadonlyArray<string>;
 export const InvestigateReleaseBulkResultItemFailedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateReleaseBulkResultItemFailedList>;
 
-export type InvestigateReleaseBulkResultItemUndeliveredList = string[];
+export type InvestigateReleaseBulkResultItemUndeliveredList =
+  ReadonlyArray<string>;
 export const InvestigateReleaseBulkResultItemUndeliveredList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -380,7 +390,7 @@ export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateReleaseBulkResultItem>;
 
 export type InvestigateReleaseBulkResultList =
-  InvestigateReleaseBulkResultItem[];
+  ReadonlyArray<InvestigateReleaseBulkResultItem>;
 export const InvestigateReleaseBulkResultList = /*@__PURE__*/ S.Array(
   InvestigateReleaseBulkResultItem,
 ) as any as S.Schema<InvestigateReleaseBulkResultList>;
@@ -400,17 +410,17 @@ export const BulkInvestigateReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkInvestigateReleaseResponse",
 }) as any as S.Schema<BulkInvestigateReleaseResponse>;
 
-export type InvestigateBulkCreateRequestAction =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkCreateRequestAction = "MOVE" | "RELEASE";
 export const InvestigateBulkCreateRequestAction = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -418,15 +428,20 @@ export type InvestigateBulkCreateRequestSearchParamsFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCreateRequestSearchParamsFinalDisposition =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateRequestSearchParamsMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateBulkCreateRequestSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
@@ -494,14 +509,21 @@ export type InvestigateBulkCreateRequestDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkCreateRequestDestination = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateRequestExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCreateRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -545,13 +567,12 @@ export type InvestigateBulkCreateResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkCreateResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCreateResponseActionParamsMoveType =
-  | "MOVE"
-  | (string & {});
+export type InvestigateBulkCreateResponseActionParamsMoveType = "MOVE";
 export const InvestigateBulkCreateResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
@@ -559,7 +580,13 @@ export type InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCreateResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -583,9 +610,7 @@ export const InvestigateBulkCreateResponseActionParamsMove =
     identifier: "InvestigateBulkCreateResponseActionParamsMove",
   }) as any as S.Schema<InvestigateBulkCreateResponseActionParamsMove>;
 
-export type InvestigateBulkCreateResponseActionParamsReleaseType =
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkCreateResponseActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkCreateResponseActionParamsReleaseType =
   /*@__PURE__*/ S.String;
 
@@ -609,17 +634,17 @@ export const InvestigateBulkCreateResponseActionParams =
     T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
   );
 
-export type InvestigateBulkCreateResponseActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkCreateResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkCreateResponseActionType = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -627,15 +652,20 @@ export type InvestigateBulkCreateResponseSearchParamsFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCreateResponseSearchParamsFinalDisposition =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCreateResponseSearchParamsMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateBulkCreateResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
@@ -703,7 +733,10 @@ export type InvestigateBulkCreateResponseStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -776,18 +809,26 @@ export type InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkCancelCreateResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCancelCreateResponseActionParamsMoveType =
-  | "MOVE"
-  | (string & {});
+export type InvestigateBulkCancelCreateResponseActionParamsMoveType = "MOVE";
 export const InvestigateBulkCancelCreateResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
-  "MALICIOUS" | "MALICIOUS-BEC" | "SUSPICIOUS" | (string & {});
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE";
 export const InvestigateBulkCancelCreateResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -813,8 +854,7 @@ export const InvestigateBulkCancelCreateResponseActionParamsMove =
   }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParamsMove>;
 
 export type InvestigateBulkCancelCreateResponseActionParamsReleaseType =
-  | "RELEASE"
-  | (string & {});
+  "RELEASE";
 export const InvestigateBulkCancelCreateResponseActionParamsReleaseType =
   /*@__PURE__*/ S.String;
 
@@ -838,10 +878,7 @@ export const InvestigateBulkCancelCreateResponseActionParams =
     T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
   );
 
-export type InvestigateBulkCancelCreateResponseActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkCancelCreateResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkCancelCreateResponseActionType =
   /*@__PURE__*/ S.String;
 
@@ -849,7 +886,10 @@ export type InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -857,15 +897,20 @@ export type InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
@@ -933,7 +978,10 @@ export type InvestigateBulkCancelCreateResponseStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkCancelCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -984,14 +1032,21 @@ export type InvestigateMoveCreateRequestDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateMoveCreateRequestDestination = /*@__PURE__*/ S.String;
 
 export type InvestigateMoveCreateRequestExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateMoveCreateRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -1064,7 +1119,8 @@ export const InvestigateMoveCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateMoveCreateResultItem",
 }) as any as S.Schema<InvestigateMoveCreateResultItem>;
 
-export type InvestigateMoveCreateResultList = InvestigateMoveCreateResultItem[];
+export type InvestigateMoveCreateResultList =
+  ReadonlyArray<InvestigateMoveCreateResultItem>;
 export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
   InvestigateMoveCreateResultItem,
 ) as any as S.Schema<InvestigateMoveCreateResultList>;
@@ -1124,7 +1180,9 @@ export type InvestigateReclassifyCreateRequestExpectedDisposition =
   | "NONE"
   | "BULK"
   | "MALICIOUS"
-  | (string & {});
+  | "SPAM"
+  | "SPOOF"
+  | "SUSPICIOUS";
 export const InvestigateReclassifyCreateRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -1174,8 +1232,7 @@ export type SettingsAllowPoliciesCreateRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesCreateRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -1235,8 +1292,7 @@ export type SettingsAllowPoliciesCreateResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesCreateResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -1302,8 +1358,7 @@ export type SettingsBlockSendersCreateRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersCreateRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -1342,8 +1397,7 @@ export type SettingsBlockSendersCreateResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersCreateResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -1384,8 +1438,7 @@ export type SettingsImpersonationRegistryCreateRequestProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryCreateRequestProvenance =
   /*@__PURE__*/ S.String;
 
@@ -1434,8 +1487,7 @@ export type SettingsImpersonationRegistryCreateResponseProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryCreateResponseProvenance =
   /*@__PURE__*/ S.String;
 
@@ -1481,7 +1533,7 @@ export const CreateSettingImpersonationRegistryResponse =
   }) as any as S.Schema<CreateSettingImpersonationRegistryResponse>;
 
 export type SettingsSendingDomainRestrictionsCreateRequestExcludeList =
-  string[];
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsCreateRequestExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1517,7 +1569,7 @@ export const CreateSettingSendingDomainRestrictionRequest =
   }) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>;
 
 export type SettingsSendingDomainRestrictionsCreateResponseExcludeList =
-  string[];
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsCreateResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1998,7 +2050,9 @@ export type InvestigateGetResponseActionLogItemOperation =
   | "MOVE"
   | "RELEASE"
   | "RECLASSIFY"
-  | (string & {});
+  | "SUBMISSION"
+  | "QUARANTINE_RELEASE"
+  | "PREVIEW";
 export const InvestigateGetResponseActionLogItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -2045,17 +2099,17 @@ export const InvestigateGetResponseActionLogItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateGetResponseActionLogItem>;
 
 export type InvestigateGetResponseActionLogList =
-  InvestigateGetResponseActionLogItem[];
+  ReadonlyArray<InvestigateGetResponseActionLogItem>;
 export const InvestigateGetResponseActionLogList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseActionLogItem,
 ) as any as S.Schema<InvestigateGetResponseActionLogList>;
 
-export type InvestigateGetResponseClientRecipientsList = string[];
+export type InvestigateGetResponseClientRecipientsList = ReadonlyArray<string>;
 export const InvestigateGetResponseClientRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseClientRecipientsList>;
 
-export type InvestigateGetResponseDetectionReasonsList = string[];
+export type InvestigateGetResponseDetectionReasonsList = ReadonlyArray<string>;
 export const InvestigateGetResponseDetectionReasonsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseDetectionReasonsList>;
@@ -2064,7 +2118,11 @@ export type InvestigateGetResponsePropertiesAllowlistedPatternType =
   | "quarantine_release"
   | "acceptable_sender"
   | "allowed_sender"
-  | (string & {});
+  | "allowed_recipient"
+  | "domain_similarity"
+  | "domain_recency"
+  | "managed_acceptable_sender"
+  | "outbound_ndr";
 export const InvestigateGetResponsePropertiesAllowlistedPatternType =
   /*@__PURE__*/ S.String;
 
@@ -2072,7 +2130,11 @@ export type InvestigateGetResponsePropertiesWhitelistedPatternType =
   | "quarantine_release"
   | "acceptable_sender"
   | "allowed_sender"
-  | (string & {});
+  | "allowed_recipient"
+  | "domain_similarity"
+  | "domain_recency"
+  | "managed_acceptable_sender"
+  | "outbound_ndr";
 export const InvestigateGetResponsePropertiesWhitelistedPatternType =
   /*@__PURE__*/ S.String;
 
@@ -2118,23 +2180,33 @@ export type InvestigateGetResponseDeliveryMode =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "REVIEW_SUBMISSION"
+  | "DMARC_UNVERIFIED"
+  | "DMARC_FAILURE_REPORT"
+  | "DMARC_AGGREGATE_REPORT"
+  | "THREAT_INTEL_SUBMISSION"
+  | "SIMULATION_SUBMISSION"
+  | "API"
+  | "RETRO_SCAN";
 export const InvestigateGetResponseDeliveryMode = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseDeliveryStatusItem =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateGetResponseDeliveryStatusItem = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseDeliveryStatusList =
-  InvestigateGetResponseDeliveryStatusItem[];
+  ReadonlyArray<InvestigateGetResponseDeliveryStatusItem>;
 export const InvestigateGetResponseDeliveryStatusList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseDeliveryStatusItem,
 ) as any as S.Schema<InvestigateGetResponseDeliveryStatusList>;
 
-export type InvestigateGetResponseEnvelopeToList = string[];
+export type InvestigateGetResponseEnvelopeToList = ReadonlyArray<string>;
 export const InvestigateGetResponseEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseEnvelopeToList>;
@@ -2143,14 +2215,26 @@ export type InvestigateGetResponseFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateGetResponseFinalDisposition = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseFindingsItemDetection =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateGetResponseFindingsItemDetection =
   /*@__PURE__*/ S.String;
 
@@ -2182,7 +2266,7 @@ export const InvestigateGetResponseFindingsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateGetResponseFindingsItem>;
 
 export type InvestigateGetResponseFindingsList =
-  InvestigateGetResponseFindingsItem[];
+  ReadonlyArray<InvestigateGetResponseFindingsItem>;
 export const InvestigateGetResponseFindingsList = /*@__PURE__*/ S.Array(
   InvestigateGetResponseFindingsItem,
 ) as any as S.Schema<InvestigateGetResponseFindingsList>;
@@ -2191,29 +2275,28 @@ export type InvestigateGetResponsePostDeliveryOperationsItem =
   | "PREVIEW"
   | "QUARANTINE_RELEASE"
   | "SUBMISSION"
-  | "MOVE"
-  | (string & {});
+  | "MOVE";
 export const InvestigateGetResponsePostDeliveryOperationsItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponsePostDeliveryOperationsList =
-  InvestigateGetResponsePostDeliveryOperationsItem[];
+  ReadonlyArray<InvestigateGetResponsePostDeliveryOperationsItem>;
 export const InvestigateGetResponsePostDeliveryOperationsList =
   /*@__PURE__*/ S.Array(
     InvestigateGetResponsePostDeliveryOperationsItem,
   ) as any as S.Schema<InvestigateGetResponsePostDeliveryOperationsList>;
 
-export type InvestigateGetResponseThreatCategoriesList = string[];
+export type InvestigateGetResponseThreatCategoriesList = ReadonlyArray<string>;
 export const InvestigateGetResponseThreatCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseThreatCategoriesList>;
 
-export type InvestigateGetResponseToList = string[];
+export type InvestigateGetResponseToList = ReadonlyArray<string>;
 export const InvestigateGetResponseToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseToList>;
 
-export type InvestigateGetResponseToNameList = string[];
+export type InvestigateGetResponseToNameList = ReadonlyArray<string>;
 export const InvestigateGetResponseToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateGetResponseToNameList>;
@@ -2222,21 +2305,24 @@ export type InvestigateGetResponseValidationDkim =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateGetResponseValidationDkim = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseValidationDmarc =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateGetResponseValidationDmarc = /*@__PURE__*/ S.String;
 
 export type InvestigateGetResponseValidationSpf =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateGetResponseValidationSpf = /*@__PURE__*/ S.String;
 
 export interface InvestigateGetResponseValidation {
@@ -2397,13 +2483,12 @@ export type InvestigateBulkGetResponseActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkGetResponseActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetResponseActionParamsMoveType =
-  | "MOVE"
-  | (string & {});
+export type InvestigateBulkGetResponseActionParamsMoveType = "MOVE";
 export const InvestigateBulkGetResponseActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
@@ -2411,7 +2496,13 @@ export type InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkGetResponseActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -2435,9 +2526,7 @@ export const InvestigateBulkGetResponseActionParamsMove =
     identifier: "InvestigateBulkGetResponseActionParamsMove",
   }) as any as S.Schema<InvestigateBulkGetResponseActionParamsMove>;
 
-export type InvestigateBulkGetResponseActionParamsReleaseType =
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkGetResponseActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkGetResponseActionParamsReleaseType =
   /*@__PURE__*/ S.String;
 
@@ -2461,17 +2550,17 @@ export const InvestigateBulkGetResponseActionParams =
     T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
   );
 
-export type InvestigateBulkGetResponseActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkGetResponseActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkGetResponseActionType = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkGetResponseSearchParamsDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateBulkGetResponseSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -2479,15 +2568,20 @@ export type InvestigateBulkGetResponseSearchParamsFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkGetResponseSearchParamsFinalDisposition =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkGetResponseSearchParamsMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateBulkGetResponseSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
@@ -2555,7 +2649,10 @@ export type InvestigateBulkGetResponseStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2629,7 +2726,13 @@ export type InvestigateDetectionsGetResponseAttachmentsItemDetection =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateDetectionsGetResponseAttachmentsItemDetection =
   /*@__PURE__*/ S.String;
 
@@ -2673,7 +2776,7 @@ export const InvestigateDetectionsGetResponseAttachmentsItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItem>;
 
 export type InvestigateDetectionsGetResponseAttachmentsList =
-  InvestigateDetectionsGetResponseAttachmentsItem[];
+  ReadonlyArray<InvestigateDetectionsGetResponseAttachmentsItem>;
 export const InvestigateDetectionsGetResponseAttachmentsList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseAttachmentsItem,
@@ -2683,7 +2786,13 @@ export type InvestigateDetectionsGetResponseFindingsItemDetection =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateDetectionsGetResponseFindingsItemDetection =
   /*@__PURE__*/ S.String;
 
@@ -2718,7 +2827,7 @@ export const InvestigateDetectionsGetResponseFindingsItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
 
 export type InvestigateDetectionsGetResponseFindingsList =
-  InvestigateDetectionsGetResponseFindingsItem[];
+  ReadonlyArray<InvestigateDetectionsGetResponseFindingsItem>;
 export const InvestigateDetectionsGetResponseFindingsList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseFindingsItem,
@@ -2739,7 +2848,7 @@ export const InvestigateDetectionsGetResponseHeadersItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseHeadersItem>;
 
 export type InvestigateDetectionsGetResponseHeadersList =
-  InvestigateDetectionsGetResponseHeadersItem[];
+  ReadonlyArray<InvestigateDetectionsGetResponseHeadersItem>;
 export const InvestigateDetectionsGetResponseHeadersList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseHeadersItem,
@@ -2760,7 +2869,7 @@ export const InvestigateDetectionsGetResponseLinksItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseLinksItem>;
 
 export type InvestigateDetectionsGetResponseLinksList =
-  InvestigateDetectionsGetResponseLinksItem[];
+  ReadonlyArray<InvestigateDetectionsGetResponseLinksItem>;
 export const InvestigateDetectionsGetResponseLinksList = /*@__PURE__*/ S.Array(
   InvestigateDetectionsGetResponseLinksItem,
 ) as any as S.Schema<InvestigateDetectionsGetResponseLinksList>;
@@ -2804,7 +2913,7 @@ export const InvestigateDetectionsGetResponseThreatCategoriesItem =
   }) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesItem>;
 
 export type InvestigateDetectionsGetResponseThreatCategoriesList =
-  InvestigateDetectionsGetResponseThreatCategoriesItem[];
+  ReadonlyArray<InvestigateDetectionsGetResponseThreatCategoriesItem>;
 export const InvestigateDetectionsGetResponseThreatCategoriesList =
   /*@__PURE__*/ S.Array(
     InvestigateDetectionsGetResponseThreatCategoriesItem,
@@ -2814,7 +2923,8 @@ export type InvestigateDetectionsGetResponseValidationDkim =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateDetectionsGetResponseValidationDkim =
   /*@__PURE__*/ S.String;
 
@@ -2822,7 +2932,8 @@ export type InvestigateDetectionsGetResponseValidationDmarc =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateDetectionsGetResponseValidationDmarc =
   /*@__PURE__*/ S.String;
 
@@ -2830,7 +2941,8 @@ export type InvestigateDetectionsGetResponseValidationSpf =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateDetectionsGetResponseValidationSpf =
   /*@__PURE__*/ S.String;
 
@@ -2856,7 +2968,13 @@ export type InvestigateDetectionsGetResponseFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateDetectionsGetResponseFinalDisposition =
   /*@__PURE__*/ S.String;
 
@@ -3012,7 +3130,7 @@ export const InvestigateTraceGetResponseInboundLinesItem =
   }) as any as S.Schema<InvestigateTraceGetResponseInboundLinesItem>;
 
 export type InvestigateTraceGetResponseInboundLinesList =
-  InvestigateTraceGetResponseInboundLinesItem[];
+  ReadonlyArray<InvestigateTraceGetResponseInboundLinesItem>;
 export const InvestigateTraceGetResponseInboundLinesList =
   /*@__PURE__*/ S.Array(
     InvestigateTraceGetResponseInboundLinesItem,
@@ -3052,7 +3170,7 @@ export const InvestigateTraceGetResponseOutboundLinesItem =
   }) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesItem>;
 
 export type InvestigateTraceGetResponseOutboundLinesList =
-  InvestigateTraceGetResponseOutboundLinesItem[];
+  ReadonlyArray<InvestigateTraceGetResponseOutboundLinesItem>;
 export const InvestigateTraceGetResponseOutboundLinesList =
   /*@__PURE__*/ S.Array(
     InvestigateTraceGetResponseOutboundLinesItem,
@@ -3112,8 +3230,7 @@ export type SettingsAllowPoliciesGetResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesGetResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -3200,8 +3317,7 @@ export type SettingsBlockSendersGetResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersGetResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -3263,12 +3379,13 @@ export type SettingsDomainsGetResponseAllowedDeliveryModesItem =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsGetResponseAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseAllowedDeliveryModesList =
-  SettingsDomainsGetResponseAllowedDeliveryModesItem[];
+  ReadonlyArray<SettingsDomainsGetResponseAllowedDeliveryModesItem>;
 export const SettingsDomainsGetResponseAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsGetResponseAllowedDeliveryModesItem,
@@ -3290,23 +3407,25 @@ export const SettingsDomainsGetResponseAuthorization = /*@__PURE__*/ S.suspend(
   identifier: "SettingsDomainsGetResponseAuthorization",
 }) as any as S.Schema<SettingsDomainsGetResponseAuthorization>;
 
-export type SettingsDomainsGetResponseDmarcStatus =
-  | "none"
-  | "good"
-  | "invalid"
-  | (string & {});
+export type SettingsDomainsGetResponseDmarcStatus = "none" | "good" | "invalid";
 export const SettingsDomainsGetResponseDmarcStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseDropDispositionsItem =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const SettingsDomainsGetResponseDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseDropDispositionsList =
-  SettingsDomainsGetResponseDropDispositionsItem[];
+  ReadonlyArray<SettingsDomainsGetResponseDropDispositionsItem>;
 export const SettingsDomainsGetResponseDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsGetResponseDropDispositionsItem,
@@ -3330,19 +3449,14 @@ export const SettingsDomainsGetResponseEmailsProcessed =
     identifier: "SettingsDomainsGetResponseEmailsProcessed",
   }) as any as S.Schema<SettingsDomainsGetResponseEmailsProcessed>;
 
-export type SettingsDomainsGetResponseFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
+export type SettingsDomainsGetResponseFolder = "AllItems" | "Inbox";
 export const SettingsDomainsGetResponseFolder = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsGetResponseInboxProvider =
-  | "Microsoft"
-  | "Google"
-  | (string & {});
+export type SettingsDomainsGetResponseInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsGetResponseInboxProvider = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsGetResponseIpRestrictionsList = string[];
+export type SettingsDomainsGetResponseIpRestrictionsList =
+  ReadonlyArray<string>;
 export const SettingsDomainsGetResponseIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3352,11 +3466,12 @@ export type SettingsDomainsGetResponseRegionsItem =
   | "GLOBAL"
   | "AU"
   | "DE"
-  | (string & {});
+  | "IN"
+  | "US";
 export const SettingsDomainsGetResponseRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseRegionsList =
-  SettingsDomainsGetResponseRegionsItem[];
+  ReadonlyArray<SettingsDomainsGetResponseRegionsItem>;
 export const SettingsDomainsGetResponseRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsGetResponseRegionsItem,
 ) as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
@@ -3365,15 +3480,15 @@ export type SettingsDomainsGetResponseSpfStatus =
   | "none"
   | "good"
   | "neutral"
-  | (string & {});
+  | "open"
+  | "invalid";
 export const SettingsDomainsGetResponseSpfStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsGetResponseStatus =
   | "pending"
   | "active"
   | "failed"
-  | "timeout"
-  | (string & {});
+  | "timeout";
 export const SettingsDomainsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3488,8 +3603,7 @@ export type SettingsImpersonationRegistryGetResponseProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryGetResponseProvenance =
   /*@__PURE__*/ S.String;
 
@@ -3560,7 +3674,8 @@ export const GetSettingSendingDomainRestrictionRequest =
     identifier: "GetSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>;
 
-export type SettingsSendingDomainRestrictionsGetResponseExcludeList = string[];
+export type SettingsSendingDomainRestrictionsGetResponseExcludeList =
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsGetResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3705,7 +3820,10 @@ export type InvestigateBulkMessagesListRequestStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkMessagesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListInvestigateBulkMessagesRequest {
@@ -3744,18 +3862,26 @@ export type InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkMessagesListResultItemActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListResultItemActionParamsMoveType =
-  | "MOVE"
-  | (string & {});
+export type InvestigateBulkMessagesListResultItemActionParamsMoveType = "MOVE";
 export const InvestigateBulkMessagesListResultItemActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
-  "MALICIOUS" | "MALICIOUS-BEC" | "SUSPICIOUS" | (string & {});
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE";
 export const InvestigateBulkMessagesListResultItemActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -3783,8 +3909,7 @@ export const InvestigateBulkMessagesListResultItemActionParamsMove =
   }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParamsMove>;
 
 export type InvestigateBulkMessagesListResultItemActionParamsReleaseType =
-  | "RELEASE"
-  | (string & {});
+  "RELEASE";
 export const InvestigateBulkMessagesListResultItemActionParamsReleaseType =
   /*@__PURE__*/ S.String;
 
@@ -3815,8 +3940,7 @@ export const InvestigateBulkMessagesListResultItemActionParams =
 
 export type InvestigateBulkMessagesListResultItemActionType =
   | "MOVE"
-  | "RELEASE"
-  | (string & {});
+  | "RELEASE";
 export const InvestigateBulkMessagesListResultItemActionType =
   /*@__PURE__*/ S.String;
 
@@ -3824,7 +3948,10 @@ export type InvestigateBulkMessagesListResultItemStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkMessagesListResultItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -3868,7 +3995,7 @@ export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateBulkMessagesListResultItem>;
 
 export type InvestigateBulkMessagesListResultList =
-  InvestigateBulkMessagesListResultItem[];
+  ReadonlyArray<InvestigateBulkMessagesListResultItem>;
 export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
   InvestigateBulkMessagesListResultItem,
 ) as any as S.Schema<InvestigateBulkMessagesListResultList>;
@@ -3888,17 +4015,17 @@ export const ListInvestigateBulkMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvestigateBulkMessagesResponse",
 }) as any as S.Schema<ListInvestigateBulkMessagesResponse>;
 
-export type InvestigateBulkListRequestActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkListRequestActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkListRequestActionType = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkListRequestStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListInvestigateBulksRequest {
@@ -3937,13 +4064,12 @@ export type InvestigateBulkListResultItemActionParamsMoveDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
-  | (string & {});
+  | "RecoverableItemsDeletions"
+  | "RecoverableItemsPurges";
 export const InvestigateBulkListResultItemActionParamsMoveDestination =
   /*@__PURE__*/ S.String;
 
-export type InvestigateBulkListResultItemActionParamsMoveType =
-  | "MOVE"
-  | (string & {});
+export type InvestigateBulkListResultItemActionParamsMoveType = "MOVE";
 export const InvestigateBulkListResultItemActionParamsMoveType =
   /*@__PURE__*/ S.String;
 
@@ -3951,7 +4077,13 @@ export type InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkListResultItemActionParamsMoveExpectedDisposition =
   /*@__PURE__*/ S.String;
 
@@ -3975,9 +4107,7 @@ export const InvestigateBulkListResultItemActionParamsMove =
     identifier: "InvestigateBulkListResultItemActionParamsMove",
   }) as any as S.Schema<InvestigateBulkListResultItemActionParamsMove>;
 
-export type InvestigateBulkListResultItemActionParamsReleaseType =
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkListResultItemActionParamsReleaseType = "RELEASE";
 export const InvestigateBulkListResultItemActionParamsReleaseType =
   /*@__PURE__*/ S.String;
 
@@ -4001,17 +4131,17 @@ export const InvestigateBulkListResultItemActionParams =
     T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]]),
   );
 
-export type InvestigateBulkListResultItemActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
+export type InvestigateBulkListResultItemActionType = "MOVE" | "RELEASE";
 export const InvestigateBulkListResultItemActionType = /*@__PURE__*/ S.String;
 
 export type InvestigateBulkListResultItemSearchParamsDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateBulkListResultItemSearchParamsDeliveryStatus =
   /*@__PURE__*/ S.String;
 
@@ -4019,15 +4149,20 @@ export type InvestigateBulkListResultItemSearchParamsFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateBulkListResultItemSearchParamsFinalDisposition =
   /*@__PURE__*/ S.String;
 
 export type InvestigateBulkListResultItemSearchParamsMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateBulkListResultItemSearchParamsMessageAction =
   /*@__PURE__*/ S.String;
 
@@ -4095,7 +4230,10 @@ export type InvestigateBulkListResultItemStatus =
   | "PENDING"
   | "DISCOVERING"
   | "PROCESSING"
-  | (string & {});
+  | "COMPLETED"
+  | "FAILED"
+  | "CANCELLED"
+  | "SKIPPED";
 export const InvestigateBulkListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface InvestigateBulkListResultItem {
@@ -4141,7 +4279,8 @@ export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateBulkListResultItem",
 }) as any as S.Schema<InvestigateBulkListResultItem>;
 
-export type InvestigateBulkListResultList = InvestigateBulkListResultItem[];
+export type InvestigateBulkListResultList =
+  ReadonlyArray<InvestigateBulkListResultItem>;
 export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
   InvestigateBulkListResultItem,
 ) as any as S.Schema<InvestigateBulkListResultList>;
@@ -4165,21 +4304,25 @@ export type InvestigateListRequestDeliveryStatus =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateListRequestDeliveryStatus = /*@__PURE__*/ S.String;
 
 export type InvestigateListRequestFinalDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const InvestigateListRequestFinalDisposition = /*@__PURE__*/ S.String;
 
 export type InvestigateListRequestMessageAction =
   | "PREVIEW"
   | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
+  | "MOVED";
 export const InvestigateListRequestMessageAction = /*@__PURE__*/ S.String;
 
 export interface ListInvestigatesRequest {
@@ -4256,7 +4399,9 @@ export type InvestigateListResultItemActionLogItemOperation =
   | "MOVE"
   | "RELEASE"
   | "RECLASSIFY"
-  | (string & {});
+  | "SUBMISSION"
+  | "QUARANTINE_RELEASE"
+  | "PREVIEW";
 export const InvestigateListResultItemActionLogItemOperation =
   /*@__PURE__*/ S.String;
 
@@ -4304,18 +4449,20 @@ export const InvestigateListResultItemActionLogItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateListResultItemActionLogItem>;
 
 export type InvestigateListResultItemActionLogList =
-  InvestigateListResultItemActionLogItem[];
+  ReadonlyArray<InvestigateListResultItemActionLogItem>;
 export const InvestigateListResultItemActionLogList = /*@__PURE__*/ S.Array(
   InvestigateListResultItemActionLogItem,
 ) as any as S.Schema<InvestigateListResultItemActionLogList>;
 
-export type InvestigateListResultItemClientRecipientsList = string[];
+export type InvestigateListResultItemClientRecipientsList =
+  ReadonlyArray<string>;
 export const InvestigateListResultItemClientRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateListResultItemClientRecipientsList>;
 
-export type InvestigateListResultItemDetectionReasonsList = string[];
+export type InvestigateListResultItemDetectionReasonsList =
+  ReadonlyArray<string>;
 export const InvestigateListResultItemDetectionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4325,7 +4472,11 @@ export type InvestigateListResultItemPropertiesAllowlistedPatternType =
   | "quarantine_release"
   | "acceptable_sender"
   | "allowed_sender"
-  | (string & {});
+  | "allowed_recipient"
+  | "domain_similarity"
+  | "domain_recency"
+  | "managed_acceptable_sender"
+  | "outbound_ndr";
 export const InvestigateListResultItemPropertiesAllowlistedPatternType =
   /*@__PURE__*/ S.String;
 
@@ -4333,7 +4484,11 @@ export type InvestigateListResultItemPropertiesWhitelistedPatternType =
   | "quarantine_release"
   | "acceptable_sender"
   | "allowed_sender"
-  | (string & {});
+  | "allowed_recipient"
+  | "domain_similarity"
+  | "domain_recency"
+  | "managed_acceptable_sender"
+  | "outbound_ndr";
 export const InvestigateListResultItemPropertiesWhitelistedPatternType =
   /*@__PURE__*/ S.String;
 
@@ -4379,25 +4534,35 @@ export type InvestigateListResultItemDeliveryMode =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "REVIEW_SUBMISSION"
+  | "DMARC_UNVERIFIED"
+  | "DMARC_FAILURE_REPORT"
+  | "DMARC_AGGREGATE_REPORT"
+  | "THREAT_INTEL_SUBMISSION"
+  | "SIMULATION_SUBMISSION"
+  | "API"
+  | "RETRO_SCAN";
 export const InvestigateListResultItemDeliveryMode = /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemDeliveryStatusItem =
   | "delivered"
   | "moved"
   | "quarantined"
-  | (string & {});
+  | "rejected"
+  | "deferred"
+  | "bounced"
+  | "queued";
 export const InvestigateListResultItemDeliveryStatusItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemDeliveryStatusList =
-  InvestigateListResultItemDeliveryStatusItem[];
+  ReadonlyArray<InvestigateListResultItemDeliveryStatusItem>;
 export const InvestigateListResultItemDeliveryStatusList =
   /*@__PURE__*/ S.Array(
     InvestigateListResultItemDeliveryStatusItem,
   ) as any as S.Schema<InvestigateListResultItemDeliveryStatusList>;
 
-export type InvestigateListResultItemEnvelopeToList = string[];
+export type InvestigateListResultItemEnvelopeToList = ReadonlyArray<string>;
 export const InvestigateListResultItemEnvelopeToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemEnvelopeToList>;
@@ -4406,14 +4571,26 @@ export type InvestigateListResultItemFinalDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateListResultItemFinalDisposition = /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemFindingsItemDetection =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const InvestigateListResultItemFindingsItemDetection =
   /*@__PURE__*/ S.String;
 
@@ -4446,7 +4623,7 @@ export const InvestigateListResultItemFindingsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvestigateListResultItemFindingsItem>;
 
 export type InvestigateListResultItemFindingsList =
-  InvestigateListResultItemFindingsItem[];
+  ReadonlyArray<InvestigateListResultItemFindingsItem>;
 export const InvestigateListResultItemFindingsList = /*@__PURE__*/ S.Array(
   InvestigateListResultItemFindingsItem,
 ) as any as S.Schema<InvestigateListResultItemFindingsList>;
@@ -4455,30 +4632,30 @@ export type InvestigateListResultItemPostDeliveryOperationsItem =
   | "PREVIEW"
   | "QUARANTINE_RELEASE"
   | "SUBMISSION"
-  | "MOVE"
-  | (string & {});
+  | "MOVE";
 export const InvestigateListResultItemPostDeliveryOperationsItem =
   /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemPostDeliveryOperationsList =
-  InvestigateListResultItemPostDeliveryOperationsItem[];
+  ReadonlyArray<InvestigateListResultItemPostDeliveryOperationsItem>;
 export const InvestigateListResultItemPostDeliveryOperationsList =
   /*@__PURE__*/ S.Array(
     InvestigateListResultItemPostDeliveryOperationsItem,
   ) as any as S.Schema<InvestigateListResultItemPostDeliveryOperationsList>;
 
-export type InvestigateListResultItemThreatCategoriesList = string[];
+export type InvestigateListResultItemThreatCategoriesList =
+  ReadonlyArray<string>;
 export const InvestigateListResultItemThreatCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InvestigateListResultItemThreatCategoriesList>;
 
-export type InvestigateListResultItemToList = string[];
+export type InvestigateListResultItemToList = ReadonlyArray<string>;
 export const InvestigateListResultItemToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemToList>;
 
-export type InvestigateListResultItemToNameList = string[];
+export type InvestigateListResultItemToNameList = ReadonlyArray<string>;
 export const InvestigateListResultItemToNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvestigateListResultItemToNameList>;
@@ -4487,21 +4664,24 @@ export type InvestigateListResultItemValidationDkim =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateListResultItemValidationDkim = /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemValidationDmarc =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateListResultItemValidationDmarc = /*@__PURE__*/ S.String;
 
 export type InvestigateListResultItemValidationSpf =
   | "pass"
   | "neutral"
   | "fail"
-  | (string & {});
+  | "error"
+  | "none";
 export const InvestigateListResultItemValidationSpf = /*@__PURE__*/ S.String;
 
 export interface InvestigateListResultItemValidation {
@@ -4641,7 +4821,8 @@ export const InvestigateListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvestigateListResultItem",
 }) as any as S.Schema<InvestigateListResultItem>;
 
-export type InvestigateListResultList = InvestigateListResultItem[];
+export type InvestigateListResultList =
+  ReadonlyArray<InvestigateListResultItem>;
 export const InvestigateListResultList = /*@__PURE__*/ S.Array(
   InvestigateListResultItem,
 ) as any as S.Schema<InvestigateListResultList>;
@@ -4697,11 +4878,17 @@ export type PhishguardReportsListResultItemDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const PhishguardReportsListResultItemDisposition =
   /*@__PURE__*/ S.String;
 
-export type PhishguardReportsListResultItemFieldsToList = string[];
+export type PhishguardReportsListResultItemFieldsToList = ReadonlyArray<string>;
 export const PhishguardReportsListResultItemFieldsToList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4743,7 +4930,7 @@ export const PhishguardReportsListResultItemTagsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PhishguardReportsListResultItemTagsItem>;
 
 export type PhishguardReportsListResultItemTagsList =
-  PhishguardReportsListResultItemTagsItem[];
+  ReadonlyArray<PhishguardReportsListResultItemTagsItem>;
 export const PhishguardReportsListResultItemTagsList = /*@__PURE__*/ S.Array(
   PhishguardReportsListResultItemTagsItem,
 ) as any as S.Schema<PhishguardReportsListResultItemTagsList>;
@@ -4778,7 +4965,8 @@ export const PhishguardReportsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhishguardReportsListResultItem",
 }) as any as S.Schema<PhishguardReportsListResultItem>;
 
-export type PhishguardReportsListResultList = PhishguardReportsListResultItem[];
+export type PhishguardReportsListResultList =
+  ReadonlyArray<PhishguardReportsListResultItem>;
 export const PhishguardReportsListResultList = /*@__PURE__*/ S.Array(
   PhishguardReportsListResultItem,
 ) as any as S.Schema<PhishguardReportsListResultList>;
@@ -4798,24 +4986,17 @@ export const ListPhishguardReportsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPhishguardReportsResponse",
 }) as any as S.Schema<ListPhishguardReportsResponse>;
 
-export type SettingsAllowPoliciesListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsAllowPoliciesListRequestDirection = "asc" | "desc";
 export const SettingsAllowPoliciesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsAllowPoliciesListRequestOrder =
-  | "pattern"
-  | "created_at"
-  | (string & {});
+export type SettingsAllowPoliciesListRequestOrder = "pattern" | "created_at";
 export const SettingsAllowPoliciesListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SettingsAllowPoliciesListRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesListRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -4883,8 +5064,7 @@ export type SettingsAllowPoliciesListResultItemPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesListResultItemPatternType =
   /*@__PURE__*/ S.String;
 
@@ -4946,7 +5126,7 @@ export const SettingsAllowPoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAllowPoliciesListResultItem>;
 
 export type SettingsAllowPoliciesListResultList =
-  SettingsAllowPoliciesListResultItem[];
+  ReadonlyArray<SettingsAllowPoliciesListResultItem>;
 export const SettingsAllowPoliciesListResultList = /*@__PURE__*/ S.Array(
   SettingsAllowPoliciesListResultItem,
 ) as any as S.Schema<SettingsAllowPoliciesListResultList>;
@@ -4966,24 +5146,17 @@ export const ListSettingAllowPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingAllowPoliciesResponse",
 }) as any as S.Schema<ListSettingAllowPoliciesResponse>;
 
-export type SettingsBlockSendersListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsBlockSendersListRequestDirection = "asc" | "desc";
 export const SettingsBlockSendersListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsBlockSendersListRequestOrder =
-  | "pattern"
-  | "created_at"
-  | (string & {});
+export type SettingsBlockSendersListRequestOrder = "pattern" | "created_at";
 export const SettingsBlockSendersListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SettingsBlockSendersListRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersListRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -5036,8 +5209,7 @@ export type SettingsBlockSendersListResultItemPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersListResultItemPatternType =
   /*@__PURE__*/ S.String;
 
@@ -5074,7 +5246,7 @@ export const SettingsBlockSendersListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsBlockSendersListResultItem>;
 
 export type SettingsBlockSendersListResultList =
-  SettingsBlockSendersListResultItem[];
+  ReadonlyArray<SettingsBlockSendersListResultItem>;
 export const SettingsBlockSendersListResultList = /*@__PURE__*/ S.Array(
   SettingsBlockSendersListResultItem,
 ) as any as S.Schema<SettingsBlockSendersListResultList>;
@@ -5098,7 +5270,8 @@ export type SettingsDomainsListRequestActiveDeliveryMode =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsListRequestActiveDeliveryMode =
   /*@__PURE__*/ S.String;
 
@@ -5106,33 +5279,27 @@ export type SettingsDomainsListRequestAllowedDeliveryMode =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsListRequestAllowedDeliveryMode =
   /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsDomainsListRequestDirection = "asc" | "desc";
 export const SettingsDomainsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListRequestDomainList = string[];
+export type SettingsDomainsListRequestDomainList = ReadonlyArray<string>;
 export const SettingsDomainsListRequestDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SettingsDomainsListRequestDomainList>;
 
-export type SettingsDomainsListRequestOrder =
-  | "domain"
-  | "created_at"
-  | (string & {});
+export type SettingsDomainsListRequestOrder = "domain" | "created_at";
 export const SettingsDomainsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListRequestStatus =
   | "pending"
   | "active"
   | "failed"
-  | "timeout"
-  | (string & {});
+  | "timeout";
 export const SettingsDomainsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListSettingDomainsRequest {
@@ -5197,12 +5364,13 @@ export type SettingsDomainsListResultItemAllowedDeliveryModesItem =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsListResultItemAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemAllowedDeliveryModesList =
-  SettingsDomainsListResultItemAllowedDeliveryModesItem[];
+  ReadonlyArray<SettingsDomainsListResultItemAllowedDeliveryModesItem>;
 export const SettingsDomainsListResultItemAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsListResultItemAllowedDeliveryModesItem,
@@ -5227,20 +5395,25 @@ export const SettingsDomainsListResultItemAuthorization =
 export type SettingsDomainsListResultItemDmarcStatus =
   | "none"
   | "good"
-  | "invalid"
-  | (string & {});
+  | "invalid";
 export const SettingsDomainsListResultItemDmarcStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemDropDispositionsItem =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const SettingsDomainsListResultItemDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemDropDispositionsList =
-  SettingsDomainsListResultItemDropDispositionsItem[];
+  ReadonlyArray<SettingsDomainsListResultItemDropDispositionsItem>;
 export const SettingsDomainsListResultItemDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsListResultItemDropDispositionsItem,
@@ -5264,20 +5437,15 @@ export const SettingsDomainsListResultItemEmailsProcessed =
     identifier: "SettingsDomainsListResultItemEmailsProcessed",
   }) as any as S.Schema<SettingsDomainsListResultItemEmailsProcessed>;
 
-export type SettingsDomainsListResultItemFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
+export type SettingsDomainsListResultItemFolder = "AllItems" | "Inbox";
 export const SettingsDomainsListResultItemFolder = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListResultItemInboxProvider =
-  | "Microsoft"
-  | "Google"
-  | (string & {});
+export type SettingsDomainsListResultItemInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsListResultItemInboxProvider =
   /*@__PURE__*/ S.String;
 
-export type SettingsDomainsListResultItemIpRestrictionsList = string[];
+export type SettingsDomainsListResultItemIpRestrictionsList =
+  ReadonlyArray<string>;
 export const SettingsDomainsListResultItemIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5287,11 +5455,12 @@ export type SettingsDomainsListResultItemRegionsItem =
   | "GLOBAL"
   | "AU"
   | "DE"
-  | (string & {});
+  | "IN"
+  | "US";
 export const SettingsDomainsListResultItemRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemRegionsList =
-  SettingsDomainsListResultItemRegionsItem[];
+  ReadonlyArray<SettingsDomainsListResultItemRegionsItem>;
 export const SettingsDomainsListResultItemRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsListResultItemRegionsItem,
 ) as any as S.Schema<SettingsDomainsListResultItemRegionsList>;
@@ -5300,15 +5469,15 @@ export type SettingsDomainsListResultItemSpfStatus =
   | "none"
   | "good"
   | "neutral"
-  | (string & {});
+  | "open"
+  | "invalid";
 export const SettingsDomainsListResultItemSpfStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsListResultItemStatus =
   | "pending"
   | "active"
   | "failed"
-  | "timeout"
-  | (string & {});
+  | "timeout";
 export const SettingsDomainsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface SettingsDomainsListResultItem {
@@ -5392,7 +5561,8 @@ export const SettingsDomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsDomainsListResultItem",
 }) as any as S.Schema<SettingsDomainsListResultItem>;
 
-export type SettingsDomainsListResultList = SettingsDomainsListResultItem[];
+export type SettingsDomainsListResultList =
+  ReadonlyArray<SettingsDomainsListResultItem>;
 export const SettingsDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsDomainsListResultItem,
 ) as any as S.Schema<SettingsDomainsListResultList>;
@@ -5412,18 +5582,14 @@ export const ListSettingDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingDomainsResponse",
 }) as any as S.Schema<ListSettingDomainsResponse>;
 
-export type SettingsImpersonationRegistryListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsImpersonationRegistryListRequestDirection = "asc" | "desc";
 export const SettingsImpersonationRegistryListRequestDirection =
   /*@__PURE__*/ S.String;
 
 export type SettingsImpersonationRegistryListRequestOrder =
   | "name"
   | "email"
-  | "created_at"
-  | (string & {});
+  | "created_at";
 export const SettingsImpersonationRegistryListRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -5431,8 +5597,7 @@ export type SettingsImpersonationRegistryListRequestProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryListRequestProvenance =
   /*@__PURE__*/ S.String;
 
@@ -5484,8 +5649,7 @@ export type SettingsImpersonationRegistryListResultItemProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryListResultItemProvenance =
   /*@__PURE__*/ S.String;
 
@@ -5530,7 +5694,7 @@ export const SettingsImpersonationRegistryListResultItem =
   }) as any as S.Schema<SettingsImpersonationRegistryListResultItem>;
 
 export type SettingsImpersonationRegistryListResultList =
-  SettingsImpersonationRegistryListResultItem[];
+  ReadonlyArray<SettingsImpersonationRegistryListResultItem>;
 export const SettingsImpersonationRegistryListResultList =
   /*@__PURE__*/ S.Array(
     SettingsImpersonationRegistryListResultItem,
@@ -5556,15 +5720,13 @@ export const ListSettingImpersonationRegistriesResponse =
 
 export type SettingsSendingDomainRestrictionsListRequestDirection =
   | "asc"
-  | "desc"
-  | (string & {});
+  | "desc";
 export const SettingsSendingDomainRestrictionsListRequestDirection =
   /*@__PURE__*/ S.String;
 
 export type SettingsSendingDomainRestrictionsListRequestOrder =
   | "domain"
-  | "created_at"
-  | (string & {});
+  | "created_at";
 export const SettingsSendingDomainRestrictionsListRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -5609,7 +5771,7 @@ export const ListSettingSendingDomainRestrictionsRequest =
   }) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>;
 
 export type SettingsSendingDomainRestrictionsListResultItemExcludeList =
-  string[];
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsListResultItemExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5646,7 +5808,7 @@ export const SettingsSendingDomainRestrictionsListResultItem =
   }) as any as S.Schema<SettingsSendingDomainRestrictionsListResultItem>;
 
 export type SettingsSendingDomainRestrictionsListResultList =
-  SettingsSendingDomainRestrictionsListResultItem[];
+  ReadonlyArray<SettingsSendingDomainRestrictionsListResultItem>;
 export const SettingsSendingDomainRestrictionsListResultList =
   /*@__PURE__*/ S.Array(
     SettingsSendingDomainRestrictionsListResultItem,
@@ -5670,17 +5832,11 @@ export const ListSettingSendingDomainRestrictionsResponse =
     identifier: "ListSettingSendingDomainRestrictionsResponse",
   }) as any as S.Schema<ListSettingSendingDomainRestrictionsResponse>;
 
-export type SettingsTrustedDomainsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type SettingsTrustedDomainsListRequestDirection = "asc" | "desc";
 export const SettingsTrustedDomainsListRequestDirection =
   /*@__PURE__*/ S.String;
 
-export type SettingsTrustedDomainsListRequestOrder =
-  | "pattern"
-  | "created_at"
-  | (string & {});
+export type SettingsTrustedDomainsListRequestOrder = "pattern" | "created_at";
 export const SettingsTrustedDomainsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListSettingTrustedDomainsRequest {
@@ -5761,7 +5917,7 @@ export const SettingsTrustedDomainsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SettingsTrustedDomainsListResultItem>;
 
 export type SettingsTrustedDomainsListResultList =
-  SettingsTrustedDomainsListResultItem[];
+  ReadonlyArray<SettingsTrustedDomainsListResultItem>;
 export const SettingsTrustedDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsTrustedDomainsListResultItem,
 ) as any as S.Schema<SettingsTrustedDomainsListResultList>;
@@ -5834,7 +5990,7 @@ export const SettingsUrlIgnorePatternsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SettingsUrlIgnorePatternsListResultItem>;
 
 export type SettingsUrlIgnorePatternsListResultList =
-  SettingsUrlIgnorePatternsListResultItem[];
+  ReadonlyArray<SettingsUrlIgnorePatternsListResultItem>;
 export const SettingsUrlIgnorePatternsListResultList = /*@__PURE__*/ S.Array(
   SettingsUrlIgnorePatternsListResultItem,
 ) as any as S.Schema<SettingsUrlIgnorePatternsListResultList>;
@@ -5859,25 +6015,31 @@ export type SubmissionsListRequestOriginalDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListRequestOriginalDisposition = /*@__PURE__*/ S.String;
 
 export type SubmissionsListRequestOutcomeDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListRequestOutcomeDisposition = /*@__PURE__*/ S.String;
 
 export type SubmissionsListRequestRequestedDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListRequestRequestedDisposition =
   /*@__PURE__*/ S.String;
 
-export type SubmissionsListRequestType = "TEAM" | "USER" | (string & {});
+export type SubmissionsListRequestType = "TEAM" | "USER";
 export const SubmissionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListSubmissionsRequest {
@@ -5946,22 +6108,25 @@ export const ListSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SubmissionsListResultItemCustomerStatus =
   | "escalated"
   | "reviewed"
-  | "unreviewed"
-  | (string & {});
+  | "unreviewed";
 export const SubmissionsListResultItemCustomerStatus = /*@__PURE__*/ S.String;
 
 export type SubmissionsListResultItemEscalatedAs =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListResultItemEscalatedAs = /*@__PURE__*/ S.String;
 
 export type SubmissionsListResultItemOriginalDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListResultItemOriginalDisposition =
   /*@__PURE__*/ S.String;
 
@@ -5969,7 +6134,9 @@ export type SubmissionsListResultItemOutcomeDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListResultItemOutcomeDisposition =
   /*@__PURE__*/ S.String;
 
@@ -5977,11 +6144,13 @@ export type SubmissionsListResultItemRequestedDisposition =
   | "MALICIOUS"
   | "SUSPICIOUS"
   | "SPOOF"
-  | (string & {});
+  | "SPAM"
+  | "BULK"
+  | "NONE";
 export const SubmissionsListResultItemRequestedDisposition =
   /*@__PURE__*/ S.String;
 
-export type SubmissionsListResultItemType = "Team" | "User" | (string & {});
+export type SubmissionsListResultItemType = "Team" | "User";
 export const SubmissionsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface SubmissionsListResultItem {
@@ -6051,7 +6220,8 @@ export const SubmissionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmissionsListResultItem",
 }) as any as S.Schema<SubmissionsListResultItem>;
 
-export type SubmissionsListResultList = SubmissionsListResultItem[];
+export type SubmissionsListResultList =
+  ReadonlyArray<SubmissionsListResultItem>;
 export const SubmissionsListResultList = /*@__PURE__*/ S.Array(
   SubmissionsListResultItem,
 ) as any as S.Schema<SubmissionsListResultList>;
@@ -6075,8 +6245,7 @@ export type SettingsAllowPoliciesEditRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesEditRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -6143,8 +6312,7 @@ export type SettingsAllowPoliciesEditResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsAllowPoliciesEditResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -6208,8 +6376,7 @@ export type SettingsBlockSendersEditRequestPatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersEditRequestPatternType =
   /*@__PURE__*/ S.String;
 
@@ -6251,8 +6418,7 @@ export type SettingsBlockSendersEditResponsePatternType =
   | "EMAIL"
   | "DOMAIN"
   | "IP"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const SettingsBlockSendersEditResponsePatternType =
   /*@__PURE__*/ S.String;
 
@@ -6291,12 +6457,13 @@ export type SettingsDomainsEditRequestAllowedDeliveryModesItem =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsEditRequestAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditRequestAllowedDeliveryModesList =
-  SettingsDomainsEditRequestAllowedDeliveryModesItem[];
+  ReadonlyArray<SettingsDomainsEditRequestAllowedDeliveryModesItem>;
 export const SettingsDomainsEditRequestAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditRequestAllowedDeliveryModesItem,
@@ -6306,24 +6473,28 @@ export type SettingsDomainsEditRequestDropDispositionsItem =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const SettingsDomainsEditRequestDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditRequestDropDispositionsList =
-  SettingsDomainsEditRequestDropDispositionsItem[];
+  ReadonlyArray<SettingsDomainsEditRequestDropDispositionsItem>;
 export const SettingsDomainsEditRequestDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditRequestDropDispositionsItem,
   ) as any as S.Schema<SettingsDomainsEditRequestDropDispositionsList>;
 
-export type SettingsDomainsEditRequestFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
+export type SettingsDomainsEditRequestFolder = "AllItems" | "Inbox";
 export const SettingsDomainsEditRequestFolder = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditRequestIpRestrictionsList = string[];
+export type SettingsDomainsEditRequestIpRestrictionsList =
+  ReadonlyArray<string>;
 export const SettingsDomainsEditRequestIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6333,11 +6504,12 @@ export type SettingsDomainsEditRequestRegionsItem =
   | "GLOBAL"
   | "AU"
   | "DE"
-  | (string & {});
+  | "IN"
+  | "US";
 export const SettingsDomainsEditRequestRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditRequestRegionsList =
-  SettingsDomainsEditRequestRegionsItem[];
+  ReadonlyArray<SettingsDomainsEditRequestRegionsItem>;
 export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsEditRequestRegionsItem,
 ) as any as S.Schema<SettingsDomainsEditRequestRegionsList>;
@@ -6407,12 +6579,13 @@ export type SettingsDomainsEditResponseAllowedDeliveryModesItem =
   | "DIRECT"
   | "BCC"
   | "JOURNAL"
-  | (string & {});
+  | "API"
+  | "RETRO_SCAN";
 export const SettingsDomainsEditResponseAllowedDeliveryModesItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseAllowedDeliveryModesList =
-  SettingsDomainsEditResponseAllowedDeliveryModesItem[];
+  ReadonlyArray<SettingsDomainsEditResponseAllowedDeliveryModesItem>;
 export const SettingsDomainsEditResponseAllowedDeliveryModesList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditResponseAllowedDeliveryModesItem,
@@ -6437,20 +6610,25 @@ export const SettingsDomainsEditResponseAuthorization = /*@__PURE__*/ S.suspend(
 export type SettingsDomainsEditResponseDmarcStatus =
   | "none"
   | "good"
-  | "invalid"
-  | (string & {});
+  | "invalid";
 export const SettingsDomainsEditResponseDmarcStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseDropDispositionsItem =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
-  | (string & {});
+  | "SPOOF"
+  | "SPAM"
+  | "BULK"
+  | "ENCRYPTED"
+  | "EXTERNAL"
+  | "UNKNOWN"
+  | "NONE";
 export const SettingsDomainsEditResponseDropDispositionsItem =
   /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseDropDispositionsList =
-  SettingsDomainsEditResponseDropDispositionsItem[];
+  ReadonlyArray<SettingsDomainsEditResponseDropDispositionsItem>;
 export const SettingsDomainsEditResponseDropDispositionsList =
   /*@__PURE__*/ S.Array(
     SettingsDomainsEditResponseDropDispositionsItem,
@@ -6474,19 +6652,14 @@ export const SettingsDomainsEditResponseEmailsProcessed =
     identifier: "SettingsDomainsEditResponseEmailsProcessed",
   }) as any as S.Schema<SettingsDomainsEditResponseEmailsProcessed>;
 
-export type SettingsDomainsEditResponseFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
+export type SettingsDomainsEditResponseFolder = "AllItems" | "Inbox";
 export const SettingsDomainsEditResponseFolder = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditResponseInboxProvider =
-  | "Microsoft"
-  | "Google"
-  | (string & {});
+export type SettingsDomainsEditResponseInboxProvider = "Microsoft" | "Google";
 export const SettingsDomainsEditResponseInboxProvider = /*@__PURE__*/ S.String;
 
-export type SettingsDomainsEditResponseIpRestrictionsList = string[];
+export type SettingsDomainsEditResponseIpRestrictionsList =
+  ReadonlyArray<string>;
 export const SettingsDomainsEditResponseIpRestrictionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6496,11 +6669,12 @@ export type SettingsDomainsEditResponseRegionsItem =
   | "GLOBAL"
   | "AU"
   | "DE"
-  | (string & {});
+  | "IN"
+  | "US";
 export const SettingsDomainsEditResponseRegionsItem = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseRegionsList =
-  SettingsDomainsEditResponseRegionsItem[];
+  ReadonlyArray<SettingsDomainsEditResponseRegionsItem>;
 export const SettingsDomainsEditResponseRegionsList = /*@__PURE__*/ S.Array(
   SettingsDomainsEditResponseRegionsItem,
 ) as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
@@ -6509,15 +6683,15 @@ export type SettingsDomainsEditResponseSpfStatus =
   | "none"
   | "good"
   | "neutral"
-  | (string & {});
+  | "open"
+  | "invalid";
 export const SettingsDomainsEditResponseSpfStatus = /*@__PURE__*/ S.String;
 
 export type SettingsDomainsEditResponseStatus =
   | "pending"
   | "active"
   | "failed"
-  | "timeout"
-  | (string & {});
+  | "timeout";
 export const SettingsDomainsEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6606,8 +6780,7 @@ export type SettingsImpersonationRegistryEditRequestProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryEditRequestProvenance =
   /*@__PURE__*/ S.String;
 
@@ -6661,8 +6834,7 @@ export type SettingsImpersonationRegistryEditResponseProvenance =
   | "A1S_INTERNAL"
   | "SNOOPY-CASB_OFFICE_365"
   | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
+  | "SNOOPY-GOOGLE_DIRECTORY";
 export const SettingsImpersonationRegistryEditResponseProvenance =
   /*@__PURE__*/ S.String;
 
@@ -6707,7 +6879,8 @@ export const PatchSettingImpersonationRegistryResponse =
     identifier: "PatchSettingImpersonationRegistryResponse",
   }) as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
 
-export type SettingsSendingDomainRestrictionsEditRequestExcludeList = string[];
+export type SettingsSendingDomainRestrictionsEditRequestExcludeList =
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsEditRequestExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6749,7 +6922,8 @@ export const PatchSettingSendingDomainRestrictionRequest =
     identifier: "PatchSettingSendingDomainRestrictionRequest",
   }) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>;
 
-export type SettingsSendingDomainRestrictionsEditResponseExcludeList = string[];
+export type SettingsSendingDomainRestrictionsEditResponseExcludeList =
+  ReadonlyArray<string>;
 export const SettingsSendingDomainRestrictionsEditResponseExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,

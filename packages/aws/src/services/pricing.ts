@@ -241,8 +241,7 @@ export type FilterType =
   | "EQUALS"
   | "CONTAINS"
   | "ANY_OF"
-  | "NONE_OF"
-  | (string & {});
+  | "NONE_OF";
 export const FilterType = /*@__PURE__*/ S.String;
 
 export type Field = string;

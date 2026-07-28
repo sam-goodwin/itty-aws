@@ -12,6 +12,63 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type AccessConnectorsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccessConnectorsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessConnectorsCreateOrUpdateRequestTagsMap>;
+
+export interface AccessConnectorPropertiesInput {}
+export const AccessConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AccessConnectorPropertiesInput",
+}) as any as S.Schema<AccessConnectorPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface AccessConnectorsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const AccessConnectorsCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "AccessConnectorsCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<AccessConnectorsCreateOrUpdateRequestIdentity>;
+
 export interface AccessConnectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,7 +76,14 @@ export interface AccessConnectorsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Azure Databricks Access Connector. */
   connectorName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AccessConnectorsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Azure Databricks Access Connector properties */
+  properties?: AccessConnectorPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccessConnectorsCreateOrUpdateRequestIdentity;
 }
 export const AccessConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -27,7 +91,10 @@ export const AccessConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       connectorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AccessConnectorsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AccessConnectorPropertiesInput),
+      identity: S.optional(AccessConnectorsCreateOrUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -62,12 +129,11 @@ export type ProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** List of workspaces referring this Access Connector. */
-export type AccessConnectorPropertiesReferedByList = string[];
+export type AccessConnectorPropertiesReferedByList = ReadonlyArray<string>;
 export const AccessConnectorPropertiesReferedByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessConnectorPropertiesReferedByList>;
@@ -86,15 +152,6 @@ export const AccessConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessConnectorProperties",
 }) as any as S.Schema<AccessConnectorProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -371,7 +428,7 @@ export const AccessConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessConnector>;
 
 /** The AccessConnector items on this page */
-export type AccessConnectorListResultValueList = AccessConnector[];
+export type AccessConnectorListResultValueList = ReadonlyArray<AccessConnector>;
 export const AccessConnectorListResultValueList = /*@__PURE__*/ S.Array(
   AccessConnector,
 ) as any as S.Schema<AccessConnectorListResultValueList>;
@@ -412,6 +469,30 @@ export const AccessConnectorsListBySubscriptionRequest =
     identifier: "AccessConnectorsListBySubscriptionRequest",
   }) as any as S.Schema<AccessConnectorsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type AccessConnectorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccessConnectorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccessConnectorsUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface AccessConnectorsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const AccessConnectorsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "AccessConnectorsUpdateRequestIdentity",
+}) as any as S.Schema<AccessConnectorsUpdateRequestIdentity>;
+
 export interface AccessConnectorsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -419,14 +500,18 @@ export interface AccessConnectorsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Azure Databricks Access Connector. */
   connectorName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AccessConnectorsUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AccessConnectorsUpdateRequestIdentity;
 }
 export const AccessConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     connectorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AccessConnectorsUpdateRequestTagsMap),
+    identity: S.optional(AccessConnectorsUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -550,7 +635,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Resource Provider operations supported by the Resource Provider resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -618,7 +703,8 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The Ports used when connecting to domainName. */
-export type EndpointDependencyEndpointDetailsList = EndpointDetail[];
+export type EndpointDependencyEndpointDetailsList =
+  ReadonlyArray<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -640,7 +726,8 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointDependency>;
 
 /** The endpoints that Workspace connect to */
-export type OutboundEnvironmentEndpointEndpointsList = EndpointDependency[];
+export type OutboundEnvironmentEndpointEndpointsList =
+  ReadonlyArray<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -663,7 +750,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of outbound network dependency endpoints */
 export type OutboundEnvironmentEndpointCollection =
-  OutboundEnvironmentEndpoint[];
+  ReadonlyArray<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
@@ -677,6 +764,71 @@ export const OutboundNetworkDependenciesEndpointsListResponse =
     identifier: "OutboundNetworkDependenciesEndpointsListResponse",
   }) as any as S.Schema<OutboundNetworkDependenciesEndpointsListResponse>;
 
+/** The private endpoint property of a private endpoint connection. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** GroupIds from the private link service resource. */
+export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  ReadonlyArray<string>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+
+/** The status of a private endpoint connection */
+export type PrivateLinkServiceConnectionStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected"
+  | "Disconnected";
+export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
+
+/** The current state of a private endpoint connection. */
+export interface PrivateLinkServiceConnectionState {
+  /** The status of a private endpoint connection */
+  status: PrivateLinkServiceConnectionStatus;
+  /** The description for the current state of a private endpoint connection */
+  description?: string;
+  /** Actions required for a private endpoint connection */
+  actionsRequired?: string;
+}
+export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: PrivateLinkServiceConnectionStatus,
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkServiceConnectionState",
+}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
+/** The properties of a private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** Private endpoint */
+  privateEndpoint?: PrivateEndpointInput;
+  /** GroupIds from the private link service resource. */
+  groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
+  /** Private endpoint connection state */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      groupIds: S.optional(
+        PrivateEndpointConnectionPropertiesInputGroupIdsList,
+      ),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -686,7 +838,8 @@ export interface PrivateEndpointConnectionsCreateRequest {
   workspaceName: string;
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** The private endpoint connection properties. */
+  properties: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -695,7 +848,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: PrivateEndpointConnectionPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -722,39 +875,12 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** GroupIds from the private link service resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
-/** The status of a private endpoint connection */
-export type PrivateLinkServiceConnectionStatus =
-  | "Pending"
-  | "Approved"
-  | "Rejected"
-  | "Disconnected"
-  | (string & {});
-export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
-
-/** The current state of a private endpoint connection. */
-export interface PrivateLinkServiceConnectionState {
-  /** The status of a private endpoint connection */
-  status: PrivateLinkServiceConnectionStatus;
-  /** The description for the current state of a private endpoint connection */
-  description?: string;
-  /** Actions required for a private endpoint connection */
-  actionsRequired?: string;
-}
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: PrivateLinkServiceConnectionStatus,
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState",
-}) as any as S.Schema<PrivateLinkServiceConnectionState>;
 
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
@@ -762,8 +888,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -948,7 +1073,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionsListValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionsListValueList>;
@@ -998,14 +1123,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The required members for a specific group id */
-export type GroupIdInformationPropertiesRequiredMembersList = string[];
+export type GroupIdInformationPropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const GroupIdInformationPropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id */
-export type GroupIdInformationPropertiesRequiredZoneNamesList = string[];
+export type GroupIdInformationPropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const GroupIdInformationPropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1103,7 +1230,8 @@ export const GroupIdInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupIdInformation>;
 
 /** The GroupIdInformation items on this page */
-export type PrivateLinkResourcesListValueList = GroupIdInformation[];
+export type PrivateLinkResourcesListValueList =
+  ReadonlyArray<GroupIdInformation>;
 export const PrivateLinkResourcesListValueList = /*@__PURE__*/ S.Array(
   GroupIdInformation,
 ) as any as S.Schema<PrivateLinkResourcesListValueList>;
@@ -1124,36 +1252,6 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourcesList",
 }) as any as S.Schema<PrivateLinkResourcesList>;
 
-export interface VNetPeeringCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the workspace vNet peering. */
-  peeringName: string;
-  body: unknown;
-}
-export const VNetPeeringCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    peeringName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "VNetPeeringCreateOrUpdateRequest",
-}) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>;
-
 /** The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering). */
 export interface VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork {
   /** The Id of the databricks virtual network. */
@@ -1169,7 +1267,7 @@ export const VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork =
   }) as any as S.Schema<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>;
 
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
-export type AddressSpaceAddressPrefixesList = string[];
+export type AddressSpaceAddressPrefixesList = ReadonlyArray<string>;
 export const AddressSpaceAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressSpaceAddressPrefixesList>;
@@ -1200,11 +1298,7 @@ export const VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork =
   }) as any as S.Schema<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork>;
 
 /** The status of the virtual network peering. */
-export type PeeringState =
-  | "Initiated"
-  | "Connected"
-  | "Disconnected"
-  | (string & {});
+export type PeeringState = "Initiated" | "Connected" | "Disconnected";
 export const PeeringState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -1212,8 +1306,7 @@ export type PeeringProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PeeringProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the virtual network peering. */
@@ -1259,6 +1352,37 @@ export const VirtualNetworkPeeringPropertiesFormat = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "VirtualNetworkPeeringPropertiesFormat",
 }) as any as S.Schema<VirtualNetworkPeeringPropertiesFormat>;
+
+export interface VNetPeeringCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the workspace vNet peering. */
+  peeringName: string;
+  /** List of properties for vNet Peering */
+  properties: VirtualNetworkPeeringPropertiesFormat;
+}
+export const VNetPeeringCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    peeringName: S.String.pipe(T.Label()),
+    properties: VirtualNetworkPeeringPropertiesFormat,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "VNetPeeringCreateOrUpdateRequest",
+}) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>;
 
 export interface VNetPeeringCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1413,7 +1537,8 @@ export const VirtualNetworkPeering = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkPeering>;
 
 /** The VirtualNetworkPeering items on this page */
-export type VirtualNetworkPeeringListValueList = VirtualNetworkPeering[];
+export type VirtualNetworkPeeringListValueList =
+  ReadonlyArray<VirtualNetworkPeering>;
 export const VirtualNetworkPeeringListValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkPeering,
 ) as any as S.Schema<VirtualNetworkPeeringListValueList>;
@@ -1434,48 +1559,21 @@ export const VirtualNetworkPeeringList = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualNetworkPeeringList",
 }) as any as S.Schema<VirtualNetworkPeeringList>;
 
-export interface WorkspacesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  body: unknown;
-}
-export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequest",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type WorkspacesCreateOrUpdateResponseTagsMap = {
+export type WorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid' */
-export type ComputeMode = "Serverless" | "Hybrid" | (string & {});
+export type ComputeMode = "Serverless" | "Hybrid";
 export const ComputeMode = /*@__PURE__*/ S.String;
 
 /** The workspace's custom parameters. */
-export type CustomParameterType = "Bool" | "Object" | "String" | (string & {});
+export type CustomParameterType = "Bool" | "Object" | "String";
 export const CustomParameterType = /*@__PURE__*/ S.String;
 
 /** The Value. */
@@ -1527,10 +1625,7 @@ export const WorkspaceCustomBooleanParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceCustomBooleanParameter>;
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault */
-export type EncryptionKeySource =
-  | "Default"
-  | "Microsoft.Keyvault"
-  | (string & {});
+export type EncryptionKeySource = "Default" | "Microsoft.Keyvault";
 export const EncryptionKeySource = /*@__PURE__*/ S.String;
 
 /** The object that contains details of encryption used on the workspace. */
@@ -1662,50 +1757,28 @@ export const WorkspaceProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceProviderAuthorization>;
 
 /** The workspace provider authorizations. */
-export type WorkspacePropertiesAuthorizationsList =
-  WorkspaceProviderAuthorization[];
-export const WorkspacePropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
+export type WorkspacePropertiesInputAuthorizationsList =
+  ReadonlyArray<WorkspaceProviderAuthorization>;
+export const WorkspacePropertiesInputAuthorizationsList = /*@__PURE__*/ S.Array(
   WorkspaceProviderAuthorization,
-) as any as S.Schema<WorkspacePropertiesAuthorizationsList>;
+) as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
 
 /** Provides details of the entity that created/updated the workspace. */
-export interface CreatedBy {
-  /** The Object ID that created the workspace. */
-  oid?: string;
-  /** The Personal Object ID corresponding to the object ID above */
-  puid?: string;
-  /** The application ID of the application that initiated the creation of the workspace. For example, Azure Portal. */
-  applicationId?: string;
-}
-export const CreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oid: S.optional(S.String),
-    puid: S.optional(S.String),
-    applicationId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreatedBy" }) as any as S.Schema<CreatedBy>;
+export interface CreatedByInput {}
+export const CreatedByInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "CreatedByInput" }) as any as S.Schema<CreatedByInput>;
 
 /** The Managed Identity details for storage account. */
-export interface ManagedIdentityConfiguration {
-  /** The objectId of the Managed Identity that is linked to the Managed Storage account. */
-  principalId?: string;
-  /** The tenant Id where the Managed Identity is created. */
-  tenantId?: string;
-  /** The type of Identity created. It can be either SystemAssigned or UserAssigned. */
-  type?: string;
-}
-export const ManagedIdentityConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
+export interface ManagedIdentityConfigurationInput {}
+export const ManagedIdentityConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "ManagedIdentityConfiguration",
-}) as any as S.Schema<ManagedIdentityConfiguration>;
+  identifier: "ManagedIdentityConfigurationInput",
+}) as any as S.Schema<ManagedIdentityConfigurationInput>;
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
-export type EncryptionKeySource2 = "Microsoft.Keyvault" | (string & {});
+export type EncryptionKeySource2 = "Microsoft.Keyvault";
 export const EncryptionKeySource2 = /*@__PURE__*/ S.String;
 
 /** Key Vault input properties for encryption. */
@@ -1809,10 +1882,7 @@ export const WorkspacePropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacePropertiesEncryption",
 }) as any as S.Schema<WorkspacePropertiesEncryption>;
 
-export type AutomaticClusterUpdateValue =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type AutomaticClusterUpdateValue = "Enabled" | "Disabled";
 export const AutomaticClusterUpdateValue = /*@__PURE__*/ S.String;
 
 /** Status of automated cluster updates feature. */
@@ -1829,16 +1899,13 @@ export const AutomaticClusterUpdateDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Compliance standards associated with the workspace. */
 export type ComplianceSecurityProfileDefinitionComplianceStandardsList =
-  string[];
+  ReadonlyArray<string>;
 export const ComplianceSecurityProfileDefinitionComplianceStandardsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ComplianceSecurityProfileDefinitionComplianceStandardsList>;
 
-export type ComplianceSecurityProfileValue =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ComplianceSecurityProfileValue = "Enabled" | "Disabled";
 export const ComplianceSecurityProfileValue = /*@__PURE__*/ S.String;
 
 /** Status of Compliance Security Profile feature. */
@@ -1858,10 +1925,7 @@ export const ComplianceSecurityProfileDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceSecurityProfileDefinition",
 }) as any as S.Schema<ComplianceSecurityProfileDefinition>;
 
-export type EnhancedSecurityMonitoringValue =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type EnhancedSecurityMonitoringValue = "Enabled" | "Disabled";
 export const EnhancedSecurityMonitoringValue = /*@__PURE__*/ S.String;
 
 /** Status of Enhanced Security Monitoring feature. */
@@ -1901,31 +1965,21 @@ export const EnhancedSecurityComplianceDefinition = /*@__PURE__*/ S.suspend(
   identifier: "EnhancedSecurityComplianceDefinition",
 }) as any as S.Schema<EnhancedSecurityComplianceDefinition>;
 
-/** Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
-export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
-export const WorkspacePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
-
 /** The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace. */
 export type RequiredNsgRules =
   | "AllRules"
   | "NoAzureDatabricksRules"
-  | "NoAzureServiceRules"
-  | (string & {});
+  | "NoAzureServiceRules";
 export const RequiredNsgRules = /*@__PURE__*/ S.String;
 
 /** Defines the initial type of the default catalog. Possible values (case-insensitive): HiveMetastore, UnityCatalog */
 export type DefaultCatalogPropertiesInitialType =
   | "HiveMetastore"
-  | "UnityCatalog"
-  | (string & {});
+  | "UnityCatalog";
 export const DefaultCatalogPropertiesInitialType = /*@__PURE__*/ S.String;
 
 /** These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace. */
@@ -1945,7 +1999,7 @@ export const DefaultCatalogProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultCatalogProperties>;
 
 /** The identity type of the Access Connector Resource. */
-export type IdentityType = "SystemAssigned" | "UserAssigned" | (string & {});
+export type IdentityType = "SystemAssigned" | "UserAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace. */
@@ -1968,8 +2022,179 @@ export const WorkspacePropertiesAccessConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePropertiesAccessConnector>;
 
 /** Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace. */
-export type DefaultStorageFirewall = "Disabled" | "Enabled" | (string & {});
+export type DefaultStorageFirewall = "Disabled" | "Enabled";
 export const DefaultStorageFirewall = /*@__PURE__*/ S.String;
+
+/** The workspace properties. */
+export interface WorkspacePropertiesInput {
+  /** The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid' */
+  computeMode: ComputeMode;
+  /** The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace. */
+  managedResourceGroupId?: string;
+  /** The workspace's custom parameters. */
+  parameters?: WorkspaceCustomParameters;
+  /** The blob URI where the UI definition file is located. */
+  uiDefinitionUri?: string;
+  /** The workspace provider authorizations. */
+  authorizations?: WorkspacePropertiesInputAuthorizationsList;
+  /** Indicates the Object ID, PUID and Application ID of entity that created the workspace. */
+  createdBy?: CreatedByInput;
+  /** Indicates the Object ID, PUID and Application ID of entity that last updated the workspace. */
+  updatedBy?: CreatedByInput;
+  /** The details of Managed Identity of Storage Account. Only returned in Hybrid ComputeMode workspace. */
+  storageAccountIdentity?: ManagedIdentityConfigurationInput;
+  /** The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption. Only returned in Hybrid ComputeMode workspace. */
+  managedDiskIdentity?: ManagedIdentityConfigurationInput;
+  /** Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
+  encryption?: WorkspacePropertiesEncryption;
+  /** Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace. */
+  enhancedSecurityCompliance?: EnhancedSecurityComplianceDefinition;
+  /** The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace. */
+  requiredNsgRules?: RequiredNsgRules;
+  /** Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace. */
+  defaultCatalog?: DefaultCatalogProperties;
+  /** Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace. */
+  accessConnector?: WorkspacePropertiesAccessConnector;
+  /** Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace. */
+  defaultStorageFirewall?: DefaultStorageFirewall;
+}
+export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeMode: ComputeMode,
+    managedResourceGroupId: S.optional(S.String),
+    parameters: S.optional(WorkspaceCustomParameters),
+    uiDefinitionUri: S.optional(S.String),
+    authorizations: S.optional(WorkspacePropertiesInputAuthorizationsList),
+    createdBy: S.optional(CreatedByInput),
+    updatedBy: S.optional(CreatedByInput),
+    storageAccountIdentity: S.optional(ManagedIdentityConfigurationInput),
+    managedDiskIdentity: S.optional(ManagedIdentityConfigurationInput),
+    encryption: S.optional(WorkspacePropertiesEncryption),
+    enhancedSecurityCompliance: S.optional(
+      EnhancedSecurityComplianceDefinition,
+    ),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    requiredNsgRules: S.optional(RequiredNsgRules),
+    defaultCatalog: S.optional(DefaultCatalogProperties),
+    accessConnector: S.optional(WorkspacePropertiesAccessConnector),
+    defaultStorageFirewall: S.optional(DefaultStorageFirewall),
+  }),
+).annotate({
+  identifier: "WorkspacePropertiesInput",
+}) as any as S.Schema<WorkspacePropertiesInput>;
+
+/** SKU for the resource. */
+export interface Sku {
+  /** The SKU name. */
+  name: string;
+  /** The SKU tier. */
+  tier?: string;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(S.String),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+export interface WorkspacesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** Resource tags. */
+  tags?: WorkspacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The workspace properties. */
+  properties: WorkspacePropertiesInput;
+  /** The SKU of the resource. */
+  sku?: Sku;
+}
+export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: WorkspacePropertiesInput,
+    sku: S.optional(Sku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "WorkspacesCreateOrUpdateRequest",
+}) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type WorkspacesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+
+/** The workspace provider authorizations. */
+export type WorkspacePropertiesAuthorizationsList =
+  ReadonlyArray<WorkspaceProviderAuthorization>;
+export const WorkspacePropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
+  WorkspaceProviderAuthorization,
+) as any as S.Schema<WorkspacePropertiesAuthorizationsList>;
+
+/** Provides details of the entity that created/updated the workspace. */
+export interface CreatedBy {
+  /** The Object ID that created the workspace. */
+  oid?: string;
+  /** The Personal Object ID corresponding to the object ID above */
+  puid?: string;
+  /** The application ID of the application that initiated the creation of the workspace. For example, Azure Portal. */
+  applicationId?: string;
+}
+export const CreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oid: S.optional(S.String),
+    puid: S.optional(S.String),
+    applicationId: S.optional(S.String),
+  }),
+).annotate({ identifier: "CreatedBy" }) as any as S.Schema<CreatedBy>;
+
+/** The Managed Identity details for storage account. */
+export interface ManagedIdentityConfiguration {
+  /** The objectId of the Managed Identity that is linked to the Managed Storage account. */
+  principalId?: string;
+  /** The tenant Id where the Managed Identity is created. */
+  tenantId?: string;
+  /** The type of Identity created. It can be either SystemAssigned or UserAssigned. */
+  type?: string;
+}
+export const ManagedIdentityConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedIdentityConfiguration",
+}) as any as S.Schema<ManagedIdentityConfiguration>;
+
+/** Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
+export type WorkspacePropertiesPrivateEndpointConnectionsList =
+  ReadonlyArray<PrivateEndpointConnection>;
+export const WorkspacePropertiesPrivateEndpointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnection,
+  ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** The workspace properties. */
 export interface WorkspaceProperties {
@@ -2053,20 +2278,6 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceProperties",
 }) as any as S.Schema<WorkspaceProperties>;
-
-/** SKU for the resource. */
-export interface Sku {
-  /** The SKU name. */
-  name: string;
-  /** The SKU tier. */
-  tier?: string;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2257,7 +2468,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = Workspace[];
+export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -2297,6 +2508,15 @@ export const WorkspacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesListBySubscriptionRequest",
 }) as any as S.Schema<WorkspacesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type WorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
+
 export interface WorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2304,14 +2524,15 @@ export interface WorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesUpdateRequestTagsMap;
 }
 export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

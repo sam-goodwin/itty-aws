@@ -143,7 +143,7 @@ export type BatchGetRecordIdentifiers = BatchGetRecordIdentifier[];
 export const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(
   BatchGetRecordIdentifier,
 );
-export type ExpirationTimeResponse = "Enabled" | "Disabled" | (string & {});
+export type ExpirationTimeResponse = "Enabled" | "Disabled";
 export const ExpirationTimeResponse = /*@__PURE__*/ S.String;
 
 export interface BatchGetRecordRequest {
@@ -253,7 +253,7 @@ export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetRecordResponse",
 }) as any as S.Schema<BatchGetRecordResponse>;
-export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
+export type TargetStore = "OnlineStore" | "OfflineStore";
 export const TargetStore = /*@__PURE__*/ S.String;
 
 export type TargetStores = TargetStore[];
@@ -263,8 +263,7 @@ export type TtlDurationUnit =
   | "Minutes"
   | "Hours"
   | "Days"
-  | "Weeks"
-  | (string & {});
+  | "Weeks";
 export const TtlDurationUnit = /*@__PURE__*/ S.String;
 
 export type TtlDurationValue = number;
@@ -368,7 +367,7 @@ export const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchWriteRecordResponse",
 }) as any as S.Schema<BatchWriteRecordResponse>;
-export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
+export type DeletionMode = "SoftDelete" | "HardDelete";
 export const DeletionMode = /*@__PURE__*/ S.String;
 
 export interface DeleteRecordRequest {

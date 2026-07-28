@@ -102,7 +102,7 @@ export const Flight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Flight" }) as any as S.Schema<Flight>;
 
-export type FlightList = Flight[];
+export type FlightList = ReadonlyArray<Flight>;
 export const FlightList = /*@__PURE__*/ S.Array(
   Flight,
 ) as any as S.Schema<FlightList>;
@@ -184,16 +184,14 @@ export type FlightEmissionsDetailsContrailsImpactBucketEnum =
   | "CONTRAILS_IMPACT_UNSPECIFIED"
   | "CONTRAILS_IMPACT_NEGLIGIBLE"
   | "CONTRAILS_IMPACT_MODERATE"
-  | "CONTRAILS_IMPACT_SEVERE"
-  | (string & {});
+  | "CONTRAILS_IMPACT_SEVERE";
 export const FlightEmissionsDetailsContrailsImpactBucketEnum =
   /*@__PURE__*/ S.String;
 
 export type FlightEmissionsDetailsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "TIM"
-  | "EASA"
-  | (string & {});
+  | "EASA";
 export const FlightEmissionsDetailsSourceEnum = /*@__PURE__*/ S.String;
 
 /** Details about the specific flight's emissions. */
@@ -224,8 +222,7 @@ export type EmissionsProvenanceEntryFuelBurnEeaStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "AIRCRAFT_MAPPING_FALLBACK_WITH_CORRECTION_FACTOR"
   | "AIRCRAFT_MAPPING_EXACT"
-  | "AIRCRAFT_MAPPING_FALLBACK"
-  | (string & {});
+  | "AIRCRAFT_MAPPING_FALLBACK";
 export const EmissionsProvenanceEntryFuelBurnEeaStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -239,16 +236,14 @@ export type EmissionsProvenanceEntrySourceEnum =
   | "AIRCRAFT_MODEL_TYPICAL"
   | "GLOBAL_DEFAULT"
   | "IATA"
-  | "ICL"
-  | (string & {});
+  | "ICL";
 export const EmissionsProvenanceEntrySourceEnum = /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryLoadFactorsT100StrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "CARRIER_ROUTE_MONTH"
   | "CARRIER_MONTH"
-  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH"
-  | (string & {});
+  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH";
 export const EmissionsProvenanceEntryLoadFactorsT100StrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -256,8 +251,7 @@ export type EmissionsProvenanceEntryDistanceAdjustmentStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "ORIGIN_DESTINATION"
   | "COUNTRY_PAIR"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const EmissionsProvenanceEntryDistanceAdjustmentStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -265,8 +259,7 @@ export type EmissionsProvenanceEntryDataCategoryEnum =
   | "DATA_CATEGORY_UNSPECIFIED"
   | "PRIMARY"
   | "MODELED"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const EmissionsProvenanceEntryDataCategoryEnum = /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
@@ -274,8 +267,7 @@ export type EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
   | "CARRIER_ROUTE_AIRCRAFT_CLASS"
   | "ROUTE_AIRCRAFT_CLASS"
   | "DISTANCE_AIRCRAFT_CLASS"
-  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH_AIRCRAFT_CLASS"
-  | (string & {});
+  | "ACTUAL_CARRIER_ROUTE_YEAR_MONTH_AIRCRAFT_CLASS";
 export const EmissionsProvenanceEntryCargoMassFractionT100StrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -286,24 +278,21 @@ export type EmissionsProvenanceEntryProvenanceEntryTypeEnum =
   | "CARGO_MASS_FRACTION"
   | "SEATING_CONFIG"
   | "SEAT_AREA_RATIOS"
-  | "DISTANCE_ADJUSTMENT"
-  | (string & {});
+  | "DISTANCE_ADJUSTMENT";
 export const EmissionsProvenanceEntryProvenanceEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntryLoadFactorsChAviationStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "CARRIER_MONTH"
-  | "ACTUAL_CARRIER_YEAR_MONTH"
-  | (string & {});
+  | "ACTUAL_CARRIER_YEAR_MONTH";
 export const EmissionsProvenanceEntryLoadFactorsChAviationStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type EmissionsProvenanceEntrySeatAreaRatioIataStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "NARROW_AIRCRAFT_BODY"
-  | "WIDE_AIRCRAFT_BODY"
-  | (string & {});
+  | "WIDE_AIRCRAFT_BODY";
 export const EmissionsProvenanceEntrySeatAreaRatioIataStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -370,7 +359,8 @@ export const EmissionsProvenanceEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmissionsProvenanceEntry",
 }) as any as S.Schema<EmissionsProvenanceEntry>;
 
-export type EmissionsProvenanceEntryList = EmissionsProvenanceEntry[];
+export type EmissionsProvenanceEntryList =
+  ReadonlyArray<EmissionsProvenanceEntry>;
 export const EmissionsProvenanceEntryList = /*@__PURE__*/ S.Array(
   EmissionsProvenanceEntry,
 ) as any as S.Schema<EmissionsProvenanceEntryList>;
@@ -448,7 +438,8 @@ export const FlightWithDetailedEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlightWithDetailedEmissions",
 }) as any as S.Schema<FlightWithDetailedEmissions>;
 
-export type FlightWithDetailedEmissionsList = FlightWithDetailedEmissions[];
+export type FlightWithDetailedEmissionsList =
+  ReadonlyArray<FlightWithDetailedEmissions>;
 export const FlightWithDetailedEmissionsList = /*@__PURE__*/ S.Array(
   FlightWithDetailedEmissions,
 ) as any as S.Schema<FlightWithDetailedEmissionsList>;
@@ -525,16 +516,14 @@ export const ComputeFlightEmissionsFlightsRequest = /*@__PURE__*/ S.suspend(
 export type FlightWithEmissionsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "TIM"
-  | "EASA"
-  | (string & {});
+  | "EASA";
 export const FlightWithEmissionsSourceEnum = /*@__PURE__*/ S.String;
 
 export type FlightWithEmissionsContrailsImpactBucketEnum =
   | "CONTRAILS_IMPACT_UNSPECIFIED"
   | "CONTRAILS_IMPACT_NEGLIGIBLE"
   | "CONTRAILS_IMPACT_MODERATE"
-  | "CONTRAILS_IMPACT_SEVERE"
-  | (string & {});
+  | "CONTRAILS_IMPACT_SEVERE";
 export const FlightWithEmissionsContrailsImpactBucketEnum =
   /*@__PURE__*/ S.String;
 
@@ -565,7 +554,7 @@ export const FlightWithEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlightWithEmissions",
 }) as any as S.Schema<FlightWithEmissions>;
 
-export type FlightWithEmissionsList = FlightWithEmissions[];
+export type FlightWithEmissionsList = ReadonlyArray<FlightWithEmissions>;
 export const FlightWithEmissionsList = /*@__PURE__*/ S.Array(
   FlightWithEmissions,
 ) as any as S.Schema<FlightWithEmissionsList>;
@@ -591,8 +580,7 @@ export type Scope3FlightSegmentCabinClassEnum =
   | "ECONOMY"
   | "PREMIUM_ECONOMY"
   | "BUSINESS"
-  | "FIRST"
-  | (string & {});
+  | "FIRST";
 export const Scope3FlightSegmentCabinClassEnum = /*@__PURE__*/ S.String;
 
 /** Flight parameters with which the Scope 3 emissions are fetched. */
@@ -626,7 +614,7 @@ export const Scope3FlightSegment = /*@__PURE__*/ S.suspend(() =>
   identifier: "Scope3FlightSegment",
 }) as any as S.Schema<Scope3FlightSegment>;
 
-export type Scope3FlightSegmentList = Scope3FlightSegment[];
+export type Scope3FlightSegmentList = ReadonlyArray<Scope3FlightSegment>;
 export const Scope3FlightSegmentList = /*@__PURE__*/ S.Array(
   Scope3FlightSegment,
 ) as any as S.Schema<Scope3FlightSegmentList>;
@@ -670,8 +658,7 @@ export type Scope3FlightEmissionsSourceEnum =
   | "SCOPE3_DATA_TYPE_UNSPECIFIED"
   | "TIM_EMISSIONS"
   | "TYPICAL_FLIGHT_EMISSIONS"
-  | "DISTANCE_BASED_EMISSIONS"
-  | (string & {});
+  | "DISTANCE_BASED_EMISSIONS";
 export const Scope3FlightEmissionsSourceEnum = /*@__PURE__*/ S.String;
 
 /** Scope 3 flight with emission estimates. */
@@ -699,7 +686,7 @@ export const Scope3FlightEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "Scope3FlightEmissions",
 }) as any as S.Schema<Scope3FlightEmissions>;
 
-export type Scope3FlightEmissionsList = Scope3FlightEmissions[];
+export type Scope3FlightEmissionsList = ReadonlyArray<Scope3FlightEmissions>;
 export const Scope3FlightEmissionsList = /*@__PURE__*/ S.Array(
   Scope3FlightEmissions,
 ) as any as S.Schema<Scope3FlightEmissionsList>;
@@ -735,7 +722,7 @@ export const Market = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Market" }) as any as S.Schema<Market>;
 
-export type MarketList = Market[];
+export type MarketList = ReadonlyArray<Market>;
 export const MarketList = /*@__PURE__*/ S.Array(
   Market,
 ) as any as S.Schema<MarketList>;
@@ -789,7 +776,7 @@ export const TypicalFlightEmissions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TypicalFlightEmissions",
 }) as any as S.Schema<TypicalFlightEmissions>;
 
-export type TypicalFlightEmissionsList = TypicalFlightEmissions[];
+export type TypicalFlightEmissionsList = ReadonlyArray<TypicalFlightEmissions>;
 export const TypicalFlightEmissionsList = /*@__PURE__*/ S.Array(
   TypicalFlightEmissions,
 ) as any as S.Schema<TypicalFlightEmissionsList>;

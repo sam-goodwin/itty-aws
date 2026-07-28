@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValueType": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase0Type": {
       "type": "enum",
       "members": {
         "EQ": {
@@ -37,33 +37,42 @@
           "traits": {
             "smithy.api#enumValue": "gt"
           }
+        },
+        "GTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gte"
+          }
+        },
+        "LT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lt"
+          }
+        },
+        "LTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lte"
+          }
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValueValue": {
-      "type": "structure",
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase0Value": {
+      "type": "union",
       "members": {
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "String": {
+          "target": "smithy.api#String"
         },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Double": {
+          "target": "smithy.api#Double"
         },
-        "boolean": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Boolean": {
+          "target": "smithy.api#Boolean"
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValue": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase0": {
       "type": "structure",
       "members": {
         "key": {
@@ -73,20 +82,20 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValueType",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase0Type",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "value": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValueValue",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase0Value",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItemType": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItemType": {
       "type": "enum",
       "members": {
         "EQ": {
@@ -106,33 +115,42 @@
           "traits": {
             "smithy.api#enumValue": "gt"
           }
+        },
+        "GTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gte"
+          }
+        },
+        "LT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lt"
+          }
+        },
+        "LTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lte"
+          }
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue": {
-      "type": "structure",
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItemValue": {
+      "type": "union",
       "members": {
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "String": {
+          "target": "smithy.api#String"
         },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Double": {
+          "target": "smithy.api#Double"
         },
-        "boolean": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Boolean": {
+          "target": "smithy.api#Boolean"
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItem": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -142,26 +160,26 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItemType",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItemType",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "value": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItemValue",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersList": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersItem"
+        "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersItem"
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeType": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1Type": {
       "type": "enum",
       "members": {
         "AND": {
@@ -178,17 +196,17 @@
         }
       }
     },
-    "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersType": {
+    "com.cloudflare.autorag#AiSearchRequestFiltersCase1": {
       "type": "structure",
       "members": {
         "filters": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeFiltersList",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1FiltersList",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersTypeType",
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1Type",
           "traits": {
             "smithy.api#required": {}
           }
@@ -198,11 +216,11 @@
     "com.cloudflare.autorag#AiSearchRequestFilters": {
       "type": "union",
       "members": {
-        "ObjectKeyTypeValue": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectKeyTypeValue"
+        "AiSearchRequestFiltersCase0": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase0"
         },
-        "ObjectFiltersType": {
-          "target": "com.cloudflare.autorag#AiSearchRequestFiltersObjectFiltersType"
+        "AiSearchRequestFiltersCase1": {
+          "target": "com.cloudflare.autorag#AiSearchRequestFiltersCase1"
         }
       }
     },
@@ -225,6 +243,144 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/meta/llama-3.1-8b-instruct-fp8"
+          }
+        },
+        "CF_META_LLAMA_4_SCOUT_17B_16E_INSTRUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/meta/llama-4-scout-17b-16e-instruct"
+          }
+        },
+        "CF_QWEN_QWEN3_30B_A3B_FP8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        },
+        "CF_DEEPSEEK_AI_DEEPSEEK_R1_DISTILL_QWEN_32B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+          }
+        },
+        "CF_MOONSHOTAI_KIMI_K2_INSTRUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/moonshotai/kimi-k2-instruct"
+          }
+        },
+        "ANTHROPIC_CLAUDE_3_7_SONNET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "anthropic/claude-3-7-sonnet"
+          }
+        },
+        "ANTHROPIC_CLAUDE_SONNET_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "anthropic/claude-sonnet-4"
+          }
+        },
+        "ANTHROPIC_CLAUDE_OPUS_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "anthropic/claude-opus-4"
+          }
+        },
+        "ANTHROPIC_CLAUDE_3_5_HAIKU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "anthropic/claude-3-5-haiku"
+          }
+        },
+        "CEREBRAS_QWEN_3_235B_A22B_INSTRUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/qwen-3-235b-a22b-instruct"
+          }
+        },
+        "CEREBRAS_QWEN_3_235B_A22B_THINKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/qwen-3-235b-a22b-thinking"
+          }
+        },
+        "CEREBRAS_LLAMA_3_3_70B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/llama-3.3-70b"
+          }
+        },
+        "CEREBRAS_LLAMA_4_MAVERICK_17B_128E_INSTRUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/llama-4-maverick-17b-128e-instruct"
+          }
+        },
+        "CEREBRAS_LLAMA_4_SCOUT_17B_16E_INSTRUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/llama-4-scout-17b-16e-instruct"
+          }
+        },
+        "CEREBRAS_GPT_OSS_120B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cerebras/gpt-oss-120b"
+          }
+        },
+        "GOOGLE_AI_STUDIO_GEMINI_2_5_FLASH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google-ai-studio/gemini-2.5-flash"
+          }
+        },
+        "GOOGLE_AI_STUDIO_GEMINI_2_5_PRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google-ai-studio/gemini-2.5-pro"
+          }
+        },
+        "GROK_GROK_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "grok/grok-4"
+          }
+        },
+        "GROQ_LLAMA_3_3_70B_VERSATILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "groq/llama-3.3-70b-versatile"
+          }
+        },
+        "GROQ_LLAMA_3_1_8B_INSTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "groq/llama-3.1-8b-instant"
+          }
+        },
+        "OPENAI_GPT_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openai/gpt-5"
+          }
+        },
+        "OPENAI_GPT_5_MINI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openai/gpt-5-mini"
+          }
+        },
+        "OPENAI_GPT_5_NANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openai/gpt-5-nano"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
           }
         }
       }
@@ -549,7 +705,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValueType": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase0Type": {
       "type": "enum",
       "members": {
         "EQ": {
@@ -569,33 +725,42 @@
           "traits": {
             "smithy.api#enumValue": "gt"
           }
+        },
+        "GTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gte"
+          }
+        },
+        "LT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lt"
+          }
+        },
+        "LTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lte"
+          }
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValueValue": {
-      "type": "structure",
+    "com.cloudflare.autorag#SearchRequestFiltersCase0Value": {
+      "type": "union",
       "members": {
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "String": {
+          "target": "smithy.api#String"
         },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Double": {
+          "target": "smithy.api#Double"
         },
-        "boolean": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Boolean": {
+          "target": "smithy.api#Boolean"
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValue": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase0": {
       "type": "structure",
       "members": {
         "key": {
@@ -605,20 +770,20 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValueType",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase0Type",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "value": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValueValue",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase0Value",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItemType": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItemType": {
       "type": "enum",
       "members": {
         "EQ": {
@@ -638,33 +803,42 @@
           "traits": {
             "smithy.api#enumValue": "gt"
           }
+        },
+        "GTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gte"
+          }
+        },
+        "LT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lt"
+          }
+        },
+        "LTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lte"
+          }
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItemValue": {
-      "type": "structure",
+    "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItemValue": {
+      "type": "union",
       "members": {
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "String": {
+          "target": "smithy.api#String"
         },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Double": {
+          "target": "smithy.api#Double"
         },
-        "boolean": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "Boolean": {
+          "target": "smithy.api#Boolean"
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItem": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItem": {
       "type": "structure",
       "members": {
         "key": {
@@ -674,26 +848,26 @@
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItemType",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItemType",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "value": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItemValue",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItemValue",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersList": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersItem"
+        "target": "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersItem"
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeType": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase1Type": {
       "type": "enum",
       "members": {
         "AND": {
@@ -710,17 +884,17 @@
         }
       }
     },
-    "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersType": {
+    "com.cloudflare.autorag#SearchRequestFiltersCase1": {
       "type": "structure",
       "members": {
         "filters": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeFiltersList",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase1FiltersList",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersTypeType",
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase1Type",
           "traits": {
             "smithy.api#required": {}
           }
@@ -730,11 +904,11 @@
     "com.cloudflare.autorag#SearchRequestFilters": {
       "type": "union",
       "members": {
-        "ObjectKeyTypeValue": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectKeyTypeValue"
+        "SearchRequestFiltersCase0": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase0"
         },
-        "ObjectFiltersType": {
-          "target": "com.cloudflare.autorag#SearchRequestFiltersObjectFiltersType"
+        "SearchRequestFiltersCase1": {
+          "target": "com.cloudflare.autorag#SearchRequestFiltersCase1"
         }
       }
     },

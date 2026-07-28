@@ -12,6 +12,37 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The user associated with the access policy. */
+export interface AccessPolicyAssignmentPropertiesInputUser {
+  /** The object ID of the user. */
+  objectId?: string;
+}
+export const AccessPolicyAssignmentPropertiesInputUser =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AccessPolicyAssignmentPropertiesInputUser",
+  }) as any as S.Schema<AccessPolicyAssignmentPropertiesInputUser>;
+
+/** Properties of Redis Enterprise database access policy assignment. */
+export interface AccessPolicyAssignmentPropertiesInput {
+  /** Name of access policy under specific access policy assignment. Only "default" policy is supported for now. */
+  accessPolicyName: string;
+  /** The user associated with the access policy. */
+  user: AccessPolicyAssignmentPropertiesInputUser;
+}
+export const AccessPolicyAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accessPolicyName: S.String,
+      user: AccessPolicyAssignmentPropertiesInputUser,
+    }),
+).annotate({
+  identifier: "AccessPolicyAssignmentPropertiesInput",
+}) as any as S.Schema<AccessPolicyAssignmentPropertiesInput>;
+
 export interface AccessPolicyAssignmentCreateUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -23,7 +54,8 @@ export interface AccessPolicyAssignmentCreateUpdateRequest {
   databaseName: string;
   /** The name of the Redis Enterprise database access policy assignment. */
   accessPolicyAssignmentName: string;
-  body: unknown;
+  /** Properties of the access policy assignment. */
+  properties?: AccessPolicyAssignmentPropertiesInput;
 }
 export const AccessPolicyAssignmentCreateUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -33,7 +65,7 @@ export const AccessPolicyAssignmentCreateUpdateRequest =
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       accessPolicyAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AccessPolicyAssignmentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -53,8 +85,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The user associated with the access policy. */
@@ -253,7 +284,8 @@ export const AccessPolicyAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyAssignment>;
 
 /** List of access policy assignments. */
-export type AccessPolicyAssignmentListValueList = AccessPolicyAssignment[];
+export type AccessPolicyAssignmentListValueList =
+  ReadonlyArray<AccessPolicyAssignment>;
 export const AccessPolicyAssignmentListValueList = /*@__PURE__*/ S.Array(
   AccessPolicyAssignment,
 ) as any as S.Schema<AccessPolicyAssignmentListValueList>;
@@ -274,73 +306,23 @@ export const AccessPolicyAssignmentList = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessPolicyAssignmentList",
 }) as any as S.Schema<AccessPolicyAssignmentList>;
 
-export interface DatabasesCreateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens */
-  clusterName: string;
-  /** The name of the Redis Enterprise database. */
-  databaseName: string;
-  body: unknown;
-}
-export const DatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "DatabasesCreateRequest",
-}) as any as S.Schema<DatabasesCreateRequest>;
-
 /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
-export type DatabaseCreatePropertiesClientProtocol =
+export type DatabaseCreatePropertiesInputClientProtocol =
   | "Encrypted"
-  | "Plaintext"
-  | (string & {});
-export const DatabaseCreatePropertiesClientProtocol = /*@__PURE__*/ S.String;
-
-/** Current resource status */
-export type ResourceState =
-  | "Running"
-  | "Creating"
-  | "CreateFailed"
-  | "Updating"
-  | "UpdateFailed"
-  | "Deleting"
-  | "DeleteFailed"
-  | "Enabling"
-  | "EnableFailed"
-  | "Disabling"
-  | "DisableFailed"
-  | "Disabled"
-  | "Scaling"
-  | "ScalingFailed"
-  | "Moving"
-  | (string & {});
-export const ResourceState = /*@__PURE__*/ S.String;
+  | "Plaintext";
+export const DatabaseCreatePropertiesInputClientProtocol =
+  /*@__PURE__*/ S.String;
 
 /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
-export type DatabaseCreatePropertiesClusteringPolicy =
+export type DatabaseCreatePropertiesInputClusteringPolicy =
   | "EnterpriseCluster"
   | "OSSCluster"
-  | "NoCluster"
-  | (string & {});
-export const DatabaseCreatePropertiesClusteringPolicy = /*@__PURE__*/ S.String;
+  | "NoCluster";
+export const DatabaseCreatePropertiesInputClusteringPolicy =
+  /*@__PURE__*/ S.String;
 
 /** Redis eviction policy - default is VolatileLRU */
-export type DatabaseCreatePropertiesEvictionPolicy =
+export type DatabaseCreatePropertiesInputEvictionPolicy =
   | "AllKeysLFU"
   | "AllKeysLRU"
   | "AllKeysRandom"
@@ -348,16 +330,16 @@ export type DatabaseCreatePropertiesEvictionPolicy =
   | "VolatileLFU"
   | "VolatileTTL"
   | "VolatileRandom"
-  | "NoEviction"
-  | (string & {});
-export const DatabaseCreatePropertiesEvictionPolicy = /*@__PURE__*/ S.String;
+  | "NoEviction";
+export const DatabaseCreatePropertiesInputEvictionPolicy =
+  /*@__PURE__*/ S.String;
 
 /** Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact. */
-export type PersistenceAofFrequency = "1s" | "always" | (string & {});
+export type PersistenceAofFrequency = "1s" | "always";
 export const PersistenceAofFrequency = /*@__PURE__*/ S.String;
 
 /** Sets the frequency at which a snapshot of the database is created. */
-export type PersistenceRdbFrequency = "1h" | "6h" | "12h" | (string & {});
+export type PersistenceRdbFrequency = "1h" | "6h" | "12h";
 export const PersistenceRdbFrequency = /*@__PURE__*/ S.String;
 
 /** Persistence-related configuration for the Redis Enterprise database */
@@ -381,6 +363,192 @@ export const Persistence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Persistence" }) as any as S.Schema<Persistence>;
 
 /** Specifies configuration of a redis module */
+export interface ModuleInput {
+  /** The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries' */
+  name: string;
+  /** Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'. */
+  args?: string;
+}
+export const ModuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    args: S.optional(S.String),
+  }),
+).annotate({ identifier: "ModuleInput" }) as any as S.Schema<ModuleInput>;
+
+/** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
+export type DatabaseCreatePropertiesInputModulesList =
+  ReadonlyArray<ModuleInput>;
+export const DatabaseCreatePropertiesInputModulesList = /*@__PURE__*/ S.Array(
+  ModuleInput,
+) as any as S.Schema<DatabaseCreatePropertiesInputModulesList>;
+
+/** Specifies details of a linked database resource. */
+export interface LinkedDatabaseInput {
+  /** Resource ID of a database resource to link with this database. */
+  id?: string;
+}
+export const LinkedDatabaseInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LinkedDatabaseInput",
+}) as any as S.Schema<LinkedDatabaseInput>;
+
+/** List of database resources to link with this database */
+export type DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList =
+  ReadonlyArray<LinkedDatabaseInput>;
+export const DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList =
+  /*@__PURE__*/ S.Array(
+    LinkedDatabaseInput,
+  ) as any as S.Schema<DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList>;
+
+/** Optional set of properties to configure geo replication for this database. */
+export interface DatabaseCreatePropertiesInputGeoReplication {
+  /** Name for the group of linked database resources */
+  groupNickname?: string;
+  /** List of database resources to link with this database */
+  linkedDatabases?: DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList;
+}
+export const DatabaseCreatePropertiesInputGeoReplication =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupNickname: S.optional(S.String),
+      linkedDatabases: S.optional(
+        DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DatabaseCreatePropertiesInputGeoReplication",
+  }) as any as S.Schema<DatabaseCreatePropertiesInputGeoReplication>;
+
+/** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
+export type DatabaseCreatePropertiesInputDeferUpgrade =
+  | "Deferred"
+  | "NotDeferred";
+export const DatabaseCreatePropertiesInputDeferUpgrade = /*@__PURE__*/ S.String;
+
+/** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
+export type DatabaseCreatePropertiesInputAccessKeysAuthentication =
+  | "Disabled"
+  | "Enabled";
+export const DatabaseCreatePropertiesInputAccessKeysAuthentication =
+  /*@__PURE__*/ S.String;
+
+/** Properties for creating Redis Enterprise databases */
+export interface DatabaseCreatePropertiesInput {
+  /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
+  clientProtocol?: DatabaseCreatePropertiesInputClientProtocol;
+  /** TCP port of the database endpoint. Specified at create time. Defaults to an available port. */
+  port?: number;
+  /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
+  clusteringPolicy?: DatabaseCreatePropertiesInputClusteringPolicy;
+  /** Redis eviction policy - default is VolatileLRU */
+  evictionPolicy?: DatabaseCreatePropertiesInputEvictionPolicy;
+  /** Persistence settings */
+  persistence?: Persistence;
+  /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
+  modules?: DatabaseCreatePropertiesInputModulesList;
+  /** Optional set of properties to configure geo replication for this database. */
+  geoReplication?: DatabaseCreatePropertiesInputGeoReplication;
+  /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
+  deferUpgrade?: DatabaseCreatePropertiesInputDeferUpgrade;
+  /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
+  accessKeysAuthentication?: DatabaseCreatePropertiesInputAccessKeysAuthentication;
+}
+export const DatabaseCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientProtocol: S.optional(DatabaseCreatePropertiesInputClientProtocol),
+    port: S.optional(S.Number),
+    clusteringPolicy: S.optional(DatabaseCreatePropertiesInputClusteringPolicy),
+    evictionPolicy: S.optional(DatabaseCreatePropertiesInputEvictionPolicy),
+    persistence: S.optional(Persistence),
+    modules: S.optional(DatabaseCreatePropertiesInputModulesList),
+    geoReplication: S.optional(DatabaseCreatePropertiesInputGeoReplication),
+    deferUpgrade: S.optional(DatabaseCreatePropertiesInputDeferUpgrade),
+    accessKeysAuthentication: S.optional(
+      DatabaseCreatePropertiesInputAccessKeysAuthentication,
+    ),
+  }),
+).annotate({
+  identifier: "DatabaseCreatePropertiesInput",
+}) as any as S.Schema<DatabaseCreatePropertiesInput>;
+
+export interface DatabasesCreateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens */
+  clusterName: string;
+  /** The name of the Redis Enterprise database. */
+  databaseName: string;
+  /** Other properties of the database. */
+  properties?: DatabaseCreatePropertiesInput;
+}
+export const DatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+    properties: S.optional(DatabaseCreatePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DatabasesCreateRequest",
+}) as any as S.Schema<DatabasesCreateRequest>;
+
+/** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
+export type DatabaseCreatePropertiesClientProtocol = "Encrypted" | "Plaintext";
+export const DatabaseCreatePropertiesClientProtocol = /*@__PURE__*/ S.String;
+
+/** Current resource status */
+export type ResourceState =
+  | "Running"
+  | "Creating"
+  | "CreateFailed"
+  | "Updating"
+  | "UpdateFailed"
+  | "Deleting"
+  | "DeleteFailed"
+  | "Enabling"
+  | "EnableFailed"
+  | "Disabling"
+  | "DisableFailed"
+  | "Disabled"
+  | "Scaling"
+  | "ScalingFailed"
+  | "Moving";
+export const ResourceState = /*@__PURE__*/ S.String;
+
+/** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
+export type DatabaseCreatePropertiesClusteringPolicy =
+  | "EnterpriseCluster"
+  | "OSSCluster"
+  | "NoCluster";
+export const DatabaseCreatePropertiesClusteringPolicy = /*@__PURE__*/ S.String;
+
+/** Redis eviction policy - default is VolatileLRU */
+export type DatabaseCreatePropertiesEvictionPolicy =
+  | "AllKeysLFU"
+  | "AllKeysLRU"
+  | "AllKeysRandom"
+  | "VolatileLRU"
+  | "VolatileLFU"
+  | "VolatileTTL"
+  | "VolatileRandom"
+  | "NoEviction";
+export const DatabaseCreatePropertiesEvictionPolicy = /*@__PURE__*/ S.String;
+
+/** Specifies configuration of a redis module */
 export interface Module {
   /** The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries' */
   name: string;
@@ -398,7 +566,7 @@ export const Module = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
 
 /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
-export type DatabaseCreatePropertiesModulesList = Module[];
+export type DatabaseCreatePropertiesModulesList = ReadonlyArray<Module>;
 export const DatabaseCreatePropertiesModulesList = /*@__PURE__*/ S.Array(
   Module,
 ) as any as S.Schema<DatabaseCreatePropertiesModulesList>;
@@ -409,8 +577,7 @@ export type LinkedDatabaseState =
   | "Linking"
   | "Unlinking"
   | "LinkFailed"
-  | "UnlinkFailed"
-  | (string & {});
+  | "UnlinkFailed";
 export const LinkedDatabaseState = /*@__PURE__*/ S.String;
 
 /** Specifies details of a linked database resource. */
@@ -429,7 +596,7 @@ export const LinkedDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database resources to link with this database */
 export type DatabaseCreatePropertiesGeoReplicationLinkedDatabasesList =
-  LinkedDatabase[];
+  ReadonlyArray<LinkedDatabase>;
 export const DatabaseCreatePropertiesGeoReplicationLinkedDatabasesList =
   /*@__PURE__*/ S.Array(
     LinkedDatabase,
@@ -455,17 +622,13 @@ export const DatabaseCreatePropertiesGeoReplication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseCreatePropertiesGeoReplication>;
 
 /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
-export type DatabaseCreatePropertiesDeferUpgrade =
-  | "Deferred"
-  | "NotDeferred"
-  | (string & {});
+export type DatabaseCreatePropertiesDeferUpgrade = "Deferred" | "NotDeferred";
 export const DatabaseCreatePropertiesDeferUpgrade = /*@__PURE__*/ S.String;
 
 /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
 export type DatabaseCreatePropertiesAccessKeysAuthentication =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const DatabaseCreatePropertiesAccessKeysAuthentication =
   /*@__PURE__*/ S.String;
 
@@ -582,7 +745,8 @@ export interface DatabasesExportRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** SAS URI for the target directory to export to */
+  sasUri: string;
 }
 export const DatabasesExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -590,7 +754,7 @@ export const DatabasesExportRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sasUri: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -610,6 +774,12 @@ export const DatabasesExportResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesExportResponse",
 }) as any as S.Schema<DatabasesExportResponse>;
 
+/** The identifiers of all the other database resources in the georeplication group to be flushed. */
+export type DatabasesFlushRequestIdsList = ReadonlyArray<string>;
+export const DatabasesFlushRequestIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabasesFlushRequestIdsList>;
+
 export interface DatabasesFlushRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -619,7 +789,8 @@ export interface DatabasesFlushRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body?: unknown;
+  /** The identifiers of all the other database resources in the georeplication group to be flushed. */
+  ids?: DatabasesFlushRequestIdsList;
 }
 export const DatabasesFlushRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -627,7 +798,7 @@ export const DatabasesFlushRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    ids: S.optional(DatabasesFlushRequestIdsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -647,6 +818,33 @@ export const DatabasesFlushResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesFlushResponse",
 }) as any as S.Schema<DatabasesFlushResponse>;
 
+/** The resource IDs of the databases that are expected to be linked and included in the replication group. This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered. */
+export type DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList =
+  ReadonlyArray<LinkedDatabaseInput>;
+export const DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList =
+  /*@__PURE__*/ S.Array(
+    LinkedDatabaseInput,
+  ) as any as S.Schema<DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList>;
+
+/** Properties to configure geo replication for this database. */
+export interface DatabasesForceLinkToReplicationGroupRequestGeoReplication {
+  /** The name of the group of linked database resources. This should match the existing replication group name. */
+  groupNickname?: string;
+  /** The resource IDs of the databases that are expected to be linked and included in the replication group. This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered. */
+  linkedDatabases?: DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList;
+}
+export const DatabasesForceLinkToReplicationGroupRequestGeoReplication =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupNickname: S.optional(S.String),
+      linkedDatabases: S.optional(
+        DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DatabasesForceLinkToReplicationGroupRequestGeoReplication",
+  }) as any as S.Schema<DatabasesForceLinkToReplicationGroupRequestGeoReplication>;
+
 export interface DatabasesForceLinkToReplicationGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -656,7 +854,8 @@ export interface DatabasesForceLinkToReplicationGroupRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** Properties to configure geo replication for this database. */
+  geoReplication: DatabasesForceLinkToReplicationGroupRequestGeoReplication;
 }
 export const DatabasesForceLinkToReplicationGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -665,7 +864,7 @@ export const DatabasesForceLinkToReplicationGroupRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      geoReplication: DatabasesForceLinkToReplicationGroupRequestGeoReplication,
     }).pipe(
       T.Http({
         method: "POST",
@@ -684,6 +883,12 @@ export const DatabasesForceLinkToReplicationGroupResponse =
     identifier: "DatabasesForceLinkToReplicationGroupResponse",
   }) as any as S.Schema<DatabasesForceLinkToReplicationGroupResponse>;
 
+/** The resource IDs of the database resources to be unlinked. */
+export type DatabasesForceUnlinkRequestIdsList = ReadonlyArray<string>;
+export const DatabasesForceUnlinkRequestIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabasesForceUnlinkRequestIdsList>;
+
 export interface DatabasesForceUnlinkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -693,7 +898,8 @@ export interface DatabasesForceUnlinkRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** The resource IDs of the database resources to be unlinked. */
+  ids: DatabasesForceUnlinkRequestIdsList;
 }
 export const DatabasesForceUnlinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -701,7 +907,7 @@ export const DatabasesForceUnlinkRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    ids: DatabasesForceUnlinkRequestIdsList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -770,6 +976,12 @@ export const DatabasesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesGetResponse",
 }) as any as S.Schema<DatabasesGetResponse>;
 
+/** SAS URIs for the target blobs to import from */
+export type DatabasesImportRequestSasUrisList = ReadonlyArray<string>;
+export const DatabasesImportRequestSasUrisList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabasesImportRequestSasUrisList>;
+
 export interface DatabasesImportRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -779,7 +991,8 @@ export interface DatabasesImportRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** SAS URIs for the target blobs to import from */
+  sasUris: DatabasesImportRequestSasUrisList;
 }
 export const DatabasesImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -787,7 +1000,7 @@ export const DatabasesImportRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sasUris: DatabasesImportRequestSasUrisList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -853,7 +1066,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** List of databases */
-export type DatabaseListValueList = Database[];
+export type DatabaseListValueList = ReadonlyArray<Database>;
 export const DatabaseListValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListValueList>;
@@ -914,6 +1127,10 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
+/** Which access key to regenerate. */
+export type DatabasesRegenerateKeyRequestKeyType = "Primary" | "Secondary";
+export const DatabasesRegenerateKeyRequestKeyType = /*@__PURE__*/ S.String;
+
 export interface DatabasesRegenerateKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -923,7 +1140,8 @@ export interface DatabasesRegenerateKeyRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** Which access key to regenerate. */
+  keyType: DatabasesRegenerateKeyRequestKeyType;
 }
 export const DatabasesRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -931,7 +1149,7 @@ export const DatabasesRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    keyType: DatabasesRegenerateKeyRequestKeyType,
   }).pipe(
     T.Http({
       method: "POST",
@@ -944,6 +1162,120 @@ export const DatabasesRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesRegenerateKeyRequest",
 }) as any as S.Schema<DatabasesRegenerateKeyRequest>;
 
+/** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
+export type DatabaseUpdatePropertiesInputClientProtocol =
+  | "Encrypted"
+  | "Plaintext";
+export const DatabaseUpdatePropertiesInputClientProtocol =
+  /*@__PURE__*/ S.String;
+
+/** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
+export type DatabaseUpdatePropertiesInputClusteringPolicy =
+  | "EnterpriseCluster"
+  | "OSSCluster"
+  | "NoCluster";
+export const DatabaseUpdatePropertiesInputClusteringPolicy =
+  /*@__PURE__*/ S.String;
+
+/** Redis eviction policy - default is VolatileLRU */
+export type DatabaseUpdatePropertiesInputEvictionPolicy =
+  | "AllKeysLFU"
+  | "AllKeysLRU"
+  | "AllKeysRandom"
+  | "VolatileLRU"
+  | "VolatileLFU"
+  | "VolatileTTL"
+  | "VolatileRandom"
+  | "NoEviction";
+export const DatabaseUpdatePropertiesInputEvictionPolicy =
+  /*@__PURE__*/ S.String;
+
+/** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
+export type DatabaseUpdatePropertiesInputModulesList =
+  ReadonlyArray<ModuleInput>;
+export const DatabaseUpdatePropertiesInputModulesList = /*@__PURE__*/ S.Array(
+  ModuleInput,
+) as any as S.Schema<DatabaseUpdatePropertiesInputModulesList>;
+
+/** List of database resources to link with this database */
+export type DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
+  ReadonlyArray<LinkedDatabaseInput>;
+export const DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList =
+  /*@__PURE__*/ S.Array(
+    LinkedDatabaseInput,
+  ) as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList>;
+
+/** Optional set of properties to configure geo replication for this database. */
+export interface DatabaseUpdatePropertiesInputGeoReplication {
+  /** Name for the group of linked database resources */
+  groupNickname?: string;
+  /** List of database resources to link with this database */
+  linkedDatabases?: DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList;
+}
+export const DatabaseUpdatePropertiesInputGeoReplication =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupNickname: S.optional(S.String),
+      linkedDatabases: S.optional(
+        DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DatabaseUpdatePropertiesInputGeoReplication",
+  }) as any as S.Schema<DatabaseUpdatePropertiesInputGeoReplication>;
+
+/** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
+export type DatabaseUpdatePropertiesInputDeferUpgrade =
+  | "Deferred"
+  | "NotDeferred";
+export const DatabaseUpdatePropertiesInputDeferUpgrade = /*@__PURE__*/ S.String;
+
+/** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
+export type DatabaseUpdatePropertiesInputAccessKeysAuthentication =
+  | "Disabled"
+  | "Enabled";
+export const DatabaseUpdatePropertiesInputAccessKeysAuthentication =
+  /*@__PURE__*/ S.String;
+
+/** Properties for updating Redis Enterprise databases */
+export interface DatabaseUpdatePropertiesInput {
+  /** Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted. */
+  clientProtocol?: DatabaseUpdatePropertiesInputClientProtocol;
+  /** TCP port of the database endpoint. Specified at create time. Defaults to an available port. */
+  port?: number;
+  /** Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database. */
+  clusteringPolicy?: DatabaseUpdatePropertiesInputClusteringPolicy;
+  /** Redis eviction policy - default is VolatileLRU */
+  evictionPolicy?: DatabaseUpdatePropertiesInputEvictionPolicy;
+  /** Persistence settings */
+  persistence?: Persistence;
+  /** Optional set of redis modules to enable in this database - modules can only be added at creation time. */
+  modules?: DatabaseUpdatePropertiesInputModulesList;
+  /** Optional set of properties to configure geo replication for this database. */
+  geoReplication?: DatabaseUpdatePropertiesInputGeoReplication;
+  /** Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade */
+  deferUpgrade?: DatabaseUpdatePropertiesInputDeferUpgrade;
+  /** This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created. */
+  accessKeysAuthentication?: DatabaseUpdatePropertiesInputAccessKeysAuthentication;
+}
+export const DatabaseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientProtocol: S.optional(DatabaseUpdatePropertiesInputClientProtocol),
+    port: S.optional(S.Number),
+    clusteringPolicy: S.optional(DatabaseUpdatePropertiesInputClusteringPolicy),
+    evictionPolicy: S.optional(DatabaseUpdatePropertiesInputEvictionPolicy),
+    persistence: S.optional(Persistence),
+    modules: S.optional(DatabaseUpdatePropertiesInputModulesList),
+    geoReplication: S.optional(DatabaseUpdatePropertiesInputGeoReplication),
+    deferUpgrade: S.optional(DatabaseUpdatePropertiesInputDeferUpgrade),
+    accessKeysAuthentication: S.optional(
+      DatabaseUpdatePropertiesInputAccessKeysAuthentication,
+    ),
+  }),
+).annotate({
+  identifier: "DatabaseUpdatePropertiesInput",
+}) as any as S.Schema<DatabaseUpdatePropertiesInput>;
+
 export interface DatabasesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -953,7 +1285,8 @@ export interface DatabasesUpdateRequest {
   clusterName: string;
   /** The name of the Redis Enterprise database. */
   databaseName: string;
-  body: unknown;
+  /** Properties of the database. */
+  properties?: DatabaseUpdatePropertiesInput;
 }
 export const DatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -961,7 +1294,7 @@ export const DatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DatabaseUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1068,11 +1401,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1099,7 +1432,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1145,7 +1478,7 @@ export const OperationsStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsStatusGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1167,7 +1500,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1318,8 +1651,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1346,8 +1678,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1442,7 +1773,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsListResponseValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionsListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1461,6 +1792,31 @@ export const PrivateEndpointConnectionsListResponse = /*@__PURE__*/ S.suspend(
   identifier: "PrivateEndpointConnectionsListResponse",
 }) as any as S.Schema<PrivateEndpointConnectionsListResponse>;
 
+/** The Private Endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Properties of the PrivateEndpointConnectProperties. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The resource of private end point. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsPutRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1470,7 +1826,8 @@ export interface PrivateEndpointConnectionsPutRequest {
   clusterName: string;
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1479,7 +1836,7 @@ export const PrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1541,14 +1898,16 @@ export const PrivateLinkResourcesListByClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1601,7 +1960,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByClusterResponseValueList =
-  PrivateLinkResource[];
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesListByClusterResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -1620,45 +1979,14 @@ export const PrivateLinkResourcesListByClusterResponse =
     identifier: "PrivateLinkResourcesListByClusterResponse",
   }) as any as S.Schema<PrivateLinkResourcesListByClusterResponse>;
 
-export interface RedisEnterpriseCreateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens */
-  clusterName: string;
-  body: unknown;
-}
-export const RedisEnterpriseCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RedisEnterpriseCreateRequest",
-}) as any as S.Schema<RedisEnterpriseCreateRequest>;
-
 /** Resource tags. */
-export type RedisEnterpriseCreateResponseTagsMap = {
+export type RedisEnterpriseCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const RedisEnterpriseCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const RedisEnterpriseCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<RedisEnterpriseCreateResponseTagsMap>;
-
-/** Distinguishes the kind of cluster. Read-only. */
-export type Kind = "v1" | "v2" | (string & {});
-export const Kind = /*@__PURE__*/ S.String;
+) as any as S.Schema<RedisEnterpriseCreateRequestTagsMap>;
 
 /** The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future. */
 export type SkuName =
@@ -1716,8 +2044,7 @@ export type SkuName =
   | "FlashOptimized_A1000"
   | "FlashOptimized_A1500"
   | "FlashOptimized_A2000"
-  | "FlashOptimized_A4500"
-  | (string & {});
+  | "FlashOptimized_A4500";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** SKU parameters supplied to the create Redis Enterprise cluster operation. */
@@ -1735,19 +2062,222 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseCreateResponseZonesList = string[];
-export const RedisEnterpriseCreateResponseZonesList = /*@__PURE__*/ S.Array(
+export type RedisEnterpriseCreateRequestZonesList = ReadonlyArray<string>;
+export const RedisEnterpriseCreateRequestZonesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<RedisEnterpriseCreateResponseZonesList>;
+) as any as S.Schema<RedisEnterpriseCreateRequestZonesList>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface RedisEnterpriseCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const RedisEnterpriseCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "RedisEnterpriseCreateRequestIdentity",
+}) as any as S.Schema<RedisEnterpriseCreateRequestIdentity>;
+
+/** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
+export type ClusterCreatePropertiesInputHighAvailability =
+  | "Enabled"
+  | "Disabled";
+export const ClusterCreatePropertiesInputHighAvailability =
+  /*@__PURE__*/ S.String;
+
+/** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
+export type ClusterCreatePropertiesInputMinimumTlsVersion =
+  | "1.0"
+  | "1.1"
+  | "1.2";
+export const ClusterCreatePropertiesInputMinimumTlsVersion =
+  /*@__PURE__*/ S.String;
+
+/** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
+export type ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
+  "systemAssignedIdentity" | "userAssignedIdentity";
+export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+export interface ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+  /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
+  userAssignedIdentityResourceId?: string;
+  /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
+  identityType?: ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+}
+export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userAssignedIdentityResourceId: S.optional(S.String),
+      identityType: S.optional(
+        ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+  }) as any as S.Schema<ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+
+/** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
+export interface ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption {
+  /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+  keyEncryptionKeyIdentity?: ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity;
+  /** Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 */
+  keyEncryptionKeyUrl?: string;
+}
+export const ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keyEncryptionKeyIdentity: S.optional(
+        ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
+      ),
+      keyEncryptionKeyUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption",
+  }) as any as S.Schema<ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption>;
+
+/** Encryption-at-rest configuration for the cluster. */
+export interface ClusterCreatePropertiesInputEncryption {
+  /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
+  customerManagedKeyEncryption?: ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption;
+}
+export const ClusterCreatePropertiesInputEncryption = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      customerManagedKeyEncryption: S.optional(
+        ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption,
+      ),
+    }),
+).annotate({
+  identifier: "ClusterCreatePropertiesInputEncryption",
+}) as any as S.Schema<ClusterCreatePropertiesInputEncryption>;
+
+/** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
+export type ClusterCreatePropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const ClusterCreatePropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Properties of Redis Enterprise clusters for create operations */
+export interface ClusterCreatePropertiesInput {
+  /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
+  highAvailability?: ClusterCreatePropertiesInputHighAvailability;
+  /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
+  minimumTlsVersion?: ClusterCreatePropertiesInputMinimumTlsVersion;
+  /** Encryption-at-rest configuration for the cluster. */
+  encryption?: ClusterCreatePropertiesInputEncryption;
+  /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
+  publicNetworkAccess: ClusterCreatePropertiesInputPublicNetworkAccess | null;
+}
+export const ClusterCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    highAvailability: S.optional(ClusterCreatePropertiesInputHighAvailability),
+    minimumTlsVersion: S.optional(
+      ClusterCreatePropertiesInputMinimumTlsVersion,
+    ),
+    encryption: S.optional(ClusterCreatePropertiesInputEncryption),
+    publicNetworkAccess: S.NullOr(
+      ClusterCreatePropertiesInputPublicNetworkAccess,
+    ),
+  }),
+).annotate({
+  identifier: "ClusterCreatePropertiesInput",
+}) as any as S.Schema<ClusterCreatePropertiesInput>;
+
+export interface RedisEnterpriseCreateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens */
+  clusterName: string;
+  /** Resource tags. */
+  tags?: RedisEnterpriseCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The SKU to create, which affects price, performance, and features. */
+  sku: Sku;
+  /** The Availability Zones where this cluster will be deployed. */
+  zones?: RedisEnterpriseCreateRequestZonesList;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: RedisEnterpriseCreateRequestIdentity;
+  /** Other properties of the cluster. */
+  properties?: ClusterCreatePropertiesInput;
+}
+export const RedisEnterpriseCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    tags: S.optional(RedisEnterpriseCreateRequestTagsMap),
+    location: S.String,
+    sku: Sku,
+    zones: S.optional(RedisEnterpriseCreateRequestZonesList),
+    identity: S.optional(RedisEnterpriseCreateRequestIdentity),
+    properties: S.optional(ClusterCreatePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "RedisEnterpriseCreateRequest",
+}) as any as S.Schema<RedisEnterpriseCreateRequest>;
+
+/** Resource tags. */
+export type RedisEnterpriseCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RedisEnterpriseCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RedisEnterpriseCreateResponseTagsMap>;
+
+/** Distinguishes the kind of cluster. Read-only. */
+export type Kind = "v1" | "v2";
+export const Kind = /*@__PURE__*/ S.String;
+
+/** The Availability Zones where this cluster will be deployed. */
+export type RedisEnterpriseCreateResponseZonesList = ReadonlyArray<string>;
+export const RedisEnterpriseCreateResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RedisEnterpriseCreateResponseZonesList>;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1796,23 +2326,16 @@ export const RedisEnterpriseCreateResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RedisEnterpriseCreateResponseIdentity>;
 
 /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
-export type ClusterCreatePropertiesHighAvailability =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ClusterCreatePropertiesHighAvailability = "Enabled" | "Disabled";
 export const ClusterCreatePropertiesHighAvailability = /*@__PURE__*/ S.String;
 
 /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
-export type ClusterCreatePropertiesMinimumTlsVersion =
-  | "1.0"
-  | "1.1"
-  | "1.2"
-  | (string & {});
+export type ClusterCreatePropertiesMinimumTlsVersion = "1.0" | "1.1" | "1.2";
 export const ClusterCreatePropertiesMinimumTlsVersion = /*@__PURE__*/ S.String;
 
 /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
 export type ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
-  "systemAssignedIdentity" | "userAssignedIdentity" | (string & {});
+  "systemAssignedIdentity" | "userAssignedIdentity";
 export const ClusterCreatePropertiesEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1871,11 +2394,7 @@ export const ClusterCreatePropertiesEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCreatePropertiesEncryption>;
 
 /** Explains the current redundancy strategy of the cluster, which affects the expected SLA. */
-export type ClusterCreatePropertiesRedundancyMode =
-  | "None"
-  | "LR"
-  | "ZR"
-  | (string & {});
+export type ClusterCreatePropertiesRedundancyMode = "None" | "LR" | "ZR";
 export const ClusterCreatePropertiesRedundancyMode = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint Connection resource. */
@@ -1903,17 +2422,14 @@ export const ClusterCreatePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the specified Redis Enterprise cluster */
 export type ClusterCreatePropertiesPrivateEndpointConnectionsList =
-  ClusterCreatePropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<ClusterCreatePropertiesPrivateEndpointConnectionsItem>;
 export const ClusterCreatePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ClusterCreatePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<ClusterCreatePropertiesPrivateEndpointConnectionsList>;
 
 /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
-export type ClusterCreatePropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ClusterCreatePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const ClusterCreatePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -2064,7 +2580,7 @@ export const RedisEnterpriseGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisEnterpriseGetResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseGetResponseZonesList = string[];
+export type RedisEnterpriseGetResponseZonesList = ReadonlyArray<string>;
 export const RedisEnterpriseGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseGetResponseZonesList>;
@@ -2154,7 +2670,7 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type ClusterZonesList = string[];
+export type ClusterZonesList = ReadonlyArray<string>;
 export const ClusterZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZonesList>;
@@ -2217,7 +2733,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** List of clusters. */
-export type ClusterListValueList = Cluster[];
+export type ClusterListValueList = ReadonlyArray<Cluster>;
 export const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
@@ -2300,7 +2816,7 @@ export const SkuDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuDetails" }) as any as S.Schema<SkuDetails>;
 
 /** List of SKUS available to scale up or scale down. */
-export type SkuDetailsListSkusList = SkuDetails[];
+export type SkuDetailsListSkusList = ReadonlyArray<SkuDetails>;
 export const SkuDetailsListSkusList = /*@__PURE__*/ S.Array(
   SkuDetails,
 ) as any as S.Schema<SkuDetailsListSkusList>;
@@ -2316,6 +2832,140 @@ export const SkuDetailsList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkuDetailsList" }) as any as S.Schema<SkuDetailsList>;
 
+/** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
+export type ClusterUpdatePropertiesInputHighAvailability =
+  | "Enabled"
+  | "Disabled";
+export const ClusterUpdatePropertiesInputHighAvailability =
+  /*@__PURE__*/ S.String;
+
+/** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
+export type ClusterUpdatePropertiesInputMinimumTlsVersion =
+  | "1.0"
+  | "1.1"
+  | "1.2";
+export const ClusterUpdatePropertiesInputMinimumTlsVersion =
+  /*@__PURE__*/ S.String;
+
+/** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
+export type ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
+  "systemAssignedIdentity" | "userAssignedIdentity";
+export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+  /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
+  userAssignedIdentityResourceId?: string;
+  /** Only userAssignedIdentity is supported in this API version; other types may be supported in the future */
+  identityType?: ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType;
+}
+export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userAssignedIdentityResourceId: S.optional(S.String),
+      identityType: S.optional(
+        ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+  }) as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+
+/** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
+export interface ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption {
+  /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+  keyEncryptionKeyIdentity?: ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity;
+  /** Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 */
+  keyEncryptionKeyUrl?: string;
+}
+export const ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keyEncryptionKeyIdentity: S.optional(
+        ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
+      ),
+      keyEncryptionKeyUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption",
+  }) as any as S.Schema<ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption>;
+
+/** Encryption-at-rest configuration for the cluster. */
+export interface ClusterUpdatePropertiesInputEncryption {
+  /** All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption. */
+  customerManagedKeyEncryption?: ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption;
+}
+export const ClusterUpdatePropertiesInputEncryption = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      customerManagedKeyEncryption: S.optional(
+        ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption,
+      ),
+    }),
+).annotate({
+  identifier: "ClusterUpdatePropertiesInputEncryption",
+}) as any as S.Schema<ClusterUpdatePropertiesInputEncryption>;
+
+/** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
+export type ClusterUpdatePropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const ClusterUpdatePropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Properties of Redis Enterprise clusters for update operations */
+export interface ClusterUpdatePropertiesInput {
+  /** Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss. */
+  highAvailability?: ClusterUpdatePropertiesInputHighAvailability;
+  /** The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions. */
+  minimumTlsVersion?: ClusterUpdatePropertiesInputMinimumTlsVersion;
+  /** Encryption-at-rest configuration for the cluster. */
+  encryption?: ClusterUpdatePropertiesInputEncryption;
+  /** Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set. */
+  publicNetworkAccess?: ClusterUpdatePropertiesInputPublicNetworkAccess | null;
+}
+export const ClusterUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    highAvailability: S.optional(ClusterUpdatePropertiesInputHighAvailability),
+    minimumTlsVersion: S.optional(
+      ClusterUpdatePropertiesInputMinimumTlsVersion,
+    ),
+    encryption: S.optional(ClusterUpdatePropertiesInputEncryption),
+    publicNetworkAccess: S.optional(
+      S.NullOr(ClusterUpdatePropertiesInputPublicNetworkAccess),
+    ),
+  }),
+).annotate({
+  identifier: "ClusterUpdatePropertiesInput",
+}) as any as S.Schema<ClusterUpdatePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface RedisEnterpriseUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const RedisEnterpriseUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "RedisEnterpriseUpdateRequestIdentity",
+}) as any as S.Schema<RedisEnterpriseUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type RedisEnterpriseUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RedisEnterpriseUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RedisEnterpriseUpdateRequestTagsMap>;
+
 export interface RedisEnterpriseUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2323,14 +2973,24 @@ export interface RedisEnterpriseUpdateRequest {
   resourceGroupName: string;
   /** The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens */
   clusterName: string;
-  body: unknown;
+  /** The SKU to create, which affects price, performance, and features. */
+  sku?: Sku;
+  /** Other properties of the cluster. */
+  properties?: ClusterUpdatePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: RedisEnterpriseUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: RedisEnterpriseUpdateRequestTagsMap;
 }
 export const RedisEnterpriseUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(Sku),
+    properties: S.optional(ClusterUpdatePropertiesInput),
+    identity: S.optional(RedisEnterpriseUpdateRequestIdentity),
+    tags: S.optional(RedisEnterpriseUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2353,7 +3013,7 @@ export const RedisEnterpriseUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisEnterpriseUpdateResponseTagsMap>;
 
 /** The Availability Zones where this cluster will be deployed. */
-export type RedisEnterpriseUpdateResponseZonesList = string[];
+export type RedisEnterpriseUpdateResponseZonesList = ReadonlyArray<string>;
 export const RedisEnterpriseUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RedisEnterpriseUpdateResponseZonesList>;

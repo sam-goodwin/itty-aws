@@ -72,8 +72,7 @@ export type CancelSubscriptionRequestCancellationReasonEnum =
   | "CANCELLATION_REASON_SYSTEM_ERROR"
   | "CANCELLATION_REASON_SYSTEM_CANCEL"
   | "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH"
-  | "CANCELLATION_REASON_OTHER"
-  | (string & {});
+  | "CANCELLATION_REASON_OTHER";
 export const CancelSubscriptionRequestCancellationReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -168,7 +167,7 @@ export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec =
   }) as any as S.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 
 export type PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList =
-  PromotionIntroductoryPricingDetailsIntroductoryPricingSpec[];
+  ReadonlyArray<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList =
   /*@__PURE__*/ S.Array(
     PromotionIntroductoryPricingDetailsIntroductoryPricingSpec,
@@ -189,12 +188,7 @@ export const PromotionIntroductoryPricingDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PromotionIntroductoryPricingDetails",
 }) as any as S.Schema<PromotionIntroductoryPricingDetails>;
 
-export type DurationUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "MONTH"
-  | "DAY"
-  | "HOUR"
-  | (string & {});
+export type DurationUnitEnum = "UNIT_UNSPECIFIED" | "MONTH" | "DAY" | "HOUR";
 export const DurationUnitEnum = /*@__PURE__*/ S.String;
 
 /** Describes the length of a period of a time. */
@@ -214,8 +208,7 @@ export const Duration = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionPromotionSpecTypeEnum =
   | "PROMOTION_TYPE_UNSPECIFIED"
   | "PROMOTION_TYPE_FREE_TRIAL"
-  | "PROMOTION_TYPE_INTRODUCTORY_PRICING"
-  | (string & {});
+  | "PROMOTION_TYPE_INTRODUCTORY_PRICING";
 export const SubscriptionPromotionSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes the spec for one promotion. */
@@ -240,12 +233,13 @@ export const SubscriptionPromotionSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionPromotionSpec",
 }) as any as S.Schema<SubscriptionPromotionSpec>;
 
-export type SubscriptionPromotionSpecList = SubscriptionPromotionSpec[];
+export type SubscriptionPromotionSpecList =
+  ReadonlyArray<SubscriptionPromotionSpec>;
 export const SubscriptionPromotionSpecList = /*@__PURE__*/ S.Array(
   SubscriptionPromotionSpec,
 ) as any as S.Schema<SubscriptionPromotionSpecList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -254,8 +248,7 @@ export type YoutubePayloadPartnerPlanTypeEnum =
   | "PARTNER_PLAN_TYPE_UNSPECIFIED"
   | "PARTNER_PLAN_TYPE_STANDALONE"
   | "PARTNER_PLAN_TYPE_HARD_BUNDLE"
-  | "PARTNER_PLAN_TYPE_SOFT_BUNDLE"
-  | (string & {});
+  | "PARTNER_PLAN_TYPE_SOFT_BUNDLE";
 export const YoutubePayloadPartnerPlanTypeEnum = /*@__PURE__*/ S.String;
 
 /** Payload specific to Youtube products. */
@@ -299,8 +292,7 @@ export type GoogleOnePayloadSalesChannelEnum =
   | "CHANNEL_RETAIL"
   | "CHANNEL_ONLINE_WEB"
   | "CHANNEL_ONLINE_ANDROID_APP"
-  | "CHANNEL_ONLINE_IOS_APP"
-  | (string & {});
+  | "CHANNEL_ONLINE_IOS_APP";
 export const GoogleOnePayloadSalesChannelEnum = /*@__PURE__*/ S.String;
 
 export type GoogleOnePayloadOfferingEnum =
@@ -308,8 +300,7 @@ export type GoogleOnePayloadOfferingEnum =
   | "OFFERING_VAS_BUNDLE"
   | "OFFERING_VAS_STANDALONE"
   | "OFFERING_HARD_BUNDLE"
-  | "OFFERING_SOFT_BUNDLE"
-  | (string & {});
+  | "OFFERING_SOFT_BUNDLE";
 export const GoogleOnePayloadOfferingEnum = /*@__PURE__*/ S.String;
 
 /** Payload specific to Google One products. */
@@ -367,8 +358,7 @@ export const FiniteBillingCycleDetails = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionLineItemRecurrenceTypeEnum =
   | "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED"
   | "LINE_ITEM_RECURRENCE_TYPE_PERIODIC"
-  | "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME"
-  | (string & {});
+  | "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME";
 export const SubscriptionLineItemRecurrenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details for an element in the hard bundle. */
@@ -389,7 +379,7 @@ export const SubscriptionLineItemBundleDetailsBundleElementDetails =
   }) as any as S.Schema<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 
 export type SubscriptionLineItemBundleDetailsBundleElementDetailsList =
-  SubscriptionLineItemBundleDetailsBundleElementDetails[];
+  ReadonlyArray<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 export const SubscriptionLineItemBundleDetailsBundleElementDetailsList =
   /*@__PURE__*/ S.Array(
     SubscriptionLineItemBundleDetailsBundleElementDetails,
@@ -446,8 +436,7 @@ export type SubscriptionLineItemStateEnum =
   | "LINE_ITEM_STATE_ACTIVATING"
   | "LINE_ITEM_STATE_DEACTIVATING"
   | "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE"
-  | "LINE_ITEM_STATE_OFF_CYCLE_CHARGING"
-  | (string & {});
+  | "LINE_ITEM_STATE_OFF_CYCLE_CHARGING";
 export const SubscriptionLineItemStateEnum = /*@__PURE__*/ S.String;
 
 /** Individual line item definition of a subscription. */
@@ -501,7 +490,7 @@ export const SubscriptionLineItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionLineItem",
 }) as any as S.Schema<SubscriptionLineItem>;
 
-export type SubscriptionLineItemList = SubscriptionLineItem[];
+export type SubscriptionLineItemList = ReadonlyArray<SubscriptionLineItem>;
 export const SubscriptionLineItemList = /*@__PURE__*/ S.Array(
   SubscriptionLineItem,
 ) as any as S.Schema<SubscriptionLineItemList>;
@@ -513,8 +502,7 @@ export type SubscriptionStateEnum =
   | "STATE_CANCELLED"
   | "STATE_IN_GRACE_PERIOD"
   | "STATE_CANCEL_AT_END_OF_CYCLE"
-  | "STATE_SUSPENDED"
-  | (string & {});
+  | "STATE_SUSPENDED";
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 export type SubscriptionCancellationDetailsReasonEnum =
@@ -529,8 +517,7 @@ export type SubscriptionCancellationDetailsReasonEnum =
   | "CANCELLATION_REASON_SYSTEM_ERROR"
   | "CANCELLATION_REASON_SYSTEM_CANCEL"
   | "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH"
-  | "CANCELLATION_REASON_OTHER"
-  | (string & {});
+  | "CANCELLATION_REASON_OTHER";
 export const SubscriptionCancellationDetailsReasonEnum = /*@__PURE__*/ S.String;
 
 /** Describes the details of a cancelled or cancelling subscription. */
@@ -563,8 +550,7 @@ export type SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum =
   | "BILLING_CYCLE_SPEC_UNSPECIFIED"
   | "BILLING_CYCLE_SPEC_ALIGN_WITH_PREVIOUS_SUBSCRIPTION"
   | "BILLING_CYCLE_SPEC_START_IMMEDIATELY"
-  | "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE"
-  | (string & {});
+  | "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE";
 export const SubscriptionUpgradeDowngradeDetailsBillingCycleSpecEnum =
   /*@__PURE__*/ S.String;
 
@@ -591,8 +577,7 @@ export type SubscriptionProcessingStateEnum =
   | "PROCESSING_STATE_CANCELLING"
   | "PROCESSING_STATE_RECURRING"
   | "PROCESSING_STATE_RESUMING"
-  | "PROCESSING_STATE_SUSPENDING"
-  | (string & {});
+  | "PROCESSING_STATE_SUSPENDING";
 export const SubscriptionProcessingStateEnum = /*@__PURE__*/ S.String;
 
 /** Acts as a central billing entity between an external partner and Google. Google services use the subscription state to grant or revoke the user's service entitlement. Note: The subscription state might not perfectly align with the user's service entitlement. Some services might continue providing access until the current cycle ends, even if the subscription is immediately canceled. Consult the relevant contract or product policy for specific details. */
@@ -718,7 +703,7 @@ export const EntitleSubscriptionRequestLineItemEntitlementDetails =
   }) as any as S.Schema<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 
 export type EntitleSubscriptionRequestLineItemEntitlementDetailsList =
-  EntitleSubscriptionRequestLineItemEntitlementDetails[];
+  ReadonlyArray<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 export const EntitleSubscriptionRequestLineItemEntitlementDetailsList =
   /*@__PURE__*/ S.Array(
     EntitleSubscriptionRequestLineItemEntitlementDetails,
@@ -900,7 +885,8 @@ export const GoogleTypeLocalizedText = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleTypeLocalizedText",
 }) as any as S.Schema<GoogleTypeLocalizedText>;
 
-export type GoogleTypeLocalizedTextList = GoogleTypeLocalizedText[];
+export type GoogleTypeLocalizedTextList =
+  ReadonlyArray<GoogleTypeLocalizedText>;
 export const GoogleTypeLocalizedTextList = /*@__PURE__*/ S.Array(
   GoogleTypeLocalizedText,
 ) as any as S.Schema<GoogleTypeLocalizedTextList>;
@@ -908,8 +894,7 @@ export const GoogleTypeLocalizedTextList = /*@__PURE__*/ S.Array(
 export type PromotionPromotionTypeEnum =
   | "PROMOTION_TYPE_UNSPECIFIED"
   | "PROMOTION_TYPE_FREE_TRIAL"
-  | "PROMOTION_TYPE_INTRODUCTORY_PRICING"
-  | (string & {});
+  | "PROMOTION_TYPE_INTRODUCTORY_PRICING";
 export const PromotionPromotionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Promotion resource that defines a promotion for a subscription that can be resold. */
@@ -947,7 +932,7 @@ export const Promotion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
-export type PromotionList = Promotion[];
+export type PromotionList = ReadonlyArray<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;
@@ -1166,7 +1151,7 @@ export const ProductPriceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPriceConfig",
 }) as any as S.Schema<ProductPriceConfig>;
 
-export type ProductPriceConfigList = ProductPriceConfig[];
+export type ProductPriceConfigList = ReadonlyArray<ProductPriceConfig>;
 export const ProductPriceConfigList = /*@__PURE__*/ S.Array(
   ProductPriceConfig,
 ) as any as S.Schema<ProductPriceConfigList>;
@@ -1174,15 +1159,13 @@ export const ProductPriceConfigList = /*@__PURE__*/ S.Array(
 export type ProductProductTypeEnum =
   | "PRODUCT_TYPE_UNSPECIFIED"
   | "PRODUCT_TYPE_SUBSCRIPTION"
-  | "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION"
-  | (string & {});
+  | "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION";
 export const ProductProductTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProductBundleDetailsEntitlementModeEnum =
   | "ENTITLEMENT_MODE_UNSPECIFIED"
   | "ENTITLEMENT_MODE_FULL"
-  | "ENTITLEMENT_MODE_INCREMENTAL"
-  | (string & {});
+  | "ENTITLEMENT_MODE_INCREMENTAL";
 export const ProductBundleDetailsEntitlementModeEnum = /*@__PURE__*/ S.String;
 
 /** The individual product that is included in the bundle. */
@@ -1199,7 +1182,7 @@ export const ProductBundleDetailsBundleElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductBundleDetailsBundleElement>;
 
 export type ProductBundleDetailsBundleElementList =
-  ProductBundleDetailsBundleElement[];
+  ReadonlyArray<ProductBundleDetailsBundleElement>;
 export const ProductBundleDetailsBundleElementList = /*@__PURE__*/ S.Array(
   ProductBundleDetailsBundleElement,
 ) as any as S.Schema<ProductBundleDetailsBundleElementList>;
@@ -1252,7 +1235,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -1342,7 +1325,7 @@ export const PatchPartnersSubscriptionsLineItemsRequest =
   }) as any as S.Schema<PatchPartnersSubscriptionsLineItemsRequest>;
 
 export type ProvisionPartnersSubscriptionsCycleOptions_initialCycleDuration_unitEnum =
-  "UNIT_UNSPECIFIED" | "MONTH" | "DAY" | "HOUR" | (string & {});
+  "UNIT_UNSPECIFIED" | "MONTH" | "DAY" | "HOUR";
 export const ProvisionPartnersSubscriptionsCycleOptions_initialCycleDuration_unitEnum =
   /*@__PURE__*/ S.String;
 
@@ -1387,8 +1370,7 @@ export type ResumeSubscriptionRequestResumeModeEnum =
   | "RESUME_MODE_UNSPECIFIED"
   | "RESUME_MODE_CYCLE_OPTIONS"
   | "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE"
-  | "RESUME_MODE_IMMEDIATE_NEW_CYCLE"
-  | (string & {});
+  | "RESUME_MODE_IMMEDIATE_NEW_CYCLE";
 export const ResumeSubscriptionRequestResumeModeEnum = /*@__PURE__*/ S.String;
 
 /** Request to resume a suspended subscription. */
@@ -1444,8 +1426,7 @@ export const ResumeSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 export type SuspendSubscriptionRequestSuspendModeEnum =
   | "SUSPEND_MODE_UNSPECIFIED"
   | "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD"
-  | "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD"
-  | (string & {});
+  | "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD";
 export const SuspendSubscriptionRequestSuspendModeEnum = /*@__PURE__*/ S.String;
 
 /** Request to suspend a subscription. */

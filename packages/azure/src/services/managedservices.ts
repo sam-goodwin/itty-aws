@@ -36,7 +36,7 @@ export const MarketplaceRegistrationDefinitionsGetRequest =
   }) as any as S.Schema<MarketplaceRegistrationDefinitionsGetRequest>;
 
 /** The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals. */
-export type AuthorizationDelegatedRoleDefinitionIdsList = string[];
+export type AuthorizationDelegatedRoleDefinitionIdsList = ReadonlyArray<string>;
 export const AuthorizationDelegatedRoleDefinitionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -66,17 +66,14 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type MarketplaceRegistrationDefinitionPropertiesAuthorizationsList =
-  Authorization[];
+  ReadonlyArray<Authorization>;
 export const MarketplaceRegistrationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     Authorization,
   ) as any as S.Schema<MarketplaceRegistrationDefinitionPropertiesAuthorizationsList>;
 
 /** The multi-factor authorization provider to be used for just-in-time access requests. */
-export type JustInTimeAccessPolicyMultiFactorAuthProvider =
-  | "Azure"
-  | "None"
-  | (string & {});
+export type JustInTimeAccessPolicyMultiFactorAuthProvider = "Azure" | "None";
 export const JustInTimeAccessPolicyMultiFactorAuthProvider =
   /*@__PURE__*/ S.String;
 
@@ -98,7 +95,7 @@ export const EligibleApprover = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of managedByTenant approvers for the eligible authorization. */
 export type JustInTimeAccessPolicyManagedByTenantApproversList =
-  EligibleApprover[];
+  ReadonlyArray<EligibleApprover>;
 export const JustInTimeAccessPolicyManagedByTenantApproversList =
   /*@__PURE__*/ S.Array(
     EligibleApprover,
@@ -149,7 +146,7 @@ export const EligibleAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList =
-  EligibleAuthorization[];
+  ReadonlyArray<EligibleAuthorization>;
 export const MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList =
   /*@__PURE__*/ S.Array(
     EligibleAuthorization,
@@ -256,7 +253,7 @@ export const MarketplaceRegistrationDefinitionsListRequest =
 
 /** The list of marketplace registration definitions. */
 export type MarketplaceRegistrationDefinitionListValueList =
-  MarketplaceRegistrationDefinition[];
+  ReadonlyArray<MarketplaceRegistrationDefinition>;
 export const MarketplaceRegistrationDefinitionListValueList =
   /*@__PURE__*/ S.Array(
     MarketplaceRegistrationDefinition,
@@ -370,7 +367,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of Microsoft.ManagedServices operations. */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -405,19 +402,34 @@ export const OperationsWithScopeListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsWithScopeListRequest",
 }) as any as S.Schema<OperationsWithScopeListRequest>;
 
+/** The properties of the registration assignment. */
+export interface RegistrationAssignmentPropertiesInput {
+  /** The fully qualified path of the registration definition. */
+  registrationDefinitionId: string;
+}
+export const RegistrationAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registrationDefinitionId: S.String,
+    }),
+).annotate({
+  identifier: "RegistrationAssignmentPropertiesInput",
+}) as any as S.Schema<RegistrationAssignmentPropertiesInput>;
+
 export interface RegistrationAssignmentsCreateOrUpdateRequest {
   /** The scope of the resource. */
   scope: string;
   /** The GUID of the registration assignment. */
   registrationAssignmentId: string;
-  body: unknown;
+  /** The properties of a registration assignment. */
+  properties?: RegistrationAssignmentPropertiesInput;
 }
 export const RegistrationAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scope: S.String.pipe(T.Label()),
       registrationAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RegistrationAssignmentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -443,14 +455,13 @@ export type RegistrationAssignmentPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const RegistrationAssignmentPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList =
-  Authorization[];
+  ReadonlyArray<Authorization>;
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     Authorization,
@@ -458,7 +469,7 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAut
 
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
-  EligibleAuthorization[];
+  ReadonlyArray<EligibleAuthorization>;
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
   /*@__PURE__*/ S.Array(
     EligibleAuthorization,
@@ -477,8 +488,7 @@ export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProv
     | "Canceled"
     | "Failed"
     | "Succeeded"
-    | "Updating"
-    | (string & {});
+    | "Updating";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -529,13 +539,13 @@ export const RegistrationAssignmentPropertiesRegistrationDefinitionProperties =
 
 /** The type of identity that created the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -634,8 +644,7 @@ export type RegistrationAssignmentSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const RegistrationAssignmentSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -644,8 +653,7 @@ export type RegistrationAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const RegistrationAssignmentSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -789,7 +797,8 @@ export const RegistrationAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationAssignmentsListRequest>;
 
 /** The list of registration assignments. */
-export type RegistrationAssignmentListValueList = RegistrationAssignment[];
+export type RegistrationAssignmentListValueList =
+  ReadonlyArray<RegistrationAssignment>;
 export const RegistrationAssignmentListValueList = /*@__PURE__*/ S.Array(
   RegistrationAssignment,
 ) as any as S.Schema<RegistrationAssignmentListValueList>;
@@ -810,19 +819,67 @@ export const RegistrationAssignmentList = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationAssignmentList",
 }) as any as S.Schema<RegistrationAssignmentList>;
 
+/** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
+export type RegistrationDefinitionPropertiesInputAuthorizationsList =
+  ReadonlyArray<Authorization>;
+export const RegistrationDefinitionPropertiesInputAuthorizationsList =
+  /*@__PURE__*/ S.Array(
+    Authorization,
+  ) as any as S.Schema<RegistrationDefinitionPropertiesInputAuthorizationsList>;
+
+/** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
+export type RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
+  ReadonlyArray<EligibleAuthorization>;
+export const RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
+  /*@__PURE__*/ S.Array(
+    EligibleAuthorization,
+  ) as any as S.Schema<RegistrationDefinitionPropertiesInputEligibleAuthorizationsList>;
+
+/** The properties of a registration definition. */
+export interface RegistrationDefinitionPropertiesInput {
+  /** The description of the registration definition. */
+  description?: string;
+  /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
+  authorizations: RegistrationDefinitionPropertiesInputAuthorizationsList;
+  /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
+  eligibleAuthorizations?: RegistrationDefinitionPropertiesInputEligibleAuthorizationsList;
+  /** The name of the registration definition. */
+  registrationDefinitionName?: string;
+  /** The identifier of the managedBy tenant. */
+  managedByTenantId: string;
+}
+export const RegistrationDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      description: S.optional(S.String),
+      authorizations: RegistrationDefinitionPropertiesInputAuthorizationsList,
+      eligibleAuthorizations: S.optional(
+        RegistrationDefinitionPropertiesInputEligibleAuthorizationsList,
+      ),
+      registrationDefinitionName: S.optional(S.String),
+      managedByTenantId: S.String,
+    }),
+).annotate({
+  identifier: "RegistrationDefinitionPropertiesInput",
+}) as any as S.Schema<RegistrationDefinitionPropertiesInput>;
+
 export interface RegistrationDefinitionsCreateOrUpdateRequest {
   /** The scope of the resource. */
   scope: string;
   /** The GUID of the registration definition. */
   registrationDefinitionId: string;
-  body: unknown;
+  /** The properties of a registration definition. */
+  properties?: RegistrationDefinitionPropertiesInput;
+  /** The details for the Managed Services offer’s plan in Azure Marketplace. */
+  plan?: Plan;
 }
 export const RegistrationDefinitionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scope: S.String.pipe(T.Label()),
       registrationDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RegistrationDefinitionPropertiesInput),
+      plan: S.optional(Plan),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -837,7 +894,7 @@ export const RegistrationDefinitionsCreateOrUpdateRequest =
 
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesAuthorizationsList =
-  Authorization[];
+  ReadonlyArray<Authorization>;
 export const RegistrationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     Authorization,
@@ -845,7 +902,7 @@ export const RegistrationDefinitionPropertiesAuthorizationsList =
 
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesEligibleAuthorizationsList =
-  EligibleAuthorization[];
+  ReadonlyArray<EligibleAuthorization>;
 export const RegistrationDefinitionPropertiesEligibleAuthorizationsList =
   /*@__PURE__*/ S.Array(
     EligibleAuthorization,
@@ -864,8 +921,7 @@ export type RegistrationDefinitionPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const RegistrationDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -915,8 +971,7 @@ export type RegistrationDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const RegistrationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -925,8 +980,7 @@ export type RegistrationDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const RegistrationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1063,7 +1117,8 @@ export const RegistrationDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationDefinitionsListRequest>;
 
 /** The list of registration definitions. */
-export type RegistrationDefinitionListValueList = RegistrationDefinition[];
+export type RegistrationDefinitionListValueList =
+  ReadonlyArray<RegistrationDefinition>;
 export const RegistrationDefinitionListValueList = /*@__PURE__*/ S.Array(
   RegistrationDefinition,
 ) as any as S.Schema<RegistrationDefinitionListValueList>;

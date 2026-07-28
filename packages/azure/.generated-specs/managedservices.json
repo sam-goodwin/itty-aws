@@ -1728,16 +1728,30 @@
             "smithy.api#documentation": "The GUID of the registration assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.managedservices#RegistrationAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a registration assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.managedservices#RegistrationAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "registrationDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified path of the registration definition.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the registration assignment."
       }
     },
     "com.azure.managedservices#RegistrationAssignmentsGet": {
@@ -1871,16 +1885,79 @@
             "smithy.api#documentation": "The GUID of the registration definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.managedservices#RegistrationDefinitionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a registration definition."
+          }
+        },
+        "plan": {
+          "target": "com.azure.managedservices#Plan",
+          "traits": {
+            "smithy.api#documentation": "The details for the Managed Services offer’s plan in Azure Marketplace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.managedservices#RegistrationDefinitionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the registration definition."
+          }
+        },
+        "authorizations": {
+          "target": "com.azure.managedservices#RegistrationDefinitionPropertiesInputAuthorizationsList",
+          "traits": {
+            "smithy.api#documentation": "The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.",
+            "smithy.api#required": {}
+          }
+        },
+        "eligibleAuthorizations": {
+          "target": "com.azure.managedservices#RegistrationDefinitionPropertiesInputEligibleAuthorizationsList",
+          "traits": {
+            "smithy.api#documentation": "The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant."
+          }
+        },
+        "registrationDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the registration definition."
+          }
+        },
+        "managedByTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the managedBy tenant.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a registration definition."
+      }
+    },
+    "com.azure.managedservices#RegistrationDefinitionPropertiesInputEligibleAuthorizationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.managedservices#EligibleAuthorization"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant."
+      }
+    },
+    "com.azure.managedservices#RegistrationDefinitionPropertiesInputAuthorizationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.managedservices#Authorization"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant."
       }
     },
     "com.azure.managedservices#RegistrationDefinitionsGet": {

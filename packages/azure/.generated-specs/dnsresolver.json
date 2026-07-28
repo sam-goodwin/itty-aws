@@ -655,16 +655,27 @@
             "smithy.api#documentation": "The name of the outbound endpoint for the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#OutboundEndpointsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for outbound endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#OutboundEndpointsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for outbound endpoint."
       }
     },
     "com.azure.dnsresolver#OutboundEndpointsCreateOrUpdate": {
@@ -791,16 +802,56 @@
             "smithy.api#documentation": "The name of the outbound endpoint for the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#OutboundEndpointsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#OutboundEndpointPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the outbound endpoint.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#OutboundEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subnet": {
+          "target": "com.azure.dnsresolver#SubResource",
+          "traits": {
+            "smithy.api#documentation": "The reference to the subnet used for the outbound endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of an outbound endpoint for a DNS resolver."
+      }
+    },
+    "com.azure.dnsresolver#OutboundEndpointsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#OutboundEndpointsGet": {
@@ -1356,16 +1407,27 @@
             "smithy.api#documentation": "The name of the inbound endpoint for the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#InboundEndpointsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for inbound endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#InboundEndpointsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for inbound endpoint."
       }
     },
     "com.azure.dnsresolver#InboundEndpointsCreateOrUpdate": {
@@ -1492,16 +1554,65 @@
             "smithy.api#documentation": "The name of the inbound endpoint for the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#InboundEndpointsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#InboundEndpointPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the inbound endpoint.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#InboundEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "ipConfigurations": {
+          "target": "com.azure.dnsresolver#InboundEndpointPropertiesInputIpConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "IP configurations for the inbound endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of an inbound endpoint for a DNS resolver."
+      }
+    },
+    "com.azure.dnsresolver#InboundEndpointPropertiesInputIpConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dnsresolver#IpConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "IP configurations for the inbound endpoint."
+      }
+    },
+    "com.azure.dnsresolver#InboundEndpointsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#InboundEndpointsGet": {
@@ -2011,16 +2122,27 @@
             "smithy.api#documentation": "The name of the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolversUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for DNS Resolver."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolversUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for DNS Resolver."
       }
     },
     "com.azure.dnsresolver#DnsResolversCreateOrUpdate": {
@@ -2139,16 +2261,56 @@
             "smithy.api#documentation": "The name of the DNS resolver."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolversCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS resolver.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "virtualNetwork": {
+          "target": "com.azure.dnsresolver#SubResource",
+          "traits": {
+            "smithy.api#documentation": "The reference to the virtual network. This cannot be changed after creation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of a DNS resolver."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolversCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsResolversGet": {
@@ -2626,16 +2788,27 @@
             "smithy.api#documentation": "The name of the DNS resolver policy virtual network link for the DNS resolver policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for the DNS resolver policy virtual network link."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for the DNS resolver policy virtual network link."
       }
     },
     "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate": {
@@ -2762,16 +2935,41 @@
             "smithy.api#documentation": "The name of the DNS resolver policy virtual network link for the DNS resolver policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinkProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS resolver policy virtual network link.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinksGet": {
@@ -3354,16 +3552,74 @@
             "smithy.api#documentation": "The name of the DNS security rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsSecurityRulePatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Updatable properties of the DNS security rule."
+          }
+        },
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsSecurityRulesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for DNS security rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsSecurityRulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for DNS security rule."
+      }
+    },
+    "com.azure.dnsresolver#DnsSecurityRulePatchProperties": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.azure.dnsresolver#DnsSecurityRuleAction",
+          "traits": {
+            "smithy.api#documentation": "The action to take on DNS requests that match the DNS security rule."
+          }
+        },
+        "dnsResolverDomainLists": {
+          "target": "com.azure.dnsresolver#DnsSecurityRulePatchPropertiesDnsResolverDomainListsList",
+          "traits": {
+            "smithy.api#documentation": "DNS resolver policy domains lists that the DNS security rule applies to."
+          }
+        },
+        "dnsSecurityRuleState": {
+          "target": "com.azure.dnsresolver#DnsSecurityRuleState",
+          "traits": {
+            "smithy.api#documentation": "The state of DNS security rule."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The priority of the DNS security rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the updatable properties of a DNS security rule."
+      }
+    },
+    "com.azure.dnsresolver#DnsSecurityRulePatchPropertiesDnsResolverDomainListsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dnsresolver#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "DNS resolver policy domains lists that the DNS security rule applies to."
       }
     },
     "com.azure.dnsresolver#DnsSecurityRulesCreateOrUpdate": {
@@ -3490,16 +3746,41 @@
             "smithy.api#documentation": "The name of the DNS security rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsSecurityRulesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsSecurityRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS security rule.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsSecurityRulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsSecurityRulesGet": {
@@ -3975,16 +4256,27 @@
             "smithy.api#documentation": "The name of the DNS resolver policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverPoliciesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for DNS resolver policy."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPoliciesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for DNS resolver policy."
       }
     },
     "com.azure.dnsresolver#DnsResolverPoliciesCreateOrUpdate": {
@@ -4102,16 +4394,47 @@
             "smithy.api#documentation": "The name of the DNS resolver policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverPoliciesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverPolicyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS resolver policy."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of a DNS resolver policy."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverPoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsResolverPoliciesGet": {
@@ -4539,16 +4862,58 @@
             "smithy.api#documentation": "The name of the DNS resolver domain list."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListBulkProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the DNS resolver domain list upload or download request.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListBulkProperties": {
+      "type": "structure",
+      "members": {
+        "storageUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage account blob file URL to be used in the bulk upload or download request of DNS resolver domain list.",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.azure.dnsresolver#Action",
+          "traits": {
+            "smithy.api#documentation": "The action to take in the request, Upload or Download.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes DNS resolver domain list properties for bulk UPLOAD or DOWNLOAD operations."
+      }
+    },
+    "com.azure.dnsresolver#Action": {
+      "type": "enum",
+      "members": {
+        "UPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Upload"
+          }
+        },
+        "DOWNLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Download"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The action type in requests for bulk upload or download of a DNS resolver domain list."
       }
     },
     "com.azure.dnsresolver#DnsResolverDomainListsDelete": {
@@ -4717,16 +5082,56 @@
             "smithy.api#documentation": "The name of the DNS resolver domain list."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Updatable properties of the DNS resolver domain list."
+          }
+        },
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for DNS resolver domain list."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for DNS resolver domain list."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListPatchProperties": {
+      "type": "structure",
+      "members": {
+        "domains": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListPatchPropertiesDomainsList",
+          "traits": {
+            "smithy.api#documentation": "The domains in the domain list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the updatable properties of a DNS resolver domain list."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListPatchPropertiesDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The domains in the domain list."
       }
     },
     "com.azure.dnsresolver#DnsResolverDomainListsCreateOrUpdate": {
@@ -4844,16 +5249,63 @@
             "smithy.api#documentation": "The name of the DNS resolver domain list."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS resolver domain list."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "domains": {
+          "target": "com.azure.dnsresolver#DnsResolverDomainListPropertiesInputDomainsList",
+          "traits": {
+            "smithy.api#documentation": "The domains in the domain list. Will be null if user is using large domain list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of a DNS resolver domain list."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListPropertiesInputDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The domains in the domain list. Will be null if user is using large domain list."
+      }
+    },
+    "com.azure.dnsresolver#DnsResolverDomainListsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsResolverDomainListsGet": {
@@ -5322,16 +5774,41 @@
             "smithy.api#documentation": "The name of the virtual network link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#VirtualNetworkLinkPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Updatable properties of the virtual network link."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#VirtualNetworkLinkPatchProperties": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.dnsresolver#VirtualNetworkLinkPatchPropertiesMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata attached to the virtual network link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the updatable properties of the virtual network link."
+      }
+    },
+    "com.azure.dnsresolver#VirtualNetworkLinkPatchPropertiesMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata attached to the virtual network link."
       }
     },
     "com.azure.dnsresolver#VirtualNetworkLinksCreateOrUpdate": {
@@ -5433,10 +5910,10 @@
             "smithy.api#documentation": "The name of the virtual network link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#VirtualNetworkLinkProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the virtual network link.",
             "smithy.api#required": {}
           }
         }
@@ -5942,16 +6419,82 @@
             "smithy.api#documentation": "The name of the forwarding rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#ForwardingRulePatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Updatable properties of the forwarding rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#ForwardingRulePatchProperties": {
+      "type": "structure",
+      "members": {
+        "targetDnsServers": {
+          "target": "com.azure.dnsresolver#ForwardingRulePatchPropertiesTargetDnsServersList",
+          "traits": {
+            "smithy.api#documentation": "DNS servers to forward the DNS query to."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.dnsresolver#ForwardingRulePatchPropertiesMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata attached to the forwarding rule."
+          }
+        },
+        "forwardingRuleState": {
+          "target": "com.azure.dnsresolver#ForwardingRulePatchPropertiesForwardingRuleState",
+          "traits": {
+            "smithy.api#documentation": "The state of forwarding rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the updatable properties of a forwarding rule within a DNS forwarding ruleset."
+      }
+    },
+    "com.azure.dnsresolver#ForwardingRulePatchPropertiesForwardingRuleState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of forwarding rule."
+      }
+    },
+    "com.azure.dnsresolver#ForwardingRulePatchPropertiesMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata attached to the forwarding rule."
+      }
+    },
+    "com.azure.dnsresolver#ForwardingRulePatchPropertiesTargetDnsServersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dnsresolver#TargetDnsServer"
+      },
+      "traits": {
+        "smithy.api#documentation": "DNS servers to forward the DNS query to."
       }
     },
     "com.azure.dnsresolver#ForwardingRulesCreateOrUpdate": {
@@ -6053,10 +6596,10 @@
             "smithy.api#documentation": "The name of the forwarding rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dnsresolver#ForwardingRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the forwarding rule.",
             "smithy.api#required": {}
           }
         }
@@ -6505,16 +7048,42 @@
             "smithy.api#documentation": "The name of the DNS forwarding ruleset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "dnsResolverOutboundEndpoints": {
+          "target": "com.azure.dnsresolver#DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers."
+          }
+        },
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsForwardingRulesetsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for DNS Resolver."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsForwardingRulesetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for DNS Resolver."
+      }
+    },
+    "com.azure.dnsresolver#DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dnsresolver#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers."
       }
     },
     "com.azure.dnsresolver#DnsForwardingRulesetsCreateOrUpdate": {
@@ -6633,16 +7202,65 @@
             "smithy.api#documentation": "The name of the DNS forwarding ruleset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dnsresolver#DnsForwardingRulesetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.dnsresolver#DnsForwardingRulesetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the DNS forwarding ruleset.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dnsresolver#DnsForwardingRulesetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dnsResolverOutboundEndpoints": {
+          "target": "com.azure.dnsresolver#DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of a DNS forwarding ruleset."
+      }
+    },
+    "com.azure.dnsresolver#DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dnsresolver#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers."
+      }
+    },
+    "com.azure.dnsresolver#DnsForwardingRulesetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dnsresolver#DnsForwardingRulesetsGet": {

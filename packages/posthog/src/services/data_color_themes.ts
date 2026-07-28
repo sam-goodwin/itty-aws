@@ -35,6 +35,28 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface DataColorThemesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  name?: string;
+  colors?: unknown;
+}
+export const DataColorThemesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    colors: S.optional(S.Unknown),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/data_color_themes/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DataColorThemesCreateRequest",
+}) as any as S.Schema<DataColorThemesCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +72,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,43 +107,13 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface DataColorThemesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: number;
-  name?: string;
-  colors?: unknown;
-  is_global?: boolean;
-  created_at?: string | null;
-  created_by?: UserBasic;
-}
-export const DataColorThemesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    colors: S.optional(S.Unknown),
-    is_global: S.optional(S.Boolean),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/data_color_themes/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DataColorThemesCreateRequest",
-}) as any as S.Schema<DataColorThemesCreateRequest>;
-
 export interface DataColorTheme {
   id?: number;
   name?: string;
   colors?: unknown;
   is_global?: boolean;
   created_at?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
 }
 export const DataColorTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -131,7 +122,7 @@ export const DataColorTheme = /*@__PURE__*/ S.suspend(() =>
     colors: S.optional(S.Unknown),
     is_global: S.optional(S.Boolean),
     created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
   }),
 ).annotate({ identifier: "DataColorTheme" }) as any as S.Schema<DataColorTheme>;
 
@@ -187,7 +178,8 @@ export const DataColorThemesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataColorThemesListRequest",
 }) as any as S.Schema<DataColorThemesListRequest>;
 
-export type PaginatedDataColorThemeListResultsList = DataColorTheme[];
+export type PaginatedDataColorThemeListResultsList =
+  ReadonlyArray<DataColorTheme>;
 export const PaginatedDataColorThemeListResultsList = /*@__PURE__*/ S.Array(
   DataColorTheme,
 ) as any as S.Schema<PaginatedDataColorThemeListResultsList>;
@@ -216,9 +208,6 @@ export interface DataColorThemesPartialUpdateRequest {
   id: number;
   name?: string;
   colors?: unknown;
-  is_global?: boolean;
-  created_at?: string | null;
-  created_by?: UserBasic;
 }
 export const DataColorThemesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -226,9 +215,6 @@ export const DataColorThemesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
     colors: S.optional(S.Unknown),
-    is_global: S.optional(S.Boolean),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -268,9 +254,6 @@ export interface DataColorThemesUpdateRequest {
   id: number;
   name?: string;
   colors?: unknown;
-  is_global?: boolean;
-  created_at?: string | null;
-  created_by?: UserBasic;
 }
 export const DataColorThemesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -278,9 +261,6 @@ export const DataColorThemesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
     colors: S.optional(S.Unknown),
-    is_global: S.optional(S.Boolean),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
   }).pipe(
     T.Http({
       method: "PUT",

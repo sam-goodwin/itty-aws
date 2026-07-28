@@ -503,10 +503,22 @@
             "smithy.api#documentation": "Organization name slug from `list_organizations`. Example: `acme`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billing_email": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The billing email for the organization"
+          }
+        },
+        "idp_managed_roles": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the IdP provider is be responsible for managing roles in PlanetScale"
+          }
+        },
+        "invoice_budget_amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The expected monthly budget for the organization"
           }
         }
       },
@@ -1655,6 +1667,44 @@
         }
       }
     },
+    "com.planetscale.api#CreateDatabaseRequestKind": {
+      "type": "enum",
+      "members": {
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        },
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of database to create."
+      }
+    },
+    "com.planetscale.api#CreateDatabaseRequestStorage": {
+      "type": "structure",
+      "members": {
+        "minimum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The initial minimum storage size in bytes."
+          }
+        },
+        "maximum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum storage size in bytes for autoscaling."
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.planetscale.api#CreateDatabaseRequest": {
       "type": "structure",
       "members": {
@@ -1666,11 +1716,46 @@
             "smithy.api#documentation": "Organization name slug from `list_organizations`. Example: `acme`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name of the database",
+            "smithy.api#required": {}
           }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region the database will be deployed in. If left blank, defaults to the organization's default region."
+          }
+        },
+        "cluster_size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The database cluster size name (e.g., 'PS_10', 'PS_80'). Use the 'List available cluster sizes' endpoint to get available options for your organization. /v1/organizations/:organization/cluster-size-skus",
+            "smithy.api#required": {}
+          }
+        },
+        "replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas for the database. 0 for non-HA, 2+ for HA."
+          }
+        },
+        "kind": {
+          "target": "com.planetscale.api#CreateDatabaseRequestKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of database to create."
+          }
+        },
+        "major_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For PostgreSQL databases, the PostgreSQL major version to use for the database. Defaults to the latest available major version."
+          }
+        },
+        "storage": {
+          "target": "com.planetscale.api#CreateDatabaseRequestStorage"
         }
       },
       "traits": {
@@ -2264,10 +2349,70 @@
             "smithy.api#documentation": "Database name slug from `list_databases`. Example: `app-db`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "new_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name to update the database to"
+          }
+        },
+        "automatic_migrations": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to copy migration data to new branches and in deploy requests. (Vitess only)"
+          }
+        },
+        "migration_framework": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A migration framework to use on the database. (Vitess only)"
+          }
+        },
+        "migration_table_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of table to use as migration table for the database. (Vitess only)"
+          }
+        },
+        "require_approval_for_deploy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not deploy requests must be approved by a database administrator other than the request creator"
+          }
+        },
+        "restrict_branch_region": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to limit branch creation to the same region as the one selected during database creation."
+          }
+        },
+        "allow_data_branching": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not data branching is allowed on the database. (Vitess only)"
+          }
+        },
+        "allow_foreign_key_constraints": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not foreign key constraints are allowed on the database. (Vitess only)"
+          }
+        },
+        "insights_raw_queries": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not full queries should be collected from the database"
+          }
+        },
+        "production_branch_web_console": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the web console can be used on the production branch of the database"
+          }
+        },
+        "default_branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default branch of the database"
           }
         }
       },
@@ -2625,6 +2770,96 @@
         }
       }
     },
+    "com.planetscale.api#CreateBackupPolicyRequestTarget": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the policy is for production or development branches"
+      }
+    },
+    "com.planetscale.api#CreateBackupPolicyRequestRetentionUnit": {
+      "type": "enum",
+      "members": {
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The unit for the retention period of the backup policy"
+      }
+    },
+    "com.planetscale.api#CreateBackupPolicyRequestFrequencyUnit": {
+      "type": "enum",
+      "members": {
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The unit for the frequency of the backup policy"
+      }
+    },
     "com.planetscale.api#CreateBackupPolicyRequest": {
       "type": "structure",
       "members": {
@@ -2644,10 +2879,58 @@
             "smithy.api#documentation": "Database name slug from `list_databases`. Example: `app-db`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the backup policy"
+          }
+        },
+        "target": {
+          "target": "com.planetscale.api#CreateBackupPolicyRequestTarget",
+          "traits": {
+            "smithy.api#documentation": "Whether the policy is for production or development branches"
+          }
+        },
+        "retention_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A number value for the retention period of the backup policy"
+          }
+        },
+        "retention_unit": {
+          "target": "com.planetscale.api#CreateBackupPolicyRequestRetentionUnit",
+          "traits": {
+            "smithy.api#documentation": "The unit for the retention period of the backup policy"
+          }
+        },
+        "frequency_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A number value for the frequency of the backup policy"
+          }
+        },
+        "frequency_unit": {
+          "target": "com.planetscale.api#CreateBackupPolicyRequestFrequencyUnit",
+          "traits": {
+            "smithy.api#documentation": "The unit for the frequency of the backup policy"
+          }
+        },
+        "schedule_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of day that the backup is scheduled, in HH:MM format"
+          }
+        },
+        "schedule_day": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday"
+          }
+        },
+        "schedule_week": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week"
           }
         }
       },
@@ -2879,6 +3162,96 @@
         "smithy.api#documentation": "Get a backup policy"
       }
     },
+    "com.planetscale.api#UpdateBackupPolicyRequestTarget": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the policy is for production or development branches"
+      }
+    },
+    "com.planetscale.api#UpdateBackupPolicyRequestRetentionUnit": {
+      "type": "enum",
+      "members": {
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The unit for the retention period of the backup policy"
+      }
+    },
+    "com.planetscale.api#UpdateBackupPolicyRequestFrequencyUnit": {
+      "type": "enum",
+      "members": {
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The unit for the frequency of the backup policy"
+      }
+    },
     "com.planetscale.api#UpdateBackupPolicyRequest": {
       "type": "structure",
       "members": {
@@ -2906,10 +3279,58 @@
             "smithy.api#documentation": "The ID of the backup policy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the backup policy"
+          }
+        },
+        "target": {
+          "target": "com.planetscale.api#UpdateBackupPolicyRequestTarget",
+          "traits": {
+            "smithy.api#documentation": "Whether the policy is for production or development branches"
+          }
+        },
+        "retention_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A number value for the retention period of the backup policy"
+          }
+        },
+        "retention_unit": {
+          "target": "com.planetscale.api#UpdateBackupPolicyRequestRetentionUnit",
+          "traits": {
+            "smithy.api#documentation": "The unit for the retention period of the backup policy"
+          }
+        },
+        "frequency_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A number value for the frequency of the backup policy"
+          }
+        },
+        "frequency_unit": {
+          "target": "com.planetscale.api#UpdateBackupPolicyRequestFrequencyUnit",
+          "traits": {
+            "smithy.api#documentation": "The unit for the frequency of the backup policy"
+          }
+        },
+        "schedule_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of day that the backup is scheduled, in HH:MM format"
+          }
+        },
+        "schedule_day": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday"
+          }
+        },
+        "schedule_week": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week"
           }
         }
       },
@@ -3651,6 +4072,67 @@
         }
       }
     },
+    "com.planetscale.api#CreateBranchRequestSeedData": {
+      "type": "enum",
+      "members": {
+        "LAST_SUCCESSFUL_BACKUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_successful_backup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch."
+      }
+    },
+    "com.planetscale.api#CreateBranchRequestKeyspaceClusterSizesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "For MySQL backup restores, per-keyspace cluster sizes. Each entry is { \"keyspace_name\": \"main\", \"cluster_size\": \"PS_40\" }. When provided, each restored keyspace must have a size here or via cluster_size."
+      }
+    },
+    "com.planetscale.api#CreateBranchRequestStorage": {
+      "type": "structure",
+      "members": {
+        "minimum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum storage size in bytes."
+          }
+        },
+        "maximum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum storage size in bytes for autoscaling."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.planetscale.api#CreateBranchRequestKind": {
+      "type": "enum",
+      "members": {
+        "MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mysql"
+          }
+        },
+        "POSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgresql"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of branch to create. Required when create_database_if_missing is set."
+      }
+    },
     "com.planetscale.api#CreateBranchRequest": {
       "type": "structure",
       "members": {
@@ -3670,10 +4152,74 @@
             "smithy.api#documentation": "The name of the database the branch belongs to"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the branch to create",
+            "smithy.api#required": {}
+          }
+        },
+        "parent_branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent branch. Defaults to the database's default branch if not provided."
+          }
+        },
+        "backup_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If provided, restores the backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region to create the branch in. If not provided, the branch will be created in the default region for its database."
+          }
+        },
+        "restore_point": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Restore from a point-in-time recovery timestamp (e.g. 2023-01-01T00:00:00Z). Available only for PostgreSQL databases."
+          }
+        },
+        "seed_data": {
+          "target": "com.planetscale.api#CreateBranchRequestSeedData",
+          "traits": {
+            "smithy.api#documentation": "If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch."
+          }
+        },
+        "cluster_size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The database cluster size. Required if a backup_id is provided (unless keyspace_cluster_sizes covers every keyspace), optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800"
+          }
+        },
+        "keyspace_cluster_sizes": {
+          "target": "com.planetscale.api#CreateBranchRequestKeyspaceClusterSizesList",
+          "traits": {
+            "smithy.api#documentation": "For MySQL backup restores, per-keyspace cluster sizes. Each entry is { \"keyspace_name\": \"main\", \"cluster_size\": \"PS_40\" }. When provided, each restored keyspace must have a size here or via cluster_size."
+          }
+        },
+        "storage": {
+          "target": "com.planetscale.api#CreateBranchRequestStorage"
+        },
+        "major_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For PostgreSQL databases, the PostgreSQL major version to use for the branch. Defaults to the major version of the parent branch if it exists or the database's default branch major version. Ignored for branches restored from backups."
+          }
+        },
+        "create_database_if_missing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Create a new database for the branch if the database does not exist. Defaults to false."
+          }
+        },
+        "kind": {
+          "target": "com.planetscale.api#CreateBranchRequestKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of branch to create. Required when create_database_if_missing is set."
           }
         }
       },
@@ -4262,10 +4808,11 @@
             "smithy.api#documentation": "The name of the branch"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "new_name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name to update the branch",
+            "smithy.api#required": {}
           }
         }
       },
@@ -5098,6 +5645,44 @@
         }
       }
     },
+    "com.planetscale.api#CreateBackupRequestRetentionUnit": {
+      "type": "enum",
+      "members": {
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Unit for the retention period of the backup"
+      }
+    },
     "com.planetscale.api#CreateBackupRequest": {
       "type": "structure",
       "members": {
@@ -5125,10 +5710,28 @@
             "smithy.api#documentation": "The name of the branch"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name for the backup"
+          }
+        },
+        "retention_unit": {
+          "target": "com.planetscale.api#CreateBackupRequestRetentionUnit",
+          "traits": {
+            "smithy.api#documentation": "Unit for the retention period of the backup"
+          }
+        },
+        "retention_value": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Value between `1` and `1000` for the retention period of the backup (i.e retention_value `6` and retention_unit `hour` means 6 hours)"
+          }
+        },
+        "emergency": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the backup is an immediate backup that may affect database performance. Emergency backups are only supported for PostgreSQL databases."
           }
         }
       },
@@ -5761,10 +6364,10 @@
             "smithy.api#documentation": "The ID of the backup"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "protected": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether the backup is protected from deletion or not"
           }
         }
       },
@@ -6945,10 +7548,28 @@
             "smithy.api#documentation": "Branch name from `list_branches`. Example: `main`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The bouncer name"
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of server the bouncer targets"
+          }
+        },
+        "bouncer_size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size SKU for the bouncer"
+          }
+        },
+        "replicas_per_cell": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replica servers per cell"
           }
         }
       },
@@ -7659,6 +8280,18 @@
         }
       }
     },
+    "com.planetscale.api#UpdateBouncerResizeRequestRequestParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bouncer configuration parameters nested by namespace (e.g., {\"pgbouncer\": {\"default_pool_size\": \"100\"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated."
+      }
+    },
     "com.planetscale.api#UpdateBouncerResizeRequestRequest": {
       "type": "structure",
       "members": {
@@ -7694,10 +8327,22 @@
             "smithy.api#documentation": "The name of the bouncer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "bouncer_size": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The bouncer size SKU name (e.g., 'PGB_5', 'PGB_10', 'PGB_20', 'PGB_40', 'PGB_80', 'PGB_160'). Defaults to 'PGB_5'."
+          }
+        },
+        "replicas_per_cell": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of PgBouncers per availability zone. Defaults to 1."
+          }
+        },
+        "parameters": {
+          "target": "com.planetscale.api#UpdateBouncerResizeRequestRequestParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Bouncer configuration parameters nested by namespace (e.g., {\"pgbouncer\": {\"default_pool_size\": \"100\"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated."
           }
         }
       },
@@ -8584,6 +9229,54 @@
         }
       }
     },
+    "com.planetscale.api#UpdateBranchChangeRequestRequestParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster configuration parameters nested by namespace (e.g., {\"pgconf\": {\"max_connections\": \"200\"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'."
+      }
+    },
+    "com.planetscale.api#UpdateBranchChangeRequestRequestStorage": {
+      "type": "structure",
+      "members": {
+        "minimum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum storage size in bytes."
+          }
+        },
+        "maximum_storage_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum storage size in bytes for autoscaling."
+          }
+        },
+        "storage_autoscaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether storage autoscaling is enabled."
+          }
+        },
+        "storage_iops": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage IOPS."
+          }
+        },
+        "storage_throughput_mibs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage throughput in MiB/s."
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.planetscale.api#UpdateBranchChangeRequestRequest": {
       "type": "structure",
       "members": {
@@ -8611,11 +9304,26 @@
             "smithy.api#documentation": "Branch name from `list_branches`. Example: `main`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "cluster_size": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The size of the cluster. Available sizes can be found using the 'List cluster sizes' endpoint."
           }
+        },
+        "replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of replicas"
+          }
+        },
+        "parameters": {
+          "target": "com.planetscale.api#UpdateBranchChangeRequestRequestParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Cluster configuration parameters nested by namespace (e.g., {\"pgconf\": {\"max_connections\": \"200\"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'."
+          }
+        },
+        "storage": {
+          "target": "com.planetscale.api#UpdateBranchChangeRequestRequestStorage"
         }
       },
       "traits": {
@@ -9077,10 +9785,11 @@
             "smithy.api#documentation": "The name of the branch to configure"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "cluster_size": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The new size of the database cluster: PS_10, PS_20,…",
+            "smithy.api#required": {}
           }
         }
       },
@@ -15242,10 +15951,30 @@
             "smithy.api#documentation": "The name of the branch"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the keyspace",
+            "smithy.api#required": {}
+          }
+        },
+        "cluster_size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The database cluster size name (e.g., 'PS_10', 'PS_80'). Use the 'List available cluster sizes' endpoint to get available options for your organization. /v1/organizations/:organization/cluster-size-skus",
+            "smithy.api#required": {}
+          }
+        },
+        "extra_replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of additional replicas beyond the included default"
+          }
+        },
+        "shards": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of shards. Default: 1"
           }
         }
       },
@@ -16004,10 +16733,11 @@
             "smithy.api#documentation": "The name of the keyspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "vschema": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The new VSchema for the keyspace",
+            "smithy.api#required": {}
           }
         }
       },
@@ -16953,6 +17683,47 @@
         }
       }
     },
+    "com.planetscale.api#CreatePasswordRequestRole": {
+      "type": "enum",
+      "members": {
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reader"
+          }
+        },
+        "WRITER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "writer"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin"
+          }
+        },
+        "READWRITER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "readwriter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The database role of the password (i.e. admin)"
+      }
+    },
+    "com.planetscale.api#CreatePasswordRequestCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IP addresses or CIDR ranges that can use this password"
+      }
+    },
     "com.planetscale.api#CreatePasswordRequest": {
       "type": "structure",
       "members": {
@@ -16980,10 +17751,40 @@
             "smithy.api#documentation": "The name of the branch the password belongs to"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Optional name of the password"
+          }
+        },
+        "role": {
+          "target": "com.planetscale.api#CreatePasswordRequestRole",
+          "traits": {
+            "smithy.api#documentation": "The database role of the password (i.e. admin)"
+          }
+        },
+        "replica": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the password is for a read replica"
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to live (in seconds) for the password. The password will be invalid when TTL has passed"
+          }
+        },
+        "cidrs": {
+          "target": "com.planetscale.api#CreatePasswordRequestCidrsList",
+          "traits": {
+            "smithy.api#documentation": "List of IP addresses or CIDR ranges that can use this password"
+          }
+        },
+        "direct_vtgate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the password connects directly to a VTGate"
           }
         }
       },
@@ -17837,6 +18638,15 @@
         "smithy.api#documentation": "Get a password"
       }
     },
+    "com.planetscale.api#UpdatePasswordRequestCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IP addresses or CIDR ranges that can use this password"
+      }
+    },
     "com.planetscale.api#UpdatePasswordRequest": {
       "type": "structure",
       "members": {
@@ -17872,10 +18682,16 @@
             "smithy.api#documentation": "The ID of the password"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name for the password"
+          }
+        },
+        "cidrs": {
+          "target": "com.planetscale.api#UpdatePasswordRequestCidrsList",
+          "traits": {
+            "smithy.api#documentation": "List of IP addresses or CIDR ranges that can use this password"
           }
         }
       },
@@ -19323,6 +20139,99 @@
         }
       }
     },
+    "com.planetscale.api#CreateRoleRequestInheritedRolesItem": {
+      "type": "enum",
+      "members": {
+        "PSCALE_MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pscale_managed"
+          }
+        },
+        "PG_CHECKPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_checkpoint"
+          }
+        },
+        "PG_CREATE_SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_create_subscription"
+          }
+        },
+        "PG_MAINTAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_maintain"
+          }
+        },
+        "PG_MONITOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_monitor"
+          }
+        },
+        "PG_READ_ALL_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_read_all_data"
+          }
+        },
+        "PG_READ_ALL_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_read_all_settings"
+          }
+        },
+        "PG_READ_ALL_STATS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_read_all_stats"
+          }
+        },
+        "PG_SIGNAL_BACKEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_signal_backend"
+          }
+        },
+        "PG_STAT_SCAN_TABLES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_stat_scan_tables"
+          }
+        },
+        "PG_USE_RESERVED_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_use_reserved_connections"
+          }
+        },
+        "PG_WRITE_ALL_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pg_write_all_data"
+          }
+        },
+        "POSTGRES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postgres"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.planetscale.api#CreateRoleRequestInheritedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.planetscale.api#CreateRoleRequestInheritedRolesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles to inherit from"
+      }
+    },
     "com.planetscale.api#CreateRoleRequest": {
       "type": "structure",
       "members": {
@@ -19350,10 +20259,40 @@
             "smithy.api#documentation": "Branch name from `list_branches`. Example: `main`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the role"
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to live in seconds"
+          }
+        },
+        "inherited_roles": {
+          "target": "com.planetscale.api#CreateRoleRequestInheritedRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles to inherit from"
+          }
+        },
+        "with_replication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the role should have the REPLICATION attribute"
+          }
+        },
+        "require_where_on_delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Require WHERE clause on DELETE statements"
+          }
+        },
+        "require_where_on_update": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Require WHERE clause on UPDATE statements"
           }
         }
       },
@@ -19888,43 +20827,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.planetscale.api#ResetDefaultRoleResponse": {
-      "type": "structure",
-      "members": {
-        "username": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The database user name",
-            "smithy.api#required": {}
-          }
-        },
-        "password": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The plaintext password",
-            "smithy.api#required": {},
-            "smithy.api#sensitive": {}
-          }
-        },
-        "access_host_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The database connection host",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
     "com.planetscale.api#ResetDefaultRole": {
       "type": "operation",
       "input": {
         "target": "com.planetscale.api#ResetDefaultRoleRequest"
       },
       "output": {
-        "target": "com.planetscale.api#ResetDefaultRoleResponse"
+        "target": "com.planetscale.api#PostgresRole"
       },
       "errors": [
         {
@@ -20043,10 +20952,22 @@
             "smithy.api#documentation": "The ID of the role"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The new name of the role"
+          }
+        },
+        "require_where_on_delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Require WHERE clause on DELETE statements"
+          }
+        },
+        "require_where_on_update": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Require WHERE clause on UPDATE statements"
           }
         }
       },
@@ -20189,10 +21110,11 @@
             "smithy.api#documentation": "The ID of the role"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "successor": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The role to reassign ownership to",
+            "smithy.api#required": {}
           }
         }
       },
@@ -20997,6 +21919,41 @@
         }
       }
     },
+    "com.planetscale.api#CreateTrafficBudgetRequestMode": {
+      "type": "enum",
+      "members": {
+        "ENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enforce"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of the traffic budget"
+      }
+    },
+    "com.planetscale.api#CreateTrafficBudgetRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of traffic rules to apply to the budget"
+      }
+    },
     "com.planetscale.api#CreateTrafficBudgetRequest": {
       "type": "structure",
       "members": {
@@ -21024,10 +21981,52 @@
             "smithy.api#documentation": "Branch name from `list_branches`. Example: `main`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name of the traffic budget"
+          }
+        },
+        "mode": {
+          "target": "com.planetscale.api#CreateTrafficBudgetRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of the traffic budget"
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set."
+          }
+        },
+        "rate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set."
+          }
+        },
+        "burst": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set."
+          }
+        },
+        "concurrency": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The percentage of available worker processes this policy can use (0-100). Unlimited when not set."
+          }
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100)."
+          }
+        },
+        "rules": {
+          "target": "com.planetscale.api#CreateTrafficBudgetRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "Array of traffic rules to apply to the budget"
           }
         }
       },
@@ -21383,6 +22382,35 @@
         "smithy.api#documentation": "Create a traffic budget"
       }
     },
+    "com.planetscale.api#CreateTrafficRuleRequestKind": {
+      "type": "enum",
+      "members": {
+        "MATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "match"
+          }
+        },
+        "EACH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "each"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of rule"
+      }
+    },
+    "com.planetscale.api#CreateTrafficRuleRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional array of tags for this rule. Each rules take exactly one tag."
+      }
+    },
     "com.planetscale.api#CreateTrafficRuleRequest": {
       "type": "structure",
       "members": {
@@ -21418,10 +22446,28 @@
             "smithy.api#documentation": "The ID of the traffic budget"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.planetscale.api#CreateTrafficRuleRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Kind of rule"
+          }
+        },
+        "keyspace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The keyspace to apply a query pattern rule to"
+          }
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query pattern fingerprint to apply rule to"
+          }
+        },
+        "tags": {
+          "target": "com.planetscale.api#CreateTrafficRuleRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Optional array of tags for this rule. Each rules take exactly one tag."
           }
         }
       },
@@ -21767,6 +22813,41 @@
         "smithy.api#documentation": "Get a traffic budget"
       }
     },
+    "com.planetscale.api#UpdateTrafficBudgetRequestMode": {
+      "type": "enum",
+      "members": {
+        "ENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enforce"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of the traffic budget"
+      }
+    },
+    "com.planetscale.api#UpdateTrafficBudgetRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of traffic rules to apply to the budget"
+      }
+    },
     "com.planetscale.api#UpdateTrafficBudgetRequest": {
       "type": "structure",
       "members": {
@@ -21802,10 +22883,52 @@
             "smithy.api#documentation": "The ID of the traffic budget"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name of the traffic budget"
+          }
+        },
+        "mode": {
+          "target": "com.planetscale.api#UpdateTrafficBudgetRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of the traffic budget"
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set."
+          }
+        },
+        "rate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set."
+          }
+        },
+        "burst": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set."
+          }
+        },
+        "concurrency": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The percentage of available worker processes this policy can use (0-100). Unlimited when not set."
+          }
+        },
+        "warning_threshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100)."
+          }
+        },
+        "rules": {
+          "target": "com.planetscale.api#UpdateTrafficBudgetRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "Array of traffic rules to apply to the budget"
           }
         }
       },
@@ -22138,6 +23261,15 @@
         }
       }
     },
+    "com.planetscale.api#CreateDatabasePostgresCidrRequestCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range."
+      }
+    },
     "com.planetscale.api#CreateDatabasePostgresCidrRequest": {
       "type": "structure",
       "members": {
@@ -22157,10 +23289,23 @@
             "smithy.api#documentation": "The name of the database"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "schema": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The PostgreSQL schema to restrict access to. Leave empty or omit to allow access to all schemas."
+          }
+        },
+        "role": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PostgreSQL role to restrict access to. Leave empty or omit to allow access for all roles."
+          }
+        },
+        "cidrs": {
+          "target": "com.planetscale.api#CreateDatabasePostgresCidrRequestCidrsList",
+          "traits": {
+            "smithy.api#documentation": "List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -22354,6 +23499,15 @@
         "smithy.api#documentation": "Get an IP restriction entry"
       }
     },
+    "com.planetscale.api#UpdateDatabasePostgresCidrRequestCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated."
+      }
+    },
     "com.planetscale.api#UpdateDatabasePostgresCidrRequest": {
       "type": "structure",
       "members": {
@@ -22381,10 +23535,22 @@
             "smithy.api#documentation": "The ID of the IP restriction entry"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "schema": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The PostgreSQL schema to restrict access to. Leave empty to allow access to all schemas."
+          }
+        },
+        "role": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PostgreSQL role to restrict access to. Leave empty to allow access for all roles."
+          }
+        },
+        "cidrs": {
+          "target": "com.planetscale.api#UpdateDatabasePostgresCidrRequestCidrsList",
+          "traits": {
+            "smithy.api#documentation": "List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated."
           }
         }
       },
@@ -25371,10 +26537,36 @@
             "smithy.api#documentation": "The name of the deploy request's database"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "branch": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the branch the deploy request is created from",
+            "smithy.api#required": {}
+          }
+        },
+        "into_branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the branch the deploy request will be merged into",
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Notes about the deploy request"
+          }
+        },
+        "auto_cutover": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to enable auto_cutover for the deploy request. When enabled, will auto cutover to the new schema as soon as it is ready."
+          }
+        },
+        "auto_delete_branch": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to enable auto_delete_branch for the deploy request. When enabled, will delete the branch once the DR successfully completes."
           }
         }
       },
@@ -26953,6 +28145,20 @@
         "smithy.api#documentation": "Get a deploy request"
       }
     },
+    "com.planetscale.api#CloseDeployRequestRequestState": {
+      "type": "enum",
+      "members": {
+        "CLOSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deploy request will be updated to this state"
+      }
+    },
     "com.planetscale.api#CloseDeployRequestRequest": {
       "type": "structure",
       "members": {
@@ -26980,10 +28186,10 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "state": {
+          "target": "com.planetscale.api#CloseDeployRequestRequestState",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The deploy request will be updated to this state"
           }
         }
       },
@@ -27100,10 +28306,10 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "enable": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether or not to enable auto-apply for the deploy request"
           }
         }
       },
@@ -27163,10 +28369,10 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "enable": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether or not to enable auto-delete branch for the deploy request"
           }
         }
       },
@@ -27340,10 +28546,10 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "instant_ddl": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether or not to deploy the request with instant DDL. Defaults to false."
           }
         }
       },
@@ -29211,6 +30417,26 @@
         }
       }
     },
+    "com.planetscale.api#ReviewDeployRequestRequestState": {
+      "type": "enum",
+      "members": {
+        "COMMENTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "commented"
+          }
+        },
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "approved"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`)"
+      }
+    },
     "com.planetscale.api#ReviewDeployRequestRequest": {
       "type": "structure",
       "members": {
@@ -29238,10 +30464,16 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "state": {
+          "target": "com.planetscale.api#ReviewDeployRequestRequestState",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`)"
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deploy request review comments"
           }
         }
       },
@@ -29751,6 +30983,15 @@
         "smithy.api#documentation": "Get deploy request throttler configurations"
       }
     },
+    "com.planetscale.api#UpdateDeployRequestThrottlerRequestConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "If specifying throttler ratios per keyspace, an array of { \"keyspace_name\": \"mykeyspace\", \"ratio\": 10 }, one for each eligible keyspace"
+      }
+    },
     "com.planetscale.api#UpdateDeployRequestThrottlerRequest": {
       "type": "structure",
       "members": {
@@ -29778,10 +31019,16 @@
             "smithy.api#documentation": "The number of the deploy request"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ratio": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "A throttler ratio between 0 and 95 that will apply to all keyspaces affected by the deploy request. 0 effectively disables throttler, while 95 drastically slows down migrations in the deploy request"
+          }
+        },
+        "configurations": {
+          "target": "com.planetscale.api#UpdateDeployRequestThrottlerRequestConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "If specifying throttler ratios per keyspace, an array of { \"keyspace_name\": \"mykeyspace\", \"ratio\": 10 }, one for each eligible keyspace"
           }
         }
       },
@@ -31845,10 +33092,10 @@
             "smithy.api#documentation": "Schema recommendation sequence number. Example: `42`."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "reason": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The reason for dismissing the recommendation (max 500 characters)"
           }
         }
       },
@@ -31930,6 +33177,15 @@
         "smithy.api#documentation": "Get database throttler configurations"
       }
     },
+    "com.planetscale.api#UpdateDatabaseThrottlerRequestConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "If specifying throttler ratios per keyspace, an array of { \"keyspace_name\": \"mykeyspace\", \"ratio\": 10 }, one for each eligible keyspace"
+      }
+    },
     "com.planetscale.api#UpdateDatabaseThrottlerRequest": {
       "type": "structure",
       "members": {
@@ -31949,10 +33205,16 @@
             "smithy.api#documentation": "The name of the database that the throttled deploy requests belong to"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ratio": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "A throttler ratio between 0 and 95 that will apply to all keyspaces in the database. 0 effectively disables throttler, while 95 drastically slows down deploy request migrations"
+          }
+        },
+        "configurations": {
+          "target": "com.planetscale.api#UpdateDatabaseThrottlerRequestConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "If specifying throttler ratios per keyspace, an array of { \"keyspace_name\": \"mykeyspace\", \"ratio\": 10 }, one for each eligible keyspace"
           }
         }
       },
@@ -32328,6 +33590,15 @@
         }
       }
     },
+    "com.planetscale.api#CreateWebhookRequestEventsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The events this webhook should subscribe to"
+      }
+    },
     "com.planetscale.api#CreateWebhookRequest": {
       "type": "structure",
       "members": {
@@ -32347,10 +33618,23 @@
             "smithy.api#documentation": "The name of the database"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The URL the webhook will send events to",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the webhook should be enabled"
+          }
+        },
+        "events": {
+          "target": "com.planetscale.api#CreateWebhookRequestEventsList",
+          "traits": {
+            "smithy.api#documentation": "The events this webhook should subscribe to"
           }
         }
       },
@@ -32649,6 +33933,15 @@
         "smithy.api#documentation": "Get a webhook"
       }
     },
+    "com.planetscale.api#UpdateWebhookRequestEventsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The events this webhook should subscribe to"
+      }
+    },
     "com.planetscale.api#UpdateWebhookRequest": {
       "type": "structure",
       "members": {
@@ -32676,10 +33969,22 @@
             "smithy.api#documentation": "The ID of the webhook"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "url": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The URL the webhook will send events to"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the webhook should be enabled"
+          }
+        },
+        "events": {
+          "target": "com.planetscale.api#UpdateWebhookRequestEventsList",
+          "traits": {
+            "smithy.api#documentation": "The events this webhook should subscribe to"
           }
         }
       },
@@ -33862,6 +35167,47 @@
         }
       }
     },
+    "com.planetscale.api#CreateWorkflowRequestOnDdl": {
+      "type": "enum",
+      "members": {
+        "IGNORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IGNORE"
+          }
+        },
+        "STOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STOP"
+          }
+        },
+        "EXEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXEC"
+          }
+        },
+        "EXEC_IGNORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXEC_IGNORE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The behavior when DDL changes during the workflow"
+      }
+    },
+    "com.planetscale.api#CreateWorkflowRequestTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tables to move"
+      }
+    },
     "com.planetscale.api#CreateWorkflowRequest": {
       "type": "structure",
       "members": {
@@ -33881,10 +35227,50 @@
             "smithy.api#documentation": "The name of the database the workflow belongs to"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Name the workflow",
+            "smithy.api#required": {}
+          }
+        },
+        "source_keyspace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the source keyspace",
+            "smithy.api#required": {}
+          }
+        },
+        "target_keyspace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the target keyspace",
+            "smithy.api#required": {}
+          }
+        },
+        "global_keyspace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the global sequence keyspace"
+          }
+        },
+        "defer_secondary_keys": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Defer secondary keys"
+          }
+        },
+        "on_ddl": {
+          "target": "com.planetscale.api#CreateWorkflowRequestOnDdl",
+          "traits": {
+            "smithy.api#documentation": "The behavior when DDL changes during the workflow"
+          }
+        },
+        "tables": {
+          "target": "com.planetscale.api#CreateWorkflowRequestTablesList",
+          "traits": {
+            "smithy.api#documentation": "List of tables to move",
+            "smithy.api#required": {}
           }
         }
       },
@@ -36487,10 +37873,11 @@
             "smithy.api#documentation": "The ID of the user"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "role": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The role to assign to the member (e.g., 'admin', 'member'). Note: Cannot update your own role. Roles managed by IdP cannot be updated via API.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -38432,6 +39819,26 @@
         "smithy.api#documentation": "Delete an OAuth token"
       }
     },
+    "com.planetscale.api#CreateOauthTokenRequestGrantType": {
+      "type": "enum",
+      "members": {
+        "AUTHORIZATION_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authorization_code"
+          }
+        },
+        "REFRESH_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "refresh_token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token"
+      }
+    },
     "com.planetscale.api#CreateOauthTokenRequest": {
       "type": "structure",
       "members": {
@@ -38451,10 +39858,45 @@
             "smithy.api#documentation": "The ID of the OAuth application"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "client_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The OAuth application's client ID",
+            "smithy.api#required": {}
+          }
+        },
+        "client_secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OAuth application's client secret",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "grant_type": {
+          "target": "com.planetscale.api#CreateOauthTokenRequestGrantType",
+          "traits": {
+            "smithy.api#documentation": "Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token",
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OAuth grant code provided to your OAuth application's redirect URI. Required when grant_type is authorization_code"
+          }
+        },
+        "redirect_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OAuth application's redirect URI. Required when grant_type is authorization_code"
+          }
+        },
+        "refresh_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The refresh token from the original OAuth token grant. Required when grant_type is refresh_token",
+            "smithy.api#sensitive": {}
           }
         }
       },
@@ -38623,10 +40065,16 @@
             "smithy.api#documentation": "The name of the organization"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the service token"
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to live (in seconds) for the service token. The token will be invalid when TTL has passed"
           }
         }
       },
@@ -39248,10 +40696,17 @@
             "smithy.api#documentation": "The name of the organization"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the team",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the team's purpose"
           }
         }
       },
@@ -39705,10 +41160,16 @@
             "smithy.api#documentation": "The slug of the team"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The new name for the team"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new description for the team"
           }
         }
       },
@@ -40555,10 +42016,11 @@
             "smithy.api#documentation": "The slug of the team"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "user_id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The ID of the organization member to add to the team",
+            "smithy.api#required": {}
           }
         }
       },
@@ -42009,10 +43471,16 @@
             "smithy.api#documentation": "The name of the keyspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "cluster_size": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The new cluster size for the keyspace: PS_10, PS_20,…"
+          }
+        },
+        "extra_replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of additional replicas per shard beyond the cluster size's included default (each production cluster includes 2 replicas)"
           }
         }
       },

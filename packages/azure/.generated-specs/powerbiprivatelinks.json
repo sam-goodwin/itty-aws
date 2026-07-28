@@ -412,11 +412,10 @@
             "smithy.api#documentation": "The name of the private endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.powerbiprivatelinks#PrivateEndpointConnectionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the properties of the private endpoint connection."
           }
         }
       },
@@ -1070,17 +1069,79 @@
             "smithy.api#documentation": "The name of the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbiprivatelinks#TenantPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.powerbiprivatelinks#PowerBIResourcesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Specifies the tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.powerbiprivatelinks#PowerBIResourcesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the tags of the resource."
+      }
+    },
+    "com.azure.powerbiprivatelinks#TenantPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the tenant id of the resource."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.powerbiprivatelinks#TenantPropertiesInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the private endpoint connections of the resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.powerbiprivatelinks#TenantPropertiesInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.powerbiprivatelinks#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the private endpoint connections of the resource."
+      }
+    },
+    "com.azure.powerbiprivatelinks#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.powerbiprivatelinks#PrivateEndpointConnectionProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties of the private endpoint connection."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.powerbiprivatelinks#PowerBIResourcesCreate": {
       "type": "operation",
@@ -1128,16 +1189,39 @@
             "smithy.api#documentation": "The name of the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbiprivatelinks#TenantPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.powerbiprivatelinks#PowerBIResourcesCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Specifies the tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbiprivatelinks#PowerBIResourcesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the tags of the resource."
       }
     },
     "com.azure.powerbiprivatelinks#PowerBIResourcesListByResourceName": {

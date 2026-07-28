@@ -95,7 +95,10 @@
           }
         },
         "user": {
-          "target": "com.posthog.max#UserBasic"
+          "target": "com.posthog.max#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String",
@@ -928,7 +931,10 @@
           }
         },
         "user": {
-          "target": "com.posthog.max#UserBasic"
+          "target": "com.posthog.max#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String",
@@ -1170,42 +1176,6 @@
         "smithy.api#documentation": "Appends a message to an existing conversation without triggering AI processing.\nThis is used for client-side generated messages that need to be persisted\n(e.g., support ticket confirmation messages)."
       }
     },
-    "com.posthog.max#ConversationsCancelPartialUpdateRequestMessagesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsCancelPartialUpdateRequestMessagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsCancelPartialUpdateRequestMessagesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsCancelPartialUpdateRequestPendingApprovalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-      }
-    },
     "com.posthog.max#ConversationsCancelPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1223,98 +1193,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this conversation."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "status": {
-          "target": "com.posthog.max#ConversationStatus"
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the conversation.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "topic": {
-          "target": "com.posthog.max#TopicEnum",
-          "traits": {
-            "smithy.api#documentation": "Product domain the conversation is about, classified from the first question.\n\n* `web_analytics` - Web analytics\n* `product_analytics` - Product analytics\n* `session_replay` - Session replay\n* `surveys` - Surveys\n* `feature_flags` - Feature flags\n* `experiments` - Experiments\n* `error_tracking` - Error tracking\n* `data_warehouse` - Data warehouse\n* `other` - Other",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user": {
-          "target": "com.posthog.max#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "com.posthog.max#ConversationType"
-        },
-        "is_internal": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}'",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_workspace_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "messages": {
-          "target": "com.posthog.max#ConversationsCancelPartialUpdateRequestMessagesList"
-        },
-        "has_unsupported_content": {
-          "target": "smithy.api#Boolean"
-        },
-        "agent_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "agent_runtime": {
-          "target": "com.posthog.max#AgentRuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.\n\n* `langgraph` - LangGraph\n* `sandbox` - Sandbox"
-          }
-        },
-        "is_sandbox": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_approvals": {
-          "target": "com.posthog.max#ConversationsCancelPartialUpdateRequestPendingApprovalsList",
-          "traits": {
-            "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-          }
-        },
-        "task": {
-          "target": "com.posthog.max#ConversationTask",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1641,42 +1519,6 @@
         }
       }
     },
-    "com.posthog.max#ConversationsQueueCreateRequestMessagesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueCreateRequestMessagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueueCreateRequestMessagesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueCreateRequestPendingApprovalsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueCreateRequestPendingApprovalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueueCreateRequestPendingApprovalsItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-      }
-    },
     "com.posthog.max#ConversationsQueueCreateRequest": {
       "type": "structure",
       "members": {
@@ -1694,98 +1536,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this conversation."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "status": {
-          "target": "com.posthog.max#ConversationStatus"
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the conversation.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "topic": {
-          "target": "com.posthog.max#TopicEnum",
-          "traits": {
-            "smithy.api#documentation": "Product domain the conversation is about, classified from the first question.\n\n* `web_analytics` - Web analytics\n* `product_analytics` - Product analytics\n* `session_replay` - Session replay\n* `surveys` - Surveys\n* `feature_flags` - Feature flags\n* `experiments` - Experiments\n* `error_tracking` - Error tracking\n* `data_warehouse` - Data warehouse\n* `other` - Other",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user": {
-          "target": "com.posthog.max#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "com.posthog.max#ConversationType"
-        },
-        "is_internal": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}'",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_workspace_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "messages": {
-          "target": "com.posthog.max#ConversationsQueueCreateRequestMessagesList"
-        },
-        "has_unsupported_content": {
-          "target": "smithy.api#Boolean"
-        },
-        "agent_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "agent_runtime": {
-          "target": "com.posthog.max#AgentRuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.\n\n* `langgraph` - LangGraph\n* `sandbox` - Sandbox"
-          }
-        },
-        "is_sandbox": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_approvals": {
-          "target": "com.posthog.max#ConversationsQueueCreateRequestPendingApprovalsList",
-          "traits": {
-            "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-          }
-        },
-        "task": {
-          "target": "com.posthog.max#ConversationTask",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1807,42 +1557,6 @@
           "uri": "/api/projects/{project_id}/conversations/{conversation}/queue/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.max#ConversationsQueuePartialUpdateRequestMessagesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueuePartialUpdateRequestMessagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueuePartialUpdateRequestMessagesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueuePartialUpdateRequestPendingApprovalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
       }
     },
     "com.posthog.max#ConversationsQueuePartialUpdateRequest": {
@@ -1869,98 +1583,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "status": {
-          "target": "com.posthog.max#ConversationStatus"
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the conversation.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "topic": {
-          "target": "com.posthog.max#TopicEnum",
-          "traits": {
-            "smithy.api#documentation": "Product domain the conversation is about, classified from the first question.\n\n* `web_analytics` - Web analytics\n* `product_analytics` - Product analytics\n* `session_replay` - Session replay\n* `surveys` - Surveys\n* `feature_flags` - Feature flags\n* `experiments` - Experiments\n* `error_tracking` - Error tracking\n* `data_warehouse` - Data warehouse\n* `other` - Other",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user": {
-          "target": "com.posthog.max#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "com.posthog.max#ConversationType"
-        },
-        "is_internal": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}'",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_workspace_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "messages": {
-          "target": "com.posthog.max#ConversationsQueuePartialUpdateRequestMessagesList"
-        },
-        "has_unsupported_content": {
-          "target": "smithy.api#Boolean"
-        },
-        "agent_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "agent_runtime": {
-          "target": "com.posthog.max#AgentRuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.\n\n* `langgraph` - LangGraph\n* `sandbox` - Sandbox"
-          }
-        },
-        "is_sandbox": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_approvals": {
-          "target": "com.posthog.max#ConversationsQueuePartialUpdateRequestPendingApprovalsList",
-          "traits": {
-            "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-          }
-        },
-        "task": {
-          "target": "com.posthog.max#ConversationTask",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2031,42 +1653,6 @@
         }
       }
     },
-    "com.posthog.max#ConversationsQueueClearCreateRequestMessagesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueClearCreateRequestMessagesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueueClearCreateRequestMessagesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueClearCreateRequestPendingApprovalsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.max#ConversationsQueueClearCreateRequestPendingApprovalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.max#ConversationsQueueClearCreateRequestPendingApprovalsItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-      }
-    },
     "com.posthog.max#ConversationsQueueClearCreateRequest": {
       "type": "structure",
       "members": {
@@ -2084,98 +1670,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this conversation."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "status": {
-          "target": "com.posthog.max#ConversationStatus"
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the conversation.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "topic": {
-          "target": "com.posthog.max#TopicEnum",
-          "traits": {
-            "smithy.api#documentation": "Product domain the conversation is about, classified from the first question.\n\n* `web_analytics` - Web analytics\n* `product_analytics` - Product analytics\n* `session_replay` - Session replay\n* `surveys` - Surveys\n* `feature_flags` - Feature flags\n* `experiments` - Experiments\n* `error_tracking` - Error tracking\n* `data_warehouse` - Data warehouse\n* `other` - Other",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user": {
-          "target": "com.posthog.max#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "com.posthog.max#ConversationType"
-        },
-        "is_internal": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}'",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_workspace_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "messages": {
-          "target": "com.posthog.max#ConversationsQueueClearCreateRequestMessagesList"
-        },
-        "has_unsupported_content": {
-          "target": "smithy.api#Boolean"
-        },
-        "agent_mode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "agent_runtime": {
-          "target": "com.posthog.max#AgentRuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`.\n\n* `langgraph` - LangGraph\n* `sandbox` - Sandbox"
-          }
-        },
-        "is_sandbox": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_approvals": {
-          "target": "com.posthog.max#ConversationsQueueClearCreateRequestPendingApprovalsList",
-          "traits": {
-            "smithy.api#documentation": "Return pending approval cards as structured data.\n\nCombines metadata from conversation.approval_decisions with payload from checkpoint\ninterrupts (single source of truth for payload data)."
-          }
-        },
-        "task": {
-          "target": "com.posthog.max#ConversationTask",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

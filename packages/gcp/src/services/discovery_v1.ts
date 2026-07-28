@@ -102,7 +102,7 @@ export const RestDescriptionAuth = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestDescriptionAuth",
 }) as any as S.Schema<RestDescriptionAuth>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -119,7 +119,7 @@ export const JsonSchemaAnnotations = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonSchemaAnnotations",
 }) as any as S.Schema<JsonSchemaAnnotations>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -137,7 +137,8 @@ export const JsonSchemaVariantMapItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsonSchemaVariantMapItem",
 }) as any as S.Schema<JsonSchemaVariantMapItem>;
 
-export type JsonSchemaVariantMapItemList = JsonSchemaVariantMapItem[];
+export type JsonSchemaVariantMapItemList =
+  ReadonlyArray<JsonSchemaVariantMapItem>;
 export const JsonSchemaVariantMapItemList = /*@__PURE__*/ S.Array(
   JsonSchemaVariantMapItem,
 ) as any as S.Schema<JsonSchemaVariantMapItemList>;
@@ -438,7 +439,8 @@ export const RestDescriptionEndpointsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestDescriptionEndpointsItem",
 }) as any as S.Schema<RestDescriptionEndpointsItem>;
 
-export type RestDescriptionEndpointsItemList = RestDescriptionEndpointsItem[];
+export type RestDescriptionEndpointsItemList =
+  ReadonlyArray<RestDescriptionEndpointsItem>;
 export const RestDescriptionEndpointsItemList = /*@__PURE__*/ S.Array(
   RestDescriptionEndpointsItem,
 ) as any as S.Schema<RestDescriptionEndpointsItemList>;
@@ -640,7 +642,7 @@ export const DirectoryListItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryListItemsItem",
 }) as any as S.Schema<DirectoryListItemsItem>;
 
-export type DirectoryListItemsItemList = DirectoryListItemsItem[];
+export type DirectoryListItemsItemList = ReadonlyArray<DirectoryListItemsItem>;
 export const DirectoryListItemsItemList = /*@__PURE__*/ S.Array(
   DirectoryListItemsItem,
 ) as any as S.Schema<DirectoryListItemsItemList>;

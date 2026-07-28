@@ -69,13 +69,12 @@ export type ComputeFoldersContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
+  | "TECHNICAL_INCIDENTS";
 export const ComputeFoldersContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeFoldersContactsNotificationCategoriesEnumList =
-  ComputeFoldersContactsNotificationCategoriesEnum[];
+  ReadonlyArray<ComputeFoldersContactsNotificationCategoriesEnum>;
 export const ComputeFoldersContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeFoldersContactsNotificationCategoriesEnum,
@@ -119,13 +118,12 @@ export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptio
     | "BILLING"
     | "LEGAL"
     | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS"
-    | (string & {});
+    | "TECHNICAL_INCIDENTS";
 export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
-  GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum[];
+  ReadonlyArray<GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum>;
 export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscriptionsItemEnum,
@@ -134,8 +132,7 @@ export const GoogleCloudEssentialcontactsV1ContactNotificationCategorySubscripti
 export type GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
   | "VALIDATION_STATE_UNSPECIFIED"
   | "VALID"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const GoogleCloudEssentialcontactsV1ContactValidationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -173,7 +170,7 @@ export const GoogleCloudEssentialcontactsV1Contact = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>;
 
 export type GoogleCloudEssentialcontactsV1ContactList =
-  GoogleCloudEssentialcontactsV1Contact[];
+  ReadonlyArray<GoogleCloudEssentialcontactsV1Contact>;
 export const GoogleCloudEssentialcontactsV1ContactList = /*@__PURE__*/ S.Array(
   GoogleCloudEssentialcontactsV1Contact,
 ) as any as S.Schema<GoogleCloudEssentialcontactsV1ContactList>;
@@ -204,13 +201,12 @@ export type ComputeOrganizationsContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
+  | "TECHNICAL_INCIDENTS";
 export const ComputeOrganizationsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeOrganizationsContactsNotificationCategoriesEnumList =
-  ComputeOrganizationsContactsNotificationCategoriesEnum[];
+  ReadonlyArray<ComputeOrganizationsContactsNotificationCategoriesEnum>;
 export const ComputeOrganizationsContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeOrganizationsContactsNotificationCategoriesEnum,
@@ -256,13 +252,12 @@ export type ComputeProjectsContactsNotificationCategoriesEnum =
   | "BILLING"
   | "LEGAL"
   | "PRODUCT_UPDATES"
-  | "TECHNICAL_INCIDENTS"
-  | (string & {});
+  | "TECHNICAL_INCIDENTS";
 export const ComputeProjectsContactsNotificationCategoriesEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeProjectsContactsNotificationCategoriesEnumList =
-  ComputeProjectsContactsNotificationCategoriesEnum[];
+  ReadonlyArray<ComputeProjectsContactsNotificationCategoriesEnum>;
 export const ComputeProjectsContactsNotificationCategoriesEnumList =
   /*@__PURE__*/ S.Array(
     ComputeProjectsContactsNotificationCategoriesEnum,
@@ -637,7 +632,7 @@ export const PatchProjectsContactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsContactsRequest",
 }) as any as S.Schema<PatchProjectsContactsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -651,8 +646,7 @@ export type GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCate
     | "BILLING"
     | "LEGAL"
     | "PRODUCT_UPDATES"
-    | "TECHNICAL_INCIDENTS"
-    | (string & {});
+    | "TECHNICAL_INCIDENTS";
 export const GoogleCloudEssentialcontactsV1SendTestMessageRequestNotificationCategoryEnum =
   /*@__PURE__*/ S.String;
 

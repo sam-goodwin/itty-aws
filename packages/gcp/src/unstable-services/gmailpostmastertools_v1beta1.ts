@@ -58,8 +58,7 @@ export type DomainPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
   | "OWNER"
   | "READER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** A registered domain resource in the Postmaster API. */
@@ -111,12 +110,12 @@ export const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedbackLoop" }) as any as S.Schema<FeedbackLoop>;
 
-export type FeedbackLoopList = FeedbackLoop[];
+export type FeedbackLoopList = ReadonlyArray<FeedbackLoop>;
 export const FeedbackLoopList = /*@__PURE__*/ S.Array(
   FeedbackLoop,
 ) as any as S.Schema<FeedbackLoopList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -126,8 +125,7 @@ export type IpReputationReputationEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BAD"
-  | (string & {});
+  | "BAD";
 export const IpReputationReputationEnum = /*@__PURE__*/ S.String;
 
 /** IP Reputation information for a set of IPs in a specific reputation category. */
@@ -150,7 +148,7 @@ export const IpReputation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpReputation" }) as any as S.Schema<IpReputation>;
 
-export type IpReputationList = IpReputation[];
+export type IpReputationList = ReadonlyArray<IpReputation>;
 export const IpReputationList = /*@__PURE__*/ S.Array(
   IpReputation,
 ) as any as S.Schema<IpReputationList>;
@@ -166,15 +164,13 @@ export type DeliveryErrorErrorTypeEnum =
   | "LOW_DOMAIN_REPUTATION"
   | "IP_IN_RBL"
   | "DOMAIN_IN_RBL"
-  | "BAD_PTR_RECORD"
-  | (string & {});
+  | "BAD_PTR_RECORD";
 export const DeliveryErrorErrorTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeliveryErrorErrorClassEnum =
   | "DELIVERY_ERROR_CLASS_UNSPECIFIED"
   | "PERMANENT_ERROR"
-  | "TEMPORARY_ERROR"
-  | (string & {});
+  | "TEMPORARY_ERROR";
 export const DeliveryErrorErrorClassEnum = /*@__PURE__*/ S.String;
 
 /** Metric on a particular delivery error type. */
@@ -194,7 +190,7 @@ export const DeliveryError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeliveryError" }) as any as S.Schema<DeliveryError>;
 
-export type DeliveryErrorList = DeliveryError[];
+export type DeliveryErrorList = ReadonlyArray<DeliveryError>;
 export const DeliveryErrorList = /*@__PURE__*/ S.Array(
   DeliveryError,
 ) as any as S.Schema<DeliveryErrorList>;
@@ -204,8 +200,7 @@ export type TrafficStatsDomainReputationEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BAD"
-  | (string & {});
+  | "BAD";
 export const TrafficStatsDomainReputationEnum = /*@__PURE__*/ S.String;
 
 /** Email traffic statistics pertaining to a specific date. */
@@ -276,7 +271,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
 
-export type DomainList = Domain[];
+export type DomainList = ReadonlyArray<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -339,7 +334,7 @@ export const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsTrafficStatsRequest",
 }) as any as S.Schema<ListDomainsTrafficStatsRequest>;
 
-export type TrafficStatsList = TrafficStats[];
+export type TrafficStatsList = ReadonlyArray<TrafficStats>;
 export const TrafficStatsList = /*@__PURE__*/ S.Array(
   TrafficStats,
 ) as any as S.Schema<TrafficStatsList>;

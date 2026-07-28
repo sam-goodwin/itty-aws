@@ -163,11 +163,7 @@ export const DeleteCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCalendarsResponse",
 }) as any as S.Schema<DeleteCalendarsResponse>;
 
-export type DeleteEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type DeleteEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const DeleteEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteEventsRequest {
@@ -276,7 +272,7 @@ export const GetCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCalendarListRequest",
 }) as any as S.Schema<GetCalendarListRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -306,7 +302,7 @@ export const EventReminder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventReminder" }) as any as S.Schema<EventReminder>;
 
-export type EventReminderList = EventReminder[];
+export type EventReminderList = ReadonlyArray<EventReminder>;
 export const EventReminderList = /*@__PURE__*/ S.Array(
   EventReminder,
 ) as any as S.Schema<EventReminderList>;
@@ -326,7 +322,7 @@ export const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
   identifier: "CalendarNotification",
 }) as any as S.Schema<CalendarNotification>;
 
-export type CalendarNotificationList = CalendarNotification[];
+export type CalendarNotificationList = ReadonlyArray<CalendarNotification>;
 export const CalendarNotificationList = /*@__PURE__*/ S.Array(
   CalendarNotification,
 ) as any as S.Schema<CalendarNotificationList>;
@@ -450,7 +446,7 @@ export const EventLabel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventLabel" }) as any as S.Schema<EventLabel>;
 
-export type EventLabelList = EventLabel[];
+export type EventLabelList = ReadonlyArray<EventLabel>;
 export const EventLabelList = /*@__PURE__*/ S.Array(
   EventLabel,
 ) as any as S.Schema<EventLabelList>;
@@ -614,7 +610,7 @@ export const EventAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventAttachment",
 }) as any as S.Schema<EventAttachment>;
 
-export type EventAttachmentList = EventAttachment[];
+export type EventAttachmentList = ReadonlyArray<EventAttachment>;
 export const EventAttachmentList = /*@__PURE__*/ S.Array(
   EventAttachment,
 ) as any as S.Schema<EventAttachmentList>;
@@ -799,7 +795,7 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
-export type EntryPointList = EntryPoint[];
+export type EntryPointList = ReadonlyArray<EntryPoint>;
 export const EntryPointList = /*@__PURE__*/ S.Array(
   EntryPoint,
 ) as any as S.Schema<EntryPointList>;
@@ -1002,7 +998,7 @@ export const EventAttendee = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventAttendee" }) as any as S.Schema<EventAttendee>;
 
-export type EventAttendeeList = EventAttendee[];
+export type EventAttendeeList = ReadonlyArray<EventAttendee>;
 export const EventAttendeeList = /*@__PURE__*/ S.Array(
   EventAttendee,
 ) as any as S.Schema<EventAttendeeList>;
@@ -1328,11 +1324,7 @@ export const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertCalendarsRequest",
 }) as any as S.Schema<InsertCalendarsRequest>;
 
-export type InsertEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type InsertEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const InsertEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface InsertEventsRequest {
@@ -1422,7 +1414,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesEventsRequest",
 }) as any as S.Schema<InstancesEventsRequest>;
 
-export type EventList = Event[];
+export type EventList = ReadonlyArray<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -1495,7 +1487,7 @@ export const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListAclRequest" }) as any as S.Schema<ListAclRequest>;
 
-export type AclRuleList = AclRule[];
+export type AclRuleList = ReadonlyArray<AclRule>;
 export const AclRuleList = /*@__PURE__*/ S.Array(
   AclRule,
 ) as any as S.Schema<AclRuleList>;
@@ -1527,8 +1519,7 @@ export type ListCalendarListMinAccessRoleEnum =
   | "owner"
   | "reader"
   | "writer"
-  | "writerWithoutPrivateAccess"
-  | (string & {});
+  | "writerWithoutPrivateAccess";
 export const ListCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface ListCalendarListRequest {
@@ -1569,7 +1560,7 @@ export const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCalendarListRequest",
 }) as any as S.Schema<ListCalendarListRequest>;
 
-export type CalendarListEntryList = CalendarListEntry[];
+export type CalendarListEntryList = ReadonlyArray<CalendarListEntry>;
 export const CalendarListEntryList = /*@__PURE__*/ S.Array(
   CalendarListEntry,
 ) as any as S.Schema<CalendarListEntryList>;
@@ -1602,16 +1593,16 @@ export type ListEventsEventTypesEnum =
   | "focusTime"
   | "fromGmail"
   | "outOfOffice"
-  | "workingLocation"
-  | (string & {});
+  | "workingLocation";
 export const ListEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type ListEventsEventTypesEnumList = ListEventsEventTypesEnum[];
+export type ListEventsEventTypesEnumList =
+  ReadonlyArray<ListEventsEventTypesEnum>;
 export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
   ListEventsEventTypesEnum,
 ) as any as S.Schema<ListEventsEventTypesEnumList>;
 
-export type ListEventsOrderByEnum = "startTime" | "updated" | (string & {});
+export type ListEventsOrderByEnum = "startTime" | "updated";
 export const ListEventsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface ListEventsRequest {
@@ -1710,7 +1701,7 @@ export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingsRequest",
 }) as any as S.Schema<ListSettingsRequest>;
 
-export type SettingList = Setting[];
+export type SettingList = ReadonlyArray<Setting>;
 export const SettingList = /*@__PURE__*/ S.Array(
   Setting,
 ) as any as S.Schema<SettingList>;
@@ -1737,11 +1728,7 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
-export type MoveEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type MoveEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const MoveEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface MoveEventsRequest {
@@ -1846,11 +1833,7 @@ export const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCalendarsRequest",
 }) as any as S.Schema<PatchCalendarsRequest>;
 
-export type PatchEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type PatchEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const PatchEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface PatchEventsRequest {
@@ -1910,7 +1893,7 @@ export const FreeBusyRequestItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeBusyRequestItem",
 }) as any as S.Schema<FreeBusyRequestItem>;
 
-export type FreeBusyRequestItemList = FreeBusyRequestItem[];
+export type FreeBusyRequestItemList = ReadonlyArray<FreeBusyRequestItem>;
 export const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(
   FreeBusyRequestItem,
 ) as any as S.Schema<FreeBusyRequestItemList>;
@@ -1973,7 +1956,7 @@ export const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Calendar_Error" }) as any as S.Schema<Calendar_Error>;
 
-export type Calendar_ErrorList = Calendar_Error[];
+export type Calendar_ErrorList = ReadonlyArray<Calendar_Error>;
 export const Calendar_ErrorList = /*@__PURE__*/ S.Array(
   Calendar_Error,
 ) as any as S.Schema<Calendar_ErrorList>;
@@ -2010,7 +1993,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
-export type TimePeriodList = TimePeriod[];
+export type TimePeriodList = ReadonlyArray<TimePeriod>;
 export const TimePeriodList = /*@__PURE__*/ S.Array(
   TimePeriod,
 ) as any as S.Schema<TimePeriodList>;
@@ -2062,11 +2045,7 @@ export const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeBusyResponse",
 }) as any as S.Schema<FreeBusyResponse>;
 
-export type QuickAddEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type QuickAddEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const QuickAddEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface QuickAddEventsRequest {
@@ -2261,11 +2240,7 @@ export const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCalendarsRequest",
 }) as any as S.Schema<UpdateCalendarsRequest>;
 
-export type UpdateEventsSendUpdatesEnum =
-  | "all"
-  | "externalOnly"
-  | "none"
-  | (string & {});
+export type UpdateEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const UpdateEventsSendUpdatesEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateEventsRequest {
@@ -2351,8 +2326,7 @@ export type WatchCalendarListMinAccessRoleEnum =
   | "owner"
   | "reader"
   | "writer"
-  | "writerWithoutPrivateAccess"
-  | (string & {});
+  | "writerWithoutPrivateAccess";
 export const WatchCalendarListMinAccessRoleEnum = /*@__PURE__*/ S.String;
 
 export interface WatchCalendarListRequest {
@@ -2396,7 +2370,7 @@ export const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchCalendarListRequest",
 }) as any as S.Schema<WatchCalendarListRequest>;
 
-export type WatchEventsOrderByEnum = "startTime" | "updated" | (string & {});
+export type WatchEventsOrderByEnum = "startTime" | "updated";
 export const WatchEventsOrderByEnum = /*@__PURE__*/ S.String;
 
 export type WatchEventsEventTypesEnum =
@@ -2405,11 +2379,11 @@ export type WatchEventsEventTypesEnum =
   | "focusTime"
   | "fromGmail"
   | "outOfOffice"
-  | "workingLocation"
-  | (string & {});
+  | "workingLocation";
 export const WatchEventsEventTypesEnum = /*@__PURE__*/ S.String;
 
-export type WatchEventsEventTypesEnumList = WatchEventsEventTypesEnum[];
+export type WatchEventsEventTypesEnumList =
+  ReadonlyArray<WatchEventsEventTypesEnum>;
 export const WatchEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
   WatchEventsEventTypesEnum,
 ) as any as S.Schema<WatchEventsEventTypesEnumList>;

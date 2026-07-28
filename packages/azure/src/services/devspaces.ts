@@ -19,7 +19,8 @@ export interface ContainerHostMappingsGetContainerHostMappingRequest {
   resourceGroupName: string;
   /** Location of the container host. */
   location: string;
-  body: unknown;
+  /** ARM ID of the Container Host resource */
+  containerHostResourceId?: string;
 }
 export const ContainerHostMappingsGetContainerHostMappingRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27,7 +28,7 @@ export const ContainerHostMappingsGetContainerHostMappingRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      containerHostResourceId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -56,6 +57,52 @@ export const ContainerHostMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerHostMapping",
 }) as any as S.Schema<ContainerHostMapping>;
 
+/** Tags for the Azure resource. */
+export type ControllersCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ControllersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ControllersCreateRequestTagsMap>;
+
+export interface ControllerPropertiesInput {
+  /** Resource ID of the target container host */
+  targetContainerHostResourceId: string;
+  /** Credentials of the target container host (base64). */
+  targetContainerHostCredentialsBase64: string;
+}
+export const ControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetContainerHostResourceId: S.String,
+    targetContainerHostCredentialsBase64: S.String,
+  }),
+).annotate({
+  identifier: "ControllerPropertiesInput",
+}) as any as S.Schema<ControllerPropertiesInput>;
+
+/** The name of the SKU for Azure Dev Spaces Controller. */
+export type SkuName = "S1";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** The tier of the SKU for Azure Dev Spaces Controller. */
+export type SkuTier = "Standard";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** Model representing SKU for Azure Dev Spaces Controller. */
+export interface Sku {
+  /** The name of the SKU for Azure Dev Spaces Controller. */
+  name: SkuName;
+  /** The tier of the SKU for Azure Dev Spaces Controller. */
+  tier?: SkuTier;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+    tier: S.optional(SkuTier),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
 export interface ControllersCreateRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -63,14 +110,22 @@ export interface ControllersCreateRequest {
   resourceGroupName: string;
   /** Name of the resource. */
   name: string;
-  body: unknown;
+  /** Tags for the Azure resource. */
+  tags?: ControllersCreateRequestTagsMap;
+  /** Region where the Azure resource is located. */
+  location: string;
+  properties: ControllerPropertiesInput;
+  sku: Sku;
 }
 export const ControllersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ControllersCreateRequestTagsMap),
+    location: S.String,
+    properties: ControllerPropertiesInput,
+    sku: Sku,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -100,8 +155,7 @@ export type ControllerPropertiesProvisioningState =
   | "Updating"
   | "Creating"
   | "Deleting"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const ControllerPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 export interface ControllerProperties {
@@ -130,28 +184,6 @@ export const ControllerProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ControllerProperties",
 }) as any as S.Schema<ControllerProperties>;
-
-/** The name of the SKU for Azure Dev Spaces Controller. */
-export type SkuName = "S1" | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** The tier of the SKU for Azure Dev Spaces Controller. */
-export type SkuTier = "Standard" | (string & {});
-export const SkuTier = /*@__PURE__*/ S.String;
-
-/** Model representing SKU for Azure Dev Spaces Controller. */
-export interface Sku {
-  /** The name of the SKU for Azure Dev Spaces Controller. */
-  name: SkuName;
-  /** The tier of the SKU for Azure Dev Spaces Controller. */
-  tier?: SkuTier;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-    tier: S.optional(SkuTier),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export interface ControllersCreateResponse {
   /** Fully qualified resource Id for the resource. */
@@ -328,7 +360,7 @@ export const Controller = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Controller" }) as any as S.Schema<Controller>;
 
 /** List of Azure Dev Spaces Controllers. */
-export type ControllerListValueList = Controller[];
+export type ControllerListValueList = ReadonlyArray<Controller>;
 export const ControllerListValueList = /*@__PURE__*/ S.Array(
   Controller,
 ) as any as S.Schema<ControllerListValueList>;
@@ -376,7 +408,8 @@ export interface ControllersListConnectionDetailsRequest {
   resourceGroupName: string;
   /** Name of the resource. */
   name: string;
-  body: unknown;
+  /** Resource ID of the target container host mapped to the Azure Dev Spaces Controller. */
+  targetContainerHostResourceId: string;
 }
 export const ControllersListConnectionDetailsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -384,7 +417,7 @@ export const ControllersListConnectionDetailsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetContainerHostResourceId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -426,7 +459,7 @@ export const ControllerConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure Dev Spaces Controller connection details. */
 export type ControllerConnectionDetailsListConnectionDetailsListList =
-  ControllerConnectionDetails[];
+  ReadonlyArray<ControllerConnectionDetails>;
 export const ControllerConnectionDetailsListConnectionDetailsListList =
   /*@__PURE__*/ S.Array(
     ControllerConnectionDetails,
@@ -446,6 +479,28 @@ export const ControllerConnectionDetailsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ControllerConnectionDetailsList",
 }) as any as S.Schema<ControllerConnectionDetailsList>;
 
+/** Tags for the Azure Dev Spaces Controller. */
+export type ControllersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ControllersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ControllersUpdateRequestTagsMap>;
+
+export interface ControllerUpdateParametersProperties {
+  /** Credentials of the target container host (base64). */
+  targetContainerHostCredentialsBase64?: string;
+}
+export const ControllerUpdateParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      targetContainerHostCredentialsBase64: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ControllerUpdateParametersProperties",
+}) as any as S.Schema<ControllerUpdateParametersProperties>;
+
 export interface ControllersUpdateRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -453,14 +508,17 @@ export interface ControllersUpdateRequest {
   resourceGroupName: string;
   /** Name of the resource. */
   name: string;
-  body: unknown;
+  /** Tags for the Azure Dev Spaces Controller. */
+  tags?: ControllersUpdateRequestTagsMap;
+  properties?: ControllerUpdateParametersProperties;
 }
 export const ControllersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ControllersUpdateRequestTagsMap),
+    properties: S.optional(ControllerUpdateParametersProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -561,7 +619,7 @@ export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource provider operations list. */
 export type ResourceProviderOperationListValueList =
-  ResourceProviderOperationDefinition[];
+  ReadonlyArray<ResourceProviderOperationDefinition>;
 export const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperationDefinition,
 ) as any as S.Schema<ResourceProviderOperationListValueList>;

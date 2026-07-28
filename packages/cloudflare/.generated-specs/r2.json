@@ -60,6 +60,24 @@
           "traits": {
             "smithy.api#enumValue": "enam"
           }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weur"
+          }
+        },
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wnam"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
+          }
         }
       }
     },
@@ -164,6 +182,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "enam"
+          }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weur"
+          }
+        },
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wnam"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
           }
         }
       }
@@ -450,6 +486,24 @@
           "traits": {
             "smithy.api#enumValue": "enam"
           }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weur"
+          }
+        },
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wnam"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
+          }
         }
       }
     },
@@ -622,6 +676,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "enam"
+          }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weur"
+          }
+        },
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wnam"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
           }
         }
       }
@@ -858,6 +930,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "enam"
+          }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weur"
+          }
+        },
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wnam"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
           }
         }
       }
@@ -1111,6 +1201,18 @@
           "traits": {
             "smithy.api#enumValue": "POST"
           }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "HEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HEAD"
+          }
         }
       }
     },
@@ -1271,6 +1373,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "POST"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "HEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HEAD"
           }
         }
       }
@@ -1821,6 +1935,24 @@
           "traits": {
             "smithy.api#enumValue": "deactivated"
           }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
         }
       }
     },
@@ -1843,6 +1975,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "active"
+          }
+        },
+        "DEACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivated"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
           }
         }
       }
@@ -2046,6 +2196,24 @@
           "traits": {
             "smithy.api#enumValue": "deactivated"
           }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
         }
       }
     },
@@ -2068,6 +2236,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "active"
+          }
+        },
+        "DEACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivated"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
           }
         }
       }
@@ -2804,6 +2990,18 @@
           "traits": {
             "smithy.api#enumValue": "DeleteObject"
           }
+        },
+        "COMPLETEMULTIPARTUPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompleteMultipartUpload"
+          }
+        },
+        "LIFECYCLEDELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LifecycleDeletion"
+          }
         }
       }
     },
@@ -2977,6 +3175,18 @@
           "traits": {
             "smithy.api#enumValue": "DeleteObject"
           }
+        },
+        "COMPLETEMULTIPARTUPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompleteMultipartUpload"
+          }
+        },
+        "LIFECYCLEDELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LifecycleDeletion"
+          }
         }
       }
     },
@@ -3141,6 +3351,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "DeleteObject"
+          }
+        },
+        "COMPLETEMULTIPARTUPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompleteMultipartUpload"
+          }
+        },
+        "LIFECYCLEDELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LifecycleDeletion"
           }
         }
       }
@@ -4901,7 +5123,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.r2#BucketsObjectsListResultItemHttpMetadata": {
@@ -5358,6 +5580,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsSippyGetResponseDestinationProvider": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsSippyGetResponseDestination": {
       "type": "structure",
       "members": {
@@ -5377,7 +5610,7 @@
           }
         },
         "provider": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#BucketsSippyGetResponseDestinationProvider"
         }
       }
     },
@@ -5498,6 +5731,17 @@
         }
       }
     },
+    "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestination": {
       "type": "structure",
       "members": {
@@ -5508,7 +5752,7 @@
           }
         },
         "provider": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
         },
         "secretAccessKey": {
           "target": "smithy.api#String",
@@ -5588,7 +5832,7 @@
           }
         },
         "provider": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
         },
         "secretAccessKey": {
           "target": "smithy.api#String",
@@ -5662,7 +5906,7 @@
           }
         },
         "provider": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateRequestBodyR2EnableSippyAwsDestinationProvider"
         },
         "secretAccessKey": {
           "target": "smithy.api#String",
@@ -5778,6 +6022,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsSippyUpdateResponseDestinationProvider": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsSippyUpdateResponseDestination": {
       "type": "structure",
       "members": {
@@ -5797,7 +6052,7 @@
           }
         },
         "provider": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#BucketsSippyUpdateResponseDestinationProvider"
         }
       }
     },
@@ -6047,6 +6302,17 @@
         }
       }
     },
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaJurisdiction": {
       "type": "enum",
       "members": {
@@ -6092,7 +6358,7 @@
           }
         },
         "vendor": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckSourceRequestBodyR2SlurperR2SourceSchemaVendor",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6208,6 +6474,17 @@
         }
       }
     },
+    "com.cloudflare.r2#SuperSlurperConnectivityPrecheckTargetRequestVendor": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#SuperSlurperConnectivityPrecheckTargetRequestJurisdiction": {
       "type": "enum",
       "members": {
@@ -6254,7 +6531,7 @@
           }
         },
         "vendor": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.r2#SuperSlurperConnectivityPrecheckTargetRequestVendor",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6569,6 +6846,17 @@
         }
       }
     },
+    "com.cloudflare.r2#SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction": {
       "type": "enum",
       "members": {
@@ -6614,7 +6902,7 @@
           }
         },
         "vendor": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.r2#SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6700,7 +6988,7 @@
           }
         },
         "vendor": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.r2#SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor",
           "traits": {
             "smithy.api#required": {}
           }
@@ -6885,6 +7173,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.r2#SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#SuperSlurperJobsGetResponseSourceR2SourceResponseSchema": {
       "type": "structure",
       "members": {
@@ -6901,7 +7200,7 @@
           "target": "smithy.api#String"
         },
         "vendor": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor"
         }
       }
     },
@@ -6981,7 +7280,7 @@
           "target": "com.cloudflare.r2#SuperSlurperJobsGetResponseTargetJurisdiction"
         },
         "vendor": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor"
         }
       }
     },
@@ -7160,6 +7459,17 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.r2#SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#SuperSlurperJobsListResultItemSourceR2SourceResponseSchema": {
       "type": "structure",
       "members": {
@@ -7176,7 +7486,7 @@
           "target": "smithy.api#String"
         },
         "vendor": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor"
         }
       }
     },
@@ -7256,7 +7566,7 @@
           "target": "com.cloudflare.r2#SuperSlurperJobsListResultItemTargetJurisdiction"
         },
         "vendor": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.r2#SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor"
         }
       }
     },
@@ -7587,6 +7897,78 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "migrationAbort"
+          }
+        },
+        "MIGRATIONERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "migrationError"
+          }
+        },
+        "MIGRATIONPAUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "migrationPause"
+          }
+        },
+        "MIGRATIONRESUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "migrationResume"
+          }
+        },
+        "MIGRATIONERRORFAILEDCONTINUATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "migrationErrorFailedContinuation"
+          }
+        },
+        "IMPORTERRORRETRYEXHAUSTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importErrorRetryExhaustion"
+          }
+        },
+        "IMPORTSKIPPEDSTORAGECLASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedStorageClass"
+          }
+        },
+        "IMPORTSKIPPEDOVERSIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedOversized"
+          }
+        },
+        "IMPORTSKIPPEDEMPTYOBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedEmptyObject"
+          }
+        },
+        "IMPORTSKIPPEDUNSUPPORTEDCONTENTTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedUnsupportedContentType"
+          }
+        },
+        "IMPORTSKIPPEDEXCLUDEDCONTENTTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedExcludedContentType"
+          }
+        },
+        "IMPORTSKIPPEDINVALIDMEDIA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedInvalidMedia"
+          }
+        },
+        "IMPORTSKIPPEDREQUIRESRETRIEVAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "importSkippedRequiresRetrieval"
           }
         }
       }

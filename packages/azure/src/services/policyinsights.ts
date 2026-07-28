@@ -12,19 +12,84 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The compliance state that should be set on the resource. */
+export type ComplianceState = "Compliant" | "NonCompliant" | "Unknown";
+export const ComplianceState = /*@__PURE__*/ S.String;
+
+/** A piece of evidence supporting the compliance state set in the attestation. */
+export interface AttestationEvidence {
+  /** The description for this piece of evidence. */
+  description?: string;
+  /** The URI location of the evidence. */
+  sourceUri?: string;
+}
+export const AttestationEvidence = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    sourceUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AttestationEvidence",
+}) as any as S.Schema<AttestationEvidence>;
+
+/** The evidence supporting the compliance state set in this attestation. */
+export type AttestationPropertiesInputEvidenceList =
+  ReadonlyArray<AttestationEvidence>;
+export const AttestationPropertiesInputEvidenceList = /*@__PURE__*/ S.Array(
+  AttestationEvidence,
+) as any as S.Schema<AttestationPropertiesInputEvidenceList>;
+
+/** The properties of an attestation resource. */
+export interface AttestationPropertiesInput {
+  /** The resource ID of the policy assignment that the attestation is setting the state for. */
+  policyAssignmentId: string;
+  /** The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition. */
+  policyDefinitionReferenceId?: string;
+  /** The compliance state that should be set on the resource. */
+  complianceState?: ComplianceState;
+  /** The time the compliance state should expire. */
+  expiresOn?: string;
+  /** The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID. */
+  owner?: string;
+  /** Comments describing why this attestation was created. */
+  comments?: string;
+  /** The evidence supporting the compliance state set in this attestation. */
+  evidence?: AttestationPropertiesInputEvidenceList;
+  /** The time the evidence was assessed */
+  assessmentDate?: string;
+  /** Additional metadata for this attestation */
+  metadata?: unknown;
+}
+export const AttestationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyAssignmentId: S.String,
+    policyDefinitionReferenceId: S.optional(S.String),
+    complianceState: S.optional(ComplianceState),
+    expiresOn: S.optional(S.String),
+    owner: S.optional(S.String),
+    comments: S.optional(S.String),
+    evidence: S.optional(AttestationPropertiesInputEvidenceList),
+    assessmentDate: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "AttestationPropertiesInput",
+}) as any as S.Schema<AttestationPropertiesInput>;
+
 export interface AttestationsCreateOrUpdateAtResourceRequest {
   /** Resource ID. */
   resourceId: string;
   /** The name of the attestation. */
   attestationName: string;
-  body: unknown;
+  /** Properties for the attestation. */
+  properties: AttestationPropertiesInput;
 }
 export const AttestationsCreateOrUpdateAtResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceId: S.String.pipe(T.Label()),
       attestationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: AttestationPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42,8 +107,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -51,8 +115,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -81,32 +144,9 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** The compliance state that should be set on the resource. */
-export type ComplianceState =
-  | "Compliant"
-  | "NonCompliant"
-  | "Unknown"
-  | (string & {});
-export const ComplianceState = /*@__PURE__*/ S.String;
-
-/** A piece of evidence supporting the compliance state set in the attestation. */
-export interface AttestationEvidence {
-  /** The description for this piece of evidence. */
-  description?: string;
-  /** The URI location of the evidence. */
-  sourceUri?: string;
-}
-export const AttestationEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    sourceUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AttestationEvidence",
-}) as any as S.Schema<AttestationEvidence>;
-
 /** The evidence supporting the compliance state set in this attestation. */
-export type AttestationPropertiesEvidenceList = AttestationEvidence[];
+export type AttestationPropertiesEvidenceList =
+  ReadonlyArray<AttestationEvidence>;
 export const AttestationPropertiesEvidenceList = /*@__PURE__*/ S.Array(
   AttestationEvidence,
 ) as any as S.Schema<AttestationPropertiesEvidenceList>;
@@ -186,7 +226,8 @@ export interface AttestationsCreateOrUpdateAtResourceGroupRequest {
   resourceGroupName: string;
   /** The name of the attestation. */
   attestationName: string;
-  body: unknown;
+  /** Properties for the attestation. */
+  properties: AttestationPropertiesInput;
 }
 export const AttestationsCreateOrUpdateAtResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -194,7 +235,7 @@ export const AttestationsCreateOrUpdateAtResourceGroupRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       attestationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: AttestationPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -237,14 +278,15 @@ export interface AttestationsCreateOrUpdateAtSubscriptionRequest {
   subscriptionId: string;
   /** The name of the attestation. */
   attestationName: string;
-  body: unknown;
+  /** Properties for the attestation. */
+  properties: AttestationPropertiesInput;
 }
 export const AttestationsCreateOrUpdateAtSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       attestationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: AttestationPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -567,7 +609,7 @@ export const Attestation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attestation" }) as any as S.Schema<Attestation>;
 
 /** The Attestation items on this page */
-export type AttestationListResultValueList = Attestation[];
+export type AttestationListResultValueList = ReadonlyArray<Attestation>;
 export const AttestationListResultValueList = /*@__PURE__*/ S.Array(
   Attestation,
 ) as any as S.Schema<AttestationListResultValueList>;
@@ -644,12 +686,12 @@ export const AttestationsListForSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AttestationsListForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForPolicyDefinitionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -744,7 +786,7 @@ export const ComponentExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(
 
 /** Details of the evaluated expressions. */
 export type ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
-  ComponentExpressionEvaluationDetails[];
+  ReadonlyArray<ComponentExpressionEvaluationDetails>;
 export const ComponentPolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ComponentExpressionEvaluationDetails,
@@ -769,7 +811,8 @@ export const ComponentPolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentPolicyEvaluationDetails>;
 
 /** Policy definition group names. */
-export type ComponentPolicyStatePolicyDefinitionGroupNamesList = string[];
+export type ComponentPolicyStatePolicyDefinitionGroupNamesList =
+  ReadonlyArray<string>;
 export const ComponentPolicyStatePolicyDefinitionGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -884,7 +927,8 @@ export const ComponentPolicyState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentPolicyState>;
 
 /** Query results. */
-export type ComponentPolicyStatesQueryResultsValueList = ComponentPolicyState[];
+export type ComponentPolicyStatesQueryResultsValueList =
+  ReadonlyArray<ComponentPolicyState>;
 export const ComponentPolicyStatesQueryResultsValueList = /*@__PURE__*/ S.Array(
   ComponentPolicyState,
 ) as any as S.Schema<ComponentPolicyStatesQueryResultsValueList>;
@@ -909,7 +953,7 @@ export const ComponentPolicyStatesQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentPolicyStatesQueryResults>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -964,7 +1008,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1019,12 +1063,12 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1089,7 +1133,7 @@ export const ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAss
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1141,12 +1185,12 @@ export const ComponentPolicyStatesListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<ComponentPolicyStatesListQueryResultsForSubscriptionRequest>;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource =
-  "latest" | (string & {});
+  "latest";
 export const ComponentPolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestComponentPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -1261,7 +1305,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of available operations. */
-export type OperationsListResultsValueList = Operation[];
+export type OperationsListResultsValueList = ReadonlyArray<Operation>;
 export const OperationsListResultsValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultsValueList>;
@@ -1283,12 +1327,12 @@ export const OperationsListResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResults>;
 
 export type PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyEventsListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForManagementGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1380,7 +1424,7 @@ export const ComponentEventDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentEventDetails>;
 
 /** Components events records populated only when URL contains $expand=components clause. */
-export type PolicyEventComponentsList = ComponentEventDetails[];
+export type PolicyEventComponentsList = ReadonlyArray<ComponentEventDetails>;
 export const PolicyEventComponentsList = /*@__PURE__*/ S.Array(
   ComponentEventDetails,
 ) as any as S.Schema<PolicyEventComponentsList>;
@@ -1487,7 +1531,7 @@ export const PolicyEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyEvent" }) as any as S.Schema<PolicyEvent>;
 
 /** Query results. */
-export type PolicyEventsQueryResultsValueList = PolicyEvent[];
+export type PolicyEventsQueryResultsValueList = ReadonlyArray<PolicyEvent>;
 export const PolicyEventsQueryResultsValueList = /*@__PURE__*/ S.Array(
   PolicyEvent,
 ) as any as S.Schema<PolicyEventsQueryResultsValueList>;
@@ -1515,12 +1559,12 @@ export const PolicyEventsQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyEventsQueryResults>;
 
 export type PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForPolicyDefinitionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1584,12 +1628,12 @@ export const PolicyEventsListQueryResultsForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForPolicyDefinitionRequest>;
 
 export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForPolicySetDefinitionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1653,7 +1697,7 @@ export const PolicyEventsListQueryResultsForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1711,7 +1755,7 @@ export const PolicyEventsListQueryResultsForResourceRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceGroupRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1769,12 +1813,12 @@ export const PolicyEventsListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupRequest>;
 
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1842,7 +1886,7 @@ export const PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   }) as any as S.Schema<PolicyEventsListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForSubscriptionRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -1897,12 +1941,12 @@ export const PolicyEventsListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<PolicyEventsListQueryResultsForSubscriptionRequest>;
 
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource =
-  "default" | (string & {});
+  "default";
 export const PolicyEventsListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyEventsResource =
   /*@__PURE__*/ S.String;
 
@@ -2113,7 +2157,8 @@ export const SlimPolicyMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlimPolicyMetadata>;
 
 /** The SlimPolicyMetadata items on this page */
-export type PolicyMetadataCollectionValueList = SlimPolicyMetadata[];
+export type PolicyMetadataCollectionValueList =
+  ReadonlyArray<SlimPolicyMetadata>;
 export const PolicyMetadataCollectionValueList = /*@__PURE__*/ S.Array(
   SlimPolicyMetadata,
 ) as any as S.Schema<PolicyMetadataCollectionValueList>;
@@ -2135,16 +2180,66 @@ export const PolicyMetadataCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyMetadataCollection>;
 
 export type PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
+
+/** The information about the resource that will be evaluated. */
+export interface CheckRestrictionsResourceDetails {
+  /** The resource content. This should include whatever properties are already known and can be a partial set of all resource properties. */
+  resourceContent: unknown;
+  /** The api-version of the resource content. */
+  apiVersion?: string;
+  /** The scope where the resource is being created. For example, if the resource is a child resource this would be the parent resource's resource ID. */
+  scope?: string;
+}
+export const CheckRestrictionsResourceDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceContent: S.Unknown,
+    apiVersion: S.optional(S.String),
+    scope: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckRestrictionsResourceDetails",
+}) as any as S.Schema<CheckRestrictionsResourceDetails>;
+
+/** The list of potential values for the field that should be evaluated against Azure Policy. */
+export type PendingFieldValuesList = ReadonlyArray<string>;
+export const PendingFieldValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PendingFieldValuesList>;
+
+/** A field that should be evaluated against Azure Policy to determine restrictions. */
+export interface PendingField {
+  /** The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias. */
+  field: string;
+  /** The list of potential values for the field that should be evaluated against Azure Policy. */
+  values?: PendingFieldValuesList;
+}
+export const PendingField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.String,
+    values: S.optional(PendingFieldValuesList),
+  }),
+).annotate({ identifier: "PendingField" }) as any as S.Schema<PendingField>;
+
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
+  ReadonlyArray<PendingField>;
+export const PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList>;
 
 export interface PolicyRestrictionsCheckAtManagementGroupScopeRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
   managementGroupsNamespace: PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace;
   /** Management group ID. */
   managementGroupId: string;
-  body: unknown;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails?: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList;
 }
 export const PolicyRestrictionsCheckAtManagementGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2154,7 +2249,10 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeRequest =
           T.Label(),
         ),
       managementGroupId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceDetails: S.optional(CheckRestrictionsResourceDetails),
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2168,16 +2266,11 @@ export const PolicyRestrictionsCheckAtManagementGroupScopeRequest =
   }) as any as S.Schema<PolicyRestrictionsCheckAtManagementGroupScopeRequest>;
 
 /** The type of restriction that is imposed on the field. */
-export type FieldRestrictionResult =
-  | "Required"
-  | "Removed"
-  | "Deny"
-  | "Audit"
-  | (string & {});
+export type FieldRestrictionResult = "Required" | "Removed" | "Deny" | "Audit";
 export const FieldRestrictionResult = /*@__PURE__*/ S.String;
 
 /** The values that policy either requires or denies for the field. */
-export type FieldRestrictionValuesList = string[];
+export type FieldRestrictionValuesList = ReadonlyArray<string>;
 export const FieldRestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FieldRestrictionValuesList>;
@@ -2233,7 +2326,7 @@ export const FieldRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldRestriction>;
 
 /** The restrictions placed on that field by policy. */
-export type FieldRestrictionsRestrictionsList = FieldRestriction[];
+export type FieldRestrictionsRestrictionsList = ReadonlyArray<FieldRestriction>;
 export const FieldRestrictionsRestrictionsList = /*@__PURE__*/ S.Array(
   FieldRestriction,
 ) as any as S.Schema<FieldRestrictionsRestrictionsList>;
@@ -2255,7 +2348,8 @@ export const FieldRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FieldRestrictions>;
 
 /** The restrictions that will be placed on various fields in the resource by policy. */
-export type CheckRestrictionsResultFieldRestrictionsList = FieldRestrictions[];
+export type CheckRestrictionsResultFieldRestrictionsList =
+  ReadonlyArray<FieldRestrictions>;
 export const CheckRestrictionsResultFieldRestrictionsList =
   /*@__PURE__*/ S.Array(
     FieldRestrictions,
@@ -2294,7 +2388,7 @@ export const ExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the evaluated expressions. */
 export type CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
-  ExpressionEvaluationDetails[];
+  ReadonlyArray<ExpressionEvaluationDetails>;
 export const CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ExpressionEvaluationDetails,
@@ -2374,7 +2468,7 @@ export const PolicyEvaluationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy evaluation results against the given resource content. This will indicate if the partial content that was provided will be denied as-is. */
 export type CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
-  PolicyEvaluationResult[];
+  ReadonlyArray<PolicyEvaluationResult>;
 export const CheckRestrictionsResultContentEvaluationResultPolicyEvaluationsList =
   /*@__PURE__*/ S.Array(
     PolicyEvaluationResult,
@@ -2414,19 +2508,36 @@ export const CheckRestrictionsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckRestrictionsResult",
 }) as any as S.Schema<CheckRestrictionsResult>;
 
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
+  ReadonlyArray<PendingField>;
+export const PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList>;
+
 export interface PolicyRestrictionsCheckAtResourceGroupScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList;
+  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
+  includeAuditEffect?: boolean;
 }
 export const PolicyRestrictionsCheckAtResourceGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceDetails: CheckRestrictionsResourceDetails,
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList,
+      ),
+      includeAuditEffect: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2439,16 +2550,33 @@ export const PolicyRestrictionsCheckAtResourceGroupScopeRequest =
     identifier: "PolicyRestrictionsCheckAtResourceGroupScopeRequest",
   }) as any as S.Schema<PolicyRestrictionsCheckAtResourceGroupScopeRequest>;
 
+/** The list of fields and values that should be evaluated for potential restrictions. */
+export type PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
+  ReadonlyArray<PendingField>;
+export const PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList =
+  /*@__PURE__*/ S.Array(
+    PendingField,
+  ) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList>;
+
 export interface PolicyRestrictionsCheckAtSubscriptionScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The information about the resource that will be evaluated. */
+  resourceDetails: CheckRestrictionsResourceDetails;
+  /** The list of fields and values that should be evaluated for potential restrictions. */
+  pendingFields?: PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList;
+  /** Whether to include policies with the 'audit' effect in the results. Defaults to false. */
+  includeAuditEffect?: boolean;
 }
 export const PolicyRestrictionsCheckAtSubscriptionScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceDetails: CheckRestrictionsResourceDetails,
+      pendingFields: S.optional(
+        PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList,
+      ),
+      includeAuditEffect: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2462,12 +2590,12 @@ export const PolicyRestrictionsCheckAtSubscriptionScopeRequest =
   }) as any as S.Schema<PolicyRestrictionsCheckAtSubscriptionScopeRequest>;
 
 export type PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyStatesListQueryResultsForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForManagementGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2529,7 +2657,7 @@ export const PolicyStatesListQueryResultsForManagementGroupRequest =
 
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList =
-  ExpressionEvaluationDetails[];
+  ReadonlyArray<ExpressionEvaluationDetails>;
 export const PolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
     ExpressionEvaluationDetails,
@@ -2554,7 +2682,7 @@ export const PolicyEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyEvaluationDetails>;
 
 /** Policy definition group names. */
-export type PolicyStatePolicyDefinitionGroupNamesList = string[];
+export type PolicyStatePolicyDefinitionGroupNamesList = ReadonlyArray<string>;
 export const PolicyStatePolicyDefinitionGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyStatePolicyDefinitionGroupNamesList>;
@@ -2585,7 +2713,7 @@ export const ComponentStateDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentStateDetails>;
 
 /** Components state compliance records populated only when URL contains $expand=components clause. */
-export type PolicyStateComponentsList = ComponentStateDetails[];
+export type PolicyStateComponentsList = ReadonlyArray<ComponentStateDetails>;
 export const PolicyStateComponentsList = /*@__PURE__*/ S.Array(
   ComponentStateDetails,
 ) as any as S.Schema<PolicyStateComponentsList>;
@@ -2703,7 +2831,7 @@ export const PolicyState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyState" }) as any as S.Schema<PolicyState>;
 
 /** Query results. */
-export type PolicyStatesQueryResultsValueList = PolicyState[];
+export type PolicyStatesQueryResultsValueList = ReadonlyArray<PolicyState>;
 export const PolicyStatesQueryResultsValueList = /*@__PURE__*/ S.Array(
   PolicyState,
 ) as any as S.Schema<PolicyStatesQueryResultsValueList>;
@@ -2731,12 +2859,12 @@ export const PolicyStatesQueryResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyStatesQueryResults>;
 
 export type PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForPolicyDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2800,12 +2928,12 @@ export const PolicyStatesListQueryResultsForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicyDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForPolicySetDefinitionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2869,7 +2997,7 @@ export const PolicyStatesListQueryResultsForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForPolicySetDefinitionRequest>;
 
 export type PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2927,7 +3055,7 @@ export const PolicyStatesListQueryResultsForResourceRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceRequest>;
 
 export type PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -2985,12 +3113,12 @@ export const PolicyStatesListQueryResultsForResourceGroupRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupRequest>;
 
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3058,7 +3186,7 @@ export const PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRe
   }) as any as S.Schema<PolicyStatesListQueryResultsForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3113,12 +3241,12 @@ export const PolicyStatesListQueryResultsForSubscriptionRequest =
   }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionRequest>;
 
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
-  "default" | "latest" | (string & {});
+  "default" | "latest";
 export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequestPolicyStatesResource =
   /*@__PURE__*/ S.String;
 
@@ -3183,12 +3311,12 @@ export const PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentReq
   }) as any as S.Schema<PolicyStatesListQueryResultsForSubscriptionLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForManagementGroupRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3253,19 +3381,20 @@ export const ComplianceDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceDetail>;
 
 /** The resources summary at this level. */
-export type SummaryResultsResourceDetailsList = ComplianceDetail[];
+export type SummaryResultsResourceDetailsList = ReadonlyArray<ComplianceDetail>;
 export const SummaryResultsResourceDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsResourceDetailsList>;
 
 /** The policy artifact summary at this level. For query scope level, it represents policy assignment summary. For policy assignment level, it represents policy definitions summary. */
-export type SummaryResultsPolicyDetailsList = ComplianceDetail[];
+export type SummaryResultsPolicyDetailsList = ReadonlyArray<ComplianceDetail>;
 export const SummaryResultsPolicyDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsPolicyDetailsList>;
 
 /** The policy definition group summary at this level. */
-export type SummaryResultsPolicyGroupDetailsList = ComplianceDetail[];
+export type SummaryResultsPolicyGroupDetailsList =
+  ReadonlyArray<ComplianceDetail>;
 export const SummaryResultsPolicyGroupDetailsList = /*@__PURE__*/ S.Array(
   ComplianceDetail,
 ) as any as S.Schema<SummaryResultsPolicyGroupDetailsList>;
@@ -3297,7 +3426,8 @@ export const SummaryResults = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SummaryResults" }) as any as S.Schema<SummaryResults>;
 
 /** Policy definition group names. */
-export type PolicyDefinitionSummaryPolicyDefinitionGroupNamesList = string[];
+export type PolicyDefinitionSummaryPolicyDefinitionGroupNamesList =
+  ReadonlyArray<string>;
 export const PolicyDefinitionSummaryPolicyDefinitionGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3332,7 +3462,7 @@ export const PolicyDefinitionSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy definitions summary. */
 export type PolicyAssignmentSummaryPolicyDefinitionsList =
-  PolicyDefinitionSummary[];
+  ReadonlyArray<PolicyDefinitionSummary>;
 export const PolicyAssignmentSummaryPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionSummary,
@@ -3355,7 +3485,8 @@ export const PolicyGroupSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyGroupSummary>;
 
 /** Policy definition group summary. */
-export type PolicyAssignmentSummaryPolicyGroupsList = PolicyGroupSummary[];
+export type PolicyAssignmentSummaryPolicyGroupsList =
+  ReadonlyArray<PolicyGroupSummary>;
 export const PolicyAssignmentSummaryPolicyGroupsList = /*@__PURE__*/ S.Array(
   PolicyGroupSummary,
 ) as any as S.Schema<PolicyAssignmentSummaryPolicyGroupsList>;
@@ -3386,7 +3517,8 @@ export const PolicyAssignmentSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignmentSummary>;
 
 /** Policy assignments summary. */
-export type SummaryPolicyAssignmentsList = PolicyAssignmentSummary[];
+export type SummaryPolicyAssignmentsList =
+  ReadonlyArray<PolicyAssignmentSummary>;
 export const SummaryPolicyAssignmentsList = /*@__PURE__*/ S.Array(
   PolicyAssignmentSummary,
 ) as any as S.Schema<SummaryPolicyAssignmentsList>;
@@ -3412,7 +3544,7 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 
 /** Summarize action results. */
-export type SummarizeResultsValueList = Summary[];
+export type SummarizeResultsValueList = ReadonlyArray<Summary>;
 export const SummarizeResultsValueList = /*@__PURE__*/ S.Array(
   Summary,
 ) as any as S.Schema<SummarizeResultsValueList>;
@@ -3437,12 +3569,12 @@ export const SummarizeResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummarizeResults>;
 
 export type PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForPolicyDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForPolicyDefinitionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3494,12 +3626,12 @@ export const PolicyStatesSummarizeForPolicyDefinitionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForPolicyDefinitionRequest>;
 
 export type PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForPolicySetDefinitionRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForPolicySetDefinitionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3551,7 +3683,7 @@ export const PolicyStatesSummarizeForPolicySetDefinitionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForPolicySetDefinitionRequest>;
 
 export type PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3594,7 +3726,7 @@ export const PolicyStatesSummarizeForResourceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PolicyStatesSummarizeForResourceRequest>;
 
 export type PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceGroupRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3640,12 +3772,12 @@ export const PolicyStatesSummarizeForResourceGroupRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForResourceGroupRequest>;
 
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3701,7 +3833,7 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequest>;
 
 export type PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForSubscriptionRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3744,12 +3876,12 @@ export const PolicyStatesSummarizeForSubscriptionRequest =
   }) as any as S.Schema<PolicyStatesSummarizeForSubscriptionRequest>;
 
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
-  "Microsoft.Authorization" | (string & {});
+  "Microsoft.Authorization";
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   /*@__PURE__*/ S.String;
 
 export type PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
-  "latest" | (string & {});
+  "latest";
 export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequestPolicyStatesSummaryResource =
   /*@__PURE__*/ S.String;
 
@@ -3857,7 +3989,7 @@ export const PolicyStatesTriggerSubscriptionEvaluationResponse =
   }) as any as S.Schema<PolicyStatesTriggerSubscriptionEvaluationResponse>;
 
 export type RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsCancelAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -3893,18 +4025,17 @@ export const RemediationsCancelAtManagementGroupRequest =
 /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
 export type ResourceDiscoveryMode =
   | "ExistingNonCompliant"
-  | "ReEvaluateCompliance"
-  | (string & {});
+  | "ReEvaluateCompliance";
 export const ResourceDiscoveryMode = /*@__PURE__*/ S.String;
 
 /** The resource locations that will be remediated. */
-export type RemediationFiltersLocationsList = string[];
+export type RemediationFiltersLocationsList = ReadonlyArray<string>;
 export const RemediationFiltersLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemediationFiltersLocationsList>;
 
 /** The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided. */
-export type RemediationFiltersResourceIdsList = string[];
+export type RemediationFiltersResourceIdsList = ReadonlyArray<string>;
 export const RemediationFiltersResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemediationFiltersResourceIdsList>;
@@ -4179,9 +4310,40 @@ export const RemediationsCancelAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsCancelAtSubscriptionResponse>;
 
 export type RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsCreateOrUpdateAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
+
+/** The remediation properties. */
+export interface RemediationPropertiesInput {
+  /** The resource ID of the policy assignment that should be remediated. */
+  policyAssignmentId?: string;
+  /** The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition. */
+  policyDefinitionReferenceId?: string;
+  /** The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified. */
+  resourceDiscoveryMode?: ResourceDiscoveryMode;
+  /** The filters that will be applied to determine which resources to remediate. */
+  filters?: RemediationFilters;
+  /** Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used. */
+  resourceCount?: number;
+  /** Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used. */
+  parallelDeployments?: number;
+  /** The remediation failure threshold settings */
+  failureThreshold?: RemediationPropertiesFailureThreshold;
+}
+export const RemediationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyAssignmentId: S.optional(S.String),
+    policyDefinitionReferenceId: S.optional(S.String),
+    resourceDiscoveryMode: S.optional(ResourceDiscoveryMode),
+    filters: S.optional(RemediationFilters),
+    resourceCount: S.optional(S.Number),
+    parallelDeployments: S.optional(S.Number),
+    failureThreshold: S.optional(RemediationPropertiesFailureThreshold),
+  }),
+).annotate({
+  identifier: "RemediationPropertiesInput",
+}) as any as S.Schema<RemediationPropertiesInput>;
 
 export interface RemediationsCreateOrUpdateAtManagementGroupRequest {
   /** The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed. */
@@ -4190,7 +4352,8 @@ export interface RemediationsCreateOrUpdateAtManagementGroupRequest {
   managementGroupId: string;
   /** The name of the remediation. */
   remediationName: string;
-  body: unknown;
+  /** Properties for the remediation. */
+  properties?: RemediationPropertiesInput;
 }
 export const RemediationsCreateOrUpdateAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4201,7 +4364,7 @@ export const RemediationsCreateOrUpdateAtManagementGroupRequest =
         ),
       managementGroupId: S.String.pipe(T.Label()),
       remediationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RemediationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4244,14 +4407,15 @@ export interface RemediationsCreateOrUpdateAtResourceRequest {
   resourceId: string;
   /** The name of the remediation. */
   remediationName: string;
-  body: unknown;
+  /** Properties for the remediation. */
+  properties?: RemediationPropertiesInput;
 }
 export const RemediationsCreateOrUpdateAtResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceId: S.String.pipe(T.Label()),
       remediationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RemediationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4296,7 +4460,8 @@ export interface RemediationsCreateOrUpdateAtResourceGroupRequest {
   resourceGroupName: string;
   /** The name of the remediation. */
   remediationName: string;
-  body: unknown;
+  /** Properties for the remediation. */
+  properties?: RemediationPropertiesInput;
 }
 export const RemediationsCreateOrUpdateAtResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4304,7 +4469,7 @@ export const RemediationsCreateOrUpdateAtResourceGroupRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       remediationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RemediationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4347,14 +4512,15 @@ export interface RemediationsCreateOrUpdateAtSubscriptionRequest {
   subscriptionId: string;
   /** The name of the remediation. */
   remediationName: string;
-  body: unknown;
+  /** Properties for the remediation. */
+  properties?: RemediationPropertiesInput;
 }
 export const RemediationsCreateOrUpdateAtSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       remediationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RemediationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4393,7 +4559,7 @@ export const RemediationsCreateOrUpdateAtSubscriptionResponse =
   }) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>;
 
 export type RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsDeleteAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -4598,8 +4764,7 @@ export const RemediationsDeleteAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsDeleteAtSubscriptionResponse>;
 
 export type RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
-  | "Microsoft.Management"
-  | (string & {});
+  "Microsoft.Management";
 export const RemediationsGetAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -4803,7 +4968,7 @@ export const RemediationsGetAtSubscriptionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemediationsGetAtSubscriptionResponse>;
 
 export type RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsListDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -4840,7 +5005,7 @@ export const RemediationsListDeploymentsAtManagementGroupRequest =
   }) as any as S.Schema<RemediationsListDeploymentsAtManagementGroupRequest>;
 
 /** Internal error details. */
-export type ErrorDefinitionDetailsList = ErrorDefinition[];
+export type ErrorDefinitionDetailsList = ReadonlyArray<ErrorDefinition>;
 export const ErrorDefinitionDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDefinition),
 ) as any as S.Schema<ErrorDefinitionDetailsList>;
@@ -4860,7 +5025,7 @@ export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
 
 /** Additional scenario specific error details. */
-export type ErrorDefinitionAdditionalInfoList = TypedErrorInfo[];
+export type ErrorDefinitionAdditionalInfoList = ReadonlyArray<TypedErrorInfo>;
 export const ErrorDefinitionAdditionalInfoList = /*@__PURE__*/ S.Array(
   TypedErrorInfo,
 ) as any as S.Schema<ErrorDefinitionAdditionalInfoList>;
@@ -4922,7 +5087,8 @@ export const RemediationDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemediationDeployment>;
 
 /** The RemediationDeployment items on this page */
-export type RemediationDeploymentsListResultValueList = RemediationDeployment[];
+export type RemediationDeploymentsListResultValueList =
+  ReadonlyArray<RemediationDeployment>;
 export const RemediationDeploymentsListResultValueList = /*@__PURE__*/ S.Array(
   RemediationDeployment,
 ) as any as S.Schema<RemediationDeploymentsListResultValueList>;
@@ -5025,7 +5191,7 @@ export const RemediationsListDeploymentsAtSubscriptionRequest =
   }) as any as S.Schema<RemediationsListDeploymentsAtSubscriptionRequest>;
 
 export type RemediationsListForManagementGroupRequestManagementGroupsNamespace =
-  "Microsoft.Management" | (string & {});
+  "Microsoft.Management";
 export const RemediationsListForManagementGroupRequestManagementGroupsNamespace =
   /*@__PURE__*/ S.String;
 
@@ -5085,7 +5251,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
 /** The Remediation items on this page */
-export type RemediationListResultValueList = Remediation[];
+export type RemediationListResultValueList = ReadonlyArray<Remediation>;
 export const RemediationListResultValueList = /*@__PURE__*/ S.Array(
   Remediation,
 ) as any as S.Schema<RemediationListResultValueList>;

@@ -314,16 +314,33 @@
             "smithy.api#documentation": "The name of the commitment plan association with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#CommitmentPlanAccountAssociationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account commitment plan association."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdateAssociationRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdateAssociationRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#CommitmentPlansGetAssociation": {
@@ -1054,16 +1071,33 @@
             "smithy.api#documentation": "The name of the commitmentPlan associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cognitiveservices#CommitmentPlansUpdatePlanRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPlansUpdatePlanRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdatePlan": {
@@ -1192,16 +1226,115 @@
             "smithy.api#documentation": "The name of the commitmentPlan associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#CommitmentPlanPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account commitment plan."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdatePlanRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdatePlanRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPlanPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "commitmentPlanGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commitment plan guid."
+          }
+        },
+        "hostingModel": {
+          "target": "com.azure.cognitiveservices#HostingModel",
+          "traits": {
+            "smithy.api#documentation": "Account hosting model."
+          }
+        },
+        "planType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commitment plan type."
+          }
+        },
+        "current": {
+          "target": "com.azure.cognitiveservices#CommitmentPeriodInput",
+          "traits": {
+            "smithy.api#documentation": "Cognitive Services account commitment period."
+          }
+        },
+        "autoRenew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "AutoRenew commitment plan."
+          }
+        },
+        "next": {
+          "target": "com.azure.cognitiveservices#CommitmentPeriodInput",
+          "traits": {
+            "smithy.api#documentation": "Cognitive Services account commitment period."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Cognitive Services account commitment plan."
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPeriodInput": {
+      "type": "structure",
+      "members": {
+        "tier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commitment period commitment tier."
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Commitment period commitment count."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cognitive Services account commitment period."
       }
     },
     "com.azure.cognitiveservices#CommitmentPlansGetPlan": {
@@ -1904,16 +2037,65 @@
             "smithy.api#documentation": "The name of the Rai External Safety Provider associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiExternalSafetyProviderSchemaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services Rai External Safety provider."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiExternalSafetyProviderSchemaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "providerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the safety provider."
+          }
+        },
+        "providerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the safety provider."
+          }
+        },
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Safety provider mode sync/async."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Webhook URL for the safety provider."
+          }
+        },
+        "secretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret in Key Vault that contains the api key to access the webhook."
+          }
+        },
+        "managedIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The managed identity to access the Key Vault."
+          }
+        },
+        "keyVaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Key Vault URI that contains the api key for safety provider urls."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "RAI External SafetyProvider schema properties."
       }
     },
     "com.azure.cognitiveservices#AccountsListSkus": {
@@ -2076,16 +2258,36 @@
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.cognitiveservices#KeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "key name to generate (Key1|Key2)",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#KeyName": {
+      "type": "enum",
+      "members": {
+        "KEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Key1"
+          }
+        },
+        "KEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Key2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "key name to generate (Key1|Key2)"
       }
     },
     "com.azure.cognitiveservices#RaiTopicsDelete": {
@@ -2319,16 +2521,33 @@
             "smithy.api#documentation": "The name of the Rai Topic associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiTopicProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services Rai Topic."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#RaiTopicsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiTopicsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#RaiTopicsGet": {
@@ -2863,16 +3082,33 @@
             "smithy.api#documentation": "The name of the Rai Tool Label"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiToolLabelProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the RAI Tool Label."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#RaiToolLabelsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiToolLabelsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#RaiToolLabelsGet": {
@@ -3640,16 +3876,33 @@
             "smithy.api#documentation": "The name of the RaiPolicy associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services RaiPolicy."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#RaiPoliciesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiPoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#RaiPoliciesGet": {
@@ -4126,16 +4379,33 @@
             "smithy.api#documentation": "The name of the RaiBlocklist Item associated with the custom blocklist"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiBlocklistItemProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services RaiBlocklist Item."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#RaiBlocklistItemsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiBlocklistItemsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#RaiBlocklistItemsGet": {
@@ -4472,7 +4742,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.cognitiveservices#RaiBlocklistItemsBulkDeleteRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -4481,6 +4751,15 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiBlocklistItemsBulkDeleteRequest": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Cognitive Services RaiBlocklist Items Names."
       }
     },
     "com.azure.cognitiveservices#RaiBlocklistItemsBatchAdd": {
@@ -4614,7 +4893,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.cognitiveservices#RaiBlocklistItemsBulkAddRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -4623,6 +4902,32 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiBlocklistItemsBulkAddRequest": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#RaiBlocklistItemBulkRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Cognitive Services RaiBlocklist Items for batch add."
+      }
+    },
+    "com.azure.cognitiveservices#RaiBlocklistItemBulkRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiBlocklistItemProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of Cognitive Services RaiBlocklist Item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Cognitive Services RaiBlocklist Item request body."
       }
     },
     "com.azure.cognitiveservices#RaiBlocklistsDelete": {
@@ -4800,16 +5105,33 @@
             "smithy.api#documentation": "The name of the RaiBlocklist associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiBlocklistProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services RaiBlocklist."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#RaiBlocklistsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#RaiBlocklistsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#RaiBlocklistsGet": {
@@ -6285,15 +6607,97 @@
             "smithy.api#documentation": "Friendly name of the connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2Input",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties that the Cognitive services connection will be updated with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#ConnectionPropertiesV2Input": {
+      "type": "structure",
+      "members": {
+        "authType": {
+          "target": "com.azure.cognitiveservices#ConnectionAuthType",
+          "traits": {
+            "smithy.api#documentation": "Authentication type of the connection target",
+            "smithy.api#required": {}
+          }
+        },
+        "category": {
+          "target": "com.azure.cognitiveservices#ConnectionCategory",
+          "traits": {
+            "smithy.api#documentation": "Category of the connection"
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provides the error message if the connection fails"
+          }
+        },
+        "expiryTime": {
+          "target": "smithy.api#String"
+        },
+        "isSharedToAll": {
+          "target": "smithy.api#Boolean"
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2InputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Store user metadata for this connection"
+          }
+        },
+        "peRequirement": {
+          "target": "com.azure.cognitiveservices#ManagedPERequirement",
+          "traits": {
+            "smithy.api#documentation": "Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'."
+          }
+        },
+        "peStatus": {
+          "target": "com.azure.cognitiveservices#ManagedPEStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'."
+          }
+        },
+        "sharedUserList": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2InputSharedUserListList"
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The connection URL to be used."
+          }
+        },
+        "useWorkspaceManagedIdentity": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection property base schema."
+      }
+    },
+    "com.azure.cognitiveservices#ConnectionPropertiesV2InputSharedUserListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#ConnectionPropertiesV2InputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Store user metadata for this connection"
       }
     },
     "com.azure.cognitiveservices#ProjectConnectionsCreate": {
@@ -6397,10 +6801,11 @@
             "smithy.api#documentation": "Friendly name of the connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2Input",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Connection property base schema.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -6940,16 +7345,86 @@
             "smithy.api#documentation": "The name of the capability host associated with the Cognitive Services Resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "[Required] Additional attributes of the entity.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "aiServicesConnections": {
+          "target": "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputAiServicesConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of AI services connections.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "vectorStoreConnections": {
+          "target": "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageConnections": {
+          "target": "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputStorageConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used as a storage resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "threadStorageConnections": {
+          "target": "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used for Thread storage.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used for Thread storage."
+      }
+    },
+    "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputStorageConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used as a storage resource."
+      }
+    },
+    "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB)."
+      }
+    },
+    "com.azure.cognitiveservices#ProjectCapabilityHostPropertiesInputAiServicesConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of AI services connections."
       }
     },
     "com.azure.cognitiveservices#ProjectCapabilityHostsGet": {
@@ -7796,7 +8271,8 @@
         "state": {
           "target": "com.azure.cognitiveservices#AgentDeploymentState",
           "traits": {
-            "smithy.api#documentation": "Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents)."
+            "smithy.api#documentation": "Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "protocols": {
@@ -8114,16 +8590,110 @@
             "smithy.api#documentation": "The name of the deployment associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "[Required] Additional attributes of the entity.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#AgentDeploymentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the display name of the deployment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the unique identifier of the deployment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentState",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "protocols": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentPropertiesInputProtocolsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the supported protocol types and versions exposed by this deployment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agents": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentPropertiesInputAgentsList",
+          "traits": {
+            "smithy.api#documentation": "Returns a flat list of agent:version deployed in this deployment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.cognitiveservices#AgentDeploymentType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of deployment for the agent.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type representing an agent deployment as a management construct."
+      }
+    },
+    "com.azure.cognitiveservices#AgentDeploymentPropertiesInputAgentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#VersionedAgentReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "Returns a flat list of agent:version deployed in this deployment."
+      }
+    },
+    "com.azure.cognitiveservices#AgentDeploymentPropertiesInputProtocolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#AgentProtocolVersion"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the supported protocol types and versions exposed by this deployment."
+      }
+    },
+    "com.azure.cognitiveservices#AgentDeploymentPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
       }
     },
     "com.azure.cognitiveservices#AgentDeploymentsGet": {
@@ -8584,25 +9154,29 @@
         "agentIdentityBlueprint": {
           "target": "com.azure.cognitiveservices#AssignedIdentity",
           "traits": {
-            "smithy.api#documentation": "The EntraId Agentic Blueprint of the application."
+            "smithy.api#documentation": "The EntraId Agentic Blueprint of the application.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "defaultInstanceIdentity": {
           "target": "com.azure.cognitiveservices#AssignedIdentity",
           "traits": {
-            "smithy.api#documentation": "The (default) agent instance identity of the application."
+            "smithy.api#documentation": "The (default) agent instance identity of the application.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "authorizationPolicy": {
           "target": "com.azure.cognitiveservices#ApplicationAuthorizationPolicy",
           "traits": {
-            "smithy.api#documentation": "Gets or sets the authorization policy associated with this agentic application instance."
+            "smithy.api#documentation": "Gets or sets the authorization policy associated with this agentic application instance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "trafficRoutingPolicy": {
           "target": "com.azure.cognitiveservices#ApplicationTrafficRoutingPolicy",
           "traits": {
-            "smithy.api#documentation": "Gets or sets the traffic routing policy for the application's deployments."
+            "smithy.api#documentation": "Gets or sets the traffic routing policy for the application's deployments.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "provisioningState": {
@@ -9020,16 +9594,158 @@
             "smithy.api#documentation": "Name for the Agent Application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#AgenticApplicationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "[Required] Additional attributes of the entity.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#AgenticApplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#AgenticApplicationPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "baseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The application's dedicated invocation endpoint.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agents": {
+          "target": "com.azure.cognitiveservices#AgenticApplicationPropertiesInputAgentsList",
+          "traits": {
+            "smithy.api#documentation": "The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agentIdentityBlueprint": {
+          "target": "com.azure.cognitiveservices#AssignedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The EntraId Agentic Blueprint of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "defaultInstanceIdentity": {
+          "target": "com.azure.cognitiveservices#AssignedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The (default) agent instance identity of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "authorizationPolicy": {
+          "target": "com.azure.cognitiveservices#ApplicationAuthorizationPolicy",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the authorization policy associated with this agentic application instance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "trafficRoutingPolicy": {
+          "target": "com.azure.cognitiveservices#ApplicationTrafficRoutingPolicy",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the traffic routing policy for the application's deployments.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource type representing an agentic application as a management construct."
+      }
+    },
+    "com.azure.cognitiveservices#AssignedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.cognitiveservices#IdentityKind",
+          "traits": {
+            "smithy.api#documentation": "Specifies the kind of Entra identity described by this object.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cognitiveservices#IdentityManagementType",
+          "traits": {
+            "smithy.api#documentation": "Enumeration of identity types, from the perspective of management.",
+            "smithy.api#required": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The client ID of the identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID of the identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant ID of the identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject of this identity assignment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type representing an identity assignment"
+      }
+    },
+    "com.azure.cognitiveservices#AgenticApplicationPropertiesInputAgentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#AgentReferenceProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application."
+      }
+    },
+    "com.azure.cognitiveservices#AgenticApplicationPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
       }
     },
     "com.azure.cognitiveservices#AgentApplicationsGet": {
@@ -9711,16 +10427,104 @@
             "smithy.api#documentation": "The name of Cognitive Services account's project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ProjectPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services project."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#ProjectsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "identity": {
+          "target": "com.azure.cognitiveservices#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cognitiveservices#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.cognitiveservices#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.cognitiveservices#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cognitiveservices#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
+      }
+    },
+    "com.azure.cognitiveservices#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User-assigned managed identity."
+      }
+    },
+    "com.azure.cognitiveservices#ProjectsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.cognitiveservices#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the Cognitive Services Project."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the Cognitive Services Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Cognitive Services Project'."
       }
     },
     "com.azure.cognitiveservices#ProjectsCreate": {
@@ -9851,16 +10655,45 @@
             "smithy.api#documentation": "The name of Cognitive Services account's project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ProjectPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services project."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#ProjectsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "identity": {
+          "target": "com.azure.cognitiveservices#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#ProjectsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#ProjectsGet": {
@@ -10615,16 +11448,90 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the private endpoint connection"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputPrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The Private Endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "The private link resource group ids."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link resource group ids."
+      }
+    },
+    "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.cognitiveservices#PrivateEndpointServiceConnectionStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason for approval/rejection of the connection."
+          }
+        },
+        "actionsRequired": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message indicating if changes on the service provider require any updates on the consumer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider."
+      }
+    },
+    "com.azure.cognitiveservices#PrivateEndpointConnectionPropertiesInputPrivateEndpoint": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.cognitiveservices#PrivateEndpointConnectionsGet": {
@@ -12180,12 +13087,6 @@
           "traits": {
             "smithy.api#documentation": "Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID."
           }
-        },
-        "callRateLimit": {
-          "target": "com.azure.cognitiveservices#CallRateLimit",
-          "traits": {
-            "smithy.api#documentation": "The call rate limit Cognitive Services account."
-          }
         }
       },
       "traits": {
@@ -12310,12 +13211,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported."
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -12630,16 +13525,43 @@
             "smithy.api#documentation": "Name of the cognitive services account managed network outbound rule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#OutboundRuleInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Outbound Rule for the managed network of a cognitive services account.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#OutboundRuleInput": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.cognitiveservices#RuleCategory",
+          "traits": {
+            "smithy.api#documentation": "Category of a managed network Outbound Rule of a cognitive services account."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices#RuleStatus",
+          "traits": {
+            "smithy.api#documentation": "Type of a managed network Outbound Rule of a cognitive services account."
+          }
+        },
+        "type": {
+          "target": "com.azure.cognitiveservices#RuleType",
+          "traits": {
+            "smithy.api#documentation": "Type of a managed network Outbound Rule of a cognitive services account.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Outbound Rule for the managed network of a cognitive services account."
       }
     },
     "com.azure.cognitiveservices#OutboundRuleGet": {
@@ -12929,16 +13851,132 @@
             "smithy.api#documentation": "Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed Network settings for a cognitive services account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#ManagedNetworkSettingsInput": {
+      "type": "structure",
+      "members": {
+        "isolationMode": {
+          "target": "com.azure.cognitiveservices#IsolationMode",
+          "traits": {
+            "smithy.api#documentation": "Isolation mode for the managed network of a cognitive services account."
+          }
+        },
+        "outboundRules": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsInputOutboundRulesMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of <OutboundRule>",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkProvisionStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the Provisioning for the managed network of a cognitive services account."
+          }
+        },
+        "firewallSku": {
+          "target": "com.azure.cognitiveservices#FirewallSku",
+          "traits": {
+            "smithy.api#documentation": "Firewall Sku used for FQDN Rules"
+          }
+        },
+        "managedNetworkKind": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkKind",
+          "traits": {
+            "smithy.api#documentation": "The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed Network settings for a cognitive services account."
+      }
+    },
+    "com.azure.cognitiveservices#ManagedNetworkKind": {
+      "type": "enum",
+      "members": {
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled."
+      }
+    },
+    "com.azure.cognitiveservices#FirewallSku": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Firewall Sku used for FQDN Rules"
+      }
+    },
+    "com.azure.cognitiveservices#ManagedNetworkSettingsInputOutboundRulesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cognitiveservices#OutboundRuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of <OutboundRule>"
+      }
+    },
+    "com.azure.cognitiveservices#IsolationMode": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ALLOWINTERNETOUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowInternetOutbound"
+          }
+        },
+        "ALLOWONLYAPPROVEDOUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowOnlyApprovedOutbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Isolation mode for the managed network of a cognitive services account."
       }
     },
     "com.azure.cognitiveservices#ManagedNetworkSettingsDelete": {
@@ -13182,72 +14220,6 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices#IsolationMode": {
-      "type": "enum",
-      "members": {
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Disabled"
-          }
-        },
-        "ALLOWINTERNETOUTBOUND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AllowInternetOutbound"
-          }
-        },
-        "ALLOWONLYAPPROVEDOUTBOUND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AllowOnlyApprovedOutbound"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Isolation mode for the managed network of a cognitive services account."
-      }
-    },
-    "com.azure.cognitiveservices#ManagedNetworkKind": {
-      "type": "enum",
-      "members": {
-        "V1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "V1"
-          }
-        },
-        "V2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "V2"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled."
-      }
-    },
-    "com.azure.cognitiveservices#FirewallSku": {
-      "type": "enum",
-      "members": {
-        "STANDARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard"
-          }
-        },
-        "BASIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Basic"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Firewall Sku used for FQDN Rules"
-      }
-    },
     "com.azure.cognitiveservices#ManagedNetworkSettingsExOutboundRulesMap": {
       "type": "map",
       "key": {
@@ -13295,15 +14267,78 @@
             "smithy.api#documentation": "Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of the managed network settings of a cognitive services account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#ManagedNetworkSettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managedNetwork": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsExInput",
+          "traits": {
+            "smithy.api#documentation": "Managed Network settings for a cognitive services account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the managed network settings of a cognitive services account."
+      }
+    },
+    "com.azure.cognitiveservices#ManagedNetworkSettingsExInput": {
+      "type": "structure",
+      "members": {
+        "isolationMode": {
+          "target": "com.azure.cognitiveservices#IsolationMode",
+          "traits": {
+            "smithy.api#documentation": "Isolation mode for the managed network of a cognitive services account."
+          }
+        },
+        "outboundRules": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsExInputOutboundRulesMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of <OutboundRule>",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkProvisionStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the Provisioning for the managed network of a cognitive services account."
+          }
+        },
+        "firewallSku": {
+          "target": "com.azure.cognitiveservices#FirewallSku",
+          "traits": {
+            "smithy.api#documentation": "Firewall Sku used for FQDN Rules"
+          }
+        },
+        "managedNetworkKind": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkKind",
+          "traits": {
+            "smithy.api#documentation": "The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#ManagedNetworkSettingsExInputOutboundRulesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cognitiveservices#OutboundRuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of <OutboundRule>"
       }
     },
     "com.azure.cognitiveservices#ManagedNetworkSettingsPut": {
@@ -13398,11 +14433,10 @@
             "smithy.api#documentation": "Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ManagedNetworkSettingsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the managed network settings of a cognitive services account."
           }
         }
       },
@@ -14002,16 +15036,79 @@
             "smithy.api#documentation": "The name of the encryptionScope associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#EncryptionScopePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services EncryptionScope."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#EncryptionScopesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#EncryptionScopesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.cognitiveservices#EncryptionScopePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultProperties": {
+          "target": "com.azure.cognitiveservices#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of KeyVault"
+          }
+        },
+        "keySource": {
+          "target": "com.azure.cognitiveservices#EncryptionScopePropertiesInputKeySource",
+          "traits": {
+            "smithy.api#documentation": "Enumerates the possible value of keySource for Encryption"
+          }
+        },
+        "state": {
+          "target": "com.azure.cognitiveservices#EncryptionScopeState",
+          "traits": {
+            "smithy.api#documentation": "The encryptionScope state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to EncryptionScope"
+      }
+    },
+    "com.azure.cognitiveservices#EncryptionScopePropertiesInputKeySource": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_COGNITIVESERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.CognitiveServices"
+          }
+        },
+        "MICROSOFT_KEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumerates the possible value of keySource for Encryption"
       }
     },
     "com.azure.cognitiveservices#EncryptionScopesGet": {
@@ -14559,13 +15656,15 @@
         "serviceTier": {
           "target": "com.azure.cognitiveservices#ServiceTier",
           "traits": {
-            "smithy.api#documentation": "The service tier for the deployment. Determines the pricing and performance level for request processing. Use 'Default' for standard pricing or 'Priority' for higher-priority processing with premium pricing. Note: Pause operations are only supported on Standard, DataZoneStandard, and GlobalStandard SKUs."
+            "smithy.api#documentation": "The service tier for the deployment. Determines the pricing and performance level for request processing. Use 'Default' for standard pricing or 'Priority' for higher-priority processing with premium pricing. Note: Pause operations are only supported on Standard, DataZoneStandard, and GlobalStandard SKUs.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "deploymentState": {
           "target": "com.azure.cognitiveservices#DeploymentState",
           "traits": {
-            "smithy.api#documentation": "The state of the deployment. Controls whether the deployment is accepting inference requests. Use 'Running' for active deployments that process requests, or 'Paused' to temporarily stop inference while preserving the deployment configuration."
+            "smithy.api#documentation": "The state of the deployment. Controls whether the deployment is accepting inference requests. Use 'Running' for active deployments that process requests, or 'Paused' to temporarily stop inference while preserving the deployment configuration.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "routing": {
@@ -15189,16 +16288,33 @@
             "smithy.api#documentation": "The name of the deployment associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cognitiveservices#DeploymentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#DeploymentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#DeploymentsCreateOrUpdate": {
@@ -15323,16 +16439,135 @@
             "smithy.api#documentation": "The name of the deployment associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#DeploymentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account deployment."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#DeploymentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#DeploymentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.cognitiveservices#DeploymentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "model": {
+          "target": "com.azure.cognitiveservices#DeploymentModel",
+          "traits": {
+            "smithy.api#documentation": "Properties of Cognitive Services account deployment model."
+          }
+        },
+        "scaleSettings": {
+          "target": "com.azure.cognitiveservices#DeploymentScaleSettingsInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)"
+          }
+        },
+        "raiPolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of RAI policy."
+          }
+        },
+        "versionUpgradeOption": {
+          "target": "com.azure.cognitiveservices#DeploymentModelVersionUpgradeOption",
+          "traits": {
+            "smithy.api#documentation": "Deployment model version upgrade option."
+          }
+        },
+        "currentCapacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The current capacity."
+          }
+        },
+        "capacitySettings": {
+          "target": "com.azure.cognitiveservices#DeploymentCapacitySettings",
+          "traits": {
+            "smithy.api#documentation": "Internal use only."
+          }
+        },
+        "parentDeploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of parent deployment."
+          }
+        },
+        "spilloverDeploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit."
+          }
+        },
+        "serviceTier": {
+          "target": "com.azure.cognitiveservices#ServiceTier",
+          "traits": {
+            "smithy.api#documentation": "The service tier for the deployment. Determines the pricing and performance level for request processing. Use 'Default' for standard pricing or 'Priority' for higher-priority processing with premium pricing. Note: Pause operations are only supported on Standard, DataZoneStandard, and GlobalStandard SKUs.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deploymentState": {
+          "target": "com.azure.cognitiveservices#DeploymentState",
+          "traits": {
+            "smithy.api#documentation": "The state of the deployment. Controls whether the deployment is accepting inference requests. Use 'Running' for active deployments that process requests, or 'Paused' to temporarily stop inference while preserving the deployment configuration.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "routing": {
+          "target": "com.azure.cognitiveservices#DeploymentRouting",
+          "traits": {
+            "smithy.api#documentation": "Routing configuration for the model-router deployment. This property is only applicable when the deployed model is 'model-router' version 2025-11-18 or later. Allows you to select the models subset for routing and the routing mode (balanced, quality, cost) for routing across all supported models or the model subset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Cognitive Services account deployment."
+      }
+    },
+    "com.azure.cognitiveservices#DeploymentScaleSettingsInput": {
+      "type": "structure",
+      "members": {
+        "scaleType": {
+          "target": "com.azure.cognitiveservices#DeploymentScaleType",
+          "traits": {
+            "smithy.api#documentation": "Deployment scale type."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Deployment capacity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)"
       }
     },
     "com.azure.cognitiveservices#DeploymentsGet": {
@@ -15760,16 +16995,33 @@
             "smithy.api#documentation": "The name of the defender for AI setting."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#DefenderForAISettingProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Defender for AI resource properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#DefenderForAISettingsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#DefenderForAISettingsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#DefenderForAISettingsCreateOrUpdate": {
@@ -15888,16 +17140,33 @@
             "smithy.api#documentation": "The name of the defender for AI setting."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#DefenderForAISettingProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Defender for AI resource properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#DefenderForAISettingsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#DefenderForAISettingsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#DefenderForAISettingsGet": {
@@ -16315,10 +17584,10 @@
             "smithy.api#documentation": "Friendly name of the connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2Input",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties that the Cognitive services connection will be updated with."
           }
         }
       },
@@ -16419,10 +17688,11 @@
             "smithy.api#documentation": "Friendly name of the connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#ConnectionPropertiesV2Input",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Connection property base schema.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -16793,16 +18063,51 @@
             "smithy.api#documentation": "The name of the commitmentPlan associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#CommitmentPlanPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account commitment plan."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CommitmentPlansCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#CommitmentPlansGet": {
@@ -17280,16 +18585,131 @@
             "smithy.api#documentation": "The name of the capability host associated with the Cognitive Services Resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "[Required] Additional attributes of the entity.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "aiServicesConnections": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInputAiServicesConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of AI services connections.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityHostKind": {
+          "target": "com.azure.cognitiveservices#CapabilityHostKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of this capability host."
+          }
+        },
+        "customerSubnet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer subnet info to help set up this capability host.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageConnections": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInputStorageConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used as a storage resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "threadStorageConnections": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInputThreadStorageConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used for Thread storage.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "vectorStoreConnections": {
+          "target": "com.azure.cognitiveservices#CapabilityHostPropertiesInputVectorStoreConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "enablePublicHostingEnvironment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether public hosting environment is enabled for the capability host"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInputVectorStoreConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB)."
+      }
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInputThreadStorageConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used for Thread storage."
+      }
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInputStorageConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connection names from those available in the account or project to be used as a storage resource."
+      }
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInputAiServicesConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of AI services connections."
+      }
+    },
+    "com.azure.cognitiveservices#CapabilityHostPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
       }
     },
     "com.azure.cognitiveservices#AccountCapabilityHostsGet": {
@@ -18537,16 +19957,202 @@
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#AccountsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "identity": {
+          "target": "com.azure.cognitiveservices#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.cognitiveservices#AccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "migrationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource migration token."
+          }
+        },
+        "customSubDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional subdomain name used for token-based authentication."
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.cognitiveservices#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "A collection of rules governing the accessibility from specific network locations."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.cognitiveservices#Encryption",
+          "traits": {
+            "smithy.api#documentation": "The encryption properties for this resource."
+          }
+        },
+        "userOwnedStorage": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInputUserOwnedStorageList",
+          "traits": {
+            "smithy.api#documentation": "The storage accounts for this resource."
+          }
+        },
+        "amlWorkspace": {
+          "target": "com.azure.cognitiveservices#UserOwnedAmlWorkspace",
+          "traits": {
+            "smithy.api#documentation": "The user owned AML account properties."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.cognitiveservices#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public endpoint access is allowed for this account."
+          }
+        },
+        "apiProperties": {
+          "target": "com.azure.cognitiveservices#ApiProperties",
+          "traits": {
+            "smithy.api#documentation": "The api properties for special APIs."
+          }
+        },
+        "dynamicThrottlingEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag to enable dynamic throttling."
+          }
+        },
+        "storedCompletionsDisabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag to disable stored completions."
+          }
+        },
+        "restrictOutboundNetworkAccess": {
+          "target": "smithy.api#Boolean"
+        },
+        "allowedFqdnList": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInputAllowedFqdnListList"
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean"
+        },
+        "restore": {
+          "target": "smithy.api#Boolean"
+        },
+        "locations": {
+          "target": "com.azure.cognitiveservices#MultiRegionSettings",
+          "traits": {
+            "smithy.api#documentation": "The multiregion settings of Cognitive Services account."
+          }
+        },
+        "raiMonitorConfig": {
+          "target": "com.azure.cognitiveservices#RaiMonitorConfig",
+          "traits": {
+            "smithy.api#documentation": "Cognitive Services Rai Monitor Config."
+          }
+        },
+        "networkInjections": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInputNetworkInjectionsList"
+        },
+        "allowProjectManagement": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry."
+          }
+        },
+        "defaultProject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter."
+          }
+        },
+        "associatedProjects": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInputAssociatedProjectsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the projects, by project name, that are associated with this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Cognitive Services account."
+      }
+    },
+    "com.azure.cognitiveservices#AccountPropertiesInputAssociatedProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the projects, by project name, that are associated with this resource."
+      }
+    },
+    "com.azure.cognitiveservices#AccountPropertiesInputNetworkInjectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#NetworkInjection"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#AccountPropertiesInputAllowedFqdnListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices#AccountPropertiesInputUserOwnedStorageList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#UserOwnedStorage"
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage accounts for this resource."
       }
     },
     "com.azure.cognitiveservices#AccountsCreate": {
@@ -18681,16 +20287,57 @@
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#AccountPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#AccountsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account."
+          }
+        },
+        "sku": {
+          "target": "com.azure.cognitiveservices#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "identity": {
+          "target": "com.azure.cognitiveservices#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#AccountsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#AccountsGet": {
@@ -19375,16 +21022,33 @@
             "smithy.api#documentation": "The name of the RaiPolicy associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services RaiPolicy."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices#SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cognitiveservices#SubscriptionRaiPolicyGet": {
@@ -19635,11 +21299,10 @@
             "smithy.api#documentation": "The name of the Rai External Safety Provider associated with the Cognitive Services Account"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#RaiExternalSafetyProviderSchemaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services Rai External Safety provider."
           }
         }
       },
@@ -19959,7 +21622,8 @@
         "tierUpgradeEligibilityInfo": {
           "target": "com.azure.cognitiveservices#QuotaTierUpgradeEligibilityInfo",
           "traits": {
-            "smithy.api#documentation": "Information about the quota tier upgrade eligibility for the subscription."
+            "smithy.api#documentation": "Information about the quota tier upgrade eligibility for the subscription.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -20061,16 +21725,29 @@
             "smithy.api#documentation": "Default parameter. Leave the value as default."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#QuotaTierPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of quota tier resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#QuotaTierPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tierUpgradePolicy": {
+          "target": "com.azure.cognitiveservices#TierUpgradePolicy",
+          "traits": {
+            "smithy.api#documentation": "Gets the tier upgrade policy for the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Quota Tier resource'."
       }
     },
     "com.azure.cognitiveservices#QuotaTiersCreateOrUpdate": {
@@ -20149,11 +21826,10 @@
             "smithy.api#documentation": "Default parameter. Leave the value as default."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cognitiveservices#QuotaTierPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of quota tier resource."
           }
         }
       },
@@ -21406,16 +23082,39 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "skus": {
+          "target": "com.azure.cognitiveservices#CheckSkuAvailabilityRequestSkusList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The SKU of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Type of the resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CheckSkuAvailabilityRequestSkusList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU of the resource."
       }
     },
     "com.azure.cognitiveservices#DeletedAccountsList": {
@@ -21556,11 +23255,24 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "subdomainName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The subdomain name to use.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Type of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind (type) of cognitive service account."
           }
         }
       },
@@ -21635,16 +23347,76 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "model": {
+          "target": "com.azure.cognitiveservices#DeploymentModel",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Cognitive Services account deployment model."
+          }
+        },
+        "skuName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of SKU."
+          }
+        },
+        "workloads": {
+          "target": "com.azure.cognitiveservices#CalculateModelCapacityRequestWorkloadsList",
+          "traits": {
+            "smithy.api#documentation": "List of Model Capacity Calculator Workload."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices#CalculateModelCapacityRequestWorkloadsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices#ModelCapacityCalculatorWorkload"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Model Capacity Calculator Workload."
+      }
+    },
+    "com.azure.cognitiveservices#ModelCapacityCalculatorWorkload": {
+      "type": "structure",
+      "members": {
+        "requestPerMinute": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Request per minute."
+          }
+        },
+        "requestParameters": {
+          "target": "com.azure.cognitiveservices#ModelCapacityCalculatorWorkloadRequestParam",
+          "traits": {
+            "smithy.api#documentation": "Dictionary, Model Capacity Calculator Workload Parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model Capacity Calculator Workload."
+      }
+    },
+    "com.azure.cognitiveservices#ModelCapacityCalculatorWorkloadRequestParam": {
+      "type": "structure",
+      "members": {
+        "avgPromptTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Average prompt tokens."
+          }
+        },
+        "avgGeneratedTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Average generated tokens."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary, Model Capacity Calculator Workload Parameters."
       }
     },
     "com.azure.cognitiveservices#AccountsList": {

@@ -187,7 +187,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -241,8 +241,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type ExecutionTemplateJobTypeEnum =
   | "JOB_TYPE_UNSPECIFIED"
   | "VERTEX_AI"
-  | "DATAPROC"
-  | (string & {});
+  | "DATAPROC";
 export const ExecutionTemplateJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type SchedulerAcceleratorConfigTypeEnum =
@@ -254,8 +253,7 @@ export type SchedulerAcceleratorConfigTypeEnum =
   | "NVIDIA_TESLA_T4"
   | "NVIDIA_TESLA_A100"
   | "TPU_V2"
-  | "TPU_V3"
-  | (string & {});
+  | "TPU_V3";
 export const SchedulerAcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported. */
@@ -281,8 +279,7 @@ export type ExecutionTemplateScaleTierEnum =
   | "PREMIUM_1"
   | "BASIC_GPU"
   | "BASIC_TPU"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const ExecutionTemplateScaleTierEnum = /*@__PURE__*/ S.String;
 
 /** Parameters used in Dataproc JobType executions. */
@@ -379,8 +376,7 @@ export type ExecutionStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "EXPIRED"
-  | "INITIALIZING"
-  | (string & {});
+  | "INITIALIZING";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a single executed notebook. */
@@ -446,8 +442,7 @@ export const CreateProjectsLocationsExecutionsRequest = /*@__PURE__*/ S.suspend(
 export type InstanceNicTypeEnum =
   | "UNSPECIFIED_NIC_TYPE"
   | "VIRTIO_NET"
-  | "GVNIC"
-  | (string & {});
+  | "GVNIC";
 export const InstanceNicTypeEnum = /*@__PURE__*/ S.String;
 
 /** A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid. */
@@ -469,7 +464,7 @@ export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShieldedInstanceConfig",
 }) as any as S.Schema<ShieldedInstanceConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -490,8 +485,7 @@ export type AcceleratorConfigTypeEnum =
   | "NVIDIA_H100_80GB"
   | "NVIDIA_H100_MEGA_80GB"
   | "TPU_V2"
-  | "TPU_V3"
-  | (string & {});
+  | "TPU_V3";
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported. */
@@ -515,23 +509,20 @@ export type InstanceDataDiskTypeEnum =
   | "PD_STANDARD"
   | "PD_SSD"
   | "PD_BALANCED"
-  | "PD_EXTREME"
-  | (string & {});
+  | "PD_EXTREME";
 export const InstanceDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeHistoryEntryStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const UpgradeHistoryEntryStateEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeHistoryEntryActionEnum =
   | "ACTION_UNSPECIFIED"
   | "UPGRADE"
-  | "ROLLBACK"
-  | (string & {});
+  | "ROLLBACK";
 export const UpgradeHistoryEntryActionEnum = /*@__PURE__*/ S.String;
 
 /** The entry of VM image upgrade history. */
@@ -574,7 +565,7 @@ export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeHistoryEntry",
 }) as any as S.Schema<UpgradeHistoryEntry>;
 
-export type UpgradeHistoryEntryList = UpgradeHistoryEntry[];
+export type UpgradeHistoryEntryList = ReadonlyArray<UpgradeHistoryEntry>;
 export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
   UpgradeHistoryEntry,
 ) as any as S.Schema<UpgradeHistoryEntryList>;
@@ -591,8 +582,7 @@ export type InstanceStateEnum =
   | "INITIALIZING"
   | "REGISTERING"
   | "SUSPENDING"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceBootDiskTypeEnum =
@@ -600,15 +590,13 @@ export type InstanceBootDiskTypeEnum =
   | "PD_STANDARD"
   | "PD_SSD"
   | "PD_BALANCED"
-  | "PD_EXTREME"
-  | (string & {});
+  | "PD_EXTREME";
 export const InstanceBootDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "GMEK"
-  | "CMEK"
-  | (string & {});
+  | "CMEK";
 export const InstanceDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** Guest OS features for boot disk. */
@@ -622,7 +610,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = GuestOsFeature[];
+export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -671,7 +659,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList = Disk[];
+export type DiskList = ReadonlyArray<Disk>;
 export const DiskList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList>;
@@ -680,8 +668,7 @@ export type ReservationAffinityConsumeReservationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | (string & {});
+  | "SPECIFIC_RESERVATION";
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -708,13 +695,12 @@ export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
 
 export type InstanceMigrationEligibilityErrorsItemEnum =
   | "ERROR_UNSPECIFIED"
-  | "DATAPROC_HUB"
-  | (string & {});
+  | "DATAPROC_HUB";
 export const InstanceMigrationEligibilityErrorsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceMigrationEligibilityErrorsItemEnumList =
-  InstanceMigrationEligibilityErrorsItemEnum[];
+  ReadonlyArray<InstanceMigrationEligibilityErrorsItemEnum>;
 export const InstanceMigrationEligibilityErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceMigrationEligibilityErrorsItemEnum,
@@ -727,13 +713,12 @@ export type InstanceMigrationEligibilityWarningsItemEnum =
   | "UNSUPPORTED_OS"
   | "NO_REMOVE_DATA_DISK"
   | "GCS_BACKUP"
-  | "POST_STARTUP_SCRIPT"
-  | (string & {});
+  | "POST_STARTUP_SCRIPT";
 export const InstanceMigrationEligibilityWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceMigrationEligibilityWarningsItemEnumList =
-  InstanceMigrationEligibilityWarningsItemEnum[];
+  ReadonlyArray<InstanceMigrationEligibilityWarningsItemEnum>;
 export const InstanceMigrationEligibilityWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceMigrationEligibilityWarningsItemEnum,
@@ -911,15 +896,13 @@ export type RuntimeStateEnum =
   | "STOPPED"
   | "DELETING"
   | "UPGRADING"
-  | "INITIALIZING"
-  | (string & {});
+  | "INITIALIZING";
 export const RuntimeStateEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeAccessConfigAccessTypeEnum =
   | "RUNTIME_ACCESS_TYPE_UNSPECIFIED"
   | "SINGLE_USER"
-  | "SERVICE_ACCOUNT"
-  | (string & {});
+  | "SERVICE_ACCOUNT";
 export const RuntimeAccessConfigAccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the login configuration for Runtime */
@@ -973,7 +956,7 @@ export const RuntimeGuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuntimeGuestOsFeature",
 }) as any as S.Schema<RuntimeGuestOsFeature>;
 
-export type RuntimeGuestOsFeatureList = RuntimeGuestOsFeature[];
+export type RuntimeGuestOsFeatureList = ReadonlyArray<RuntimeGuestOsFeature>;
 export const RuntimeGuestOsFeatureList = /*@__PURE__*/ S.Array(
   RuntimeGuestOsFeature,
 ) as any as S.Schema<RuntimeGuestOsFeatureList>;
@@ -983,8 +966,7 @@ export type LocalDiskInitializeParamsDiskTypeEnum =
   | "PD_STANDARD"
   | "PD_SSD"
   | "PD_BALANCED"
-  | "PD_EXTREME"
-  | (string & {});
+  | "PD_EXTREME";
 export const LocalDiskInitializeParamsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both. */
@@ -1056,7 +1038,7 @@ export const LocalDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalDisk" }) as any as S.Schema<LocalDisk>;
 
-export type ContainerImageList = ContainerImage[];
+export type ContainerImageList = ReadonlyArray<ContainerImage>;
 export const ContainerImageList = /*@__PURE__*/ S.Array(
   ContainerImage,
 ) as any as S.Schema<ContainerImageList>;
@@ -1064,8 +1046,7 @@ export const ContainerImageList = /*@__PURE__*/ S.Array(
 export type VirtualMachineConfigNicTypeEnum =
   | "UNSPECIFIED_NIC_TYPE"
   | "VIRTIO_NET"
-  | "GVNIC"
-  | (string & {});
+  | "GVNIC";
 export const VirtualMachineConfigNicTypeEnum = /*@__PURE__*/ S.String;
 
 /** A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid. */
@@ -1100,8 +1081,7 @@ export type RuntimeAcceleratorConfigTypeEnum =
   | "TPU_V3"
   | "NVIDIA_TESLA_T4_VWS"
   | "NVIDIA_TESLA_P100_VWS"
-  | "NVIDIA_TESLA_P4_VWS"
-  | (string & {});
+  | "NVIDIA_TESLA_P4_VWS";
 export const RuntimeAcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100` */
@@ -1200,12 +1180,11 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 
 export type RuntimeMigrationEligibilityErrorsItemEnum =
   | "ERROR_UNSPECIFIED"
-  | "CUSTOM_CONTAINER"
-  | (string & {});
+  | "CUSTOM_CONTAINER";
 export const RuntimeMigrationEligibilityErrorsItemEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeMigrationEligibilityErrorsItemEnumList =
-  RuntimeMigrationEligibilityErrorsItemEnum[];
+  ReadonlyArray<RuntimeMigrationEligibilityErrorsItemEnum>;
 export const RuntimeMigrationEligibilityErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     RuntimeMigrationEligibilityErrorsItemEnum,
@@ -1218,13 +1197,12 @@ export type RuntimeMigrationEligibilityWarningsItemEnum =
   | "RESERVED_IP_RANGE"
   | "GOOGLE_MANAGED_NETWORK"
   | "POST_STARTUP_SCRIPT"
-  | "SINGLE_USER"
-  | (string & {});
+  | "SINGLE_USER";
 export const RuntimeMigrationEligibilityWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type RuntimeMigrationEligibilityWarningsItemEnumList =
-  RuntimeMigrationEligibilityWarningsItemEnum[];
+  ReadonlyArray<RuntimeMigrationEligibilityWarningsItemEnum>;
 export const RuntimeMigrationEligibilityWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     RuntimeMigrationEligibilityWarningsItemEnum,
@@ -1251,15 +1229,13 @@ export type RuntimeHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "AGENT_NOT_INSTALLED"
-  | "AGENT_NOT_RUNNING"
-  | (string & {});
+  | "AGENT_NOT_RUNNING";
 export const RuntimeHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeSoftwareConfigPostStartupScriptBehaviorEnum =
   | "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"
   | "RUN_EVERY_START"
-  | "DOWNLOAD_AND_RUN_EVERY_START"
-  | (string & {});
+  | "DOWNLOAD_AND_RUN_EVERY_START";
 export const RuntimeSoftwareConfigPostStartupScriptBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1404,11 +1380,10 @@ export type ScheduleStateEnum =
   | "DISABLED"
   | "UPDATE_FAILED"
   | "INITIALIZING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ScheduleStateEnum = /*@__PURE__*/ S.String;
 
-export type ExecutionList = Execution[];
+export type ExecutionList = ReadonlyArray<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -1752,7 +1727,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1820,8 +1795,7 @@ export type GetInstanceHealthResponseHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "AGENT_NOT_INSTALLED"
-  | "AGENT_NOT_RUNNING"
-  | (string & {});
+  | "AGENT_NOT_RUNNING";
 export const GetInstanceHealthResponseHealthStateEnum = /*@__PURE__*/ S.String;
 
 /** Response for checking if a notebook instance is healthy. */
@@ -1999,8 +1973,7 @@ export type IsUpgradeableProjectsLocationsInstancesTypeEnum =
   | "UPGRADE_FRAMEWORK"
   | "UPGRADE_OS"
   | "UPGRADE_CUDA"
-  | "UPGRADE_ALL"
-  | (string & {});
+  | "UPGRADE_ALL";
 export const IsUpgradeableProjectsLocationsInstancesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2080,7 +2053,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2126,7 +2099,7 @@ export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEnvironmentsRequest",
 }) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
-export type EnvironmentList = Environment[];
+export type EnvironmentList = ReadonlyArray<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -2231,7 +2204,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2286,7 +2259,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2341,7 +2314,7 @@ export const ListProjectsLocationsRuntimesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRuntimesRequest",
 }) as any as S.Schema<ListProjectsLocationsRuntimesRequest>;
 
-export type RuntimeList = Runtime[];
+export type RuntimeList = ReadonlyArray<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;
@@ -2396,7 +2369,7 @@ export const ListProjectsLocationsSchedulesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSchedulesRequest",
 }) as any as S.Schema<ListProjectsLocationsSchedulesRequest>;
 
-export type ScheduleList = Schedule[];
+export type ScheduleList = ReadonlyArray<Schedule>;
 export const ScheduleList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleList>;
@@ -2423,8 +2396,7 @@ export const ListSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
 export type MigrateInstanceRequestPostStartupScriptOptionEnum =
   | "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED"
   | "POST_STARTUP_SCRIPT_OPTION_SKIP"
-  | "POST_STARTUP_SCRIPT_OPTION_RERUN"
-  | (string & {});
+  | "POST_STARTUP_SCRIPT_OPTION_RERUN";
 export const MigrateInstanceRequestPostStartupScriptOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2468,8 +2440,7 @@ export const MigrateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type MigrateRuntimeRequestPostStartupScriptOptionEnum =
   | "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED"
   | "POST_STARTUP_SCRIPT_OPTION_SKIP"
-  | "POST_STARTUP_SCRIPT_OPTION_RERUN"
-  | (string & {});
+  | "POST_STARTUP_SCRIPT_OPTION_RERUN";
 export const MigrateRuntimeRequestPostStartupScriptOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2641,8 +2612,7 @@ export type EventTypeEnum =
   | "IDLE"
   | "HEARTBEAT"
   | "HEALTH"
-  | "MAINTENANCE"
-  | (string & {});
+  | "MAINTENANCE";
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of an Event for a managed / semi-managed notebook instance. */
@@ -2892,8 +2862,7 @@ export type SetInstanceAcceleratorRequestTypeEnum =
   | "NVIDIA_H100_80GB"
   | "NVIDIA_H100_MEGA_80GB"
   | "TPU_V2"
-  | "TPU_V3"
-  | (string & {});
+  | "TPU_V3";
 export const SetInstanceAcceleratorRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for setting instance accelerator. */
@@ -3469,8 +3438,7 @@ export type UpgradeInstanceInternalRequestTypeEnum =
   | "UPGRADE_FRAMEWORK"
   | "UPGRADE_OS"
   | "UPGRADE_CUDA"
-  | "UPGRADE_ALL"
-  | (string & {});
+  | "UPGRADE_ALL";
 export const UpgradeInstanceInternalRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for upgrading a notebook instance from within the VM */
@@ -3516,8 +3484,7 @@ export type UpgradeInstanceRequestTypeEnum =
   | "UPGRADE_FRAMEWORK"
   | "UPGRADE_OS"
   | "UPGRADE_CUDA"
-  | "UPGRADE_ALL"
-  | (string & {});
+  | "UPGRADE_ALL";
 export const UpgradeInstanceRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for upgrading a notebook instance */

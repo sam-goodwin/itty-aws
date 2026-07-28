@@ -106,8 +106,7 @@ export type RecipientsCreateResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsCreateResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsCreateResponseResourcesItem {
@@ -133,7 +132,7 @@ export const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsCreateResponseResourcesItem>;
 
 export type RecipientsCreateResponseResourcesList =
-  RecipientsCreateResponseResourcesItem[];
+  ReadonlyArray<RecipientsCreateResponseResourcesItem>;
 export const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsCreateResponseResourcesList>;
@@ -171,7 +170,9 @@ export type ResourcesCreateRequestResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesCreateRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateResourceRequest {
@@ -215,14 +216,12 @@ export type ResourcesCreateResponseResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesCreateResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesCreateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesCreateResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -284,7 +283,8 @@ export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRecipientsItem",
 }) as any as S.Schema<CreateRequestRecipientsItem>;
 
-export type CreateRequestRecipientsList = CreateRequestRecipientsItem[];
+export type CreateRequestRecipientsList =
+  ReadonlyArray<CreateRequestRecipientsItem>;
 export const CreateRequestRecipientsList = /*@__PURE__*/ S.Array(
   CreateRequestRecipientsItem,
 ) as any as S.Schema<CreateRequestRecipientsList>;
@@ -293,7 +293,9 @@ export type CreateRequestResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const CreateRequestResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestResourcesItem {
@@ -319,7 +321,8 @@ export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestResourcesItem",
 }) as any as S.Schema<CreateRequestResourcesItem>;
 
-export type CreateRequestResourcesList = CreateRequestResourcesItem[];
+export type CreateRequestResourcesList =
+  ReadonlyArray<CreateRequestResourcesItem>;
 export const CreateRequestResourcesList = /*@__PURE__*/ S.Array(
   CreateRequestResourcesItem,
 ) as any as S.Schema<CreateRequestResourcesList>;
@@ -351,34 +354,28 @@ export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceSharingRequest",
 }) as any as S.Schema<CreateResourceSharingRequest>;
 
-export type CreateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type CreateResponseStatus = "active" | "deleting" | "deleted";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type CreateResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type CreateResponseTargetType = "account" | "organization";
 export const CreateResponseTargetType = /*@__PURE__*/ S.String;
 
-export type CreateResponseKind = "sent" | "received" | (string & {});
+export type CreateResponseKind = "sent" | "received";
 export const CreateResponseKind = /*@__PURE__*/ S.String;
 
 export type CreateResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const CreateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type CreateResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const CreateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseResourcesItem {
@@ -419,7 +416,8 @@ export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseResourcesItem",
 }) as any as S.Schema<CreateResponseResourcesItem>;
 
-export type CreateResponseResourcesList = CreateResponseResourcesItem[];
+export type CreateResponseResourcesList =
+  ReadonlyArray<CreateResponseResourcesItem>;
 export const CreateResponseResourcesList = /*@__PURE__*/ S.Array(
   CreateResponseResourcesItem,
 ) as any as S.Schema<CreateResponseResourcesList>;
@@ -514,8 +512,7 @@ export type RecipientsDeleteResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsDeleteResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsDeleteResponseResourcesItem {
@@ -541,7 +538,7 @@ export const RecipientsDeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsDeleteResponseResourcesItem>;
 
 export type RecipientsDeleteResponseResourcesList =
-  RecipientsDeleteResponseResourcesItem[];
+  ReadonlyArray<RecipientsDeleteResponseResourcesItem>;
 export const RecipientsDeleteResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsDeleteResponseResourcesItem,
 ) as any as S.Schema<RecipientsDeleteResponseResourcesList>;
@@ -605,14 +602,12 @@ export type ResourcesDeleteResponseResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesDeleteResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesDeleteResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesDeleteResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -677,34 +672,28 @@ export const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceSharingRequest",
 }) as any as S.Schema<DeleteResourceSharingRequest>;
 
-export type DeleteResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type DeleteResponseStatus = "active" | "deleting" | "deleted";
 export const DeleteResponseStatus = /*@__PURE__*/ S.String;
 
-export type DeleteResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type DeleteResponseTargetType = "account" | "organization";
 export const DeleteResponseTargetType = /*@__PURE__*/ S.String;
 
-export type DeleteResponseKind = "sent" | "received" | (string & {});
+export type DeleteResponseKind = "sent" | "received";
 export const DeleteResponseKind = /*@__PURE__*/ S.String;
 
 export type DeleteResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const DeleteResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type DeleteResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const DeleteResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseResourcesItem {
@@ -745,7 +734,8 @@ export const DeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseResourcesItem",
 }) as any as S.Schema<DeleteResponseResourcesItem>;
 
-export type DeleteResponseResourcesList = DeleteResponseResourcesItem[];
+export type DeleteResponseResourcesList =
+  ReadonlyArray<DeleteResponseResourcesItem>;
 export const DeleteResponseResourcesList = /*@__PURE__*/ S.Array(
   DeleteResponseResourcesItem,
 ) as any as S.Schema<DeleteResponseResourcesList>;
@@ -843,8 +833,7 @@ export type RecipientsGetResponseAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsGetResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsGetResponseResourcesItem {
@@ -869,7 +858,7 @@ export const RecipientsGetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientsGetResponseResourcesItem>;
 
 export type RecipientsGetResponseResourcesList =
-  RecipientsGetResponseResourcesItem[];
+  ReadonlyArray<RecipientsGetResponseResourcesItem>;
 export const RecipientsGetResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsGetResponseResourcesItem,
 ) as any as S.Schema<RecipientsGetResponseResourcesList>;
@@ -933,14 +922,12 @@ export type ResourcesGetResponseResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesGetResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesGetResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1013,31 +1000,25 @@ export const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceSharingRequest",
 }) as any as S.Schema<GetResourceSharingRequest>;
 
-export type GetResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type GetResponseStatus = "active" | "deleting" | "deleted";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseTargetType = "account" | "organization" | (string & {});
+export type GetResponseTargetType = "account" | "organization";
 export const GetResponseTargetType = /*@__PURE__*/ S.String;
 
-export type GetResponseKind = "sent" | "received" | (string & {});
+export type GetResponseKind = "sent" | "received";
 export const GetResponseKind = /*@__PURE__*/ S.String;
 
 export type GetResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const GetResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
-export type GetResponseResourcesItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type GetResponseResourcesItemStatus = "active" | "deleting" | "deleted";
 export const GetResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseResourcesItem {
@@ -1078,7 +1059,7 @@ export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseResourcesItem",
 }) as any as S.Schema<GetResponseResourcesItem>;
 
-export type GetResponseResourcesList = GetResponseResourcesItem[];
+export type GetResponseResourcesList = ReadonlyArray<GetResponseResourcesItem>;
 export const GetResponseResourcesList = /*@__PURE__*/ S.Array(
   GetResponseResourcesItem,
 ) as any as S.Schema<GetResponseResourcesList>;
@@ -1179,8 +1160,7 @@ export type RecipientsListResultItemAssociationStatus =
   | "associating"
   | "associated"
   | "disassociating"
-  | "disassociated"
-  | (string & {});
+  | "disassociated";
 export const RecipientsListResultItemAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsListResultItemResourcesItem {
@@ -1206,7 +1186,7 @@ export const RecipientsListResultItemResourcesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecipientsListResultItemResourcesItem>;
 
 export type RecipientsListResultItemResourcesList =
-  RecipientsListResultItemResourcesItem[];
+  ReadonlyArray<RecipientsListResultItemResourcesItem>;
 export const RecipientsListResultItemResourcesList = /*@__PURE__*/ S.Array(
   RecipientsListResultItemResourcesItem,
 ) as any as S.Schema<RecipientsListResultItemResourcesList>;
@@ -1239,7 +1219,7 @@ export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecipientsListResultItem",
 }) as any as S.Schema<RecipientsListResultItem>;
 
-export type RecipientsListResultList = RecipientsListResultItem[];
+export type RecipientsListResultList = ReadonlyArray<RecipientsListResultItem>;
 export const RecipientsListResultList = /*@__PURE__*/ S.Array(
   RecipientsListResultItem,
 ) as any as S.Schema<RecipientsListResultList>;
@@ -1263,14 +1243,12 @@ export type ResourcesListRequestResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesListRequestResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesListRequestStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesListRequestStatus = "active" | "deleting" | "deleted";
 export const ResourcesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListResourcesRequest {
@@ -1314,14 +1292,12 @@ export type ResourcesListResultItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesListResultItemResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesListResultItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesListResultItemStatus = "active" | "deleting" | "deleted";
 export const ResourcesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ResourcesListResultItem {
@@ -1362,7 +1338,7 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesListResultItem",
 }) as any as S.Schema<ResourcesListResultItem>;
 
-export type ResourcesListResultList = ResourcesListResultItem[];
+export type ResourcesListResultList = ReadonlyArray<ResourcesListResultItem>;
 export const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
@@ -1382,40 +1358,39 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
 
-export type ListRequestDirection = "asc" | "desc" | (string & {});
+export type ListRequestDirection = "asc" | "desc";
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ListRequestKind = "sent" | "received" | (string & {});
+export type ListRequestKind = "sent" | "received";
 export const ListRequestKind = /*@__PURE__*/ S.String;
 
-export type ListRequestOrder = "name" | "created" | (string & {});
+export type ListRequestOrder = "name" | "created";
 export const ListRequestOrder = /*@__PURE__*/ S.String;
 
 export type ListRequestResourceTypes =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ListRequestResourceTypes = /*@__PURE__*/ S.String;
 
-export type ListRequestResourceTypesList = ListRequestResourceTypes[];
+export type ListRequestResourceTypesList =
+  ReadonlyArray<ListRequestResourceTypes>;
 export const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
   ListRequestResourceTypes,
 ) as any as S.Schema<ListRequestResourceTypesList>;
 
-export type ListRequestStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ListRequestStatus = "active" | "deleting" | "deleted";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export type ListRequestTagList = string[];
+export type ListRequestTagList = ReadonlyArray<string>;
 export const ListRequestTagList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListRequestTagList>;
 
-export type ListRequestTargetType = "account" | "organization" | (string & {});
+export type ListRequestTargetType = "account" | "organization";
 export const ListRequestTargetType = /*@__PURE__*/ S.String;
 
 export interface ListResourceSharingsRequest {
@@ -1475,34 +1450,28 @@ export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourceSharingsRequest",
 }) as any as S.Schema<ListResourceSharingsRequest>;
 
-export type ListResultItemStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ListResultItemStatus = "active" | "deleting" | "deleted";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResultItemTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type ListResultItemTargetType = "account" | "organization";
 export const ListResultItemTargetType = /*@__PURE__*/ S.String;
 
-export type ListResultItemKind = "sent" | "received" | (string & {});
+export type ListResultItemKind = "sent" | "received";
 export const ListResultItemKind = /*@__PURE__*/ S.String;
 
 export type ListResultItemResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ListResultItemResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type ListResultItemResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const ListResultItemResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemResourcesItem {
@@ -1543,7 +1512,8 @@ export const ListResultItemResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemResourcesItem",
 }) as any as S.Schema<ListResultItemResourcesItem>;
 
-export type ListResultItemResourcesList = ListResultItemResourcesItem[];
+export type ListResultItemResourcesList =
+  ReadonlyArray<ListResultItemResourcesItem>;
 export const ListResultItemResourcesList = /*@__PURE__*/ S.Array(
   ListResultItemResourcesItem,
 ) as any as S.Schema<ListResultItemResourcesList>;
@@ -1605,7 +1575,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -1658,14 +1628,12 @@ export type ResourcesUpdateResponseResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const ResourcesUpdateResponseResourceType = /*@__PURE__*/ S.String;
 
-export type ResourcesUpdateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type ResourcesUpdateResponseStatus = "active" | "deleting" | "deleted";
 export const ResourcesUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1733,34 +1701,28 @@ export const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceSharingRequest",
 }) as any as S.Schema<UpdateResourceSharingRequest>;
 
-export type UpdateResponseStatus =
-  | "active"
-  | "deleting"
-  | "deleted"
-  | (string & {});
+export type UpdateResponseStatus = "active" | "deleting" | "deleted";
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
-export type UpdateResponseTargetType =
-  | "account"
-  | "organization"
-  | (string & {});
+export type UpdateResponseTargetType = "account" | "organization";
 export const UpdateResponseTargetType = /*@__PURE__*/ S.String;
 
-export type UpdateResponseKind = "sent" | "received" | (string & {});
+export type UpdateResponseKind = "sent" | "received";
 export const UpdateResponseKind = /*@__PURE__*/ S.String;
 
 export type UpdateResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
   | "gateway-destination-ip"
-  | (string & {});
+  | "gateway-block-page-settings"
+  | "gateway-extended-email-matching"
+  | "idp-federation-grant";
 export const UpdateResponseResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export type UpdateResponseResourcesItemStatus =
   | "active"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const UpdateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseResourcesItem {
@@ -1801,7 +1763,8 @@ export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseResourcesItem",
 }) as any as S.Schema<UpdateResponseResourcesItem>;
 
-export type UpdateResponseResourcesList = UpdateResponseResourcesItem[];
+export type UpdateResponseResourcesList =
+  ReadonlyArray<UpdateResponseResourcesItem>;
 export const UpdateResponseResourcesList = /*@__PURE__*/ S.Array(
   UpdateResponseResourcesItem,
 ) as any as S.Schema<UpdateResponseResourcesList>;

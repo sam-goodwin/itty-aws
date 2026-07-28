@@ -129,8 +129,7 @@ export type Id = string;
 export type PortfolioShareType =
   | "IMPORTED"
   | "AWS_SERVICECATALOG"
-  | "AWS_ORGANIZATIONS"
-  | (string & {});
+  | "AWS_ORGANIZATIONS";
 export const PortfolioShareType = /*@__PURE__*/ S.String;
 
 export interface AcceptPortfolioShareInput {
@@ -174,7 +173,7 @@ export const AssociateBudgetWithResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateBudgetWithResourceOutput",
 }) as any as S.Schema<AssociateBudgetWithResourceOutput>;
 export type PrincipalARN = string;
-export type PrincipalType = "IAM" | "IAM_PATTERN" | (string & {});
+export type PrincipalType = "IAM" | "IAM_PATTERN";
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 export interface AssociatePrincipalWithPortfolioInput {
@@ -311,8 +310,7 @@ export type ServiceActionAssociationErrorCode =
   | "LIMIT_EXCEEDED"
   | "RESOURCE_NOT_FOUND"
   | "THROTTLING"
-  | "INVALID_PARAMETER"
-  | (string & {});
+  | "INVALID_PARAMETER";
 export const ServiceActionAssociationErrorCode = /*@__PURE__*/ S.String;
 
 export type ServiceActionAssociationErrorMessage = string;
@@ -381,7 +379,7 @@ export const BatchDisassociateServiceActionFromProvisioningArtifactOutput =
   }) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactOutput>;
 export type ProductArn = string;
 export type ProductViewName = string;
-export type ProvisioningArtifactPropertyName = "Id" | (string & {});
+export type ProvisioningArtifactPropertyName = "Id";
 export const ProvisioningArtifactPropertyName = /*@__PURE__*/ S.String;
 
 export type ProvisioningArtifactPropertyValue = string;
@@ -398,7 +396,7 @@ export type SourceProvisioningArtifactProperties = {
 export const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
   SourceProvisioningArtifactPropertiesMap,
 );
-export type CopyOption = "CopyTags" | (string & {});
+export type CopyOption = "CopyTags";
 export const CopyOption = /*@__PURE__*/ S.String;
 
 export type CopyOptions = CopyOption[];
@@ -487,7 +485,7 @@ export const ConstraintDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConstraintDetail",
 }) as any as S.Schema<ConstraintDetail>;
-export type Status = "AVAILABLE" | "CREATING" | "FAILED" | (string & {});
+export type Status = "AVAILABLE" | "CREATING" | "FAILED";
 export const Status = /*@__PURE__*/ S.String;
 
 export interface CreateConstraintOutput {
@@ -579,8 +577,7 @@ export const CreatePortfolioOutput = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationNodeType =
   | "ORGANIZATION"
   | "ORGANIZATIONAL_UNIT"
-  | "ACCOUNT"
-  | (string & {});
+  | "ACCOUNT";
 export const OrganizationNodeType = /*@__PURE__*/ S.String;
 
 export type OrganizationNodeValue = string;
@@ -636,8 +633,7 @@ export type ProductType =
   | "MARKETPLACE"
   | "TERRAFORM_OPEN_SOURCE"
   | "TERRAFORM_CLOUD"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const ProductType = /*@__PURE__*/ S.String;
 
 export type ProvisioningArtifactName = string;
@@ -655,8 +651,7 @@ export type ProvisioningArtifactType =
   | "MARKETPLACE_CAR"
   | "TERRAFORM_OPEN_SOURCE"
   | "TERRAFORM_CLOUD"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const ProvisioningArtifactType = /*@__PURE__*/ S.String;
 
 export type DisableTemplateValidation = boolean;
@@ -678,7 +673,7 @@ export const ProvisioningArtifactProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisioningArtifactProperties",
 }) as any as S.Schema<ProvisioningArtifactProperties>;
-export type SourceType = "CODESTAR" | (string & {});
+export type SourceType = "CODESTAR";
 export const SourceType = /*@__PURE__*/ S.String;
 
 export type CodeStarConnectionArn = string;
@@ -791,7 +786,7 @@ export const ProductViewSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductViewSummary>;
 export type CreatedTime = Date;
 export type LastSyncTime = Date;
-export type LastSyncStatus = "SUCCEEDED" | "FAILED" | (string & {});
+export type LastSyncStatus = "SUCCEEDED" | "FAILED";
 export const LastSyncStatus = /*@__PURE__*/ S.String;
 
 export type LastSyncStatusMessage = string;
@@ -847,10 +842,7 @@ export const ProductViewDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductViewDetail",
 }) as any as S.Schema<ProductViewDetail>;
 export type ProvisioningArtifactActive = boolean;
-export type ProvisioningArtifactGuidance =
-  | "DEFAULT"
-  | "DEPRECATED"
-  | (string & {});
+export type ProvisioningArtifactGuidance = "DEFAULT" | "DEPRECATED";
 export const ProvisioningArtifactGuidance = /*@__PURE__*/ S.String;
 
 export type SourceRevision = string;
@@ -893,7 +885,7 @@ export const CreateProductOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProductOutput",
 }) as any as S.Schema<CreateProductOutput>;
 export type ProvisionedProductPlanName = string;
-export type ProvisionedProductPlanType = "CLOUDFORMATION" | (string & {});
+export type ProvisionedProductPlanType = "CLOUDFORMATION";
 export const ProvisionedProductPlanType = /*@__PURE__*/ S.String;
 
 export type NotificationArn = string;
@@ -1004,15 +996,14 @@ export const CreateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProvisioningArtifactOutput",
 }) as any as S.Schema<CreateProvisioningArtifactOutput>;
 export type ServiceActionName = string;
-export type ServiceActionDefinitionType = "SSM_AUTOMATION" | (string & {});
+export type ServiceActionDefinitionType = "SSM_AUTOMATION";
 export const ServiceActionDefinitionType = /*@__PURE__*/ S.String;
 
 export type ServiceActionDefinitionKey =
   | "Name"
   | "Version"
   | "AssumeRole"
-  | "Parameters"
-  | (string & {});
+  | "Parameters";
 export const ServiceActionDefinitionKey = /*@__PURE__*/ S.String;
 
 export type ServiceActionDefinitionValue = string;
@@ -1322,11 +1313,7 @@ export const DescribeCopyProductStatusInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCopyProductStatusInput",
 }) as any as S.Schema<DescribeCopyProductStatusInput>;
-export type CopyProductStatus =
-  | "SUCCEEDED"
-  | "IN_PROGRESS"
-  | "FAILED"
-  | (string & {});
+export type CopyProductStatus = "SUCCEEDED" | "IN_PROGRESS" | "FAILED";
 export const CopyProductStatus = /*@__PURE__*/ S.String;
 
 export type StatusDetail = string;
@@ -1385,8 +1372,7 @@ export type DescribePortfolioShareType =
   | "ACCOUNT"
   | "ORGANIZATION"
   | "ORGANIZATIONAL_UNIT"
-  | "ORGANIZATION_MEMBER_ACCOUNT"
-  | (string & {});
+  | "ORGANIZATION_MEMBER_ACCOUNT";
 export const DescribePortfolioShareType = /*@__PURE__*/ S.String;
 
 export type PageToken = string;
@@ -1457,8 +1443,7 @@ export type ShareStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "COMPLETED_WITH_ERRORS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ShareStatus = /*@__PURE__*/ S.String;
 
 export type SuccessfulShares = string[];
@@ -1677,8 +1662,7 @@ export type ProvisionedProductStatus =
   | "UNDER_CHANGE"
   | "TAINTED"
   | "ERROR"
-  | "PLAN_IN_PROGRESS"
-  | (string & {});
+  | "PLAN_IN_PROGRESS";
 export const ProvisionedProductStatus = /*@__PURE__*/ S.String;
 
 export type ProvisionedProductStatusMessage = string;
@@ -1768,8 +1752,7 @@ export type ProvisionedProductPlanStatus =
   | "CREATE_FAILED"
   | "EXECUTE_IN_PROGRESS"
   | "EXECUTE_SUCCESS"
-  | "EXECUTE_FAILED"
-  | (string & {});
+  | "EXECUTE_FAILED";
 export const ProvisionedProductPlanStatus = /*@__PURE__*/ S.String;
 
 export type UpdatedTime = Date;
@@ -1812,13 +1795,13 @@ export const ProvisionedProductPlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionedProductPlanDetails",
 }) as any as S.Schema<ProvisionedProductPlanDetails>;
-export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
+export type ChangeAction = "ADD" | "MODIFY" | "REMOVE";
 export const ChangeAction = /*@__PURE__*/ S.String;
 
 export type LogicalResourceId = string;
 export type PhysicalResourceId = string;
 export type PlanResourceType = string;
-export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
+export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL";
 export const Replacement = /*@__PURE__*/ S.String;
 
 export type ResourceAttribute =
@@ -1827,18 +1810,13 @@ export type ResourceAttribute =
   | "CREATIONPOLICY"
   | "UPDATEPOLICY"
   | "DELETIONPOLICY"
-  | "TAGS"
-  | (string & {});
+  | "TAGS";
 export const ResourceAttribute = /*@__PURE__*/ S.String;
 
 export type Scope = ResourceAttribute[];
 export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
 export type PropertyName = string;
-export type RequiresRecreation =
-  | "NEVER"
-  | "CONDITIONALLY"
-  | "ALWAYS"
-  | (string & {});
+export type RequiresRecreation = "NEVER" | "CONDITIONALLY" | "ALWAYS";
 export const RequiresRecreation = /*@__PURE__*/ S.String;
 
 export interface ResourceTargetDefinition {
@@ -1855,7 +1833,7 @@ export const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceTargetDefinition",
 }) as any as S.Schema<ResourceTargetDefinition>;
-export type EvaluationType = "STATIC" | "DYNAMIC" | (string & {});
+export type EvaluationType = "STATIC" | "DYNAMIC";
 export const EvaluationType = /*@__PURE__*/ S.String;
 
 export type CausingEntity = string;
@@ -2149,8 +2127,7 @@ export type RecordStatus =
   | "IN_PROGRESS"
   | "IN_PROGRESS_IN_ERROR"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RecordStatus = /*@__PURE__*/ S.String;
 
 export type RecordType = string;
@@ -2532,11 +2509,7 @@ export const GetAWSOrganizationsAccessStatusInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAWSOrganizationsAccessStatusInput",
 }) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>;
-export type AccessStatus =
-  | "ENABLED"
-  | "UNDER_CHANGE"
-  | "DISABLED"
-  | (string & {});
+export type AccessStatus = "ENABLED" | "UNDER_CHANGE" | "DISABLED";
 export const AccessStatus = /*@__PURE__*/ S.String;
 
 export interface GetAWSOrganizationsAccessStatusOutput {
@@ -2928,7 +2901,7 @@ export const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPrincipalsForPortfolioOutput",
 }) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
-export type AccessLevelFilterKey = "Account" | "Role" | "User" | (string & {});
+export type AccessLevelFilterKey = "Account" | "Role" | "User";
 export const AccessLevelFilterKey = /*@__PURE__*/ S.String;
 
 export type AccessLevelFilterValue = string;
@@ -3258,11 +3231,7 @@ export const ListStackInstancesForProvisionedProductInput =
   ).annotate({
     identifier: "ListStackInstancesForProvisionedProductInput",
   }) as any as S.Schema<ListStackInstancesForProvisionedProductInput>;
-export type StackInstanceStatus =
-  | "CURRENT"
-  | "OUTDATED"
-  | "INOPERABLE"
-  | (string & {});
+export type StackInstanceStatus = "CURRENT" | "OUTDATED" | "INOPERABLE";
 export const StackInstanceStatus = /*@__PURE__*/ S.String;
 
 export interface StackInstance {
@@ -3335,7 +3304,7 @@ export const ListTagOptionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagOptionsOutput",
 }) as any as S.Schema<ListTagOptionsOutput>;
 export type EngineWorkflowToken = string;
-export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED" | (string & {});
+export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED";
 export const EngineWorkflowStatus = /*@__PURE__*/ S.String;
 
 export type EngineWorkflowFailureReason = string;
@@ -3583,8 +3552,7 @@ export type ProductViewFilterBy =
   | "FullTextSearch"
   | "Owner"
   | "ProductType"
-  | "SourceProductId"
-  | (string & {});
+  | "SourceProductId";
 export const ProductViewFilterBy = /*@__PURE__*/ S.String;
 
 export type ProductViewFilterValue = string;
@@ -3595,14 +3563,10 @@ export const ProductViewFilters = /*@__PURE__*/ S.Record(
   ProductViewFilterBy,
   ProductViewFilterValues.pipe(S.optional),
 );
-export type ProductViewSortBy =
-  | "Title"
-  | "VersionCount"
-  | "CreationDate"
-  | (string & {});
+export type ProductViewSortBy = "Title" | "VersionCount" | "CreationDate";
 export const ProductViewSortBy = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface SearchProductsInput {
@@ -3671,7 +3635,7 @@ export const SearchProductsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchProductsOutput",
 }) as any as S.Schema<SearchProductsOutput>;
-export type ProductSource = "ACCOUNT" | (string & {});
+export type ProductSource = "ACCOUNT";
 export const ProductSource = /*@__PURE__*/ S.String;
 
 export interface SearchProductsAsAdminInput {
@@ -3714,7 +3678,7 @@ export const SearchProductsAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchProductsAsAdminOutput",
 }) as any as S.Schema<SearchProductsAsAdminOutput>;
-export type ProvisionedProductViewFilterBy = "SearchQuery" | (string & {});
+export type ProvisionedProductViewFilterBy = "SearchQuery";
 export const ProvisionedProductViewFilterBy = /*@__PURE__*/ S.String;
 
 export type ProvisionedProductViewFilterValue = string;
@@ -4003,11 +3967,7 @@ export const UpdateProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateProductOutput",
 }) as any as S.Schema<UpdateProductOutput>;
-export type StackSetOperationType =
-  | "CREATE"
-  | "UPDATE"
-  | "DELETE"
-  | (string & {});
+export type StackSetOperationType = "CREATE" | "UPDATE" | "DELETE";
 export const StackSetOperationType = /*@__PURE__*/ S.String;
 
 export interface UpdateProvisioningPreferences {
@@ -4076,7 +4036,7 @@ export const UpdateProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateProvisionedProductOutput",
 }) as any as S.Schema<UpdateProvisionedProductOutput>;
-export type PropertyKey = "OWNER" | "LAUNCH_ROLE" | (string & {});
+export type PropertyKey = "OWNER" | "LAUNCH_ROLE";
 export const PropertyKey = /*@__PURE__*/ S.String;
 
 export type PropertyValue = string;

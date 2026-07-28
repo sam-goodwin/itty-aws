@@ -60,6 +60,24 @@
           "traits": {
             "smithy.api#enumValue": "active"
           }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
         }
       }
     },
@@ -246,6 +264,24 @@
           "traits": {
             "smithy.api#enumValue": "active"
           }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
         }
       }
     },
@@ -396,6 +432,24 @@
           "traits": {
             "smithy.api#enumValue": "active"
           }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
         }
       }
     },
@@ -499,6 +553,29 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsEditRequestCertificateAuthority": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        },
+        "LETS_ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lets_encrypt"
+          }
+        },
+        "SSL_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_com"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsEditRequest": {
       "type": "structure",
       "members": {
@@ -518,7 +595,7 @@
           }
         },
         "certificate_authority": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsEditRequestCertificateAuthority",
           "traits": {
             "smithy.api#documentation": "The Certificate Authority that Total TLS certificates will be issued through."
           }
@@ -528,14 +605,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsEditResponseCertificateAuthority": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        },
+        "LETS_ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lets_encrypt"
+          }
+        },
+        "SSL_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_com"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsEditResponseValidityPeriod": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         }
       }
@@ -544,7 +643,7 @@
       "type": "structure",
       "members": {
         "certificate_authority": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsEditResponseCertificateAuthority",
           "traits": {
             "smithy.api#documentation": "The Certificate Authority that Total TLS certificates will be issued through."
           }
@@ -600,14 +699,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsGetResponseCertificateAuthority": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        },
+        "LETS_ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lets_encrypt"
+          }
+        },
+        "SSL_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_com"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsGetResponseValidityPeriod": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         }
       }
@@ -616,7 +737,7 @@
       "type": "structure",
       "members": {
         "certificate_authority": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsGetResponseCertificateAuthority",
           "traits": {
             "smithy.api#documentation": "The Certificate Authority that Total TLS certificates will be issued through."
           }
@@ -657,6 +778,29 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsUpdateRequestCertificateAuthority": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        },
+        "LETS_ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lets_encrypt"
+          }
+        },
+        "SSL_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_com"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -676,7 +820,7 @@
           }
         },
         "certificate_authority": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsUpdateRequestCertificateAuthority",
           "traits": {
             "smithy.api#documentation": "The Certificate Authority that Total TLS certificates will be issued through."
           }
@@ -686,14 +830,36 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsUpdateResponseCertificateAuthority": {
+      "type": "enum",
+      "members": {
+        "GOOGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "google"
+          }
+        },
+        "LETS_ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lets_encrypt"
+          }
+        },
+        "SSL_COM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl_com"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsUpdateResponseValidityPeriod": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         }
       }
@@ -702,7 +868,7 @@
       "type": "structure",
       "members": {
         "certificate_authority": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsUpdateResponseCertificateAuthority",
           "traits": {
             "smithy.api#documentation": "The Certificate Authority that Total TLS certificates will be issued through."
           }

@@ -100,19 +100,19 @@ export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracesCreateRequestContext>;
 
 export type TracesCreateRequestCookiesMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const TracesCreateRequestCookiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<TracesCreateRequestCookiesMap>;
 
 export type TracesCreateRequestHeadersMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const TracesCreateRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<TracesCreateRequestHeadersMap>;
 
 export interface CreateTraceRequest {

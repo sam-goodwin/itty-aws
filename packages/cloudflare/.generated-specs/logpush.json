@@ -37,6 +37,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -116,6 +308,198 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
+          }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
           }
         }
       }
@@ -197,6 +581,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -244,6 +820,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -277,63 +1045,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -380,6 +1091,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -532,19 +1255,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForAccountResultItemMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -622,6 +1345,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -669,6 +1584,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -702,63 +1809,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -805,6 +1855,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -957,19 +2019,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#DatasetsJobsGetForZoneResultItemMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -1227,6 +2289,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -1260,63 +2514,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -1363,6 +2560,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -1506,19 +2715,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountRequestMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -1566,6 +2775,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -1599,63 +3000,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -1702,6 +3046,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -1854,19 +3210,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsCreateForAccountResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -1926,6 +3282,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -1959,63 +3507,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -2062,6 +3553,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -2205,19 +3708,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneRequestMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -2265,6 +3768,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -2298,63 +3993,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -2401,6 +4039,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -2553,19 +4203,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsCreateForZoneResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -2763,6 +4413,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -2796,63 +4638,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -2899,6 +4684,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -3051,19 +4848,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsGetForAccountResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -3148,6 +4945,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -3181,63 +5170,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -3284,6 +5216,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -3436,19 +5380,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsGetForZoneResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -3525,6 +5469,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -3558,63 +5694,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -3661,6 +5740,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -3813,19 +5904,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsListForAccountResultItemMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -3919,6 +6010,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -3952,63 +6235,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -4055,6 +6281,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -4207,19 +6445,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsListForZoneResultItemMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -4311,63 +6549,6 @@
         }
       }
     },
-    "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
     "com.cloudflare.logpush#JobsUpdateForAccountRequestOutputOptionsFieldNamesList": {
       "type": "list",
       "member": {
@@ -4410,6 +6591,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -4554,19 +6747,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountRequestMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -4614,6 +6807,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -4647,63 +7032,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -4750,6 +7078,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -4902,19 +7242,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsUpdateForAccountResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -4989,63 +7329,6 @@
         }
       }
     },
-    "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
     "com.cloudflare.logpush#JobsUpdateForZoneRequestOutputOptionsFieldNamesList": {
       "type": "list",
       "member": {
@@ -5088,6 +7371,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -5232,19 +7527,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneRequestMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -5292,6 +7587,198 @@
           "traits": {
             "smithy.api#enumValue": "audit_logs_v2"
           }
+        },
+        "BISO_USER_ACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "biso_user_actions"
+          }
+        },
+        "CASB_FINDINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb_findings"
+          }
+        },
+        "DEVICE_POSTURE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_posture_results"
+          }
+        },
+        "DEX_APPLICATION_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_application_tests"
+          }
+        },
+        "DEX_DEVICE_STATE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dex_device_state_events"
+          }
+        },
+        "DLP_FORENSIC_COPIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dlp_forensic_copies"
+          }
+        },
+        "DNS_FIREWALL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_firewall_logs"
+          }
+        },
+        "DNS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_logs"
+          }
+        },
+        "EMAIL_SECURITY_ALERTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_alerts"
+          }
+        },
+        "EMAIL_SECURITY_POST_DELIVERY_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security_post_delivery_events"
+          }
+        },
+        "FIREWALL_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewall_events"
+          }
+        },
+        "GATEWAY_DNS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_dns"
+          }
+        },
+        "GATEWAY_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_http"
+          }
+        },
+        "GATEWAY_NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway_network"
+          }
+        },
+        "HTTP_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_requests"
+          }
+        },
+        "IPSEC_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipsec_logs"
+          }
+        },
+        "MAGIC_IDS_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_ids_detections"
+          }
+        },
+        "MCP_PORTAL_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mcp_portal_logs"
+          }
+        },
+        "MNM_FLOW_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mnm_flow_logs"
+          }
+        },
+        "NEL_REPORTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nel_reports"
+          }
+        },
+        "NETWORK_ANALYTICS_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_analytics_logs"
+          }
+        },
+        "PAGE_SHIELD_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_shield_events"
+          }
+        },
+        "SINKHOLE_HTTP_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sinkhole_http_logs"
+          }
+        },
+        "SPECTRUM_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spectrum_events"
+          }
+        },
+        "SSH_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssh_logs"
+          }
+        },
+        "TURNSTILE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "turnstile_events"
+          }
+        },
+        "WARP_CONFIG_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_config_changes"
+          }
+        },
+        "WARP_TOGGLE_CHANGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warp_toggle_changes"
+          }
+        },
+        "WEBSOCKET_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket_analytics"
+          }
+        },
+        "WORKERS_TRACE_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_trace_events"
+          }
+        },
+        "ZARAZ_EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zaraz_events"
+          }
+        },
+        "ZERO_TRUST_NETWORK_SESSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero_trust_network_sessions"
+          }
         }
       }
     },
@@ -5325,63 +7812,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "edge"
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadBytes": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadIntervalSeconds": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadRecords": {
-      "type": "structure",
-      "members": {
-        "_0": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "0"
-          }
-        },
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       }
@@ -5428,6 +7858,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "rfc3339"
+          }
+        },
+        "RFC3339MS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ms"
+          }
+        },
+        "RFC3339NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339ns"
           }
         }
       }
@@ -5580,19 +8022,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadBytes",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadIntervalSeconds",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "com.cloudflare.logpush#JobsUpdateForZoneResponseMaxUploadRecords",
+          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }

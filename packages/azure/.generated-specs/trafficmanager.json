@@ -741,11 +741,28 @@
             "smithy.api#documentation": "The name of the Traffic Manager endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles."
+          }
+        },
+        "properties": {
+          "target": "com.azure.trafficmanager#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Traffic Manager endpoint."
           }
         }
       },
@@ -871,11 +888,28 @@
             "smithy.api#documentation": "The name of the Traffic Manager endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles."
+          }
+        },
+        "properties": {
+          "target": "com.azure.trafficmanager#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Traffic Manager endpoint."
           }
         }
       },
@@ -1615,16 +1649,151 @@
             "smithy.api#documentation": "The name of the Traffic Manager profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles."
+          }
+        },
+        "tags": {
+          "target": "com.azure.trafficmanager#ProfilesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Region where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.trafficmanager#ProfilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Traffic Manager profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.trafficmanager#ProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "profileStatus": {
+          "target": "com.azure.trafficmanager#ProfileStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Traffic Manager profile."
+          }
+        },
+        "trafficRoutingMethod": {
+          "target": "com.azure.trafficmanager#TrafficRoutingMethod",
+          "traits": {
+            "smithy.api#documentation": "The traffic routing method of the Traffic Manager profile."
+          }
+        },
+        "dnsConfig": {
+          "target": "com.azure.trafficmanager#DnsConfigInput",
+          "traits": {
+            "smithy.api#documentation": "The DNS settings of the Traffic Manager profile."
+          }
+        },
+        "monitorConfig": {
+          "target": "com.azure.trafficmanager#MonitorConfig",
+          "traits": {
+            "smithy.api#documentation": "The endpoint monitoring settings of the Traffic Manager profile."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.trafficmanager#ProfilePropertiesInputEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The list of endpoints in the Traffic Manager profile."
+          }
+        },
+        "trafficViewEnrollmentStatus": {
+          "target": "com.azure.trafficmanager#TrafficViewEnrollmentStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile."
+          }
+        },
+        "allowedEndpointRecordTypes": {
+          "target": "com.azure.trafficmanager#ProfilePropertiesInputAllowedEndpointRecordTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of allowed endpoint record types."
+          }
+        },
+        "maxReturn": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of endpoints to be returned for MultiValue routing type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class representing the Traffic Manager profile properties."
+      }
+    },
+    "com.azure.trafficmanager#ProfilePropertiesInputAllowedEndpointRecordTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.trafficmanager#AllowedEndpointRecordType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of allowed endpoint record types."
+      }
+    },
+    "com.azure.trafficmanager#ProfilePropertiesInputEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.trafficmanager#Endpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of endpoints in the Traffic Manager profile."
+      }
+    },
+    "com.azure.trafficmanager#DnsConfigInput": {
+      "type": "structure",
+      "members": {
+        "relativeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class containing DNS settings in a Traffic Manager profile."
+      }
+    },
+    "com.azure.trafficmanager#ProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.trafficmanager#ProfilesCreateOrUpdate": {
@@ -1729,16 +1898,57 @@
             "smithy.api#documentation": "The name of the Traffic Manager profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles."
+          }
+        },
+        "tags": {
+          "target": "com.azure.trafficmanager#ProfilesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Region where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.trafficmanager#ProfilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Traffic Manager profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.trafficmanager#ProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.trafficmanager#ProfilesGet": {
@@ -2263,11 +2473,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
           }
         }
       },
@@ -2397,11 +2612,16 @@
     "com.azure.trafficmanager#ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
           }
         }
       },

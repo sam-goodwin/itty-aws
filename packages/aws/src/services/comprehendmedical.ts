@@ -144,8 +144,7 @@ export type JobStatus =
   | "PARTIAL_SUCCESS"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type AnyLengthString = string;
@@ -169,7 +168,7 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutputDataConfig",
 }) as any as S.Schema<OutputDataConfig>;
-export type LanguageCode = "en" | (string & {});
+export type LanguageCode = "en";
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export type IamRoleArn = string;
@@ -332,8 +331,7 @@ export type EntityType =
   | "TEST_TREATMENT_PROCEDURE"
   | "ANATOMY"
   | "TIME_EXPRESSION"
-  | "BEHAVIORAL_ENVIRONMENTAL_SOCIAL"
-  | (string & {});
+  | "BEHAVIORAL_ENVIRONMENTAL_SOCIAL";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export type EntitySubType =
@@ -381,8 +379,7 @@ export type EntitySubType =
   | "ALLERGIES"
   | "TOBACCO_USE"
   | "ALCOHOL_CONSUMPTION"
-  | "REC_DRUG_USE"
-  | (string & {});
+  | "REC_DRUG_USE";
 export const EntitySubType = /*@__PURE__*/ S.String;
 
 export type AttributeName =
@@ -394,8 +391,7 @@ export type AttributeName =
   | "HYPOTHETICAL"
   | "LOW_CONFIDENCE"
   | "PAST_HISTORY"
-  | "FUTURE"
-  | (string & {});
+  | "FUTURE";
 export const AttributeName = /*@__PURE__*/ S.String;
 
 export interface Trait {
@@ -429,8 +425,7 @@ export type RelationshipType =
   | "SYSTEM_ORGAN_SITE"
   | "AMOUNT"
   | "USAGE"
-  | "QUALITY"
-  | (string & {});
+  | "QUALITY";
 export const RelationshipType = /*@__PURE__*/ S.String;
 
 export interface Attribute {
@@ -575,10 +570,10 @@ export const InferICD10CMRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferICD10CMRequest",
 }) as any as S.Schema<InferICD10CMRequest>;
-export type ICD10CMEntityCategory = "MEDICAL_CONDITION" | (string & {});
+export type ICD10CMEntityCategory = "MEDICAL_CONDITION";
 export const ICD10CMEntityCategory = /*@__PURE__*/ S.String;
 
-export type ICD10CMEntityType = "DX_NAME" | "TIME_EXPRESSION" | (string & {});
+export type ICD10CMEntityType = "DX_NAME" | "TIME_EXPRESSION";
 export const ICD10CMEntityType = /*@__PURE__*/ S.String;
 
 export type ICD10CMAttributeType =
@@ -588,8 +583,7 @@ export type ICD10CMAttributeType =
   | "QUALITY"
   | "QUANTITY"
   | "TIME_TO_DX_NAME"
-  | "TIME_EXPRESSION"
-  | (string & {});
+  | "TIME_EXPRESSION";
 export const ICD10CMAttributeType = /*@__PURE__*/ S.String;
 
 export type ICD10CMTraitName =
@@ -599,8 +593,7 @@ export type ICD10CMTraitName =
   | "SYMPTOM"
   | "PERTAINS_TO_FAMILY"
   | "HYPOTHETICAL"
-  | "LOW_CONFIDENCE"
-  | (string & {});
+  | "LOW_CONFIDENCE";
 export const ICD10CMTraitName = /*@__PURE__*/ S.String;
 
 export interface ICD10CMTrait {
@@ -615,8 +608,7 @@ export const ICD10CMTraitList = /*@__PURE__*/ S.Array(ICD10CMTrait);
 export type ICD10CMRelationshipType =
   | "OVERLAP"
   | "SYSTEM_ORGAN_SITE"
-  | "QUALITY"
-  | (string & {});
+  | "QUALITY";
 export const ICD10CMRelationshipType = /*@__PURE__*/ S.String;
 
 export interface ICD10CMAttribute {
@@ -715,10 +707,10 @@ export const InferRxNormRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferRxNormRequest",
 }) as any as S.Schema<InferRxNormRequest>;
-export type RxNormEntityCategory = "MEDICATION" | (string & {});
+export type RxNormEntityCategory = "MEDICATION";
 export const RxNormEntityCategory = /*@__PURE__*/ S.String;
 
-export type RxNormEntityType = "BRAND_NAME" | "GENERIC_NAME" | (string & {});
+export type RxNormEntityType = "BRAND_NAME" | "GENERIC_NAME";
 export const RxNormEntityType = /*@__PURE__*/ S.String;
 
 export type RxNormAttributeType =
@@ -728,11 +720,10 @@ export type RxNormAttributeType =
   | "FREQUENCY"
   | "RATE"
   | "ROUTE_OR_MODE"
-  | "STRENGTH"
-  | (string & {});
+  | "STRENGTH";
 export const RxNormAttributeType = /*@__PURE__*/ S.String;
 
-export type RxNormTraitName = "NEGATION" | "PAST_HISTORY" | (string & {});
+export type RxNormTraitName = "NEGATION" | "PAST_HISTORY";
 export const RxNormTraitName = /*@__PURE__*/ S.String;
 
 export interface RxNormTrait {
@@ -839,16 +830,14 @@ export const InferSNOMEDCTRequest = /*@__PURE__*/ S.suspend(() =>
 export type SNOMEDCTEntityCategory =
   | "MEDICAL_CONDITION"
   | "ANATOMY"
-  | "TEST_TREATMENT_PROCEDURE"
-  | (string & {});
+  | "TEST_TREATMENT_PROCEDURE";
 export const SNOMEDCTEntityCategory = /*@__PURE__*/ S.String;
 
 export type SNOMEDCTEntityType =
   | "DX_NAME"
   | "TEST_NAME"
   | "PROCEDURE_NAME"
-  | "TREATMENT_NAME"
-  | (string & {});
+  | "TREATMENT_NAME";
 export const SNOMEDCTEntityType = /*@__PURE__*/ S.String;
 
 export type SNOMEDCTAttributeType =
@@ -857,8 +846,7 @@ export type SNOMEDCTAttributeType =
   | "DIRECTION"
   | "SYSTEM_ORGAN_SITE"
   | "TEST_VALUE"
-  | "TEST_UNIT"
-  | (string & {});
+  | "TEST_UNIT";
 export const SNOMEDCTAttributeType = /*@__PURE__*/ S.String;
 
 export type SNOMEDCTRelationshipType =
@@ -868,8 +856,7 @@ export type SNOMEDCTRelationshipType =
   | "TEST_UNITS"
   | "DIRECTION"
   | "SYSTEM_ORGAN_SITE"
-  | "TEST_UNIT"
-  | (string & {});
+  | "TEST_UNIT";
 export const SNOMEDCTRelationshipType = /*@__PURE__*/ S.String;
 
 export type SNOMEDCTTraitName =
@@ -881,8 +868,7 @@ export type SNOMEDCTTraitName =
   | "HYPOTHETICAL"
   | "LOW_CONFIDENCE"
   | "PAST_HISTORY"
-  | "FUTURE"
-  | (string & {});
+  | "FUTURE";
 export const SNOMEDCTTraitName = /*@__PURE__*/ S.String;
 
 export interface SNOMEDCTTrait {

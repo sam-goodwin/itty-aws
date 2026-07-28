@@ -104,7 +104,8 @@
         "details": {
           "target": "com.azure.guestconfiguration#AssignmentReportDetails",
           "traits": {
-            "smithy.api#documentation": "Details of the assignment report."
+            "smithy.api#documentation": "Details of the assignment report.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "vmssResourceId": {
@@ -767,7 +768,8 @@
         "provisioningState": {
           "target": "com.azure.guestconfiguration#ProvisioningState",
           "traits": {
-            "smithy.api#documentation": "The provisioning state, which only appears in the response."
+            "smithy.api#documentation": "The provisioning state, which only appears in the response.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "resourceType": {
@@ -1229,16 +1231,247 @@
             "smithy.api#documentation": "The guest configuration assignment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The guest configuration assignment name.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the VM is located."
+          }
+        },
+        "properties": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Guest configuration assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "guestConfiguration": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationNavigationInput",
+          "traits": {
+            "smithy.api#documentation": "The guest configuration to assign."
+          }
+        },
+        "latestAssignmentReport": {
+          "target": "com.azure.guestconfiguration#AssignmentReportInput",
+          "traits": {
+            "smithy.api#documentation": "Last reported guest configuration assignment report."
+          }
+        },
+        "context": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source which initiated the guest configuration assignment. Ex: Azure Policy"
+          }
+        },
+        "vmssVMList": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInputVmssVMListList",
+          "traits": {
+            "smithy.api#documentation": "The list of VM Compliance data for VMSS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Guest configuration assignment properties."
+      }
+    },
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInputVmssVMListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.guestconfiguration#VMSSVMInfoInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of VM Compliance data for VMSS"
+      }
+    },
+    "com.azure.guestconfiguration#VMSSVMInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Information about VMSS VM"
+      }
+    },
+    "com.azure.guestconfiguration#AssignmentReportInput": {
+      "type": "structure",
+      "members": {
+        "assignment": {
+          "target": "com.azure.guestconfiguration#AssignmentInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Configuration details of the guest configuration assignment."
+          }
+        },
+        "vm": {
+          "target": "com.azure.guestconfiguration#VMInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Information about the VM."
+          }
+        },
+        "resources": {
+          "target": "com.azure.guestconfiguration#AssignmentReportInputResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The list of resources for which guest configuration assignment compliance is checked."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.guestconfiguration#AssignmentReportInputResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.guestconfiguration#AssignmentReportResourceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of resources for which guest configuration assignment compliance is checked."
+      }
+    },
+    "com.azure.guestconfiguration#AssignmentReportResourceInput": {
+      "type": "structure",
+      "members": {
+        "reasons": {
+          "target": "com.azure.guestconfiguration#AssignmentReportResourceInputReasonsList",
+          "traits": {
+            "smithy.api#documentation": "Compliance reason and reason code for a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The guest configuration assignment resource."
+      }
+    },
+    "com.azure.guestconfiguration#AssignmentReportResourceInputReasonsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.guestconfiguration#AssignmentReportResourceComplianceReasonInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Compliance reason and reason code for a resource."
+      }
+    },
+    "com.azure.guestconfiguration#AssignmentReportResourceComplianceReasonInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Reason and code for the compliance of the guest configuration assignment resource."
+      }
+    },
+    "com.azure.guestconfiguration#VMInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Information about the VM."
+      }
+    },
+    "com.azure.guestconfiguration#AssignmentInfoInput": {
+      "type": "structure",
+      "members": {
+        "configuration": {
+          "target": "com.azure.guestconfiguration#ConfigurationInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Information about the configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the guest configuration assignment."
+      }
+    },
+    "com.azure.guestconfiguration#ConfigurationInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Information about the configuration."
+      }
+    },
+    "com.azure.guestconfiguration#GuestConfigurationNavigationInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.guestconfiguration#Kind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the guest configuration. For example:DSC"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the guest configuration."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the guest configuration."
+          }
+        },
+        "contentUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri of the storage where guest configuration package is uploaded."
+          }
+        },
+        "contentHash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Combined hash of the guest configuration package and configuration parameters."
+          }
+        },
+        "contentManagedIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed identity with storage access of the guest configuration package and configuration parameters."
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.guestconfiguration#AssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor."
+          }
+        },
+        "configurationParameter": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationNavigationInputConfigurationParameterList",
+          "traits": {
+            "smithy.api#documentation": "The configuration parameters for the guest configuration."
+          }
+        },
+        "configurationProtectedParameter": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationNavigationInputConfigurationProtectedParameterList",
+          "traits": {
+            "smithy.api#documentation": "The protected configuration parameters for the guest configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules."
+      }
+    },
+    "com.azure.guestconfiguration#GuestConfigurationNavigationInputConfigurationProtectedParameterList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.guestconfiguration#ConfigurationParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The protected configuration parameters for the guest configuration."
+      }
+    },
+    "com.azure.guestconfiguration#GuestConfigurationNavigationInputConfigurationParameterList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.guestconfiguration#ConfigurationParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration parameters for the guest configuration."
       }
     },
     "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet": {
@@ -2118,11 +2351,23 @@
             "smithy.api#documentation": "The guest configuration assignment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The guest configuration assignment name.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the VM is located."
+          }
+        },
+        "properties": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Guest configuration assignment."
           }
         }
       },
@@ -2785,11 +3030,23 @@
             "smithy.api#documentation": "The guest configuration assignment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The guest configuration assignment name.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the VM is located."
+          }
+        },
+        "properties": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Guest configuration assignment."
           }
         }
       },
@@ -3605,11 +3862,16 @@
             "smithy.api#documentation": "The guest configuration assignment name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Region where the VM is located."
+          }
+        },
+        "properties": {
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Guest configuration assignment."
           }
         }
       },

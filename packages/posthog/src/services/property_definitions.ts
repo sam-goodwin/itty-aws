@@ -36,18 +36,20 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** List of object IDs to update tags on. */
-export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = number[];
+export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
+  ReadonlyArray<number>;
 export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
-export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = string[];
+export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
+  ReadonlyArray<string>;
 export const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -81,7 +83,7 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequest =
     identifier: "PropertyDefinitionsBulkUpdateTagsCreateRequest",
   }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
 
-export type BulkUpdateTagsItemTagsList = string[];
+export type BulkUpdateTagsItemTagsList = ReadonlyArray<string>;
 export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateTagsItemTagsList>;
@@ -99,7 +101,8 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsItem",
 }) as any as S.Schema<BulkUpdateTagsItem>;
 
-export type BulkUpdateTagsResponseUpdatedList = BulkUpdateTagsItem[];
+export type BulkUpdateTagsResponseUpdatedList =
+  ReadonlyArray<BulkUpdateTagsItem>;
 export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
@@ -117,7 +120,8 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsError",
 }) as any as S.Schema<BulkUpdateTagsError>;
 
-export type BulkUpdateTagsResponseSkippedList = BulkUpdateTagsError[];
+export type BulkUpdateTagsResponseSkippedList =
+  ReadonlyArray<BulkUpdateTagsError>;
 export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
@@ -167,8 +171,7 @@ export type PropertyDefinitionsListRequestType =
   | "event"
   | "person"
   | "group"
-  | "session"
-  | (string & {});
+  | "session";
 export const PropertyDefinitionsListRequestType = /*@__PURE__*/ S.String;
 
 export interface PropertyDefinitionsListRequest {
@@ -234,7 +237,7 @@ export const PropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyDefinitionsListRequest",
 }) as any as S.Schema<PropertyDefinitionsListRequest>;
 
-export type EnterprisePropertyDefinitionTagsList = unknown[];
+export type EnterprisePropertyDefinitionTagsList = ReadonlyArray<unknown>;
 export const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EnterprisePropertyDefinitionTagsList>;
@@ -254,11 +257,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -296,8 +298,7 @@ export type PropertyDefinitionTypeEnum =
   | "String"
   | "Numeric"
   | "Boolean"
-  | "Duration"
-  | (string & {});
+  | "Duration";
 export const PropertyDefinitionTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnterprisePropertyDefinitionPropertyType =
@@ -314,12 +315,12 @@ export interface EnterprisePropertyDefinition {
   tags?: EnterprisePropertyDefinitionTagsList;
   is_numerical?: boolean;
   updated_at?: string;
-  updated_by?: UserBasic;
+  updated_by?: UserBasic | null;
   is_seen_on_filtered_events?: boolean | null;
   property_type?: EnterprisePropertyDefinitionPropertyType | null;
   verified?: boolean;
   verified_at?: string | null;
-  verified_by?: UserBasic;
+  verified_by?: UserBasic | null;
   hidden?: boolean | null;
   /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
   warehouse_origin?: unknown;
@@ -332,14 +333,14 @@ export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(EnterprisePropertyDefinitionTagsList),
     is_numerical: S.optional(S.Boolean),
     updated_at: S.optional(S.String),
-    updated_by: S.optional(UserBasic),
+    updated_by: S.optional(S.NullOr(UserBasic)),
     is_seen_on_filtered_events: S.optional(S.NullOr(S.Boolean)),
     property_type: S.optional(
       S.NullOr(EnterprisePropertyDefinitionPropertyType),
     ),
     verified: S.optional(S.Boolean),
     verified_at: S.optional(S.NullOr(S.String)),
-    verified_by: S.optional(UserBasic),
+    verified_by: S.optional(S.NullOr(UserBasic)),
     hidden: S.optional(S.NullOr(S.Boolean)),
     warehouse_origin: S.optional(S.Unknown),
   }),
@@ -348,7 +349,7 @@ export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterprisePropertyDefinition>;
 
 export type PaginatedEnterprisePropertyDefinitionListResultsList =
-  EnterprisePropertyDefinition[];
+  ReadonlyArray<EnterprisePropertyDefinition>;
 export const PaginatedEnterprisePropertyDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     EnterprisePropertyDefinition,
@@ -372,7 +373,8 @@ export const PaginatedEnterprisePropertyDefinitionList =
     identifier: "PaginatedEnterprisePropertyDefinitionList",
   }) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>;
 
-export type PropertyDefinitionsPartialUpdateRequestTagsList = unknown[];
+export type PropertyDefinitionsPartialUpdateRequestTagsList =
+  ReadonlyArray<unknown>;
 export const PropertyDefinitionsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -389,41 +391,24 @@ export interface PropertyDefinitionsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this property definition. */
   id: string;
-  name?: string;
   description?: string | null;
   tags?: PropertyDefinitionsPartialUpdateRequestTagsList;
-  is_numerical?: boolean;
-  updated_at?: string;
-  updated_by?: UserBasic;
-  is_seen_on_filtered_events?: boolean | null;
   property_type?: PropertyDefinitionsPartialUpdateRequestPropertyType | null;
   verified?: boolean;
-  verified_at?: string | null;
-  verified_by?: UserBasic;
   hidden?: boolean | null;
-  /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
-  warehouse_origin?: unknown;
 }
 export const PropertyDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
       description: S.optional(S.NullOr(S.String)),
       tags: S.optional(PropertyDefinitionsPartialUpdateRequestTagsList),
-      is_numerical: S.optional(S.Boolean),
-      updated_at: S.optional(S.String),
-      updated_by: S.optional(UserBasic),
-      is_seen_on_filtered_events: S.optional(S.NullOr(S.Boolean)),
       property_type: S.optional(
         S.NullOr(PropertyDefinitionsPartialUpdateRequestPropertyType),
       ),
       verified: S.optional(S.Boolean),
-      verified_at: S.optional(S.NullOr(S.String)),
-      verified_by: S.optional(UserBasic),
       hidden: S.optional(S.NullOr(S.Boolean)),
-      warehouse_origin: S.optional(S.Unknown),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -481,7 +466,7 @@ export const PropertyDefinitionsSeenTogetherRetrieveResponse =
     identifier: "PropertyDefinitionsSeenTogetherRetrieveResponse",
   }) as any as S.Schema<PropertyDefinitionsSeenTogetherRetrieveResponse>;
 
-export type PropertyDefinitionsUpdateRequestTagsList = unknown[];
+export type PropertyDefinitionsUpdateRequestTagsList = ReadonlyArray<unknown>;
 export const PropertyDefinitionsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PropertyDefinitionsUpdateRequestTagsList>;
@@ -497,40 +482,23 @@ export interface PropertyDefinitionsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this property definition. */
   id: string;
-  name?: string;
   description?: string | null;
   tags?: PropertyDefinitionsUpdateRequestTagsList;
-  is_numerical?: boolean;
-  updated_at?: string;
-  updated_by?: UserBasic;
-  is_seen_on_filtered_events?: boolean | null;
   property_type?: PropertyDefinitionsUpdateRequestPropertyType | null;
   verified?: boolean;
-  verified_at?: string | null;
-  verified_by?: UserBasic;
   hidden?: boolean | null;
-  /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
-  warehouse_origin?: unknown;
 }
 export const PropertyDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     tags: S.optional(PropertyDefinitionsUpdateRequestTagsList),
-    is_numerical: S.optional(S.Boolean),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(UserBasic),
-    is_seen_on_filtered_events: S.optional(S.NullOr(S.Boolean)),
     property_type: S.optional(
       S.NullOr(PropertyDefinitionsUpdateRequestPropertyType),
     ),
     verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verified_by: S.optional(UserBasic),
     hidden: S.optional(S.NullOr(S.Boolean)),
-    warehouse_origin: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "PUT",

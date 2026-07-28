@@ -152,8 +152,7 @@ export type FolderTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MY_DRIVE_ROOT"
   | "TEAM_DRIVE_ROOT"
-  | "STANDARD_FOLDER"
-  | (string & {});
+  | "STANDARD_FOLDER";
 export const FolderTypeEnum = /*@__PURE__*/ S.String;
 
 /** This item is deprecated; please see `DriveFolder` instead. */
@@ -171,8 +170,7 @@ export type DriveFolderTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MY_DRIVE_ROOT"
   | "SHARED_DRIVE_ROOT"
-  | "STANDARD_FOLDER"
-  | (string & {});
+  | "STANDARD_FOLDER";
 export const DriveFolderTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Drive item which is a folder. */
@@ -374,8 +372,7 @@ export type PermissionRoleEnum =
   | "EDITOR"
   | "COMMENTER"
   | "VIEWER"
-  | "PUBLISHED_VIEWER"
-  | (string & {});
+  | "PUBLISHED_VIEWER";
 export const PermissionRoleEnum = /*@__PURE__*/ S.String;
 
 /** Information about a group. */
@@ -418,7 +415,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList = Permission[];
+export type PermissionList = ReadonlyArray<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;
@@ -442,8 +439,7 @@ export const PermissionChange = /*@__PURE__*/ S.suspend(() =>
 export type DataLeakPreventionChangeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FLAGGED"
-  | "CLEARED"
-  | (string & {});
+  | "CLEARED";
 export const DataLeakPreventionChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** A change in the object's data leak prevention status. */
@@ -481,8 +477,7 @@ export type AssignmentSubtypeEnum =
   | "REPLY_DELETED"
   | "RESOLVED"
   | "REOPENED"
-  | "REASSIGNED"
-  | (string & {});
+  | "REASSIGNED";
 export const AssignmentSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A comment with an assignment. */
@@ -499,7 +494,7 @@ export const Assignment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Assignment" }) as any as S.Schema<Assignment>;
 
-export type UserList_ = User[];
+export type UserList_ = ReadonlyArray<User>;
 export const UserList_ = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList_>;
@@ -511,8 +506,7 @@ export type PostSubtypeEnum =
   | "REPLY_ADDED"
   | "REPLY_DELETED"
   | "RESOLVED"
-  | "REOPENED"
-  | (string & {});
+  | "REOPENED";
 export const PostSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A regular posted comment. */
@@ -535,8 +529,7 @@ export type SuggestionSubtypeEnum =
   | "ACCEPTED"
   | "REJECTED"
   | "ACCEPT_DELETED"
-  | "REJECT_DELETED"
-  | (string & {});
+  | "REJECT_DELETED";
 export const SuggestionSubtypeEnum = /*@__PURE__*/ S.String;
 
 /** A suggestion. */
@@ -570,7 +563,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
-export type TargetReferenceList = TargetReference[];
+export type TargetReferenceList = ReadonlyArray<TargetReference>;
 export const TargetReferenceList = /*@__PURE__*/ S.Array(
   TargetReference,
 ) as any as S.Schema<TargetReferenceList>;
@@ -589,7 +582,7 @@ export const Move = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Move" }) as any as S.Schema<Move>;
 
-export type RestoreTypeEnum = "TYPE_UNSPECIFIED" | "UNTRASH" | (string & {});
+export type RestoreTypeEnum = "TYPE_UNSPECIFIED" | "UNTRASH";
 export const RestoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** A deleted object was restored. */
@@ -603,11 +596,7 @@ export const Restore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
-export type DeleteTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "TRASH"
-  | "PERMANENT_DELETE"
-  | (string & {});
+export type DeleteTypeEnum = "TYPE_UNSPECIFIED" | "TRASH" | "PERMANENT_DELETE";
 export const DeleteTypeEnum = /*@__PURE__*/ S.String;
 
 /** An object was deleted. */
@@ -624,8 +613,7 @@ export const Delete = /*@__PURE__*/ S.suspend(() =>
 export type RestrictionChangeNewRestrictionEnum =
   | "RESTRICTION_UNSPECIFIED"
   | "UNRESTRICTED"
-  | "FULLY_RESTRICTED"
-  | (string & {});
+  | "FULLY_RESTRICTED";
 export const RestrictionChangeNewRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type RestrictionChangeFeatureEnum =
@@ -636,8 +624,7 @@ export type RestrictionChangeFeatureEnum =
   | "DRIVE_FILE_STREAM"
   | "FILE_ORGANIZER_CAN_SHARE_FOLDERS"
   | "READERS_CAN_DOWNLOAD"
-  | "WRITERS_CAN_DOWNLOAD"
-  | (string & {});
+  | "WRITERS_CAN_DOWNLOAD";
 export const RestrictionChangeFeatureEnum = /*@__PURE__*/ S.String;
 
 /** Information about restriction policy changes to a feature. */
@@ -656,7 +643,7 @@ export const RestrictionChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestrictionChange",
 }) as any as S.Schema<RestrictionChange>;
 
-export type RestrictionChangeList = RestrictionChange[];
+export type RestrictionChangeList = ReadonlyArray<RestrictionChange>;
 export const RestrictionChangeList = /*@__PURE__*/ S.Array(
   RestrictionChange,
 ) as any as S.Schema<RestrictionChangeList>;
@@ -675,8 +662,7 @@ export const SettingsChange = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationReferenceTypeEnum =
   | "UNSPECIFIED_REFERENCE_TYPE"
   | "LINK"
-  | "DISCUSS"
-  | (string & {});
+  | "DISCUSS";
 export const ApplicationReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Activity in applications other than Drive. */
@@ -697,12 +683,11 @@ export type AppliedLabelChangeDetailTypesItemEnum =
   | "LABEL_ADDED"
   | "LABEL_REMOVED"
   | "LABEL_FIELD_VALUE_CHANGED"
-  | "LABEL_APPLIED_BY_ITEM_CREATE"
-  | (string & {});
+  | "LABEL_APPLIED_BY_ITEM_CREATE";
 export const AppliedLabelChangeDetailTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type AppliedLabelChangeDetailTypesItemEnumList =
-  AppliedLabelChangeDetailTypesItemEnum[];
+  ReadonlyArray<AppliedLabelChangeDetailTypesItemEnum>;
 export const AppliedLabelChangeDetailTypesItemEnumList = /*@__PURE__*/ S.Array(
   AppliedLabelChangeDetailTypesItemEnum,
 ) as any as S.Schema<AppliedLabelChangeDetailTypesItemEnumList>;
@@ -718,7 +703,7 @@ export const Text = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Text" }) as any as S.Schema<Text>;
 
-export type TextList_ = Text[];
+export type TextList_ = ReadonlyArray<Text>;
 export const TextList_ = /*@__PURE__*/ S.Array(
   Text,
 ) as any as S.Schema<TextList_>;
@@ -745,7 +730,7 @@ export const SingleUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SingleUser" }) as any as S.Schema<SingleUser>;
 
-export type SingleUserList = SingleUser[];
+export type SingleUserList = ReadonlyArray<SingleUser>;
 export const SingleUserList = /*@__PURE__*/ S.Array(
   SingleUser,
 ) as any as S.Schema<SingleUserList>;
@@ -788,7 +773,7 @@ export const Driveactivity_Date = /*@__PURE__*/ S.suspend(() =>
   identifier: "Driveactivity_Date",
 }) as any as S.Schema<Driveactivity_Date>;
 
-export type SelectionList_ = Selection[];
+export type SelectionList_ = ReadonlyArray<Selection>;
 export const SelectionList_ = /*@__PURE__*/ S.Array(
   Selection,
 ) as any as S.Schema<SelectionList_>;
@@ -869,7 +854,7 @@ export const FieldValueChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldValueChange",
 }) as any as S.Schema<FieldValueChange>;
 
-export type FieldValueChangeList = FieldValueChange[];
+export type FieldValueChangeList = ReadonlyArray<FieldValueChange>;
 export const FieldValueChangeList = /*@__PURE__*/ S.Array(
   FieldValueChange,
 ) as any as S.Schema<FieldValueChangeList>;
@@ -896,7 +881,8 @@ export const AppliedLabelChangeDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppliedLabelChangeDetail",
 }) as any as S.Schema<AppliedLabelChangeDetail>;
 
-export type AppliedLabelChangeDetailList = AppliedLabelChangeDetail[];
+export type AppliedLabelChangeDetailList =
+  ReadonlyArray<AppliedLabelChangeDetail>;
 export const AppliedLabelChangeDetailList = /*@__PURE__*/ S.Array(
   AppliedLabelChangeDetail,
 ) as any as S.Schema<AppliedLabelChangeDetailList>;
@@ -1090,7 +1076,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
-export type TargetList = Target[];
+export type TargetList = ReadonlyArray<Target>;
 export const TargetList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetList>;
@@ -1104,8 +1090,7 @@ export const AnonymousUser = /*@__PURE__*/ S.suspend(() =>
 export type SystemEventTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "USER_DELETION"
-  | "TRASH_AUTO_PURGE"
-  | (string & {});
+  | "TRASH_AUTO_PURGE";
 export const SystemEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Event triggered by system operations instead of end users. */
@@ -1159,7 +1144,7 @@ export const Actor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
 
-export type ActorList = Actor[];
+export type ActorList = ReadonlyArray<Actor>;
 export const ActorList = /*@__PURE__*/ S.Array(
   Actor,
 ) as any as S.Schema<ActorList>;
@@ -1201,7 +1186,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type ActionList = Action[];
+export type ActionList = ReadonlyArray<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -1232,7 +1217,7 @@ export const DriveActivity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DriveActivity" }) as any as S.Schema<DriveActivity>;
 
-export type DriveActivityList = DriveActivity[];
+export type DriveActivityList = ReadonlyArray<DriveActivity>;
 export const DriveActivityList = /*@__PURE__*/ S.Array(
   DriveActivity,
 ) as any as S.Schema<DriveActivityList>;

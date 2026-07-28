@@ -489,16 +489,37 @@
             "smithy.api#documentation": "The name of the provider monitor setting."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.providerhub#ProviderMonitorSettingsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.providerhub#ProviderMonitorSettingProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#ProviderMonitorSettingsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingsGet": {
@@ -1288,12 +1309,8 @@
             "smithy.api#documentation": "The SKU."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeSku"
         }
       },
       "traits": {
@@ -1674,12 +1691,8 @@
             "smithy.api#documentation": "The SKU."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeSku"
         }
       },
       "traits": {
@@ -2027,12 +2040,8 @@
             "smithy.api#documentation": "The SKU."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeSku"
         }
       },
       "traits": {
@@ -2412,12 +2421,8 @@
             "smithy.api#documentation": "The SKU."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeSku"
         }
       },
       "traits": {
@@ -6764,16 +6769,44 @@
             "smithy.api#documentation": "The resource type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationProperties"
+        },
+        "kind": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationsCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationsCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Managed"
+          }
+        },
+        "HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hybrid"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationsGet": {
@@ -7080,17 +7113,50 @@
             "smithy.api#documentation": "The resource action name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resources": {
+          "target": "com.azure.providerhub#ResourceActionsDeleteResourcesRequestResourcesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "resource management action content."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.providerhub#ResourceActionsDeleteResourcesRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceManagementEntityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "resource management action content."
+      }
+    },
+    "com.azure.providerhub#ResourceManagementEntityInput": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id.",
+            "smithy.api#required": {}
+          }
+        },
+        "homeTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The home tenant id."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.providerhub#OperationsDelete": {
       "type": "operation",
@@ -7462,12 +7528,8 @@
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#OperationsContentProperties"
         }
       },
       "traits": {
@@ -7844,12 +7906,8 @@
             "smithy.api#documentation": "The notification registration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#NotificationRegistrationProperties"
         }
       },
       "traits": {
@@ -9846,16 +9904,337 @@
             "smithy.api#documentation": "The name of the release."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#FrontloadPayloadProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the frontload payload.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#FrontloadPayloadProperties": {
+      "type": "structure",
+      "members": {
+        "operationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation type.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The provider namespace.",
+            "smithy.api#required": {}
+          }
+        },
+        "frontloadLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The frontload location.",
+            "smithy.api#required": {}
+          }
+        },
+        "copyFromLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The copy from location.",
+            "smithy.api#required": {}
+          }
+        },
+        "environmentType": {
+          "target": "com.azure.providerhub#AvailableCheckInManifestEnvironment",
+          "traits": {
+            "smithy.api#documentation": "The environment type.",
+            "smithy.api#required": {}
+          }
+        },
+        "serviceFeatureFlag": {
+          "target": "com.azure.providerhub#ServiceFeatureFlagAction",
+          "traits": {
+            "smithy.api#documentation": "The service feature flag.",
+            "smithy.api#required": {}
+          }
+        },
+        "includeResourceTypes": {
+          "target": "com.azure.providerhub#FrontloadPayloadPropertiesIncludeResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The resource types to include.",
+            "smithy.api#required": {}
+          }
+        },
+        "excludeResourceTypes": {
+          "target": "com.azure.providerhub#FrontloadPayloadPropertiesExcludeResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The resource types to exclude.",
+            "smithy.api#required": {}
+          }
+        },
+        "overrideManifestLevelFields": {
+          "target": "com.azure.providerhub#ManifestLevelPropertyBag",
+          "traits": {
+            "smithy.api#documentation": "The manifest level fields to override.",
+            "smithy.api#required": {}
+          }
+        },
+        "overrideEndpointLevelFields": {
+          "target": "com.azure.providerhub#ResourceTypeEndpointBase",
+          "traits": {
+            "smithy.api#documentation": "The endpoint level fields to override.",
+            "smithy.api#required": {}
+          }
+        },
+        "ignoreFields": {
+          "target": "com.azure.providerhub#FrontloadPayloadPropertiesIgnoreFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The fields to ignore.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#FrontloadPayloadPropertiesIgnoreFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The fields to ignore."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeEndpointBase": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether it's enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersions": {
+          "target": "com.azure.providerhub#ResourceTypeEndpointBaseApiVersionsList",
+          "traits": {
+            "smithy.api#documentation": "The api versions.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpointUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint uri.",
+            "smithy.api#required": {}
+          }
+        },
+        "locations": {
+          "target": "com.azure.providerhub#ResourceTypeEndpointBaseLocationsList",
+          "traits": {
+            "smithy.api#documentation": "The locations.",
+            "smithy.api#required": {}
+          }
+        },
+        "requiredFeatures": {
+          "target": "com.azure.providerhub#ResourceTypeEndpointBaseRequiredFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The required features.",
+            "smithy.api#required": {}
+          }
+        },
+        "featuresRule": {
+          "target": "com.azure.providerhub#FeaturesRule",
+          "traits": {
+            "smithy.api#documentation": "The features rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is a TimeSpan property.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpointType": {
+          "target": "com.azure.providerhub#EndpointType",
+          "traits": {
+            "smithy.api#documentation": "The endpoint type.",
+            "smithy.api#required": {}
+          }
+        },
+        "dstsConfiguration": {
+          "target": "com.azure.providerhub#DstsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The dsts configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "skuLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The sku link.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api version.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.azure.providerhub#ResourceTypeEndpointBaseZonesList",
+          "traits": {
+            "smithy.api#documentation": "The zones.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#ResourceTypeEndpointBaseZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The zones."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeEndpointBaseRequiredFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The required features."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeEndpointBaseLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The locations."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeEndpointBaseApiVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The api versions."
+      }
+    },
+    "com.azure.providerhub#ManifestLevelPropertyBag": {
+      "type": "structure",
+      "members": {
+        "resourceHydrationAccounts": {
+          "target": "com.azure.providerhub#ManifestLevelPropertyBagResourceHydrationAccountsList",
+          "traits": {
+            "smithy.api#documentation": "The resource hydration accounts."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#ManifestLevelPropertyBagResourceHydrationAccountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceHydrationAccount"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource hydration accounts."
+      }
+    },
+    "com.azure.providerhub#FrontloadPayloadPropertiesExcludeResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource types to exclude."
+      }
+    },
+    "com.azure.providerhub#FrontloadPayloadPropertiesIncludeResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource types to include."
+      }
+    },
+    "com.azure.providerhub#ServiceFeatureFlagAction": {
+      "type": "enum",
+      "members": {
+        "DONOTCREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoNotCreate"
+          }
+        },
+        "CREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Create"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The service feature flag."
+      }
+    },
+    "com.azure.providerhub#AvailableCheckInManifestEnvironment": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "CANARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canary"
+          }
+        },
+        "PROD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Prod"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "All"
+          }
+        },
+        "MOONCAKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mooncake"
+          }
+        },
+        "FAIRFAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fairfax"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The environment type."
       }
     },
     "com.azure.providerhub#NewRegionFrontloadReleaseGet": {
@@ -10659,10 +11038,10 @@
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#FrontloadPayloadProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the frontload payload.",
             "smithy.api#required": {}
           }
         }
@@ -10900,16 +11279,328 @@
             "smithy.api#documentation": "The rollout name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#DefaultRolloutPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the rollout."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#DefaultRolloutPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "specification": {
+          "target": "com.azure.providerhub#DefaultRolloutSpecificationInput",
+          "traits": {
+            "smithy.api#documentation": "The default rollout specification."
+          }
+        },
+        "status": {
+          "target": "com.azure.providerhub#DefaultRolloutStatusInput",
+          "traits": {
+            "smithy.api#documentation": "The default rollout status."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#DefaultRolloutStatusInput": {
+      "type": "structure",
+      "members": {
+        "completedRegions": {
+          "target": "com.azure.providerhub#DefaultRolloutStatusInputCompletedRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The completed regions."
+          }
+        },
+        "failedOrSkippedRegions": {
+          "target": "com.azure.providerhub#DefaultRolloutStatusInputFailedOrSkippedRegionsMap",
+          "traits": {
+            "smithy.api#documentation": "The failed or skipped regions."
+          }
+        },
+        "nextTrafficRegion": {
+          "target": "com.azure.providerhub#TrafficRegionCategory",
+          "traits": {
+            "smithy.api#documentation": "The next traffic region."
+          }
+        },
+        "nextTrafficRegionScheduledTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The next traffic region scheduled time."
+          }
+        },
+        "subscriptionReregistrationResult": {
+          "target": "com.azure.providerhub#SubscriptionReregistrationResult",
+          "traits": {
+            "smithy.api#documentation": "The subscription reregistration result."
+          }
+        },
+        "manifestCheckinStatus": {
+          "target": "com.azure.providerhub#CheckinManifestInfo",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin status."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#DefaultRolloutStatusInputFailedOrSkippedRegionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.providerhub#ExtendedErrorInfoInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The failed or skipped regions."
+      }
+    },
+    "com.azure.providerhub#ExtendedErrorInfoInput": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "details": {
+          "target": "com.azure.providerhub#ExtendedErrorInfoInputDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.providerhub#ExtendedErrorInfoInputAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The additional error information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error information."
+      }
+    },
+    "com.azure.providerhub#ExtendedErrorInfoInputAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#TypedErrorInfoInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The additional error information."
+      }
+    },
+    "com.azure.providerhub#TypedErrorInfoInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the error.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error information."
+      }
+    },
+    "com.azure.providerhub#ExtendedErrorInfoInputDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ExtendedErrorInfoInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.providerhub#DefaultRolloutStatusInputCompletedRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The completed regions."
+      }
+    },
+    "com.azure.providerhub#DefaultRolloutSpecificationInput": {
+      "type": "structure",
+      "members": {
+        "expeditedRollout": {
+          "target": "com.azure.providerhub#ExpeditedRolloutDefinition",
+          "traits": {
+            "smithy.api#documentation": "The expedited rollout definition."
+          }
+        },
+        "canary": {
+          "target": "com.azure.providerhub#CanaryTrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The canary traffic region configuration."
+          }
+        },
+        "lowTraffic": {
+          "target": "com.azure.providerhub#TrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The low traffic region configuration."
+          }
+        },
+        "mediumTraffic": {
+          "target": "com.azure.providerhub#TrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The medium traffic region configuration."
+          }
+        },
+        "highTraffic": {
+          "target": "com.azure.providerhub#TrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The high traffic region configuration."
+          }
+        },
+        "restOfTheWorldGroupOne": {
+          "target": "com.azure.providerhub#TrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The rest of the world group one region configuration."
+          }
+        },
+        "restOfTheWorldGroupTwo": {
+          "target": "com.azure.providerhub#TrafficRegionRolloutConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The rest of the world group two region configuration."
+          }
+        },
+        "providerRegistration": {
+          "target": "com.azure.providerhub#ProviderRegistrationInput",
+          "traits": {
+            "smithy.api#documentation": "The provider registration."
+          }
+        },
+        "resourceTypeRegistrations": {
+          "target": "com.azure.providerhub#DefaultRolloutSpecificationInputResourceTypeRegistrationsList",
+          "traits": {
+            "smithy.api#documentation": "The resource type registrations."
+          }
+        },
+        "autoProvisionConfig": {
+          "target": "com.azure.providerhub#DefaultRolloutSpecificationAutoProvisionConfig",
+          "traits": {
+            "smithy.api#documentation": "The auto provisioning config."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#DefaultRolloutSpecificationInputResourceTypeRegistrationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceTypeRegistrationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type registrations."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationProperties"
+        },
+        "kind": {
+          "target": "com.azure.providerhub#ResourceTypeRegistrationInputKind",
+          "traits": {
+            "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
+      }
+    },
+    "com.azure.providerhub#ResourceTypeRegistrationInputKind": {
+      "type": "enum",
+      "members": {
+        "MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Managed"
+          }
+        },
+        "HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hybrid"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
+      }
+    },
+    "com.azure.providerhub#ProviderRegistrationInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.providerhub#ProviderRegistrationProperties"
+        },
+        "kind": {
+          "target": "com.azure.providerhub#ProviderRegistrationInputKind",
+          "traits": {
+            "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
+      }
+    },
+    "com.azure.providerhub#ProviderRegistrationInputKind": {
+      "type": "enum",
+      "members": {
+        "MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Managed"
+          }
+        },
+        "HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hybrid"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
     "com.azure.providerhub#DefaultRolloutsGet": {
@@ -11465,16 +12156,146 @@
             "smithy.api#documentation": "The rollout name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#CustomRolloutPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the rollout.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#CustomRolloutPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "specification": {
+          "target": "com.azure.providerhub#CustomRolloutSpecificationInput",
+          "traits": {
+            "smithy.api#documentation": "The specification.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.providerhub#CustomRolloutStatusInput",
+          "traits": {
+            "smithy.api#documentation": "The status."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#CustomRolloutStatusInput": {
+      "type": "structure",
+      "members": {
+        "completedRegions": {
+          "target": "com.azure.providerhub#CustomRolloutStatusInputCompletedRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The completed regions."
+          }
+        },
+        "failedOrSkippedRegions": {
+          "target": "com.azure.providerhub#CustomRolloutStatusInputFailedOrSkippedRegionsMap",
+          "traits": {
+            "smithy.api#documentation": "The failed or skipped regions."
+          }
+        },
+        "manifestCheckinStatus": {
+          "target": "com.azure.providerhub#CheckinManifestInfo",
+          "traits": {
+            "smithy.api#documentation": "The manifest checkin status."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#CustomRolloutStatusInputFailedOrSkippedRegionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.providerhub#ExtendedErrorInfoInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The failed or skipped regions."
+      }
+    },
+    "com.azure.providerhub#CustomRolloutStatusInputCompletedRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The completed regions."
+      }
+    },
+    "com.azure.providerhub#CustomRolloutSpecificationInput": {
+      "type": "structure",
+      "members": {
+        "autoProvisionConfig": {
+          "target": "com.azure.providerhub#CustomRolloutSpecificationAutoProvisionConfig",
+          "traits": {
+            "smithy.api#documentation": "The auto provisioning configuration."
+          }
+        },
+        "canary": {
+          "target": "com.azure.providerhub#TrafficRegions",
+          "traits": {
+            "smithy.api#documentation": "The canary region configuration."
+          }
+        },
+        "releaseScopes": {
+          "target": "com.azure.providerhub#CustomRolloutSpecificationInputReleaseScopesList",
+          "traits": {
+            "smithy.api#documentation": "The list of ARM regions scoped for the release."
+          }
+        },
+        "refreshSubscriptionRegistration": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether refreshing subscription registration is enabled or disabled."
+          }
+        },
+        "skipReleaseScopeValidation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether release scope validation should be skipped."
+          }
+        },
+        "providerRegistration": {
+          "target": "com.azure.providerhub#ProviderRegistrationInput",
+          "traits": {
+            "smithy.api#documentation": "The provider registration."
+          }
+        },
+        "resourceTypeRegistrations": {
+          "target": "com.azure.providerhub#CustomRolloutSpecificationInputResourceTypeRegistrationsList",
+          "traits": {
+            "smithy.api#documentation": "The resource type registrations."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.providerhub#CustomRolloutSpecificationInputResourceTypeRegistrationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.providerhub#ResourceTypeRegistrationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type registrations."
+      }
+    },
+    "com.azure.providerhub#CustomRolloutSpecificationInputReleaseScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of ARM regions scoped for the release."
       }
     },
     "com.azure.providerhub#CustomRolloutsGet": {
@@ -11717,10 +12538,17 @@
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "environment": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The environment supplied to the checkin manifest operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "baselineArmManifestLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The baseline ARM manifest location supplied to the checkin manifest operation.",
             "smithy.api#required": {}
           }
         }
@@ -11957,12 +12785,8 @@
             "smithy.api#documentation": "The application ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.providerhub#AuthorizedApplicationProperties"
         }
       },
       "traits": {
@@ -12311,16 +13135,44 @@
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.providerhub#ProviderRegistrationProperties"
+        },
+        "kind": {
+          "target": "com.azure.providerhub#ProviderRegistrationsCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.providerhub#ProviderRegistrationsCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Managed"
+          }
+        },
+        "HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hybrid"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
     "com.azure.providerhub#ProviderRegistrationsGet": {

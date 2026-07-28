@@ -63,46 +63,41 @@ export class NotFound extends T.applyErrorMatchers(
 export type AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesInsertDataOptionEnum =
   | "OVERWRITE"
-  | "INSERT_ROWS"
-  | (string & {});
+  | "INSERT_ROWS";
 export const AppendSpreadsheetsValuesInsertDataOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type AppendSpreadsheetsValuesValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED"
-  | (string & {});
+  | "USER_ENTERED";
 export const AppendSpreadsheetsValuesValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type ValueRangeMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const ValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type DocumentListList = DocumentList[];
+export type DocumentListList = ReadonlyArray<DocumentList>;
 export const DocumentListList = /*@__PURE__*/ S.Array(
   DocumentList,
 ) as any as S.Schema<DocumentListList>;
@@ -221,8 +216,7 @@ export const AppendValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type DimensionRangeDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const DimensionRangeDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range along a single dimension on a sheet. All indexes are zero-based. Indexes are half open: the start index is inclusive and the end index is exclusive. Missing indexes indicate the range is unbounded on that side. */
@@ -250,8 +244,7 @@ export type DeveloperMetadataLocationLocationTypeEnum =
   | "ROW"
   | "COLUMN"
   | "SHEET"
-  | "SPREADSHEET"
-  | (string & {});
+  | "SPREADSHEET";
 export const DeveloperMetadataLocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A location where metadata may be associated in a spreadsheet. */
@@ -281,22 +274,19 @@ export type DeveloperMetadataLookupLocationTypeEnum =
   | "ROW"
   | "COLUMN"
   | "SHEET"
-  | "SPREADSHEET"
-  | (string & {});
+  | "SPREADSHEET";
 export const DeveloperMetadataLookupLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type DeveloperMetadataLookupVisibilityEnum =
   | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
   | "DOCUMENT"
-  | "PROJECT"
-  | (string & {});
+  | "PROJECT";
 export const DeveloperMetadataLookupVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type DeveloperMetadataLookupLocationMatchingStrategyEnum =
   | "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED"
   | "EXACT_LOCATION"
-  | "INTERSECTING_LOCATION"
-  | (string & {});
+  | "INTERSECTING_LOCATION";
 export const DeveloperMetadataLookupLocationMatchingStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -373,7 +363,7 @@ export const DataFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataFilter" }) as any as S.Schema<DataFilter>;
 
-export type DataFilterList = DataFilter[];
+export type DataFilterList = ReadonlyArray<DataFilter>;
 export const DataFilterList = /*@__PURE__*/ S.Array(
   DataFilter,
 ) as any as S.Schema<DataFilterList>;
@@ -413,7 +403,7 @@ export const BatchClearByDataFilterSpreadsheetsValuesRequest =
     identifier: "BatchClearByDataFilterSpreadsheetsValuesRequest",
   }) as any as S.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -488,23 +478,20 @@ export const BatchClearValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetValuesByDataFilterRequestMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const BatchGetValuesByDataFilterRequestMajorDimensionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -574,7 +561,7 @@ export const MatchedValueRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatchedValueRange",
 }) as any as S.Schema<MatchedValueRange>;
 
-export type MatchedValueRangeList = MatchedValueRange[];
+export type MatchedValueRangeList = ReadonlyArray<MatchedValueRange>;
 export const MatchedValueRangeList = /*@__PURE__*/ S.Array(
   MatchedValueRange,
 ) as any as S.Schema<MatchedValueRangeList>;
@@ -597,24 +584,21 @@ export const BatchGetValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetSpreadsheetsValuesValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const BatchGetSpreadsheetsValuesValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchGetSpreadsheetsValuesMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const BatchGetSpreadsheetsValuesMajorDimensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -654,7 +638,7 @@ export const BatchGetSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetSpreadsheetsValuesRequest",
 }) as any as S.Schema<BatchGetSpreadsheetsValuesRequest>;
 
-export type ValueRangeList = ValueRange[];
+export type ValueRangeList = ReadonlyArray<ValueRange>;
 export const ValueRangeList = /*@__PURE__*/ S.Array(
   ValueRange,
 ) as any as S.Schema<ValueRangeList>;
@@ -678,16 +662,14 @@ export const BatchGetValuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED"
-  | (string & {});
+  | "USER_ENTERED";
 export const BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type DataFilterValueRangeMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const DataFilterValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range of values whose location is specified by a DataFilter. */
@@ -709,7 +691,7 @@ export const DataFilterValueRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataFilterValueRange",
 }) as any as S.Schema<DataFilterValueRange>;
 
-export type DataFilterValueRangeList = DataFilterValueRange[];
+export type DataFilterValueRangeList = ReadonlyArray<DataFilterValueRange>;
 export const DataFilterValueRangeList = /*@__PURE__*/ S.Array(
   DataFilterValueRange,
 ) as any as S.Schema<DataFilterValueRangeList>;
@@ -717,13 +699,12 @@ export const DataFilterValueRangeList = /*@__PURE__*/ S.Array(
 export type BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
-  "SERIAL_NUMBER" | "FORMATTED_STRING" | (string & {});
+  "SERIAL_NUMBER" | "FORMATTED_STRING";
 export const BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -810,7 +791,7 @@ export const UpdateValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateValuesByDataFilterResponse>;
 
 export type UpdateValuesByDataFilterResponseList =
-  UpdateValuesByDataFilterResponse[];
+  ReadonlyArray<UpdateValuesByDataFilterResponse>;
 export const UpdateValuesByDataFilterResponseList = /*@__PURE__*/ S.Array(
   UpdateValuesByDataFilterResponse,
 ) as any as S.Schema<UpdateValuesByDataFilterResponseList>;
@@ -848,8 +829,7 @@ export type CellFormatVerticalAlignmentEnum =
   | "VERTICAL_ALIGN_UNSPECIFIED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const CellFormatVerticalAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type NumberFormatTypeEnum =
@@ -861,8 +841,7 @@ export type NumberFormatTypeEnum =
   | "DATE"
   | "TIME"
   | "DATE_TIME"
-  | "SCIENTIFIC"
-  | (string & {});
+  | "SCIENTIFIC";
 export const NumberFormatTypeEnum = /*@__PURE__*/ S.String;
 
 /** The number format of a cell. */
@@ -883,8 +862,7 @@ export type CellFormatHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT"
-  | (string & {});
+  | "RIGHT";
 export const CellFormatHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
@@ -931,8 +909,7 @@ export type ColorStyleThemeColorEnum =
   | "ACCENT4"
   | "ACCENT5"
   | "ACCENT6"
-  | "LINK"
-  | (string & {});
+  | "LINK";
 export const ColorStyleThemeColorEnum = /*@__PURE__*/ S.String;
 
 /** A color value. */
@@ -954,8 +931,7 @@ export type CellFormatWrapStrategyEnum =
   | "OVERFLOW_CELL"
   | "LEGACY_WRAP"
   | "CLIP"
-  | "WRAP"
-  | (string & {});
+  | "WRAP";
 export const CellFormatWrapStrategyEnum = /*@__PURE__*/ S.String;
 
 /** An external or local reference. */
@@ -1007,8 +983,7 @@ export const TextFormat = /*@__PURE__*/ S.suspend(() =>
 export type CellFormatHyperlinkDisplayTypeEnum =
   | "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED"
   | "LINKED"
-  | "PLAIN_TEXT"
-  | (string & {});
+  | "PLAIN_TEXT";
 export const CellFormatHyperlinkDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 export type BorderStyleEnum =
@@ -1019,8 +994,7 @@ export type BorderStyleEnum =
   | "SOLID_MEDIUM"
   | "SOLID_THICK"
   | "NONE"
-  | "DOUBLE"
-  | (string & {});
+  | "DOUBLE";
 export const BorderStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border along a cell. */
@@ -1086,8 +1060,7 @@ export const Padding = /*@__PURE__*/ S.suspend(() =>
 export type CellFormatTextDirectionEnum =
   | "TEXT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
-  | "RIGHT_TO_LEFT"
-  | (string & {});
+  | "RIGHT_TO_LEFT";
 export const CellFormatTextDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The format of a cell. */
@@ -1160,8 +1133,7 @@ export type ThemeColorPairColorTypeEnum =
   | "ACCENT4"
   | "ACCENT5"
   | "ACCENT6"
-  | "LINK"
-  | (string & {});
+  | "LINK";
 export const ThemeColorPairColorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pair mapping a spreadsheet theme color type to the concrete color it represents. */
@@ -1178,7 +1150,7 @@ export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
-export type ThemeColorPairList = ThemeColorPair[];
+export type ThemeColorPairList = ReadonlyArray<ThemeColorPair>;
 export const ThemeColorPairList = /*@__PURE__*/ S.Array(
   ThemeColorPair,
 ) as any as S.Schema<ThemeColorPairList>;
@@ -1203,8 +1175,7 @@ export type SpreadsheetPropertiesAutoRecalcEnum =
   | "RECALCULATION_INTERVAL_UNSPECIFIED"
   | "ON_CHANGE"
   | "MINUTE"
-  | "HOUR"
-  | (string & {});
+  | "HOUR";
 export const SpreadsheetPropertiesAutoRecalcEnum = /*@__PURE__*/ S.String;
 
 /** Properties of a spreadsheet. */
@@ -1273,8 +1244,7 @@ export const DataSourceColumnReference = /*@__PURE__*/ S.suspend(() =>
 export type SortSpecSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const SortSpecSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** A sort order associated with a specific column or row. */
@@ -1306,7 +1276,7 @@ export const SortSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SortSpec" }) as any as S.Schema<SortSpec>;
 
-export type SortSpecList = SortSpec[];
+export type SortSpecList = ReadonlyArray<SortSpec>;
 export const SortSpecList = /*@__PURE__*/ S.Array(
   SortSpec,
 ) as any as S.Schema<SortSpecList>;
@@ -1344,8 +1314,7 @@ export type BooleanConditionTypeEnum =
   | "BOOLEAN"
   | "TEXT_NOT_EQ"
   | "DATE_NOT_EQ"
-  | "FILTER_EXPRESSION"
-  | (string & {});
+  | "FILTER_EXPRESSION";
 export const BooleanConditionTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConditionValueRelativeDateEnum =
@@ -1355,8 +1324,7 @@ export type ConditionValueRelativeDateEnum =
   | "PAST_WEEK"
   | "YESTERDAY"
   | "TODAY"
-  | "TOMORROW"
-  | (string & {});
+  | "TOMORROW";
 export const ConditionValueRelativeDateEnum = /*@__PURE__*/ S.String;
 
 /** The value of the condition. */
@@ -1373,7 +1341,7 @@ export const ConditionValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConditionValue" }) as any as S.Schema<ConditionValue>;
 
-export type ConditionValueList = ConditionValue[];
+export type ConditionValueList = ReadonlyArray<ConditionValue>;
 export const ConditionValueList = /*@__PURE__*/ S.Array(
   ConditionValue,
 ) as any as S.Schema<ConditionValueList>;
@@ -1443,7 +1411,7 @@ export const FilterSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilterSpec" }) as any as S.Schema<FilterSpec>;
 
-export type FilterSpecList = FilterSpec[];
+export type FilterSpecList = ReadonlyArray<FilterSpec>;
 export const FilterSpecList = /*@__PURE__*/ S.Array(
   FilterSpec,
 ) as any as S.Schema<FilterSpecList>;
@@ -1504,8 +1472,7 @@ export type PasteDataRequestTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING"
-  | (string & {});
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const PasteDataRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** A coordinate in a sheet. All indexes are zero-based. */
@@ -1575,7 +1542,8 @@ export const DataSourceObjectReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceObjectReference",
 }) as any as S.Schema<DataSourceObjectReference>;
 
-export type DataSourceObjectReferenceList = DataSourceObjectReference[];
+export type DataSourceObjectReferenceList =
+  ReadonlyArray<DataSourceObjectReference>;
 export const DataSourceObjectReferenceList = /*@__PURE__*/ S.Array(
   DataSourceObjectReference,
 ) as any as S.Schema<DataSourceObjectReferenceList>;
@@ -1615,10 +1583,7 @@ export const RefreshDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshDataSourceRequest",
 }) as any as S.Schema<RefreshDataSourceRequest>;
 
-export type PivotTableValueLayoutEnum =
-  | "HORIZONTAL"
-  | "VERTICAL"
-  | (string & {});
+export type PivotTableValueLayoutEnum = "HORIZONTAL" | "VERTICAL";
 export const PivotTableValueLayoutEnum = /*@__PURE__*/ S.String;
 
 export type DataExecutionStatusStateEnum =
@@ -1627,8 +1592,7 @@ export type DataExecutionStatusStateEnum =
   | "RUNNING"
   | "CANCELLING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DataExecutionStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type DataExecutionStatusErrorCodeEnum =
@@ -1651,8 +1615,7 @@ export type DataExecutionStatusErrorCodeEnum =
   | "OBJECT_NOT_FOUND"
   | "OBJECT_IN_ERROR_STATE"
   | "OBJECT_SPEC_INVALID"
-  | "DATA_EXECUTION_CANCELLED"
-  | (string & {});
+  | "DATA_EXECUTION_CANCELLED";
 export const DataExecutionStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The data execution status. A data execution is created to sync a data source object with the latest data from a DataSource. It is usually scheduled to run at background, you can check its state to tell if an execution completes There are several scenarios where a data execution is triggered to run: * Adding a data source creates an associated data source sheet as well as a data execution to sync the data from the data source to the sheet. * Updating a data source creates a data execution to refresh the associated data source sheet similarly. * You can send refresh request to explicitly refresh one or multiple data source objects. */
@@ -1704,8 +1667,7 @@ export type ErrorValueTypeEnum =
   | "NAME"
   | "NUM"
   | "N_A"
-  | "LOADING"
-  | (string & {});
+  | "LOADING";
 export const ErrorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** An error in a cell. */
@@ -1745,7 +1707,7 @@ export const ExtendedValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtendedValue" }) as any as S.Schema<ExtendedValue>;
 
-export type ExtendedValueList = ExtendedValue[];
+export type ExtendedValueList = ReadonlyArray<ExtendedValue>;
 export const ExtendedValueList = /*@__PURE__*/ S.Array(
   ExtendedValue,
 ) as any as S.Schema<ExtendedValueList>;
@@ -1766,7 +1728,7 @@ export const ManualRuleGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManualRuleGroup",
 }) as any as S.Schema<ManualRuleGroup>;
 
-export type ManualRuleGroupList = ManualRuleGroup[];
+export type ManualRuleGroupList = ReadonlyArray<ManualRuleGroup>;
 export const ManualRuleGroupList = /*@__PURE__*/ S.Array(
   ManualRuleGroup,
 ) as any as S.Schema<ManualRuleGroupList>;
@@ -1798,8 +1760,7 @@ export type DateTimeRuleTypeEnum =
   | "YEAR"
   | "YEAR_MONTH"
   | "YEAR_QUARTER"
-  | "YEAR_MONTH_DAY"
-  | (string & {});
+  | "YEAR_MONTH_DAY";
 export const DateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. For example, consider a pivot table showing sales transactions by date: +----------+--------------+ | Date | SUM of Sales | +----------+--------------+ | 1/1/2017 | $621.14 | | 2/3/2017 | $708.84 | | 5/8/2017 | $326.84 | ... +----------+--------------+ Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH results in the following pivot table. +--------------+--------------+ | Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan | $53,731.78 | | 2017-Feb | $83,475.32 | | 2017-Mar | $94,385.05 | ... +--------------+--------------+ */
@@ -1862,7 +1823,8 @@ export const PivotGroupValueMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "PivotGroupValueMetadata",
 }) as any as S.Schema<PivotGroupValueMetadata>;
 
-export type PivotGroupValueMetadataList = PivotGroupValueMetadata[];
+export type PivotGroupValueMetadataList =
+  ReadonlyArray<PivotGroupValueMetadata>;
 export const PivotGroupValueMetadataList = /*@__PURE__*/ S.Array(
   PivotGroupValueMetadata,
 ) as any as S.Schema<PivotGroupValueMetadataList>;
@@ -1870,8 +1832,7 @@ export const PivotGroupValueMetadataList = /*@__PURE__*/ S.Array(
 export type PivotGroupSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const PivotGroupSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Information about which values in a pivot group should be used for sorting. */
@@ -1928,7 +1889,7 @@ export const PivotGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PivotGroup" }) as any as S.Schema<PivotGroup>;
 
-export type PivotGroupList = PivotGroup[];
+export type PivotGroupList = ReadonlyArray<PivotGroup>;
 export const PivotGroupList = /*@__PURE__*/ S.Array(
   PivotGroup,
 ) as any as S.Schema<PivotGroupList>;
@@ -1971,7 +1932,7 @@ export const PivotFilterSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "PivotFilterSpec",
 }) as any as S.Schema<PivotFilterSpec>;
 
-export type PivotFilterSpecList = PivotFilterSpec[];
+export type PivotFilterSpecList = ReadonlyArray<PivotFilterSpec>;
 export const PivotFilterSpecList = /*@__PURE__*/ S.Array(
   PivotFilterSpec,
 ) as any as S.Schema<PivotFilterSpecList>;
@@ -1980,8 +1941,7 @@ export type PivotValueCalculatedDisplayTypeEnum =
   | "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED"
   | "PERCENT_OF_ROW_TOTAL"
   | "PERCENT_OF_COLUMN_TOTAL"
-  | "PERCENT_OF_GRAND_TOTAL"
-  | (string & {});
+  | "PERCENT_OF_GRAND_TOTAL";
 export const PivotValueCalculatedDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 export type PivotValueSummarizeFunctionEnum =
@@ -2000,8 +1960,7 @@ export type PivotValueSummarizeFunctionEnum =
   | "VAR"
   | "VARP"
   | "CUSTOM"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PivotValueSummarizeFunctionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of how a value in a pivot table should be calculated. */
@@ -2030,7 +1989,7 @@ export const PivotValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PivotValue" }) as any as S.Schema<PivotValue>;
 
-export type PivotValueList = PivotValue[];
+export type PivotValueList = ReadonlyArray<PivotValue>;
 export const PivotValueList = /*@__PURE__*/ S.Array(
   PivotValue,
 ) as any as S.Schema<PivotValueList>;
@@ -2114,7 +2073,7 @@ export const TextFormatRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextFormatRun" }) as any as S.Schema<TextFormatRun>;
 
-export type TextFormatRunList = TextFormatRun[];
+export type TextFormatRunList = ReadonlyArray<TextFormatRun>;
 export const TextFormatRunList = /*@__PURE__*/ S.Array(
   TextFormatRun,
 ) as any as S.Schema<TextFormatRunList>;
@@ -2123,8 +2082,7 @@ export type PersonPropertiesDisplayFormatEnum =
   | "DISPLAY_FORMAT_UNSPECIFIED"
   | "DEFAULT"
   | "LAST_NAME_COMMA_FIRST_NAME"
-  | "EMAIL"
-  | (string & {});
+  | "EMAIL";
 export const PersonPropertiesDisplayFormatEnum = /*@__PURE__*/ S.String;
 
 /** Properties specific to a linked person. */
@@ -2187,7 +2145,7 @@ export const ChipRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChipRun" }) as any as S.Schema<ChipRun>;
 
-export type ChipRunList = ChipRun[];
+export type ChipRunList = ReadonlyArray<ChipRun>;
 export const ChipRunList = /*@__PURE__*/ S.Array(
   ChipRun,
 ) as any as S.Schema<ChipRunList>;
@@ -2211,11 +2169,11 @@ export const DataSourceFormula = /*@__PURE__*/ S.suspend(() =>
 export type DataSourceTableColumnSelectionTypeEnum =
   | "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED"
   | "SELECTED"
-  | "SYNC_ALL"
-  | (string & {});
+  | "SYNC_ALL";
 export const DataSourceTableColumnSelectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceColumnReferenceList = DataSourceColumnReference[];
+export type DataSourceColumnReferenceList =
+  ReadonlyArray<DataSourceColumnReference>;
 export const DataSourceColumnReferenceList = /*@__PURE__*/ S.Array(
   DataSourceColumnReference,
 ) as any as S.Schema<DataSourceColumnReferenceList>;
@@ -2298,7 +2256,7 @@ export const CellData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CellData" }) as any as S.Schema<CellData>;
 
-export type CellDataList = CellData[];
+export type CellDataList = ReadonlyArray<CellData>;
 export const CellDataList = /*@__PURE__*/ S.Array(
   CellData,
 ) as any as S.Schema<CellDataList>;
@@ -2314,7 +2272,7 @@ export const RowData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RowData" }) as any as S.Schema<RowData>;
 
-export type RowDataList = RowData[];
+export type RowDataList = ReadonlyArray<RowData>;
 export const RowDataList = /*@__PURE__*/ S.Array(
   RowData,
 ) as any as S.Schema<RowDataList>;
@@ -2376,8 +2334,7 @@ export const SetDataValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type AppendDimensionRequestDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const AppendDimensionRequestDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Appends rows or columns to the end of a sheet. */
@@ -2461,8 +2418,7 @@ export type SheetPropertiesSheetTypeEnum =
   | "SHEET_TYPE_UNSPECIFIED"
   | "GRID"
   | "OBJECT"
-  | "DATA_SOURCE"
-  | (string & {});
+  | "DATA_SOURCE";
 export const SheetPropertiesSheetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A column in a data source. */
@@ -2481,7 +2437,7 @@ export const DataSourceColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceColumn",
 }) as any as S.Schema<DataSourceColumn>;
 
-export type DataSourceColumnList = DataSourceColumn[];
+export type DataSourceColumnList = ReadonlyArray<DataSourceColumn>;
 export const DataSourceColumnList = /*@__PURE__*/ S.Array(
   DataSourceColumn,
 ) as any as S.Schema<DataSourceColumnList>;
@@ -2613,8 +2569,7 @@ export type TextToColumnsRequestDelimiterTypeEnum =
   | "PERIOD"
   | "SPACE"
   | "CUSTOM"
-  | "AUTODETECT"
-  | (string & {});
+  | "AUTODETECT";
 export const TextToColumnsRequestDelimiterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Splits a column of text into multiple columns, based on a delimiter in each cell. */
@@ -2652,8 +2607,7 @@ export type ChartDateTimeRuleTypeEnum =
   | "YEAR"
   | "YEAR_MONTH"
   | "YEAR_QUARTER"
-  | "YEAR_MONTH_DAY"
-  | (string & {});
+  | "YEAR_MONTH_DAY";
 export const ChartDateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. */
@@ -2702,7 +2656,7 @@ export const ChartGroupRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartGroupRule" }) as any as S.Schema<ChartGroupRule>;
 
-export type GridRangeList = GridRange[];
+export type GridRangeList = ReadonlyArray<GridRange>;
 export const GridRangeList = /*@__PURE__*/ S.Array(
   GridRange,
 ) as any as S.Schema<GridRangeList>;
@@ -2727,8 +2681,7 @@ export type ChartDataAggregateTypeEnum =
   | "MAX"
   | "MEDIAN"
   | "MIN"
-  | "SUM"
-  | (string & {});
+  | "SUM";
 export const ChartDataAggregateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The data included in a domain or series. */
@@ -2755,8 +2708,7 @@ export type OrgChartSpecNodeSizeEnum =
   | "ORG_CHART_LABEL_SIZE_UNSPECIFIED"
   | "SMALL"
   | "MEDIUM"
-  | "LARGE"
-  | (string & {});
+  | "LARGE";
 export const OrgChartSpecNodeSizeEnum = /*@__PURE__*/ S.String;
 
 /** An org chart. Org charts require a unique set of labels in labels and may optionally include parent_labels and tooltips. parent_labels contain, for each node, the label identifying the parent node. tooltips contain, for each node, an optional tooltip. For example, to describe an OrgChart with Alice as the CEO, Bob as the President (reporting to Alice) and Cathy as VP of Sales (also reporting to Alice), have labels contain "Alice", "Bob", "Cathy", parent_labels contain "", "Alice", "Alice" and tooltips contain "CEO", "President", "VP Sales". */
@@ -2798,8 +2750,7 @@ export type PieChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "LABELED_LEGEND"
-  | (string & {});
+  | "LABELED_LEGEND";
 export const PieChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A pie chart. */
@@ -2829,8 +2780,7 @@ export type TextPositionHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT"
-  | (string & {});
+  | "RIGHT";
 export const TextPositionHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Position settings for text. */
@@ -2869,16 +2819,14 @@ export type DataLabelPlacementEnum =
   | "BELOW"
   | "INSIDE_END"
   | "INSIDE_BASE"
-  | "OUTSIDE_END"
-  | (string & {});
+  | "OUTSIDE_END";
 export const DataLabelPlacementEnum = /*@__PURE__*/ S.String;
 
 export type DataLabelTypeEnum =
   | "DATA_LABEL_TYPE_UNSPECIFIED"
   | "NONE"
   | "DATA"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const DataLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings for one set of data labels. Data labels are annotations that appear next to a set of data, such as the points on a line chart, and provide additional information about what the data represents, such as a text representation of the value behind that point on the graph. */
@@ -2939,7 +2887,8 @@ export const WaterfallChartCustomSubtotal = /*@__PURE__*/ S.suspend(() =>
   identifier: "WaterfallChartCustomSubtotal",
 }) as any as S.Schema<WaterfallChartCustomSubtotal>;
 
-export type WaterfallChartCustomSubtotalList = WaterfallChartCustomSubtotal[];
+export type WaterfallChartCustomSubtotalList =
+  ReadonlyArray<WaterfallChartCustomSubtotal>;
 export const WaterfallChartCustomSubtotalList = /*@__PURE__*/ S.Array(
   WaterfallChartCustomSubtotal,
 ) as any as S.Schema<WaterfallChartCustomSubtotalList>;
@@ -2975,7 +2924,7 @@ export const WaterfallChartSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "WaterfallChartSeries",
 }) as any as S.Schema<WaterfallChartSeries>;
 
-export type WaterfallChartSeriesList = WaterfallChartSeries[];
+export type WaterfallChartSeriesList = ReadonlyArray<WaterfallChartSeries>;
 export const WaterfallChartSeriesList = /*@__PURE__*/ S.Array(
   WaterfallChartSeries,
 ) as any as S.Schema<WaterfallChartSeriesList>;
@@ -2989,8 +2938,7 @@ export type LineStyleTypeEnum =
   | "MEDIUM_DASHED"
   | "MEDIUM_DASHED_DOTTED"
   | "LONG_DASHED"
-  | "LONG_DASHED_DOTTED"
-  | (string & {});
+  | "LONG_DASHED_DOTTED";
 export const LineStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Properties that describe the style of a line. */
@@ -3010,8 +2958,7 @@ export const LineStyle = /*@__PURE__*/ S.suspend(() =>
 export type WaterfallChartSpecStackedTypeEnum =
   | "WATERFALL_STACKED_TYPE_UNSPECIFIED"
   | "STACKED"
-  | "SEQUENTIAL"
-  | (string & {});
+  | "SEQUENTIAL";
 export const WaterfallChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** A waterfall chart. */
@@ -3068,8 +3015,7 @@ export type BubbleChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "INSIDE_LEGEND"
-  | (string & {});
+  | "INSIDE_LEGEND";
 export const BubbleChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A bubble chart. */
@@ -3123,8 +3069,7 @@ export type ChartSpecHiddenDimensionStrategyEnum =
   | "SKIP_HIDDEN_ROWS_AND_COLUMNS"
   | "SKIP_HIDDEN_ROWS"
   | "SKIP_HIDDEN_COLUMNS"
-  | "SHOW_ALL"
-  | (string & {});
+  | "SHOW_ALL";
 export const ChartSpecHiddenDimensionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** A histogram series containing the series color and data. */
@@ -3146,7 +3091,7 @@ export const HistogramSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistogramSeries",
 }) as any as S.Schema<HistogramSeries>;
 
-export type HistogramSeriesList = HistogramSeries[];
+export type HistogramSeriesList = ReadonlyArray<HistogramSeries>;
 export const HistogramSeriesList = /*@__PURE__*/ S.Array(
   HistogramSeries,
 ) as any as S.Schema<HistogramSeriesList>;
@@ -3158,8 +3103,7 @@ export type HistogramChartSpecLegendPositionEnum =
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
   | "NO_LEGEND"
-  | "INSIDE_LEGEND"
-  | (string & {});
+  | "INSIDE_LEGEND";
 export const HistogramChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A histogram chart. A histogram chart groups data items into bins, displaying each bin as a column of stacked items. Histograms are used to display the distribution of a dataset. Each column of items represents a range into which those items fall. The number of bins can be chosen automatically or specified explicitly. */
@@ -3193,15 +3137,13 @@ export type BasicChartSpecLegendPositionEnum =
   | "LEFT_LEGEND"
   | "RIGHT_LEGEND"
   | "TOP_LEGEND"
-  | "NO_LEGEND"
-  | (string & {});
+  | "NO_LEGEND";
 export const BasicChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSpecCompareModeEnum =
   | "BASIC_CHART_COMPARE_MODE_UNSPECIFIED"
   | "DATUM"
-  | "CATEGORY"
-  | (string & {});
+  | "CATEGORY";
 export const BasicChartSpecCompareModeEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSpecChartTypeEnum =
@@ -3212,8 +3154,7 @@ export type BasicChartSpecChartTypeEnum =
   | "COLUMN"
   | "SCATTER"
   | "COMBO"
-  | "STEPPED_AREA"
-  | (string & {});
+  | "STEPPED_AREA";
 export const BasicChartSpecChartTypeEnum = /*@__PURE__*/ S.String;
 
 export type PointStyleShapeEnum =
@@ -3225,8 +3166,7 @@ export type PointStyleShapeEnum =
   | "SQUARE"
   | "STAR"
   | "TRIANGLE"
-  | "X_MARK"
-  | (string & {});
+  | "X_MARK";
 export const PointStyleShapeEnum = /*@__PURE__*/ S.String;
 
 /** The style of a point on the chart. */
@@ -3266,7 +3206,7 @@ export const BasicSeriesDataPointStyleOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BasicSeriesDataPointStyleOverride>;
 
 export type BasicSeriesDataPointStyleOverrideList =
-  BasicSeriesDataPointStyleOverride[];
+  ReadonlyArray<BasicSeriesDataPointStyleOverride>;
 export const BasicSeriesDataPointStyleOverrideList = /*@__PURE__*/ S.Array(
   BasicSeriesDataPointStyleOverride,
 ) as any as S.Schema<BasicSeriesDataPointStyleOverrideList>;
@@ -3279,16 +3219,14 @@ export type BasicChartSeriesTypeEnum =
   | "COLUMN"
   | "SCATTER"
   | "COMBO"
-  | "STEPPED_AREA"
-  | (string & {});
+  | "STEPPED_AREA";
 export const BasicChartSeriesTypeEnum = /*@__PURE__*/ S.String;
 
 export type BasicChartSeriesTargetAxisEnum =
   | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
   | "BOTTOM_AXIS"
   | "LEFT_AXIS"
-  | "RIGHT_AXIS"
-  | (string & {});
+  | "RIGHT_AXIS";
 export const BasicChartSeriesTargetAxisEnum = /*@__PURE__*/ S.String;
 
 /** A single series of data in a chart. For example, if charting stock prices over time, multiple series may exist, one for the "Open Price", "High Price", "Low Price" and "Close Price". */
@@ -3328,7 +3266,7 @@ export const BasicChartSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "BasicChartSeries",
 }) as any as S.Schema<BasicChartSeries>;
 
-export type BasicChartSeriesList = BasicChartSeries[];
+export type BasicChartSeriesList = ReadonlyArray<BasicChartSeries>;
 export const BasicChartSeriesList = /*@__PURE__*/ S.Array(
   BasicChartSeries,
 ) as any as S.Schema<BasicChartSeriesList>;
@@ -3349,7 +3287,7 @@ export const BasicChartDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "BasicChartDomain",
 }) as any as S.Schema<BasicChartDomain>;
 
-export type BasicChartDomainList = BasicChartDomain[];
+export type BasicChartDomainList = ReadonlyArray<BasicChartDomain>;
 export const BasicChartDomainList = /*@__PURE__*/ S.Array(
   BasicChartDomain,
 ) as any as S.Schema<BasicChartDomainList>;
@@ -3358,16 +3296,14 @@ export type BasicChartAxisPositionEnum =
   | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
   | "BOTTOM_AXIS"
   | "LEFT_AXIS"
-  | "RIGHT_AXIS"
-  | (string & {});
+  | "RIGHT_AXIS";
 export const BasicChartAxisPositionEnum = /*@__PURE__*/ S.String;
 
 export type ChartAxisViewWindowOptionsViewWindowModeEnum =
   | "DEFAULT_VIEW_WINDOW_MODE"
   | "VIEW_WINDOW_MODE_UNSUPPORTED"
   | "EXPLICIT"
-  | "PRETTY"
-  | (string & {});
+  | "PRETTY";
 export const ChartAxisViewWindowOptionsViewWindowModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3413,7 +3349,7 @@ export const BasicChartAxis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BasicChartAxis" }) as any as S.Schema<BasicChartAxis>;
 
-export type BasicChartAxisList = BasicChartAxis[];
+export type BasicChartAxisList = ReadonlyArray<BasicChartAxis>;
 export const BasicChartAxisList = /*@__PURE__*/ S.Array(
   BasicChartAxis,
 ) as any as S.Schema<BasicChartAxisList>;
@@ -3422,8 +3358,7 @@ export type BasicChartSpecStackedTypeEnum =
   | "BASIC_CHART_STACKED_TYPE_UNSPECIFIED"
   | "NOT_STACKED"
   | "STACKED"
-  | "PERCENT_STACKED"
-  | (string & {});
+  | "PERCENT_STACKED";
 export const BasicChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for a basic chart. See BasicChartType for the list of charts this supports. */
@@ -3521,7 +3456,7 @@ export const CandlestickData = /*@__PURE__*/ S.suspend(() =>
   identifier: "CandlestickData",
 }) as any as S.Schema<CandlestickData>;
 
-export type CandlestickDataList = CandlestickData[];
+export type CandlestickDataList = ReadonlyArray<CandlestickData>;
 export const CandlestickDataList = /*@__PURE__*/ S.Array(
   CandlestickData,
 ) as any as S.Schema<CandlestickDataList>;
@@ -3632,15 +3567,13 @@ export type ScorecardChartSpecAggregateTypeEnum =
   | "MAX"
   | "MEDIAN"
   | "MIN"
-  | "SUM"
-  | (string & {});
+  | "SUM";
 export const ScorecardChartSpecAggregateTypeEnum = /*@__PURE__*/ S.String;
 
 export type ScorecardChartSpecNumberFormatSourceEnum =
   | "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED"
   | "FROM_DATA"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const ScorecardChartSpecNumberFormatSourceEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for key value. */
@@ -3676,8 +3609,7 @@ export const ChartCustomNumberFormatOptions = /*@__PURE__*/ S.suspend(() =>
 export type BaselineValueFormatComparisonTypeEnum =
   | "COMPARISON_TYPE_UNDEFINED"
   | "ABSOLUTE_DIFFERENCE"
-  | "PERCENTAGE_DIFFERENCE"
-  | (string & {});
+  | "PERCENTAGE_DIFFERENCE";
 export const BaselineValueFormatComparisonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for baseline value. */
@@ -3941,8 +3873,7 @@ export type InterpolationPointTypeEnum =
   | "MAX"
   | "NUMBER"
   | "PERCENT"
-  | "PERCENTILE"
-  | (string & {});
+  | "PERCENTILE";
 export const InterpolationPointTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single interpolation point on a gradient conditional format. These pin the gradient color scale according to the color, type and value chosen. */
@@ -4028,8 +3959,7 @@ export const UpdateConditionalFormatRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export type InsertRangeRequestShiftDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const InsertRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Inserts cells into a range, shifting the existing cells over or down. */
@@ -4179,8 +4109,7 @@ export const UpdateBordersRequest = /*@__PURE__*/ S.suspend(() =>
 export type SourceAndDestinationDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const SourceAndDestinationDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A combination of a source range and how to extend that source. */
@@ -4258,8 +4187,7 @@ export type TableColumnPropertiesColumnTypeEnum =
   | "PEOPLE_CHIP"
   | "FINANCE_CHIP"
   | "PLACE_CHIP"
-  | "RATINGS_CHIP"
-  | (string & {});
+  | "RATINGS_CHIP";
 export const TableColumnPropertiesColumnTypeEnum = /*@__PURE__*/ S.String;
 
 /** A data validation rule for a column in a table. */
@@ -4297,7 +4225,7 @@ export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableColumnProperties",
 }) as any as S.Schema<TableColumnProperties>;
 
-export type TableColumnPropertiesList = TableColumnProperties[];
+export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
 export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
@@ -4341,8 +4269,7 @@ export const AddTableRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteRangeRequestShiftDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const DeleteRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Deletes a range of cells, shifting other cells into the deleted area. */
@@ -4384,8 +4311,7 @@ export type CutPasteRequestPasteTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING"
-  | (string & {});
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const CutPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Moves data from the source to the destination. */
@@ -4524,10 +4450,7 @@ export const UpdateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNamedRangeRequest",
 }) as any as S.Schema<UpdateNamedRangeRequest>;
 
-export type CopyPasteRequestPasteOrientationEnum =
-  | "NORMAL"
-  | "TRANSPOSE"
-  | (string & {});
+export type CopyPasteRequestPasteOrientationEnum = "NORMAL" | "TRANSPOSE";
 export const CopyPasteRequestPasteOrientationEnum = /*@__PURE__*/ S.String;
 
 export type CopyPasteRequestPasteTypeEnum =
@@ -4537,8 +4460,7 @@ export type CopyPasteRequestPasteTypeEnum =
   | "PASTE_NO_BORDERS"
   | "PASTE_FORMULA"
   | "PASTE_DATA_VALIDATION"
-  | "PASTE_CONDITIONAL_FORMATTING"
-  | (string & {});
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const CopyPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Copies data from the source to the destination. */
@@ -4608,8 +4530,7 @@ export const MoveDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeveloperMetadataVisibilityEnum =
   | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
   | "DOCUMENT"
-  | "PROJECT"
-  | (string & {});
+  | "PROJECT";
 export const DeveloperMetadataVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Developer metadata associated with a location or object in a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). Developer metadata may be used to associate arbitrary data with various parts of a spreadsheet and it will remain associated at those locations as they move around and the spreadsheet is edited. For example, if developer metadata is associated with row 5 and another row is then subsequently inserted above row 5, that original metadata is still associated with the row it was first associated with (what is now row 6). If the associated object is deleted then its metadata is deleted too. */
@@ -4810,7 +4731,7 @@ export const DataSourceSheetDimensionRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceSheetDimensionRange",
 }) as any as S.Schema<DataSourceSheetDimensionRange>;
 
-export type DeveloperMetadataList = DeveloperMetadata[];
+export type DeveloperMetadataList = ReadonlyArray<DeveloperMetadata>;
 export const DeveloperMetadataList = /*@__PURE__*/ S.Array(
   DeveloperMetadata,
 ) as any as S.Schema<DeveloperMetadataList>;
@@ -4927,8 +4848,7 @@ export type SlicerSpecHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGN_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT"
-  | (string & {});
+  | "RIGHT";
 export const SlicerSpecHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The specifications of a slicer. */
@@ -5303,7 +5223,7 @@ export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceParameter",
 }) as any as S.Schema<DataSourceParameter>;
 
-export type DataSourceParameterList = DataSourceParameter[];
+export type DataSourceParameterList = ReadonlyArray<DataSourceParameter>;
 export const DataSourceParameterList = /*@__PURE__*/ S.Array(
   DataSourceParameter,
 ) as any as S.Schema<DataSourceParameterList>;
@@ -5358,7 +5278,7 @@ export const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddDataSourceRequest",
 }) as any as S.Schema<AddDataSourceRequest>;
 
-export type DimensionRangeList = DimensionRange[];
+export type DimensionRangeList = ReadonlyArray<DimensionRange>;
 export const DimensionRangeList = /*@__PURE__*/ S.Array(
   DimensionRange,
 ) as any as S.Schema<DimensionRangeList>;
@@ -5382,8 +5302,7 @@ export const DeleteDuplicatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type MergeCellsRequestMergeTypeEnum =
   | "MERGE_ALL"
   | "MERGE_COLUMNS"
-  | "MERGE_ROWS"
-  | (string & {});
+  | "MERGE_ROWS";
 export const MergeCellsRequestMergeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Merges all cells in the range. */
@@ -5704,7 +5623,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = Request[];
+export type RequestList = ReadonlyArray<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -5752,32 +5671,32 @@ export const BatchUpdateSpreadsheetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateSpreadsheetsRequest",
 }) as any as S.Schema<BatchUpdateSpreadsheetsRequest>;
 
-export type EmbeddedChartList = EmbeddedChart[];
+export type EmbeddedChartList = ReadonlyArray<EmbeddedChart>;
 export const EmbeddedChartList = /*@__PURE__*/ S.Array(
   EmbeddedChart,
 ) as any as S.Schema<EmbeddedChartList>;
 
-export type ProtectedRangeList = ProtectedRange[];
+export type ProtectedRangeList = ReadonlyArray<ProtectedRange>;
 export const ProtectedRangeList = /*@__PURE__*/ S.Array(
   ProtectedRange,
 ) as any as S.Schema<ProtectedRangeList>;
 
-export type ConditionalFormatRuleList = ConditionalFormatRule[];
+export type ConditionalFormatRuleList = ReadonlyArray<ConditionalFormatRule>;
 export const ConditionalFormatRuleList = /*@__PURE__*/ S.Array(
   ConditionalFormatRule,
 ) as any as S.Schema<ConditionalFormatRuleList>;
 
-export type SlicerList = Slicer[];
+export type SlicerList = ReadonlyArray<Slicer>;
 export const SlicerList = /*@__PURE__*/ S.Array(
   Slicer,
 ) as any as S.Schema<SlicerList>;
 
-export type BandedRangeList = BandedRange[];
+export type BandedRangeList = ReadonlyArray<BandedRange>;
 export const BandedRangeList = /*@__PURE__*/ S.Array(
   BandedRange,
 ) as any as S.Schema<BandedRangeList>;
 
-export type DimensionPropertiesList = DimensionProperties[];
+export type DimensionPropertiesList = ReadonlyArray<DimensionProperties>;
 export const DimensionPropertiesList = /*@__PURE__*/ S.Array(
   DimensionProperties,
 ) as any as S.Schema<DimensionPropertiesList>;
@@ -5805,22 +5724,22 @@ export const GridData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GridData" }) as any as S.Schema<GridData>;
 
-export type GridDataList = GridData[];
+export type GridDataList = ReadonlyArray<GridData>;
 export const GridDataList = /*@__PURE__*/ S.Array(
   GridData,
 ) as any as S.Schema<GridDataList>;
 
-export type FilterViewList = FilterView[];
+export type FilterViewList = ReadonlyArray<FilterView>;
 export const FilterViewList = /*@__PURE__*/ S.Array(
   FilterView,
 ) as any as S.Schema<FilterViewList>;
 
-export type DimensionGroupList = DimensionGroup[];
+export type DimensionGroupList = ReadonlyArray<DimensionGroup>;
 export const DimensionGroupList = /*@__PURE__*/ S.Array(
   DimensionGroup,
 ) as any as S.Schema<DimensionGroupList>;
 
-export type TableList = Table[];
+export type TableList = ReadonlyArray<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -5875,17 +5794,17 @@ export const Sheet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sheet" }) as any as S.Schema<Sheet>;
 
-export type SheetList = Sheet[];
+export type SheetList = ReadonlyArray<Sheet>;
 export const SheetList = /*@__PURE__*/ S.Array(
   Sheet,
 ) as any as S.Schema<SheetList>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
 
-export type NamedRangeList = NamedRange[];
+export type NamedRangeList = ReadonlyArray<NamedRange>;
 export const NamedRangeList = /*@__PURE__*/ S.Array(
   NamedRange,
 ) as any as S.Schema<NamedRangeList>;
@@ -5906,8 +5825,7 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
 
 export type DataSourceRefreshScheduleRefreshScopeEnum =
   | "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED"
-  | "ALL_DATA_SOURCES"
-  | (string & {});
+  | "ALL_DATA_SOURCES";
 export const DataSourceRefreshScheduleRefreshScopeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -5951,13 +5869,12 @@ export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList =
-  DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum[];
+  ReadonlyArray<DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum>;
 export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList =
   /*@__PURE__*/ S.Array(
     DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum,
@@ -5981,7 +5898,7 @@ export const DataSourceRefreshWeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceRefreshWeeklySchedule",
 }) as any as S.Schema<DataSourceRefreshWeeklySchedule>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -6030,7 +5947,8 @@ export const DataSourceRefreshSchedule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceRefreshSchedule",
 }) as any as S.Schema<DataSourceRefreshSchedule>;
 
-export type DataSourceRefreshScheduleList = DataSourceRefreshSchedule[];
+export type DataSourceRefreshScheduleList =
+  ReadonlyArray<DataSourceRefreshSchedule>;
 export const DataSourceRefreshScheduleList = /*@__PURE__*/ S.Array(
   DataSourceRefreshSchedule,
 ) as any as S.Schema<DataSourceRefreshScheduleList>;
@@ -6321,7 +6239,7 @@ export const RefreshDataSourceObjectExecutionStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RefreshDataSourceObjectExecutionStatus>;
 
 export type RefreshDataSourceObjectExecutionStatusList =
-  RefreshDataSourceObjectExecutionStatus[];
+  ReadonlyArray<RefreshDataSourceObjectExecutionStatus>;
 export const RefreshDataSourceObjectExecutionStatusList = /*@__PURE__*/ S.Array(
   RefreshDataSourceObjectExecutionStatus,
 ) as any as S.Schema<RefreshDataSourceObjectExecutionStatusList>;
@@ -6407,8 +6325,7 @@ export const AddDimensionGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export type RefreshCancellationStatusStateEnum =
   | "REFRESH_CANCELLATION_STATE_UNSPECIFIED"
   | "CANCEL_SUCCEEDED"
-  | "CANCEL_FAILED"
-  | (string & {});
+  | "CANCEL_FAILED";
 export const RefreshCancellationStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type RefreshCancellationStatusErrorCodeEnum =
@@ -6417,8 +6334,7 @@ export type RefreshCancellationStatusErrorCodeEnum =
   | "CANCEL_PERMISSION_DENIED"
   | "QUERY_EXECUTION_COMPLETED"
   | "CONCURRENT_CANCELLATION"
-  | "CANCEL_OTHER_ERROR"
-  | (string & {});
+  | "CANCEL_OTHER_ERROR";
 export const RefreshCancellationStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The status of a refresh cancellation. You can send a cancel request to explicitly cancel one or multiple data source object refreshes. */
@@ -6453,7 +6369,8 @@ export const CancelDataSourceRefreshStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelDataSourceRefreshStatus",
 }) as any as S.Schema<CancelDataSourceRefreshStatus>;
 
-export type CancelDataSourceRefreshStatusList = CancelDataSourceRefreshStatus[];
+export type CancelDataSourceRefreshStatusList =
+  ReadonlyArray<CancelDataSourceRefreshStatus>;
 export const CancelDataSourceRefreshStatusList = /*@__PURE__*/ S.Array(
   CancelDataSourceRefreshStatus,
 ) as any as S.Schema<CancelDataSourceRefreshStatusList>;
@@ -6586,7 +6503,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = Response[];
+export type ResponseList = ReadonlyArray<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -6613,23 +6530,20 @@ export const BatchUpdateSpreadsheetResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchUpdateValuesRequestResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const BatchUpdateValuesRequestResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type BatchUpdateValuesRequestValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED"
-  | (string & {});
+  | "USER_ENTERED";
 export const BatchUpdateValuesRequestValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -6684,7 +6598,7 @@ export const BatchUpdateSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchUpdateSpreadsheetsValuesRequest",
 }) as any as S.Schema<BatchUpdateSpreadsheetsValuesRequest>;
 
-export type UpdateValuesResponseList = UpdateValuesResponse[];
+export type UpdateValuesResponseList = ReadonlyArray<UpdateValuesResponse>;
 export const UpdateValuesResponseList = /*@__PURE__*/ S.Array(
   UpdateValuesResponse,
 ) as any as S.Schema<UpdateValuesResponseList>;
@@ -6912,24 +6826,21 @@ export const GetSpreadsheetsDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(
 
 export type GetSpreadsheetsValuesDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const GetSpreadsheetsValuesDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetSpreadsheetsValuesValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const GetSpreadsheetsValuesValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetSpreadsheetsValuesMajorDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
   | "ROWS"
-  | "COLUMNS"
-  | (string & {});
+  | "COLUMNS";
 export const GetSpreadsheetsValuesMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 export interface GetSpreadsheetsValuesRequest {
@@ -7019,7 +6930,8 @@ export const MatchedDeveloperMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatchedDeveloperMetadata",
 }) as any as S.Schema<MatchedDeveloperMetadata>;
 
-export type MatchedDeveloperMetadataList = MatchedDeveloperMetadata[];
+export type MatchedDeveloperMetadataList =
+  ReadonlyArray<MatchedDeveloperMetadata>;
 export const MatchedDeveloperMetadataList = /*@__PURE__*/ S.Array(
   MatchedDeveloperMetadata,
 ) as any as S.Schema<MatchedDeveloperMetadataList>;
@@ -7040,23 +6952,20 @@ export const SearchDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSpreadsheetsValuesValueInputOptionEnum =
   | "INPUT_VALUE_OPTION_UNSPECIFIED"
   | "RAW"
-  | "USER_ENTERED"
-  | (string & {});
+  | "USER_ENTERED";
 export const UpdateSpreadsheetsValuesValueInputOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
   | "FORMATTED_VALUE"
   | "UNFORMATTED_VALUE"
-  | "FORMULA"
-  | (string & {});
+  | "FORMULA";
 export const UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   | "SERIAL_NUMBER"
-  | "FORMATTED_STRING"
-  | (string & {});
+  | "FORMATTED_STRING";
 export const UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
   /*@__PURE__*/ S.String;
 

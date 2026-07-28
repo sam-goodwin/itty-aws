@@ -645,16 +645,40 @@
             "smithy.api#documentation": "The name of the shared private link resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.webpubsub#SharedPrivateLinkResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#SharedPrivateLinkResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group id from the provider of resource the shared private link resource is for",
+            "smithy.api#required": {}
+          }
+        },
+        "privateLinkResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the resource the shared private link resource is for",
+            "smithy.api#required": {}
+          }
+        },
+        "requestMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request message for requesting approval of the shared private link resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of an existing Shared Private Link Resource"
       }
     },
     "com.azure.webpubsub#WebPubSubSharedPrivateLinkResourcesGet": {
@@ -1073,12 +1097,8 @@
             "smithy.api#documentation": "The name of the shared private link resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.webpubsub#SharedPrivateLinkResourcePropertiesInput"
         }
       },
       "traits": {
@@ -1502,16 +1522,82 @@
             "smithy.api#documentation": "The name of the replica."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.webpubsub#WebPubSubReplicasUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.webpubsub#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.webpubsub#ReplicaPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#ReplicaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "regionEndpointEnabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable the regional endpoint. Default to \"Enabled\".\r\nWhen it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected."
+          }
+        },
+        "resourceStopped": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stop or start the resource.  Default to \"false\".\r\nWhen it's true, the data plane of the resource is shutdown.\r\nWhen it's false, the data plane of the resource is started."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub#ResourceSkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Required.\r\n\r\nAllowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.webpubsub#WebPubSubSkuTier"
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional, integer. The unit count of the resource.\r\n1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.\r\n\r\nIf present, following values are allowed:\r\n    Free_F1: 1;\r\n    Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;\r\n    Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;\r\n    Premium_P2:  100,200,300,400,500,600,700,800,900,1000;"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing information of the resource."
+      }
+    },
+    "com.azure.webpubsub#WebPubSubReplicasUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.webpubsub#WebPubSubReplicasCreateOrUpdate": {
@@ -1631,16 +1717,40 @@
             "smithy.api#documentation": "The name of the replica."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.webpubsub#WebPubSubReplicasCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.webpubsub#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.webpubsub#ReplicaPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#WebPubSubReplicasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.webpubsub#WebPubSubReplicasGet": {
@@ -1984,16 +2094,38 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "keyType": {
+          "target": "com.azure.webpubsub#KeyType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#KeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        },
+        "SALT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Salt"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of access key."
       }
     },
     "com.azure.webpubsub#WebPubSubPrivateLinkResourcesList": {
@@ -2462,16 +2594,26 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.webpubsub#PrivateEndpointConnectionPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.webpubsub#PrivateEndpoint"
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.webpubsub#PrivateLinkServiceConnectionState"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint connection properties"
       }
     },
     "com.azure.webpubsub#WebPubSubPrivateEndpointConnectionsGet": {
@@ -3094,10 +3236,9 @@
             "smithy.api#documentation": "The hub name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.webpubsub#WebPubSubHubProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
@@ -3510,16 +3651,36 @@
             "smithy.api#documentation": "Custom domain name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.webpubsub#CustomDomainPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#CustomDomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "customCertificate": {
+          "target": "com.azure.webpubsub#ResourceReference",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a custom domain."
       }
     },
     "com.azure.webpubsub#WebPubSubCustomDomainsGet": {
@@ -3919,16 +4080,43 @@
             "smithy.api#documentation": "Custom certificate name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.webpubsub#CustomCertificatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#CustomCertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultBaseUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base uri of the KeyVault that stores certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate secret name.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultSecretVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate secret version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom certificate properties."
       }
     },
     "com.azure.webpubsub#WebPubSubCustomCertificatesGet": {
@@ -4857,16 +5045,135 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.webpubsub#WebPubSubUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.webpubsub#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.webpubsub#WebPubSubPropertiesInput"
+        },
+        "kind": {
+          "target": "com.azure.webpubsub#ServiceKind"
+        },
+        "identity": {
+          "target": "com.azure.webpubsub#ManagedIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#ManagedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.webpubsub#ManagedIdentityType"
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.webpubsub#ManagedIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Get or set the user assigned identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class represent managed identities used for request and response"
+      }
+    },
+    "com.azure.webpubsub#ManagedIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.webpubsub#UserAssignedIdentityPropertyInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Get or set the user assigned identities"
+      }
+    },
+    "com.azure.webpubsub#UserAssignedIdentityPropertyInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties of user assigned identity."
+      }
+    },
+    "com.azure.webpubsub#WebPubSubPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tls": {
+          "target": "com.azure.webpubsub#WebPubSubTlsSettings"
+        },
+        "liveTraceConfiguration": {
+          "target": "com.azure.webpubsub#LiveTraceConfiguration"
+        },
+        "resourceLogConfiguration": {
+          "target": "com.azure.webpubsub#ResourceLogConfiguration"
+        },
+        "networkACLs": {
+          "target": "com.azure.webpubsub#WebPubSubNetworkACLs"
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable public network access. Default to \"Enabled\".\r\nWhen it's Enabled, network ACLs still apply.\r\nWhen it's Disabled, public network access is always disabled no matter what you set in network ACLs."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "DisableLocalAuth\r\nEnable or disable local auth with AccessKey\r\nWhen set as true, connection with AccessKey=xxx won't work."
+          }
+        },
+        "disableAadAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "DisableLocalAuth\r\nEnable or disable aad auth\r\nWhen set as true, connection with AuthType=aad won't work."
+          }
+        },
+        "regionEndpointEnabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable the regional endpoint. Default to \"Enabled\".\r\nWhen it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.\r\nThis property is replica specific. Disable the regional endpoint without replica is not allowed."
+          }
+        },
+        "resourceStopped": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stop or start the resource.  Default to \"False\".\r\nWhen it's true, the data plane of the resource is shutdown.\r\nWhen it's false, the data plane of the resource is started."
+          }
+        },
+        "socketIO": {
+          "target": "com.azure.webpubsub#WebPubSubSocketIOSettings"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class that describes the properties of the resource"
+      }
+    },
+    "com.azure.webpubsub#WebPubSubUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.webpubsub#WebPubSubCreateOrUpdate": {
@@ -4984,16 +5291,46 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.webpubsub#WebPubSubCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.webpubsub#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.webpubsub#WebPubSubPropertiesInput"
+        },
+        "kind": {
+          "target": "com.azure.webpubsub#ServiceKind"
+        },
+        "identity": {
+          "target": "com.azure.webpubsub#ManagedIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub#WebPubSubCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.webpubsub#WebPubSubGet": {
@@ -5483,10 +5820,17 @@
             "smithy.api#documentation": "the region"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource type. Can be \"Microsoft.SignalRService/SignalR\", \"Microsoft.SignalRService/WebPubSub\", \"Microsoft.SignalRService/SignalR/replicas\" or \"Microsoft.SignalRService/WebPubSub/replicas\"",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name to validate. e.g.\"my-resource-name\"",
             "smithy.api#required": {}
           }
         }

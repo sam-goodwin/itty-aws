@@ -50,7 +50,8 @@ export const AnnouncementChannel = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnouncementChannel",
 }) as any as S.Schema<AnnouncementChannel>;
 
-export type AnnouncementsChannelsListResponseBodyList = AnnouncementChannel[];
+export type AnnouncementsChannelsListResponseBodyList =
+  ReadonlyArray<AnnouncementChannel>;
 export const AnnouncementsChannelsListResponseBodyList = /*@__PURE__*/ S.Array(
   AnnouncementChannel,
 ) as any as S.Schema<AnnouncementsChannelsListResponseBodyList>;
@@ -63,14 +64,43 @@ export const AnnouncementsChannelsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnouncementsChannelsListResponse",
 }) as any as S.Schema<AnnouncementsChannelsListResponse>;
 
+/** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
+export type AnnouncementsCreateRequestChannelsList = ReadonlyArray<string>;
+export const AnnouncementsCreateRequestChannelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AnnouncementsCreateRequestChannelsList>;
+
+export interface AnnouncementsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Message body to send, rendered as Slack mrkdwn. */
+  message: string;
+  /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
+  channels: AnnouncementsCreateRequestChannelsList;
+}
+export const AnnouncementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    message: S.String,
+    channels: AnnouncementsCreateRequestChannelsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/announcements/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AnnouncementsCreateRequest",
+}) as any as S.Schema<AnnouncementsCreateRequest>;
+
 /** * `pending` - Pending * `sending` - Sending * `sent` - Sent * `partially_failed` - Partially failed * `failed` - Failed */
 export type AnnouncementStatusEnum =
   | "pending"
   | "sending"
   | "sent"
   | "partially_failed"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const AnnouncementStatusEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -88,11 +118,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -125,11 +154,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** * `pending` - Pending * `sent` - Sent * `failed` - Failed */
-export type AnnouncementDeliveryStatusEnum =
-  | "pending"
-  | "sent"
-  | "failed"
-  | (string & {});
+export type AnnouncementDeliveryStatusEnum = "pending" | "sent" | "failed";
 export const AnnouncementDeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 export interface AnnouncementDelivery {
@@ -162,20 +187,13 @@ export const AnnouncementDelivery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementDelivery>;
 
 /** Per-channel delivery rows, one per selected Slack channel. */
-export type AnnouncementsCreateRequestDeliveriesList = AnnouncementDelivery[];
-export const AnnouncementsCreateRequestDeliveriesList = /*@__PURE__*/ S.Array(
+export type AnnouncementOutputDeliveriesList =
+  ReadonlyArray<AnnouncementDelivery>;
+export const AnnouncementOutputDeliveriesList = /*@__PURE__*/ S.Array(
   AnnouncementDelivery,
-) as any as S.Schema<AnnouncementsCreateRequestDeliveriesList>;
+) as any as S.Schema<AnnouncementOutputDeliveriesList>;
 
-/** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
-export type AnnouncementsCreateRequestChannelsList = string[];
-export const AnnouncementsCreateRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementsCreateRequestChannelsList>;
-
-export interface AnnouncementsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
+export interface AnnouncementOutput {
   id: string;
   /** Short human-friendly identifier for the announcement. */
   short_id: string;
@@ -195,73 +213,9 @@ export interface AnnouncementsCreateRequest {
   created_at: string;
   created_by: UserBasic;
   /** Per-channel delivery rows, one per selected Slack channel. */
-  deliveries: AnnouncementsCreateRequestDeliveriesList;
-  /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
-  channels: AnnouncementsCreateRequestChannelsList;
+  deliveries: AnnouncementOutputDeliveriesList;
 }
-export const AnnouncementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    short_id: S.String,
-    message: S.String,
-    status: AnnouncementStatusEnum,
-    total_channels: S.Number,
-    sent_count: S.Number,
-    failed_count: S.Number,
-    sent_at: S.NullOr(S.String),
-    created_at: S.String,
-    created_by: UserBasic,
-    deliveries: AnnouncementsCreateRequestDeliveriesList,
-    channels: AnnouncementsCreateRequestChannelsList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/announcements/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AnnouncementsCreateRequest",
-}) as any as S.Schema<AnnouncementsCreateRequest>;
-
-/** Per-channel delivery rows, one per selected Slack channel. */
-export type AnnouncementDeliveriesList = AnnouncementDelivery[];
-export const AnnouncementDeliveriesList = /*@__PURE__*/ S.Array(
-  AnnouncementDelivery,
-) as any as S.Schema<AnnouncementDeliveriesList>;
-
-/** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
-export type AnnouncementChannelsList = string[];
-export const AnnouncementChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnouncementChannelsList>;
-
-export interface Announcement {
-  id: string;
-  /** Short human-friendly identifier for the announcement. */
-  short_id: string;
-  /** Message body to send, rendered as Slack mrkdwn. */
-  message: string;
-  /** Overall status: pending, sending, sent, partially_failed, or failed. * `pending` - Pending * `sending` - Sending * `sent` - Sent * `partially_failed` - Partially failed * `failed` - Failed */
-  status: AnnouncementStatusEnum;
-  /** Number of channels this announcement targets. */
-  total_channels: number;
-  /** Number of channels the message was successfully delivered to. */
-  sent_count: number;
-  /** Number of channels delivery failed for. */
-  failed_count: number;
-  /** When delivery finished (all channels resolved). Null while pending/sending. */
-  sent_at: string | null;
-  /** When the announcement was created. */
-  created_at: string;
-  created_by: UserBasic;
-  /** Per-channel delivery rows, one per selected Slack channel. */
-  deliveries: AnnouncementDeliveriesList;
-  /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
-  channels: AnnouncementChannelsList;
-}
-export const Announcement = /*@__PURE__*/ S.suspend(() =>
+export const AnnouncementOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     short_id: S.String,
@@ -273,10 +227,11 @@ export const Announcement = /*@__PURE__*/ S.suspend(() =>
     sent_at: S.NullOr(S.String),
     created_at: S.String,
     created_by: UserBasic,
-    deliveries: AnnouncementDeliveriesList,
-    channels: AnnouncementChannelsList,
+    deliveries: AnnouncementOutputDeliveriesList,
   }),
-).annotate({ identifier: "Announcement" }) as any as S.Schema<Announcement>;
+).annotate({
+  identifier: "AnnouncementOutput",
+}) as any as S.Schema<AnnouncementOutput>;
 
 export interface AnnouncementsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -302,27 +257,28 @@ export const AnnouncementsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnouncementsListRequest",
 }) as any as S.Schema<AnnouncementsListRequest>;
 
-export type PaginatedAnnouncementListResultsList = Announcement[];
-export const PaginatedAnnouncementListResultsList = /*@__PURE__*/ S.Array(
-  Announcement,
-) as any as S.Schema<PaginatedAnnouncementListResultsList>;
+export type PaginatedAnnouncementListOutputResultsList =
+  ReadonlyArray<AnnouncementOutput>;
+export const PaginatedAnnouncementListOutputResultsList = /*@__PURE__*/ S.Array(
+  AnnouncementOutput,
+) as any as S.Schema<PaginatedAnnouncementListOutputResultsList>;
 
-export interface PaginatedAnnouncementList {
+export interface PaginatedAnnouncementListOutput {
   count: number;
   next?: string | null;
   previous?: string | null;
-  results: PaginatedAnnouncementListResultsList;
+  results: PaginatedAnnouncementListOutputResultsList;
 }
-export const PaginatedAnnouncementList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedAnnouncementListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedAnnouncementListResultsList,
+    results: PaginatedAnnouncementListOutputResultsList,
   }),
 ).annotate({
-  identifier: "PaginatedAnnouncementList",
-}) as any as S.Schema<PaginatedAnnouncementList>;
+  identifier: "PaginatedAnnouncementListOutput",
+}) as any as S.Schema<PaginatedAnnouncementListOutput>;
 
 export interface AnnouncementsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -362,12 +318,12 @@ export const announcementsChannelsList: API.OperationMethod<
 export type AnnouncementsCreateError = PosthogOpError;
 export const announcementsCreate: API.OperationMethod<
   AnnouncementsCreateRequest,
-  Announcement,
+  AnnouncementOutput,
   AnnouncementsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnnouncementsCreateRequest,
-  output: Announcement,
+  output: AnnouncementOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -376,12 +332,12 @@ export const announcementsCreate: API.OperationMethod<
 export type AnnouncementsListError = PosthogOpError;
 export const announcementsList: API.OperationMethod<
   AnnouncementsListRequest,
-  PaginatedAnnouncementList,
+  PaginatedAnnouncementListOutput,
   AnnouncementsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnnouncementsListRequest,
-  output: PaginatedAnnouncementList,
+  output: PaginatedAnnouncementListOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -390,12 +346,12 @@ export const announcementsList: API.OperationMethod<
 export type AnnouncementsRetrieveError = PosthogOpError;
 export const announcementsRetrieve: API.OperationMethod<
   AnnouncementsRetrieveRequest,
-  Announcement,
+  AnnouncementOutput,
   AnnouncementsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnnouncementsRetrieveRequest,
-  output: Announcement,
+  output: AnnouncementOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

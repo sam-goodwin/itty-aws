@@ -126,13 +126,12 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "TOUCH"
   | "WEBGL"
   | "SVG_FILTERS"
-  | "SVG_FE_IMAGE"
-  | (string & {});
+  | "SVG_FE_IMAGE";
 export const CreativeAssetMetadataDetectedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList =
-  CreativeAssetMetadataDetectedFeaturesItemEnum[];
+  ReadonlyArray<CreativeAssetMetadataDetectedFeaturesItemEnum>;
 export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataDetectedFeaturesItemEnum,
@@ -143,14 +142,10 @@ export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_TOP"
   | "TARGET_SELF"
   | "TARGET_PARENT"
-  | "TARGET_POPUP"
-  | (string & {});
+  | "TARGET_POPUP";
 export const CreativeCustomEventTargetTypeEnum = /*@__PURE__*/ S.String;
 
-export type PopupWindowPropertiesPositionTypeEnum =
-  | "CENTER"
-  | "COORDINATES"
-  | (string & {});
+export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
 export const PopupWindowPropertiesPositionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Offset Position. */
@@ -230,8 +225,7 @@ export const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
-  | "ADVERTISER_EVENT_COUNTER"
-  | (string & {});
+  | "ADVERTISER_EVENT_COUNTER";
 export const CreativeCustomEventAdvertiserCustomEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -239,8 +233,7 @@ export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
-  | "ARTWORK_TYPE_IMAGE"
-  | (string & {});
+  | "ARTWORK_TYPE_IMAGE";
 export const CreativeCustomEventArtworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Click-through URL */
@@ -304,7 +297,7 @@ export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreativeCustomEvent",
 }) as any as S.Schema<CreativeCustomEvent>;
 
-export type CreativeCustomEventList = CreativeCustomEvent[];
+export type CreativeCustomEventList = ReadonlyArray<CreativeCustomEvent>;
 export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
   CreativeCustomEvent,
 ) as any as S.Schema<CreativeCustomEventList>;
@@ -326,7 +319,7 @@ export const ClickTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
-export type ClickTagList = ClickTag[];
+export type ClickTagList = ReadonlyArray<ClickTag>;
 export const ClickTagList = /*@__PURE__*/ S.Array(
   ClickTag,
 ) as any as S.Schema<ClickTagList>;
@@ -337,8 +330,7 @@ export type CreativeAssetIdTypeEnum =
   | "VIDEO"
   | "HTML"
   | "HTML_IMAGE"
-  | "AUDIO"
-  | (string & {});
+  | "AUDIO";
 export const CreativeAssetIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative Asset ID. */
@@ -361,8 +353,7 @@ export type DimensionValueMatchTypeEnum =
   | "EXACT"
   | "BEGINS_WITH"
   | "CONTAINS"
-  | "WILDCARD_EXPRESSION"
-  | (string & {});
+  | "WILDCARD_EXPRESSION";
 export const DimensionValueMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DimensionValue resource. */
@@ -417,13 +408,12 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_HARD_CODED"
   | "SVG_INVALID"
   | "CLICK_TAG_IN_RICH_MEDIA"
-  | "MISSING_ENABLER_REFERENCE"
-  | (string & {});
+  | "MISSING_ENABLER_REFERENCE";
 export const CreativeAssetMetadataWarnedValidationRulesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type CreativeAssetMetadataWarnedValidationRulesItemEnumList =
-  CreativeAssetMetadataWarnedValidationRulesItemEnum[];
+  ReadonlyArray<CreativeAssetMetadataWarnedValidationRulesItemEnum>;
 export const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
   /*@__PURE__*/ S.Array(
     CreativeAssetMetadataWarnedValidationRulesItemEnum,

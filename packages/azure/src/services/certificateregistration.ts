@@ -12,6 +12,100 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap>;
+
+/** Status of the Key Vault secret. */
+export type KeyVaultSecretStatus =
+  | "Initialized"
+  | "WaitingOnCertificateOrder"
+  | "Succeeded"
+  | "CertificateOrderFailed"
+  | "OperationNotPermittedOnKeyVault"
+  | "AzureServiceUnauthorizedToAccessKeyVault"
+  | "KeyVaultDoesNotExist"
+  | "KeyVaultSecretDoesNotExist"
+  | "UnknownError"
+  | "ExternalPrivateKey"
+  | "Unknown";
+export const KeyVaultSecretStatus = /*@__PURE__*/ S.String;
+
+/** Key Vault container for a certificate that is purchased through Azure. */
+export interface AppServiceCertificate {
+  /** Key Vault resource Id. */
+  keyVaultId?: string;
+  /** Key Vault secret name. */
+  keyVaultSecretName?: string;
+  /** Status of the Key Vault secret. */
+  provisioningState?: KeyVaultSecretStatus;
+}
+export const AppServiceCertificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultId: S.optional(S.String),
+    keyVaultSecretName: S.optional(S.String),
+    provisioningState: S.optional(KeyVaultSecretStatus),
+  }),
+).annotate({
+  identifier: "AppServiceCertificate",
+}) as any as S.Schema<AppServiceCertificate>;
+
+/** State of the Key Vault secret. */
+export type AppServiceCertificateOrderPropertiesInputCertificatesMap = {
+  [key: string]: AppServiceCertificate | undefined;
+};
+export const AppServiceCertificateOrderPropertiesInputCertificatesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AppServiceCertificate,
+  ) as any as S.Schema<AppServiceCertificateOrderPropertiesInputCertificatesMap>;
+
+/** Certificate product type. */
+export type CertificateProductType =
+  | "StandardDomainValidatedSsl"
+  | "StandardDomainValidatedWildCardSsl";
+export const CertificateProductType = /*@__PURE__*/ S.String;
+
+/** AppServiceCertificateOrder resource specific properties */
+export interface AppServiceCertificateOrderPropertiesInput {
+  /** State of the Key Vault secret. */
+  certificates?: AppServiceCertificateOrderPropertiesInputCertificatesMap;
+  /** Certificate distinguished name. */
+  distinguishedName?: string;
+  /** Duration in years (must be 1). */
+  validityInYears?: number;
+  /** Certificate key size. */
+  keySize?: number;
+  /** Certificate product type. */
+  productType: CertificateProductType;
+  /** <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>. */
+  autoRenew?: boolean;
+  /** Last CSR that was created for this order. */
+  csr?: string;
+}
+export const AppServiceCertificateOrderPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificates: S.optional(
+        AppServiceCertificateOrderPropertiesInputCertificatesMap,
+      ),
+      distinguishedName: S.optional(S.String),
+      validityInYears: S.optional(S.Number),
+      keySize: S.optional(S.Number),
+      productType: CertificateProductType,
+      autoRenew: S.optional(S.Boolean),
+      csr: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AppServiceCertificateOrderPropertiesInput",
+  }) as any as S.Schema<AppServiceCertificateOrderPropertiesInput>;
+
 export interface AppServiceCertificateOrdersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,7 +113,14 @@ export interface AppServiceCertificateOrdersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** AppServiceCertificateOrder resource specific properties */
+  properties?: AppServiceCertificateOrderPropertiesInput;
+  /** Kind of resource */
+  kind?: string;
 }
 export const AppServiceCertificateOrdersCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27,7 +128,10 @@ export const AppServiceCertificateOrdersCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AppServiceCertificateOrderPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -45,8 +149,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +157,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -94,41 +196,6 @@ export const AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponseTagsMap>;
 
-/** Status of the Key Vault secret. */
-export type KeyVaultSecretStatus =
-  | "Initialized"
-  | "WaitingOnCertificateOrder"
-  | "Succeeded"
-  | "CertificateOrderFailed"
-  | "OperationNotPermittedOnKeyVault"
-  | "AzureServiceUnauthorizedToAccessKeyVault"
-  | "KeyVaultDoesNotExist"
-  | "KeyVaultSecretDoesNotExist"
-  | "UnknownError"
-  | "ExternalPrivateKey"
-  | "Unknown"
-  | (string & {});
-export const KeyVaultSecretStatus = /*@__PURE__*/ S.String;
-
-/** Key Vault container for a certificate that is purchased through Azure. */
-export interface AppServiceCertificate {
-  /** Key Vault resource Id. */
-  keyVaultId?: string;
-  /** Key Vault secret name. */
-  keyVaultSecretName?: string;
-  /** Status of the Key Vault secret. */
-  provisioningState?: KeyVaultSecretStatus;
-}
-export const AppServiceCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyVaultId: S.optional(S.String),
-    keyVaultSecretName: S.optional(S.String),
-    provisioningState: S.optional(KeyVaultSecretStatus),
-  }),
-).annotate({
-  identifier: "AppServiceCertificate",
-}) as any as S.Schema<AppServiceCertificate>;
-
 /** State of the Key Vault secret. */
 export type AppServiceCertificateOrderPropertiesCertificatesMap = {
   [key: string]: AppServiceCertificate | undefined;
@@ -139,21 +206,13 @@ export const AppServiceCertificateOrderPropertiesCertificatesMap =
     AppServiceCertificate,
   ) as any as S.Schema<AppServiceCertificateOrderPropertiesCertificatesMap>;
 
-/** Certificate product type. */
-export type CertificateProductType =
-  | "StandardDomainValidatedSsl"
-  | "StandardDomainValidatedWildCardSsl"
-  | (string & {});
-export const CertificateProductType = /*@__PURE__*/ S.String;
-
 /** Status of certificate order. */
 export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
   | "InProgress"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Current order status. */
@@ -167,8 +226,7 @@ export type CertificateOrderStatus =
   | "PendingRekey"
   | "Unused"
   | "Expired"
-  | "NotSubmitted"
-  | (string & {});
+  | "NotSubmitted";
 export const CertificateOrderStatus = /*@__PURE__*/ S.String;
 
 /** SSL certificate details. */
@@ -211,13 +269,12 @@ export const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
 export type ResourceNotRenewableReason =
   | "RegistrationStatusNotSupportedForRenewal"
   | "ExpirationNotInRenewalTimeRange"
-  | "SubscriptionNotActive"
-  | (string & {});
+  | "SubscriptionNotActive";
 export const ResourceNotRenewableReason = /*@__PURE__*/ S.String;
 
 /** Reasons why App Service Certificate is not renewable at the current moment. */
 export type AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
-  ResourceNotRenewableReason[];
+  ReadonlyArray<ResourceNotRenewableReason>;
 export const AppServiceCertificateOrderPropertiesAppServiceCertificateNotRenewableReasonsList =
   /*@__PURE__*/ S.Array(
     ResourceNotRenewableReason,
@@ -351,6 +408,15 @@ export const AppServiceCertificateOrdersCreateOrUpdateResponse =
     identifier: "AppServiceCertificateOrdersCreateOrUpdateResponse",
   }) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponse>;
 
+/** Resource tags. */
+export type AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap =
+  { [key: string]: string | undefined };
+export const AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap>;
+
 export interface AppServiceCertificateOrdersCreateOrUpdateCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -360,7 +426,14 @@ export interface AppServiceCertificateOrdersCreateOrUpdateCertificateRequest {
   certificateOrderName: string;
   /** Name of the certificate. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Core resource properties */
+  properties?: AppServiceCertificate;
+  /** Kind of resource */
+  kind?: string;
 }
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -369,7 +442,12 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(AppServiceCertificate),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -704,7 +782,7 @@ export const AppServiceCertificateOrder = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of resources. */
 export type AppServiceCertificateOrderCollectionValueList =
-  AppServiceCertificateOrder[];
+  ReadonlyArray<AppServiceCertificateOrder>;
 export const AppServiceCertificateOrderCollectionValueList =
   /*@__PURE__*/ S.Array(
     AppServiceCertificateOrder,
@@ -821,7 +899,7 @@ export const AppServiceCertificateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AppServiceCertificateResource items on this page */
 export type AppServiceCertificateCollectionValueList =
-  AppServiceCertificateResource[];
+  ReadonlyArray<AppServiceCertificateResource>;
 export const AppServiceCertificateCollectionValueList = /*@__PURE__*/ S.Array(
   AppServiceCertificateResource,
 ) as any as S.Schema<AppServiceCertificateCollectionValueList>;
@@ -842,6 +920,29 @@ export const AppServiceCertificateCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppServiceCertificateCollection",
 }) as any as S.Schema<AppServiceCertificateCollection>;
 
+/** ReissueCertificateOrderRequest resource specific properties */
+export interface ReissueCertificateOrderRequestProperties {
+  /** Certificate Key Size. */
+  keySize?: number;
+  /** Delay in hours to revoke existing certificate after the new certificate is issued. */
+  delayExistingRevokeInHours?: number;
+  /** Csr to be used for re-key operation. */
+  csr?: string;
+  /** Should we change the ASC type (from managed private key to external private key and vice versa). */
+  isPrivateKeyExternal?: boolean;
+}
+export const ReissueCertificateOrderRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keySize: S.optional(S.Number),
+      delayExistingRevokeInHours: S.optional(S.Number),
+      csr: S.optional(S.String),
+      isPrivateKeyExternal: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "ReissueCertificateOrderRequestProperties",
+}) as any as S.Schema<ReissueCertificateOrderRequestProperties>;
+
 export interface AppServiceCertificateOrdersReissueRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -849,7 +950,10 @@ export interface AppServiceCertificateOrdersReissueRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** ReissueCertificateOrderRequest resource specific properties */
+  properties?: ReissueCertificateOrderRequestProperties;
 }
 export const AppServiceCertificateOrdersReissueRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -857,7 +961,8 @@ export const AppServiceCertificateOrdersReissueRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(ReissueCertificateOrderRequestProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -876,6 +981,26 @@ export const AppServiceCertificateOrdersReissueResponse =
     identifier: "AppServiceCertificateOrdersReissueResponse",
   }) as any as S.Schema<AppServiceCertificateOrdersReissueResponse>;
 
+/** RenewCertificateOrderRequest resource specific properties */
+export interface RenewCertificateOrderRequestProperties {
+  /** Certificate Key Size. */
+  keySize?: number;
+  /** Csr to be used for re-key operation. */
+  csr?: string;
+  /** Should we change the ASC type (from managed private key to external private key and vice versa). */
+  isPrivateKeyExternal?: boolean;
+}
+export const RenewCertificateOrderRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keySize: S.optional(S.Number),
+      csr: S.optional(S.String),
+      isPrivateKeyExternal: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "RenewCertificateOrderRequestProperties",
+}) as any as S.Schema<RenewCertificateOrderRequestProperties>;
+
 export interface AppServiceCertificateOrdersRenewRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -883,7 +1008,10 @@ export interface AppServiceCertificateOrdersRenewRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RenewCertificateOrderRequest resource specific properties */
+  properties?: RenewCertificateOrderRequestProperties;
 }
 export const AppServiceCertificateOrdersRenewRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -891,7 +1019,8 @@ export const AppServiceCertificateOrdersRenewRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(RenewCertificateOrderRequestProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -950,7 +1079,8 @@ export interface AppServiceCertificateOrdersResendRequestEmailsRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** Name of the object. */
+  name?: string;
 }
 export const AppServiceCertificateOrdersResendRequestEmailsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -958,7 +1088,7 @@ export const AppServiceCertificateOrdersResendRequestEmailsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1018,8 +1148,7 @@ export type CertificateOrderActionType =
   | "CertificateExpired"
   | "CertificateExpirationWarning"
   | "FraudDocumentationRequired"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const CertificateOrderActionType = /*@__PURE__*/ S.String;
 
 /** Certificate order action. */
@@ -1039,7 +1168,7 @@ export const CertificateOrderAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateOrderAction>;
 
 export type AppServiceCertificateOrdersRetrieveCertificateActionsResponseBodyList =
-  CertificateOrderAction[];
+  ReadonlyArray<CertificateOrderAction>;
 export const AppServiceCertificateOrdersRetrieveCertificateActionsResponseBodyList =
   /*@__PURE__*/ S.Array(
     CertificateOrderAction,
@@ -1100,7 +1229,7 @@ export const CertificateEmail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateEmail>;
 
 export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryResponseBodyList =
-  CertificateEmail[];
+  ReadonlyArray<CertificateEmail>;
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryResponseBodyList =
   /*@__PURE__*/ S.Array(
     CertificateEmail,
@@ -1125,7 +1254,10 @@ export interface AppServiceCertificateOrdersRetrieveSiteSealRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** If <code>true</code> use the light color theme for site seal; otherwise, use the default color theme. */
+  lightTheme?: boolean;
+  /** Locale of site seal. */
+  locale?: string;
 }
 export const AppServiceCertificateOrdersRetrieveSiteSealRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1133,7 +1265,8 @@ export const AppServiceCertificateOrdersRetrieveSiteSealRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      lightTheme: S.optional(S.Boolean),
+      locale: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1157,6 +1290,49 @@ export const SiteSeal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SiteSeal" }) as any as S.Schema<SiteSeal>;
 
+/** State of the Key Vault secret. */
+export type AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap =
+  { [key: string]: AppServiceCertificate | undefined };
+export const AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AppServiceCertificate,
+  ) as any as S.Schema<AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap>;
+
+/** AppServiceCertificateOrderPatchResource resource specific properties */
+export interface AppServiceCertificateOrderPatchResourcePropertiesInput {
+  /** State of the Key Vault secret. */
+  certificates?: AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap;
+  /** Certificate distinguished name. */
+  distinguishedName?: string;
+  /** Duration in years (must be 1). */
+  validityInYears?: number;
+  /** Certificate key size. */
+  keySize?: number;
+  /** Certificate product type. */
+  productType: CertificateProductType;
+  /** <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>. */
+  autoRenew?: boolean;
+  /** Last CSR that was created for this order. */
+  csr?: string;
+}
+export const AppServiceCertificateOrderPatchResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificates: S.optional(
+        AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap,
+      ),
+      distinguishedName: S.optional(S.String),
+      validityInYears: S.optional(S.Number),
+      keySize: S.optional(S.Number),
+      productType: CertificateProductType,
+      autoRenew: S.optional(S.Boolean),
+      csr: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AppServiceCertificateOrderPatchResourcePropertiesInput",
+  }) as any as S.Schema<AppServiceCertificateOrderPatchResourcePropertiesInput>;
+
 export interface AppServiceCertificateOrdersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1164,7 +1340,10 @@ export interface AppServiceCertificateOrdersUpdateRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** AppServiceCertificateOrderPatchResource resource specific properties */
+  properties?: AppServiceCertificateOrderPatchResourcePropertiesInput;
 }
 export const AppServiceCertificateOrdersUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1172,7 +1351,10 @@ export const AppServiceCertificateOrdersUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        AppServiceCertificateOrderPatchResourcePropertiesInput,
+      ),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1238,7 +1420,10 @@ export interface AppServiceCertificateOrdersUpdateCertificateRequest {
   certificateOrderName: string;
   /** Name of the certificate. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: AppServiceCertificate;
 }
 export const AppServiceCertificateOrdersUpdateCertificateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1247,7 +1432,8 @@ export const AppServiceCertificateOrdersUpdateCertificateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       certificateOrderName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(AppServiceCertificate),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1306,16 +1492,37 @@ export const AppServiceCertificateOrdersUpdateCertificateResponse =
     identifier: "AppServiceCertificateOrdersUpdateCertificateResponse",
   }) as any as S.Schema<AppServiceCertificateOrdersUpdateCertificateResponse>;
 
+/** Resource tags. */
+export type AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap =
+  { [key: string]: string | undefined };
+export const AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap>;
+
 export interface AppServiceCertificateOrdersValidatePurchaseInformationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** AppServiceCertificateOrder resource specific properties */
+  properties?: AppServiceCertificateOrderPropertiesInput;
+  /** Kind of resource */
+  kind?: string;
 }
 export const AppServiceCertificateOrdersValidatePurchaseInformationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(AppServiceCertificateOrderPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1421,23 +1628,19 @@ export const SupportTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportTopic" }) as any as S.Schema<SupportTopic>;
 
 /** List of Support Topics for which this detector is enabled. */
-export type DetectorInfoSupportTopicListList = SupportTopic[];
+export type DetectorInfoSupportTopicListList = ReadonlyArray<SupportTopic>;
 export const DetectorInfoSupportTopicListList = /*@__PURE__*/ S.Array(
   SupportTopic,
 ) as any as S.Schema<DetectorInfoSupportTopicListList>;
 
 /** Analysis Types for which this detector should apply to. */
-export type DetectorInfoAnalysisTypeList = string[];
+export type DetectorInfoAnalysisTypeList = ReadonlyArray<string>;
 export const DetectorInfoAnalysisTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DetectorInfoAnalysisTypeList>;
 
 /** Whether this detector is an Analysis Detector or not. */
-export type DetectorType =
-  | "Detector"
-  | "Analysis"
-  | "CategoryOverview"
-  | (string & {});
+export type DetectorType = "Detector" | "Analysis" | "CategoryOverview";
 export const DetectorType = /*@__PURE__*/ S.String;
 
 /** Definition of Detector */
@@ -1495,19 +1698,20 @@ export const DataTableResponseColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataTableResponseColumn>;
 
 /** List of columns with data types */
-export type DataTableResponseObjectColumnsList = DataTableResponseColumn[];
+export type DataTableResponseObjectColumnsList =
+  ReadonlyArray<DataTableResponseColumn>;
 export const DataTableResponseObjectColumnsList = /*@__PURE__*/ S.Array(
   DataTableResponseColumn,
 ) as any as S.Schema<DataTableResponseObjectColumnsList>;
 
-export type DataTableResponseObjectRowsItemList = string[];
+export type DataTableResponseObjectRowsItemList = ReadonlyArray<string>;
 export const DataTableResponseObjectRowsItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableResponseObjectRowsItemList>;
 
 /** Raw row values */
 export type DataTableResponseObjectRowsList =
-  DataTableResponseObjectRowsItemList[];
+  ReadonlyArray<DataTableResponseObjectRowsItemList>;
 export const DataTableResponseObjectRowsList = /*@__PURE__*/ S.Array(
   DataTableResponseObjectRowsItemList,
 ) as any as S.Schema<DataTableResponseObjectRowsList>;
@@ -1557,8 +1761,7 @@ export type RenderingType =
   | "DownTime"
   | "SummaryCard"
   | "SearchComponent"
-  | "AppInsightEnablement"
-  | (string & {});
+  | "AppInsightEnablement";
 export const RenderingType = /*@__PURE__*/ S.String;
 
 /** Instructions for rendering the data */
@@ -1593,7 +1796,8 @@ export const DiagnosticData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiagnosticData" }) as any as S.Schema<DiagnosticData>;
 
 /** Data Set */
-export type DetectorResponsePropertiesDatasetList = DiagnosticData[];
+export type DetectorResponsePropertiesDatasetList =
+  ReadonlyArray<DiagnosticData>;
 export const DetectorResponsePropertiesDatasetList = /*@__PURE__*/ S.Array(
   DiagnosticData,
 ) as any as S.Schema<DetectorResponsePropertiesDatasetList>;
@@ -1604,8 +1808,7 @@ export type InsightStatus =
   | "Warning"
   | "Info"
   | "Success"
-  | "None"
-  | (string & {});
+  | "None";
 export const InsightStatus = /*@__PURE__*/ S.String;
 
 /** Identify the status of the most severe insight generated by the detector. */
@@ -1646,7 +1849,8 @@ export const KeyValuePairStringObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyValuePairStringObject>;
 
 /** Settings for the data provider */
-export type DataProviderMetadataPropertyBagList = KeyValuePairStringObject[];
+export type DataProviderMetadataPropertyBagList =
+  ReadonlyArray<KeyValuePairStringObject>;
 export const DataProviderMetadataPropertyBagList = /*@__PURE__*/ S.Array(
   KeyValuePairStringObject,
 ) as any as S.Schema<DataProviderMetadataPropertyBagList>;
@@ -1668,14 +1872,14 @@ export const DataProviderMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional configuration for different data providers to be used by the UI */
 export type DetectorResponsePropertiesDataProvidersMetadataList =
-  DataProviderMetadata[];
+  ReadonlyArray<DataProviderMetadata>;
 export const DetectorResponsePropertiesDataProvidersMetadataList =
   /*@__PURE__*/ S.Array(
     DataProviderMetadata,
   ) as any as S.Schema<DetectorResponsePropertiesDataProvidersMetadataList>;
 
 /** Links attribute of sample utterance. */
-export type SampleUtteranceLinksList = string[];
+export type SampleUtteranceLinksList = ReadonlyArray<string>;
 export const SampleUtteranceLinksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SampleUtteranceLinksList>;
@@ -1716,7 +1920,8 @@ export const QueryUtterancesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryUtterancesResult>;
 
 /** Array of utterance results for search query. */
-export type QueryUtterancesResultsResultsList = QueryUtterancesResult[];
+export type QueryUtterancesResultsResultsList =
+  ReadonlyArray<QueryUtterancesResult>;
 export const QueryUtterancesResultsResultsList = /*@__PURE__*/ S.Array(
   QueryUtterancesResult,
 ) as any as S.Schema<QueryUtterancesResultsResultsList>;
@@ -1849,7 +2054,8 @@ export const DetectorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectorResponse>;
 
 /** The DetectorResponse items on this page */
-export type DetectorResponseCollectionValueList = DetectorResponse[];
+export type DetectorResponseCollectionValueList =
+  ReadonlyArray<DetectorResponse>;
 export const DetectorResponseCollectionValueList = /*@__PURE__*/ S.Array(
   DetectorResponse,
 ) as any as S.Schema<DetectorResponseCollectionValueList>;
@@ -1919,7 +2125,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type MetricSpecificationDimensionsList = Dimension[];
+export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1938,18 +2144,21 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricAvailability",
 }) as any as S.Schema<MetricAvailability>;
 
-export type MetricSpecificationAvailabilitiesList = MetricAvailability[];
+export type MetricSpecificationAvailabilitiesList =
+  ReadonlyArray<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
-export type MetricSpecificationSupportedTimeGrainTypesList = string[];
+export type MetricSpecificationSupportedTimeGrainTypesList =
+  ReadonlyArray<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
-export type MetricSpecificationSupportedAggregationTypesList = string[];
+export type MetricSpecificationSupportedAggregationTypesList =
+  ReadonlyArray<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2004,7 +2213,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricSpecification>;
 
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -2028,7 +2237,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogSpecification",
 }) as any as S.Schema<LogSpecification>;
 
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -2085,7 +2295,8 @@ export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsmOperationDescription>;
 
 /** Collection of resources. */
-export type CsmOperationCollectionValueList = CsmOperationDescription[];
+export type CsmOperationCollectionValueList =
+  ReadonlyArray<CsmOperationDescription>;
 export const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
   CsmOperationDescription,
 ) as any as S.Schema<CsmOperationCollectionValueList>;

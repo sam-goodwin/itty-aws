@@ -872,6 +872,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -1064,6 +1094,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "10m"
+          }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
           }
         }
       }
@@ -1299,6 +1359,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -1511,6 +1601,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -1711,6 +1831,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "10m"
+          }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
           }
         }
       }
@@ -1946,6 +2096,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -2172,6 +2352,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "10m"
+          }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
           }
         }
       }
@@ -2402,6 +2612,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -2595,6 +2835,36 @@
           "traits": {
             "smithy.api#enumValue": "10m"
           }
+        },
+        "_15M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "15m"
+          }
+        },
+        "_20M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20m"
+          }
+        },
+        "_30M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "30m"
+          }
+        },
+        "_45M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "45m"
+          }
+        },
+        "_60M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60m"
+          }
         }
       }
     },
@@ -2774,13 +3044,6 @@
             "smithy.api#documentation": "The id of the rule. Must be unique.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
           }
         }
       },

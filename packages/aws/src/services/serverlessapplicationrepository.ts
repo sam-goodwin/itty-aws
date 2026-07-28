@@ -244,8 +244,7 @@ export type Capability =
   | "CAPABILITY_IAM"
   | "CAPABILITY_NAMED_IAM"
   | "CAPABILITY_AUTO_EXPAND"
-  | "CAPABILITY_RESOURCE_POLICY"
-  | (string & {});
+  | "CAPABILITY_RESOURCE_POLICY";
 export const Capability = /*@__PURE__*/ S.String;
 
 export type __listOfCapability = Capability[];
@@ -595,7 +594,7 @@ export const CreateCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCloudFormationTemplateRequest",
 }) as any as S.Schema<CreateCloudFormationTemplateRequest>;
-export type Status = "PREPARING" | "ACTIVE" | "EXPIRED" | (string & {});
+export type Status = "PREPARING" | "ACTIVE" | "EXPIRED";
 export const Status = /*@__PURE__*/ S.String;
 
 export interface CreateCloudFormationTemplateResponse {

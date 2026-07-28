@@ -105,8 +105,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type AnnotationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_LEGACY_EXPORT_CONSENT"
-  | "TYPE_QWIKLAB"
-  | (string & {});
+  | "TYPE_QWIKLAB";
 export const AnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing an Annotation */
@@ -163,7 +162,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -217,8 +216,7 @@ export type CollectorStateEnum =
   | "STATE_PAUSED"
   | "STATE_DELETING"
   | "STATE_DECOMMISSIONED"
-  | "STATE_ERROR"
-  | (string & {});
+  | "STATE_ERROR";
 export const CollectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a MC Source of type VSphere Scan. */
@@ -463,7 +461,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsOperationsRequest",
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -498,7 +496,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -550,7 +548,7 @@ export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCollectorsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectorsRequest>;
 
-export type CollectorList = Collector[];
+export type CollectorList = ReadonlyArray<Collector>;
 export const CollectorList = /*@__PURE__*/ S.Array(
   Collector,
 ) as any as S.Schema<CollectorList>;
@@ -602,7 +600,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

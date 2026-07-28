@@ -12,6 +12,121 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type DashboardsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DashboardsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DashboardsCreateOrUpdateRequestTagsMap>;
+
+/** The dashboard's part position. */
+export interface DashboardPartsPosition {
+  /** The dashboard's part x coordinate. */
+  x: number;
+  /** The dashboard's part y coordinate. */
+  y: number;
+  /** The dashboard's part row span. */
+  rowSpan: number;
+  /** The dashboard's part column span. */
+  colSpan: number;
+  /** The dashboard part's metadata. */
+  metadata?: unknown;
+}
+export const DashboardPartsPosition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    x: S.Number,
+    y: S.Number,
+    rowSpan: S.Number,
+    colSpan: S.Number,
+    metadata: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "DashboardPartsPosition",
+}) as any as S.Schema<DashboardPartsPosition>;
+
+/** The dashboard part metadata type. */
+export type DashboardPartMetadataType =
+  "Extension/HubsExtension/PartType/MarkdownPart";
+export const DashboardPartMetadataType = /*@__PURE__*/ S.String;
+
+/** A dashboard part metadata. */
+export interface DashboardPartMetadata {
+  type: DashboardPartMetadataType;
+}
+export const DashboardPartMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: DashboardPartMetadataType,
+  }),
+).annotate({
+  identifier: "DashboardPartMetadata",
+}) as any as S.Schema<DashboardPartMetadata>;
+
+/** A dashboard part. */
+export interface DashboardParts {
+  /** The dashboard's part position. */
+  position: DashboardPartsPosition;
+  /** The dashboard part's metadata. */
+  metadata?: DashboardPartMetadata;
+}
+export const DashboardParts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: DashboardPartsPosition,
+    metadata: S.optional(DashboardPartMetadata),
+  }),
+).annotate({ identifier: "DashboardParts" }) as any as S.Schema<DashboardParts>;
+
+/** The dashboard parts. */
+export type DashboardLensPartsList = ReadonlyArray<DashboardParts>;
+export const DashboardLensPartsList = /*@__PURE__*/ S.Array(
+  DashboardParts,
+) as any as S.Schema<DashboardLensPartsList>;
+
+/** A dashboard lens. */
+export interface DashboardLens {
+  /** The lens order. */
+  order: number;
+  /** The dashboard parts. */
+  parts: DashboardLensPartsList;
+  /** The dashboard len's metadata. */
+  metadata?: unknown;
+}
+export const DashboardLens = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    order: S.Number,
+    parts: DashboardLensPartsList,
+    metadata: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "DashboardLens" }) as any as S.Schema<DashboardLens>;
+
+/** The dashboard lenses. */
+export type DashboardPropertiesWithProvisioningStateInputLensesList =
+  ReadonlyArray<DashboardLens>;
+export const DashboardPropertiesWithProvisioningStateInputLensesList =
+  /*@__PURE__*/ S.Array(
+    DashboardLens,
+  ) as any as S.Schema<DashboardPropertiesWithProvisioningStateInputLensesList>;
+
+/** Dashboard Properties with Provisioning state */
+export interface DashboardPropertiesWithProvisioningStateInput {
+  /** The dashboard lenses. */
+  lenses?: DashboardPropertiesWithProvisioningStateInputLensesList;
+  /** The dashboard metadata. */
+  metadata?: unknown;
+}
+export const DashboardPropertiesWithProvisioningStateInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lenses: S.optional(
+        DashboardPropertiesWithProvisioningStateInputLensesList,
+      ),
+      metadata: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "DashboardPropertiesWithProvisioningStateInput",
+  }) as any as S.Schema<DashboardPropertiesWithProvisioningStateInput>;
+
 export interface DashboardsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,14 +134,21 @@ export interface DashboardsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the dashboard. */
   dashboardName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DashboardsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DashboardPropertiesWithProvisioningStateInput;
 }
 export const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dashboardName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DashboardsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DashboardPropertiesWithProvisioningStateInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -44,8 +166,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,8 +174,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -92,89 +212,9 @@ export const DashboardsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<DashboardsCreateOrUpdateResponseTagsMap>;
 
-/** The dashboard's part position. */
-export interface DashboardPartsPosition {
-  /** The dashboard's part x coordinate. */
-  x: number;
-  /** The dashboard's part y coordinate. */
-  y: number;
-  /** The dashboard's part row span. */
-  rowSpan: number;
-  /** The dashboard's part column span. */
-  colSpan: number;
-  /** The dashboard part's metadata. */
-  metadata?: unknown;
-}
-export const DashboardPartsPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.Number,
-    y: S.Number,
-    rowSpan: S.Number,
-    colSpan: S.Number,
-    metadata: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "DashboardPartsPosition",
-}) as any as S.Schema<DashboardPartsPosition>;
-
-/** The dashboard part metadata type. */
-export type DashboardPartMetadataType =
-  | "Extension/HubsExtension/PartType/MarkdownPart"
-  | (string & {});
-export const DashboardPartMetadataType = /*@__PURE__*/ S.String;
-
-/** A dashboard part metadata. */
-export interface DashboardPartMetadata {
-  type: DashboardPartMetadataType;
-}
-export const DashboardPartMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DashboardPartMetadataType,
-  }),
-).annotate({
-  identifier: "DashboardPartMetadata",
-}) as any as S.Schema<DashboardPartMetadata>;
-
-/** A dashboard part. */
-export interface DashboardParts {
-  /** The dashboard's part position. */
-  position: DashboardPartsPosition;
-  /** The dashboard part's metadata. */
-  metadata?: DashboardPartMetadata;
-}
-export const DashboardParts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    position: DashboardPartsPosition,
-    metadata: S.optional(DashboardPartMetadata),
-  }),
-).annotate({ identifier: "DashboardParts" }) as any as S.Schema<DashboardParts>;
-
-/** The dashboard parts. */
-export type DashboardLensPartsList = DashboardParts[];
-export const DashboardLensPartsList = /*@__PURE__*/ S.Array(
-  DashboardParts,
-) as any as S.Schema<DashboardLensPartsList>;
-
-/** A dashboard lens. */
-export interface DashboardLens {
-  /** The lens order. */
-  order: number;
-  /** The dashboard parts. */
-  parts: DashboardLensPartsList;
-  /** The dashboard len's metadata. */
-  metadata?: unknown;
-}
-export const DashboardLens = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    order: S.Number,
-    parts: DashboardLensPartsList,
-    metadata: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "DashboardLens" }) as any as S.Schema<DashboardLens>;
-
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateLensesList =
-  DashboardLens[];
+  ReadonlyArray<DashboardLens>;
 export const DashboardPropertiesWithProvisioningStateLensesList =
   /*@__PURE__*/ S.Array(
     DashboardLens,
@@ -184,8 +224,7 @@ export const DashboardPropertiesWithProvisioningStateLensesList =
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -397,7 +436,7 @@ export const Dashboard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dashboard" }) as any as S.Schema<Dashboard>;
 
 /** The Dashboard items on this page */
-export type DashboardListResultValueList = Dashboard[];
+export type DashboardListResultValueList = ReadonlyArray<Dashboard>;
 export const DashboardListResultValueList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<DashboardListResultValueList>;
@@ -437,6 +476,37 @@ export const DashboardsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardsListBySubscriptionRequest",
 }) as any as S.Schema<DashboardsListBySubscriptionRequest>;
 
+/** The dashboard lenses. */
+export type DashboardPropertiesLensesList = ReadonlyArray<DashboardLens>;
+export const DashboardPropertiesLensesList = /*@__PURE__*/ S.Array(
+  DashboardLens,
+) as any as S.Schema<DashboardPropertiesLensesList>;
+
+/** The shared dashboard properties. */
+export interface DashboardProperties {
+  /** The dashboard lenses. */
+  lenses?: DashboardPropertiesLensesList;
+  /** The dashboard metadata. */
+  metadata?: unknown;
+}
+export const DashboardProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lenses: S.optional(DashboardPropertiesLensesList),
+    metadata: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "DashboardProperties",
+}) as any as S.Schema<DashboardProperties>;
+
+/** Resource tags */
+export type DashboardsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DashboardsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DashboardsUpdateRequestTagsMap>;
+
 export interface DashboardsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -444,14 +514,18 @@ export interface DashboardsUpdateRequest {
   resourceGroupName: string;
   /** The name of the dashboard. */
   dashboardName: string;
-  body: unknown;
+  /** The shared dashboard properties. */
+  properties?: DashboardProperties;
+  /** Resource tags */
+  tags?: DashboardsUpdateRequestTagsMap;
 }
 export const DashboardsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dashboardName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DashboardProperties),
+    tags: S.optional(DashboardsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -536,7 +610,7 @@ export const Violation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
 /** The Violation items on this page */
-export type ViolationsListValueList = Violation[];
+export type ViolationsListValueList = ReadonlyArray<Violation>;
 export const ViolationsListValueList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ViolationsListValueList>;
@@ -592,11 +666,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -623,7 +697,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -643,15 +717,29 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Tenant Configuration Properties with Provisioning state */
+export interface ConfigurationPropertiesInput {
+  /** When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited. */
+  enforcePrivateMarkdownStorage?: boolean;
+}
+export const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enforcePrivateMarkdownStorage: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigurationPropertiesInput",
+}) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface TenantConfigurationsCreateRequest {
   /** The name of the Configuration */
   configurationName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigurationPropertiesInput;
 }
 export const TenantConfigurationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -813,7 +901,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = Configuration[];
+export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;

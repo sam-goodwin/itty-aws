@@ -12,6 +12,38 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Tags on the azure resource. */
+export type AccountsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsCreateRequestTagsMap>;
+
+/** Identity Type */
+export type IdentityInputType = "SystemAssigned";
+export const IdentityInputType = /*@__PURE__*/ S.String;
+
+/** Identity of resource */
+export interface IdentityInput {
+  /** Identity Type */
+  type?: IdentityInputType;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(IdentityInputType),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
+/** Account property bag. */
+export interface AccountPropertiesInput {}
+export const AccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AccountPropertiesInput",
+}) as any as S.Schema<AccountPropertiesInput>;
+
 export interface AccountsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -19,14 +51,24 @@ export interface AccountsCreateRequest {
   resourceGroupName: string;
   /** The name of the share account. */
   accountName: string;
-  body: unknown;
+  /** Location of the azure resource. */
+  location?: string;
+  /** Tags on the azure resource. */
+  tags?: AccountsCreateRequestTagsMap;
+  /** Identity Info on the Account */
+  identity: IdentityInput;
+  /** Properties on the account */
+  properties?: AccountPropertiesInput;
 }
 export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(AccountsCreateRequestTagsMap),
+    identity: IdentityInput,
+    properties: S.optional(AccountPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -44,8 +86,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,8 +94,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -93,7 +133,7 @@ export const AccountsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsCreateResponseTagsMap>;
 
 /** Identity Type */
-export type IdentityType = "SystemAssigned" | (string & {});
+export type IdentityType = "SystemAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Identity of resource */
@@ -119,8 +159,7 @@ export type AccountPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const AccountPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Account property bag. */
@@ -204,7 +243,7 @@ export const AccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsDeleteRequest>;
 
 /** Nested details of the error model */
-export type DataShareErrorInfoDetailsList = DataShareErrorInfo[];
+export type DataShareErrorInfoDetailsList = ReadonlyArray<DataShareErrorInfo>;
 export const DataShareErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => DataShareErrorInfo),
 ) as any as S.Schema<DataShareErrorInfoDetailsList>;
@@ -238,8 +277,7 @@ export type OperationResponseStatus =
   | "TransientFailure"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const OperationResponseStatus = /*@__PURE__*/ S.String;
 
 /** Response for long running operation */
@@ -394,7 +432,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** Collection of items of type DataTransferObjects. */
-export type AccountListValueList = Account[];
+export type AccountListValueList = ReadonlyArray<Account>;
 export const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
@@ -435,6 +473,15 @@ export const AccountsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListBySubscriptionRequest",
 }) as any as S.Schema<AccountsListBySubscriptionRequest>;
 
+/** Tags on the azure resource. */
+export type AccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateRequestTagsMap>;
+
 export interface AccountsUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -442,14 +489,15 @@ export interface AccountsUpdateRequest {
   resourceGroupName: string;
   /** The name of the share account. */
   accountName: string;
-  body: unknown;
+  /** Tags on the azure resource. */
+  tags?: AccountsUpdateRequestTagsMap;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AccountsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -531,8 +579,7 @@ export type ConsumerInvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
-  | "Withdrawn"
-  | (string & {});
+  | "Withdrawn";
 export const ConsumerInvitationPropertiesInvitationStatus =
   /*@__PURE__*/ S.String;
 
@@ -661,7 +708,7 @@ export const ConsumerInvitation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumerInvitation>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ConsumerInvitationListValueList = ConsumerInvitation[];
+export type ConsumerInvitationListValueList = ReadonlyArray<ConsumerInvitation>;
 export const ConsumerInvitationListValueList = /*@__PURE__*/ S.Array(
   ConsumerInvitation,
 ) as any as S.Schema<ConsumerInvitationListValueList>;
@@ -682,16 +729,30 @@ export const ConsumerInvitationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumerInvitationList",
 }) as any as S.Schema<ConsumerInvitationList>;
 
+/** Properties of consumer invitation */
+export interface ConsumerInvitationPropertiesInput {
+  /** Unique id of the invitation. */
+  invitationId: string;
+}
+export const ConsumerInvitationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invitationId: S.String,
+  }),
+).annotate({
+  identifier: "ConsumerInvitationPropertiesInput",
+}) as any as S.Schema<ConsumerInvitationPropertiesInput>;
+
 export interface ConsumerInvitationsRejectInvitationRequest {
   /** Location of the invitation */
   location: string;
-  body: unknown;
+  /** Properties on the account */
+  properties: ConsumerInvitationPropertiesInput;
 }
 export const ConsumerInvitationsRejectInvitationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ConsumerInvitationPropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",
@@ -776,8 +837,7 @@ export type ConsumerSourceDataSetPropertiesDataSetType =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const ConsumerSourceDataSetPropertiesDataSetType =
   /*@__PURE__*/ S.String;
 
@@ -832,7 +892,8 @@ export const ConsumerSourceDataSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumerSourceDataSet>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ConsumerSourceDataSetListValueList = ConsumerSourceDataSet[];
+export type ConsumerSourceDataSetListValueList =
+  ReadonlyArray<ConsumerSourceDataSet>;
 export const ConsumerSourceDataSetListValueList = /*@__PURE__*/ S.Array(
   ConsumerSourceDataSet,
 ) as any as S.Schema<ConsumerSourceDataSetListValueList>;
@@ -853,6 +914,22 @@ export const ConsumerSourceDataSetList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumerSourceDataSetList",
 }) as any as S.Schema<ConsumerSourceDataSetList>;
 
+/** Kind of data set mapping. */
+export type DataSetMappingsCreateRequestKind =
+  | "Blob"
+  | "Container"
+  | "BlobFolder"
+  | "AdlsGen2FileSystem"
+  | "AdlsGen2Folder"
+  | "AdlsGen2File"
+  | "KustoCluster"
+  | "KustoDatabase"
+  | "KustoTable"
+  | "SqlDBTable"
+  | "SqlDWTable"
+  | "SynapseWorkspaceSqlPoolTable";
+export const DataSetMappingsCreateRequestKind = /*@__PURE__*/ S.String;
+
 export interface DataSetMappingsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -864,7 +941,8 @@ export interface DataSetMappingsCreateRequest {
   shareSubscriptionName: string;
   /** The name of the data set mapping to be created. */
   dataSetMappingName: string;
-  body: unknown;
+  /** Kind of data set mapping. */
+  kind: DataSetMappingsCreateRequestKind;
 }
 export const DataSetMappingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -873,7 +951,7 @@ export const DataSetMappingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     accountName: S.String.pipe(T.Label()),
     shareSubscriptionName: S.String.pipe(T.Label()),
     dataSetMappingName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: DataSetMappingsCreateRequestKind,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -899,8 +977,7 @@ export type DataSetMappingsCreateResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetMappingsCreateResponse {
@@ -1009,8 +1086,7 @@ export type DataSetMappingsGetResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetMappingsGetResponse {
@@ -1088,8 +1164,7 @@ export type DataSetMappingKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetMappingKind = /*@__PURE__*/ S.String;
 
 /** A data set mapping data transfer object. */
@@ -1116,7 +1191,7 @@ export const DataSetMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSetMapping" }) as any as S.Schema<DataSetMapping>;
 
 /** Collection of items of type DataTransferObjects. */
-export type DataSetMappingListValueList = DataSetMapping[];
+export type DataSetMappingListValueList = ReadonlyArray<DataSetMapping>;
 export const DataSetMappingListValueList = /*@__PURE__*/ S.Array(
   DataSetMapping,
 ) as any as S.Schema<DataSetMappingListValueList>;
@@ -1137,6 +1212,24 @@ export const DataSetMappingList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSetMappingList",
 }) as any as S.Schema<DataSetMappingList>;
 
+/** Kind of data set. */
+export type DataSetsCreateRequestKind =
+  | "Blob"
+  | "Container"
+  | "BlobFolder"
+  | "AdlsGen2FileSystem"
+  | "AdlsGen2Folder"
+  | "AdlsGen2File"
+  | "AdlsGen1Folder"
+  | "AdlsGen1File"
+  | "KustoCluster"
+  | "KustoDatabase"
+  | "KustoTable"
+  | "SqlDBTable"
+  | "SqlDWTable"
+  | "SynapseWorkspaceSqlPoolTable";
+export const DataSetsCreateRequestKind = /*@__PURE__*/ S.String;
+
 export interface DataSetsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1148,7 +1241,8 @@ export interface DataSetsCreateRequest {
   shareName: string;
   /** The name of the dataSet. */
   dataSetName: string;
-  body: unknown;
+  /** Kind of data set. */
+  kind: DataSetsCreateRequestKind;
 }
 export const DataSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1157,7 +1251,7 @@ export const DataSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     accountName: S.String.pipe(T.Label()),
     shareName: S.String.pipe(T.Label()),
     dataSetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: DataSetsCreateRequestKind,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1185,8 +1279,7 @@ export type DataSetsCreateResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetsCreateResponse {
@@ -1297,8 +1390,7 @@ export type DataSetsGetResponseKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface DataSetsGetResponse {
@@ -1377,8 +1469,7 @@ export type DataSetKind =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const DataSetKind = /*@__PURE__*/ S.String;
 
 /** A DataSet data transfer object. */
@@ -1405,7 +1496,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
 /** Collection of items of type DataTransferObjects. */
-export type DataSetListValueList = DataSet[];
+export type DataSetListValueList = ReadonlyArray<DataSet>;
 export const DataSetListValueList = /*@__PURE__*/ S.Array(
   DataSet,
 ) as any as S.Schema<DataSetListValueList>;
@@ -1427,13 +1518,14 @@ export const DataSetList = /*@__PURE__*/ S.suspend(() =>
 export interface EmailRegistrationsActivateEmailRequest {
   /** Location of the activation. */
   location: string;
-  body: unknown;
+  /** Activation code for the registration */
+  activationCode?: string;
 }
 export const EmailRegistrationsActivateEmailRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      activationCode: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1450,8 +1542,7 @@ export const EmailRegistrationsActivateEmailRequest = /*@__PURE__*/ S.suspend(
 export type EmailRegistrationRegistrationStatus =
   | "ActivationPending"
   | "Activated"
-  | "ActivationAttemptsExhausted"
-  | (string & {});
+  | "ActivationAttemptsExhausted";
 export const EmailRegistrationRegistrationStatus = /*@__PURE__*/ S.String;
 
 /** Dto for tenant domain registration */
@@ -1499,6 +1590,28 @@ export const EmailRegistrationsRegisterEmailRequest = /*@__PURE__*/ S.suspend(
   identifier: "EmailRegistrationsRegisterEmailRequest",
 }) as any as S.Schema<EmailRegistrationsRegisterEmailRequest>;
 
+/** Invitation property bag. */
+export interface InvitationPropertiesInput {
+  /** The expiration date for the invitation and share subscription. */
+  expirationDate?: string;
+  /** The target Azure AD Id. Can't be combined with email. */
+  targetActiveDirectoryId?: string;
+  /** The email the invitation is directed to. */
+  targetEmail?: string;
+  /** The target user or application Id that invitation is being sent to. Must be specified along TargetActiveDirectoryId. This enables sending invitations to specific users or applications in an AD tenant. */
+  targetObjectId?: string;
+}
+export const InvitationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expirationDate: S.optional(S.String),
+    targetActiveDirectoryId: S.optional(S.String),
+    targetEmail: S.optional(S.String),
+    targetObjectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvitationPropertiesInput",
+}) as any as S.Schema<InvitationPropertiesInput>;
+
 export interface InvitationsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1510,7 +1623,8 @@ export interface InvitationsCreateRequest {
   shareName: string;
   /** The name of the invitation. */
   invitationName: string;
-  body: unknown;
+  /** Properties on the Invitation */
+  properties?: InvitationPropertiesInput;
 }
 export const InvitationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1519,7 +1633,7 @@ export const InvitationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     accountName: S.String.pipe(T.Label()),
     shareName: S.String.pipe(T.Label()),
     invitationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InvitationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1537,8 +1651,7 @@ export type InvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
-  | "Withdrawn"
-  | (string & {});
+  | "Withdrawn";
 export const InvitationPropertiesInvitationStatus = /*@__PURE__*/ S.String;
 
 /** Invitation property bag. */
@@ -1759,7 +1872,7 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 /** Collection of items of type DataTransferObjects. */
-export type InvitationListValueList = Invitation[];
+export type InvitationListValueList = ReadonlyArray<Invitation>;
 export const InvitationListValueList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<InvitationListValueList>;
@@ -1835,7 +1948,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  OperationMetaLogSpecification[];
+  ReadonlyArray<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -1859,7 +1972,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList =
-  DimensionProperties[];
+  ReadonlyArray<DimensionProperties>;
 export const OperationMetaMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     DimensionProperties,
@@ -1867,7 +1980,7 @@ export const OperationMetaMetricSpecificationDimensionsList =
 
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1875,7 +1988,7 @@ export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1933,7 +2046,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  OperationMetaMetricSpecification[];
+  ReadonlyArray<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -1993,7 +2106,7 @@ export const OperationModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationModel" }) as any as S.Schema<OperationModel>;
 
 /** Collection of items of type DataTransferObjects. */
-export type OperationListValueList = OperationModel[];
+export type OperationListValueList = ReadonlyArray<OperationModel>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationModel,
 ) as any as S.Schema<OperationListValueList>;
@@ -2012,6 +2125,20 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
 
+/** Provider share subscription properties */
+export interface ProviderShareSubscriptionPropertiesInput {
+  /** Expiration date of the share subscription in UTC format */
+  expirationDate?: string;
+}
+export const ProviderShareSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      expirationDate: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ProviderShareSubscriptionPropertiesInput",
+}) as any as S.Schema<ProviderShareSubscriptionPropertiesInput>;
+
 export interface ProviderShareSubscriptionsAdjustRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2023,7 +2150,8 @@ export interface ProviderShareSubscriptionsAdjustRequest {
   shareName: string;
   /** To locate shareSubscription */
   providerShareSubscriptionId: string;
-  body: unknown;
+  /** properties of providerShareSubscription */
+  properties?: ProviderShareSubscriptionPropertiesInput;
 }
 export const ProviderShareSubscriptionsAdjustRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2033,7 +2161,7 @@ export const ProviderShareSubscriptionsAdjustRequest = /*@__PURE__*/ S.suspend(
       accountName: S.String.pipe(T.Label()),
       shareName: S.String.pipe(T.Label()),
       providerShareSubscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProviderShareSubscriptionPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2051,8 +2179,7 @@ export type ProviderShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
-  | "Revoking"
-  | (string & {});
+  | "Revoking";
 export const ProviderShareSubscriptionPropertiesShareSubscriptionStatus =
   /*@__PURE__*/ S.String;
 
@@ -2239,7 +2366,7 @@ export const ProviderShareSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of items of type DataTransferObjects. */
 export type ProviderShareSubscriptionListValueList =
-  ProviderShareSubscription[];
+  ReadonlyArray<ProviderShareSubscription>;
 export const ProviderShareSubscriptionListValueList = /*@__PURE__*/ S.Array(
   ProviderShareSubscription,
 ) as any as S.Schema<ProviderShareSubscriptionListValueList>;
@@ -2271,7 +2398,8 @@ export interface ProviderShareSubscriptionsReinstateRequest {
   shareName: string;
   /** To locate shareSubscription */
   providerShareSubscriptionId: string;
-  body: unknown;
+  /** properties of providerShareSubscription */
+  properties?: ProviderShareSubscriptionPropertiesInput;
 }
 export const ProviderShareSubscriptionsReinstateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2281,7 +2409,7 @@ export const ProviderShareSubscriptionsReinstateRequest =
       accountName: S.String.pipe(T.Label()),
       shareName: S.String.pipe(T.Label()),
       providerShareSubscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProviderShareSubscriptionPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2376,6 +2504,29 @@ export const ProviderShareSubscriptionsRevokeResponse = /*@__PURE__*/ S.suspend(
   identifier: "ProviderShareSubscriptionsRevokeResponse",
 }) as any as S.Schema<ProviderShareSubscriptionsRevokeResponse>;
 
+/** Share kind. */
+export type SharePropertiesInputShareKind = "CopyBased" | "InPlace";
+export const SharePropertiesInputShareKind = /*@__PURE__*/ S.String;
+
+/** Share property bag. */
+export interface SharePropertiesInput {
+  /** Share description. */
+  description?: string;
+  /** Share kind. */
+  shareKind?: SharePropertiesInputShareKind;
+  /** Share terms. */
+  terms?: string;
+}
+export const SharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    shareKind: S.optional(SharePropertiesInputShareKind),
+    terms: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SharePropertiesInput",
+}) as any as S.Schema<SharePropertiesInput>;
+
 export interface SharesCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2385,7 +2536,8 @@ export interface SharesCreateRequest {
   accountName: string;
   /** The name of the share. */
   shareName: string;
-  body: unknown;
+  /** Properties on the share */
+  properties?: SharePropertiesInput;
 }
 export const SharesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2393,7 +2545,7 @@ export const SharesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     shareName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SharePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2412,12 +2564,11 @@ export type SharePropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SharePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Share kind. */
-export type SharePropertiesShareKind = "CopyBased" | "InPlace" | (string & {});
+export type SharePropertiesShareKind = "CopyBased" | "InPlace";
 export const SharePropertiesShareKind = /*@__PURE__*/ S.String;
 
 /** Share property bag. */
@@ -2613,7 +2764,7 @@ export const Share = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareListValueList = Share[];
+export type ShareListValueList = ReadonlyArray<Share>;
 export const ShareListValueList = /*@__PURE__*/ S.Array(
   Share,
 ) as any as S.Schema<ShareListValueList>;
@@ -2647,7 +2798,24 @@ export interface SharesListSynchronizationDetailsRequest {
   _filter?: string;
   /** Sorts the results using OData syntax. */
   _orderby?: string;
-  body: unknown;
+  /** Email of the user who created the synchronization */
+  consumerEmail?: string;
+  /** Name of the user who created the synchronization */
+  consumerName?: string;
+  /** Tenant name of the consumer who created the synchronization */
+  consumerTenantName?: string;
+  /** synchronization duration */
+  durationMs?: number;
+  /** End time of synchronization */
+  endTime?: string;
+  /** message of synchronization */
+  message?: string;
+  /** start time of synchronization */
+  startTime?: string;
+  /** Raw Status */
+  status?: string;
+  /** Synchronization id */
+  synchronizationId?: string;
 }
 export const SharesListSynchronizationDetailsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2659,7 +2827,15 @@ export const SharesListSynchronizationDetailsRequest = /*@__PURE__*/ S.suspend(
       _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
       _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      body: S.Unknown.pipe(T.HttpBody()),
+      consumerEmail: S.optional(S.String),
+      consumerName: S.optional(S.String),
+      consumerTenantName: S.optional(S.String),
+      durationMs: S.optional(S.Number),
+      endTime: S.optional(S.String),
+      message: S.optional(S.String),
+      startTime: S.optional(S.String),
+      status: S.optional(S.String),
+      synchronizationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2687,8 +2863,7 @@ export type SynchronizationDetailsDataSetType =
   | "KustoTable"
   | "SqlDBTable"
   | "SqlDWTable"
-  | "SynapseWorkspaceSqlPoolTable"
-  | (string & {});
+  | "SynapseWorkspaceSqlPoolTable";
 export const SynchronizationDetailsDataSetType = /*@__PURE__*/ S.String;
 
 /** Synchronization details at data set level */
@@ -2747,7 +2922,8 @@ export const SynchronizationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationDetails>;
 
 /** Collection of items of type DataTransferObjects. */
-export type SynchronizationDetailsListValueList = SynchronizationDetails[];
+export type SynchronizationDetailsListValueList =
+  ReadonlyArray<SynchronizationDetails>;
 export const SynchronizationDetailsListValueList = /*@__PURE__*/ S.Array(
   SynchronizationDetails,
 ) as any as S.Schema<SynchronizationDetailsListValueList>;
@@ -2808,8 +2984,7 @@ export const SharesListSynchronizationsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Synchronization mode */
 export type ShareSynchronizationSynchronizationMode =
   | "Incremental"
-  | "FullSync"
-  | (string & {});
+  | "FullSync";
 export const ShareSynchronizationSynchronizationMode = /*@__PURE__*/ S.String;
 
 /** A ShareSynchronization data transfer object. */
@@ -2853,7 +3028,8 @@ export const ShareSynchronization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareSynchronization>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareSynchronizationListValueList = ShareSynchronization[];
+export type ShareSynchronizationListValueList =
+  ReadonlyArray<ShareSynchronization>;
 export const ShareSynchronizationListValueList = /*@__PURE__*/ S.Array(
   ShareSynchronization,
 ) as any as S.Schema<ShareSynchronizationListValueList>;
@@ -2883,7 +3059,8 @@ export interface ShareSubscriptionsCancelSynchronizationRequest {
   accountName: string;
   /** The name of the shareSubscription. */
   shareSubscriptionName: string;
-  body: unknown;
+  /** Synchronization id */
+  synchronizationId: string;
 }
 export const ShareSubscriptionsCancelSynchronizationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2892,7 +3069,7 @@ export const ShareSubscriptionsCancelSynchronizationRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       shareSubscriptionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      synchronizationId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2908,8 +3085,7 @@ export const ShareSubscriptionsCancelSynchronizationRequest =
 /** Synchronization Mode */
 export type ShareSubscriptionSynchronizationSynchronizationMode =
   | "Incremental"
-  | "FullSync"
-  | (string & {});
+  | "FullSync";
 export const ShareSubscriptionSynchronizationSynchronizationMode =
   /*@__PURE__*/ S.String;
 
@@ -2946,6 +3122,25 @@ export const ShareSubscriptionSynchronization = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShareSubscriptionSynchronization",
 }) as any as S.Schema<ShareSubscriptionSynchronization>;
 
+/** Share subscription property bag. */
+export interface ShareSubscriptionPropertiesInput {
+  /** The expiration date of the share subscription. */
+  expirationDate?: string;
+  /** The invitation id. */
+  invitationId: string;
+  /** Source share location. */
+  sourceShareLocation: string;
+}
+export const ShareSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expirationDate: S.optional(S.String),
+    invitationId: S.String,
+    sourceShareLocation: S.String,
+  }),
+).annotate({
+  identifier: "ShareSubscriptionPropertiesInput",
+}) as any as S.Schema<ShareSubscriptionPropertiesInput>;
+
 export interface ShareSubscriptionsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2955,7 +3150,8 @@ export interface ShareSubscriptionsCreateRequest {
   accountName: string;
   /** The name of the shareSubscription. */
   shareSubscriptionName: string;
-  body: unknown;
+  /** Properties on the share subscription */
+  properties: ShareSubscriptionPropertiesInput;
 }
 export const ShareSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2963,7 +3159,7 @@ export const ShareSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     shareSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: ShareSubscriptionPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2982,16 +3178,12 @@ export type ShareSubscriptionPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Moving"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ShareSubscriptionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Kind of share */
-export type ShareSubscriptionPropertiesShareKind =
-  | "CopyBased"
-  | "InPlace"
-  | (string & {});
+export type ShareSubscriptionPropertiesShareKind = "CopyBased" | "InPlace";
 export const ShareSubscriptionPropertiesShareKind = /*@__PURE__*/ S.String;
 
 /** Gets the current status of share subscription. */
@@ -2999,8 +3191,7 @@ export type ShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
-  | "Revoking"
-  | (string & {});
+  | "Revoking";
 export const ShareSubscriptionPropertiesShareSubscriptionStatus =
   /*@__PURE__*/ S.String;
 
@@ -3226,7 +3417,7 @@ export const ShareSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareSubscription>;
 
 /** Collection of items of type DataTransferObjects. */
-export type ShareSubscriptionListValueList = ShareSubscription[];
+export type ShareSubscriptionListValueList = ReadonlyArray<ShareSubscription>;
 export const ShareSubscriptionListValueList = /*@__PURE__*/ S.Array(
   ShareSubscription,
 ) as any as S.Schema<ShareSubscriptionListValueList>;
@@ -3281,9 +3472,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsRequest =
   }) as any as S.Schema<ShareSubscriptionsListSourceShareSynchronizationSettingsRequest>;
 
 /** Kind of synchronization setting on share. */
-export type SourceShareSynchronizationSettingKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SourceShareSynchronizationSettingKind = "ScheduleBased";
 export const SourceShareSynchronizationSettingKind = /*@__PURE__*/ S.String;
 
 /** A view of synchronization setting added by the provider */
@@ -3301,7 +3490,7 @@ export const SourceShareSynchronizationSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of items of type DataTransferObjects. */
 export type SourceShareSynchronizationSettingListValueList =
-  SourceShareSynchronizationSetting[];
+  ReadonlyArray<SourceShareSynchronizationSetting>;
 export const SourceShareSynchronizationSettingListValueList =
   /*@__PURE__*/ S.Array(
     SourceShareSynchronizationSetting,
@@ -3339,7 +3528,8 @@ export interface ShareSubscriptionsListSynchronizationDetailsRequest {
   _filter?: string;
   /** Sorts the results using OData syntax. */
   _orderby?: string;
-  body: unknown;
+  /** Synchronization id */
+  synchronizationId: string;
 }
 export const ShareSubscriptionsListSynchronizationDetailsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3351,7 +3541,7 @@ export const ShareSubscriptionsListSynchronizationDetailsRequest =
       _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
       _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-      body: S.Unknown.pipe(T.HttpBody()),
+      synchronizationId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3404,7 +3594,7 @@ export const ShareSubscriptionsListSynchronizationsRequest =
 
 /** Collection of items of type DataTransferObjects. */
 export type ShareSubscriptionSynchronizationListValueList =
-  ShareSubscriptionSynchronization[];
+  ReadonlyArray<ShareSubscriptionSynchronization>;
 export const ShareSubscriptionSynchronizationListValueList =
   /*@__PURE__*/ S.Array(
     ShareSubscriptionSynchronization,
@@ -3427,6 +3617,13 @@ export const ShareSubscriptionSynchronizationList = /*@__PURE__*/ S.suspend(
   identifier: "ShareSubscriptionSynchronizationList",
 }) as any as S.Schema<ShareSubscriptionSynchronizationList>;
 
+/** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
+export type ShareSubscriptionsSynchronizeRequestSynchronizationMode =
+  | "Incremental"
+  | "FullSync";
+export const ShareSubscriptionsSynchronizeRequestSynchronizationMode =
+  /*@__PURE__*/ S.String;
+
 export interface ShareSubscriptionsSynchronizeRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -3436,7 +3633,8 @@ export interface ShareSubscriptionsSynchronizeRequest {
   accountName: string;
   /** The name of share subscription */
   shareSubscriptionName: string;
-  body: unknown;
+  /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
+  synchronizationMode?: ShareSubscriptionsSynchronizeRequestSynchronizationMode;
 }
 export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3445,7 +3643,9 @@ export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       shareSubscriptionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      synchronizationMode: S.optional(
+        ShareSubscriptionsSynchronizeRequestSynchronizationMode,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3458,6 +3658,10 @@ export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(
   identifier: "ShareSubscriptionsSynchronizeRequest",
 }) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>;
 
+/** Kind of synchronization setting. */
+export type SynchronizationSettingsCreateRequestKind = "ScheduleBased";
+export const SynchronizationSettingsCreateRequestKind = /*@__PURE__*/ S.String;
+
 export interface SynchronizationSettingsCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -3469,7 +3673,8 @@ export interface SynchronizationSettingsCreateRequest {
   shareName: string;
   /** The name of the synchronizationSetting. */
   synchronizationSettingName: string;
-  body: unknown;
+  /** Kind of synchronization setting. */
+  kind: SynchronizationSettingsCreateRequestKind;
 }
 export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3479,7 +3684,7 @@ export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
       accountName: S.String.pipe(T.Label()),
       shareName: S.String.pipe(T.Label()),
       synchronizationSettingName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: SynchronizationSettingsCreateRequestKind,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3493,9 +3698,7 @@ export const SynchronizationSettingsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SynchronizationSettingsCreateRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingsCreateResponseKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SynchronizationSettingsCreateResponseKind = "ScheduleBased";
 export const SynchronizationSettingsCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface SynchronizationSettingsCreateResponse {
@@ -3587,9 +3790,7 @@ export const SynchronizationSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationSettingsGetRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingsGetResponseKind =
-  | "ScheduleBased"
-  | (string & {});
+export type SynchronizationSettingsGetResponseKind = "ScheduleBased";
 export const SynchronizationSettingsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface SynchronizationSettingsGetResponse {
@@ -3649,7 +3850,7 @@ export const SynchronizationSettingsListByShareRequest =
   }) as any as S.Schema<SynchronizationSettingsListByShareRequest>;
 
 /** Kind of synchronization setting. */
-export type SynchronizationSettingKind = "ScheduleBased" | (string & {});
+export type SynchronizationSettingKind = "ScheduleBased";
 export const SynchronizationSettingKind = /*@__PURE__*/ S.String;
 
 /** A Synchronization Setting data transfer object. */
@@ -3678,7 +3879,8 @@ export const SynchronizationSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynchronizationSetting>;
 
 /** Collection of items of type DataTransferObjects. */
-export type SynchronizationSettingListValueList = SynchronizationSetting[];
+export type SynchronizationSettingListValueList =
+  ReadonlyArray<SynchronizationSetting>;
 export const SynchronizationSettingListValueList = /*@__PURE__*/ S.Array(
   SynchronizationSetting,
 ) as any as S.Schema<SynchronizationSettingListValueList>;
@@ -3699,6 +3901,10 @@ export const SynchronizationSettingList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SynchronizationSettingList",
 }) as any as S.Schema<SynchronizationSettingList>;
 
+/** Kind of synchronization on trigger. */
+export type TriggersCreateRequestKind = "ScheduleBased";
+export const TriggersCreateRequestKind = /*@__PURE__*/ S.String;
+
 export interface TriggersCreateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -3710,7 +3916,8 @@ export interface TriggersCreateRequest {
   shareSubscriptionName: string;
   /** The name of the trigger. */
   triggerName: string;
-  body: unknown;
+  /** Kind of synchronization on trigger. */
+  kind: TriggersCreateRequestKind;
 }
 export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3719,7 +3926,7 @@ export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
     accountName: S.String.pipe(T.Label()),
     shareSubscriptionName: S.String.pipe(T.Label()),
     triggerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: TriggersCreateRequestKind,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3733,7 +3940,7 @@ export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersCreateRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggersCreateResponseKind = "ScheduleBased" | (string & {});
+export type TriggersCreateResponseKind = "ScheduleBased";
 export const TriggersCreateResponseKind = /*@__PURE__*/ S.String;
 
 export interface TriggersCreateResponse {
@@ -3823,7 +4030,7 @@ export const TriggersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersGetRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggersGetResponseKind = "ScheduleBased" | (string & {});
+export type TriggersGetResponseKind = "ScheduleBased";
 export const TriggersGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface TriggersGetResponse {
@@ -3883,7 +4090,7 @@ export const TriggersListByShareSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TriggersListByShareSubscriptionRequest>;
 
 /** Kind of synchronization on trigger. */
-export type TriggerKind = "ScheduleBased" | (string & {});
+export type TriggerKind = "ScheduleBased";
 export const TriggerKind = /*@__PURE__*/ S.String;
 
 /** A Trigger data transfer object. */
@@ -3910,7 +4117,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** Collection of items of type DataTransferObjects. */
-export type TriggerListValueList = Trigger[];
+export type TriggerListValueList = ReadonlyArray<Trigger>;
 export const TriggerListValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerListValueList>;

@@ -174,7 +174,7 @@ export const ListShelvesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListShelvesRequest>;
 
 export type GoogleExampleLibraryagentV1ShelfList =
-  GoogleExampleLibraryagentV1Shelf[];
+  ReadonlyArray<GoogleExampleLibraryagentV1Shelf>;
 export const GoogleExampleLibraryagentV1ShelfList = /*@__PURE__*/ S.Array(
   GoogleExampleLibraryagentV1Shelf,
 ) as any as S.Schema<GoogleExampleLibraryagentV1ShelfList>;
@@ -221,7 +221,7 @@ export const ListShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListShelvesBooksRequest>;
 
 export type GoogleExampleLibraryagentV1BookList =
-  GoogleExampleLibraryagentV1Book[];
+  ReadonlyArray<GoogleExampleLibraryagentV1Book>;
 export const GoogleExampleLibraryagentV1BookList = /*@__PURE__*/ S.Array(
   GoogleExampleLibraryagentV1Book,
 ) as any as S.Schema<GoogleExampleLibraryagentV1BookList>;

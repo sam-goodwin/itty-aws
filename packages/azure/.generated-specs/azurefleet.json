@@ -4029,16 +4029,626 @@
             "smithy.api#documentation": "The name of the Compute Fleet"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurefleet#FleetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azurefleet#ManagedServiceIdentityUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "Updatable managed service identity"
+          }
+        },
+        "plan": {
+          "target": "com.azure.azurefleet#ResourcePlanUpdate",
+          "traits": {
+            "smithy.api#documentation": "Updatable resource plan"
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurefleet#FleetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "RP-specific updatable properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurefleet#FleetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "spotPriorityProfile": {
+          "target": "com.azure.azurefleet#SpotPriorityProfile",
+          "traits": {
+            "smithy.api#documentation": "Configuration Options for Spot instances in Compute Fleet."
+          }
+        },
+        "regularPriorityProfile": {
+          "target": "com.azure.azurefleet#RegularPriorityProfile",
+          "traits": {
+            "smithy.api#documentation": "Configuration Options for Regular instances in Compute Fleet."
+          }
+        },
+        "vmSizesProfile": {
+          "target": "com.azure.azurefleet#FleetPropertiesInputVmSizesProfileList",
+          "traits": {
+            "smithy.api#documentation": "List of VM sizes supported for Compute Fleet",
+            "smithy.api#required": {}
+          }
+        },
+        "vmAttributes": {
+          "target": "com.azure.azurefleet#VMAttributes",
+          "traits": {
+            "smithy.api#documentation": "Attribute based Fleet."
+          }
+        },
+        "additionalLocationsProfile": {
+          "target": "com.azure.azurefleet#AdditionalLocationsProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Represents the configuration for additional locations where Fleet resources may be deployed."
+          }
+        },
+        "computeProfile": {
+          "target": "com.azure.azurefleet#ComputeProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Compute Profile to use for running user's workloads.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the Compute Fleet."
+      }
+    },
+    "com.azure.azurefleet#ComputeProfileInput": {
+      "type": "structure",
+      "members": {
+        "baseVirtualMachineProfile": {
+          "target": "com.azure.azurefleet#BaseVirtualMachineProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Base Virtual Machine Profile Properties to be specified according to \"specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile\"",
+            "smithy.api#required": {}
+          }
+        },
+        "computeApiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.\nThe default value will be the latest supported computeApiVersion by Compute Fleet."
+          }
+        },
+        "platformFaultDomainCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of fault domains to use when creating the underlying VMSS.\nA fault domain is a logical group of hardware within an Azure datacenter.\nVMs in the same fault domain share a common power source and network switch.\nIf not specified, defaults to 1, which represents \"Max Spreading\" (using as many fault domains as possible).\nThis property cannot be updated."
+          }
+        },
+        "additionalVirtualMachineCapabilities": {
+          "target": "com.azure.azurefleet#AdditionalCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.\nultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.\nhibernationEnabled: Enables the hibernation capability on the VMSS VMs.\nDefault value is null if not specified. This property cannot be updated once set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Compute Profile to use for running user's workloads."
+      }
+    },
+    "com.azure.azurefleet#BaseVirtualMachineProfileInput": {
+      "type": "structure",
+      "members": {
+        "osProfile": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetOSProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the operating system settings for the virtual machines in the scale\nset."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetStorageProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the storage settings for the virtual machine disks."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies properties of the network interfaces of the virtual machines in the\nscale set."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.azurefleet#SecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Security related profile settings for the virtual machines in the\nscale set."
+          }
+        },
+        "diagnosticsProfile": {
+          "target": "com.azure.azurefleet#DiagnosticsProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the boot diagnostic settings state."
+          }
+        },
+        "extensionProfile": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies a collection of settings for extensions installed on virtual machines\nin the scale set."
+          }
+        },
+        "licenseType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies that the image or disk that is being used was licensed on-premises.\n<br><br> Possible values for Windows Server operating system are: <br><br>\nWindows_Client <br><br> Windows_Server <br><br> Possible values for Linux\nServer operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS\n(for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for\nWindows\nServer](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)\n<br><br> [Azure Hybrid Use Benefit for Linux\nServer](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)\n<br><br> Minimum api-version: 2015-06-15"
+          }
+        },
+        "scheduledEventsProfile": {
+          "target": "com.azure.azurefleet#ScheduledEventsProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies Scheduled Event related configurations."
+          }
+        },
+        "userData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UserData for the virtual machines in the scale set, which must be base-64\nencoded. Customer should not pass any secrets in here. Minimum api-version:\n2021-03-01."
+          }
+        },
+        "capacityReservation": {
+          "target": "com.azure.azurefleet#CapacityReservationProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the capacity reservation related details of a scale set. Minimum\napi-version: 2021-04-01."
+          }
+        },
+        "applicationProfile": {
+          "target": "com.azure.azurefleet#ApplicationProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the gallery applications that should be made available to the VM/VMSS"
+          }
+        },
+        "hardwareProfile": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetHardwareProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the hardware profile related details of a scale set. Minimum\napi-version: 2021-11-01."
+          }
+        },
+        "serviceArtifactReference": {
+          "target": "com.azure.azurefleet#ServiceArtifactReference",
+          "traits": {
+            "smithy.api#documentation": "Specifies the service artifact reference id used to set same image version for\nall virtual machines in the scale set when using 'latest' image version.\nMinimum api-version: 2022-11-01"
+          }
+        },
+        "securityPostureReference": {
+          "target": "com.azure.azurefleet#SecurityPostureReference",
+          "traits": {
+            "smithy.api#documentation": "Specifies the security posture to be used for all virtual machines in the scale\nset. Minimum api-version: 2023-03-01"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the base virtual machine profile for fleet"
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionProfileInput": {
+      "type": "structure",
+      "members": {
+        "extensions": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionProfileInputExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "The virtual machine scale set child extension resources."
+          }
+        },
+        "extensionsTimeBudget": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the time alloted for all extensions to start. The time duration\nshould be between 15 minutes and 120 minutes (inclusive) and should be\nspecified in ISO 8601 format. The default value is 90 minutes (PT1H30M).\nMinimum api-version: 2020-06-01."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a virtual machine scale set extension profile."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionProfileInputExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The virtual machine scale set child extension resources."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extension."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the properties of a Virtual Machine Scale Set Extension."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a Virtual Machine Scale Set Extension."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "forceUpdateTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If a value is provided and is different from the previous value, the extension\nhandler will be forced to update even if the extension configuration has not\nchanged."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extension handler publisher."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+          }
+        },
+        "typeHandlerVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version of the script handler."
+          }
+        },
+        "autoUpgradeMinorVersion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should use a newer minor version if one is\navailable at deployment time. Once deployed, however, the extension will not\nupgrade minor versions unless redeployed, even with this property set to true."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should be automatically upgraded by the\nplatform if there is a newer version of the extension available."
+          }
+        },
+        "settings": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "Json formatted public settings for the extension."
+          }
+        },
+        "protectedSettings": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "The extension can contain either protectedSettings or\nprotectedSettingsFromKeyVault or no protected settings at all."
+          }
+        },
+        "provisionAfterExtensions": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of extension names after which this extension needs to be\nprovisioned."
+          }
+        },
+        "suppressFailures": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether failures stemming from the extension will be suppressed\n(Operational failures such as not connecting to the VM will not be suppressed\nregardless of this value). The default is false."
+          }
+        },
+        "protectedSettingsFromKeyVault": {
+          "target": "com.azure.azurefleet#KeyVaultSecretReference",
+          "traits": {
+            "smithy.api#documentation": "The extensions protected settings that are passed by reference, and consumed\nfrom key vault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Machine Scale Set Extension."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of extension names after which this extension needs to be\nprovisioned."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The extension can contain either protectedSettings or\nprotectedSettingsFromKeyVault or no protected settings at all."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetExtensionPropertiesInputSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json formatted public settings for the extension."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetStorageProfileInput": {
+      "type": "structure",
+      "members": {
+        "imageReference": {
+          "target": "com.azure.azurefleet#ImageReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies information about the image to use. You can specify information about\nplatform images, marketplace images, or virtual machine images. This element is\nrequired when you want to use a platform image, marketplace image, or virtual\nmachine image, but is not used in other creation operations."
+          }
+        },
+        "osDisk": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetOSDisk",
+          "traits": {
+            "smithy.api#documentation": "Specifies information about the operating system disk used by the virtual\nmachines in the scale set. For more information about disks, see [About disks\nand VHDs for Azure virtual\nmachines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)."
+          }
+        },
+        "dataDisks": {
+          "target": "com.azure.azurefleet#VirtualMachineScaleSetStorageProfileInputDataDisksList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameters that are used to add data disks to the virtual\nmachines in the scale set. For more information about disks, see [About disks\nand VHDs for Azure virtual\nmachines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)."
+          }
+        },
+        "diskControllerType": {
+          "target": "com.azure.azurefleet#DiskControllerTypes",
+          "traits": {
+            "smithy.api#documentation": "Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a virtual machine scale set storage profile."
+      }
+    },
+    "com.azure.azurefleet#VirtualMachineScaleSetStorageProfileInputDataDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurefleet#VirtualMachineScaleSetDataDisk"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameters that are used to add data disks to the virtual\nmachines in the scale set. For more information about disks, see [About disks\nand VHDs for Azure virtual\nmachines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)."
+      }
+    },
+    "com.azure.azurefleet#ImageReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id"
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image publisher."
+          }
+        },
+        "offer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the offer of the platform image or marketplace image used to create\nthe virtual machine."
+          }
+        },
+        "sku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image SKU."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version of the platform image or marketplace image used to create\nthe virtual machine. The allowed formats are Major.Minor.Build or 'latest'.\nMajor, Minor, and Build are decimal numbers. Specify 'latest' to use the latest\nversion of an image available at deploy time. Even if you use 'latest', the VM\nimage will not automatically update after deploy time even if a new version\nbecomes available. Please do not use field 'version' for gallery image\ndeployment, gallery image should always use 'id' field for deployment, to use 'latest'\nversion of gallery image, just set\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'\nin the 'id' field without version input."
+          }
+        },
+        "sharedGalleryImageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specified the shared gallery image unique id for vm deployment. This can be\nfetched from shared gallery image GET call."
+          }
+        },
+        "communityGalleryImageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specified the community gallery image unique id for vm deployment. This can be\nfetched from community gallery image GET call."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies information about the image to use. You can specify information about\nplatform images, marketplace images, or virtual machine images. This element is\nrequired when you want to use a platform image, marketplace image, or virtual\nmachine image, but is not used in other creation operations. NOTE: Image\nreference publisher and offer can only be set when you create the scale set."
+      }
+    },
+    "com.azure.azurefleet#AdditionalLocationsProfileInput": {
+      "type": "structure",
+      "members": {
+        "locationProfiles": {
+          "target": "com.azure.azurefleet#AdditionalLocationsProfileInputLocationProfilesList",
+          "traits": {
+            "smithy.api#documentation": "The list of location profiles.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the configuration for additional locations where Fleet resources may be deployed."
+      }
+    },
+    "com.azure.azurefleet#AdditionalLocationsProfileInputLocationProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurefleet#LocationProfileInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of location profiles."
+      }
+    },
+    "com.azure.azurefleet#LocationProfileInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM location name of the additional region. If LocationProfile is specified, then location is required.",
+            "smithy.api#required": {}
+          }
+        },
+        "virtualMachineProfileOverride": {
+          "target": "com.azure.azurefleet#BaseVirtualMachineProfileInput",
+          "traits": {
+            "smithy.api#documentation": "An override for computeProfile.baseVirtualMachineProfile specific to this region. \nThis override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional)."
+      }
+    },
+    "com.azure.azurefleet#FleetPropertiesInputVmSizesProfileList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurefleet#VmSizeProfile"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of VM sizes supported for Compute Fleet"
+      }
+    },
+    "com.azure.azurefleet#ResourcePlanUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic"
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding."
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The template for adding optional properties."
+      }
+    },
+    "com.azure.azurefleet#ManagedServiceIdentityUpdateInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurefleet#ManagedServiceIdentityUpdateInputType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed)."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azurefleet#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The identities assigned to this resource by the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The template for adding optional properties."
+      }
+    },
+    "com.azure.azurefleet#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azurefleet#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The identities assigned to this resource by the user."
+      }
+    },
+    "com.azure.azurefleet#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.azurefleet#ManagedServiceIdentityUpdateInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned,UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed)."
+      }
+    },
+    "com.azure.azurefleet#FleetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurefleet#FleetsCreateOrUpdate": {
@@ -4247,16 +4857,144 @@
             "smithy.api#documentation": "The name of the Compute Fleet"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurefleet#FleetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurefleet#FleetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "zones": {
+          "target": "com.azure.azurefleet#FleetsCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "Zones in which the Compute Fleet is available"
+          }
+        },
+        "identity": {
+          "target": "com.azure.azurefleet#FleetsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "plan": {
+          "target": "com.azure.azurefleet#FleetsCreateOrUpdateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurefleet#FleetsCreateOrUpdateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.azurefleet#FleetsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurefleet#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azurefleet#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azurefleet#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azurefleet#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.azurefleet#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.azurefleet#FleetsCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Zones in which the Compute Fleet is available"
+      }
+    },
+    "com.azure.azurefleet#FleetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurefleet#FleetsGet": {

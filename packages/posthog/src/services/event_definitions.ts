@@ -57,13 +57,13 @@ export const EventDefinitionsByNameRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "EventDefinitionsByNameRetrieveRequest",
 }) as any as S.Schema<EventDefinitionsByNameRetrieveRequest>;
 
-export type EventDefinitionRecordTagsList = unknown[];
+export type EventDefinitionRecordTagsList = ReadonlyArray<unknown>;
 export const EventDefinitionRecordTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionRecordTagsList>;
 
 /** * `allow` - Allow * `reject` - Reject */
-export type EnforcementModeEnum = "allow" | "reject" | (string & {});
+export type EnforcementModeEnum = "allow" | "reject";
 export const EnforcementModeEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -81,11 +81,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -132,7 +131,7 @@ export interface EventDefinitionRecord {
   action_id?: number;
   is_calculating?: boolean;
   last_calculated_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   post_to_slack?: boolean;
 }
 export const EventDefinitionRecord = /*@__PURE__*/ S.suspend(() =>
@@ -149,89 +148,54 @@ export const EventDefinitionRecord = /*@__PURE__*/ S.suspend(() =>
     action_id: S.optional(S.Number),
     is_calculating: S.optional(S.Boolean),
     last_calculated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     post_to_slack: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "EventDefinitionRecord",
 }) as any as S.Schema<EventDefinitionRecord>;
 
-export type EventDefinitionsCreateRequestTagsList = unknown[];
+export type EventDefinitionsCreateRequestTagsList = ReadonlyArray<unknown>;
 export const EventDefinitionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionsCreateRequestTagsList>;
 
-export type EventDefinitionsCreateRequestDefaultColumnsList = string[];
+export type EventDefinitionsCreateRequestDefaultColumnsList =
+  ReadonlyArray<string>;
 export const EventDefinitionsCreateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EventDefinitionsCreateRequestDefaultColumnsList>;
 
-export type EventDefinitionsCreateRequestMediaPreviewUrlsList = string[];
-export const EventDefinitionsCreateRequestMediaPreviewUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EventDefinitionsCreateRequestMediaPreviewUrlsList>;
-
 export interface EventDefinitionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   name?: string;
   owner?: number | null;
   description?: string | null;
   tags?: EventDefinitionsCreateRequestTagsList;
-  created_at?: string | null;
-  updated_at?: string;
-  updated_by?: UserBasic;
-  last_seen_at?: string | null;
-  last_updated_at?: string;
   verified?: boolean;
-  verified_at?: string | null;
-  verified_by?: UserBasic;
   hidden?: boolean | null;
   enforcement_mode?: EnforcementModeEnum;
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
-  is_action?: boolean;
-  action_id?: number;
-  is_calculating?: boolean;
-  last_calculated_at?: string;
-  created_by?: UserBasic;
   post_to_slack?: boolean;
   default_columns?: EventDefinitionsCreateRequestDefaultColumnsList;
-  media_preview_urls?: EventDefinitionsCreateRequestMediaPreviewUrlsList;
 }
 export const EventDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     owner: S.optional(S.NullOr(S.Number)),
     description: S.optional(S.NullOr(S.String)),
     tags: S.optional(EventDefinitionsCreateRequestTagsList),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(UserBasic),
-    last_seen_at: S.optional(S.NullOr(S.String)),
-    last_updated_at: S.optional(S.String),
     verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verified_by: S.optional(UserBasic),
     hidden: S.optional(S.NullOr(S.Boolean)),
     enforcement_mode: S.optional(EnforcementModeEnum),
     primary_property: S.optional(S.NullOr(S.String)),
-    is_action: S.optional(S.Boolean),
-    action_id: S.optional(S.Number),
-    is_calculating: S.optional(S.Boolean),
-    last_calculated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
     post_to_slack: S.optional(S.Boolean),
     default_columns: S.optional(
       EventDefinitionsCreateRequestDefaultColumnsList,
-    ),
-    media_preview_urls: S.optional(
-      EventDefinitionsCreateRequestMediaPreviewUrlsList,
     ),
   }).pipe(
     T.Http({
@@ -244,18 +208,19 @@ export const EventDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionsCreateRequest",
 }) as any as S.Schema<EventDefinitionsCreateRequest>;
 
-export type EnterpriseEventDefinitionTagsList = unknown[];
+export type EnterpriseEventDefinitionTagsList = ReadonlyArray<unknown>;
 export const EnterpriseEventDefinitionTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EnterpriseEventDefinitionTagsList>;
 
-export type EnterpriseEventDefinitionDefaultColumnsList = string[];
+export type EnterpriseEventDefinitionDefaultColumnsList = ReadonlyArray<string>;
 export const EnterpriseEventDefinitionDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
 
-export type EnterpriseEventDefinitionMediaPreviewUrlsList = string[];
+export type EnterpriseEventDefinitionMediaPreviewUrlsList =
+  ReadonlyArray<string>;
 export const EnterpriseEventDefinitionMediaPreviewUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -270,12 +235,12 @@ export interface EnterpriseEventDefinition {
   tags?: EnterpriseEventDefinitionTagsList;
   created_at?: string | null;
   updated_at?: string;
-  updated_by?: UserBasic;
+  updated_by?: UserBasic | null;
   last_seen_at?: string | null;
   last_updated_at?: string;
   verified?: boolean;
   verified_at?: string | null;
-  verified_by?: UserBasic;
+  verified_by?: UserBasic | null;
   hidden?: boolean | null;
   enforcement_mode?: EnforcementModeEnum;
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
@@ -284,7 +249,7 @@ export interface EnterpriseEventDefinition {
   action_id?: number;
   is_calculating?: boolean;
   last_calculated_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   post_to_slack?: boolean;
   default_columns?: EnterpriseEventDefinitionDefaultColumnsList;
   media_preview_urls?: EnterpriseEventDefinitionMediaPreviewUrlsList;
@@ -298,12 +263,12 @@ export const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(EnterpriseEventDefinitionTagsList),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.String),
-    updated_by: S.optional(UserBasic),
+    updated_by: S.optional(S.NullOr(UserBasic)),
     last_seen_at: S.optional(S.NullOr(S.String)),
     last_updated_at: S.optional(S.String),
     verified: S.optional(S.Boolean),
     verified_at: S.optional(S.NullOr(S.String)),
-    verified_by: S.optional(UserBasic),
+    verified_by: S.optional(S.NullOr(UserBasic)),
     hidden: S.optional(S.NullOr(S.Boolean)),
     enforcement_mode: S.optional(EnforcementModeEnum),
     primary_property: S.optional(S.NullOr(S.String)),
@@ -311,7 +276,7 @@ export const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
     action_id: S.optional(S.Number),
     is_calculating: S.optional(S.Boolean),
     last_calculated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     post_to_slack: S.optional(S.Boolean),
     default_columns: S.optional(EnterpriseEventDefinitionDefaultColumnsList),
     media_preview_urls: S.optional(
@@ -407,7 +372,7 @@ export const EventDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDefinitionsListRequest>;
 
 export type PaginatedEnterpriseEventDefinitionListResultsList =
-  EnterpriseEventDefinition[];
+  ReadonlyArray<EnterpriseEventDefinition>;
 export const PaginatedEnterpriseEventDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     EnterpriseEventDefinition,
@@ -431,23 +396,19 @@ export const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedEnterpriseEventDefinitionList",
 }) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>;
 
-export type EventDefinitionsPartialUpdateRequestTagsList = unknown[];
+export type EventDefinitionsPartialUpdateRequestTagsList =
+  ReadonlyArray<unknown>;
 export const EventDefinitionsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EventDefinitionsPartialUpdateRequestTagsList>;
 
-export type EventDefinitionsPartialUpdateRequestDefaultColumnsList = string[];
+export type EventDefinitionsPartialUpdateRequestDefaultColumnsList =
+  ReadonlyArray<string>;
 export const EventDefinitionsPartialUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EventDefinitionsPartialUpdateRequestDefaultColumnsList>;
-
-export type EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList = string[];
-export const EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList>;
 
 export interface EventDefinitionsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -458,26 +419,13 @@ export interface EventDefinitionsPartialUpdateRequest {
   owner?: number | null;
   description?: string | null;
   tags?: EventDefinitionsPartialUpdateRequestTagsList;
-  created_at?: string | null;
-  updated_at?: string;
-  updated_by?: UserBasic;
-  last_seen_at?: string | null;
-  last_updated_at?: string;
   verified?: boolean;
-  verified_at?: string | null;
-  verified_by?: UserBasic;
   hidden?: boolean | null;
   enforcement_mode?: EnforcementModeEnum;
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
-  is_action?: boolean;
-  action_id?: number;
-  is_calculating?: boolean;
-  last_calculated_at?: string;
-  created_by?: UserBasic;
   post_to_slack?: boolean;
   default_columns?: EventDefinitionsPartialUpdateRequestDefaultColumnsList;
-  media_preview_urls?: EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList;
 }
 export const EventDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -488,28 +436,13 @@ export const EventDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       owner: S.optional(S.NullOr(S.Number)),
       description: S.optional(S.NullOr(S.String)),
       tags: S.optional(EventDefinitionsPartialUpdateRequestTagsList),
-      created_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-      updated_by: S.optional(UserBasic),
-      last_seen_at: S.optional(S.NullOr(S.String)),
-      last_updated_at: S.optional(S.String),
       verified: S.optional(S.Boolean),
-      verified_at: S.optional(S.NullOr(S.String)),
-      verified_by: S.optional(UserBasic),
       hidden: S.optional(S.NullOr(S.Boolean)),
       enforcement_mode: S.optional(EnforcementModeEnum),
       primary_property: S.optional(S.NullOr(S.String)),
-      is_action: S.optional(S.Boolean),
-      action_id: S.optional(S.Number),
-      is_calculating: S.optional(S.Boolean),
-      last_calculated_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
       post_to_slack: S.optional(S.Boolean),
       default_columns: S.optional(
         EventDefinitionsPartialUpdateRequestDefaultColumnsList,
-      ),
-      media_preview_urls: S.optional(
-        EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList,
       ),
     }).pipe(
       T.Http({
@@ -523,7 +456,7 @@ export const EventDefinitionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EventDefinitionsPartialUpdateRequest>;
 
 export type EventDefinitionsPrimaryPropertiesRetrieveRequestNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const EventDefinitionsPrimaryPropertiesRetrieveRequestNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -649,22 +582,17 @@ export const EventDefinitionsTypescriptRetrieveResponse =
     identifier: "EventDefinitionsTypescriptRetrieveResponse",
   }) as any as S.Schema<EventDefinitionsTypescriptRetrieveResponse>;
 
-export type EventDefinitionsUpdateRequestTagsList = unknown[];
+export type EventDefinitionsUpdateRequestTagsList = ReadonlyArray<unknown>;
 export const EventDefinitionsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionsUpdateRequestTagsList>;
 
-export type EventDefinitionsUpdateRequestDefaultColumnsList = string[];
+export type EventDefinitionsUpdateRequestDefaultColumnsList =
+  ReadonlyArray<string>;
 export const EventDefinitionsUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EventDefinitionsUpdateRequestDefaultColumnsList>;
-
-export type EventDefinitionsUpdateRequestMediaPreviewUrlsList = string[];
-export const EventDefinitionsUpdateRequestMediaPreviewUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EventDefinitionsUpdateRequestMediaPreviewUrlsList>;
 
 export interface EventDefinitionsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -675,26 +603,13 @@ export interface EventDefinitionsUpdateRequest {
   owner?: number | null;
   description?: string | null;
   tags?: EventDefinitionsUpdateRequestTagsList;
-  created_at?: string | null;
-  updated_at?: string;
-  updated_by?: UserBasic;
-  last_seen_at?: string | null;
-  last_updated_at?: string;
   verified?: boolean;
-  verified_at?: string | null;
-  verified_by?: UserBasic;
   hidden?: boolean | null;
   enforcement_mode?: EnforcementModeEnum;
   /** Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property's value next to the event name without the user having to open the event. */
   primary_property?: string | null;
-  is_action?: boolean;
-  action_id?: number;
-  is_calculating?: boolean;
-  last_calculated_at?: string;
-  created_by?: UserBasic;
   post_to_slack?: boolean;
   default_columns?: EventDefinitionsUpdateRequestDefaultColumnsList;
-  media_preview_urls?: EventDefinitionsUpdateRequestMediaPreviewUrlsList;
 }
 export const EventDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -704,28 +619,13 @@ export const EventDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     owner: S.optional(S.NullOr(S.Number)),
     description: S.optional(S.NullOr(S.String)),
     tags: S.optional(EventDefinitionsUpdateRequestTagsList),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(UserBasic),
-    last_seen_at: S.optional(S.NullOr(S.String)),
-    last_updated_at: S.optional(S.String),
     verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verified_by: S.optional(UserBasic),
     hidden: S.optional(S.NullOr(S.Boolean)),
     enforcement_mode: S.optional(EnforcementModeEnum),
     primary_property: S.optional(S.NullOr(S.String)),
-    is_action: S.optional(S.Boolean),
-    action_id: S.optional(S.Number),
-    is_calculating: S.optional(S.Boolean),
-    last_calculated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
     post_to_slack: S.optional(S.Boolean),
     default_columns: S.optional(
       EventDefinitionsUpdateRequestDefaultColumnsList,
-    ),
-    media_preview_urls: S.optional(
-      EventDefinitionsUpdateRequestMediaPreviewUrlsList,
     ),
   }).pipe(
     T.Http({

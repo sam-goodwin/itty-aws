@@ -27,7 +27,8 @@ export type CreateRequestActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const CreateRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionResponse {
@@ -63,7 +64,7 @@ export const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestAction",
 }) as any as S.Schema<CreateRequestAction>;
 
-export type CreateRequestMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type CreateRequestMatchHeadersItemOp = "eq" | "ne";
 export const CreateRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface CreateRequestMatchHeadersItem {
@@ -84,7 +85,8 @@ export const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestMatchHeadersItem",
 }) as any as S.Schema<CreateRequestMatchHeadersItem>;
 
-export type CreateRequestMatchHeadersList = CreateRequestMatchHeadersItem[];
+export type CreateRequestMatchHeadersList =
+  ReadonlyArray<CreateRequestMatchHeadersItem>;
 export const CreateRequestMatchHeadersList = /*@__PURE__*/ S.Array(
   CreateRequestMatchHeadersItem,
 ) as any as S.Schema<CreateRequestMatchHeadersList>;
@@ -93,16 +95,19 @@ export type CreateRequestMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const CreateRequestMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type CreateRequestMatchRequestMethodsList =
-  CreateRequestMatchRequestMethodsItem[];
+  ReadonlyArray<CreateRequestMatchRequestMethodsItem>;
 export const CreateRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   CreateRequestMatchRequestMethodsItem,
 ) as any as S.Schema<CreateRequestMatchRequestMethodsList>;
 
-export type CreateRequestMatchRequestSchemesList = string[];
+export type CreateRequestMatchRequestSchemesList = ReadonlyArray<string>;
 export const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestMatchRequestSchemesList>;
@@ -188,7 +193,8 @@ export type CreateResponseActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const CreateResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface CreateResponseActionResponse {
@@ -224,7 +230,7 @@ export const CreateResponseAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAction",
 }) as any as S.Schema<CreateResponseAction>;
 
-export type CreateResponseBypassItemName = "url" | (string & {});
+export type CreateResponseBypassItemName = "url";
 export const CreateResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface CreateResponseBypassItem {
@@ -241,12 +247,12 @@ export const CreateResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseBypassItem",
 }) as any as S.Schema<CreateResponseBypassItem>;
 
-export type CreateResponseBypassList = CreateResponseBypassItem[];
+export type CreateResponseBypassList = ReadonlyArray<CreateResponseBypassItem>;
 export const CreateResponseBypassList = /*@__PURE__*/ S.Array(
   CreateResponseBypassItem,
 ) as any as S.Schema<CreateResponseBypassList>;
 
-export type CreateResponseMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type CreateResponseMatchHeadersItemOp = "eq" | "ne";
 export const CreateResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface CreateResponseMatchHeadersItem {
@@ -267,7 +273,8 @@ export const CreateResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseMatchHeadersItem",
 }) as any as S.Schema<CreateResponseMatchHeadersItem>;
 
-export type CreateResponseMatchHeadersList = CreateResponseMatchHeadersItem[];
+export type CreateResponseMatchHeadersList =
+  ReadonlyArray<CreateResponseMatchHeadersItem>;
 export const CreateResponseMatchHeadersList = /*@__PURE__*/ S.Array(
   CreateResponseMatchHeadersItem,
 ) as any as S.Schema<CreateResponseMatchHeadersList>;
@@ -276,16 +283,19 @@ export type CreateResponseMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const CreateResponseMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type CreateResponseMatchRequestMethodsList =
-  CreateResponseMatchRequestMethodsItem[];
+  ReadonlyArray<CreateResponseMatchRequestMethodsItem>;
 export const CreateResponseMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   CreateResponseMatchRequestMethodsItem,
 ) as any as S.Schema<CreateResponseMatchRequestMethodsList>;
 
-export type CreateResponseMatchRequestSchemesList = string[];
+export type CreateResponseMatchRequestSchemesList = ReadonlyArray<string>;
 export const CreateResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseMatchRequestSchemesList>;
@@ -396,7 +406,8 @@ export type DeleteResponseActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const DeleteResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseActionResponse {
@@ -432,7 +443,7 @@ export const DeleteResponseAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseAction",
 }) as any as S.Schema<DeleteResponseAction>;
 
-export type DeleteResponseBypassItemName = "url" | (string & {});
+export type DeleteResponseBypassItemName = "url";
 export const DeleteResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseBypassItem {
@@ -449,12 +460,12 @@ export const DeleteResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseBypassItem",
 }) as any as S.Schema<DeleteResponseBypassItem>;
 
-export type DeleteResponseBypassList = DeleteResponseBypassItem[];
+export type DeleteResponseBypassList = ReadonlyArray<DeleteResponseBypassItem>;
 export const DeleteResponseBypassList = /*@__PURE__*/ S.Array(
   DeleteResponseBypassItem,
 ) as any as S.Schema<DeleteResponseBypassList>;
 
-export type DeleteResponseMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type DeleteResponseMatchHeadersItemOp = "eq" | "ne";
 export const DeleteResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseMatchHeadersItem {
@@ -475,7 +486,8 @@ export const DeleteResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseMatchHeadersItem",
 }) as any as S.Schema<DeleteResponseMatchHeadersItem>;
 
-export type DeleteResponseMatchHeadersList = DeleteResponseMatchHeadersItem[];
+export type DeleteResponseMatchHeadersList =
+  ReadonlyArray<DeleteResponseMatchHeadersItem>;
 export const DeleteResponseMatchHeadersList = /*@__PURE__*/ S.Array(
   DeleteResponseMatchHeadersItem,
 ) as any as S.Schema<DeleteResponseMatchHeadersList>;
@@ -484,16 +496,19 @@ export type DeleteResponseMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const DeleteResponseMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type DeleteResponseMatchRequestMethodsList =
-  DeleteResponseMatchRequestMethodsItem[];
+  ReadonlyArray<DeleteResponseMatchRequestMethodsItem>;
 export const DeleteResponseMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   DeleteResponseMatchRequestMethodsItem,
 ) as any as S.Schema<DeleteResponseMatchRequestMethodsList>;
 
-export type DeleteResponseMatchRequestSchemesList = string[];
+export type DeleteResponseMatchRequestSchemesList = ReadonlyArray<string>;
 export const DeleteResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResponseMatchRequestSchemesList>;
@@ -581,7 +596,8 @@ export type EditRequestActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const EditRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionResponse {
@@ -617,7 +633,7 @@ export const EditRequestAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestAction",
 }) as any as S.Schema<EditRequestAction>;
 
-export type EditRequestMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type EditRequestMatchHeadersItemOp = "eq" | "ne";
 export const EditRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface EditRequestMatchHeadersItem {
@@ -638,7 +654,8 @@ export const EditRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestMatchHeadersItem",
 }) as any as S.Schema<EditRequestMatchHeadersItem>;
 
-export type EditRequestMatchHeadersList = EditRequestMatchHeadersItem[];
+export type EditRequestMatchHeadersList =
+  ReadonlyArray<EditRequestMatchHeadersItem>;
 export const EditRequestMatchHeadersList = /*@__PURE__*/ S.Array(
   EditRequestMatchHeadersItem,
 ) as any as S.Schema<EditRequestMatchHeadersList>;
@@ -647,16 +664,19 @@ export type EditRequestMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const EditRequestMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type EditRequestMatchRequestMethodsList =
-  EditRequestMatchRequestMethodsItem[];
+  ReadonlyArray<EditRequestMatchRequestMethodsItem>;
 export const EditRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   EditRequestMatchRequestMethodsItem,
 ) as any as S.Schema<EditRequestMatchRequestMethodsList>;
 
-export type EditRequestMatchRequestSchemesList = string[];
+export type EditRequestMatchRequestSchemesList = ReadonlyArray<string>;
 export const EditRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditRequestMatchRequestSchemesList>;
@@ -745,7 +765,8 @@ export type EditResponseActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const EditResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface EditResponseActionResponse {
@@ -781,7 +802,7 @@ export const EditResponseAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseAction",
 }) as any as S.Schema<EditResponseAction>;
 
-export type EditResponseBypassItemName = "url" | (string & {});
+export type EditResponseBypassItemName = "url";
 export const EditResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface EditResponseBypassItem {
@@ -798,12 +819,12 @@ export const EditResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseBypassItem",
 }) as any as S.Schema<EditResponseBypassItem>;
 
-export type EditResponseBypassList = EditResponseBypassItem[];
+export type EditResponseBypassList = ReadonlyArray<EditResponseBypassItem>;
 export const EditResponseBypassList = /*@__PURE__*/ S.Array(
   EditResponseBypassItem,
 ) as any as S.Schema<EditResponseBypassList>;
 
-export type EditResponseMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type EditResponseMatchHeadersItemOp = "eq" | "ne";
 export const EditResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface EditResponseMatchHeadersItem {
@@ -824,7 +845,8 @@ export const EditResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseMatchHeadersItem",
 }) as any as S.Schema<EditResponseMatchHeadersItem>;
 
-export type EditResponseMatchHeadersList = EditResponseMatchHeadersItem[];
+export type EditResponseMatchHeadersList =
+  ReadonlyArray<EditResponseMatchHeadersItem>;
 export const EditResponseMatchHeadersList = /*@__PURE__*/ S.Array(
   EditResponseMatchHeadersItem,
 ) as any as S.Schema<EditResponseMatchHeadersList>;
@@ -833,16 +855,19 @@ export type EditResponseMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const EditResponseMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type EditResponseMatchRequestMethodsList =
-  EditResponseMatchRequestMethodsItem[];
+  ReadonlyArray<EditResponseMatchRequestMethodsItem>;
 export const EditResponseMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   EditResponseMatchRequestMethodsItem,
 ) as any as S.Schema<EditResponseMatchRequestMethodsList>;
 
-export type EditResponseMatchRequestSchemesList = string[];
+export type EditResponseMatchRequestSchemesList = ReadonlyArray<string>;
 export const EditResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseMatchRequestSchemesList>;
@@ -953,7 +978,8 @@ export type GetResponseActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const GetResponseActionMode = /*@__PURE__*/ S.String;
 
 export interface GetResponseActionResponse {
@@ -989,7 +1015,7 @@ export const GetResponseAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAction",
 }) as any as S.Schema<GetResponseAction>;
 
-export type GetResponseBypassItemName = "url" | (string & {});
+export type GetResponseBypassItemName = "url";
 export const GetResponseBypassItemName = /*@__PURE__*/ S.String;
 
 export interface GetResponseBypassItem {
@@ -1006,12 +1032,12 @@ export const GetResponseBypassItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseBypassItem",
 }) as any as S.Schema<GetResponseBypassItem>;
 
-export type GetResponseBypassList = GetResponseBypassItem[];
+export type GetResponseBypassList = ReadonlyArray<GetResponseBypassItem>;
 export const GetResponseBypassList = /*@__PURE__*/ S.Array(
   GetResponseBypassItem,
 ) as any as S.Schema<GetResponseBypassList>;
 
-export type GetResponseMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type GetResponseMatchHeadersItemOp = "eq" | "ne";
 export const GetResponseMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface GetResponseMatchHeadersItem {
@@ -1032,7 +1058,8 @@ export const GetResponseMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseMatchHeadersItem",
 }) as any as S.Schema<GetResponseMatchHeadersItem>;
 
-export type GetResponseMatchHeadersList = GetResponseMatchHeadersItem[];
+export type GetResponseMatchHeadersList =
+  ReadonlyArray<GetResponseMatchHeadersItem>;
 export const GetResponseMatchHeadersList = /*@__PURE__*/ S.Array(
   GetResponseMatchHeadersItem,
 ) as any as S.Schema<GetResponseMatchHeadersList>;
@@ -1041,16 +1068,19 @@ export type GetResponseMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const GetResponseMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type GetResponseMatchRequestMethodsList =
-  GetResponseMatchRequestMethodsItem[];
+  ReadonlyArray<GetResponseMatchRequestMethodsItem>;
 export const GetResponseMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   GetResponseMatchRequestMethodsItem,
 ) as any as S.Schema<GetResponseMatchRequestMethodsList>;
 
-export type GetResponseMatchRequestSchemesList = string[];
+export type GetResponseMatchRequestSchemesList = ReadonlyArray<string>;
 export const GetResponseMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseMatchRequestSchemesList>;
@@ -1160,7 +1190,8 @@ export type ListResultItemActionMode =
   | "simulate"
   | "ban"
   | "challenge"
-  | (string & {});
+  | "js_challenge"
+  | "managed_challenge";
 export const ListResultItemActionMode = /*@__PURE__*/ S.String;
 
 export interface ListResultItemActionResponse {
@@ -1196,7 +1227,7 @@ export const ListResultItemAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemAction",
 }) as any as S.Schema<ListResultItemAction>;
 
-export type ListResultItemBypassItemName = "url" | (string & {});
+export type ListResultItemBypassItemName = "url";
 export const ListResultItemBypassItemName = /*@__PURE__*/ S.String;
 
 export interface ListResultItemBypassItem {
@@ -1213,12 +1244,12 @@ export const ListResultItemBypassItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemBypassItem",
 }) as any as S.Schema<ListResultItemBypassItem>;
 
-export type ListResultItemBypassList = ListResultItemBypassItem[];
+export type ListResultItemBypassList = ReadonlyArray<ListResultItemBypassItem>;
 export const ListResultItemBypassList = /*@__PURE__*/ S.Array(
   ListResultItemBypassItem,
 ) as any as S.Schema<ListResultItemBypassList>;
 
-export type ListResultItemMatchHeadersItemOp = "eq" | "ne" | (string & {});
+export type ListResultItemMatchHeadersItemOp = "eq" | "ne";
 export const ListResultItemMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface ListResultItemMatchHeadersItem {
@@ -1239,7 +1270,8 @@ export const ListResultItemMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemMatchHeadersItem",
 }) as any as S.Schema<ListResultItemMatchHeadersItem>;
 
-export type ListResultItemMatchHeadersList = ListResultItemMatchHeadersItem[];
+export type ListResultItemMatchHeadersList =
+  ReadonlyArray<ListResultItemMatchHeadersItem>;
 export const ListResultItemMatchHeadersList = /*@__PURE__*/ S.Array(
   ListResultItemMatchHeadersItem,
 ) as any as S.Schema<ListResultItemMatchHeadersList>;
@@ -1248,16 +1280,19 @@ export type ListResultItemMatchRequestMethodsItem =
   | "GET"
   | "POST"
   | "PUT"
-  | (string & {});
+  | "DELETE"
+  | "PATCH"
+  | "HEAD"
+  | "_ALL_";
 export const ListResultItemMatchRequestMethodsItem = /*@__PURE__*/ S.String;
 
 export type ListResultItemMatchRequestMethodsList =
-  ListResultItemMatchRequestMethodsItem[];
+  ReadonlyArray<ListResultItemMatchRequestMethodsItem>;
 export const ListResultItemMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   ListResultItemMatchRequestMethodsItem,
 ) as any as S.Schema<ListResultItemMatchRequestMethodsList>;
 
-export type ListResultItemMatchRequestSchemesList = string[];
+export type ListResultItemMatchRequestSchemesList = ReadonlyArray<string>;
 export const ListResultItemMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemMatchRequestSchemesList>;
@@ -1338,7 +1373,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

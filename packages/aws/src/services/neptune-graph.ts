@@ -216,15 +216,14 @@ export type ExportTaskStatus =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ExportTaskStatus = /*@__PURE__*/ S.String;
 
-export type ExportFormat = "PARQUET" | "CSV" | (string & {});
+export type ExportFormat = "PARQUET" | "CSV";
 export const ExportFormat = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
-export type ParquetType = "COLUMNAR" | (string & {});
+export type ParquetType = "COLUMNAR";
 export const ParquetType = /*@__PURE__*/ S.String;
 
 export interface CancelExportTaskOutput {
@@ -274,12 +273,7 @@ export const CancelImportTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImportTaskInput",
 }) as any as S.Schema<CancelImportTaskInput>;
-export type Format =
-  | "CSV"
-  | "OPEN_CYPHER"
-  | "PARQUET"
-  | "NTRIPLES"
-  | (string & {});
+export type Format = "CSV" | "OPEN_CYPHER" | "PARQUET" | "NTRIPLES";
 export const Format = /*@__PURE__*/ S.String;
 
 export type ImportTaskStatus =
@@ -293,8 +287,7 @@ export type ImportTaskStatus =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ImportTaskStatus = /*@__PURE__*/ S.String;
 
 export interface CancelImportTaskOutput {
@@ -415,8 +408,7 @@ export type GraphStatus =
   | "IMPORTING"
   | "STARTING"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const GraphStatus = /*@__PURE__*/ S.String;
 
 export type SnapshotId = string;
@@ -483,12 +475,7 @@ export const CreateGraphSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGraphSnapshotInput",
 }) as any as S.Schema<CreateGraphSnapshotInput>;
-export type SnapshotStatus =
-  | "CREATING"
-  | "AVAILABLE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
+export type SnapshotStatus = "CREATING" | "AVAILABLE" | "DELETING" | "FAILED";
 export const SnapshotStatus = /*@__PURE__*/ S.String;
 
 export interface CreateGraphSnapshotOutput {
@@ -535,7 +522,7 @@ export type ImportOptions = { neptune: NeptuneImportOptions };
 export const ImportOptions = /*@__PURE__*/ S.Union([
   S.Struct({ neptune: NeptuneImportOptions }),
 ]);
-export type BlankNodeHandling = "convertToIri" | (string & {});
+export type BlankNodeHandling = "convertToIri";
 export const BlankNodeHandling = /*@__PURE__*/ S.String;
 
 export interface CreateGraphUsingImportTaskInput {
@@ -649,8 +636,7 @@ export type PrivateGraphEndpointStatus =
   | "CREATING"
   | "AVAILABLE"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PrivateGraphEndpointStatus = /*@__PURE__*/ S.String;
 
 export type VpcEndpointId = string;
@@ -816,7 +802,7 @@ export const DeletePrivateGraphEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePrivateGraphEndpointOutput",
 }) as any as S.Schema<DeletePrivateGraphEndpointOutput>;
-export type QueryLanguage = "OPEN_CYPHER" | (string & {});
+export type QueryLanguage = "OPEN_CYPHER";
 export const QueryLanguage = /*@__PURE__*/ S.String;
 
 export type DocumentValuedMap = { [key: string]: any | undefined };
@@ -824,10 +810,10 @@ export const DocumentValuedMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Any.pipe(S.optional),
 );
-export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
+export type PlanCacheType = "ENABLED" | "DISABLED" | "AUTO";
 export const PlanCacheType = /*@__PURE__*/ S.String;
 
-export type ExplainMode = "STATIC" | "DETAILS" | (string & {});
+export type ExplainMode = "STATIC" | "DETAILS";
 export const ExplainMode = /*@__PURE__*/ S.String;
 
 export interface ExecuteQueryInput {
@@ -917,7 +903,7 @@ export type ExportFilterLabel = string;
 export type ExportFilterOutputPropertyName = string;
 export type ExportFilterOutputDataType = string;
 export type ExportFilterSourcePropertyName = string;
-export type MultiValueHandlingType = "TO_LIST" | "PICK_FIRST" | (string & {});
+export type MultiValueHandlingType = "TO_LIST" | "PICK_FIRST";
 export const MultiValueHandlingType = /*@__PURE__*/ S.String;
 
 export interface ExportFilterPropertyAttributes {
@@ -1094,7 +1080,7 @@ export const GetGraphSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGraphSnapshotOutput",
 }) as any as S.Schema<GetGraphSnapshotOutput>;
-export type GraphSummaryMode = "BASIC" | "DETAILED" | (string & {});
+export type GraphSummaryMode = "BASIC" | "DETAILED";
 export const GraphSummaryMode = /*@__PURE__*/ S.String;
 
 export interface GetGraphSummaryInput {
@@ -1355,7 +1341,7 @@ export const GetQueryInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetQueryInput" }) as any as S.Schema<GetQueryInput>;
-export type QueryState = "RUNNING" | "WAITING" | "CANCELLING" | (string & {});
+export type QueryState = "RUNNING" | "WAITING" | "CANCELLING";
 export const QueryState = /*@__PURE__*/ S.String;
 
 export interface GetQueryOutput {
@@ -1670,12 +1656,7 @@ export const ListPrivateGraphEndpointsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPrivateGraphEndpointsOutput",
 }) as any as S.Schema<ListPrivateGraphEndpointsOutput>;
-export type QueryStateInput =
-  | "ALL"
-  | "RUNNING"
-  | "WAITING"
-  | "CANCELLING"
-  | (string & {});
+export type QueryStateInput = "ALL" | "RUNNING" | "WAITING" | "CANCELLING";
 export const QueryStateInput = /*@__PURE__*/ S.String;
 
 export interface ListQueriesInput {
@@ -2247,7 +2228,7 @@ export const UpdateGraphOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateGraphOutput",
 }) as any as S.Schema<UpdateGraphOutput>;
-export type ConflictExceptionReason = "CONCURRENT_MODIFICATION" | (string & {});
+export type ConflictExceptionReason = "CONCURRENT_MODIFICATION";
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -2257,8 +2238,7 @@ export type ValidationExceptionReason =
   | "QUERY_CANCELLED"
   | "QUERY_TOO_LARGE"
   | "UNSUPPORTED_OPERATION"
-  | "BAD_REQUEST"
-  | (string & {});
+  | "BAD_REQUEST";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type UnprocessableExceptionReason =
@@ -2266,8 +2246,7 @@ export type UnprocessableExceptionReason =
   | "INTERNAL_LIMIT_EXCEEDED"
   | "MEMORY_LIMIT_EXCEEDED"
   | "STORAGE_LIMIT_EXCEEDED"
-  | "PARTITION_FULL"
-  | (string & {});
+  | "PARTITION_FULL";
 export const UnprocessableExceptionReason = /*@__PURE__*/ S.String;
 
 export type CancelExportTaskError =

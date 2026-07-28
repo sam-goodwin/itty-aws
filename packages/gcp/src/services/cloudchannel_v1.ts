@@ -104,7 +104,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -274,7 +274,8 @@ export const GoogleCloudChannelV1Parameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1Parameter",
 }) as any as S.Schema<GoogleCloudChannelV1Parameter>;
 
-export type GoogleCloudChannelV1ParameterList = GoogleCloudChannelV1Parameter[];
+export type GoogleCloudChannelV1ParameterList =
+  ReadonlyArray<GoogleCloudChannelV1Parameter>;
 export const GoogleCloudChannelV1ParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Parameter,
 ) as any as S.Schema<GoogleCloudChannelV1ParameterList>;
@@ -380,8 +381,7 @@ export type GoogleCloudChannelV1PeriodPeriodTypeEnum =
   | "PERIOD_TYPE_UNSPECIFIED"
   | "DAY"
   | "MONTH"
-  | "YEAR"
-  | (string & {});
+  | "YEAR";
 export const GoogleCloudChannelV1PeriodPeriodTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents period in days/months/years. */
@@ -406,8 +406,7 @@ export type GoogleCloudChannelV1RenewalSettingsPaymentPlanEnum =
   | "FLEXIBLE"
   | "FREE"
   | "TRIAL"
-  | "OFFLINE"
-  | (string & {});
+  | "OFFLINE";
 export const GoogleCloudChannelV1RenewalSettingsPaymentPlanEnum =
   /*@__PURE__*/ S.String;
 
@@ -520,8 +519,7 @@ export const CheckCloudIdentityAccountsExistAccountsRequest =
 export type GoogleCloudChannelV1CloudIdentityCustomerAccountCustomerTypeEnum =
   | "CUSTOMER_TYPE_UNSPECIFIED"
   | "DOMAIN"
-  | "TEAM"
-  | (string & {});
+  | "TEAM";
 export const GoogleCloudChannelV1CloudIdentityCustomerAccountCustomerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -557,7 +555,7 @@ export const GoogleCloudChannelV1CloudIdentityCustomerAccount =
   }) as any as S.Schema<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
 
 export type GoogleCloudChannelV1CloudIdentityCustomerAccountList =
-  GoogleCloudChannelV1CloudIdentityCustomerAccount[];
+  ReadonlyArray<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
 export const GoogleCloudChannelV1CloudIdentityCustomerAccountList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1CloudIdentityCustomerAccount,
@@ -584,8 +582,7 @@ export type GoogleCloudChannelV1ChannelPartnerLinkLinkStateEnum =
   | "INVITED"
   | "ACTIVE"
   | "REVOKED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const GoogleCloudChannelV1ChannelPartnerLinkLinkStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -597,16 +594,14 @@ export type GoogleCloudChannelV1EduDataInstituteSizeEnum =
   | "SIZE_1001_2000"
   | "SIZE_2001_5000"
   | "SIZE_5001_10000"
-  | "SIZE_10001_OR_MORE"
-  | (string & {});
+  | "SIZE_10001_OR_MORE";
 export const GoogleCloudChannelV1EduDataInstituteSizeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1EduDataInstituteTypeEnum =
   | "INSTITUTE_TYPE_UNSPECIFIED"
   | "K12"
-  | "UNIVERSITY"
-  | (string & {});
+  | "UNIVERSITY";
 export const GoogleCloudChannelV1EduDataInstituteTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -632,8 +627,7 @@ export const GoogleCloudChannelV1EduData = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudChannelV1CloudIdentityInfoCustomerTypeEnum =
   | "CUSTOMER_TYPE_UNSPECIFIED"
   | "DOMAIN"
-  | "TEAM"
-  | (string & {});
+  | "TEAM";
 export const GoogleCloudChannelV1CloudIdentityInfoCustomerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -771,16 +765,14 @@ export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudChannelV1RepricingConfigRebillingBasisEnum =
   | "REBILLING_BASIS_UNSPECIFIED"
   | "COST_AT_LIST"
-  | "DIRECT_CUSTOMER_COST"
-  | (string & {});
+  | "DIRECT_CUSTOMER_COST";
 export const GoogleCloudChannelV1RepricingConfigRebillingBasisEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1ConditionalOverrideRebillingBasisEnum =
   | "REBILLING_BASIS_UNSPECIFIED"
   | "COST_AT_LIST"
-  | "DIRECT_CUSTOMER_COST"
-  | (string & {});
+  | "DIRECT_CUSTOMER_COST";
 export const GoogleCloudChannelV1ConditionalOverrideRebillingBasisEnum =
   /*@__PURE__*/ S.String;
 
@@ -878,7 +870,7 @@ export const GoogleCloudChannelV1ConditionalOverride = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1ConditionalOverride>;
 
 export type GoogleCloudChannelV1ConditionalOverrideList =
-  GoogleCloudChannelV1ConditionalOverride[];
+  ReadonlyArray<GoogleCloudChannelV1ConditionalOverride>;
 export const GoogleCloudChannelV1ConditionalOverrideList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1ConditionalOverride,
@@ -1003,12 +995,11 @@ export const GoogleCloudChannelV1ContactInfo = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudChannelV1CustomerCustomerAttestationStateEnum =
   | "CUSTOMER_ATTESTATION_STATE_UNSPECIFIED"
   | "EXEMPT"
-  | "NON_EXEMPT_AND_INFO_VERIFIED"
-  | (string & {});
+  | "NON_EXEMPT_AND_INFO_VERIFIED";
 export const GoogleCloudChannelV1CustomerCustomerAttestationStateEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1213,8 +1204,7 @@ export const GoogleCloudChannelV1AssociationInfo = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudChannelV1EntitlementProvisioningStateEnum =
   | "PROVISIONING_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const GoogleCloudChannelV1EntitlementProvisioningStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1224,13 +1214,12 @@ export type GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnum =
   | "TRIAL_ENDED"
   | "RENEWAL_WITH_TYPE_CANCEL"
   | "PENDING_TOS_ACCEPTANCE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnumList =
-  GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnum[];
+  ReadonlyArray<GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnum>;
 export const GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1EntitlementSuspensionReasonsItemEnum,
@@ -1534,8 +1523,7 @@ export type GoogleCloudChannelV1ColumnDataTypeEnum =
   | "DECIMAL"
   | "MONEY"
   | "DATE"
-  | "DATE_TIME"
-  | (string & {});
+  | "DATE_TIME";
 export const GoogleCloudChannelV1ColumnDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a report column. Specifies the data properties in the corresponding position of the report rows. */
@@ -1557,7 +1545,8 @@ export const GoogleCloudChannelV1Column = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1Column",
 }) as any as S.Schema<GoogleCloudChannelV1Column>;
 
-export type GoogleCloudChannelV1ColumnList = GoogleCloudChannelV1Column[];
+export type GoogleCloudChannelV1ColumnList =
+  ReadonlyArray<GoogleCloudChannelV1Column>;
 export const GoogleCloudChannelV1ColumnList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Column,
 ) as any as S.Schema<GoogleCloudChannelV1ColumnList>;
@@ -1730,7 +1719,7 @@ export const GoogleCloudChannelV1ReportValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1ReportValue>;
 
 export type GoogleCloudChannelV1ReportValueList =
-  GoogleCloudChannelV1ReportValue[];
+  ReadonlyArray<GoogleCloudChannelV1ReportValue>;
 export const GoogleCloudChannelV1ReportValueList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1ReportValue,
 ) as any as S.Schema<GoogleCloudChannelV1ReportValueList>;
@@ -1751,7 +1740,8 @@ export const GoogleCloudChannelV1Row = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1Row",
 }) as any as S.Schema<GoogleCloudChannelV1Row>;
 
-export type GoogleCloudChannelV1RowList = GoogleCloudChannelV1Row[];
+export type GoogleCloudChannelV1RowList =
+  ReadonlyArray<GoogleCloudChannelV1Row>;
 export const GoogleCloudChannelV1RowList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Row,
 ) as any as S.Schema<GoogleCloudChannelV1RowList>;
@@ -1779,8 +1769,7 @@ export const GoogleCloudChannelV1FetchReportResultsResponse =
 export type GetAccountsChannelPartnerLinksViewEnum =
   | "UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetAccountsChannelPartnerLinksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAccountsChannelPartnerLinksRequest {
@@ -2000,8 +1989,7 @@ export const ImportAccountsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAccountsChannelPartnerLinksViewEnum =
   | "UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListAccountsChannelPartnerLinksViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsChannelPartnerLinksRequest {
@@ -2033,7 +2021,7 @@ export const ListAccountsChannelPartnerLinksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAccountsChannelPartnerLinksRequest>;
 
 export type GoogleCloudChannelV1ChannelPartnerLinkList =
-  GoogleCloudChannelV1ChannelPartnerLink[];
+  ReadonlyArray<GoogleCloudChannelV1ChannelPartnerLink>;
 export const GoogleCloudChannelV1ChannelPartnerLinkList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1ChannelPartnerLink,
 ) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLinkList>;
@@ -2087,7 +2075,7 @@ export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReques
   }) as any as S.Schema<ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
 
 export type GoogleCloudChannelV1ChannelPartnerRepricingConfigList =
-  GoogleCloudChannelV1ChannelPartnerRepricingConfig[];
+  ReadonlyArray<GoogleCloudChannelV1ChannelPartnerRepricingConfig>;
 export const GoogleCloudChannelV1ChannelPartnerRepricingConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1ChannelPartnerRepricingConfig,
@@ -2141,7 +2129,8 @@ export const ListAccountsChannelPartnerLinksCustomersRequest =
     identifier: "ListAccountsChannelPartnerLinksCustomersRequest",
   }) as any as S.Schema<ListAccountsChannelPartnerLinksCustomersRequest>;
 
-export type GoogleCloudChannelV1CustomerList = GoogleCloudChannelV1Customer[];
+export type GoogleCloudChannelV1CustomerList =
+  ReadonlyArray<GoogleCloudChannelV1Customer>;
 export const GoogleCloudChannelV1CustomerList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Customer,
 ) as any as S.Schema<GoogleCloudChannelV1CustomerList>;
@@ -2219,7 +2208,7 @@ export const ListAccountsCustomersCustomerRepricingConfigsRequest =
   }) as any as S.Schema<ListAccountsCustomersCustomerRepricingConfigsRequest>;
 
 export type GoogleCloudChannelV1CustomerRepricingConfigList =
-  GoogleCloudChannelV1CustomerRepricingConfig[];
+  ReadonlyArray<GoogleCloudChannelV1CustomerRepricingConfig>;
 export const GoogleCloudChannelV1CustomerRepricingConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1CustomerRepricingConfig,
@@ -2270,7 +2259,7 @@ export const ListAccountsCustomersEntitlementsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAccountsCustomersEntitlementsRequest>;
 
 export type GoogleCloudChannelV1EntitlementList =
-  GoogleCloudChannelV1Entitlement[];
+  ReadonlyArray<GoogleCloudChannelV1Entitlement>;
 export const GoogleCloudChannelV1EntitlementList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Entitlement,
 ) as any as S.Schema<GoogleCloudChannelV1EntitlementList>;
@@ -2327,8 +2316,7 @@ export const ListAccountsOffersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudChannelV1MediaTypeEnum =
   | "MEDIA_TYPE_UNSPECIFIED"
-  | "MEDIA_TYPE_IMAGE"
-  | (string & {});
+  | "MEDIA_TYPE_IMAGE";
 export const GoogleCloudChannelV1MediaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents media information. */
@@ -2410,15 +2398,13 @@ export type GoogleCloudChannelV1PlanPaymentPlanEnum =
   | "FLEXIBLE"
   | "FREE"
   | "TRIAL"
-  | "OFFLINE"
-  | (string & {});
+  | "OFFLINE";
 export const GoogleCloudChannelV1PlanPaymentPlanEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1PlanPaymentTypeEnum =
   | "PAYMENT_TYPE_UNSPECIFIED"
   | "PREPAY"
-  | "POSTPAY"
-  | (string & {});
+  | "POSTPAY";
 export const GoogleCloudChannelV1PlanPaymentTypeEnum = /*@__PURE__*/ S.String;
 
 /** The payment plan for the Offer. Describes how to make a payment. */
@@ -2450,8 +2436,7 @@ export type GoogleCloudChannelV1PricePhasePeriodTypeEnum =
   | "PERIOD_TYPE_UNSPECIFIED"
   | "DAY"
   | "MONTH"
-  | "YEAR"
-  | (string & {});
+  | "YEAR";
 export const GoogleCloudChannelV1PricePhasePeriodTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2461,8 +2446,7 @@ export type GoogleCloudChannelV1DiscountComponentDiscountTypeEnum =
   | "PROMOTIONAL_DISCOUNT"
   | "SALES_DISCOUNT"
   | "RESELLER_MARGIN"
-  | "DEAL_CODE"
-  | (string & {});
+  | "DEAL_CODE";
 export const GoogleCloudChannelV1DiscountComponentDiscountTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2489,7 +2473,7 @@ export const GoogleCloudChannelV1DiscountComponent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1DiscountComponent>;
 
 export type GoogleCloudChannelV1DiscountComponentList =
-  GoogleCloudChannelV1DiscountComponent[];
+  ReadonlyArray<GoogleCloudChannelV1DiscountComponent>;
 export const GoogleCloudChannelV1DiscountComponentList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1DiscountComponent,
 ) as any as S.Schema<GoogleCloudChannelV1DiscountComponentList>;
@@ -2541,7 +2525,8 @@ export const GoogleCloudChannelV1PriceTier = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1PriceTier",
 }) as any as S.Schema<GoogleCloudChannelV1PriceTier>;
 
-export type GoogleCloudChannelV1PriceTierList = GoogleCloudChannelV1PriceTier[];
+export type GoogleCloudChannelV1PriceTierList =
+  ReadonlyArray<GoogleCloudChannelV1PriceTier>;
 export const GoogleCloudChannelV1PriceTierList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1PriceTier,
 ) as any as S.Schema<GoogleCloudChannelV1PriceTierList>;
@@ -2572,7 +2557,7 @@ export const GoogleCloudChannelV1PricePhase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1PricePhase>;
 
 export type GoogleCloudChannelV1PricePhaseList =
-  GoogleCloudChannelV1PricePhase[];
+  ReadonlyArray<GoogleCloudChannelV1PricePhase>;
 export const GoogleCloudChannelV1PricePhaseList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1PricePhase,
 ) as any as S.Schema<GoogleCloudChannelV1PricePhaseList>;
@@ -2586,8 +2571,7 @@ export type GoogleCloudChannelV1PriceByResourceResourceTypeEnum =
   | "MINUTES"
   | "IAAS_USAGE"
   | "SUBSCRIPTION"
-  | "AI_CREDITS"
-  | (string & {});
+  | "AI_CREDITS";
 export const GoogleCloudChannelV1PriceByResourceResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2613,18 +2597,18 @@ export const GoogleCloudChannelV1PriceByResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1PriceByResource>;
 
 export type GoogleCloudChannelV1PriceByResourceList =
-  GoogleCloudChannelV1PriceByResource[];
+  ReadonlyArray<GoogleCloudChannelV1PriceByResource>;
 export const GoogleCloudChannelV1PriceByResourceList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1PriceByResource,
 ) as any as S.Schema<GoogleCloudChannelV1PriceByResourceList>;
 
 export type GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnum =
-  "CUSTOMER_TYPE_UNSPECIFIED" | "DOMAIN" | "TEAM" | (string & {});
+  "CUSTOMER_TYPE_UNSPECIFIED" | "DOMAIN" | "TEAM";
 export const GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnumList =
-  GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnum[];
+  ReadonlyArray<GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnum>;
 export const GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1CustomerConstraintsAllowedCustomerTypesItemEnum,
@@ -2634,13 +2618,12 @@ export type GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum
     | "PROMOTIONAL_TYPE_UNSPECIFIED"
     | "NEW_UPGRADE"
     | "TRANSFER"
-    | "PROMOTION_SWITCH"
-    | (string & {});
+    | "PROMOTION_SWITCH";
 export const GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList =
-  GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum[];
+  ReadonlyArray<GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum>;
 export const GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1CustomerConstraintsPromotionalOrderTypesItemEnum,
@@ -2688,12 +2671,12 @@ export type GoogleCloudChannelV1ParameterDefinitionParameterTypeEnum =
   | "INT64"
   | "STRING"
   | "DOUBLE"
-  | "BOOLEAN"
-  | (string & {});
+  | "BOOLEAN";
 export const GoogleCloudChannelV1ParameterDefinitionParameterTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleCloudChannelV1ValueList = GoogleCloudChannelV1Value[];
+export type GoogleCloudChannelV1ValueList =
+  ReadonlyArray<GoogleCloudChannelV1Value>;
 export const GoogleCloudChannelV1ValueList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Value,
 ) as any as S.Schema<GoogleCloudChannelV1ValueList>;
@@ -2730,7 +2713,7 @@ export const GoogleCloudChannelV1ParameterDefinition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1ParameterDefinition>;
 
 export type GoogleCloudChannelV1ParameterDefinitionList =
-  GoogleCloudChannelV1ParameterDefinition[];
+  ReadonlyArray<GoogleCloudChannelV1ParameterDefinition>;
 export const GoogleCloudChannelV1ParameterDefinitionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1ParameterDefinition,
@@ -2778,7 +2761,8 @@ export const GoogleCloudChannelV1Offer = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1Offer",
 }) as any as S.Schema<GoogleCloudChannelV1Offer>;
 
-export type GoogleCloudChannelV1OfferList = GoogleCloudChannelV1Offer[];
+export type GoogleCloudChannelV1OfferList =
+  ReadonlyArray<GoogleCloudChannelV1Offer>;
 export const GoogleCloudChannelV1OfferList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Offer,
 ) as any as S.Schema<GoogleCloudChannelV1OfferList>;
@@ -2827,7 +2811,8 @@ export const ListAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsReportsRequest",
 }) as any as S.Schema<ListAccountsReportsRequest>;
 
-export type GoogleCloudChannelV1ReportList = GoogleCloudChannelV1Report[];
+export type GoogleCloudChannelV1ReportList =
+  ReadonlyArray<GoogleCloudChannelV1Report>;
 export const GoogleCloudChannelV1ReportList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Report,
 ) as any as S.Schema<GoogleCloudChannelV1ReportList>;
@@ -2889,7 +2874,8 @@ export const GoogleCloudChannelV1SkuGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudChannelV1SkuGroup",
 }) as any as S.Schema<GoogleCloudChannelV1SkuGroup>;
 
-export type GoogleCloudChannelV1SkuGroupList = GoogleCloudChannelV1SkuGroup[];
+export type GoogleCloudChannelV1SkuGroupList =
+  ReadonlyArray<GoogleCloudChannelV1SkuGroup>;
 export const GoogleCloudChannelV1SkuGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1SkuGroup,
 ) as any as S.Schema<GoogleCloudChannelV1SkuGroupList>;
@@ -2959,7 +2945,7 @@ export const GoogleCloudChannelV1BillableSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1BillableSku>;
 
 export type GoogleCloudChannelV1BillableSkuList =
-  GoogleCloudChannelV1BillableSku[];
+  ReadonlyArray<GoogleCloudChannelV1BillableSku>;
 export const GoogleCloudChannelV1BillableSkuList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1BillableSku,
 ) as any as S.Schema<GoogleCloudChannelV1BillableSkuList>;
@@ -3014,8 +3000,7 @@ export type GoogleCloudChannelV1EntitlementChangeActivationReasonEnum =
   | "RESELLER_REVOKED_SUSPENSION"
   | "CUSTOMER_ACCEPTED_PENDING_TOS"
   | "RENEWAL_SETTINGS_CHANGED"
-  | "OTHER_ACTIVATION_REASON"
-  | (string & {});
+  | "OTHER_ACTIVATION_REASON";
 export const GoogleCloudChannelV1EntitlementChangeActivationReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3034,8 +3019,7 @@ export type GoogleCloudChannelV1EntitlementChangeChangeTypeEnum =
   | "LICENSE_CAP_CHANGED"
   | "SUSPENSION_DETAILS_CHANGED"
   | "TRIAL_END_DATE_EXTENDED"
-  | "TRIAL_STARTED"
-  | (string & {});
+  | "TRIAL_STARTED";
 export const GoogleCloudChannelV1EntitlementChangeChangeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3043,8 +3027,7 @@ export type GoogleCloudChannelV1EntitlementChangeCancellationReasonEnum =
   | "CANCELLATION_REASON_UNSPECIFIED"
   | "SERVICE_TERMINATED"
   | "RELATIONSHIP_ENDED"
-  | "PARTIAL_TRANSFER"
-  | (string & {});
+  | "PARTIAL_TRANSFER";
 export const GoogleCloudChannelV1EntitlementChangeCancellationReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3053,8 +3036,7 @@ export type GoogleCloudChannelV1EntitlementChangeOperatorTypeEnum =
   | "CUSTOMER_SERVICE_REPRESENTATIVE"
   | "SYSTEM"
   | "CUSTOMER"
-  | "RESELLER"
-  | (string & {});
+  | "RESELLER";
 export const GoogleCloudChannelV1EntitlementChangeOperatorTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3064,8 +3046,7 @@ export type GoogleCloudChannelV1EntitlementChangeSuspensionReasonEnum =
   | "TRIAL_ENDED"
   | "RENEWAL_WITH_TYPE_CANCEL"
   | "PENDING_TOS_ACCEPTANCE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleCloudChannelV1EntitlementChangeSuspensionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3127,7 +3108,7 @@ export const GoogleCloudChannelV1EntitlementChange = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1EntitlementChange>;
 
 export type GoogleCloudChannelV1EntitlementChangeList =
-  GoogleCloudChannelV1EntitlementChange[];
+  ReadonlyArray<GoogleCloudChannelV1EntitlementChange>;
 export const GoogleCloudChannelV1EntitlementChangeList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1EntitlementChange,
 ) as any as S.Schema<GoogleCloudChannelV1EntitlementChangeList>;
@@ -3179,7 +3160,8 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3231,7 +3213,8 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductsRequest",
 }) as any as S.Schema<ListProductsRequest>;
 
-export type GoogleCloudChannelV1ProductList = GoogleCloudChannelV1Product[];
+export type GoogleCloudChannelV1ProductList =
+  ReadonlyArray<GoogleCloudChannelV1Product>;
 export const GoogleCloudChannelV1ProductList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Product,
 ) as any as S.Schema<GoogleCloudChannelV1ProductList>;
@@ -3283,7 +3266,8 @@ export const ListProductsSkusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductsSkusRequest",
 }) as any as S.Schema<ListProductsSkusRequest>;
 
-export type GoogleCloudChannelV1SkuList = GoogleCloudChannelV1Sku[];
+export type GoogleCloudChannelV1SkuList =
+  ReadonlyArray<GoogleCloudChannelV1Sku>;
 export const GoogleCloudChannelV1SkuList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1Sku,
 ) as any as S.Schema<GoogleCloudChannelV1SkuList>;
@@ -3370,7 +3354,7 @@ export const GoogleCloudChannelV1PurchasableOffer = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1PurchasableOffer>;
 
 export type GoogleCloudChannelV1PurchasableOfferList =
-  GoogleCloudChannelV1PurchasableOffer[];
+  ReadonlyArray<GoogleCloudChannelV1PurchasableOffer>;
 export const GoogleCloudChannelV1PurchasableOfferList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1PurchasableOffer,
 ) as any as S.Schema<GoogleCloudChannelV1PurchasableOfferList>;
@@ -3393,7 +3377,7 @@ export const GoogleCloudChannelV1ListPurchasableOffersResponse =
   }) as any as S.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse>;
 
 export type ListPurchasableSkusAccountsCustomersChangeOfferPurchase_changeTypeEnum =
-  "CHANGE_TYPE_UNSPECIFIED" | "UPGRADE" | "DOWNGRADE" | (string & {});
+  "CHANGE_TYPE_UNSPECIFIED" | "UPGRADE" | "DOWNGRADE";
 export const ListPurchasableSkusAccountsCustomersChangeOfferPurchase_changeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3452,7 +3436,7 @@ export const GoogleCloudChannelV1PurchasableSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1PurchasableSku>;
 
 export type GoogleCloudChannelV1PurchasableSkuList =
-  GoogleCloudChannelV1PurchasableSku[];
+  ReadonlyArray<GoogleCloudChannelV1PurchasableSku>;
 export const GoogleCloudChannelV1PurchasableSkuList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1PurchasableSku,
 ) as any as S.Schema<GoogleCloudChannelV1PurchasableSkuList>;
@@ -3622,7 +3606,7 @@ export const GoogleCloudChannelV1TransferableOffer = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1TransferableOffer>;
 
 export type GoogleCloudChannelV1TransferableOfferList =
-  GoogleCloudChannelV1TransferableOffer[];
+  ReadonlyArray<GoogleCloudChannelV1TransferableOffer>;
 export const GoogleCloudChannelV1TransferableOfferList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1TransferableOffer,
 ) as any as S.Schema<GoogleCloudChannelV1TransferableOfferList>;
@@ -3701,8 +3685,7 @@ export type GoogleCloudChannelV1TransferEligibilityIneligibilityReasonEnum =
   | "PENDING_TOS_ACCEPTANCE"
   | "SKU_NOT_ELIGIBLE"
   | "SKU_SUSPENDED"
-  | "CHANNEL_PARTNER_NOT_AUTHORIZED_FOR_SKU"
-  | (string & {});
+  | "CHANNEL_PARTNER_NOT_AUTHORIZED_FOR_SKU";
 export const GoogleCloudChannelV1TransferEligibilityIneligibilityReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3748,7 +3731,7 @@ export const GoogleCloudChannelV1TransferableSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudChannelV1TransferableSku>;
 
 export type GoogleCloudChannelV1TransferableSkuList =
-  GoogleCloudChannelV1TransferableSku[];
+  ReadonlyArray<GoogleCloudChannelV1TransferableSku>;
 export const GoogleCloudChannelV1TransferableSkuList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1TransferableSku,
 ) as any as S.Schema<GoogleCloudChannelV1TransferableSkuList>;
@@ -4053,7 +4036,7 @@ export const GoogleCloudChannelV1BillingAccountPurchaseInfo =
   }) as any as S.Schema<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
 
 export type GoogleCloudChannelV1BillingAccountPurchaseInfoList =
-  GoogleCloudChannelV1BillingAccountPurchaseInfo[];
+  ReadonlyArray<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
 export const GoogleCloudChannelV1BillingAccountPurchaseInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudChannelV1BillingAccountPurchaseInfo,
@@ -4079,7 +4062,7 @@ export const GoogleCloudChannelV1SkuPurchaseGroup = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudChannelV1SkuPurchaseGroup>;
 
 export type GoogleCloudChannelV1SkuPurchaseGroupList =
-  GoogleCloudChannelV1SkuPurchaseGroup[];
+  ReadonlyArray<GoogleCloudChannelV1SkuPurchaseGroup>;
 export const GoogleCloudChannelV1SkuPurchaseGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudChannelV1SkuPurchaseGroup,
 ) as any as S.Schema<GoogleCloudChannelV1SkuPurchaseGroupList>;

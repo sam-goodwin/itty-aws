@@ -140,16 +140,36 @@
             "smithy.api#documentation": "A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.batch#AccountKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of account key to regenerate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#AccountKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of account key to regenerate."
       }
     },
     "com.azure.batch#PrivateLinkResourceGet": {
@@ -908,16 +928,68 @@
             "smithy.api#documentation": "The private endpoint connection name. This must be unique within the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with the private endpoint connection."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#PrivateEndpointConnectionUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#PrivateEndpointConnectionUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.batch#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.batch#PrivateLinkServiceConnectionStateInput",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection state of the private endpoint connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint connection properties."
+      }
+    },
+    "com.azure.batch#PrivateLinkServiceConnectionStateInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.batch#PrivateLinkServiceConnectionStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Batch private endpoint connection",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the private Connection state"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link service connection state of the private endpoint connection"
       }
     },
     "com.azure.batch#PrivateEndpointConnectionGet": {
@@ -4315,16 +4387,207 @@
             "smithy.api#documentation": "The pool name. This must be unique within the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#PoolPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with the pool."
+          }
+        },
+        "identity": {
+          "target": "com.azure.batch#BatchPoolIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the Batch Pool."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#PoolUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#PoolUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.batch#BatchPoolIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.batch#PoolIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the Batch Pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.batch#BatchPoolIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the Batch pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities"
+      }
+    },
+    "com.azure.batch#BatchPoolIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.batch#UserAssignedIdentitiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the Batch pool."
+      }
+    },
+    "com.azure.batch#UserAssignedIdentitiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The list of associated user identities."
+      }
+    },
+    "com.azure.batch#PoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series)."
+          }
+        },
+        "deploymentConfiguration": {
+          "target": "com.azure.batch#DeploymentConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Deployment configuration properties."
+          }
+        },
+        "scaleSettings": {
+          "target": "com.azure.batch#ScaleSettings",
+          "traits": {
+            "smithy.api#documentation": "Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes."
+          }
+        },
+        "interNodeCommunication": {
+          "target": "com.azure.batch#InterNodeCommunicationState",
+          "traits": {
+            "smithy.api#documentation": "This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'."
+          }
+        },
+        "networkConfiguration": {
+          "target": "com.azure.batch#NetworkConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The network configuration for a pool."
+          }
+        },
+        "taskSlotsPerNode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256."
+          }
+        },
+        "taskSchedulingPolicy": {
+          "target": "com.azure.batch#TaskSchedulingPolicy",
+          "traits": {
+            "smithy.api#documentation": "If not specified, the default is spread."
+          }
+        },
+        "userAccounts": {
+          "target": "com.azure.batch#PoolPropertiesInputUserAccountsList",
+          "traits": {
+            "smithy.api#documentation": "The list of user accounts to be created on each node in the pool."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.batch#PoolPropertiesInputMetadataList",
+          "traits": {
+            "smithy.api#documentation": "The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
+          }
+        },
+        "startTask": {
+          "target": "com.azure.batch#StartTask",
+          "traits": {
+            "smithy.api#documentation": "In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool."
+          }
+        },
+        "applicationPackages": {
+          "target": "com.azure.batch#PoolPropertiesInputApplicationPackagesList",
+          "traits": {
+            "smithy.api#documentation": "Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool."
+          }
+        },
+        "mountConfiguration": {
+          "target": "com.azure.batch#PoolPropertiesInputMountConfigurationList",
+          "traits": {
+            "smithy.api#documentation": "This supports Azure Files, NFS, CIFS/SMB, and Blobfuse."
+          }
+        },
+        "upgradePolicy": {
+          "target": "com.azure.batch#UpgradePolicy",
+          "traits": {
+            "smithy.api#documentation": "Describes an upgrade policy - automatic, manual, or rolling."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pool properties."
+      }
+    },
+    "com.azure.batch#PoolPropertiesInputMountConfigurationList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#MountConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "This supports Azure Files, NFS, CIFS/SMB, and Blobfuse."
+      }
+    },
+    "com.azure.batch#PoolPropertiesInputApplicationPackagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#ApplicationPackageReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool."
+      }
+    },
+    "com.azure.batch#PoolPropertiesInputMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#MetadataItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
+      }
+    },
+    "com.azure.batch#PoolPropertiesInputUserAccountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#UserAccount"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user accounts to be created on each node in the pool."
       }
     },
     "com.azure.batch#PoolCreate": {
@@ -4449,16 +4712,39 @@
             "smithy.api#documentation": "The pool name. This must be unique within the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#PoolPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with the pool."
+          }
+        },
+        "identity": {
+          "target": "com.azure.batch#BatchPoolIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the Batch Pool."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#PoolCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#PoolCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.batch#PoolGet": {
@@ -6184,10 +6470,10 @@
             "smithy.api#documentation": "The version of the application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "format": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The format of the application package binary file.",
             "smithy.api#required": {}
           }
         }
@@ -6387,15 +6673,40 @@
             "smithy.api#documentation": "The version of the application."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#ApplicationPackagePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties associated with the Application Package."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#ApplicationPackageCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#ApplicationPackageCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.batch#ApplicationPackagePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties of an application package"
       }
     },
     "com.azure.batch#ApplicationPackageGet": {
@@ -6886,16 +7197,33 @@
             "smithy.api#documentation": "The name of the application. This must be unique within the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#ApplicationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with the Application."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#ApplicationUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#ApplicationUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.batch#ApplicationCreate": {
@@ -7014,15 +7342,33 @@
             "smithy.api#documentation": "The name of the application. This must be unique within the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.batch#ApplicationProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties associated with the Application."
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#ApplicationCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#ApplicationCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.batch#ApplicationGet": {
@@ -7537,7 +7883,8 @@
         "networkProfile": {
           "target": "com.azure.batch#NetworkProfile",
           "traits": {
-            "smithy.api#documentation": "The network profile only takes effect when publicNetworkAccess is enabled."
+            "smithy.api#documentation": "The network profile only takes effect when publicNetworkAccess is enabled.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "privateEndpointConnections": {
@@ -8048,16 +8395,193 @@
             "smithy.api#documentation": "A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.batch#BatchAccountUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The user-specified tags associated with the account."
+          }
+        },
+        "properties": {
+          "target": "com.azure.batch#BatchAccountUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the account."
+          }
+        },
+        "identity": {
+          "target": "com.azure.batch#BatchAccountIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the Batch account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#BatchAccountIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.batch#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the Batch account.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.batch#BatchAccountIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the Batch account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity of the Batch account, if configured. This is used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration or when `ManagedIdentity` is selected as the auto-storage authentication mode."
+      }
+    },
+    "com.azure.batch#BatchAccountIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.batch#UserAssignedIdentitiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the Batch account."
+      }
+    },
+    "com.azure.batch#BatchAccountUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "autoStorage": {
+          "target": "com.azure.batch#AutoStorageBaseProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties related to the auto-storage account."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.batch#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead."
+          }
+        },
+        "allowedAuthenticationModes": {
+          "target": "com.azure.batch#BatchAccountUpdatePropertiesAllowedAuthenticationModesList",
+          "traits": {
+            "smithy.api#documentation": "List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.batch#BatchAccountUpdatePropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "The network access type for operating on the resources in the Batch account."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.batch#NetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The network profile only takes effect when publicNetworkAccess is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a Batch account."
+      }
+    },
+    "com.azure.batch#BatchAccountUpdatePropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network access type for operating on the resources in the Batch account."
+      }
+    },
+    "com.azure.batch#BatchAccountUpdatePropertiesAllowedAuthenticationModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#AuthenticationMode"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane."
+      }
+    },
+    "com.azure.batch#AutoStorageBaseProperties": {
+      "type": "structure",
+      "members": {
+        "storageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the storage account to be used for auto-storage account.",
+            "smithy.api#required": {}
+          }
+        },
+        "authenticationMode": {
+          "target": "com.azure.batch#AutoStorageBasePropertiesAuthenticationMode",
+          "traits": {
+            "smithy.api#documentation": "The authentication mode which the Batch service will use to manage the auto-storage account."
+          }
+        },
+        "nodeIdentityReference": {
+          "target": "com.azure.batch#ComputeNodeIdentityReference",
+          "traits": {
+            "smithy.api#documentation": "The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties related to the auto-storage account."
+      }
+    },
+    "com.azure.batch#AutoStorageBasePropertiesAuthenticationMode": {
+      "type": "enum",
+      "members": {
+        "STORAGEKEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StorageKeys"
+          }
+        },
+        "BATCHACCOUNTMANAGEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BatchAccountManagedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The authentication mode which the Batch service will use to manage the auto-storage account."
+      }
+    },
+    "com.azure.batch#BatchAccountUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user-specified tags associated with the account."
       }
     },
     "com.azure.batch#BatchAccountCreate": {
@@ -8175,16 +8699,132 @@
             "smithy.api#documentation": "A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The region in which to create the account.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.batch#BatchAccountCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The user-specified tags associated with the account."
+          }
+        },
+        "properties": {
+          "target": "com.azure.batch#BatchAccountCreateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Batch account."
+          }
+        },
+        "identity": {
+          "target": "com.azure.batch#BatchAccountIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the Batch account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#BatchAccountCreateProperties": {
+      "type": "structure",
+      "members": {
+        "autoStorage": {
+          "target": "com.azure.batch#AutoStorageBaseProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties related to the auto-storage account."
+          }
+        },
+        "poolAllocationMode": {
+          "target": "com.azure.batch#PoolAllocationMode",
+          "traits": {
+            "smithy.api#documentation": "The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService."
+          }
+        },
+        "keyVaultReference": {
+          "target": "com.azure.batch#KeyVaultReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to the Azure key vault associated with the Batch account."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.batch#BatchAccountCreatePropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "The network access type for operating on the resources in the Batch account."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.batch#NetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The network profile only takes effect when publicNetworkAccess is enabled."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.batch#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead."
+          }
+        },
+        "allowedAuthenticationModes": {
+          "target": "com.azure.batch#BatchAccountCreatePropertiesAllowedAuthenticationModesList",
+          "traits": {
+            "smithy.api#documentation": "List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a Batch account."
+      }
+    },
+    "com.azure.batch#BatchAccountCreatePropertiesAllowedAuthenticationModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.batch#AuthenticationMode"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane."
+      }
+    },
+    "com.azure.batch#BatchAccountCreatePropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network access type for operating on the resources in the Batch account."
+      }
+    },
+    "com.azure.batch#BatchAccountCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user-specified tags associated with the account."
       }
     },
     "com.azure.batch#BatchAccountGet": {
@@ -8738,16 +9378,37 @@
             "smithy.api#documentation": "The desired region for the name check."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name to check for availability",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.batch#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The resource type.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.batch#ResourceType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_BATCH_BATCHACCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Batch/batchAccounts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the request to list operations."
       }
     },
     "com.azure.batch#BatchAccountList": {

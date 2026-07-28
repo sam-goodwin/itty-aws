@@ -18,29 +18,22 @@ export type CustomerProfileConfigScopeEnum =
   | "group_1"
   | "group_2"
   | "group_3"
-  | "group_4"
-  | (string & {});
+  | "group_4";
 export const CustomerProfileConfigScopeEnum = /*@__PURE__*/ S.String;
 
 export interface CustomerProfileConfigsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   scope?: CustomerProfileConfigScopeEnum;
   content?: unknown;
   sidebar?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const CustomerProfileConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     scope: S.optional(CustomerProfileConfigScopeEnum),
     content: S.optional(S.Unknown),
     sidebar: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -126,7 +119,7 @@ export const CustomerProfileConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerProfileConfigsListRequest>;
 
 export type PaginatedCustomerProfileConfigListResultsList =
-  CustomerProfileConfig[];
+  ReadonlyArray<CustomerProfileConfig>;
 export const PaginatedCustomerProfileConfigListResultsList =
   /*@__PURE__*/ S.Array(
     CustomerProfileConfig,
@@ -156,8 +149,6 @@ export interface CustomerProfileConfigsPartialUpdateRequest {
   scope?: CustomerProfileConfigScopeEnum;
   content?: unknown;
   sidebar?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const CustomerProfileConfigsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -167,8 +158,6 @@ export const CustomerProfileConfigsPartialUpdateRequest =
       scope: S.optional(CustomerProfileConfigScopeEnum),
       content: S.optional(S.Unknown),
       sidebar: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -208,8 +197,6 @@ export interface CustomerProfileConfigsUpdateRequest {
   scope?: CustomerProfileConfigScopeEnum;
   content?: unknown;
   sidebar?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const CustomerProfileConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -218,8 +205,6 @@ export const CustomerProfileConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     scope: S.optional(CustomerProfileConfigScopeEnum),
     content: S.optional(S.Unknown),
     sidebar: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

@@ -163,7 +163,7 @@ export const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAssertionRequest",
 }) as any as S.Schema<CreateAssertionRequest>;
 export type Uuid = string;
-export type AssertionSource = "AI_GENERATED" | "USER" | (string & {});
+export type AssertionSource = "AI_GENERATED" | "USER";
 export const AssertionSource = /*@__PURE__*/ S.String;
 
 export interface Assertion {
@@ -307,8 +307,7 @@ export type MultiAzDisasterRecoveryApproach =
   | "HOT_STANDBY"
   | "WARM_STANDBY"
   | "PILOT_LIGHT"
-  | "BACKUP_AND_RESTORE"
-  | (string & {});
+  | "BACKUP_AND_RESTORE";
 export const MultiAzDisasterRecoveryApproach = /*@__PURE__*/ S.String;
 
 export interface MultiAzTargets {
@@ -328,8 +327,7 @@ export type MultiRegionDisasterRecoveryApproach =
   | "HOT_STANDBY"
   | "WARM_STANDBY"
   | "PILOT_LIGHT"
-  | "BACKUP_AND_RESTORE"
-  | (string & {});
+  | "BACKUP_AND_RESTORE";
 export const MultiRegionDisasterRecoveryApproach = /*@__PURE__*/ S.String;
 
 export interface MultiRegionTargets {
@@ -433,7 +431,7 @@ export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePolicyResponse",
 }) as any as S.Schema<CreatePolicyResponse>;
-export type ReportType = "FAILURE_MODE" | (string & {});
+export type ReportType = "FAILURE_MODE";
 export const ReportType = /*@__PURE__*/ S.String;
 
 export interface CreateReportRequest {
@@ -459,11 +457,7 @@ export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReportRequest",
 }) as any as S.Schema<CreateReportRequest>;
-export type ReportGenerationStatus =
-  | "PENDING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+export type ReportGenerationStatus = "PENDING" | "SUCCEEDED" | "FAILED";
 export const ReportGenerationStatus = /*@__PURE__*/ S.String;
 
 export interface S3ReportOutput {
@@ -475,8 +469,7 @@ export const S3ReportOutput = /*@__PURE__*/ S.suspend(() =>
 export type ReportGenerationErrorCode =
   | "INSUFFICIENT_PERMISSIONS"
   | "CONFIGURATION_ERROR"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const ReportGenerationErrorCode = /*@__PURE__*/ S.String;
 
 export interface FailedReportOutput {
@@ -573,7 +566,7 @@ export const PermissionModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PermissionModel",
 }) as any as S.Schema<PermissionModel>;
-export type DependencyDiscoveryInput = "ENABLED" | "DISABLED" | (string & {});
+export type DependencyDiscoveryInput = "ENABLED" | "DISABLED";
 export const DependencyDiscoveryInput = /*@__PURE__*/ S.String;
 
 export type S3BucketPath = string;
@@ -642,11 +635,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
-export type DependencyDiscoveryStatus =
-  | "ENABLED"
-  | "INITIALIZING"
-  | "DISABLED"
-  | (string & {});
+export type DependencyDiscoveryStatus = "ENABLED" | "INITIALIZING" | "DISABLED";
 export const DependencyDiscoveryStatus = /*@__PURE__*/ S.String;
 
 export interface DependencyDiscoveryConfig {
@@ -661,7 +650,7 @@ export const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DependencyDiscoveryConfig",
 }) as any as S.Schema<DependencyDiscoveryConfig>;
-export type PolicyValueSource = "SELF" | "CROSS_ACCOUNT" | (string & {});
+export type PolicyValueSource = "SELF" | "CROSS_ACCOUNT";
 export const PolicyValueSource = /*@__PURE__*/ S.String;
 
 export interface SloSource {
@@ -726,10 +715,7 @@ export const EffectivePolicyValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EffectivePolicyValues",
 }) as any as S.Schema<EffectivePolicyValues>;
-export type AchievabilityStatus =
-  | "ACHIEVABLE"
-  | "NOT_ACHIEVABLE"
-  | (string & {});
+export type AchievabilityStatus = "ACHIEVABLE" | "NOT_ACHIEVABLE";
 export const AchievabilityStatus = /*@__PURE__*/ S.String;
 
 export interface Achievability {
@@ -744,7 +730,7 @@ export const Achievability = /*@__PURE__*/ S.suspend(() =>
     multiRegionRtoRpo: S.optional(AchievabilityStatus),
   }),
 ).annotate({ identifier: "Achievability" }) as any as S.Schema<Achievability>;
-export type CostCurrency = "USD" | (string & {});
+export type CostCurrency = "USD";
 export const CostCurrency = /*@__PURE__*/ S.String;
 
 export interface AssessmentCost {
@@ -762,8 +748,7 @@ export type ResourceDiscoveryRunStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "COMPLETED_WITH_FAILURES"
-  | "NOT_STARTED"
-  | (string & {});
+  | "NOT_STARTED";
 export const ResourceDiscoveryRunStatus = /*@__PURE__*/ S.String;
 
 export type ResourceDiscoveryErrorCode =
@@ -773,8 +758,7 @@ export type ResourceDiscoveryErrorCode =
   | "STATE_FILE_NOT_FOUND"
   | "ACCESS_DENIED"
   | "UNSUPPORTED_CLUSTER"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const ResourceDiscoveryErrorCode = /*@__PURE__*/ S.String;
 
 export interface ResourceDiscoveryStatus {
@@ -798,8 +782,7 @@ export type AssessmentStatus =
   | "PENDING"
   | "IN_PROGRESS"
   | "FAILED"
-  | "SUCCESS"
-  | (string & {});
+  | "SUCCESS";
 export const AssessmentStatus = /*@__PURE__*/ S.String;
 
 export type OrganizationId = string;
@@ -869,10 +852,7 @@ export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceResponse>;
 export type EntityLabel = string;
 export type EntityDescription = string;
-export type ServiceFunctionCriticality =
-  | "PRIMARY"
-  | "SUPPLEMENTAL"
-  | (string & {});
+export type ServiceFunctionCriticality = "PRIMARY" | "SUPPLEMENTAL";
 export const ServiceFunctionCriticality = /*@__PURE__*/ S.String;
 
 export interface CreateServiceFunctionRequest {
@@ -903,7 +883,7 @@ export const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateServiceFunctionRequest",
 }) as any as S.Schema<CreateServiceFunctionRequest>;
 export type EntityId = string;
-export type ServiceFunctionSource = "AI_GENERATED" | "USER" | (string & {});
+export type ServiceFunctionSource = "AI_GENERATED" | "USER";
 export const ServiceFunctionSource = /*@__PURE__*/ S.String;
 
 export interface ServiceFunction {
@@ -1351,14 +1331,13 @@ export type FailureCategory =
   | "EXCESSIVE_LOAD"
   | "EXCESSIVE_LATENCY"
   | "MISCONFIGURATION_AND_BUGS"
-  | "SINGLE_POINT_OF_FAILURE"
-  | (string & {});
+  | "SINGLE_POINT_OF_FAILURE";
 export const FailureCategory = /*@__PURE__*/ S.String;
 
-export type FindingStatus = "OPEN" | "RESOLVED" | "IRRELEVANT" | (string & {});
+export type FindingStatus = "OPEN" | "RESOLVED" | "IRRELEVANT";
 export const FindingStatus = /*@__PURE__*/ S.String;
 
-export type FindingSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export type FindingSeverity = "LOW" | "MEDIUM" | "HIGH";
 export const FindingSeverity = /*@__PURE__*/ S.String;
 
 export type FunctionsList = string[];
@@ -1367,8 +1346,7 @@ export type PolicyComponent =
   | "AVAILABILITY_SLO"
   | "MULTI_AZ_DISASTER_RECOVERY"
   | "MULTI_REGION_DISASTER_RECOVERY"
-  | "DATA_RECOVERY"
-  | (string & {});
+  | "DATA_RECOVERY";
 export const PolicyComponent = /*@__PURE__*/ S.String;
 
 export type SuggestedChangesList = string[];
@@ -1678,7 +1656,7 @@ export const ListAssertionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssertionsResponse",
 }) as any as S.Schema<ListAssertionsResponse>;
-export type QueryGranularity = "HOURLY" | "DAILY" | (string & {});
+export type QueryGranularity = "HOURLY" | "DAILY";
 export const QueryGranularity = /*@__PURE__*/ S.String;
 
 export interface ListDependenciesRequest {
@@ -1742,7 +1720,7 @@ export const QueryRange = /*@__PURE__*/ S.suspend(() =>
     dataPoints: QueryDataPointList,
   }),
 ).annotate({ identifier: "QueryRange" }) as any as S.Schema<QueryRange>;
-export type DependencyCriticality = "HARD" | "SOFT" | "UNKNOWN" | (string & {});
+export type DependencyCriticality = "HARD" | "SOFT" | "UNKNOWN";
 export const DependencyCriticality = /*@__PURE__*/ S.String;
 
 export interface DependencySummary {
@@ -1815,8 +1793,7 @@ export const ListFailureModeAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AssessmentStep =
   | "TOPOLOGY_ENHANCEMENT"
   | "SERVICE_FUNCTION_GENERATION"
-  | "RESILIENCE_ASSESSMENT"
-  | (string & {});
+  | "RESILIENCE_ASSESSMENT";
 export const AssessmentStep = /*@__PURE__*/ S.String;
 
 export type AssessmentErrorCode =
@@ -1824,8 +1801,7 @@ export type AssessmentErrorCode =
   | "CMK_ACCESS_DENIED"
   | "AGENT_ERROR"
   | "INTERNAL_ERROR"
-  | "DESIGN_FILE_ACCESS_DENIED"
-  | (string & {});
+  | "DESIGN_FILE_ACCESS_DENIED";
 export const AssessmentErrorCode = /*@__PURE__*/ S.String;
 
 export interface AssessmentSummary {
@@ -1946,8 +1922,7 @@ export type InputSourceType =
   | "EKS"
   | "TERRAFORM"
   | "DESIGN_FILE"
-  | "MONITORING"
-  | (string & {});
+  | "MONITORING";
 export const InputSourceType = /*@__PURE__*/ S.String;
 
 export interface ListInputSourcesRequest {
@@ -2212,8 +2187,7 @@ export type ServiceEventType =
   | "SERVICE_ACHIEVABILITY_UPDATED"
   | "ASSERTION_CREATED"
   | "ASSERTION_UPDATED"
-  | "ASSERTION_DELETED"
-  | (string & {});
+  | "ASSERTION_DELETED";
 export const ServiceEventType = /*@__PURE__*/ S.String;
 
 export type ServiceEventTypeList = ServiceEventType[];
@@ -2253,7 +2227,7 @@ export const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceEventsRequest",
 }) as any as S.Schema<ListServiceEventsRequest>;
-export type ActorType = "USER" | "SYSTEM" | (string & {});
+export type ActorType = "USER" | "SYSTEM";
 export const ActorType = /*@__PURE__*/ S.String;
 
 export interface EventActor {
@@ -3122,8 +3096,7 @@ export type TopologyType =
   | "CONTAINMENT"
   | "DATA_FLOW"
   | "OBSERVABILITY"
-  | "PERMISSIONS"
-  | (string & {});
+  | "PERMISSIONS";
 export const TopologyType = /*@__PURE__*/ S.String;
 
 export interface EdgePropertySummary {
@@ -3179,8 +3152,7 @@ export type SystemEventType =
   | "SYSTEM_SERVICE_ASSOCIATED"
   | "SYSTEM_SERVICE_DISASSOCIATED"
   | "SYSTEM_POLICY_ASSOCIATED"
-  | "SYSTEM_POLICY_DISASSOCIATED"
-  | (string & {});
+  | "SYSTEM_POLICY_DISASSOCIATED";
 export const SystemEventType = /*@__PURE__*/ S.String;
 
 export type SystemEventTypeList = SystemEventType[];
@@ -4047,8 +4019,7 @@ export type ValidationExceptionReason =
   | "INVALID_FIELD_VALUE"
   | "DUPLICATE_VALUE"
   | "MISSING_REQUIRED_FIELD"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

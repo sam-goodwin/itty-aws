@@ -64,8 +64,7 @@ export type AuthorTypeEnum =
   | "AUTHOR_TYPE_UNSPECIFIED"
   | "REGULAR_USER"
   | "LOCAL_GUIDE"
-  | "MERCHANT"
-  | (string & {});
+  | "MERCHANT";
 export const AuthorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the author of a question or answer */
@@ -111,7 +110,7 @@ export const Answer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
-export type AnswerList = Answer[];
+export type AnswerList = ReadonlyArray<Answer>;
 export const AnswerList = /*@__PURE__*/ S.Array(
   Answer,
 ) as any as S.Schema<AnswerList>;
@@ -245,7 +244,7 @@ export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLocationsQuestionsRequest",
 }) as any as S.Schema<ListLocationsQuestionsRequest>;
 
-export type QuestionList = Question[];
+export type QuestionList = ReadonlyArray<Question>;
 export const QuestionList = /*@__PURE__*/ S.Array(
   Question,
 ) as any as S.Schema<QuestionList>;

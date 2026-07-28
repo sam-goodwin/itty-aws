@@ -67,23 +67,17 @@ export const StringMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StringMap>;
 
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
-    | "WORKER_IP_UNSPECIFIED"
-    | "WORKER_IP_PUBLIC"
-    | "WORKER_IP_PRIVATE"
-    | (string & {});
+  "WORKER_IP_UNSPECIFIED" | "WORKER_IP_PUBLIC" | "WORKER_IP_PRIVATE";
 export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
-    | "FLEXRS_UNSPECIFIED"
-    | "FLEXRS_SPEED_OPTIMIZED"
-    | "FLEXRS_COST_OPTIMIZED"
-    | (string & {});
+  "FLEXRS_UNSPECIFIED" | "FLEXRS_SPEED_OPTIMIZED" | "FLEXRS_COST_OPTIMIZED";
 export const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -212,8 +206,7 @@ export const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest =
 export type GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
-  | "WORKER_IP_PRIVATE"
-  | (string & {});
+  | "WORKER_IP_PRIVATE";
 export const GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -378,16 +371,14 @@ export type GoogleCloudDatapipelinesV1PipelineStateEnum =
   | "STATE_ACTIVE"
   | "STATE_STOPPING"
   | "STATE_ARCHIVED"
-  | "STATE_PAUSED"
-  | (string & {});
+  | "STATE_PAUSED";
 export const GoogleCloudDatapipelinesV1PipelineStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatapipelinesV1PipelineTypeEnum =
   | "PIPELINE_TYPE_UNSPECIFIED"
   | "PIPELINE_TYPE_BATCH"
-  | "PIPELINE_TYPE_STREAMING"
-  | (string & {});
+  | "PIPELINE_TYPE_STREAMING";
 export const GoogleCloudDatapipelinesV1PipelineTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -531,7 +522,7 @@ export const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
 
 export type GoogleCloudDatapipelinesV1PipelineList =
-  GoogleCloudDatapipelinesV1Pipeline[];
+  ReadonlyArray<GoogleCloudDatapipelinesV1Pipeline>;
 export const GoogleCloudDatapipelinesV1PipelineList = /*@__PURE__*/ S.Array(
   GoogleCloudDatapipelinesV1Pipeline,
 ) as any as S.Schema<GoogleCloudDatapipelinesV1PipelineList>;
@@ -584,7 +575,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -614,8 +605,7 @@ export type GoogleCloudDatapipelinesV1JobStateEnum =
   | "STATE_RUNNING"
   | "STATE_DONE"
   | "STATE_FAILED"
-  | "STATE_CANCELLED"
-  | (string & {});
+  | "STATE_CANCELLED";
 export const GoogleCloudDatapipelinesV1JobStateEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
@@ -629,8 +619,7 @@ export type GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum =
   | "SUPPORTED"
   | "STALE"
   | "DEPRECATED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -709,7 +698,8 @@ export const GoogleCloudDatapipelinesV1Job = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudDatapipelinesV1Job",
 }) as any as S.Schema<GoogleCloudDatapipelinesV1Job>;
 
-export type GoogleCloudDatapipelinesV1JobList = GoogleCloudDatapipelinesV1Job[];
+export type GoogleCloudDatapipelinesV1JobList =
+  ReadonlyArray<GoogleCloudDatapipelinesV1Job>;
 export const GoogleCloudDatapipelinesV1JobList = /*@__PURE__*/ S.Array(
   GoogleCloudDatapipelinesV1Job,
 ) as any as S.Schema<GoogleCloudDatapipelinesV1JobList>;

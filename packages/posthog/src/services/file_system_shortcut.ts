@@ -38,7 +38,6 @@ export class NotFound extends T.applyErrorMatchers(
 export interface FileSystemShortcutCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   /** Display path of the shortcut in the sidebar. */
   path?: string;
   /** Type of the linked item (e.g. 'folder', 'insight'), or blank. */
@@ -49,21 +48,15 @@ export interface FileSystemShortcutCreateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemShortcutCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     path: S.optional(S.String),
     type: S.optional(S.String),
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     order: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -158,7 +151,8 @@ export const FileSystemShortcutListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileSystemShortcutListRequest",
 }) as any as S.Schema<FileSystemShortcutListRequest>;
 
-export type PaginatedFileSystemShortcutListResultsList = FileSystemShortcut2[];
+export type PaginatedFileSystemShortcutListResultsList =
+  ReadonlyArray<FileSystemShortcut2>;
 export const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ S.Array(
   FileSystemShortcut2,
 ) as any as S.Schema<PaginatedFileSystemShortcutListResultsList>;
@@ -195,9 +189,6 @@ export interface FileSystemShortcutPartialUpdateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemShortcutPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -209,8 +200,6 @@ export const FileSystemShortcutPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       ref: S.optional(S.NullOr(S.String)),
       href: S.optional(S.NullOr(S.String)),
       order: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -223,7 +212,8 @@ export const FileSystemShortcutPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FileSystemShortcutPartialUpdateRequest>;
 
 /** IDs of the current user's shortcuts in the desired display order. */
-export type FileSystemShortcutReorderCreateRequestOrderedIdsList = string[];
+export type FileSystemShortcutReorderCreateRequestOrderedIdsList =
+  ReadonlyArray<string>;
 export const FileSystemShortcutReorderCreateRequestOrderedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -287,9 +277,6 @@ export interface FileSystemShortcutUpdateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemShortcutUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -300,8 +287,6 @@ export const FileSystemShortcutUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     order: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

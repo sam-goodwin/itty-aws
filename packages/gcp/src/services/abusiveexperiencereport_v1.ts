@@ -59,15 +59,13 @@ export type SiteSummaryResponseFilterStatusEnum =
   | "ON"
   | "OFF"
   | "PAUSED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const SiteSummaryResponseFilterStatusEnum = /*@__PURE__*/ S.String;
 
 export type SiteSummaryResponseAbusiveStatusEnum =
   | "UNKNOWN"
   | "PASSING"
-  | "FAILING"
-  | (string & {});
+  | "FAILING";
 export const SiteSummaryResponseAbusiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetSiteSummary. */
@@ -114,7 +112,7 @@ export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListViolatingSitesRequest",
 }) as any as S.Schema<ListViolatingSitesRequest>;
 
-export type SiteSummaryResponseList = SiteSummaryResponse[];
+export type SiteSummaryResponseList = ReadonlyArray<SiteSummaryResponse>;
 export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
   SiteSummaryResponse,
 ) as any as S.Schema<SiteSummaryResponseList>;

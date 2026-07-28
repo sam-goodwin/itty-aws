@@ -83,7 +83,7 @@ export const GoogleCloudContentwarehouseV1CloudAIDocumentOption =
     identifier: "GoogleCloudContentwarehouseV1CloudAIDocumentOption",
   }) as any as S.Schema<GoogleCloudContentwarehouseV1CloudAIDocumentOption>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -92,8 +92,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -112,7 +111,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -133,7 +133,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -177,7 +177,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -253,7 +253,7 @@ export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>;
 
 export type GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList =
-  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>;
 export const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment,
@@ -286,8 +286,7 @@ export type GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   | "REPLACE"
   | "EVAL_REQUESTED"
   | "EVAL_APPROVED"
-  | "EVAL_SKIPPED"
-  | (string & {});
+  | "EVAL_SKIPPED";
 export const GoogleCloudDocumentaiV1DocumentProvenanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -312,7 +311,7 @@ export const GoogleCloudDocumentaiV1DocumentProvenanceParent =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentProvenanceParent>;
 
 export type GoogleCloudDocumentaiV1DocumentProvenanceParentList =
-  GoogleCloudDocumentaiV1DocumentProvenanceParent[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentProvenanceParent>;
 export const GoogleCloudDocumentaiV1DocumentProvenanceParentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentProvenanceParent,
@@ -516,8 +515,7 @@ export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   | "TOKEN"
   | "VISUAL_ELEMENT"
   | "TABLE"
-  | "FORM_FIELD"
-  | (string & {});
+  | "FORM_FIELD";
 export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -537,7 +535,8 @@ export const GoogleCloudDocumentaiV1Vertex = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudDocumentaiV1Vertex",
 }) as any as S.Schema<GoogleCloudDocumentaiV1Vertex>;
 
-export type GoogleCloudDocumentaiV1VertexList = GoogleCloudDocumentaiV1Vertex[];
+export type GoogleCloudDocumentaiV1VertexList =
+  ReadonlyArray<GoogleCloudDocumentaiV1Vertex>;
 export const GoogleCloudDocumentaiV1VertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1Vertex,
 ) as any as S.Schema<GoogleCloudDocumentaiV1VertexList>;
@@ -560,7 +559,7 @@ export const GoogleCloudDocumentaiV1NormalizedVertex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1NormalizedVertex>;
 
 export type GoogleCloudDocumentaiV1NormalizedVertexList =
-  GoogleCloudDocumentaiV1NormalizedVertex[];
+  ReadonlyArray<GoogleCloudDocumentaiV1NormalizedVertex>;
 export const GoogleCloudDocumentaiV1NormalizedVertexList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1NormalizedVertex,
@@ -611,7 +610,7 @@ export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRef =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>;
 
 export type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList =
-  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>;
 export const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageAnchorPageRef,
@@ -682,7 +681,7 @@ export const GoogleCloudDocumentaiV1DocumentEntity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentEntity>;
 
 export type GoogleCloudDocumentaiV1DocumentEntityList =
-  GoogleCloudDocumentaiV1DocumentEntity[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentEntity>;
 export const GoogleCloudDocumentaiV1DocumentEntityList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentEntity,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentEntityList>;
@@ -705,7 +704,7 @@ export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguage =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
 
 export type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList =
-  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>;
 export const GoogleCloudDocumentaiV1DocumentPageDetectedLanguageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageDetectedLanguage,
@@ -716,8 +715,7 @@ export type GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   | "PAGE_UP"
   | "PAGE_RIGHT"
   | "PAGE_DOWN"
-  | "PAGE_LEFT"
-  | (string & {});
+  | "PAGE_LEFT";
 export const GoogleCloudDocumentaiV1DocumentPageLayoutOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -769,7 +767,7 @@ export const GoogleCloudDocumentaiV1DocumentPageParagraph =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageParagraph>;
 
 export type GoogleCloudDocumentaiV1DocumentPageParagraphList =
-  GoogleCloudDocumentaiV1DocumentPageParagraph[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageParagraph>;
 export const GoogleCloudDocumentaiV1DocumentPageParagraphList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageParagraph,
@@ -877,8 +875,7 @@ export type GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "SPACE"
   | "WIDE_SPACE"
-  | "HYPHEN"
-  | (string & {});
+  | "HYPHEN";
 export const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -929,7 +926,7 @@ export const GoogleCloudDocumentaiV1DocumentPageToken = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageToken>;
 
 export type GoogleCloudDocumentaiV1DocumentPageTokenList =
-  GoogleCloudDocumentaiV1DocumentPageToken[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageToken>;
 export const GoogleCloudDocumentaiV1DocumentPageTokenList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageToken,
@@ -958,7 +955,7 @@ export const GoogleCloudDocumentaiV1DocumentPageBlock = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageBlock>;
 
 export type GoogleCloudDocumentaiV1DocumentPageBlockList =
-  GoogleCloudDocumentaiV1DocumentPageBlock[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageBlock>;
 export const GoogleCloudDocumentaiV1DocumentPageBlockList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageBlock,
@@ -987,7 +984,7 @@ export const GoogleCloudDocumentaiV1DocumentPageVisualElement =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageVisualElement>;
 
 export type GoogleCloudDocumentaiV1DocumentPageVisualElementList =
-  GoogleCloudDocumentaiV1DocumentPageVisualElement[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageVisualElement>;
 export const GoogleCloudDocumentaiV1DocumentPageVisualElementList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageVisualElement,
@@ -1019,7 +1016,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTableTableCell =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableCell>;
 
 export type GoogleCloudDocumentaiV1DocumentPageTableTableCellList =
-  GoogleCloudDocumentaiV1DocumentPageTableTableCell[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageTableTableCell>;
 export const GoogleCloudDocumentaiV1DocumentPageTableTableCellList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageTableTableCell,
@@ -1040,7 +1037,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTableTableRow =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTableTableRow>;
 
 export type GoogleCloudDocumentaiV1DocumentPageTableTableRowList =
-  GoogleCloudDocumentaiV1DocumentPageTableTableRow[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageTableTableRow>;
 export const GoogleCloudDocumentaiV1DocumentPageTableTableRowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageTableTableRow,
@@ -1079,7 +1076,7 @@ export const GoogleCloudDocumentaiV1DocumentPageTable = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageTable>;
 
 export type GoogleCloudDocumentaiV1DocumentPageTableList =
-  GoogleCloudDocumentaiV1DocumentPageTable[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageTable>;
 export const GoogleCloudDocumentaiV1DocumentPageTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageTable,
@@ -1125,7 +1122,7 @@ export const GoogleCloudDocumentaiV1DocumentPageFormField =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageFormField>;
 
 export type GoogleCloudDocumentaiV1DocumentPageFormFieldList =
-  GoogleCloudDocumentaiV1DocumentPageFormField[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageFormField>;
 export const GoogleCloudDocumentaiV1DocumentPageFormFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageFormField,
@@ -1150,7 +1147,7 @@ export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
 
 export type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList =
-  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>;
 export const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect,
@@ -1212,7 +1209,7 @@ export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>;
 
 export type GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList =
-  GoogleCloudDocumentaiV1DocumentPageDetectedBarcode[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>;
 export const GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageDetectedBarcode,
@@ -1265,7 +1262,7 @@ export const GoogleCloudDocumentaiV1DocumentPageMatrix =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageMatrix>;
 
 export type GoogleCloudDocumentaiV1DocumentPageMatrixList =
-  GoogleCloudDocumentaiV1DocumentPageMatrix[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageMatrix>;
 export const GoogleCloudDocumentaiV1DocumentPageMatrixList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageMatrix,
@@ -1294,7 +1291,7 @@ export const GoogleCloudDocumentaiV1DocumentPageLine = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageLine>;
 
 export type GoogleCloudDocumentaiV1DocumentPageLineList =
-  GoogleCloudDocumentaiV1DocumentPageLine[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageLine>;
 export const GoogleCloudDocumentaiV1DocumentPageLineList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageLine,
@@ -1320,7 +1317,7 @@ export const GoogleCloudDocumentaiV1DocumentPageSymbol =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageSymbol>;
 
 export type GoogleCloudDocumentaiV1DocumentPageSymbolList =
-  GoogleCloudDocumentaiV1DocumentPageSymbol[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPageSymbol>;
 export const GoogleCloudDocumentaiV1DocumentPageSymbolList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentPageSymbol,
@@ -1396,7 +1393,7 @@ export const GoogleCloudDocumentaiV1DocumentPage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPage>;
 
 export type GoogleCloudDocumentaiV1DocumentPageList =
-  GoogleCloudDocumentaiV1DocumentPage[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentPage>;
 export const GoogleCloudDocumentaiV1DocumentPageList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentPage,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentPageList>;
@@ -1440,7 +1437,7 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader 
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList =
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader>;
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader,
@@ -1467,7 +1464,7 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter 
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
@@ -1509,7 +1506,7 @@ export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList =
-  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk>;
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk,
@@ -1537,7 +1534,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1582,7 +1579,7 @@ export const GoogleCloudDocumentaiV1DocumentShardInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentShardInfo>;
 
 export type GoogleCloudDocumentaiV1DocumentProvenanceList =
-  GoogleCloudDocumentaiV1DocumentProvenance[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentProvenance>;
 export const GoogleCloudDocumentaiV1DocumentProvenanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentProvenance,
@@ -1609,7 +1606,7 @@ export const GoogleCloudDocumentaiV1DocumentTextChange =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentTextChange>;
 
 export type GoogleCloudDocumentaiV1DocumentTextChangeList =
-  GoogleCloudDocumentaiV1DocumentTextChange[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentTextChange>;
 export const GoogleCloudDocumentaiV1DocumentTextChangeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentTextChange,
@@ -1686,7 +1683,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>;
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList =
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell>;
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCellList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell,
@@ -1710,7 +1707,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList =
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow>;
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow,
@@ -1762,7 +1759,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLay
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>;
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList =
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry>;
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry,
@@ -1824,7 +1821,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
 
 export type GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList =
-  GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock>;
 export const GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock,
@@ -1846,7 +1843,7 @@ export const GoogleCloudDocumentaiV1DocumentDocumentLayout =
     identifier: "GoogleCloudDocumentaiV1DocumentDocumentLayout",
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentDocumentLayout>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1903,7 +1900,7 @@ export const GoogleCloudDocumentaiV1DocumentRevision = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentRevision>;
 
 export type GoogleCloudDocumentaiV1DocumentRevisionList =
-  GoogleCloudDocumentaiV1DocumentRevision[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentRevision>;
 export const GoogleCloudDocumentaiV1DocumentRevisionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentRevision,
@@ -1930,7 +1927,7 @@ export const GoogleCloudDocumentaiV1DocumentEntityRelation =
   }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentEntityRelation>;
 
 export type GoogleCloudDocumentaiV1DocumentEntityRelationList =
-  GoogleCloudDocumentaiV1DocumentEntityRelation[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentEntityRelation>;
 export const GoogleCloudDocumentaiV1DocumentEntityRelationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDocumentaiV1DocumentEntityRelation,
@@ -1989,7 +1986,7 @@ export const GoogleCloudDocumentaiV1DocumentStyle = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentStyle>;
 
 export type GoogleCloudDocumentaiV1DocumentStyleList =
-  GoogleCloudDocumentaiV1DocumentStyle[];
+  ReadonlyArray<GoogleCloudDocumentaiV1DocumentStyle>;
 export const GoogleCloudDocumentaiV1DocumentStyleList = /*@__PURE__*/ S.Array(
   GoogleCloudDocumentaiV1DocumentStyle,
 ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentStyleList>;
@@ -2080,7 +2077,7 @@ export const GoogleCloudContentwarehouseV1TimestampValue =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1TimestampValue>;
 
 export type GoogleCloudContentwarehouseV1TimestampValueList =
-  GoogleCloudContentwarehouseV1TimestampValue[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1TimestampValue>;
 export const GoogleCloudContentwarehouseV1TimestampValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1TimestampValue,
@@ -2195,7 +2192,7 @@ export const GoogleCloudContentwarehouseV1EnumArray = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudContentwarehouseV1EnumArray",
 }) as any as S.Schema<GoogleCloudContentwarehouseV1EnumArray>;
 
-export type GoogleTypeDateTimeList = GoogleTypeDateTime[];
+export type GoogleTypeDateTimeList = ReadonlyArray<GoogleTypeDateTime>;
 export const GoogleTypeDateTimeList = /*@__PURE__*/ S.Array(
   GoogleTypeDateTime,
 ) as any as S.Schema<GoogleTypeDateTimeList>;
@@ -2230,7 +2227,7 @@ export const GoogleCloudContentwarehouseV1PropertyArray =
     identifier: "GoogleCloudContentwarehouseV1PropertyArray",
   }) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyArray>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -2288,7 +2285,7 @@ export const GoogleCloudContentwarehouseV1Property = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudContentwarehouseV1Property>;
 
 export type GoogleCloudContentwarehouseV1PropertyList =
-  GoogleCloudContentwarehouseV1Property[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1Property>;
 export const GoogleCloudContentwarehouseV1PropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Property,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyList>;
@@ -2297,8 +2294,7 @@ export type GoogleCloudContentwarehouseV1DocumentContentCategoryEnum =
   | "CONTENT_CATEGORY_UNSPECIFIED"
   | "CONTENT_CATEGORY_IMAGE"
   | "CONTENT_CATEGORY_AUDIO"
-  | "CONTENT_CATEGORY_VIDEO"
-  | (string & {});
+  | "CONTENT_CATEGORY_VIDEO";
 export const GoogleCloudContentwarehouseV1DocumentContentCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2309,8 +2305,7 @@ export type GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum =
   | "RAW_DOCUMENT_FILE_TYPE_XLSX"
   | "RAW_DOCUMENT_FILE_TYPE_PPTX"
   | "RAW_DOCUMENT_FILE_TYPE_TEXT"
-  | "RAW_DOCUMENT_FILE_TYPE_TIFF"
-  | (string & {});
+  | "RAW_DOCUMENT_FILE_TYPE_TIFF";
 export const GoogleCloudContentwarehouseV1DocumentRawDocumentFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2483,7 +2478,8 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -2493,8 +2489,7 @@ export type GoogleCloudContentwarehouseV1RuleTriggerTypeEnum =
   | "ON_CREATE"
   | "ON_UPDATE"
   | "ON_CREATE_LINK"
-  | "ON_DELETE_LINK"
-  | (string & {});
+  | "ON_DELETE_LINK";
 export const GoogleCloudContentwarehouseV1RuleTriggerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2530,8 +2525,7 @@ export type GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum =
   | "UNKNOWN"
   | "ADD_POLICY_BINDING"
   | "REMOVE_POLICY_BINDING"
-  | "REPLACE_POLICY_BINDING"
-  | (string & {});
+  | "REPLACE_POLICY_BINDING";
 export const GoogleCloudContentwarehouseV1AccessControlActionOperationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2657,7 +2651,7 @@ export const GoogleCloudContentwarehouseV1Action = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudContentwarehouseV1Action>;
 
 export type GoogleCloudContentwarehouseV1ActionList =
-  GoogleCloudContentwarehouseV1Action[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1Action>;
 export const GoogleCloudContentwarehouseV1ActionList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Action,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1ActionList>;
@@ -2688,7 +2682,7 @@ export const GoogleCloudContentwarehouseV1Rule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudContentwarehouseV1Rule>;
 
 export type GoogleCloudContentwarehouseV1RuleList =
-  GoogleCloudContentwarehouseV1Rule[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1Rule>;
 export const GoogleCloudContentwarehouseV1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1Rule,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1RuleList>;
@@ -2711,7 +2705,7 @@ export const GoogleCloudContentwarehouseV1InvalidRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudContentwarehouseV1InvalidRule>;
 
 export type GoogleCloudContentwarehouseV1InvalidRuleList =
-  GoogleCloudContentwarehouseV1InvalidRule[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1InvalidRule>;
 export const GoogleCloudContentwarehouseV1InvalidRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1InvalidRule,
@@ -2742,8 +2736,7 @@ export type GoogleCloudContentwarehouseV1ActionOutputActionStateEnum =
   | "ACTION_SUCCEEDED"
   | "ACTION_FAILED"
   | "ACTION_TIMED_OUT"
-  | "ACTION_PENDING"
-  | (string & {});
+  | "ACTION_PENDING";
 export const GoogleCloudContentwarehouseV1ActionOutputActionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2770,7 +2763,7 @@ export const GoogleCloudContentwarehouseV1ActionOutput =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1ActionOutput>;
 
 export type GoogleCloudContentwarehouseV1ActionOutputList =
-  GoogleCloudContentwarehouseV1ActionOutput[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1ActionOutput>;
 export const GoogleCloudContentwarehouseV1ActionOutputList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1ActionOutput,
@@ -2794,7 +2787,7 @@ export const GoogleCloudContentwarehouseV1RuleActionsPair =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1RuleActionsPair>;
 
 export type GoogleCloudContentwarehouseV1RuleActionsPairList =
-  GoogleCloudContentwarehouseV1RuleActionsPair[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1RuleActionsPair>;
 export const GoogleCloudContentwarehouseV1RuleActionsPairList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1RuleActionsPair,
@@ -2923,7 +2916,7 @@ export const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>;
 
 export type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList =
-  GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>;
 export const GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource,
@@ -2936,8 +2929,7 @@ export type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEn
     | "HIGH"
     | "MEDIUM"
     | "LOW"
-    | "LOWEST"
-    | (string & {});
+    | "LOWEST";
 export const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3053,7 +3045,7 @@ export const GoogleCloudContentwarehouseV1PropertyDefinition =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyDefinition>;
 
 export type GoogleCloudContentwarehouseV1PropertyDefinitionList =
-  GoogleCloudContentwarehouseV1PropertyDefinition[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1PropertyDefinition>;
 export const GoogleCloudContentwarehouseV1PropertyDefinitionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1PropertyDefinition,
@@ -3120,8 +3112,7 @@ export const CreateProjectsLocationsDocumentSchemasRequest =
 export type GoogleCloudContentwarehouseV1DocumentLinkStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "SOFT_DELETED"
-  | (string & {});
+  | "SOFT_DELETED";
 export const GoogleCloudContentwarehouseV1DocumentLinkStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3302,7 +3293,7 @@ export const GoogleCloudContentwarehouseV1SynonymSetSynonym =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1SynonymSetSynonym>;
 
 export type GoogleCloudContentwarehouseV1SynonymSetSynonymList =
-  GoogleCloudContentwarehouseV1SynonymSetSynonym[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1SynonymSetSynonym>;
 export const GoogleCloudContentwarehouseV1SynonymSetSynonymList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1SynonymSetSynonym,
@@ -3759,16 +3750,14 @@ export type GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum =
   | "ACL_MODE_UNKNOWN"
   | "ACL_MODE_UNIVERSAL_ACCESS"
   | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
-  | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
-  | (string & {});
+  | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
 export const GoogleCloudContentwarehouseV1ProjectStatusAccessControlModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum =
   | "DB_UNKNOWN"
   | "DB_INFRA_SPANNER"
-  | "DB_CLOUD_SQL_POSTGRES"
-  | (string & {});
+  | "DB_CLOUD_SQL_POSTGRES";
 export const GoogleCloudContentwarehouseV1ProjectStatusDatabaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3780,8 +3769,7 @@ export type GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   | "PROJECT_STATE_DELETING"
   | "PROJECT_STATE_DELETING_FAILED"
   | "PROJECT_STATE_DELETED"
-  | "PROJECT_STATE_NOT_FOUND"
-  | (string & {});
+  | "PROJECT_STATE_NOT_FOUND";
 export const GoogleCloudContentwarehouseV1ProjectStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3819,7 +3807,7 @@ export const GoogleCloudContentwarehouseV1ProjectStatus =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1ProjectStatus>;
 
 export type GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum =
-  "DB_UNKNOWN" | "DB_INFRA_SPANNER" | "DB_CLOUD_SQL_POSTGRES" | (string & {});
+  "DB_UNKNOWN" | "DB_INFRA_SPANNER" | "DB_CLOUD_SQL_POSTGRES";
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestDatabaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3827,8 +3815,7 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreator
     | "DOCUMENT_CREATOR_DEFAULT_ROLE_UNSPECIFIED"
     | "DOCUMENT_ADMIN"
     | "DOCUMENT_EDITOR"
-    | "DOCUMENT_VIEWER"
-    | (string & {});
+    | "DOCUMENT_VIEWER";
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestDocumentCreatorDefaultRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -3836,8 +3823,7 @@ export type GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlMo
     | "ACL_MODE_UNKNOWN"
     | "ACL_MODE_UNIVERSAL_ACCESS"
     | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID"
-    | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
-    | (string & {});
+    | "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI";
 export const GoogleCloudContentwarehouseV1InitializeProjectRequestAccessControlModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3943,7 +3929,7 @@ export const LinkedSourcesProjectsLocationsDocumentsRequest =
   }) as any as S.Schema<LinkedSourcesProjectsLocationsDocumentsRequest>;
 
 export type GoogleCloudContentwarehouseV1DocumentLinkList =
-  GoogleCloudContentwarehouseV1DocumentLink[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1DocumentLink>;
 export const GoogleCloudContentwarehouseV1DocumentLinkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1DocumentLink,
@@ -4049,7 +4035,7 @@ export const ListProjectsLocationsDocumentSchemasRequest =
   }) as any as S.Schema<ListProjectsLocationsDocumentSchemasRequest>;
 
 export type GoogleCloudContentwarehouseV1DocumentSchemaList =
-  GoogleCloudContentwarehouseV1DocumentSchema[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1DocumentSchema>;
 export const GoogleCloudContentwarehouseV1DocumentSchemaList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1DocumentSchema,
@@ -4100,7 +4086,7 @@ export const ListProjectsLocationsRuleSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRuleSetsRequest>;
 
 export type GoogleCloudContentwarehouseV1RuleSetList =
-  GoogleCloudContentwarehouseV1RuleSet[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1RuleSet>;
 export const GoogleCloudContentwarehouseV1RuleSetList = /*@__PURE__*/ S.Array(
   GoogleCloudContentwarehouseV1RuleSet,
 ) as any as S.Schema<GoogleCloudContentwarehouseV1RuleSetList>;
@@ -4148,7 +4134,7 @@ export const ListProjectsLocationsSynonymSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsSynonymSetsRequest>;
 
 export type GoogleCloudContentwarehouseV1SynonymSetList =
-  GoogleCloudContentwarehouseV1SynonymSet[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1SynonymSet>;
 export const GoogleCloudContentwarehouseV1SynonymSetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1SynonymSet,
@@ -4236,8 +4222,7 @@ export type GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum =
   | "UPDATE_TYPE_INSERT_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_REPLACE_PROPERTIES_BY_NAMES"
   | "UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES"
-  | "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES"
-  | (string & {});
+  | "UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES";
 export const GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4483,7 +4468,7 @@ export const GoogleCloudContentwarehouseV1ProcessorInfo =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1ProcessorInfo>;
 
 export type GoogleCloudContentwarehouseV1ProcessorInfoList =
-  GoogleCloudContentwarehouseV1ProcessorInfo[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1ProcessorInfo>;
 export const GoogleCloudContentwarehouseV1ProcessorInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1ProcessorInfo,
@@ -4680,7 +4665,7 @@ export const RunPipelineProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunPipelineProjectsLocationsRequest>;
 
 export type GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum =
-  "HISTOGRAM_YAXIS_DOCUMENT" | "HISTOGRAM_YAXIS_PROPERTY" | (string & {});
+  "HISTOGRAM_YAXIS_DOCUMENT" | "HISTOGRAM_YAXIS_PROPERTY";
 export const GoogleCloudContentwarehouseV1HistogramQueryPropertyNameFilterYAxisEnum =
   /*@__PURE__*/ S.String;
 
@@ -4728,7 +4713,7 @@ export const GoogleCloudContentwarehouseV1HistogramQuery =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQuery>;
 
 export type GoogleCloudContentwarehouseV1HistogramQueryList =
-  GoogleCloudContentwarehouseV1HistogramQuery[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1HistogramQuery>;
 export const GoogleCloudContentwarehouseV1HistogramQueryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1HistogramQuery,
@@ -4752,7 +4737,7 @@ export const GoogleCloudContentwarehouseV1WeightedSchemaProperty =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1WeightedSchemaProperty>;
 
 export type GoogleCloudContentwarehouseV1WeightedSchemaPropertyList =
-  GoogleCloudContentwarehouseV1WeightedSchemaProperty[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1WeightedSchemaProperty>;
 export const GoogleCloudContentwarehouseV1WeightedSchemaPropertyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1WeightedSchemaProperty,
@@ -4791,7 +4776,7 @@ export const GoogleCloudContentwarehouseV1PropertyFilter =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1PropertyFilter>;
 
 export type GoogleCloudContentwarehouseV1PropertyFilterList =
-  GoogleCloudContentwarehouseV1PropertyFilter[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1PropertyFilter>;
 export const GoogleCloudContentwarehouseV1PropertyFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1PropertyFilter,
@@ -4802,8 +4787,7 @@ export type GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum =
   | "ALL"
   | "FOLDER"
   | "DOCUMENT"
-  | "ROOT_FOLDER"
-  | (string & {});
+  | "ROOT_FOLDER";
 export const GoogleCloudContentwarehouseV1FileTypeFilterFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4827,8 +4811,7 @@ export type GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum =
   | "TIME_FIELD_UNSPECIFIED"
   | "CREATE_TIME"
   | "UPDATE_TIME"
-  | "DISPOSITION_TIME"
-  | (string & {});
+  | "DISPOSITION_TIME";
 export const GoogleCloudContentwarehouseV1TimeFilterTimeFieldEnum =
   /*@__PURE__*/ S.String;
 
@@ -4867,7 +4850,7 @@ export const GoogleCloudContentwarehouseV1TimeFilter = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudContentwarehouseV1TimeFilter>;
 
 export type GoogleCloudContentwarehouseV1TimeFilterList =
-  GoogleCloudContentwarehouseV1TimeFilter[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1TimeFilter>;
 export const GoogleCloudContentwarehouseV1TimeFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1TimeFilter,
@@ -4924,10 +4907,7 @@ export const GoogleCloudContentwarehouseV1DocumentQuery =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1DocumentQuery>;
 
 export type GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum =
-    | "TOTAL_RESULT_SIZE_UNSPECIFIED"
-    | "ESTIMATED_SIZE"
-    | "ACTUAL_SIZE"
-    | (string & {});
+  "TOTAL_RESULT_SIZE_UNSPECIFIED" | "ESTIMATED_SIZE" | "ACTUAL_SIZE";
 export const GoogleCloudContentwarehouseV1SearchDocumentsRequestTotalResultSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5018,7 +4998,7 @@ export const GoogleCloudContentwarehouseV1QAResultHighlight =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1QAResultHighlight>;
 
 export type GoogleCloudContentwarehouseV1QAResultHighlightList =
-  GoogleCloudContentwarehouseV1QAResultHighlight[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1QAResultHighlight>;
 export const GoogleCloudContentwarehouseV1QAResultHighlightList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1QAResultHighlight,
@@ -5068,7 +5048,7 @@ export const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumen
   }) as any as S.Schema<GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>;
 
 export type GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList =
-  GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument>;
 export const GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocumentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument,
@@ -5092,7 +5072,7 @@ export const GoogleCloudContentwarehouseV1HistogramQueryResult =
   }) as any as S.Schema<GoogleCloudContentwarehouseV1HistogramQueryResult>;
 
 export type GoogleCloudContentwarehouseV1HistogramQueryResultList =
-  GoogleCloudContentwarehouseV1HistogramQueryResult[];
+  ReadonlyArray<GoogleCloudContentwarehouseV1HistogramQueryResult>;
 export const GoogleCloudContentwarehouseV1HistogramQueryResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContentwarehouseV1HistogramQueryResult,

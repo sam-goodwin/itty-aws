@@ -143,7 +143,7 @@ export const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConsoleRequest>;
 
 /** The operating system type of the cloud shell. */
-export type ConsolePropertiesOsType = "Linux" | "Windows" | (string & {});
+export type ConsolePropertiesOsType = "Linux" | "Windows";
 export const ConsolePropertiesOsType = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the console. */
@@ -156,8 +156,7 @@ export type ConsolePropertiesProvisioningState =
   | "Repairing"
   | "Failed"
   | "Canceled"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const ConsolePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cloud shell console properties. */
@@ -243,7 +242,7 @@ export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserSettingsRequest>;
 
 /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
-export type UserPropertiesPreferredOsType = "Windows" | "Linux" | (string & {});
+export type UserPropertiesPreferredOsType = "Windows" | "Linux";
 export const UserPropertiesPreferredOsType = /*@__PURE__*/ S.String;
 
 /** The storage profile of the user settings. */
@@ -268,16 +267,14 @@ export type TerminalSettingsFontSize =
   | "NotSpecified"
   | "Small"
   | "Medium"
-  | "Large"
-  | (string & {});
+  | "Large";
 export const TerminalSettingsFontSize = /*@__PURE__*/ S.String;
 
 /** Style of terminal font. */
 export type TerminalSettingsFontStyle =
   | "NotSpecified"
   | "Monospace"
-  | "Courier"
-  | (string & {});
+  | "Courier";
 export const TerminalSettingsFontStyle = /*@__PURE__*/ S.String;
 
 /** Settings for terminal appearance. */
@@ -297,11 +294,7 @@ export const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminalSettings>;
 
 /** The shell type of the cloud shell. */
-export type UserPropertiesPreferredShellType =
-  | "bash"
-  | "pwsh"
-  | "powershell"
-  | (string & {});
+export type UserPropertiesPreferredShellType = "bash" | "pwsh" | "powershell";
 export const UserPropertiesPreferredShellType = /*@__PURE__*/ S.String;
 
 /** The cloud shell user settings properties. */
@@ -427,12 +420,12 @@ export const KeepAliveWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
-  body: unknown;
+  properties?: UserProperties;
 }
 export const PatchUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(UserProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -461,14 +454,14 @@ export interface PatchUserSettingsWithLocationRequest {
   location: string;
   /** The name of the user settings */
   userSettingsName: string;
-  body: unknown;
+  properties?: UserProperties;
 }
 export const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       location: S.String.pipe(T.Label()),
       userSettingsName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(UserProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -493,15 +486,51 @@ export const PatchUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(
   identifier: "PatchUserSettingsWithLocationResponse",
 }) as any as S.Schema<PatchUserSettingsWithLocationResponse>;
 
+/** The operating system type of the cloud shell. */
+export type ConsoleCreatePropertiesOsType = "Linux" | "Windows";
+export const ConsoleCreatePropertiesOsType = /*@__PURE__*/ S.String;
+
+/** Provisioning state of the console. */
+export type ConsoleCreatePropertiesProvisioningState =
+  | "NotSpecified"
+  | "Accepted"
+  | "Pending"
+  | "Updating"
+  | "Creating"
+  | "Repairing"
+  | "Failed"
+  | "Canceled"
+  | "Succeeded";
+export const ConsoleCreatePropertiesProvisioningState = /*@__PURE__*/ S.String;
+
+/** Cloud shell properties for creating a console. */
+export interface ConsoleCreateProperties {
+  /** The operating system type of the cloud shell. */
+  osType: ConsoleCreatePropertiesOsType;
+  /** Provisioning state of the console. */
+  provisioningState?: ConsoleCreatePropertiesProvisioningState;
+  /** Uri of the console. */
+  uri?: string;
+}
+export const ConsoleCreateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: ConsoleCreatePropertiesOsType,
+    provisioningState: S.optional(ConsoleCreatePropertiesProvisioningState),
+    uri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsoleCreateProperties",
+}) as any as S.Schema<ConsoleCreateProperties>;
+
 export interface PutConsoleRequest {
   /** The name of the console */
   consoleName: string;
-  body: unknown;
+  properties: ConsoleCreateProperties;
 }
 export const PutConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consoleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: ConsoleCreateProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -561,12 +590,12 @@ export const PutConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
-  body: unknown;
+  properties: UserProperties;
 }
 export const PutUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: UserProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -595,13 +624,13 @@ export interface PutUserSettingsWithLocationRequest {
   location: string;
   /** The name of the user settings */
   userSettingsName: string;
-  body: unknown;
+  properties: UserProperties;
 }
 export const PutUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     userSettingsName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: UserProperties,
   }).pipe(
     T.Http({
       method: "PUT",

@@ -467,16 +467,85 @@
             "smithy.api#documentation": "The name of the secret."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.keyvault#SecretsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags that will be assigned to the secret."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#SecretPatchPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the secret"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#SecretPatchPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the secret."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the secret."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault#AttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the secret."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the secret"
+      }
+    },
+    "com.azure.keyvault#AttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in seconds since 1970-01-01T00:00:00Z."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in seconds since 1970-01-01T00:00:00Z."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object attributes managed by the KeyVault service."
+      }
+    },
+    "com.azure.keyvault#SecretsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the secret."
       }
     },
     "com.azure.keyvault#SecretsCreateOrUpdate": {
@@ -596,16 +665,60 @@
             "smithy.api#documentation": "The name of the secret."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.keyvault#SecretsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The tags that will be assigned to the secret."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#SecretPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the secret",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#SecretPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the secret."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault#AttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the secret."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the secret"
+      }
+    },
+    "com.azure.keyvault#SecretsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the secret."
       }
     },
     "com.azure.keyvault#SecretsGet": {
@@ -1466,16 +1579,48 @@
             "smithy.api#documentation": "Name of the private endpoint connection associated with the key vault."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.keyvault#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Modified whenever there is a change in the state of private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.keyvault#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the private endpoint object."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.keyvault#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the private link connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection resource."
+      }
+    },
+    "com.azure.keyvault#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Private endpoint object properties."
       }
     },
     "com.azure.keyvault#PrivateEndpointConnectionsGet": {
@@ -2558,16 +2703,159 @@
             "smithy.api#documentation": "The name of the key to be retrieved."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.keyvault#KeysCreateIfNotExistRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The tags that will be assigned to the key."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#KeyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the key to be created.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#KeyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.keyvault#KeyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the key."
+          }
+        },
+        "kty": {
+          "target": "com.azure.keyvault#JsonWebKeyType",
+          "traits": {
+            "smithy.api#documentation": "The type of the key. For valid values, see JsonWebKeyType."
+          }
+        },
+        "keyOps": {
+          "target": "com.azure.keyvault#KeyPropertiesInputKeyOpsList"
+        },
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096."
+          }
+        },
+        "curveName": {
+          "target": "com.azure.keyvault#JsonWebKeyCurveName",
+          "traits": {
+            "smithy.api#documentation": "The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256"
+          }
+        },
+        "rotationPolicy": {
+          "target": "com.azure.keyvault#RotationPolicyInput",
+          "traits": {
+            "smithy.api#documentation": "Key rotation policy in response. It will be used for both output and input. Omitted if empty"
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "Key release policy in response. It will be used for both output and input. Omitted if empty"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the key."
+      }
+    },
+    "com.azure.keyvault#RotationPolicyInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.keyvault#KeyRotationPolicyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of key rotation policy."
+          }
+        },
+        "lifetimeActions": {
+          "target": "com.azure.keyvault#RotationPolicyInputLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "The lifetimeActions for key rotation action."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#RotationPolicyInputLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#LifetimeAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The lifetimeActions for key rotation action."
+      }
+    },
+    "com.azure.keyvault#KeyRotationPolicyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#KeyPropertiesInputKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#JsonWebKeyOperation"
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#KeyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether or not the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in seconds since 1970-01-01T00:00:00Z."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in seconds since 1970-01-01T00:00:00Z."
+          }
+        },
+        "exportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the private key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object attributes managed by the Azure Key Vault service."
+      }
+    },
+    "com.azure.keyvault#KeysCreateIfNotExistRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the key."
       }
     },
     "com.azure.keyvault#KeysGet": {
@@ -3359,10 +3647,10 @@
             "smithy.api#documentation": "Name of the operation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.keyvault#VaultAccessPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the access policy",
             "smithy.api#required": {}
           }
         }
@@ -3933,16 +4221,128 @@
             "smithy.api#documentation": "The name of the vault."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.keyvault#VaultsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags that will be assigned to the key vault."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#VaultPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the vault"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#VaultPatchProperties": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault."
+          }
+        },
+        "sku": {
+          "target": "com.azure.keyvault#Sku",
+          "traits": {
+            "smithy.api#documentation": "SKU details"
+          }
+        },
+        "accessPolicies": {
+          "target": "com.azure.keyvault#VaultPatchPropertiesAccessPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID."
+          }
+        },
+        "enabledForDeployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+          }
+        },
+        "enabledForDiskEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
+          }
+        },
+        "enabledForTemplateDeployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+          }
+        },
+        "enableSoftDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether the 'soft delete' functionality is enabled for this key vault. Once set to true, it cannot be reverted to false."
+          }
+        },
+        "enableRbacAuthorization": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be  ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the value of this property will not change."
+          }
+        },
+        "softDeleteRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "softDelete data retention days. It accepts >=7 and <=90."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.keyvault#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "The vault's create mode to indicate whether the vault need to be recovered or not."
+          }
+        },
+        "enablePurgeProtection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value."
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.keyvault#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "A collection of rules governing the accessibility of the vault from specific network locations."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the vault"
+      }
+    },
+    "com.azure.keyvault#VaultPatchPropertiesAccessPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#AccessPolicyEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID."
+      }
+    },
+    "com.azure.keyvault#VaultsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the key vault."
       }
     },
     "com.azure.keyvault#VaultsCreateOrUpdate": {
@@ -4054,16 +4454,150 @@
             "smithy.api#documentation": "The name of the vault."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The supported Azure location where the key vault should be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault#VaultsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags that will be assigned to the key vault."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#VaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the vault",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#VaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.keyvault#Sku",
+          "traits": {
+            "smithy.api#documentation": "SKU details",
+            "smithy.api#required": {}
+          }
+        },
+        "accessPolicies": {
+          "target": "com.azure.keyvault#VaultPropertiesInputAccessPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required."
+          }
+        },
+        "vaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the vault for performing operations on keys and secrets."
+          }
+        },
+        "enabledForDeployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+          }
+        },
+        "enabledForDiskEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys."
+          }
+        },
+        "enabledForTemplateDeployment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+          }
+        },
+        "enableSoftDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether the 'soft delete' functionality is enabled for this key vault. If it's not set to any value(true or false) when creating new key vault, it will be set to true by default. Once set to true, it cannot be reverted to false."
+          }
+        },
+        "softDeleteRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "softDelete data retention days. It accepts >=7 and <=90."
+          }
+        },
+        "enableRbacAuthorization": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be  ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the vault is created with the default value of false. Note that management actions are always authorized with RBAC."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.keyvault#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "The vault's create mode to indicate whether the vault need to be recovered or not."
+          }
+        },
+        "enablePurgeProtection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value."
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.keyvault#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "Rules governing the accessibility of the key vault from specific network locations."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.keyvault#VaultProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state of the vault."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the vault"
+      }
+    },
+    "com.azure.keyvault#VaultPropertiesInputAccessPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#AccessPolicyEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required."
+      }
+    },
+    "com.azure.keyvault#VaultsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the key vault."
       }
     },
     "com.azure.keyvault#VaultsGet": {
@@ -5237,16 +5771,120 @@
             "smithy.api#documentation": "Name of the private endpoint connection associated with the managed hsm pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.keyvault#ManagedHsmSku",
+          "traits": {
+            "smithy.api#documentation": "SKU details"
+          }
+        },
+        "identity": {
+          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsPutRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Modified whenever there is a change in the state of private endpoint connection."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault#MHSMPrivateEndpointConnectionsPutRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#MHSMPrivateEndpointConnectionsPutRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.keyvault#MHSMPrivateEndpointConnectionsPutRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.keyvault#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.keyvault#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.keyvault#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.keyvault#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.keyvault#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.keyvault#MHSMPrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.keyvault#MHSMPrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the private endpoint object."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.keyvault#MHSMPrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the private link connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection resource."
+      }
+    },
+    "com.azure.keyvault#MHSMPrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Private endpoint object properties."
       }
     },
     "com.azure.keyvault#MHSMPrivateEndpointConnectionsGet": {
@@ -6221,16 +6859,159 @@
             "smithy.api#documentation": "The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The tags that will be assigned to the key."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault#ManagedHsmKeyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the key to be created.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#ManagedHsmKeyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.keyvault#ManagedHsmKeyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the key."
+          }
+        },
+        "kty": {
+          "target": "com.azure.keyvault#JsonWebKeyType",
+          "traits": {
+            "smithy.api#documentation": "The type of the key. For valid values, see JsonWebKeyType."
+          }
+        },
+        "keyOps": {
+          "target": "com.azure.keyvault#ManagedHsmKeyPropertiesInputKeyOpsList"
+        },
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096."
+          }
+        },
+        "curveName": {
+          "target": "com.azure.keyvault#JsonWebKeyCurveName",
+          "traits": {
+            "smithy.api#documentation": "The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256"
+          }
+        },
+        "rotationPolicy": {
+          "target": "com.azure.keyvault#ManagedHsmRotationPolicyInput",
+          "traits": {
+            "smithy.api#documentation": "Key rotation policy in response. It will be used for both output and input. Omitted if empty"
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault#ManagedHsmKeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "Key release policy in response. It will be used for both output and input. Omitted if empty"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the key."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmRotationPolicyInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.keyvault#ManagedHsmKeyRotationPolicyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of key rotation policy."
+          }
+        },
+        "lifetimeActions": {
+          "target": "com.azure.keyvault#ManagedHsmRotationPolicyInputLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "The lifetimeActions for key rotation action."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#ManagedHsmRotationPolicyInputLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#ManagedHsmLifetimeAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The lifetimeActions for key rotation action."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmKeyRotationPolicyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#ManagedHsmKeyPropertiesInputKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#JsonWebKeyOperation"
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault#ManagedHsmKeyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether or not the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in seconds since 1970-01-01T00:00:00Z."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in seconds since 1970-01-01T00:00:00Z."
+          }
+        },
+        "exportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the private key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object attributes managed by the Azure Key Vault service."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmKeysCreateIfNotExistRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the key."
       }
     },
     "com.azure.keyvault#ManagedHsmKeysGet": {
@@ -6989,16 +7770,188 @@
             "smithy.api#documentation": "The name of the managed HSM Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.keyvault#ManagedHsmPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the managed HSM"
+          }
+        },
+        "sku": {
+          "target": "com.azure.keyvault#ManagedHsmSku",
+          "traits": {
+            "smithy.api#documentation": "SKU details"
+          }
+        },
+        "identity": {
+          "target": "com.azure.keyvault#ManagedHsmsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault#ManagedHsmsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#ManagedHsmsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.keyvault#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.keyvault#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.keyvault#ManagedHsmPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool."
+          }
+        },
+        "initialAdminObjectIds": {
+          "target": "com.azure.keyvault#ManagedHsmPropertiesInputInitialAdminObjectIdsList",
+          "traits": {
+            "smithy.api#documentation": "Array of initial administrators object ids for this managed hsm pool."
+          }
+        },
+        "enableSoftDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable."
+          }
+        },
+        "softDeleteRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90."
+          }
+        },
+        "enablePurgeProtection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.keyvault#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "The create mode to indicate whether the resource is being created or is being recovered from a deleted resource."
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.keyvault#MHSMNetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "Rules governing the accessibility of the key vault from specific network locations."
+          }
+        },
+        "regions": {
+          "target": "com.azure.keyvault#ManagedHsmPropertiesInputRegionsList",
+          "traits": {
+            "smithy.api#documentation": "List of all regions associated with the managed hsm pool."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.keyvault#ManagedHsmPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission to the managed HSM from public networks."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the managed HSM Pool"
+      }
+    },
+    "com.azure.keyvault#ManagedHsmPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission to the managed HSM from public networks."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmPropertiesInputRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault#MHSMGeoReplicatedRegionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of all regions associated with the managed hsm pool."
+      }
+    },
+    "com.azure.keyvault#MHSMGeoReplicatedRegionInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the geo replicated region."
+          }
+        },
+        "isPrimary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates whether the region is the primary region or a secondary region."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A region that this managed HSM Pool has been extended to."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmPropertiesInputInitialAdminObjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of initial administrators object ids for this managed hsm pool."
       }
     },
     "com.azure.keyvault#ManagedHsmsCreateOrUpdate": {
@@ -7150,16 +8103,68 @@
             "smithy.api#documentation": "The name of the managed HSM Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.keyvault#ManagedHsmPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the managed HSM"
+          }
+        },
+        "sku": {
+          "target": "com.azure.keyvault#ManagedHsmSku",
+          "traits": {
+            "smithy.api#documentation": "SKU details"
+          }
+        },
+        "identity": {
+          "target": "com.azure.keyvault#ManagedHsmsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault#ManagedHsmsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#ManagedHsmsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.keyvault#ManagedHsmsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.keyvault#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.keyvault#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
     "com.azure.keyvault#ManagedHsmsGet": {
@@ -8257,16 +9262,37 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The vault name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.keyvault#VaultsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.KeyVault/vaults",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault#VaultsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KEYVAULT_VAULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/vaults"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.KeyVault/vaults"
       }
     },
     "com.azure.keyvault#ManagedHsmsCheckMhsmNameAvailability": {
@@ -8325,10 +9351,10 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The managed hsm name.",
             "smithy.api#required": {}
           }
         }

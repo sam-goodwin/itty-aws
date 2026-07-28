@@ -57,7 +57,24 @@ export type PagesTestsCreateRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreatePageTestRequest {
@@ -88,8 +105,7 @@ export const CreatePageTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PagesTestsCreateResponseDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesTestsCreateResponseDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -97,7 +113,8 @@ export type PagesTestsCreateResponseDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
-  | (string & {});
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
 export const PagesTestsCreateResponseDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -123,8 +140,7 @@ export const PagesTestsCreateResponseDesktopReportError =
 export type PagesTestsCreateResponseDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsCreateResponseDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -177,7 +193,24 @@ export type PagesTestsCreateResponseRegionValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsCreateResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsCreateResponseRegion {
@@ -194,10 +227,7 @@ export const PagesTestsCreateResponseRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsCreateResponseRegion",
 }) as any as S.Schema<PagesTestsCreateResponseRegion>;
 
-export type PagesTestsCreateResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -208,7 +238,7 @@ export interface CreatePageTestResponse {
   /** The Lighthouse report. */
   desktopReport?: PagesTestsCreateResponseDesktopReport;
   /** The Lighthouse report. */
-  mobileReport?: unknown;
+  mobileReport?: PagesTestsCreateResponseDesktopReport;
   /** A test region with a label. */
   region?: PagesTestsCreateResponseRegion;
   /** The frequency of the test. */
@@ -221,7 +251,7 @@ export const CreatePageTestResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     date: S.optional(S.String),
     desktopReport: S.optional(PagesTestsCreateResponseDesktopReport),
-    mobileReport: S.optional(S.Unknown),
+    mobileReport: S.optional(PagesTestsCreateResponseDesktopReport),
     region: S.optional(PagesTestsCreateResponseRegion),
     scheduleFrequency: S.optional(PagesTestsCreateResponseScheduleFrequency),
     url: S.optional(S.String),
@@ -230,14 +260,31 @@ export const CreatePageTestResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePageTestResponse",
 }) as any as S.Schema<CreatePageTestResponse>;
 
-export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY" | (string & {});
+export type ScheduleCreateRequestFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleCreateRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreateScheduleRequest {
@@ -269,17 +316,31 @@ export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScheduleRequest",
 }) as any as S.Schema<CreateScheduleRequest>;
 
-export type ScheduleCreateResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type ScheduleCreateResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleCreateResponseScheduleRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleCreateResponseScheduleRegion = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseSchedule {
@@ -302,8 +363,7 @@ export const ScheduleCreateResponseSchedule = /*@__PURE__*/ S.suspend(() =>
 
 export type ScheduleCreateResponseTestDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const ScheduleCreateResponseTestDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -311,7 +371,8 @@ export type ScheduleCreateResponseTestDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
-  | (string & {});
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
 export const ScheduleCreateResponseTestDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -337,8 +398,7 @@ export const ScheduleCreateResponseTestDesktopReportError =
 export type ScheduleCreateResponseTestDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ScheduleCreateResponseTestDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -391,7 +451,24 @@ export type ScheduleCreateResponseTestRegionValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleCreateResponseTestRegionValue = /*@__PURE__*/ S.String;
 
 export interface ScheduleCreateResponseTestRegion {
@@ -408,10 +485,7 @@ export const ScheduleCreateResponseTestRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduleCreateResponseTestRegion",
 }) as any as S.Schema<ScheduleCreateResponseTestRegion>;
 
-export type ScheduleCreateResponseTestScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type ScheduleCreateResponseTestScheduleFrequency = "DAILY" | "WEEKLY";
 export const ScheduleCreateResponseTestScheduleFrequency =
   /*@__PURE__*/ S.String;
 
@@ -422,7 +496,7 @@ export interface ScheduleCreateResponseTest {
   /** The Lighthouse report. */
   desktopReport?: ScheduleCreateResponseTestDesktopReport;
   /** The Lighthouse report. */
-  mobileReport?: unknown;
+  mobileReport?: ScheduleCreateResponseTestDesktopReport;
   /** A test region with a label. */
   region?: ScheduleCreateResponseTestRegion;
   /** The frequency of the test. */
@@ -435,7 +509,7 @@ export const ScheduleCreateResponseTest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     date: S.optional(S.String),
     desktopReport: S.optional(ScheduleCreateResponseTestDesktopReport),
-    mobileReport: S.optional(S.Unknown),
+    mobileReport: S.optional(ScheduleCreateResponseTestDesktopReport),
     region: S.optional(ScheduleCreateResponseTestRegion),
     scheduleFrequency: S.optional(ScheduleCreateResponseTestScheduleFrequency),
     url: S.optional(S.String),
@@ -463,7 +537,24 @@ export type PagesTestsDeleteRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsDeleteRequestRegion = /*@__PURE__*/ S.String;
 
 export interface DeletePageTestRequest {
@@ -509,7 +600,24 @@ export type ScheduleDeleteRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleDeleteRequestRegion = /*@__PURE__*/ S.String;
 
 export interface DeleteScheduleRequest {
@@ -576,10 +684,7 @@ export const GetPageTestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPageTestRequest",
 }) as any as S.Schema<GetPageTestRequest>;
 
-export type PagesTestsGetResponseDesktopReportDeviceType =
-  | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+export type PagesTestsGetResponseDesktopReportDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTestsGetResponseDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -587,7 +692,8 @@ export type PagesTestsGetResponseDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
-  | (string & {});
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
 export const PagesTestsGetResponseDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -613,8 +719,7 @@ export const PagesTestsGetResponseDesktopReportError = /*@__PURE__*/ S.suspend(
 export type PagesTestsGetResponseDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsGetResponseDesktopReportState = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseDesktopReport {
@@ -665,7 +770,24 @@ export type PagesTestsGetResponseRegionValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsGetResponseRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsGetResponseRegion {
@@ -682,10 +804,7 @@ export const PagesTestsGetResponseRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsGetResponseRegion",
 }) as any as S.Schema<PagesTestsGetResponseRegion>;
 
-export type PagesTestsGetResponseScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsGetResponseScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsGetResponseScheduleFrequency = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -696,7 +815,7 @@ export interface GetPageTestResponse {
   /** The Lighthouse report. */
   desktopReport?: PagesTestsGetResponseDesktopReport;
   /** The Lighthouse report. */
-  mobileReport?: unknown;
+  mobileReport?: PagesTestsGetResponseDesktopReport;
   /** A test region with a label. */
   region?: PagesTestsGetResponseRegion;
   /** The frequency of the test. */
@@ -709,7 +828,7 @@ export const GetPageTestResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     date: S.optional(S.String),
     desktopReport: S.optional(PagesTestsGetResponseDesktopReport),
-    mobileReport: S.optional(S.Unknown),
+    mobileReport: S.optional(PagesTestsGetResponseDesktopReport),
     region: S.optional(PagesTestsGetResponseRegion),
     scheduleFrequency: S.optional(PagesTestsGetResponseScheduleFrequency),
     url: S.optional(S.String),
@@ -722,7 +841,24 @@ export type ScheduleGetRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleGetRequestRegion = /*@__PURE__*/ S.String;
 
 export interface GetScheduleRequest {
@@ -751,14 +887,31 @@ export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScheduleRequest",
 }) as any as S.Schema<GetScheduleRequest>;
 
-export type ScheduleGetResponseFrequency = "DAILY" | "WEEKLY" | (string & {});
+export type ScheduleGetResponseFrequency = "DAILY" | "WEEKLY";
 export const ScheduleGetResponseFrequency = /*@__PURE__*/ S.String;
 
 export type ScheduleGetResponseRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const ScheduleGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -894,7 +1047,24 @@ export type AvailabilitiesListResponseRegionsItemValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const AvailabilitiesListResponseRegionsItemValue =
   /*@__PURE__*/ S.String;
 
@@ -914,130 +1084,94 @@ export const AvailabilitiesListResponseRegionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AvailabilitiesListResponseRegionsItem>;
 
 export type AvailabilitiesListResponseRegionsList =
-  AvailabilitiesListResponseRegionsItem[];
+  ReadonlyArray<AvailabilitiesListResponseRegionsItem>;
 export const AvailabilitiesListResponseRegionsList = /*@__PURE__*/ S.Array(
   AvailabilitiesListResponseRegionsItem,
 ) as any as S.Schema<AvailabilitiesListResponseRegionsList>;
 
-export type AvailabilitiesListResponseRegionsPerPlanBusinessItemValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | (string & {});
-export const AvailabilitiesListResponseRegionsPerPlanBusinessItemValue =
-  /*@__PURE__*/ S.String;
-
 export interface AvailabilitiesListResponseRegionsPerPlanBusinessItem {
   label?: string;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsPerPlanBusinessItemValue;
+  value?: string;
 }
 export const AvailabilitiesListResponseRegionsPerPlanBusinessItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       label: S.optional(S.String),
-      value: S.optional(
-        AvailabilitiesListResponseRegionsPerPlanBusinessItemValue,
-      ),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanBusinessItem",
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanBusinessList =
-  AvailabilitiesListResponseRegionsPerPlanBusinessItem[];
+  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanBusinessItem>;
 export const AvailabilitiesListResponseRegionsPerPlanBusinessList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanBusinessItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanBusinessList>;
 
-export type AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | (string & {});
-export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue =
-  /*@__PURE__*/ S.String;
-
 export interface AvailabilitiesListResponseRegionsPerPlanEnterpriseItem {
   label?: string;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue;
+  value?: string;
 }
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       label: S.optional(S.String),
-      value: S.optional(
-        AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue,
-      ),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanEnterpriseItem",
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
-  AvailabilitiesListResponseRegionsPerPlanEnterpriseItem[];
+  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanEnterpriseItem>;
 export const AvailabilitiesListResponseRegionsPerPlanEnterpriseList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanEnterpriseItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanEnterpriseList>;
 
-export type AvailabilitiesListResponseRegionsPerPlanFreeItemValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | (string & {});
-export const AvailabilitiesListResponseRegionsPerPlanFreeItemValue =
-  /*@__PURE__*/ S.String;
-
 export interface AvailabilitiesListResponseRegionsPerPlanFreeItem {
   label?: string;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsPerPlanFreeItemValue;
+  value?: string;
 }
 export const AvailabilitiesListResponseRegionsPerPlanFreeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       label: S.optional(S.String),
-      value: S.optional(AvailabilitiesListResponseRegionsPerPlanFreeItemValue),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanFreeItem",
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanFreeList =
-  AvailabilitiesListResponseRegionsPerPlanFreeItem[];
+  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanFreeItem>;
 export const AvailabilitiesListResponseRegionsPerPlanFreeList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanFreeItem,
   ) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanFreeList>;
 
-export type AvailabilitiesListResponseRegionsPerPlanProItemValue =
-  | "asia-east1"
-  | "asia-northeast1"
-  | "asia-northeast2"
-  | (string & {});
-export const AvailabilitiesListResponseRegionsPerPlanProItemValue =
-  /*@__PURE__*/ S.String;
-
 export interface AvailabilitiesListResponseRegionsPerPlanProItem {
   label?: string;
   /** A test region. */
-  value?: AvailabilitiesListResponseRegionsPerPlanProItemValue;
+  value?: string;
 }
 export const AvailabilitiesListResponseRegionsPerPlanProItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       label: S.optional(S.String),
-      value: S.optional(AvailabilitiesListResponseRegionsPerPlanProItemValue),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AvailabilitiesListResponseRegionsPerPlanProItem",
   }) as any as S.Schema<AvailabilitiesListResponseRegionsPerPlanProItem>;
 
 export type AvailabilitiesListResponseRegionsPerPlanProList =
-  AvailabilitiesListResponseRegionsPerPlanProItem[];
+  ReadonlyArray<AvailabilitiesListResponseRegionsPerPlanProItem>;
 export const AvailabilitiesListResponseRegionsPerPlanProList =
   /*@__PURE__*/ S.Array(
     AvailabilitiesListResponseRegionsPerPlanProItem,
@@ -1106,7 +1240,24 @@ export type PagesListResultItemRegionValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesListResultItemRegion {
@@ -1123,16 +1274,12 @@ export const PagesListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItemRegion",
 }) as any as S.Schema<PagesListResultItemRegion>;
 
-export type PagesListResultItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
 
 export type PagesListResultItemTestsItemDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesListResultItemTestsItemDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -1140,7 +1287,8 @@ export type PagesListResultItemTestsItemDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
-  | (string & {});
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
 export const PagesListResultItemTestsItemDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1166,8 +1314,7 @@ export const PagesListResultItemTestsItemDesktopReportError =
 export type PagesListResultItemTestsItemDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesListResultItemTestsItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -1218,10 +1365,7 @@ export const PagesListResultItemTestsItemDesktopReport =
     identifier: "PagesListResultItemTestsItemDesktopReport",
   }) as any as S.Schema<PagesListResultItemTestsItemDesktopReport>;
 
-export type PagesListResultItemTestsItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesListResultItemTestsItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesListResultItemTestsItemScheduleFrequency =
   /*@__PURE__*/ S.String;
 
@@ -1232,9 +1376,9 @@ export interface PagesListResultItemTestsItem {
   /** The Lighthouse report. */
   desktopReport?: PagesListResultItemTestsItemDesktopReport;
   /** The Lighthouse report. */
-  mobileReport?: unknown;
+  mobileReport?: PagesListResultItemTestsItemDesktopReport;
   /** A test region with a label. */
-  region?: unknown;
+  region?: PagesListResultItemRegion;
   /** The frequency of the test. */
   scheduleFrequency?: PagesListResultItemTestsItemScheduleFrequency;
   /** A URL. */
@@ -1245,8 +1389,8 @@ export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     date: S.optional(S.String),
     desktopReport: S.optional(PagesListResultItemTestsItemDesktopReport),
-    mobileReport: S.optional(S.Unknown),
-    region: S.optional(S.Unknown),
+    mobileReport: S.optional(PagesListResultItemTestsItemDesktopReport),
+    region: S.optional(PagesListResultItemRegion),
     scheduleFrequency: S.optional(
       PagesListResultItemTestsItemScheduleFrequency,
     ),
@@ -1256,7 +1400,8 @@ export const PagesListResultItemTestsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItemTestsItem",
 }) as any as S.Schema<PagesListResultItemTestsItem>;
 
-export type PagesListResultItemTestsList = PagesListResultItemTestsItem[];
+export type PagesListResultItemTestsList =
+  ReadonlyArray<PagesListResultItemTestsItem>;
 export const PagesListResultItemTestsList = /*@__PURE__*/ S.Array(
   PagesListResultItemTestsItem,
 ) as any as S.Schema<PagesListResultItemTestsList>;
@@ -1281,7 +1426,7 @@ export const PagesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesListResultItem",
 }) as any as S.Schema<PagesListResultItem>;
 
-export type PagesListResultList = PagesListResultItem[];
+export type PagesListResultList = ReadonlyArray<PagesListResultItem>;
 export const PagesListResultList = /*@__PURE__*/ S.Array(
   PagesListResultItem,
 ) as any as S.Schema<PagesListResultList>;
@@ -1305,7 +1450,24 @@ export type PagesTestsListRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsListRequestRegion = /*@__PURE__*/ S.String;
 
 export interface ListPageTestsRequest {
@@ -1340,8 +1502,7 @@ export const ListPageTestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PagesTestsListResultItemDesktopReportDeviceType =
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const PagesTestsListResultItemDesktopReportDeviceType =
   /*@__PURE__*/ S.String;
 
@@ -1349,7 +1510,8 @@ export type PagesTestsListResultItemDesktopReportErrorCode =
   | "NOT_REACHABLE"
   | "DNS_FAILURE"
   | "NOT_HTML"
-  | (string & {});
+  | "LIGHTHOUSE_TIMEOUT"
+  | "UNKNOWN";
 export const PagesTestsListResultItemDesktopReportErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1375,8 +1537,7 @@ export const PagesTestsListResultItemDesktopReportError =
 export type PagesTestsListResultItemDesktopReportState =
   | "RUNNING"
   | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PagesTestsListResultItemDesktopReportState =
   /*@__PURE__*/ S.String;
 
@@ -1429,7 +1590,24 @@ export type PagesTestsListResultItemRegionValue =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTestsListResultItemRegionValue = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItemRegion {
@@ -1446,10 +1624,7 @@ export const PagesTestsListResultItemRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsListResultItemRegion",
 }) as any as S.Schema<PagesTestsListResultItemRegion>;
 
-export type PagesTestsListResultItemScheduleFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | (string & {});
+export type PagesTestsListResultItemScheduleFrequency = "DAILY" | "WEEKLY";
 export const PagesTestsListResultItemScheduleFrequency = /*@__PURE__*/ S.String;
 
 export interface PagesTestsListResultItem {
@@ -1459,7 +1634,7 @@ export interface PagesTestsListResultItem {
   /** The Lighthouse report. */
   desktopReport?: PagesTestsListResultItemDesktopReport;
   /** The Lighthouse report. */
-  mobileReport?: unknown;
+  mobileReport?: PagesTestsListResultItemDesktopReport;
   /** A test region with a label. */
   region?: PagesTestsListResultItemRegion;
   /** The frequency of the test. */
@@ -1472,7 +1647,7 @@ export const PagesTestsListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     date: S.optional(S.String),
     desktopReport: S.optional(PagesTestsListResultItemDesktopReport),
-    mobileReport: S.optional(S.Unknown),
+    mobileReport: S.optional(PagesTestsListResultItemDesktopReport),
     region: S.optional(PagesTestsListResultItemRegion),
     scheduleFrequency: S.optional(PagesTestsListResultItemScheduleFrequency),
     url: S.optional(S.String),
@@ -1481,7 +1656,7 @@ export const PagesTestsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagesTestsListResultItem",
 }) as any as S.Schema<PagesTestsListResultItem>;
 
-export type PagesTestsListResultList = PagesTestsListResultItem[];
+export type PagesTestsListResultList = ReadonlyArray<PagesTestsListResultItem>;
 export const PagesTestsListResultList = /*@__PURE__*/ S.Array(
   PagesTestsListResultItem,
 ) as any as S.Schema<PagesTestsListResultList>;
@@ -1501,14 +1676,31 @@ export const ListPageTestsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPageTestsResponse",
 }) as any as S.Schema<ListPageTestsResponse>;
 
-export type PagesTrendRequestDeviceType = "DESKTOP" | "MOBILE" | (string & {});
+export type PagesTrendRequestDeviceType = "DESKTOP" | "MOBILE";
 export const PagesTrendRequestDeviceType = /*@__PURE__*/ S.String;
 
 export type PagesTrendRequestRegion =
   | "asia-east1"
   | "asia-northeast1"
   | "asia-northeast2"
-  | (string & {});
+  | "asia-south1"
+  | "asia-southeast1"
+  | "australia-southeast1"
+  | "europe-north1"
+  | "europe-southwest1"
+  | "europe-west1"
+  | "europe-west2"
+  | "europe-west3"
+  | "europe-west4"
+  | "europe-west8"
+  | "europe-west9"
+  | "me-west1"
+  | "southamerica-east1"
+  | "us-central1"
+  | "us-east1"
+  | "us-east4"
+  | "us-south1"
+  | "us-west1";
 export const PagesTrendRequestRegion = /*@__PURE__*/ S.String;
 
 export interface TrendPageRequest {
@@ -1550,42 +1742,42 @@ export const TrendPageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendPageRequest",
 }) as any as S.Schema<TrendPageRequest>;
 
-export type PagesTrendResponseClsList = number[];
+export type PagesTrendResponseClsList = ReadonlyArray<number>;
 export const PagesTrendResponseClsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseClsList>;
 
-export type PagesTrendResponseFcpList = number[];
+export type PagesTrendResponseFcpList = ReadonlyArray<number>;
 export const PagesTrendResponseFcpList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseFcpList>;
 
-export type PagesTrendResponseLcpList = number[];
+export type PagesTrendResponseLcpList = ReadonlyArray<number>;
 export const PagesTrendResponseLcpList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseLcpList>;
 
-export type PagesTrendResponsePerformanceScoreList = number[];
+export type PagesTrendResponsePerformanceScoreList = ReadonlyArray<number>;
 export const PagesTrendResponsePerformanceScoreList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponsePerformanceScoreList>;
 
-export type PagesTrendResponseSiList = number[];
+export type PagesTrendResponseSiList = ReadonlyArray<number>;
 export const PagesTrendResponseSiList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseSiList>;
 
-export type PagesTrendResponseTbtList = number[];
+export type PagesTrendResponseTbtList = ReadonlyArray<number>;
 export const PagesTrendResponseTbtList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTbtList>;
 
-export type PagesTrendResponseTtfbList = number[];
+export type PagesTrendResponseTtfbList = ReadonlyArray<number>;
 export const PagesTrendResponseTtfbList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTtfbList>;
 
-export type PagesTrendResponseTtiList = number[];
+export type PagesTrendResponseTtiList = ReadonlyArray<number>;
 export const PagesTrendResponseTtiList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PagesTrendResponseTtiList>;

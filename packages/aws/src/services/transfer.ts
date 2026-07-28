@@ -139,12 +139,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export type HomeDirectory = string;
-export type HomeDirectoryType = "PATH" | "LOGICAL" | (string & {});
+export type HomeDirectoryType = "PATH" | "LOGICAL";
 export const HomeDirectoryType = /*@__PURE__*/ S.String;
 
 export type MapEntry = string;
 export type MapTarget = string;
-export type MapType = "FILE" | "DIRECTORY" | (string & {});
+export type MapType = "FILE" | "DIRECTORY";
 export const MapType = /*@__PURE__*/ S.String;
 
 export interface HomeDirectoryMapEntry {
@@ -217,7 +217,7 @@ export const CreateAccessResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessResponse>;
 export type Description = string;
 export type ProfileId = string;
-export type AgreementStatusType = "ACTIVE" | "INACTIVE" | (string & {});
+export type AgreementStatusType = "ACTIVE" | "INACTIVE";
 export const AgreementStatusType = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -231,10 +231,10 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
-export type PreserveFilenameType = "ENABLED" | "DISABLED" | (string & {});
+export type PreserveFilenameType = "ENABLED" | "DISABLED";
 export const PreserveFilenameType = /*@__PURE__*/ S.String;
 
-export type EnforceMessageSigningType = "ENABLED" | "DISABLED" | (string & {});
+export type EnforceMessageSigningType = "ENABLED" | "DISABLED";
 export const EnforceMessageSigningType = /*@__PURE__*/ S.String;
 
 export interface CustomDirectoriesType {
@@ -298,7 +298,7 @@ export const CreateAgreementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgreementResponse>;
 export type Url = string;
 export type MessageSubject = string | redacted.Redacted<string>;
-export type CompressionEnum = "ZLIB" | "DISABLED" | (string & {});
+export type CompressionEnum = "ZLIB" | "DISABLED";
 export const CompressionEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionAlg =
@@ -306,17 +306,10 @@ export type EncryptionAlg =
   | "AES192_CBC"
   | "AES256_CBC"
   | "DES_EDE3_CBC"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const EncryptionAlg = /*@__PURE__*/ S.String;
 
-export type SigningAlg =
-  | "SHA256"
-  | "SHA384"
-  | "SHA512"
-  | "SHA1"
-  | "NONE"
-  | (string & {});
+export type SigningAlg = "SHA256" | "SHA384" | "SHA512" | "SHA1" | "NONE";
 export const SigningAlg = /*@__PURE__*/ S.String;
 
 export type MdnSigningAlg =
@@ -325,15 +318,14 @@ export type MdnSigningAlg =
   | "SHA512"
   | "SHA1"
   | "NONE"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const MdnSigningAlg = /*@__PURE__*/ S.String;
 
-export type MdnResponse = "SYNC" | "NONE" | "ASYNC" | (string & {});
+export type MdnResponse = "SYNC" | "NONE" | "ASYNC";
 export const MdnResponse = /*@__PURE__*/ S.String;
 
 export type As2ConnectorSecretId = string;
-export type PreserveContentType = "ENABLED" | "DISABLED" | (string & {});
+export type PreserveContentType = "ENABLED" | "DISABLED";
 export const PreserveContentType = /*@__PURE__*/ S.String;
 
 export type As2AsyncMdnServerIds = string[];
@@ -420,7 +412,7 @@ export type ConnectorEgressConfig = {
 export const ConnectorEgressConfig = /*@__PURE__*/ S.Union([
   S.Struct({ VpcLattice: ConnectorVpcLatticeEgressConfig }),
 ]);
-export type ConnectorsIpAddressType = "IPV4" | "DUALSTACK" | (string & {});
+export type ConnectorsIpAddressType = "IPV4" | "DUALSTACK";
 export const ConnectorsIpAddressType = /*@__PURE__*/ S.String;
 
 export interface CreateConnectorRequest {
@@ -461,7 +453,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
 export type As2Id = string;
-export type ProfileType = "LOCAL" | "PARTNER" | (string & {});
+export type ProfileType = "LOCAL" | "PARTNER";
 export const ProfileType = /*@__PURE__*/ S.String;
 
 export type CertificateId = string;
@@ -494,7 +486,7 @@ export const CreateProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProfileResponse",
 }) as any as S.Schema<CreateProfileResponse>;
 export type Certificate = string;
-export type Domain = "S3" | "EFS" | (string & {});
+export type Domain = "S3" | "EFS";
 export const Domain = /*@__PURE__*/ S.String;
 
 export type AddressAllocationId = string;
@@ -526,7 +518,7 @@ export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EndpointDetails",
 }) as any as S.Schema<EndpointDetails>;
-export type EndpointType = "PUBLIC" | "VPC" | "VPC_ENDPOINT" | (string & {});
+export type EndpointType = "PUBLIC" | "VPC" | "VPC_ENDPOINT";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export type HostKey = string | redacted.Redacted<string>;
@@ -535,8 +527,7 @@ export type SftpAuthenticationMethods =
   | "PASSWORD"
   | "PUBLIC_KEY"
   | "PUBLIC_KEY_OR_PASSWORD"
-  | "PUBLIC_KEY_AND_PASSWORD"
-  | (string & {});
+  | "PUBLIC_KEY_AND_PASSWORD";
 export const SftpAuthenticationMethods = /*@__PURE__*/ S.String;
 
 export interface IdentityProviderDetails {
@@ -561,30 +552,25 @@ export type IdentityProviderType =
   | "SERVICE_MANAGED"
   | "API_GATEWAY"
   | "AWS_DIRECTORY_SERVICE"
-  | "AWS_LAMBDA"
-  | (string & {});
+  | "AWS_LAMBDA";
 export const IdentityProviderType = /*@__PURE__*/ S.String;
 
 export type NullableRole = string;
 export type PostAuthenticationLoginBanner = string;
 export type PreAuthenticationLoginBanner = string;
-export type Protocol = "SFTP" | "FTP" | "FTPS" | "AS2" | (string & {});
+export type Protocol = "SFTP" | "FTP" | "FTPS" | "AS2";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type Protocols = Protocol[];
 export const Protocols = /*@__PURE__*/ S.Array(Protocol);
 export type PassiveIp = string;
-export type TlsSessionResumptionMode =
-  | "DISABLED"
-  | "ENABLED"
-  | "ENFORCED"
-  | (string & {});
+export type TlsSessionResumptionMode = "DISABLED" | "ENABLED" | "ENFORCED";
 export const TlsSessionResumptionMode = /*@__PURE__*/ S.String;
 
-export type SetStatOption = "DEFAULT" | "ENABLE_NO_OP" | (string & {});
+export type SetStatOption = "DEFAULT" | "ENABLE_NO_OP";
 export const SetStatOption = /*@__PURE__*/ S.String;
 
-export type As2Transport = "HTTP" | (string & {});
+export type As2Transport = "HTTP";
 export const As2Transport = /*@__PURE__*/ S.String;
 
 export type As2Transports = As2Transport[];
@@ -634,10 +620,7 @@ export const WorkflowDetails = /*@__PURE__*/ S.suspend(() =>
 export type Arn = string;
 export type StructuredLogDestinations = string[];
 export const StructuredLogDestinations = /*@__PURE__*/ S.Array(S.String);
-export type DirectoryListingOptimization =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type DirectoryListingOptimization = "ENABLED" | "DISABLED";
 export const DirectoryListingOptimization = /*@__PURE__*/ S.String;
 
 export interface S3StorageOptions {
@@ -650,7 +633,7 @@ export const S3StorageOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3StorageOptions",
 }) as any as S.Schema<S3StorageOptions>;
-export type IpAddressType = "IPV4" | "DUALSTACK" | (string & {});
+export type IpAddressType = "IPV4" | "DUALSTACK";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export interface CreateServerRequest {
@@ -770,13 +753,10 @@ export type WebAppUnits = { Provisioned: number };
 export const WebAppUnits = /*@__PURE__*/ S.Union([
   S.Struct({ Provisioned: S.Number }),
 ]);
-export type WebAppEndpointPolicy = "FIPS" | "STANDARD" | (string & {});
+export type WebAppEndpointPolicy = "FIPS" | "STANDARD";
 export const WebAppEndpointPolicy = /*@__PURE__*/ S.String;
 
-export type WebAppVpcEndpointIpAddressType =
-  | "IPV4"
-  | "DUALSTACK"
-  | (string & {});
+export type WebAppVpcEndpointIpAddressType = "IPV4" | "DUALSTACK";
 export const WebAppVpcEndpointIpAddressType = /*@__PURE__*/ S.String;
 
 export interface WebAppVpcConfig {
@@ -838,13 +818,7 @@ export const CreateWebAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWebAppResponse",
 }) as any as S.Schema<CreateWebAppResponse>;
 export type WorkflowDescription = string;
-export type WorkflowStepType =
-  | "COPY"
-  | "CUSTOM"
-  | "TAG"
-  | "DELETE"
-  | "DECRYPT"
-  | (string & {});
+export type WorkflowStepType = "COPY" | "CUSTOM" | "TAG" | "DELETE" | "DECRYPT";
 export const WorkflowStepType = /*@__PURE__*/ S.String;
 
 export type WorkflowStepName = string;
@@ -882,7 +856,7 @@ export const InputFileLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InputFileLocation",
 }) as any as S.Schema<InputFileLocation>;
-export type OverwriteExisting = "TRUE" | "FALSE" | (string & {});
+export type OverwriteExisting = "TRUE" | "FALSE";
 export const OverwriteExisting = /*@__PURE__*/ S.String;
 
 export type SourceFileLocation = string;
@@ -955,7 +929,7 @@ export const TagStepDetails = /*@__PURE__*/ S.suspend(() =>
     SourceFileLocation: S.optional(S.String),
   }),
 ).annotate({ identifier: "TagStepDetails" }) as any as S.Schema<TagStepDetails>;
-export type EncryptionType = "PGP" | (string & {});
+export type EncryptionType = "PGP";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface DecryptStepDetails {
@@ -1345,28 +1319,17 @@ export const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCertificateRequest",
 }) as any as S.Schema<DescribeCertificateRequest>;
-export type CertificateUsageType =
-  | "SIGNING"
-  | "ENCRYPTION"
-  | "TLS"
-  | (string & {});
+export type CertificateUsageType = "SIGNING" | "ENCRYPTION" | "TLS";
 export const CertificateUsageType = /*@__PURE__*/ S.String;
 
-export type CertificateStatusType =
-  | "ACTIVE"
-  | "PENDING_ROTATION"
-  | "INACTIVE"
-  | (string & {});
+export type CertificateStatusType = "ACTIVE" | "PENDING_ROTATION" | "INACTIVE";
 export const CertificateStatusType = /*@__PURE__*/ S.String;
 
 export type CertificateBodyType = string | redacted.Redacted<string>;
 export type CertificateChainType = string | redacted.Redacted<string>;
 export type CertDate = Date;
 export type CertSerial = string;
-export type CertificateType =
-  | "CERTIFICATE"
-  | "CERTIFICATE_WITH_PRIVATE_KEY"
-  | (string & {});
+export type CertificateType = "CERTIFICATE" | "CERTIFICATE_WITH_PRIVATE_KEY";
 export const CertificateType = /*@__PURE__*/ S.String;
 
 export interface DescribedCertificate {
@@ -1445,14 +1408,11 @@ export type DescribedConnectorEgressConfig = {
 export const DescribedConnectorEgressConfig = /*@__PURE__*/ S.Union([
   S.Struct({ VpcLattice: DescribedConnectorVpcLatticeEgressConfig }),
 ]);
-export type ConnectorEgressType =
-  | "SERVICE_MANAGED"
-  | "VPC_LATTICE"
-  | (string & {});
+export type ConnectorEgressType = "SERVICE_MANAGED" | "VPC_LATTICE";
 export const ConnectorEgressType = /*@__PURE__*/ S.String;
 
 export type ConnectorErrorMessage = string;
-export type ConnectorStatus = "ACTIVE" | "ERRORED" | "PENDING" | (string & {});
+export type ConnectorStatus = "ACTIVE" | "ERRORED" | "PENDING";
 export const ConnectorStatus = /*@__PURE__*/ S.String;
 
 export interface DescribedConnector {
@@ -1579,8 +1539,7 @@ export type ExecutionStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "EXCEPTION"
-  | "HANDLING_EXCEPTION"
-  | (string & {});
+  | "HANDLING_EXCEPTION";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export type StepResultOutputsJson = string;
@@ -1592,8 +1551,7 @@ export type ExecutionErrorType =
   | "NOT_FOUND"
   | "BAD_REQUEST"
   | "TIMEOUT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const ExecutionErrorType = /*@__PURE__*/ S.String;
 
 export type ExecutionErrorMessage = string;
@@ -1762,10 +1720,10 @@ export type Fips = boolean;
 export type SecurityPolicyOption = string;
 export type SecurityPolicyOptions = string[];
 export const SecurityPolicyOptions = /*@__PURE__*/ S.Array(S.String);
-export type SecurityPolicyResourceType = "SERVER" | "CONNECTOR" | (string & {});
+export type SecurityPolicyResourceType = "SERVER" | "CONNECTOR";
 export const SecurityPolicyResourceType = /*@__PURE__*/ S.String;
 
-export type SecurityPolicyProtocol = "SFTP" | "FTPS" | (string & {});
+export type SecurityPolicyProtocol = "SFTP" | "FTPS";
 export const SecurityPolicyProtocol = /*@__PURE__*/ S.String;
 
 export type SecurityPolicyProtocols = SecurityPolicyProtocol[];
@@ -1822,8 +1780,7 @@ export type State =
   | "STARTING"
   | "STOPPING"
   | "START_FAILED"
-  | "STOP_FAILED"
-  | (string & {});
+  | "STOP_FAILED";
 export const State = /*@__PURE__*/ S.String;
 
 export type UserCount = number;
@@ -1990,7 +1947,7 @@ export const DescribedWebAppIdentityProviderDetails = /*@__PURE__*/ S.Union([
   S.Struct({ IdentityCenterConfig: DescribedIdentityCenterConfig }),
 ]);
 export type WebAppEndpoint = string;
-export type WebAppEndpointType = "PUBLIC" | "VPC" | (string & {});
+export type WebAppEndpointType = "PUBLIC" | "VPC";
 export const WebAppEndpointType = /*@__PURE__*/ S.String;
 
 export interface DescribedWebAppVpcConfig {
@@ -2492,8 +2449,7 @@ export type TransferTableStatus =
   | "QUEUED"
   | "IN_PROGRESS"
   | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const TransferTableStatus = /*@__PURE__*/ S.String;
 
 export type FailureCode = string;
@@ -2863,7 +2819,7 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWorkflowsResponse",
 }) as any as S.Schema<ListWorkflowsResponse>;
 export type CallbackToken = string;
-export type CustomStepStatus = "SUCCESS" | "FAILURE" | (string & {});
+export type CustomStepStatus = "SUCCESS" | "FAILURE";
 export const CustomStepStatus = /*@__PURE__*/ S.String;
 
 export interface SendWorkflowStepStateRequest {

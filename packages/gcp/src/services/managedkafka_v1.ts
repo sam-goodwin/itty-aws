@@ -102,7 +102,7 @@ export const AddAclEntryProjectsLocationsClustersAclsRequest =
     identifier: "AddAclEntryProjectsLocationsClustersAclsRequest",
   }) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
 
-export type AclEntryList = AclEntry[];
+export type AclEntryList = ReadonlyArray<AclEntry>;
 export const AclEntryList = /*@__PURE__*/ S.Array(
   AclEntry,
 ) as any as S.Schema<AclEntryList>;
@@ -189,8 +189,7 @@ export type CheckCompatibilityRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF"
-  | (string & {});
+  | "PROTOBUF";
 export const CheckCompatibilityRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** SchemaReference is a reference to a schema. */
@@ -212,7 +211,7 @@ export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaReference",
 }) as any as S.Schema<SchemaReference>;
 
-export type SchemaReferenceList = SchemaReference[];
+export type SchemaReferenceList = ReadonlyArray<SchemaReference>;
 export const SchemaReferenceList = /*@__PURE__*/ S.Array(
   SchemaReference,
 ) as any as S.Schema<SchemaReferenceList>;
@@ -262,7 +261,7 @@ export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityReq
       "CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest",
   }) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -331,8 +330,7 @@ export type ClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka cluster. */
@@ -346,7 +344,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = NetworkConfig[];
+export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -390,7 +388,7 @@ export const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateAuthorityServiceConfig>;
 
 export type CertificateAuthorityServiceConfigList =
-  CertificateAuthorityServiceConfig[];
+  ReadonlyArray<CertificateAuthorityServiceConfig>;
 export const CertificateAuthorityServiceConfigList = /*@__PURE__*/ S.Array(
   CertificateAuthorityServiceConfig,
 ) as any as S.Schema<CertificateAuthorityServiceConfigList>;
@@ -434,8 +432,7 @@ export const UpdateOptions = /*@__PURE__*/ S.suspend(() =>
 export type RebalanceConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "NO_REBALANCE"
-  | "AUTO_REBALANCE_ON_SCALE_UP"
-  | (string & {});
+  | "AUTO_REBALANCE_ON_SCALE_UP";
 export const RebalanceConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Defines rebalancing behavior of a Kafka cluster. */
@@ -468,7 +465,7 @@ export const BrokerDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BrokerDetails" }) as any as S.Schema<BrokerDetails>;
 
-export type BrokerDetailsList = BrokerDetails[];
+export type BrokerDetailsList = ReadonlyArray<BrokerDetails>;
 export const BrokerDetailsList = /*@__PURE__*/ S.Array(
   BrokerDetails,
 ) as any as S.Schema<BrokerDetailsList>;
@@ -557,7 +554,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -691,7 +688,7 @@ export const ConnectNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectNetworkConfig",
 }) as any as S.Schema<ConnectNetworkConfig>;
 
-export type ConnectNetworkConfigList = ConnectNetworkConfig[];
+export type ConnectNetworkConfigList = ReadonlyArray<ConnectNetworkConfig>;
 export const ConnectNetworkConfigList = /*@__PURE__*/ S.Array(
   ConnectNetworkConfig,
 ) as any as S.Schema<ConnectNetworkConfigList>;
@@ -730,8 +727,7 @@ export type ConnectClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const ConnectClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** An Apache Kafka Connect cluster deployed in a location. */
@@ -810,8 +806,7 @@ export type ConnectorStateEnum =
   | "PAUSED"
   | "FAILED"
   | "RESTARTING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const ConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Task Retry Policy is implemented on a best-effort basis. The default policy retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of 12 hours. You can disable the policy by setting the task_retry_disabled field to true. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between consecutive task restarts may not always precisely match the configured settings. This can happen when the ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for minimum and maximum backoffs are 60 seconds and 12 hours respectively. */
@@ -934,8 +929,7 @@ export type CreateVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF"
-  | (string & {});
+  | "PROTOBUF";
 export const CreateVersionRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for CreateVersion. */
@@ -1209,8 +1203,7 @@ export type SchemaConfigCompatibilityEnum =
   | "FORWARD"
   | "FORWARD_TRANSITIVE"
   | "FULL"
-  | "FULL_TRANSITIVE"
-  | (string & {});
+  | "FULL_TRANSITIVE";
 export const SchemaConfigCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** SchemaConfig represents configuration for a schema registry or a specific subject. */
@@ -1268,12 +1261,7 @@ export const DeleteProjectsLocationsSchemaRegistriesContextsModeRequest =
     identifier: "DeleteProjectsLocationsSchemaRegistriesContextsModeRequest",
   }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>;
 
-export type SchemaModeModeEnum =
-  | "NONE"
-  | "READONLY"
-  | "READWRITE"
-  | "IMPORT"
-  | (string & {});
+export type SchemaModeModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
 export const SchemaModeModeEnum = /*@__PURE__*/ S.String;
 
 /** SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE: deprecated. This was the default mode for a subject, but now the default is unset (which means use the global schema registry setting) * READONLY: The schema registry is in read-only mode. * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. * IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data importing purposes. */
@@ -1458,8 +1446,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
-  | "CLUSTER_VIEW_FULL"
-  | (string & {});
+  | "CLUSTER_VIEW_FULL";
 export const GetProjectsLocationsClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -1797,8 +1784,7 @@ export type Managedkafka_SchemaSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF"
-  | (string & {});
+  | "PROTOBUF";
 export const Managedkafka_SchemaSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Schema for a Kafka message. */
@@ -1847,8 +1833,7 @@ export type SchemaVersionSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF"
-  | (string & {});
+  | "PROTOBUF";
 export const SchemaVersionSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Version of a schema. */
@@ -2061,7 +2046,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2113,7 +2098,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2162,7 +2147,7 @@ export const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersAclsRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>;
 
-export type AclList = Acl[];
+export type AclList = ReadonlyArray<Acl>;
 export const AclList = /*@__PURE__*/ S.Array(Acl) as any as S.Schema<AclList>;
 
 /** Response for ListAcls. */
@@ -2184,8 +2169,7 @@ export const ListAclsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsClustersConsumerGroupsViewEnum =
   | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
   | "CONSUMER_GROUP_VIEW_BASIC"
-  | "CONSUMER_GROUP_VIEW_FULL"
-  | (string & {});
+  | "CONSUMER_GROUP_VIEW_FULL";
 export const ListProjectsLocationsClustersConsumerGroupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2222,7 +2206,7 @@ export const ListProjectsLocationsClustersConsumerGroupsRequest =
     identifier: "ListProjectsLocationsClustersConsumerGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
 
-export type ConsumerGroupList = ConsumerGroup[];
+export type ConsumerGroupList = ReadonlyArray<ConsumerGroup>;
 export const ConsumerGroupList = /*@__PURE__*/ S.Array(
   ConsumerGroup,
 ) as any as S.Schema<ConsumerGroupList>;
@@ -2268,7 +2252,7 @@ export const ListProjectsLocationsClustersTopicsRequest =
     identifier: "ListProjectsLocationsClustersTopicsRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>;
 
-export type TopicList = Topic[];
+export type TopicList = ReadonlyArray<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -2320,7 +2304,7 @@ export const ListProjectsLocationsConnectClustersRequest =
     identifier: "ListProjectsLocationsConnectClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>;
 
-export type ConnectClusterList = ConnectCluster[];
+export type ConnectClusterList = ReadonlyArray<ConnectCluster>;
 export const ConnectClusterList = /*@__PURE__*/ S.Array(
   ConnectCluster,
 ) as any as S.Schema<ConnectClusterList>;
@@ -2369,7 +2353,7 @@ export const ListProjectsLocationsConnectClustersConnectorsRequest =
     identifier: "ListProjectsLocationsConnectClustersConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
 
-export type ConnectorList = Connector[];
+export type ConnectorList = ReadonlyArray<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;
@@ -2421,7 +2405,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2448,8 +2432,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSchemaRegistriesViewEnum =
   | "SCHEMA_REGISTRY_VIEW_UNSPECIFIED"
   | "SCHEMA_REGISTRY_VIEW_BASIC"
-  | "SCHEMA_REGISTRY_VIEW_FULL"
-  | (string & {});
+  | "SCHEMA_REGISTRY_VIEW_FULL";
 export const ListProjectsLocationsSchemaRegistriesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2477,7 +2460,7 @@ export const ListProjectsLocationsSchemaRegistriesRequest =
     identifier: "ListProjectsLocationsSchemaRegistriesRequest",
   }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>;
 
-export type SchemaRegistryList = SchemaRegistry[];
+export type SchemaRegistryList = ReadonlyArray<SchemaRegistry>;
 export const SchemaRegistryList = /*@__PURE__*/ S.Array(
   SchemaRegistry,
 ) as any as S.Schema<SchemaRegistryList>;
@@ -2794,8 +2777,7 @@ export type LookupVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
-  | "PROTOBUF"
-  | (string & {});
+  | "PROTOBUF";
 export const LookupVersionRequestSchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request for LookupVersion. */
@@ -3221,8 +3203,7 @@ export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "FORWARD"
   | "FORWARD_TRANSITIVE"
   | "FULL"
-  | "FULL_TRANSITIVE"
-  | (string & {});
+  | "FULL_TRANSITIVE";
 export const UpdateSchemaConfigRequestCompatibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -3290,8 +3271,7 @@ export type UpdateSchemaModeRequestModeEnum =
   | "NONE"
   | "READONLY"
   | "READWRITE"
-  | "IMPORT"
-  | (string & {});
+  | "IMPORT";
 export const UpdateSchemaModeRequestModeEnum = /*@__PURE__*/ S.String;
 
 /** Request for updating schema registry or subject mode. */

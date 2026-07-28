@@ -670,16 +670,36 @@
             "smithy.api#documentation": "Vault setting name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#VaultSettingCreationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Vault setting creation input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#VaultSettingCreationInputProperties": {
+      "type": "structure",
+      "members": {
+        "migrationSolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The migration solution Id."
+          }
+        },
+        "vmwareToAzureProviderType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "VMware to Azure provider type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input to create vault setting."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationVaultSettingGet": {
@@ -2779,16 +2799,88 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanUnplannedFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The recovery plan unplanned failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanUnplannedFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "com.azure.recoveryservicessiterecovery#PossibleOperationsDirections",
+          "traits": {
+            "smithy.api#documentation": "The failover direction.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceSiteOperations": {
+          "target": "com.azure.recoveryservicessiterecovery#SourceSiteOperations",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether source site operations are required.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The provider specific properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan unplanned failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificFailoverInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The provider specific properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificFailoverInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan provider specific failover input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SourceSiteOperations": {
+      "type": "enum",
+      "members": {
+        "REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Required"
+          }
+        },
+        "NOTREQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotRequired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A value indicating whether source site operations are required."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansTestFailoverCleanup": {
@@ -2889,16 +2981,30 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverCleanupInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The recovery plan test failover cleanup input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverCleanupInputProperties": {
+      "type": "structure",
+      "members": {
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test failover cleanup comments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan test failover cleanup input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansTestFailover": {
@@ -2999,16 +3105,59 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The recovery plan test failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "com.azure.recoveryservicessiterecovery#PossibleOperationsDirections",
+          "traits": {
+            "smithy.api#documentation": "The failover direction.",
+            "smithy.api#required": {}
+          }
+        },
+        "networkType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network type to be used for test failover.",
+            "smithy.api#required": {}
+          }
+        },
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the network to be used for test failover."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The provider specific properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan test failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificFailoverInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The provider specific properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansReprotect": {
@@ -3212,16 +3361,46 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanPlannedFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The recovery plan planned failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanPlannedFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "com.azure.recoveryservicessiterecovery#PossibleOperationsDirections",
+          "traits": {
+            "smithy.api#documentation": "The failover direction.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The provider specific properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan planned failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificFailoverInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The provider specific properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansFailoverCommit": {
@@ -3587,16 +3766,38 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateRecoveryPlanInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Recovery plan update properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateRecoveryPlanInputProperties": {
+      "type": "structure",
+      "members": {
+        "groups": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateRecoveryPlanInputPropertiesGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The recovery plan groups."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan update properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateRecoveryPlanInputPropertiesGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "The recovery plan groups."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansCreate": {
@@ -3697,16 +3898,116 @@
             "smithy.api#documentation": "Name of the recovery plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Recovery plan creation properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputProperties": {
+      "type": "structure",
+      "members": {
+        "primaryFabricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary fabric Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "recoveryFabricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recovery fabric Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "failoverDeploymentModel": {
+          "target": "com.azure.recoveryservicessiterecovery#FailoverDeploymentModel",
+          "traits": {
+            "smithy.api#documentation": "The failover deployment model."
+          }
+        },
+        "groups": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputPropertiesGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The recovery plan groups.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputPropertiesProviderSpecificInputList",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan creation properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputPropertiesProviderSpecificInputList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The provider specific input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RecoveryPlanProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the Instance type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recovery plan provider specific input base class."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateRecoveryPlanInputPropertiesGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RecoveryPlanGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "The recovery plan groups."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FailoverDeploymentModel": {
+      "type": "enum",
+      "members": {
+        "NOTAPPLICABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotApplicable"
+          }
+        },
+        "CLASSIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Classic"
+          }
+        },
+        "RESOURCEMANAGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceManager"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The failover deployment model."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryPlansGet": {
@@ -4094,16 +4395,44 @@
             "smithy.api#documentation": "Replication protection intent name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateProtectionIntentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Create protection intent input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateProtectionIntentProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateProtectionIntentProviderSpecificDetails",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderInput. For A2A provider, it will be A2ACreateProtectionIntentInput object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create protection intent input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateProtectionIntentProviderSpecificDetails": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create protection intent provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionIntentsGet": {
@@ -5814,16 +6143,44 @@
             "smithy.api#documentation": "Replication policy name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdatePolicyInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ReplicationProviderSettings."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdatePolicyInputProperties": {
+      "type": "structure",
+      "members": {
+        "replicationProviderSettings": {
+          "target": "com.azure.recoveryservicessiterecovery#PolicyProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderSettings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy update properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#PolicyProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesCreate": {
@@ -5924,16 +6281,29 @@
             "smithy.api#documentation": "Replication policy name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreatePolicyInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Policy creation properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreatePolicyInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#PolicyProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderSettings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy creation properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationPoliciesGet": {
@@ -7682,16 +8052,83 @@
             "smithy.api#documentation": "The name of the recovery services vault."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Date time to get jobs from."
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date time to get jobs upto."
+          }
+        },
+        "fabricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the fabric to search jobs under."
+          }
+        },
+        "affectedObjectTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of objects."
+          }
+        },
+        "jobStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The states of the job to be filtered can be in."
+          }
+        },
+        "jobOutputType": {
+          "target": "com.azure.recoveryservicessiterecovery#ExportJobOutputSerializationType",
+          "traits": {
+            "smithy.api#documentation": "The output type of the jobs."
+          }
+        },
+        "jobName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job Name."
+          }
+        },
+        "timezoneOffset": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timezone offset for the location of the request (in minutes)."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ExportJobOutputSerializationType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Json"
+          }
+        },
+        "XML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Xml"
+          }
+        },
+        "EXCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Excel"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The output type of the jobs."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsResume": {
@@ -7792,16 +8229,29 @@
             "smithy.api#documentation": "Job identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ResumeJobParamsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resume job properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResumeJobParamsProperties": {
+      "type": "structure",
+      "members": {
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resume job comments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resume job properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationJobsRestart": {
@@ -8418,16 +8868,53 @@
             "smithy.api#documentation": "vcenter name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateVCenterRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The update VCenter Request Properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateVCenterRequestProperties": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the vCenter."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the vCenter to be discovered."
+          }
+        },
+        "processServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The process server Id from where the update can be orchestrated."
+          }
+        },
+        "port": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port number for discovery."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CS account Id which has privileges to update the vCenter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an update vCenter request."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersCreate": {
@@ -8536,16 +9023,53 @@
             "smithy.api#documentation": "vcenter name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#AddVCenterRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of an add vCenter request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#AddVCenterRequestProperties": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the vCenter."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the vCenter to be discovered."
+          }
+        },
+        "processServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The process server Id from where the discovery is orchestrated."
+          }
+        },
+        "port": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The port number for discovery."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account Id which has privileges to discover the vCenter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an add vCenter request."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationvCentersGet": {
@@ -8907,16 +9431,29 @@
             "smithy.api#documentation": "Storage classification mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#StorageMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Storage mapping input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#StorageMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "targetStorageClassificationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the storage object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage mapping input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationStorageClassificationMappingsGet": {
@@ -9626,16 +10163,106 @@
             "smithy.api#documentation": "Recovery services provider name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#AddRecoveryServicesProviderInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of an add provider request.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#AddRecoveryServicesProviderInputProperties": {
+      "type": "structure",
+      "members": {
+        "machineName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the machine where the provider is getting added.",
+            "smithy.api#required": {}
+          }
+        },
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the machine where the provider is getting added."
+          }
+        },
+        "biosId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Bios Id of the machine."
+          }
+        },
+        "authenticationIdentityInput": {
+          "target": "com.azure.recoveryservicessiterecovery#IdentityProviderInput",
+          "traits": {
+            "smithy.api#documentation": "The identity provider input for DRA authentication.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceAccessIdentityInput": {
+          "target": "com.azure.recoveryservicessiterecovery#IdentityProviderInput",
+          "traits": {
+            "smithy.api#documentation": "The identity provider input for resource access.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataPlaneAuthenticationIdentityInput": {
+          "target": "com.azure.recoveryservicessiterecovery#IdentityProviderInput",
+          "traits": {
+            "smithy.api#documentation": "The identity provider input for data plane authentication."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an add provider request."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#IdentityProviderInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
+            "smithy.api#required": {}
+          }
+        },
+        "applicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
+            "smithy.api#required": {}
+          }
+        },
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
+            "smithy.api#required": {}
+          }
+        },
+        "audience": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The intended Audience of the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
+            "smithy.api#required": {}
+          }
+        },
+        "aadAuthority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base authority for Azure Active Directory authentication.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity provider input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationRecoveryServicesProvidersGet": {
@@ -9914,16 +10541,50 @@
             "smithy.api#documentation": "Protection container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchProtectionInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Switch protection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchProtectionInputProperties": {
+      "type": "structure",
+      "members": {
+        "replicationProtectedItemName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique replication protected item name."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchProtectionProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific switch protection input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Switch protection input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchProtectionProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the Instance type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific switch protection input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersSwitchClusterProtection": {
@@ -10032,16 +10693,50 @@
             "smithy.api#documentation": "Protection container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchClusterProtectionInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Switch cluster protection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchClusterProtectionInputProperties": {
+      "type": "structure",
+      "members": {
+        "replicationProtectionClusterName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique replication protection cluster name."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchClusterProtectionProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific switch protection input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Switch cluster protection input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchClusterProtectionProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the Instance type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific switch cluster protection input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsDelete": {
@@ -10114,16 +10809,43 @@
             "smithy.api#documentation": "Protection Container mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RemoveProtectionContainerMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Configure protection input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RemoveProtectionContainerMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProviderContainerUnmappingInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific input for unpairing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Unpairing input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProviderContainerUnmappingInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for unpairing operations."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsPurge": {
@@ -10315,16 +11037,44 @@
             "smithy.api#documentation": "Protection Container mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateProtectionContainerMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Update protection container mapping input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateProtectionContainerMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificUpdateContainerMappingInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific input for updating protection container mapping."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container pairing update input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificUpdateContainerMappingInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for update pairing operations."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsCreate": {
@@ -10441,16 +11191,56 @@
             "smithy.api#documentation": "Protection Container mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateProtectionContainerMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Configure protection input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateProtectionContainerMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "targetProtectionContainerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target unique protection container name."
+          }
+        },
+        "policyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Applicable policy."
+          }
+        },
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificContainerMappingInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific input for pairing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configure pairing input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificContainerMappingInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for pairing operations."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainerMappingsGet": {
@@ -10747,16 +11537,57 @@
             "smithy.api#documentation": "Replication protection cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ClusterUnplannedFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Unplanned failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ClusterUnplannedFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Failover direction."
+          }
+        },
+        "sourceSiteOperations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source site operations status."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ClusterUnplannedFailoverProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for unplanned failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ClusterUnplannedFailoverProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific unplanned cluster failover input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersTestFailoverCleanup": {
@@ -10867,16 +11698,30 @@
             "smithy.api#documentation": "Replication protection cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ClusterTestFailoverCleanupInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test failover cleanup input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ClusterTestFailoverCleanupInputProperties": {
+      "type": "structure",
+      "members": {
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Test failover cleanup comments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for test failover cleanup input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersTestFailover": {
@@ -10987,16 +11832,83 @@
             "smithy.api#documentation": "Replication protection cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ClusterTestFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ClusterTestFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "com.azure.recoveryservicessiterecovery#FailoverDirection",
+          "traits": {
+            "smithy.api#documentation": "Failover direction."
+          }
+        },
+        "networkType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Network type to be used for test failover."
+          }
+        },
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the network to be used for test failover."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ClusterTestFailoverProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for test failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ClusterTestFailoverProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific test cluster failover input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FailoverDirection": {
+      "type": "enum",
+      "members": {
+        "PRIMARYTORECOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PrimaryToRecovery"
+          }
+        },
+        "RECOVERYTOPRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoveryToPrimary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Failover direction."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersRepairReplication": {
@@ -11741,16 +12653,67 @@
             "smithy.api#documentation": "Replication protection cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties to apply cluster recovery point input.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointInputProperties": {
+      "type": "structure",
+      "members": {
+        "clusterRecoveryPointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cluster recovery point id to be passed to failover to a particular recovery point."
+          }
+        },
+        "individualNodeRecoveryPoints": {
+          "target": "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList",
+          "traits": {
+            "smithy.api#documentation": "The list of individual node recovery points."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input for applying cluster recovery point.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for apply cluster recovery point properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for apply cluster recovery point."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of individual node recovery points."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersPurge": {
@@ -11936,16 +12899,242 @@
             "smithy.api#documentation": "Replication protection cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The custom data."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "protectionClusterType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of protection cluster type."
+          }
+        },
+        "primaryFabricFriendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the primary fabric."
+          }
+        },
+        "primaryFabricProvider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fabric provider of the primary fabric."
+          }
+        },
+        "recoveryFabricFriendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of recovery fabric."
+          }
+        },
+        "recoveryFabricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Arm Id of recovery fabric."
+          }
+        },
+        "primaryProtectionContainerFriendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of primary protection container friendly name."
+          }
+        },
+        "recoveryProtectionContainerFriendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of recovery container friendly name."
+          }
+        },
+        "protectionState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protection status."
+          }
+        },
+        "protectionStateDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protection state description."
+          }
+        },
+        "activeLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Current active location of the Protection cluster."
+          }
+        },
+        "testFailoverState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Test failover state."
+          }
+        },
+        "testFailoverStateDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Test failover state description."
+          }
+        },
+        "allowedOperations": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputAllowedOperationsList",
+          "traits": {
+            "smithy.api#documentation": "The allowed operations on the Replication protection cluster."
+          }
+        },
+        "replicationHealth": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration."
+          }
+        },
+        "healthErrors": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputHealthErrorsList",
+          "traits": {
+            "smithy.api#documentation": "List of health errors."
+          }
+        },
+        "lastSuccessfulFailoverTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last successful failover time."
+          }
+        },
+        "lastSuccessfulTestFailoverTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last successful test failover time."
+          }
+        },
+        "policyFriendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of Policy governing this PE."
+          }
+        },
+        "currentScenario": {
+          "target": "com.azure.recoveryservicessiterecovery#CurrentScenarioDetails",
+          "traits": {
+            "smithy.api#documentation": "The current scenario."
+          }
+        },
+        "recoveryContainerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recovery container Id."
+          }
+        },
+        "agentClusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Agent cluster Id."
+          }
+        },
+        "clusterFqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cluster FQDN."
+          }
+        },
+        "clusterNodeFqdns": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList",
+          "traits": {
+            "smithy.api#documentation": "The List of cluster Node FQDNs."
+          }
+        },
+        "clusterProtectedItemIds": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList",
+          "traits": {
+            "smithy.api#documentation": "The List of Protected Item Id's."
+          }
+        },
+        "areAllClusterNodesRegistered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether all nodes of the cluster are registered or not."
+          }
+        },
+        "clusterRegisteredNodes": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList",
+          "traits": {
+            "smithy.api#documentation": "The registered node details."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ReplicationClusterProviderSpecificSettings",
+          "traits": {
+            "smithy.api#documentation": "The Replication cluster provider custom settings."
+          }
+        },
+        "sharedDiskProperties": {
+          "target": "com.azure.recoveryservicessiterecovery#SharedDiskReplicationItemProperties",
+          "traits": {
+            "smithy.api#documentation": "The shared disk properties."
+          }
+        },
+        "policyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Policy Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Replication protection cluster custom data details."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#RegisteredClusterNodes"
+      },
+      "traits": {
+        "smithy.api#documentation": "The registered node details."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The List of Protected Item Id's."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The List of cluster Node FQDNs."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputHealthErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#HealthError"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of health errors."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProtectionClusterPropertiesInputAllowedOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The allowed operations on the Replication protection cluster."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionClustersGet": {
@@ -12242,16 +13431,29 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateMobilityServiceRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the update mobility service request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateMobilityServiceRequestProperties": {
+      "type": "structure",
+      "members": {
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CS run as account Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an update mobility service request."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUpdateAppliance": {
@@ -12368,16 +13570,53 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateApplianceForReplicationProtectedItemInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Update appliance replication protected item properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateApplianceForReplicationProtectedItemInputProperties": {
+      "type": "structure",
+      "members": {
+        "targetApplianceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target appliance Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateApplianceForReplicationProtectedItemProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input to update replication protected item.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update appliance for protected item input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateApplianceForReplicationProtectedItemProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update replication protected item provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsUnplannedFailover": {
@@ -12494,16 +13733,57 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UnplannedFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Unplanned failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UnplannedFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Failover direction."
+          }
+        },
+        "sourceSiteOperations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source site operations status."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#UnplannedFailoverProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for unplanned failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UnplannedFailoverProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific unplanned failover input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsTestFailoverCleanup": {
@@ -12620,16 +13900,30 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#TestFailoverCleanupInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test failover cleanup input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestFailoverCleanupInputProperties": {
+      "type": "structure",
+      "members": {
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Test failover cleanup comments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for test failover cleanup input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsTestFailover": {
@@ -12746,16 +14040,63 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#TestFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test failover input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Test failover direction."
+          }
+        },
+        "networkType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Network type to be used for test failover."
+          }
+        },
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the network to be used for test failover."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#TestFailoverProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for test failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestFailoverProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific test failover input."
       }
     },
     "com.azure.recoveryservicessiterecovery#TargetComputeSizesListByReplicationProtectedItems": {
@@ -13115,16 +14456,50 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchProviderInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Switch provider input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchProviderInputProperties": {
+      "type": "structure",
+      "members": {
+        "targetInstanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target provider type."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#SwitchProviderProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for switch provider input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#SwitchProviderProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific switch provider input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsResolveHealthErrors": {
@@ -13241,16 +14616,52 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ResolveHealthInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Disable resolve health input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResolveHealthInputProperties": {
+      "type": "structure",
+      "members": {
+        "healthErrors": {
+          "target": "com.azure.recoveryservicessiterecovery#ResolveHealthInputPropertiesHealthErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Health errors."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resolve health input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResolveHealthInputPropertiesHealthErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#ResolveHealthError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Health errors."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResolveHealthError": {
+      "type": "structure",
+      "members": {
+        "healthErrorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Health error id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resolve health errors input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsRepairReplication": {
@@ -13486,16 +14897,44 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RemoveDisksInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Remove disk input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RemoveDisksInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#RemoveDisksProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remove Disk input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RemoveDisksProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remove Disk provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsDelete": {
@@ -13568,16 +15007,71 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#DisableProtectionInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Disable protection input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#DisableProtectionInputProperties": {
+      "type": "structure",
+      "members": {
+        "disableProtectionReason": {
+          "target": "com.azure.recoveryservicessiterecovery#DisableProtectionReason",
+          "traits": {
+            "smithy.api#documentation": "Disable protection reason. It can have values NotSpecified/MigrationComplete."
+          }
+        },
+        "replicationProviderInput": {
+          "target": "com.azure.recoveryservicessiterecovery#DisableProtectionProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Replication provider specific input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Disable protection input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#DisableProtectionProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Disable protection provider specific input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#DisableProtectionReason": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "MIGRATIONCOMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MigrationComplete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Disable protection reason. It can have values NotSpecified/MigrationComplete."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsReinstallMobilityService": {
@@ -13694,16 +15188,29 @@
             "smithy.api#documentation": "The name of the protected item on which the agent is to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ReinstallMobilityServiceRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the reinstall mobility service request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReinstallMobilityServiceRequestProperties": {
+      "type": "structure",
+      "members": {
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CS run as account Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an update mobility service request."
       }
     },
     "com.azure.recoveryservicessiterecovery#RecoveryPointsGet": {
@@ -14137,16 +15644,50 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ReverseReplicationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Reverse replication properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReverseReplicationInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Failover direction."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ReverseReplicationProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific reverse replication input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reverse replication input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReverseReplicationProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific reverse replication input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsPlannedFailover": {
@@ -14263,16 +15804,50 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#PlannedFailoverInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Planned failover input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#PlannedFailoverInputProperties": {
+      "type": "structure",
+      "members": {
+        "failoverDirection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Failover direction."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#PlannedFailoverProviderSpecificFailoverInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific settings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input definition for planned failover input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#PlannedFailoverProviderSpecificFailoverInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific failover input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsFailoverCommit": {
@@ -14627,16 +16202,52 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ApplyRecoveryPointInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The input properties to apply recovery point.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ApplyRecoveryPointInputProperties": {
+      "type": "structure",
+      "members": {
+        "recoveryPointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The recovery point Id."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ApplyRecoveryPointProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "Provider specific input for applying recovery point.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input properties to apply recovery point."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ApplyRecoveryPointProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for apply recovery point."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsAddDisks": {
@@ -14753,16 +16364,45 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#AddDisksInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Add disks input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#AddDisksInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#AddDisksProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Add Disks input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#AddDisksProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Add Disks provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsPurge": {
@@ -14954,17 +16594,288 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Update replication protected item properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemInputProperties": {
+      "type": "structure",
+      "members": {
+        "recoveryAzureVMName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Azure VM name given by the user."
+          }
+        },
+        "recoveryAzureVMSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Azure VM size."
+          }
+        },
+        "selectedRecoveryAzureNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Azure Network Id."
+          }
+        },
+        "selectedTfoAzureNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Network Id for test failover."
+          }
+        },
+        "selectedSourceNicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The selected source nic Id which will be used as the primary nic during failover."
+          }
+        },
+        "enableRdpOnTargetOption": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The selected option to enable RDP\\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum."
+          }
+        },
+        "vmNics": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemInputPropertiesVmNicsList",
+          "traits": {
+            "smithy.api#documentation": "The list of VM nic details."
+          }
+        },
+        "licenseType": {
+          "target": "com.azure.recoveryservicessiterecovery#LicenseType",
+          "traits": {
+            "smithy.api#documentation": "License type."
+          }
+        },
+        "recoveryAvailabilitySetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target availability set Id."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemProviderInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input to update replication protected item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update protected item input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemProviderInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update replication protected item provider specific input."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#LicenseType": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "NOLICENSETYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoLicenseType"
+          }
+        },
+        "WINDOWSSERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WindowsServer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "License type."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateReplicationProtectedItemInputPropertiesVmNicsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#VMNicInputDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of VM nic details."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#VMNicInputDetails": {
+      "type": "structure",
+      "members": {
+        "nicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The nic Id."
+          }
+        },
+        "ipConfigs": {
+          "target": "com.azure.recoveryservicessiterecovery#VMNicInputDetailsIpConfigsList",
+          "traits": {
+            "smithy.api#documentation": "The IP configurations to be used by NIC during test failover and failover."
+          }
+        },
+        "selectionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Selection type for failover."
+          }
+        },
+        "recoveryNetworkSecurityGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the NSG associated with the NIC."
+          }
+        },
+        "enableAcceleratedNetworkingOnRecovery": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the NIC has accelerated networking enabled."
+          }
+        },
+        "tfoNetworkSecurityGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The NSG to be used by NIC during test failover."
+          }
+        },
+        "enableAcceleratedNetworkingOnTfo": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the test NIC has accelerated networking enabled."
+          }
+        },
+        "recoveryNicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the NIC to be used when creating target NICs."
+          }
+        },
+        "recoveryNicResourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group of the NIC to be used when creating target NICs."
+          }
+        },
+        "reuseExistingNic": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether an existing NIC is allowed to be reused during failover subject to availability."
+          }
+        },
+        "tfoNicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the NIC to be used when creating target NICs in TFO."
+          }
+        },
+        "tfoNicResourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group of the NIC to be used when creating target NICs in TFO."
+          }
+        },
+        "tfoReuseExistingNic": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability."
+          }
+        },
+        "targetNicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target NIC name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Hyper V VM network input details."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#VMNicInputDetailsIpConfigsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#IPConfigInputDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IP configurations to be used by NIC during test failover and failover."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#IPConfigInputDetails": {
+      "type": "structure",
+      "members": {
+        "ipConfigName": {
+          "target": "smithy.api#String"
+        },
+        "isPrimary": {
+          "target": "smithy.api#Boolean"
+        },
+        "isSeletedForFailover": {
+          "target": "smithy.api#Boolean"
+        },
+        "recoverySubnetName": {
+          "target": "smithy.api#String"
+        },
+        "recoveryStaticIPAddress": {
+          "target": "smithy.api#String"
+        },
+        "recoveryPublicIPAddressId": {
+          "target": "smithy.api#String"
+        },
+        "recoveryLBBackendAddressPoolIds": {
+          "target": "com.azure.recoveryservicessiterecovery#IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList"
+        },
+        "tfoSubnetName": {
+          "target": "smithy.api#String"
+        },
+        "tfoStaticIPAddress": {
+          "target": "smithy.api#String"
+        },
+        "tfoPublicIPAddressId": {
+          "target": "smithy.api#String"
+        },
+        "tfoLBBackendAddressPoolIds": {
+          "target": "com.azure.recoveryservicessiterecovery#IPConfigInputDetailsTfoLBBackendAddressPoolIdsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.recoveryservicessiterecovery#IPConfigInputDetailsTfoLBBackendAddressPoolIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.recoveryservicessiterecovery#IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsCreate": {
       "type": "operation",
@@ -15080,16 +16991,56 @@
             "smithy.api#documentation": "Replication protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#EnableProtectionInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Enable protection input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#EnableProtectionInputProperties": {
+      "type": "structure",
+      "members": {
+        "policyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Policy Id."
+          }
+        },
+        "protectableItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protectable item Id."
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#EnableProtectionProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable protection input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#EnableProtectionProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable protection provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectedItemsGet": {
@@ -15756,16 +17707,30 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#TestMigrateCleanupInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test migrate cleanup input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestMigrateCleanupInputProperties": {
+      "type": "structure",
+      "members": {
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Test migrate cleanup comments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Test migrate cleanup input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsTestMigrate": {
@@ -15882,16 +17847,46 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#TestMigrateInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Test migrate input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestMigrateInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#TestMigrateProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Test migrate input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#TestMigrateProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Test migrate provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsResync": {
@@ -16008,16 +18003,46 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ResyncInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resync input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResyncInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ResyncProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resync input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResyncProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resync provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsResumeReplication": {
@@ -16134,16 +18159,46 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ResumeReplicationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resume replication input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResumeReplicationInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#ResumeReplicationProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input for resume replication.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resume replication input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ResumeReplicationProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resume replication provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsPauseReplication": {
@@ -16260,16 +18315,31 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#PauseReplicationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Pause replication input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#PauseReplicationInputProperties": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pause replication input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#MigrationRecoveryPointsGet": {
@@ -16708,16 +18778,46 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#MigrateInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Migrate input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#MigrateInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#MigrateProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migrate input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#MigrateProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migrate provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsDelete": {
@@ -16916,16 +19016,45 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateMigrationItemInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Update migration item input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateMigrationItemInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateMigrationItemProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific input to update migration item.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update migration item input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateMigrationItemProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update migration item provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsCreate": {
@@ -17042,16 +19171,53 @@
             "smithy.api#documentation": "Migration item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#EnableMigrationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Enable migration input properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#EnableMigrationInputProperties": {
+      "type": "structure",
+      "members": {
+        "policyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#EnableMigrationProviderSpecificInput",
+          "traits": {
+            "smithy.api#documentation": "The provider specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable migration input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#EnableMigrationProviderSpecificInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable migration provider specific input."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationMigrationItemsGet": {
@@ -17434,16 +19600,41 @@
             "smithy.api#documentation": "Protection container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#DiscoverProtectableItemRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a discover protectable item request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#DiscoverProtectableItemRequestProperties": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the physical machine."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the physical machine to be discovered."
+          }
+        },
+        "osType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OS type on the physical machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discover protectable item properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersCreate": {
@@ -17552,16 +19743,53 @@
             "smithy.api#documentation": "Protection container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateProtectionContainerInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Create protection container input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateProtectionContainerInputProperties": {
+      "type": "structure",
+      "members": {
+        "providerSpecificInput": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateProtectionContainerInputPropertiesProviderSpecificInputList",
+          "traits": {
+            "smithy.api#documentation": "Provider specific inputs for container creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create protection container input properties."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateProtectionContainerInputPropertiesProviderSpecificInputList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificContainerCreationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific inputs for container creation."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ReplicationProviderSpecificContainerCreationInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider specific input for container creation operation."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationProtectionContainersGet": {
@@ -17923,16 +20151,56 @@
             "smithy.api#documentation": "Network mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#UpdateNetworkMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The input properties needed to update network mapping."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#UpdateNetworkMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "recoveryFabricName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recovery fabric name."
+          }
+        },
+        "recoveryNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recovery network Id."
+          }
+        },
+        "fabricSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#FabricSpecificUpdateNetworkMappingInput",
+          "traits": {
+            "smithy.api#documentation": "Fabrics specific input network Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Common input details for network mapping operation."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FabricSpecificUpdateNetworkMappingInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input details specific to fabrics during Network Mapping."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsCreate": {
@@ -18049,16 +20317,58 @@
             "smithy.api#documentation": "Network mapping name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#CreateNetworkMappingInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Input properties for creating network mapping.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#CreateNetworkMappingInputProperties": {
+      "type": "structure",
+      "members": {
+        "recoveryFabricName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recovery fabric Name."
+          }
+        },
+        "recoveryNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recovery network Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "fabricSpecificDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#FabricSpecificCreateNetworkMappingInput",
+          "traits": {
+            "smithy.api#documentation": "Fabric specific input properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Common input details for network mapping operation."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FabricSpecificCreateNetworkMappingInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The instance type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input details specific to fabrics during Network Mapping."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationNetworkMappingsGet": {
@@ -18897,16 +21207,29 @@
             "smithy.api#documentation": "Fabric name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#RenewCertificateInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Renew certificate input properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#RenewCertificateInputProperties": {
+      "type": "structure",
+      "members": {
+        "renewCertificateType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Renew certificate type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Renew Certificate input properties."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsRemoveInfra": {
@@ -19125,16 +21448,62 @@
             "smithy.api#documentation": "Fabric name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#FailoverProcessServerRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the PS Failover request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FailoverProcessServerRequestProperties": {
+      "type": "structure",
+      "members": {
+        "containerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The container identifier."
+          }
+        },
+        "sourceProcessServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source process server."
+          }
+        },
+        "targetProcessServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new process server."
+          }
+        },
+        "vmsToMigrate": {
+          "target": "com.azure.recoveryservicessiterecovery#FailoverProcessServerRequestPropertiesVmsToMigrateList",
+          "traits": {
+            "smithy.api#documentation": "The VMS to migrate."
+          }
+        },
+        "updateType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value for failover type. It can be systemlevel/serverlevel."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Failover Process Server request."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FailoverProcessServerRequestPropertiesVmsToMigrateList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The VMS to migrate."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsMigrateToAad": {
@@ -19456,16 +21825,44 @@
             "smithy.api#documentation": "Fabric name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#FabricCreationInputProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fabric creation input."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FabricCreationInputProperties": {
+      "type": "structure",
+      "members": {
+        "customDetails": {
+          "target": "com.azure.recoveryservicessiterecovery#FabricSpecificCreationInput",
+          "traits": {
+            "smithy.api#documentation": "Fabric provider specific creation input."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of site details provided during the time of site creation."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#FabricSpecificCreationInput": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the class type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Fabric provider specific settings."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationFabricsGet": {
@@ -20315,16 +22712,50 @@
             "smithy.api#documentation": "The name of the email notification configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicessiterecovery#ConfigureAlertRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a configure alert request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ConfigureAlertRequestProperties": {
+      "type": "structure",
+      "members": {
+        "sendToOwners": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether to send email to subscription administrator."
+          }
+        },
+        "customEmailAddresses": {
+          "target": "com.azure.recoveryservicessiterecovery#ConfigureAlertRequestPropertiesCustomEmailAddressesList",
+          "traits": {
+            "smithy.api#documentation": "The custom email address for sending emails."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale for the email notification."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a configure alert request."
+      }
+    },
+    "com.azure.recoveryservicessiterecovery#ConfigureAlertRequestPropertiesCustomEmailAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom email address for sending emails."
       }
     },
     "com.azure.recoveryservicessiterecovery#ReplicationAlertSettingsGet": {

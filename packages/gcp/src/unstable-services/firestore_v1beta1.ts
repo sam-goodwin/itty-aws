@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -90,8 +90,7 @@ export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
 export type ReadWriteConcurrencyModeEnum =
   | "CONCURRENCY_MODE_UNSPECIFIED"
   | "OPTIMISTIC"
-  | "PESSIMISTIC"
-  | (string & {});
+  | "PESSIMISTIC";
 export const ReadWriteConcurrencyModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for a transaction that can be used to read and write documents. */
@@ -171,7 +170,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
     identifier: "BatchGetProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
@@ -218,7 +217,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
-export type StageList = Stage[];
+export type StageList = ReadonlyArray<Stage>;
 export const StageList = /*@__PURE__*/ S.Array(
   Stage,
 ) as any as S.Schema<StageList>;
@@ -253,7 +252,7 @@ export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
   identifier: "Firestore_Function",
 }) as any as S.Schema<Firestore_Function>;
 
-export type ValueNullValueEnum = "NULL_VALUE" | (string & {});
+export type ValueNullValueEnum = "NULL_VALUE";
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
 /** A map value. */
@@ -384,8 +383,7 @@ export const Precondition = /*@__PURE__*/ S.suspend(() =>
 
 export type FieldTransformSetToServerValueEnum =
   | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME"
-  | (string & {});
+  | "REQUEST_TIME";
 export const FieldTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of a field of the document. */
@@ -417,7 +415,7 @@ export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
-export type FieldTransformList = FieldTransform[];
+export type FieldTransformList = ReadonlyArray<FieldTransform>;
 export const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
@@ -464,7 +462,7 @@ export const Write = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
-export type WriteList = Write[];
+export type WriteList = ReadonlyArray<Write>;
 export const WriteList = /*@__PURE__*/ S.Array(
   Write,
 ) as any as S.Schema<WriteList>;
@@ -527,7 +525,7 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
-export type WriteResultList = WriteResult[];
+export type WriteResultList = ReadonlyArray<WriteResult>;
 export const WriteResultList = /*@__PURE__*/ S.Array(
   WriteResult,
 ) as any as S.Schema<WriteResultList>;
@@ -538,7 +536,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -560,7 +558,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -714,8 +712,7 @@ export type GoogleFirestoreAdminV1beta1IndexFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "ASCENDING"
   | "DESCENDING"
-  | "ARRAY_CONTAINS"
-  | (string & {});
+  | "ARRAY_CONTAINS";
 export const GoogleFirestoreAdminV1beta1IndexFieldModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -737,7 +734,7 @@ export const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexField>;
 
 export type GoogleFirestoreAdminV1beta1IndexFieldList =
-  GoogleFirestoreAdminV1beta1IndexField[];
+  ReadonlyArray<GoogleFirestoreAdminV1beta1IndexField>;
 export const GoogleFirestoreAdminV1beta1IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexFieldList>;
@@ -746,8 +743,7 @@ export type GoogleFirestoreAdminV1beta1IndexStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleFirestoreAdminV1beta1IndexStateEnum = /*@__PURE__*/ S.String;
 
 /** An index definition. */
@@ -943,7 +939,7 @@ export const ExplainStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExplainStats" }) as any as S.Schema<ExplainStats>;
 
-export type DocumentList = Document[];
+export type DocumentList = ReadonlyArray<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DocumentList>;
@@ -1234,8 +1230,7 @@ export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
-  | "DOT_PRODUCT"
-  | (string & {});
+  | "DOT_PRODUCT";
 export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a field in a document, ex: `stats.operations`. */
@@ -1305,12 +1300,12 @@ export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionSelector",
 }) as any as S.Schema<CollectionSelector>;
 
-export type CollectionSelectorList = CollectionSelector[];
+export type CollectionSelectorList = ReadonlyArray<CollectionSelector>;
 export const CollectionSelectorList = /*@__PURE__*/ S.Array(
   CollectionSelector,
 ) as any as S.Schema<CollectionSelectorList>;
 
-export type FieldReferenceList = FieldReference[];
+export type FieldReferenceList = ReadonlyArray<FieldReference>;
 export const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
@@ -1326,14 +1321,10 @@ export const Projection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
 
-export type CompositeFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "AND"
-  | "OR"
-  | (string & {});
+export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
-export type FilterList = Filter[];
+export type FilterList = ReadonlyArray<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -1365,8 +1356,7 @@ export type FieldFilterOpEnum =
   | "ARRAY_CONTAINS"
   | "IN"
   | "ARRAY_CONTAINS_ANY"
-  | "NOT_IN"
-  | (string & {});
+  | "NOT_IN";
 export const FieldFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter on a specific field. */
@@ -1391,8 +1381,7 @@ export type UnaryFilterOpEnum =
   | "IS_NAN"
   | "IS_NULL"
   | "IS_NOT_NAN"
-  | "IS_NOT_NULL"
-  | (string & {});
+  | "IS_NOT_NULL";
 export const UnaryFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter with a single operand. */
@@ -1429,8 +1418,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type OrderDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const OrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** An order on a field. */
@@ -1447,7 +1435,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
-export type OrderList = Order[];
+export type OrderList = ReadonlyArray<Order>;
 export const OrderList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderList>;
@@ -1571,7 +1559,7 @@ export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListenProjectsDatabasesDocumentsRequest",
 }) as any as S.Schema<ListenProjectsDatabasesDocumentsRequest>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1632,8 +1620,7 @@ export type TargetChangeTargetChangeTypeEnum =
   | "ADD"
   | "REMOVE"
   | "CURRENT"
-  | "RESET"
-  | (string & {});
+  | "RESET";
 export const TargetChangeTargetChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Targets being watched have changed. */
@@ -1802,7 +1789,7 @@ export const ListProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatabasesIndexesRequest>;
 
 export type GoogleFirestoreAdminV1beta1IndexList =
-  GoogleFirestoreAdminV1beta1Index[];
+  ReadonlyArray<GoogleFirestoreAdminV1beta1Index>;
 export const GoogleFirestoreAdminV1beta1IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexList>;
@@ -1871,7 +1858,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
     identifier: "PartitionQueryProjectsDatabasesDocumentsRequest",
   }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
-export type CursorList = Cursor[];
+export type CursorList = ReadonlyArray<Cursor>;
 export const CursorList = /*@__PURE__*/ S.Array(
   Cursor,
 ) as any as S.Schema<CursorList>;
@@ -2014,7 +2001,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = Aggregation[];
+export type AggregationList = ReadonlyArray<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;

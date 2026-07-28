@@ -12,34 +12,24 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `disabled` - Disabled * `dry_run` - Dry Run * `live` - Live */
-export type EventFilterConfigModeEnum =
-  | "disabled"
-  | "dry_run"
-  | "live"
-  | (string & {});
+export type EventFilterConfigModeEnum = "disabled" | "dry_run" | "live";
 export const EventFilterConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface EventFilterCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   mode?: EventFilterConfigModeEnum;
   /** Boolean expression tree. Nodes: {"type": "and"|"or", "children": [...]}, {"type": "not", "child": {...}}, {"type": "condition", "field": "event_name"|"distinct_id", "operator": "exact"|"contains", "value": "<string>"} */
   filter_tree?: unknown;
   /** Test events to validate the filter. Each: {"event_name": "...", "distinct_id": "...", "expected_result": "drop"|"ingest"} */
   test_cases?: unknown;
-  created_at?: string;
-  updated_at?: string;
 }
 export const EventFilterCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     mode: S.optional(EventFilterConfigModeEnum),
     filter_tree: S.optional(S.Unknown),
     test_cases: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -92,12 +82,12 @@ export const EventFilterMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventFilterMetricsRetrieveRequest",
 }) as any as S.Schema<EventFilterMetricsRetrieveRequest>;
 
-export type AppMetricsResponseLabelsList = string[];
+export type AppMetricsResponseLabelsList = ReadonlyArray<string>;
 export const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppMetricsResponseLabelsList>;
 
-export type AppMetricSeriesValuesList = number[];
+export type AppMetricSeriesValuesList = ReadonlyArray<number>;
 export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
@@ -115,7 +105,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricSeries",
 }) as any as S.Schema<AppMetricSeries>;
 
-export type AppMetricsResponseSeriesList = AppMetricSeries[];
+export type AppMetricsResponseSeriesList = ReadonlyArray<AppMetricSeries>;
 export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;

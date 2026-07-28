@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type PlaceActionLinkProviderTypeEnum =
   | "PROVIDER_TYPE_UNSPECIFIED"
   | "MERCHANT"
-  | "AGGREGATOR_3P"
-  | (string & {});
+  | "AGGREGATOR_3P";
 export const PlaceActionLinkProviderTypeEnum = /*@__PURE__*/ S.String;
 
 export type PlaceActionLinkPlaceActionTypeEnum =
@@ -76,8 +75,7 @@ export type PlaceActionLinkPlaceActionTypeEnum =
   | "FOOD_DELIVERY"
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
-  | "SOLOPRENEUR_APPOINTMENT"
-  | (string & {});
+  | "SOLOPRENEUR_APPOINTMENT";
 export const PlaceActionLinkPlaceActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a place action link and its attributes. */
@@ -207,7 +205,7 @@ export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListLocationsPlaceActionLinksRequest",
 }) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
 
-export type PlaceActionLinkList = PlaceActionLink[];
+export type PlaceActionLinkList = ReadonlyArray<PlaceActionLink>;
 export const PlaceActionLinkList = /*@__PURE__*/ S.Array(
   PlaceActionLink,
 ) as any as S.Schema<PlaceActionLinkList>;
@@ -264,8 +262,7 @@ export type PlaceActionTypeMetadataPlaceActionTypeEnum =
   | "FOOD_DELIVERY"
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
-  | "SOLOPRENEUR_APPOINTMENT"
-  | (string & {});
+  | "SOLOPRENEUR_APPOINTMENT";
 export const PlaceActionTypeMetadataPlaceActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -285,7 +282,8 @@ export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaceActionTypeMetadata",
 }) as any as S.Schema<PlaceActionTypeMetadata>;
 
-export type PlaceActionTypeMetadataList = PlaceActionTypeMetadata[];
+export type PlaceActionTypeMetadataList =
+  ReadonlyArray<PlaceActionTypeMetadata>;
 export const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(
   PlaceActionTypeMetadata,
 ) as any as S.Schema<PlaceActionTypeMetadataList>;

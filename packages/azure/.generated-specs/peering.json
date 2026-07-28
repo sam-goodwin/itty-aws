@@ -613,16 +613,29 @@
             "smithy.api#documentation": "The name of the registered prefix."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.peering#PeeringRegisteredPrefixPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties that define a registered prefix."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringRegisteredPrefixPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The customer's prefix from which traffic originates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a registered prefix."
       }
     },
     "com.azure.peering#RegisteredPrefixesGet": {
@@ -1018,16 +1031,29 @@
             "smithy.api#documentation": "The name of the registered ASN."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.peering#PeeringRegisteredAsnPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties that define a registered ASN."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringRegisteredAsnPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "asn": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The customer's ASN from which traffic originates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a registered ASN."
       }
     },
     "com.azure.peering#RegisteredAsnsGet": {
@@ -2386,16 +2412,27 @@
             "smithy.api#documentation": "The name of the peering."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.peering#PeeringsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
       }
     },
     "com.azure.peering#PeeringsCreateOrUpdate": {
@@ -2521,16 +2558,255 @@
             "smithy.api#documentation": "The name of the peering."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.peering#PeeringsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.peering#PeeringPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that define a peering."
+          }
+        },
+        "sku": {
+          "target": "com.azure.peering#PeeringSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU that defines the tier and kind of the peering.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.peering#Kind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the peering.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "direct": {
+          "target": "com.azure.peering#PeeringPropertiesDirectInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that define a direct peering."
+          }
+        },
+        "exchange": {
+          "target": "com.azure.peering#PeeringPropertiesExchangeInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that define an exchange peering."
+          }
+        },
+        "connectivityProbes": {
+          "target": "com.azure.peering#PeeringPropertiesInputConnectivityProbesList",
+          "traits": {
+            "smithy.api#documentation": "The connectivity probes associated with the peering."
+          }
+        },
+        "peeringLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the peering."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define connectivity to the Microsoft Cloud Edge."
+      }
+    },
+    "com.azure.peering#PeeringPropertiesInputConnectivityProbesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.peering#ConnectivityProbeInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The connectivity probes associated with the peering."
+      }
+    },
+    "com.azure.peering#ConnectivityProbeInput": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint IP address where traffic will be sent to from Azure for the connectivity probe."
+          }
+        },
+        "azureRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region where traffic will originate from for the connectivity probe."
+          }
+        },
+        "protocol": {
+          "target": "com.azure.peering#Protocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol of the traffic that will be sent for the connectivity probe."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a connectivity probe, a configuration peers can add to direct and exchange peerings to create ping tests. These ping\ntests will allow us to generate availability, jitter, and latency data for traffic (using ICMP or TCP) from Azure to an endpoint\nIP address given by the customer. This data will be emitted such that the peer can view these metrics in the Azure portal in the\nConnectivity probe blade of their peering."
+      }
+    },
+    "com.azure.peering#PeeringPropertiesExchangeInput": {
+      "type": "structure",
+      "members": {
+        "connections": {
+          "target": "com.azure.peering#PeeringPropertiesExchangeInputConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of connections that constitute an exchange peering."
+          }
+        },
+        "peerAsn": {
+          "target": "com.azure.peering#SubResource",
+          "traits": {
+            "smithy.api#documentation": "The reference of the peer ASN."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define an exchange peering."
+      }
+    },
+    "com.azure.peering#PeeringPropertiesExchangeInputConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.peering#ExchangeConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of connections that constitute an exchange peering."
+      }
+    },
+    "com.azure.peering#ExchangeConnectionInput": {
+      "type": "structure",
+      "members": {
+        "peeringDBFacilityId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The PeeringDB.com ID of the facility at which the connection has to be set up."
+          }
+        },
+        "bgpSession": {
+          "target": "com.azure.peering#BgpSession",
+          "traits": {
+            "smithy.api#documentation": "The BGP session associated with the connection."
+          }
+        },
+        "connectionIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define an exchange connection."
+      }
+    },
+    "com.azure.peering#PeeringPropertiesDirectInput": {
+      "type": "structure",
+      "members": {
+        "connections": {
+          "target": "com.azure.peering#PeeringPropertiesDirectInputConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of connections that constitute a direct peering."
+          }
+        },
+        "peerAsn": {
+          "target": "com.azure.peering#SubResource",
+          "traits": {
+            "smithy.api#documentation": "The reference of the peer ASN."
+          }
+        },
+        "directPeeringType": {
+          "target": "com.azure.peering#DirectPeeringType",
+          "traits": {
+            "smithy.api#documentation": "The type of direct peering."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a direct peering."
+      }
+    },
+    "com.azure.peering#PeeringPropertiesDirectInputConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.peering#DirectConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of connections that constitute a direct peering."
+      }
+    },
+    "com.azure.peering#DirectConnectionInput": {
+      "type": "structure",
+      "members": {
+        "bandwidthInMbps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The bandwidth of the connection."
+          }
+        },
+        "sessionAddressProvider": {
+          "target": "com.azure.peering#SessionAddressProvider",
+          "traits": {
+            "smithy.api#documentation": "The field indicating if Microsoft provides session ip addresses."
+          }
+        },
+        "useForPeeringService": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag that indicates whether or not the connection is used for peering service."
+          }
+        },
+        "peeringDBFacilityId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The PeeringDB.com ID of the facility at which the connection has to be set up."
+          }
+        },
+        "bgpSession": {
+          "target": "com.azure.peering#BgpSession",
+          "traits": {
+            "smithy.api#documentation": "The BGP session associated with the connection."
+          }
+        },
+        "connectionIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a direct connection."
+      }
+    },
+    "com.azure.peering#PeeringsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.peering#PeeringsGet": {
@@ -3085,16 +3361,35 @@
             "smithy.api#documentation": "The name of the prefix."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.peering#PeeringServicePrefixPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the peering prefix properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringServicePrefixPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The prefix from which your traffic originates."
+          }
+        },
+        "peeringServicePrefixKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The peering service prefix key"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The peering service prefix properties class."
       }
     },
     "com.azure.peering#PrefixesGet": {
@@ -3537,16 +3832,47 @@
             "smithy.api#documentation": "The name of the connection monitor test"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.peering#ConnectionMonitorTestPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties that define a Connection Monitor Test."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#ConnectionMonitorTestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceAgent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Connection Monitor test source agent"
+          }
+        },
+        "destination": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Connection Monitor test destination"
+          }
+        },
+        "destinationPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Connection Monitor test destination port"
+          }
+        },
+        "testFrequencyInSec": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Connection Monitor test frequency in seconds"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a Connection Monitor Test."
       }
     },
     "com.azure.peering#ConnectionMonitorTestsGet": {
@@ -4024,16 +4350,27 @@
             "smithy.api#documentation": "The name of the peering."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.peering#PeeringServicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
       }
     },
     "com.azure.peering#PeeringServicesCreateOrUpdate": {
@@ -4151,16 +4488,91 @@
             "smithy.api#documentation": "The name of the peering."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.peering#PeeringServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.peering#PeeringServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that define a peering service."
+          }
+        },
+        "sku": {
+          "target": "com.azure.peering#PeeringServiceSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU that defines the type of the peering service."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeeringServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "peeringServiceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location (state/province) of the customer."
+          }
+        },
+        "peeringServiceProvider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service provider."
+          }
+        },
+        "providerPrimaryPeeringLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary peering (Microsoft/service provider) location to be used for customer traffic."
+          }
+        },
+        "providerBackupPeeringLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backup peering (Microsoft/service provider) location to be used for customer traffic."
+          }
+        },
+        "logAnalyticsWorkspaceProperties": {
+          "target": "com.azure.peering#LogAnalyticsWorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics Workspace Properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define connectivity to the Peering Service."
+      }
+    },
+    "com.azure.peering#LogAnalyticsWorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties that define a Log Analytics Workspace."
+      }
+    },
+    "com.azure.peering#PeeringServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.peering#PeeringServicesGet": {
@@ -5537,16 +5949,50 @@
             "smithy.api#documentation": "The peer ASN name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.peering#PeerAsnPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties that define a peer's ASN."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.peering#PeerAsnPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "peerAsn": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Autonomous System Number (ASN) of the peer."
+          }
+        },
+        "peerContactDetail": {
+          "target": "com.azure.peering#PeerAsnPropertiesInputPeerContactDetailList",
+          "traits": {
+            "smithy.api#documentation": "The contact details of the peer."
+          }
+        },
+        "peerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the peer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that define a peer's ASN."
+      }
+    },
+    "com.azure.peering#PeerAsnPropertiesInputPeerContactDetailList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.peering#ContactDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contact details of the peer."
       }
     },
     "com.azure.peering#PeerAsnsGet": {
@@ -6131,11 +6577,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "peeringServiceLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the peering service location."
+          }
+        },
+        "peeringServiceProvider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the peering service provider."
           }
         }
       },

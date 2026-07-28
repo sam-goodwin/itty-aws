@@ -12,18 +12,154 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows' */
+export type OSType = "Linux" | "Windows";
+export const OSType = /*@__PURE__*/ S.String;
+
+/** Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows. */
+export type OSSKU = "CBLMariner" | "Windows2019" | "Windows2022";
+export const OSSKU = /*@__PURE__*/ S.String;
+
+/** The node labels to be persisted across all nodes in agent pool. */
+export type AgentPoolPropertiesInputNodeLabelsMap = {
+  [key: string]: string | undefined;
+};
+export const AgentPoolPropertiesInputNodeLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AgentPoolPropertiesInputNodeLabelsMap>;
+
+/** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
+export type AgentPoolPropertiesInputNodeTaintsList = ReadonlyArray<string>;
+export const AgentPoolPropertiesInputNodeTaintsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AgentPoolPropertiesInputNodeTaintsList>;
+
+/** Profile for agent pool properties that can be updated */
+export interface AgentPoolUpdateProfileInput {
+  /** Number of nodes in the agent pool. The default value is 1. */
+  count?: number;
+  /** The VM sku size of the agent pool node VMs. */
+  vmSize?: string;
+}
+export const AgentPoolUpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    vmSize: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentPoolUpdateProfileInput",
+}) as any as S.Schema<AgentPoolUpdateProfileInput>;
+
+export type AgentPoolPropertiesInputStatusReadyReplicasList =
+  ReadonlyArray<AgentPoolUpdateProfileInput>;
+export const AgentPoolPropertiesInputStatusReadyReplicasList =
+  /*@__PURE__*/ S.Array(
+    AgentPoolUpdateProfileInput,
+  ) as any as S.Schema<AgentPoolPropertiesInputStatusReadyReplicasList>;
+
+/** The observed status of the agent pool. */
+export interface AgentPoolPropertiesInputStatus {
+  /** Error messages during an agent pool operation or steady state. */
+  errorMessage?: string;
+  readyReplicas?: AgentPoolPropertiesInputStatusReadyReplicasList;
+}
+export const AgentPoolPropertiesInputStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    readyReplicas: S.optional(AgentPoolPropertiesInputStatusReadyReplicasList),
+  }),
+).annotate({
+  identifier: "AgentPoolPropertiesInputStatus",
+}) as any as S.Schema<AgentPoolPropertiesInputStatus>;
+
+/** Properties of the agent pool resource */
+export interface AgentPoolPropertiesInput {
+  osType?: OSType;
+  osSKU?: OSSKU;
+  /** The node labels to be persisted across all nodes in agent pool. */
+  nodeLabels?: AgentPoolPropertiesInputNodeLabelsMap;
+  /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
+  nodeTaints?: AgentPoolPropertiesInputNodeTaintsList;
+  /** The maximum number of nodes for auto-scaling */
+  maxCount?: number;
+  /** The minimum number of nodes for auto-scaling */
+  minCount?: number;
+  /** Whether to enable auto-scaler. Default value is false */
+  enableAutoScaling?: boolean;
+  /** The maximum number of pods that can run on a node. */
+  maxPods?: number;
+  /** Number of nodes in the agent pool. The default value is 1. */
+  count?: number;
+  /** The VM sku size of the agent pool node VMs. */
+  vmSize?: string;
+  /** The observed status of the agent pool. */
+  status?: AgentPoolPropertiesInputStatus;
+}
+export const AgentPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(OSType),
+    osSKU: S.optional(OSSKU),
+    nodeLabels: S.optional(AgentPoolPropertiesInputNodeLabelsMap),
+    nodeTaints: S.optional(AgentPoolPropertiesInputNodeTaintsList),
+    maxCount: S.optional(S.Number),
+    minCount: S.optional(S.Number),
+    enableAutoScaling: S.optional(S.Boolean),
+    maxPods: S.optional(S.Number),
+    count: S.optional(S.Number),
+    vmSize: S.optional(S.String),
+    status: S.optional(AgentPoolPropertiesInputStatus),
+  }),
+).annotate({
+  identifier: "AgentPoolPropertiesInput",
+}) as any as S.Schema<AgentPoolPropertiesInput>;
+
+/** Resource tags */
+export type AgentPoolCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AgentPoolCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
+
+/** The extended location type. Allowed value: 'CustomLocation' */
+export type ExtendedLocationType = "CustomLocation";
+export const ExtendedLocationType = /*@__PURE__*/ S.String;
+
+/** Extended location pointing to the underlying infrastructure */
+export interface ExtendedLocation {
+  /** The extended location type. Allowed value: 'CustomLocation' */
+  type?: ExtendedLocationType;
+  /** ARM Id of the extended location. */
+  name?: string;
+}
+export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ExtendedLocationType),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtendedLocation",
+}) as any as S.Schema<ExtendedLocation>;
+
 export interface AgentPoolCreateOrUpdateRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
-  body: unknown;
+  properties?: AgentPoolPropertiesInput;
+  /** Resource tags */
+  tags?: AgentPoolCreateOrUpdateRequestTagsMap;
+  extendedLocation?: ExtendedLocation;
 }
 export const AgentPoolCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     agentPoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AgentPoolPropertiesInput),
+    tags: S.optional(AgentPoolCreateOrUpdateRequestTagsMap),
+    extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -41,8 +177,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -50,8 +185,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -80,18 +214,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows' */
-export type OSType = "Linux" | "Windows" | (string & {});
-export const OSType = /*@__PURE__*/ S.String;
-
-/** Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows. */
-export type OSSKU =
-  | "CBLMariner"
-  | "Windows2019"
-  | "Windows2022"
-  | (string & {});
-export const OSSKU = /*@__PURE__*/ S.String;
-
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesNodeLabelsMap = {
   [key: string]: string | undefined;
@@ -102,7 +224,7 @@ export const AgentPoolPropertiesNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type AgentPoolPropertiesNodeTaintsList = string[];
+export type AgentPoolPropertiesNodeTaintsList = ReadonlyArray<string>;
 export const AgentPoolPropertiesNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
@@ -117,8 +239,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Updating"
   | "Upgrading"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Profile for agent pool properties that can be updated */
@@ -141,7 +262,7 @@ export const AgentPoolUpdateProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolUpdateProfile>;
 
 export type AgentPoolPropertiesStatusReadyReplicasList =
-  AgentPoolUpdateProfile[];
+  ReadonlyArray<AgentPoolUpdateProfile>;
 export const AgentPoolPropertiesStatusReadyReplicasList = /*@__PURE__*/ S.Array(
   AgentPoolUpdateProfile,
 ) as any as S.Schema<AgentPoolPropertiesStatusReadyReplicasList>;
@@ -219,26 +340,6 @@ export const AgentPoolCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AgentPoolCreateOrUpdateResponseTagsMap>;
-
-/** The extended location type. Allowed value: 'CustomLocation' */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
-export const ExtendedLocationType = /*@__PURE__*/ S.String;
-
-/** Extended location pointing to the underlying infrastructure */
-export interface ExtendedLocation {
-  /** The extended location type. Allowed value: 'CustomLocation' */
-  type?: ExtendedLocationType;
-  /** ARM Id of the extended location. */
-  name?: string;
-}
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtendedLocation",
-}) as any as S.Schema<ExtendedLocation>;
 
 export interface AgentPoolCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -408,7 +509,7 @@ export const AgentPool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
 
-export type AgentPoolListResultValueList = AgentPool[];
+export type AgentPoolListResultValueList = ReadonlyArray<AgentPool>;
 export const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolListResultValueList>;
@@ -499,10 +600,7 @@ export const GetKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKubernetesVersionsRequest>;
 
 /** The particular KubernetesVersion Image OS Type (Linux, Windows) */
-export type KubernetesVersionReadinessOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type KubernetesVersionReadinessOsType = "Windows" | "Linux";
 export const KubernetesVersionReadinessOsType = /*@__PURE__*/ S.String;
 
 /** Indicates whether the kubernetes version image is ready or not */
@@ -527,13 +625,14 @@ export const KubernetesVersionReadiness = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersionReadiness>;
 
 /** Indicates whether the kubernetes version image is ready or not */
-export type KubernetesPatchVersionsReadinessList = KubernetesVersionReadiness[];
+export type KubernetesPatchVersionsReadinessList =
+  ReadonlyArray<KubernetesVersionReadiness>;
 export const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ S.Array(
   KubernetesVersionReadiness,
 ) as any as S.Schema<KubernetesPatchVersionsReadinessList>;
 
 /** Possible upgrade paths for given patch version */
-export type KubernetesPatchVersionsUpgradesList = string[];
+export type KubernetesPatchVersionsUpgradesList = ReadonlyArray<string>;
 export const KubernetesPatchVersionsUpgradesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
@@ -585,7 +684,7 @@ export const KubernetesVersionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type GetKubernetesVersionsResponsePropertiesValuesList =
-  KubernetesVersionProperties[];
+  ReadonlyArray<KubernetesVersionProperties>;
 export const GetKubernetesVersionsResponsePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -667,7 +766,7 @@ export const VmSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmSkuCapabilities>;
 
 /** The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc. */
-export type VmSkuPropertiesCapabilitiesList = VmSkuCapabilities[];
+export type VmSkuPropertiesCapabilitiesList = ReadonlyArray<VmSkuCapabilities>;
 export const VmSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   VmSkuCapabilities,
 ) as any as S.Schema<VmSkuPropertiesCapabilitiesList>;
@@ -698,7 +797,8 @@ export const VmSkuProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmSkuProperties>;
 
 /** List of supported VM SKUs. */
-export type GetVMSkusResponsePropertiesValuesList = VmSkuProperties[];
+export type GetVMSkusResponsePropertiesValuesList =
+  ReadonlyArray<VmSkuProperties>;
 export const GetVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<GetVMSkusResponsePropertiesValuesList>;
@@ -875,7 +975,8 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadata>;
 
 /** Array of hybridIdentityMetadata */
-export type HybridIdentityMetadataListValueList = HybridIdentityMetadata[];
+export type HybridIdentityMetadataListValueList =
+  ReadonlyArray<HybridIdentityMetadata>;
 export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
@@ -896,15 +997,33 @@ export const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
   identifier: "HybridIdentityMetadataList",
 }) as any as S.Schema<HybridIdentityMetadataList>;
 
+/** Defines the resource properties for the hybrid identity metadata. */
+export interface HybridIdentityMetadataPropertiesInput {
+  /** Unique id of the parent provisioned cluster resource. */
+  resourceUid?: string;
+  /** Onboarding public key for provisioning the Managed identity for the connected cluster. */
+  publicKey?: string;
+}
+export const HybridIdentityMetadataPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceUid: S.optional(S.String),
+      publicKey: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "HybridIdentityMetadataPropertiesInput",
+}) as any as S.Schema<HybridIdentityMetadataPropertiesInput>;
+
 export interface HybridIdentityMetadataPutRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
-  body: unknown;
+  /** Resource properties. */
+  properties: HybridIdentityMetadataPropertiesInput;
 }
 export const HybridIdentityMetadataPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: HybridIdentityMetadataPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -962,7 +1081,7 @@ export const KubernetesVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type KubernetesVersionProfilePropertiesValuesList =
-  KubernetesVersionProperties[];
+  ReadonlyArray<KubernetesVersionProperties>;
 export const KubernetesVersionProfilePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -1008,7 +1127,8 @@ export const KubernetesVersionProfile = /*@__PURE__*/ S.suspend(() =>
   identifier: "KubernetesVersionProfile",
 }) as any as S.Schema<KubernetesVersionProfile>;
 
-export type KubernetesVersionProfileListValueList = KubernetesVersionProfile[];
+export type KubernetesVersionProfileListValueList =
+  ReadonlyArray<KubernetesVersionProfile>;
 export const KubernetesVersionProfileListValueList = /*@__PURE__*/ S.Array(
   KubernetesVersionProfile,
 ) as any as S.Schema<KubernetesVersionProfileListValueList>;
@@ -1064,11 +1184,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1095,7 +1215,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1115,28 +1235,6 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface ProvisionedClusterInstancesCreateOrUpdateRequest {
-  /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
-  connectedClusterResourceUri: string;
-  body: unknown;
-}
-export const ProvisionedClusterInstancesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectedClusterResourceUri: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
-        code: 200,
-        apiVersion: "2024-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProvisionedClusterInstancesCreateOrUpdateRequest",
-  }) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>;
-
 export interface LinuxProfilePropertiesSshPublicKeysItem {
   /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
   keyData?: string;
@@ -1152,7 +1250,7 @@ export const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ S.suspend(
 
 /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
 export type LinuxProfilePropertiesSshPublicKeysList =
-  LinuxProfilePropertiesSshPublicKeysItem[];
+  ReadonlyArray<LinuxProfilePropertiesSshPublicKeysItem>;
 export const LinuxProfilePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
   LinuxProfilePropertiesSshPublicKeysItem,
 ) as any as S.Schema<LinuxProfilePropertiesSshPublicKeysList>;
@@ -1230,7 +1328,7 @@ export const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkProfileLoadBalancerProfile>;
 
 /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
-export type NetworkProfileNetworkPolicy = "calico" | (string & {});
+export type NetworkProfileNetworkPolicy = "calico";
 export const NetworkProfileNetworkPolicy = /*@__PURE__*/ S.String;
 
 /** The network configuration profile for the provisioned cluster. */
@@ -1304,6 +1402,301 @@ export const ClusterVMAccessProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterVMAccessProfile>;
 
 /** The node labels to be persisted across all nodes in agent pool. */
+export type NamedAgentPoolProfileInputNodeLabelsMap = {
+  [key: string]: string | undefined;
+};
+export const NamedAgentPoolProfileInputNodeLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
+
+/** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
+export type NamedAgentPoolProfileInputNodeTaintsList = ReadonlyArray<string>;
+export const NamedAgentPoolProfileInputNodeTaintsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
+
+/** Profile of the default agent pool along with a name parameter */
+export interface NamedAgentPoolProfileInput {
+  osType?: OSType;
+  osSKU?: OSSKU;
+  /** The node labels to be persisted across all nodes in agent pool. */
+  nodeLabels?: NamedAgentPoolProfileInputNodeLabelsMap;
+  /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
+  nodeTaints?: NamedAgentPoolProfileInputNodeTaintsList;
+  /** The maximum number of nodes for auto-scaling */
+  maxCount?: number;
+  /** The minimum number of nodes for auto-scaling */
+  minCount?: number;
+  /** Whether to enable auto-scaler. Default value is false */
+  enableAutoScaling?: boolean;
+  /** The maximum number of pods that can run on a node. */
+  maxPods?: number;
+  /** Number of nodes in the agent pool. The default value is 1. */
+  count?: number;
+  /** The VM sku size of the agent pool node VMs. */
+  vmSize?: string;
+  /** Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1 */
+  name?: string;
+}
+export const NamedAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(OSType),
+    osSKU: S.optional(OSSKU),
+    nodeLabels: S.optional(NamedAgentPoolProfileInputNodeLabelsMap),
+    nodeTaints: S.optional(NamedAgentPoolProfileInputNodeTaintsList),
+    maxCount: S.optional(S.Number),
+    minCount: S.optional(S.Number),
+    enableAutoScaling: S.optional(S.Boolean),
+    maxPods: S.optional(S.Number),
+    count: S.optional(S.Number),
+    vmSize: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NamedAgentPoolProfileInput",
+}) as any as S.Schema<NamedAgentPoolProfileInput>;
+
+/** The agent pool properties for the provisioned cluster. */
+export type ProvisionedClusterPropertiesInputAgentPoolProfilesList =
+  ReadonlyArray<NamedAgentPoolProfileInput>;
+export const ProvisionedClusterPropertiesInputAgentPoolProfilesList =
+  /*@__PURE__*/ S.Array(
+    NamedAgentPoolProfileInput,
+  ) as any as S.Schema<ProvisionedClusterPropertiesInputAgentPoolProfilesList>;
+
+/** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
+export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
+  ReadonlyArray<string>;
+export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
+
+/** The profile for the infrastructure networks used by the provisioned cluster */
+export interface CloudProviderProfileInfraNetworkProfile {
+  /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
+  vnetSubnetIds?: CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList;
+}
+export const CloudProviderProfileInfraNetworkProfile = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      vnetSubnetIds: S.optional(
+        CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList,
+      ),
+    }),
+).annotate({
+  identifier: "CloudProviderProfileInfraNetworkProfile",
+}) as any as S.Schema<CloudProviderProfileInfraNetworkProfile>;
+
+/** The profile for the underlying cloud infrastructure provider for the provisioned cluster. */
+export interface CloudProviderProfile {
+  /** The profile for the infrastructure networks used by the provisioned cluster */
+  infraNetworkProfile?: CloudProviderProfileInfraNetworkProfile;
+}
+export const CloudProviderProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infraNetworkProfile: S.optional(CloudProviderProfileInfraNetworkProfile),
+  }),
+).annotate({
+  identifier: "CloudProviderProfile",
+}) as any as S.Schema<CloudProviderProfile>;
+
+/** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
+export type ProvisionedClusterLicenseProfileAzureHybridBenefit =
+  | "True"
+  | "False"
+  | "NotApplicable";
+export const ProvisionedClusterLicenseProfileAzureHybridBenefit =
+  /*@__PURE__*/ S.String;
+
+/** The license profile of the provisioned cluster. */
+export interface ProvisionedClusterLicenseProfile {
+  /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
+  azureHybridBenefit?: ProvisionedClusterLicenseProfileAzureHybridBenefit;
+}
+export const ProvisionedClusterLicenseProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    azureHybridBenefit: S.optional(
+      ProvisionedClusterLicenseProfileAzureHybridBenefit,
+    ),
+  }),
+).annotate({
+  identifier: "ProvisionedClusterLicenseProfile",
+}) as any as S.Schema<ProvisionedClusterLicenseProfile>;
+
+/** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
+export type ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
+  | "least-waste"
+  | "most-pods"
+  | "priority"
+  | "random";
+export const ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
+  /*@__PURE__*/ S.String;
+
+/** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
+export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
+  /** Valid values are 'true' and 'false' */
+  balance_similar_node_groups?: string;
+  /** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
+  expander?: ProvisionedClusterPropertiesInputAutoScalerProfileExpander;
+  /** The default is 10. */
+  max_empty_bulk_delete?: string;
+  /** The default is 600. */
+  max_graceful_termination_sec?: string;
+  /** The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  max_node_provision_time?: string;
+  /** The default is 45. The maximum is 100 and the minimum is 0. */
+  max_total_unready_percentage?: string;
+  /** For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc). */
+  new_pod_scale_up_delay?: string;
+  /** This must be an integer. The default is 3. */
+  ok_total_unready_count?: string;
+  /** The default is '10'. Values must be an integer number of seconds. */
+  scan_interval?: string;
+  /** The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  scale_down_delay_after_add?: string;
+  /** The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  scale_down_delay_after_delete?: string;
+  /** The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  scale_down_delay_after_failure?: string;
+  /** The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  scale_down_unneeded_time?: string;
+  /** The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported. */
+  scale_down_unready_time?: string;
+  /** The default is '0.5'. */
+  scale_down_utilization_threshold?: string;
+  /** The default is true. */
+  skip_nodes_with_local_storage?: string;
+  /** The default is true. */
+  skip_nodes_with_system_pods?: string;
+}
+export const ProvisionedClusterPropertiesInputAutoScalerProfile =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      balance_similar_node_groups: S.optional(
+        S.String.pipe(T.Body("balance-similar-node-groups")),
+      ),
+      expander: S.optional(
+        ProvisionedClusterPropertiesInputAutoScalerProfileExpander,
+      ),
+      max_empty_bulk_delete: S.optional(
+        S.String.pipe(T.Body("max-empty-bulk-delete")),
+      ),
+      max_graceful_termination_sec: S.optional(
+        S.String.pipe(T.Body("max-graceful-termination-sec")),
+      ),
+      max_node_provision_time: S.optional(
+        S.String.pipe(T.Body("max-node-provision-time")),
+      ),
+      max_total_unready_percentage: S.optional(
+        S.String.pipe(T.Body("max-total-unready-percentage")),
+      ),
+      new_pod_scale_up_delay: S.optional(
+        S.String.pipe(T.Body("new-pod-scale-up-delay")),
+      ),
+      ok_total_unready_count: S.optional(
+        S.String.pipe(T.Body("ok-total-unready-count")),
+      ),
+      scan_interval: S.optional(S.String.pipe(T.Body("scan-interval"))),
+      scale_down_delay_after_add: S.optional(
+        S.String.pipe(T.Body("scale-down-delay-after-add")),
+      ),
+      scale_down_delay_after_delete: S.optional(
+        S.String.pipe(T.Body("scale-down-delay-after-delete")),
+      ),
+      scale_down_delay_after_failure: S.optional(
+        S.String.pipe(T.Body("scale-down-delay-after-failure")),
+      ),
+      scale_down_unneeded_time: S.optional(
+        S.String.pipe(T.Body("scale-down-unneeded-time")),
+      ),
+      scale_down_unready_time: S.optional(
+        S.String.pipe(T.Body("scale-down-unready-time")),
+      ),
+      scale_down_utilization_threshold: S.optional(
+        S.String.pipe(T.Body("scale-down-utilization-threshold")),
+      ),
+      skip_nodes_with_local_storage: S.optional(
+        S.String.pipe(T.Body("skip-nodes-with-local-storage")),
+      ),
+      skip_nodes_with_system_pods: S.optional(
+        S.String.pipe(T.Body("skip-nodes-with-system-pods")),
+      ),
+    }),
+  ).annotate({
+    identifier: "ProvisionedClusterPropertiesInputAutoScalerProfile",
+  }) as any as S.Schema<ProvisionedClusterPropertiesInputAutoScalerProfile>;
+
+/** Properties of the provisioned cluster. */
+export interface ProvisionedClusterPropertiesInput {
+  /** The profile for Linux VMs in the provisioned cluster. */
+  linuxProfile?: LinuxProfileProperties;
+  /** The profile for control plane of the provisioned cluster. */
+  controlPlane?: ControlPlaneProfile;
+  /** The version of Kubernetes in use by the provisioned cluster. */
+  kubernetesVersion?: string;
+  /** The network configuration profile for the provisioned cluster. */
+  networkProfile?: NetworkProfile;
+  /** The storage configuration profile for the provisioned cluster. */
+  storageProfile?: StorageProfile;
+  /** The SSH restricted access profile for the VMs in the provisioned cluster. */
+  clusterVMAccessProfile?: ClusterVMAccessProfile;
+  /** The agent pool properties for the provisioned cluster. */
+  agentPoolProfiles?: ProvisionedClusterPropertiesInputAgentPoolProfilesList;
+  /** The profile for the underlying cloud infrastructure provider for the provisioned cluster. */
+  cloudProviderProfile?: CloudProviderProfile;
+  /** The license profile of the provisioned cluster. */
+  licenseProfile?: ProvisionedClusterLicenseProfile;
+  /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
+  autoScalerProfile?: ProvisionedClusterPropertiesInputAutoScalerProfile;
+}
+export const ProvisionedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    linuxProfile: S.optional(LinuxProfileProperties),
+    controlPlane: S.optional(ControlPlaneProfile),
+    kubernetesVersion: S.optional(S.String),
+    networkProfile: S.optional(NetworkProfile),
+    storageProfile: S.optional(StorageProfile),
+    clusterVMAccessProfile: S.optional(ClusterVMAccessProfile),
+    agentPoolProfiles: S.optional(
+      ProvisionedClusterPropertiesInputAgentPoolProfilesList,
+    ),
+    cloudProviderProfile: S.optional(CloudProviderProfile),
+    licenseProfile: S.optional(ProvisionedClusterLicenseProfile),
+    autoScalerProfile: S.optional(
+      ProvisionedClusterPropertiesInputAutoScalerProfile,
+    ),
+  }),
+).annotate({
+  identifier: "ProvisionedClusterPropertiesInput",
+}) as any as S.Schema<ProvisionedClusterPropertiesInput>;
+
+export interface ProvisionedClusterInstancesCreateOrUpdateRequest {
+  /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
+  connectedClusterResourceUri: string;
+  properties?: ProvisionedClusterPropertiesInput;
+  extendedLocation?: ExtendedLocation;
+}
+export const ProvisionedClusterInstancesCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      connectedClusterResourceUri: S.String.pipe(T.Label()),
+      properties: S.optional(ProvisionedClusterPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+        code: 200,
+        apiVersion: "2024-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ProvisionedClusterInstancesCreateOrUpdateRequest",
+  }) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>;
+
+/** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileNodeLabelsMap = {
   [key: string]: string | undefined;
 };
@@ -1313,7 +1706,7 @@ export const NamedAgentPoolProfileNodeLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
-export type NamedAgentPoolProfileNodeTaintsList = string[];
+export type NamedAgentPoolProfileNodeTaintsList = ReadonlyArray<string>;
 export const NamedAgentPoolProfileNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
@@ -1364,47 +1757,11 @@ export const NamedAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesAgentPoolProfilesList =
-  NamedAgentPoolProfile[];
+  ReadonlyArray<NamedAgentPoolProfile>;
 export const ProvisionedClusterPropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     NamedAgentPoolProfile,
   ) as any as S.Schema<ProvisionedClusterPropertiesAgentPoolProfilesList>;
-
-/** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
-export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList = string[];
-export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
-
-/** The profile for the infrastructure networks used by the provisioned cluster */
-export interface CloudProviderProfileInfraNetworkProfile {
-  /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
-  vnetSubnetIds?: CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList;
-}
-export const CloudProviderProfileInfraNetworkProfile = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vnetSubnetIds: S.optional(
-        CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList,
-      ),
-    }),
-).annotate({
-  identifier: "CloudProviderProfileInfraNetworkProfile",
-}) as any as S.Schema<CloudProviderProfileInfraNetworkProfile>;
-
-/** The profile for the underlying cloud infrastructure provider for the provisioned cluster. */
-export interface CloudProviderProfile {
-  /** The profile for the infrastructure networks used by the provisioned cluster */
-  infraNetworkProfile?: CloudProviderProfileInfraNetworkProfile;
-}
-export const CloudProviderProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infraNetworkProfile: S.optional(CloudProviderProfileInfraNetworkProfile),
-  }),
-).annotate({
-  identifier: "CloudProviderProfile",
-}) as any as S.Schema<CloudProviderProfile>;
 
 /** Observed phase of the addon or component on the provisioned cluster. Possible values include: 'pending', 'provisioning', 'provisioning {HelmChartInstalled}', 'provisioning {MSICertificateDownloaded}', 'provisioned', 'deleting', 'failed', 'upgrading' */
 export type AddonStatusProfilePhase =
@@ -1415,8 +1772,7 @@ export type AddonStatusProfilePhase =
   | "provisioned"
   | "deleting"
   | "failed"
-  | "upgrading"
-  | (string & {});
+  | "upgrading";
 export const AddonStatusProfilePhase = /*@__PURE__*/ S.String;
 
 /** The status profile of the addons and other kubernetes components */
@@ -1443,7 +1799,7 @@ export const AddonStatusProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The detailed status of the provisioned cluster components including addons. */
 export type ProvisionedClusterPropertiesStatusControlPlaneStatusList =
-  AddonStatusProfile[];
+  ReadonlyArray<AddonStatusProfile>;
 export const ProvisionedClusterPropertiesStatusControlPlaneStatusList =
   /*@__PURE__*/ S.Array(
     AddonStatusProfile,
@@ -1470,37 +1826,12 @@ export const ProvisionedClusterPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisionedClusterPropertiesStatus",
 }) as any as S.Schema<ProvisionedClusterPropertiesStatus>;
 
-/** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
-export type ProvisionedClusterLicenseProfileAzureHybridBenefit =
-  | "True"
-  | "False"
-  | "NotApplicable"
-  | (string & {});
-export const ProvisionedClusterLicenseProfileAzureHybridBenefit =
-  /*@__PURE__*/ S.String;
-
-/** The license profile of the provisioned cluster. */
-export interface ProvisionedClusterLicenseProfile {
-  /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
-  azureHybridBenefit?: ProvisionedClusterLicenseProfileAzureHybridBenefit;
-}
-export const ProvisionedClusterLicenseProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureHybridBenefit: S.optional(
-      ProvisionedClusterLicenseProfileAzureHybridBenefit,
-    ),
-  }),
-).annotate({
-  identifier: "ProvisionedClusterLicenseProfile",
-}) as any as S.Schema<ProvisionedClusterLicenseProfile>;
-
 /** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
 export type ProvisionedClusterPropertiesAutoScalerProfileExpander =
   | "least-waste"
   | "most-pods"
   | "priority"
-  | "random"
-  | (string & {});
+  | "random";
 export const ProvisionedClusterPropertiesAutoScalerProfileExpander =
   /*@__PURE__*/ S.String;
 
@@ -1785,7 +2116,7 @@ export const ProvisionedClusterPoolUpgradeProfileProperties =
 
 /** List of available kubernetes versions for upgrade. */
 export type ProvisionedClusterPoolUpgradeProfileUpgradesList =
-  ProvisionedClusterPoolUpgradeProfileProperties[];
+  ReadonlyArray<ProvisionedClusterPoolUpgradeProfileProperties>;
 export const ProvisionedClusterPoolUpgradeProfileUpgradesList =
   /*@__PURE__*/ S.Array(
     ProvisionedClusterPoolUpgradeProfileProperties,
@@ -1897,7 +2228,8 @@ export const ProvisionedCluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisionedCluster",
 }) as any as S.Schema<ProvisionedCluster>;
 
-export type ProvisionedClusterListResultValueList = ProvisionedCluster[];
+export type ProvisionedClusterListResultValueList =
+  ReadonlyArray<ProvisionedCluster>;
 export const ProvisionedClusterListResultValueList = /*@__PURE__*/ S.Array(
   ProvisionedCluster,
 ) as any as S.Schema<ProvisionedClusterListResultValueList>;
@@ -1967,7 +2299,7 @@ export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Base64-encoded Kubernetes configuration file. */
 export type ListCredentialResponsePropertiesKubeconfigsList =
-  CredentialResult[];
+  ReadonlyArray<CredentialResult>;
 export const ListCredentialResponsePropertiesKubeconfigsList =
   /*@__PURE__*/ S.Array(
     CredentialResult,
@@ -2033,12 +2365,12 @@ export const ProvisionedClusterInstancesListUserKubeconfigRequest =
 export interface PutKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
-  body: unknown;
+  extendedLocation?: ExtendedLocation;
 }
 export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2053,7 +2385,7 @@ export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type PutKubernetesVersionsResponsePropertiesValuesList =
-  KubernetesVersionProperties[];
+  ReadonlyArray<KubernetesVersionProperties>;
 export const PutKubernetesVersionsResponsePropertiesValuesList =
   /*@__PURE__*/ S.Array(
     KubernetesVersionProperties,
@@ -2102,12 +2434,12 @@ export const PutKubernetesVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
-  body: unknown;
+  extendedLocation?: ExtendedLocation;
 }
 export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2121,7 +2453,8 @@ export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVMSkusRequest>;
 
 /** List of supported VM SKUs. */
-export type PutVMSkusResponsePropertiesValuesList = VmSkuProperties[];
+export type PutVMSkusResponsePropertiesValuesList =
+  ReadonlyArray<VmSkuProperties>;
 export const PutVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<PutVMSkusResponsePropertiesValuesList>;
@@ -2165,6 +2498,157 @@ export const PutVMSkusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutVMSkusResponse",
 }) as any as S.Schema<PutVMSkusResponse>;
 
+/** Resource tags. */
+export type VirtualNetworksCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const VirtualNetworksCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
+
+/** Infrastructure network profile for HCI platform */
+export interface VirtualNetworkPropertiesInputInfraVnetProfileHci {
+  /** Group in MOC(Microsoft On-premises Cloud) */
+  mocGroup?: string;
+  /** Location in MOC(Microsoft On-premises Cloud) */
+  mocLocation?: string;
+  /** Virtual Network name in MOC(Microsoft On-premises Cloud) */
+  mocVnetName?: string;
+}
+export const VirtualNetworkPropertiesInputInfraVnetProfileHci =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mocGroup: S.optional(S.String),
+      mocLocation: S.optional(S.String),
+      mocVnetName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VirtualNetworkPropertiesInputInfraVnetProfileHci",
+  }) as any as S.Schema<VirtualNetworkPropertiesInputInfraVnetProfileHci>;
+
+export interface VirtualNetworkPropertiesInputInfraVnetProfile {
+  /** Infrastructure network profile for HCI platform */
+  hci?: VirtualNetworkPropertiesInputInfraVnetProfileHci;
+}
+export const VirtualNetworkPropertiesInputInfraVnetProfile =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hci: S.optional(VirtualNetworkPropertiesInputInfraVnetProfileHci),
+    }),
+  ).annotate({
+    identifier: "VirtualNetworkPropertiesInputInfraVnetProfile",
+  }) as any as S.Schema<VirtualNetworkPropertiesInputInfraVnetProfile>;
+
+export interface VirtualNetworkPropertiesInputVipPoolItem {
+  /** Ending IP address for the IP Pool */
+  endIP?: string;
+  /** Starting IP address for the IP Pool */
+  startIP?: string;
+}
+export const VirtualNetworkPropertiesInputVipPoolItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      endIP: S.optional(S.String),
+      startIP: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VirtualNetworkPropertiesInputVipPoolItem",
+}) as any as S.Schema<VirtualNetworkPropertiesInputVipPoolItem>;
+
+/** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
+export type VirtualNetworkPropertiesInputVipPoolList =
+  ReadonlyArray<VirtualNetworkPropertiesInputVipPoolItem>;
+export const VirtualNetworkPropertiesInputVipPoolList = /*@__PURE__*/ S.Array(
+  VirtualNetworkPropertiesInputVipPoolItem,
+) as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
+
+export interface VirtualNetworkPropertiesInputVmipPoolItem {
+  /** Ending IP address for the IP Pool */
+  endIP?: string;
+  /** Starting IP address for the IP Pool */
+  startIP?: string;
+}
+export const VirtualNetworkPropertiesInputVmipPoolItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endIP: S.optional(S.String),
+      startIP: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VirtualNetworkPropertiesInputVmipPoolItem",
+  }) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolItem>;
+
+/** Range of IP Addresses for Kubernetes node VMs */
+export type VirtualNetworkPropertiesInputVmipPoolList =
+  ReadonlyArray<VirtualNetworkPropertiesInputVmipPoolItem>;
+export const VirtualNetworkPropertiesInputVmipPoolList = /*@__PURE__*/ S.Array(
+  VirtualNetworkPropertiesInputVmipPoolItem,
+) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
+
+/** List of DNS server IP Addresses associated with the network */
+export type VirtualNetworkPropertiesInputDnsServersList = ReadonlyArray<string>;
+export const VirtualNetworkPropertiesInputDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VirtualNetworkPropertiesInputDnsServersList>;
+
+/** Properties of the virtual network resource */
+export interface VirtualNetworkPropertiesInput {
+  infraVnetProfile?: VirtualNetworkPropertiesInputInfraVnetProfile;
+  /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
+  vipPool?: VirtualNetworkPropertiesInputVipPoolList;
+  /** Range of IP Addresses for Kubernetes node VMs */
+  vmipPool?: VirtualNetworkPropertiesInputVmipPoolList;
+  /** List of DNS server IP Addresses associated with the network */
+  dnsServers?: VirtualNetworkPropertiesInputDnsServersList;
+  /** IP Address of the Gateway associated with the network */
+  gateway?: string;
+  /** IP Address Prefix of the network */
+  ipAddressPrefix?: string;
+  /** VLAN Id used by the network */
+  vlanID?: number;
+}
+export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infraVnetProfile: S.optional(VirtualNetworkPropertiesInputInfraVnetProfile),
+    vipPool: S.optional(VirtualNetworkPropertiesInputVipPoolList),
+    vmipPool: S.optional(VirtualNetworkPropertiesInputVmipPoolList),
+    dnsServers: S.optional(VirtualNetworkPropertiesInputDnsServersList),
+    gateway: S.optional(S.String),
+    ipAddressPrefix: S.optional(S.String),
+    vlanID: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VirtualNetworkPropertiesInput",
+}) as any as S.Schema<VirtualNetworkPropertiesInput>;
+
+/** The extended location type. Allowed value: 'CustomLocation' */
+export type VirtualNetworksCreateOrUpdateRequestExtendedLocationType =
+  "CustomLocation";
+export const VirtualNetworksCreateOrUpdateRequestExtendedLocationType =
+  /*@__PURE__*/ S.String;
+
+/** Extended location pointing to the underlying infrastructure */
+export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
+  /** The extended location type. Allowed value: 'CustomLocation' */
+  type?: VirtualNetworksCreateOrUpdateRequestExtendedLocationType;
+  /** ARM Id of the extended location. */
+  name?: string;
+}
+export const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        VirtualNetworksCreateOrUpdateRequestExtendedLocationType,
+      ),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VirtualNetworksCreateOrUpdateRequestExtendedLocation",
+  }) as any as S.Schema<VirtualNetworksCreateOrUpdateRequestExtendedLocation>;
+
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2172,7 +2656,13 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: VirtualNetworksCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: VirtualNetworkPropertiesInput;
+  /** Extended location pointing to the underlying infrastructure */
+  extendedLocation?: VirtualNetworksCreateOrUpdateRequestExtendedLocation;
 }
 export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2180,7 +2670,12 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       virtualNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(VirtualNetworksCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(VirtualNetworkPropertiesInput),
+      extendedLocation: S.optional(
+        VirtualNetworksCreateOrUpdateRequestExtendedLocation,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2253,7 +2748,7 @@ export const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesVipPoolList =
-  VirtualNetworkPropertiesVipPoolItem[];
+  ReadonlyArray<VirtualNetworkPropertiesVipPoolItem>;
 export const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVipPoolList>;
@@ -2276,13 +2771,13 @@ export const VirtualNetworkPropertiesVmipPoolItem = /*@__PURE__*/ S.suspend(
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList =
-  VirtualNetworkPropertiesVmipPoolItem[];
+  ReadonlyArray<VirtualNetworkPropertiesVmipPoolItem>;
 export const VirtualNetworkPropertiesVmipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesVmipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
-export type VirtualNetworkPropertiesDnsServersList = string[];
+export type VirtualNetworkPropertiesDnsServersList = ReadonlyArray<string>;
 export const VirtualNetworkPropertiesDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
@@ -2295,8 +2790,7 @@ export type VirtualNetworkPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const VirtualNetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The error if any from the operation. */
@@ -2386,8 +2880,7 @@ export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksCreateOrUpdateResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -2508,9 +3001,7 @@ export const VirtualNetworkTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
-export type VirtualNetworkExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+export type VirtualNetworkExtendedLocationType = "CustomLocation";
 export const VirtualNetworkExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** Extended location pointing to the underlying infrastructure */
@@ -2560,7 +3051,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VirtualNetwork" }) as any as S.Schema<VirtualNetwork>;
 
-export type VirtualNetworksListResultValueList = VirtualNetwork[];
+export type VirtualNetworksListResultValueList = ReadonlyArray<VirtualNetwork>;
 export const VirtualNetworksListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworksListResultValueList>;
@@ -2635,8 +3126,7 @@ export const VirtualNetworksRetrieveResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksRetrieveResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksRetrieveResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -2691,6 +3181,15 @@ export const VirtualNetworksRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualNetworksRetrieveResponse",
 }) as any as S.Schema<VirtualNetworksRetrieveResponse>;
 
+/** Resource tags */
+export type VirtualNetworksUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const VirtualNetworksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<VirtualNetworksUpdateRequestTagsMap>;
+
 export interface VirtualNetworksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2698,14 +3197,15 @@ export interface VirtualNetworksUpdateRequest {
   resourceGroupName: string;
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: VirtualNetworksUpdateRequestTagsMap;
 }
 export const VirtualNetworksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     virtualNetworkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(VirtualNetworksUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2729,8 +3229,7 @@ export const VirtualNetworksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksUpdateResponseExtendedLocationType =
-  | "CustomLocation"
-  | (string & {});
+  "CustomLocation";
 export const VirtualNetworksUpdateResponseExtendedLocationType =
   /*@__PURE__*/ S.String;
 
@@ -2803,7 +3302,7 @@ export const VMSkusListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VMSkusListRequest>;
 
 /** List of supported VM SKUs. */
-export type VmSkuProfilePropertiesValuesList = VmSkuProperties[];
+export type VmSkuProfilePropertiesValuesList = ReadonlyArray<VmSkuProperties>;
 export const VmSkuProfilePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<VmSkuProfilePropertiesValuesList>;
@@ -2846,7 +3345,7 @@ export const VmSkuProfile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VmSkuProfile" }) as any as S.Schema<VmSkuProfile>;
 
-export type VmSkuProfileListValueList = VmSkuProfile[];
+export type VmSkuProfileListValueList = ReadonlyArray<VmSkuProfile>;
 export const VmSkuProfileListValueList = /*@__PURE__*/ S.Array(
   VmSkuProfile,
 ) as any as S.Schema<VmSkuProfileListValueList>;

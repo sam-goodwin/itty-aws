@@ -201,7 +201,7 @@ export const SlackChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlackChannel" }) as any as S.Schema<SlackChannel>;
 
 /** Slack channels visible to the PostHog Slack app. */
-export type SlackChannelsResponseChannelsList = SlackChannel[];
+export type SlackChannelsResponseChannelsList = ReadonlyArray<SlackChannel>;
 export const SlackChannelsResponseChannelsList = /*@__PURE__*/ S.Array(
   SlackChannel,
 ) as any as S.Schema<SlackChannelsResponseChannelsList>;
@@ -351,9 +351,30 @@ export type IntegrationKindEnum =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const IntegrationKindEnum = /*@__PURE__*/ S.String;
+
+export interface IntegrationsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  kind?: IntegrationKindEnum;
+  config?: unknown;
+}
+export const IntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    kind: S.optional(IntegrationKindEnum),
+    config: S.optional(S.Unknown),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/integrations/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "IntegrationsCreateRequest",
+}) as any as S.Schema<IntegrationsCreateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -370,11 +391,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -406,45 +426,13 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface IntegrationsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: number;
-  kind?: IntegrationKindEnum;
-  config?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  errors?: string;
-  display_name?: string;
-}
-export const IntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
-    kind: S.optional(IntegrationKindEnum),
-    config: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    errors: S.optional(S.String),
-    display_name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/integrations/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IntegrationsCreateRequest",
-}) as any as S.Schema<IntegrationsCreateRequest>;
-
 /** Standard Integration serializer. */
 export interface IntegrationConfig {
   id?: number;
   kind?: IntegrationKindEnum;
   config?: unknown;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   errors?: string;
   display_name?: string;
 }
@@ -454,7 +442,7 @@ export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(IntegrationKindEnum),
     config: S.optional(S.Unknown),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     errors: S.optional(S.String),
     display_name: S.optional(S.String),
   }),
@@ -493,25 +481,15 @@ export const IntegrationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface IntegrationsDomainConnectApplyUrlCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: number;
   kind?: IntegrationKindEnum;
   config?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  errors?: string;
-  display_name?: string;
 }
 export const IntegrationsDomainConnectApplyUrlCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.Number),
       kind: S.optional(IntegrationKindEnum),
       config: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      errors: S.optional(S.String),
-      display_name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -561,10 +539,6 @@ export interface IntegrationsEmailPartialUpdateRequest {
   id: number;
   kind?: IntegrationKindEnum;
   config?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  errors?: string;
-  display_name?: string;
 }
 export const IntegrationsEmailPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -573,10 +547,6 @@ export const IntegrationsEmailPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       id: S.Number.pipe(T.Label()),
       kind: S.optional(IntegrationKindEnum),
       config: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      errors: S.optional(S.String),
-      display_name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -595,10 +565,6 @@ export interface IntegrationsEmailVerifyCreateRequest {
   id: number;
   kind?: IntegrationKindEnum;
   config?: unknown;
-  created_at?: string;
-  created_by?: UserBasic;
-  errors?: string;
-  display_name?: string;
 }
 export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -607,10 +573,6 @@ export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(
       id: S.Number.pipe(T.Label()),
       kind: S.optional(IntegrationKindEnum),
       config: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      errors: S.optional(S.String),
-      display_name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -664,7 +626,7 @@ export const IntegrationsGithubBranchesRetrieveRequest =
   }) as any as S.Schema<IntegrationsGithubBranchesRetrieveRequest>;
 
 /** List of branch names */
-export type GitHubBranchesResponseBranchesList = string[];
+export type GitHubBranchesResponseBranchesList = ReadonlyArray<string>;
 export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GitHubBranchesResponseBranchesList>;
@@ -713,7 +675,7 @@ export const IntegrationsGithubLinkExistingCreateRequest =
   }) as any as S.Schema<IntegrationsGithubLinkExistingCreateRequest>;
 
 /** * `posthog_code` - posthog_code */
-export type ConnectFromEnum = "posthog_code" | (string & {});
+export type ConnectFromEnum = "posthog_code";
 export const ConnectFromEnum = /*@__PURE__*/ S.String;
 
 export interface IntegrationsGithubOauthAuthorizeCreateRequest {
@@ -844,7 +806,8 @@ export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
 /** The refreshed repository cache. */
-export type GitHubReposRefreshResponseRepositoriesList = GitHubRepo[];
+export type GitHubReposRefreshResponseRepositoriesList =
+  ReadonlyArray<GitHubRepo>;
 export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
@@ -892,7 +855,7 @@ export const IntegrationsGithubReposRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "IntegrationsGithubReposRetrieveRequest",
 }) as any as S.Schema<IntegrationsGithubReposRetrieveRequest>;
 
-export type GitHubReposResponseRepositoriesList = GitHubRepo[];
+export type GitHubReposResponseRepositoriesList = ReadonlyArray<GitHubRepo>;
 export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposResponseRepositoriesList>;
@@ -959,7 +922,7 @@ export const GitHubTeam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubTeam" }) as any as S.Schema<GitHubTeam>;
 
 /** List of GitHub teams available to the installation organization. */
-export type GitHubTeamsResponseTeamsList = GitHubTeam[];
+export type GitHubTeamsResponseTeamsList = ReadonlyArray<GitHubTeam>;
 export const GitHubTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   GitHubTeam,
 ) as any as S.Schema<GitHubTeamsResponseTeamsList>;
@@ -1074,7 +1037,7 @@ export const JiraProject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JiraProject" }) as any as S.Schema<JiraProject>;
 
 /** Jira projects available to this integration. */
-export type JiraProjectsResponseProjectsList = JiraProject[];
+export type JiraProjectsResponseProjectsList = ReadonlyArray<JiraProject>;
 export const JiraProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   JiraProject,
 ) as any as S.Schema<JiraProjectsResponseProjectsList>;
@@ -1127,7 +1090,7 @@ export const LinearTeam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinearTeam" }) as any as S.Schema<LinearTeam>;
 
 /** Linear teams available to this integration. */
-export type LinearTeamsResponseTeamsList = LinearTeam[];
+export type LinearTeamsResponseTeamsList = ReadonlyArray<LinearTeam>;
 export const LinearTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   LinearTeam,
 ) as any as S.Schema<LinearTeamsResponseTeamsList>;
@@ -1241,8 +1204,7 @@ export type IntegrationsListRequestKind =
   | "stripe"
   | "tiktok-ads"
   | "twilio"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const IntegrationsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface IntegrationsListRequest {
@@ -1272,7 +1234,8 @@ export const IntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationsListRequest",
 }) as any as S.Schema<IntegrationsListRequest>;
 
-export type PaginatedIntegrationConfigListResultsList = IntegrationConfig[];
+export type PaginatedIntegrationConfigListResultsList =
+  ReadonlyArray<IntegrationConfig>;
 export const PaginatedIntegrationConfigListResultsList = /*@__PURE__*/ S.Array(
   IntegrationConfig,
 ) as any as S.Schema<PaginatedIntegrationConfigListResultsList>;

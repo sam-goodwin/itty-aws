@@ -240,8 +240,7 @@ export type Comparator =
   | "Exists"
   | "DoesNotExist"
   | "In"
-  | "NotIn"
-  | (string & {});
+  | "NotIn";
 export const Comparator = /*@__PURE__*/ S.String;
 
 export type IntegerList = number[];
@@ -259,8 +258,7 @@ export const LocaleList = /*@__PURE__*/ S.Array(Locale);
 export type HITAccessActions =
   | "Accept"
   | "PreviewAndAccept"
-  | "DiscoverPreviewAndAccept"
-  | (string & {});
+  | "DiscoverPreviewAndAccept";
 export const HITAccessActions = /*@__PURE__*/ S.String;
 
 export interface QualificationRequirement {
@@ -392,16 +390,14 @@ export type HITStatus =
   | "Unassignable"
   | "Reviewable"
   | "Reviewing"
-  | "Disposed"
-  | (string & {});
+  | "Disposed";
 export const HITStatus = /*@__PURE__*/ S.String;
 
 export type HITReviewStatus =
   | "NotReviewed"
   | "MarkedForReview"
   | "ReviewedAppropriate"
-  | "ReviewedInappropriate"
-  | (string & {});
+  | "ReviewedInappropriate";
 export const HITReviewStatus = /*@__PURE__*/ S.String;
 
 export interface HIT {
@@ -546,7 +542,7 @@ export const CreateHITWithHITTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHITWithHITTypeResponse",
 }) as any as S.Schema<CreateHITWithHITTypeResponse>;
-export type QualificationTypeStatus = "Active" | "Inactive" | (string & {});
+export type QualificationTypeStatus = "Active" | "Inactive";
 export const QualificationTypeStatus = /*@__PURE__*/ S.String;
 
 export interface CreateQualificationTypeRequest {
@@ -803,11 +799,7 @@ export const GetAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssignmentRequest",
 }) as any as S.Schema<GetAssignmentRequest>;
-export type AssignmentStatus =
-  | "Submitted"
-  | "Approved"
-  | "Rejected"
-  | (string & {});
+export type AssignmentStatus = "Submitted" | "Approved" | "Rejected";
 export const AssignmentStatus = /*@__PURE__*/ S.String;
 
 export interface Assignment {
@@ -921,7 +913,7 @@ export const GetQualificationScoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQualificationScoreRequest",
 }) as any as S.Schema<GetQualificationScoreRequest>;
-export type QualificationStatus = "Granted" | "Revoked" | (string & {});
+export type QualificationStatus = "Granted" | "Revoked";
 export const QualificationStatus = /*@__PURE__*/ S.String;
 
 export interface Qualification {
@@ -1262,7 +1254,7 @@ export const ListQualificationTypesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListQualificationTypesResponse",
 }) as any as S.Schema<ListQualificationTypesResponse>;
-export type ReviewableHITStatus = "Reviewable" | "Reviewing" | (string & {});
+export type ReviewableHITStatus = "Reviewable" | "Reviewing";
 export const ReviewableHITStatus = /*@__PURE__*/ S.String;
 
 export interface ListReviewableHITsRequest {
@@ -1305,7 +1297,7 @@ export const ListReviewableHITsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListReviewableHITsResponse",
 }) as any as S.Schema<ListReviewableHITsResponse>;
-export type ReviewPolicyLevel = "Assignment" | "HIT" | (string & {});
+export type ReviewPolicyLevel = "Assignment" | "HIT";
 export const ReviewPolicyLevel = /*@__PURE__*/ S.String;
 
 export type ReviewPolicyLevelList = ReviewPolicyLevel[];
@@ -1367,8 +1359,7 @@ export type ReviewActionStatus =
   | "Intended"
   | "Succeeded"
   | "Failed"
-  | "Cancelled"
-  | (string & {});
+  | "Cancelled";
 export const ReviewActionStatus = /*@__PURE__*/ S.String;
 
 export interface ReviewActionDetail {
@@ -1543,10 +1534,7 @@ export const NotifyWorkersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyWorkersRequest",
 }) as any as S.Schema<NotifyWorkersRequest>;
-export type NotifyWorkersFailureCode =
-  | "SoftFailure"
-  | "HardFailure"
-  | (string & {});
+export type NotifyWorkersFailureCode = "SoftFailure" | "HardFailure";
 export const NotifyWorkersFailureCode = /*@__PURE__*/ S.String;
 
 export interface NotifyWorkersFailureStatus {
@@ -1664,7 +1652,7 @@ export const SendBonusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendBonusResponse",
 }) as any as S.Schema<SendBonusResponse>;
-export type NotificationTransport = "Email" | "SQS" | "SNS" | (string & {});
+export type NotificationTransport = "Email" | "SQS" | "SNS";
 export const NotificationTransport = /*@__PURE__*/ S.String;
 
 export type EventType =
@@ -1679,8 +1667,7 @@ export type EventType =
   | "HITReviewable"
   | "HITExtended"
   | "HITDisposed"
-  | "Ping"
-  | (string & {});
+  | "Ping";
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventTypeList = EventType[];

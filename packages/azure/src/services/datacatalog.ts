@@ -12,44 +12,17 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ADCCatalogsCreateOrUpdateRequest {
-  /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group within the user's subscription. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the data catalog in the specified subscription and resource group. */
-  catalogName: string;
-  body: unknown;
-}
-export const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
-      code: 200,
-      apiVersion: "2016-03-30",
-    }),
-  ),
-).annotate({
-  identifier: "ADCCatalogsCreateOrUpdateRequest",
-}) as any as S.Schema<ADCCatalogsCreateOrUpdateRequest>;
-
 /** Resource tags */
-export type ADCCatalogsCreateOrUpdateResponseTagsMap = {
+export type ADCCatalogsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ADCCatalogsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const ADCCatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ADCCatalogsCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<ADCCatalogsCreateOrUpdateRequestTagsMap>;
 
 /** Azure data catalog SKU. */
-export type ADCCatalogPropertiesSku = "Free" | "Standard" | (string & {});
+export type ADCCatalogPropertiesSku = "Free" | "Standard";
 export const ADCCatalogPropertiesSku = /*@__PURE__*/ S.String;
 
 /** User principals. */
@@ -67,13 +40,13 @@ export const Principals = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principals" }) as any as S.Schema<Principals>;
 
 /** Azure data catalog admin list. */
-export type ADCCatalogPropertiesAdminsList = Principals[];
+export type ADCCatalogPropertiesAdminsList = ReadonlyArray<Principals>;
 export const ADCCatalogPropertiesAdminsList = /*@__PURE__*/ S.Array(
   Principals,
 ) as any as S.Schema<ADCCatalogPropertiesAdminsList>;
 
 /** Azure data catalog user list. */
-export type ADCCatalogPropertiesUsersList = Principals[];
+export type ADCCatalogPropertiesUsersList = ReadonlyArray<Principals>;
 export const ADCCatalogPropertiesUsersList = /*@__PURE__*/ S.Array(
   Principals,
 ) as any as S.Schema<ADCCatalogPropertiesUsersList>;
@@ -105,6 +78,52 @@ export const ADCCatalogProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ADCCatalogProperties",
 }) as any as S.Schema<ADCCatalogProperties>;
+
+export interface ADCCatalogsCreateOrUpdateRequest {
+  /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group within the user's subscription. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the data catalog in the specified subscription and resource group. */
+  catalogName: string;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ADCCatalogsCreateOrUpdateRequestTagsMap;
+  /** Resource etag */
+  etag?: string;
+  /** Azure Data Catalog properties. */
+  properties?: ADCCatalogProperties;
+}
+export const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(ADCCatalogsCreateOrUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(ADCCatalogProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
+      code: 200,
+      apiVersion: "2016-03-30",
+    }),
+  ),
+).annotate({
+  identifier: "ADCCatalogsCreateOrUpdateRequest",
+}) as any as S.Schema<ADCCatalogsCreateOrUpdateRequest>;
+
+/** Resource tags */
+export type ADCCatalogsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ADCCatalogsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ADCCatalogsCreateOrUpdateResponseTagsMap>;
 
 export interface ADCCatalogsCreateOrUpdateResponse {
   /** Resource Id */
@@ -292,7 +311,7 @@ export const ADCCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ADCCatalog" }) as any as S.Schema<ADCCatalog>;
 
 /** the list of Azure Data Catalogs. */
-export type ADCCatalogsListResultValueList = ADCCatalog[];
+export type ADCCatalogsListResultValueList = ReadonlyArray<ADCCatalog>;
 export const ADCCatalogsListResultValueList = /*@__PURE__*/ S.Array(
   ADCCatalog,
 ) as any as S.Schema<ADCCatalogsListResultValueList>;
@@ -310,6 +329,15 @@ export const ADCCatalogsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ADCCatalogsListResult",
 }) as any as S.Schema<ADCCatalogsListResult>;
 
+/** Resource tags */
+export type ADCCatalogsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ADCCatalogsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ADCCatalogsUpdateRequestTagsMap>;
+
 export interface ADCCatalogsUpdateRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -317,14 +345,24 @@ export interface ADCCatalogsUpdateRequest {
   resourceGroupName: string;
   /** The name of the data catalog in the specified subscription and resource group. */
   catalogName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ADCCatalogsUpdateRequestTagsMap;
+  /** Resource etag */
+  etag?: string;
+  /** Azure Data Catalog properties. */
+  properties?: ADCCatalogProperties;
 }
 export const ADCCatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(ADCCatalogsUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(ADCCatalogProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -429,7 +467,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = OperationEntity[];
+export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;

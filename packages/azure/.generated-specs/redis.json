@@ -83,16 +83,36 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.redis#RedisKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Redis access key to regenerate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Redis access key to regenerate."
       }
     },
     "com.azure.redis#PrivateLinkResourcesListByRedisCache": {
@@ -657,16 +677,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.redis#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.redis#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.redis#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.redis#PrivateEndpointConnectionsGet": {
@@ -1169,10 +1216,10 @@
             "smithy.api#documentation": "The name of the RedisPatchSchedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#ScheduleEntries",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of patch schedules for a Redis cache.",
             "smithy.api#required": {}
           }
         }
@@ -1831,16 +1878,45 @@
             "smithy.api#documentation": "The name of the RedisLinkedServerWithProperties"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisLinkedServerCreatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties required to create a linked server.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisLinkedServerCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "linkedRedisCacheId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resourceId of the linked redis cache.",
+            "smithy.api#required": {}
+          }
+        },
+        "linkedRedisCacheLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the linked redis cache.",
+            "smithy.api#required": {}
+          }
+        },
+        "serverRole": {
+          "target": "com.azure.redis#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "Role of the linked server.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create properties for a linked server"
       }
     },
     "com.azure.redis#LinkedServerGet": {
@@ -2105,16 +2181,45 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "format": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "File format."
+          }
+        },
+        "files": {
+          "target": "com.azure.redis#RedisImportDataRequestFilesList",
+          "traits": {
+            "smithy.api#documentation": "files to import.",
             "smithy.api#required": {}
+          }
+        },
+        "preferred_data_archive_auth_method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS",
+            "smithy.api#jsonName": "preferred-data-archive-auth-method"
+          }
+        },
+        "storage_subscription_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription id of the storage container containing files to import using Managed Identity.",
+            "smithy.api#jsonName": "storage-subscription-id"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisImportDataRequestFilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "files to import."
       }
     },
     "com.azure.redis#RedisForceReboot": {
@@ -2177,16 +2282,62 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "rebootType": {
+          "target": "com.azure.redis#RebootType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Which Redis node(s) to reboot. Depending on this value data loss is possible."
+          }
+        },
+        "shardId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If clustering is enabled, the ID of the shard to be rebooted."
+          }
+        },
+        "ports": {
+          "target": "com.azure.redis#RedisForceRebootRequestPortsList",
+          "traits": {
+            "smithy.api#documentation": "A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisForceRebootRequestPortsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports."
+      }
+    },
+    "com.azure.redis#RebootType": {
+      "type": "enum",
+      "members": {
+        "PRIMARYNODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PrimaryNode"
+          }
+        },
+        "SECONDARYNODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecondaryNode"
+          }
+        },
+        "ALLNODES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllNodes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Which Redis node(s) to reboot. Depending on this value data loss is possible."
       }
     },
     "com.azure.redis#RedisFlushCache": {
@@ -2622,10 +2773,10 @@
             "smithy.api#documentation": "The name of the firewall rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisFirewallRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "redis cache firewall rule properties",
             "smithy.api#required": {}
           }
         }
@@ -2898,11 +3049,38 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "format": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "File format."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix to use for exported files.",
             "smithy.api#required": {}
+          }
+        },
+        "container": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Container name to export to.",
+            "smithy.api#required": {}
+          }
+        },
+        "preferred_data_archive_auth_method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS",
+            "smithy.api#jsonName": "preferred-data-archive-auth-method"
+          }
+        },
+        "storage_subscription_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription id of the storage container for data to be exported using ManagedIdentity.",
+            "smithy.api#jsonName": "storage-subscription-id"
           }
         }
       },
@@ -3140,11 +3318,10 @@
             "smithy.api#documentation": "The name of the access policy assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisCacheAccessPolicyAssignmentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an access policy assignment"
           }
         }
       },
@@ -3610,11 +3787,10 @@
             "smithy.api#documentation": "The name of the access policy that is being added to the Redis cache."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisCacheAccessPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an access policy."
           }
         }
       },
@@ -4787,16 +4963,292 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Redis cache properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.redis#RedisUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redis#RedisUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redis#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redis#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redis#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.redis#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.redis#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.redis#RedisUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.redis#RedisUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "redisConfiguration": {
+          "target": "com.azure.redis#RedisCommonPropertiesRedisConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc."
+          }
+        },
+        "redisVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'."
+          }
+        },
+        "enableNonSslPort": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the non-ssl Redis server port (6379) is enabled."
+          }
+        },
+        "replicasPerMaster": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas to be created per primary."
+          }
+        },
+        "replicasPerPrimary": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas to be created per primary."
+          }
+        },
+        "tenantSettings": {
+          "target": "com.azure.redis#RedisUpdatePropertiesInputTenantSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of tenant settings"
+          }
+        },
+        "shardCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of shards to be created on a Premium Cluster Cache."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.redis#TlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.redis#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method."
+          }
+        },
+        "updateChannel": {
+          "target": "com.azure.redis#UpdateChannel",
+          "traits": {
+            "smithy.api#documentation": "Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'."
+          }
+        },
+        "disableAccessKeyAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Authentication to Redis through access keys is disabled when set as true. Default value is false."
+          }
+        },
+        "zonalAllocationPolicy": {
+          "target": "com.azure.redis#ZonalAllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported."
+          }
+        },
+        "sku": {
+          "target": "com.azure.redis#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the Redis cache to deploy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Patchable properties of the redis cache."
+      }
+    },
+    "com.azure.redis#RedisUpdatePropertiesInputTenantSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of tenant settings"
+      }
+    },
+    "com.azure.redis#RedisCommonPropertiesRedisConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "rdb_backup_enabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the RDB backup is enabled",
+            "smithy.api#jsonName": "rdb-backup-enabled"
+          }
+        },
+        "rdb_backup_frequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)",
+            "smithy.api#jsonName": "rdb-backup-frequency"
+          }
+        },
+        "rdb_backup_max_snapshot_count": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the maximum number of snapshots for rdb backup",
+            "smithy.api#jsonName": "rdb-backup-max-snapshot-count"
+          }
+        },
+        "rdb_storage_connection_string": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage account connection string for storing rdb file",
+            "smithy.api#jsonName": "rdb-storage-connection-string"
+          }
+        },
+        "aof_backup_enabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the aof backup is enabled",
+            "smithy.api#jsonName": "aof-backup-enabled"
+          }
+        },
+        "aof_storage_connection_string_0": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First storage account connection string",
+            "smithy.api#jsonName": "aof-storage-connection-string-0"
+          }
+        },
+        "aof_storage_connection_string_1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Second storage account connection string",
+            "smithy.api#jsonName": "aof-storage-connection-string-1"
+          }
+        },
+        "maxfragmentationmemory_reserved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value in megabytes reserved for fragmentation per shard",
+            "smithy.api#jsonName": "maxfragmentationmemory-reserved"
+          }
+        },
+        "maxmemory_policy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The eviction strategy used when your data won't fit within its memory limit.",
+            "smithy.api#jsonName": "maxmemory-policy"
+          }
+        },
+        "maxmemory_reserved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value in megabytes reserved for non-cache usage per shard e.g. failover.",
+            "smithy.api#jsonName": "maxmemory-reserved"
+          }
+        },
+        "maxmemory_delta": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value in megabytes reserved for non-cache usage per shard e.g. failover.",
+            "smithy.api#jsonName": "maxmemory-delta"
+          }
+        },
+        "notify_keyspace_events": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The keyspace events which should be monitored.",
+            "smithy.api#jsonName": "notify-keyspace-events"
+          }
+        },
+        "preferred_data_persistence_auth_method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS",
+            "smithy.api#jsonName": "preferred-data-persistence-auth-method"
+          }
+        },
+        "authnotrequired": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!"
+          }
+        },
+        "storage_subscription_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.",
+            "smithy.api#jsonName": "storage-subscription-id"
+          }
+        },
+        "aad_enabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether AAD based authentication has been enabled or disabled for the cache",
+            "smithy.api#jsonName": "aad-enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc."
       }
     },
     "com.azure.redis#RedisCreate": {
@@ -4959,16 +5411,190 @@
             "smithy.api#documentation": "The name of the RedisResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redis#RedisCreatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Redis cache properties.",
             "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.azure.redis#RedisCreateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.redis#RedisCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redis#RedisCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redis#RedisCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redis#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redis#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redis#RedisCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.redis#RedisCreateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
+      }
+    },
+    "com.azure.redis#RedisCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "redisConfiguration": {
+          "target": "com.azure.redis#RedisCommonPropertiesRedisConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc."
+          }
+        },
+        "redisVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'."
+          }
+        },
+        "enableNonSslPort": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the non-ssl Redis server port (6379) is enabled."
+          }
+        },
+        "replicasPerMaster": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas to be created per primary."
+          }
+        },
+        "replicasPerPrimary": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas to be created per primary."
+          }
+        },
+        "tenantSettings": {
+          "target": "com.azure.redis#RedisCreatePropertiesInputTenantSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of tenant settings"
+          }
+        },
+        "shardCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of shards to be created on a Premium Cluster Cache."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.redis#TlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.redis#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method."
+          }
+        },
+        "updateChannel": {
+          "target": "com.azure.redis#UpdateChannel",
+          "traits": {
+            "smithy.api#documentation": "Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'."
+          }
+        },
+        "disableAccessKeyAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Authentication to Redis through access keys is disabled when set as true. Default value is false."
+          }
+        },
+        "zonalAllocationPolicy": {
+          "target": "com.azure.redis#ZonalAllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported."
+          }
+        },
+        "sku": {
+          "target": "com.azure.redis#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the Redis cache to deploy.",
+            "smithy.api#required": {}
+          }
+        },
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1"
+          }
+        },
+        "staticIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties supplied to Create Redis operation."
+      }
+    },
+    "com.azure.redis#RedisCreatePropertiesInputTenantSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of tenant settings"
       }
     },
     "com.azure.redis#RedisGet": {
@@ -5523,10 +6149,17 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type. The only legal value of this property for checking redis cache name availability is 'Microsoft.Cache/redis'.",
             "smithy.api#required": {}
           }
         }

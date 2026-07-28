@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -100,6 +100,122 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+export interface PrivateEndpoint {
+  /** Specifies the id of private endpoint. */
+  id?: string;
+}
+export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpoint",
+}) as any as S.Schema<PrivateEndpoint>;
+
+/** Status of the connection. */
+export type ConnectionStateStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected"
+  | "Disconnected";
+export const ConnectionStateStatus = /*@__PURE__*/ S.String;
+
+/** ConnectionState information. */
+export interface ConnectionState {
+  /** Status of the connection. */
+  status?: ConnectionStateStatus;
+  /** Description of the connection state. */
+  description?: string;
+  /** Actions required (if any). */
+  actionsRequired?: string;
+}
+export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(ConnectionStateStatus),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionState",
+}) as any as S.Schema<ConnectionState>;
+
+/** Provisioning state of the Private Endpoint Connection. */
+export type PrivateEndpointConnectionPropertiesProvisioningState =
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Succeeded"
+  | "Canceled"
+  | "Failed";
+export const PrivateEndpointConnectionPropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+export interface PrivateEndpointConnectionProperties {
+  /** Specifies the private endpoint. */
+  privateEndpoint?: PrivateEndpoint;
+  /** Specifies the connection state. */
+  privateLinkServiceConnectionState?: ConnectionState;
+  /** Provisioning state of the Private Endpoint Connection. */
+  provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
+}
+export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateLinkServiceConnectionState: S.optional(ConnectionState),
+    provisioningState: S.optional(
+      PrivateEndpointConnectionPropertiesProvisioningState,
+    ),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionProperties",
+}) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
+export interface PrivateEndpointConnectionInput {
+  /** Specifies the properties of the private endpoint connection. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionInput",
+}) as any as S.Schema<PrivateEndpointConnectionInput>;
+
+/** Specifies the private endpoint connections of the resource. */
+export type TenantPropertiesInputPrivateEndpointConnectionsList =
+  ReadonlyArray<PrivateEndpointConnectionInput>;
+export const TenantPropertiesInputPrivateEndpointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnectionInput,
+  ) as any as S.Schema<TenantPropertiesInputPrivateEndpointConnectionsList>;
+
+export interface TenantPropertiesInput {
+  /** Specifies the tenant id of the resource. */
+  tenantId?: string;
+  /** Specifies the private endpoint connections of the resource. */
+  privateEndpointConnections?: TenantPropertiesInputPrivateEndpointConnectionsList;
+}
+export const TenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    privateEndpointConnections: S.optional(
+      TenantPropertiesInputPrivateEndpointConnectionsList,
+    ),
+  }),
+).annotate({
+  identifier: "TenantPropertiesInput",
+}) as any as S.Schema<TenantPropertiesInput>;
+
+/** Specifies the tags of the resource. */
+export type PowerBIResourcesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PowerBIResourcesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PowerBIResourcesCreateRequestTagsMap>;
+
 export interface PowerBIResourcesCreateRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -107,14 +223,21 @@ export interface PowerBIResourcesCreateRequest {
   resourceGroupName: string;
   /** The name of the Azure resource. */
   azureResourceName: string;
-  body: unknown;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the properties of the resource. */
+  properties?: TenantPropertiesInput;
+  /** Specifies the tags of the resource. */
+  tags?: PowerBIResourcesCreateRequestTagsMap;
 }
 export const PowerBIResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     azureResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: S.optional(TenantPropertiesInput),
+    tags: S.optional(PowerBIResourcesCreateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -132,8 +255,7 @@ export type TenantResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TenantResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -141,8 +263,7 @@ export type TenantResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TenantResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -179,8 +300,7 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -189,8 +309,7 @@ export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateEndpointConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -224,78 +343,6 @@ export const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateEndpointConnectionSystemData",
 }) as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
-export interface PrivateEndpoint {
-  /** Specifies the id of private endpoint. */
-  id?: string;
-}
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpoint",
-}) as any as S.Schema<PrivateEndpoint>;
-
-/** Status of the connection. */
-export type ConnectionStateStatus =
-  | "Pending"
-  | "Approved"
-  | "Rejected"
-  | "Disconnected"
-  | (string & {});
-export const ConnectionStateStatus = /*@__PURE__*/ S.String;
-
-/** ConnectionState information. */
-export interface ConnectionState {
-  /** Status of the connection. */
-  status?: ConnectionStateStatus;
-  /** Description of the connection state. */
-  description?: string;
-  /** Actions required (if any). */
-  actionsRequired?: string;
-}
-export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ConnectionStateStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionState",
-}) as any as S.Schema<ConnectionState>;
-
-/** Provisioning state of the Private Endpoint Connection. */
-export type PrivateEndpointConnectionPropertiesProvisioningState =
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Succeeded"
-  | "Canceled"
-  | "Failed"
-  | (string & {});
-export const PrivateEndpointConnectionPropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-export interface PrivateEndpointConnectionProperties {
-  /** Specifies the private endpoint. */
-  privateEndpoint?: PrivateEndpoint;
-  /** Specifies the connection state. */
-  privateLinkServiceConnectionState?: ConnectionState;
-  /** Provisioning state of the Private Endpoint Connection. */
-  provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
-}
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateLinkServiceConnectionState: S.optional(ConnectionState),
-    provisioningState: S.optional(
-      PrivateEndpointConnectionPropertiesProvisioningState,
-    ),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionProperties",
-}) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 export interface PrivateEndpointConnection {
   /** Specifies the id of the resource. */
   id?: string;
@@ -322,7 +369,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const TenantPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -439,7 +486,7 @@ export const PowerBIResourcesListByResourceNameRequest =
   }) as any as S.Schema<PowerBIResourcesListByResourceNameRequest>;
 
 export type PowerBIResourcesListByResourceNameResponseBodyList =
-  TenantResource[];
+  ReadonlyArray<TenantResource>;
 export const PowerBIResourcesListByResourceNameResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,
@@ -456,6 +503,15 @@ export const PowerBIResourcesListByResourceNameResponse =
     identifier: "PowerBIResourcesListByResourceNameResponse",
   }) as any as S.Schema<PowerBIResourcesListByResourceNameResponse>;
 
+/** Specifies the tags of the resource. */
+export type PowerBIResourcesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PowerBIResourcesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PowerBIResourcesUpdateRequestTagsMap>;
+
 export interface PowerBIResourcesUpdateRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -463,14 +519,21 @@ export interface PowerBIResourcesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Azure resource. */
   azureResourceName: string;
-  body: unknown;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the properties of the resource. */
+  properties?: TenantPropertiesInput;
+  /** Specifies the tags of the resource. */
+  tags?: PowerBIResourcesUpdateRequestTagsMap;
 }
 export const PowerBIResourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     azureResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: S.optional(TenantPropertiesInput),
+    tags: S.optional(PowerBIResourcesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -492,7 +555,8 @@ export interface PrivateEndpointConnectionsCreateRequest {
   azureResourceName: string;
   /** The name of the private endpoint. */
   privateEndpointName: string;
-  body: unknown;
+  /** Specifies the properties of the private endpoint connection. */
+  properties?: PrivateEndpointConnectionProperties;
 }
 export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -501,7 +565,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       azureResourceName: S.String.pipe(T.Label()),
       privateEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -607,7 +671,7 @@ export const PrivateEndpointConnectionsListByResourceRequest =
 
 /** Specifies the name of the private endpoint connection. */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -658,14 +722,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -743,7 +809,8 @@ export const PrivateLinkResourcesListByResourceRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByResourceRequest>;
 
 /** A collection of private endpoint connection resources. */
-export type PrivateLinkResourcesListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourcesListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -788,7 +855,7 @@ export const PrivateLinkServiceResourceOperationResultsGetRequest =
   }) as any as S.Schema<PrivateLinkServiceResourceOperationResultsGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -810,7 +877,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -839,13 +906,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type AsyncOperationDetailErrorDetailsList = ErrorDetail[];
+export type AsyncOperationDetailErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<AsyncOperationDetailErrorDetailsList>;
 
 /** The error additional info. */
-export type AsyncOperationDetailErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type AsyncOperationDetailErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const AsyncOperationDetailErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -924,7 +992,7 @@ export const PrivateLinkServicesForPowerBIListBySubscriptionIdRequest =
   }) as any as S.Schema<PrivateLinkServicesForPowerBIListBySubscriptionIdRequest>;
 
 export type PrivateLinkServicesForPowerBIListBySubscriptionIdResponseBodyList =
-  TenantResource[];
+  ReadonlyArray<TenantResource>;
 export const PrivateLinkServicesForPowerBIListBySubscriptionIdResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,
@@ -965,7 +1033,7 @@ export const PrivateLinkServicesListByResourceGroupRequest =
   }) as any as S.Schema<PrivateLinkServicesListByResourceGroupRequest>;
 
 export type PrivateLinkServicesListByResourceGroupResponseBodyList =
-  TenantResource[];
+  ReadonlyArray<TenantResource>;
 export const PrivateLinkServicesListByResourceGroupResponseBodyList =
   /*@__PURE__*/ S.Array(
     TenantResource,

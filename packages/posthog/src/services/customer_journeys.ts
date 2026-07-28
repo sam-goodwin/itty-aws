@@ -14,24 +14,16 @@ export type { PosthogOpError, PosthogOpContext };
 export interface CustomerJourneysCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   insight?: number;
   name?: string;
   description?: string | null;
-  created_at?: string;
-  created_by?: number | null;
-  updated_at?: string | null;
 }
 export const CustomerJourneysCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(S.Number)),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -117,7 +109,8 @@ export const CustomerJourneysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerJourneysListRequest",
 }) as any as S.Schema<CustomerJourneysListRequest>;
 
-export type PaginatedCustomerJourneyListResultsList = CustomerJourney[];
+export type PaginatedCustomerJourneyListResultsList =
+  ReadonlyArray<CustomerJourney>;
 export const PaginatedCustomerJourneyListResultsList = /*@__PURE__*/ S.Array(
   CustomerJourney,
 ) as any as S.Schema<PaginatedCustomerJourneyListResultsList>;
@@ -146,9 +139,6 @@ export interface CustomerJourneysPartialUpdateRequest {
   insight?: number;
   name?: string;
   description?: string | null;
-  created_at?: string;
-  created_by?: number | null;
-  updated_at?: string | null;
 }
 export const CustomerJourneysPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -158,9 +148,6 @@ export const CustomerJourneysPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       insight: S.optional(S.Number),
       name: S.optional(S.String),
       description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(S.NullOr(S.Number)),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -199,9 +186,6 @@ export interface CustomerJourneysUpdateRequest {
   insight?: number;
   name?: string;
   description?: string | null;
-  created_at?: string;
-  created_by?: number | null;
-  updated_at?: string | null;
 }
 export const CustomerJourneysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -210,9 +194,6 @@ export const CustomerJourneysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     insight: S.optional(S.Number),
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(S.Number)),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

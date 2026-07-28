@@ -80,7 +80,7 @@ export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
-export type MethodDetailsList = MethodDetails[];
+export type MethodDetailsList = ReadonlyArray<MethodDetails>;
 export const MethodDetailsList = /*@__PURE__*/ S.Array(
   MethodDetails,
 ) as any as S.Schema<MethodDetailsList>;
@@ -108,7 +108,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
-export type QuotaGroupList = QuotaGroup[];
+export type QuotaGroupList = ReadonlyArray<QuotaGroup>;
 export const QuotaGroupList = /*@__PURE__*/ S.Array(
   QuotaGroup,
 ) as any as S.Schema<QuotaGroupList>;

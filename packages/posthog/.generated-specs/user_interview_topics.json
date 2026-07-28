@@ -375,24 +375,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "interviewee_emails": {
           "target": "com.posthog.user_interview_topics#UserInterviewTopicsCreateRequestIntervieweeEmailsList",
           "traits": {
@@ -545,18 +527,6 @@
             "smithy.api#documentation": "A UUID string identifying this user interview topic."
           }
         },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "interviewee_emails": {
           "target": "com.posthog.user_interview_topics#UserInterviewTopicsUpdateRequestIntervieweeEmailsList",
           "traits": {
@@ -667,12 +637,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this user interview topic."
           }
-        },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "interviewee_emails": {
           "target": "com.posthog.user_interview_topics#UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList",
@@ -1605,24 +1569,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "interviewee_identifier": {
           "target": "smithy.api#String",
           "traits": {
@@ -1733,18 +1679,6 @@
             "smithy.api#documentation": "A UUID string identifying this interviewee context."
           }
         },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "interviewee_identifier": {
           "target": "smithy.api#String",
           "traits": {
@@ -1806,12 +1740,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this interviewee context."
           }
-        },
-        "created_by": {
-          "target": "com.posthog.user_interview_topics#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "interviewee_identifier": {
           "target": "smithy.api#String",

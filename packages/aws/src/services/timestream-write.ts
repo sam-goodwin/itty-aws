@@ -170,8 +170,7 @@ export type TimeUnit =
   | "MILLISECONDS"
   | "SECONDS"
   | "MICROSECONDS"
-  | "NANOSECONDS"
-  | (string & {});
+  | "NANOSECONDS";
 export const TimeUnit = /*@__PURE__*/ S.String;
 
 export type SchemaName = string;
@@ -194,8 +193,7 @@ export type ScalarMeasureValueType =
   | "BIGINT"
   | "BOOLEAN"
   | "VARCHAR"
-  | "TIMESTAMP"
-  | (string & {});
+  | "TIMESTAMP";
 export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MultiMeasureAttributeMapping {
@@ -234,8 +232,7 @@ export type MeasureValueType =
   | "VARCHAR"
   | "BOOLEAN"
   | "TIMESTAMP"
-  | "MULTI"
-  | (string & {});
+  | "MULTI";
 export const MeasureValueType = /*@__PURE__*/ S.String;
 
 export interface MixedMeasureMapping {
@@ -331,7 +328,7 @@ export const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CsvConfiguration",
 }) as any as S.Schema<CsvConfiguration>;
-export type BatchLoadDataFormat = "CSV" | (string & {});
+export type BatchLoadDataFormat = "CSV";
 export const BatchLoadDataFormat = /*@__PURE__*/ S.String;
 
 export interface DataSourceConfiguration {
@@ -349,7 +346,7 @@ export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceConfiguration",
 }) as any as S.Schema<DataSourceConfiguration>;
 export type S3ObjectKeyPrefix = string;
-export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
+export type S3EncryptionOption = "SSE_S3" | "SSE_KMS";
 export const S3EncryptionOption = /*@__PURE__*/ S.String;
 
 export type StringValue2048 = string;
@@ -520,13 +517,10 @@ export const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MagneticStoreWriteProperties",
 }) as any as S.Schema<MagneticStoreWriteProperties>;
-export type PartitionKeyType = "DIMENSION" | "MEASURE" | (string & {});
+export type PartitionKeyType = "DIMENSION" | "MEASURE";
 export const PartitionKeyType = /*@__PURE__*/ S.String;
 
-export type PartitionKeyEnforcementLevel =
-  | "REQUIRED"
-  | "OPTIONAL"
-  | (string & {});
+export type PartitionKeyEnforcementLevel = "REQUIRED" | "OPTIONAL";
 export const PartitionKeyEnforcementLevel = /*@__PURE__*/ S.String;
 
 export interface PartitionKey {
@@ -571,7 +565,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTableRequest",
 }) as any as S.Schema<CreateTableRequest>;
-export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING" | (string & {});
+export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING";
 export const TableStatus = /*@__PURE__*/ S.String;
 
 export interface Table {
@@ -677,8 +671,7 @@ export type BatchLoadStatus =
   | "FAILED"
   | "SUCCEEDED"
   | "PROGRESS_STOPPED"
-  | "PENDING_RESUME"
-  | (string & {});
+  | "PENDING_RESUME";
 export const BatchLoadStatus = /*@__PURE__*/ S.String;
 
 export interface BatchLoadTaskDescription {
@@ -1015,7 +1008,7 @@ export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTableResponse",
 }) as any as S.Schema<UpdateTableResponse>;
 export type SchemaValue = string;
-export type DimensionValueType = "VARCHAR" | (string & {});
+export type DimensionValueType = "VARCHAR";
 export const DimensionValueType = /*@__PURE__*/ S.String;
 
 export interface Dimension {

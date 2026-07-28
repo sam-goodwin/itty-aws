@@ -14,8 +14,6 @@ export type { PosthogOpError, PosthogOpContext };
 export interface AccountRelationshipDefinitionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Relationship definition UUID. */
-  id: string;
   /** Human-readable name of the relationship. Unique within the team. */
   name: string;
   /** What this relationship means, e.g. 'The customer success manager responsible for this account'. */
@@ -27,7 +25,6 @@ export const AccountRelationshipDefinitionsCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.String,
       name: S.String,
       description: S.optional(S.NullOr(S.String)),
       is_single_holder: S.optional(S.Boolean),
@@ -117,7 +114,7 @@ export const AccountRelationshipDefinitionsListRequest =
   }) as any as S.Schema<AccountRelationshipDefinitionsListRequest>;
 
 export type PaginatedAccountRelationshipDefinitionListResultsList =
-  AccountRelationshipDefinition[];
+  ReadonlyArray<AccountRelationshipDefinition>;
 export const PaginatedAccountRelationshipDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     AccountRelationshipDefinition,

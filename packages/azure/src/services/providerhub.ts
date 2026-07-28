@@ -12,6 +12,91 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export interface ApplicationProviderAuthorization {
+  /** The role definition ID for the application. */
+  roleDefinitionId?: string;
+  /** The managed by role definition ID for the application. */
+  managedByRoleDefinitionId?: string;
+}
+export const ApplicationProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roleDefinitionId: S.optional(S.String),
+    managedByRoleDefinitionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationProviderAuthorization",
+}) as any as S.Schema<ApplicationProviderAuthorization>;
+
+/** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
+export type Role = "ServiceOwner" | "LimitedOwner";
+export const Role = /*@__PURE__*/ S.String;
+
+/** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
+export type ApplicationDataAuthorizationResourceTypesList =
+  ReadonlyArray<string>;
+export const ApplicationDataAuthorizationResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ApplicationDataAuthorizationResourceTypesList>;
+
+export interface ApplicationDataAuthorization {
+  /** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
+  role: Role;
+  /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
+  resourceTypes?: ApplicationDataAuthorizationResourceTypesList;
+}
+export const ApplicationDataAuthorization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: Role,
+    resourceTypes: S.optional(ApplicationDataAuthorizationResourceTypesList),
+  }),
+).annotate({
+  identifier: "ApplicationDataAuthorization",
+}) as any as S.Schema<ApplicationDataAuthorization>;
+
+/** The authorizations that determine the level of data access permissions on the specified resource types. */
+export type AuthorizedApplicationPropertiesDataAuthorizationsList =
+  ReadonlyArray<ApplicationDataAuthorization>;
+export const AuthorizedApplicationPropertiesDataAuthorizationsList =
+  /*@__PURE__*/ S.Array(
+    ApplicationDataAuthorization,
+  ) as any as S.Schema<AuthorizedApplicationPropertiesDataAuthorizationsList>;
+
+export type ProvisioningState =
+  | "NotSpecified"
+  | "Accepted"
+  | "Running"
+  | "Creating"
+  | "Created"
+  | "Deleting"
+  | "Deleted"
+  | "Canceled"
+  | "Failed"
+  | "Succeeded"
+  | "MovingResources"
+  | "TransientFailure"
+  | "RolloutInProgress";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+export interface AuthorizedApplicationProperties {
+  providerAuthorization?: ApplicationProviderAuthorization;
+  /** The authorizations that determine the level of data access permissions on the specified resource types. */
+  dataAuthorizations?: AuthorizedApplicationPropertiesDataAuthorizationsList;
+  /** The provisioning state. */
+  provisioningState?: ProvisioningState;
+}
+export const AuthorizedApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    providerAuthorization: S.optional(ApplicationProviderAuthorization),
+    dataAuthorizations: S.optional(
+      AuthorizedApplicationPropertiesDataAuthorizationsList,
+    ),
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "AuthorizedApplicationProperties",
+}) as any as S.Schema<AuthorizedApplicationProperties>;
+
 export interface AuthorizedApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,7 +104,7 @@ export interface AuthorizedApplicationsCreateOrUpdateRequest {
   providerNamespace: string;
   /** The application ID. */
   applicationId: string;
-  body: unknown;
+  properties?: AuthorizedApplicationProperties;
 }
 export const AuthorizedApplicationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27,7 +112,7 @@ export const AuthorizedApplicationsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
       applicationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AuthorizedApplicationProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -45,8 +130,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +138,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -83,91 +166,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-export interface ApplicationProviderAuthorization {
-  /** The role definition ID for the application. */
-  roleDefinitionId?: string;
-  /** The managed by role definition ID for the application. */
-  managedByRoleDefinitionId?: string;
-}
-export const ApplicationProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleDefinitionId: S.optional(S.String),
-    managedByRoleDefinitionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationProviderAuthorization",
-}) as any as S.Schema<ApplicationProviderAuthorization>;
-
-/** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
-export type Role = "ServiceOwner" | "LimitedOwner" | (string & {});
-export const Role = /*@__PURE__*/ S.String;
-
-/** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
-export type ApplicationDataAuthorizationResourceTypesList = string[];
-export const ApplicationDataAuthorizationResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ApplicationDataAuthorizationResourceTypesList>;
-
-export interface ApplicationDataAuthorization {
-  /** The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata. */
-  role: Role;
-  /** The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types */
-  resourceTypes?: ApplicationDataAuthorizationResourceTypesList;
-}
-export const ApplicationDataAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: Role,
-    resourceTypes: S.optional(ApplicationDataAuthorizationResourceTypesList),
-  }),
-).annotate({
-  identifier: "ApplicationDataAuthorization",
-}) as any as S.Schema<ApplicationDataAuthorization>;
-
-/** The authorizations that determine the level of data access permissions on the specified resource types. */
-export type AuthorizedApplicationPropertiesDataAuthorizationsList =
-  ApplicationDataAuthorization[];
-export const AuthorizedApplicationPropertiesDataAuthorizationsList =
-  /*@__PURE__*/ S.Array(
-    ApplicationDataAuthorization,
-  ) as any as S.Schema<AuthorizedApplicationPropertiesDataAuthorizationsList>;
-
-export type ProvisioningState =
-  | "NotSpecified"
-  | "Accepted"
-  | "Running"
-  | "Creating"
-  | "Created"
-  | "Deleting"
-  | "Deleted"
-  | "Canceled"
-  | "Failed"
-  | "Succeeded"
-  | "MovingResources"
-  | "TransientFailure"
-  | "RolloutInProgress"
-  | (string & {});
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-export interface AuthorizedApplicationProperties {
-  providerAuthorization?: ApplicationProviderAuthorization;
-  /** The authorizations that determine the level of data access permissions on the specified resource types. */
-  dataAuthorizations?: AuthorizedApplicationPropertiesDataAuthorizationsList;
-  /** The provisioning state. */
-  provisioningState?: ProvisioningState;
-}
-export const AuthorizedApplicationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerAuthorization: S.optional(ApplicationProviderAuthorization),
-    dataAuthorizations: S.optional(
-      AuthorizedApplicationPropertiesDataAuthorizationsList,
-    ),
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "AuthorizedApplicationProperties",
-}) as any as S.Schema<AuthorizedApplicationProperties>;
 
 export interface AuthorizedApplicationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -321,7 +319,7 @@ export const AuthorizedApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The AuthorizedApplication items on this page */
 export type AuthorizedApplicationArrayResponseWithContinuationValueList =
-  AuthorizedApplication[];
+  ReadonlyArray<AuthorizedApplication>;
 export const AuthorizedApplicationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     AuthorizedApplication,
@@ -349,13 +347,17 @@ export interface CheckinManifestRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  body: unknown;
+  /** The environment supplied to the checkin manifest operation. */
+  environment: string;
+  /** The baseline ARM manifest location supplied to the checkin manifest operation. */
+  baselineArmManifestLocation: string;
 }
 export const CheckinManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     providerNamespace: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    environment: S.String,
+    baselineArmManifestLocation: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -389,33 +391,6 @@ export const CheckinManifestInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckinManifestInfo",
 }) as any as S.Schema<CheckinManifestInfo>;
 
-export interface CustomRolloutsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
-  body: unknown;
-}
-export const CustomRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
-      code: 200,
-      apiVersion: "2024-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomRolloutsCreateOrUpdateRequest",
-}) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>;
-
 /** The auto provisioning configuration. */
 export interface CustomRolloutSpecificationAutoProvisionConfig {
   storage?: boolean;
@@ -431,7 +406,7 @@ export const CustomRolloutSpecificationAutoProvisionConfig =
     identifier: "CustomRolloutSpecificationAutoProvisionConfig",
   }) as any as S.Schema<CustomRolloutSpecificationAutoProvisionConfig>;
 
-export type TrafficRegionsRegionsList = string[];
+export type TrafficRegionsRegionsList = ReadonlyArray<string>;
 export const TrafficRegionsRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrafficRegionsRegionsList>;
@@ -446,14 +421,16 @@ export const TrafficRegions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficRegions" }) as any as S.Schema<TrafficRegions>;
 
 /** The list of ARM regions scoped for the release. */
-export type CustomRolloutSpecificationReleaseScopesList = string[];
-export const CustomRolloutSpecificationReleaseScopesList =
+export type CustomRolloutSpecificationInputReleaseScopesList =
+  ReadonlyArray<string>;
+export const CustomRolloutSpecificationInputReleaseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<CustomRolloutSpecificationReleaseScopesList>;
+  ) as any as S.Schema<CustomRolloutSpecificationInputReleaseScopesList>;
 
 /** The allowed audiences. */
-export type ResourceProviderAuthenticationAllowedAudiencesList = string[];
+export type ResourceProviderAuthenticationAllowedAudiencesList =
+  ReadonlyArray<string>;
 export const ResourceProviderAuthenticationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -485,7 +462,7 @@ export const AdditionalAuthorization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalAuthorization>;
 
 export type ResourceProviderAuthorizationManagedByAuthorizationAdditionalAuthorizationsList =
-  AdditionalAuthorization[];
+  ReadonlyArray<AdditionalAuthorization>;
 export const ResourceProviderAuthorizationManagedByAuthorizationAdditionalAuthorizationsList =
   /*@__PURE__*/ S.Array(
     AdditionalAuthorization,
@@ -526,7 +503,7 @@ export const ThirdPartyExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed third party extensions. */
 export type ResourceProviderAuthorizationAllowedThirdPartyExtensionsList =
-  ThirdPartyExtension[];
+  ReadonlyArray<ThirdPartyExtension>;
 export const ResourceProviderAuthorizationAllowedThirdPartyExtensionsList =
   /*@__PURE__*/ S.Array(
     ThirdPartyExtension,
@@ -565,14 +542,14 @@ export const ResourceProviderAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider authorizations. */
 export type ProviderRegistrationPropertiesProviderAuthorizationsList =
-  ResourceProviderAuthorization[];
+  ReadonlyArray<ResourceProviderAuthorization>;
 export const ProviderRegistrationPropertiesProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
   ) as any as S.Schema<ProviderRegistrationPropertiesProviderAuthorizationsList>;
 
 /** The status. */
-export type ServiceStatus = "Active" | "Inactive" | (string & {});
+export type ServiceStatus = "Active" | "Inactive";
 export const ServiceStatus = /*@__PURE__*/ S.String;
 
 /** Resource provider service. */
@@ -593,7 +570,7 @@ export const ResourceProviderService = /*@__PURE__*/ S.suspend(() =>
 
 /** The services. */
 export type ProviderRegistrationPropertiesServicesList =
-  ResourceProviderService[];
+  ReadonlyArray<ResourceProviderService>;
 export const ProviderRegistrationPropertiesServicesList = /*@__PURE__*/ S.Array(
   ResourceProviderService,
 ) as any as S.Schema<ProviderRegistrationPropertiesServicesList>;
@@ -607,19 +584,19 @@ export type ResourceProviderType =
   | "RegistrationFree"
   | "LegacyRegistrationRequired"
   | "TenantOnly"
-  | "AuthorizationFree"
-  | (string & {});
+  | "AuthorizationFree";
 export const ResourceProviderType = /*@__PURE__*/ S.String;
 
 /** The required features. */
-export type ProviderRegistrationPropertiesRequiredFeaturesList = string[];
+export type ProviderRegistrationPropertiesRequiredFeaturesList =
+  ReadonlyArray<string>;
 export const ProviderRegistrationPropertiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProviderRegistrationPropertiesRequiredFeaturesList>;
 
 /** The required feature policy. */
-export type FeaturesPolicy = "Any" | "All" | (string & {});
+export type FeaturesPolicy = "Any" | "All";
 export const FeaturesPolicy = /*@__PURE__*/ S.String;
 
 export interface FeaturesRule {
@@ -645,15 +622,13 @@ export type OptInHeaderType =
   | "PrivateLinkVnetTrafficTag"
   | "ResourceGroupLocation"
   | "ClientPrincipalNameEncoded"
-  | "MSIResourceIdEncoded"
-  | (string & {});
+  | "MSIResourceIdEncoded";
 export const OptInHeaderType = /*@__PURE__*/ S.String;
 
 /** The opt out headers. */
 export type OptOutHeaderType =
   | "NotSpecified"
-  | "SystemDataCreatedByLastModifiedBy"
-  | (string & {});
+  | "SystemDataCreatedByLastModifiedBy";
 export const OptOutHeaderType = /*@__PURE__*/ S.String;
 
 export interface RequestHeaderOptions {
@@ -672,20 +647,22 @@ export const RequestHeaderOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestHeaderOptions>;
 
 /** The schema owners. */
-export type ResourceProviderManagementSchemaOwnersList = string[];
+export type ResourceProviderManagementSchemaOwnersList = ReadonlyArray<string>;
 export const ResourceProviderManagementSchemaOwnersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderManagementSchemaOwnersList>;
 
 /** The manifest owners. */
-export type ResourceProviderManagementManifestOwnersList = string[];
+export type ResourceProviderManagementManifestOwnersList =
+  ReadonlyArray<string>;
 export const ResourceProviderManagementManifestOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ResourceProviderManagementManifestOwnersList>;
 
 /** The authorization owners. */
-export type ResourceProviderManagementAuthorizationOwnersList = string[];
+export type ResourceProviderManagementAuthorizationOwnersList =
+  ReadonlyArray<string>;
 export const ResourceProviderManagementAuthorizationOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -701,8 +678,7 @@ export type Readiness =
   | "PrivatePreview"
   | "PublicPreview"
   | "RemovedFromARM"
-  | "Retired"
-  | (string & {});
+  | "Retired";
 export const Readiness = /*@__PURE__*/ S.String;
 
 export interface ServiceTreeInfo {
@@ -724,7 +700,8 @@ export const ServiceTreeInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceTreeInfo>;
 
 /** The service tree infos. */
-export type ResourceProviderManagementServiceTreeInfosList = ServiceTreeInfo[];
+export type ResourceProviderManagementServiceTreeInfosList =
+  ReadonlyArray<ServiceTreeInfo>;
 export const ResourceProviderManagementServiceTreeInfosList =
   /*@__PURE__*/ S.Array(
     ServiceTreeInfo,
@@ -734,18 +711,17 @@ export const ResourceProviderManagementServiceTreeInfosList =
 export type ResourceAccessPolicy =
   | "NotSpecified"
   | "AcisReadAllowed"
-  | "AcisActionAllowed"
-  | (string & {});
+  | "AcisActionAllowed";
 export const ResourceAccessPolicy = /*@__PURE__*/ S.String;
 
 /** The allowed group claims. */
-export type ResourceAccessRoleAllowedGroupClaimsList = string[];
+export type ResourceAccessRoleAllowedGroupClaimsList = ReadonlyArray<string>;
 export const ResourceAccessRoleAllowedGroupClaimsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceAccessRoleAllowedGroupClaimsList>;
 
 /** The actions. */
-export type ResourceAccessRoleActionsList = string[];
+export type ResourceAccessRoleActionsList = ReadonlyArray<string>;
 export const ResourceAccessRoleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceAccessRoleActionsList>;
@@ -767,14 +743,15 @@ export const ResourceAccessRole = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource access roles. */
 export type ResourceProviderManagementResourceAccessRolesList =
-  ResourceAccessRole[];
+  ReadonlyArray<ResourceAccessRole>;
 export const ResourceProviderManagementResourceAccessRolesList =
   /*@__PURE__*/ S.Array(
     ResourceAccessRole,
   ) as any as S.Schema<ResourceProviderManagementResourceAccessRolesList>;
 
 /** List of expedited rollout submitters. */
-export type ResourceProviderManagementExpeditedRolloutSubmittersList = string[];
+export type ResourceProviderManagementExpeditedRolloutSubmittersList =
+  ReadonlyArray<string>;
 export const ResourceProviderManagementExpeditedRolloutSubmittersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -783,8 +760,7 @@ export const ResourceProviderManagementExpeditedRolloutSubmittersList =
 /** Type of server failure response message. */
 export type ServerFailureResponseMessageType =
   | "NotSpecified"
-  | "OutageReporting"
-  | (string & {});
+  | "OutageReporting";
 export const ServerFailureResponseMessageType = /*@__PURE__*/ S.String;
 
 /** Options for error response messages. */
@@ -804,7 +780,7 @@ export const ResourceProviderManagementErrorResponseMessageOptions =
   }) as any as S.Schema<ResourceProviderManagementErrorResponseMessageOptions>;
 
 /** Expedited rollout intent. */
-export type ExpeditedRolloutIntent = "NotSpecified" | "Hotfix" | (string & {});
+export type ExpeditedRolloutIntent = "NotSpecified" | "Hotfix";
 export const ExpeditedRolloutIntent = /*@__PURE__*/ S.String;
 
 /** Metadata for expedited rollout. */
@@ -825,7 +801,8 @@ export const ResourceProviderManagementExpeditedRolloutMetadata =
   }) as any as S.Schema<ResourceProviderManagementExpeditedRolloutMetadata>;
 
 /** List of manifest owners for canary. */
-export type ResourceProviderManagementCanaryManifestOwnersList = string[];
+export type ResourceProviderManagementCanaryManifestOwnersList =
+  ReadonlyArray<string>;
 export const ResourceProviderManagementCanaryManifestOwnersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -903,12 +880,12 @@ export const ResourceProviderManagement = /*@__PURE__*/ S.suspend(() =>
 export type ResourceProviderCapabilitiesEffect =
   | "NotSpecified"
   | "Allow"
-  | "Disallow"
-  | (string & {});
+  | "Disallow";
 export const ResourceProviderCapabilitiesEffect = /*@__PURE__*/ S.String;
 
 /** The required features. */
-export type ResourceProviderCapabilitiesRequiredFeaturesList = string[];
+export type ResourceProviderCapabilitiesRequiredFeaturesList =
+  ReadonlyArray<string>;
 export const ResourceProviderCapabilitiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -936,7 +913,7 @@ export const ResourceProviderCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities. */
 export type ProviderRegistrationPropertiesCapabilitiesList =
-  ResourceProviderCapabilities[];
+  ReadonlyArray<ResourceProviderCapabilities>;
 export const ProviderRegistrationPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     ResourceProviderCapabilities,
@@ -945,19 +922,18 @@ export const ProviderRegistrationPropertiesCapabilitiesList =
 /** The cross tenant token validation. */
 export type CrossTenantTokenValidation =
   | "EnsureSecureValidation"
-  | "PassthroughInsecureToken"
-  | (string & {});
+  | "PassthroughInsecureToken";
 export const CrossTenantTokenValidation = /*@__PURE__*/ S.String;
 
 export type PreflightOption =
   | "None"
   | "ContinueDeploymentOnFailure"
-  | "DefaultValidationOnly"
-  | (string & {});
+  | "DefaultValidationOnly";
 export const PreflightOption = /*@__PURE__*/ S.String;
 
 /** The preflight options. */
-export type TemplateDeploymentOptionsPreflightOptionsList = PreflightOption[];
+export type TemplateDeploymentOptionsPreflightOptionsList =
+  ReadonlyArray<PreflightOption>;
 export const TemplateDeploymentOptionsPreflightOptionsList =
   /*@__PURE__*/ S.Array(
     PreflightOption,
@@ -979,19 +955,20 @@ export const TemplateDeploymentOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TemplateDeploymentOptions>;
 
 /** The api versions. */
-export type ResourceProviderEndpointApiVersionsList = string[];
+export type ResourceProviderEndpointApiVersionsList = ReadonlyArray<string>;
 export const ResourceProviderEndpointApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderEndpointApiVersionsList>;
 
 /** The locations. */
-export type ResourceProviderEndpointLocationsList = string[];
+export type ResourceProviderEndpointLocationsList = ReadonlyArray<string>;
 export const ResourceProviderEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceProviderEndpointLocationsList>;
 
 /** The required features. */
-export type ResourceProviderEndpointRequiredFeaturesList = string[];
+export type ResourceProviderEndpointRequiredFeaturesList =
+  ReadonlyArray<string>;
 export const ResourceProviderEndpointRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1002,8 +979,7 @@ export type EndpointType =
   | "NotSpecified"
   | "Canary"
   | "Production"
-  | "TestInProduction"
-  | (string & {});
+  | "TestInProduction";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 export interface ResourceProviderEndpoint {
@@ -1044,25 +1020,18 @@ export const ResourceProviderEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The global notification endpoints. */
 export type ProviderRegistrationPropertiesGlobalNotificationEndpointsList =
-  ResourceProviderEndpoint[];
+  ReadonlyArray<ResourceProviderEndpoint>;
 export const ProviderRegistrationPropertiesGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
   ) as any as S.Schema<ProviderRegistrationPropertiesGlobalNotificationEndpointsList>;
 
 /** The notification type. */
-export type NotificationType =
-  | "Unspecified"
-  | "SubscriptionNotification"
-  | (string & {});
+export type NotificationType = "Unspecified" | "SubscriptionNotification";
 export const NotificationType = /*@__PURE__*/ S.String;
 
 /** Whether notifications should be skipped. */
-export type SkipNotifications =
-  | "Unspecified"
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SkipNotifications = "Unspecified" | "Enabled" | "Disabled";
 export const SkipNotifications = /*@__PURE__*/ S.String;
 
 export interface Notification {
@@ -1079,18 +1048,19 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 /** The notifications. */
-export type ProviderRegistrationPropertiesNotificationsList = Notification[];
+export type ProviderRegistrationPropertiesNotificationsList =
+  ReadonlyArray<Notification>;
 export const ProviderRegistrationPropertiesNotificationsList =
   /*@__PURE__*/ S.Array(
     Notification,
   ) as any as S.Schema<ProviderRegistrationPropertiesNotificationsList>;
 
 /** The authentication scheme. */
-export type AuthenticationScheme = "PoP" | "Bearer" | (string & {});
+export type AuthenticationScheme = "PoP" | "Bearer";
 export const AuthenticationScheme = /*@__PURE__*/ S.String;
 
 /** The signed request scope. */
-export type SignedRequestScope = "ResourceUri" | "Endpoint" | (string & {});
+export type SignedRequestScope = "ResourceUri" | "Endpoint";
 export const SignedRequestScope = /*@__PURE__*/ S.String;
 
 export interface TokenAuthConfiguration {
@@ -1112,14 +1082,14 @@ export const TokenAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenAuthConfiguration>;
 
 /** The actions. */
-export type FanoutLinkedNotificationRuleActionsList = string[];
+export type FanoutLinkedNotificationRuleActionsList = ReadonlyArray<string>;
 export const FanoutLinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FanoutLinkedNotificationRuleActionsList>;
 
 /** The endpoints. */
 export type FanoutLinkedNotificationRuleEndpointsList =
-  ResourceProviderEndpoint[];
+  ReadonlyArray<ResourceProviderEndpoint>;
 export const FanoutLinkedNotificationRuleEndpointsList = /*@__PURE__*/ S.Array(
   ResourceProviderEndpoint,
 ) as any as S.Schema<FanoutLinkedNotificationRuleEndpointsList>;
@@ -1162,14 +1132,15 @@ export const FanoutLinkedNotificationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked notification rules. */
 export type ProviderRegistrationPropertiesLinkedNotificationRulesList =
-  FanoutLinkedNotificationRule[];
+  ReadonlyArray<FanoutLinkedNotificationRule>;
 export const ProviderRegistrationPropertiesLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     FanoutLinkedNotificationRule,
   ) as any as S.Schema<ProviderRegistrationPropertiesLinkedNotificationRulesList>;
 
 /** The authorization actions. */
-export type AsyncOperationPollingRulesAuthorizationActionsList = string[];
+export type AsyncOperationPollingRulesAuthorizationActionsList =
+  ReadonlyArray<string>;
 export const AsyncOperationPollingRulesAuthorizationActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1178,8 +1149,7 @@ export const AsyncOperationPollingRulesAuthorizationActionsList =
 /** The additional options. */
 export type AdditionalOptionsAsyncOperation =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly"
-  | (string & {});
+  | "ProtectedAsyncOperationPollingAuditOnly";
 export const AdditionalOptionsAsyncOperation = /*@__PURE__*/ S.String;
 
 export interface AsyncOperationPollingRules {
@@ -1212,11 +1182,7 @@ export const ResourceProviderAuthorizationRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceProviderAuthorizationRules>;
 
 /** Notification options. */
-export type NotificationOptions =
-  | "NotSpecified"
-  | "None"
-  | "EmitSpendingLimit"
-  | (string & {});
+export type NotificationOptions = "NotSpecified" | "None" | "EmitSpendingLimit";
 export const NotificationOptions = /*@__PURE__*/ S.String;
 
 export interface ResourceHydrationAccount {
@@ -1242,14 +1208,14 @@ export const ResourceHydrationAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** resource hydration accounts */
 export type ProviderRegistrationPropertiesResourceHydrationAccountsList =
-  ResourceHydrationAccount[];
+  ReadonlyArray<ResourceHydrationAccount>;
 export const ProviderRegistrationPropertiesResourceHydrationAccountsList =
   /*@__PURE__*/ S.Array(
     ResourceHydrationAccount,
   ) as any as S.Schema<ProviderRegistrationPropertiesResourceHydrationAccountsList>;
 
 /** The endpoint type. */
-export type NotificationEndpointType = "Webhook" | "Eventhub" | (string & {});
+export type NotificationEndpointType = "Webhook" | "Eventhub";
 export const NotificationEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointInformation {
@@ -1271,7 +1237,8 @@ export const EndpointInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointInformation>;
 
 /** The endpoint information. */
-export type FilterRuleEndpointInformationList = EndpointInformation[];
+export type FilterRuleEndpointInformationList =
+  ReadonlyArray<EndpointInformation>;
 export const FilterRuleEndpointInformationList = /*@__PURE__*/ S.Array(
   EndpointInformation,
 ) as any as S.Schema<FilterRuleEndpointInformationList>;
@@ -1290,7 +1257,7 @@ export const FilterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterRule" }) as any as S.Schema<FilterRule>;
 
 /** The filter rules. */
-export type SubscriberSettingFilterRulesList = FilterRule[];
+export type SubscriberSettingFilterRulesList = ReadonlyArray<FilterRule>;
 export const SubscriberSettingFilterRulesList = /*@__PURE__*/ S.Array(
   FilterRule,
 ) as any as S.Schema<SubscriberSettingFilterRulesList>;
@@ -1308,7 +1275,7 @@ export const SubscriberSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriberSetting>;
 
 export type ResourceProviderManifestPropertiesNotificationSettingsSubscriberSettingsList =
-  SubscriberSetting[];
+  ReadonlyArray<SubscriberSetting>;
 export const ResourceProviderManifestPropertiesNotificationSettingsSubscriberSettingsList =
   /*@__PURE__*/ S.Array(
     SubscriberSetting,
@@ -1331,14 +1298,15 @@ export const ResourceProviderManifestPropertiesNotificationSettings =
 
 /** Management groups global notification endpoints. */
 export type ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList =
-  ResourceProviderEndpoint[];
+  ReadonlyArray<ResourceProviderEndpoint>;
 export const ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
   ) as any as S.Schema<ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndpointsList>;
 
 /** Optional features. */
-export type ProviderRegistrationPropertiesOptionalFeaturesList = string[];
+export type ProviderRegistrationPropertiesOptionalFeaturesList =
+  ReadonlyArray<string>;
 export const ProviderRegistrationPropertiesOptionalFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1351,8 +1319,7 @@ export type BlockActionVerb =
   | "Write"
   | "Action"
   | "Delete"
-  | "Unrecognized"
-  | (string & {});
+  | "Unrecognized";
 export const BlockActionVerb = /*@__PURE__*/ S.String;
 
 /** Resource group lock option during move. */
@@ -1372,8 +1339,7 @@ export const ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove
 
 export type ServiceClientOptionsType =
   | "NotSpecified"
-  | "DisableAutomaticDecompression"
-  | (string & {});
+  | "DisableAutomaticDecompression";
 export const ServiceClientOptionsType = /*@__PURE__*/ S.String;
 
 /** Response options. */
@@ -1390,7 +1356,8 @@ export const ResourceProviderManifestPropertiesResponseOptions =
   }) as any as S.Schema<ResourceProviderManifestPropertiesResponseOptions>;
 
 /** Legacy registrations. */
-export type ProviderRegistrationPropertiesLegacyRegistrationsList = string[];
+export type ProviderRegistrationPropertiesLegacyRegistrationsList =
+  ReadonlyArray<string>;
 export const ProviderRegistrationPropertiesLegacyRegistrationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1398,7 +1365,7 @@ export const ProviderRegistrationPropertiesLegacyRegistrationsList =
 
 /** The provider authorizations. */
 export type ProviderHubMetadataProviderAuthorizationsList =
-  ResourceProviderAuthorization[];
+  ReadonlyArray<ResourceProviderAuthorization>;
 export const ProviderHubMetadataProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
@@ -1421,7 +1388,7 @@ export const LightHouseAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The authorizations. */
 export type ThirdPartyProviderAuthorizationAuthorizationsList =
-  LightHouseAuthorization[];
+  ReadonlyArray<LightHouseAuthorization>;
 export const ThirdPartyProviderAuthorizationAuthorizationsList =
   /*@__PURE__*/ S.Array(
     LightHouseAuthorization,
@@ -1489,8 +1456,7 @@ export type SubscriptionTransitioningState =
   | "SuspendedToRegistered"
   | "SuspendedToWarned"
   | "SuspendedToDeleted"
-  | "SuspendedToUnregistered"
-  | (string & {});
+  | "SuspendedToUnregistered";
 export const SubscriptionTransitioningState = /*@__PURE__*/ S.String;
 
 /** The action. */
@@ -1500,8 +1466,7 @@ export type SubscriptionNotificationOperation =
   | "SoftDeleteAllResources"
   | "NoOp"
   | "BillingCancellation"
-  | "UndoSoftDelete"
-  | (string & {});
+  | "UndoSoftDelete";
 export const SubscriptionNotificationOperation = /*@__PURE__*/ S.String;
 
 export interface SubscriptionStateOverrideAction {
@@ -1521,7 +1486,7 @@ export const SubscriptionStateOverrideAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The subscription state override actions. */
 export type SubscriptionLifecycleNotificationSpecificationsSubscriptionStateOverrideActionsList =
-  SubscriptionStateOverrideAction[];
+  ReadonlyArray<SubscriptionStateOverrideAction>;
 export const SubscriptionLifecycleNotificationSpecificationsSubscriptionStateOverrideActionsList =
   /*@__PURE__*/ S.Array(
     SubscriptionStateOverrideAction,
@@ -1547,7 +1512,7 @@ export const SubscriptionLifecycleNotificationSpecifications =
 
 /** The allowed subscriptions. */
 export type PrivateResourceProviderConfigurationAllowedSubscriptionsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateResourceProviderConfigurationAllowedSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1714,39 +1679,23 @@ export const ProviderRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderRegistrationProperties>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ProviderRegistrationKind =
-  | "Managed"
-  | "Hybrid"
-  | "Direct"
-  | (string & {});
-export const ProviderRegistrationKind = /*@__PURE__*/ S.String;
+export type ProviderRegistrationInputKind = "Managed" | "Hybrid" | "Direct";
+export const ProviderRegistrationInputKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface ProviderRegistration {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
+export interface ProviderRegistrationInput {
   properties?: ProviderRegistrationProperties;
   /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-  kind?: ProviderRegistrationKind;
+  kind?: ProviderRegistrationInputKind;
 }
-export const ProviderRegistration = /*@__PURE__*/ S.suspend(() =>
+export const ProviderRegistrationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
     properties: S.optional(ProviderRegistrationProperties),
-    kind: S.optional(ProviderRegistrationKind),
+    kind: S.optional(ProviderRegistrationInputKind),
   }),
 ).annotate({
-  identifier: "ProviderRegistration",
-}) as any as S.Schema<ProviderRegistration>;
+  identifier: "ProviderRegistrationInput",
+}) as any as S.Schema<ProviderRegistrationInput>;
 
 /** The routing type. */
 export type RoutingType =
@@ -1763,43 +1712,37 @@ export type RoutingType =
   | "CascadeAuthorizedExtension"
   | "BypassEndpointSelectionOptimization"
   | "LocationMapping"
-  | "ServiceFanout"
-  | (string & {});
+  | "ServiceFanout";
 export const RoutingType = /*@__PURE__*/ S.String;
 
 /** The additional options. */
 export type AdditionalOptionsResourceTypeRegistration =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly"
-  | (string & {});
+  | "ProtectedAsyncOperationPollingAuditOnly";
 export const AdditionalOptionsResourceTypeRegistration = /*@__PURE__*/ S.String;
 
 /** The regionality. */
-export type Regionality =
-  | "NotSpecified"
-  | "Global"
-  | "Regional"
-  | (string & {});
+export type Regionality = "NotSpecified" | "Global" | "Regional";
 export const Regionality = /*@__PURE__*/ S.String;
 
 /** Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeEndpointKind = "Managed" | "Direct" | (string & {});
+export type ResourceTypeEndpointKind = "Managed" | "Direct";
 export const ResourceTypeEndpointKind = /*@__PURE__*/ S.String;
 
 /** The api versions. */
-export type ResourceTypeEndpointApiVersionsList = string[];
+export type ResourceTypeEndpointApiVersionsList = ReadonlyArray<string>;
 export const ResourceTypeEndpointApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointApiVersionsList>;
 
 /** The locations. */
-export type ResourceTypeEndpointLocationsList = string[];
+export type ResourceTypeEndpointLocationsList = ReadonlyArray<string>;
 export const ResourceTypeEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointLocationsList>;
 
 /** The required features. */
-export type ResourceTypeEndpointRequiredFeaturesList = string[];
+export type ResourceTypeEndpointRequiredFeaturesList = ReadonlyArray<string>;
 export const ResourceTypeEndpointRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointRequiredFeaturesList>;
@@ -1822,12 +1765,12 @@ export type ExtensionCategory =
   | "ResourceMoveBegin"
   | "ResourceMoveCompleted"
   | "BestMatchOperationBegin"
-  | "SubscriptionLifecycleNotificationDeletion"
-  | (string & {});
+  | "SubscriptionLifecycleNotificationDeletion";
 export const ExtensionCategory = /*@__PURE__*/ S.String;
 
 /** The extension categories. */
-export type ResourceTypeExtensionExtensionCategoriesList = ExtensionCategory[];
+export type ResourceTypeExtensionExtensionCategoriesList =
+  ReadonlyArray<ExtensionCategory>;
 export const ResourceTypeExtensionExtensionCategoriesList =
   /*@__PURE__*/ S.Array(
     ExtensionCategory,
@@ -1854,7 +1797,8 @@ export const ResourceTypeExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeExtension>;
 
 /** The extensions. */
-export type ResourceTypeEndpointExtensionsList = ResourceTypeExtension[];
+export type ResourceTypeEndpointExtensionsList =
+  ReadonlyArray<ResourceTypeExtension>;
 export const ResourceTypeEndpointExtensionsList = /*@__PURE__*/ S.Array(
   ResourceTypeExtension,
 ) as any as S.Schema<ResourceTypeEndpointExtensionsList>;
@@ -1864,23 +1808,17 @@ export type EndpointTypeResourceType =
   | "NotSpecified"
   | "Canary"
   | "Production"
-  | "TestInProduction"
-  | (string & {});
+  | "TestInProduction";
 export const EndpointTypeResourceType = /*@__PURE__*/ S.String;
 
 /** List of zones. */
-export type ResourceTypeEndpointZonesList = string[];
+export type ResourceTypeEndpointZonesList = ReadonlyArray<string>;
 export const ResourceTypeEndpointZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeEndpointZonesList>;
 
 /** The data boundary. */
-export type DataBoundary =
-  | "NotDefined"
-  | "Global"
-  | "EU"
-  | "US"
-  | (string & {});
+export type DataBoundary = "NotDefined" | "Global" | "EU" | "US";
 export const DataBoundary = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeEndpoint {
@@ -1942,7 +1880,7 @@ export const ResourceTypeEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The extensions. */
 export type ResourceTypeRegistrationPropertiesEndpointsList =
-  ResourceTypeEndpoint[];
+  ReadonlyArray<ResourceTypeEndpoint>;
 export const ResourceTypeRegistrationPropertiesEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeEndpoint,
@@ -1951,18 +1889,17 @@ export const ResourceTypeRegistrationPropertiesEndpointsList =
 export type ExtensionOptionType =
   | "NotSpecified"
   | "DoNotMergeExistingReadOnlyAndSecretProperties"
-  | "IncludeInternalMetadata"
-  | (string & {});
+  | "IncludeInternalMetadata";
 export const ExtensionOptionType = /*@__PURE__*/ S.String;
 
 /** The request. */
-export type ExtensionOptionsRequestList = ExtensionOptionType[];
+export type ExtensionOptionsRequestList = ReadonlyArray<ExtensionOptionType>;
 export const ExtensionOptionsRequestList = /*@__PURE__*/ S.Array(
   ExtensionOptionType,
 ) as any as S.Schema<ExtensionOptionsRequestList>;
 
 /** The response. */
-export type ExtensionOptionsResponseList = ExtensionOptionType[];
+export type ExtensionOptionsResponseList = ReadonlyArray<ExtensionOptionType>;
 export const ExtensionOptionsResponseList = /*@__PURE__*/ S.Array(
   ExtensionOptionType,
 ) as any as S.Schema<ExtensionOptionsResponseList>;
@@ -1995,16 +1932,11 @@ export const ResourceTypeExtensionOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeExtensionOptions>;
 
 /** The marketplace type. */
-export type MarketplaceType =
-  | "NotSpecified"
-  | "AddOn"
-  | "Bypass"
-  | "Store"
-  | (string & {});
+export type MarketplaceType = "NotSpecified" | "AddOn" | "Bypass" | "Store";
 export const MarketplaceType = /*@__PURE__*/ S.String;
 
 /** The api versions. */
-export type SwaggerSpecificationApiVersionsList = string[];
+export type SwaggerSpecificationApiVersionsList = ReadonlyArray<string>;
 export const SwaggerSpecificationApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SwaggerSpecificationApiVersionsList>;
@@ -2026,7 +1958,7 @@ export const SwaggerSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The swagger specifications. */
 export type ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
-  SwaggerSpecification[];
+  ReadonlyArray<SwaggerSpecification>;
 export const ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
   /*@__PURE__*/ S.Array(
     SwaggerSpecification,
@@ -2034,7 +1966,7 @@ export const ResourceTypeRegistrationPropertiesSwaggerSpecificationsList =
 
 /** The allowed unauthorized actions. */
 export type ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2045,8 +1977,7 @@ export type Intent =
   | "NOT_SPECIFIED"
   | "LOW_PRIVILEGE"
   | "DEFERRED_ACCESS_CHECK"
-  | "RP_CONTRACT"
-  | (string & {});
+  | "RP_CONTRACT";
 export const Intent = /*@__PURE__*/ S.String;
 
 export interface AllowedUnauthorizedActionsExtension {
@@ -2066,7 +1997,7 @@ export const AllowedUnauthorizedActionsExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed unauthorized actions extensions. */
 export type ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsExtensionsList =
-  AllowedUnauthorizedActionsExtension[];
+  ReadonlyArray<AllowedUnauthorizedActionsExtension>;
 export const ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsExtensionsList =
   /*@__PURE__*/ S.Array(
     AllowedUnauthorizedActionsExtension,
@@ -2089,7 +2020,7 @@ export const AuthorizationActionMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** The authorization action mappings */
 export type ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList =
-  AuthorizationActionMapping[];
+  ReadonlyArray<AuthorizationActionMapping>;
 export const ResourceTypeRegistrationPropertiesAuthorizationActionMappingsList =
   /*@__PURE__*/ S.Array(
     AuthorizationActionMapping,
@@ -2121,29 +2052,31 @@ export const LinkedAccessCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked access checks. */
 export type ResourceTypeRegistrationPropertiesLinkedAccessChecksList =
-  LinkedAccessCheck[];
+  ReadonlyArray<LinkedAccessCheck>;
 export const ResourceTypeRegistrationPropertiesLinkedAccessChecksList =
   /*@__PURE__*/ S.Array(
     LinkedAccessCheck,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedAccessChecksList>;
 
 /** The direction. */
-export type LoggingDirections = "None" | "Request" | "Response" | (string & {});
+export type LoggingDirections = "None" | "Request" | "Response";
 export const LoggingDirections = /*@__PURE__*/ S.String;
 
 /** The detail level. */
-export type LoggingDetails = "None" | "Body" | (string & {});
+export type LoggingDetails = "None" | "Body";
 export const LoggingDetails = /*@__PURE__*/ S.String;
 
 /** The hidden paths on request. */
-export type LoggingHiddenPropertyPathHiddenPathsOnRequestList = string[];
+export type LoggingHiddenPropertyPathHiddenPathsOnRequestList =
+  ReadonlyArray<string>;
 export const LoggingHiddenPropertyPathHiddenPathsOnRequestList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnRequestList>;
 
 /** The hidden paths on response. */
-export type LoggingHiddenPropertyPathHiddenPathsOnResponseList = string[];
+export type LoggingHiddenPropertyPathHiddenPathsOnResponseList =
+  ReadonlyArray<string>;
 export const LoggingHiddenPropertyPathHiddenPathsOnResponseList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2188,7 +2121,8 @@ export const LoggingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingRule" }) as any as S.Schema<LoggingRule>;
 
 /** The logging rules. */
-export type ResourceTypeRegistrationPropertiesLoggingRulesList = LoggingRule[];
+export type ResourceTypeRegistrationPropertiesLoggingRulesList =
+  ReadonlyArray<LoggingRule>;
 export const ResourceTypeRegistrationPropertiesLoggingRulesList =
   /*@__PURE__*/ S.Array(
     LoggingRule,
@@ -2198,8 +2132,7 @@ export const ResourceTypeRegistrationPropertiesLoggingRulesList =
 export type ThrottlingMetricType =
   | "NotSpecified"
   | "NumberOfRequests"
-  | "NumberOfResources"
-  | (string & {});
+  | "NumberOfResources";
 export const ThrottlingMetricType = /*@__PURE__*/ S.String;
 
 export interface ThrottlingMetric {
@@ -2221,19 +2154,19 @@ export const ThrottlingMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThrottlingMetric>;
 
 /** The metrics. */
-export type ThrottlingRuleMetricsList = ThrottlingMetric[];
+export type ThrottlingRuleMetricsList = ReadonlyArray<ThrottlingMetric>;
 export const ThrottlingRuleMetricsList = /*@__PURE__*/ S.Array(
   ThrottlingMetric,
 ) as any as S.Schema<ThrottlingRuleMetricsList>;
 
 /** The required features. */
-export type ThrottlingRuleRequiredFeaturesList = string[];
+export type ThrottlingRuleRequiredFeaturesList = ReadonlyArray<string>;
 export const ThrottlingRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlingRuleRequiredFeaturesList>;
 
 /** The application id. */
-export type ThrottlingRuleApplicationIdList = string[];
+export type ThrottlingRuleApplicationIdList = ReadonlyArray<string>;
 export const ThrottlingRuleApplicationIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlingRuleApplicationIdList>;
@@ -2259,14 +2192,15 @@ export const ThrottlingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The throttling rules. */
 export type ResourceTypeRegistrationPropertiesThrottlingRulesList =
-  ThrottlingRule[];
+  ReadonlyArray<ThrottlingRule>;
 export const ResourceTypeRegistrationPropertiesThrottlingRulesList =
   /*@__PURE__*/ S.Array(
     ThrottlingRule,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesThrottlingRulesList>;
 
 /** The required features. */
-export type ResourceTypeRegistrationPropertiesRequiredFeaturesList = string[];
+export type ResourceTypeRegistrationPropertiesRequiredFeaturesList =
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2278,19 +2212,20 @@ export type IdentityManagementTypes =
   | "SystemAssigned"
   | "UserAssigned"
   | "Actor"
-  | "DelegatedResourceIdentity"
-  | (string & {});
+  | "DelegatedResourceIdentity";
 export const IdentityManagementTypes = /*@__PURE__*/ S.String;
 
 /** The application ids. */
-export type IdentityManagementPropertiesApplicationIdsList = string[];
+export type IdentityManagementPropertiesApplicationIdsList =
+  ReadonlyArray<string>;
 export const IdentityManagementPropertiesApplicationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IdentityManagementPropertiesApplicationIdsList>;
 
 /** The delegation app ids. */
-export type IdentityManagementPropertiesDelegationAppIdsList = string[];
+export type IdentityManagementPropertiesDelegationAppIdsList =
+  ReadonlyArray<string>;
 export const IdentityManagementPropertiesDelegationAppIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2321,7 +2256,7 @@ export const IdentityManagementProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource types with custom validation. */
 export type CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
-  string[];
+  ReadonlyArray<string>;
 export const CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2346,7 +2281,7 @@ export const CheckNameAvailabilitySpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The disallowed action verbs. */
 export type ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2354,7 +2289,7 @@ export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
 
 /** The service tree infos. */
 export type ResourceTypeRegistrationPropertiesServiceTreeInfosList =
-  ServiceTreeInfo[];
+  ReadonlyArray<ServiceTreeInfo>;
 export const ResourceTypeRegistrationPropertiesServiceTreeInfosList =
   /*@__PURE__*/ S.Array(
     ServiceTreeInfo,
@@ -2367,12 +2302,11 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** The allowed actions. */
-export type SubscriptionStateRuleAllowedActionsList = string[];
+export type SubscriptionStateRuleAllowedActionsList = ReadonlyArray<string>;
 export const SubscriptionStateRuleAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionStateRuleAllowedActionsList>;
@@ -2394,7 +2328,7 @@ export const SubscriptionStateRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The subscription state rules. */
 export type ResourceTypeRegistrationPropertiesSubscriptionStateRulesList =
-  SubscriptionStateRule[];
+  ReadonlyArray<SubscriptionStateRule>;
 export const ResourceTypeRegistrationPropertiesSubscriptionStateRulesList =
   /*@__PURE__*/ S.Array(
     SubscriptionStateRule,
@@ -2405,14 +2339,10 @@ export type ExtendedLocationType =
   | "NotSpecified"
   | "CustomLocation"
   | "EdgeZone"
-  | "ArcZone"
-  | (string & {});
+  | "ArcZone";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
-export type ResourceTypeExtendedLocationPolicy =
-  | "NotSpecified"
-  | "All"
-  | (string & {});
+export type ResourceTypeExtendedLocationPolicy = "NotSpecified" | "All";
 export const ResourceTypeExtendedLocationPolicy = /*@__PURE__*/ S.String;
 
 export interface ExtendedLocationOptions {
@@ -2431,7 +2361,7 @@ export const ExtendedLocationOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended locations. */
 export type ResourceTypeRegistrationPropertiesExtendedLocationsList =
-  ExtendedLocationOptions[];
+  ReadonlyArray<ExtendedLocationOptions>;
 export const ResourceTypeRegistrationPropertiesExtendedLocationsList =
   /*@__PURE__*/ S.Array(
     ExtendedLocationOptions,
@@ -2459,15 +2389,11 @@ export const ResourceMovePolicy = /*@__PURE__*/ S.suspend(() =>
 export type ResourceDeletionPolicy =
   | "NotSpecified"
   | "CascadeDeleteAll"
-  | "CascadeDeleteProxyOnlyChildren"
-  | (string & {});
+  | "CascadeDeleteProxyOnlyChildren";
 export const ResourceDeletionPolicy = /*@__PURE__*/ S.String;
 
 /** The policy. */
-export type Policy =
-  | "NotSpecified"
-  | "SynchronizeBeginExtension"
-  | (string & {});
+export type Policy = "NotSpecified" | "SynchronizeBeginExtension";
 export const Policy = /*@__PURE__*/ S.String;
 
 export interface ResourceConcurrencyControlOption {
@@ -2550,21 +2476,19 @@ export type ResourceTypeCategory =
   | "None"
   | "FreeForm"
   | "Internal"
-  | "PureProxy"
-  | (string & {});
+  | "PureProxy";
 export const ResourceTypeCategory = /*@__PURE__*/ S.String;
 
 /** The resource validation. */
 export type ResourceValidation =
   | "NotSpecified"
   | "ReservedWords"
-  | "ProfaneWords"
-  | (string & {});
+  | "ProfaneWords";
 export const ResourceValidation = /*@__PURE__*/ S.String;
 
 /** The disallowed end user operations. */
 export type ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2580,7 +2504,7 @@ export const ResourceTypeRegistrationPropertiesMetadataMap =
     S.Unknown,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesMetadataMap>;
 
-export type QuotaPolicy = "Default" | "None" | "Restricted" | (string & {});
+export type QuotaPolicy = "Default" | "None" | "Restricted";
 export const QuotaPolicy = /*@__PURE__*/ S.String;
 
 export interface LocationQuotaRule {
@@ -2602,13 +2526,13 @@ export const LocationQuotaRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationQuotaRule>;
 
 /** The location rules. */
-export type QuotaRuleLocationRulesList = LocationQuotaRule[];
+export type QuotaRuleLocationRulesList = ReadonlyArray<LocationQuotaRule>;
 export const QuotaRuleLocationRulesList = /*@__PURE__*/ S.Array(
   LocationQuotaRule,
 ) as any as S.Schema<QuotaRuleLocationRulesList>;
 
 /** The required features. */
-export type QuotaRuleRequiredFeaturesList = string[];
+export type QuotaRuleRequiredFeaturesList = ReadonlyArray<string>;
 export const QuotaRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuotaRuleRequiredFeaturesList>;
@@ -2631,34 +2555,35 @@ export const QuotaRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The notifications. */
 export type ResourceTypeRegistrationPropertiesNotificationsList =
-  Notification[];
+  ReadonlyArray<Notification>;
 export const ResourceTypeRegistrationPropertiesNotificationsList =
   /*@__PURE__*/ S.Array(
     Notification,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesNotificationsList>;
 
 /** The actions. */
-export type LinkedNotificationRuleActionsList = string[];
+export type LinkedNotificationRuleActionsList = ReadonlyArray<string>;
 export const LinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedNotificationRuleActionsList>;
 
 /** The actions on failed operation. */
-export type LinkedNotificationRuleActionsOnFailedOperationList = string[];
+export type LinkedNotificationRuleActionsOnFailedOperationList =
+  ReadonlyArray<string>;
 export const LinkedNotificationRuleActionsOnFailedOperationList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LinkedNotificationRuleActionsOnFailedOperationList>;
 
 /** The fast path actions. */
-export type LinkedNotificationRuleFastPathActionsList = string[];
+export type LinkedNotificationRuleFastPathActionsList = ReadonlyArray<string>;
 export const LinkedNotificationRuleFastPathActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedNotificationRuleFastPathActionsList>;
 
 /** The fast path action on failed operation. */
 export type LinkedNotificationRuleFastPathActionsOnFailedOperationList =
-  string[];
+  ReadonlyArray<string>;
 export const LinkedNotificationRuleFastPathActionsOnFailedOperationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2694,17 +2619,14 @@ export const LinkedNotificationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked notification rules. */
 export type ResourceTypeRegistrationPropertiesLinkedNotificationRulesList =
-  LinkedNotificationRule[];
+  ReadonlyArray<LinkedNotificationRule>;
 export const ResourceTypeRegistrationPropertiesLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     LinkedNotificationRule,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedNotificationRulesList>;
 
 /** The capabilities. */
-export type TemplateDeploymentCapabilities =
-  | "Default"
-  | "Preflight"
-  | (string & {});
+export type TemplateDeploymentCapabilities = "Default" | "Preflight";
 export const TemplateDeploymentCapabilities = /*@__PURE__*/ S.String;
 
 /** The preflight options. */
@@ -2713,15 +2635,13 @@ export type TemplateDeploymentPreflightOptions =
   | "ValidationRequests"
   | "DeploymentRequests"
   | "TestOnly"
-  | "RegisteredOnly"
-  | (string & {});
+  | "RegisteredOnly";
 export const TemplateDeploymentPreflightOptions = /*@__PURE__*/ S.String;
 
 /** The preflight notifications. */
 export type TemplateDeploymentPreflightNotifications =
   | "None"
-  | "UnregisteredSubscriptions"
-  | (string & {});
+  | "UnregisteredSubscriptions";
 export const TemplateDeploymentPreflightNotifications = /*@__PURE__*/ S.String;
 
 export interface TemplateDeploymentPolicy {
@@ -2749,15 +2669,13 @@ export type PolicyExecutionType =
   | "NotSpecified"
   | "ExecutePolicies"
   | "BypassPolicies"
-  | "ExpectPartialPutRequests"
-  | (string & {});
+  | "ExpectPartialPutRequests";
 export const PolicyExecutionType = /*@__PURE__*/ S.String;
 
 export type AvailabilityZonePolicy =
   | "NotSpecified"
   | "SingleZoned"
-  | "MultiZoned"
-  | (string & {});
+  | "MultiZoned";
 export const AvailabilityZonePolicy = /*@__PURE__*/ S.String;
 
 /** The availability zone rule. */
@@ -2789,14 +2707,15 @@ export const AsyncTimeoutRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Async timeout rules */
 export type ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList =
-  AsyncTimeoutRule[];
+  ReadonlyArray<AsyncTimeoutRule>;
 export const ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList =
   /*@__PURE__*/ S.Array(
     AsyncTimeoutRule,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList>;
 
 /** Common API versions for the resource type. */
-export type ResourceTypeRegistrationPropertiesCommonApiVersionsList = string[];
+export type ResourceTypeRegistrationPropertiesCommonApiVersionsList =
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesCommonApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2816,7 +2735,8 @@ export const ApiProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiProfile" }) as any as S.Schema<ApiProfile>;
 
 /** The api profiles. */
-export type ResourceTypeRegistrationPropertiesApiProfilesList = ApiProfile[];
+export type ResourceTypeRegistrationPropertiesApiProfilesList =
+  ReadonlyArray<ApiProfile>;
 export const ResourceTypeRegistrationPropertiesApiProfilesList =
   /*@__PURE__*/ S.Array(
     ApiProfile,
@@ -2826,21 +2746,15 @@ export const ResourceTypeRegistrationPropertiesApiProfilesList =
 export type LinkedOperation =
   | "None"
   | "CrossResourceGroupResourceMove"
-  | "CrossSubscriptionResourceMove"
-  | (string & {});
+  | "CrossSubscriptionResourceMove";
 export const LinkedOperation = /*@__PURE__*/ S.String;
 
 /** The linked action. */
-export type LinkedAction =
-  | "NotSpecified"
-  | "Blocked"
-  | "Validate"
-  | "Enabled"
-  | (string & {});
+export type LinkedAction = "NotSpecified" | "Blocked" | "Validate" | "Enabled";
 export const LinkedAction = /*@__PURE__*/ S.String;
 
 /** Depends on types. */
-export type LinkedOperationRuleDependsOnTypesList = string[];
+export type LinkedOperationRuleDependsOnTypesList = ReadonlyArray<string>;
 export const LinkedOperationRuleDependsOnTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LinkedOperationRuleDependsOnTypesList>;
@@ -2865,14 +2779,15 @@ export const LinkedOperationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The linked operation rules. */
 export type ResourceTypeRegistrationPropertiesLinkedOperationRulesList =
-  LinkedOperationRule[];
+  ReadonlyArray<LinkedOperationRule>;
 export const ResourceTypeRegistrationPropertiesLinkedOperationRulesList =
   /*@__PURE__*/ S.Array(
     LinkedOperationRule,
   ) as any as S.Schema<ResourceTypeRegistrationPropertiesLinkedOperationRulesList>;
 
 /** The legacy names. */
-export type ResourceTypeRegistrationPropertiesLegacyNamesList = string[];
+export type ResourceTypeRegistrationPropertiesLegacyNamesList =
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesLegacyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2880,7 +2795,7 @@ export const ResourceTypeRegistrationPropertiesLegacyNamesList =
 
 /** Allowed template deployment reference actions. */
 export type ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2896,12 +2811,11 @@ export type LegacyOperation =
   | "Action"
   | "Read"
   | "EvaluateDeploymentOutput"
-  | "DeploymentCleanup"
-  | (string & {});
+  | "DeploymentCleanup";
 export const LegacyOperation = /*@__PURE__*/ S.String;
 
 export type ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList =
-  LegacyOperation[];
+  ReadonlyArray<LegacyOperation>;
 export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOperationsList =
   /*@__PURE__*/ S.Array(
     LegacyOperation,
@@ -2909,7 +2823,7 @@ export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedLegacyOpera
 
 /** The disallowed legacy operations. */
 export type LegacyDisallowedConditionDisallowedLegacyOperationsList =
-  LegacyOperation[];
+  ReadonlyArray<LegacyOperation>;
 export const LegacyDisallowedConditionDisallowedLegacyOperationsList =
   /*@__PURE__*/ S.Array(
     LegacyOperation,
@@ -2933,7 +2847,7 @@ export const LegacyDisallowedCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LegacyDisallowedCondition>;
 
 export type ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedConditionsList =
-  LegacyDisallowedCondition[];
+  ReadonlyArray<LegacyDisallowedCondition>;
 export const ResourceTypeRegistrationPropertiesLegacyPolicyDisallowedConditionsList =
   /*@__PURE__*/ S.Array(
     LegacyDisallowedCondition,
@@ -2959,7 +2873,7 @@ export const ResourceTypeRegistrationPropertiesLegacyPolicy =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesLegacyPolicy>;
 
 /** Capacity policy. */
-export type CapacityPolicy = "Default" | "Restricted" | (string & {});
+export type CapacityPolicy = "Default" | "Restricted";
 export const CapacityPolicy = /*@__PURE__*/ S.String;
 
 /** Capacity rule. */
@@ -3010,7 +2924,7 @@ export const AllowedResourceName = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed resource names. */
 export type ResourceTypeRegistrationPropertiesAllowedResourceNamesList =
-  AllowedResourceName[];
+  ReadonlyArray<AllowedResourceName>;
 export const ResourceTypeRegistrationPropertiesAllowedResourceNamesList =
   /*@__PURE__*/ S.Array(
     AllowedResourceName,
@@ -3034,10 +2948,7 @@ export const ResourceTypeRegistrationPropertiesResourceCache =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceCache>;
 
 /** Filter option. */
-export type FilterOption =
-  | "NotSpecified"
-  | "EnableSubscriptionFilterOnTenant"
-  | (string & {});
+export type FilterOption = "NotSpecified" | "EnableSubscriptionFilterOnTenant";
 export const FilterOption = /*@__PURE__*/ S.String;
 
 /** Resource query management options. */
@@ -3055,11 +2966,7 @@ export const ResourceTypeRegistrationPropertiesResourceQueryManagement =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceQueryManagement>;
 
 /** Supported operations. */
-export type SupportedOperations =
-  | "NotSpecified"
-  | "Get"
-  | "Delete"
-  | (string & {});
+export type SupportedOperations = "NotSpecified" | "Get" | "Delete";
 export const SupportedOperations = /*@__PURE__*/ S.String;
 
 /** Batch provisioning support. */
@@ -3078,7 +2985,7 @@ export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchPro
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport>;
 
 /** Required features. */
-export type DeleteDependencyRequiredFeaturesList = string[];
+export type DeleteDependencyRequiredFeaturesList = ReadonlyArray<string>;
 export const DeleteDependencyRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteDependencyRequiredFeaturesList>;
@@ -3103,7 +3010,7 @@ export const DeleteDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Delete dependencies. */
 export type ResourceTypeRegistrationPropertiesResourceManagementOptionsDeleteDependenciesList =
-  DeleteDependency[];
+  ReadonlyArray<DeleteDependency>;
 export const ResourceTypeRegistrationPropertiesResourceManagementOptionsDeleteDependenciesList =
   /*@__PURE__*/ S.Array(
     DeleteDependency,
@@ -3151,7 +3058,7 @@ export const ResourceTypeRegistrationPropertiesResourceManagementOptions =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptions>;
 
 /** Common api versions merge mode. */
-export type CommonApiVersionsMergeMode = "Merge" | "Overwrite" | (string & {});
+export type CommonApiVersionsMergeMode = "Merge" | "Overwrite";
 export const CommonApiVersionsMergeMode = /*@__PURE__*/ S.String;
 
 /** Resource type common attribute management. */
@@ -3184,14 +3091,11 @@ export const ResourceTypeRegistrationPropertiesRoutingRule =
   }) as any as S.Schema<ResourceTypeRegistrationPropertiesRoutingRule>;
 
 /** The frontdoor request mode. */
-export type FrontdoorRequestMode =
-  | "NotSpecified"
-  | "UseManifest"
-  | (string & {});
+export type FrontdoorRequestMode = "NotSpecified" | "UseManifest";
 export const FrontdoorRequestMode = /*@__PURE__*/ S.String;
 
 /** The resource sub type. */
-export type ResourceSubType = "NotSpecified" | "AsyncOperation" | (string & {});
+export type ResourceSubType = "NotSpecified" | "AsyncOperation";
 export const ResourceSubType = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeRegistrationProperties {
@@ -3487,11 +3391,239 @@ export const ResourceTypeRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTypeRegistrationProperties>;
 
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeRegistrationKind =
-  | "Managed"
-  | "Hybrid"
-  | "Direct"
-  | (string & {});
+export type ResourceTypeRegistrationInputKind = "Managed" | "Hybrid" | "Direct";
+export const ResourceTypeRegistrationInputKind = /*@__PURE__*/ S.String;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface ResourceTypeRegistrationInput {
+  properties?: ResourceTypeRegistrationProperties;
+  /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ResourceTypeRegistrationInputKind;
+}
+export const ResourceTypeRegistrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(ResourceTypeRegistrationProperties),
+    kind: S.optional(ResourceTypeRegistrationInputKind),
+  }),
+).annotate({
+  identifier: "ResourceTypeRegistrationInput",
+}) as any as S.Schema<ResourceTypeRegistrationInput>;
+
+/** The resource type registrations. */
+export type CustomRolloutSpecificationInputResourceTypeRegistrationsList =
+  ReadonlyArray<ResourceTypeRegistrationInput>;
+export const CustomRolloutSpecificationInputResourceTypeRegistrationsList =
+  /*@__PURE__*/ S.Array(
+    ResourceTypeRegistrationInput,
+  ) as any as S.Schema<CustomRolloutSpecificationInputResourceTypeRegistrationsList>;
+
+export interface CustomRolloutSpecificationInput {
+  /** The auto provisioning configuration. */
+  autoProvisionConfig?: CustomRolloutSpecificationAutoProvisionConfig;
+  /** The canary region configuration. */
+  canary?: TrafficRegions;
+  /** The list of ARM regions scoped for the release. */
+  releaseScopes?: CustomRolloutSpecificationInputReleaseScopesList;
+  /** Whether refreshing subscription registration is enabled or disabled. */
+  refreshSubscriptionRegistration?: boolean;
+  /** Whether release scope validation should be skipped. */
+  skipReleaseScopeValidation?: boolean;
+  /** The provider registration. */
+  providerRegistration?: ProviderRegistrationInput;
+  /** The resource type registrations. */
+  resourceTypeRegistrations?: CustomRolloutSpecificationInputResourceTypeRegistrationsList;
+}
+export const CustomRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoProvisionConfig: S.optional(
+      CustomRolloutSpecificationAutoProvisionConfig,
+    ),
+    canary: S.optional(TrafficRegions),
+    releaseScopes: S.optional(CustomRolloutSpecificationInputReleaseScopesList),
+    refreshSubscriptionRegistration: S.optional(S.Boolean),
+    skipReleaseScopeValidation: S.optional(S.Boolean),
+    providerRegistration: S.optional(ProviderRegistrationInput),
+    resourceTypeRegistrations: S.optional(
+      CustomRolloutSpecificationInputResourceTypeRegistrationsList,
+    ),
+  }),
+).annotate({
+  identifier: "CustomRolloutSpecificationInput",
+}) as any as S.Schema<CustomRolloutSpecificationInput>;
+
+/** The completed regions. */
+export type CustomRolloutStatusInputCompletedRegionsList =
+  ReadonlyArray<string>;
+export const CustomRolloutStatusInputCompletedRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CustomRolloutStatusInputCompletedRegionsList>;
+
+/** The error details. */
+export type ExtendedErrorInfoInputDetailsList =
+  ReadonlyArray<ExtendedErrorInfoInput>;
+export const ExtendedErrorInfoInputDetailsList = /*@__PURE__*/ S.Array(
+  S.suspend(() => ExtendedErrorInfoInput),
+) as any as S.Schema<ExtendedErrorInfoInputDetailsList>;
+
+/** Error information. */
+export interface TypedErrorInfoInput {
+  /** The type of the error. */
+  type: string;
+}
+export const TypedErrorInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+  }),
+).annotate({
+  identifier: "TypedErrorInfoInput",
+}) as any as S.Schema<TypedErrorInfoInput>;
+
+/** The additional error information. */
+export type ExtendedErrorInfoInputAdditionalInfoList =
+  ReadonlyArray<TypedErrorInfoInput>;
+export const ExtendedErrorInfoInputAdditionalInfoList = /*@__PURE__*/ S.Array(
+  TypedErrorInfoInput,
+) as any as S.Schema<ExtendedErrorInfoInputAdditionalInfoList>;
+
+/** Error information. */
+export interface ExtendedErrorInfoInput {
+  /** The error code. */
+  code?: string;
+  /** The target of the error. */
+  target?: string;
+  /** The error message. */
+  message?: string;
+  /** The error details. */
+  details?: ExtendedErrorInfoInputDetailsList;
+  /** The additional error information. */
+  additionalInfo?: ExtendedErrorInfoInputAdditionalInfoList;
+}
+export const ExtendedErrorInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    target: S.optional(S.String),
+    message: S.optional(S.String),
+    details: S.optional(ExtendedErrorInfoInputDetailsList),
+    additionalInfo: S.optional(ExtendedErrorInfoInputAdditionalInfoList),
+  }),
+).annotate({
+  identifier: "ExtendedErrorInfoInput",
+}) as any as S.Schema<ExtendedErrorInfoInput>;
+
+/** The failed or skipped regions. */
+export type CustomRolloutStatusInputFailedOrSkippedRegionsMap = {
+  [key: string]: ExtendedErrorInfoInput | undefined;
+};
+export const CustomRolloutStatusInputFailedOrSkippedRegionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ExtendedErrorInfoInput,
+  ) as any as S.Schema<CustomRolloutStatusInputFailedOrSkippedRegionsMap>;
+
+export interface CustomRolloutStatusInput {
+  /** The completed regions. */
+  completedRegions?: CustomRolloutStatusInputCompletedRegionsList;
+  /** The failed or skipped regions. */
+  failedOrSkippedRegions?: CustomRolloutStatusInputFailedOrSkippedRegionsMap;
+  /** The manifest checkin status. */
+  manifestCheckinStatus?: CheckinManifestInfo;
+}
+export const CustomRolloutStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completedRegions: S.optional(CustomRolloutStatusInputCompletedRegionsList),
+    failedOrSkippedRegions: S.optional(
+      CustomRolloutStatusInputFailedOrSkippedRegionsMap,
+    ),
+    manifestCheckinStatus: S.optional(CheckinManifestInfo),
+  }),
+).annotate({
+  identifier: "CustomRolloutStatusInput",
+}) as any as S.Schema<CustomRolloutStatusInput>;
+
+export interface CustomRolloutPropertiesInput {
+  /** The specification. */
+  specification: CustomRolloutSpecificationInput;
+  /** The status. */
+  status?: CustomRolloutStatusInput;
+}
+export const CustomRolloutPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    specification: CustomRolloutSpecificationInput,
+    status: S.optional(CustomRolloutStatusInput),
+  }),
+).annotate({
+  identifier: "CustomRolloutPropertiesInput",
+}) as any as S.Schema<CustomRolloutPropertiesInput>;
+
+export interface CustomRolloutsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The rollout name. */
+  rolloutName: string;
+  /** Properties of the rollout. */
+  properties: CustomRolloutPropertiesInput;
+}
+export const CustomRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
+    properties: CustomRolloutPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+      code: 200,
+      apiVersion: "2024-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "CustomRolloutsCreateOrUpdateRequest",
+}) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>;
+
+/** The list of ARM regions scoped for the release. */
+export type CustomRolloutSpecificationReleaseScopesList = ReadonlyArray<string>;
+export const CustomRolloutSpecificationReleaseScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CustomRolloutSpecificationReleaseScopesList>;
+
+/** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ProviderRegistrationKind = "Managed" | "Hybrid" | "Direct";
+export const ProviderRegistrationKind = /*@__PURE__*/ S.String;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface ProviderRegistration {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ProviderRegistrationProperties;
+  /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ProviderRegistrationKind;
+}
+export const ProviderRegistration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ProviderRegistrationProperties),
+    kind: S.optional(ProviderRegistrationKind),
+  }),
+).annotate({
+  identifier: "ProviderRegistration",
+}) as any as S.Schema<ProviderRegistration>;
+
+/** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ResourceTypeRegistrationKind = "Managed" | "Hybrid" | "Direct";
 export const ResourceTypeRegistrationKind = /*@__PURE__*/ S.String;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
@@ -3523,7 +3655,7 @@ export const ResourceTypeRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type registrations. */
 export type CustomRolloutSpecificationResourceTypeRegistrationsList =
-  ResourceTypeRegistration[];
+  ReadonlyArray<ResourceTypeRegistration>;
 export const CustomRolloutSpecificationResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistration,
@@ -3564,13 +3696,13 @@ export const CustomRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomRolloutSpecification>;
 
 /** The completed regions. */
-export type CustomRolloutStatusCompletedRegionsList = string[];
+export type CustomRolloutStatusCompletedRegionsList = ReadonlyArray<string>;
 export const CustomRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomRolloutStatusCompletedRegionsList>;
 
 /** The error details. */
-export type ExtendedErrorInfoDetailsList = ExtendedErrorInfo[];
+export type ExtendedErrorInfoDetailsList = ReadonlyArray<ExtendedErrorInfo>;
 export const ExtendedErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ExtendedErrorInfo),
 ) as any as S.Schema<ExtendedErrorInfoDetailsList>;
@@ -3590,7 +3722,7 @@ export const TypedErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypedErrorInfo" }) as any as S.Schema<TypedErrorInfo>;
 
 /** The additional error information. */
-export type ExtendedErrorInfoAdditionalInfoList = TypedErrorInfo[];
+export type ExtendedErrorInfoAdditionalInfoList = ReadonlyArray<TypedErrorInfo>;
 export const ExtendedErrorInfoAdditionalInfoList = /*@__PURE__*/ S.Array(
   TypedErrorInfo,
 ) as any as S.Schema<ExtendedErrorInfoAdditionalInfoList>;
@@ -3822,7 +3954,7 @@ export const CustomRollout = /*@__PURE__*/ S.suspend(() =>
 
 /** The CustomRollout items on this page */
 export type CustomRolloutArrayResponseWithContinuationValueList =
-  CustomRollout[];
+  ReadonlyArray<CustomRollout>;
 export const CustomRolloutArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     CustomRollout,
@@ -3877,34 +4009,6 @@ export const CustomRolloutsStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomRolloutsStopResponse",
 }) as any as S.Schema<CustomRolloutsStopResponse>;
 
-export interface DefaultRolloutsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
-  body: unknown;
-}
-export const DefaultRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      rolloutName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
-        code: 200,
-        apiVersion: "2024-09-01",
-      }),
-    ),
-).annotate({
-  identifier: "DefaultRolloutsCreateOrUpdateRequest",
-}) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>;
-
 export interface ExpeditedRolloutDefinition {
   /** Indicates whether expedited rollout is enabled/disabled */
   enabled?: boolean;
@@ -3918,14 +4022,16 @@ export const ExpeditedRolloutDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpeditedRolloutDefinition>;
 
 /** The skip regions. */
-export type CanaryTrafficRegionRolloutConfigurationSkipRegionsList = string[];
+export type CanaryTrafficRegionRolloutConfigurationSkipRegionsList =
+  ReadonlyArray<string>;
 export const CanaryTrafficRegionRolloutConfigurationSkipRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CanaryTrafficRegionRolloutConfigurationSkipRegionsList>;
 
 /** The regions. */
-export type CanaryTrafficRegionRolloutConfigurationRegionsList = string[];
+export type CanaryTrafficRegionRolloutConfigurationRegionsList =
+  ReadonlyArray<string>;
 export const CanaryTrafficRegionRolloutConfigurationRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3949,7 +4055,8 @@ export const CanaryTrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend(
   identifier: "CanaryTrafficRegionRolloutConfiguration",
 }) as any as S.Schema<CanaryTrafficRegionRolloutConfiguration>;
 
-export type TrafficRegionRolloutConfigurationRegionsList = string[];
+export type TrafficRegionRolloutConfigurationRegionsList =
+  ReadonlyArray<string>;
 export const TrafficRegionRolloutConfigurationRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3970,12 +4077,12 @@ export const TrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficRegionRolloutConfiguration>;
 
 /** The resource type registrations. */
-export type DefaultRolloutSpecificationResourceTypeRegistrationsList =
-  ResourceTypeRegistration[];
-export const DefaultRolloutSpecificationResourceTypeRegistrationsList =
+export type DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
+  ReadonlyArray<ResourceTypeRegistrationInput>;
+export const DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
   /*@__PURE__*/ S.Array(
-    ResourceTypeRegistration,
-  ) as any as S.Schema<DefaultRolloutSpecificationResourceTypeRegistrationsList>;
+    ResourceTypeRegistrationInput,
+  ) as any as S.Schema<DefaultRolloutSpecificationInputResourceTypeRegistrationsList>;
 
 /** The auto provisioning config. */
 export interface DefaultRolloutSpecificationAutoProvisionConfig {
@@ -3993,6 +4100,170 @@ export const DefaultRolloutSpecificationAutoProvisionConfig =
   ).annotate({
     identifier: "DefaultRolloutSpecificationAutoProvisionConfig",
   }) as any as S.Schema<DefaultRolloutSpecificationAutoProvisionConfig>;
+
+export interface DefaultRolloutSpecificationInput {
+  /** The expedited rollout definition. */
+  expeditedRollout?: ExpeditedRolloutDefinition;
+  /** The canary traffic region configuration. */
+  canary?: CanaryTrafficRegionRolloutConfiguration;
+  /** The low traffic region configuration. */
+  lowTraffic?: TrafficRegionRolloutConfiguration;
+  /** The medium traffic region configuration. */
+  mediumTraffic?: TrafficRegionRolloutConfiguration;
+  /** The high traffic region configuration. */
+  highTraffic?: TrafficRegionRolloutConfiguration;
+  /** The rest of the world group one region configuration. */
+  restOfTheWorldGroupOne?: TrafficRegionRolloutConfiguration;
+  /** The rest of the world group two region configuration. */
+  restOfTheWorldGroupTwo?: TrafficRegionRolloutConfiguration;
+  /** The provider registration. */
+  providerRegistration?: ProviderRegistrationInput;
+  /** The resource type registrations. */
+  resourceTypeRegistrations?: DefaultRolloutSpecificationInputResourceTypeRegistrationsList;
+  /** The auto provisioning config. */
+  autoProvisionConfig?: DefaultRolloutSpecificationAutoProvisionConfig;
+}
+export const DefaultRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expeditedRollout: S.optional(ExpeditedRolloutDefinition),
+    canary: S.optional(CanaryTrafficRegionRolloutConfiguration),
+    lowTraffic: S.optional(TrafficRegionRolloutConfiguration),
+    mediumTraffic: S.optional(TrafficRegionRolloutConfiguration),
+    highTraffic: S.optional(TrafficRegionRolloutConfiguration),
+    restOfTheWorldGroupOne: S.optional(TrafficRegionRolloutConfiguration),
+    restOfTheWorldGroupTwo: S.optional(TrafficRegionRolloutConfiguration),
+    providerRegistration: S.optional(ProviderRegistrationInput),
+    resourceTypeRegistrations: S.optional(
+      DefaultRolloutSpecificationInputResourceTypeRegistrationsList,
+    ),
+    autoProvisionConfig: S.optional(
+      DefaultRolloutSpecificationAutoProvisionConfig,
+    ),
+  }),
+).annotate({
+  identifier: "DefaultRolloutSpecificationInput",
+}) as any as S.Schema<DefaultRolloutSpecificationInput>;
+
+/** The completed regions. */
+export type DefaultRolloutStatusInputCompletedRegionsList =
+  ReadonlyArray<string>;
+export const DefaultRolloutStatusInputCompletedRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DefaultRolloutStatusInputCompletedRegionsList>;
+
+/** The failed or skipped regions. */
+export type DefaultRolloutStatusInputFailedOrSkippedRegionsMap = {
+  [key: string]: ExtendedErrorInfoInput | undefined;
+};
+export const DefaultRolloutStatusInputFailedOrSkippedRegionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ExtendedErrorInfoInput,
+  ) as any as S.Schema<DefaultRolloutStatusInputFailedOrSkippedRegionsMap>;
+
+/** The next traffic region. */
+export type TrafficRegionCategory =
+  | "NotSpecified"
+  | "Canary"
+  | "LowTraffic"
+  | "MediumTraffic"
+  | "HighTraffic"
+  | "None"
+  | "RestOfTheWorldGroupOne"
+  | "RestOfTheWorldGroupTwo";
+export const TrafficRegionCategory = /*@__PURE__*/ S.String;
+
+/** The subscription reregistration result. */
+export type SubscriptionReregistrationResult =
+  | "NotApplicable"
+  | "ConditionalUpdate"
+  | "ForcedUpdate"
+  | "Failed";
+export const SubscriptionReregistrationResult = /*@__PURE__*/ S.String;
+
+export interface DefaultRolloutStatusInput {
+  /** The completed regions. */
+  completedRegions?: DefaultRolloutStatusInputCompletedRegionsList;
+  /** The failed or skipped regions. */
+  failedOrSkippedRegions?: DefaultRolloutStatusInputFailedOrSkippedRegionsMap;
+  /** The next traffic region. */
+  nextTrafficRegion?: TrafficRegionCategory;
+  /** The next traffic region scheduled time. */
+  nextTrafficRegionScheduledTime?: string;
+  /** The subscription reregistration result. */
+  subscriptionReregistrationResult?: SubscriptionReregistrationResult;
+  /** The manifest checkin status. */
+  manifestCheckinStatus?: CheckinManifestInfo;
+}
+export const DefaultRolloutStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completedRegions: S.optional(DefaultRolloutStatusInputCompletedRegionsList),
+    failedOrSkippedRegions: S.optional(
+      DefaultRolloutStatusInputFailedOrSkippedRegionsMap,
+    ),
+    nextTrafficRegion: S.optional(TrafficRegionCategory),
+    nextTrafficRegionScheduledTime: S.optional(S.String),
+    subscriptionReregistrationResult: S.optional(
+      SubscriptionReregistrationResult,
+    ),
+    manifestCheckinStatus: S.optional(CheckinManifestInfo),
+  }),
+).annotate({
+  identifier: "DefaultRolloutStatusInput",
+}) as any as S.Schema<DefaultRolloutStatusInput>;
+
+export interface DefaultRolloutPropertiesInput {
+  /** The default rollout specification. */
+  specification?: DefaultRolloutSpecificationInput;
+  /** The default rollout status. */
+  status?: DefaultRolloutStatusInput;
+}
+export const DefaultRolloutPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    specification: S.optional(DefaultRolloutSpecificationInput),
+    status: S.optional(DefaultRolloutStatusInput),
+  }),
+).annotate({
+  identifier: "DefaultRolloutPropertiesInput",
+}) as any as S.Schema<DefaultRolloutPropertiesInput>;
+
+export interface DefaultRolloutsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The rollout name. */
+  rolloutName: string;
+  /** Properties of the rollout. */
+  properties?: DefaultRolloutPropertiesInput;
+}
+export const DefaultRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      rolloutName: S.String.pipe(T.Label()),
+      properties: S.optional(DefaultRolloutPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+        code: 200,
+        apiVersion: "2024-09-01",
+      }),
+    ),
+).annotate({
+  identifier: "DefaultRolloutsCreateOrUpdateRequest",
+}) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>;
+
+/** The resource type registrations. */
+export type DefaultRolloutSpecificationResourceTypeRegistrationsList =
+  ReadonlyArray<ResourceTypeRegistration>;
+export const DefaultRolloutSpecificationResourceTypeRegistrationsList =
+  /*@__PURE__*/ S.Array(
+    ResourceTypeRegistration,
+  ) as any as S.Schema<DefaultRolloutSpecificationResourceTypeRegistrationsList>;
 
 export interface DefaultRolloutSpecification {
   /** The expedited rollout definition. */
@@ -4038,7 +4309,7 @@ export const DefaultRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultRolloutSpecification>;
 
 /** The completed regions. */
-export type DefaultRolloutStatusCompletedRegionsList = string[];
+export type DefaultRolloutStatusCompletedRegionsList = ReadonlyArray<string>;
 export const DefaultRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DefaultRolloutStatusCompletedRegionsList>;
@@ -4052,28 +4323,6 @@ export const DefaultRolloutStatusFailedOrSkippedRegionsMap =
     S.String,
     ExtendedErrorInfo,
   ) as any as S.Schema<DefaultRolloutStatusFailedOrSkippedRegionsMap>;
-
-/** The next traffic region. */
-export type TrafficRegionCategory =
-  | "NotSpecified"
-  | "Canary"
-  | "LowTraffic"
-  | "MediumTraffic"
-  | "HighTraffic"
-  | "None"
-  | "RestOfTheWorldGroupOne"
-  | "RestOfTheWorldGroupTwo"
-  | (string & {});
-export const TrafficRegionCategory = /*@__PURE__*/ S.String;
-
-/** The subscription reregistration result. */
-export type SubscriptionReregistrationResult =
-  | "NotApplicable"
-  | "ConditionalUpdate"
-  | "ForcedUpdate"
-  | "Failed"
-  | (string & {});
-export const SubscriptionReregistrationResult = /*@__PURE__*/ S.String;
 
 export interface DefaultRolloutStatus {
   /** The completed regions. */
@@ -4278,7 +4527,7 @@ export const DefaultRollout = /*@__PURE__*/ S.suspend(() =>
 
 /** The DefaultRollout items on this page */
 export type DefaultRolloutArrayResponseWithContinuationValueList =
-  DefaultRollout[];
+  ReadonlyArray<DefaultRollout>;
 export const DefaultRolloutArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     DefaultRollout,
@@ -4357,20 +4606,22 @@ export const GenerateManifestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider authorizations. */
 export type ResourceProviderManifestProviderAuthorizationsList =
-  ResourceProviderAuthorization[];
+  ReadonlyArray<ResourceProviderAuthorization>;
 export const ResourceProviderManifestProviderAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderAuthorization,
   ) as any as S.Schema<ResourceProviderManifestProviderAuthorizationsList>;
 
 /** The services. */
-export type ResourceProviderManifestServicesList = ResourceProviderService[];
+export type ResourceProviderManifestServicesList =
+  ReadonlyArray<ResourceProviderService>;
 export const ResourceProviderManifestServicesList = /*@__PURE__*/ S.Array(
   ResourceProviderService,
 ) as any as S.Schema<ResourceProviderManifestServicesList>;
 
 /** The required features. */
-export type ResourceProviderManifestRequiredFeaturesList = string[];
+export type ResourceProviderManifestRequiredFeaturesList =
+  ReadonlyArray<string>;
 export const ResourceProviderManifestRequiredFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4379,19 +4630,18 @@ export const ResourceProviderManifestRequiredFeaturesList =
 /** The additional options. */
 export type AdditionalOptions =
   | "ProtectedAsyncOperationPolling"
-  | "ProtectedAsyncOperationPollingAuditOnly"
-  | (string & {});
+  | "ProtectedAsyncOperationPollingAuditOnly";
 export const AdditionalOptions = /*@__PURE__*/ S.String;
 
 /** The allowed unauthorized actions. */
-export type ResourceTypeAllowedUnauthorizedActionsList = string[];
+export type ResourceTypeAllowedUnauthorizedActionsList = ReadonlyArray<string>;
 export const ResourceTypeAllowedUnauthorizedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeAllowedUnauthorizedActionsList>;
 
 /** The allowed unauthorized actions extensions. */
 export type ResourceTypeAllowedUnauthorizedActionsExtensionsList =
-  AllowedUnauthorizedActionsExtension[];
+  ReadonlyArray<AllowedUnauthorizedActionsExtension>;
 export const ResourceTypeAllowedUnauthorizedActionsExtensionsList =
   /*@__PURE__*/ S.Array(
     AllowedUnauthorizedActionsExtension,
@@ -4399,32 +4649,33 @@ export const ResourceTypeAllowedUnauthorizedActionsExtensionsList =
 
 /** The authorization action mappings. */
 export type ResourceTypeAuthorizationActionMappingsList =
-  AuthorizationActionMapping[];
+  ReadonlyArray<AuthorizationActionMapping>;
 export const ResourceTypeAuthorizationActionMappingsList =
   /*@__PURE__*/ S.Array(
     AuthorizationActionMapping,
   ) as any as S.Schema<ResourceTypeAuthorizationActionMappingsList>;
 
 /** The linked access checks. */
-export type ResourceTypeLinkedAccessChecksList = LinkedAccessCheck[];
+export type ResourceTypeLinkedAccessChecksList =
+  ReadonlyArray<LinkedAccessCheck>;
 export const ResourceTypeLinkedAccessChecksList = /*@__PURE__*/ S.Array(
   LinkedAccessCheck,
 ) as any as S.Schema<ResourceTypeLinkedAccessChecksList>;
 
 /** The logging rules. */
-export type ResourceTypeLoggingRulesList = LoggingRule[];
+export type ResourceTypeLoggingRulesList = ReadonlyArray<LoggingRule>;
 export const ResourceTypeLoggingRulesList = /*@__PURE__*/ S.Array(
   LoggingRule,
 ) as any as S.Schema<ResourceTypeLoggingRulesList>;
 
 /** The throttling rules. */
-export type ResourceTypeThrottlingRulesList = ThrottlingRule[];
+export type ResourceTypeThrottlingRulesList = ReadonlyArray<ThrottlingRule>;
 export const ResourceTypeThrottlingRulesList = /*@__PURE__*/ S.Array(
   ThrottlingRule,
 ) as any as S.Schema<ResourceTypeThrottlingRulesList>;
 
 /** The endpoints. */
-export type ResourceTypeEndpointsList = ResourceProviderEndpoint[];
+export type ResourceTypeEndpointsList = ReadonlyArray<ResourceProviderEndpoint>;
 export const ResourceTypeEndpointsList = /*@__PURE__*/ S.Array(
   ResourceProviderEndpoint,
 ) as any as S.Schema<ResourceTypeEndpointsList>;
@@ -4442,37 +4693,40 @@ export const IdentityManagement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityManagement>;
 
 /** The required features. */
-export type ResourceTypeRequiredFeaturesList = string[];
+export type ResourceTypeRequiredFeaturesList = ReadonlyArray<string>;
 export const ResourceTypeRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeRequiredFeaturesList>;
 
 /** The subscription state rules. */
-export type ResourceTypeSubscriptionStateRulesList = SubscriptionStateRule[];
+export type ResourceTypeSubscriptionStateRulesList =
+  ReadonlyArray<SubscriptionStateRule>;
 export const ResourceTypeSubscriptionStateRulesList = /*@__PURE__*/ S.Array(
   SubscriptionStateRule,
 ) as any as S.Schema<ResourceTypeSubscriptionStateRulesList>;
 
 /** The service tree infos. */
-export type ResourceTypeServiceTreeInfosList = ServiceTreeInfo[];
+export type ResourceTypeServiceTreeInfosList = ReadonlyArray<ServiceTreeInfo>;
 export const ResourceTypeServiceTreeInfosList = /*@__PURE__*/ S.Array(
   ServiceTreeInfo,
 ) as any as S.Schema<ResourceTypeServiceTreeInfosList>;
 
 /** The disallowed action verbs. */
-export type ResourceTypeDisallowedActionVerbsList = string[];
+export type ResourceTypeDisallowedActionVerbsList = ReadonlyArray<string>;
 export const ResourceTypeDisallowedActionVerbsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceTypeDisallowedActionVerbsList>;
 
 /** The extended locations. */
-export type ResourceTypeExtendedLocationsList = ExtendedLocationOptions[];
+export type ResourceTypeExtendedLocationsList =
+  ReadonlyArray<ExtendedLocationOptions>;
 export const ResourceTypeExtendedLocationsList = /*@__PURE__*/ S.Array(
   ExtendedLocationOptions,
 ) as any as S.Schema<ResourceTypeExtendedLocationsList>;
 
 /** The linked operation rules. */
-export type ResourceTypeLinkedOperationRulesList = LinkedOperationRule[];
+export type ResourceTypeLinkedOperationRulesList =
+  ReadonlyArray<LinkedOperationRule>;
 export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
   LinkedOperationRule,
 ) as any as S.Schema<ResourceTypeLinkedOperationRulesList>;
@@ -4481,18 +4735,18 @@ export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
 export type ManifestResourceDeletionPolicy =
   | "NotSpecified"
   | "Cascade"
-  | "Force"
-  | (string & {});
+  | "Force";
 export const ManifestResourceDeletionPolicy = /*@__PURE__*/ S.String;
 
 /** The notifications. */
-export type ResourceTypeNotificationsList = Notification[];
+export type ResourceTypeNotificationsList = ReadonlyArray<Notification>;
 export const ResourceTypeNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ResourceTypeNotificationsList>;
 
 /** The linked notification rules. */
-export type ResourceTypeLinkedNotificationRulesList = LinkedNotificationRule[];
+export type ResourceTypeLinkedNotificationRulesList =
+  ReadonlyArray<LinkedNotificationRule>;
 export const ResourceTypeLinkedNotificationRulesList = /*@__PURE__*/ S.Array(
   LinkedNotificationRule,
 ) as any as S.Schema<ResourceTypeLinkedNotificationRulesList>;
@@ -4608,21 +4862,22 @@ export const ResourceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceType" }) as any as S.Schema<ResourceType>;
 
 /** The resource types. */
-export type ResourceProviderManifestResourceTypesList = ResourceType[];
+export type ResourceProviderManifestResourceTypesList =
+  ReadonlyArray<ResourceType>;
 export const ResourceProviderManifestResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<ResourceProviderManifestResourceTypesList>;
 
 /** The capabilities. */
 export type ResourceProviderManifestCapabilitiesList =
-  ResourceProviderCapabilities[];
+  ReadonlyArray<ResourceProviderCapabilities>;
 export const ResourceProviderManifestCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceProviderCapabilities,
 ) as any as S.Schema<ResourceProviderManifestCapabilitiesList>;
 
 /** The global notification endpoints. */
 export type ResourceProviderManifestGlobalNotificationEndpointsList =
-  ResourceProviderEndpoint[];
+  ReadonlyArray<ResourceProviderEndpoint>;
 export const ResourceProviderManifestGlobalNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ResourceProviderEndpoint,
@@ -4644,14 +4899,15 @@ export const ReRegisterSubscriptionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReRegisterSubscriptionMetadata>;
 
 /** The notifications. */
-export type ResourceProviderManifestNotificationsList = Notification[];
+export type ResourceProviderManifestNotificationsList =
+  ReadonlyArray<Notification>;
 export const ResourceProviderManifestNotificationsList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ResourceProviderManifestNotificationsList>;
 
 /** The linked notification rules. */
 export type ResourceProviderManifestLinkedNotificationRulesList =
-  FanoutLinkedNotificationRule[];
+  ReadonlyArray<FanoutLinkedNotificationRule>;
 export const ResourceProviderManifestLinkedNotificationRulesList =
   /*@__PURE__*/ S.Array(
     FanoutLinkedNotificationRule,
@@ -4737,6 +4993,177 @@ export const ResourceProviderManifest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceProviderManifest",
 }) as any as S.Schema<ResourceProviderManifest>;
 
+/** The environment type. */
+export type AvailableCheckInManifestEnvironment =
+  | "NotSpecified"
+  | "Canary"
+  | "Prod"
+  | "All"
+  | "Mooncake"
+  | "Fairfax";
+export const AvailableCheckInManifestEnvironment = /*@__PURE__*/ S.String;
+
+/** The service feature flag. */
+export type ServiceFeatureFlagAction = "DoNotCreate" | "Create";
+export const ServiceFeatureFlagAction = /*@__PURE__*/ S.String;
+
+/** The resource types to include. */
+export type FrontloadPayloadPropertiesIncludeResourceTypesList =
+  ReadonlyArray<string>;
+export const FrontloadPayloadPropertiesIncludeResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FrontloadPayloadPropertiesIncludeResourceTypesList>;
+
+/** The resource types to exclude. */
+export type FrontloadPayloadPropertiesExcludeResourceTypesList =
+  ReadonlyArray<string>;
+export const FrontloadPayloadPropertiesExcludeResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FrontloadPayloadPropertiesExcludeResourceTypesList>;
+
+/** The resource hydration accounts. */
+export type ManifestLevelPropertyBagResourceHydrationAccountsList =
+  ReadonlyArray<ResourceHydrationAccount>;
+export const ManifestLevelPropertyBagResourceHydrationAccountsList =
+  /*@__PURE__*/ S.Array(
+    ResourceHydrationAccount,
+  ) as any as S.Schema<ManifestLevelPropertyBagResourceHydrationAccountsList>;
+
+export interface ManifestLevelPropertyBag {
+  /** The resource hydration accounts. */
+  resourceHydrationAccounts?: ManifestLevelPropertyBagResourceHydrationAccountsList;
+}
+export const ManifestLevelPropertyBag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceHydrationAccounts: S.optional(
+      ManifestLevelPropertyBagResourceHydrationAccountsList,
+    ),
+  }),
+).annotate({
+  identifier: "ManifestLevelPropertyBag",
+}) as any as S.Schema<ManifestLevelPropertyBag>;
+
+/** The api versions. */
+export type ResourceTypeEndpointBaseApiVersionsList = ReadonlyArray<string>;
+export const ResourceTypeEndpointBaseApiVersionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceTypeEndpointBaseApiVersionsList>;
+
+/** The locations. */
+export type ResourceTypeEndpointBaseLocationsList = ReadonlyArray<string>;
+export const ResourceTypeEndpointBaseLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceTypeEndpointBaseLocationsList>;
+
+/** The required features. */
+export type ResourceTypeEndpointBaseRequiredFeaturesList =
+  ReadonlyArray<string>;
+export const ResourceTypeEndpointBaseRequiredFeaturesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceTypeEndpointBaseRequiredFeaturesList>;
+
+/** The zones. */
+export type ResourceTypeEndpointBaseZonesList = ReadonlyArray<string>;
+export const ResourceTypeEndpointBaseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceTypeEndpointBaseZonesList>;
+
+export interface ResourceTypeEndpointBase {
+  /** Whether it's enabled. */
+  enabled: boolean;
+  /** The api versions. */
+  apiVersions: ResourceTypeEndpointBaseApiVersionsList;
+  /** The endpoint uri. */
+  endpointUri: string;
+  /** The locations. */
+  locations: ResourceTypeEndpointBaseLocationsList;
+  /** The required features. */
+  requiredFeatures: ResourceTypeEndpointBaseRequiredFeaturesList;
+  /** The features rule. */
+  featuresRule: FeaturesRule;
+  /** This is a TimeSpan property. */
+  timeout: string;
+  /** The endpoint type. */
+  endpointType: EndpointType;
+  /** The dsts configuration. */
+  dstsConfiguration: DstsConfiguration;
+  /** The sku link. */
+  skuLink: string;
+  /** The api version. */
+  apiVersion: string;
+  /** The zones. */
+  zones: ResourceTypeEndpointBaseZonesList;
+}
+export const ResourceTypeEndpointBase = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    apiVersions: ResourceTypeEndpointBaseApiVersionsList,
+    endpointUri: S.String,
+    locations: ResourceTypeEndpointBaseLocationsList,
+    requiredFeatures: ResourceTypeEndpointBaseRequiredFeaturesList,
+    featuresRule: FeaturesRule,
+    timeout: S.String,
+    endpointType: EndpointType,
+    dstsConfiguration: DstsConfiguration,
+    skuLink: S.String,
+    apiVersion: S.String,
+    zones: ResourceTypeEndpointBaseZonesList,
+  }),
+).annotate({
+  identifier: "ResourceTypeEndpointBase",
+}) as any as S.Schema<ResourceTypeEndpointBase>;
+
+/** The fields to ignore. */
+export type FrontloadPayloadPropertiesIgnoreFieldsList = ReadonlyArray<string>;
+export const FrontloadPayloadPropertiesIgnoreFieldsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FrontloadPayloadPropertiesIgnoreFieldsList>;
+
+export interface FrontloadPayloadProperties {
+  /** The operation type. */
+  operationType: string;
+  /** The provider namespace. */
+  providerNamespace: string;
+  /** The frontload location. */
+  frontloadLocation: string;
+  /** The copy from location. */
+  copyFromLocation: string;
+  /** The environment type. */
+  environmentType: AvailableCheckInManifestEnvironment;
+  /** The service feature flag. */
+  serviceFeatureFlag: ServiceFeatureFlagAction;
+  /** The resource types to include. */
+  includeResourceTypes: FrontloadPayloadPropertiesIncludeResourceTypesList;
+  /** The resource types to exclude. */
+  excludeResourceTypes: FrontloadPayloadPropertiesExcludeResourceTypesList;
+  /** The manifest level fields to override. */
+  overrideManifestLevelFields: ManifestLevelPropertyBag;
+  /** The endpoint level fields to override. */
+  overrideEndpointLevelFields: ResourceTypeEndpointBase;
+  /** The fields to ignore. */
+  ignoreFields: FrontloadPayloadPropertiesIgnoreFieldsList;
+}
+export const FrontloadPayloadProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operationType: S.String,
+    providerNamespace: S.String,
+    frontloadLocation: S.String,
+    copyFromLocation: S.String,
+    environmentType: AvailableCheckInManifestEnvironment,
+    serviceFeatureFlag: ServiceFeatureFlagAction,
+    includeResourceTypes: FrontloadPayloadPropertiesIncludeResourceTypesList,
+    excludeResourceTypes: FrontloadPayloadPropertiesExcludeResourceTypesList,
+    overrideManifestLevelFields: ManifestLevelPropertyBag,
+    overrideEndpointLevelFields: ResourceTypeEndpointBase,
+    ignoreFields: FrontloadPayloadPropertiesIgnoreFieldsList,
+  }),
+).annotate({
+  identifier: "FrontloadPayloadProperties",
+}) as any as S.Schema<FrontloadPayloadProperties>;
+
 export interface NewRegionFrontloadReleaseCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4744,7 +5171,8 @@ export interface NewRegionFrontloadReleaseCreateOrUpdateRequest {
   providerNamespace: string;
   /** The name of the release. */
   releaseName: string;
-  body: unknown;
+  /** Properties of the frontload payload. */
+  properties: FrontloadPayloadProperties;
 }
 export const NewRegionFrontloadReleaseCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4752,7 +5180,7 @@ export const NewRegionFrontloadReleaseCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
       releaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: FrontloadPayloadProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4795,14 +5223,15 @@ export interface NewRegionFrontloadReleaseGenerateManifestRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  body: unknown;
+  /** Properties of the frontload payload. */
+  properties: FrontloadPayloadProperties;
 }
 export const NewRegionFrontloadReleaseGenerateManifestRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: FrontloadPayloadProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4898,58 +5327,24 @@ export const NewRegionFrontloadReleaseStopResponse = /*@__PURE__*/ S.suspend(
   identifier: "NewRegionFrontloadReleaseStopResponse",
 }) as any as S.Schema<NewRegionFrontloadReleaseStopResponse>;
 
-export interface NotificationRegistrationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The notification registration. */
-  notificationRegistrationName: string;
-  body: unknown;
-}
-export const NotificationRegistrationsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      notificationRegistrationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
-        code: 200,
-        apiVersion: "2024-09-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "NotificationRegistrationsCreateOrUpdateRequest",
-  }) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>;
-
 /** The notification mode. */
-export type NotificationMode =
-  | "NotSpecified"
-  | "EventHub"
-  | "WebHook"
-  | (string & {});
+export type NotificationMode = "NotSpecified" | "EventHub" | "WebHook";
 export const NotificationMode = /*@__PURE__*/ S.String;
 
 /** The message scope. */
-export type MessageScope =
-  | "NotSpecified"
-  | "RegisteredSubscriptions"
-  | (string & {});
+export type MessageScope = "NotSpecified" | "RegisteredSubscriptions";
 export const MessageScope = /*@__PURE__*/ S.String;
 
 /** The included events. */
-export type NotificationRegistrationPropertiesIncludedEventsList = string[];
+export type NotificationRegistrationPropertiesIncludedEventsList =
+  ReadonlyArray<string>;
 export const NotificationRegistrationPropertiesIncludedEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
 
 /** The locations. */
-export type NotificationEndpointLocationsList = string[];
+export type NotificationEndpointLocationsList = ReadonlyArray<string>;
 export const NotificationEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationEndpointLocationsList>;
@@ -4971,7 +5366,7 @@ export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The notification endpoints. */
 export type NotificationRegistrationPropertiesNotificationEndpointsList =
-  NotificationEndpoint[];
+  ReadonlyArray<NotificationEndpoint>;
 export const NotificationRegistrationPropertiesNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     NotificationEndpoint,
@@ -5004,6 +5399,34 @@ export const NotificationRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationRegistrationProperties",
 }) as any as S.Schema<NotificationRegistrationProperties>;
+
+export interface NotificationRegistrationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The notification registration. */
+  notificationRegistrationName: string;
+  properties?: NotificationRegistrationProperties;
+}
+export const NotificationRegistrationsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      notificationRegistrationName: S.String.pipe(T.Label()),
+      properties: S.optional(NotificationRegistrationProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+        code: 200,
+        apiVersion: "2024-09-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "NotificationRegistrationsCreateOrUpdateRequest",
+  }) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>;
 
 export interface NotificationRegistrationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5160,7 +5583,7 @@ export const NotificationRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The NotificationRegistration items on this page */
 export type NotificationRegistrationArrayResponseWithContinuationValueList =
-  NotificationRegistration[];
+  ReadonlyArray<NotificationRegistration>;
 export const NotificationRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     NotificationRegistration,
@@ -5183,36 +5606,8 @@ export const NotificationRegistrationArrayResponseWithContinuation =
     identifier: "NotificationRegistrationArrayResponseWithContinuation",
   }) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>;
 
-export interface OperationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  body: unknown;
-}
-export const OperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
-      code: 200,
-      apiVersion: "2024-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsCreateOrUpdateRequest",
-}) as any as S.Schema<OperationsCreateOrUpdateRequest>;
-
 /** The origin. */
-export type OperationOrigins =
-  | "NotSpecified"
-  | "User"
-  | "System"
-  | (string & {});
+export type OperationOrigins = "NotSpecified" | "User" | "System";
 export const OperationOrigins = /*@__PURE__*/ S.String;
 
 export interface OperationsDisplayDefinition {
@@ -5300,7 +5695,7 @@ export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocalizedOperationDisplayDefinition>;
 
 /** The action type. */
-export type OperationActionType = "NotSpecified" | "Internal" | (string & {});
+export type OperationActionType = "NotSpecified" | "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 export interface LocalizedOperationDefinition {
@@ -5329,7 +5724,7 @@ export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations content. */
 export type OperationsContentPropertiesContentsList =
-  LocalizedOperationDefinition[];
+  ReadonlyArray<LocalizedOperationDefinition>;
 export const OperationsContentPropertiesContentsList = /*@__PURE__*/ S.Array(
   LocalizedOperationDefinition,
 ) as any as S.Schema<OperationsContentPropertiesContentsList>;
@@ -5345,6 +5740,30 @@ export const OperationsContentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OperationsContentProperties",
 }) as any as S.Schema<OperationsContentProperties>;
+
+export interface OperationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  properties?: OperationsContentProperties;
+}
+export const OperationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    properties: S.optional(OperationsContentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+      code: 200,
+      apiVersion: "2024-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "OperationsCreateOrUpdateRequest",
+}) as any as S.Schema<OperationsCreateOrUpdateRequest>;
 
 export interface OperationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5442,7 +5861,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The value. */
 export type OperationsDefinitionArrayResponseWithContinuationValueList =
-  OperationsDefinition[];
+  ReadonlyArray<OperationsDefinition>;
 export const OperationsDefinitionArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -5490,7 +5909,7 @@ export const OperationsListByProviderRegistrationRequest =
   }) as any as S.Schema<OperationsListByProviderRegistrationRequest>;
 
 export type OperationsListByProviderRegistrationResponseBodyList =
-  OperationsDefinition[];
+  ReadonlyArray<OperationsDefinition>;
 export const OperationsListByProviderRegistrationResponseBodyList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -5507,6 +5926,28 @@ export const OperationsListByProviderRegistrationResponse =
     identifier: "OperationsListByProviderRegistrationResponse",
   }) as any as S.Schema<OperationsListByProviderRegistrationResponse>;
 
+/** Resource tags. */
+export type ProviderMonitorSettingsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingsCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProviderMonitorSettingsCreateRequestTagsMap>;
+
+export interface ProviderMonitorSettingProperties {
+  /** The provisioning state. */
+  provisioningState?: ProvisioningState;
+}
+export const ProviderMonitorSettingProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "ProviderMonitorSettingProperties",
+}) as any as S.Schema<ProviderMonitorSettingProperties>;
+
 export interface ProviderMonitorSettingsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5514,7 +5955,11 @@ export interface ProviderMonitorSettingsCreateRequest {
   resourceGroupName: string;
   /** The name of the provider monitor setting. */
   providerMonitorSettingName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
 }
 export const ProviderMonitorSettingsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5522,7 +5967,9 @@ export const ProviderMonitorSettingsCreateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       providerMonitorSettingName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ProviderMonitorSettingsCreateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ProviderMonitorSettingProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5544,18 +5991,6 @@ export const ProviderMonitorSettingsCreateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<ProviderMonitorSettingsCreateResponseTagsMap>;
-
-export interface ProviderMonitorSettingProperties {
-  /** The provisioning state. */
-  provisioningState?: ProvisioningState;
-}
-export const ProviderMonitorSettingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "ProviderMonitorSettingProperties",
-}) as any as S.Schema<ProviderMonitorSettingProperties>;
 
 export interface ProviderMonitorSettingsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5747,7 +6182,7 @@ export const ProviderMonitorSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderMonitorSetting items on this page */
 export type ProviderMonitorSettingArrayResponseWithContinuationValueList =
-  ProviderMonitorSetting[];
+  ReadonlyArray<ProviderMonitorSetting>;
 export const ProviderMonitorSettingArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ProviderMonitorSetting,
@@ -5856,19 +6291,30 @@ export const ProviderMonitorSettingsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ProviderMonitorSettingsUpdateResponse",
 }) as any as S.Schema<ProviderMonitorSettingsUpdateResponse>;
 
+/** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ProviderRegistrationsCreateOrUpdateRequestKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct";
+export const ProviderRegistrationsCreateOrUpdateRequestKind =
+  /*@__PURE__*/ S.String;
+
 export interface ProviderRegistrationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  body: unknown;
+  properties?: ProviderRegistrationProperties;
+  /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ProviderRegistrationsCreateOrUpdateRequestKind;
 }
 export const ProviderRegistrationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProviderRegistrationProperties),
+      kind: S.optional(ProviderRegistrationsCreateOrUpdateRequestKind),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5885,8 +6331,7 @@ export const ProviderRegistrationsCreateOrUpdateRequest =
 export type ProviderRegistrationsCreateOrUpdateResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct"
-  | (string & {});
+  | "Direct";
 export const ProviderRegistrationsCreateOrUpdateResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -5970,7 +6415,7 @@ export const ProviderRegistrationsGenerateOperationsRequest =
   }) as any as S.Schema<ProviderRegistrationsGenerateOperationsRequest>;
 
 export type ProviderRegistrationsGenerateOperationsResponseBodyList =
-  OperationsDefinition[];
+  ReadonlyArray<OperationsDefinition>;
 export const ProviderRegistrationsGenerateOperationsResponseBodyList =
   /*@__PURE__*/ S.Array(
     OperationsDefinition,
@@ -6013,8 +6458,7 @@ export const ProviderRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProviderRegistrationsGetResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct"
-  | (string & {});
+  | "Direct";
 export const ProviderRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface ProviderRegistrationsGetResponse {
@@ -6064,7 +6508,7 @@ export const ProviderRegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProviderRegistration items on this page */
 export type ProviderRegistrationArrayResponseWithContinuationValueList =
-  ProviderRegistration[];
+  ReadonlyArray<ProviderRegistration>;
 export const ProviderRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ProviderRegistration,
@@ -6087,6 +6531,32 @@ export const ProviderRegistrationArrayResponseWithContinuation =
     identifier: "ProviderRegistrationArrayResponseWithContinuation",
   }) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>;
 
+export interface ResourceManagementEntityInput {
+  /** The resource id. */
+  resourceId: string;
+  /** The home tenant id. */
+  homeTenantId?: string;
+  /** The location. */
+  location?: string;
+}
+export const ResourceManagementEntityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String,
+    homeTenantId: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceManagementEntityInput",
+}) as any as S.Schema<ResourceManagementEntityInput>;
+
+/** resource management action content. */
+export type ResourceActionsDeleteResourcesRequestResourcesList =
+  ReadonlyArray<ResourceManagementEntityInput>;
+export const ResourceActionsDeleteResourcesRequestResourcesList =
+  /*@__PURE__*/ S.Array(
+    ResourceManagementEntityInput,
+  ) as any as S.Schema<ResourceActionsDeleteResourcesRequestResourcesList>;
+
 export interface ResourceActionsDeleteResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6094,7 +6564,8 @@ export interface ResourceActionsDeleteResourcesRequest {
   providerNamespace: string;
   /** The resource action name. */
   resourceActionName: string;
-  body: unknown;
+  /** resource management action content. */
+  resources?: ResourceActionsDeleteResourcesRequestResourcesList;
 }
 export const ResourceActionsDeleteResourcesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6102,7 +6573,7 @@ export const ResourceActionsDeleteResourcesRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
       resourceActionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resources: S.optional(ResourceActionsDeleteResourcesRequestResourcesList),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6122,6 +6593,14 @@ export const ResourceActionsDeleteResourcesResponse = /*@__PURE__*/ S.suspend(
   identifier: "ResourceActionsDeleteResourcesResponse",
 }) as any as S.Schema<ResourceActionsDeleteResourcesResponse>;
 
+/** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ResourceTypeRegistrationsCreateOrUpdateRequestKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct";
+export const ResourceTypeRegistrationsCreateOrUpdateRequestKind =
+  /*@__PURE__*/ S.String;
+
 export interface ResourceTypeRegistrationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6129,7 +6608,9 @@ export interface ResourceTypeRegistrationsCreateOrUpdateRequest {
   providerNamespace: string;
   /** The resource type. */
   resourceType: string;
-  body: unknown;
+  properties?: ResourceTypeRegistrationProperties;
+  /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ResourceTypeRegistrationsCreateOrUpdateRequestKind;
 }
 export const ResourceTypeRegistrationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6137,7 +6618,8 @@ export const ResourceTypeRegistrationsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
       resourceType: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ResourceTypeRegistrationProperties),
+      kind: S.optional(ResourceTypeRegistrationsCreateOrUpdateRequestKind),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6154,8 +6636,7 @@ export const ResourceTypeRegistrationsCreateOrUpdateRequest =
 export type ResourceTypeRegistrationsCreateOrUpdateResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct"
-  | (string & {});
+  | "Direct";
 export const ResourceTypeRegistrationsCreateOrUpdateResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -6248,8 +6729,7 @@ export const ResourceTypeRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypeRegistrationsGetResponseKind =
   | "Managed"
   | "Hybrid"
-  | "Direct"
-  | (string & {});
+  | "Direct";
 export const ResourceTypeRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface ResourceTypeRegistrationsGetResponse {
@@ -6304,7 +6784,7 @@ export const ResourceTypeRegistrationsListByProviderRegistrationRequest =
 
 /** The ResourceTypeRegistration items on this page */
 export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
-  ResourceTypeRegistration[];
+  ReadonlyArray<ResourceTypeRegistration>;
 export const ResourceTypeRegistrationArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     ResourceTypeRegistration,
@@ -6327,50 +6807,20 @@ export const ResourceTypeRegistrationArrayResponseWithContinuation =
     identifier: "ResourceTypeRegistrationArrayResponseWithContinuation",
   }) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>;
 
-export interface SkusCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The SKU. */
-  sku: string;
-  body: unknown;
-}
-export const SkusCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    resourceType: S.String.pipe(T.Label()),
-    sku: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
-      code: 200,
-      apiVersion: "2024-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "SkusCreateOrUpdateRequest",
-}) as any as S.Schema<SkusCreateOrUpdateRequest>;
-
 /** The locations. */
-export type SkuSettingLocationsList = string[];
+export type SkuSettingLocationsList = ReadonlyArray<string>;
 export const SkuSettingLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingLocationsList>;
 
 /** The zones. */
-export type SkuLocationInfoZonesList = string[];
+export type SkuLocationInfoZonesList = ReadonlyArray<string>;
 export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The name. */
-export type SkuZoneDetailNameList = string[];
+export type SkuZoneDetailNameList = ReadonlyArray<string>;
 export const SkuZoneDetailNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuZoneDetailNameList>;
@@ -6389,7 +6839,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** The capabilities. */
-export type SkuZoneDetailCapabilitiesList = SkuCapability[];
+export type SkuZoneDetailCapabilitiesList = ReadonlyArray<SkuCapability>;
 export const SkuZoneDetailCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<SkuZoneDetailCapabilitiesList>;
@@ -6408,13 +6858,13 @@ export const SkuZoneDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuZoneDetail" }) as any as S.Schema<SkuZoneDetail>;
 
 /** The zone details. */
-export type SkuLocationInfoZoneDetailsList = SkuZoneDetail[];
+export type SkuLocationInfoZoneDetailsList = ReadonlyArray<SkuZoneDetail>;
 export const SkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   SkuZoneDetail,
 ) as any as S.Schema<SkuLocationInfoZoneDetailsList>;
 
 /** The extended locations. */
-export type SkuLocationInfoExtendedLocationsList = string[];
+export type SkuLocationInfoExtendedLocationsList = ReadonlyArray<string>;
 export const SkuLocationInfoExtendedLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
@@ -6444,25 +6894,25 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfo>;
 
 /** The location info. */
-export type SkuSettingLocationInfoList = SkuLocationInfo[];
+export type SkuSettingLocationInfoList = ReadonlyArray<SkuLocationInfo>;
 export const SkuSettingLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<SkuSettingLocationInfoList>;
 
 /** The required quota ids. */
-export type SkuSettingRequiredQuotaIdsList = string[];
+export type SkuSettingRequiredQuotaIdsList = ReadonlyArray<string>;
 export const SkuSettingRequiredQuotaIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
 
 /** The required features. */
-export type SkuSettingRequiredFeaturesList = string[];
+export type SkuSettingRequiredFeaturesList = ReadonlyArray<string>;
 export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuSettingRequiredFeaturesList>;
 
 /** The scale type. */
-export type SkuScaleType = "None" | "Manual" | "Automatic" | (string & {});
+export type SkuScaleType = "None" | "Manual" | "Automatic";
 export const SkuScaleType = /*@__PURE__*/ S.String;
 
 export interface SkuCapacity {
@@ -6501,13 +6951,13 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
 
 /** The costs. */
-export type SkuSettingCostsList = SkuCost[];
+export type SkuSettingCostsList = ReadonlyArray<SkuCost>;
 export const SkuSettingCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<SkuSettingCostsList>;
 
 /** The capabilities. */
-export type SkuSettingCapabilitiesList = SkuCapability[];
+export type SkuSettingCapabilitiesList = ReadonlyArray<SkuCapability>;
 export const SkuSettingCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<SkuSettingCapabilitiesList>;
@@ -6556,7 +7006,7 @@ export const SkuSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuSetting" }) as any as S.Schema<SkuSetting>;
 
 /** The sku settings. */
-export type ResourceTypeSkuSkuSettingsList = SkuSetting[];
+export type ResourceTypeSkuSkuSettingsList = ReadonlyArray<SkuSetting>;
 export const ResourceTypeSkuSkuSettingsList = /*@__PURE__*/ S.Array(
   SkuSetting,
 ) as any as S.Schema<ResourceTypeSkuSkuSettingsList>;
@@ -6575,6 +7025,36 @@ export const ResourceTypeSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceTypeSku",
 }) as any as S.Schema<ResourceTypeSku>;
+
+export interface SkusCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The SKU. */
+  sku: string;
+  properties?: ResourceTypeSku;
+}
+export const SkusCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+    sku: S.String.pipe(T.Label()),
+    properties: S.optional(ResourceTypeSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      code: 200,
+      apiVersion: "2024-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "SkusCreateOrUpdateRequest",
+}) as any as S.Schema<SkusCreateOrUpdateRequest>;
 
 export interface SkusCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6610,7 +7090,7 @@ export interface SkusCreateOrUpdateNestedResourceTypeFirstRequest {
   nestedResourceTypeFirst: string;
   /** The SKU. */
   sku: string;
-  body: unknown;
+  properties?: ResourceTypeSku;
 }
 export const SkusCreateOrUpdateNestedResourceTypeFirstRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6620,7 +7100,7 @@ export const SkusCreateOrUpdateNestedResourceTypeFirstRequest =
       resourceType: S.String.pipe(T.Label()),
       nestedResourceTypeFirst: S.String.pipe(T.Label()),
       sku: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ResourceTypeSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6670,7 +7150,7 @@ export interface SkusCreateOrUpdateNestedResourceTypeSecondRequest {
   nestedResourceTypeSecond: string;
   /** The SKU. */
   sku: string;
-  body: unknown;
+  properties?: ResourceTypeSku;
 }
 export const SkusCreateOrUpdateNestedResourceTypeSecondRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6681,7 +7161,7 @@ export const SkusCreateOrUpdateNestedResourceTypeSecondRequest =
       nestedResourceTypeFirst: S.String.pipe(T.Label()),
       nestedResourceTypeSecond: S.String.pipe(T.Label()),
       sku: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ResourceTypeSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6733,7 +7213,7 @@ export interface SkusCreateOrUpdateNestedResourceTypeThirdRequest {
   nestedResourceTypeThird: string;
   /** The SKU. */
   sku: string;
-  body: unknown;
+  properties?: ResourceTypeSku;
 }
 export const SkusCreateOrUpdateNestedResourceTypeThirdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6745,7 +7225,7 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdRequest =
       nestedResourceTypeSecond: S.String.pipe(T.Label()),
       nestedResourceTypeThird: S.String.pipe(T.Label()),
       sku: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ResourceTypeSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7215,7 +7695,8 @@ export const SkuResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
 
 /** The SkuResource items on this page */
-export type SkuResourceArrayResponseWithContinuationValueList = SkuResource[];
+export type SkuResourceArrayResponseWithContinuationValueList =
+  ReadonlyArray<SkuResource>;
 export const SkuResourceArrayResponseWithContinuationValueList =
   /*@__PURE__*/ S.Array(
     SkuResource,

@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -158,8 +158,7 @@ export type EnvironmentStateEnum =
   | "RUNNING"
   | "UPDATING"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for data storage in the environment. */
@@ -209,8 +208,7 @@ export const RecoveryConfig = /*@__PURE__*/ S.suspend(() =>
 export type TaskLogsRetentionConfigStorageModeEnum =
   | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
   | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
-  | "CLOUD_LOGGING_ONLY"
-  | (string & {});
+  | "CLOUD_LOGGING_ONLY";
 export const TaskLogsRetentionConfigStorageModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration setting for Task Logs. */
@@ -229,8 +227,7 @@ export const TaskLogsRetentionConfig = /*@__PURE__*/ S.suspend(() =>
 export type AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
   | "RETENTION_MODE_UNSPECIFIED"
   | "RETENTION_MODE_ENABLED"
-  | "RETENTION_MODE_DISABLED"
-  | (string & {});
+  | "RETENTION_MODE_DISABLED";
 export const AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -287,16 +284,14 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEnvironmentConfigNetworkingTypeEnum =
   | "NETWORKING_TYPE_UNSPECIFIED"
   | "PRIVATE"
-  | "PUBLIC"
-  | (string & {});
+  | "PUBLIC";
 export const PrivateEnvironmentConfigNetworkingTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkingConfigConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "VPC_PEERING"
-  | "PRIVATE_SERVICE_CONNECT"
-  | (string & {});
+  | "PRIVATE_SERVICE_CONNECT";
 export const NetworkingConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for networking connections in the Composer 2 environment. */
@@ -398,8 +393,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 
 export type EnvironmentConfigResilienceModeEnum =
   | "RESILIENCE_MODE_UNSPECIFIED"
-  | "HIGH_RESILIENCE"
-  | (string & {});
+  | "HIGH_RESILIENCE";
 export const EnvironmentConfigResilienceModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.* */
@@ -559,7 +553,7 @@ export const WorkloadsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkloadsConfig",
 }) as any as S.Schema<WorkloadsConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -647,7 +641,7 @@ export const AllowedIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AllowedIpRange" }) as any as S.Schema<AllowedIpRange>;
 
-export type AllowedIpRangeList = AllowedIpRange[];
+export type AllowedIpRangeList = ReadonlyArray<AllowedIpRange>;
 export const AllowedIpRangeList = /*@__PURE__*/ S.Array(
   AllowedIpRange,
 ) as any as S.Schema<AllowedIpRangeList>;
@@ -668,15 +662,13 @@ export const WebServerNetworkAccessControl = /*@__PURE__*/ S.suspend(() =>
 export type SoftwareConfigWebServerPluginsModeEnum =
   | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
   | "PLUGINS_DISABLED"
-  | "PLUGINS_ENABLED"
-  | (string & {});
+  | "PLUGINS_ENABLED";
 export const SoftwareConfigWebServerPluginsModeEnum = /*@__PURE__*/ S.String;
 
 export type SoftwareConfigAuditLogsReplicationModeEnum =
   | "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED"
   | "AUDIT_LOGS_REPLICATION_DISABLED"
-  | "AUDIT_LOGS_REPLICATION_ENABLED"
-  | (string & {});
+  | "AUDIT_LOGS_REPLICATION_ENABLED";
 export const SoftwareConfigAuditLogsReplicationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -744,7 +736,7 @@ export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 
-export type CidrBlockList = CidrBlock[];
+export type CidrBlockList = ReadonlyArray<CidrBlock>;
 export const CidrBlockList = /*@__PURE__*/ S.Array(
   CidrBlock,
 ) as any as S.Schema<CidrBlockList>;
@@ -770,8 +762,7 @@ export type EnvironmentConfigEnvironmentSizeEnum =
   | "ENVIRONMENT_SIZE_SMALL"
   | "ENVIRONMENT_SIZE_MEDIUM"
   | "ENVIRONMENT_SIZE_LARGE"
-  | "ENVIRONMENT_SIZE_EXTRA_LARGE"
-  | (string & {});
+  | "ENVIRONMENT_SIZE_EXTRA_LARGE";
 export const EnvironmentConfigEnvironmentSizeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for an environment. */
@@ -1296,7 +1287,7 @@ export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEnvironmentsRequest",
 }) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
-export type EnvironmentList = Environment[];
+export type EnvironmentList = ReadonlyArray<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -1343,7 +1334,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
       "ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
   }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
-export type UserWorkloadsConfigMapList = UserWorkloadsConfigMap[];
+export type UserWorkloadsConfigMapList = ReadonlyArray<UserWorkloadsConfigMap>;
 export const UserWorkloadsConfigMapList = /*@__PURE__*/ S.Array(
   UserWorkloadsConfigMap,
 ) as any as S.Schema<UserWorkloadsConfigMapList>;
@@ -1389,7 +1380,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
     identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
   }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
-export type UserWorkloadsSecretList = UserWorkloadsSecret[];
+export type UserWorkloadsSecretList = ReadonlyArray<UserWorkloadsSecret>;
 export const UserWorkloadsSecretList = /*@__PURE__*/ S.Array(
   UserWorkloadsSecret,
 ) as any as S.Schema<UserWorkloadsSecretList>;
@@ -1447,8 +1438,7 @@ export type ComposerWorkloadTypeEnum =
   | "DAG_PROCESSOR"
   | "TRIGGERER"
   | "WEB_SERVER"
-  | "REDIS"
-  | (string & {});
+  | "REDIS";
 export const ComposerWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 export type ComposerWorkloadStatusStateEnum =
@@ -1458,8 +1448,7 @@ export type ComposerWorkloadStatusStateEnum =
   | "WARNING"
   | "ERROR"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ComposerWorkloadStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Workload status. */
@@ -1500,7 +1489,7 @@ export const ComposerWorkload = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComposerWorkload",
 }) as any as S.Schema<ComposerWorkload>;
 
-export type ComposerWorkloadList = ComposerWorkload[];
+export type ComposerWorkloadList = ReadonlyArray<ComposerWorkload>;
 export const ComposerWorkloadList = /*@__PURE__*/ S.Array(
   ComposerWorkload,
 ) as any as S.Schema<ComposerWorkloadList>;
@@ -1592,7 +1581,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
-export type ImageVersionList = ImageVersion[];
+export type ImageVersionList = ReadonlyArray<ImageVersion>;
 export const ImageVersionList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionList>;
@@ -1644,7 +1633,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1812,7 +1801,7 @@ export const Line = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Line" }) as any as S.Schema<Line>;
 
-export type LineList = Line[];
+export type LineList = ReadonlyArray<Line>;
 export const LineList = /*@__PURE__*/ S.Array(
   Line,
 ) as any as S.Schema<LineList>;

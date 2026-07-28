@@ -69,7 +69,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = OperationEntity[];
+export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -90,6 +90,375 @@ export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationEntityListResult",
 }) as any as S.Schema<OperationEntityListResult>;
 
+/** Resource tags */
+export type DomainServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DomainServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DomainServicesCreateOrUpdateRequestTagsMap>;
+
+/** Replica Set Definition */
+export interface ReplicaSetInput {
+  /** Virtual network location */
+  location?: string;
+  /** The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName. */
+  subnetId?: string;
+}
+export const ReplicaSetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    subnetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicaSetInput",
+}) as any as S.Schema<ReplicaSetInput>;
+
+/** List of ReplicaSets */
+export type DomainServicePropertiesInputReplicaSetsList =
+  ReadonlyArray<ReplicaSetInput>;
+export const DomainServicePropertiesInputReplicaSetsList =
+  /*@__PURE__*/ S.Array(
+    ReplicaSetInput,
+  ) as any as S.Schema<DomainServicePropertiesInputReplicaSetsList>;
+
+/** A flag to determine whether or not Secure LDAP is enabled or disabled. */
+export type LdapsSettingsInputLdaps = "Enabled" | "Disabled";
+export const LdapsSettingsInputLdaps = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
+export type LdapsSettingsInputExternalAccess = "Enabled" | "Disabled";
+export const LdapsSettingsInputExternalAccess = /*@__PURE__*/ S.String;
+
+/** Secure LDAP Settings */
+export interface LdapsSettingsInput {
+  /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
+  ldaps?: LdapsSettingsInputLdaps;
+  /** The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file. */
+  pfxCertificate?: string;
+  /** The password to decrypt the provided Secure LDAP certificate pfx file. */
+  pfxCertificatePassword?: string | Redacted.Redacted<string>;
+  /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
+  externalAccess?: LdapsSettingsInputExternalAccess;
+}
+export const LdapsSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ldaps: S.optional(LdapsSettingsInputLdaps),
+    pfxCertificate: S.optional(S.String),
+    pfxCertificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    externalAccess: S.optional(LdapsSettingsInputExternalAccess),
+  }),
+).annotate({
+  identifier: "LdapsSettingsInput",
+}) as any as S.Schema<LdapsSettingsInput>;
+
+/** Forest Trust Setting */
+export interface ForestTrust {
+  /** Trusted Domain FQDN */
+  trustedDomainFqdn?: string;
+  /** Trust Direction */
+  trustDirection?: string;
+  /** Friendly Name */
+  friendlyName?: string;
+  /** Remote Dns ips */
+  remoteDnsIps?: string;
+  /** Trust Password */
+  trustPassword?: string | Redacted.Redacted<string>;
+}
+export const ForestTrust = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustedDomainFqdn: S.optional(S.String),
+    trustDirection: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    remoteDnsIps: S.optional(S.String),
+    trustPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({ identifier: "ForestTrust" }) as any as S.Schema<ForestTrust>;
+
+/** List of settings for Resource Forest */
+export type ResourceForestSettingsSettingsList = ReadonlyArray<ForestTrust>;
+export const ResourceForestSettingsSettingsList = /*@__PURE__*/ S.Array(
+  ForestTrust,
+) as any as S.Schema<ResourceForestSettingsSettingsList>;
+
+/** Settings for Resource Forest */
+export interface ResourceForestSettings {
+  /** List of settings for Resource Forest */
+  settings?: ResourceForestSettingsSettingsList;
+  /** Resource Forest */
+  resourceForest?: string;
+}
+export const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    settings: S.optional(ResourceForestSettingsSettingsList),
+    resourceForest: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceForestSettings",
+}) as any as S.Schema<ResourceForestSettings>;
+
+/** A flag to determine whether or not NtlmV1 is enabled or disabled. */
+export type DomainSecuritySettingsNtlmV1 = "Enabled" | "Disabled";
+export const DomainSecuritySettingsNtlmV1 = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not TlsV1 is enabled or disabled. */
+export type DomainSecuritySettingsTlsV1 = "Enabled" | "Disabled";
+export const DomainSecuritySettingsTlsV1 = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
+export type DomainSecuritySettingsSyncNtlmPasswords = "Enabled" | "Disabled";
+export const DomainSecuritySettingsSyncNtlmPasswords = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
+export type DomainSecuritySettingsSyncKerberosPasswords =
+  | "Enabled"
+  | "Disabled";
+export const DomainSecuritySettingsSyncKerberosPasswords =
+  /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
+export type DomainSecuritySettingsSyncOnPremPasswords = "Enabled" | "Disabled";
+export const DomainSecuritySettingsSyncOnPremPasswords = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
+export type DomainSecuritySettingsKerberosRc4Encryption =
+  | "Enabled"
+  | "Disabled";
+export const DomainSecuritySettingsKerberosRc4Encryption =
+  /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
+export type DomainSecuritySettingsKerberosArmoring = "Enabled" | "Disabled";
+export const DomainSecuritySettingsKerberosArmoring = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not LdapSigning is enabled or disabled. */
+export type DomainSecuritySettingsLdapSigning = "Enabled" | "Disabled";
+export const DomainSecuritySettingsLdapSigning = /*@__PURE__*/ S.String;
+
+/** A flag to determine whether or not ChannelBinding is enabled or disabled. */
+export type DomainSecuritySettingsChannelBinding = "Enabled" | "Disabled";
+export const DomainSecuritySettingsChannelBinding = /*@__PURE__*/ S.String;
+
+/** Domain Security Settings */
+export interface DomainSecuritySettings {
+  /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
+  ntlmV1?: DomainSecuritySettingsNtlmV1;
+  /** A flag to determine whether or not TlsV1 is enabled or disabled. */
+  tlsV1?: DomainSecuritySettingsTlsV1;
+  /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
+  syncNtlmPasswords?: DomainSecuritySettingsSyncNtlmPasswords;
+  /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
+  syncKerberosPasswords?: DomainSecuritySettingsSyncKerberosPasswords;
+  /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
+  syncOnPremPasswords?: DomainSecuritySettingsSyncOnPremPasswords;
+  /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
+  kerberosRc4Encryption?: DomainSecuritySettingsKerberosRc4Encryption;
+  /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
+  kerberosArmoring?: DomainSecuritySettingsKerberosArmoring;
+  /** A flag to determine whether or not LdapSigning is enabled or disabled. */
+  ldapSigning?: DomainSecuritySettingsLdapSigning;
+  /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
+  channelBinding?: DomainSecuritySettingsChannelBinding;
+}
+export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ntlmV1: S.optional(DomainSecuritySettingsNtlmV1),
+    tlsV1: S.optional(DomainSecuritySettingsTlsV1),
+    syncNtlmPasswords: S.optional(DomainSecuritySettingsSyncNtlmPasswords),
+    syncKerberosPasswords: S.optional(
+      DomainSecuritySettingsSyncKerberosPasswords,
+    ),
+    syncOnPremPasswords: S.optional(DomainSecuritySettingsSyncOnPremPasswords),
+    kerberosRc4Encryption: S.optional(
+      DomainSecuritySettingsKerberosRc4Encryption,
+    ),
+    kerberosArmoring: S.optional(DomainSecuritySettingsKerberosArmoring),
+    ldapSigning: S.optional(DomainSecuritySettingsLdapSigning),
+    channelBinding: S.optional(DomainSecuritySettingsChannelBinding),
+  }),
+).annotate({
+  identifier: "DomainSecuritySettings",
+}) as any as S.Schema<DomainSecuritySettings>;
+
+/** Enabled or Disabled flag to turn on Group-based filtered sync */
+export type DomainServicePropertiesInputFilteredSync = "Enabled" | "Disabled";
+export const DomainServicePropertiesInputFilteredSync = /*@__PURE__*/ S.String;
+
+/** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
+export type DomainServicePropertiesInputSyncScope = "All" | "CloudOnly";
+export const DomainServicePropertiesInputSyncScope = /*@__PURE__*/ S.String;
+
+/** Should global admins be notified */
+export type NotificationSettingsNotifyGlobalAdmins = "Enabled" | "Disabled";
+export const NotificationSettingsNotifyGlobalAdmins = /*@__PURE__*/ S.String;
+
+/** Should domain controller admins be notified */
+export type NotificationSettingsNotifyDcAdmins = "Enabled" | "Disabled";
+export const NotificationSettingsNotifyDcAdmins = /*@__PURE__*/ S.String;
+
+/** The list of additional recipients */
+export type NotificationSettingsAdditionalRecipientsList =
+  ReadonlyArray<string>;
+export const NotificationSettingsAdditionalRecipientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NotificationSettingsAdditionalRecipientsList>;
+
+/** Settings for notification */
+export interface NotificationSettings {
+  /** Should global admins be notified */
+  notifyGlobalAdmins?: NotificationSettingsNotifyGlobalAdmins;
+  /** Should domain controller admins be notified */
+  notifyDcAdmins?: NotificationSettingsNotifyDcAdmins;
+  /** The list of additional recipients */
+  additionalRecipients?: NotificationSettingsAdditionalRecipientsList;
+}
+export const NotificationSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notifyGlobalAdmins: S.optional(NotificationSettingsNotifyGlobalAdmins),
+    notifyDcAdmins: S.optional(NotificationSettingsNotifyDcAdmins),
+    additionalRecipients: S.optional(
+      NotificationSettingsAdditionalRecipientsList,
+    ),
+  }),
+).annotate({
+  identifier: "NotificationSettings",
+}) as any as S.Schema<NotificationSettings>;
+
+/** Status for individual validator after running diagnostics. */
+export type ConfigDiagnosticsValidatorResultStatus =
+  | "None"
+  | "Running"
+  | "OK"
+  | "Failure"
+  | "Warning"
+  | "Skipped";
+export const ConfigDiagnosticsValidatorResultStatus = /*@__PURE__*/ S.String;
+
+/** List of domain resource property name or values used to compose a rich description. */
+export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
+  ReadonlyArray<string>;
+export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
+
+/** Specific issue for a particular config diagnostics validator */
+export interface ConfigDiagnosticsValidatorResultIssue {
+  /** Validation issue identifier. */
+  id?: string;
+  /** List of domain resource property name or values used to compose a rich description. */
+  descriptionParams?: ConfigDiagnosticsValidatorResultIssueDescriptionParamsList;
+}
+export const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      descriptionParams: S.optional(
+        ConfigDiagnosticsValidatorResultIssueDescriptionParamsList,
+      ),
+    }),
+).annotate({
+  identifier: "ConfigDiagnosticsValidatorResultIssue",
+}) as any as S.Schema<ConfigDiagnosticsValidatorResultIssue>;
+
+/** List of resource config validation issues. */
+export type ConfigDiagnosticsValidatorResultIssuesList =
+  ReadonlyArray<ConfigDiagnosticsValidatorResultIssue>;
+export const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ S.Array(
+  ConfigDiagnosticsValidatorResultIssue,
+) as any as S.Schema<ConfigDiagnosticsValidatorResultIssuesList>;
+
+/** Config Diagnostics validator result data */
+export interface ConfigDiagnosticsValidatorResult {
+  /** Validator identifier */
+  validatorId?: string;
+  /** Replica set location and subnet name */
+  replicaSetSubnetDisplayName?: string;
+  /** Status for individual validator after running diagnostics. */
+  status?: ConfigDiagnosticsValidatorResultStatus;
+  /** List of resource config validation issues. */
+  issues?: ConfigDiagnosticsValidatorResultIssuesList;
+}
+export const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    validatorId: S.optional(S.String),
+    replicaSetSubnetDisplayName: S.optional(S.String),
+    status: S.optional(ConfigDiagnosticsValidatorResultStatus),
+    issues: S.optional(ConfigDiagnosticsValidatorResultIssuesList),
+  }),
+).annotate({
+  identifier: "ConfigDiagnosticsValidatorResult",
+}) as any as S.Schema<ConfigDiagnosticsValidatorResult>;
+
+/** List of Configuration Diagnostics validator results. */
+export type ConfigDiagnosticsValidatorResultsList =
+  ReadonlyArray<ConfigDiagnosticsValidatorResult>;
+export const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ S.Array(
+  ConfigDiagnosticsValidatorResult,
+) as any as S.Schema<ConfigDiagnosticsValidatorResultsList>;
+
+/** Configuration Diagnostics */
+export interface ConfigDiagnostics {
+  /** Last domain configuration diagnostics DateTime */
+  lastExecuted?: string;
+  /** List of Configuration Diagnostics validator results. */
+  validatorResults?: ConfigDiagnosticsValidatorResultsList;
+}
+export const ConfigDiagnostics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastExecuted: S.optional(S.String),
+    validatorResults: S.optional(ConfigDiagnosticsValidatorResultsList),
+  }),
+).annotate({
+  identifier: "ConfigDiagnostics",
+}) as any as S.Schema<ConfigDiagnostics>;
+
+/** Properties of the Domain Service. */
+export interface DomainServicePropertiesInput {
+  /** The name of the Azure domain that the user would like to deploy Domain Services to. */
+  domainName?: string;
+  /** List of ReplicaSets */
+  replicaSets?: DomainServicePropertiesInputReplicaSetsList;
+  /** Secure LDAP Settings */
+  ldapsSettings?: LdapsSettingsInput;
+  /** Resource Forest Settings */
+  resourceForestSettings?: ResourceForestSettings;
+  /** DomainSecurity Settings */
+  domainSecuritySettings?: DomainSecuritySettings;
+  /** Domain Configuration Type */
+  domainConfigurationType?: string;
+  /** Sku Type */
+  sku?: string;
+  /** Enabled or Disabled flag to turn on Group-based filtered sync */
+  filteredSync?: DomainServicePropertiesInputFilteredSync;
+  /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
+  syncScope?: DomainServicePropertiesInputSyncScope;
+  /** Notification Settings */
+  notificationSettings?: NotificationSettings;
+  /** Configuration diagnostics data containing latest execution from client. */
+  configDiagnostics?: ConfigDiagnostics;
+}
+export const DomainServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.optional(S.String),
+    replicaSets: S.optional(DomainServicePropertiesInputReplicaSetsList),
+    ldapsSettings: S.optional(LdapsSettingsInput),
+    resourceForestSettings: S.optional(ResourceForestSettings),
+    domainSecuritySettings: S.optional(DomainSecuritySettings),
+    domainConfigurationType: S.optional(S.String),
+    sku: S.optional(S.String),
+    filteredSync: S.optional(DomainServicePropertiesInputFilteredSync),
+    syncScope: S.optional(DomainServicePropertiesInputSyncScope),
+    notificationSettings: S.optional(NotificationSettings),
+    configDiagnostics: S.optional(ConfigDiagnostics),
+  }),
+).annotate({
+  identifier: "DomainServicePropertiesInput",
+}) as any as S.Schema<DomainServicePropertiesInput>;
+
 export interface DomainServicesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -97,14 +466,24 @@ export interface DomainServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the domain service. */
   domainServiceName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: DomainServicesCreateOrUpdateRequestTagsMap;
+  /** Resource etag */
+  etag?: string;
+  /** Domain service properties */
+  properties?: DomainServicePropertiesInput;
 }
 export const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     domainServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(DomainServicesCreateOrUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(DomainServicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -132,8 +511,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -142,8 +520,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -181,7 +558,7 @@ export const DomainServicesCreateOrUpdateResponseSystemData =
   }) as any as S.Schema<DomainServicesCreateOrUpdateResponseSystemData>;
 
 /** List of Domain Controller IP Address */
-export type ReplicaSetDomainControllerIpAddressList = string[];
+export type ReplicaSetDomainControllerIpAddressList = ReadonlyArray<string>;
 export const ReplicaSetDomainControllerIpAddressList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
@@ -204,7 +581,7 @@ export const HealthMonitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthMonitor" }) as any as S.Schema<HealthMonitor>;
 
 /** List of Domain Health Monitors */
-export type ReplicaSetHealthMonitorsList = HealthMonitor[];
+export type ReplicaSetHealthMonitorsList = ReadonlyArray<HealthMonitor>;
 export const ReplicaSetHealthMonitorsList = /*@__PURE__*/ S.Array(
   HealthMonitor,
 ) as any as S.Schema<ReplicaSetHealthMonitorsList>;
@@ -239,7 +616,7 @@ export const HealthAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthAlert" }) as any as S.Schema<HealthAlert>;
 
 /** List of Domain Health Alerts */
-export type ReplicaSetHealthAlertsList = HealthAlert[];
+export type ReplicaSetHealthAlertsList = ReadonlyArray<HealthAlert>;
 export const ReplicaSetHealthAlertsList = /*@__PURE__*/ S.Array(
   HealthAlert,
 ) as any as S.Schema<ReplicaSetHealthAlertsList>;
@@ -285,20 +662,17 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaSet" }) as any as S.Schema<ReplicaSet>;
 
 /** List of ReplicaSets */
-export type DomainServicePropertiesReplicaSetsList = ReplicaSet[];
+export type DomainServicePropertiesReplicaSetsList = ReadonlyArray<ReplicaSet>;
 export const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<DomainServicePropertiesReplicaSetsList>;
 
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
-export type LdapsSettingsLdaps = "Enabled" | "Disabled" | (string & {});
+export type LdapsSettingsLdaps = "Enabled" | "Disabled";
 export const LdapsSettingsLdaps = /*@__PURE__*/ S.String;
 
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
-export type LdapsSettingsExternalAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type LdapsSettingsExternalAccess = "Enabled" | "Disabled";
 export const LdapsSettingsExternalAccess = /*@__PURE__*/ S.String;
 
 /** Secure LDAP Settings */
@@ -330,212 +704,13 @@ export const LdapsSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LdapsSettings" }) as any as S.Schema<LdapsSettings>;
 
-/** Forest Trust Setting */
-export interface ForestTrust {
-  /** Trusted Domain FQDN */
-  trustedDomainFqdn?: string;
-  /** Trust Direction */
-  trustDirection?: string;
-  /** Friendly Name */
-  friendlyName?: string;
-  /** Remote Dns ips */
-  remoteDnsIps?: string;
-  /** Trust Password */
-  trustPassword?: string | Redacted.Redacted<string>;
-}
-export const ForestTrust = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trustedDomainFqdn: S.optional(S.String),
-    trustDirection: S.optional(S.String),
-    friendlyName: S.optional(S.String),
-    remoteDnsIps: S.optional(S.String),
-    trustPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({ identifier: "ForestTrust" }) as any as S.Schema<ForestTrust>;
-
-/** List of settings for Resource Forest */
-export type ResourceForestSettingsSettingsList = ForestTrust[];
-export const ResourceForestSettingsSettingsList = /*@__PURE__*/ S.Array(
-  ForestTrust,
-) as any as S.Schema<ResourceForestSettingsSettingsList>;
-
-/** Settings for Resource Forest */
-export interface ResourceForestSettings {
-  /** List of settings for Resource Forest */
-  settings?: ResourceForestSettingsSettingsList;
-  /** Resource Forest */
-  resourceForest?: string;
-}
-export const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    settings: S.optional(ResourceForestSettingsSettingsList),
-    resourceForest: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceForestSettings",
-}) as any as S.Schema<ResourceForestSettings>;
-
-/** A flag to determine whether or not NtlmV1 is enabled or disabled. */
-export type DomainSecuritySettingsNtlmV1 =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsNtlmV1 = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not TlsV1 is enabled or disabled. */
-export type DomainSecuritySettingsTlsV1 =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsTlsV1 = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
-export type DomainSecuritySettingsSyncNtlmPasswords =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsSyncNtlmPasswords = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
-export type DomainSecuritySettingsSyncKerberosPasswords =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsSyncKerberosPasswords =
-  /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
-export type DomainSecuritySettingsSyncOnPremPasswords =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsSyncOnPremPasswords = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
-export type DomainSecuritySettingsKerberosRc4Encryption =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsKerberosRc4Encryption =
-  /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
-export type DomainSecuritySettingsKerberosArmoring =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsKerberosArmoring = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not LdapSigning is enabled or disabled. */
-export type DomainSecuritySettingsLdapSigning =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsLdapSigning = /*@__PURE__*/ S.String;
-
-/** A flag to determine whether or not ChannelBinding is enabled or disabled. */
-export type DomainSecuritySettingsChannelBinding =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DomainSecuritySettingsChannelBinding = /*@__PURE__*/ S.String;
-
-/** Domain Security Settings */
-export interface DomainSecuritySettings {
-  /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
-  ntlmV1?: DomainSecuritySettingsNtlmV1;
-  /** A flag to determine whether or not TlsV1 is enabled or disabled. */
-  tlsV1?: DomainSecuritySettingsTlsV1;
-  /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
-  syncNtlmPasswords?: DomainSecuritySettingsSyncNtlmPasswords;
-  /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
-  syncKerberosPasswords?: DomainSecuritySettingsSyncKerberosPasswords;
-  /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
-  syncOnPremPasswords?: DomainSecuritySettingsSyncOnPremPasswords;
-  /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
-  kerberosRc4Encryption?: DomainSecuritySettingsKerberosRc4Encryption;
-  /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
-  kerberosArmoring?: DomainSecuritySettingsKerberosArmoring;
-  /** A flag to determine whether or not LdapSigning is enabled or disabled. */
-  ldapSigning?: DomainSecuritySettingsLdapSigning;
-  /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
-  channelBinding?: DomainSecuritySettingsChannelBinding;
-}
-export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ntlmV1: S.optional(DomainSecuritySettingsNtlmV1),
-    tlsV1: S.optional(DomainSecuritySettingsTlsV1),
-    syncNtlmPasswords: S.optional(DomainSecuritySettingsSyncNtlmPasswords),
-    syncKerberosPasswords: S.optional(
-      DomainSecuritySettingsSyncKerberosPasswords,
-    ),
-    syncOnPremPasswords: S.optional(DomainSecuritySettingsSyncOnPremPasswords),
-    kerberosRc4Encryption: S.optional(
-      DomainSecuritySettingsKerberosRc4Encryption,
-    ),
-    kerberosArmoring: S.optional(DomainSecuritySettingsKerberosArmoring),
-    ldapSigning: S.optional(DomainSecuritySettingsLdapSigning),
-    channelBinding: S.optional(DomainSecuritySettingsChannelBinding),
-  }),
-).annotate({
-  identifier: "DomainSecuritySettings",
-}) as any as S.Schema<DomainSecuritySettings>;
-
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
-export type DomainServicePropertiesFilteredSync =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DomainServicePropertiesFilteredSync = "Enabled" | "Disabled";
 export const DomainServicePropertiesFilteredSync = /*@__PURE__*/ S.String;
 
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
-export type DomainServicePropertiesSyncScope =
-  | "All"
-  | "CloudOnly"
-  | (string & {});
+export type DomainServicePropertiesSyncScope = "All" | "CloudOnly";
 export const DomainServicePropertiesSyncScope = /*@__PURE__*/ S.String;
-
-/** Should global admins be notified */
-export type NotificationSettingsNotifyGlobalAdmins =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const NotificationSettingsNotifyGlobalAdmins = /*@__PURE__*/ S.String;
-
-/** Should domain controller admins be notified */
-export type NotificationSettingsNotifyDcAdmins =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const NotificationSettingsNotifyDcAdmins = /*@__PURE__*/ S.String;
-
-/** The list of additional recipients */
-export type NotificationSettingsAdditionalRecipientsList = string[];
-export const NotificationSettingsAdditionalRecipientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NotificationSettingsAdditionalRecipientsList>;
-
-/** Settings for notification */
-export interface NotificationSettings {
-  /** Should global admins be notified */
-  notifyGlobalAdmins?: NotificationSettingsNotifyGlobalAdmins;
-  /** Should domain controller admins be notified */
-  notifyDcAdmins?: NotificationSettingsNotifyDcAdmins;
-  /** The list of additional recipients */
-  additionalRecipients?: NotificationSettingsAdditionalRecipientsList;
-}
-export const NotificationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notifyGlobalAdmins: S.optional(NotificationSettingsNotifyGlobalAdmins),
-    notifyDcAdmins: S.optional(NotificationSettingsNotifyDcAdmins),
-    additionalRecipients: S.optional(
-      NotificationSettingsAdditionalRecipientsList,
-    ),
-  }),
-).annotate({
-  identifier: "NotificationSettings",
-}) as any as S.Schema<NotificationSettings>;
 
 /** Migration Progress */
 export interface MigrationProgress {
@@ -571,96 +746,6 @@ export const MigrationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MigrationProperties",
 }) as any as S.Schema<MigrationProperties>;
-
-/** Status for individual validator after running diagnostics. */
-export type ConfigDiagnosticsValidatorResultStatus =
-  | "None"
-  | "Running"
-  | "OK"
-  | "Failure"
-  | "Warning"
-  | "Skipped"
-  | (string & {});
-export const ConfigDiagnosticsValidatorResultStatus = /*@__PURE__*/ S.String;
-
-/** List of domain resource property name or values used to compose a rich description. */
-export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
-  string[];
-export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
-
-/** Specific issue for a particular config diagnostics validator */
-export interface ConfigDiagnosticsValidatorResultIssue {
-  /** Validation issue identifier. */
-  id?: string;
-  /** List of domain resource property name or values used to compose a rich description. */
-  descriptionParams?: ConfigDiagnosticsValidatorResultIssueDescriptionParamsList;
-}
-export const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      descriptionParams: S.optional(
-        ConfigDiagnosticsValidatorResultIssueDescriptionParamsList,
-      ),
-    }),
-).annotate({
-  identifier: "ConfigDiagnosticsValidatorResultIssue",
-}) as any as S.Schema<ConfigDiagnosticsValidatorResultIssue>;
-
-/** List of resource config validation issues. */
-export type ConfigDiagnosticsValidatorResultIssuesList =
-  ConfigDiagnosticsValidatorResultIssue[];
-export const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ S.Array(
-  ConfigDiagnosticsValidatorResultIssue,
-) as any as S.Schema<ConfigDiagnosticsValidatorResultIssuesList>;
-
-/** Config Diagnostics validator result data */
-export interface ConfigDiagnosticsValidatorResult {
-  /** Validator identifier */
-  validatorId?: string;
-  /** Replica set location and subnet name */
-  replicaSetSubnetDisplayName?: string;
-  /** Status for individual validator after running diagnostics. */
-  status?: ConfigDiagnosticsValidatorResultStatus;
-  /** List of resource config validation issues. */
-  issues?: ConfigDiagnosticsValidatorResultIssuesList;
-}
-export const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validatorId: S.optional(S.String),
-    replicaSetSubnetDisplayName: S.optional(S.String),
-    status: S.optional(ConfigDiagnosticsValidatorResultStatus),
-    issues: S.optional(ConfigDiagnosticsValidatorResultIssuesList),
-  }),
-).annotate({
-  identifier: "ConfigDiagnosticsValidatorResult",
-}) as any as S.Schema<ConfigDiagnosticsValidatorResult>;
-
-/** List of Configuration Diagnostics validator results. */
-export type ConfigDiagnosticsValidatorResultsList =
-  ConfigDiagnosticsValidatorResult[];
-export const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ S.Array(
-  ConfigDiagnosticsValidatorResult,
-) as any as S.Schema<ConfigDiagnosticsValidatorResultsList>;
-
-/** Configuration Diagnostics */
-export interface ConfigDiagnostics {
-  /** Last domain configuration diagnostics DateTime */
-  lastExecuted?: string;
-  /** List of Configuration Diagnostics validator results. */
-  validatorResults?: ConfigDiagnosticsValidatorResultsList;
-}
-export const ConfigDiagnostics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastExecuted: S.optional(S.String),
-    validatorResults: S.optional(ConfigDiagnosticsValidatorResultsList),
-  }),
-).annotate({
-  identifier: "ConfigDiagnostics",
-}) as any as S.Schema<ConfigDiagnostics>;
 
 /** Properties of the Domain Service. */
 export interface DomainServiceProperties {
@@ -831,8 +916,7 @@ export type DomainServicesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -841,8 +925,7 @@ export type DomainServicesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -940,8 +1023,7 @@ export type DomainServiceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServiceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -949,8 +1031,7 @@ export type DomainServiceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServiceSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1014,7 +1095,7 @@ export const DomainService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainService" }) as any as S.Schema<DomainService>;
 
 /** the list of domain services. */
-export type DomainServiceListResultValueList = DomainService[];
+export type DomainServiceListResultValueList = ReadonlyArray<DomainService>;
 export const DomainServiceListResultValueList = /*@__PURE__*/ S.Array(
   DomainService,
 ) as any as S.Schema<DomainServiceListResultValueList>;
@@ -1058,6 +1139,15 @@ export const DomainServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "DomainServicesListByResourceGroupRequest",
 }) as any as S.Schema<DomainServicesListByResourceGroupRequest>;
 
+/** Resource tags */
+export type DomainServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DomainServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DomainServicesUpdateRequestTagsMap>;
+
 export interface DomainServicesUpdateRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1065,14 +1155,24 @@ export interface DomainServicesUpdateRequest {
   resourceGroupName: string;
   /** The name of the domain service. */
   domainServiceName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: DomainServicesUpdateRequestTagsMap;
+  /** Resource etag */
+  etag?: string;
+  /** Domain service properties */
+  properties?: DomainServicePropertiesInput;
 }
 export const DomainServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     domainServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(DomainServicesUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(DomainServicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1099,8 +1199,7 @@ export type DomainServicesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1109,8 +1208,7 @@ export type DomainServicesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DomainServicesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1189,7 +1287,12 @@ export interface OuContainerCreateRequest {
   domainServiceName: string;
   /** The name of the OuContainer. */
   ouContainerName: string;
-  body: unknown;
+  /** The account name */
+  accountName?: string;
+  /** The account spn */
+  spn?: string;
+  /** The account password */
+  password?: string | Redacted.Redacted<string>;
 }
 export const OuContainerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1197,7 +1300,9 @@ export const OuContainerCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     domainServiceName: S.String.pipe(T.Label()),
     ouContainerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    accountName: S.optional(S.String),
+    spn: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1224,8 +1329,7 @@ export type OuContainerCreateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1234,8 +1338,7 @@ export type OuContainerCreateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1289,7 +1392,7 @@ export const ContainerAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerAccount>;
 
 /** The list of container accounts */
-export type OuContainerPropertiesAccountsList = ContainerAccount[];
+export type OuContainerPropertiesAccountsList = ReadonlyArray<ContainerAccount>;
 export const OuContainerPropertiesAccountsList = /*@__PURE__*/ S.Array(
   ContainerAccount,
 ) as any as S.Schema<OuContainerPropertiesAccountsList>;
@@ -1438,8 +1541,7 @@ export type OuContainerGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1448,8 +1550,7 @@ export type OuContainerGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1553,8 +1654,7 @@ export type OuContainerSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1562,8 +1662,7 @@ export type OuContainerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1627,7 +1726,7 @@ export const OuContainer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OuContainer" }) as any as S.Schema<OuContainer>;
 
 /** The list of OuContainer. */
-export type OuContainerListResultValueList = OuContainer[];
+export type OuContainerListResultValueList = ReadonlyArray<OuContainer>;
 export const OuContainerListResultValueList = /*@__PURE__*/ S.Array(
   OuContainer,
 ) as any as S.Schema<OuContainerListResultValueList>;
@@ -1671,7 +1770,12 @@ export interface OuContainerUpdateRequest {
   domainServiceName: string;
   /** The name of the OuContainer. */
   ouContainerName: string;
-  body: unknown;
+  /** The account name */
+  accountName?: string;
+  /** The account spn */
+  spn?: string;
+  /** The account password */
+  password?: string | Redacted.Redacted<string>;
 }
 export const OuContainerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1679,7 +1783,9 @@ export const OuContainerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     domainServiceName: S.String.pipe(T.Label()),
     ouContainerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    accountName: S.optional(S.String),
+    spn: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1706,8 +1812,7 @@ export type OuContainerUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1716,8 +1821,7 @@ export type OuContainerUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OuContainerUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

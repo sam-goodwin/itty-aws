@@ -119,7 +119,10 @@
           "target": "smithy.api#String"
         },
         "updated_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
+          "target": "com.posthog.event_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_seen_at": {
           "target": "smithy.api#String",
@@ -140,7 +143,10 @@
           }
         },
         "verified_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
+          "target": "com.posthog.event_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "hidden": {
           "target": "smithy.api#Boolean",
@@ -171,7 +177,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
+          "target": "com.posthog.event_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "post_to_slack": {
           "target": "smithy.api#Boolean"
@@ -411,13 +420,6 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsCreateRequestMediaPreviewUrlsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.event_definitions#EventDefinitionsCreateRequest": {
       "type": "structure",
       "members": {
@@ -428,9 +430,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String"
@@ -450,38 +449,8 @@
         "tags": {
           "target": "com.posthog.event_definitions#EventDefinitionsCreateRequestTagsList"
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_updated_at": {
-          "target": "smithy.api#String"
-        },
         "verified": {
           "target": "smithy.api#Boolean"
-        },
-        "verified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "verified_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
         },
         "hidden": {
           "target": "smithy.api#Boolean",
@@ -499,29 +468,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "action_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "last_calculated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
         "post_to_slack": {
           "target": "smithy.api#Boolean"
         },
         "default_columns": {
           "target": "com.posthog.event_definitions#EventDefinitionsCreateRequestDefaultColumnsList"
-        },
-        "media_preview_urls": {
-          "target": "com.posthog.event_definitions#EventDefinitionsCreateRequestMediaPreviewUrlsList"
         }
       },
       "traits": {
@@ -617,13 +568,6 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsUpdateRequestMediaPreviewUrlsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.event_definitions#EventDefinitionsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -661,38 +605,8 @@
         "tags": {
           "target": "com.posthog.event_definitions#EventDefinitionsUpdateRequestTagsList"
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_updated_at": {
-          "target": "smithy.api#String"
-        },
         "verified": {
           "target": "smithy.api#Boolean"
-        },
-        "verified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "verified_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
         },
         "hidden": {
           "target": "smithy.api#Boolean",
@@ -710,29 +624,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "action_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "last_calculated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
         "post_to_slack": {
           "target": "smithy.api#Boolean"
         },
         "default_columns": {
           "target": "com.posthog.event_definitions#EventDefinitionsUpdateRequestDefaultColumnsList"
-        },
-        "media_preview_urls": {
-          "target": "com.posthog.event_definitions#EventDefinitionsUpdateRequestMediaPreviewUrlsList"
         }
       },
       "traits": {
@@ -780,13 +676,6 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -824,38 +713,8 @@
         "tags": {
           "target": "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequestTagsList"
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_updated_at": {
-          "target": "smithy.api#String"
-        },
         "verified": {
           "target": "smithy.api#Boolean"
-        },
-        "verified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "verified_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
         },
         "hidden": {
           "target": "smithy.api#Boolean",
@@ -873,29 +732,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "action_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "last_calculated_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
-        },
         "post_to_slack": {
           "target": "smithy.api#Boolean"
         },
         "default_columns": {
           "target": "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequestDefaultColumnsList"
-        },
-        "media_preview_urls": {
-          "target": "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequestMediaPreviewUrlsList"
         }
       },
       "traits": {
@@ -1051,7 +892,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.event_definitions#UserBasic"
+          "target": "com.posthog.event_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "post_to_slack": {
           "target": "smithy.api#Boolean"

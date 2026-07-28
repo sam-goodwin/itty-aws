@@ -50,7 +50,8 @@ export const GetDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDmarcReportRequest",
 }) as any as S.Schema<GetDmarcReportRequest>;
 
-export type DmarcReportsGetResponseApprovedSourcesItemIpsList = string[];
+export type DmarcReportsGetResponseApprovedSourcesItemIpsList =
+  ReadonlyArray<string>;
 export const DmarcReportsGetResponseApprovedSourcesItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -94,7 +95,7 @@ export const DmarcReportsGetResponseApprovedSourcesItem =
   }) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesItem>;
 
 export type DmarcReportsGetResponseApprovedSourcesList =
-  DmarcReportsGetResponseApprovedSourcesItem[];
+  ReadonlyArray<DmarcReportsGetResponseApprovedSourcesItem>;
 export const DmarcReportsGetResponseApprovedSourcesList = /*@__PURE__*/ S.Array(
   DmarcReportsGetResponseApprovedSourcesItem,
 ) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesList>;
@@ -125,7 +126,7 @@ export const DmarcReportsGetResponseRecordsBimiRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsBimiRecordsList =
-  DmarcReportsGetResponseRecordsBimiRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsBimiRecordsItem>;
 export const DmarcReportsGetResponseRecordsBimiRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsBimiRecordsItem,
@@ -157,7 +158,7 @@ export const DmarcReportsGetResponseRecordsCnameDkimRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsCnameDkimRecordsList =
-  DmarcReportsGetResponseRecordsCnameDkimRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameDkimRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsCnameDkimRecordsItem,
@@ -189,7 +190,7 @@ export const DmarcReportsGetResponseRecordsCnameDmarcRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
-  DmarcReportsGetResponseRecordsCnameDmarcRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsCnameDmarcRecordsItem,
@@ -221,7 +222,7 @@ export const DmarcReportsGetResponseRecordsCnameSpfRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsCnameSpfRecordsList =
-  DmarcReportsGetResponseRecordsCnameSpfRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
 export const DmarcReportsGetResponseRecordsCnameSpfRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsCnameSpfRecordsItem,
@@ -253,7 +254,7 @@ export const DmarcReportsGetResponseRecordsDkimRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsDkimRecordsList =
-  DmarcReportsGetResponseRecordsDkimRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsDkimRecordsItem>;
 export const DmarcReportsGetResponseRecordsDkimRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsDkimRecordsItem,
@@ -285,7 +286,7 @@ export const DmarcReportsGetResponseRecordsDmarcRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsDmarcRecordsList =
-  DmarcReportsGetResponseRecordsDmarcRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
 export const DmarcReportsGetResponseRecordsDmarcRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsDmarcRecordsItem,
@@ -317,7 +318,7 @@ export const DmarcReportsGetResponseRecordsSpfRecordsItem =
   }) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsItem>;
 
 export type DmarcReportsGetResponseRecordsSpfRecordsList =
-  DmarcReportsGetResponseRecordsSpfRecordsItem[];
+  ReadonlyArray<DmarcReportsGetResponseRecordsSpfRecordsItem>;
 export const DmarcReportsGetResponseRecordsSpfRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsGetResponseRecordsSpfRecordsItem,
@@ -383,8 +384,7 @@ export type DmarcReportsGetResponseStatus =
   | "missing-dmarc-report"
   | "multiple-dmarc-reports"
   | "missing-dmarc-rua"
-  | "cname-on-dmarc-record"
-  | (string & {});
+  | "cname-on-dmarc-record";
 export const DmarcReportsGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -460,7 +460,7 @@ export const GetSpfInspectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSpfInspectRequest",
 }) as any as S.Schema<GetSpfInspectRequest>;
 
-export type SpfInspectGetResponseComponentsList = unknown[];
+export type SpfInspectGetResponseComponentsList = ReadonlyArray<unknown>;
 export const SpfInspectGetResponseComponentsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SpfInspectGetResponseComponentsList>;
@@ -486,7 +486,8 @@ export const SpfInspectGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpfInspectGetResponseErrorsItem",
 }) as any as S.Schema<SpfInspectGetResponseErrorsItem>;
 
-export type SpfInspectGetResponseErrorsList = SpfInspectGetResponseErrorsItem[];
+export type SpfInspectGetResponseErrorsList =
+  ReadonlyArray<SpfInspectGetResponseErrorsItem>;
 export const SpfInspectGetResponseErrorsList = /*@__PURE__*/ S.Array(
   SpfInspectGetResponseErrorsItem,
 ) as any as S.Schema<SpfInspectGetResponseErrorsList>;
@@ -542,7 +543,8 @@ export const PatchDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDmarcReportRequest",
 }) as any as S.Schema<PatchDmarcReportRequest>;
 
-export type DmarcReportsEditResponseApprovedSourcesItemIpsList = string[];
+export type DmarcReportsEditResponseApprovedSourcesItemIpsList =
+  ReadonlyArray<string>;
 export const DmarcReportsEditResponseApprovedSourcesItemIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -586,7 +588,7 @@ export const DmarcReportsEditResponseApprovedSourcesItem =
   }) as any as S.Schema<DmarcReportsEditResponseApprovedSourcesItem>;
 
 export type DmarcReportsEditResponseApprovedSourcesList =
-  DmarcReportsEditResponseApprovedSourcesItem[];
+  ReadonlyArray<DmarcReportsEditResponseApprovedSourcesItem>;
 export const DmarcReportsEditResponseApprovedSourcesList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseApprovedSourcesItem,
@@ -618,7 +620,7 @@ export const DmarcReportsEditResponseRecordsBimiRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsBimiRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsBimiRecordsList =
-  DmarcReportsEditResponseRecordsBimiRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsBimiRecordsItem>;
 export const DmarcReportsEditResponseRecordsBimiRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsBimiRecordsItem,
@@ -650,7 +652,7 @@ export const DmarcReportsEditResponseRecordsCnameDkimRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDkimRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsCnameDkimRecordsList =
-  DmarcReportsEditResponseRecordsCnameDkimRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsCnameDkimRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameDkimRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsCnameDkimRecordsItem,
@@ -682,7 +684,7 @@ export const DmarcReportsEditResponseRecordsCnameDmarcRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameDmarcRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsCnameDmarcRecordsList =
-  DmarcReportsEditResponseRecordsCnameDmarcRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsCnameDmarcRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameDmarcRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsCnameDmarcRecordsItem,
@@ -714,7 +716,7 @@ export const DmarcReportsEditResponseRecordsCnameSpfRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsCnameSpfRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsCnameSpfRecordsList =
-  DmarcReportsEditResponseRecordsCnameSpfRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsCnameSpfRecordsItem>;
 export const DmarcReportsEditResponseRecordsCnameSpfRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsCnameSpfRecordsItem,
@@ -746,7 +748,7 @@ export const DmarcReportsEditResponseRecordsDkimRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsDkimRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsDkimRecordsList =
-  DmarcReportsEditResponseRecordsDkimRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsDkimRecordsItem>;
 export const DmarcReportsEditResponseRecordsDkimRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsDkimRecordsItem,
@@ -778,7 +780,7 @@ export const DmarcReportsEditResponseRecordsDmarcRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsDmarcRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsDmarcRecordsList =
-  DmarcReportsEditResponseRecordsDmarcRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsDmarcRecordsItem>;
 export const DmarcReportsEditResponseRecordsDmarcRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsDmarcRecordsItem,
@@ -810,7 +812,7 @@ export const DmarcReportsEditResponseRecordsSpfRecordsItem =
   }) as any as S.Schema<DmarcReportsEditResponseRecordsSpfRecordsItem>;
 
 export type DmarcReportsEditResponseRecordsSpfRecordsList =
-  DmarcReportsEditResponseRecordsSpfRecordsItem[];
+  ReadonlyArray<DmarcReportsEditResponseRecordsSpfRecordsItem>;
 export const DmarcReportsEditResponseRecordsSpfRecordsList =
   /*@__PURE__*/ S.Array(
     DmarcReportsEditResponseRecordsSpfRecordsItem,
@@ -876,8 +878,7 @@ export type DmarcReportsEditResponseStatus =
   | "missing-dmarc-report"
   | "multiple-dmarc-reports"
   | "missing-dmarc-rua"
-  | "cname-on-dmarc-record"
-  | (string & {});
+  | "cname-on-dmarc-record";
 export const DmarcReportsEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

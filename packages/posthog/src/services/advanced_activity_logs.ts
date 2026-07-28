@@ -61,7 +61,7 @@ export const StaticFiltersUsersItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersUsersItemMap>;
 
 /** Users who have logged activity. */
-export type StaticFiltersUsersList = StaticFiltersUsersItemMap[];
+export type StaticFiltersUsersList = ReadonlyArray<StaticFiltersUsersItemMap>;
 export const StaticFiltersUsersList = /*@__PURE__*/ S.Array(
   StaticFiltersUsersItemMap,
 ) as any as S.Schema<StaticFiltersUsersList>;
@@ -73,7 +73,7 @@ export const StaticFiltersScopesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersScopesItemMap>;
 
 /** Available activity scopes. */
-export type StaticFiltersScopesList = StaticFiltersScopesItemMap[];
+export type StaticFiltersScopesList = ReadonlyArray<StaticFiltersScopesItemMap>;
 export const StaticFiltersScopesList = /*@__PURE__*/ S.Array(
   StaticFiltersScopesItemMap,
 ) as any as S.Schema<StaticFiltersScopesList>;
@@ -87,7 +87,8 @@ export const StaticFiltersActivitiesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersActivitiesItemMap>;
 
 /** Available activity types. */
-export type StaticFiltersActivitiesList = StaticFiltersActivitiesItemMap[];
+export type StaticFiltersActivitiesList =
+  ReadonlyArray<StaticFiltersActivitiesItemMap>;
 export const StaticFiltersActivitiesList = /*@__PURE__*/ S.Array(
   StaticFiltersActivitiesItemMap,
 ) as any as S.Schema<StaticFiltersActivitiesList>;
@@ -101,7 +102,8 @@ export const StaticFiltersClientsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StaticFiltersClientsItemMap>;
 
 /** API clients that have generated activity (from x-posthog-client header). */
-export type StaticFiltersClientsList = StaticFiltersClientsItemMap[];
+export type StaticFiltersClientsList =
+  ReadonlyArray<StaticFiltersClientsItemMap>;
 export const StaticFiltersClientsList = /*@__PURE__*/ S.Array(
   StaticFiltersClientsItemMap,
 ) as any as S.Schema<StaticFiltersClientsList>;
@@ -149,12 +151,6 @@ export const AvailableFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailableFiltersResponse",
 }) as any as S.Schema<AvailableFiltersResponse>;
 
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -164,12 +160,87 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicInputRoleAtOrganization =
+  | RoleAtOrganizationEnum
+  | BlankEnum;
+export const UserBasicInputRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicInputRoleAtOrganization>;
+
+export interface UserBasicInput {
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  role_at_organization?: UserBasicInputRoleAtOrganization | null;
+}
+export const UserBasicInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    role_at_organization: S.optional(
+      S.NullOr(UserBasicInputRoleAtOrganization),
+    ),
+  }),
+).annotate({ identifier: "UserBasicInput" }) as any as S.Schema<UserBasicInput>;
+
+export interface AdvancedActivityLogsExportCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  user?: UserBasicInput | null;
+  team_id?: number | null;
+  organization_id?: string | null;
+  was_impersonated?: boolean | null;
+  is_system?: boolean | null;
+  client?: string | null;
+  ip_address?: string | null;
+  activity?: string;
+  item_id?: string | null;
+  scope?: string;
+  detail?: unknown;
+  created_at?: string;
+}
+export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      user: S.optional(S.NullOr(UserBasicInput)),
+      team_id: S.optional(S.NullOr(S.Number)),
+      organization_id: S.optional(S.NullOr(S.String)),
+      was_impersonated: S.optional(S.NullOr(S.Boolean)),
+      is_system: S.optional(S.NullOr(S.Boolean)),
+      client: S.optional(S.NullOr(S.String)),
+      ip_address: S.optional(S.NullOr(S.String)),
+      activity: S.optional(S.String),
+      item_id: S.optional(S.NullOr(S.String)),
+      scope: S.optional(S.String),
+      detail: S.optional(S.Unknown),
+      created_at: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/advanced_activity_logs/export/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "AdvancedActivityLogsExportCreateRequest",
+}) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
 export const UserBasicRoleAtOrganization =
@@ -200,57 +271,9 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface AdvancedActivityLogsExportCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  user?: UserBasic;
-  /** is the date of this log item newer than the user's bookmark */
-  unread?: boolean;
-  team_id?: number | null;
-  organization_id?: string | null;
-  was_impersonated?: boolean | null;
-  is_system?: boolean | null;
-  client?: string | null;
-  ip_address?: string | null;
-  activity?: string;
-  item_id?: string | null;
-  scope?: string;
-  detail?: unknown;
-  created_at?: string;
-}
-export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      user: S.optional(UserBasic),
-      unread: S.optional(S.Boolean),
-      team_id: S.optional(S.NullOr(S.Number)),
-      organization_id: S.optional(S.NullOr(S.String)),
-      was_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_system: S.optional(S.NullOr(S.Boolean)),
-      client: S.optional(S.NullOr(S.String)),
-      ip_address: S.optional(S.NullOr(S.String)),
-      activity: S.optional(S.String),
-      item_id: S.optional(S.NullOr(S.String)),
-      scope: S.optional(S.String),
-      detail: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/advanced_activity_logs/export/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "AdvancedActivityLogsExportCreateRequest",
-}) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>;
-
 export interface ActivityLog {
   id?: string;
-  user?: UserBasic;
+  user?: UserBasic | null;
   /** is the date of this log item newer than the user's bookmark */
   unread?: boolean;
   team_id?: number | null;
@@ -268,7 +291,7 @@ export interface ActivityLog {
 export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    user: S.optional(UserBasic),
+    user: S.optional(S.NullOr(UserBasic)),
     unread: S.optional(S.Boolean),
     team_id: S.optional(S.NullOr(S.Number)),
     organization_id: S.optional(S.NullOr(S.String)),
@@ -284,39 +307,41 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityLog" }) as any as S.Schema<ActivityLog>;
 
-export type AdvancedActivityLogsListRequestActivitiesList = string[];
+export type AdvancedActivityLogsListRequestActivitiesList =
+  ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestActivitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdvancedActivityLogsListRequestActivitiesList>;
 
-export type AdvancedActivityLogsListRequestClientsList = string[];
+export type AdvancedActivityLogsListRequestClientsList = ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestClientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestClientsList>;
 
-export type AdvancedActivityLogsListRequestIpAddressesList = string[];
+export type AdvancedActivityLogsListRequestIpAddressesList =
+  ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdvancedActivityLogsListRequestIpAddressesList>;
 
-export type AdvancedActivityLogsListRequestItemIdsList = string[];
+export type AdvancedActivityLogsListRequestItemIdsList = ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestItemIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestItemIdsList>;
 
-export type AdvancedActivityLogsListRequestScopesList = string[];
+export type AdvancedActivityLogsListRequestScopesList = ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestScopesList>;
 
-export type AdvancedActivityLogsListRequestTeamIdsList = number[];
+export type AdvancedActivityLogsListRequestTeamIdsList = ReadonlyArray<number>;
 export const AdvancedActivityLogsListRequestTeamIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AdvancedActivityLogsListRequestTeamIdsList>;
 
-export type AdvancedActivityLogsListRequestUsersList = string[];
+export type AdvancedActivityLogsListRequestUsersList = ReadonlyArray<string>;
 export const AdvancedActivityLogsListRequestUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AdvancedActivityLogsListRequestUsersList>;
@@ -399,7 +424,7 @@ export const AdvancedActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedActivityLogsListRequest",
 }) as any as S.Schema<AdvancedActivityLogsListRequest>;
 
-export type PaginatedActivityLogListResultsList = ActivityLog[];
+export type PaginatedActivityLogListResultsList = ReadonlyArray<ActivityLog>;
 export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;

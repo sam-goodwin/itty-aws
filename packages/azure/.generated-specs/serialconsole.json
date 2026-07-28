@@ -383,11 +383,10 @@
             "smithy.api#documentation": "The name of the serial port to connect to."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.serialconsole#SerialPortProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the serial port."
           }
         }
       },

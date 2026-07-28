@@ -17,14 +17,18 @@ export interface FabricCapacitiesCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const FabricCapacitiesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -40,8 +44,7 @@ export const FabricCapacitiesCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type FabricCapacitiesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const FabricCapacitiesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -64,6 +67,66 @@ export const FabricCapacitiesCheckNameAvailabilityResponse =
     identifier: "FabricCapacitiesCheckNameAvailabilityResponse",
   }) as any as S.Schema<FabricCapacitiesCheckNameAvailabilityResponse>;
 
+/** Resource tags. */
+export type FabricCapacitiesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FabricCapacitiesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<FabricCapacitiesCreateOrUpdateRequestTagsMap>;
+
+/** An array of administrator user identities. */
+export type CapacityAdministrationMembersList = ReadonlyArray<string>;
+export const CapacityAdministrationMembersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CapacityAdministrationMembersList>;
+
+/** The administration properties of the Fabric capacity resource */
+export interface CapacityAdministration {
+  /** An array of administrator user identities. */
+  members: CapacityAdministrationMembersList;
+}
+export const CapacityAdministration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    members: CapacityAdministrationMembersList,
+  }),
+).annotate({
+  identifier: "CapacityAdministration",
+}) as any as S.Schema<CapacityAdministration>;
+
+/** The Microsoft Fabric capacity properties. */
+export interface FabricCapacityPropertiesInput {
+  /** The capacity administration */
+  administration: CapacityAdministration;
+}
+export const FabricCapacityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administration: CapacityAdministration,
+  }),
+).annotate({
+  identifier: "FabricCapacityPropertiesInput",
+}) as any as S.Schema<FabricCapacityPropertiesInput>;
+
+/** The name of the Azure pricing tier to which the SKU applies. */
+export type RpSkuTier = "Fabric";
+export const RpSkuTier = /*@__PURE__*/ S.String;
+
+/** Represents the SKU name and Azure pricing tier for Microsoft Fabric capacity resource. */
+export interface RpSku {
+  /** The name of the SKU level. */
+  name: string;
+  /** The name of the Azure pricing tier to which the SKU applies. */
+  tier: RpSkuTier;
+}
+export const RpSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: RpSkuTier,
+  }),
+).annotate({ identifier: "RpSku" }) as any as S.Schema<RpSku>;
+
 export interface FabricCapacitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -71,7 +134,14 @@ export interface FabricCapacitiesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   capacityName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FabricCapacitiesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties: FabricCapacityPropertiesInput;
+  /** The SKU details */
+  sku: RpSku;
 }
 export const FabricCapacitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -79,7 +149,10 @@ export const FabricCapacitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       capacityName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(FabricCapacitiesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: FabricCapacityPropertiesInput,
+      sku: RpSku,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -97,8 +170,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -106,8 +178,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -153,8 +224,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Provisioning"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The state of the Fabric capacity resource. */
@@ -170,28 +240,8 @@ export type ResourceState =
   | "Paused"
   | "Resuming"
   | "Scaling"
-  | "Preparing"
-  | (string & {});
+  | "Preparing";
 export const ResourceState = /*@__PURE__*/ S.String;
-
-/** An array of administrator user identities. */
-export type CapacityAdministrationMembersList = string[];
-export const CapacityAdministrationMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapacityAdministrationMembersList>;
-
-/** The administration properties of the Fabric capacity resource */
-export interface CapacityAdministration {
-  /** An array of administrator user identities. */
-  members: CapacityAdministrationMembersList;
-}
-export const CapacityAdministration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    members: CapacityAdministrationMembersList,
-  }),
-).annotate({
-  identifier: "CapacityAdministration",
-}) as any as S.Schema<CapacityAdministration>;
 
 /** The Microsoft Fabric capacity properties. */
 export interface FabricCapacityProperties {
@@ -211,24 +261,6 @@ export const FabricCapacityProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FabricCapacityProperties",
 }) as any as S.Schema<FabricCapacityProperties>;
-
-/** The name of the Azure pricing tier to which the SKU applies. */
-export type RpSkuTier = "Fabric" | (string & {});
-export const RpSkuTier = /*@__PURE__*/ S.String;
-
-/** Represents the SKU name and Azure pricing tier for Microsoft Fabric capacity resource. */
-export interface RpSku {
-  /** The name of the SKU level. */
-  name: string;
-  /** The name of the Azure pricing tier to which the SKU applies. */
-  tier: RpSkuTier;
-}
-export const RpSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: RpSkuTier,
-  }),
-).annotate({ identifier: "RpSku" }) as any as S.Schema<RpSku>;
 
 export interface FabricCapacitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -426,7 +458,7 @@ export const FabricCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FabricCapacity" }) as any as S.Schema<FabricCapacity>;
 
 /** The FabricCapacity items on this page */
-export type FabricCapacityListResultValueList = FabricCapacity[];
+export type FabricCapacityListResultValueList = ReadonlyArray<FabricCapacity>;
 export const FabricCapacityListResultValueList = /*@__PURE__*/ S.Array(
   FabricCapacity,
 ) as any as S.Schema<FabricCapacityListResultValueList>;
@@ -487,7 +519,7 @@ export const FabricCapacitiesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FabricCapacitiesListSkusRequest>;
 
 /** The list of available locations for the SKU */
-export type RpSkuDetailsForNewResourceLocationsList = string[];
+export type RpSkuDetailsForNewResourceLocationsList = ReadonlyArray<string>;
 export const RpSkuDetailsForNewResourceLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RpSkuDetailsForNewResourceLocationsList>;
@@ -513,7 +545,7 @@ export const RpSkuDetailsForNewResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for new resources */
 export type RpSkuEnumerationForNewResourceResultValueList =
-  RpSkuDetailsForNewResource[];
+  ReadonlyArray<RpSkuDetailsForNewResource>;
 export const RpSkuEnumerationForNewResourceResultValueList =
   /*@__PURE__*/ S.Array(
     RpSkuDetailsForNewResource,
@@ -580,7 +612,7 @@ export const RpSkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SKU details */
 export type RpSkuEnumerationForExistingResourceResultValueList =
-  RpSkuDetailsForExistingResource[];
+  ReadonlyArray<RpSkuDetailsForExistingResource>;
 export const RpSkuEnumerationForExistingResourceResultValueList =
   /*@__PURE__*/ S.Array(
     RpSkuDetailsForExistingResource,
@@ -667,6 +699,28 @@ export const FabricCapacitiesSuspendResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FabricCapacitiesSuspendResponse",
 }) as any as S.Schema<FabricCapacitiesSuspendResponse>;
 
+/** Resource tags. */
+export type FabricCapacitiesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FabricCapacitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FabricCapacitiesUpdateRequestTagsMap>;
+
+/** The updatable properties of the FabricCapacity. */
+export interface FabricCapacityUpdateProperties {
+  /** The capacity administration */
+  administration?: CapacityAdministration;
+}
+export const FabricCapacityUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administration: S.optional(CapacityAdministration),
+  }),
+).annotate({
+  identifier: "FabricCapacityUpdateProperties",
+}) as any as S.Schema<FabricCapacityUpdateProperties>;
+
 export interface FabricCapacitiesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -674,14 +728,21 @@ export interface FabricCapacitiesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   capacityName: string;
-  body: unknown;
+  /** The SKU details */
+  sku?: RpSku;
+  /** Resource tags. */
+  tags?: FabricCapacitiesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: FabricCapacityUpdateProperties;
 }
 export const FabricCapacitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     capacityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(RpSku),
+    tags: S.optional(FabricCapacitiesUpdateRequestTagsMap),
+    properties: S.optional(FabricCapacityUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -773,11 +834,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -804,7 +865,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

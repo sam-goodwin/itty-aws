@@ -192,8 +192,7 @@ export type FeatureType =
   | "FORMS"
   | "QUERIES"
   | "SIGNATURES"
-  | "LAYOUT"
-  | (string & {});
+  | "LAYOUT";
 export const FeatureType = /*@__PURE__*/ S.String;
 
 export type FeatureTypes = FeatureType[];
@@ -202,8 +201,7 @@ export type HumanLoopName = string;
 export type FlowDefinitionArn = string;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
-  | "FreeOfAdultContent"
-  | (string & {});
+  | "FreeOfAdultContent";
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
 export type ContentClassifiers = ContentClassifier[];
@@ -332,12 +330,11 @@ export type BlockType =
   | "LAYOUT_LIST"
   | "LAYOUT_FIGURE"
   | "LAYOUT_TABLE"
-  | "LAYOUT_KEY_VALUE"
-  | (string & {});
+  | "LAYOUT_KEY_VALUE";
 export const BlockType = /*@__PURE__*/ S.String;
 
 export type Percent = number;
-export type TextType = "HANDWRITING" | "PRINTED" | (string & {});
+export type TextType = "HANDWRITING" | "PRINTED";
 export const TextType = /*@__PURE__*/ S.String;
 
 export interface BoundingBox {
@@ -386,8 +383,7 @@ export type RelationshipType =
   | "ANSWER"
   | "TABLE"
   | "TABLE_TITLE"
-  | "TABLE_FOOTER"
-  | (string & {});
+  | "TABLE_FOOTER";
 export const RelationshipType = /*@__PURE__*/ S.String;
 
 export type IdList = string[];
@@ -410,13 +406,12 @@ export type EntityType =
   | "TABLE_SECTION_TITLE"
   | "TABLE_SUMMARY"
   | "STRUCTURED_TABLE"
-  | "SEMI_STRUCTURED_TABLE"
-  | (string & {});
+  | "SEMI_STRUCTURED_TABLE";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export type EntityTypes = EntityType[];
 export const EntityTypes = /*@__PURE__*/ S.Array(EntityType);
-export type SelectionStatus = "SELECTED" | "NOT_SELECTED" | (string & {});
+export type SelectionStatus = "SELECTED" | "NOT_SELECTED";
 export const SelectionStatus = /*@__PURE__*/ S.String;
 
 export interface Block {
@@ -629,7 +624,7 @@ export const AnalyzeIDRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalyzeIDRequest",
 }) as any as S.Schema<AnalyzeIDRequest>;
-export type ValueType = "DATE" | (string & {});
+export type ValueType = "DATE";
 export const ValueType = /*@__PURE__*/ S.String;
 
 export interface NormalizedValue {
@@ -704,7 +699,7 @@ export const AnalyzeIDResponse = /*@__PURE__*/ S.suspend(() =>
 export type AdapterName = string;
 export type ClientRequestToken = string;
 export type AdapterDescription = string;
-export type AutoUpdate = "ENABLED" | "DISABLED" | (string & {});
+export type AutoUpdate = "ENABLED" | "DISABLED";
 export const AutoUpdate = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -899,8 +894,7 @@ export type AdapterVersionStatus =
   | "AT_RISK"
   | "DEPRECATED"
   | "CREATION_ERROR"
-  | "CREATION_IN_PROGRESS"
-  | (string & {});
+  | "CREATION_IN_PROGRESS";
 export const AdapterVersionStatus = /*@__PURE__*/ S.String;
 
 export type AdapterVersionStatusMessage = string;
@@ -989,8 +983,7 @@ export type JobStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "PARTIAL_SUCCESS"
-  | (string & {});
+  | "PARTIAL_SUCCESS";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type ErrorCode = string;

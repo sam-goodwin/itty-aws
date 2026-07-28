@@ -63,12 +63,11 @@ export class NotFound extends T.applyErrorMatchers(
 export type ComputeInsightsRequestInsightsItemEnum =
   | "INSIGHT_UNSPECIFIED"
   | "INSIGHT_COUNT"
-  | "INSIGHT_PLACES"
-  | (string & {});
+  | "INSIGHT_PLACES";
 export const ComputeInsightsRequestInsightsItemEnum = /*@__PURE__*/ S.String;
 
 export type ComputeInsightsRequestInsightsItemEnumList =
-  ComputeInsightsRequestInsightsItemEnum[];
+  ReadonlyArray<ComputeInsightsRequestInsightsItemEnum>;
 export const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(
   ComputeInsightsRequestInsightsItemEnum,
 ) as any as S.Schema<ComputeInsightsRequestInsightsItemEnumList>;
@@ -91,11 +90,11 @@ export type FilterOperatingStatusItemEnum =
   | "OPERATING_STATUS_UNSPECIFIED"
   | "OPERATING_STATUS_OPERATIONAL"
   | "OPERATING_STATUS_PERMANENTLY_CLOSED"
-  | "OPERATING_STATUS_TEMPORARILY_CLOSED"
-  | (string & {});
+  | "OPERATING_STATUS_TEMPORARILY_CLOSED";
 export const FilterOperatingStatusItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterOperatingStatusItemEnumList = FilterOperatingStatusItemEnum[];
+export type FilterOperatingStatusItemEnumList =
+  ReadonlyArray<FilterOperatingStatusItemEnum>;
 export const FilterOperatingStatusItemEnumList = /*@__PURE__*/ S.Array(
   FilterOperatingStatusItemEnum,
 ) as any as S.Schema<FilterOperatingStatusItemEnumList>;
@@ -106,11 +105,11 @@ export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE"
-  | (string & {});
+  | "PRICE_LEVEL_VERY_EXPENSIVE";
 export const FilterPriceLevelsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterPriceLevelsItemEnumList = FilterPriceLevelsItemEnum[];
+export type FilterPriceLevelsItemEnumList =
+  ReadonlyArray<FilterPriceLevelsItemEnum>;
 export const FilterPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(
   FilterPriceLevelsItemEnum,
 ) as any as S.Schema<FilterPriceLevelsItemEnumList>;
@@ -146,7 +145,7 @@ export const Circle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Circle" }) as any as S.Schema<Circle>;
 
-export type LatLngList = LatLng[];
+export type LatLngList = ReadonlyArray<LatLng>;
 export const LatLngList = /*@__PURE__*/ S.Array(
   LatLng,
 ) as any as S.Schema<LatLngList>;
@@ -201,7 +200,7 @@ export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -294,7 +293,7 @@ export const PlaceInsight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlaceInsight" }) as any as S.Schema<PlaceInsight>;
 
-export type PlaceInsightList = PlaceInsight[];
+export type PlaceInsightList = ReadonlyArray<PlaceInsight>;
 export const PlaceInsightList = /*@__PURE__*/ S.Array(
   PlaceInsight,
 ) as any as S.Schema<PlaceInsightList>;

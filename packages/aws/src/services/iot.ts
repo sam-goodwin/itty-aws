@@ -432,11 +432,7 @@ export const AssociateSbomWithPackageVersionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateSbomWithPackageVersionRequest",
 }) as any as S.Schema<AssociateSbomWithPackageVersionRequest>;
-export type SbomValidationStatus =
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+export type SbomValidationStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export const SbomValidationStatus = /*@__PURE__*/ S.String;
 
 export interface AssociateSbomWithPackageVersionResponse {
@@ -594,10 +590,7 @@ export const AttachSecurityProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachSecurityProfileResponse",
 }) as any as S.Schema<AttachSecurityProfileResponse>;
-export type ThingPrincipalType =
-  | "EXCLUSIVE_THING"
-  | "NON_EXCLUSIVE_THING"
-  | (string & {});
+export type ThingPrincipalType = "EXCLUSIVE_THING" | "NON_EXCLUSIVE_THING";
 export const ThingPrincipalType = /*@__PURE__*/ S.String;
 
 export interface AttachThingPrincipalRequest {
@@ -980,7 +973,7 @@ export const PublicKeyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type AuthorizerStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type AuthorizerStatus = "ACTIVE" | "INACTIVE";
 export const AuthorizerStatus = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -1128,9 +1121,7 @@ export const CreateCertificateFromCsrResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCertificateFromCsrResponse>;
 export type CertificateProviderName = string;
 export type CertificateProviderFunctionArn = string;
-export type CertificateProviderOperation =
-  | "CreateCertificateFromCsr"
-  | (string & {});
+export type CertificateProviderOperation = "CreateCertificateFromCsr";
 export const CertificateProviderOperation = /*@__PURE__*/ S.String;
 
 export type CertificateProviderAccountDefaultForOperations =
@@ -1183,7 +1174,7 @@ export const CreateCertificateProviderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCertificateProviderResponse",
 }) as any as S.Schema<CreateCertificateProviderResponse>;
 export type CommandId = string;
-export type CommandNamespace = "AWS-IoT" | "AWS-IoT-FleetWise" | (string & {});
+export type CommandNamespace = "AWS-IoT" | "AWS-IoT-FleetWise";
 export const CommandNamespace = /*@__PURE__*/ S.String;
 
 export type DisplayName = string;
@@ -1198,7 +1189,7 @@ export const CommandPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ content: S.optional(T.Blob), contentType: S.optional(S.String) }),
 ).annotate({ identifier: "CommandPayload" }) as any as S.Schema<CommandPayload>;
 export type CommandPayloadTemplateString = string;
-export type OutputFormat = "JSON" | "CBOR" | (string & {});
+export type OutputFormat = "JSON" | "CBOR";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface AwsJsonSubstitutionCommandPreprocessorConfig {
@@ -1230,8 +1221,7 @@ export type CommandParameterType =
   | "LONG"
   | "UNSIGNEDLONG"
   | "BOOLEAN"
-  | "BINARY"
-  | (string & {});
+  | "BINARY";
 export const CommandParameterType = /*@__PURE__*/ S.String;
 
 export type StringParameterValue = string;
@@ -1273,8 +1263,7 @@ export type CommandParameterValueComparisonOperator =
   | "IN_SET"
   | "NOT_IN_SET"
   | "IN_RANGE"
-  | "NOT_IN_RANGE"
-  | (string & {});
+  | "NOT_IN_RANGE";
 export const CommandParameterValueComparisonOperator = /*@__PURE__*/ S.String;
 
 export type CommandParameterValueStringList = string[];
@@ -1403,8 +1392,7 @@ export type CustomMetricType =
   | "string-list"
   | "ip-address-list"
   | "number-list"
-  | "number"
-  | (string & {});
+  | "number";
 export const CustomMetricType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomMetricRequest {
@@ -1448,7 +1436,7 @@ export const CreateCustomMetricResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomMetricResponse",
 }) as any as S.Schema<CreateCustomMetricResponse>;
 export type DimensionName = string;
-export type DimensionType = "TOPIC_FILTER" | (string & {});
+export type DimensionType = "TOPIC_FILTER";
 export const DimensionType = /*@__PURE__*/ S.String;
 
 export type DimensionStringValue = string;
@@ -1509,11 +1497,7 @@ export const AuthorizerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizerConfig",
 }) as any as S.Schema<AuthorizerConfig>;
-export type ServiceType =
-  | "DATA"
-  | "CREDENTIAL_PROVIDER"
-  | "JOBS"
-  | (string & {});
+export type ServiceType = "DATA" | "CREDENTIAL_PROVIDER" | "JOBS";
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export type SecurityPolicy = string;
@@ -1544,16 +1528,14 @@ export type AuthenticationType =
   | "CUSTOM_AUTH"
   | "AWS_X509"
   | "AWS_SIGV4"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 export type ApplicationProtocol =
   | "SECURE_MQTT"
   | "MQTT_WSS"
   | "HTTPS"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const ApplicationProtocol = /*@__PURE__*/ S.String;
 
 export type ClientCertificateCallbackArn = string;
@@ -1711,11 +1693,7 @@ export const CreateDynamicThingGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDynamicThingGroupResponse",
 }) as any as S.Schema<CreateDynamicThingGroupResponse>;
 export type FleetMetricName = string;
-export type AggregationTypeName =
-  | "Statistics"
-  | "Percentiles"
-  | "Cardinality"
-  | (string & {});
+export type AggregationTypeName = "Statistics" | "Percentiles" | "Cardinality";
 export const AggregationTypeName = /*@__PURE__*/ S.String;
 
 export type AggregationTypeValue = string;
@@ -1763,8 +1741,7 @@ export type FleetMetricUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None"
-  | (string & {});
+  | "None";
 export const FleetMetricUnit = /*@__PURE__*/ S.String;
 
 export interface CreateFleetMetricRequest {
@@ -1832,7 +1809,7 @@ export const PresignedUrlConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PresignedUrlConfig",
 }) as any as S.Schema<PresignedUrlConfig>;
-export type TargetSelection = "CONTINUOUS" | "SNAPSHOT" | (string & {});
+export type TargetSelection = "CONTINUOUS" | "SNAPSHOT";
 export const TargetSelection = /*@__PURE__*/ S.String;
 
 export type MaxJobExecutionsPerMin = number;
@@ -1881,11 +1858,10 @@ export type JobExecutionFailureType =
   | "FAILED"
   | "REJECTED"
   | "TIMED_OUT"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const JobExecutionFailureType = /*@__PURE__*/ S.String;
 
-export type AbortAction = "CANCEL" | (string & {});
+export type AbortAction = "CANCEL";
 export const AbortAction = /*@__PURE__*/ S.String;
 
 export type AbortThresholdPercentage = number;
@@ -1920,11 +1896,7 @@ export const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ inProgressTimeoutInMinutes: S.optional(S.Number) }),
 ).annotate({ identifier: "TimeoutConfig" }) as any as S.Schema<TimeoutConfig>;
 export type JobTemplateArn = string;
-export type RetryableFailureType =
-  | "FAILED"
-  | "TIMED_OUT"
-  | "ALL"
-  | (string & {});
+export type RetryableFailureType = "FAILED" | "TIMED_OUT" | "ALL";
 export const RetryableFailureType = /*@__PURE__*/ S.String;
 
 export type NumberOfRetries = number;
@@ -1953,11 +1925,7 @@ export const ParameterMap = /*@__PURE__*/ S.Record(
   S.String.pipe(S.optional),
 );
 export type StringDateTime = string;
-export type JobEndBehavior =
-  | "STOP_ROLLOUT"
-  | "CANCEL"
-  | "FORCE_CANCEL"
-  | (string & {});
+export type JobEndBehavior = "STOP_ROLLOUT" | "CANCEL" | "FORCE_CANCEL";
 export const JobEndBehavior = /*@__PURE__*/ S.String;
 
 export type CronExpression = string;
@@ -2161,7 +2129,7 @@ export const CreateKeysAndCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeysAndCertificateResponse",
 }) as any as S.Schema<CreateKeysAndCertificateResponse>;
 export type MitigationActionName = string;
-export type DeviceCertificateUpdateAction = "DEACTIVATE" | (string & {});
+export type DeviceCertificateUpdateAction = "DEACTIVATE";
 export const DeviceCertificateUpdateAction = /*@__PURE__*/ S.String;
 
 export interface UpdateDeviceCertificateParams {
@@ -2172,7 +2140,7 @@ export const UpdateDeviceCertificateParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDeviceCertificateParams",
 }) as any as S.Schema<UpdateDeviceCertificateParams>;
-export type CACertificateUpdateAction = "DEACTIVATE" | (string & {});
+export type CACertificateUpdateAction = "DEACTIVATE";
 export const CACertificateUpdateAction = /*@__PURE__*/ S.String;
 
 export interface UpdateCACertificateParams {
@@ -2197,7 +2165,7 @@ export const AddThingsToThingGroupParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddThingsToThingGroupParams",
 }) as any as S.Schema<AddThingsToThingGroupParams>;
-export type PolicyTemplateName = "BLANK_POLICY" | (string & {});
+export type PolicyTemplateName = "BLANK_POLICY";
 export const PolicyTemplateName = /*@__PURE__*/ S.String;
 
 export interface ReplaceDefaultPolicyVersionParams {
@@ -2208,13 +2176,7 @@ export const ReplaceDefaultPolicyVersionParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplaceDefaultPolicyVersionParams",
 }) as any as S.Schema<ReplaceDefaultPolicyVersionParams>;
-export type LogLevel =
-  | "DEBUG"
-  | "INFO"
-  | "ERROR"
-  | "WARN"
-  | "DISABLED"
-  | (string & {});
+export type LogLevel = "DEBUG" | "INFO" | "ERROR" | "WARN" | "DISABLED";
 export const LogLevel = /*@__PURE__*/ S.String;
 
 export interface EnableIoTLoggingParams {
@@ -2301,7 +2263,7 @@ export type OTAUpdateDescription = string;
 export type Target = string;
 export type Targets = string[];
 export const Targets = /*@__PURE__*/ S.Array(S.String);
-export type Protocol = "MQTT" | "HTTP" | (string & {});
+export type Protocol = "MQTT" | "HTTP";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type Protocols = Protocol[];
@@ -2361,11 +2323,10 @@ export type AwsJobAbortCriteriaFailureType =
   | "FAILED"
   | "REJECTED"
   | "TIMED_OUT"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const AwsJobAbortCriteriaFailureType = /*@__PURE__*/ S.String;
 
-export type AwsJobAbortCriteriaAbortAction = "CANCEL" | (string & {});
+export type AwsJobAbortCriteriaAbortAction = "CANCEL";
 export const AwsJobAbortCriteriaAbortAction = /*@__PURE__*/ S.String;
 
 export type AwsJobAbortCriteriaAbortThresholdPercentage = number;
@@ -2608,8 +2569,7 @@ export type OTAUpdateStatus =
   | "CREATE_COMPLETE"
   | "CREATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const OTAUpdateStatus = /*@__PURE__*/ S.String;
 
 export interface CreateOTAUpdateResponse {
@@ -2734,11 +2694,7 @@ export const CreatePackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePackageVersionRequest",
 }) as any as S.Schema<CreatePackageVersionRequest>;
-export type PackageVersionStatus =
-  | "DRAFT"
-  | "PUBLISHED"
-  | "DEPRECATED"
-  | (string & {});
+export type PackageVersionStatus = "DRAFT" | "PUBLISHED" | "DEPRECATED";
 export const PackageVersionStatus = /*@__PURE__*/ S.String;
 
 export type PackageVersionErrorReason = string;
@@ -2896,7 +2852,7 @@ export const ProvisioningHook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisioningHook",
 }) as any as S.Schema<ProvisioningHook>;
-export type TemplateType = "FLEET_PROVISIONING" | "JITP" | (string & {});
+export type TemplateType = "FLEET_PROVISIONING" | "JITP";
 export const TemplateType = /*@__PURE__*/ S.String;
 
 export interface CreateProvisioningTemplateRequest {
@@ -3031,24 +2987,11 @@ export const CreateRoleAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoleAliasResponse",
 }) as any as S.Schema<CreateRoleAliasResponse>;
-export type AuditFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | "BIWEEKLY"
-  | "MONTHLY"
-  | (string & {});
+export type AuditFrequency = "DAILY" | "WEEKLY" | "BIWEEKLY" | "MONTHLY";
 export const AuditFrequency = /*@__PURE__*/ S.String;
 
 export type DayOfMonth = string;
-export type DayOfWeek =
-  | "SUN"
-  | "MON"
-  | "TUE"
-  | "WED"
-  | "THU"
-  | "FRI"
-  | "SAT"
-  | (string & {});
+export type DayOfWeek = "SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export type TargetAuditCheckNames = string[];
@@ -3098,7 +3041,7 @@ export const CreateScheduledAuditResponse = /*@__PURE__*/ S.suspend(() =>
 export type SecurityProfileDescription = string;
 export type BehaviorName = string;
 export type BehaviorMetric = string;
-export type DimensionValueOperator = "IN" | "NOT_IN" | (string & {});
+export type DimensionValueOperator = "IN" | "NOT_IN";
 export const DimensionValueOperator = /*@__PURE__*/ S.String;
 
 export interface MetricDimension {
@@ -3123,8 +3066,7 @@ export type ComparisonOperator =
   | "in-port-set"
   | "not-in-port-set"
   | "in-set"
-  | "not-in-set"
-  | (string & {});
+  | "not-in-set";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type UnsignedLong = number;
@@ -3169,7 +3111,7 @@ export const StatisticalThreshold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StatisticalThreshold",
 }) as any as S.Schema<StatisticalThreshold>;
-export type ConfidenceLevel = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export type ConfidenceLevel = "LOW" | "MEDIUM" | "HIGH";
 export const ConfidenceLevel = /*@__PURE__*/ S.String;
 
 export interface MachineLearningDetectionConfig {
@@ -3224,7 +3166,7 @@ export const Behavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Behavior" }) as any as S.Schema<Behavior>;
 export type Behaviors = Behavior[];
 export const Behaviors = /*@__PURE__*/ S.Array(Behavior);
-export type AlertTargetType = "SNS" | (string & {});
+export type AlertTargetType = "SNS";
 export const AlertTargetType = /*@__PURE__*/ S.String;
 
 export type AlertTargetArn = string;
@@ -3545,7 +3487,7 @@ export type AwsArn = string;
 export type DynamoOperation = string;
 export type HashKeyField = string;
 export type HashKeyValue = string;
-export type DynamoKeyType = "STRING" | "NUMBER" | (string & {});
+export type DynamoKeyType = "STRING" | "NUMBER";
 export const DynamoKeyType = /*@__PURE__*/ S.String;
 
 export type RangeKeyField = string;
@@ -3599,7 +3541,7 @@ export interface LambdaAction {
 export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functionArn: S.String }),
 ).annotate({ identifier: "LambdaAction" }) as any as S.Schema<LambdaAction>;
-export type MessageFormat = "RAW" | "JSON" | (string & {});
+export type MessageFormat = "RAW" | "JSON";
 export const MessageFormat = /*@__PURE__*/ S.String;
 
 export interface SnsAction {
@@ -3704,8 +3646,7 @@ export type CannedAccessControlList =
   | "authenticated-read"
   | "bucket-owner-read"
   | "bucket-owner-full-control"
-  | "log-delivery-write"
-  | (string & {});
+  | "log-delivery-write";
 export const CannedAccessControlList = /*@__PURE__*/ S.String;
 
 export interface S3Action {
@@ -4353,8 +4294,7 @@ export type TopicRuleDestinationStatus =
   | "IN_PROGRESS"
   | "DISABLED"
   | "ERROR"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const TopicRuleDestinationStatus = /*@__PURE__*/ S.String;
 
 export type CreatedAtDate = Date;
@@ -5365,8 +5305,7 @@ export type LogTargetType =
   | "THING_GROUP"
   | "CLIENT_ID"
   | "SOURCE_IP"
-  | "PRINCIPAL_ID"
-  | (string & {});
+  | "PRINCIPAL_ID";
 export const LogTargetType = /*@__PURE__*/ S.String;
 
 export type LogTargetName = string;
@@ -5441,7 +5380,7 @@ export const DescribeAccountAuditConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeAccountAuditConfigurationRequest",
 }) as any as S.Schema<DescribeAccountAuditConfigurationRequest>;
-export type AuditNotificationType = "SNS" | (string & {});
+export type AuditNotificationType = "SNS";
 export const AuditNotificationType = /*@__PURE__*/ S.String;
 
 export type Enabled = boolean;
@@ -5468,8 +5407,7 @@ export const AuditNotificationTargetConfigurations = /*@__PURE__*/ S.Record(
 );
 export type ConfigName =
   | "CERT_AGE_THRESHOLD_IN_DAYS"
-  | "CERT_EXPIRATION_THRESHOLD_IN_DAYS"
-  | (string & {});
+  | "CERT_EXPIRATION_THRESHOLD_IN_DAYS";
 export const ConfigName = /*@__PURE__*/ S.String;
 
 export type ConfigValue = string;
@@ -5536,12 +5474,7 @@ export const DescribeAuditFindingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAuditFindingRequest",
 }) as any as S.Schema<DescribeAuditFindingRequest>;
-export type AuditFindingSeverity =
-  | "CRITICAL"
-  | "HIGH"
-  | "MEDIUM"
-  | "LOW"
-  | (string & {});
+export type AuditFindingSeverity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
 export const AuditFindingSeverity = /*@__PURE__*/ S.String;
 
 export type ResourceType =
@@ -5553,8 +5486,7 @@ export type ResourceType =
   | "ACCOUNT_SETTINGS"
   | "ROLE_ALIAS"
   | "IAM_ROLE"
-  | "ISSUER_CERTIFICATE"
-  | (string & {});
+  | "ISSUER_CERTIFICATE";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -5656,8 +5588,7 @@ export type AuditMitigationActionsTaskStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const AuditMitigationActionsTaskStatus = /*@__PURE__*/ S.String;
 
 export type TotalFindingsCount = number;
@@ -5825,14 +5756,10 @@ export type AuditTaskStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const AuditTaskStatus = /*@__PURE__*/ S.String;
 
-export type AuditTaskType =
-  | "ON_DEMAND_AUDIT_TASK"
-  | "SCHEDULED_AUDIT_TASK"
-  | (string & {});
+export type AuditTaskType = "ON_DEMAND_AUDIT_TASK" | "SCHEDULED_AUDIT_TASK";
 export const AuditTaskType = /*@__PURE__*/ S.String;
 
 export type TotalChecksCount = number;
@@ -5868,8 +5795,7 @@ export type AuditCheckRunStatus =
   | "CANCELED"
   | "COMPLETED_COMPLIANT"
   | "COMPLETED_NON_COMPLIANT"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AuditCheckRunStatus = /*@__PURE__*/ S.String;
 
 export type CheckCompliant = boolean;
@@ -6050,10 +5976,10 @@ export const DescribeCACertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCACertificateRequest",
 }) as any as S.Schema<DescribeCACertificateRequest>;
-export type CACertificateStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type CACertificateStatus = "ACTIVE" | "INACTIVE";
 export const CACertificateStatus = /*@__PURE__*/ S.String;
 
-export type AutoRegistrationStatus = "ENABLE" | "DISABLE" | (string & {});
+export type AutoRegistrationStatus = "ENABLE" | "DISABLE";
 export const AutoRegistrationStatus = /*@__PURE__*/ S.String;
 
 export type CustomerVersion = number;
@@ -6070,7 +5996,7 @@ export const CertificateValidity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CertificateValidity",
 }) as any as S.Schema<CertificateValidity>;
-export type CertificateMode = "DEFAULT" | "SNI_ONLY" | (string & {});
+export type CertificateMode = "DEFAULT" | "SNI_ONLY";
 export const CertificateMode = /*@__PURE__*/ S.String;
 
 export interface CACertificateDescription {
@@ -6156,8 +6082,7 @@ export type CertificateStatus =
   | "REVOKED"
   | "PENDING_TRANSFER"
   | "REGISTER_INACTIVE"
-  | "PENDING_ACTIVATION"
-  | (string & {});
+  | "PENDING_ACTIVATION";
 export const CertificateStatus = /*@__PURE__*/ S.String;
 
 export type Message = string;
@@ -6358,8 +6283,7 @@ export type DetectMitigationActionsTaskStatus =
   | "IN_PROGRESS"
   | "SUCCESSFUL"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const DetectMitigationActionsTaskStatus = /*@__PURE__*/ S.String;
 
 export type ViolationId = string;
@@ -6510,7 +6434,7 @@ export const DescribeDomainConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainConfigurationRequest",
 }) as any as S.Schema<DescribeDomainConfigurationRequest>;
-export type ServerCertificateStatus = "INVALID" | "VALID" | (string & {});
+export type ServerCertificateStatus = "INVALID" | "VALID";
 export const ServerCertificateStatus = /*@__PURE__*/ S.String;
 
 export type ServerCertificateStatusDetail = string;
@@ -6532,14 +6456,10 @@ export type ServerCertificates = ServerCertificateSummary[];
 export const ServerCertificates = /*@__PURE__*/ S.Array(
   ServerCertificateSummary,
 );
-export type DomainConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
+export type DomainConfigurationStatus = "ENABLED" | "DISABLED";
 export const DomainConfigurationStatus = /*@__PURE__*/ S.String;
 
-export type DomainType =
-  | "ENDPOINT"
-  | "AWS_MANAGED"
-  | "CUSTOMER_MANAGED"
-  | (string & {});
+export type DomainType = "ENDPOINT" | "AWS_MANAGED" | "CUSTOMER_MANAGED";
 export const DomainType = /*@__PURE__*/ S.String;
 
 export interface DescribeDomainConfigurationResponse {
@@ -6596,15 +6516,12 @@ export const DescribeEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeEncryptionConfigurationRequest",
 }) as any as S.Schema<DescribeEncryptionConfigurationRequest>;
-export type EncryptionType =
-  | "CUSTOMER_MANAGED_KMS_KEY"
-  | "AWS_OWNED_KMS_KEY"
-  | (string & {});
+export type EncryptionType = "CUSTOMER_MANAGED_KMS_KEY" | "AWS_OWNED_KMS_KEY";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
 export type KmsAccessRoleArn = string;
-export type ConfigurationStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
+export type ConfigurationStatus = "HEALTHY" | "UNHEALTHY";
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface ConfigurationDetails {
@@ -6697,8 +6614,7 @@ export type EventType =
   | "JOB_EXECUTION"
   | "POLICY"
   | "CERTIFICATE"
-  | "CA_CERTIFICATE"
-  | (string & {});
+  | "CA_CERTIFICATE";
 export const EventType = /*@__PURE__*/ S.String;
 
 export interface Configuration {
@@ -6799,7 +6715,7 @@ export const DescribeIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIndexRequest",
 }) as any as S.Schema<DescribeIndexRequest>;
-export type IndexStatus = "ACTIVE" | "BUILDING" | "REBUILDING" | (string & {});
+export type IndexStatus = "ACTIVE" | "BUILDING" | "REBUILDING";
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export type IndexSchema = string;
@@ -6846,8 +6762,7 @@ export type JobStatus =
   | "CANCELED"
   | "COMPLETED"
   | "DELETION_IN_PROGRESS"
-  | "SCHEDULED"
-  | (string & {});
+  | "SCHEDULED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type Forced = boolean;
@@ -6996,8 +6911,7 @@ export type JobExecutionStatus =
   | "TIMED_OUT"
   | "REJECTED"
   | "REMOVED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const JobExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface JobExecutionStatusDetails {
@@ -7191,8 +7105,7 @@ export type MitigationActionType =
   | "ADD_THINGS_TO_THING_GROUP"
   | "REPLACE_DEFAULT_POLICY_VERSION"
   | "ENABLE_IOT_LOGGING"
-  | "PUBLISH_FINDING_TO_SNS"
-  | (string & {});
+  | "PUBLISH_FINDING_TO_SNS";
 export const MitigationActionType = /*@__PURE__*/ S.String;
 
 export interface DescribeMitigationActionResponse {
@@ -7590,11 +7503,7 @@ export const ThingGroupMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThingGroupMetadata",
 }) as any as S.Schema<ThingGroupMetadata>;
-export type DynamicGroupStatus =
-  | "ACTIVE"
-  | "BUILDING"
-  | "REBUILDING"
-  | (string & {});
+export type DynamicGroupStatus = "ACTIVE" | "BUILDING" | "REBUILDING";
 export const DynamicGroupStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeThingGroupResponse {
@@ -7651,8 +7560,7 @@ export type Status =
   | "Completed"
   | "Failed"
   | "Cancelled"
-  | "Cancelling"
-  | (string & {});
+  | "Cancelling";
 export const Status = /*@__PURE__*/ S.String;
 
 export type Count = number;
@@ -7966,11 +7874,7 @@ export const GetBehaviorModelTrainingSummariesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBehaviorModelTrainingSummariesRequest",
 }) as any as S.Schema<GetBehaviorModelTrainingSummariesRequest>;
-export type ModelStatus =
-  | "PENDING_BUILD"
-  | "ACTIVE"
-  | "EXPIRED"
-  | (string & {});
+export type ModelStatus = "PENDING_BUILD" | "ACTIVE" | "EXPIRED";
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export type DataCollectionPercentage = number;
@@ -8194,8 +8098,7 @@ export type CommandExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "REJECTED"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const CommandExecutionStatus = /*@__PURE__*/ S.String;
 
 export type StatusReasonCode = string;
@@ -8336,24 +8239,20 @@ export const GetIndexingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIndexingConfigurationRequest",
 }) as any as S.Schema<GetIndexingConfigurationRequest>;
-export type ThingIndexingMode =
-  | "OFF"
-  | "REGISTRY"
-  | "REGISTRY_AND_SHADOW"
-  | (string & {});
+export type ThingIndexingMode = "OFF" | "REGISTRY" | "REGISTRY_AND_SHADOW";
 export const ThingIndexingMode = /*@__PURE__*/ S.String;
 
-export type ThingConnectivityIndexingMode = "OFF" | "STATUS" | (string & {});
+export type ThingConnectivityIndexingMode = "OFF" | "STATUS";
 export const ThingConnectivityIndexingMode = /*@__PURE__*/ S.String;
 
-export type DeviceDefenderIndexingMode = "OFF" | "VIOLATIONS" | (string & {});
+export type DeviceDefenderIndexingMode = "OFF" | "VIOLATIONS";
 export const DeviceDefenderIndexingMode = /*@__PURE__*/ S.String;
 
-export type NamedShadowIndexingMode = "OFF" | "ON" | (string & {});
+export type NamedShadowIndexingMode = "OFF" | "ON";
 export const NamedShadowIndexingMode = /*@__PURE__*/ S.String;
 
 export type FieldName = string;
-export type FieldType = "Number" | "String" | "Boolean" | (string & {});
+export type FieldType = "Number" | "String" | "Boolean";
 export const FieldType = /*@__PURE__*/ S.String;
 
 export interface Field {
@@ -8369,7 +8268,7 @@ export type ShadowName = string;
 export type NamedShadowNamesFilter = string[];
 export const NamedShadowNamesFilter = /*@__PURE__*/ S.Array(S.String);
 export type TargetFieldName = string;
-export type TargetFieldOrder = "LatLon" | "LonLat" | (string & {});
+export type TargetFieldOrder = "LatLon" | "LonLat";
 export const TargetFieldOrder = /*@__PURE__*/ S.String;
 
 export interface GeoLocationTarget {
@@ -8383,7 +8282,7 @@ export const GeoLocationTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeoLocationTarget>;
 export type GeoLocationsFilter = GeoLocationTarget[];
 export const GeoLocationsFilter = /*@__PURE__*/ S.Array(GeoLocationTarget);
-export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA" | (string & {});
+export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA";
 export const FleetIndexingApi = /*@__PURE__*/ S.String;
 
 export type FleetIndexingApiList = FleetIndexingApi[];
@@ -8430,7 +8329,7 @@ export const ThingIndexingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThingIndexingConfiguration",
 }) as any as S.Schema<ThingIndexingConfiguration>;
-export type ThingGroupIndexingMode = "OFF" | "ON" | (string & {});
+export type ThingGroupIndexingMode = "OFF" | "ON";
 export const ThingGroupIndexingMode = /*@__PURE__*/ S.String;
 
 export interface ThingGroupIndexingConfiguration {
@@ -8986,8 +8885,7 @@ export type DisconnectReasonValue =
   | "WEBSOCKET_TTL_EXPIRATION"
   | "CUSTOMAUTH_TTL_EXPIRATION"
   | "UNKNOWN"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const DisconnectReasonValue = /*@__PURE__*/ S.String;
 
 export type SourceIp = string | redacted.Redacted<string>;
@@ -9166,8 +9064,7 @@ export type DeviceDefenderThingName = string;
 export type BehaviorCriteriaType =
   | "STATIC"
   | "STATISTICAL"
-  | "MACHINE_LEARNING"
-  | (string & {});
+  | "MACHINE_LEARNING";
 export const BehaviorCriteriaType = /*@__PURE__*/ S.String;
 
 export type ListSuppressedAlerts = boolean;
@@ -9175,8 +9072,7 @@ export type VerificationState =
   | "FALSE_POSITIVE"
   | "BENIGN_POSITIVE"
   | "TRUE_POSITIVE"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const VerificationState = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
@@ -9380,8 +9276,7 @@ export type AuditMitigationActionsExecutionStatus =
   | "FAILED"
   | "CANCELED"
   | "SKIPPED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const AuditMitigationActionsExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface ListAuditMitigationActionsExecutionsRequest {
@@ -9935,7 +9830,7 @@ export const ListCertificatesByCAResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCertificatesByCAResponse",
 }) as any as S.Schema<ListCertificatesByCAResponse>;
 export type CommandMaxResults = number;
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface TimeFilter {
@@ -10156,8 +10051,7 @@ export type DetectMitigationActionExecutionStatus =
   | "IN_PROGRESS"
   | "SUCCESSFUL"
   | "FAILED"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const DetectMitigationActionExecutionStatus = /*@__PURE__*/ S.String;
 
 export type DetectMitigationActionExecutionErrorCode = string;
@@ -11518,7 +11412,7 @@ export const ListRoleAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRoleAliasesResponse",
 }) as any as S.Schema<ListRoleAliasesResponse>;
-export type SbomValidationResult = "FAILED" | "SUCCEEDED" | (string & {});
+export type SbomValidationResult = "FAILED" | "SUCCEEDED";
 export const SbomValidationResult = /*@__PURE__*/ S.String;
 
 export interface ListSbomValidationResultsRequest {
@@ -11555,8 +11449,7 @@ export const ListSbomValidationResultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSbomValidationResultsRequest>;
 export type SbomValidationErrorCode =
   | "INCOMPATIBLE_FORMAT"
-  | "FILE_SIZE_LIMIT_EXCEEDED"
-  | (string & {});
+  | "FILE_SIZE_LIMIT_EXCEEDED";
 export const SbomValidationErrorCode = /*@__PURE__*/ S.String;
 
 export type SbomValidationErrorMessage = string;
@@ -12091,7 +11984,7 @@ export const ListThingPrincipalsV2Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListThingPrincipalsV2Response",
 }) as any as S.Schema<ListThingPrincipalsV2Response>;
-export type ReportType = "ERRORS" | "RESULTS" | (string & {});
+export type ReportType = "ERRORS" | "RESULTS";
 export const ReportType = /*@__PURE__*/ S.String;
 
 export interface ListThingRegistrationTaskReportsRequest {
@@ -12620,8 +12513,7 @@ export const ListViolationEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ViolationEventType =
   | "in-alarm"
   | "alarm-cleared"
-  | "alarm-invalidated"
-  | (string & {});
+  | "alarm-invalidated";
 export const ViolationEventType = /*@__PURE__*/ S.String;
 
 export interface ViolationEvent {
@@ -13438,12 +13330,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
-export type ActionType =
-  | "PUBLISH"
-  | "SUBSCRIBE"
-  | "RECEIVE"
-  | "CONNECT"
-  | (string & {});
+export type ActionType = "PUBLISH" | "SUBSCRIBE" | "RECEIVE" | "CONNECT";
 export const ActionType = /*@__PURE__*/ S.String;
 
 export type Resource = string;
@@ -13517,11 +13404,7 @@ export const Denied = /*@__PURE__*/ S.suspend(() =>
     explicitDeny: S.optional(ExplicitDeny),
   }),
 ).annotate({ identifier: "Denied" }) as any as S.Schema<Denied>;
-export type AuthDecision =
-  | "ALLOWED"
-  | "EXPLICIT_DENY"
-  | "IMPLICIT_DENY"
-  | (string & {});
+export type AuthDecision = "ALLOWED" | "EXPLICIT_DENY" | "IMPLICIT_DENY";
 export const AuthDecision = /*@__PURE__*/ S.String;
 
 export type MissingContextValue = string;
@@ -14438,7 +14321,7 @@ export const UpdatePackageConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePackageConfigurationResponse",
 }) as any as S.Schema<UpdatePackageConfigurationResponse>;
-export type PackageVersionAction = "PUBLISH" | "DEPRECATE" | (string & {});
+export type PackageVersionAction = "PUBLISH" | "DEPRECATE";
 export const PackageVersionAction = /*@__PURE__*/ S.String;
 
 export interface UpdatePackageVersionRequest {

@@ -194,7 +194,10 @@ export type HostnameCertificatesCreateResponseStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnameCertificatesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -316,7 +319,10 @@ export type HostnameCertificatesDeleteResponseStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnameCertificatesDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -425,14 +431,20 @@ export type HostnamesGetResponseCertStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnamesGetResponseCertStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesGetResponseStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnamesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -516,7 +528,10 @@ export type HostnameCertificatesGetResponseStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnameCertificatesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -665,7 +680,10 @@ export type HostnameCertificatesListResultItemStatus =
   | "initializing"
   | "pending_deployment"
   | "pending_deletion"
-  | (string & {});
+  | "active"
+  | "deleted"
+  | "deployment_timed_out"
+  | "deletion_timed_out";
 export const HostnameCertificatesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface HostnameCertificatesListResultItem {
@@ -702,7 +720,7 @@ export const HostnameCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnameCertificatesListResultItem>;
 
 export type HostnameCertificatesListResultList =
-  HostnameCertificatesListResultItem[];
+  ReadonlyArray<HostnameCertificatesListResultItem>;
 export const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
   HostnameCertificatesListResultItem,
 ) as any as S.Schema<HostnameCertificatesListResultList>;
@@ -771,7 +789,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -810,7 +828,7 @@ export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostnamesUpdateRequestConfigItem>;
 
 export type HostnamesUpdateRequestConfigList =
-  HostnamesUpdateRequestConfigItem[];
+  ReadonlyArray<HostnamesUpdateRequestConfigItem>;
 export const HostnamesUpdateRequestConfigList = /*@__PURE__*/ S.Array(
   HostnamesUpdateRequestConfigItem,
 ) as any as S.Schema<HostnamesUpdateRequestConfigList>;
@@ -864,7 +882,8 @@ export const HostnamesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostnamesUpdateResultItem",
 }) as any as S.Schema<HostnamesUpdateResultItem>;
 
-export type HostnamesUpdateResultList = HostnamesUpdateResultItem[];
+export type HostnamesUpdateResultList =
+  ReadonlyArray<HostnamesUpdateResultItem>;
 export const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
   HostnamesUpdateResultItem,
 ) as any as S.Schema<HostnamesUpdateResultList>;
@@ -1099,7 +1118,8 @@ export const ZoneCertificatesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneCertificatesListResultItem",
 }) as any as S.Schema<ZoneCertificatesListResultItem>;
 
-export type ZoneCertificatesListResultList = ZoneCertificatesListResultItem[];
+export type ZoneCertificatesListResultList =
+  ReadonlyArray<ZoneCertificatesListResultItem>;
 export const ZoneCertificatesListResultList = /*@__PURE__*/ S.Array(
   ZoneCertificatesListResultItem,
 ) as any as S.Schema<ZoneCertificatesListResultList>;

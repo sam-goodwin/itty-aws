@@ -105,11 +105,10 @@ export type ProviderOAuthConfigSystemProviderIdEnum =
   | "ROVO"
   | "NEW_RELIC"
   | "DATASTAX"
-  | "DYNATRACE"
-  | (string & {});
+  | "DYNATRACE";
 export const ProviderOAuthConfigSystemProviderIdEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -154,8 +153,7 @@ export type CustomOAuthConfigScmProviderEnum =
   | "SCM_PROVIDER_UNKNOWN"
   | "GITHUB_ENTERPRISE"
   | "GITLAB_ENTERPRISE"
-  | "BITBUCKET_DATA_CENTER"
-  | (string & {});
+  | "BITBUCKET_DATA_CENTER";
 export const CustomOAuthConfigScmProviderEnum = /*@__PURE__*/ S.String;
 
 /** ServiceDirectoryConfig represents Service Directory configuration for a connection. */
@@ -294,7 +292,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -441,8 +439,7 @@ export type InstallationStateStageEnum =
   | "PENDING_CREATE_APP"
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const InstallationStateStageEnum = /*@__PURE__*/ S.String;
 
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
@@ -469,8 +466,7 @@ export type GitHubConfigGithubAppEnum =
   | "DEVELOPER_CONNECT"
   | "FIREBASE"
   | "GEMINI_CODE_ASSIST"
-  | "DATAFORM"
-  | (string & {});
+  | "DATAFORM";
 export const GitHubConfigGithubAppEnum = /*@__PURE__*/ S.String;
 
 /** Represents an OAuth token of the account that authorized the Connection, and associated metadata. */
@@ -860,8 +856,7 @@ export type InsightsConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "COMPLETE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const InsightsConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Artifact Registry configurations. */
@@ -910,7 +905,7 @@ export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
 
-export type ArtifactConfigList = ArtifactConfig[];
+export type ArtifactConfigList = ReadonlyArray<ArtifactConfig>;
 export const ArtifactConfigList = /*@__PURE__*/ S.Array(
   ArtifactConfig,
 ) as any as S.Schema<ArtifactConfigList>;
@@ -960,8 +955,7 @@ export const AppHubService = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "LINKED"
-  | "UNLINKED"
-  | (string & {});
+  | "UNLINKED";
 export const RuntimeConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** AppHubWorkload represents the App Hub Workload. */
@@ -1007,12 +1001,12 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
-export type RuntimeConfigList = RuntimeConfig[];
+export type RuntimeConfigList = ReadonlyArray<RuntimeConfig>;
 export const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -1373,7 +1367,7 @@ export const Installation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Installation" }) as any as S.Schema<Installation>;
 
-export type InstallationList = Installation[];
+export type InstallationList = ReadonlyArray<Installation>;
 export const InstallationList = /*@__PURE__*/ S.Array(
   Installation,
 ) as any as S.Schema<InstallationList>;
@@ -1392,7 +1386,7 @@ export const FetchGitHubInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchGitHubInstallationsResponse>;
 
 export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum =
-  "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH" | (string & {});
+  "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH";
 export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRefTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1484,7 +1478,7 @@ export const LinkableGitRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkableGitRepository",
 }) as any as S.Schema<LinkableGitRepository>;
 
-export type LinkableGitRepositoryList = LinkableGitRepository[];
+export type LinkableGitRepositoryList = ReadonlyArray<LinkableGitRepository>;
 export const LinkableGitRepositoryList = /*@__PURE__*/ S.Array(
   LinkableGitRepository,
 ) as any as S.Schema<LinkableGitRepositoryList>;
@@ -1691,7 +1685,7 @@ export const UserRepository = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserRepository" }) as any as S.Schema<UserRepository>;
 
-export type UserRepositoryList = UserRepository[];
+export type UserRepositoryList = ReadonlyArray<UserRepository>;
 export const UserRepositoryList = /*@__PURE__*/ S.Array(
   UserRepository,
 ) as any as S.Schema<UserRepositoryList>;
@@ -1898,8 +1892,7 @@ export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest =
 export type DeploymentEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_ACTIVE"
-  | "STATE_INACTIVE"
-  | (string & {});
+  | "STATE_INACTIVE";
 export const DeploymentEventStateEnum = /*@__PURE__*/ S.String;
 
 /** The ArtifactDeployment resource represents the deployment of the artifact within the InsightsConfig resource. */
@@ -1936,7 +1929,7 @@ export const ArtifactDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactDeployment",
 }) as any as S.Schema<ArtifactDeployment>;
 
-export type ArtifactDeploymentList = ArtifactDeployment[];
+export type ArtifactDeploymentList = ReadonlyArray<ArtifactDeployment>;
 export const ArtifactDeploymentList = /*@__PURE__*/ S.Array(
   ArtifactDeployment,
 ) as any as S.Schema<ArtifactDeploymentList>;
@@ -2027,7 +2020,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2079,7 +2072,7 @@ export const ListProjectsLocationsAccountConnectorsRequest =
     identifier: "ListProjectsLocationsAccountConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsAccountConnectorsRequest>;
 
-export type AccountConnectorList = AccountConnector[];
+export type AccountConnectorList = ReadonlyArray<AccountConnector>;
 export const AccountConnectorList = /*@__PURE__*/ S.Array(
   AccountConnector,
 ) as any as S.Schema<AccountConnectorList>;
@@ -2134,7 +2127,7 @@ export const ListProjectsLocationsAccountConnectorsUsersRequest =
     identifier: "ListProjectsLocationsAccountConnectorsUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsAccountConnectorsUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -2189,7 +2182,7 @@ export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectionsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
-export type ConnectionList = Connection[];
+export type ConnectionList = ReadonlyArray<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;
@@ -2244,7 +2237,7 @@ export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest =
     identifier: "ListProjectsLocationsConnectionsGitRepositoryLinksRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
-export type GitRepositoryLinkList = GitRepositoryLink[];
+export type GitRepositoryLinkList = ReadonlyArray<GitRepositoryLink>;
 export const GitRepositoryLinkList = /*@__PURE__*/ S.Array(
   GitRepositoryLink,
 ) as any as S.Schema<GitRepositoryLinkList>;
@@ -2299,7 +2292,7 @@ export const ListProjectsLocationsInsightsConfigsRequest =
     identifier: "ListProjectsLocationsInsightsConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsInsightsConfigsRequest>;
 
-export type InsightsConfigList = InsightsConfig[];
+export type InsightsConfigList = ReadonlyArray<InsightsConfig>;
 export const InsightsConfigList = /*@__PURE__*/ S.Array(
   InsightsConfig,
 ) as any as S.Schema<InsightsConfigList>;
@@ -2354,7 +2347,7 @@ export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest =
     identifier: "ListProjectsLocationsInsightsConfigsDeploymentEventsRequest",
   }) as any as S.Schema<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
-export type DeploymentEventList = DeploymentEvent[];
+export type DeploymentEventList = ReadonlyArray<DeploymentEvent>;
 export const DeploymentEventList = /*@__PURE__*/ S.Array(
   DeploymentEvent,
 ) as any as S.Schema<DeploymentEventList>;
@@ -2406,7 +2399,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2763,8 +2756,7 @@ export type StartOAuthResponseSystemProviderIdEnum =
   | "ROVO"
   | "NEW_RELIC"
   | "DATASTAX"
-  | "DYNATRACE"
-  | (string & {});
+  | "DYNATRACE";
 export const StartOAuthResponseSystemProviderIdEnum = /*@__PURE__*/ S.String;
 
 /** Message for responding to starting an OAuth flow. */

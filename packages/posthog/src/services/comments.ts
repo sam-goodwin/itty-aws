@@ -71,11 +71,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -107,17 +106,10 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type CommentMentionsList = number[];
-export const CommentMentionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CommentMentionsList>;
-
-export interface Comment {
+export interface CommentOutput {
   id?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   deleted?: boolean | null;
-  mentions?: CommentMentionsList;
-  slug?: string;
   /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
   is_task?: boolean;
   /** The user who marked this task complete. Null for open tasks and non-task comments. */
@@ -133,13 +125,11 @@ export interface Comment {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+export const CommentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    mentions: S.optional(CommentMentionsList),
-    slug: S.optional(S.String),
     is_task: S.optional(S.Boolean),
     completed_by: S.optional(S.NullOr(UserBasic)),
     content: S.optional(S.NullOr(S.String)),
@@ -152,7 +142,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
     completed_at: S.optional(S.NullOr(S.String)),
     source_comment: S.optional(S.NullOr(S.String)),
   }),
-).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
+).annotate({ identifier: "CommentOutput" }) as any as S.Schema<CommentOutput>;
 
 export interface CommentsCountRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -179,7 +169,7 @@ export const CommentsCountRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsCountRetrieveResponse",
 }) as any as S.Schema<CommentsCountRetrieveResponse>;
 
-export type CommentsCreateRequestMentionsList = number[];
+export type CommentsCreateRequestMentionsList = ReadonlyArray<number>;
 export const CommentsCreateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsCreateRequestMentionsList>;
@@ -187,44 +177,30 @@ export const CommentsCreateRequestMentionsList = /*@__PURE__*/ S.Array(
 export interface CommentsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
-  created_by?: UserBasic;
   deleted?: boolean | null;
   mentions?: CommentsCreateRequestMentionsList;
   slug?: string;
   /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
   is_task?: boolean;
-  /** The user who marked this task complete. Null for open tasks and non-task comments. */
-  completed_by?: UserBasic | null;
   content?: string | null;
   rich_content?: unknown;
-  version?: number;
-  created_at?: string;
   item_id?: string | null;
   item_context?: unknown;
   scope?: string;
-  /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH. */
-  completed_at?: string | null;
   source_comment?: string | null;
 }
 export const CommentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    created_by: S.optional(UserBasic),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsCreateRequestMentionsList),
     slug: S.optional(S.String),
     is_task: S.optional(S.Boolean),
-    completed_by: S.optional(S.NullOr(UserBasic)),
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
-    version: S.optional(S.Number),
-    created_at: S.optional(S.String),
     item_id: S.optional(S.NullOr(S.String)),
     item_context: S.optional(S.Unknown),
     scope: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -265,18 +241,10 @@ export const CommentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsDestroyResponse",
 }) as any as S.Schema<CommentsDestroyResponse>;
 
-export type CommentsListRequestCompleted =
-  | "any"
-  | "open"
-  | "completed"
-  | (string & {});
+export type CommentsListRequestCompleted = "any" | "open" | "completed";
 export const CommentsListRequestCompleted = /*@__PURE__*/ S.String;
 
-export type CommentsListRequestKind =
-  | "any"
-  | "comment"
-  | "task"
-  | (string & {});
+export type CommentsListRequestKind = "any" | "comment" | "task";
 export const CommentsListRequestKind = /*@__PURE__*/ S.String;
 
 export interface CommentsListRequest {
@@ -318,27 +286,28 @@ export const CommentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsListRequest",
 }) as any as S.Schema<CommentsListRequest>;
 
-export type PaginatedCommentListResultsList = Comment[];
-export const PaginatedCommentListResultsList = /*@__PURE__*/ S.Array(
-  Comment,
-) as any as S.Schema<PaginatedCommentListResultsList>;
+export type PaginatedCommentListOutputResultsList =
+  ReadonlyArray<CommentOutput>;
+export const PaginatedCommentListOutputResultsList = /*@__PURE__*/ S.Array(
+  CommentOutput,
+) as any as S.Schema<PaginatedCommentListOutputResultsList>;
 
-export interface PaginatedCommentList {
+export interface PaginatedCommentListOutput {
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedCommentListResultsList;
+  results?: PaginatedCommentListOutputResultsList;
 }
-export const PaginatedCommentList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedCommentListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedCommentListResultsList),
+    results: S.optional(PaginatedCommentListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedCommentList",
-}) as any as S.Schema<PaginatedCommentList>;
+  identifier: "PaginatedCommentListOutput",
+}) as any as S.Schema<PaginatedCommentListOutput>;
 
-export type CommentsPartialUpdateRequestMentionsList = number[];
+export type CommentsPartialUpdateRequestMentionsList = ReadonlyArray<number>;
 export const CommentsPartialUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsPartialUpdateRequestMentionsList>;
@@ -348,43 +317,31 @@ export interface CommentsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
-  created_by?: UserBasic;
   deleted?: boolean | null;
   mentions?: CommentsPartialUpdateRequestMentionsList;
   slug?: string;
   /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
   is_task?: boolean;
-  /** The user who marked this task complete. Null for open tasks and non-task comments. */
-  completed_by?: UserBasic | null;
   content?: string | null;
   rich_content?: unknown;
-  version?: number;
-  created_at?: string;
   item_id?: string | null;
   item_context?: unknown;
   scope?: string;
-  /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH. */
-  completed_at?: string | null;
   source_comment?: string | null;
 }
 export const CommentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_by: S.optional(UserBasic),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsPartialUpdateRequestMentionsList),
     slug: S.optional(S.String),
     is_task: S.optional(S.Boolean),
-    completed_by: S.optional(S.NullOr(UserBasic)),
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
-    version: S.optional(S.Number),
-    created_at: S.optional(S.String),
     item_id: S.optional(S.NullOr(S.String)),
     item_context: S.optional(S.Unknown),
     scope: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -467,7 +424,7 @@ export const CommentsThreadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentsThreadRetrieveResponse",
 }) as any as S.Schema<CommentsThreadRetrieveResponse>;
 
-export type CommentsUpdateRequestMentionsList = number[];
+export type CommentsUpdateRequestMentionsList = ReadonlyArray<number>;
 export const CommentsUpdateRequestMentionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CommentsUpdateRequestMentionsList>;
@@ -477,43 +434,31 @@ export interface CommentsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this comment. */
   id: string;
-  created_by?: UserBasic;
   deleted?: boolean | null;
   mentions?: CommentsUpdateRequestMentionsList;
   slug?: string;
   /** Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation. */
   is_task?: boolean;
-  /** The user who marked this task complete. Null for open tasks and non-task comments. */
-  completed_by?: UserBasic | null;
   content?: string | null;
   rich_content?: unknown;
-  version?: number;
-  created_at?: string;
   item_id?: string | null;
   item_context?: unknown;
   scope?: string;
-  /** ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH. */
-  completed_at?: string | null;
   source_comment?: string | null;
 }
 export const CommentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_by: S.optional(UserBasic),
     deleted: S.optional(S.NullOr(S.Boolean)),
     mentions: S.optional(CommentsUpdateRequestMentionsList),
     slug: S.optional(S.String),
     is_task: S.optional(S.Boolean),
-    completed_by: S.optional(S.NullOr(UserBasic)),
     content: S.optional(S.NullOr(S.String)),
     rich_content: S.optional(S.Unknown),
-    version: S.optional(S.Number),
-    created_at: S.optional(S.String),
     item_id: S.optional(S.NullOr(S.String)),
     item_context: S.optional(S.Unknown),
     scope: S.optional(S.String),
-    completed_at: S.optional(S.NullOr(S.String)),
     source_comment: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -530,12 +475,12 @@ export type CommentsCompleteCreateError = PosthogOpError;
 /** Mark a task-comment as complete. Sets completed_at and completed_by. 400 if the comment is not a task or is already complete. */
 export const commentsCompleteCreate: API.OperationMethod<
   CommentsCompleteCreateRequest,
-  Comment,
+  CommentOutput,
   CommentsCompleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsCompleteCreateRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -562,12 +507,12 @@ export type CommentsCreateError =
   | PosthogOpError;
 export const commentsCreate: API.OperationMethod<
   CommentsCreateRequest,
-  Comment,
+  CommentOutput,
   CommentsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsCreateRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -595,12 +540,12 @@ export type CommentsListError =
   | PosthogOpError;
 export const commentsList: API.OperationMethod<
   CommentsListRequest,
-  PaginatedCommentList,
+  PaginatedCommentListOutput,
   CommentsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsListRequest,
-  output: PaginatedCommentList,
+  output: PaginatedCommentListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -613,12 +558,12 @@ export type CommentsPartialUpdateError =
   | PosthogOpError;
 export const commentsPartialUpdate: API.OperationMethod<
   CommentsPartialUpdateRequest,
-  Comment,
+  CommentOutput,
   CommentsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsPartialUpdateRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -628,12 +573,12 @@ export type CommentsReopenCreateError = PosthogOpError;
 /** Reopen a completed task-comment. Clears completed_at and completed_by. 400 if the comment is not a task or is already open. */
 export const commentsReopenCreate: API.OperationMethod<
   CommentsReopenCreateRequest,
-  Comment,
+  CommentOutput,
   CommentsReopenCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsReopenCreateRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -642,12 +587,12 @@ export const commentsReopenCreate: API.OperationMethod<
 export type CommentsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const commentsRetrieve: API.OperationMethod<
   CommentsRetrieveRequest,
-  Comment,
+  CommentOutput,
   CommentsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsRetrieveRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -674,12 +619,12 @@ export type CommentsUpdateError =
   | PosthogOpError;
 export const commentsUpdate: API.OperationMethod<
   CommentsUpdateRequest,
-  Comment,
+  CommentOutput,
   CommentsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CommentsUpdateRequest,
-  output: Comment,
+  output: CommentOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

@@ -143,7 +143,7 @@ export const BaselineEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BaselineEntry" }) as any as S.Schema<BaselineEntry>;
 
-export type BaselineOverviewEntriesList = BaselineEntry[];
+export type BaselineOverviewEntriesList = ReadonlyArray<BaselineEntry>;
 export const BaselineOverviewEntriesList = /*@__PURE__*/ S.Array(
   BaselineEntry,
 ) as any as S.Schema<BaselineOverviewEntriesList>;
@@ -261,7 +261,7 @@ export const VisualReviewReposListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisualReviewReposListRequest",
 }) as any as S.Schema<VisualReviewReposListRequest>;
 
-export type PaginatedRepoListResultsList = Repo[];
+export type PaginatedRepoListResultsList = ReadonlyArray<Repo>;
 export const PaginatedRepoListResultsList = /*@__PURE__*/ S.Array(
   Repo,
 ) as any as S.Schema<PaginatedRepoListResultsList>;
@@ -455,7 +455,7 @@ export const VisualReviewReposQuarantineListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisualReviewReposQuarantineListRequest>;
 
 export type PaginatedQuarantinedIdentifierEntryListResultsList =
-  QuarantinedIdentifierEntry[];
+  ReadonlyArray<QuarantinedIdentifierEntry>;
 export const PaginatedQuarantinedIdentifierEntryListResultsList =
   /*@__PURE__*/ S.Array(
     QuarantinedIdentifierEntry,
@@ -569,7 +569,7 @@ export const VisualReviewReposRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisualReviewReposRunsListRequest",
 }) as any as S.Schema<VisualReviewReposRunsListRequest>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RunSummary {
@@ -643,7 +643,7 @@ export const Run = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Run" }) as any as S.Schema<Run>;
 
-export type PaginatedRunListResultsList = Run[];
+export type PaginatedRunListResultsList = ReadonlyArray<Run>;
 export const PaginatedRunListResultsList = /*@__PURE__*/ S.Array(
   Run,
 ) as any as S.Schema<PaginatedRunListResultsList>;
@@ -751,7 +751,7 @@ export const SnapshotHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotHistoryEntry>;
 
 export type PaginatedSnapshotHistoryEntryListResultsList =
-  SnapshotHistoryEntry[];
+  ReadonlyArray<SnapshotHistoryEntry>;
 export const PaginatedSnapshotHistoryEntryListResultsList =
   /*@__PURE__*/ S.Array(
     SnapshotHistoryEntry,
@@ -831,7 +831,7 @@ export const SnapshotManifestItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotManifestItem>;
 
 export type VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList =
-  SnapshotManifestItem[];
+  ReadonlyArray<SnapshotManifestItem>;
 export const VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList =
   /*@__PURE__*/ S.Array(
     SnapshotManifestItem,
@@ -894,7 +894,7 @@ export const UploadTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UploadTarget" }) as any as S.Schema<UploadTarget>;
 
-export type AddSnapshotsResultUploadsList = UploadTarget[];
+export type AddSnapshotsResultUploadsList = ReadonlyArray<UploadTarget>;
 export const AddSnapshotsResultUploadsList = /*@__PURE__*/ S.Array(
   UploadTarget,
 ) as any as S.Schema<AddSnapshotsResultUploadsList>;
@@ -929,7 +929,7 @@ export const ApproveSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot "Accept change" action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint. */
 export type VisualReviewRunsApproveCreateRequestSnapshotsList =
-  ApproveSnapshotInput[];
+  ReadonlyArray<ApproveSnapshotInput>;
 export const VisualReviewRunsApproveCreateRequestSnapshotsList =
   /*@__PURE__*/ S.Array(
     ApproveSnapshotInput,
@@ -999,7 +999,8 @@ export const VisualReviewRunsCountsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "VisualReviewRunsCountsRetrieveRequest",
 }) as any as S.Schema<VisualReviewRunsCountsRetrieveRequest>;
 
-export type VisualReviewRunsCreateRequestSnapshotsList = SnapshotManifestItem[];
+export type VisualReviewRunsCreateRequestSnapshotsList =
+  ReadonlyArray<SnapshotManifestItem>;
 export const VisualReviewRunsCreateRequestSnapshotsList = /*@__PURE__*/ S.Array(
   SnapshotManifestItem,
 ) as any as S.Schema<VisualReviewRunsCreateRequestSnapshotsList>;
@@ -1013,7 +1014,8 @@ export const VisualReviewRunsCreateRequestBaselineHashesMap =
     S.String,
   ) as any as S.Schema<VisualReviewRunsCreateRequestBaselineHashesMap>;
 
-export type VisualReviewRunsCreateRequestRemovedIdentifiersList = string[];
+export type VisualReviewRunsCreateRequestRemovedIdentifiersList =
+  ReadonlyArray<string>;
 export const VisualReviewRunsCreateRequestRemovedIdentifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1071,7 +1073,7 @@ export const VisualReviewRunsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisualReviewRunsCreateRequest",
 }) as any as S.Schema<VisualReviewRunsCreateRequest>;
 
-export type CreateRunResultUploadsList = UploadTarget[];
+export type CreateRunResultUploadsList = ReadonlyArray<UploadTarget>;
 export const CreateRunResultUploadsList = /*@__PURE__*/ S.Array(
   UploadTarget,
 ) as any as S.Schema<CreateRunResultUploadsList>;
@@ -1310,7 +1312,7 @@ export const DiffCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiffCluster" }) as any as S.Schema<DiffCluster>;
 
-export type ClusterSummaryItemsList = DiffCluster[];
+export type ClusterSummaryItemsList = ReadonlyArray<DiffCluster>;
 export const ClusterSummaryItemsList = /*@__PURE__*/ S.Array(
   DiffCluster,
 ) as any as S.Schema<ClusterSummaryItemsList>;
@@ -1383,7 +1385,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type PaginatedSnapshotListResultsList = Snapshot[];
+export type PaginatedSnapshotListResultsList = ReadonlyArray<Snapshot>;
 export const PaginatedSnapshotListResultsList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<PaginatedSnapshotListResultsList>;
@@ -1485,7 +1487,8 @@ export const ToleratedHashEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToleratedHashEntry",
 }) as any as S.Schema<ToleratedHashEntry>;
 
-export type PaginatedToleratedHashEntryListResultsList = ToleratedHashEntry[];
+export type PaginatedToleratedHashEntryListResultsList =
+  ReadonlyArray<ToleratedHashEntry>;
 export const PaginatedToleratedHashEntryListResultsList = /*@__PURE__*/ S.Array(
   ToleratedHashEntry,
 ) as any as S.Schema<PaginatedToleratedHashEntryListResultsList>;

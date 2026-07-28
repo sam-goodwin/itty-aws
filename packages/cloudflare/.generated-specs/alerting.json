@@ -33,13 +33,54 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#AvailableAlertsListResultValueItemFilterOptionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.alerting#AvailableAlertsListResultValueItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes the alert type."
+          }
+        },
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alert type name."
+          }
+        },
+        "filter_options": {
+          "target": "com.cloudflare.alerting#AvailableAlertsListResultValueItemFilterOptionsList",
+          "traits": {
+            "smithy.api#documentation": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use this value when creating and updating a notification policy."
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#AvailableAlertsListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#AvailableAlertsListResultValueItem"
+      }
+    },
     "com.cloudflare.alerting#AvailableAlertsListResultMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.alerting#AvailableAlertsListResultValueList"
       }
     },
     "com.cloudflare.alerting#AvailableAlertsListResponse": {
@@ -91,13 +132,65 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.alerting#DestinationsEligibleGetResultValueItemType": {
+      "type": "enum",
+      "members": {
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email"
+          }
+        },
+        "PAGERDUTY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pagerduty"
+          }
+        },
+        "WEBHOOK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webhook"
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsEligibleGetResultValueItem": {
+      "type": "structure",
+      "members": {
+        "eligible": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether or not the account is eligible for the delivery mechanism."
+          }
+        },
+        "ready": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.alerting#DestinationsEligibleGetResultValueItemType",
+          "traits": {
+            "smithy.api#documentation": "Determines type of delivery mechanism."
+          }
+        }
+      }
+    },
+    "com.cloudflare.alerting#DestinationsEligibleGetResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.alerting#DestinationsEligibleGetResultValueItem"
+      }
+    },
     "com.cloudflare.alerting#DestinationsEligibleGetResultMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.alerting#DestinationsEligibleGetResultValueList"
       }
     },
     "com.cloudflare.alerting#DestinationsEligibleGetResponse": {
@@ -498,6 +591,36 @@
           "traits": {
             "smithy.api#enumValue": "feishu"
           }
+        },
+        "GCHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gchat"
+          }
+        },
+        "GENERIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generic"
+          }
+        },
+        "OPSGENIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "opsgenie"
+          }
+        },
+        "SLACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "slack"
+          }
+        },
+        "SPLUNK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "splunk"
+          }
         }
       }
     },
@@ -611,6 +734,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "feishu"
+          }
+        },
+        "GCHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gchat"
+          }
+        },
+        "GENERIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generic"
+          }
+        },
+        "OPSGENIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "opsgenie"
+          }
+        },
+        "SLACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "slack"
+          }
+        },
+        "SPLUNK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "splunk"
           }
         }
       }
@@ -968,6 +1121,402 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "advanced_ddos_attack_l4_alert"
+          }
+        },
+        "ADVANCED_DDOS_ATTACK_L7_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_ddos_attack_l7_alert"
+          }
+        },
+        "ADVANCED_HTTP_ALERT_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_http_alert_error"
+          }
+        },
+        "BGP_HIJACK_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bgp_hijack_notification"
+          }
+        },
+        "BILLING_USAGE_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "billing_usage_alert"
+          }
+        },
+        "BLOCK_NOTIFICATION_BLOCK_REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_block_removed"
+          }
+        },
+        "BLOCK_NOTIFICATION_NEW_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_new_block"
+          }
+        },
+        "BLOCK_NOTIFICATION_REVIEW_REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_review_rejected"
+          }
+        },
+        "BOT_TRAFFIC_BASIC_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bot_traffic_basic_alert"
+          }
+        },
+        "BRAND_PROTECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_alert"
+          }
+        },
+        "BRAND_PROTECTION_DIGEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_digest"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_anomaly"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ENT_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_ent_anomaly"
+          }
+        },
+        "CLOUDFORCE_ONE_REQUEST_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudforce_one_request_notification"
+          }
+        },
+        "CNI_MAINTENANCE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cni_maintenance_notification"
+          }
+        },
+        "CUSTOM_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_analytics"
+          }
+        },
+        "CUSTOM_BOT_DETECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_bot_detection_alert"
+          }
+        },
+        "CUSTOM_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_ssl_certificate_event_type"
+          }
+        },
+        "DEDICATED_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_ssl_certificate_event_type"
+          }
+        },
+        "DEVICE_CONNECTIVITY_ANOMALY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_connectivity_anomaly_alert"
+          }
+        },
+        "DOS_ATTACK_L4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l4"
+          }
+        },
+        "DOS_ATTACK_L7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l7"
+          }
+        },
+        "EXPIRING_SERVICE_TOKEN_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expiring_service_token_alert"
+          }
+        },
+        "FAILING_LOGPUSH_JOB_DISABLED_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failing_logpush_job_disabled_alert"
+          }
+        },
+        "FBM_AUTO_ADVERTISEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_auto_advertisement"
+          }
+        },
+        "FBM_DOSD_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_dosd_attack"
+          }
+        },
+        "FBM_VOLUMETRIC_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_volumetric_attack"
+          }
+        },
+        "HEALTH_CHECK_STATUS_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "health_check_status_notification"
+          }
+        },
+        "HOSTNAME_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hostname_aop_custom_certificate_expiration_type"
+          }
+        },
+        "HTTP_ALERT_EDGE_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_edge_error"
+          }
+        },
+        "HTTP_ALERT_ORIGIN_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_origin_error"
+          }
+        },
+        "IMAGE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_notification"
+          }
+        },
+        "IMAGE_RESIZING_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_resizing_notification"
+          }
+        },
+        "INCIDENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "incident_alert"
+          }
+        },
+        "LOAD_BALANCING_HEALTH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_health_alert"
+          }
+        },
+        "LOAD_BALANCING_POOL_ENABLEMENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_pool_enablement_alert"
+          }
+        },
+        "LOGO_MATCH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logo_match_alert"
+          }
+        },
+        "MAGIC_TUNNEL_HEALTH_CHECK_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_tunnel_health_check_event"
+          }
+        },
+        "MAGIC_WAN_TUNNEL_HEALTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_wan_tunnel_health"
+          }
+        },
+        "MAINTENANCE_EVENT_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance_event_notification"
+          }
+        },
+        "MTLS_CERTIFICATE_STORE_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mtls_certificate_store_certificate_expiration_type"
+          }
+        },
+        "PAGES_EVENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pages_event_alert"
+          }
+        },
+        "RADAR_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radar_notification"
+          }
+        },
+        "REAL_ORIGIN_MONITORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "real_origin_monitoring"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_CODE_CHANGE_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_code_change_detections"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_SCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_scripts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MAX_LENGTH_RESOURCE_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_max_length_resource_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_RESOURCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_resources"
+          }
+        },
+        "SECONDARY_DNS_ALL_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_all_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_warning"
+          }
+        },
+        "SECONDARY_DNS_ZONE_SUCCESSFULLY_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_successfully_updated"
+          }
+        },
+        "SECONDARY_DNS_ZONE_VALIDATION_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_validation_warning"
+          }
+        },
+        "SECURITY_INSIGHTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "security_insights_alert"
+          }
+        },
+        "SENTINEL_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sentinel_alert"
+          }
+        },
+        "STREAM_LIVE_NOTIFICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_live_notifications"
+          }
+        },
+        "SYNTHETIC_TEST_LATENCY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_latency_alert"
+          }
+        },
+        "SYNTHETIC_TEST_LOW_AVAILABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_low_availability_alert"
+          }
+        },
+        "TRAFFIC_ANOMALIES_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_anomalies_alert"
+          }
+        },
+        "TUNNEL_HEALTH_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_health_event"
+          }
+        },
+        "TUNNEL_UPDATE_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_update_event"
+          }
+        },
+        "UNIVERSAL_SSL_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal_ssl_event_type"
+          }
+        },
+        "WEB_ANALYTICS_METRICS_UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_analytics_metrics_update"
+          }
+        },
+        "ZONE_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
           }
         }
       }
@@ -1778,6 +2327,402 @@
           "traits": {
             "smithy.api#enumValue": "advanced_ddos_attack_l4_alert"
           }
+        },
+        "ADVANCED_DDOS_ATTACK_L7_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_ddos_attack_l7_alert"
+          }
+        },
+        "ADVANCED_HTTP_ALERT_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_http_alert_error"
+          }
+        },
+        "BGP_HIJACK_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bgp_hijack_notification"
+          }
+        },
+        "BILLING_USAGE_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "billing_usage_alert"
+          }
+        },
+        "BLOCK_NOTIFICATION_BLOCK_REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_block_removed"
+          }
+        },
+        "BLOCK_NOTIFICATION_NEW_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_new_block"
+          }
+        },
+        "BLOCK_NOTIFICATION_REVIEW_REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_review_rejected"
+          }
+        },
+        "BOT_TRAFFIC_BASIC_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bot_traffic_basic_alert"
+          }
+        },
+        "BRAND_PROTECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_alert"
+          }
+        },
+        "BRAND_PROTECTION_DIGEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_digest"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_anomaly"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ENT_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_ent_anomaly"
+          }
+        },
+        "CLOUDFORCE_ONE_REQUEST_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudforce_one_request_notification"
+          }
+        },
+        "CNI_MAINTENANCE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cni_maintenance_notification"
+          }
+        },
+        "CUSTOM_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_analytics"
+          }
+        },
+        "CUSTOM_BOT_DETECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_bot_detection_alert"
+          }
+        },
+        "CUSTOM_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_ssl_certificate_event_type"
+          }
+        },
+        "DEDICATED_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_ssl_certificate_event_type"
+          }
+        },
+        "DEVICE_CONNECTIVITY_ANOMALY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_connectivity_anomaly_alert"
+          }
+        },
+        "DOS_ATTACK_L4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l4"
+          }
+        },
+        "DOS_ATTACK_L7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l7"
+          }
+        },
+        "EXPIRING_SERVICE_TOKEN_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expiring_service_token_alert"
+          }
+        },
+        "FAILING_LOGPUSH_JOB_DISABLED_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failing_logpush_job_disabled_alert"
+          }
+        },
+        "FBM_AUTO_ADVERTISEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_auto_advertisement"
+          }
+        },
+        "FBM_DOSD_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_dosd_attack"
+          }
+        },
+        "FBM_VOLUMETRIC_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_volumetric_attack"
+          }
+        },
+        "HEALTH_CHECK_STATUS_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "health_check_status_notification"
+          }
+        },
+        "HOSTNAME_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hostname_aop_custom_certificate_expiration_type"
+          }
+        },
+        "HTTP_ALERT_EDGE_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_edge_error"
+          }
+        },
+        "HTTP_ALERT_ORIGIN_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_origin_error"
+          }
+        },
+        "IMAGE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_notification"
+          }
+        },
+        "IMAGE_RESIZING_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_resizing_notification"
+          }
+        },
+        "INCIDENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "incident_alert"
+          }
+        },
+        "LOAD_BALANCING_HEALTH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_health_alert"
+          }
+        },
+        "LOAD_BALANCING_POOL_ENABLEMENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_pool_enablement_alert"
+          }
+        },
+        "LOGO_MATCH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logo_match_alert"
+          }
+        },
+        "MAGIC_TUNNEL_HEALTH_CHECK_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_tunnel_health_check_event"
+          }
+        },
+        "MAGIC_WAN_TUNNEL_HEALTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_wan_tunnel_health"
+          }
+        },
+        "MAINTENANCE_EVENT_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance_event_notification"
+          }
+        },
+        "MTLS_CERTIFICATE_STORE_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mtls_certificate_store_certificate_expiration_type"
+          }
+        },
+        "PAGES_EVENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pages_event_alert"
+          }
+        },
+        "RADAR_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radar_notification"
+          }
+        },
+        "REAL_ORIGIN_MONITORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "real_origin_monitoring"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_CODE_CHANGE_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_code_change_detections"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_SCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_scripts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MAX_LENGTH_RESOURCE_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_max_length_resource_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_RESOURCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_resources"
+          }
+        },
+        "SECONDARY_DNS_ALL_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_all_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_warning"
+          }
+        },
+        "SECONDARY_DNS_ZONE_SUCCESSFULLY_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_successfully_updated"
+          }
+        },
+        "SECONDARY_DNS_ZONE_VALIDATION_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_validation_warning"
+          }
+        },
+        "SECURITY_INSIGHTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "security_insights_alert"
+          }
+        },
+        "SENTINEL_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sentinel_alert"
+          }
+        },
+        "STREAM_LIVE_NOTIFICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_live_notifications"
+          }
+        },
+        "SYNTHETIC_TEST_LATENCY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_latency_alert"
+          }
+        },
+        "SYNTHETIC_TEST_LOW_AVAILABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_low_availability_alert"
+          }
+        },
+        "TRAFFIC_ANOMALIES_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_anomalies_alert"
+          }
+        },
+        "TUNNEL_HEALTH_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_health_event"
+          }
+        },
+        "TUNNEL_UPDATE_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_update_event"
+          }
+        },
+        "UNIVERSAL_SSL_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal_ssl_event_type"
+          }
+        },
+        "WEB_ANALYTICS_METRICS_UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_analytics_metrics_update"
+          }
+        },
+        "ZONE_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
+          }
         }
       }
     },
@@ -2523,6 +3468,402 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "advanced_ddos_attack_l4_alert"
+          }
+        },
+        "ADVANCED_DDOS_ATTACK_L7_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_ddos_attack_l7_alert"
+          }
+        },
+        "ADVANCED_HTTP_ALERT_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_http_alert_error"
+          }
+        },
+        "BGP_HIJACK_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bgp_hijack_notification"
+          }
+        },
+        "BILLING_USAGE_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "billing_usage_alert"
+          }
+        },
+        "BLOCK_NOTIFICATION_BLOCK_REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_block_removed"
+          }
+        },
+        "BLOCK_NOTIFICATION_NEW_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_new_block"
+          }
+        },
+        "BLOCK_NOTIFICATION_REVIEW_REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_review_rejected"
+          }
+        },
+        "BOT_TRAFFIC_BASIC_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bot_traffic_basic_alert"
+          }
+        },
+        "BRAND_PROTECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_alert"
+          }
+        },
+        "BRAND_PROTECTION_DIGEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_digest"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_anomaly"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ENT_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_ent_anomaly"
+          }
+        },
+        "CLOUDFORCE_ONE_REQUEST_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudforce_one_request_notification"
+          }
+        },
+        "CNI_MAINTENANCE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cni_maintenance_notification"
+          }
+        },
+        "CUSTOM_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_analytics"
+          }
+        },
+        "CUSTOM_BOT_DETECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_bot_detection_alert"
+          }
+        },
+        "CUSTOM_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_ssl_certificate_event_type"
+          }
+        },
+        "DEDICATED_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_ssl_certificate_event_type"
+          }
+        },
+        "DEVICE_CONNECTIVITY_ANOMALY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_connectivity_anomaly_alert"
+          }
+        },
+        "DOS_ATTACK_L4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l4"
+          }
+        },
+        "DOS_ATTACK_L7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l7"
+          }
+        },
+        "EXPIRING_SERVICE_TOKEN_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expiring_service_token_alert"
+          }
+        },
+        "FAILING_LOGPUSH_JOB_DISABLED_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failing_logpush_job_disabled_alert"
+          }
+        },
+        "FBM_AUTO_ADVERTISEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_auto_advertisement"
+          }
+        },
+        "FBM_DOSD_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_dosd_attack"
+          }
+        },
+        "FBM_VOLUMETRIC_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_volumetric_attack"
+          }
+        },
+        "HEALTH_CHECK_STATUS_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "health_check_status_notification"
+          }
+        },
+        "HOSTNAME_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hostname_aop_custom_certificate_expiration_type"
+          }
+        },
+        "HTTP_ALERT_EDGE_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_edge_error"
+          }
+        },
+        "HTTP_ALERT_ORIGIN_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_origin_error"
+          }
+        },
+        "IMAGE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_notification"
+          }
+        },
+        "IMAGE_RESIZING_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_resizing_notification"
+          }
+        },
+        "INCIDENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "incident_alert"
+          }
+        },
+        "LOAD_BALANCING_HEALTH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_health_alert"
+          }
+        },
+        "LOAD_BALANCING_POOL_ENABLEMENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_pool_enablement_alert"
+          }
+        },
+        "LOGO_MATCH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logo_match_alert"
+          }
+        },
+        "MAGIC_TUNNEL_HEALTH_CHECK_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_tunnel_health_check_event"
+          }
+        },
+        "MAGIC_WAN_TUNNEL_HEALTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_wan_tunnel_health"
+          }
+        },
+        "MAINTENANCE_EVENT_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance_event_notification"
+          }
+        },
+        "MTLS_CERTIFICATE_STORE_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mtls_certificate_store_certificate_expiration_type"
+          }
+        },
+        "PAGES_EVENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pages_event_alert"
+          }
+        },
+        "RADAR_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radar_notification"
+          }
+        },
+        "REAL_ORIGIN_MONITORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "real_origin_monitoring"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_CODE_CHANGE_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_code_change_detections"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_SCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_scripts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MAX_LENGTH_RESOURCE_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_max_length_resource_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_RESOURCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_resources"
+          }
+        },
+        "SECONDARY_DNS_ALL_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_all_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_warning"
+          }
+        },
+        "SECONDARY_DNS_ZONE_SUCCESSFULLY_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_successfully_updated"
+          }
+        },
+        "SECONDARY_DNS_ZONE_VALIDATION_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_validation_warning"
+          }
+        },
+        "SECURITY_INSIGHTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "security_insights_alert"
+          }
+        },
+        "SENTINEL_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sentinel_alert"
+          }
+        },
+        "STREAM_LIVE_NOTIFICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_live_notifications"
+          }
+        },
+        "SYNTHETIC_TEST_LATENCY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_latency_alert"
+          }
+        },
+        "SYNTHETIC_TEST_LOW_AVAILABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_low_availability_alert"
+          }
+        },
+        "TRAFFIC_ANOMALIES_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_anomalies_alert"
+          }
+        },
+        "TUNNEL_HEALTH_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_health_event"
+          }
+        },
+        "TUNNEL_UPDATE_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_update_event"
+          }
+        },
+        "UNIVERSAL_SSL_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal_ssl_event_type"
+          }
+        },
+        "WEB_ANALYTICS_METRICS_UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_analytics_metrics_update"
+          }
+        },
+        "ZONE_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
           }
         }
       }
@@ -3270,6 +4611,402 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "advanced_ddos_attack_l4_alert"
+          }
+        },
+        "ADVANCED_DDOS_ATTACK_L7_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_ddos_attack_l7_alert"
+          }
+        },
+        "ADVANCED_HTTP_ALERT_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced_http_alert_error"
+          }
+        },
+        "BGP_HIJACK_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bgp_hijack_notification"
+          }
+        },
+        "BILLING_USAGE_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "billing_usage_alert"
+          }
+        },
+        "BLOCK_NOTIFICATION_BLOCK_REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_block_removed"
+          }
+        },
+        "BLOCK_NOTIFICATION_NEW_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_new_block"
+          }
+        },
+        "BLOCK_NOTIFICATION_REVIEW_REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block_notification_review_rejected"
+          }
+        },
+        "BOT_TRAFFIC_BASIC_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bot_traffic_basic_alert"
+          }
+        },
+        "BRAND_PROTECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_alert"
+          }
+        },
+        "BRAND_PROTECTION_DIGEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brand_protection_digest"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_anomaly"
+          }
+        },
+        "CLICKHOUSE_ALERT_FW_ENT_ANOMALY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clickhouse_alert_fw_ent_anomaly"
+          }
+        },
+        "CLOUDFORCE_ONE_REQUEST_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudforce_one_request_notification"
+          }
+        },
+        "CNI_MAINTENANCE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cni_maintenance_notification"
+          }
+        },
+        "CUSTOM_ANALYTICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_analytics"
+          }
+        },
+        "CUSTOM_BOT_DETECTION_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_bot_detection_alert"
+          }
+        },
+        "CUSTOM_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom_ssl_certificate_event_type"
+          }
+        },
+        "DEDICATED_SSL_CERTIFICATE_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dedicated_ssl_certificate_event_type"
+          }
+        },
+        "DEVICE_CONNECTIVITY_ANOMALY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "device_connectivity_anomaly_alert"
+          }
+        },
+        "DOS_ATTACK_L4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l4"
+          }
+        },
+        "DOS_ATTACK_L7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dos_attack_l7"
+          }
+        },
+        "EXPIRING_SERVICE_TOKEN_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expiring_service_token_alert"
+          }
+        },
+        "FAILING_LOGPUSH_JOB_DISABLED_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failing_logpush_job_disabled_alert"
+          }
+        },
+        "FBM_AUTO_ADVERTISEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_auto_advertisement"
+          }
+        },
+        "FBM_DOSD_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_dosd_attack"
+          }
+        },
+        "FBM_VOLUMETRIC_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fbm_volumetric_attack"
+          }
+        },
+        "HEALTH_CHECK_STATUS_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "health_check_status_notification"
+          }
+        },
+        "HOSTNAME_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hostname_aop_custom_certificate_expiration_type"
+          }
+        },
+        "HTTP_ALERT_EDGE_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_edge_error"
+          }
+        },
+        "HTTP_ALERT_ORIGIN_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_alert_origin_error"
+          }
+        },
+        "IMAGE_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_notification"
+          }
+        },
+        "IMAGE_RESIZING_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_resizing_notification"
+          }
+        },
+        "INCIDENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "incident_alert"
+          }
+        },
+        "LOAD_BALANCING_HEALTH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_health_alert"
+          }
+        },
+        "LOAD_BALANCING_POOL_ENABLEMENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancing_pool_enablement_alert"
+          }
+        },
+        "LOGO_MATCH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logo_match_alert"
+          }
+        },
+        "MAGIC_TUNNEL_HEALTH_CHECK_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_tunnel_health_check_event"
+          }
+        },
+        "MAGIC_WAN_TUNNEL_HEALTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "magic_wan_tunnel_health"
+          }
+        },
+        "MAINTENANCE_EVENT_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance_event_notification"
+          }
+        },
+        "MTLS_CERTIFICATE_STORE_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mtls_certificate_store_certificate_expiration_type"
+          }
+        },
+        "PAGES_EVENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pages_event_alert"
+          }
+        },
+        "RADAR_NOTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radar_notification"
+          }
+        },
+        "REAL_ORIGIN_MONITORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "real_origin_monitoring"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_CODE_CHANGE_DETECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_code_change_detections"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_HOSTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_hosts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_SCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_scripts"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MALICIOUS_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_malicious_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_MAX_LENGTH_RESOURCE_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_max_length_resource_url"
+          }
+        },
+        "SCRIPTMONITOR_ALERT_NEW_RESOURCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scriptmonitor_alert_new_resources"
+          }
+        },
+        "SECONDARY_DNS_ALL_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_all_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_PRIMARIES_FAILING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_primaries_failing"
+          }
+        },
+        "SECONDARY_DNS_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_warning"
+          }
+        },
+        "SECONDARY_DNS_ZONE_SUCCESSFULLY_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_successfully_updated"
+          }
+        },
+        "SECONDARY_DNS_ZONE_VALIDATION_WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary_dns_zone_validation_warning"
+          }
+        },
+        "SECURITY_INSIGHTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "security_insights_alert"
+          }
+        },
+        "SENTINEL_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sentinel_alert"
+          }
+        },
+        "STREAM_LIVE_NOTIFICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_live_notifications"
+          }
+        },
+        "SYNTHETIC_TEST_LATENCY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_latency_alert"
+          }
+        },
+        "SYNTHETIC_TEST_LOW_AVAILABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetic_test_low_availability_alert"
+          }
+        },
+        "TRAFFIC_ANOMALIES_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_anomalies_alert"
+          }
+        },
+        "TUNNEL_HEALTH_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_health_event"
+          }
+        },
+        "TUNNEL_UPDATE_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnel_update_event"
+          }
+        },
+        "UNIVERSAL_SSL_EVENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal_ssl_event_type"
+          }
+        },
+        "WEB_ANALYTICS_METRICS_UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_analytics_metrics_update"
+          }
+        },
+        "ZONE_AOP_CUSTOM_CERTIFICATE_EXPIRATION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
           }
         }
       }

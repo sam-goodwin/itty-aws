@@ -306,11 +306,55 @@
             "smithy.api#documentation": "Reservation ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billingAccountId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Billing account the benefit utilization summaries report is for. Required for billing account and billing profile scopes. Not supported for any benefit scopes."
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Billing profile id the benefit utilization summaries report is for. Required for billing profile scope. Not supported for billing account or any benefit scopes."
+          }
+        },
+        "benefitOrderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -348,11 +392,55 @@
             "smithy.api#documentation": "Reservation Order ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billingAccountId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Billing account the benefit utilization summaries report is for. Required for billing account and billing profile scopes. Not supported for any benefit scopes."
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Billing profile id the benefit utilization summaries report is for. Required for billing profile scope. Not supported for billing account or any benefit scopes."
+          }
+        },
+        "benefitOrderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -398,11 +486,55 @@
             "smithy.api#documentation": "Savings plan ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billingAccountId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Billing account the benefit utilization summaries report is for. Required for billing account and billing profile scopes. Not supported for any benefit scopes."
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Billing profile id the benefit utilization summaries report is for. Required for billing profile scope. Not supported for billing account or any benefit scopes."
+          }
+        },
+        "benefitOrderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -697,11 +829,55 @@
             "smithy.api#documentation": "Savings plan order ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billingAccountId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Billing account the benefit utilization summaries report is for. Required for billing account and billing profile scopes. Not supported for any benefit scopes."
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Billing profile id the benefit utilization summaries report is for. Required for billing profile scope. Not supported for billing account or any benefit scopes."
+          }
+        },
+        "benefitOrderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -977,11 +1153,49 @@
             "smithy.api#documentation": "BillingAccount ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "billingProfileId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Billing profile id the benefit utilization summaries report is for. Required for billing profile scope. Not supported for billing account or any benefit scopes."
+          }
+        },
+        "benefitOrderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -1071,11 +1285,16 @@
             "smithy.api#documentation": "BillingAccount ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Rule name"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type. This is expected to be Microsoft.CostManagement/costAllocationRules"
           }
         }
       },
@@ -1445,16 +1664,43 @@
             "smithy.api#documentation": "Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#CostAllocationRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Cost allocation rule properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#CostAllocationRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of a cost allocation rule."
+          }
+        },
+        "details": {
+          "target": "com.azure.cost_management#CostAllocationRuleDetails",
+          "traits": {
+            "smithy.api#documentation": "Resource information for the cost allocation rule",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cost_management#RuleStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the rule",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cost allocation rule"
       }
     },
     "com.azure.cost_management#CostAllocationRulesGet": {
@@ -2043,11 +2289,43 @@
             "smithy.api#documentation": "Billing Profile ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "benefitOrderId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Benefit order id the benefit utilization summaries report is for. Required for benefit order and benefit id scopes. Not supported for any billing scopes."
+          }
+        },
+        "benefitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Benefit id the benefit utilization summaries report is for. Required for benefit id scope. Not supported for benefit order or any billing scopes."
+          }
+        },
+        "grain": {
+          "target": "com.azure.cost_management#Grain",
+          "traits": {
+            "smithy.api#documentation": "The grain the summaries data is served at in the report. Accepted values are 'Daily' or 'Monthly'.",
             "smithy.api#required": {}
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the summaries data that will be served in the report.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#BenefitKind",
+          "traits": {
+            "smithy.api#documentation": "The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan"
           }
         }
       },
@@ -3085,16 +3363,107 @@
             "smithy.api#documentation": "View name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#ViewPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the view."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#ViewPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User input name of the view. Required."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope."
+          }
+        },
+        "modifiedOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date when the user last modified this view."
+          }
+        },
+        "dateRange": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date range of the current view."
+          }
+        },
+        "query": {
+          "target": "com.azure.cost_management#ReportConfigDefinition",
+          "traits": {
+            "smithy.api#documentation": "Query body configuration. Required."
+          }
+        },
+        "chart": {
+          "target": "com.azure.cost_management#ChartType",
+          "traits": {
+            "smithy.api#documentation": "Chart type of the main view in Cost Analysis. Required."
+          }
+        },
+        "accumulated": {
+          "target": "com.azure.cost_management#AccumulatedType",
+          "traits": {
+            "smithy.api#documentation": "Show costs accumulated over time."
+          }
+        },
+        "metric": {
+          "target": "com.azure.cost_management#MetricType",
+          "traits": {
+            "smithy.api#documentation": "Metric to use when displaying costs."
+          }
+        },
+        "kpis": {
+          "target": "com.azure.cost_management#ViewPropertiesInputKpisList",
+          "traits": {
+            "smithy.api#documentation": "List of KPIs to show in Cost Analysis UI."
+          }
+        },
+        "pivots": {
+          "target": "com.azure.cost_management#ViewPropertiesInputPivotsList",
+          "traits": {
+            "smithy.api#documentation": "Configuration of 3 sub-views in the Cost Analysis UI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the view."
+      }
+    },
+    "com.azure.cost_management#ViewPropertiesInputPivotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#PivotProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration of 3 sub-views in the Cost Analysis UI."
+      }
+    },
+    "com.azure.cost_management#ViewPropertiesInputKpisList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#KpiProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of KPIs to show in Cost Analysis UI."
       }
     },
     "com.azure.cost_management#ViewsGet": {
@@ -3796,11 +4165,22 @@
             "smithy.api#documentation": "Scheduled action name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#ScheduledActionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the scheduled action."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required."
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#ScheduledActionKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the scheduled action."
           }
         }
       },
@@ -4238,11 +4618,16 @@
     "com.azure.cost_management#ScheduledActionsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -4427,16 +4812,412 @@
             "smithy.api#documentation": "This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.azure.cost_management#ExportType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.azure.cost_management#TimeframeType",
+          "traits": {
+            "smithy.api#documentation": "The time frame for pulling data for the query. If custom, then a specific time period must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#QueryTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has time period for pulling data for the query."
+          }
+        },
+        "dataset": {
+          "target": "com.azure.cost_management#QueryDataset",
+          "traits": {
+            "smithy.api#documentation": "Has definition for data in this query.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#QueryDataset": {
+      "type": "structure",
+      "members": {
+        "granularity": {
+          "target": "com.azure.cost_management#GranularityType",
+          "traits": {
+            "smithy.api#documentation": "The granularity of rows in the query."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.cost_management#QueryDatasetConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Has configuration information for the data in the export. The configuration will be ignored if aggregation and grouping are provided."
+          }
+        },
+        "aggregation": {
+          "target": "com.azure.cost_management#QueryDatasetAggregationMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses."
+          }
+        },
+        "grouping": {
+          "target": "com.azure.cost_management#QueryDatasetGroupingList",
+          "traits": {
+            "smithy.api#documentation": "Array of group by expression to use in the query. Query can have up to 2 group by clauses."
+          }
+        },
+        "filter": {
+          "target": "com.azure.cost_management#QueryFilter",
+          "traits": {
+            "smithy.api#documentation": "The filter expression to use in the query. Please reference our Query API REST documentation for how to properly format the filter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The definition of data present in the query."
+      }
+    },
+    "com.azure.cost_management#QueryFilter": {
+      "type": "structure",
+      "members": {
+        "and": {
+          "target": "com.azure.cost_management#QueryFilterAndList",
+          "traits": {
+            "smithy.api#documentation": "The logical \"AND\" expression. Must have at least 2 items."
+          }
+        },
+        "or": {
+          "target": "com.azure.cost_management#QueryFilterOrList",
+          "traits": {
+            "smithy.api#documentation": "The logical \"OR\" expression. Must have at least 2 items."
+          }
+        },
+        "dimensions": {
+          "target": "com.azure.cost_management#QueryComparisonExpression",
+          "traits": {
+            "smithy.api#documentation": "Has comparison expression for a dimension"
+          }
+        },
+        "tags": {
+          "target": "com.azure.cost_management#QueryComparisonExpression",
+          "traits": {
+            "smithy.api#documentation": "Has comparison expression for a tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The filter expression to be used in the export."
+      }
+    },
+    "com.azure.cost_management#QueryComparisonExpression": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the column to use in comparison.",
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "com.azure.cost_management#QueryOperatorType",
+          "traits": {
+            "smithy.api#documentation": "The operator to use for comparison.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.cost_management#QueryComparisonExpressionValuesList",
+          "traits": {
+            "smithy.api#documentation": "Array of values to use for comparison",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The comparison expression to be used in the query."
+      }
+    },
+    "com.azure.cost_management#QueryComparisonExpressionValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of values to use for comparison"
+      }
+    },
+    "com.azure.cost_management#QueryOperatorType": {
+      "type": "enum",
+      "members": {
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operator to use for comparison."
+      }
+    },
+    "com.azure.cost_management#QueryFilterOrList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#QueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The logical \"OR\" expression. Must have at least 2 items."
+      }
+    },
+    "com.azure.cost_management#QueryFilterAndList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#QueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The logical \"AND\" expression. Must have at least 2 items."
+      }
+    },
+    "com.azure.cost_management#QueryDatasetGroupingList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#QueryGrouping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of group by expression to use in the query. Query can have up to 2 group by clauses."
+      }
+    },
+    "com.azure.cost_management#QueryGrouping": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cost_management#QueryColumnType",
+          "traits": {
+            "smithy.api#documentation": "Has type of the column to group.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the column to group.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The group by expression to be used in the query."
+      }
+    },
+    "com.azure.cost_management#QueryDatasetAggregationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cost_management#QueryAggregation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses."
+      }
+    },
+    "com.azure.cost_management#QueryAggregation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the column to aggregate.",
+            "smithy.api#required": {}
+          }
+        },
+        "function": {
+          "target": "com.azure.cost_management#FunctionType",
+          "traits": {
+            "smithy.api#documentation": "The name of the aggregation function to use.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The aggregation expression to be used in the query."
+      }
+    },
+    "com.azure.cost_management#QueryDatasetConfiguration": {
+      "type": "structure",
+      "members": {
+        "columns": {
+          "target": "com.azure.cost_management#QueryDatasetConfigurationColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration of dataset in the query."
+      }
+    },
+    "com.azure.cost_management#QueryDatasetConfigurationColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns."
+      }
+    },
+    "com.azure.cost_management#GranularityType": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Daily"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Monthly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The granularity of rows in the export. Currently 'Daily' is supported for most cases."
+      }
+    },
+    "com.azure.cost_management#QueryTimePeriod": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date to pull data from.",
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date to pull data to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The start and end date for pulling data for the query."
+      }
+    },
+    "com.azure.cost_management#TimeframeType": {
+      "type": "enum",
+      "members": {
+        "MONTHTODATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MonthToDate"
+          }
+        },
+        "BILLINGMONTHTODATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BillingMonthToDate"
+          }
+        },
+        "THELASTMONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TheLastMonth"
+          }
+        },
+        "THELASTBILLINGMONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TheLastBillingMonth"
+          }
+        },
+        "WEEKTODATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WeekToDate"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        },
+        "THECURRENTMONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TheCurrentMonth"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The time frame for pulling data for the export. If custom, then a specific time period must be provided."
+      }
+    },
+    "com.azure.cost_management#ExportType": {
+      "type": "enum",
+      "members": {
+        "USAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Usage"
+          }
+        },
+        "ACTUALCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActualCost"
+          }
+        },
+        "AMORTIZEDCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AmortizedCost"
+          }
+        },
+        "FOCUSCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FocusCost"
+          }
+        },
+        "PRICESHEET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PriceSheet"
+          }
+        },
+        "RESERVATIONTRANSACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReservationTransactions"
+          }
+        },
+        "RESERVATIONRECOMMENDATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReservationRecommendations"
+          }
+        },
+        "RESERVATIONDETAILS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReservationDetails"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations."
       }
     },
     "com.azure.cost_management#QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType": {
@@ -4641,16 +5422,334 @@
             "smithy.api#documentation": "May be used to filter forecasts by properties/usageDate (Utc time), properties/chargeType or properties/grain. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.azure.cost_management#ForecastType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of the forecast.",
             "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.azure.cost_management#ForecastTimeframe",
+          "traits": {
+            "smithy.api#documentation": "The time frame for pulling data for the forecast. If custom, then a specific time period must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#ForecastTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has time period for pulling data for the forecast."
+          }
+        },
+        "dataset": {
+          "target": "com.azure.cost_management#ForecastDataset",
+          "traits": {
+            "smithy.api#documentation": "Has definition for data in this forecast.",
+            "smithy.api#required": {}
+          }
+        },
+        "includeActualCost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean determining if actualCost will be included."
+          }
+        },
+        "includeFreshPartialCost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean determining if FreshPartialCost will be included."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#ForecastDataset": {
+      "type": "structure",
+      "members": {
+        "granularity": {
+          "target": "com.azure.cost_management#GranularityType",
+          "traits": {
+            "smithy.api#documentation": "The granularity of rows in the forecast."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.cost_management#ForecastDatasetConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Has configuration information for the data in the export. The configuration will be ignored if aggregation and grouping are provided."
+          }
+        },
+        "aggregation": {
+          "target": "com.azure.cost_management#ForecastDatasetAggregationMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of aggregation expression to use in the forecast. The key of each item in the dictionary is the alias for the aggregated column. forecast can have up to 2 aggregation clauses.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "com.azure.cost_management#ForecastFilter",
+          "traits": {
+            "smithy.api#documentation": "Has filter expression to use in the forecast."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The definition of data present in the forecast."
+      }
+    },
+    "com.azure.cost_management#ForecastFilter": {
+      "type": "structure",
+      "members": {
+        "and": {
+          "target": "com.azure.cost_management#ForecastFilterAndList",
+          "traits": {
+            "smithy.api#documentation": "The logical \"AND\" expression. Must have at least 2 items."
+          }
+        },
+        "or": {
+          "target": "com.azure.cost_management#ForecastFilterOrList",
+          "traits": {
+            "smithy.api#documentation": "The logical \"OR\" expression. Must have at least 2 items."
+          }
+        },
+        "dimensions": {
+          "target": "com.azure.cost_management#ForecastComparisonExpression",
+          "traits": {
+            "smithy.api#documentation": "Has comparison expression for a dimension"
+          }
+        },
+        "tags": {
+          "target": "com.azure.cost_management#ForecastComparisonExpression",
+          "traits": {
+            "smithy.api#documentation": "Has comparison expression for a tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The filter expression to be used in the export."
+      }
+    },
+    "com.azure.cost_management#ForecastComparisonExpression": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the column to use in comparison.",
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "com.azure.cost_management#ForecastOperatorType",
+          "traits": {
+            "smithy.api#documentation": "The operator to use for comparison.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.cost_management#ForecastComparisonExpressionValuesList",
+          "traits": {
+            "smithy.api#documentation": "Array of values to use for comparison",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The comparison expression to be used in the forecast."
+      }
+    },
+    "com.azure.cost_management#ForecastComparisonExpressionValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of values to use for comparison"
+      }
+    },
+    "com.azure.cost_management#ForecastOperatorType": {
+      "type": "enum",
+      "members": {
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operator to use for comparison."
+      }
+    },
+    "com.azure.cost_management#ForecastFilterOrList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#ForecastFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The logical \"OR\" expression. Must have at least 2 items."
+      }
+    },
+    "com.azure.cost_management#ForecastFilterAndList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cost_management#ForecastFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The logical \"AND\" expression. Must have at least 2 items."
+      }
+    },
+    "com.azure.cost_management#ForecastDatasetAggregationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cost_management#ForecastAggregation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of aggregation expression to use in the forecast. The key of each item in the dictionary is the alias for the aggregated column. forecast can have up to 2 aggregation clauses."
+      }
+    },
+    "com.azure.cost_management#ForecastAggregation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.cost_management#FunctionName",
+          "traits": {
+            "smithy.api#documentation": "The name of the column to aggregate.",
+            "smithy.api#required": {}
+          }
+        },
+        "function": {
+          "target": "com.azure.cost_management#FunctionType",
+          "traits": {
+            "smithy.api#documentation": "The name of the aggregation function to use.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The aggregation expression to be used in the forecast."
+      }
+    },
+    "com.azure.cost_management#FunctionName": {
+      "type": "enum",
+      "members": {
+        "PRETAXCOSTUSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PreTaxCostUSD"
+          }
+        },
+        "COST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cost"
+          }
+        },
+        "COSTUSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CostUSD"
+          }
+        },
+        "PRETAXCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PreTaxCost"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the column to aggregate."
+      }
+    },
+    "com.azure.cost_management#ForecastDatasetConfiguration": {
+      "type": "structure",
+      "members": {
+        "columns": {
+          "target": "com.azure.cost_management#ForecastDatasetConfigurationColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration of dataset in the forecast."
+      }
+    },
+    "com.azure.cost_management#ForecastDatasetConfigurationColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns."
+      }
+    },
+    "com.azure.cost_management#ForecastTimePeriod": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date to pull data from.",
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date to pull data to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Has time period for pulling data for the forecast."
+      }
+    },
+    "com.azure.cost_management#ForecastTimeframe": {
+      "type": "enum",
+      "members": {
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The time frame for pulling data for the forecast."
+      }
+    },
+    "com.azure.cost_management#ForecastType": {
+      "type": "enum",
+      "members": {
+        "USAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Usage"
+          }
+        },
+        "ACTUALCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActualCost"
+          }
+        },
+        "AMORTIZEDCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AmortizedCost"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the forecast."
       }
     },
     "com.azure.cost_management#ForecastExternalCloudProviderUsageRequestExternalCloudProviderType": {
@@ -5807,11 +6906,16 @@
             "smithy.api#documentation": "View name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#ViewPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the view."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not."
           }
         }
       },
@@ -6087,10 +7191,10 @@
             "smithy.api#documentation": "Setting type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.cost_management#SettingsKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
           }
         }
@@ -6476,11 +7580,22 @@
             "smithy.api#documentation": "Scheduled action name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#ScheduledActionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the scheduled action."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required."
+          }
+        },
+        "kind": {
+          "target": "com.azure.cost_management#ScheduledActionKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the scheduled action."
           }
         }
       },
@@ -6721,10 +7836,30 @@
             "smithy.api#documentation": "The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.azure.cost_management#ExportType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.azure.cost_management#TimeframeType",
+          "traits": {
+            "smithy.api#documentation": "The time frame for pulling data for the query. If custom, then a specific time period must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#QueryTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has time period for pulling data for the query."
+          }
+        },
+        "dataset": {
+          "target": "com.azure.cost_management#QueryDataset",
+          "traits": {
+            "smithy.api#documentation": "Has definition for data in this query.",
             "smithy.api#required": {}
           }
         }
@@ -7071,16 +8206,81 @@
             "smithy.api#documentation": "The ARM Resource ID for subscription, resource group, billing account, or other billing scopes. For details, see https://aka.ms/costmgmt/scopes."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "metric": {
+          "target": "com.azure.cost_management#GenerateDetailedCostReportMetricType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The type of the detailed report. By default ActualCost is provided"
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#GenerateDetailedCostReportTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has time period for pulling data for the cost detailed report. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided."
+          }
+        },
+        "billingPeriod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Billing period in YearMonth(e.g. 202008) format. Only for legacy enterprise customers can use this. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided."
+          }
+        },
+        "invoiceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invoice ID for Pay-as-you-go and Microsoft Customer Agreement scopes. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided."
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer ID for Microsoft Customer Agreement scopes (Invoice Id is also required for this)."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#GenerateDetailedCostReportTimePeriod": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date to pull data from. example format 2020-03-15",
+            "smithy.api#required": {}
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date to pull data to. example format 2020-03-15",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The start and end date for pulling data for the cost detailed report."
+      }
+    },
+    "com.azure.cost_management#GenerateDetailedCostReportMetricType": {
+      "type": "enum",
+      "members": {
+        "ACTUALCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActualCost"
+          }
+        },
+        "AMORTIZEDCOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AmortizedCost"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the detailed report. By default ActualCost is provided"
       }
     },
     "com.azure.cost_management#GenerateCostDetailsReportCreateOperation": {
@@ -7376,11 +8576,28 @@
             "smithy.api#documentation": "The ARM Resource ID for subscription, billing account, or other billing scopes.Currently Resource Group and Management Group are not supported. For details, see https://aka.ms/costmgmt/scopes."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "metric": {
+          "target": "com.azure.cost_management#CostDetailsMetricType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The type of the detailed report. By default ActualCost is provided"
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#CostDetailsTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "The specific date range of cost details requested for the report. This parameter cannot be used alongside either the invoiceId or billingPeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost. API only allows data to be pulled for 1 month or less and no older than 13 months. If no timePeriod or billingPeriod or invoiceId is provided the API defaults to the open month time period"
+          }
+        },
+        "billingPeriod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This parameter can be used only by Enterprise Agreement customers. Use the YearMonth(e.g. 202008) format. This parameter cannot be used alongside either the invoiceId or timePeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost."
+          }
+        },
+        "invoiceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This parameter can only be used by Microsoft Customer Agreement customers. Additionally, it can only be used at the Billing Profile or Customer scope. This parameter cannot be used alongside either the billingPeriod or timePeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost."
           }
         }
       },
@@ -7493,11 +8710,43 @@
             "smithy.api#documentation": "May be used to filter forecasts by properties/usageDate (Utc time), properties/chargeType or properties/grain. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "com.azure.cost_management#ForecastType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of the forecast.",
             "smithy.api#required": {}
+          }
+        },
+        "timeframe": {
+          "target": "com.azure.cost_management#ForecastTimeframe",
+          "traits": {
+            "smithy.api#documentation": "The time frame for pulling data for the forecast. If custom, then a specific time period must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#ForecastTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has time period for pulling data for the forecast."
+          }
+        },
+        "dataset": {
+          "target": "com.azure.cost_management#ForecastDataset",
+          "traits": {
+            "smithy.api#documentation": "Has definition for data in this forecast.",
+            "smithy.api#required": {}
+          }
+        },
+        "includeActualCost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean determining if actualCost will be included."
+          }
+        },
+        "includeFreshPartialCost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean determining if FreshPartialCost will be included."
           }
         }
       },
@@ -7951,26 +9200,6 @@
         "smithy.api#documentation": "Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples)."
       }
     },
-    "com.azure.cost_management#GranularityType": {
-      "type": "enum",
-      "members": {
-        "DAILY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Daily"
-          }
-        },
-        "MONTHLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Monthly"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The granularity of rows in the export. Currently 'Daily' is supported for most cases."
-      }
-    },
     "com.azure.cost_management#ExportTimePeriod": {
       "type": "structure",
       "members": {
@@ -7991,112 +9220,6 @@
       },
       "traits": {
         "smithy.api#documentation": "The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 1 calendar month."
-      }
-    },
-    "com.azure.cost_management#TimeframeType": {
-      "type": "enum",
-      "members": {
-        "MONTHTODATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MonthToDate"
-          }
-        },
-        "BILLINGMONTHTODATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "BillingMonthToDate"
-          }
-        },
-        "THELASTMONTH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "TheLastMonth"
-          }
-        },
-        "THELASTBILLINGMONTH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "TheLastBillingMonth"
-          }
-        },
-        "WEEKTODATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "WeekToDate"
-          }
-        },
-        "CUSTOM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Custom"
-          }
-        },
-        "THECURRENTMONTH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "TheCurrentMonth"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The time frame for pulling data for the export. If custom, then a specific time period must be provided."
-      }
-    },
-    "com.azure.cost_management#ExportType": {
-      "type": "enum",
-      "members": {
-        "USAGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Usage"
-          }
-        },
-        "ACTUALCOST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ActualCost"
-          }
-        },
-        "AMORTIZEDCOST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AmortizedCost"
-          }
-        },
-        "FOCUSCOST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FocusCost"
-          }
-        },
-        "PRICESHEET": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PriceSheet"
-          }
-        },
-        "RESERVATIONTRANSACTIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReservationTransactions"
-          }
-        },
-        "RESERVATIONRECOMMENDATIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReservationRecommendations"
-          }
-        },
-        "RESERVATIONDETAILS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReservationDetails"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations."
       }
     },
     "com.azure.cost_management#ExportDeliveryInfo": {
@@ -8325,10 +9448,10 @@
             "smithy.api#documentation": "Export Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "timePeriod": {
+          "target": "com.azure.cost_management#ExportTimePeriod",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Has time period for pulling data for the export."
           }
         }
       },
@@ -8694,16 +9817,118 @@
             "smithy.api#documentation": "Export Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#ExportPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the export."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cost_management#ExportsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the Export's managed identity. Only required when utilizing managed identity."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#ExportsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cost_management#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.cost_management#ExportPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.azure.cost_management#FormatType",
+          "traits": {
+            "smithy.api#documentation": "The format of the export being delivered."
+          }
+        },
+        "deliveryInfo": {
+          "target": "com.azure.cost_management#ExportDeliveryInfo",
+          "traits": {
+            "smithy.api#documentation": "Has delivery information for the export.",
+            "smithy.api#required": {}
+          }
+        },
+        "definition": {
+          "target": "com.azure.cost_management#ExportDefinition",
+          "traits": {
+            "smithy.api#documentation": "Has the definition for the export.",
+            "smithy.api#required": {}
+          }
+        },
+        "runHistory": {
+          "target": "com.azure.cost_management#ExportExecutionListResultInput",
+          "traits": {
+            "smithy.api#documentation": "If requested, has the most recent run history for the export."
+          }
+        },
+        "partitionData": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file."
+          }
+        },
+        "dataOverwriteBehavior": {
+          "target": "com.azure.cost_management#DataOverwriteBehaviorType",
+          "traits": {
+            "smithy.api#documentation": "Allow customers to select overwrite data(OverwritePreviousReport) for exports. This setting will enable overwrite data for the same month in customer storage account. By default set to CreateNewReport."
+          }
+        },
+        "compressionMode": {
+          "target": "com.azure.cost_management#CompressionModeType",
+          "traits": {
+            "smithy.api#documentation": "Allow customers to select compress data for exports. This setting will enable destination file compression scheme at runtime. By default set to None. Gzip is for csv and snappy for parquet."
+          }
+        },
+        "exportDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The export description set by customer at time of export creation/update."
+          }
+        },
+        "schedule": {
+          "target": "com.azure.cost_management#ExportSchedule",
+          "traits": {
+            "smithy.api#documentation": "Has schedule information for the export."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the export."
+      }
+    },
+    "com.azure.cost_management#ExportExecutionListResultInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Result of listing the run history of an export."
       }
     },
     "com.azure.cost_management#ExportsGet": {
@@ -9167,11 +10392,16 @@
             "smithy.api#documentation": "The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -9924,16 +11154,80 @@
             "smithy.api#documentation": "Budget Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#BudgetPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the budget."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cost_management#BudgetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.cost_management#CategoryType",
+          "traits": {
+            "smithy.api#documentation": "The category of the budget.\n- 'Cost' defines a Budget.\n- 'ReservationUtilization' defines a Reservation Utilization Alert Rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total amount of cost to track with the budget.\n\nSupported for CategoryType(s): Cost.\n\nRequired for CategoryType(s): Cost."
+          }
+        },
+        "timeGrain": {
+          "target": "com.azure.cost_management#TimeGrainType",
+          "traits": {
+            "smithy.api#documentation": "The time covered by a budget. Tracking of the amount will be reset based on the time grain.\n\nSupported for CategoryType(s): Cost, ReservationUtilization.\n\nSupported timeGrainTypes for **CategoryType: Cost**\n\n- Monthly\n- Quarterly\n- Annually\n- BillingMonth*\n- BillingQuarter*\n- BillingAnnual*\n\n*only supported for Web Direct customers.\n\nSupported timeGrainTypes for **CategoryType: ReservationUtilization**\n- Last7Days\n- Last30Days\n\nRequired for CategoryType(s): Cost, ReservationUtilization.",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.cost_management#BudgetTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.\n\nSupported for CategoryType(s): Cost, ReservationUtilization.\n\nRequired for CategoryType(s): Cost, ReservationUtilization.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "com.azure.cost_management#BudgetFilter",
+          "traits": {
+            "smithy.api#documentation": "May be used to filter budgets by user-specified dimensions and/or tags.\n\nSupported for CategoryType(s): Cost, ReservationUtilization."
+          }
+        },
+        "notifications": {
+          "target": "com.azure.cost_management#BudgetPropertiesInputNotificationsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of notifications associated with the budget.\n\nSupported for CategoryType(s): Cost, ReservationUtilization.\n\n- Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.\n- Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the budget."
+      }
+    },
+    "com.azure.cost_management#BudgetPropertiesInputNotificationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cost_management#Notification"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of notifications associated with the budget.\n\nSupported for CategoryType(s): Cost, ReservationUtilization.\n\n- Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.\n- Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable."
       }
     },
     "com.azure.cost_management#BudgetsGet": {
@@ -10622,11 +11916,10 @@
             "smithy.api#documentation": "Alert ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cost_management#AlertProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Alert properties."
           }
         }
       },

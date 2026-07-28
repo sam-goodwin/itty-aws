@@ -137,7 +137,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -309,7 +309,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
     identifier: "ListAccountsProductsLocalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
-export type LocalInventoryList = LocalInventory[];
+export type LocalInventoryList = ReadonlyArray<LocalInventory>;
 export const LocalInventoryList = /*@__PURE__*/ S.Array(
   LocalInventory,
 ) as any as S.Schema<LocalInventoryList>;
@@ -355,7 +355,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
     identifier: "ListAccountsProductsRegionalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>;
 
-export type RegionalInventoryList = RegionalInventory[];
+export type RegionalInventoryList = ReadonlyArray<RegionalInventory>;
 export const RegionalInventoryList = /*@__PURE__*/ S.Array(
   RegionalInventory,
 ) as any as S.Schema<RegionalInventoryList>;

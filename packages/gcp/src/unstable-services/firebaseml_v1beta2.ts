@@ -66,7 +66,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -111,7 +111,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -147,7 +147,7 @@ export const ModelState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ModelState" }) as any as S.Schema<ModelState>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -255,8 +255,7 @@ export const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DownloadModelResponseModelFormatEnum =
   | "MODEL_FORMAT_UNSPECIFIED"
-  | "TFLITE"
-  | (string & {});
+  | "TFLITE";
 export const DownloadModelResponseModelFormatEnum = /*@__PURE__*/ S.String;
 
 /** The response for downloading a model to device. */
@@ -344,7 +343,7 @@ export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsModelsRequest",
 }) as any as S.Schema<ListProjectsModelsRequest>;
 
-export type ModelList = Model[];
+export type ModelList = ReadonlyArray<Model>;
 export const ModelList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ModelList>;

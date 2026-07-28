@@ -164,7 +164,7 @@ export const AddRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddRegionRequest",
 }) as any as S.Schema<AddRegionRequest>;
-export type RegionStatus = "ACTIVE" | "ADDING" | "REMOVING" | (string & {});
+export type RegionStatus = "ACTIVE" | "ADDING" | "REMOVING";
 export const RegionStatus = /*@__PURE__*/ S.String;
 
 export interface AddRegionResponse {
@@ -233,10 +233,10 @@ export const AttachManagedPolicyToPermissionSetResponse =
     identifier: "AttachManagedPolicyToPermissionSetResponse",
   }) as any as S.Schema<AttachManagedPolicyToPermissionSetResponse>;
 export type TargetId = string;
-export type TargetType = "AWS_ACCOUNT" | (string & {});
+export type TargetType = "AWS_ACCOUNT";
 export const TargetType = /*@__PURE__*/ S.String;
 
-export type PrincipalType = "USER" | "GROUP" | (string & {});
+export type PrincipalType = "USER" | "GROUP";
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 export type PrincipalId = string;
@@ -262,11 +262,7 @@ export const CreateAccountAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountAssignmentRequest",
 }) as any as S.Schema<CreateAccountAssignmentRequest>;
-export type StatusValues =
-  | "IN_PROGRESS"
-  | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+export type StatusValues = "IN_PROGRESS" | "FAILED" | "SUCCEEDED";
 export const StatusValues = /*@__PURE__*/ S.String;
 
 export type UUId = string;
@@ -312,7 +308,7 @@ export const CreateAccountAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationProviderArn = string;
 export type ApplicationNameType = string;
 export type Description = string;
-export type SignInOrigin = "IDENTITY_CENTER" | "APPLICATION" | (string & {});
+export type SignInOrigin = "IDENTITY_CENTER" | "APPLICATION";
 export const SignInOrigin = /*@__PURE__*/ S.String;
 
 export type ApplicationUrl = string;
@@ -323,7 +319,7 @@ export interface SignInOptions {
 export const SignInOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Origin: SignInOrigin, ApplicationUrl: S.optional(S.String) }),
 ).annotate({ identifier: "SignInOptions" }) as any as S.Schema<SignInOptions>;
-export type ApplicationVisibility = "ENABLED" | "DISABLED" | (string & {});
+export type ApplicationVisibility = "ENABLED" | "DISABLED";
 export const ApplicationVisibility = /*@__PURE__*/ S.String;
 
 export interface PortalOptions {
@@ -347,7 +343,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
+export type ApplicationStatus = "ENABLED" | "DISABLED";
 export const ApplicationStatus = /*@__PURE__*/ S.String;
 
 export type ClientToken = string;
@@ -550,13 +546,13 @@ export const CreatePermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionSetResponse",
 }) as any as S.Schema<CreatePermissionSetResponse>;
 export type TrustedTokenIssuerName = string;
-export type TrustedTokenIssuerType = "OIDC_JWT" | (string & {});
+export type TrustedTokenIssuerType = "OIDC_JWT";
 export const TrustedTokenIssuerType = /*@__PURE__*/ S.String;
 
 export type TrustedTokenIssuerUrl = string;
 export type ClaimAttributePath = string;
 export type JMESPath = string;
-export type JwksRetrievalOption = "OPEN_ID_DISCOVERY" | (string & {});
+export type JwksRetrievalOption = "OPEN_ID_DISCOVERY";
 export const JwksRetrievalOption = /*@__PURE__*/ S.String;
 
 export interface OidcJwtConfiguration {
@@ -702,7 +698,7 @@ export const DeleteApplicationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteApplicationAssignmentResponse",
 }) as any as S.Schema<DeleteApplicationAssignmentResponse>;
-export type AuthenticationMethodType = "IAM" | (string & {});
+export type AuthenticationMethodType = "IAM";
 export const AuthenticationMethodType = /*@__PURE__*/ S.String;
 
 export interface DeleteApplicationAuthenticationMethodRequest {
@@ -729,8 +725,7 @@ export type GrantType =
   | "authorization_code"
   | "refresh_token"
   | "urn:ietf:params:oauth:grant-type:jwt-bearer"
-  | "urn:ietf:params:oauth:grant-type:token-exchange"
-  | (string & {});
+  | "urn:ietf:params:oauth:grant-type:token-exchange";
 export const GrantType = /*@__PURE__*/ S.String;
 
 export interface DeleteApplicationGrantRequest {
@@ -988,7 +983,7 @@ export const DescribeApplicationProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationProviderRequest",
 }) as any as S.Schema<DescribeApplicationProviderRequest>;
-export type FederationProtocol = "SAML" | "OAUTH" | (string & {});
+export type FederationProtocol = "SAML" | "OAUTH";
 export const FederationProtocol = /*@__PURE__*/ S.String;
 
 export type Name = string;
@@ -1064,22 +1059,14 @@ export type InstanceStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
   | "DELETE_IN_PROGRESS"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const InstanceStatus = /*@__PURE__*/ S.String;
 
-export type KmsKeyType =
-  | "AWS_OWNED_KMS_KEY"
-  | "CUSTOMER_MANAGED_KEY"
-  | (string & {});
+export type KmsKeyType = "AWS_OWNED_KMS_KEY" | "CUSTOMER_MANAGED_KEY";
 export const KmsKeyType = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
-export type KmsKeyStatus =
-  | "UPDATING"
-  | "ENABLED"
-  | "UPDATE_FAILED"
-  | (string & {});
+export type KmsKeyStatus = "UPDATING" | "ENABLED" | "UPDATE_FAILED";
 export const KmsKeyStatus = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfigurationDetails {
@@ -1136,8 +1123,7 @@ export const DescribeInstanceAccessControlAttributeConfigurationRequest =
 export type InstanceAccessControlAttributeConfigurationStatus =
   | "ENABLED"
   | "CREATION_IN_PROGRESS"
-  | "CREATION_FAILED"
-  | (string & {});
+  | "CREATION_FAILED";
 export const InstanceAccessControlAttributeConfigurationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1516,10 +1502,7 @@ export const GetApplicationSessionConfigurationRequest =
   ).annotate({
     identifier: "GetApplicationSessionConfigurationRequest",
   }) as any as S.Schema<GetApplicationSessionConfigurationRequest>;
-export type UserBackgroundSessionApplicationStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type UserBackgroundSessionApplicationStatus = "ENABLED" | "DISABLED";
 export const UserBackgroundSessionApplicationStatus = /*@__PURE__*/ S.String;
 
 export interface GetApplicationSessionConfigurationResponse {
@@ -1803,8 +1786,7 @@ export const ListAccountAssignmentsForPrincipalResponse =
   }) as any as S.Schema<ListAccountAssignmentsForPrincipalResponse>;
 export type ProvisioningStatus =
   | "LATEST_PERMISSION_SET_PROVISIONED"
-  | "LATEST_PERMISSION_SET_NOT_PROVISIONED"
-  | (string & {});
+  | "LATEST_PERMISSION_SET_NOT_PROVISIONED";
 export const ProvisioningStatus = /*@__PURE__*/ S.String;
 
 export interface ListAccountsForProvisionedPermissionSetRequest {
@@ -2544,10 +2526,7 @@ export const ListTrustedTokenIssuersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTrustedTokenIssuersResponse",
 }) as any as S.Schema<ListTrustedTokenIssuersResponse>;
-export type ProvisionTargetType =
-  | "AWS_ACCOUNT"
-  | "ALL_PROVISIONED_ACCOUNTS"
-  | (string & {});
+export type ProvisionTargetType = "AWS_ACCOUNT" | "ALL_PROVISIONED_ACCOUNTS";
 export const ProvisionTargetType = /*@__PURE__*/ S.String;
 
 export interface ProvisionPermissionSetRequest {
@@ -2952,32 +2931,25 @@ export const UpdateTrustedTokenIssuerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrustedTokenIssuerResponse",
 }) as any as S.Schema<UpdateTrustedTokenIssuerResponse>;
 export type AccessDeniedExceptionMessage = string;
-export type AccessDeniedExceptionReason =
-  | "KMS_AccessDeniedException"
-  | (string & {});
+export type AccessDeniedExceptionReason = "KMS_AccessDeniedException";
 export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
 export type ConflictExceptionMessage = string;
 export type InternalFailureMessage = string;
 export type ServiceQuotaExceededMessage = string;
 export type ThrottlingExceptionMessage = string;
-export type ThrottlingExceptionReason =
-  | "KMS_ThrottlingException"
-  | (string & {});
+export type ThrottlingExceptionReason = "KMS_ThrottlingException";
 export const ThrottlingExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionMessage = string;
 export type ValidationExceptionReason =
   | "KMS_InvalidKeyUsageException"
   | "KMS_InvalidStateException"
-  | "KMS_DisabledException"
-  | (string & {});
+  | "KMS_DisabledException";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ResourceNotFoundMessage = string;
-export type ResourceNotFoundExceptionReason =
-  | "KMS_NotFoundException"
-  | (string & {});
+export type ResourceNotFoundExceptionReason = "KMS_NotFoundException";
 export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 
 export type AddRegionError =

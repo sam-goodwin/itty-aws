@@ -176,8 +176,7 @@ export type ProviderType =
   | "GitHubEnterpriseServer"
   | "GitLab"
   | "GitLabSelfManaged"
-  | "AzureDevOps"
-  | (string & {});
+  | "AzureDevOps";
 export const ProviderType = /*@__PURE__*/ S.String;
 
 export type ConnectionName = string;
@@ -335,19 +334,16 @@ export type BranchName = string;
 export type DeploymentFilePath = string;
 export type ResourceName = string;
 export type IamRoleArn = string;
-export type SyncConfigurationType = "CFN_STACK_SYNC" | (string & {});
+export type SyncConfigurationType = "CFN_STACK_SYNC";
 export const SyncConfigurationType = /*@__PURE__*/ S.String;
 
-export type PublishDeploymentStatus = "ENABLED" | "DISABLED" | (string & {});
+export type PublishDeploymentStatus = "ENABLED" | "DISABLED";
 export const PublishDeploymentStatus = /*@__PURE__*/ S.String;
 
-export type TriggerResourceUpdateOn =
-  | "ANY_CHANGE"
-  | "FILE_CHANGE"
-  | (string & {});
+export type TriggerResourceUpdateOn = "ANY_CHANGE" | "FILE_CHANGE";
 export const TriggerResourceUpdateOn = /*@__PURE__*/ S.String;
 
-export type PullRequestComment = "ENABLED" | "DISABLED" | (string & {});
+export type PullRequestComment = "ENABLED" | "DISABLED";
 export const PullRequestComment = /*@__PURE__*/ S.String;
 
 export interface CreateSyncConfigurationInput {
@@ -494,11 +490,7 @@ export const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectionInput",
 }) as any as S.Schema<GetConnectionInput>;
 export type AccountId = string;
-export type ConnectionStatus =
-  | "PENDING"
-  | "AVAILABLE"
-  | "ERROR"
-  | (string & {});
+export type ConnectionStatus = "PENDING" | "AVAILABLE" | "ERROR";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface Connection {
@@ -591,8 +583,7 @@ export type RepositorySyncStatus =
   | "INITIATED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "QUEUED"
-  | (string & {});
+  | "QUEUED";
 export const RepositorySyncStatus = /*@__PURE__*/ S.String;
 
 export type Event = string;
@@ -692,8 +683,7 @@ export type ResourceSyncStatus =
   | "FAILED"
   | "INITIATED"
   | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const ResourceSyncStatus = /*@__PURE__*/ S.String;
 
 export type Target = string;
@@ -743,10 +733,10 @@ export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSyncBlockerSummaryInput",
 }) as any as S.Schema<GetSyncBlockerSummaryInput>;
 export type Id = string;
-export type BlockerType = "AUTOMATED" | (string & {});
+export type BlockerType = "AUTOMATED";
 export const BlockerType = /*@__PURE__*/ S.String;
 
-export type BlockerStatus = "ACTIVE" | "RESOLVED" | (string & {});
+export type BlockerStatus = "ACTIVE" | "RESOLVED";
 export const BlockerStatus = /*@__PURE__*/ S.String;
 
 export type CreatedReason = string;

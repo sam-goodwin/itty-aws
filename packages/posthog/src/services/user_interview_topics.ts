@@ -51,11 +51,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -88,20 +87,21 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
-export type UserInterviewTopicIntervieweeEmailsList = string[];
+export type UserInterviewTopicIntervieweeEmailsList = ReadonlyArray<string>;
 export const UserInterviewTopicIntervieweeEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserInterviewTopicIntervieweeEmailsList>;
 
 /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
-export type UserInterviewTopicIntervieweeDistinctIdsList = string[];
+export type UserInterviewTopicIntervieweeDistinctIdsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicIntervieweeDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewTopicIntervieweeDistinctIdsList>;
 
 /** Ordered list of questions the voice agent should work through during the interview. */
-export type UserInterviewTopicQuestionsList = string[];
+export type UserInterviewTopicQuestionsList = ReadonlyArray<string>;
 export const UserInterviewTopicQuestionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserInterviewTopicQuestionsList>;
@@ -145,7 +145,8 @@ export const UserInterviewTopic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserInterviewTopic>;
 
 /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
-export type UserInterviewTopicsCreateRequestIntervieweeEmailsList = string[];
+export type UserInterviewTopicsCreateRequestIntervieweeEmailsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicsCreateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -153,14 +154,15 @@ export const UserInterviewTopicsCreateRequestIntervieweeEmailsList =
 
 /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
 export type UserInterviewTopicsCreateRequestIntervieweeDistinctIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const UserInterviewTopicsCreateRequestIntervieweeDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewTopicsCreateRequestIntervieweeDistinctIdsList>;
 
 /** Ordered list of questions the voice agent should work through during the interview. */
-export type UserInterviewTopicsCreateRequestQuestionsList = string[];
+export type UserInterviewTopicsCreateRequestQuestionsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicsCreateRequestQuestionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -169,9 +171,6 @@ export const UserInterviewTopicsCreateRequestQuestionsList =
 export interface UserInterviewTopicsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
-  created_by: UserBasic;
-  created_at: string;
   /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
   interviewee_emails?: UserInterviewTopicsCreateRequestIntervieweeEmailsList;
   /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
@@ -190,9 +189,6 @@ export interface UserInterviewTopicsCreateRequest {
 export const UserInterviewTopicsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    created_by: UserBasic,
-    created_at: S.String,
     interviewee_emails: S.optional(
       UserInterviewTopicsCreateRequestIntervieweeEmailsList,
     ),
@@ -284,7 +280,8 @@ export const InterviewLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InterviewLink" }) as any as S.Schema<InterviewLink>;
 
-export type PaginatedInterviewLinkListResultsList = InterviewLink[];
+export type PaginatedInterviewLinkListResultsList =
+  ReadonlyArray<InterviewLink>;
 export const PaginatedInterviewLinkListResultsList = /*@__PURE__*/ S.Array(
   InterviewLink,
 ) as any as S.Schema<PaginatedInterviewLinkListResultsList>;
@@ -323,7 +320,7 @@ export const BulkIntervieweeContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of interviewee context rows to create. Each item has an `interviewee_identifier` and an `agent_context`. At most 500 items per request. */
 export type UserInterviewTopicsIntervieweesBulkCreateRequestItemsList =
-  BulkIntervieweeContextItem[];
+  ReadonlyArray<BulkIntervieweeContextItem>;
 export const UserInterviewTopicsIntervieweesBulkCreateRequestItemsList =
   /*@__PURE__*/ S.Array(
     BulkIntervieweeContextItem,
@@ -354,7 +351,8 @@ export const UserInterviewTopicsIntervieweesBulkCreateRequest =
   }) as any as S.Schema<UserInterviewTopicsIntervieweesBulkCreateRequest>;
 
 /** Identifiers from the request whose rows were skipped because a row for that (topic, interviewee_identifier) already existed. */
-export type BulkIntervieweeContextResponseSkippedIdentifiersList = string[];
+export type BulkIntervieweeContextResponseSkippedIdentifiersList =
+  ReadonlyArray<string>;
 export const BulkIntervieweeContextResponseSkippedIdentifiersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -382,9 +380,6 @@ export interface UserInterviewTopicsIntervieweesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   topic_id: string;
-  id: string;
-  created_by: UserBasic;
-  created_at: string;
   /** Identifier for the interviewee — typically an email address or PostHog distinct ID. Must match a value in the parent topic's interviewee_emails or interviewee_distinct_ids. */
   interviewee_identifier: string;
   /** Extra context the voice agent should know about this specific interviewee — e.g. 'uses the replay product but has never used summarization'. */
@@ -395,9 +390,6 @@ export const UserInterviewTopicsIntervieweesCreateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       topic_id: S.String.pipe(T.Label()),
-      id: S.String,
-      created_by: UserBasic,
-      created_at: S.String,
       interviewee_identifier: S.String,
       agent_context: S.String,
     }).pipe(
@@ -489,7 +481,8 @@ export const UserInterviewTopicsIntervieweesListRequest =
     identifier: "UserInterviewTopicsIntervieweesListRequest",
   }) as any as S.Schema<UserInterviewTopicsIntervieweesListRequest>;
 
-export type PaginatedIntervieweeContextListResultsList = IntervieweeContext[];
+export type PaginatedIntervieweeContextListResultsList =
+  ReadonlyArray<IntervieweeContext>;
 export const PaginatedIntervieweeContextListResultsList = /*@__PURE__*/ S.Array(
   IntervieweeContext,
 ) as any as S.Schema<PaginatedIntervieweeContextListResultsList>;
@@ -517,8 +510,6 @@ export interface UserInterviewTopicsIntervieweesPartialUpdateRequest {
   topic_id: string;
   /** A UUID string identifying this interviewee context. */
   id: string;
-  created_by?: UserBasic;
-  created_at?: string;
   /** Identifier for the interviewee — typically an email address or PostHog distinct ID. Must match a value in the parent topic's interviewee_emails or interviewee_distinct_ids. */
   interviewee_identifier?: string;
   /** Extra context the voice agent should know about this specific interviewee — e.g. 'uses the replay product but has never used summarization'. */
@@ -530,8 +521,6 @@ export const UserInterviewTopicsIntervieweesPartialUpdateRequest =
       project_id: S.String.pipe(T.Label()),
       topic_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
       interviewee_identifier: S.optional(S.String),
       agent_context: S.optional(S.String),
     }).pipe(
@@ -575,8 +564,6 @@ export interface UserInterviewTopicsIntervieweesUpdateRequest {
   topic_id: string;
   /** A UUID string identifying this interviewee context. */
   id: string;
-  created_by: UserBasic;
-  created_at: string;
   /** Identifier for the interviewee — typically an email address or PostHog distinct ID. Must match a value in the parent topic's interviewee_emails or interviewee_distinct_ids. */
   interviewee_identifier: string;
   /** Extra context the voice agent should know about this specific interviewee — e.g. 'uses the replay product but has never used summarization'. */
@@ -588,8 +575,6 @@ export const UserInterviewTopicsIntervieweesUpdateRequest =
       project_id: S.String.pipe(T.Label()),
       topic_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      created_by: UserBasic,
-      created_at: S.String,
       interviewee_identifier: S.String,
       agent_context: S.String,
     }).pipe(
@@ -658,7 +643,8 @@ export const UserInterviewTopicsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserInterviewTopicsListRequest",
 }) as any as S.Schema<UserInterviewTopicsListRequest>;
 
-export type PaginatedUserInterviewTopicListResultsList = UserInterviewTopic[];
+export type PaginatedUserInterviewTopicListResultsList =
+  ReadonlyArray<UserInterviewTopic>;
 export const PaginatedUserInterviewTopicListResultsList = /*@__PURE__*/ S.Array(
   UserInterviewTopic,
 ) as any as S.Schema<PaginatedUserInterviewTopicListResultsList>;
@@ -682,7 +668,7 @@ export const PaginatedUserInterviewTopicList = /*@__PURE__*/ S.suspend(() =>
 
 /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
 export type UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -690,14 +676,15 @@ export const UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList =
 
 /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
 export type UserInterviewTopicsPartialUpdateRequestIntervieweeDistinctIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const UserInterviewTopicsPartialUpdateRequestIntervieweeDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewTopicsPartialUpdateRequestIntervieweeDistinctIdsList>;
 
 /** Ordered list of questions the voice agent should work through during the interview. */
-export type UserInterviewTopicsPartialUpdateRequestQuestionsList = string[];
+export type UserInterviewTopicsPartialUpdateRequestQuestionsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicsPartialUpdateRequestQuestionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -708,8 +695,6 @@ export interface UserInterviewTopicsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this user interview topic. */
   id: string;
-  created_by?: UserBasic;
-  created_at?: string;
   /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
   interviewee_emails?: UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList;
   /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
@@ -730,8 +715,6 @@ export const UserInterviewTopicsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
       interviewee_emails: S.optional(
         UserInterviewTopicsPartialUpdateRequestIntervieweeEmailsList,
       ),
@@ -916,7 +899,7 @@ export const InterviewInviteResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterviewInviteResult>;
 
 export type PaginatedInterviewInviteResultListResultsList =
-  InterviewInviteResult[];
+  ReadonlyArray<InterviewInviteResult>;
 export const PaginatedInterviewInviteResultListResultsList =
   /*@__PURE__*/ S.Array(
     InterviewInviteResult,
@@ -1057,7 +1040,8 @@ export const TestInterviewLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestInterviewLink>;
 
 /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
-export type UserInterviewTopicsUpdateRequestIntervieweeEmailsList = string[];
+export type UserInterviewTopicsUpdateRequestIntervieweeEmailsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicsUpdateRequestIntervieweeEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1065,14 +1049,15 @@ export const UserInterviewTopicsUpdateRequestIntervieweeEmailsList =
 
 /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
 export type UserInterviewTopicsUpdateRequestIntervieweeDistinctIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const UserInterviewTopicsUpdateRequestIntervieweeDistinctIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UserInterviewTopicsUpdateRequestIntervieweeDistinctIdsList>;
 
 /** Ordered list of questions the voice agent should work through during the interview. */
-export type UserInterviewTopicsUpdateRequestQuestionsList = string[];
+export type UserInterviewTopicsUpdateRequestQuestionsList =
+  ReadonlyArray<string>;
 export const UserInterviewTopicsUpdateRequestQuestionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1083,8 +1068,6 @@ export interface UserInterviewTopicsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this user interview topic. */
   id: string;
-  created_by: UserBasic;
-  created_at: string;
   /** Email addresses of people to interview. May be combined with interviewee_distinct_ids. */
   interviewee_emails?: UserInterviewTopicsUpdateRequestIntervieweeEmailsList;
   /** PostHog distinct IDs of people to interview. May be combined with interviewee_emails. */
@@ -1104,8 +1087,6 @@ export const UserInterviewTopicsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_by: UserBasic,
-    created_at: S.String,
     interviewee_emails: S.optional(
       UserInterviewTopicsUpdateRequestIntervieweeEmailsList,
     ),

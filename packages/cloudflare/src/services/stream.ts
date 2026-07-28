@@ -107,11 +107,7 @@ export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyAudioTrackRequest",
 }) as any as S.Schema<CopyAudioTrackRequest>;
 
-export type AudioTracksCopyResponseStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
+export type AudioTracksCopyResponseStatus = "queued" | "ready" | "error";
 export const AudioTracksCopyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -165,8 +161,7 @@ export const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageCreateResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -191,7 +186,7 @@ export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCaptionLanguageResponse",
 }) as any as S.Schema<CreateCaptionLanguageResponse>;
 
-export type ClipCreateRequestAllowedOriginsList = unknown[];
+export type ClipCreateRequestAllowedOriginsList = ReadonlyArray<unknown>;
 export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ClipCreateRequestAllowedOriginsList>;
@@ -266,7 +261,7 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClipRequest",
 }) as any as S.Schema<CreateClipRequest>;
 
-export type ClipCreateResponseAllowedOriginsList = unknown[];
+export type ClipCreateResponseAllowedOriginsList = ReadonlyArray<unknown>;
 export const ClipCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ClipCreateResponseAllowedOriginsList>;
@@ -324,7 +319,10 @@ export type ClipCreateResponseStatusState =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const ClipCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface ClipCreateResponseStatus {
@@ -475,7 +473,7 @@ export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateClipResponse",
 }) as any as S.Schema<CreateClipResponse>;
 
-export type CopyCreateRequestAllowedOriginsList = unknown[];
+export type CopyCreateRequestAllowedOriginsList = ReadonlyArray<unknown>;
 export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CopyCreateRequestAllowedOriginsList>;
@@ -544,7 +542,7 @@ export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCopyRequest",
 }) as any as S.Schema<CreateCopyRequest>;
 
-export type CopyCreateResponseAllowedOriginsList = unknown[];
+export type CopyCreateResponseAllowedOriginsList = ReadonlyArray<unknown>;
 export const CopyCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CopyCreateResponseAllowedOriginsList>;
@@ -602,7 +600,10 @@ export type CopyCreateResponseStatusState =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const CopyCreateResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface CopyCreateResponseStatus {
@@ -753,7 +754,8 @@ export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCopyResponse",
 }) as any as S.Schema<CreateCopyResponse>;
 
-export type DirectUploadCreateRequestAllowedOriginsList = unknown[];
+export type DirectUploadCreateRequestAllowedOriginsList =
+  ReadonlyArray<unknown>;
 export const DirectUploadCreateRequestAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -909,8 +911,7 @@ export const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsCreateResponseAudioStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsCreateResponseAudioStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsCreateResponseAudio {
@@ -934,8 +935,7 @@ export const DownloadsCreateResponseAudio = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsCreateResponseDefaultStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsCreateResponseDefaultStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsCreateResponseDefault {
@@ -975,12 +975,10 @@ export const CreateDownloadResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateKeyRequest {
   /** Identifier. */
   accountId: string;
-  body: unknown;
 }
 export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1016,16 +1014,14 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyResponse",
 }) as any as S.Schema<CreateKeyResponse>;
 
-export type LiveInputsCreateRequestRecordingAllowedOriginsList = string[];
+export type LiveInputsCreateRequestRecordingAllowedOriginsList =
+  ReadonlyArray<string>;
 export const LiveInputsCreateRequestRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
 
-export type LiveInputsCreateRequestRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsCreateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateRequestRecording {
@@ -1092,16 +1088,14 @@ export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLiveInputRequest",
 }) as any as S.Schema<CreateLiveInputRequest>;
 
-export type LiveInputsCreateResponseRecordingAllowedOriginsList = string[];
+export type LiveInputsCreateResponseRecordingAllowedOriginsList =
+  ReadonlyArray<string>;
 export const LiveInputsCreateResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsCreateResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsCreateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsCreateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseRecording {
@@ -1201,7 +1195,11 @@ export type LiveInputsCreateResponseStatus =
   | "connected"
   | "reconnected"
   | "reconnecting"
-  | (string & {});
+  | "client_disconnect"
+  | "ttl_exceeded"
+  | "failed_to_connect"
+  | "failed_to_reconnect"
+  | "new_configuration_accepted";
 export const LiveInputsCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateResponseWebRTC {
@@ -1341,7 +1339,7 @@ export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLiveInputOutputResponse",
 }) as any as S.Schema<CreateLiveInputOutputResponse>;
 
-export type CreateRequestTusResumable = "1.0.0" | (string & {});
+export type CreateRequestTusResumable = "1.0.0";
 export const CreateRequestTusResumable = /*@__PURE__*/ S.String;
 
 export interface CreateStreamRequest {
@@ -1386,19 +1384,17 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStreamResponse",
 }) as any as S.Schema<CreateStreamResponse>;
 
-export type TokenCreateRequestAccessRulesItemAction =
-  | "allow"
-  | "block"
-  | (string & {});
+export type TokenCreateRequestAccessRulesItemAction = "allow" | "block";
 export const TokenCreateRequestAccessRulesItemAction = /*@__PURE__*/ S.String;
 
-export type TokenCreateRequestAccessRulesItemCountryList = string[];
+export type TokenCreateRequestAccessRulesItemCountryList =
+  ReadonlyArray<string>;
 export const TokenCreateRequestAccessRulesItemCountryList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
 
-export type TokenCreateRequestAccessRulesItemIpList = string[];
+export type TokenCreateRequestAccessRulesItemIpList = ReadonlyArray<string>;
 export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
@@ -1406,8 +1402,7 @@ export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
 export type TokenCreateRequestAccessRulesItemType =
   | "any"
   | "ip.src"
-  | "ip.geoip.country"
-  | (string & {});
+  | "ip.geoip.country";
 export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
 
 export interface TokenCreateRequestAccessRulesItem {
@@ -1432,7 +1427,7 @@ export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokenCreateRequestAccessRulesItem>;
 
 export type TokenCreateRequestAccessRulesList =
-  TokenCreateRequestAccessRulesItem[];
+  ReadonlyArray<TokenCreateRequestAccessRulesItem>;
 export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
   TokenCreateRequestAccessRulesItem,
 ) as any as S.Schema<TokenCreateRequestAccessRulesList>;
@@ -1863,7 +1858,7 @@ export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebhookResponse",
 }) as any as S.Schema<DeleteWebhookResponse>;
 
-export type EditRequestAllowedOriginsList = unknown[];
+export type EditRequestAllowedOriginsList = ReadonlyArray<unknown>;
 export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EditRequestAllowedOriginsList>;
@@ -1938,7 +1933,7 @@ export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditStreamRequest",
 }) as any as S.Schema<EditStreamRequest>;
 
-export type EditResponseAllowedOriginsList = unknown[];
+export type EditResponseAllowedOriginsList = ReadonlyArray<unknown>;
 export const EditResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EditResponseAllowedOriginsList>;
@@ -1996,7 +1991,10 @@ export type EditResponseStatusState =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const EditResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface EditResponseStatus {
@@ -2173,8 +2171,7 @@ export const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
 export type AudioTracksGetResponseAudioItemStatus =
   | "queued"
   | "ready"
-  | "error"
-  | (string & {});
+  | "error";
 export const AudioTracksGetResponseAudioItemStatus = /*@__PURE__*/ S.String;
 
 export interface AudioTracksGetResponseAudioItem {
@@ -2198,7 +2195,8 @@ export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AudioTracksGetResponseAudioItem",
 }) as any as S.Schema<AudioTracksGetResponseAudioItem>;
 
-export type AudioTracksGetResponseAudioList = AudioTracksGetResponseAudioItem[];
+export type AudioTracksGetResponseAudioList =
+  ReadonlyArray<AudioTracksGetResponseAudioItem>;
 export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
   AudioTracksGetResponseAudioItem,
 ) as any as S.Schema<AudioTracksGetResponseAudioList>;
@@ -2239,11 +2237,7 @@ export const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCaptionRequest",
 }) as any as S.Schema<GetCaptionRequest>;
 
-export type CaptionsGetResultItemStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
+export type CaptionsGetResultItemStatus = "ready" | "inprogress" | "error";
 export const CaptionsGetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface CaptionsGetResultItem {
@@ -2267,7 +2261,7 @@ export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CaptionsGetResultItem",
 }) as any as S.Schema<CaptionsGetResultItem>;
 
-export type CaptionsGetResultList = CaptionsGetResultItem[];
+export type CaptionsGetResultList = ReadonlyArray<CaptionsGetResultItem>;
 export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
   CaptionsGetResultItem,
 ) as any as S.Schema<CaptionsGetResultList>;
@@ -2316,8 +2310,7 @@ export const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageGetResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2398,11 +2391,7 @@ export const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDownloadRequest",
 }) as any as S.Schema<GetDownloadRequest>;
 
-export type DownloadsGetResponseAudioStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
+export type DownloadsGetResponseAudioStatus = "ready" | "inprogress" | "error";
 export const DownloadsGetResponseAudioStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsGetResponseAudio {
@@ -2426,8 +2415,7 @@ export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
 export type DownloadsGetResponseDefaultStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const DownloadsGetResponseDefaultStatus = /*@__PURE__*/ S.String;
 
 export interface DownloadsGetResponseDefault {
@@ -2530,7 +2518,7 @@ export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeysGetResultItem",
 }) as any as S.Schema<KeysGetResultItem>;
 
-export type KeysGetResultList = KeysGetResultItem[];
+export type KeysGetResultList = ReadonlyArray<KeysGetResultItem>;
 export const KeysGetResultList = /*@__PURE__*/ S.Array(
   KeysGetResultItem,
 ) as any as S.Schema<KeysGetResultList>;
@@ -2571,16 +2559,14 @@ export const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLiveInputRequest",
 }) as any as S.Schema<GetLiveInputRequest>;
 
-export type LiveInputsGetResponseRecordingAllowedOriginsList = string[];
+export type LiveInputsGetResponseRecordingAllowedOriginsList =
+  ReadonlyArray<string>;
 export const LiveInputsGetResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsGetResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsGetResponseRecordingMode = "off" | "automatic";
 export const LiveInputsGetResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseRecording {
@@ -2679,7 +2665,11 @@ export type LiveInputsGetResponseStatus =
   | "connected"
   | "reconnected"
   | "reconnecting"
-  | (string & {});
+  | "client_disconnect"
+  | "ttl_exceeded"
+  | "failed_to_connect"
+  | "failed_to_reconnect"
+  | "new_configuration_accepted";
 export const LiveInputsGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsGetResponseWebRTC {
@@ -2787,7 +2777,7 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStreamRequest",
 }) as any as S.Schema<GetStreamRequest>;
 
-export type GetResponseAllowedOriginsList = unknown[];
+export type GetResponseAllowedOriginsList = ReadonlyArray<unknown>;
 export const GetResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetResponseAllowedOriginsList>;
@@ -2845,7 +2835,10 @@ export type GetResponseStatusState =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const GetResponseStatusState = /*@__PURE__*/ S.String;
 
 export interface GetResponseStatus {
@@ -3148,7 +3141,8 @@ export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LiveInputsOutputsListResultItem",
 }) as any as S.Schema<LiveInputsOutputsListResultItem>;
 
-export type LiveInputsOutputsListResultList = LiveInputsOutputsListResultItem[];
+export type LiveInputsOutputsListResultList =
+  ReadonlyArray<LiveInputsOutputsListResultItem>;
 export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
   LiveInputsOutputsListResultItem,
 ) as any as S.Schema<LiveInputsOutputsListResultList>;
@@ -3220,7 +3214,7 @@ export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LiveInputsListResponseLiveInputsItem>;
 
 export type LiveInputsListResponseLiveInputsList =
-  LiveInputsListResponseLiveInputsItem[];
+  ReadonlyArray<LiveInputsListResponseLiveInputsItem>;
 export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
   LiveInputsListResponseLiveInputsItem,
 ) as any as S.Schema<LiveInputsListResponseLiveInputsList>;
@@ -3247,7 +3241,10 @@ export type ListRequestStatus =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListStreamsRequest {
@@ -3315,7 +3312,7 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStreamsRequest",
 }) as any as S.Schema<ListStreamsRequest>;
 
-export type ListResultItemAllowedOriginsList = unknown[];
+export type ListResultItemAllowedOriginsList = ReadonlyArray<unknown>;
 export const ListResultItemAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListResultItemAllowedOriginsList>;
@@ -3373,7 +3370,10 @@ export type ListResultItemStatusState =
   | "pendingupload"
   | "downloading"
   | "queued"
-  | (string & {});
+  | "inprogress"
+  | "ready"
+  | "error"
+  | "live-inprogress";
 export const ListResultItemStatusState = /*@__PURE__*/ S.String;
 
 export interface ListResultItemStatus {
@@ -3521,7 +3521,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -3603,7 +3603,7 @@ export const WatermarksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatermarksListResultItem",
 }) as any as S.Schema<WatermarksListResultItem>;
 
-export type WatermarksListResultList = WatermarksListResultItem[];
+export type WatermarksListResultList = ReadonlyArray<WatermarksListResultItem>;
 export const WatermarksListResultList = /*@__PURE__*/ S.Array(
   WatermarksListResultItem,
 ) as any as S.Schema<WatermarksListResultList>;
@@ -3655,11 +3655,7 @@ export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAudioTrackRequest",
 }) as any as S.Schema<PatchAudioTrackRequest>;
 
-export type AudioTracksEditResponseStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
+export type AudioTracksEditResponseStatus = "queued" | "ready" | "error";
 export const AudioTracksEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3806,8 +3802,7 @@ export const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 export type CaptionsLanguageUpdateResponseStatus =
   | "ready"
   | "inprogress"
-  | "error"
-  | (string & {});
+  | "error";
 export const CaptionsLanguageUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3832,16 +3827,14 @@ export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCaptionLanguageResponse",
 }) as any as S.Schema<UpdateCaptionLanguageResponse>;
 
-export type LiveInputsUpdateRequestRecordingAllowedOriginsList = string[];
+export type LiveInputsUpdateRequestRecordingAllowedOriginsList =
+  ReadonlyArray<string>;
 export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LiveInputsUpdateRequestRecordingAllowedOriginsList>;
 
-export type LiveInputsUpdateRequestRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsUpdateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateRequestRecording {
@@ -3911,16 +3904,14 @@ export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLiveInputRequest",
 }) as any as S.Schema<UpdateLiveInputRequest>;
 
-export type LiveInputsUpdateResponseRecordingAllowedOriginsList = string[];
+export type LiveInputsUpdateResponseRecordingAllowedOriginsList =
+  ReadonlyArray<string>;
 export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LiveInputsUpdateResponseRecordingAllowedOriginsList>;
 
-export type LiveInputsUpdateResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
+export type LiveInputsUpdateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateResponseRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseRecording {
@@ -4020,7 +4011,11 @@ export type LiveInputsUpdateResponseStatus =
   | "connected"
   | "reconnected"
   | "reconnecting"
-  | (string & {});
+  | "client_disconnect"
+  | "ttl_exceeded"
+  | "failed_to_connect"
+  | "failed_to_reconnect"
+  | "new_configuration_accepted";
 export const LiveInputsUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateResponseWebRTC {

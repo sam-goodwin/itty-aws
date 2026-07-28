@@ -154,13 +154,6 @@
         }
       }
     },
-    "com.posthog.session_recordings#SessionRecordingsSharingPasswordsCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.session_recordings#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.session_recordings#SessionRecordingsSharingPasswordsCreateRequest": {
       "type": "structure",
       "members": {
@@ -179,34 +172,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.session_recordings#SessionRecordingsSharingPasswordsCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -296,13 +269,6 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.session_recordings#SessionRecordingsSharingRefreshCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.session_recordings#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.session_recordings#SessionRecordingsSharingRefreshCreateRequest": {
       "type": "structure",
       "members": {
@@ -321,34 +287,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.session_recordings#SessionRecordingsSharingRefreshCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

@@ -135,8 +135,7 @@ export type AutomationJobStatus =
   | "InProgress"
   | "Success"
   | "ServiceError"
-  | "ClientError"
-  | (string & {});
+  | "ClientError";
 export const AutomationJobStatus = /*@__PURE__*/ S.String;
 
 export type S3Uri = string;
@@ -184,7 +183,7 @@ export const SyncInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyncInputConfiguration",
 }) as any as S.Schema<SyncInputConfiguration>;
 export type DataAutomationArn = string;
-export type DataAutomationStage = "LIVE" | "DEVELOPMENT" | (string & {});
+export type DataAutomationStage = "LIVE" | "DEVELOPMENT";
 export const DataAutomationStage = /*@__PURE__*/ S.String;
 
 export interface DataAutomationConfiguration {
@@ -201,7 +200,7 @@ export const DataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataAutomationConfiguration>;
 export type BlueprintArn = string;
 export type BlueprintVersion = string;
-export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
+export type BlueprintStage = "DEVELOPMENT" | "LIVE";
 export const BlueprintStage = /*@__PURE__*/ S.String;
 
 export interface Blueprint {
@@ -261,15 +260,10 @@ export const InvokeDataAutomationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeDataAutomationRequest",
 }) as any as S.Schema<InvokeDataAutomationRequest>;
-export type SemanticModality =
-  | "DOCUMENT"
-  | "IMAGE"
-  | "AUDIO"
-  | "VIDEO"
-  | (string & {});
+export type SemanticModality = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO";
 export const SemanticModality = /*@__PURE__*/ S.String;
 
-export type CustomOutputStatus = "MATCH" | "NO_MATCH" | (string & {});
+export type CustomOutputStatus = "MATCH" | "NO_MATCH";
 export const CustomOutputStatus = /*@__PURE__*/ S.String;
 
 export interface OutputSegment {

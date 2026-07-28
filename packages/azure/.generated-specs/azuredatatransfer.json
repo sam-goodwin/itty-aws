@@ -828,11 +828,17 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "ID of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "statusReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reason for resource operation."
           }
         }
       },
@@ -909,11 +915,52 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID associated with this schema"
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection ID associated with this schema"
+          }
+        },
+        "status": {
+          "target": "com.azure.azuredatatransfer#SchemaStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the schema"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema"
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content of the schema"
+          }
+        },
+        "direction": {
+          "target": "com.azure.azuredatatransfer#Direction",
+          "traits": {
+            "smithy.api#documentation": "The direction of the schema."
+          }
+        },
+        "schemaUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri containing SAS token for the zipped schema"
+          }
+        },
+        "schemaType": {
+          "target": "com.azure.azuredatatransfer#SchemaType",
+          "traits": {
+            "smithy.api#documentation": "The Schema Type"
           }
         }
       },
@@ -1634,15 +1681,24 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azuredatatransfer#ListFlowsByPipelineListRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Connection ID to target"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#ListFlowsByPipelineListRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection ID to target"
       }
     },
     "com.azure.azuredatatransfer#PipelinesExecuteAction": {
@@ -2188,16 +2244,91 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actionType": {
+          "target": "com.azure.azuredatatransfer#ActionType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of action to be executed",
             "smithy.api#required": {}
+          }
+        },
+        "targetType": {
+          "target": "com.azure.azuredatatransfer#TargetType",
+          "traits": {
+            "smithy.api#documentation": "Type of target to execute the action on",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.azure.azuredatatransfer#PipelinesExecuteActionRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Targets for the action",
+            "smithy.api#required": {}
+          }
+        },
+        "justification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Business justification for the action"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesExecuteActionRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Targets for the action"
+      }
+    },
+    "com.azure.azuredatatransfer#TargetType": {
+      "type": "enum",
+      "members": {
+        "PIPELINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pipeline"
+          }
+        },
+        "CONNECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Connection"
+          }
+        },
+        "FLOWTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FlowType"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of target to execute the action on"
+      }
+    },
+    "com.azure.azuredatatransfer#ActionType": {
+      "type": "enum",
+      "members": {
+        "ALLOWUPDATES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowUpdates"
+          }
+        },
+        "FORCEDISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForceDisable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of action to be executed."
       }
     },
     "com.azure.azuredatatransfer#PipelinesApproveConnection": {
@@ -2344,11 +2475,17 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "ID of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "statusReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reason for resource operation."
           }
         }
       },
@@ -2551,16 +2688,98 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azuredatatransfer#PipelinesPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of pipelines patch body."
+          }
+        },
+        "tags": {
+          "target": "com.azure.azuredatatransfer#PipelinesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azuredatatransfer#PipelinesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azuredatatransfer#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azuredatatransfer#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.azuredatatransfer#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesPatchProperties": {
+      "type": "structure",
+      "members": {
+        "flowTypes": {
+          "target": "com.azure.azuredatatransfer#PipelinesPatchPropertiesFlowTypesList",
+          "traits": {
+            "smithy.api#documentation": "The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesPatchPropertiesFlowTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#FlowType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead."
       }
     },
     "com.azure.azuredatatransfer#PipelinesCreateOrUpdate": {
@@ -2707,16 +2926,162 @@
             "smithy.api#documentation": "The name of the pipeline on which to operate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azuredatatransfer#PipelinesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azuredatatransfer#PipelinePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of configurable properties for the Pipeline resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azuredatatransfer#PipelinesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "remoteCloud": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Remote cloud of the data to be transferred or received",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this pipeline"
+          }
+        },
+        "subscribers": {
+          "target": "com.azure.azuredatatransfer#PipelinePropertiesInputSubscribersList",
+          "traits": {
+            "smithy.api#documentation": "Subscribers of this resource"
+          }
+        },
+        "policies": {
+          "target": "com.azure.azuredatatransfer#PipelinePropertiesInputPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "flowTypes": {
+          "target": "com.azure.azuredatatransfer#PipelinePropertiesInputFlowTypesList",
+          "traits": {
+            "smithy.api#documentation": "The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "disabledFlowTypes": {
+          "target": "com.azure.azuredatatransfer#PipelinePropertiesInputDisabledFlowTypesList",
+          "traits": {
+            "smithy.api#documentation": "The flow types that are disabled for this pipeline"
+          }
+        },
+        "quarantineDownloadStorageAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quarantine Download Storage Account"
+          }
+        },
+        "quarantineDownloadStorageContainer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quarantine Download Storage Container"
+          }
+        },
+        "status": {
+          "target": "com.azure.azuredatatransfer#PipelineStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the current pipeline"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of pipeline"
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinePropertiesInputDisabledFlowTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#FlowType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The flow types that are disabled for this pipeline"
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinePropertiesInputFlowTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#FlowType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinePropertiesInputPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinePropertiesInputSubscribersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#Subscriber"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscribers of this resource"
+      }
+    },
+    "com.azure.azuredatatransfer#PipelinesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azuredatatransfer#PipelinesGet": {
@@ -4078,11 +4443,17 @@
             "smithy.api#documentation": "The name for the connection to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "ID of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "statusReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reason for resource operation."
           }
         }
       },
@@ -4289,16 +4660,24 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "values": {
+          "target": "com.azure.azuredatatransfer#FlowsSetSourceAddressesRequestValuesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Source addresses"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsSetSourceAddressesRequestValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Source addresses"
       }
     },
     "com.azure.azuredatatransfer#FlowsSetPassphrase": {
@@ -4500,11 +4879,10 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
           }
         }
       },
@@ -4711,16 +5089,24 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "endpoints": {
+          "target": "com.azure.azuredatatransfer#FlowsSetDestinationEndpointsRequestEndpointsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The specified flow destination endpoints."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsSetDestinationEndpointsRequestEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The specified flow destination endpoints."
       }
     },
     "com.azure.azuredatatransfer#FlowsSetDestinationEndpointPorts": {
@@ -4922,16 +5308,24 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ports": {
+          "target": "com.azure.azuredatatransfer#FlowsSetDestinationEndpointPortsRequestPortsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The specified flow destination endpoint ports"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsSetDestinationEndpointPortsRequestPortsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "The specified flow destination endpoint ports"
       }
     },
     "com.azure.azuredatatransfer#FlowsLink": {
@@ -5133,11 +5527,17 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "ID of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "statusReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reason for resource operation."
           }
         }
       },
@@ -6312,16 +6712,50 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.azuredatatransfer#FlowsUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.azuredatatransfer#FlowsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
     "com.azure.azuredatatransfer#FlowsCreateOrUpdate": {
@@ -6523,16 +6957,289 @@
             "smithy.api#documentation": "The name for the flow to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azuredatatransfer#FlowPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of flow"
+          }
+        },
+        "plan": {
+          "target": "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.azuredatatransfer#FlowPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "connection": {
+          "target": "com.azure.azuredatatransfer#SelectedResource",
+          "traits": {
+            "smithy.api#documentation": "The connection associated with this flow"
+          }
+        },
+        "keyVaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI to a Key Vault Secret containing a SAS token."
+          }
+        },
+        "status": {
+          "target": "com.azure.azuredatatransfer#FlowStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the current flow"
+          }
+        },
+        "storageAccountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account"
+          }
+        },
+        "storageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account ID"
+          }
+        },
+        "storageContainerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Container Name"
+          }
+        },
+        "storageTableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Table Name"
+          }
+        },
+        "serviceBusQueueId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service Bus Queue ID"
+          }
+        },
+        "flowType": {
+          "target": "com.azure.azuredatatransfer#FlowType",
+          "traits": {
+            "smithy.api#documentation": "The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "dataType": {
+          "target": "com.azure.azuredatatransfer#DataType",
+          "traits": {
+            "smithy.api#documentation": "Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "policies": {
+          "target": "com.azure.azuredatatransfer#FlowPropertiesInputPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "schema": {
+          "target": "com.azure.azuredatatransfer#Schema",
+          "traits": {
+            "smithy.api#documentation": "The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "messagingOptions": {
+          "target": "com.azure.azuredatatransfer#MessagingOptions",
+          "traits": {
+            "smithy.api#documentation": "The messaging options for this flow"
+          }
+        },
+        "apiFlowOptions": {
+          "target": "com.azure.azuredatatransfer#ApiFlowOptions",
+          "traits": {
+            "smithy.api#documentation": "The API Flow configuration options for Azure Data Transfer API Flow type."
+          }
+        },
+        "customerManagedKeyVaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to the customer managed key for this flow"
+          }
+        },
+        "streamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The flow stream identifier"
+          }
+        },
+        "streamProtocol": {
+          "target": "com.azure.azuredatatransfer#StreamProtocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol of the stream"
+          }
+        },
+        "streamLatency": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The latency of the stream in milliseconds"
+          }
+        },
+        "passphrase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
+          }
+        },
+        "sourceAddresses": {
+          "target": "com.azure.azuredatatransfer#StreamSourceAddresses",
+          "traits": {
+            "smithy.api#documentation": "The source IP address and CIDR ranges of the stream"
+          }
+        },
+        "destinationEndpoints": {
+          "target": "com.azure.azuredatatransfer#FlowPropertiesInputDestinationEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The destination endpoints of the stream"
+          }
+        },
+        "destinationEndpointPorts": {
+          "target": "com.azure.azuredatatransfer#FlowPropertiesInputDestinationEndpointPortsList",
+          "traits": {
+            "smithy.api#documentation": "The destination endpoint ports of the stream"
+          }
+        },
+        "eventHubId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event Hub ID"
+          }
+        },
+        "consumerGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event Hub Consumer Group"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of flow"
+      }
+    },
+    "com.azure.azuredatatransfer#FlowPropertiesInputDestinationEndpointPortsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "The destination endpoint ports of the stream"
+      }
+    },
+    "com.azure.azuredatatransfer#FlowPropertiesInputDestinationEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The destination endpoints of the stream"
+      }
+    },
+    "com.azure.azuredatatransfer#FlowPropertiesInputPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#FlowsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azuredatatransfer#FlowsGet": {
@@ -7015,16 +7722,50 @@
             "smithy.api#documentation": "The name for the connection to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.azuredatatransfer#ConnectionsUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.azuredatatransfer#ConnectionsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
     "com.azure.azuredatatransfer#ConnectionsCreateOrUpdate": {
@@ -7171,16 +7912,189 @@
             "smithy.api#documentation": "The name for the connection to perform the operation on."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azuredatatransfer#ConnectionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of connection"
+          }
+        },
+        "identity": {
+          "target": "com.azure.azuredatatransfer#ConnectionsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azuredatatransfer#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azuredatatransfer#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "pipeline": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pipeline to use to transfer data",
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.azure.azuredatatransfer#Direction",
+          "traits": {
+            "smithy.api#documentation": "Direction of data movement"
+          }
+        },
+        "justification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Justification for the connection request"
+          }
+        },
+        "flowTypes": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInputFlowTypesList",
+          "traits": {
+            "smithy.api#documentation": "The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead."
+          }
+        },
+        "requirementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requirement ID of the connection"
+          }
+        },
+        "remoteSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription ID to link cloud subscriptions together"
+          }
+        },
+        "pin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PIN to link requests together"
+          }
+        },
+        "primaryContact": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary contact for this connection request"
+          }
+        },
+        "secondaryContacts": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInputSecondaryContactsList",
+          "traits": {
+            "smithy.api#documentation": "The secondary contacts for this connection request"
+          }
+        },
+        "policies": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInputPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "schemas": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInputSchemasList",
+          "traits": {
+            "smithy.api#documentation": "The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        },
+        "schemaUris": {
+          "target": "com.azure.azuredatatransfer#ConnectionPropertiesInputSchemaUrisList",
+          "traits": {
+            "smithy.api#documentation": "The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of connection"
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInputSchemaUrisList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInputSchemasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#Schema"
+      },
+      "traits": {
+        "smithy.api#documentation": "The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInputPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInputSecondaryContactsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The secondary contacts for this connection request"
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionPropertiesInputFlowTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azuredatatransfer#FlowType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead."
+      }
+    },
+    "com.azure.azuredatatransfer#ConnectionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azuredatatransfer#ConnectionsGet": {
@@ -7635,11 +8549,52 @@
     "com.azure.azuredatatransfer#AzureDataTransferValidateSchemaRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID associated with this schema"
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection ID associated with this schema"
+          }
+        },
+        "status": {
+          "target": "com.azure.azuredatatransfer#SchemaStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the schema"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema"
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content of the schema"
+          }
+        },
+        "direction": {
+          "target": "com.azure.azuredatatransfer#Direction",
+          "traits": {
+            "smithy.api#documentation": "The direction of the schema."
+          }
+        },
+        "schemaUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri containing SAS token for the zipped schema"
+          }
+        },
+        "schemaType": {
+          "target": "com.azure.azuredatatransfer#SchemaType",
+          "traits": {
+            "smithy.api#documentation": "The Schema Type"
           }
         }
       },
@@ -7827,11 +8782,16 @@
     "com.azure.azuredatatransfer#AzureDataTransferListApprovedSchemasRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "pipeline": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the pipeline to filter approved schemas."
+          }
+        },
+        "direction": {
+          "target": "com.azure.azuredatatransfer#Direction",
+          "traits": {
+            "smithy.api#documentation": "The direction pipeline to filter approved schemas."
           }
         }
       },

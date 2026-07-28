@@ -117,11 +117,10 @@
             "smithy.api#documentation": "The name of the configuration group schema."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "versionState": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupSchemaVersionState",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The configuration group schema state."
           }
         }
       },
@@ -501,16 +500,27 @@
             "smithy.api#documentation": "The name of the configuration group schema."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupSchemasUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupSchemasUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ConfigurationGroupSchemasCreateOrUpdate": {
@@ -630,16 +640,60 @@
             "smithy.api#documentation": "The name of the configuration group schema."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupSchemaPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Configuration group schema properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupSchemaPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of what schema can contain."
+          }
+        },
+        "schemaDefinition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name and value pairs that define the configuration value. It can be a well formed escaped JSON string."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration group schema properties."
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ConfigurationGroupSchemasGet": {
@@ -1431,16 +1485,27 @@
             "smithy.api#documentation": "The name of the configuration group value."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValuesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupValuesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ConfigurationGroupValuesCreateOrUpdate": {
@@ -1552,16 +1617,102 @@
             "smithy.api#documentation": "The name of the configuration group value."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValuesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid configuration group value properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "publisherScope": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInputPublisherScope",
+          "traits": {
+            "smithy.api#documentation": "Publisher Scope."
+          }
+        },
+        "configurationGroupSchemaResourceReference": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference",
+          "traits": {
+            "smithy.api#documentation": "The azure resource reference which is used for deployment."
+          }
+        },
+        "configurationType": {
+          "target": "com.azure.hybridnetwork#ConfigurationGroupValueConfigurationType",
+          "traits": {
+            "smithy.api#documentation": "The value which indicates if configuration values are secrets",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Hybrid configuration group value properties."
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference": {
+      "type": "structure",
+      "members": {
+        "idType": {
+          "target": "com.azure.hybridnetwork#IdType",
+          "traits": {
+            "smithy.api#documentation": "The resource reference arm id type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The azure resource reference which is used for deployment."
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupValuePropertiesFormatInputPublisherScope": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publisher Scope."
+      }
+    },
+    "com.azure.hybridnetwork#ConfigurationGroupValuesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ConfigurationGroupValuesGet": {
@@ -2571,16 +2722,102 @@
             "smithy.api#documentation": "The name of the network function."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serviceEndpoint": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The endpoint of service to call.",
+            "smithy.api#required": {}
+          }
+        },
+        "requestMetadata": {
+          "target": "com.azure.hybridnetwork#RequestMetadata",
+          "traits": {
+            "smithy.api#documentation": "The request metadata.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#RequestMetadata": {
+      "type": "structure",
+      "members": {
+        "relativePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The relative path of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "httpMethod": {
+          "target": "com.azure.hybridnetwork#RequestMetadataHttpMethod",
+          "traits": {
+            "smithy.api#documentation": "The http method of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "serializedBody": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The serialized body of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api version of the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request metadata of execute request post call payload."
+      }
+    },
+    "com.azure.hybridnetwork#RequestMetadataHttpMethod": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "POST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Post"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Put"
+          }
+        },
+        "GET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Get"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Patch"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The http method of the request."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionsListByResourceGroup": {
@@ -3304,16 +3541,27 @@
             "smithy.api#documentation": "Resource name for the network function resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionsCreateOrUpdate": {
@@ -3469,16 +3717,242 @@
             "smithy.api#documentation": "Resource name for the network function resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Network function properties."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique read-only string that changes whenever the resource is updated."
+          }
+        },
+        "identity": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridnetwork#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.hybridnetwork#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.hybridnetwork#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hybridnetwork#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.hybridnetwork#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "publisherName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher name for the network function."
+          }
+        },
+        "publisherScope": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputPublisherScope",
+          "traits": {
+            "smithy.api#documentation": "Publisher Scope."
+          }
+        },
+        "networkFunctionDefinitionGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network function definition group name for the network function."
+          }
+        },
+        "networkFunctionDefinitionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network function definition version for the network function."
+          }
+        },
+        "networkFunctionDefinitionOfferingLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the network function definition offering."
+          }
+        },
+        "networkFunctionDefinitionVersionResourceReference": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference",
+          "traits": {
+            "smithy.api#documentation": "The azure resource reference which is used for deployment."
+          }
+        },
+        "nfviType": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputNfviType",
+          "traits": {
+            "smithy.api#documentation": "The NFVI type."
+          }
+        },
+        "nfviId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The nfviId for the network function."
+          }
+        },
+        "allowSoftwareUpdate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if software updates are allowed during deployment."
+          }
+        },
+        "configurationType": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionConfigurationType",
+          "traits": {
+            "smithy.api#documentation": "The value which indicates if NF  values are secrets",
+            "smithy.api#required": {}
+          }
+        },
+        "roleOverrideValues": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputRoleOverrideValuesList",
+          "traits": {
+            "smithy.api#documentation": "The role configuration override values from the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network function properties."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputRoleOverrideValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The role configuration override values from the user."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputNfviType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "AZUREARCKUBERNETES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureArcKubernetes"
+          }
+        },
+        "AZURECORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCore"
+          }
+        },
+        "AZUREOPERATORNEXUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureOperatorNexus"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The NFVI type."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference": {
+      "type": "structure",
+      "members": {
+        "idType": {
+          "target": "com.azure.hybridnetwork#IdType",
+          "traits": {
+            "smithy.api#documentation": "The resource reference arm id type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The azure resource reference which is used for deployment."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionPropertiesFormatInputPublisherScope": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publisher Scope."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionsGet": {
@@ -3759,11 +4233,10 @@
             "smithy.api#documentation": "The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "versionState": {
+          "target": "com.azure.hybridnetwork#VersionState",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning."
           }
         }
       },
@@ -4235,16 +4708,27 @@
             "smithy.api#documentation": "The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsCreateOrUpdate": {
@@ -4372,16 +4856,93 @@
             "smithy.api#documentation": "The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Network function definition version properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network function definition version description."
+          }
+        },
+        "deployParameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The deployment parameters of the network function definition version."
+          }
+        },
+        "networkFunctionType": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType",
+          "traits": {
+            "smithy.api#documentation": "The network function type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network function definition version properties."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "VIRTUALNETWORKFUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VirtualNetworkFunction"
+          }
+        },
+        "CONTAINERIZEDNETWORKFUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ContainerizedNetworkFunction"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network function type."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionDefinitionVersionsGet": {
@@ -4766,16 +5327,27 @@
             "smithy.api#documentation": "The name of the network function definition group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsCreateOrUpdate": {
@@ -4895,16 +5467,54 @@
             "smithy.api#documentation": "The name of the network function definition group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Network function definition group properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network function definition group description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network function definition group properties."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkFunctionDefinitionGroupsGet": {
@@ -5280,11 +5890,10 @@
             "smithy.api#documentation": "The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "versionState": {
+          "target": "com.azure.hybridnetwork#NSDVersionState",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The network service design version state."
           }
         }
       },
@@ -5908,16 +6517,27 @@
             "smithy.api#documentation": "The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkServiceDesignVersionsCreateOrUpdate": {
@@ -6045,16 +6665,119 @@
             "smithy.api#documentation": "The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "network service design version properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network service design version description."
+          }
+        },
+        "configurationGroupSchemaReferences": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap",
+          "traits": {
+            "smithy.api#documentation": "The configuration schemas to used to define the values."
+          }
+        },
+        "nfvisFromSite": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap",
+          "traits": {
+            "smithy.api#documentation": "The nfvis from the site."
+          }
+        },
+        "resourceElementTemplates": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource element template"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "network service design version properties."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ResourceElementTemplate"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource element template"
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hybridnetwork#NfviDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "The nfvis from the site."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration schemas to used to define the values."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkServiceDesignVersionsGet": {
@@ -6439,16 +7162,27 @@
             "smithy.api#documentation": "The name of the network service design group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkServiceDesignGroupsCreateOrUpdate": {
@@ -6568,16 +7302,54 @@
             "smithy.api#documentation": "The name of the network service design group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#NetworkServiceDesignGroupPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "network service design group properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignGroupPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The network service design group description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "network service design group properties."
+      }
+    },
+    "com.azure.hybridnetwork#NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#NetworkServiceDesignGroupsGet": {
@@ -7123,11 +7895,10 @@
             "smithy.api#documentation": "The name of the artifact manifest."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "artifactManifestState": {
+          "target": "com.azure.hybridnetwork#ArtifactManifestState",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The artifact manifest state."
           }
         }
       },
@@ -7590,16 +8361,27 @@
             "smithy.api#documentation": "The name of the artifact manifest."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ArtifactManifestsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactManifestsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ArtifactManifestsCreateOrUpdate": {
@@ -7727,16 +8509,63 @@
             "smithy.api#documentation": "The name of the artifact manifest."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ArtifactManifestsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#ArtifactManifestPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Artifact manifest properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactManifestPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "artifacts": {
+          "target": "com.azure.hybridnetwork#ArtifactManifestPropertiesFormatInputArtifactsList",
+          "traits": {
+            "smithy.api#documentation": "The artifacts list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Artifact manifest properties."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactManifestPropertiesFormatInputArtifactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ManifestArtifactFormat"
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifacts list."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactManifestsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ArtifactManifestsGet": {
@@ -8199,16 +9028,38 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "manualPrivateEndPointConnections": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "list of private endpoints."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of private endpoints."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresApprovePrivateEndPoints": {
@@ -8265,16 +9116,38 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "manualPrivateEndPointConnections": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "list of private endpoints."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of private endpoints."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresListNetworkFabricControllerPrivateEndPoints": {
@@ -8456,16 +9329,38 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "networkFabricControllerIds": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "list of network fabric controllers."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of network fabric controllers."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresAddNetworkFabricControllerEndPoints": {
@@ -8522,16 +9417,38 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "networkFabricControllerIds": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "list of network fabric controllers."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of network fabric controllers."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresDelete": {
@@ -8891,16 +9808,27 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresCreateOrUpdate": {
@@ -9020,16 +9948,153 @@
             "smithy.api#documentation": "The name of the artifact store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#ArtifactStoresCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "ArtifactStores properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "storeType": {
+          "target": "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputStoreType",
+          "traits": {
+            "smithy.api#documentation": "The artifact store type."
+          }
+        },
+        "backingResourcePublicNetworkAccess": {
+          "target": "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "The backing resource network access type."
+          }
+        },
+        "replicationStrategy": {
+          "target": "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputReplicationStrategy",
+          "traits": {
+            "smithy.api#documentation": "The replication strategy."
+          }
+        },
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Artifact store properties."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The managed resource group name."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The managed resource group location."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputReplicationStrategy": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "SINGLEREPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SingleReplication"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The replication strategy."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backing resource network access type."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStorePropertiesFormatInputStoreType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "AZURECONTAINERREGISTRY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureContainerRegistry"
+          }
+        },
+        "AZURESTORAGEACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureStorageAccount"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifact store type."
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactStoresCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#ArtifactStoresGet": {
@@ -9591,15 +10656,27 @@
             "smithy.api#documentation": "The name of the publisher."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#PublishersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#PublishersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#PublishersCreateOrUpdate": {
@@ -9749,15 +10826,100 @@
             "smithy.api#documentation": "The name of the publisher."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#PublishersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#PublisherPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Publisher properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.hybridnetwork#PublishersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#PublishersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridnetwork#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.hybridnetwork#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.hybridnetwork#PublisherPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "com.azure.hybridnetwork#PublisherPropertiesFormatInputScope",
+          "traits": {
+            "smithy.api#documentation": "Publisher Scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "publisher properties."
+      }
+    },
+    "com.azure.hybridnetwork#PublisherPropertiesFormatInputScope": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publisher Scope."
+      }
+    },
+    "com.azure.hybridnetwork#PublishersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#PublishersGet": {
@@ -10322,16 +11484,29 @@
             "smithy.api#documentation": "The name of the artifact."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.hybridnetwork#ArtifactChangeStateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Artifact update state properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#ArtifactChangeStateProperties": {
+      "type": "structure",
+      "members": {
+        "artifactState": {
+          "target": "com.azure.hybridnetwork#ArtifactState",
+          "traits": {
+            "smithy.api#documentation": "The artifact state"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifact update state properties."
       }
     },
     "com.azure.hybridnetwork#ProxyArtifactGet": {
@@ -11085,16 +12260,27 @@
             "smithy.api#documentation": "The name of the network service site."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#SitesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#SitesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#SitesCreateOrUpdate": {
@@ -11206,16 +12392,63 @@
             "smithy.api#documentation": "The name of the network service site."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#SitesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#SitePropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Site properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#SitePropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "nfvis": {
+          "target": "com.azure.hybridnetwork#SitePropertiesFormatInputNfvisList",
+          "traits": {
+            "smithy.api#documentation": "List of NFVIs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Site properties."
+      }
+    },
+    "com.azure.hybridnetwork#SitePropertiesFormatInputNfvisList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridnetwork#NFVIs"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of NFVIs"
+      }
+    },
+    "com.azure.hybridnetwork#SitesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#SitesGet": {
@@ -12068,16 +13301,27 @@
             "smithy.api#documentation": "The name of the site network service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#SiteNetworkServicesCreateOrUpdate": {
@@ -12233,16 +13477,240 @@
             "smithy.api#documentation": "The name of the site network service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Site network service properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.hybridnetwork#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Sku of the site network service."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridnetwork#SkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.hybridnetwork#SkuInputName",
+          "traits": {
+            "smithy.api#documentation": "Name of this Sku",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sku, to be associated with a SiteNetworkService."
+      }
+    },
+    "com.azure.hybridnetwork#SkuInputName": {
+      "type": "enum",
+      "members": {
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Name of this Sku"
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridnetwork#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.hybridnetwork#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group configuration."
+          }
+        },
+        "siteReference": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputSiteReference",
+          "traits": {
+            "smithy.api#documentation": "Reference to another resource."
+          }
+        },
+        "publisherScope": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputPublisherScope",
+          "traits": {
+            "smithy.api#documentation": "Publisher Scope."
+          }
+        },
+        "networkServiceDesignVersionResourceReference": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference",
+          "traits": {
+            "smithy.api#documentation": "The azure resource reference which is used for deployment."
+          }
+        },
+        "desiredStateConfigurationGroupValueReferences": {
+          "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap",
+          "traits": {
+            "smithy.api#documentation": "The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Site network service properties."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference": {
+      "type": "structure",
+      "members": {
+        "idType": {
+          "target": "com.azure.hybridnetwork#IdType",
+          "traits": {
+            "smithy.api#documentation": "The resource reference arm id type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The azure resource reference which is used for deployment."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputPublisherScope": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publisher Scope."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputSiteReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to another resource."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group name."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed resource group configuration."
+      }
+    },
+    "com.azure.hybridnetwork#SiteNetworkServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridnetwork#SiteNetworkServicesGet": {

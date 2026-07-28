@@ -666,16 +666,6 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestTableMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList": {
       "type": "list",
       "member": {
@@ -729,75 +719,6 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestAvailableColumnsItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "data_type": {
-          "target": "smithy.api#String"
-        },
-        "is_nullable": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestAvailableColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestAvailableColumnsItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-      }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestSource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "smithy.api#String"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_row_filters": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supported_api_versions": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas."
-      }
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequest": {
       "type": "structure",
       "members": {
@@ -817,45 +738,8 @@
             "smithy.api#documentation": "A UUID string identifying this external data schema."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "table": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestTableMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "should_sync": {
           "target": "smithy.api#Boolean"
-        },
-        "last_synced_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The latest error that occurred when syncing this schema.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "incremental": {
-          "target": "smithy.api#Boolean"
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "sync_type": {
           "target": "com.posthog.external_data_schemas#SyncTypeEnum",
@@ -899,12 +783,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_key_columns": {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList",
           "traits": {
@@ -933,30 +811,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "available_columns": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestAvailableColumnsList",
-          "traits": {
-            "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-          }
-        },
-        "source": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasUpdateRequestSource",
-          "traits": {
-            "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -991,16 +849,6 @@
           "code": 200
         }
       }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestTableMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList": {
       "type": "list",
@@ -1055,75 +903,6 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "data_type": {
-          "target": "smithy.api#String"
-        },
-        "is_nullable": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestAvailableColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-      }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestSource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "smithy.api#String"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_row_filters": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supported_api_versions": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas."
-      }
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1143,45 +922,8 @@
             "smithy.api#documentation": "A UUID string identifying this external data schema."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "table": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestTableMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "should_sync": {
           "target": "smithy.api#Boolean"
-        },
-        "last_synced_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The latest error that occurred when syncing this schema.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "incremental": {
-          "target": "smithy.api#Boolean"
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "sync_type": {
           "target": "com.posthog.external_data_schemas#SyncTypeEnum",
@@ -1225,12 +967,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_key_columns": {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList",
           "traits": {
@@ -1259,30 +995,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "available_columns": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestAvailableColumnsList",
-          "traits": {
-            "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-          }
-        },
-        "source": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasPartialUpdateRequestSource",
-          "traits": {
-            "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -1465,16 +1181,6 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestTableMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList": {
       "type": "list",
       "member": {
@@ -1528,75 +1234,6 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "data_type": {
-          "target": "smithy.api#String"
-        },
-        "is_nullable": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-      }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestSource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "smithy.api#String"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_row_filters": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supported_api_versions": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas."
-      }
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1616,45 +1253,8 @@
             "smithy.api#documentation": "A UUID string identifying this external data schema."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "table": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestTableMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "should_sync": {
           "target": "smithy.api#Boolean"
-        },
-        "last_synced_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The latest error that occurred when syncing this schema.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "incremental": {
-          "target": "smithy.api#Boolean"
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "sync_type": {
           "target": "com.posthog.external_data_schemas#SyncTypeEnum",
@@ -1698,12 +1298,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_key_columns": {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList",
           "traits": {
@@ -1732,30 +1326,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "available_columns": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList",
-          "traits": {
-            "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-          }
-        },
-        "source": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasIncrementalFieldsCreateRequestSource",
-          "traits": {
-            "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -1873,16 +1447,6 @@
         }
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestTableMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList": {
       "type": "list",
       "member": {
@@ -1936,75 +1500,6 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestAvailableColumnsItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "data_type": {
-          "target": "smithy.api#String"
-        },
-        "is_nullable": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestAvailableColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestAvailableColumnsItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-      }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestSource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "smithy.api#String"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_row_filters": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supported_api_versions": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas."
-      }
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequest": {
       "type": "structure",
       "members": {
@@ -2024,45 +1519,8 @@
             "smithy.api#documentation": "A UUID string identifying this external data schema."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "table": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestTableMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "should_sync": {
           "target": "smithy.api#Boolean"
-        },
-        "last_synced_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The latest error that occurred when syncing this schema.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "incremental": {
-          "target": "smithy.api#Boolean"
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "sync_type": {
           "target": "com.posthog.external_data_schemas#SyncTypeEnum",
@@ -2106,12 +1564,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_key_columns": {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList",
           "traits": {
@@ -2140,30 +1592,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "available_columns": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestAvailableColumnsList",
-          "traits": {
-            "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-          }
-        },
-        "source": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasReloadCreateRequestSource",
-          "traits": {
-            "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -2198,16 +1630,6 @@
           "code": 200
         }
       }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestTableMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList": {
       "type": "list",
@@ -2262,75 +1684,6 @@
         "smithy.api#documentation": "Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN \"NOT IN\"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows."
       }
     },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestAvailableColumnsItem": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "data_type": {
-          "target": "smithy.api#String"
-        },
-        "is_nullable": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestAvailableColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestAvailableColumnsItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-      }
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestSource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "smithy.api#String"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_row_filters": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supported_api_versions": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas."
-      }
-    },
     "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequest": {
       "type": "structure",
       "members": {
@@ -2350,45 +1703,8 @@
             "smithy.api#documentation": "A UUID string identifying this external data schema."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "table": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestTableMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "should_sync": {
           "target": "smithy.api#Boolean"
-        },
-        "last_synced_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The latest error that occurred when syncing this schema.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "incremental": {
-          "target": "smithy.api#Boolean"
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "sync_type": {
           "target": "com.posthog.external_data_schemas#SyncTypeEnum",
@@ -2432,12 +1748,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_key_columns": {
           "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList",
           "traits": {
@@ -2466,30 +1776,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "available_columns": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestAvailableColumnsList",
-          "traits": {
-            "smithy.api#documentation": "Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh."
-          }
-        },
-        "source": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSchemasResyncCreateRequestSource",
-          "traits": {
-            "smithy.api#documentation": "Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_version": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_schemas#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.",
             "com.distilled.openapi#nullable": {}
           }
         }

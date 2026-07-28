@@ -581,11 +581,16 @@
             "smithy.api#documentation": "Name of Server Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "pattern": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Pattern of the files."
+          }
+        },
+        "recallPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recall path."
           }
         }
       },
@@ -1848,15 +1853,79 @@
             "smithy.api#documentation": "Name of Server Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#ServerEndpointUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of the server endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#ServerEndpointUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "cloudTiering": {
+          "target": "com.azure.storagesync#FeatureStatus",
+          "traits": {
+            "smithy.api#documentation": "Cloud Tiering."
+          }
+        },
+        "volumeFreeSpacePercent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Level of free space to be maintained by Cloud Tiering if it is enabled."
+          }
+        },
+        "tierFilesOlderThanDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Tier files older than days."
+          }
+        },
+        "offlineDataTransfer": {
+          "target": "com.azure.storagesync#FeatureStatus",
+          "traits": {
+            "smithy.api#documentation": "Offline data transfer"
+          }
+        },
+        "offlineDataTransferShareName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offline data transfer share name"
+          }
+        },
+        "localCacheMode": {
+          "target": "com.azure.storagesync#ServerEndpointUpdatePropertiesLocalCacheMode",
+          "traits": {
+            "smithy.api#documentation": "Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ServerEndpoint Update Properties object."
+      }
+    },
+    "com.azure.storagesync#ServerEndpointUpdatePropertiesLocalCacheMode": {
+      "type": "enum",
+      "members": {
+        "DOWNLOADNEWANDMODIFIEDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DownloadNewAndModifiedFiles"
+          }
+        },
+        "UPDATELOCALLYCACHEDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UpdateLocallyCachedFiles"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access."
       }
     },
     "com.azure.storagesync#ServerEndpointsCreate": {
@@ -1959,16 +2028,155 @@
             "smithy.api#documentation": "Name of Server Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#ServerEndpointCreateParametersProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The parameters used to create the server endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#ServerEndpointCreateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "serverLocalPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Server Local path."
+          }
+        },
+        "cloudTiering": {
+          "target": "com.azure.storagesync#FeatureStatus",
+          "traits": {
+            "smithy.api#documentation": "Cloud Tiering."
+          }
+        },
+        "volumeFreeSpacePercent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Level of free space to be maintained by Cloud Tiering if it is enabled."
+          }
+        },
+        "tierFilesOlderThanDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Tier files older than days."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly Name"
+          }
+        },
+        "serverResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Server Resource Id."
+          }
+        },
+        "offlineDataTransfer": {
+          "target": "com.azure.storagesync#FeatureStatus",
+          "traits": {
+            "smithy.api#documentation": "Offline data transfer"
+          }
+        },
+        "offlineDataTransferShareName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offline data transfer share name"
+          }
+        },
+        "initialDownloadPolicy": {
+          "target": "com.azure.storagesync#ServerEndpointCreateParametersPropertiesInitialDownloadPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for how namespace and files are recalled during FastDr."
+          }
+        },
+        "localCacheMode": {
+          "target": "com.azure.storagesync#ServerEndpointCreateParametersPropertiesLocalCacheMode",
+          "traits": {
+            "smithy.api#documentation": "Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access."
+          }
+        },
+        "initialUploadPolicy": {
+          "target": "com.azure.storagesync#ServerEndpointCreateParametersPropertiesInitialUploadPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for how the initial upload sync session is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ServerEndpoint Properties object."
+      }
+    },
+    "com.azure.storagesync#ServerEndpointCreateParametersPropertiesInitialUploadPolicy": {
+      "type": "enum",
+      "members": {
+        "SERVERAUTHORITATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAuthoritative"
+          }
+        },
+        "MERGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Merge"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy for how the initial upload sync session is performed."
+      }
+    },
+    "com.azure.storagesync#ServerEndpointCreateParametersPropertiesLocalCacheMode": {
+      "type": "enum",
+      "members": {
+        "DOWNLOADNEWANDMODIFIEDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DownloadNewAndModifiedFiles"
+          }
+        },
+        "UPDATELOCALLYCACHEDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UpdateLocallyCachedFiles"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access."
+      }
+    },
+    "com.azure.storagesync#ServerEndpointCreateParametersPropertiesInitialDownloadPolicy": {
+      "type": "enum",
+      "members": {
+        "NAMESPACEONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NamespaceOnly"
+          }
+        },
+        "NAMESPACETHENMODIFIEDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NamespaceThenModifiedFiles"
+          }
+        },
+        "AVOIDTIEREDFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AvoidTieredFiles"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy for how namespace and files are recalled during FastDr."
       }
     },
     "com.azure.storagesync#ServerEndpointsGet": {
@@ -2264,16 +2472,56 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "directoryPath": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Relative path to a directory Azure File share for which change detection is to be performed."
+          }
+        },
+        "changeDetectionMode": {
+          "target": "com.azure.storagesync#ChangeDetectionMode",
+          "traits": {
+            "smithy.api#documentation": "Change Detection Mode. Applies to a directory specified in directoryPath parameter."
+          }
+        },
+        "paths": {
+          "target": "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequestPathsList",
+          "traits": {
+            "smithy.api#documentation": "Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequestPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories."
+      }
+    },
+    "com.azure.storagesync#ChangeDetectionMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RECURSIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recursive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Change Detection Mode. Applies to a directory specified in directoryPath parameter."
       }
     },
     "com.azure.storagesync#CloudEndpointsRestoreheartbeat": {
@@ -2405,16 +2653,92 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "partition": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Pre Restore partition."
+          }
+        },
+        "replicaGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore replica group."
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore request id."
+          }
+        },
+        "azureFileShareUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore Azure file share uri."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore Azure status."
+          }
+        },
+        "sourceAzureFileShareUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore Azure source azure file share uri."
+          }
+        },
+        "backupMetadataPropertyBag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore backup metadata property bag."
+          }
+        },
+        "restoreFileSpec": {
+          "target": "com.azure.storagesync#CloudEndpointsPreRestoreRequestRestoreFileSpecList",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore restore file spec array."
+          }
+        },
+        "pauseWaitForSyncDrainTimePeriodInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Pre Restore pause wait for sync drain time period in seconds."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#CloudEndpointsPreRestoreRequestRestoreFileSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagesync#RestoreFileSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pre Restore restore file spec array."
+      }
+    },
+    "com.azure.storagesync#RestoreFileSpec": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Restore file spec path"
+          }
+        },
+        "isdir": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Restore file spec isdir"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Restore file spec."
       }
     },
     "com.azure.storagesync#CloudEndpointsPreBackup": {
@@ -2479,11 +2803,10 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "azureFileShare": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Azure File Share."
           }
         }
       },
@@ -2553,16 +2876,66 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "partition": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Post Restore partition."
+          }
+        },
+        "replicaGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore replica group."
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore request id."
+          }
+        },
+        "azureFileShareUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore Azure file share uri."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore Azure status."
+          }
+        },
+        "sourceAzureFileShareUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore Azure source azure file share uri."
+          }
+        },
+        "failedFileList": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post Restore Azure failed file list."
+          }
+        },
+        "restoreFileSpec": {
+          "target": "com.azure.storagesync#CloudEndpointsPostRestoreRequestRestoreFileSpecList",
+          "traits": {
+            "smithy.api#documentation": "Post Restore restore file spec array."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#CloudEndpointsPostRestoreRequestRestoreFileSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagesync#RestoreFileSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "Post Restore restore file spec array."
       }
     },
     "com.azure.storagesync#CloudEndpointsPostBackup": {
@@ -2655,11 +3028,10 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "azureFileShare": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Azure File Share."
           }
         }
       },
@@ -3185,16 +3557,47 @@
             "smithy.api#documentation": "Name of Cloud Endpoint object."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#CloudEndpointCreateParametersProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The parameters used to create the cloud endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#CloudEndpointCreateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "storageAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account Resource Id"
+          }
+        },
+        "azureFileShareName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure file share name"
+          }
+        },
+        "storageAccountTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account Tenant Id"
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly Name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CloudEndpoint Properties object."
       }
     },
     "com.azure.storagesync#CloudEndpointsGet": {
@@ -3599,11 +4002,10 @@
             "smithy.api#documentation": "Name of Sync Group resource."
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The parameters used to create the sync group"
           }
         }
       },
@@ -3880,11 +4282,10 @@
             "smithy.api#documentation": "GUID identifying the on-premises server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serverCertificate": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Certificate Data"
           }
         }
       },
@@ -4265,16 +4666,35 @@
             "smithy.api#documentation": "GUID identifying the on-premises server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#RegisteredServerUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The parameters used to update the registered server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#RegisteredServerUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "identity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Apply server with newly discovered ApplicationId if available."
+          }
+        },
+        "applicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Apply server with new ServicePrincipal Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "RegisteredServer Update Properties object."
       }
     },
     "com.azure.storagesync#RegisteredServersCreate": {
@@ -4369,16 +4789,89 @@
             "smithy.api#documentation": "GUID identifying the on-premises server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#RegisteredServerCreateParametersProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The parameters used to create the registered server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#RegisteredServerCreateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "serverCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server Certificate"
+          }
+        },
+        "agentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server Agent Version"
+          }
+        },
+        "serverOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server OS Version"
+          }
+        },
+        "lastHeartBeat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server last heart beat"
+          }
+        },
+        "serverRole": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server serverRole"
+          }
+        },
+        "clusterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server clusterId"
+          }
+        },
+        "clusterName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server clusterName"
+          }
+        },
+        "serverId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registered Server serverId"
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly Name"
+          }
+        },
+        "applicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Server ServicePrincipal Id"
+          }
+        },
+        "identity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Apply server with newly discovered ApplicationId if available."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "RegisteredServer Create Properties object."
       }
     },
     "com.azure.storagesync#RegisteredServersGet": {
@@ -5043,16 +5536,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagesync#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.storagesync#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.storagesync#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.storagesync#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionsGet": {
@@ -5652,15 +6172,95 @@
             "smithy.api#documentation": "Name of Storage Sync Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The user-specified tags associated with the storage sync service."
+          }
+        },
+        "identity": {
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagesync#StorageSyncServiceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the server endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#StorageSyncServiceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "incomingTrafficPolicy": {
+          "target": "com.azure.storagesync#IncomingTrafficPolicy",
+          "traits": {
+            "smithy.api#documentation": "Incoming Traffic Policy"
+          }
+        },
+        "useIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Use Identity authorization when customer have finished setup RBAC permissions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "StorageSyncService Properties object."
+      }
+    },
+    "com.azure.storagesync#StorageSyncServicesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storagesync#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storagesync#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storagesync#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.storagesync#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.storagesync#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.storagesync#StorageSyncServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user-specified tags associated with the storage sync service."
       }
     },
     "com.azure.storagesync#StorageSyncServicesCreate": {
@@ -5807,16 +6407,83 @@
             "smithy.api#documentation": "Name of Storage Sync Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storagesync#StorageSyncServicesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.storagesync#StorageSyncServicesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagesync#StorageSyncServiceCreateParametersProperties",
+          "traits": {
+            "smithy.api#documentation": "The parameters used to create the storage sync service."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagesync#StorageSyncServiceCreateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "incomingTrafficPolicy": {
+          "target": "com.azure.storagesync#IncomingTrafficPolicy",
+          "traits": {
+            "smithy.api#documentation": "Incoming Traffic Policy"
+          }
+        },
+        "useIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Use Identity authorization when customer have finished setup RBAC permissions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "StorageSyncService Properties object."
+      }
+    },
+    "com.azure.storagesync#StorageSyncServicesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storagesync#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storagesync#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storagesync#StorageSyncServicesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storagesync#StorageSyncServicesGet": {
@@ -6589,10 +7256,17 @@
             "smithy.api#documentation": "The desired region for the name check."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name to check for availability",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.storagesync#Type",
+          "traits": {
+            "smithy.api#documentation": "The resource type. Must be set to Microsoft.StorageSync/storageSyncServices",
             "smithy.api#required": {}
           }
         }
@@ -6600,6 +7274,18 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.storagesync#Type": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_STORAGESYNC_STORAGESYNCSERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.StorageSync/storageSyncServices"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.storagesync#OperationsList": {
       "type": "operation",

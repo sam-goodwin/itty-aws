@@ -105,7 +105,7 @@ export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsProductsRequest",
 }) as any as S.Schema<GetAccountsProductsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -114,8 +114,7 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -138,8 +137,7 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -177,7 +175,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ItemLevelIssue[];
+export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -202,8 +200,7 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -228,7 +225,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = DestinationStatus[];
+export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -292,8 +289,7 @@ export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT"
-  | (string & {});
+  | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -316,15 +312,12 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList =
-  ProductSustainabilityIncentive[];
+  ReadonlyArray<ProductSustainabilityIncentive>;
 export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
-export type Co2EmissionsUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "GPERKM"
-  | (string & {});
+export type Co2EmissionsUnitEnum = "UNIT_UNSPECIFIED" | "GPERKM";
 export const Co2EmissionsUnitEnum = /*@__PURE__*/ S.String;
 
 /** The co2 emission of the vehicle. */
@@ -344,16 +337,14 @@ export const Co2Emissions = /*@__PURE__*/ S.suspend(() =>
 export type ReturnsShippingFeeTypeEnum =
   | "RETURN_SHIPPING_FEE_TYPE_UNSPECIFIED"
   | "CUSTOMER_RESPONSIBILITY"
-  | "DEDUCTED_FROM_REFUND"
-  | (string & {});
+  | "DEDUCTED_FROM_REFUND";
 export const ReturnsShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsWindowTypeEnum =
   | "RETURN_WINDOW_TYPE_UNSPECIFIED"
   | "FINITE_RETURN_WINDOW"
   | "NO_RETURNS"
-  | "LIFETIME"
-  | (string & {});
+  | "LIFETIME";
 export const ReturnsWindowTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReturnsItemConditionsItemEnum =
@@ -361,11 +352,11 @@ export type ReturnsItemConditionsItemEnum =
   | "NEW"
   | "LIKE_NEW"
   | "USED"
-  | "DEFECTIVE_ONLY"
-  | (string & {});
+  | "DEFECTIVE_ONLY";
 export const ReturnsItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsItemConditionsItemEnumList = ReturnsItemConditionsItemEnum[];
+export type ReturnsItemConditionsItemEnumList =
+  ReadonlyArray<ReturnsItemConditionsItemEnum>;
 export const ReturnsItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsItemConditionsItemEnum,
 ) as any as S.Schema<ReturnsItemConditionsItemEnumList>;
@@ -374,11 +365,11 @@ export type ReturnsOutcomesItemEnum =
   | "RETURN_OUTCOME_UNSPECIFIED"
   | "REFUND"
   | "EXCHANGE"
-  | "STORE_CREDIT"
-  | (string & {});
+  | "STORE_CREDIT";
 export const ReturnsOutcomesItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsOutcomesItemEnumList = ReturnsOutcomesItemEnum[];
+export type ReturnsOutcomesItemEnumList =
+  ReadonlyArray<ReturnsOutcomesItemEnum>;
 export const ReturnsOutcomesItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsOutcomesItemEnum,
 ) as any as S.Schema<ReturnsOutcomesItemEnumList>;
@@ -388,11 +379,10 @@ export type ReturnsMethodsItemEnum =
   | "BY_MAIL"
   | "IN_STORE"
   | "AT_A_KIOSK"
-  | "DROP_OFF_LOCATION"
-  | (string & {});
+  | "DROP_OFF_LOCATION";
 export const ReturnsMethodsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReturnsMethodsItemEnumList = ReturnsMethodsItemEnum[];
+export type ReturnsMethodsItemEnumList = ReadonlyArray<ReturnsMethodsItemEnum>;
 export const ReturnsMethodsItemEnumList = /*@__PURE__*/ S.Array(
   ReturnsMethodsItemEnum,
 ) as any as S.Schema<ReturnsMethodsItemEnumList>;
@@ -438,7 +428,7 @@ export const Returns = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Returns" }) as any as S.Schema<Returns>;
 
-export type ReturnsList = Returns[];
+export type ReturnsList = ReadonlyArray<Returns>;
 export const ReturnsList = /*@__PURE__*/ S.Array(
   Returns,
 ) as any as S.Schema<ReturnsList>;
@@ -471,8 +461,7 @@ export type ProductAttributesMinEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G"
-  | (string & {});
+  | "G";
 export const ProductAttributesMinEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -492,7 +481,8 @@ export const ShippingBusinessDaysConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShippingBusinessDaysConfig",
 }) as any as S.Schema<ShippingBusinessDaysConfig>;
 
-export type ShippingBusinessDaysConfigList = ShippingBusinessDaysConfig[];
+export type ShippingBusinessDaysConfigList =
+  ReadonlyArray<ShippingBusinessDaysConfig>;
 export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(
   ShippingBusinessDaysConfig,
 ) as any as S.Schema<ShippingBusinessDaysConfigList>;
@@ -500,8 +490,7 @@ export const ShippingBusinessDaysConfigList = /*@__PURE__*/ S.Array(
 export type FuelConsumptionUnitEnum =
   | "UNIT_UNSPECIFIED"
   | "LPER100KM"
-  | "KGPER100KM"
-  | (string & {});
+  | "KGPER100KM";
 export const FuelConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The fuel consumption of the vehicle. */
@@ -520,11 +509,7 @@ export const FuelConsumption = /*@__PURE__*/ S.suspend(() =>
   identifier: "FuelConsumption",
 }) as any as S.Schema<FuelConsumption>;
 
-export type MileageUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "MILES"
-  | "KM"
-  | (string & {});
+export type MileageUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KM";
 export const MileageUnitEnum = /*@__PURE__*/ S.String;
 
 /** The mileage of the vehicle. */
@@ -548,15 +533,10 @@ export type RelatedProductRelationshipTypeEnum =
   | "OFTEN_BOUGHT_WITH"
   | "SUBSTITUTE"
   | "DIFFERENT_BRAND"
-  | "ACCESSORY"
-  | (string & {});
+  | "ACCESSORY";
 export const RelatedProductRelationshipTypeEnum = /*@__PURE__*/ S.String;
 
-export type RelatedProductIdTypeEnum =
-  | "ID_TYPE_UNSPECIFIED"
-  | "GTIN"
-  | "ID"
-  | (string & {});
+export type RelatedProductIdTypeEnum = "ID_TYPE_UNSPECIFIED" | "GTIN" | "ID";
 export const RelatedProductIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies how other products are related to this product. */
@@ -576,7 +556,7 @@ export const RelatedProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedProduct" }) as any as S.Schema<RelatedProduct>;
 
-export type RelatedProductList = RelatedProduct[];
+export type RelatedProductList = ReadonlyArray<RelatedProduct>;
 export const RelatedProductList = /*@__PURE__*/ S.Array(
   RelatedProduct,
 ) as any as S.Schema<RelatedProductList>;
@@ -594,8 +574,7 @@ export type ProductAttributesEmissionsStandardEnum =
   | "EURO6C"
   | "EURO6D"
   | "EURO6D_TEMP"
-  | "EURO6E"
-  | (string & {});
+  | "EURO6E";
 export const ProductAttributesEmissionsStandardEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesPickupMethodEnum =
@@ -603,15 +582,10 @@ export type ProductAttributesPickupMethodEnum =
   | "NOT_SUPPORTED"
   | "BUY"
   | "RESERVE"
-  | "SHIP_TO_STORE"
-  | (string & {});
+  | "SHIP_TO_STORE";
 export const ProductAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 
-export type UnitAreaUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "SQM"
-  | "SQFT"
-  | (string & {});
+export type UnitAreaUnitEnum = "UNIT_UNSPECIFIED" | "SQM" | "SQFT";
 export const UnitAreaUnitEnum = /*@__PURE__*/ S.String;
 
 /** The unit area of the property. */
@@ -632,8 +606,7 @@ export type ProductFeeTypeEnum =
   | "FEE_TYPE_UNSPECIFIED"
   | "ADMIN_FEE"
   | "APPLICATION_FEE"
-  | "SECURITY_DEPOSIT"
-  | (string & {});
+  | "SECURITY_DEPOSIT";
 export const ProductFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The product fee attribute containing type and amount. */
@@ -650,7 +623,7 @@ export const ProductFee = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductFee" }) as any as S.Schema<ProductFee>;
 
-export type ProductFeeList = ProductFee[];
+export type ProductFeeList = ReadonlyArray<ProductFee>;
 export const ProductFeeList = /*@__PURE__*/ S.Array(
   ProductFee,
 ) as any as S.Schema<ProductFeeList>;
@@ -660,8 +633,7 @@ export type ProductCertificationCertificationAuthorityEnum =
   | "ADEME"
   | "BMWK"
   | "EPA"
-  | "EC"
-  | (string & {});
+  | "EC";
 export const ProductCertificationCertificationAuthorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -672,8 +644,7 @@ export type ProductCertificationCertificationNameEnum =
   | "EPREL"
   | "EU_ECOLABEL"
   | "VEHICLE_ENERGY_EFFICIENCY"
-  | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY"
-  | (string & {});
+  | "VEHICLE_ENERGY_EFFICIENCY_DISCHARGED_BATTERY";
 export const ProductCertificationCertificationNameEnum = /*@__PURE__*/ S.String;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
@@ -700,7 +671,7 @@ export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductCertification",
 }) as any as S.Schema<ProductCertification>;
 
-export type ProductCertificationList = ProductCertification[];
+export type ProductCertificationList = ReadonlyArray<ProductCertification>;
 export const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
@@ -758,7 +729,7 @@ export const Shipping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
-export type ShippingList = Shipping[];
+export type ShippingList = ReadonlyArray<Shipping>;
 export const ShippingList = /*@__PURE__*/ S.Array(
   Shipping,
 ) as any as S.Schema<ShippingList>;
@@ -770,15 +741,13 @@ export type ProductAttributesSpecialtyHousingTypeEnum =
   | "MILITARY"
   | "SENIOR"
   | "SHORT_TERM"
-  | "STUDENT"
-  | (string & {});
+  | "STUDENT";
 export const ProductAttributesSpecialtyHousingTypeEnum = /*@__PURE__*/ S.String;
 
 export type StructuredDescriptionDigitalSourceTypeEnum =
   | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
   | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const StructuredDescriptionDigitalSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -824,15 +793,13 @@ export type ProductAttributesEngineEnum =
   | "NATURAL_GAS"
   | "LPG"
   | "METHANE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ProductAttributesEngineEnum = /*@__PURE__*/ S.String;
 
 export type ProductInstallmentCreditTypeEnum =
   | "CREDIT_TYPE_UNSPECIFIED"
   | "FINANCE"
-  | "LEASE"
-  | (string & {});
+  | "LEASE";
 export const ProductInstallmentCreditTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents installment. */
@@ -902,7 +869,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeShippingThreshold",
 }) as any as S.Schema<FreeShippingThreshold>;
 
-export type FreeShippingThresholdList = FreeShippingThreshold[];
+export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
 export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
@@ -950,13 +917,12 @@ export type ProductAttributesIncludedDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+  | "LOCAL_CLOUD_RETAIL";
 export const ProductAttributesIncludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ProductAttributesIncludedDestinationsItemEnumList =
-  ProductAttributesIncludedDestinationsItemEnum[];
+  ReadonlyArray<ProductAttributesIncludedDestinationsItemEnum>;
 export const ProductAttributesIncludedDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesIncludedDestinationsItemEnum,
@@ -993,7 +959,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ProductDetail[];
+export type ProductDetailList = ReadonlyArray<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -1009,8 +975,7 @@ export type ProductAttributesEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G"
-  | (string & {});
+  | "G";
 export const ProductAttributesEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -1018,8 +983,7 @@ export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
-  | "WEEK"
-  | (string & {});
+  | "WEEK";
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -1077,7 +1041,7 @@ export const HandlingCutoffTime = /*@__PURE__*/ S.suspend(() =>
   identifier: "HandlingCutoffTime",
 }) as any as S.Schema<HandlingCutoffTime>;
 
-export type HandlingCutoffTimeList = HandlingCutoffTime[];
+export type HandlingCutoffTimeList = ReadonlyArray<HandlingCutoffTime>;
 export const HandlingCutoffTimeList = /*@__PURE__*/ S.Array(
   HandlingCutoffTime,
 ) as any as S.Schema<HandlingCutoffTimeList>;
@@ -1133,18 +1097,17 @@ export type ProductAttributesAmenityFeatureItemEnum =
   | "SOCCER_FIELD"
   | "TENNIS_COURT"
   | "WALK_IN_CLOSETS"
-  | "WHEELCHAIR_ACCESS"
-  | (string & {});
+  | "WHEELCHAIR_ACCESS";
 export const ProductAttributesAmenityFeatureItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesAmenityFeatureItemEnumList =
-  ProductAttributesAmenityFeatureItemEnum[];
+  ReadonlyArray<ProductAttributesAmenityFeatureItemEnum>;
 export const ProductAttributesAmenityFeatureItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesAmenityFeatureItemEnum,
   ) as any as S.Schema<ProductAttributesAmenityFeatureItemEnumList>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1184,16 +1147,12 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList =
-  CloudExportAdditionalProperties[];
+  ReadonlyArray<CloudExportAdditionalProperties>;
 export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
-export type ProductAttributesPauseEnum =
-  | "PAUSE_UNSPECIFIED"
-  | "ADS"
-  | "ALL"
-  | (string & {});
+export type ProductAttributesPauseEnum = "PAUSE_UNSPECIFIED" | "ADS" | "ALL";
 export const ProductAttributesPauseEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesMaxEnergyEfficiencyClassEnum =
@@ -1207,15 +1166,11 @@ export type ProductAttributesMaxEnergyEfficiencyClassEnum =
   | "D"
   | "E"
   | "F"
-  | "G"
-  | (string & {});
+  | "G";
 export const ProductAttributesMaxEnergyEfficiencyClassEnum =
   /*@__PURE__*/ S.String;
 
-export type EnergyConsumptionUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "KWHPER100KM"
-  | (string & {});
+export type EnergyConsumptionUnitEnum = "UNIT_UNSPECIFIED" | "KWHPER100KM";
 export const EnergyConsumptionUnitEnum = /*@__PURE__*/ S.String;
 
 /** The energy consumption of the vehicle. */
@@ -1250,7 +1205,7 @@ export const QuestionAndAnswer = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuestionAndAnswer",
 }) as any as S.Schema<QuestionAndAnswer>;
 
-export type QuestionAndAnswerList = QuestionAndAnswer[];
+export type QuestionAndAnswerList = ReadonlyArray<QuestionAndAnswer>;
 export const QuestionAndAnswerList = /*@__PURE__*/ S.Array(
   QuestionAndAnswer,
 ) as any as S.Schema<QuestionAndAnswerList>;
@@ -1284,7 +1239,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = LoyaltyProgram[];
+export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -1296,12 +1251,11 @@ export type ProductAttributesSizeTypesItemEnum =
   | "MATERNITY"
   | "BIG"
   | "TALL"
-  | "PLUS"
-  | (string & {});
+  | "PLUS";
 export const ProductAttributesSizeTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesSizeTypesItemEnumList =
-  ProductAttributesSizeTypesItemEnum[];
+  ReadonlyArray<ProductAttributesSizeTypesItemEnum>;
 export const ProductAttributesSizeTypesItemEnumList = /*@__PURE__*/ S.Array(
   ProductAttributesSizeTypesItemEnum,
 ) as any as S.Schema<ProductAttributesSizeTypesItemEnumList>;
@@ -1312,8 +1266,7 @@ export type ProductAttributesAgeGroupEnum =
   | "KIDS"
   | "TODDLER"
   | "INFANT"
-  | "NEWBORN"
-  | (string & {});
+  | "NEWBORN";
 export const ProductAttributesAgeGroupEnum = /*@__PURE__*/ S.String;
 
 /** The ShippingWeight of the product. */
@@ -1370,8 +1323,7 @@ export type CarrierShippingCarrierTransitTimeEnum =
   | "USPS_GROUND_ADVANTAGE_RETAIL"
   | "USPS_PRIORITY_MAIL"
   | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
-  | "USPS_FIRST_CLASS_MAIL"
-  | (string & {});
+  | "USPS_FIRST_CLASS_MAIL";
 export const CarrierShippingCarrierTransitTimeEnum = /*@__PURE__*/ S.String;
 
 export type CarrierShippingCarrierPriceEnum =
@@ -1436,8 +1388,7 @@ export type CarrierShippingCarrierPriceEnum =
   | "USPS_MEDIA_MAIL"
   | "USPS_GROUND_ADVANTAGE_RETAIL"
   | "USPS_PRIORITY_MAIL"
-  | "USPS_GROUND_ADVANTAGE_COMMERCIAL"
-  | (string & {});
+  | "USPS_GROUND_ADVANTAGE_COMMERCIAL";
 export const CarrierShippingCarrierPriceEnum = /*@__PURE__*/ S.String;
 
 /** Carrier-based shipping configuration. Allows for setting shipping speed or shipping cost based on a carrier's provided info. */
@@ -1489,7 +1440,7 @@ export const CarrierShipping = /*@__PURE__*/ S.suspend(() =>
   identifier: "CarrierShipping",
 }) as any as S.Schema<CarrierShipping>;
 
-export type CarrierShippingList = CarrierShipping[];
+export type CarrierShippingList = ReadonlyArray<CarrierShipping>;
 export const CarrierShippingList = /*@__PURE__*/ S.Array(
   CarrierShipping,
 ) as any as S.Schema<CarrierShippingList>;
@@ -1506,16 +1457,14 @@ export type ProductAttributesSizeSystemEnum =
   | "JP"
   | "MEX"
   | "UK"
-  | "US"
-  | (string & {});
+  | "US";
 export const ProductAttributesSizeSystemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "UNISEX"
-  | (string & {});
+  | "UNISEX";
 export const ProductAttributesGenderEnum = /*@__PURE__*/ S.String;
 
 /** The dimension of the product. */
@@ -1537,8 +1486,7 @@ export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
 export type StructuredTitleDigitalSourceTypeEnum =
   | "DIGITAL_SOURCE_TYPE_UNSPECIFIED"
   | "TRAINED_ALGORITHMIC_MEDIA"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const StructuredTitleDigitalSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured title, for algorithmically (AI)-generated titles. */
@@ -1563,13 +1511,12 @@ export type ProductAttributesUtilitiesIncludedItemEnum =
   | "GAS"
   | "INTERNET"
   | "TRASH"
-  | "WATER"
-  | (string & {});
+  | "WATER";
 export const ProductAttributesUtilitiesIncludedItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ProductAttributesUtilitiesIncludedItemEnumList =
-  ProductAttributesUtilitiesIncludedItemEnum[];
+  ReadonlyArray<ProductAttributesUtilitiesIncludedItemEnum>;
 export const ProductAttributesUtilitiesIncludedItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesUtilitiesIncludedItemEnum,
@@ -1588,13 +1535,12 @@ export type ProductAttributesExcludedDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+  | "LOCAL_CLOUD_RETAIL";
 export const ProductAttributesExcludedDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ProductAttributesExcludedDestinationsItemEnumList =
-  ProductAttributesExcludedDestinationsItemEnum[];
+  ReadonlyArray<ProductAttributesExcludedDestinationsItemEnum>;
 export const ProductAttributesExcludedDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     ProductAttributesExcludedDestinationsItemEnum,
@@ -1609,8 +1555,7 @@ export type ProductAttributesPickupSlaEnum =
   | "FOUR_DAY"
   | "FIVE_DAY"
   | "SIX_DAY"
-  | "MULTI_WEEK"
-  | (string & {});
+  | "MULTI_WEEK";
 export const ProductAttributesPickupSlaEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesPropertyTypeEnum =
@@ -1623,16 +1568,14 @@ export type ProductAttributesPropertyTypeEnum =
   | "ROOM"
   | "SINGLE_FAMILY_HOME"
   | "STUDIO"
-  | "TOWNHOUSE"
-  | (string & {});
+  | "TOWNHOUSE";
 export const ProductAttributesPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "NEW"
   | "USED"
-  | "REFURBISHED"
-  | (string & {});
+  | "REFURBISHED";
 export const ProductAttributesConditionEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesVehiclePriceTypeEnum =
@@ -1641,8 +1584,7 @@ export type ProductAttributesVehiclePriceTypeEnum =
   | "DRIVE_AWAY_PRICE"
   | "ESTIMATED_DRIVE_AWAY_PRICE"
   | "EXCLUDING_GOVERNMENT_CHARGES_PRICE"
-  | "VEHICLE_BASE_PRICE"
-  | (string & {});
+  | "VEHICLE_BASE_PRICE";
 export const ProductAttributesVehiclePriceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The warranty of the vehicle. */
@@ -1673,7 +1615,7 @@ export const VariantOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VariantOption" }) as any as S.Schema<VariantOption>;
 
-export type VariantOptionList = VariantOption[];
+export type VariantOptionList = ReadonlyArray<VariantOption>;
 export const VariantOptionList = /*@__PURE__*/ S.Array(
   VariantOption,
 ) as any as S.Schema<VariantOptionList>;
@@ -1682,11 +1624,11 @@ export type PetPolicyPetTypesItemEnum =
   | "PET_TYPE_UNSPECIFIED"
   | "CATS"
   | "LARGE_DOGS"
-  | "SMALL_DOGS"
-  | (string & {});
+  | "SMALL_DOGS";
 export const PetPolicyPetTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type PetPolicyPetTypesItemEnumList = PetPolicyPetTypesItemEnum[];
+export type PetPolicyPetTypesItemEnumList =
+  ReadonlyArray<PetPolicyPetTypesItemEnum>;
 export const PetPolicyPetTypesItemEnumList = /*@__PURE__*/ S.Array(
   PetPolicyPetTypesItemEnum,
 ) as any as S.Schema<PetPolicyPetTypesItemEnumList>;
@@ -1709,8 +1651,7 @@ export type ProductMinimumOrderValueSurfaceEnum =
   | "SURFACE_UNSPECIFIED"
   | "ONLINE"
   | "LOCAL"
-  | "ONLINE_LOCAL"
-  | (string & {});
+  | "ONLINE_LOCAL";
 export const ProductMinimumOrderValueSurfaceEnum = /*@__PURE__*/ S.String;
 
 /** The minimum order value in the cart before the checkout is permitted. */
@@ -1735,7 +1676,8 @@ export const ProductMinimumOrderValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductMinimumOrderValue",
 }) as any as S.Schema<ProductMinimumOrderValue>;
 
-export type ProductMinimumOrderValueList = ProductMinimumOrderValue[];
+export type ProductMinimumOrderValueList =
+  ReadonlyArray<ProductMinimumOrderValue>;
 export const ProductMinimumOrderValueList = /*@__PURE__*/ S.Array(
   ProductMinimumOrderValue,
 ) as any as S.Schema<ProductMinimumOrderValueList>;
@@ -1746,8 +1688,7 @@ export type ProductAttributesAvailabilityEnum =
   | "OUT_OF_STOCK"
   | "PREORDER"
   | "LIMITED_AVAILABILITY"
-  | "BACKORDER"
-  | (string & {});
+  | "BACKORDER";
 export const ProductAttributesAvailabilityEnum = /*@__PURE__*/ S.String;
 
 export type ProductAttributesBodyStyleEnum =
@@ -1782,8 +1723,7 @@ export type ProductAttributesBodyStyleEnum =
   | "UTV_RECREATIONAL_UTILITY"
   | "UTV_SPORT"
   | "UTV_UTILITY"
-  | "UTV_YOUTH"
-  | (string & {});
+  | "UTV_YOUTH";
 export const ProductAttributesBodyStyleEnum = /*@__PURE__*/ S.String;
 
 /** Product attributes. */
@@ -2261,7 +2201,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -2402,7 +2342,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

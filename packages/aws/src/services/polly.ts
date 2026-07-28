@@ -256,12 +256,7 @@ export const DeleteLexiconOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLexiconOutput",
 }) as any as S.Schema<DeleteLexiconOutput>;
-export type Engine =
-  | "standard"
-  | "neural"
-  | "long-form"
-  | "generative"
-  | (string & {});
+export type Engine = "standard" | "neural" | "long-form" | "generative";
 export const Engine = /*@__PURE__*/ S.String;
 
 export type LanguageCode =
@@ -306,8 +301,7 @@ export type LanguageCode =
   | "fr-BE"
   | "cs-CZ"
   | "de-CH"
-  | "en-SG"
-  | (string & {});
+  | "en-SG";
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export type IncludeAdditionalLanguageCodes = boolean;
@@ -340,7 +334,7 @@ export const DescribeVoicesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVoicesInput",
 }) as any as S.Schema<DescribeVoicesInput>;
-export type Gender = "Female" | "Male" | (string & {});
+export type Gender = "Female" | "Male";
 export const Gender = /*@__PURE__*/ S.String;
 
 export type VoiceId =
@@ -449,8 +443,7 @@ export type VoiceId =
   | "Florian"
   | "Lennart"
   | "Lorenzo"
-  | "Tiffany"
-  | (string & {});
+  | "Tiffany";
 export const VoiceId = /*@__PURE__*/ S.String;
 
 export type LanguageName = string;
@@ -578,12 +571,7 @@ export const GetSpeechSynthesisTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSpeechSynthesisTaskInput",
 }) as any as S.Schema<GetSpeechSynthesisTaskInput>;
-export type TaskStatus =
-  | "scheduled"
-  | "inProgress"
-  | "completed"
-  | "failed"
-  | (string & {});
+export type TaskStatus = "scheduled" | "inProgress" | "completed" | "failed";
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type TaskStatusReason = string;
@@ -599,22 +587,16 @@ export type OutputFormat =
   | "ogg_vorbis"
   | "pcm"
   | "mulaw"
-  | "alaw"
-  | (string & {});
+  | "alaw";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export type SampleRate = string;
-export type SpeechMarkType =
-  | "sentence"
-  | "ssml"
-  | "viseme"
-  | "word"
-  | (string & {});
+export type SpeechMarkType = "sentence" | "ssml" | "viseme" | "word";
 export const SpeechMarkType = /*@__PURE__*/ S.String;
 
 export type SpeechMarkTypeList = SpeechMarkType[];
 export const SpeechMarkTypeList = /*@__PURE__*/ S.Array(SpeechMarkType);
-export type TextType = "ssml" | "text" | (string & {});
+export type TextType = "ssml" | "text";
 export const TextType = /*@__PURE__*/ S.String;
 
 export interface SynthesisTask {
@@ -876,8 +858,7 @@ export type ValidationExceptionReason =
   | "unsupportedOperation"
   | "fieldValidationFailed"
   | "other"
-  | "invalidInboundEvent"
-  | (string & {});
+  | "invalidInboundEvent";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionFieldName = string;
@@ -897,11 +878,10 @@ export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
 );
 export type QuotaCode =
   | "input-stream-inbound-event-timeout"
-  | "input-stream-timeout"
-  | (string & {});
+  | "input-stream-timeout";
 export const QuotaCode = /*@__PURE__*/ S.String;
 
-export type ServiceCode = "polly" | (string & {});
+export type ServiceCode = "polly";
 export const ServiceCode = /*@__PURE__*/ S.String;
 
 export type AvailabilityErrorMessage = string;

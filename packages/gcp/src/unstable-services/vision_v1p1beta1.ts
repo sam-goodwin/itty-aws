@@ -73,8 +73,7 @@ export type GoogleCloudVisionV1p1beta1FeatureTypeEnum =
   | "CROP_HINTS"
   | "WEB_DETECTION"
   | "PRODUCT_SEARCH"
-  | "OBJECT_LOCALIZATION"
-  | (string & {});
+  | "OBJECT_LOCALIZATION";
 export const GoogleCloudVisionV1p1beta1FeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** The type of Google Cloud Vision API detection to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list. */
@@ -97,12 +96,12 @@ export const GoogleCloudVisionV1p1beta1Feature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Feature>;
 
 export type GoogleCloudVisionV1p1beta1FeatureList =
-  GoogleCloudVisionV1p1beta1Feature[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Feature>;
 export const GoogleCloudVisionV1p1beta1FeatureList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Feature,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1FeatureList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -140,7 +139,7 @@ export const GoogleCloudVisionV1p1beta1InputConfig = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudVisionV1p1beta1InputConfig",
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1InputConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -162,7 +161,7 @@ export const GoogleCloudVisionV1p1beta1Vertex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Vertex>;
 
 export type GoogleCloudVisionV1p1beta1VertexList =
-  GoogleCloudVisionV1p1beta1Vertex[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Vertex>;
 export const GoogleCloudVisionV1p1beta1VertexList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Vertex,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1VertexList>;
@@ -185,7 +184,7 @@ export const GoogleCloudVisionV1p1beta1NormalizedVertex =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1NormalizedVertex>;
 
 export type GoogleCloudVisionV1p1beta1NormalizedVertexList =
-  GoogleCloudVisionV1p1beta1NormalizedVertex[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1NormalizedVertex>;
 export const GoogleCloudVisionV1p1beta1NormalizedVertexList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1NormalizedVertex,
@@ -264,7 +263,7 @@ export const GoogleCloudVisionV1p1beta1LatLongRect = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudVisionV1p1beta1LatLongRect",
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1LatLongRect>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -373,7 +372,7 @@ export const GoogleCloudVisionV1p1beta1AnnotateFileRequest =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1AnnotateFileRequest>;
 
 export type GoogleCloudVisionV1p1beta1AnnotateFileRequestList =
-  GoogleCloudVisionV1p1beta1AnnotateFileRequest[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1AnnotateFileRequest>;
 export const GoogleCloudVisionV1p1beta1AnnotateFileRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1AnnotateFileRequest,
@@ -431,7 +430,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -473,7 +472,7 @@ export const GoogleCloudVisionV1p1beta1Property = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Property>;
 
 export type GoogleCloudVisionV1p1beta1PropertyList =
-  GoogleCloudVisionV1p1beta1Property[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Property>;
 export const GoogleCloudVisionV1p1beta1PropertyList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Property,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1PropertyList>;
@@ -493,7 +492,7 @@ export const GoogleCloudVisionV1p1beta1LocationInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1LocationInfo>;
 
 export type GoogleCloudVisionV1p1beta1LocationInfoList =
-  GoogleCloudVisionV1p1beta1LocationInfo[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1LocationInfo>;
 export const GoogleCloudVisionV1p1beta1LocationInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1LocationInfo,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1LocationInfoList>;
@@ -537,7 +536,7 @@ export const GoogleCloudVisionV1p1beta1EntityAnnotation =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1EntityAnnotation>;
 
 export type GoogleCloudVisionV1p1beta1EntityAnnotationList =
-  GoogleCloudVisionV1p1beta1EntityAnnotation[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1EntityAnnotation>;
 export const GoogleCloudVisionV1p1beta1EntityAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1EntityAnnotation,
@@ -549,8 +548,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationSorrowLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationSorrowLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -560,8 +558,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationHeadwearLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationHeadwearLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -571,8 +568,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationSurpriseLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationSurpriseLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -582,8 +578,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationAngerLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationAngerLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -593,8 +588,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationUnderExposedLikelihoodEnum =
     | "UNLIKELY"
     | "POSSIBLE"
     | "LIKELY"
-    | "VERY_LIKELY"
-    | (string & {});
+    | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationUnderExposedLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -604,8 +598,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationJoyLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationJoyLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -615,8 +608,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationBlurredLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationBlurredLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -676,8 +668,7 @@ export type GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkTypeEnum =
   | "CHIN_LEFT_GONION"
   | "CHIN_RIGHT_GONION"
   | "LEFT_CHEEK_CENTER"
-  | "RIGHT_CHEEK_CENTER"
-  | (string & {});
+  | "RIGHT_CHEEK_CENTER";
 export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -701,7 +692,7 @@ export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmark =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>;
 
 export type GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkList =
-  GoogleCloudVisionV1p1beta1FaceAnnotationLandmark[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>;
 export const GoogleCloudVisionV1p1beta1FaceAnnotationLandmarkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1FaceAnnotationLandmark,
@@ -780,7 +771,7 @@ export const GoogleCloudVisionV1p1beta1FaceAnnotation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1FaceAnnotation>;
 
 export type GoogleCloudVisionV1p1beta1FaceAnnotationList =
-  GoogleCloudVisionV1p1beta1FaceAnnotation[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1FaceAnnotation>;
 export const GoogleCloudVisionV1p1beta1FaceAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1FaceAnnotation,
@@ -792,8 +783,7 @@ export type GoogleCloudVisionV1p1beta1BlockBlockTypeEnum =
   | "TABLE"
   | "PICTURE"
   | "RULER"
-  | "BARCODE"
-  | (string & {});
+  | "BARCODE";
 export const GoogleCloudVisionV1p1beta1BlockBlockTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -815,7 +805,7 @@ export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>;
 
 export type GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguageList =
-  GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>;
 export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage,
@@ -827,8 +817,7 @@ export type GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreakTypeEnum =
   | "SURE_SPACE"
   | "EOL_SURE_SPACE"
   | "HYPHEN"
-  | "LINE_BREAK"
-  | (string & {});
+  | "LINE_BREAK";
 export const GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreakTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -895,7 +884,7 @@ export const GoogleCloudVisionV1p1beta1Symbol = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Symbol>;
 
 export type GoogleCloudVisionV1p1beta1SymbolList =
-  GoogleCloudVisionV1p1beta1Symbol[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Symbol>;
 export const GoogleCloudVisionV1p1beta1SymbolList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Symbol,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1SymbolList>;
@@ -923,7 +912,7 @@ export const GoogleCloudVisionV1p1beta1Word = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Word>;
 
 export type GoogleCloudVisionV1p1beta1WordList =
-  GoogleCloudVisionV1p1beta1Word[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Word>;
 export const GoogleCloudVisionV1p1beta1WordList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Word,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1WordList>;
@@ -951,7 +940,7 @@ export const GoogleCloudVisionV1p1beta1Paragraph = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Paragraph>;
 
 export type GoogleCloudVisionV1p1beta1ParagraphList =
-  GoogleCloudVisionV1p1beta1Paragraph[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Paragraph>;
 export const GoogleCloudVisionV1p1beta1ParagraphList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Paragraph,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1ParagraphList>;
@@ -982,7 +971,7 @@ export const GoogleCloudVisionV1p1beta1Block = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Block>;
 
 export type GoogleCloudVisionV1p1beta1BlockList =
-  GoogleCloudVisionV1p1beta1Block[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Block>;
 export const GoogleCloudVisionV1p1beta1BlockList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Block,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1BlockList>;
@@ -1013,7 +1002,7 @@ export const GoogleCloudVisionV1p1beta1Page = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1Page>;
 
 export type GoogleCloudVisionV1p1beta1PageList =
-  GoogleCloudVisionV1p1beta1Page[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1Page>;
 export const GoogleCloudVisionV1p1beta1PageList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1Page,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1PageList>;
@@ -1041,8 +1030,7 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationAdultEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationAdultEnum =
   /*@__PURE__*/ S.String;
 
@@ -1052,8 +1040,7 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationMedicalEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationMedicalEnum =
   /*@__PURE__*/ S.String;
 
@@ -1063,8 +1050,7 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationViolenceEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationViolenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1074,8 +1060,7 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationSpoofEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationSpoofEnum =
   /*@__PURE__*/ S.String;
 
@@ -1085,8 +1070,7 @@ export type GoogleCloudVisionV1p1beta1SafeSearchAnnotationRacyEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GoogleCloudVisionV1p1beta1SafeSearchAnnotationRacyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1142,7 +1126,7 @@ export const GoogleCloudVisionV1p1beta1ProductKeyValue =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1ProductKeyValue>;
 
 export type GoogleCloudVisionV1p1beta1ProductKeyValueList =
-  GoogleCloudVisionV1p1beta1ProductKeyValue[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1ProductKeyValue>;
 export const GoogleCloudVisionV1p1beta1ProductKeyValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1ProductKeyValue,
@@ -1194,7 +1178,7 @@ export const GoogleCloudVisionV1p1beta1ProductSearchResultsResult =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
 
 export type GoogleCloudVisionV1p1beta1ProductSearchResultsResultList =
-  GoogleCloudVisionV1p1beta1ProductSearchResultsResult[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>;
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1ProductSearchResultsResult,
@@ -1225,7 +1209,7 @@ export const GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>;
 
 export type GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotationList =
-  GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>;
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation,
@@ -1256,7 +1240,7 @@ export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>;
 
 export type GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResultList =
-  GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>;
 export const GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult,
@@ -1306,7 +1290,7 @@ export const GoogleCloudVisionV1p1beta1CropHint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1CropHint>;
 
 export type GoogleCloudVisionV1p1beta1CropHintList =
-  GoogleCloudVisionV1p1beta1CropHint[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1CropHint>;
 export const GoogleCloudVisionV1p1beta1CropHintList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1CropHint,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1CropHintList>;
@@ -1352,7 +1336,7 @@ export const GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>;
 
 export type GoogleCloudVisionV1p1beta1LocalizedObjectAnnotationList =
-  GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>;
 export const GoogleCloudVisionV1p1beta1LocalizedObjectAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation,
@@ -1379,7 +1363,7 @@ export const GoogleCloudVisionV1p1beta1WebDetectionWebEntity =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>;
 
 export type GoogleCloudVisionV1p1beta1WebDetectionWebEntityList =
-  GoogleCloudVisionV1p1beta1WebDetectionWebEntity[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>;
 export const GoogleCloudVisionV1p1beta1WebDetectionWebEntityList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1WebDetectionWebEntity,
@@ -1403,7 +1387,7 @@ export const GoogleCloudVisionV1p1beta1WebDetectionWebImage =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
 
 export type GoogleCloudVisionV1p1beta1WebDetectionWebImageList =
-  GoogleCloudVisionV1p1beta1WebDetectionWebImage[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebImage>;
 export const GoogleCloudVisionV1p1beta1WebDetectionWebImageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1WebDetectionWebImage,
@@ -1440,7 +1424,7 @@ export const GoogleCloudVisionV1p1beta1WebDetectionWebPage =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebPage>;
 
 export type GoogleCloudVisionV1p1beta1WebDetectionWebPageList =
-  GoogleCloudVisionV1p1beta1WebDetectionWebPage[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebPage>;
 export const GoogleCloudVisionV1p1beta1WebDetectionWebPageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1WebDetectionWebPage,
@@ -1464,7 +1448,7 @@ export const GoogleCloudVisionV1p1beta1WebDetectionWebLabel =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>;
 
 export type GoogleCloudVisionV1p1beta1WebDetectionWebLabelList =
-  GoogleCloudVisionV1p1beta1WebDetectionWebLabel[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>;
 export const GoogleCloudVisionV1p1beta1WebDetectionWebLabelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1WebDetectionWebLabel,
@@ -1551,7 +1535,7 @@ export const GoogleCloudVisionV1p1beta1ColorInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1ColorInfo>;
 
 export type GoogleCloudVisionV1p1beta1ColorInfoList =
-  GoogleCloudVisionV1p1beta1ColorInfo[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1ColorInfo>;
 export const GoogleCloudVisionV1p1beta1ColorInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudVisionV1p1beta1ColorInfo,
 ) as any as S.Schema<GoogleCloudVisionV1p1beta1ColorInfoList>;
@@ -1675,7 +1659,7 @@ export const GoogleCloudVisionV1p1beta1AnnotateImageResponse =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1AnnotateImageResponse>;
 
 export type GoogleCloudVisionV1p1beta1AnnotateImageResponseList =
-  GoogleCloudVisionV1p1beta1AnnotateImageResponse[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1AnnotateImageResponse>;
 export const GoogleCloudVisionV1p1beta1AnnotateImageResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1AnnotateImageResponse,
@@ -1707,7 +1691,7 @@ export const GoogleCloudVisionV1p1beta1AnnotateFileResponse =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1AnnotateFileResponse>;
 
 export type GoogleCloudVisionV1p1beta1AnnotateFileResponseList =
-  GoogleCloudVisionV1p1beta1AnnotateFileResponse[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1AnnotateFileResponse>;
 export const GoogleCloudVisionV1p1beta1AnnotateFileResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1AnnotateFileResponse,
@@ -1781,7 +1765,7 @@ export const GoogleCloudVisionV1p1beta1AnnotateImageRequest =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1AnnotateImageRequest>;
 
 export type GoogleCloudVisionV1p1beta1AnnotateImageRequestList =
-  GoogleCloudVisionV1p1beta1AnnotateImageRequest[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1AnnotateImageRequest>;
 export const GoogleCloudVisionV1p1beta1AnnotateImageRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1AnnotateImageRequest,
@@ -1992,7 +1976,7 @@ export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest =
   }) as any as S.Schema<GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest>;
 
 export type GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequestList =
-  GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest[];
+  ReadonlyArray<GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest>;
 export const GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest,

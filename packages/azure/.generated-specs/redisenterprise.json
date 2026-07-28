@@ -130,15 +130,24 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ids": {
+          "target": "com.azure.redisenterprise#DatabasesFlushRequestIdsList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The identifiers of all the other database resources in the georeplication group to be flushed."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabasesFlushRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The identifiers of all the other database resources in the georeplication group to be flushed."
       }
     },
     "com.azure.redisenterprise#DatabasesForceLinkToReplicationGroup": {
@@ -195,16 +204,59 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "geoReplication": {
+          "target": "com.azure.redisenterprise#DatabasesForceLinkToReplicationGroupRequestGeoReplication",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties to configure geo replication for this database.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabasesForceLinkToReplicationGroupRequestGeoReplication": {
+      "type": "structure",
+      "members": {
+        "groupNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the group of linked database resources. This should match the existing replication group name."
+          }
+        },
+        "linkedDatabases": {
+          "target": "com.azure.redisenterprise#DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList",
+          "traits": {
+            "smithy.api#documentation": "The resource IDs of the databases that are expected to be linked and included in the replication group. This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to configure geo replication for this database."
+      }
+    },
+    "com.azure.redisenterprise#DatabasesForceLinkToReplicationGroupRequestGeoReplicationLinkedDatabasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redisenterprise#LinkedDatabaseInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource IDs of the databases that are expected to be linked and included in the replication group. This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered."
+      }
+    },
+    "com.azure.redisenterprise#LinkedDatabaseInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of a database resource to link with this database."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies details of a linked database resource."
       }
     },
     "com.azure.redisenterprise#DatabasesForceUnlink": {
@@ -261,16 +313,25 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ids": {
+          "target": "com.azure.redisenterprise#DatabasesForceUnlinkRequestIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource IDs of the database resources to be unlinked.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabasesForceUnlinkRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource IDs of the database resources to be unlinked."
       }
     },
     "com.azure.redisenterprise#PrivateLinkResourcesListByCluster": {
@@ -693,16 +754,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redisenterprise#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.redisenterprise#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.redisenterprise#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.redisenterprise#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.redisenterprise#PrivateEndpointConnectionsGet": {
@@ -1363,16 +1451,51 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database access policy assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redisenterprise#AccessPolicyAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the access policy assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#AccessPolicyAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "accessPolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of access policy under specific access policy assignment. Only \"default\" policy is supported for now.",
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "com.azure.redisenterprise#AccessPolicyAssignmentPropertiesInputUser",
+          "traits": {
+            "smithy.api#documentation": "The user associated with the access policy.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Redis Enterprise database access policy assignment."
+      }
+    },
+    "com.azure.redisenterprise#AccessPolicyAssignmentPropertiesInputUser": {
+      "type": "structure",
+      "members": {
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object ID of the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The user associated with the access policy."
       }
     },
     "com.azure.redisenterprise#AccessPolicyAssignmentGet": {
@@ -1528,10 +1651,10 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sasUri": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "SAS URI for the target directory to export to",
             "smithy.api#required": {}
           }
         }
@@ -1594,16 +1717,25 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sasUris": {
+          "target": "com.azure.redisenterprise#DatabasesImportRequestSasUrisList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "SAS URIs for the target blobs to import from",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabasesImportRequestSasUrisList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "SAS URIs for the target blobs to import from"
       }
     },
     "com.azure.redisenterprise#DatabasesRegenerateKey": {
@@ -1680,16 +1812,36 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.redisenterprise#DatabasesRegenerateKeyRequestKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Which access key to regenerate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabasesRegenerateKeyRequestKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Which access key to regenerate."
       }
     },
     "com.azure.redisenterprise#DatabasesListKeys": {
@@ -2417,16 +2569,278 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the database."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "clientProtocol": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputClientProtocol",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "TCP port of the database endpoint. Specified at create time. Defaults to an available port."
+          }
+        },
+        "clusteringPolicy": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputClusteringPolicy",
+          "traits": {
+            "smithy.api#documentation": "Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database."
+          }
+        },
+        "evictionPolicy": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputEvictionPolicy",
+          "traits": {
+            "smithy.api#documentation": "Redis eviction policy - default is VolatileLRU"
+          }
+        },
+        "persistence": {
+          "target": "com.azure.redisenterprise#Persistence",
+          "traits": {
+            "smithy.api#documentation": "Persistence settings"
+          }
+        },
+        "modules": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputModulesList",
+          "traits": {
+            "smithy.api#documentation": "Optional set of redis modules to enable in this database - modules can only be added at creation time."
+          }
+        },
+        "geoReplication": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputGeoReplication",
+          "traits": {
+            "smithy.api#documentation": "Optional set of properties to configure geo replication for this database."
+          }
+        },
+        "deferUpgrade": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputDeferUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade"
+          }
+        },
+        "accessKeysAuthentication": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputAccessKeysAuthentication",
+          "traits": {
+            "smithy.api#documentation": "This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for updating Redis Enterprise databases"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputAccessKeysAuthentication": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputDeferUpgrade": {
+      "type": "enum",
+      "members": {
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deferred"
+          }
+        },
+        "NOTDEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotDeferred"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputGeoReplication": {
+      "type": "structure",
+      "members": {
+        "groupNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the group of linked database resources"
+          }
+        },
+        "linkedDatabases": {
+          "target": "com.azure.redisenterprise#DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList",
+          "traits": {
+            "smithy.api#documentation": "List of database resources to link with this database"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional set of properties to configure geo replication for this database."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputGeoReplicationLinkedDatabasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redisenterprise#LinkedDatabaseInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of database resources to link with this database"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputModulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redisenterprise#ModuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional set of redis modules to enable in this database - modules can only be added at creation time."
+      }
+    },
+    "com.azure.redisenterprise#ModuleInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'",
+            "smithy.api#required": {}
+          }
+        },
+        "args": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies configuration of a redis module"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputEvictionPolicy": {
+      "type": "enum",
+      "members": {
+        "ALLKEYSLFU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysLFU"
+          }
+        },
+        "ALLKEYSLRU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysLRU"
+          }
+        },
+        "ALLKEYSRANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysRandom"
+          }
+        },
+        "VOLATILELRU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileLRU"
+          }
+        },
+        "VOLATILELFU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileLFU"
+          }
+        },
+        "VOLATILETTL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileTTL"
+          }
+        },
+        "VOLATILERANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileRandom"
+          }
+        },
+        "NOEVICTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoEviction"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Redis eviction policy - default is VolatileLRU"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputClusteringPolicy": {
+      "type": "enum",
+      "members": {
+        "ENTERPRISECLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnterpriseCluster"
+          }
+        },
+        "OSSCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OSSCluster"
+          }
+        },
+        "NOCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoCluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseUpdatePropertiesInputClientProtocol": {
+      "type": "enum",
+      "members": {
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Encrypted"
+          }
+        },
+        "PLAINTEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plaintext"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
       }
     },
     "com.azure.redisenterprise#DatabasesCreate": {
@@ -2515,16 +2929,257 @@
             "smithy.api#documentation": "The name of the Redis Enterprise database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Other properties of the database."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "clientProtocol": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputClientProtocol",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "TCP port of the database endpoint. Specified at create time. Defaults to an available port."
+          }
+        },
+        "clusteringPolicy": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputClusteringPolicy",
+          "traits": {
+            "smithy.api#documentation": "Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database."
+          }
+        },
+        "evictionPolicy": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputEvictionPolicy",
+          "traits": {
+            "smithy.api#documentation": "Redis eviction policy - default is VolatileLRU"
+          }
+        },
+        "persistence": {
+          "target": "com.azure.redisenterprise#Persistence",
+          "traits": {
+            "smithy.api#documentation": "Persistence settings"
+          }
+        },
+        "modules": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputModulesList",
+          "traits": {
+            "smithy.api#documentation": "Optional set of redis modules to enable in this database - modules can only be added at creation time."
+          }
+        },
+        "geoReplication": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputGeoReplication",
+          "traits": {
+            "smithy.api#documentation": "Optional set of properties to configure geo replication for this database."
+          }
+        },
+        "deferUpgrade": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputDeferUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade"
+          }
+        },
+        "accessKeysAuthentication": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputAccessKeysAuthentication",
+          "traits": {
+            "smithy.api#documentation": "This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for creating Redis Enterprise databases"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputAccessKeysAuthentication": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputDeferUpgrade": {
+      "type": "enum",
+      "members": {
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deferred"
+          }
+        },
+        "NOTDEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotDeferred"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputGeoReplication": {
+      "type": "structure",
+      "members": {
+        "groupNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the group of linked database resources"
+          }
+        },
+        "linkedDatabases": {
+          "target": "com.azure.redisenterprise#DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList",
+          "traits": {
+            "smithy.api#documentation": "List of database resources to link with this database"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional set of properties to configure geo replication for this database."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputGeoReplicationLinkedDatabasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redisenterprise#LinkedDatabaseInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of database resources to link with this database"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputModulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redisenterprise#ModuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional set of redis modules to enable in this database - modules can only be added at creation time."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputEvictionPolicy": {
+      "type": "enum",
+      "members": {
+        "ALLKEYSLFU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysLFU"
+          }
+        },
+        "ALLKEYSLRU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysLRU"
+          }
+        },
+        "ALLKEYSRANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllKeysRandom"
+          }
+        },
+        "VOLATILELRU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileLRU"
+          }
+        },
+        "VOLATILELFU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileLFU"
+          }
+        },
+        "VOLATILETTL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileTTL"
+          }
+        },
+        "VOLATILERANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VolatileRandom"
+          }
+        },
+        "NOEVICTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoEviction"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Redis eviction policy - default is VolatileLRU"
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputClusteringPolicy": {
+      "type": "enum",
+      "members": {
+        "ENTERPRISECLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnterpriseCluster"
+          }
+        },
+        "OSSCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OSSCluster"
+          }
+        },
+        "NOCLUSTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoCluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database."
+      }
+    },
+    "com.azure.redisenterprise#DatabaseCreatePropertiesInputClientProtocol": {
+      "type": "enum",
+      "members": {
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Encrypted"
+          }
+        },
+        "PLAINTEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plaintext"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
       }
     },
     "com.azure.redisenterprise#DatabasesGet": {
@@ -3888,16 +4543,254 @@
             "smithy.api#documentation": "The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.redisenterprise#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU to create, which affects price, performance, and features."
+          }
+        },
+        "properties": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Other properties of the cluster."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redisenterprise#RedisEnterpriseUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.redisenterprise#RedisEnterpriseUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#RedisEnterpriseUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.redisenterprise#RedisEnterpriseUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redisenterprise#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redisenterprise#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redisenterprise#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.redisenterprise#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.redisenterprise#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "highAvailability": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputHighAvailability",
+          "traits": {
+            "smithy.api#documentation": "Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputMinimumTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption-at-rest configuration for the cluster."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Redis Enterprise clusters for update operations"
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set."
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryption": {
+      "type": "structure",
+      "members": {
+        "customerManagedKeyEncryption": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption",
+          "traits": {
+            "smithy.api#documentation": "All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Encryption-at-rest configuration for the cluster."
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryption": {
+      "type": "structure",
+      "members": {
+        "keyEncryptionKeyIdentity": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+          "traits": {
+            "smithy.api#documentation": "All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault."
+          }
+        },
+        "keyEncryptionKeyUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption."
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity": {
+      "type": "structure",
+      "members": {
+        "userAssignedIdentityResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId."
+          }
+        },
+        "identityType": {
+          "target": "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Only userAssignedIdentity is supported in this API version; other types may be supported in the future"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault."
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemAssignedIdentity"
+          }
+        },
+        "USERASSIGNEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userAssignedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Only userAssignedIdentity is supported in this API version; other types may be supported in the future"
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputMinimumTlsVersion": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions."
+      }
+    },
+    "com.azure.redisenterprise#ClusterUpdatePropertiesInputHighAvailability": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss."
       }
     },
     "com.azure.redisenterprise#RedisEnterpriseCreate": {
@@ -4063,16 +4956,259 @@
             "smithy.api#documentation": "The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.redisenterprise#RedisEnterpriseCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.redisenterprise#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU to create, which affects price, performance, and features.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.azure.redisenterprise#RedisEnterpriseCreateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The Availability Zones where this cluster will be deployed."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redisenterprise#RedisEnterpriseCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Other properties of the cluster."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "highAvailability": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputHighAvailability",
+          "traits": {
+            "smithy.api#documentation": "Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputMinimumTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption-at-rest configuration for the cluster."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Redis Enterprise clusters for create operations"
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network traffic can access the Redis cluster. Only 'Enabled' or 'Disabled' can be set. null is returned only for clusters created using an old API version which do not have this property and cannot be set."
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryption": {
+      "type": "structure",
+      "members": {
+        "customerManagedKeyEncryption": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption",
+          "traits": {
+            "smithy.api#documentation": "All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Encryption-at-rest configuration for the cluster."
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryption": {
+      "type": "structure",
+      "members": {
+        "keyEncryptionKeyIdentity": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+          "traits": {
+            "smithy.api#documentation": "All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault."
+          }
+        },
+        "keyEncryptionKeyUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption."
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity": {
+      "type": "structure",
+      "members": {
+        "userAssignedIdentityResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId."
+          }
+        },
+        "identityType": {
+          "target": "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Only userAssignedIdentity is supported in this API version; other types may be supported in the future"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault."
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputEncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemAssignedIdentity"
+          }
+        },
+        "USERASSIGNEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userAssignedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Only userAssignedIdentity is supported in this API version; other types may be supported in the future"
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputMinimumTlsVersion": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions."
+      }
+    },
+    "com.azure.redisenterprise#ClusterCreatePropertiesInputHighAvailability": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss."
+      }
+    },
+    "com.azure.redisenterprise#RedisEnterpriseCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redisenterprise#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redisenterprise#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redisenterprise#RedisEnterpriseCreateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Availability Zones where this cluster will be deployed."
+      }
+    },
+    "com.azure.redisenterprise#RedisEnterpriseCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.redisenterprise#RedisEnterpriseGet": {

@@ -1242,16 +1242,27 @@
             "smithy.api#documentation": "Contact Profile name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#ContactProfilesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#ContactProfilesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#ContactProfilesCreateOrUpdate": {
@@ -1364,16 +1375,202 @@
             "smithy.api#documentation": "Contact Profile name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#ContactProfilesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.orbital#ContactProfilesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the contact profile resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#ContactProfilesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.orbital#ProvisioningStateInput",
+          "traits": {
+            "smithy.api#documentation": "The current state of the resource's creation, deletion, or modification."
+          }
+        },
+        "minimumViableContactDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station."
+          }
+        },
+        "minimumElevationDegrees": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station."
+          }
+        },
+        "autoTrackingConfiguration": {
+          "target": "com.azure.orbital#ContactProfilesPropertiesInputAutoTrackingConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Auto-tracking configuration."
+          }
+        },
+        "eventHubUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub."
+          }
+        },
+        "networkConfiguration": {
+          "target": "com.azure.orbital#ContactProfilesPropertiesInputNetworkConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Network configuration of customer virtual network.",
+            "smithy.api#required": {}
+          }
+        },
+        "thirdPartyConfigurations": {
+          "target": "com.azure.orbital#ContactProfilesPropertiesInputThirdPartyConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints."
+          }
+        },
+        "links": {
+          "target": "com.azure.orbital#ContactProfilesPropertiesInputLinksList",
+          "traits": {
+            "smithy.api#documentation": "Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Contact Profile Resource Properties."
+      }
+    },
+    "com.azure.orbital#ContactProfilesPropertiesInputLinksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.orbital#ContactProfileLink"
+      },
+      "traits": {
+        "smithy.api#documentation": "Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints."
+      }
+    },
+    "com.azure.orbital#ContactProfilesPropertiesInputThirdPartyConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.orbital#ContactProfileThirdPartyConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints."
+      }
+    },
+    "com.azure.orbital#ContactProfilesPropertiesInputNetworkConfiguration": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network configuration of customer virtual network."
+      }
+    },
+    "com.azure.orbital#ContactProfilesPropertiesInputAutoTrackingConfiguration": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "XBAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xBand"
+          }
+        },
+        "SBAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sBand"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Auto-tracking configuration."
+      }
+    },
+    "com.azure.orbital#ProvisioningStateInput": {
+      "type": "enum",
+      "members": {
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "creating"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "canceled"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of the resource's creation, deletion, or modification."
+      }
+    },
+    "com.azure.orbital#ContactProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#ContactProfilesGet": {
@@ -1669,10 +1866,31 @@
             "smithy.api#documentation": "Spacecraft ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contactProfile": {
+          "target": "com.azure.orbital#ResourceReference",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The reference to the contact profile resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "groundStationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of Azure Ground Station.",
+            "smithy.api#required": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time of a contact (ISO 8601 UTC standard).",
+            "smithy.api#required": {}
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time of a contact (ISO 8601 UTC standard).",
             "smithy.api#required": {}
           }
         }
@@ -2013,16 +2231,57 @@
             "smithy.api#documentation": "Contact name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.orbital#ContactsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#ContactsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.orbital#ProvisioningStateInput",
+          "traits": {
+            "smithy.api#documentation": "The current state of the resource's creation, deletion, or modification."
+          }
+        },
+        "reservationStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reservation start time of a contact (ISO 8601 UTC standard).",
+            "smithy.api#required": {}
+          }
+        },
+        "reservationEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reservation end time of a contact (ISO 8601 UTC standard).",
+            "smithy.api#required": {}
+          }
+        },
+        "groundStationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Ground Station name.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactProfile": {
+          "target": "com.azure.orbital#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "The reference to the contact profile resource.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Contact Resource."
       }
     },
     "com.azure.orbital#ContactsGet": {
@@ -2597,16 +2856,27 @@
             "smithy.api#documentation": "Spacecraft ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#SpacecraftsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#SpacecraftsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#SpacecraftsCreateOrUpdate": {
@@ -2719,16 +2989,193 @@
             "smithy.api#documentation": "Spacecraft ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#SpacecraftsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.orbital#SpacecraftsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Spacecraft Properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#SpacecraftsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.orbital#ProvisioningStateInput",
+          "traits": {
+            "smithy.api#documentation": "The current state of the resource's creation, deletion, or modification."
+          }
+        },
+        "noradId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "NORAD ID of the spacecraft."
+          }
+        },
+        "titleLine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Title line of the two-line element set (TLE).",
+            "smithy.api#required": {}
+          }
+        },
+        "tleLine1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Line 1 of the two-line element set (TLE).",
+            "smithy.api#required": {}
+          }
+        },
+        "tleLine2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Line 2 of the two-line element set (TLE).",
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.azure.orbital#SpacecraftsPropertiesInputLinksList",
+          "traits": {
+            "smithy.api#documentation": "Immutable list of Spacecraft links.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Spacecraft Resource Properties."
+      }
+    },
+    "com.azure.orbital#SpacecraftsPropertiesInputLinksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.orbital#SpacecraftLinkInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Immutable list of Spacecraft links."
+      }
+    },
+    "com.azure.orbital#SpacecraftLinkInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link name.",
+            "smithy.api#required": {}
+          }
+        },
+        "centerFrequencyMHz": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Center Frequency in MHz.",
+            "smithy.api#required": {}
+          }
+        },
+        "bandwidthMHz": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Bandwidth in MHz.",
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.azure.orbital#SpacecraftLinkInputDirection",
+          "traits": {
+            "smithy.api#documentation": "Direction (Uplink or Downlink).",
+            "smithy.api#required": {}
+          }
+        },
+        "polarization": {
+          "target": "com.azure.orbital#SpacecraftLinkInputPolarization",
+          "traits": {
+            "smithy.api#documentation": "Polarization. e.g. (RHCP, LHCP).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of authorized spacecraft links per ground station and the expiration date of the authorization."
+      }
+    },
+    "com.azure.orbital#SpacecraftLinkInputPolarization": {
+      "type": "enum",
+      "members": {
+        "RHCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RHCP"
+          }
+        },
+        "LHCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LHCP"
+          }
+        },
+        "LINEARVERTICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linearVertical"
+          }
+        },
+        "LINEARHORIZONTAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linearHorizontal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Polarization. e.g. (RHCP, LHCP)."
+      }
+    },
+    "com.azure.orbital#SpacecraftLinkInputDirection": {
+      "type": "enum",
+      "members": {
+        "UPLINK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Uplink"
+          }
+        },
+        "DOWNLINK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Downlink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Direction (Uplink or Downlink)."
+      }
+    },
+    "com.azure.orbital#SpacecraftsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#SpacecraftsGet": {
@@ -4026,16 +4473,27 @@
             "smithy.api#documentation": "L2 Connection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#L2ConnectionsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#L2ConnectionsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#L2ConnectionsCreateOrUpdate": {
@@ -4148,16 +4606,114 @@
             "smithy.api#documentation": "L2 Connection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#L2ConnectionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.orbital#L2ConnectionsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties bag for this resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#L2ConnectionsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "edgeSite": {
+          "target": "com.azure.orbital#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.",
+            "smithy.api#required": {}
+          }
+        },
+        "edgeSitePartnerRouter": {
+          "target": "com.azure.orbital#L2ConnectionsPropertiesInputEdgeSitePartnerRouter",
+          "traits": {
+            "smithy.api#documentation": "The name of the partner router that cross-connects with the Orbital Edge Router at the edge site.",
+            "smithy.api#required": {}
+          }
+        },
+        "groundStation": {
+          "target": "com.azure.orbital#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to an Microsoft.Orbital/groundStations resource to route traffic for.",
+            "smithy.api#required": {}
+          }
+        },
+        "groundStationPartnerRouter": {
+          "target": "com.azure.orbital#L2ConnectionsPropertiesInputGroundStationPartnerRouter",
+          "traits": {
+            "smithy.api#documentation": "The name of the partner router to establish a connection to within the ground station.",
+            "smithy.api#required": {}
+          }
+        },
+        "vlanId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The VLAN ID for the L2 connection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties object for an L2 Connection."
+      }
+    },
+    "com.azure.orbital#L2ConnectionsPropertiesInputGroundStationPartnerRouter": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the partner router to establish a connection to within the ground station."
+      }
+    },
+    "com.azure.orbital#L2ConnectionsPropertiesInputEdgeSitePartnerRouter": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the partner router that cross-connects with the Orbital Edge Router at the edge site."
+      }
+    },
+    "com.azure.orbital#L2ConnectionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#L2ConnectionsGet": {
@@ -4636,16 +5192,27 @@
             "smithy.api#documentation": "Edge site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#EdgeSitesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#EdgeSitesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#EdgeSitesCreateOrUpdate": {
@@ -4758,16 +5325,41 @@
             "smithy.api#documentation": "Edge site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#EdgeSitesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.orbital#EdgeSitesProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties bag for this resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#EdgeSitesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#EdgeSitesGet": {
@@ -5152,16 +5744,27 @@
             "smithy.api#documentation": "Ground Station name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#GroundStationsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#GroundStationsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#GroundStationsCreateOrUpdate": {
@@ -5273,16 +5876,101 @@
             "smithy.api#documentation": "Ground Station name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.orbital#GroundStationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.orbital#GroundStationsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Ground Station."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.orbital#GroundStationsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City of ground station."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.orbital#GroundStationsPropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "Ground station capabilities.",
+            "smithy.api#required": {}
+          }
+        },
+        "providerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ground station provider name."
+          }
+        },
+        "longitudeDegrees": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Longitude of the ground station in decimal degrees."
+          }
+        },
+        "latitudeDegrees": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Latitude of the ground station in decimal degrees."
+          }
+        },
+        "altitudeMeters": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Altitude of the ground station."
+          }
+        },
+        "globalCommunicationsSite": {
+          "target": "com.azure.orbital#ResourceReference",
+          "traits": {
+            "smithy.api#documentation": "A reference to global communications site.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ground station resource properties."
+      }
+    },
+    "com.azure.orbital#GroundStationsPropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.orbital#Capability"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ground station capabilities."
+      }
+    },
+    "com.azure.orbital#GroundStationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.orbital#GroundStationsGet": {

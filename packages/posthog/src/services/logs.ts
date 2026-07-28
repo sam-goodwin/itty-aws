@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type FilterLogicalOperator = "AND" | "OR" | (string & {});
+export type FilterLogicalOperator = "AND" | "OR";
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
@@ -72,8 +72,7 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -81,7 +80,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  EventPropertyFilterValueCase0Item[];
+  ReadonlyArray<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -119,7 +118,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  PersonPropertyFilterValueCase0Item[];
+  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -160,7 +159,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  PersonMetadataPropertyFilterValueCase0Item[];
+  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -193,7 +192,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
+export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -201,7 +200,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ElementPropertyFilterValueCase0Item[];
+  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -241,7 +240,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  EventMetadataPropertyFilterValueCase0Item[];
+  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -278,7 +277,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  SessionPropertyFilterValueCase0Item[];
+  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -331,11 +330,7 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType =
-  | "duration"
-  | "active_seconds"
-  | "inactive_seconds"
-  | (string & {});
+export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -347,7 +342,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  RecordingPropertyFilterValueCase0Item[];
+  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -384,7 +379,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  LogEntryPropertyFilterValueCase0Item[];
+  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -429,7 +424,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  GroupPropertyFilterValueCase0Item[];
+  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -470,7 +465,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  FeaturePropertyFilterValueCase0Item[];
+  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -536,7 +531,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  HogQLPropertyFilterValueCase0Item[];
+  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -585,7 +580,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  DataWarehousePropertyFilterValueCase0Item[];
+  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -625,7 +620,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  DataWarehousePersonPropertyFilterValueCase0Item[];
+  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -663,7 +658,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ErrorTrackingIssueFilterValueCase0Item[];
+  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -698,15 +693,15 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute"
-  | (string & {});
+  | "log_resource_attribute";
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
 export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
-export type LogPropertyFilterValueCase0List = LogPropertyFilterValueCase0Item[];
+export type LogPropertyFilterValueCase0List =
+  ReadonlyArray<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -743,7 +738,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  MetricPropertyFilterValueCase0Item[];
+  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -778,8 +773,7 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -787,7 +781,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  SpanPropertyFilterValueCase0Item[];
+  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -827,7 +821,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  RevenueAnalyticsPropertyFilterValueCase0Item[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -868,7 +862,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  AccountCustomPropertyFilterValueCase0Item[];
+  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -909,7 +903,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  WorkflowVariablePropertyFilterValueCase0Item[];
+  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -971,7 +965,7 @@ export const PropertyGroupFilterValueValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
-  PropertyGroupFilterValueValuesItem[];
+  ReadonlyArray<PropertyGroupFilterValueValuesItem>;
 export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValueValuesItem,
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
@@ -989,7 +983,8 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGroupFilterValue",
 }) as any as S.Schema<PropertyGroupFilterValue>;
 
-export type PropertyGroupFilterValuesList = PropertyGroupFilterValue[];
+export type PropertyGroupFilterValuesList =
+  ReadonlyArray<PropertyGroupFilterValue>;
 export const PropertyGroupFilterValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValue,
 ) as any as S.Schema<PropertyGroupFilterValuesList>;
@@ -1007,7 +1002,7 @@ export const PropertyGroupFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGroupFilter",
 }) as any as S.Schema<PropertyGroupFilter>;
 
-export type LogsAlertFiltersServiceNamesList = string[];
+export type LogsAlertFiltersServiceNamesList = ReadonlyArray<string>;
 export const LogsAlertFiltersServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsAlertFiltersServiceNamesList>;
@@ -1018,11 +1013,11 @@ export type LogSeverityLevel =
   | "info"
   | "warn"
   | "error"
-  | "fatal"
-  | (string & {});
+  | "fatal";
 export const LogSeverityLevel = /*@__PURE__*/ S.String;
 
-export type LogsAlertFiltersSeverityLevelsList = LogSeverityLevel[];
+export type LogsAlertFiltersSeverityLevelsList =
+  ReadonlyArray<LogSeverityLevel>;
 export const LogsAlertFiltersSeverityLevelsList = /*@__PURE__*/ S.Array(
   LogSeverityLevel,
 ) as any as S.Schema<LogsAlertFiltersSeverityLevelsList>;
@@ -1043,8 +1038,56 @@ export const LogsAlertFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertFilters>;
 
 /** * `above` - Above * `below` - Below */
-export type LogsAlertThresholdOperatorEnum = "above" | "below" | (string & {});
+export type LogsAlertThresholdOperatorEnum = "above" | "below";
 export const LogsAlertThresholdOperatorEnum = /*@__PURE__*/ S.String;
+
+export interface LogsAlertsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable name for this alert. Defaults to 'Untitled alert' on create when omitted. */
+  name?: string;
+  /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
+  enabled?: boolean;
+  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
+  filters?: LogsAlertFilters;
+  /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
+  threshold_count?: number;
+  /** Whether the alert fires when the count is above or below the threshold. * `above` - Above * `below` - Below */
+  threshold_operator?: LogsAlertThresholdOperatorEnum;
+  /** Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60. */
+  window_minutes?: number;
+  /** Total number of check periods in the sliding evaluation window for firing (M in N-of-M). */
+  evaluation_periods?: number;
+  /** How many periods within the evaluation window must breach the threshold to fire (N in N-of-M). */
+  datapoints_to_alarm?: number;
+  /** Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown. */
+  cooldown_minutes?: number;
+  /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
+  snooze_until?: string | null;
+}
+export const LogsAlertsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    filters: S.optional(LogsAlertFilters),
+    threshold_count: S.optional(S.Number),
+    threshold_operator: S.optional(LogsAlertThresholdOperatorEnum),
+    window_minutes: S.optional(S.Number),
+    evaluation_periods: S.optional(S.Number),
+    datapoints_to_alarm: S.optional(S.Number),
+    cooldown_minutes: S.optional(S.Number),
+    snooze_until: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/logs/alerts/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogsAlertsCreateRequest",
+}) as any as S.Schema<LogsAlertsCreateRequest>;
 
 /** * `not_firing` - Not firing * `firing` - Firing * `pending_resolve` - Pending resolve * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
 export type LogsAlertConfigurationStateEnum =
@@ -1053,8 +1096,7 @@ export type LogsAlertConfigurationStateEnum =
   | "pending_resolve"
   | "errored"
   | "snoozed"
-  | "broken"
-  | (string & {});
+  | "broken";
 export const LogsAlertConfigurationStateEnum = /*@__PURE__*/ S.String;
 
 export interface LogsAlertStateInterval {
@@ -1079,26 +1121,22 @@ export const LogsAlertStateInterval = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertStateInterval>;
 
 /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-export type LogsAlertsCreateRequestStateTimelineList = LogsAlertStateInterval[];
-export const LogsAlertsCreateRequestStateTimelineList = /*@__PURE__*/ S.Array(
+export type LogsAlertConfigurationStateTimelineList =
+  ReadonlyArray<LogsAlertStateInterval>;
+export const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
   LogsAlertStateInterval,
-) as any as S.Schema<LogsAlertsCreateRequestStateTimelineList>;
+) as any as S.Schema<LogsAlertConfigurationStateTimelineList>;
 
 /** * `slack` - slack * `webhook` - webhook * `teams` - teams */
-export type NotificationDestinationTypeEnum =
-  | "slack"
-  | "webhook"
-  | "teams"
-  | (string & {});
+export type NotificationDestinationTypeEnum = "slack" | "webhook" | "teams";
 export const NotificationDestinationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-export type LogsAlertsCreateRequestDestinationTypesList =
-  NotificationDestinationTypeEnum[];
-export const LogsAlertsCreateRequestDestinationTypesList =
-  /*@__PURE__*/ S.Array(
-    NotificationDestinationTypeEnum,
-  ) as any as S.Schema<LogsAlertsCreateRequestDestinationTypesList>;
+export type LogsAlertConfigurationDestinationTypesList =
+  ReadonlyArray<NotificationDestinationTypeEnum>;
+export const LogsAlertConfigurationDestinationTypesList = /*@__PURE__*/ S.Array(
+  NotificationDestinationTypeEnum,
+) as any as S.Schema<LogsAlertConfigurationDestinationTypesList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -1115,11 +1153,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -1150,108 +1187,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface LogsAlertsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Unique identifier for this alert. */
-  id?: string;
-  /** Human-readable name for this alert. Defaults to 'Untitled alert' on create when omitted. */
-  name?: string;
-  /** Whether the alert is actively being evaluated. Disabling resets the state to not_firing. */
-  enabled?: boolean;
-  /** Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false). */
-  filters?: LogsAlertFilters;
-  /** Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log. */
-  threshold_count?: number;
-  /** Whether the alert fires when the count is above or below the threshold. * `above` - Above * `below` - Below */
-  threshold_operator?: LogsAlertThresholdOperatorEnum;
-  /** Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60. */
-  window_minutes?: number;
-  /** How often the alert is evaluated, in minutes. Server-managed. */
-  check_interval_minutes?: number;
-  /** Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed. * `not_firing` - Not firing * `firing` - Firing * `pending_resolve` - Pending resolve * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
-  state?: LogsAlertConfigurationStateEnum;
-  /** Total number of check periods in the sliding evaluation window for firing (M in N-of-M). */
-  evaluation_periods?: number;
-  /** How many periods within the evaluation window must breach the threshold to fire (N in N-of-M). */
-  datapoints_to_alarm?: number;
-  /** Minimum minutes between repeated notifications after the alert fires. 0 means no cooldown. */
-  cooldown_minutes?: number;
-  /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
-  snooze_until?: string | null;
-  /** When the next evaluation is scheduled. Server-managed. */
-  next_check_at?: string | null;
-  /** When the last notification was sent. Server-managed. */
-  last_notified_at?: string | null;
-  /** When the alert was last evaluated. Server-managed. */
-  last_checked_at?: string | null;
-  /** Number of consecutive evaluation failures. Resets on success. Server-managed. */
-  consecutive_failures?: number;
-  /** Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth. */
-  last_error_message?: string | null;
-  /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-  state_timeline?: LogsAlertsCreateRequestStateTimelineList;
-  /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-  destination_types?: LogsAlertsCreateRequestDestinationTypesList;
-  /** When the alert was first enabled. Null means the alert is still in draft state. */
-  first_enabled_at?: string | null;
-  /** When the alert was created. */
-  created_at?: string;
-  created_by?: UserBasic;
-  /** When the alert was last modified. */
-  updated_at?: string | null;
-}
-export const LogsAlertsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    filters: S.optional(LogsAlertFilters),
-    threshold_count: S.optional(S.Number),
-    threshold_operator: S.optional(LogsAlertThresholdOperatorEnum),
-    window_minutes: S.optional(S.Number),
-    check_interval_minutes: S.optional(S.Number),
-    state: S.optional(LogsAlertConfigurationStateEnum),
-    evaluation_periods: S.optional(S.Number),
-    datapoints_to_alarm: S.optional(S.Number),
-    cooldown_minutes: S.optional(S.Number),
-    snooze_until: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    consecutive_failures: S.optional(S.Number),
-    last_error_message: S.optional(S.NullOr(S.String)),
-    state_timeline: S.optional(LogsAlertsCreateRequestStateTimelineList),
-    destination_types: S.optional(LogsAlertsCreateRequestDestinationTypesList),
-    first_enabled_at: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/logs/alerts/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogsAlertsCreateRequest",
-}) as any as S.Schema<LogsAlertsCreateRequest>;
-
-/** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-export type LogsAlertConfigurationStateTimelineList = LogsAlertStateInterval[];
-export const LogsAlertConfigurationStateTimelineList = /*@__PURE__*/ S.Array(
-  LogsAlertStateInterval,
-) as any as S.Schema<LogsAlertConfigurationStateTimelineList>;
-
-/** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-export type LogsAlertConfigurationDestinationTypesList =
-  NotificationDestinationTypeEnum[];
-export const LogsAlertConfigurationDestinationTypesList = /*@__PURE__*/ S.Array(
-  NotificationDestinationTypeEnum,
-) as any as S.Schema<LogsAlertConfigurationDestinationTypesList>;
 
 export interface LogsAlertConfiguration {
   /** Unique identifier for this alert. */
@@ -1298,7 +1233,7 @@ export interface LogsAlertConfiguration {
   first_enabled_at?: string | null;
   /** When the alert was created. */
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   /** When the alert was last modified. */
   updated_at?: string | null;
 }
@@ -1326,7 +1261,7 @@ export const LogsAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
     destination_types: S.optional(LogsAlertConfigurationDestinationTypesList),
     first_enabled_at: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     updated_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
@@ -1369,7 +1304,8 @@ export const LogsAlertsDestinationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAlertsDestinationsCreateRequest",
 }) as any as S.Schema<LogsAlertsDestinationsCreateRequest>;
 
-export type LogsAlertDestinationResponseHogFunctionIdsList = string[];
+export type LogsAlertDestinationResponseHogFunctionIdsList =
+  ReadonlyArray<string>;
 export const LogsAlertDestinationResponseHogFunctionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1390,7 +1326,7 @@ export const LogsAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunction IDs to delete as one atomic destination group. */
 export type LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const LogsAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1493,8 +1429,7 @@ export type LogsAlertEventKindEnum =
   | "snooze"
   | "unsnooze"
   | "threshold_change"
-  | "broken_config"
-  | (string & {});
+  | "broken_config";
 export const LogsAlertEventKindEnum = /*@__PURE__*/ S.String;
 
 export interface LogsAlertEvent {
@@ -1522,7 +1457,8 @@ export const LogsAlertEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogsAlertEvent" }) as any as S.Schema<LogsAlertEvent>;
 
-export type PaginatedLogsAlertEventListResultsList = LogsAlertEvent[];
+export type PaginatedLogsAlertEventListResultsList =
+  ReadonlyArray<LogsAlertEvent>;
 export const PaginatedLogsAlertEventListResultsList = /*@__PURE__*/ S.Array(
   LogsAlertEvent,
 ) as any as S.Schema<PaginatedLogsAlertEventListResultsList>;
@@ -1572,7 +1508,7 @@ export const LogsAlertsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertsListRequest>;
 
 export type PaginatedLogsAlertConfigurationListResultsList =
-  LogsAlertConfiguration[];
+  ReadonlyArray<LogsAlertConfiguration>;
 export const PaginatedLogsAlertConfigurationListResultsList =
   /*@__PURE__*/ S.Array(
     LogsAlertConfiguration,
@@ -1595,22 +1531,6 @@ export const PaginatedLogsAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedLogsAlertConfigurationList",
 }) as any as S.Schema<PaginatedLogsAlertConfigurationList>;
 
-/** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-export type LogsAlertsPartialUpdateRequestStateTimelineList =
-  LogsAlertStateInterval[];
-export const LogsAlertsPartialUpdateRequestStateTimelineList =
-  /*@__PURE__*/ S.Array(
-    LogsAlertStateInterval,
-  ) as any as S.Schema<LogsAlertsPartialUpdateRequestStateTimelineList>;
-
-/** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-export type LogsAlertsPartialUpdateRequestDestinationTypesList =
-  NotificationDestinationTypeEnum[];
-export const LogsAlertsPartialUpdateRequestDestinationTypesList =
-  /*@__PURE__*/ S.Array(
-    NotificationDestinationTypeEnum,
-  ) as any as S.Schema<LogsAlertsPartialUpdateRequestDestinationTypesList>;
-
 export interface LogsAlertsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1628,10 +1548,6 @@ export interface LogsAlertsPartialUpdateRequest {
   threshold_operator?: LogsAlertThresholdOperatorEnum;
   /** Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60. */
   window_minutes?: number;
-  /** How often the alert is evaluated, in minutes. Server-managed. */
-  check_interval_minutes?: number;
-  /** Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed. * `not_firing` - Not firing * `firing` - Firing * `pending_resolve` - Pending resolve * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
-  state?: LogsAlertConfigurationStateEnum;
   /** Total number of check periods in the sliding evaluation window for firing (M in N-of-M). */
   evaluation_periods?: number;
   /** How many periods within the evaluation window must breach the threshold to fire (N in N-of-M). */
@@ -1640,27 +1556,6 @@ export interface LogsAlertsPartialUpdateRequest {
   cooldown_minutes?: number;
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
-  /** When the next evaluation is scheduled. Server-managed. */
-  next_check_at?: string | null;
-  /** When the last notification was sent. Server-managed. */
-  last_notified_at?: string | null;
-  /** When the alert was last evaluated. Server-managed. */
-  last_checked_at?: string | null;
-  /** Number of consecutive evaluation failures. Resets on success. Server-managed. */
-  consecutive_failures?: number;
-  /** Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth. */
-  last_error_message?: string | null;
-  /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-  state_timeline?: LogsAlertsPartialUpdateRequestStateTimelineList;
-  /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-  destination_types?: LogsAlertsPartialUpdateRequestDestinationTypesList;
-  /** When the alert was first enabled. Null means the alert is still in draft state. */
-  first_enabled_at?: string | null;
-  /** When the alert was created. */
-  created_at?: string;
-  created_by?: UserBasic;
-  /** When the alert was last modified. */
-  updated_at?: string | null;
 }
 export const LogsAlertsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1672,25 +1567,10 @@ export const LogsAlertsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     threshold_count: S.optional(S.Number),
     threshold_operator: S.optional(LogsAlertThresholdOperatorEnum),
     window_minutes: S.optional(S.Number),
-    check_interval_minutes: S.optional(S.Number),
-    state: S.optional(LogsAlertConfigurationStateEnum),
     evaluation_periods: S.optional(S.Number),
     datapoints_to_alarm: S.optional(S.Number),
     cooldown_minutes: S.optional(S.Number),
     snooze_until: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    consecutive_failures: S.optional(S.Number),
-    last_error_message: S.optional(S.NullOr(S.String)),
-    state_timeline: S.optional(LogsAlertsPartialUpdateRequestStateTimelineList),
-    destination_types: S.optional(
-      LogsAlertsPartialUpdateRequestDestinationTypesList,
-    ),
-    first_enabled_at: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1817,7 +1697,8 @@ export const LogsAlertSimulateBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAlertSimulateBucket>;
 
 /** Time-bucketed counts with full state machine evaluation. */
-export type LogsAlertSimulateResponseBucketsList = LogsAlertSimulateBucket[];
+export type LogsAlertSimulateResponseBucketsList =
+  ReadonlyArray<LogsAlertSimulateBucket>;
 export const LogsAlertSimulateResponseBucketsList = /*@__PURE__*/ S.Array(
   LogsAlertSimulateBucket,
 ) as any as S.Schema<LogsAlertSimulateResponseBucketsList>;
@@ -1849,20 +1730,6 @@ export const LogsAlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAlertSimulateResponse",
 }) as any as S.Schema<LogsAlertSimulateResponse>;
 
-/** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-export type LogsAlertsUpdateRequestStateTimelineList = LogsAlertStateInterval[];
-export const LogsAlertsUpdateRequestStateTimelineList = /*@__PURE__*/ S.Array(
-  LogsAlertStateInterval,
-) as any as S.Schema<LogsAlertsUpdateRequestStateTimelineList>;
-
-/** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-export type LogsAlertsUpdateRequestDestinationTypesList =
-  NotificationDestinationTypeEnum[];
-export const LogsAlertsUpdateRequestDestinationTypesList =
-  /*@__PURE__*/ S.Array(
-    NotificationDestinationTypeEnum,
-  ) as any as S.Schema<LogsAlertsUpdateRequestDestinationTypesList>;
-
 export interface LogsAlertsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1880,10 +1747,6 @@ export interface LogsAlertsUpdateRequest {
   threshold_operator?: LogsAlertThresholdOperatorEnum;
   /** Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60. */
   window_minutes?: number;
-  /** How often the alert is evaluated, in minutes. Server-managed. */
-  check_interval_minutes?: number;
-  /** Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed. * `not_firing` - Not firing * `firing` - Firing * `pending_resolve` - Pending resolve * `errored` - Errored * `snoozed` - Snoozed * `broken` - Broken */
-  state?: LogsAlertConfigurationStateEnum;
   /** Total number of check periods in the sliding evaluation window for firing (M in N-of-M). */
   evaluation_periods?: number;
   /** How many periods within the evaluation window must breach the threshold to fire (N in N-of-M). */
@@ -1892,27 +1755,6 @@ export interface LogsAlertsUpdateRequest {
   cooldown_minutes?: number;
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
-  /** When the next evaluation is scheduled. Server-managed. */
-  next_check_at?: string | null;
-  /** When the last notification was sent. Server-managed. */
-  last_notified_at?: string | null;
-  /** When the alert was last evaluated. Server-managed. */
-  last_checked_at?: string | null;
-  /** Number of consecutive evaluation failures. Resets on success. Server-managed. */
-  consecutive_failures?: number;
-  /** Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth. */
-  last_error_message?: string | null;
-  /** Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list. */
-  state_timeline?: LogsAlertsUpdateRequestStateTimelineList;
-  /** Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert. */
-  destination_types?: LogsAlertsUpdateRequestDestinationTypesList;
-  /** When the alert was first enabled. Null means the alert is still in draft state. */
-  first_enabled_at?: string | null;
-  /** When the alert was created. */
-  created_at?: string;
-  created_by?: UserBasic;
-  /** When the alert was last modified. */
-  updated_at?: string | null;
 }
 export const LogsAlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1924,23 +1766,10 @@ export const LogsAlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     threshold_count: S.optional(S.Number),
     threshold_operator: S.optional(LogsAlertThresholdOperatorEnum),
     window_minutes: S.optional(S.Number),
-    check_interval_minutes: S.optional(S.Number),
-    state: S.optional(LogsAlertConfigurationStateEnum),
     evaluation_periods: S.optional(S.Number),
     datapoints_to_alarm: S.optional(S.Number),
     cooldown_minutes: S.optional(S.Number),
     snooze_until: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    consecutive_failures: S.optional(S.Number),
-    last_error_message: S.optional(S.NullOr(S.String)),
-    state_timeline: S.optional(LogsAlertsUpdateRequestStateTimelineList),
-    destination_types: S.optional(LogsAlertsUpdateRequestDestinationTypesList),
-    first_enabled_at: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1952,10 +1781,7 @@ export const LogsAlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsAlertsUpdateRequest",
 }) as any as S.Schema<LogsAlertsUpdateRequest>;
 
-export type LogsAttributesRetrieveRequestAttributeType =
-  | "log"
-  | "resource"
-  | (string & {});
+export type LogsAttributesRetrieveRequestAttributeType = "log" | "resource";
 export const LogsAttributesRetrieveRequestAttributeType =
   /*@__PURE__*/ S.String;
 
@@ -1976,8 +1802,7 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterTypeEnum =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute"
-  | (string & {});
+  | "log_resource_attribute";
 export const LogPropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `lt` - lt * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after * `is_set` - is_set * `is_not_set` - is_not_set */
@@ -1994,8 +1819,7 @@ export type LogPropertyFilterOperatorEnum =
   | "is_date_before"
   | "is_date_after"
   | "is_set"
-  | "is_not_set"
-  | (string & {});
+  | "is_not_set";
 export const LogPropertyFilterOperatorEnum = /*@__PURE__*/ S.String;
 
 export interface LogPropertyFilter2 {
@@ -2019,13 +1843,15 @@ export const LogPropertyFilter2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogPropertyFilter2",
 }) as any as S.Schema<LogPropertyFilter2>;
 
-export type LogsAttributesRetrieveRequestFilterGroupList = LogPropertyFilter2[];
+export type LogsAttributesRetrieveRequestFilterGroupList =
+  ReadonlyArray<LogPropertyFilter2>;
 export const LogsAttributesRetrieveRequestFilterGroupList =
   /*@__PURE__*/ S.Array(
     LogPropertyFilter2,
   ) as any as S.Schema<LogsAttributesRetrieveRequestFilterGroupList>;
 
-export type LogsAttributesRetrieveRequestServiceNamesList = string[];
+export type LogsAttributesRetrieveRequestServiceNamesList =
+  ReadonlyArray<string>;
 export const LogsAttributesRetrieveRequestServiceNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2080,7 +1906,7 @@ export const LogsAttributesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAttributesRetrieveRequest>;
 
 /** * `key` - key * `value` - value */
-export type MatchedOnEnum = "key" | "value" | (string & {});
+export type MatchedOnEnum = "key" | "value";
 export const MatchedOnEnum = /*@__PURE__*/ S.String;
 
 export interface LogAttributeEntry {
@@ -2104,7 +1930,8 @@ export const LogAttributeEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogAttributeEntry>;
 
 /** Available attribute keys matching the filters. */
-export type LogsAttributesResponseResultsList = LogAttributeEntry[];
+export type LogsAttributesResponseResultsList =
+  ReadonlyArray<LogAttributeEntry>;
 export const LogsAttributesResponseResultsList = /*@__PURE__*/ S.Array(
   LogAttributeEntry,
 ) as any as S.Schema<LogsAttributesResponseResultsList>;
@@ -2131,24 +1958,23 @@ export type SeverityLevelsEnum =
   | "info"
   | "warn"
   | "error"
-  | "fatal"
-  | (string & {});
+  | "fatal";
 export const SeverityLevelsEnum = /*@__PURE__*/ S.String;
 
 /** Filter by log severity levels. */
-export type LogsCountBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsCountBodySeverityLevelsList = ReadonlyArray<SeverityLevelsEnum>;
 export const LogsCountBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsCountBodySeverityLevelsList>;
 
 /** Filter by service names. */
-export type LogsCountBodyServiceNamesList = string[];
+export type LogsCountBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsCountBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsCountBodyServiceNamesList>;
 
 /** Property filters for the query. */
-export type LogsCountBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsCountBodyFilterGroupList = ReadonlyArray<LogPropertyFilter2>;
 export const LogsCountBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsCountBodyFilterGroupList>;
@@ -2209,19 +2035,21 @@ export const LogsCountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsCountResponse>;
 
 /** Filter by log severity levels. Applied before bucketing. */
-export type LogsCountRangesBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsCountRangesBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsCountRangesBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsCountRangesBodySeverityLevelsList>;
 
 /** Filter by service names. Applied before bucketing. */
-export type LogsCountRangesBodyServiceNamesList = string[];
+export type LogsCountRangesBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsCountRangesBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsCountRangesBodyServiceNamesList>;
 
 /** Property filters applied before bucketing. Same shape as `query-logs`. */
-export type LogsCountRangesBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsCountRangesBodyFilterGroupList =
+  ReadonlyArray<LogPropertyFilter2>;
 export const LogsCountRangesBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsCountRangesBodyFilterGroupList>;
@@ -2293,7 +2121,8 @@ export const LogsCountRangeBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsCountRangeBucket>;
 
 /** Buckets ordered by `date_from` ascending. Empty buckets are omitted — infer gaps by comparing each bucket's `date_to` to the next bucket's `date_from`. */
-export type LogsCountRangesResponseRangesList = LogsCountRangeBucket[];
+export type LogsCountRangesResponseRangesList =
+  ReadonlyArray<LogsCountRangeBucket>;
 export const LogsCountRangesResponseRangesList = /*@__PURE__*/ S.Array(
   LogsCountRangeBucket,
 ) as any as S.Schema<LogsCountRangesResponseRangesList>;
@@ -2374,31 +2203,41 @@ export const LogsExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsExportCreateRequest",
 }) as any as S.Schema<LogsExportCreateRequest>;
 
-export type LogsExportCreateResponse = unknown;
+export type LogsExportCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogsExportCreateResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogsExportCreateResponseBodyMap>;
+
+export type LogsExportCreateResponse = LogsExportCreateResponseBodyMap;
 export const LogsExportCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  LogsExportCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "LogsExportCreateResponse",
 }) as any as S.Schema<LogsExportCreateResponse>;
 
 /** * `severity_text` - severity_text * `service_name` - service_name */
-export type FacetFieldEnum = "severity_text" | "service_name" | (string & {});
+export type FacetFieldEnum = "severity_text" | "service_name";
 export const FacetFieldEnum = /*@__PURE__*/ S.String;
 
 /** Filter by log severity levels (ignored when faceting on severity_text). */
-export type LogsFacetValuesBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsFacetValuesBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsFacetValuesBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsFacetValuesBodySeverityLevelsList>;
 
 /** Filter by service names (ignored when faceting on service_name). */
-export type LogsFacetValuesBodyServiceNamesList = string[];
+export type LogsFacetValuesBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsFacetValuesBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsFacetValuesBodyServiceNamesList>;
 
 /** Property filters for the query. */
-export type LogsFacetValuesBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsFacetValuesBodyFilterGroupList =
+  ReadonlyArray<LogPropertyFilter2>;
 export const LogsFacetValuesBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsFacetValuesBodyFilterGroupList>;
@@ -2471,7 +2310,7 @@ export const LogFacetValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogFacetValue" }) as any as S.Schema<LogFacetValue>;
 
 /** Facet values with cross-filtered counts, ordered by count descending. */
-export type LogsFacetValuesResponseResultsList = LogFacetValue[];
+export type LogsFacetValuesResponseResultsList = ReadonlyArray<LogFacetValue>;
 export const LogsFacetValuesResponseResultsList = /*@__PURE__*/ S.Array(
   LogFacetValue,
 ) as any as S.Schema<LogsFacetValuesResponseResultsList>;
@@ -2489,29 +2328,26 @@ export const LogsFacetValuesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsFacetValuesResponse>;
 
 /** Filter by log severity levels before grouping. */
-export type LogsGroupByBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsGroupByBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsGroupByBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsGroupByBodySeverityLevelsList>;
 
 /** Restrict grouping to these service names. */
-export type LogsGroupByBodyServiceNamesList = string[];
+export type LogsGroupByBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsGroupByBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsGroupByBodyServiceNamesList>;
 
 /** Property filters applied before grouping. Same shape as the query-logs endpoint. */
-export type LogsGroupByBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsGroupByBodyFilterGroupList = ReadonlyArray<LogPropertyFilter2>;
 export const LogsGroupByBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsGroupByBodyFilterGroupList>;
 
 /** * `log` - log * `resource` - resource * `column` - column */
-export type LogsGroupBySourceEnum =
-  | "log"
-  | "resource"
-  | "column"
-  | (string & {});
+export type LogsGroupBySourceEnum = "log" | "resource" | "column";
 export const LogsGroupBySourceEnum = /*@__PURE__*/ S.String;
 
 export interface LogsGroupByDimension {
@@ -2530,17 +2366,13 @@ export const LogsGroupByDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsGroupByDimension>;
 
 /** Ordered group-by dimensions to combine (a group is one combination of per-dimension values), up to 4. Takes precedence over groupBy/groupBySource; one of the two must be provided. */
-export type LogsGroupByBodyGroupBysList = LogsGroupByDimension[];
+export type LogsGroupByBodyGroupBysList = ReadonlyArray<LogsGroupByDimension>;
 export const LogsGroupByBodyGroupBysList = /*@__PURE__*/ S.Array(
   LogsGroupByDimension,
 ) as any as S.Schema<LogsGroupByBodyGroupBysList>;
 
 /** * `log_count` - log_count * `error_count` - error_count * `last_seen` - last_seen */
-export type OrderGroupsByEnum =
-  | "log_count"
-  | "error_count"
-  | "last_seen"
-  | (string & {});
+export type OrderGroupsByEnum = "log_count" | "error_count" | "last_seen";
 export const OrderGroupsByEnum = /*@__PURE__*/ S.String;
 
 export interface LogsGroupByBody {
@@ -2604,7 +2436,7 @@ export const LogsGroupByCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsGroupByCreateRequest>;
 
 /** This group's values, one per requested dimension, in request order. */
-export type LogsGroupByGroupValuesList = string[];
+export type LogsGroupByGroupValuesList = ReadonlyArray<string>;
 export const LogsGroupByGroupValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsGroupByGroupValuesList>;
@@ -2634,7 +2466,7 @@ export const LogsGroupByGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsGroupByGroup>;
 
 /** Top groups ordered by the requested aggregate, descending. Capped at `limit`. */
-export type LogsGroupByResponseGroupsList = LogsGroupByGroup[];
+export type LogsGroupByResponseGroupsList = ReadonlyArray<LogsGroupByGroup>;
 export const LogsGroupByResponseGroupsList = /*@__PURE__*/ S.Array(
   LogsGroupByGroup,
 ) as any as S.Schema<LogsGroupByResponseGroupsList>;
@@ -2678,15 +2510,23 @@ export const LogsHasLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsHasLogsRetrieveRequest",
 }) as any as S.Schema<LogsHasLogsRetrieveRequest>;
 
-export type LogsHasLogsRetrieveResponse = unknown;
+export type LogsHasLogsRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogsHasLogsRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogsHasLogsRetrieveResponseBodyMap>;
+
+export type LogsHasLogsRetrieveResponse = LogsHasLogsRetrieveResponseBodyMap;
 export const LogsHasLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  LogsHasLogsRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "LogsHasLogsRetrieveResponse",
 }) as any as S.Schema<LogsHasLogsRetrieveResponse>;
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
-export type LogsMetricRulesCreateRequestGroupByList = string[];
+export type LogsMetricRulesCreateRequestGroupByList = ReadonlyArray<string>;
 export const LogsMetricRulesCreateRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsMetricRulesCreateRequestGroupByList>;
@@ -2694,8 +2534,6 @@ export const LogsMetricRulesCreateRequestGroupByList = /*@__PURE__*/ S.Array(
 export interface LogsMetricRulesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Unique identifier for this metric rule. */
-  id: string;
   /** User-visible label for this rule. */
   name: string;
   /** Name of the generated metric as it appears in the Metrics product. Must start with a letter and contain only letters, digits, dots, underscores, and dashes. Unique per project and immutable after creation — create a new rule to emit under a different name. */
@@ -2708,26 +2546,16 @@ export interface LogsMetricRulesCreateRequest {
   value_attribute?: string | null;
   /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
   group_by?: LogsMetricRulesCreateRequestGroupByList;
-  /** Incremented on each update for worker cache coherency. */
-  version: number;
-  created_by: number;
-  created_at: string;
-  updated_at: string | null;
 }
 export const LogsMetricRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     name: S.String,
     metric_name: S.String,
     enabled: S.optional(S.Boolean),
     filter_group: S.optional(S.Unknown),
     value_attribute: S.optional(S.NullOr(S.String)),
     group_by: S.optional(LogsMetricRulesCreateRequestGroupByList),
-    version: S.Number,
-    created_by: S.Number,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2740,7 +2568,7 @@ export const LogsMetricRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsMetricRulesCreateRequest>;
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
-export type LogsMetricRuleGroupByList = string[];
+export type LogsMetricRuleGroupByList = ReadonlyArray<string>;
 export const LogsMetricRuleGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsMetricRuleGroupByList>;
@@ -2834,7 +2662,8 @@ export const LogsMetricRulesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsMetricRulesListRequest",
 }) as any as S.Schema<LogsMetricRulesListRequest>;
 
-export type PaginatedLogsMetricRuleListResultsList = LogsMetricRule[];
+export type PaginatedLogsMetricRuleListResultsList =
+  ReadonlyArray<LogsMetricRule>;
 export const PaginatedLogsMetricRuleListResultsList = /*@__PURE__*/ S.Array(
   LogsMetricRule,
 ) as any as S.Schema<PaginatedLogsMetricRuleListResultsList>;
@@ -2857,7 +2686,8 @@ export const PaginatedLogsMetricRuleList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedLogsMetricRuleList>;
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
-export type LogsMetricRulesPartialUpdateRequestGroupByList = string[];
+export type LogsMetricRulesPartialUpdateRequestGroupByList =
+  ReadonlyArray<string>;
 export const LogsMetricRulesPartialUpdateRequestGroupByList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2880,11 +2710,6 @@ export interface LogsMetricRulesPartialUpdateRequest {
   value_attribute?: string | null;
   /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
   group_by?: LogsMetricRulesPartialUpdateRequestGroupByList;
-  /** Incremented on each update for worker cache coherency. */
-  version?: number;
-  created_by?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const LogsMetricRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2896,10 +2721,6 @@ export const LogsMetricRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     filter_group: S.optional(S.Unknown),
     value_attribute: S.optional(S.NullOr(S.String)),
     group_by: S.optional(LogsMetricRulesPartialUpdateRequestGroupByList),
-    version: S.optional(S.Number),
-    created_by: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2933,7 +2754,7 @@ export const LogsMetricRulesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsMetricRulesRetrieveRequest>;
 
 /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
-export type LogsMetricRulesUpdateRequestGroupByList = string[];
+export type LogsMetricRulesUpdateRequestGroupByList = ReadonlyArray<string>;
 export const LogsMetricRulesUpdateRequestGroupByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsMetricRulesUpdateRequestGroupByList>;
@@ -2955,11 +2776,6 @@ export interface LogsMetricRulesUpdateRequest {
   value_attribute?: string | null;
   /** Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion. */
   group_by?: LogsMetricRulesUpdateRequestGroupByList;
-  /** Incremented on each update for worker cache coherency. */
-  version: number;
-  created_by: number;
-  created_at: string;
-  updated_at: string | null;
 }
 export const LogsMetricRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2971,10 +2787,6 @@ export const LogsMetricRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     filter_group: S.optional(S.Unknown),
     value_attribute: S.optional(S.NullOr(S.String)),
     group_by: S.optional(LogsMetricRulesUpdateRequestGroupByList),
-    version: S.Number,
-    created_by: S.Number,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2987,19 +2799,20 @@ export const LogsMetricRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsMetricRulesUpdateRequest>;
 
 /** Filter by log severity levels before mining. */
-export type LogsPatternsBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsPatternsBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsPatternsBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsPatternsBodySeverityLevelsList>;
 
 /** Restrict mining to these service names. */
-export type LogsPatternsBodyServiceNamesList = string[];
+export type LogsPatternsBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsPatternsBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsPatternsBodyServiceNamesList>;
 
 /** Property filters applied before mining. Same shape as the query-logs endpoint. */
-export type LogsPatternsBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsPatternsBodyFilterGroupList = ReadonlyArray<LogPropertyFilter2>;
 export const LogsPatternsBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsPatternsBodyFilterGroupList>;
@@ -3071,19 +2884,19 @@ export const LogPatternExample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogPatternExample>;
 
 /** Up to 10 distinct sampled log lines that produced this pattern, with severity, service, and timestamp for display. */
-export type LogPatternExamplesList = LogPatternExample[];
+export type LogPatternExamplesList = ReadonlyArray<LogPatternExample>;
 export const LogPatternExamplesList = /*@__PURE__*/ S.Array(
   LogPatternExample,
 ) as any as S.Schema<LogPatternExamplesList>;
 
 /** Up to 4 distinct service names this pattern was observed in. */
-export type LogPatternServicesList = string[];
+export type LogPatternServicesList = ReadonlyArray<string>;
 export const LogPatternServicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogPatternServicesList>;
 
 /** Estimated occurrences per time bucket, aligned index-for-index with the response's `sparkline_buckets`. Extrapolated from the sample like `estimated_count`, so it shows the volume shape over the window, not exact per-bucket tallies. */
-export type LogPatternSparklineList = number[];
+export type LogPatternSparklineList = ReadonlyArray<number>;
 export const LogPatternSparklineList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<LogPatternSparklineList>;
@@ -3145,7 +2958,7 @@ export const LogPattern = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogPattern" }) as any as S.Schema<LogPattern>;
 
 /** Mined patterns ordered by `count` descending. */
-export type LogsPatternsResponsePatternsList = LogPattern[];
+export type LogsPatternsResponsePatternsList = ReadonlyArray<LogPattern>;
 export const LogsPatternsResponsePatternsList = /*@__PURE__*/ S.Array(
   LogPattern,
 ) as any as S.Schema<LogsPatternsResponsePatternsList>;
@@ -3167,7 +2980,7 @@ export const LogsPatternsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Time buckets that every pattern's `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly. */
 export type LogsPatternsResponseSparklineBucketsList =
-  LogsPatternsSparklineBucket[];
+  ReadonlyArray<LogsPatternsSparklineBucket>;
 export const LogsPatternsResponseSparklineBucketsList = /*@__PURE__*/ S.Array(
   LogsPatternsSparklineBucket,
 ) as any as S.Schema<LogsPatternsResponseSparklineBucketsList>;
@@ -3228,8 +3041,7 @@ export type LogPatternDiffEntryClassificationEnum =
   | "new"
   | "rate_shift"
   | "gone"
-  | "unchanged"
-  | (string & {});
+  | "unchanged";
 export const LogPatternDiffEntryClassificationEnum = /*@__PURE__*/ S.String;
 
 export interface LogPatternDiffEntry {
@@ -3257,7 +3069,8 @@ export const LogPatternDiffEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogPatternDiffEntry>;
 
 /** Classified diff entries, most interesting first: "new" (by estimated count), then "rate_shift" (by shift magnitude), then "gone", then "unchanged". A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing. */
-export type LogsPatternsDiffResponseEntriesList = LogPatternDiffEntry[];
+export type LogsPatternsDiffResponseEntriesList =
+  ReadonlyArray<LogPatternDiffEntry>;
 export const LogsPatternsDiffResponseEntriesList = /*@__PURE__*/ S.Array(
   LogPatternDiffEntry,
 ) as any as S.Schema<LogsPatternsDiffResponseEntriesList>;
@@ -3308,29 +3121,29 @@ export const LogsPatternsDiffResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsPatternsDiffResponse>;
 
 /** Filter by log severity levels. */
-export type LogsQueryBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsQueryBodySeverityLevelsList = ReadonlyArray<SeverityLevelsEnum>;
 export const LogsQueryBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsQueryBodySeverityLevelsList>;
 
 /** Filter by service names. */
-export type LogsQueryBodyServiceNamesList = string[];
+export type LogsQueryBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsQueryBodyServiceNamesList>;
 
 /** * `latest` - latest * `earliest` - earliest */
-export type OrderByEnum = "latest" | "earliest" | (string & {});
+export type OrderByEnum = "latest" | "earliest";
 export const OrderByEnum = /*@__PURE__*/ S.String;
 
 /** Property filters for the query. */
-export type LogsQueryBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsQueryBodyFilterGroupList = ReadonlyArray<LogPropertyFilter2>;
 export const LogsQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsQueryBodyFilterGroupList>;
 
 /** Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes['a'], attributes['b'])`). Aggregations and subqueries are rejected. Values come back on each result row keyed by the aliases echoed in the response `columns` field. */
-export type LogsQueryBodyCustomColumnsList = string[];
+export type LogsQueryBodyCustomColumnsList = ReadonlyArray<string>;
 export const LogsQueryBodyCustomColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsQueryBodyCustomColumnsList>;
@@ -3461,13 +3274,13 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
 /** Log entries matching the query. */
-export type LogsQueryResponseResultsList = LogEntry[];
+export type LogsQueryResponseResultsList = ReadonlyArray<LogEntry>;
 export const LogsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogsQueryResponseResultsList>;
 
 /** Aliases for the requested `customColumns`, in request order. Each result row carries its custom column values under these keys. Null when no custom columns were requested. */
-export type LogsQueryResponseColumnsList = string[];
+export type LogsQueryResponseColumnsList = ReadonlyArray<string>;
 export const LogsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsQueryResponseColumnsList>;
@@ -3500,11 +3313,7 @@ export const LogsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsQueryResponse>;
 
 /** * `severity_sampling` - Severity-based reduction * `path_drop` - Path exclusion * `rate_limit` - Rate limit */
-export type RuleTypeEnum =
-  | "severity_sampling"
-  | "path_drop"
-  | "rate_limit"
-  | (string & {});
+export type RuleTypeEnum = "severity_sampling" | "path_drop" | "rate_limit";
 export const RuleTypeEnum = /*@__PURE__*/ S.String;
 
 export type LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap = {
@@ -3518,7 +3327,7 @@ export const LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap =
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type LogsSamplingRulesCreateRequestScopeAttributeFiltersList =
-  LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap[];
+  ReadonlyArray<LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap>;
 export const LogsSamplingRulesCreateRequestScopeAttributeFiltersList =
   /*@__PURE__*/ S.Array(
     LogsSamplingRulesCreateRequestScopeAttributeFiltersItemMap,
@@ -3527,8 +3336,6 @@ export const LogsSamplingRulesCreateRequestScopeAttributeFiltersList =
 export interface LogsSamplingRulesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Unique identifier for this sampling rule. */
-  id: string;
   /** User-visible label for this rule. */
   name: string;
   /** When false, the rule is ignored by ingestion and listing UIs that show active rules only. */
@@ -3545,16 +3352,10 @@ export interface LogsSamplingRulesCreateRequest {
   scope_attribute_filters?: LogsSamplingRulesCreateRequestScopeAttributeFiltersList;
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
-  /** Incremented on each update for worker cache coherency. */
-  version: number;
-  created_by: number;
-  created_at: string;
-  updated_at: string | null;
 }
 export const LogsSamplingRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     name: S.String,
     enabled: S.optional(S.Boolean),
     priority: S.optional(S.NullOr(S.Number)),
@@ -3565,10 +3366,6 @@ export const LogsSamplingRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       LogsSamplingRulesCreateRequestScopeAttributeFiltersList,
     ),
     config: S.Unknown,
-    version: S.Number,
-    created_by: S.Number,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3591,7 +3388,7 @@ export const LogsSamplingRuleScopeAttributeFiltersItemMap =
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type LogsSamplingRuleScopeAttributeFiltersList =
-  LogsSamplingRuleScopeAttributeFiltersItemMap[];
+  ReadonlyArray<LogsSamplingRuleScopeAttributeFiltersItemMap>;
 export const LogsSamplingRuleScopeAttributeFiltersList = /*@__PURE__*/ S.Array(
   LogsSamplingRuleScopeAttributeFiltersItemMap,
 ) as any as S.Schema<LogsSamplingRuleScopeAttributeFiltersList>;
@@ -3695,7 +3492,8 @@ export const LogsSamplingRulesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsSamplingRulesListRequest",
 }) as any as S.Schema<LogsSamplingRulesListRequest>;
 
-export type PaginatedLogsSamplingRuleListResultsList = LogsSamplingRule[];
+export type PaginatedLogsSamplingRuleListResultsList =
+  ReadonlyArray<LogsSamplingRule>;
 export const PaginatedLogsSamplingRuleListResultsList = /*@__PURE__*/ S.Array(
   LogsSamplingRule,
 ) as any as S.Schema<PaginatedLogsSamplingRuleListResultsList>;
@@ -3727,7 +3525,7 @@ export const LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersItemMap =
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersList =
-  LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersItemMap[];
+  ReadonlyArray<LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersItemMap>;
 export const LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersList =
   /*@__PURE__*/ S.Array(
     LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersItemMap,
@@ -3754,11 +3552,6 @@ export interface LogsSamplingRulesPartialUpdateRequest {
   scope_attribute_filters?: LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersList;
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config?: unknown;
-  /** Incremented on each update for worker cache coherency. */
-  version?: number;
-  created_by?: number;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const LogsSamplingRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3775,10 +3568,6 @@ export const LogsSamplingRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
         LogsSamplingRulesPartialUpdateRequestScopeAttributeFiltersList,
       ),
       config: S.optional(S.Unknown),
-      version: S.optional(S.Number),
-      created_by: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3791,7 +3580,8 @@ export const LogsSamplingRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogsSamplingRulesPartialUpdateRequest>;
 
 /** Rule IDs in the desired evaluation order (first element is highest priority / lowest order index). */
-export type LogsSamplingRulesReorderCreateRequestOrderedIdsList = string[];
+export type LogsSamplingRulesReorderCreateRequestOrderedIdsList =
+  ReadonlyArray<string>;
 export const LogsSamplingRulesReorderCreateRequestOrderedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3894,7 +3684,7 @@ export const LogsSamplingRulesUpdateRequestScopeAttributeFiltersItemMap =
 
 /** Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}]. */
 export type LogsSamplingRulesUpdateRequestScopeAttributeFiltersList =
-  LogsSamplingRulesUpdateRequestScopeAttributeFiltersItemMap[];
+  ReadonlyArray<LogsSamplingRulesUpdateRequestScopeAttributeFiltersItemMap>;
 export const LogsSamplingRulesUpdateRequestScopeAttributeFiltersList =
   /*@__PURE__*/ S.Array(
     LogsSamplingRulesUpdateRequestScopeAttributeFiltersItemMap,
@@ -3921,11 +3711,6 @@ export interface LogsSamplingRulesUpdateRequest {
   scope_attribute_filters?: LogsSamplingRulesUpdateRequestScopeAttributeFiltersList;
   /** Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes. */
   config: unknown;
-  /** Incremented on each update for worker cache coherency. */
-  version: number;
-  created_by: number;
-  created_at: string;
-  updated_at: string | null;
 }
 export const LogsSamplingRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3941,10 +3726,6 @@ export const LogsSamplingRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       LogsSamplingRulesUpdateRequestScopeAttributeFiltersList,
     ),
     config: S.Unknown,
-    version: S.Number,
-    created_by: S.Number,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3957,19 +3738,20 @@ export const LogsSamplingRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsSamplingRulesUpdateRequest>;
 
 /** Filter by log severity levels. */
-export type LogsServicesBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsServicesBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsServicesBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsServicesBodySeverityLevelsList>;
 
 /** Restrict the aggregation to these service names. */
-export type LogsServicesBodyServiceNamesList = string[];
+export type LogsServicesBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsServicesBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsServicesBodyServiceNamesList>;
 
 /** Property filters for the query. */
-export type LogsServicesBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsServicesBodyFilterGroupList = ReadonlyArray<LogPropertyFilter2>;
 export const LogsServicesBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsServicesBodyFilterGroupList>;
@@ -4052,7 +3834,8 @@ export const LogsServiceActiveRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsServiceActiveRule>;
 
 /** Enabled sampling rules whose scope includes this service. */
-export type LogsServiceAggregateActiveRulesList = LogsServiceActiveRule[];
+export type LogsServiceAggregateActiveRulesList =
+  ReadonlyArray<LogsServiceActiveRule>;
 export const LogsServiceAggregateActiveRulesList = /*@__PURE__*/ S.Array(
   LogsServiceActiveRule,
 ) as any as S.Schema<LogsServiceAggregateActiveRulesList>;
@@ -4088,7 +3871,8 @@ export const LogsServiceAggregate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsServiceAggregate>;
 
 /** Per-service aggregates, ordered by log_count descending. Capped at 25 services. */
-export type LogsServicesResponseServicesList = LogsServiceAggregate[];
+export type LogsServicesResponseServicesList =
+  ReadonlyArray<LogsServiceAggregate>;
 export const LogsServicesResponseServicesList = /*@__PURE__*/ S.Array(
   LogsServiceAggregate,
 ) as any as S.Schema<LogsServicesResponseServicesList>;
@@ -4110,7 +3894,8 @@ export const LogsServicesSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsServicesSparklineBucket>;
 
 /** Time-bucketed counts broken down by service, for plotting volume over time. */
-export type LogsServicesResponseSparklineList = LogsServicesSparklineBucket[];
+export type LogsServicesResponseSparklineList =
+  ReadonlyArray<LogsServicesSparklineBucket>;
 export const LogsServicesResponseSparklineList = /*@__PURE__*/ S.Array(
   LogsServicesSparklineBucket,
 ) as any as S.Schema<LogsServicesResponseSparklineList>;
@@ -4149,25 +3934,27 @@ export const LogsServicesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsServicesResponse>;
 
 /** Filter by log severity levels. */
-export type LogsSparklineBodySeverityLevelsList = SeverityLevelsEnum[];
+export type LogsSparklineBodySeverityLevelsList =
+  ReadonlyArray<SeverityLevelsEnum>;
 export const LogsSparklineBodySeverityLevelsList = /*@__PURE__*/ S.Array(
   SeverityLevelsEnum,
 ) as any as S.Schema<LogsSparklineBodySeverityLevelsList>;
 
 /** Filter by service names. */
-export type LogsSparklineBodyServiceNamesList = string[];
+export type LogsSparklineBodyServiceNamesList = ReadonlyArray<string>;
 export const LogsSparklineBodyServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsSparklineBodyServiceNamesList>;
 
 /** Property filters for the query. */
-export type LogsSparklineBodyFilterGroupList = LogPropertyFilter2[];
+export type LogsSparklineBodyFilterGroupList =
+  ReadonlyArray<LogPropertyFilter2>;
 export const LogsSparklineBodyFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsSparklineBodyFilterGroupList>;
 
 /** * `severity` - severity * `service` - service */
-export type SparklineBreakdownByEnum = "severity" | "service" | (string & {});
+export type SparklineBreakdownByEnum = "severity" | "service";
 export const SparklineBreakdownByEnum = /*@__PURE__*/ S.String;
 
 export interface LogsSparklineBody {
@@ -4242,7 +4029,8 @@ export const LogsSparklineBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsSparklineBucket>;
 
 /** Time-bucketed log counts. Each bucket carries either `severity` or `service` depending on breakdown. */
-export type LogsSparklineResponseResultsList = LogsSparklineBucket[];
+export type LogsSparklineResponseResultsList =
+  ReadonlyArray<LogsSparklineBucket>;
 export const LogsSparklineResponseResultsList = /*@__PURE__*/ S.Array(
   LogsSparklineBucket,
 ) as any as S.Schema<LogsSparklineResponseResultsList>;
@@ -4259,18 +4047,16 @@ export const LogsSparklineResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsSparklineResponse",
 }) as any as S.Schema<LogsSparklineResponse>;
 
-export type LogsValuesRetrieveRequestAttributeType =
-  | "log"
-  | "resource"
-  | (string & {});
+export type LogsValuesRetrieveRequestAttributeType = "log" | "resource";
 export const LogsValuesRetrieveRequestAttributeType = /*@__PURE__*/ S.String;
 
-export type LogsValuesRetrieveRequestFilterGroupList = LogPropertyFilter2[];
+export type LogsValuesRetrieveRequestFilterGroupList =
+  ReadonlyArray<LogPropertyFilter2>;
 export const LogsValuesRetrieveRequestFilterGroupList = /*@__PURE__*/ S.Array(
   LogPropertyFilter2,
 ) as any as S.Schema<LogsValuesRetrieveRequestFilterGroupList>;
 
-export type LogsValuesRetrieveRequestServiceNamesList = string[];
+export type LogsValuesRetrieveRequestServiceNamesList = ReadonlyArray<string>;
 export const LogsValuesRetrieveRequestServiceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogsValuesRetrieveRequestServiceNamesList>;
@@ -4336,7 +4122,7 @@ export const LogAttributeValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogAttributeValue>;
 
 /** Distinct values observed for the requested attribute. */
-export type LogsValuesResponseResultsList = LogAttributeValue[];
+export type LogsValuesResponseResultsList = ReadonlyArray<LogAttributeValue>;
 export const LogsValuesResponseResultsList = /*@__PURE__*/ S.Array(
   LogAttributeValue,
 ) as any as S.Schema<LogsValuesResponseResultsList>;
@@ -4373,8 +4159,7 @@ export type LogsViewColumnTypeEnum =
   | "trace_id"
   | "span_id"
   | "message"
-  | "custom"
-  | (string & {});
+  | "custom";
 export const LogsViewColumnTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LogsViewColumn {
@@ -4400,7 +4185,7 @@ export const LogsViewColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsViewColumn" }) as any as S.Schema<LogsViewColumn>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
-export type LogsViewsCreateRequestColumnsList = LogsViewColumn[];
+export type LogsViewsCreateRequestColumnsList = ReadonlyArray<LogsViewColumn>;
 export const LogsViewsCreateRequestColumnsList = /*@__PURE__*/ S.Array(
   LogsViewColumn,
 ) as any as S.Schema<LogsViewsCreateRequestColumnsList>;
@@ -4408,30 +4193,20 @@ export const LogsViewsCreateRequestColumnsList = /*@__PURE__*/ S.Array(
 export interface LogsViewsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
-  short_id?: string;
   name?: string;
   /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: LogsViewsCreateRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: LogsViewsCreateRequestColumnsList | null;
   pinned?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string | null;
 }
 export const LogsViewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    short_id: S.optional(S.String),
     name: S.optional(S.String),
     filters: S.optional(LogsViewsCreateRequestFiltersMap),
     columns: S.optional(S.NullOr(LogsViewsCreateRequestColumnsList)),
     pinned: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4451,7 +4226,7 @@ export const LogsViewFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogsViewFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
-export type LogsViewColumnsList = LogsViewColumn[];
+export type LogsViewColumnsList = ReadonlyArray<LogsViewColumn>;
 export const LogsViewColumnsList = /*@__PURE__*/ S.Array(
   LogsViewColumn,
 ) as any as S.Schema<LogsViewColumnsList>;
@@ -4466,7 +4241,7 @@ export interface LogsView {
   columns?: LogsViewColumnsList | null;
   pinned?: boolean;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   updated_at?: string | null;
 }
 export const LogsView = /*@__PURE__*/ S.suspend(() =>
@@ -4478,7 +4253,7 @@ export const LogsView = /*@__PURE__*/ S.suspend(() =>
     columns: S.optional(S.NullOr(LogsViewColumnsList)),
     pinned: S.optional(S.Boolean),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     updated_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "LogsView" }) as any as S.Schema<LogsView>;
@@ -4534,7 +4309,7 @@ export const LogsViewsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogsViewsListRequest",
 }) as any as S.Schema<LogsViewsListRequest>;
 
-export type PaginatedLogsViewListResultsList = LogsView[];
+export type PaginatedLogsViewListResultsList = ReadonlyArray<LogsView>;
 export const PaginatedLogsViewListResultsList = /*@__PURE__*/ S.Array(
   LogsView,
 ) as any as S.Schema<PaginatedLogsViewListResultsList>;
@@ -4566,7 +4341,8 @@ export const LogsViewsPartialUpdateRequestFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogsViewsPartialUpdateRequestFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
-export type LogsViewsPartialUpdateRequestColumnsList = LogsViewColumn[];
+export type LogsViewsPartialUpdateRequestColumnsList =
+  ReadonlyArray<LogsViewColumn>;
 export const LogsViewsPartialUpdateRequestColumnsList = /*@__PURE__*/ S.Array(
   LogsViewColumn,
 ) as any as S.Schema<LogsViewsPartialUpdateRequestColumnsList>;
@@ -4575,29 +4351,21 @@ export interface LogsViewsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  id?: string;
   name?: string;
   /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: LogsViewsPartialUpdateRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: LogsViewsPartialUpdateRequestColumnsList | null;
   pinned?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string | null;
 }
 export const LogsViewsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     filters: S.optional(LogsViewsPartialUpdateRequestFiltersMap),
     columns: S.optional(S.NullOr(LogsViewsPartialUpdateRequestColumnsList)),
     pinned: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4639,7 +4407,7 @@ export const LogsViewsUpdateRequestFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogsViewsUpdateRequestFiltersMap>;
 
 /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
-export type LogsViewsUpdateRequestColumnsList = LogsViewColumn[];
+export type LogsViewsUpdateRequestColumnsList = ReadonlyArray<LogsViewColumn>;
 export const LogsViewsUpdateRequestColumnsList = /*@__PURE__*/ S.Array(
   LogsViewColumn,
 ) as any as S.Schema<LogsViewsUpdateRequestColumnsList>;
@@ -4648,29 +4416,21 @@ export interface LogsViewsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  id?: string;
   name?: string;
   /** Filter criteria — subset of LogsViewerFilters. May contain severityLevels, serviceNames, searchTerm, filterGroup, dateRange, and other keys. */
   filters?: LogsViewsUpdateRequestFiltersMap;
   /** Ordered column configuration for the logs table (LogsColumnConfig[]). Order is array index. Null means the view has no column preference and the client renders its default column set. Omitting the field on update leaves the saved configuration unchanged; send null to clear it. */
   columns?: LogsViewsUpdateRequestColumnsList | null;
   pinned?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string | null;
 }
 export const LogsViewsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     filters: S.optional(LogsViewsUpdateRequestFiltersMap),
     columns: S.optional(S.NullOr(LogsViewsUpdateRequestColumnsList)),
     pinned: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

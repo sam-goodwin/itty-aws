@@ -28,21 +28,15 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `personal` - personal * `team` - team */
-export type VisibilityEnum = "personal" | "team" | (string & {});
+export type VisibilityEnum = "personal" | "team";
 export const VisibilityEnum = /*@__PURE__*/ S.String;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
+export type RuntimeAdapterEnum = "claude" | "codex";
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "xhigh"
-  | "max"
-  | (string & {});
+export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export interface LoopRepositoryEntry {
@@ -61,17 +55,14 @@ export const LoopRepositoryEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopRepositoryEntry>;
 
 /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
-export type LoopsCreateRequestRepositoriesList = LoopRepositoryEntry[];
+export type LoopsCreateRequestRepositoriesList =
+  ReadonlyArray<LoopRepositoryEntry>;
 export const LoopsCreateRequestRepositoriesList = /*@__PURE__*/ S.Array(
   LoopRepositoryEntry,
 ) as any as S.Schema<LoopsCreateRequestRepositoriesList>;
 
 /** * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
-export type OverlapPolicyEnum =
-  | "skip"
-  | "allow"
-  | "cancel_previous"
-  | (string & {});
+export type OverlapPolicyEnum = "skip" | "allow" | "cancel_previous";
 export const OverlapPolicyEnum = /*@__PURE__*/ S.String;
 
 export interface LoopBehaviors {
@@ -94,13 +85,13 @@ export const LoopBehaviors = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoopBehaviors" }) as any as S.Schema<LoopBehaviors>;
 
 /** MCP Store installation ids (Slack, Linear, etc.) available to this loop's runs. */
-export type LoopConnectorsMcpInstallationIdsList = string[];
+export type LoopConnectorsMcpInstallationIdsList = ReadonlyArray<string>;
 export const LoopConnectorsMcpInstallationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoopConnectorsMcpInstallationIdsList>;
 
 /** * `read_only` - read_only * `full` - full */
-export type PosthogMcpScopesEnum = "read_only" | "full" | (string & {});
+export type PosthogMcpScopesEnum = "read_only" | "full";
 export const PosthogMcpScopesEnum = /*@__PURE__*/ S.String;
 
 export interface LoopConnectors {
@@ -121,12 +112,11 @@ export type EventsEnum =
   | "run_completed"
   | "run_failed"
   | "pr_created"
-  | "needs_attention"
-  | (string & {});
+  | "needs_attention";
 export const EventsEnum = /*@__PURE__*/ S.String;
 
 /** Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, needs_attention. */
-export type LoopNotificationChannelEventsList = EventsEnum[];
+export type LoopNotificationChannelEventsList = ReadonlyArray<EventsEnum>;
 export const LoopNotificationChannelEventsList = /*@__PURE__*/ S.Array(
   EventsEnum,
 ) as any as S.Schema<LoopNotificationChannelEventsList>;
@@ -213,7 +203,7 @@ export const LoopContextTargetWrite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopContextTargetWrite>;
 
 /** * `schedule` - schedule * `github` - github * `api` - api */
-export type LoopTriggerTypeEnum = "schedule" | "github" | "api" | (string & {});
+export type LoopTriggerTypeEnum = "schedule" | "github" | "api";
 export const LoopTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LoopTriggerWrite {
@@ -238,7 +228,7 @@ export const LoopTriggerWrite = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopTriggerWrite>;
 
 /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
-export type LoopsCreateRequestTriggersList = LoopTriggerWrite[];
+export type LoopsCreateRequestTriggersList = ReadonlyArray<LoopTriggerWrite>;
 export const LoopsCreateRequestTriggersList = /*@__PURE__*/ S.Array(
   LoopTriggerWrite,
 ) as any as S.Schema<LoopsCreateRequestTriggersList>;
@@ -326,7 +316,7 @@ export const LoopRepositoryEntryDTO = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoopRepositoryEntryDTO>;
 
 /** Repositories this loop operates on. */
-export type LoopDTORepositoriesList = LoopRepositoryEntryDTO[];
+export type LoopDTORepositoriesList = ReadonlyArray<LoopRepositoryEntryDTO>;
 export const LoopDTORepositoriesList = /*@__PURE__*/ S.Array(
   LoopRepositoryEntryDTO,
 ) as any as S.Schema<LoopDTORepositoriesList>;
@@ -348,7 +338,7 @@ export const LoopBehaviorsDTO = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoopBehaviorsDTO",
 }) as any as S.Schema<LoopBehaviorsDTO>;
 
-export type LoopConnectorsDTOMcpInstallationIdsList = string[];
+export type LoopConnectorsDTOMcpInstallationIdsList = ReadonlyArray<string>;
 export const LoopConnectorsDTOMcpInstallationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoopConnectorsDTOMcpInstallationIdsList>;
@@ -366,7 +356,7 @@ export const LoopConnectorsDTO = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoopConnectorsDTO",
 }) as any as S.Schema<LoopConnectorsDTO>;
 
-export type LoopNotificationChannelDTOEventsList = string[];
+export type LoopNotificationChannelDTOEventsList = ReadonlyArray<string>;
 export const LoopNotificationChannelDTOEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoopNotificationChannelDTOEventsList>;
@@ -473,7 +463,7 @@ export const LoopTriggerDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoopTriggerDTO" }) as any as S.Schema<LoopTriggerDTO>;
 
 /** Triggers attached to this loop. */
-export type LoopDTOTriggersList = LoopTriggerDTO[];
+export type LoopDTOTriggersList = ReadonlyArray<LoopTriggerDTO>;
 export const LoopDTOTriggersList = /*@__PURE__*/ S.Array(
   LoopTriggerDTO,
 ) as any as S.Schema<LoopDTOTriggersList>;
@@ -599,7 +589,7 @@ export const LoopsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoopsListRequest",
 }) as any as S.Schema<LoopsListRequest>;
 
-export type PaginatedLoopDTOListResultsList = LoopDTO[];
+export type PaginatedLoopDTOListResultsList = ReadonlyArray<LoopDTO>;
 export const PaginatedLoopDTOListResultsList = /*@__PURE__*/ S.Array(
   LoopDTO,
 ) as any as S.Schema<PaginatedLoopDTOListResultsList>;
@@ -628,13 +618,15 @@ export const PaginatedLoopDTOList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedLoopDTOList>;
 
 /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
-export type LoopsPartialUpdateRequestRepositoriesList = LoopRepositoryEntry[];
+export type LoopsPartialUpdateRequestRepositoriesList =
+  ReadonlyArray<LoopRepositoryEntry>;
 export const LoopsPartialUpdateRequestRepositoriesList = /*@__PURE__*/ S.Array(
   LoopRepositoryEntry,
 ) as any as S.Schema<LoopsPartialUpdateRequestRepositoriesList>;
 
 /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
-export type LoopsPartialUpdateRequestTriggersList = LoopTriggerWrite[];
+export type LoopsPartialUpdateRequestTriggersList =
+  ReadonlyArray<LoopTriggerWrite>;
 export const LoopsPartialUpdateRequestTriggersList = /*@__PURE__*/ S.Array(
   LoopTriggerWrite,
 ) as any as S.Schema<LoopsPartialUpdateRequestTriggersList>;
@@ -799,8 +791,7 @@ export type LoopFireResultReasonEnum =
   | "disabled"
   | "gate_blocked"
   | "owner_inactive"
-  | "owner_changed"
-  | (string & {});
+  | "owner_changed";
 export const LoopFireResultReasonEnum = /*@__PURE__*/ S.String;
 
 /** Response for a manual (`run/`) or external (`trigger/`) fire. */
@@ -883,7 +874,7 @@ export const LoopRunDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoopRunDTO" }) as any as S.Schema<LoopRunDTO>;
 
 /** Run history entries, newest first. */
-export type LoopRunPageResultsList = LoopRunDTO[];
+export type LoopRunPageResultsList = ReadonlyArray<LoopRunDTO>;
 export const LoopRunPageResultsList = /*@__PURE__*/ S.Array(
   LoopRunDTO,
 ) as any as S.Schema<LoopRunPageResultsList>;
@@ -901,15 +892,25 @@ export const LoopRunPage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoopRunPage" }) as any as S.Schema<LoopRunPage>;
 
+export type LoopsTriggerCreateRequestBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const LoopsTriggerCreateRequestBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LoopsTriggerCreateRequestBodyMap>;
+
 export interface LoopsTriggerCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
+  body?: LoopsTriggerCreateRequestBodyMap;
 }
 export const LoopsTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
+    body: S.optional(LoopsTriggerCreateRequestBodyMap.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",

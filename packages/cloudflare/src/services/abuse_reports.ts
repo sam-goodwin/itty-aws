@@ -68,27 +68,17 @@ export class InvalidRequest extends T.applyErrorMatchers(
   [{ code: 7003 }],
 ) {}
 
-export type CreateRequestBodyAbuseDmcaAct = "abuse_dmca" | (string & {});
+export type CreateRequestBodyAbuseDmcaAct = "abuse_dmca";
 export const CreateRequestBodyAbuseDmcaAct = /*@__PURE__*/ S.String;
 
-export interface CreateRequestBodyAbuseDmcaAgree {
-  "1": unknown;
-}
-export const CreateRequestBodyAbuseDmcaAgree = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "1": S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateRequestBodyAbuseDmcaAgree",
-}) as any as S.Schema<CreateRequestBodyAbuseDmcaAgree>;
+export type CreateRequestBodyAbuseDmcaAgree = 1;
+export const CreateRequestBodyAbuseDmcaAgree = /*@__PURE__*/ S.Number;
 
-export type CreateRequestBodyAbuseDmcaHostNotification = "send" | (string & {});
+export type CreateRequestBodyAbuseDmcaHostNotification = "send";
 export const CreateRequestBodyAbuseDmcaHostNotification =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyAbuseDmcaOwnerNotification =
-  | "send"
-  | (string & {});
+export type CreateRequestBodyAbuseDmcaOwnerNotification = "send";
 export const CreateRequestBodyAbuseDmcaOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -168,20 +158,14 @@ export const CreateRequestBodyAbuseDmca = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbuseDmca",
 }) as any as S.Schema<CreateRequestBodyAbuseDmca>;
 
-export type CreateRequestBodyAbuseTrademarkAct =
-  | "abuse_trademark"
-  | (string & {});
+export type CreateRequestBodyAbuseTrademarkAct = "abuse_trademark";
 export const CreateRequestBodyAbuseTrademarkAct = /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyAbuseTrademarkHostNotification =
-  | "send"
-  | (string & {});
+export type CreateRequestBodyAbuseTrademarkHostNotification = "send";
 export const CreateRequestBodyAbuseTrademarkHostNotification =
   /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyAbuseTrademarkOwnerNotification =
-  | "send"
-  | (string & {});
+export type CreateRequestBodyAbuseTrademarkOwnerNotification = "send";
 export const CreateRequestBodyAbuseTrademarkOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -249,20 +233,18 @@ export const CreateRequestBodyAbuseTrademark = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbuseTrademark",
 }) as any as S.Schema<CreateRequestBodyAbuseTrademark>;
 
-export type CreateRequestBodyAbuseGeneralAct = "abuse_general" | (string & {});
+export type CreateRequestBodyAbuseGeneralAct = "abuse_general";
 export const CreateRequestBodyAbuseGeneralAct = /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseGeneralHostNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbuseGeneralHostNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseGeneralOwnerNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbuseGeneralOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -330,22 +312,18 @@ export const CreateRequestBodyAbuseGeneral = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbuseGeneral",
 }) as any as S.Schema<CreateRequestBodyAbuseGeneral>;
 
-export type CreateRequestBodyAbusePhishingAct =
-  | "abuse_phishing"
-  | (string & {});
+export type CreateRequestBodyAbusePhishingAct = "abuse_phishing";
 export const CreateRequestBodyAbusePhishingAct = /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbusePhishingHostNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbusePhishingHostNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbusePhishingOwnerNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbusePhishingOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -407,30 +385,25 @@ export const CreateRequestBodyAbusePhishing = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbusePhishing",
 }) as any as S.Schema<CreateRequestBodyAbusePhishing>;
 
-export type CreateRequestBodyAbuseChildrenAct =
-  | "abuse_children"
-  | (string & {});
+export type CreateRequestBodyAbuseChildrenAct = "abuse_children";
 export const CreateRequestBodyAbuseChildrenAct = /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseChildrenHostNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbuseChildrenHostNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseChildrenNcmecNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbuseChildrenNcmecNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseChildrenOwnerNotification =
   | "send"
   | "send-anon"
-  | "none"
-  | (string & {});
+  | "none";
 export const CreateRequestBodyAbuseChildrenOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -497,20 +470,16 @@ export const CreateRequestBodyAbuseChildren = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbuseChildren",
 }) as any as S.Schema<CreateRequestBodyAbuseChildren>;
 
-export type CreateRequestBodyAbuseThreatAct = "abuse_threat" | (string & {});
+export type CreateRequestBodyAbuseThreatAct = "abuse_threat";
 export const CreateRequestBodyAbuseThreatAct = /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyAbuseThreatHostNotification =
-  | "send"
-  | "send-anon"
-  | (string & {});
+export type CreateRequestBodyAbuseThreatHostNotification = "send" | "send-anon";
 export const CreateRequestBodyAbuseThreatHostNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseThreatOwnerNotification =
   | "send"
-  | "send-anon"
-  | (string & {});
+  | "send-anon";
 export const CreateRequestBodyAbuseThreatOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -569,21 +538,18 @@ export const CreateRequestBodyAbuseThreat = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBodyAbuseThreat",
 }) as any as S.Schema<CreateRequestBodyAbuseThreat>;
 
-export type CreateRequestBodyAbuseRegistrarWhoisAct =
-  | "abuse_registrar_whois"
-  | (string & {});
+export type CreateRequestBodyAbuseRegistrarWhoisAct = "abuse_registrar_whois";
 export const CreateRequestBodyAbuseRegistrarWhoisAct = /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseRegistrarWhoisOwnerNotification =
   | "send"
   | "send-anon"
-  | "none"
-  | (string & {});
+  | "none";
 export const CreateRequestBodyAbuseRegistrarWhoisOwnerNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType =
-  "disclosure" | "invalid_whois" | (string & {});
+  "disclosure" | "invalid_whois";
 export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestType =
   /*@__PURE__*/ S.String;
 
@@ -591,19 +557,32 @@ export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedData
     | "registrant_name"
     | "registrant_organization"
     | "registrant_email"
-    | (string & {});
+    | "registrant_phone"
+    | "registrant_address"
+    | "registrant_address_country"
+    | "registrant_address_postal_code"
+    | "admin_name"
+    | "admin_organization"
+    | "admin_email"
+    | "admin_phone"
+    | "admin_address"
+    | "tech_name"
+    | "tech_organization"
+    | "tech_email"
+    | "tech_phone"
+    | "tech_address";
 export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList =
-  CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem[];
+  ReadonlyArray<CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem>;
 export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList =
   /*@__PURE__*/ S.Array(
     CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsItem,
   ) as any as S.Schema<CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestedDataElementsList>;
 
 export type CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType =
-  "government" | "corporation" | "individual" | (string & {});
+  "government" | "corporation" | "individual";
 export const CreateRequestBodyAbuseRegistrarWhoisRegWhoRequestRegWhoRequestorType =
   /*@__PURE__*/ S.String;
 
@@ -712,21 +691,17 @@ export const CreateRequestBodyAbuseRegistrarWhois = /*@__PURE__*/ S.suspend(
   identifier: "CreateRequestBodyAbuseRegistrarWhois",
 }) as any as S.Schema<CreateRequestBodyAbuseRegistrarWhois>;
 
-export type CreateRequestBodyAbuseNcseiAct = "abuse_ncsei" | (string & {});
+export type CreateRequestBodyAbuseNcseiAct = "abuse_ncsei";
 export const CreateRequestBodyAbuseNcseiAct = /*@__PURE__*/ S.String;
 
-export type CreateRequestBodyAbuseNcseiHostNotification =
-  | "send"
-  | "send-anon"
-  | (string & {});
+export type CreateRequestBodyAbuseNcseiHostNotification = "send" | "send-anon";
 export const CreateRequestBodyAbuseNcseiHostNotification =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestBodyAbuseNcseiOwnerNotification =
   | "send"
   | "send-anon"
-  | "none"
-  | (string & {});
+  | "none";
 export const CreateRequestBodyAbuseNcseiOwnerNotification =
   /*@__PURE__*/ S.String;
 
@@ -1022,10 +997,19 @@ export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseMitigationSummary",
 }) as any as S.Schema<GetResponseMitigationSummary>;
 
-export type GetResponseStatus = "accepted" | "in_review" | (string & {});
+export type GetResponseStatus = "accepted" | "in_review";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseType = "PHISH" | "GEN" | "THREAT" | (string & {});
+export type GetResponseType =
+  | "PHISH"
+  | "GEN"
+  | "THREAT"
+  | "DMCA"
+  | "EMER"
+  | "TM"
+  | "REG_WHO"
+  | "NCSEI"
+  | "NETWORK";
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 export interface GetResponseSubmitter {
@@ -1045,7 +1029,7 @@ export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSubmitter",
 }) as any as S.Schema<GetResponseSubmitter>;
 
-export type GetResponseUrlsList = string[];
+export type GetResponseUrlsList = ReadonlyArray<string>;
 export const GetResponseUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseUrlsList>;
@@ -1093,13 +1077,23 @@ export type ListRequestMitigationStatus =
   | "pending"
   | "active"
   | "in_review"
-  | (string & {});
+  | "cancelled"
+  | "removed";
 export const ListRequestMitigationStatus = /*@__PURE__*/ S.String;
 
-export type ListRequestStatus = "accepted" | "in_review" | (string & {});
+export type ListRequestStatus = "accepted" | "in_review";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export type ListRequestType = "PHISH" | "GEN" | "THREAT" | (string & {});
+export type ListRequestType =
+  | "PHISH"
+  | "GEN"
+  | "THREAT"
+  | "DMCA"
+  | "EMER"
+  | "TM"
+  | "REG_WHO"
+  | "NCSEI"
+  | "NETWORK";
 export const ListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListAbuseReportsRequest {
@@ -1175,17 +1169,19 @@ export const ListResponseReportsItemMitigationSummary = /*@__PURE__*/ S.suspend(
   identifier: "ListResponseReportsItemMitigationSummary",
 }) as any as S.Schema<ListResponseReportsItemMitigationSummary>;
 
-export type ListResponseReportsItemStatus =
-  | "accepted"
-  | "in_review"
-  | (string & {});
+export type ListResponseReportsItemStatus = "accepted" | "in_review";
 export const ListResponseReportsItemStatus = /*@__PURE__*/ S.String;
 
 export type ListResponseReportsItemType =
   | "PHISH"
   | "GEN"
   | "THREAT"
-  | (string & {});
+  | "DMCA"
+  | "EMER"
+  | "TM"
+  | "REG_WHO"
+  | "NCSEI"
+  | "NETWORK";
 export const ListResponseReportsItemType = /*@__PURE__*/ S.String;
 
 export interface ListResponseReportsItemSubmitter {
@@ -1205,7 +1201,7 @@ export const ListResponseReportsItemSubmitter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseReportsItemSubmitter",
 }) as any as S.Schema<ListResponseReportsItemSubmitter>;
 
-export type ListResponseReportsItemUrlsList = string[];
+export type ListResponseReportsItemUrlsList = ReadonlyArray<string>;
 export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResponseReportsItemUrlsList>;
@@ -1250,7 +1246,7 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseReportsItem",
 }) as any as S.Schema<ListResponseReportsItem>;
 
-export type ListResponseReportsList = ListResponseReportsItem[];
+export type ListResponseReportsList = ReadonlyArray<ListResponseReportsItem>;
 export const ListResponseReportsList = /*@__PURE__*/ S.Array(
   ListResponseReportsItem,
 ) as any as S.Schema<ListResponseReportsList>;
@@ -1270,29 +1266,48 @@ export const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsListRequestEntityType =
   | "url_pattern"
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const MitigationsListRequestEntityType = /*@__PURE__*/ S.String;
 
 export type MitigationsListRequestSort =
   | "type,asc"
   | "type,desc"
   | "effective_date,asc"
-  | (string & {});
+  | "effective_date,desc"
+  | "status,asc"
+  | "status,desc"
+  | "entity_type,asc"
+  | "entity_type,desc";
 export const MitigationsListRequestSort = /*@__PURE__*/ S.String;
 
 export type MitigationsListRequestStatus =
   | "pending"
   | "active"
   | "in_review"
-  | (string & {});
+  | "cancelled"
+  | "removed";
 export const MitigationsListRequestStatus = /*@__PURE__*/ S.String;
 
 export type MitigationsListRequestType =
   | "account_suspend"
   | "copyright_interstitial"
   | "geo_block"
-  | (string & {});
+  | "legal_block"
+  | "malware_interstitial"
+  | "misleading_interstitial"
+  | "network_block"
+  | "phishing_interstitial"
+  | "playfairite_enforce"
+  | "r2_takedown_account"
+  | "r2_takedown_bucket"
+  | "r2_takedown_object"
+  | "rate_limit_cache"
+  | "redirect_video_stream"
+  | "registrar_freeze"
+  | "registrar_parking"
+  | "stream_block_account"
+  | "user_suspend"
+  | "workers_takedown_by_zone_id";
 export const MitigationsListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListMitigationsRequest {
@@ -1345,8 +1360,7 @@ export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsListResponseMitigationsItemEntityType =
   | "url_pattern"
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const MitigationsListResponseMitigationsItemEntityType =
   /*@__PURE__*/ S.String;
 
@@ -1354,7 +1368,8 @@ export type MitigationsListResponseMitigationsItemStatus =
   | "pending"
   | "active"
   | "in_review"
-  | (string & {});
+  | "cancelled"
+  | "removed";
 export const MitigationsListResponseMitigationsItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -1362,7 +1377,22 @@ export type MitigationsListResponseMitigationsItemType =
   | "account_suspend"
   | "copyright_interstitial"
   | "geo_block"
-  | (string & {});
+  | "legal_block"
+  | "malware_interstitial"
+  | "misleading_interstitial"
+  | "network_block"
+  | "phishing_interstitial"
+  | "playfairite_enforce"
+  | "r2_takedown_account"
+  | "r2_takedown_bucket"
+  | "r2_takedown_object"
+  | "rate_limit_cache"
+  | "redirect_video_stream"
+  | "registrar_freeze"
+  | "registrar_parking"
+  | "stream_block_account"
+  | "user_suspend"
+  | "workers_takedown_by_zone_id";
 export const MitigationsListResponseMitigationsItemType =
   /*@__PURE__*/ S.String;
 
@@ -1396,7 +1426,7 @@ export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MitigationsListResponseMitigationsItem>;
 
 export type MitigationsListResponseMitigationsList =
-  MitigationsListResponseMitigationsItem[];
+  ReadonlyArray<MitigationsListResponseMitigationsItem>;
 export const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
   MitigationsListResponseMitigationsItem,
 ) as any as S.Schema<MitigationsListResponseMitigationsList>;
@@ -1415,8 +1445,7 @@ export const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MitigationsReviewRequestAppealsItemReason =
   | "removed"
-  | "misclassified"
-  | (string & {});
+  | "misclassified";
 export const MitigationsReviewRequestAppealsItemReason = /*@__PURE__*/ S.String;
 
 export interface MitigationsReviewRequestAppealsItem {
@@ -1435,7 +1464,7 @@ export const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MitigationsReviewRequestAppealsItem>;
 
 export type MitigationsReviewRequestAppealsList =
-  MitigationsReviewRequestAppealsItem[];
+  ReadonlyArray<MitigationsReviewRequestAppealsItem>;
 export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
   MitigationsReviewRequestAppealsItem,
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
@@ -1467,22 +1496,37 @@ export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
 export type MitigationsReviewResultItemEntityType =
   | "url_pattern"
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const MitigationsReviewResultItemEntityType = /*@__PURE__*/ S.String;
 
 export type MitigationsReviewResultItemStatus =
   | "pending"
   | "active"
   | "in_review"
-  | (string & {});
+  | "cancelled"
+  | "removed";
 export const MitigationsReviewResultItemStatus = /*@__PURE__*/ S.String;
 
 export type MitigationsReviewResultItemType =
   | "account_suspend"
   | "copyright_interstitial"
   | "geo_block"
-  | (string & {});
+  | "legal_block"
+  | "malware_interstitial"
+  | "misleading_interstitial"
+  | "network_block"
+  | "phishing_interstitial"
+  | "playfairite_enforce"
+  | "r2_takedown_account"
+  | "r2_takedown_bucket"
+  | "r2_takedown_object"
+  | "rate_limit_cache"
+  | "redirect_video_stream"
+  | "registrar_freeze"
+  | "registrar_parking"
+  | "stream_block_account"
+  | "user_suspend"
+  | "workers_takedown_by_zone_id";
 export const MitigationsReviewResultItemType = /*@__PURE__*/ S.String;
 
 export interface MitigationsReviewResultItem {
@@ -1513,7 +1557,8 @@ export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MitigationsReviewResultItem",
 }) as any as S.Schema<MitigationsReviewResultItem>;
 
-export type MitigationsReviewResultList = MitigationsReviewResultItem[];
+export type MitigationsReviewResultList =
+  ReadonlyArray<MitigationsReviewResultItem>;
 export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
   MitigationsReviewResultItem,
 ) as any as S.Schema<MitigationsReviewResultList>;

@@ -385,9 +385,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -418,34 +415,21 @@
             "smithy.api#documentation": "Arbitrary JSON metadata associated with this feature."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "feature_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate."
           }
         },
-        "feature_flag": {
-          "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnly": {
+    "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -484,17 +468,8 @@
         "created_at": {
           "target": "smithy.api#String"
         },
-        "feature_flag_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate."
-          }
-        },
         "feature_flag": {
           "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -514,7 +489,7 @@
         "target": "com.posthog.early_access_feature#EarlyAccessFeatureCreateRequest"
       },
       "output": {
-        "target": "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnly"
+        "target": "com.posthog.early_access_feature#EarlyAccessFeatureSerializerCreateOnlyOutput"
       },
       "errors": [
         {
@@ -583,18 +558,6 @@
         }
       }
     },
-    "com.posthog.early_access_feature#EarlyAccessFeatureUpdateRequestPayloadMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {
-        "smithy.api#documentation": "Feature flag payload for this early access feature"
-      }
-    },
     "com.posthog.early_access_feature#EarlyAccessFeatureUpdateRequest": {
       "type": "structure",
       "members": {
@@ -613,9 +576,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this early access feature."
           }
-        },
-        "feature_flag": {
-          "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
         },
         "name": {
           "target": "smithy.api#String",
@@ -639,22 +599,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "URL to external documentation for this feature. Shown to users in the opt-in UI."
-          }
-        },
-        "payload": {
-          "target": "com.posthog.early_access_feature#EarlyAccessFeatureUpdateRequestPayloadMap",
-          "traits": {
-            "smithy.api#documentation": "Feature flag payload for this early access feature"
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -689,18 +633,6 @@
         }
       }
     },
-    "com.posthog.early_access_feature#EarlyAccessFeaturePartialUpdateRequestPayloadMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {
-        "smithy.api#documentation": "Feature flag payload for this early access feature"
-      }
-    },
     "com.posthog.early_access_feature#EarlyAccessFeaturePartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -719,9 +651,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this early access feature."
           }
-        },
-        "feature_flag": {
-          "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
         },
         "name": {
           "target": "smithy.api#String",
@@ -745,22 +674,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "URL to external documentation for this feature. Shown to users in the opt-in UI."
-          }
-        },
-        "payload": {
-          "target": "com.posthog.early_access_feature#EarlyAccessFeaturePartialUpdateRequestPayloadMap",
-          "traits": {
-            "smithy.api#documentation": "Feature flag payload for this early access feature"
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

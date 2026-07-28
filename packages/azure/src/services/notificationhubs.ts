@@ -13,15 +13,62 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Gets or sets resource tags */
+export type NamespacesCheckAvailabilityRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesCheckAvailabilityRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesCheckAvailabilityRequestTagsMap>;
+
+/** Namespace SKU name. */
+export type SkuName = "Free" | "Basic" | "Standard";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** The Sku description for a namespace */
+export interface Sku {
+  name: SkuName;
+  /** Gets or sets the tier of particular sku */
+  tier?: string;
+  /** Gets or sets the Sku size */
+  size?: string;
+  /** Gets or sets the Sku Family */
+  family?: string;
+  /** Gets or sets the capacity of the resource */
+  capacity?: number;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+    tier: S.optional(S.String),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
 export interface NamespacesCheckAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Gets or sets resource name */
+  name: string;
+  /** Gets or sets resource location */
+  location?: string;
+  /** Gets or sets resource tags */
+  tags?: NamespacesCheckAvailabilityRequestTagsMap;
+  /** Not used and deprecated since API version 2023-09-01 */
+  isAvailiable?: boolean;
+  sku?: Sku;
 }
 export const NamespacesCheckAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    location: S.optional(S.String),
+    tags: S.optional(NamespacesCheckAvailabilityRequestTagsMap),
+    isAvailiable: S.optional(S.Boolean),
+    sku: S.optional(Sku),
   }).pipe(
     T.Http({
       method: "POST",
@@ -39,8 +86,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -48,8 +94,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -88,32 +133,6 @@ export const NamespacesCheckAvailabilityResponseTagsMap =
     S.String,
   ) as any as S.Schema<NamespacesCheckAvailabilityResponseTagsMap>;
 
-/** Namespace SKU name. */
-export type SkuName = "Free" | "Basic" | "Standard" | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** The Sku description for a namespace */
-export interface Sku {
-  name: SkuName;
-  /** Gets or sets the tier of particular sku */
-  tier?: string;
-  /** Gets or sets the Sku size */
-  size?: string;
-  /** Gets or sets the Sku Family */
-  family?: string;
-  /** Gets or sets the capacity of the resource */
-  capacity?: number;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
 export interface NamespacesCheckAvailabilityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -146,41 +165,14 @@ export const NamespacesCheckAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesCheckAvailabilityResponse",
 }) as any as S.Schema<NamespacesCheckAvailabilityResponse>;
 
-export interface NamespacesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Namespace name */
-  namespaceName: string;
-  body: unknown;
-}
-export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
-      code: 200,
-      apiVersion: "2023-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateRequest",
-}) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type NamespacesCreateOrUpdateResponseTagsMap = {
+export type NamespacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 /** Defines values for OperationProvisioningState. */
 export type OperationProvisioningState =
@@ -190,21 +182,15 @@ export type OperationProvisioningState =
   | "Failed"
   | "Canceled"
   | "Pending"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const OperationProvisioningState = /*@__PURE__*/ S.String;
 
 /** Namespace status. */
-export type NamespaceStatus =
-  | "Created"
-  | "Creating"
-  | "Suspended"
-  | "Deleting"
-  | (string & {});
+export type NamespaceStatus = "Created" | "Creating" | "Suspended" | "Deleting";
 export const NamespaceStatus = /*@__PURE__*/ S.String;
 
 /** Defines values for NamespaceType. */
-export type NamespaceType = "Messaging" | "NotificationHub" | (string & {});
+export type NamespaceType = "Messaging" | "NotificationHub";
 export const NamespaceType = /*@__PURE__*/ S.String;
 
 /** Allowed replication region */
@@ -216,20 +202,19 @@ export type ReplicationRegion =
   | "BrazilSouth"
   | "SouthEastAsia"
   | "SouthAfricaNorth"
-  | "None"
-  | (string & {});
+  | "None";
 export const ReplicationRegion = /*@__PURE__*/ S.String;
 
 /** Namespace SKU name. */
-export type ZoneRedundancyPreference = "Disabled" | "Enabled" | (string & {});
+export type ZoneRedundancyPreference = "Disabled" | "Enabled";
 export const ZoneRedundancyPreference = /*@__PURE__*/ S.String;
 
 /** Defines values for AccessRights. */
-export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
+export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** List of access rights. */
-export type IpRuleRightsList = AccessRights[];
+export type IpRuleRightsList = ReadonlyArray<AccessRights>;
 export const IpRuleRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<IpRuleRightsList>;
@@ -249,13 +234,14 @@ export const IpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRule" }) as any as S.Schema<IpRule>;
 
 /** List of IP rules. */
-export type NetworkAclsIpRulesList = IpRule[];
+export type NetworkAclsIpRulesList = ReadonlyArray<IpRule>;
 export const NetworkAclsIpRulesList = /*@__PURE__*/ S.Array(
   IpRule,
 ) as any as S.Schema<NetworkAclsIpRulesList>;
 
 /** List of access rights. */
-export type PublicInternetAuthorizationRuleRightsList = AccessRights[];
+export type PublicInternetAuthorizationRuleRightsList =
+  ReadonlyArray<AccessRights>;
 export const PublicInternetAuthorizationRuleRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<PublicInternetAuthorizationRuleRightsList>;
@@ -563,6 +549,86 @@ export const PnsCredentials = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PnsCredentials" }) as any as S.Schema<PnsCredentials>;
 
+/** Type of public network access. */
+export type PublicNetworkAccess = "Enabled" | "Disabled";
+export const PublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** Represents namespace properties. */
+export interface NamespacePropertiesInput {
+  provisioningState?: OperationProvisioningState;
+  status?: NamespaceStatus;
+  namespaceType?: NamespaceType;
+  replicationRegion?: ReplicationRegion;
+  zoneRedundancy?: ZoneRedundancyPreference;
+  networkAcls?: NetworkAcls;
+  pnsCredentials?: PnsCredentials;
+  /** Gets or sets scaleUnit where the namespace gets created */
+  scaleUnit?: string;
+  /** Deprecated. */
+  dataCenter?: string;
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(OperationProvisioningState),
+    status: S.optional(NamespaceStatus),
+    namespaceType: S.optional(NamespaceType),
+    replicationRegion: S.optional(ReplicationRegion),
+    zoneRedundancy: S.optional(ZoneRedundancyPreference),
+    networkAcls: S.optional(NetworkAcls),
+    pnsCredentials: S.optional(PnsCredentials),
+    scaleUnit: S.optional(S.String),
+    dataCenter: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "NamespacePropertiesInput",
+}) as any as S.Schema<NamespacePropertiesInput>;
+
+export interface NamespacesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Namespace name */
+  namespaceName: string;
+  /** Resource tags. */
+  tags?: NamespacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  sku: Sku;
+  properties?: NamespacePropertiesInput;
+}
+export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    namespaceName: S.String.pipe(T.Label()),
+    tags: S.optional(NamespacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    sku: Sku,
+    properties: S.optional(NamespacePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}",
+      code: 200,
+      apiVersion: "2023-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "NamespacesCreateOrUpdateRequest",
+}) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type NamespacesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+
 /** State of Private Endpoint Connection. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Unknown"
@@ -572,8 +638,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "UpdatingByProxy"
   | "Deleting"
   | "DeletingByProxy"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -591,7 +656,8 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemotePrivateEndpointConnection>;
 
 /** List of group ids. For Notification Hubs, it always contains a single "namespace" element. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -602,8 +668,7 @@ export type PrivateLinkConnectionStatus =
   | "Disconnected"
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** State of the Private Link Service connection. */
@@ -672,15 +737,11 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Private Endpoint Connections for namespace */
 export type NamespacePropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnectionResource[];
+  ReadonlyArray<PrivateEndpointConnectionResource>;
 export const NamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
   ) as any as S.Schema<NamespacePropertiesPrivateEndpointConnectionsList>;
-
-/** Type of public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
-export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Represents namespace properties. */
 export interface NamespaceProperties {
@@ -777,6 +838,44 @@ export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesCreateOrUpdateResponse",
 }) as any as S.Schema<NamespacesCreateOrUpdateResponse>;
 
+/** Gets or sets the rights associated with the rule. */
+export type SharedAccessAuthorizationRulePropertiesInputRightsList =
+  ReadonlyArray<AccessRights>;
+export const SharedAccessAuthorizationRulePropertiesInputRightsList =
+  /*@__PURE__*/ S.Array(
+    AccessRights,
+  ) as any as S.Schema<SharedAccessAuthorizationRulePropertiesInputRightsList>;
+
+/** SharedAccessAuthorizationRule properties. */
+export interface SharedAccessAuthorizationRulePropertiesInput {
+  /** Gets or sets the rights associated with the rule. */
+  rights: SharedAccessAuthorizationRulePropertiesInputRightsList;
+  /** Gets a base64-encoded 256-bit primary key for signing and validating the SAS token. */
+  primaryKey?: string;
+  /** Gets a base64-encoded 256-bit primary key for signing and validating the SAS token. */
+  secondaryKey?: string;
+}
+export const SharedAccessAuthorizationRulePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rights: SharedAccessAuthorizationRulePropertiesInputRightsList,
+      primaryKey: S.optional(S.String),
+      secondaryKey: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SharedAccessAuthorizationRulePropertiesInput",
+  }) as any as S.Schema<SharedAccessAuthorizationRulePropertiesInput>;
+
+/** Deprecated - only for compatibility. */
+export type NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap>;
+
 export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -786,7 +885,11 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   namespaceName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  body: unknown;
+  properties?: SharedAccessAuthorizationRulePropertiesInput;
+  /** Deprecated - only for compatibility. */
+  location?: string;
+  /** Deprecated - only for compatibility. */
+  tags?: NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap;
 }
 export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -795,7 +898,9 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedAccessAuthorizationRulePropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -809,7 +914,8 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
   }) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>;
 
 /** Gets or sets the rights associated with the rule. */
-export type SharedAccessAuthorizationRulePropertiesRightsList = AccessRights[];
+export type SharedAccessAuthorizationRulePropertiesRightsList =
+  ReadonlyArray<AccessRights>;
 export const SharedAccessAuthorizationRulePropertiesRightsList =
   /*@__PURE__*/ S.Array(
     AccessRights,
@@ -1228,7 +1334,7 @@ export const NamespaceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type NamespaceListResultValueList = NamespaceResource[];
+export type NamespaceListResultValueList = ReadonlyArray<NamespaceResource>;
 export const NamespaceListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceResource,
 ) as any as S.Schema<NamespaceListResultValueList>;
@@ -1343,7 +1449,7 @@ export const SharedAccessAuthorizationRuleResource = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type SharedAccessAuthorizationRuleListResultValueList =
-  SharedAccessAuthorizationRuleResource[];
+  ReadonlyArray<SharedAccessAuthorizationRuleResource>;
 export const SharedAccessAuthorizationRuleListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedAccessAuthorizationRuleResource,
@@ -1419,6 +1525,10 @@ export const ResourceListKeys = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceListKeys",
 }) as any as S.Schema<ResourceListKeys>;
 
+/** Type of Shared Access Policy Key (primary or secondary). */
+export type PolicyKeyType = "PrimaryKey" | "SecondaryKey";
+export const PolicyKeyType = /*@__PURE__*/ S.String;
+
 export interface NamespacesRegenerateKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1428,7 +1538,7 @@ export interface NamespacesRegenerateKeysRequest {
   namespaceName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  body: unknown;
+  policyKey: PolicyKeyType;
 }
 export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1436,7 +1546,7 @@ export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     authorizationRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    policyKey: PolicyKeyType,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1449,6 +1559,14 @@ export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesRegenerateKeysRequest",
 }) as any as S.Schema<NamespacesRegenerateKeysRequest>;
 
+export type NamespacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesUpdateRequestTagsMap>;
+
 export interface NamespacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1456,14 +1574,18 @@ export interface NamespacesUpdateRequest {
   resourceGroupName: string;
   /** Namespace name */
   namespaceName: string;
-  body: unknown;
+  sku?: Sku;
+  properties?: NamespacePropertiesInput;
+  tags?: NamespacesUpdateRequestTagsMap;
 }
 export const NamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(Sku),
+    properties: S.optional(NamespacePropertiesInput),
+    tags: S.optional(NamespacesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1516,6 +1638,16 @@ export const NamespacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesUpdateResponse",
 }) as any as S.Schema<NamespacesUpdateResponse>;
 
+/** Gets or sets resource tags */
+export type NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap>;
+
 export interface NotificationHubsCheckNotificationHubAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1523,7 +1655,15 @@ export interface NotificationHubsCheckNotificationHubAvailabilityRequest {
   resourceGroupName: string;
   /** Namespace name */
   namespaceName: string;
-  body: unknown;
+  /** Gets or sets resource name */
+  name: string;
+  /** Gets or sets resource location */
+  location?: string;
+  /** Gets or sets resource tags */
+  tags?: NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap;
+  /** Not used and deprecated since API version 2023-09-01 */
+  isAvailiable?: boolean;
+  sku?: Sku;
 }
 export const NotificationHubsCheckNotificationHubAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1531,7 +1671,13 @@ export const NotificationHubsCheckNotificationHubAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      location: S.optional(S.String),
+      tags: S.optional(
+        NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap,
+      ),
+      isAvailiable: S.optional(S.Boolean),
+      sku: S.optional(Sku),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1589,6 +1735,48 @@ export const NotificationHubsCheckNotificationHubAvailabilityResponse =
     identifier: "NotificationHubsCheckNotificationHubAvailabilityResponse",
   }) as any as S.Schema<NotificationHubsCheckNotificationHubAvailabilityResponse>;
 
+/** Resource tags. */
+export type NotificationHubsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NotificationHubsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NotificationHubsCreateOrUpdateRequestTagsMap>;
+
+/** NotificationHub properties. */
+export interface NotificationHubPropertiesInput {
+  /** Gets or sets the NotificationHub name. */
+  name?: string;
+  /** Gets or sets the RegistrationTtl of the created NotificationHub */
+  registrationTtl?: string;
+  apnsCredential?: ApnsCredential;
+  wnsCredential?: WnsCredential;
+  gcmCredential?: GcmCredential;
+  mpnsCredential?: MpnsCredential;
+  admCredential?: AdmCredential;
+  baiduCredential?: BaiduCredential;
+  browserCredential?: BrowserCredential;
+  xiaomiCredential?: XiaomiCredential;
+}
+export const NotificationHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    registrationTtl: S.optional(S.String),
+    apnsCredential: S.optional(ApnsCredential),
+    wnsCredential: S.optional(WnsCredential),
+    gcmCredential: S.optional(GcmCredential),
+    mpnsCredential: S.optional(MpnsCredential),
+    admCredential: S.optional(AdmCredential),
+    baiduCredential: S.optional(BaiduCredential),
+    browserCredential: S.optional(BrowserCredential),
+    xiaomiCredential: S.optional(XiaomiCredential),
+  }),
+).annotate({
+  identifier: "NotificationHubPropertiesInput",
+}) as any as S.Schema<NotificationHubPropertiesInput>;
+
 export interface NotificationHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1598,7 +1786,12 @@ export interface NotificationHubsCreateOrUpdateRequest {
   namespaceName: string;
   /** Notification Hub name */
   notificationHubName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NotificationHubsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: NotificationHubPropertiesInput;
+  sku?: Sku;
 }
 export const NotificationHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1607,7 +1800,10 @@ export const NotificationHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       notificationHubName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NotificationHubsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NotificationHubPropertiesInput),
+      sku: S.optional(Sku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1632,7 +1828,7 @@ export const NotificationHubsCreateOrUpdateResponseTagsMap =
 
 /** Gets or sets the AuthorizationRules of the created NotificationHub */
 export type NotificationHubPropertiesAuthorizationRulesList =
-  SharedAccessAuthorizationRuleProperties[];
+  ReadonlyArray<SharedAccessAuthorizationRuleProperties>;
 export const NotificationHubPropertiesAuthorizationRulesList =
   /*@__PURE__*/ S.Array(
     SharedAccessAuthorizationRuleProperties,
@@ -1709,6 +1905,16 @@ export const NotificationHubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotificationHubsCreateOrUpdateResponse",
 }) as any as S.Schema<NotificationHubsCreateOrUpdateResponse>;
 
+/** Deprecated - only for compatibility. */
+export type NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap>;
+
 export interface NotificationHubsCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1720,7 +1926,11 @@ export interface NotificationHubsCreateOrUpdateAuthorizationRuleRequest {
   notificationHubName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  body: unknown;
+  properties?: SharedAccessAuthorizationRulePropertiesInput;
+  /** Deprecated - only for compatibility. */
+  location?: string;
+  /** Deprecated - only for compatibility. */
+  tags?: NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap;
 }
 export const NotificationHubsCreateOrUpdateAuthorizationRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1730,7 +1940,11 @@ export const NotificationHubsCreateOrUpdateAuthorizationRuleRequest =
       namespaceName: S.String.pipe(T.Label()),
       notificationHubName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedAccessAuthorizationRulePropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1836,7 +2050,7 @@ export const RegistrationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationResult>;
 
 /** Gets or sets actual failure description */
-export type DebugSendResultResultsList = RegistrationResult[];
+export type DebugSendResultResultsList = ReadonlyArray<RegistrationResult>;
 export const DebugSendResultResultsList = /*@__PURE__*/ S.Array(
   RegistrationResult,
 ) as any as S.Schema<DebugSendResultResultsList>;
@@ -2253,7 +2467,8 @@ export const NotificationHubResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationHubResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type NotificationHubListResultValueList = NotificationHubResource[];
+export type NotificationHubListResultValueList =
+  ReadonlyArray<NotificationHubResource>;
 export const NotificationHubListResultValueList = /*@__PURE__*/ S.Array(
   NotificationHubResource,
 ) as any as S.Schema<NotificationHubListResultValueList>;
@@ -2345,7 +2560,7 @@ export interface NotificationHubsRegenerateKeysRequest {
   notificationHubName: string;
   /** Authorization Rule Name */
   authorizationRuleName: string;
-  body: unknown;
+  policyKey: PolicyKeyType;
 }
 export const NotificationHubsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2355,7 +2570,7 @@ export const NotificationHubsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
       namespaceName: S.String.pipe(T.Label()),
       notificationHubName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      policyKey: PolicyKeyType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2368,6 +2583,14 @@ export const NotificationHubsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
   identifier: "NotificationHubsRegenerateKeysRequest",
 }) as any as S.Schema<NotificationHubsRegenerateKeysRequest>;
 
+export type NotificationHubsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NotificationHubsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NotificationHubsUpdateRequestTagsMap>;
+
 export interface NotificationHubsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2377,7 +2600,9 @@ export interface NotificationHubsUpdateRequest {
   namespaceName: string;
   /** Notification Hub name */
   notificationHubName: string;
-  body: unknown;
+  properties?: NotificationHubPropertiesInput;
+  sku?: Sku;
+  tags?: NotificationHubsUpdateRequestTagsMap;
 }
 export const NotificationHubsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2385,7 +2610,9 @@ export const NotificationHubsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     notificationHubName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(NotificationHubPropertiesInput),
+    sku: S.optional(Sku),
+    tags: S.optional(NotificationHubsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2494,7 +2721,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Log specifications. */
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -2514,7 +2742,7 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 /** List of availabilities. */
-export type MetricSpecificationAvailabilitiesList = Availability[];
+export type MetricSpecificationAvailabilitiesList = ReadonlyArray<Availability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   Availability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
@@ -2555,7 +2783,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specification. */
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -2610,7 +2838,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Gets list of NotificationHubs operations supported by the Microsoft.NotificationHubs resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2750,14 +2978,16 @@ export const PrivateEndpointConnectionsGetGroupIdRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsGetGroupIdRequest>;
 
 /** Required members. For Notification Hubs, it's always a collection with a single "namespace" item. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names. For Notification Hubs, it contains two CNames for Service Bus and Notification Hubs zones. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2838,7 +3068,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type PrivateEndpointConnectionResourceListResultValueList =
-  PrivateEndpointConnectionResource[];
+  ReadonlyArray<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -2912,7 +3142,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2933,6 +3164,46 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourceListResult",
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
+/** Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection. */
+export interface RemotePrivateEndpointConnectionInput {}
+export const RemotePrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RemotePrivateEndpointConnectionInput",
+}) as any as S.Schema<RemotePrivateEndpointConnectionInput>;
+
+/** State of the Private Link Service connection. */
+export interface RemotePrivateLinkServiceConnectionStateInput {
+  status?: PrivateLinkConnectionStatus;
+}
+export const RemotePrivateLinkServiceConnectionStateInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(PrivateLinkConnectionStatus),
+    }),
+  ).annotate({
+    identifier: "RemotePrivateLinkServiceConnectionStateInput",
+  }) as any as S.Schema<RemotePrivateLinkServiceConnectionStateInput>;
+
+/** Private Endpoint Connection properties. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  provisioningState?: PrivateEndpointConnectionProvisioningState;
+  privateEndpoint?: RemotePrivateEndpointConnectionInput;
+  privateLinkServiceConnectionState?: RemotePrivateLinkServiceConnectionStateInput;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+      privateEndpoint: S.optional(RemotePrivateEndpointConnectionInput),
+      privateLinkServiceConnectionState: S.optional(
+        RemotePrivateLinkServiceConnectionStateInput,
+      ),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2942,7 +3213,7 @@ export interface PrivateEndpointConnectionsUpdateRequest {
   namespaceName: string;
   /** Private Endpoint Connection Name */
   privateEndpointConnectionName: string;
-  body: unknown;
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2951,7 +3222,7 @@ export const PrivateEndpointConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",

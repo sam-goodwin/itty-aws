@@ -13,88 +13,15 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ApplicationDefinitionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the managed application definition. */
-  applicationDefinitionName: string;
-  body: unknown;
-}
-export const ApplicationDefinitionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      applicationDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
-        code: 200,
-        apiVersion: "2021-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ApplicationDefinitionsCreateOrUpdateRequest",
-  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>;
-
 /** Resource tags */
-export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
+export type ApplicationDefinitionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+export const ApplicationDefinitionsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
-
-/** The type of identity that created the resource. */
-export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
-export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
-export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface ApplicationDefinitionsCreateOrUpdateResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const ApplicationDefinitionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationDefinitionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseSystemData>;
+  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequestTagsMap>;
 
 /** SKU for the resource. */
 export interface Sku {
@@ -123,11 +50,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The managed application lock level. */
-export type ApplicationLockLevel =
-  | "CanNotDelete"
-  | "ReadOnly"
-  | "None"
-  | (string & {});
+export type ApplicationLockLevel = "CanNotDelete" | "ReadOnly" | "None";
 export const ApplicationLockLevel = /*@__PURE__*/ S.String;
 
 /** The managed application provider authorization. */
@@ -148,7 +71,7 @@ export const ApplicationAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider authorizations. */
 export type ApplicationDefinitionPropertiesAuthorizationsList =
-  ApplicationAuthorization[];
+  ReadonlyArray<ApplicationAuthorization>;
 export const ApplicationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ApplicationAuthorization,
@@ -159,16 +82,11 @@ export type ApplicationDefinitionArtifactName =
   | "NotSpecified"
   | "ApplicationResourceTemplate"
   | "CreateUiDefinition"
-  | "MainTemplateParameters"
-  | (string & {});
+  | "MainTemplateParameters";
 export const ApplicationDefinitionArtifactName = /*@__PURE__*/ S.String;
 
 /** The managed application artifact type. */
-export type ApplicationArtifactType =
-  | "NotSpecified"
-  | "Template"
-  | "Custom"
-  | (string & {});
+export type ApplicationArtifactType = "NotSpecified" | "Template" | "Custom";
 export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 
 /** Application definition artifact. */
@@ -192,7 +110,7 @@ export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition. */
 export type ApplicationDefinitionPropertiesArtifactsList =
-  ApplicationDefinitionArtifact[];
+  ReadonlyArray<ApplicationDefinitionArtifact>;
 export const ApplicationDefinitionPropertiesArtifactsList =
   /*@__PURE__*/ S.Array(
     ApplicationDefinitionArtifact,
@@ -213,7 +131,7 @@ export const ApplicationNotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application notification endpoint. */
 export type ApplicationNotificationPolicyNotificationEndpointsList =
-  ApplicationNotificationEndpoint[];
+  ReadonlyArray<ApplicationNotificationEndpoint>;
 export const ApplicationNotificationPolicyNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ApplicationNotificationEndpoint,
@@ -235,7 +153,7 @@ export const ApplicationNotificationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The deny assignment excluded actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -243,7 +161,7 @@ export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
 
 /** The deny assignment excluded data actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -271,11 +189,7 @@ export const ApplicationPackageLockingPolicyDefinition =
   }) as any as S.Schema<ApplicationPackageLockingPolicyDefinition>;
 
 /** The deployment mode. */
-export type DeploymentMode =
-  | "NotSpecified"
-  | "Incremental"
-  | "Complete"
-  | (string & {});
+export type DeploymentMode = "NotSpecified" | "Incremental" | "Complete";
 export const DeploymentMode = /*@__PURE__*/ S.String;
 
 /** Managed application deployment policy. */
@@ -295,8 +209,7 @@ export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationManagementMode =
   | "NotSpecified"
   | "Unmanaged"
-  | "Managed"
-  | (string & {});
+  | "Managed";
 export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 
 /** Managed application management policy. */
@@ -332,7 +245,8 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationPolicy>;
 
 /** The managed application provider policies. */
-export type ApplicationDefinitionPropertiesPoliciesList = ApplicationPolicy[];
+export type ApplicationDefinitionPropertiesPoliciesList =
+  ReadonlyArray<ApplicationPolicy>;
 export const ApplicationDefinitionPropertiesPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicy,
@@ -394,6 +308,102 @@ export const ApplicationDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationDefinitionProperties",
 }) as any as S.Schema<ApplicationDefinitionProperties>;
+
+export interface ApplicationDefinitionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the managed application definition. */
+  applicationDefinitionName: string;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationDefinitionsCreateOrUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The managed application definition properties. */
+  properties: ApplicationDefinitionProperties;
+}
+export const ApplicationDefinitionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      applicationDefinitionName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(ApplicationDefinitionsCreateOrUpdateRequestTagsMap),
+      managedBy: S.optional(S.String),
+      sku: S.optional(Sku),
+      properties: ApplicationDefinitionProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+        code: 200,
+        apiVersion: "2021-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ApplicationDefinitionsCreateOrUpdateRequest",
+  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>;
+
+/** Resource tags */
+export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
+
+/** The type of identity that created the resource. */
+export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
+  "User" | "Application" | "ManagedIdentity" | "Key";
+export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
+  "User" | "Application" | "ManagedIdentity" | "Key";
+export const ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface ApplicationDefinitionsCreateOrUpdateResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const ApplicationDefinitionsCreateOrUpdateResponseSystemData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdBy: S.optional(S.String),
+      createdByType: S.optional(
+        ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType,
+      ),
+      createdAt: S.optional(S.String),
+      lastModifiedBy: S.optional(S.String),
+      lastModifiedByType: S.optional(
+        ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+      ),
+      lastModifiedAt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ApplicationDefinitionsCreateOrUpdateResponseSystemData",
+  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseSystemData>;
 
 export interface ApplicationDefinitionsCreateOrUpdateResponse {
   /** Resource ID */
@@ -505,8 +515,7 @@ export type ApplicationDefinitionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -515,8 +524,7 @@ export type ApplicationDefinitionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -626,8 +634,7 @@ export type ApplicationDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -636,8 +643,7 @@ export type ApplicationDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -709,7 +715,8 @@ export const ApplicationDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationDefinition>;
 
 /** The array of managed application definitions. */
-export type ApplicationDefinitionListResultValueList = ApplicationDefinition[];
+export type ApplicationDefinitionListResultValueList =
+  ReadonlyArray<ApplicationDefinition>;
 export const ApplicationDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApplicationDefinition,
 ) as any as S.Schema<ApplicationDefinitionListResultValueList>;
@@ -750,6 +757,16 @@ export const ApplicationDefinitionsListBySubscriptionRequest =
     identifier: "ApplicationDefinitionsListBySubscriptionRequest",
   }) as any as S.Schema<ApplicationDefinitionsListBySubscriptionRequest>;
 
+/** Application definition tags */
+export type ApplicationDefinitionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationDefinitionsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationDefinitionsUpdateRequestTagsMap>;
+
 export interface ApplicationDefinitionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -757,14 +774,15 @@ export interface ApplicationDefinitionsUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed application definition. */
   applicationDefinitionName: string;
-  body: unknown;
+  /** Application definition tags */
+  tags?: ApplicationDefinitionsUpdateRequestTagsMap;
 }
 export const ApplicationDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationDefinitionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ApplicationDefinitionsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -792,8 +810,7 @@ export type ApplicationDefinitionsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -802,8 +819,7 @@ export type ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -877,6 +893,155 @@ export const ApplicationDefinitionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ApplicationDefinitionsUpdateResponse",
 }) as any as S.Schema<ApplicationDefinitionsUpdateResponse>;
 
+/** Resource tags */
+export type ApplicationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
+
+/** The Jit approval mode. */
+export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
+export const JitApprovalMode = /*@__PURE__*/ S.String;
+
+/** The approver type. */
+export type JitApproverDefinitionType = "user" | "group";
+export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
+
+/** JIT approver definition. */
+export interface JitApproverDefinition {
+  /** The approver service principal Id. */
+  id: string;
+  /** The approver type. */
+  type?: JitApproverDefinitionType;
+  /** The approver display name. */
+  displayName?: string;
+}
+export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.optional(JitApproverDefinitionType),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JitApproverDefinition",
+}) as any as S.Schema<JitApproverDefinition>;
+
+/** The JIT approvers */
+export type ApplicationJitAccessPolicyJitApproversList =
+  ReadonlyArray<JitApproverDefinition>;
+export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
+  JitApproverDefinition,
+) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
+
+/** Managed application Jit access policy. */
+export interface ApplicationJitAccessPolicy {
+  /** Whether the JIT access is enabled. */
+  jitAccessEnabled: boolean;
+  /** JIT approval mode. */
+  jitApprovalMode?: JitApprovalMode;
+  /** The JIT approvers */
+  jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
+  /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
+  maximumJitAccessDuration?: string;
+}
+export const ApplicationJitAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jitAccessEnabled: S.Boolean,
+    jitApprovalMode: S.optional(JitApprovalMode),
+    jitApprovers: S.optional(ApplicationJitAccessPolicyJitApproversList),
+    maximumJitAccessDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationJitAccessPolicy",
+}) as any as S.Schema<ApplicationJitAccessPolicy>;
+
+/** The managed application properties. */
+export interface ApplicationPropertiesInput {
+  /** The managed resource group Id. */
+  managedResourceGroupId?: string;
+  /** The fully qualified path of managed application definition Id. */
+  applicationDefinitionId?: string;
+  /** Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string. */
+  parameters?: unknown;
+  /** The managed application Jit access policy. */
+  jitAccessPolicy?: ApplicationJitAccessPolicy;
+}
+export const ApplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedResourceGroupId: S.optional(S.String),
+    applicationDefinitionId: S.optional(S.String),
+    parameters: S.optional(S.Unknown),
+    jitAccessPolicy: S.optional(ApplicationJitAccessPolicy),
+  }),
+).annotate({
+  identifier: "ApplicationPropertiesInput",
+}) as any as S.Schema<ApplicationPropertiesInput>;
+
+/** Plan for the managed application. */
+export interface Plan {
+  /** The plan name. */
+  name: string;
+  /** The publisher ID. */
+  publisher: string;
+  /** The product code. */
+  product: string;
+  /** The promotion code. */
+  promotionCode?: string;
+  /** The plan's version. */
+  version: string;
+}
+export const Plan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.String,
+  }),
+).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
+
+/** The identity type. */
+export type IdentityInputType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned"
+  | "None";
+export const IdentityInputType = /*@__PURE__*/ S.String;
+
+/** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
+export interface UserAssignedResourceIdentityInput {}
+export const UserAssignedResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedResourceIdentityInput",
+}) as any as S.Schema<UserAssignedResourceIdentityInput>;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedResourceIdentityInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. */
+export interface IdentityInput {
+  /** The identity type. */
+  type?: IdentityInputType;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(IdentityInputType),
+    userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -884,14 +1049,36 @@ export interface ApplicationsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsCreateOrUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The managed application properties. */
+  properties: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: Plan;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
 }
 export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    properties: ApplicationPropertiesInput,
+    plan: S.optional(Plan),
+    kind: S.String,
+    identity: S.optional(IdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -918,8 +1105,7 @@ export type ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -928,8 +1114,7 @@ export type ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -976,8 +1161,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Managed application billing details definition. */
@@ -993,69 +1177,9 @@ export const ApplicationBillingDetailsDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationBillingDetailsDefinition",
 }) as any as S.Schema<ApplicationBillingDetailsDefinition>;
 
-/** The Jit approval mode. */
-export type JitApprovalMode =
-  | "NotSpecified"
-  | "AutoApprove"
-  | "ManualApprove"
-  | (string & {});
-export const JitApprovalMode = /*@__PURE__*/ S.String;
-
-/** The approver type. */
-export type JitApproverDefinitionType = "user" | "group" | (string & {});
-export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
-
-/** JIT approver definition. */
-export interface JitApproverDefinition {
-  /** The approver service principal Id. */
-  id: string;
-  /** The approver type. */
-  type?: JitApproverDefinitionType;
-  /** The approver display name. */
-  displayName?: string;
-}
-export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.optional(JitApproverDefinitionType),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JitApproverDefinition",
-}) as any as S.Schema<JitApproverDefinition>;
-
-/** The JIT approvers */
-export type ApplicationJitAccessPolicyJitApproversList =
-  JitApproverDefinition[];
-export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
-  JitApproverDefinition,
-) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
-
-/** Managed application Jit access policy. */
-export interface ApplicationJitAccessPolicy {
-  /** Whether the JIT access is enabled. */
-  jitAccessEnabled: boolean;
-  /** JIT approval mode. */
-  jitApprovalMode?: JitApprovalMode;
-  /** The JIT approvers */
-  jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
-  /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
-  maximumJitAccessDuration?: string;
-}
-export const ApplicationJitAccessPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jitAccessEnabled: S.Boolean,
-    jitApprovalMode: S.optional(JitApprovalMode),
-    jitApprovers: S.optional(ApplicationJitAccessPolicyJitApproversList),
-    maximumJitAccessDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationJitAccessPolicy",
-}) as any as S.Schema<ApplicationJitAccessPolicy>;
-
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList =
-  ApplicationAuthorization[];
+  ReadonlyArray<ApplicationAuthorization>;
 export const ApplicationPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
   ApplicationAuthorization,
 ) as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
@@ -1100,8 +1224,7 @@ export type ApplicationArtifactName =
   | "NotSpecified"
   | "ViewDefinition"
   | "Authorizations"
-  | "CustomRoleDefinition"
-  | (string & {});
+  | "CustomRoleDefinition";
 export const ApplicationArtifactName = /*@__PURE__*/ S.String;
 
 /** Managed application artifact. */
@@ -1124,7 +1247,8 @@ export const ApplicationArtifact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationArtifact>;
 
 /** The collection of managed application artifacts. */
-export type ApplicationPropertiesArtifactsList = ApplicationArtifact[];
+export type ApplicationPropertiesArtifactsList =
+  ReadonlyArray<ApplicationArtifact>;
 export const ApplicationPropertiesArtifactsList = /*@__PURE__*/ S.Array(
   ApplicationArtifact,
 ) as any as S.Schema<ApplicationPropertiesArtifactsList>;
@@ -1203,36 +1327,12 @@ export const ApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationProperties",
 }) as any as S.Schema<ApplicationProperties>;
 
-/** Plan for the managed application. */
-export interface Plan {
-  /** The plan name. */
-  name: string;
-  /** The publisher ID. */
-  publisher: string;
-  /** The product code. */
-  product: string;
-  /** The promotion code. */
-  promotionCode?: string;
-  /** The plan's version. */
-  version: string;
-}
-export const Plan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.String,
-  }),
-).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
-
 /** The identity type. */
 export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -1325,16 +1425,48 @@ export const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsCreateOrUpdateResponse",
 }) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
 
+/** Resource tags */
+export type ApplicationsCreateOrUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsCreateOrUpdateByIdRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequestTagsMap>;
+
 export interface ApplicationsCreateOrUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsCreateOrUpdateByIdRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The managed application properties. */
+  properties: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: Plan;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
 }
 export const ApplicationsCreateOrUpdateByIdRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       applicationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(ApplicationsCreateOrUpdateByIdRequestTagsMap),
+      managedBy: S.optional(S.String),
+      sku: S.optional(Sku),
+      properties: ApplicationPropertiesInput,
+      plan: S.optional(Plan),
+      kind: S.String,
+      identity: S.optional(IdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1362,14 +1494,13 @@ export type ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ApplicationsCreateOrUpdateByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1549,8 +1680,7 @@ export type ApplicationsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1559,8 +1689,7 @@ export type ApplicationsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1672,8 +1801,7 @@ export type ApplicationsGetByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsGetByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1682,8 +1810,7 @@ export type ApplicationsGetByIdResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsGetByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1792,7 +1919,7 @@ export const ApplicationsListAllowedUpgradePlansRequest =
   }) as any as S.Schema<ApplicationsListAllowedUpgradePlansRequest>;
 
 /** The array of plans. */
-export type AllowedUpgradePlansResultValueList = Plan[];
+export type AllowedUpgradePlansResultValueList = ReadonlyArray<Plan>;
 export const AllowedUpgradePlansResultValueList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<AllowedUpgradePlansResultValueList>;
@@ -1845,8 +1972,7 @@ export type ApplicationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1854,8 +1980,7 @@ export type ApplicationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1931,7 +2056,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The array of managed applications. */
-export type ApplicationListResultValueList = Application[];
+export type ApplicationListResultValueList = ReadonlyArray<Application>;
 export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
@@ -1972,6 +2097,14 @@ export const ApplicationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "ApplicationsListBySubscriptionRequest",
 }) as any as S.Schema<ApplicationsListBySubscriptionRequest>;
 
+/** The user assigned identities. */
+export type ApplicationsListTokensRequestUserAssignedIdentitiesList =
+  ReadonlyArray<string>;
+export const ApplicationsListTokensRequestUserAssignedIdentitiesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ApplicationsListTokensRequestUserAssignedIdentitiesList>;
+
 export interface ApplicationsListTokensRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1979,14 +2112,20 @@ export interface ApplicationsListTokensRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body: unknown;
+  /** The authorization audience. */
+  authorizationAudience?: string;
+  /** The user assigned identities. */
+  userAssignedIdentities?: ApplicationsListTokensRequestUserAssignedIdentitiesList;
 }
 export const ApplicationsListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    authorizationAudience: S.optional(S.String),
+    userAssignedIdentities: S.optional(
+      ApplicationsListTokensRequestUserAssignedIdentitiesList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2031,7 +2170,8 @@ export const ManagedIdentityToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedIdentityToken>;
 
 /** The array of managed identity tokens. */
-export type ManagedIdentityTokenResultValueList = ManagedIdentityToken[];
+export type ManagedIdentityTokenResultValueList =
+  ReadonlyArray<ManagedIdentityToken>;
 export const ManagedIdentityTokenResultValueList = /*@__PURE__*/ S.Array(
   ManagedIdentityToken,
 ) as any as S.Schema<ManagedIdentityTokenResultValueList>;
@@ -2082,6 +2222,38 @@ export const ApplicationsRefreshPermissionsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ApplicationsRefreshPermissionsResponse",
 }) as any as S.Schema<ApplicationsRefreshPermissionsResponse>;
 
+/** Resource tags */
+export type ApplicationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsUpdateRequestTagsMap>;
+
+/** Plan for the managed application. */
+export interface PlanPatchable {
+  /** The plan name. */
+  name?: string;
+  /** The publisher ID. */
+  publisher?: string;
+  /** The product code. */
+  product?: string;
+  /** The promotion code. */
+  promotionCode?: string;
+  /** The plan's version. */
+  version?: string;
+}
+export const PlanPatchable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    publisher: S.optional(S.String),
+    product: S.optional(S.String),
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({ identifier: "PlanPatchable" }) as any as S.Schema<PlanPatchable>;
+
 export interface ApplicationsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2089,14 +2261,36 @@ export interface ApplicationsUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body?: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The managed application properties. */
+  properties?: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: PlanPatchable;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind?: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
 }
 export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsUpdateRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    properties: S.optional(ApplicationPropertiesInput),
+    plan: S.optional(PlanPatchable),
+    kind: S.optional(S.String),
+    identity: S.optional(IdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2123,8 +2317,7 @@ export type ApplicationsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2133,8 +2326,7 @@ export type ApplicationsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2170,29 +2362,6 @@ export const ApplicationsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ApplicationsUpdateResponseSystemData",
 }) as any as S.Schema<ApplicationsUpdateResponseSystemData>;
-
-/** Plan for the managed application. */
-export interface PlanPatchable {
-  /** The plan name. */
-  name?: string;
-  /** The publisher ID. */
-  publisher?: string;
-  /** The product code. */
-  product?: string;
-  /** The promotion code. */
-  promotionCode?: string;
-  /** The plan's version. */
-  version?: string;
-}
-export const PlanPatchable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    publisher: S.optional(S.String),
-    product: S.optional(S.String),
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlanPatchable" }) as any as S.Schema<PlanPatchable>;
 
 export interface ApplicationsUpdateResponse {
   /** Resource ID */
@@ -2239,6 +2408,42 @@ export const ApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateResponse",
 }) as any as S.Schema<ApplicationsUpdateResponse>;
 
+/** The JIT request metadata. */
+export interface JitRequestMetadata {
+  /** The origin request id. */
+  originRequestId?: string;
+  /** The requestor id. */
+  requestorId?: string;
+  /** The publisher's tenant name. */
+  tenantDisplayName?: string;
+  /** The subject display name. */
+  subjectDisplayName?: string;
+}
+export const JitRequestMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originRequestId: S.optional(S.String),
+    requestorId: S.optional(S.String),
+    tenantDisplayName: S.optional(S.String),
+    subjectDisplayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JitRequestMetadata",
+}) as any as S.Schema<JitRequestMetadata>;
+
+/** The JIT status. */
+export type Status = "NotSpecified" | "Elevate" | "Remove";
+export const Status = /*@__PURE__*/ S.String;
+
+/** The sub status. */
+export type SubStatus =
+  | "NotSpecified"
+  | "Approved"
+  | "Denied"
+  | "Failed"
+  | "Expired"
+  | "Timeout";
+export const SubStatus = /*@__PURE__*/ S.String;
+
 export interface ApplicationsUpdateAccessRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2246,14 +2451,24 @@ export interface ApplicationsUpdateAccessRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body: unknown;
+  /** The approver name. */
+  approver?: string;
+  /** The JIT request metadata. */
+  metadata: JitRequestMetadata;
+  /** The JIT status. */
+  status: Status;
+  /** The JIT status. */
+  subStatus: SubStatus;
 }
 export const ApplicationsUpdateAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    approver: S.optional(S.String),
+    metadata: JitRequestMetadata,
+    status: Status,
+    subStatus: SubStatus,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2273,15 +2488,46 @@ export const ApplicationsUpdateAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateAccessResponse",
 }) as any as S.Schema<ApplicationsUpdateAccessResponse>;
 
+/** Resource tags */
+export type ApplicationsUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsUpdateByIdRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsUpdateByIdRequestTagsMap>;
+
 export interface ApplicationsUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
-  body?: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsUpdateByIdRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The managed application properties. */
+  properties?: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: PlanPatchable;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind?: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
 }
 export const ApplicationsUpdateByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsUpdateByIdRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    properties: S.optional(ApplicationPropertiesInput),
+    plan: S.optional(PlanPatchable),
+    kind: S.optional(S.String),
+    identity: S.optional(IdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2308,8 +2554,7 @@ export type ApplicationsUpdateByIdResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsUpdateByIdResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2318,8 +2563,7 @@ export type ApplicationsUpdateByIdResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ApplicationsUpdateByIdResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2401,6 +2645,81 @@ export const ApplicationsUpdateByIdResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateByIdResponse",
 }) as any as S.Schema<ApplicationsUpdateByIdResponse>;
 
+/** Resource tags */
+export type JitRequestsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const JitRequestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JitRequestsCreateOrUpdateRequestTagsMap>;
+
+/** The JIT authorization policies. */
+export interface JitAuthorizationPolicies {
+  /** The the principal id that will be granted JIT access. */
+  principalId: string;
+  /** The role definition id that will be granted to the Principal. */
+  roleDefinitionId: string;
+}
+export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    roleDefinitionId: S.String,
+  }),
+).annotate({
+  identifier: "JitAuthorizationPolicies",
+}) as any as S.Schema<JitAuthorizationPolicies>;
+
+/** The JIT authorization policies. */
+export type JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  ReadonlyArray<JitAuthorizationPolicies>;
+export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  /*@__PURE__*/ S.Array(
+    JitAuthorizationPolicies,
+  ) as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
+
+/** The JIT request scheduling type. */
+export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
+export const JitSchedulingType = /*@__PURE__*/ S.String;
+
+/** The JIT scheduling policies. */
+export interface JitSchedulingPolicy {
+  /** The type of JIT schedule. */
+  type: JitSchedulingType;
+  duration: string;
+  /** The start time of the request. */
+  startTime: string;
+}
+export const JitSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: JitSchedulingType,
+    duration: S.String,
+    startTime: S.String,
+  }),
+).annotate({
+  identifier: "JitSchedulingPolicy",
+}) as any as S.Schema<JitSchedulingPolicy>;
+
+/** Information about JIT request properties */
+export interface JitRequestPropertiesInput {
+  /** The parent application id. */
+  applicationResourceId: string;
+  /** The JIT authorization policies. */
+  jitAuthorizationPolicies: JitRequestPropertiesInputJitAuthorizationPoliciesList;
+  /** The JIT request properties. */
+  jitSchedulingPolicy: JitSchedulingPolicy;
+}
+export const JitRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationResourceId: S.String,
+    jitAuthorizationPolicies:
+      JitRequestPropertiesInputJitAuthorizationPoliciesList,
+    jitSchedulingPolicy: JitSchedulingPolicy,
+  }),
+).annotate({
+  identifier: "JitRequestPropertiesInput",
+}) as any as S.Schema<JitRequestPropertiesInput>;
+
 export interface JitRequestsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2408,14 +2727,21 @@ export interface JitRequestsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the JIT request. */
   jitRequestName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: JitRequestsCreateOrUpdateRequestTagsMap;
+  /** The JIT request properties. */
+  properties?: JitRequestPropertiesInput;
 }
 export const JitRequestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jitRequestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(JitRequestsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(JitRequestPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2442,8 +2768,7 @@ export type JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2452,8 +2777,7 @@ export type JitRequestsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2491,54 +2815,12 @@ export const JitRequestsCreateOrUpdateResponseSystemData =
   }) as any as S.Schema<JitRequestsCreateOrUpdateResponseSystemData>;
 
 /** The JIT authorization policies. */
-export interface JitAuthorizationPolicies {
-  /** The the principal id that will be granted JIT access. */
-  principalId: string;
-  /** The role definition id that will be granted to the Principal. */
-  roleDefinitionId: string;
-}
-export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    roleDefinitionId: S.String,
-  }),
-).annotate({
-  identifier: "JitAuthorizationPolicies",
-}) as any as S.Schema<JitAuthorizationPolicies>;
-
-/** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList =
-  JitAuthorizationPolicies[];
+  ReadonlyArray<JitAuthorizationPolicies>;
 export const JitRequestPropertiesJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
   ) as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
-
-/** The JIT request scheduling type. */
-export type JitSchedulingType =
-  | "NotSpecified"
-  | "Once"
-  | "Recurring"
-  | (string & {});
-export const JitSchedulingType = /*@__PURE__*/ S.String;
-
-/** The JIT scheduling policies. */
-export interface JitSchedulingPolicy {
-  /** The type of JIT schedule. */
-  type: JitSchedulingType;
-  duration: string;
-  /** The start time of the request. */
-  startTime: string;
-}
-export const JitSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: JitSchedulingType,
-    duration: S.String,
-    startTime: S.String,
-  }),
-).annotate({
-  identifier: "JitSchedulingPolicy",
-}) as any as S.Schema<JitSchedulingPolicy>;
 
 /** The JIT request state. */
 export type JitRequestState =
@@ -2549,8 +2831,7 @@ export type JitRequestState =
   | "Failed"
   | "Canceled"
   | "Expired"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const JitRequestState = /*@__PURE__*/ S.String;
 
 /** Information about JIT request properties */
@@ -2688,8 +2969,7 @@ export type JitRequestsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2698,8 +2978,7 @@ export type JitRequestsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2798,8 +3077,7 @@ export type JitRequestDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestDefinitionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2808,8 +3086,7 @@ export type JitRequestDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestDefinitionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2875,7 +3152,8 @@ export const JitRequestDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JitRequestDefinition>;
 
 /** The array of Jit request definition. */
-export type JitRequestDefinitionListResultValueList = JitRequestDefinition[];
+export type JitRequestDefinitionListResultValueList =
+  ReadonlyArray<JitRequestDefinition>;
 export const JitRequestDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   JitRequestDefinition,
 ) as any as S.Schema<JitRequestDefinitionListResultValueList>;
@@ -2916,6 +3194,15 @@ export const JitRequestsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "JitRequestsListBySubscriptionRequest",
 }) as any as S.Schema<JitRequestsListBySubscriptionRequest>;
 
+/** Jit request tags */
+export type JitRequestsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const JitRequestsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JitRequestsUpdateRequestTagsMap>;
+
 export interface JitRequestsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2923,14 +3210,15 @@ export interface JitRequestsUpdateRequest {
   resourceGroupName: string;
   /** The name of the JIT request. */
   jitRequestName: string;
-  body: unknown;
+  /** Jit request tags */
+  tags?: JitRequestsUpdateRequestTagsMap;
 }
 export const JitRequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jitRequestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(JitRequestsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2957,8 +3245,7 @@ export type JitRequestsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2967,8 +3254,7 @@ export type JitRequestsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const JitRequestsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3069,11 +3355,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3100,7 +3386,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type ListOperationsResponseValueList = Operation[];
+export type ListOperationsResponseValueList = ReadonlyArray<Operation>;
 export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;

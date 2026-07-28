@@ -13,122 +13,50 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AccessControlListsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Access Control List. */
-  accessControlListName: string;
-  body: unknown;
-}
-export const AccessControlListsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accessControlListName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "AccessControlListsCreateRequest",
-}) as any as S.Schema<AccessControlListsCreateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type AccessControlListsCreateResponseTagsMap = {
+export type AccessControlListsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccessControlListsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const AccessControlListsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<AccessControlListsCreateResponseTagsMap>;
+) as any as S.Schema<AccessControlListsCreateRequestTagsMap>;
 
 /** Input method to configure Access Control List. */
-export type ConfigurationType = "File" | "Inline" | (string & {});
+export type ConfigurationType = "File" | "Inline";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type AccessControlListPropertiesDefaultAction =
-  | "Permit"
-  | "Deny"
-  | (string & {});
-export const AccessControlListPropertiesDefaultAction = /*@__PURE__*/ S.String;
+export type AccessControlListPropertiesInputDefaultAction = "Permit" | "Deny";
+export const AccessControlListPropertiesInputDefaultAction =
+  /*@__PURE__*/ S.String;
 
 /** IP Address type. */
-export type IPAddressType = "IPv4" | "IPv6" | (string & {});
+export type IPAddressType = "IPv4" | "IPv6";
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 /** List of the protocols that need to be matched. */
-export type AccessControlListMatchConditionProtocolTypesList = string[];
+export type AccessControlListMatchConditionProtocolTypesList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionProtocolTypesList>;
 
 /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionVlansList = string[];
+export type VlanMatchConditionVlansList = ReadonlyArray<string>;
 export const VlanMatchConditionVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionVlansList>;
 
 /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
-export type VlanMatchConditionInnerVlansList = string[];
+export type VlanMatchConditionInnerVlansList = ReadonlyArray<string>;
 export const VlanMatchConditionInnerVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionInnerVlansList>;
 
 /** List of vlan group names that need to be matched. */
-export type VlanMatchConditionVlanGroupNamesList = string[];
+export type VlanMatchConditionVlanGroupNamesList = ReadonlyArray<string>;
 export const VlanMatchConditionVlanGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanMatchConditionVlanGroupNamesList>;
@@ -156,22 +84,21 @@ export const VlanMatchCondition = /*@__PURE__*/ S.suspend(() =>
 export type SourceDestinationType =
   | "SourceIP"
   | "DestinationIP"
-  | "Bidirectional"
-  | (string & {});
+  | "Bidirectional";
 export const SourceDestinationType = /*@__PURE__*/ S.String;
 
 /** IP Prefix Type that needs to be matched. */
-export type PrefixType = "Prefix" | "LongestPrefix" | (string & {});
+export type PrefixType = "Prefix" | "LongestPrefix";
 export const PrefixType = /*@__PURE__*/ S.String;
 
 /** The list of IP Prefixes that need to be matched. */
-export type IpMatchConditionIpPrefixValuesList = string[];
+export type IpMatchConditionIpPrefixValuesList = ReadonlyArray<string>;
 export const IpMatchConditionIpPrefixValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionIpPrefixValuesList>;
 
 /** The List of IP Group Names that need to be matched. */
-export type IpMatchConditionIpGroupNamesList = string[];
+export type IpMatchConditionIpGroupNamesList = ReadonlyArray<string>;
 export const IpMatchConditionIpGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpMatchConditionIpGroupNamesList>;
@@ -199,74 +126,77 @@ export const IpMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpMatchCondition>;
 
 /** List of ether type values that need to be matched. */
-export type AccessControlListMatchConditionEtherTypesList = string[];
+export type AccessControlListMatchConditionEtherTypesList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionEtherTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionEtherTypesList>;
 
 /** List of IP fragment packets that need to be matched. */
-export type AccessControlListMatchConditionFragmentsList = string[];
+export type AccessControlListMatchConditionFragmentsList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionFragmentsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionFragmentsList>;
 
 /** List of IP Lengths that need to be matched. */
-export type AccessControlListMatchConditionIpLengthsList = string[];
+export type AccessControlListMatchConditionIpLengthsList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionIpLengthsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionIpLengthsList>;
 
 /** List of TTL [Time To Live] values that need to be matched. */
-export type AccessControlListMatchConditionTtlValuesList = string[];
+export type AccessControlListMatchConditionTtlValuesList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionTtlValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionTtlValuesList>;
 
 /** List of DSCP Markings that need to be matched. */
-export type AccessControlListMatchConditionDscpMarkingsList = string[];
+export type AccessControlListMatchConditionDscpMarkingsList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionDscpMarkingsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionDscpMarkingsList>;
 
 /** Protocol neighbors that need to be matched. */
-export type AccessControlListMatchConditionProtocolNeighborsList = string[];
+export type AccessControlListMatchConditionProtocolNeighborsList =
+  ReadonlyArray<string>;
 export const AccessControlListMatchConditionProtocolNeighborsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListMatchConditionProtocolNeighborsList>;
 
 /** Port type that needs to be matched. */
-export type PortType =
-  | "SourcePort"
-  | "DestinationPort"
-  | "Bidirectional"
-  | (string & {});
+export type PortType = "SourcePort" | "DestinationPort" | "Bidirectional";
 export const PortType = /*@__PURE__*/ S.String;
 
 /** Layer4 protocol type that needs to be matched. */
-export type Layer4Protocol = "TCP" | "UDP" | "SCTP" | (string & {});
+export type Layer4Protocol = "TCP" | "UDP" | "SCTP";
 export const Layer4Protocol = /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
-export type AccessControlListPortConditionPortsList = string[];
+export type AccessControlListPortConditionPortsList = ReadonlyArray<string>;
 export const AccessControlListPortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlListPortConditionPortsList>;
 
 /** List of the port Group Names that need to be matched. */
-export type AccessControlListPortConditionPortGroupNamesList = string[];
+export type AccessControlListPortConditionPortGroupNamesList =
+  ReadonlyArray<string>;
 export const AccessControlListPortConditionPortGroupNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessControlListPortConditionPortGroupNamesList>;
 
 /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
-export type AccessControlListPortConditionFlagsList = string[];
+export type AccessControlListPortConditionFlagsList = ReadonlyArray<string>;
 export const AccessControlListPortConditionFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlListPortConditionFlagsList>;
@@ -299,7 +229,7 @@ export const AccessControlListPortCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlListPortCondition>;
 
 /** Internet Control Message Protocol (ICMP) types */
-export type IcmpConfigurationPropertiesIcmpTypesList = string[];
+export type IcmpConfigurationPropertiesIcmpTypesList = ReadonlyArray<string>;
 export const IcmpConfigurationPropertiesIcmpTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IcmpConfigurationPropertiesIcmpTypesList>;
@@ -364,30 +294,18 @@ export const AccessControlListMatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the match conditions. */
 export type AccessControlListMatchConfigurationMatchConditionsList =
-  AccessControlListMatchCondition[];
+  ReadonlyArray<AccessControlListMatchCondition>;
 export const AccessControlListMatchConfigurationMatchConditionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchCondition,
   ) as any as S.Schema<AccessControlListMatchConfigurationMatchConditionsList>;
 
 /** Type of actions that can be performed. */
-export type AclActionType =
-  | "Drop"
-  | "Count"
-  | "Log"
-  | "Remark"
-  | "PoliceRate"
-  | (string & {});
+export type AclActionType = "Drop" | "Count" | "Log" | "Remark" | "PoliceRate";
 export const AclActionType = /*@__PURE__*/ S.String;
 
 /** Bit rate unit. */
-export type BitRateUnit =
-  | "bps"
-  | "Kbps"
-  | "Mbps"
-  | "Gbps"
-  | "Pps"
-  | (string & {});
+export type BitRateUnit = "bps" | "Kbps" | "Mbps" | "Gbps" | "Pps";
 export const BitRateUnit = /*@__PURE__*/ S.String;
 
 /** Bit rate in bits per second. */
@@ -410,8 +328,7 @@ export type BurstSizeUnit =
   | "KBytes"
   | "MBytes"
   | "GBytes"
-  | "Packets"
-  | (string & {});
+  | "Packets";
 export const BurstSizeUnit = /*@__PURE__*/ S.String;
 
 /** Burst size in packets. */
@@ -468,7 +385,7 @@ export const AccessControlListAction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationActionsList =
-  AccessControlListAction[];
+  ReadonlyArray<AccessControlListAction>;
 export const AccessControlListMatchConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     AccessControlListAction,
@@ -502,15 +419,15 @@ export const AccessControlListMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlListMatchConfiguration>;
 
 /** List of match configurations. */
-export type AccessControlListPropertiesMatchConfigurationsList =
-  AccessControlListMatchConfiguration[];
-export const AccessControlListPropertiesMatchConfigurationsList =
+export type AccessControlListPropertiesInputMatchConfigurationsList =
+  ReadonlyArray<AccessControlListMatchConfiguration>;
+export const AccessControlListPropertiesInputMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     AccessControlListMatchConfiguration,
-  ) as any as S.Schema<AccessControlListPropertiesMatchConfigurationsList>;
+  ) as any as S.Schema<AccessControlListPropertiesInputMatchConfigurationsList>;
 
 /** List of IP Prefixes. */
-export type IpGroupPropertiesIpPrefixesList = string[];
+export type IpGroupPropertiesIpPrefixesList = ReadonlyArray<string>;
 export const IpGroupPropertiesIpPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpGroupPropertiesIpPrefixesList>;
@@ -535,14 +452,15 @@ export const IpGroupProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpGroupProperties>;
 
 /** List of IP Groups. */
-export type CommonDynamicMatchConfigurationIpGroupsList = IpGroupProperties[];
+export type CommonDynamicMatchConfigurationIpGroupsList =
+  ReadonlyArray<IpGroupProperties>;
 export const CommonDynamicMatchConfigurationIpGroupsList =
   /*@__PURE__*/ S.Array(
     IpGroupProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationIpGroupsList>;
 
 /** List of vlans. */
-export type VlanGroupPropertiesVlansList = string[];
+export type VlanGroupPropertiesVlansList = ReadonlyArray<string>;
 export const VlanGroupPropertiesVlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VlanGroupPropertiesVlansList>;
@@ -565,14 +483,14 @@ export const VlanGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of vlan groups. */
 export type CommonDynamicMatchConfigurationVlanGroupsList =
-  VlanGroupProperties[];
+  ReadonlyArray<VlanGroupProperties>;
 export const CommonDynamicMatchConfigurationVlanGroupsList =
   /*@__PURE__*/ S.Array(
     VlanGroupProperties,
   ) as any as S.Schema<CommonDynamicMatchConfigurationVlanGroupsList>;
 
 /** List of the ports that need to be matched. */
-export type PortGroupPropertiesPortsList = string[];
+export type PortGroupPropertiesPortsList = ReadonlyArray<string>;
 export const PortGroupPropertiesPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortGroupPropertiesPortsList>;
@@ -595,7 +513,7 @@ export const PortGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the port groups. */
 export type CommonDynamicMatchConfigurationPortGroupsList =
-  PortGroupProperties[];
+  ReadonlyArray<PortGroupProperties>;
 export const CommonDynamicMatchConfigurationPortGroupsList =
   /*@__PURE__*/ S.Array(
     PortGroupProperties,
@@ -621,36 +539,29 @@ export const CommonDynamicMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommonDynamicMatchConfiguration>;
 
 /** List of dynamic match configurations. */
-export type AccessControlListPropertiesDynamicMatchConfigurationsList =
-  CommonDynamicMatchConfiguration[];
-export const AccessControlListPropertiesDynamicMatchConfigurationsList =
+export type AccessControlListPropertiesInputDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfiguration>;
+export const AccessControlListPropertiesInputDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
-  ) as any as S.Schema<AccessControlListPropertiesDynamicMatchConfigurationsList>;
+  ) as any as S.Schema<AccessControlListPropertiesInputDynamicMatchConfigurationsList>;
 
 /** Access Control List (ACL) Type */
 export type AclType =
   | "ControlPlaneTrafficPolicy"
   | "Tenant"
   | "Management"
-  | "ControlPlaneAcl"
-  | (string & {});
+  | "ControlPlaneAcl";
 export const AclType = /*@__PURE__*/ S.String;
 
 /** Device Role */
-export type DeviceRole =
-  | "CE"
-  | "ToR"
-  | "NPB"
-  | "ManagementSwitch"
-  | (string & {});
+export type DeviceRole = "CE" | "ToR" | "NPB" | "ManagementSwitch";
 export const DeviceRole = /*@__PURE__*/ S.String;
 
 /** Configuration to enable or disable ACL action count. */
 export type GlobalAccessControlListActionPropertiesEnableCount =
   | "True"
-  | "False"
-  | (string & {});
+  | "False";
 export const GlobalAccessControlListActionPropertiesEnableCount =
   /*@__PURE__*/ S.String;
 
@@ -670,26 +581,6 @@ export const GlobalAccessControlListActionProperties = /*@__PURE__*/ S.suspend(
   identifier: "GlobalAccessControlListActionProperties",
 }) as any as S.Schema<GlobalAccessControlListActionProperties>;
 
-/** Details of the last operations performed on the resource */
-export interface LastOperationProperties {
-  /** Details status of the last operation performed on the resource. */
-  details?: string;
-}
-export const LastOperationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    details: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LastOperationProperties",
-}) as any as S.Schema<LastOperationProperties>;
-
-/** Associated Network Fabric Resource IDs */
-export type AccessControlListPropertiesNetworkFabricIdsList = string[];
-export const AccessControlListPropertiesNetworkFabricIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AccessControlListPropertiesNetworkFabricIdsList>;
-
 /** Control Plane Access Control List (ACL) IP condition properties */
 export interface ControlPlanAclIpMatchCondition {
   /** List of the source IP addresses that need to be matched. */
@@ -707,12 +598,7 @@ export const ControlPlanAclIpMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlanAclIpMatchCondition>;
 
 /** Control Plane Access Control List (ACL) Time To Live (TTL) match conditions properties */
-export type ControlPlaneAclTtlMatchType =
-  | "eq"
-  | "neq"
-  | "gt"
-  | "lt"
-  | (string & {});
+export type ControlPlaneAclTtlMatchType = "eq" | "neq" | "gt" | "lt";
 export const ControlPlaneAclTtlMatchType = /*@__PURE__*/ S.String;
 
 /** TTL [Time To Live] match conditions properties */
@@ -732,19 +618,13 @@ export const ControlPlaneAclTtlMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclTtlMatchCondition>;
 
 /** List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236 */
-export type ControlPlaneAclPortConditionPortsList = string[];
+export type ControlPlaneAclPortConditionPortsList = ReadonlyArray<string>;
 export const ControlPlaneAclPortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControlPlaneAclPortConditionPortsList>;
 
 /** Control Plane Access Control List (ACL) port match types */
-export type ControlPlaneAclPortMatchType =
-  | "eq"
-  | "neq"
-  | "gt"
-  | "lt"
-  | "range"
-  | (string & {});
+export type ControlPlaneAclPortMatchType = "eq" | "neq" | "gt" | "lt" | "range";
 export const ControlPlaneAclPortMatchType = /*@__PURE__*/ S.String;
 
 /** Control Plane Access Control List (ACL) Port Match conditions properties */
@@ -780,7 +660,7 @@ export const ControlPlaneAclPortMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclPortMatchCondition>;
 
 /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
-export type ControlPlaneAclMatchConditionFlagsList = string[];
+export type ControlPlaneAclMatchConditionFlagsList = ReadonlyArray<string>;
 export const ControlPlaneAclMatchConditionFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControlPlaneAclMatchConditionFlagsList>;
@@ -814,11 +694,7 @@ export const ControlPlaneAclMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclMatchCondition>;
 
 /** Control Plane Access Control List (ACL) Action Types */
-export type ControlPlaneAclActionType =
-  | "Permit"
-  | "Deny"
-  | "Remark"
-  | (string & {});
+export type ControlPlaneAclActionType = "Permit" | "Deny" | "Remark";
 export const ControlPlaneAclActionType = /*@__PURE__*/ S.String;
 
 /** Control Plane Access Control List (ACL) Actions */
@@ -862,7 +738,7 @@ export const ControlPlaneAclMatchConfigurationProperties =
 
 /** Access Control List (ACL) match configurations. */
 export type ControlPlaneAclPropertiesMatchConfigurationsList =
-  ControlPlaneAclMatchConfigurationProperties[];
+  ReadonlyArray<ControlPlaneAclMatchConfigurationProperties>;
 export const ControlPlaneAclPropertiesMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclMatchConfigurationProperties,
@@ -887,8 +763,190 @@ export const ControlPlaneAclProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclProperties>;
 
 /** Access Control List (ACL) configurations. */
+export type AccessControlListPropertiesInputControlPlaneAclConfigurationList =
+  ReadonlyArray<ControlPlaneAclProperties>;
+export const AccessControlListPropertiesInputControlPlaneAclConfigurationList =
+  /*@__PURE__*/ S.Array(
+    ControlPlaneAclProperties,
+  ) as any as S.Schema<AccessControlListPropertiesInputControlPlaneAclConfigurationList>;
+
+/** Access Control List Properties defines the resource properties. */
+export interface AccessControlListPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Input method to configure Access Control List. */
+  configurationType: ConfigurationType;
+  /** Access Control List file URL. */
+  aclsUrl?: string;
+  /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+  defaultAction?: AccessControlListPropertiesInputDefaultAction;
+  /** List of match configurations. */
+  matchConfigurations?: AccessControlListPropertiesInputMatchConfigurationsList;
+  /** List of dynamic match configurations. */
+  dynamicMatchConfigurations?: AccessControlListPropertiesInputDynamicMatchConfigurationsList;
+  /** Access Control List (ACL) Type */
+  aclType?: AclType;
+  /** Device Role */
+  deviceRole?: DeviceRole;
+  /** Global Access Control List (ACL) actions */
+  globalAccessControlListActions?: GlobalAccessControlListActionProperties;
+  /** Access Control List (ACL) configurations. */
+  controlPlaneAclConfiguration?: AccessControlListPropertiesInputControlPlaneAclConfigurationList;
+}
+export const AccessControlListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    configurationType: ConfigurationType,
+    aclsUrl: S.optional(S.String),
+    defaultAction: S.optional(AccessControlListPropertiesInputDefaultAction),
+    matchConfigurations: S.optional(
+      AccessControlListPropertiesInputMatchConfigurationsList,
+    ),
+    dynamicMatchConfigurations: S.optional(
+      AccessControlListPropertiesInputDynamicMatchConfigurationsList,
+    ),
+    aclType: S.optional(AclType),
+    deviceRole: S.optional(DeviceRole),
+    globalAccessControlListActions: S.optional(
+      GlobalAccessControlListActionProperties,
+    ),
+    controlPlaneAclConfiguration: S.optional(
+      AccessControlListPropertiesInputControlPlaneAclConfigurationList,
+    ),
+  }),
+).annotate({
+  identifier: "AccessControlListPropertiesInput",
+}) as any as S.Schema<AccessControlListPropertiesInput>;
+
+export interface AccessControlListsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Access Control List. */
+  accessControlListName: string;
+  /** Resource tags. */
+  tags?: AccessControlListsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The Access ControlList properties. */
+  properties: AccessControlListPropertiesInput;
+}
+export const AccessControlListsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accessControlListName: S.String.pipe(T.Label()),
+    tags: S.optional(AccessControlListsCreateRequestTagsMap),
+    location: S.String,
+    properties: AccessControlListPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "AccessControlListsCreateRequest",
+}) as any as S.Schema<AccessControlListsCreateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type AccessControlListsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccessControlListsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccessControlListsCreateResponseTagsMap>;
+
+/** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+export type AccessControlListPropertiesDefaultAction = "Permit" | "Deny";
+export const AccessControlListPropertiesDefaultAction = /*@__PURE__*/ S.String;
+
+/** List of match configurations. */
+export type AccessControlListPropertiesMatchConfigurationsList =
+  ReadonlyArray<AccessControlListMatchConfiguration>;
+export const AccessControlListPropertiesMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    AccessControlListMatchConfiguration,
+  ) as any as S.Schema<AccessControlListPropertiesMatchConfigurationsList>;
+
+/** List of dynamic match configurations. */
+export type AccessControlListPropertiesDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfiguration>;
+export const AccessControlListPropertiesDynamicMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    CommonDynamicMatchConfiguration,
+  ) as any as S.Schema<AccessControlListPropertiesDynamicMatchConfigurationsList>;
+
+/** Details of the last operations performed on the resource */
+export interface LastOperationProperties {
+  /** Details status of the last operation performed on the resource. */
+  details?: string;
+}
+export const LastOperationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LastOperationProperties",
+}) as any as S.Schema<LastOperationProperties>;
+
+/** Associated Network Fabric Resource IDs */
+export type AccessControlListPropertiesNetworkFabricIdsList =
+  ReadonlyArray<string>;
+export const AccessControlListPropertiesNetworkFabricIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListPropertiesNetworkFabricIdsList>;
+
+/** Access Control List (ACL) configurations. */
 export type AccessControlListPropertiesControlPlaneAclConfigurationList =
-  ControlPlaneAclProperties[];
+  ReadonlyArray<ControlPlaneAclProperties>;
 export const AccessControlListPropertiesControlPlaneAclConfigurationList =
   /*@__PURE__*/ S.Array(
     ControlPlaneAclProperties,
@@ -908,8 +966,7 @@ export type ConfigurationState =
   | "DeferredControl"
   | "Provisioning"
   | "PendingCommit"
-  | "PendingAdministrativeUpdate"
-  | (string & {});
+  | "PendingAdministrativeUpdate";
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -919,8 +976,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** State defined to represent administrative actions or post actions on a particular resource. */
@@ -930,8 +986,7 @@ export type AdministrativeState =
   | "MAT"
   | "RMA"
   | "UnderMaintenance"
-  | "EnabledDegraded"
-  | (string & {});
+  | "EnabledDegraded";
 export const AdministrativeState = /*@__PURE__*/ S.String;
 
 /** Access Control List Properties defines the resource properties. */
@@ -1190,7 +1245,8 @@ export const AccessControlList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlList>;
 
 /** The AccessControlList items on this page */
-export type AccessControlListsListResultValueList = AccessControlList[];
+export type AccessControlListsListResultValueList =
+  ReadonlyArray<AccessControlList>;
 export const AccessControlListsListResultValueList = /*@__PURE__*/ S.Array(
   AccessControlList,
 ) as any as S.Schema<AccessControlListsListResultValueList>;
@@ -1257,7 +1313,7 @@ export const AccessControlListsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessControlListsResyncRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1279,7 +1335,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1322,6 +1378,694 @@ export const AccessControlListsResyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessControlListsResyncResponse",
 }) as any as S.Schema<AccessControlListsResyncResponse>;
 
+/** Resource tags. */
+export type AccessControlListsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccessControlListsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccessControlListsUpdateRequestTagsMap>;
+
+/** Community action types. Example: Permit | Deny. */
+export type CommunityActionTypes = "Permit" | "Deny";
+export const CommunityActionTypes = /*@__PURE__*/ S.String;
+
+/** List of the protocols that need to be matched. */
+export type AccessControlListMatchConditionPatchProtocolTypesList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchProtocolTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchProtocolTypesList>;
+
+/** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
+export type VlanMatchConditionPatchVlansList = ReadonlyArray<string>;
+export const VlanMatchConditionPatchVlansList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VlanMatchConditionPatchVlansList>;
+
+/** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
+export type VlanMatchConditionPatchInnerVlansList = ReadonlyArray<string>;
+export const VlanMatchConditionPatchInnerVlansList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VlanMatchConditionPatchInnerVlansList>;
+
+/** List of vlan group names that need to be matched. */
+export type VlanMatchConditionPatchVlanGroupNamesList = ReadonlyArray<string>;
+export const VlanMatchConditionPatchVlanGroupNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VlanMatchConditionPatchVlanGroupNamesList>;
+
+/** The vlan match conditions that need to be matched. */
+export interface VlanMatchConditionPatch {
+  /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
+  vlans?: VlanMatchConditionPatchVlansList;
+  /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
+  innerVlans?: VlanMatchConditionPatchInnerVlansList;
+  /** List of vlan group names that need to be matched. */
+  vlanGroupNames?: VlanMatchConditionPatchVlanGroupNamesList;
+}
+export const VlanMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vlans: S.optional(VlanMatchConditionPatchVlansList),
+    innerVlans: S.optional(VlanMatchConditionPatchInnerVlansList),
+    vlanGroupNames: S.optional(VlanMatchConditionPatchVlanGroupNamesList),
+  }),
+).annotate({
+  identifier: "VlanMatchConditionPatch",
+}) as any as S.Schema<VlanMatchConditionPatch>;
+
+/** The list of IP Prefixes that need to be matched. */
+export type IpMatchConditionPatchIpPrefixValuesList = ReadonlyArray<string>;
+export const IpMatchConditionPatchIpPrefixValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IpMatchConditionPatchIpPrefixValuesList>;
+
+/** The List of IP Group Names that need to be matched. */
+export type IpMatchConditionPatchIpGroupNamesList = ReadonlyArray<string>;
+export const IpMatchConditionPatchIpGroupNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IpMatchConditionPatchIpGroupNamesList>;
+
+/** Defines the condition that can be filtered using the selected IPs. */
+export interface IpMatchConditionPatch {
+  /** IP Address type that needs to be matched. */
+  type?: SourceDestinationType;
+  /** IP Prefix Type that needs to be matched. */
+  prefixType?: PrefixType;
+  /** The list of IP Prefixes that need to be matched. */
+  ipPrefixValues?: IpMatchConditionPatchIpPrefixValuesList;
+  /** The List of IP Group Names that need to be matched. */
+  ipGroupNames?: IpMatchConditionPatchIpGroupNamesList;
+}
+export const IpMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(SourceDestinationType),
+    prefixType: S.optional(PrefixType),
+    ipPrefixValues: S.optional(IpMatchConditionPatchIpPrefixValuesList),
+    ipGroupNames: S.optional(IpMatchConditionPatchIpGroupNamesList),
+  }),
+).annotate({
+  identifier: "IpMatchConditionPatch",
+}) as any as S.Schema<IpMatchConditionPatch>;
+
+/** List of ether type values that need to be matched. */
+export type AccessControlListMatchConditionPatchEtherTypesList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchEtherTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchEtherTypesList>;
+
+/** List of IP fragment packets that need to be matched. */
+export type AccessControlListMatchConditionPatchFragmentsList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchFragmentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchFragmentsList>;
+
+/** List of IP Lengths that need to be matched. */
+export type AccessControlListMatchConditionPatchIpLengthsList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchIpLengthsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchIpLengthsList>;
+
+/** List of TTL [Time To Live] values that need to be matched. */
+export type AccessControlListMatchConditionPatchTtlValuesList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchTtlValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchTtlValuesList>;
+
+/** List of DSCP Markings that need to be matched. */
+export type AccessControlListMatchConditionPatchDscpMarkingsList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchDscpMarkingsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchDscpMarkingsList>;
+
+/** List of the Ports that need to be matched. */
+export type AccessControlListPortConditionPatchPortsList =
+  ReadonlyArray<string>;
+export const AccessControlListPortConditionPatchPortsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListPortConditionPatchPortsList>;
+
+/** List of the port Group Names that need to be matched. */
+export type AccessControlListPortConditionPatchPortGroupNamesList =
+  ReadonlyArray<string>;
+export const AccessControlListPortConditionPatchPortGroupNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListPortConditionPatchPortGroupNamesList>;
+
+/** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
+export type AccessControlListPortConditionPatchFlagsList =
+  ReadonlyArray<string>;
+export const AccessControlListPortConditionPatchFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListPortConditionPatchFlagsList>;
+
+/** Defines the port condition that needs to be matched. */
+export interface AccessControlListPortConditionPatch {
+  /** Port type that needs to be matched. */
+  portType?: PortType;
+  /** Layer4 protocol type that needs to be matched. */
+  layer4Protocol?: Layer4Protocol;
+  /** List of the Ports that need to be matched. */
+  ports?: AccessControlListPortConditionPatchPortsList;
+  /** List of the port Group Names that need to be matched. */
+  portGroupNames?: AccessControlListPortConditionPatchPortGroupNamesList;
+  /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
+  flags?: AccessControlListPortConditionPatchFlagsList;
+}
+export const AccessControlListPortConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    portType: S.optional(PortType),
+    layer4Protocol: S.optional(Layer4Protocol),
+    ports: S.optional(AccessControlListPortConditionPatchPortsList),
+    portGroupNames: S.optional(
+      AccessControlListPortConditionPatchPortGroupNamesList,
+    ),
+    flags: S.optional(AccessControlListPortConditionPatchFlagsList),
+  }),
+).annotate({
+  identifier: "AccessControlListPortConditionPatch",
+}) as any as S.Schema<AccessControlListPortConditionPatch>;
+
+/** Protocol neighbors that need to be matched. */
+export type AccessControlListMatchConditionPatchProtocolNeighborsList =
+  ReadonlyArray<string>;
+export const AccessControlListMatchConditionPatchProtocolNeighborsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListMatchConditionPatchProtocolNeighborsList>;
+
+/** Internet Control Message Protocol (ICMP) types */
+export type IcmpConfigurationPatchPropertiesIcmpTypesList =
+  ReadonlyArray<string>;
+export const IcmpConfigurationPatchPropertiesIcmpTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IcmpConfigurationPatchPropertiesIcmpTypesList>;
+
+/** Internet Control Message Protocol (ICMP) configuration patch properties */
+export interface IcmpConfigurationPatchProperties {
+  /** Internet Control Message Protocol (ICMP) types */
+  icmpTypes?: IcmpConfigurationPatchPropertiesIcmpTypesList;
+}
+export const IcmpConfigurationPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    icmpTypes: S.optional(IcmpConfigurationPatchPropertiesIcmpTypesList),
+  }),
+).annotate({
+  identifier: "IcmpConfigurationPatchProperties",
+}) as any as S.Schema<IcmpConfigurationPatchProperties>;
+
+/** Defines the match condition that is supported to filter the traffic. */
+export interface AccessControlListMatchConditionPatch {
+  /** List of the protocols that need to be matched. */
+  protocolTypes?: AccessControlListMatchConditionPatchProtocolTypesList;
+  /** Vlan match condition that needs to be matched. */
+  vlanMatchCondition?: VlanMatchConditionPatch;
+  /** IP condition that needs to be matched. */
+  ipCondition?: IpMatchConditionPatch;
+  /** List of ether type values that need to be matched. */
+  etherTypes?: AccessControlListMatchConditionPatchEtherTypesList;
+  /** List of IP fragment packets that need to be matched. */
+  fragments?: AccessControlListMatchConditionPatchFragmentsList;
+  /** List of IP Lengths that need to be matched. */
+  ipLengths?: AccessControlListMatchConditionPatchIpLengthsList;
+  /** List of TTL [Time To Live] values that need to be matched. */
+  ttlValues?: AccessControlListMatchConditionPatchTtlValuesList;
+  /** List of DSCP Markings that need to be matched. */
+  dscpMarkings?: AccessControlListMatchConditionPatchDscpMarkingsList;
+  /** Defines the port condition that needs to be matched. */
+  portCondition?: AccessControlListPortConditionPatch;
+  /** Protocol neighbors that need to be matched. */
+  protocolNeighbors?: AccessControlListMatchConditionPatchProtocolNeighborsList;
+  /** Internet Control Message Protocol (ICMP) configuration */
+  icmpConfiguration?: IcmpConfigurationPatchProperties;
+}
+export const AccessControlListMatchConditionPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      protocolTypes: S.optional(
+        AccessControlListMatchConditionPatchProtocolTypesList,
+      ),
+      vlanMatchCondition: S.optional(VlanMatchConditionPatch),
+      ipCondition: S.optional(IpMatchConditionPatch),
+      etherTypes: S.optional(
+        AccessControlListMatchConditionPatchEtherTypesList,
+      ),
+      fragments: S.optional(AccessControlListMatchConditionPatchFragmentsList),
+      ipLengths: S.optional(AccessControlListMatchConditionPatchIpLengthsList),
+      ttlValues: S.optional(AccessControlListMatchConditionPatchTtlValuesList),
+      dscpMarkings: S.optional(
+        AccessControlListMatchConditionPatchDscpMarkingsList,
+      ),
+      portCondition: S.optional(AccessControlListPortConditionPatch),
+      protocolNeighbors: S.optional(
+        AccessControlListMatchConditionPatchProtocolNeighborsList,
+      ),
+      icmpConfiguration: S.optional(IcmpConfigurationPatchProperties),
+    }),
+).annotate({
+  identifier: "AccessControlListMatchConditionPatch",
+}) as any as S.Schema<AccessControlListMatchConditionPatch>;
+
+/** List of the match conditions. */
+export type AccessControlListMatchConfigurationPatchMatchConditionsList =
+  ReadonlyArray<AccessControlListMatchConditionPatch>;
+export const AccessControlListMatchConfigurationPatchMatchConditionsList =
+  /*@__PURE__*/ S.Array(
+    AccessControlListMatchConditionPatch,
+  ) as any as S.Schema<AccessControlListMatchConfigurationPatchMatchConditionsList>;
+
+/** Action that need to be performed */
+export interface AccessControlListActionPatch {
+  /** Type of actions that can be performed. */
+  type?: AclActionType;
+  /** Name of the counter block to get match count information. */
+  counterName?: string;
+  /** Remark comment */
+  remarkComment?: string;
+  /** Police rate configuration */
+  policeRateConfiguration?: PoliceRateConfigurationProperties;
+}
+export const AccessControlListActionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(AclActionType),
+    counterName: S.optional(S.String),
+    remarkComment: S.optional(S.String),
+    policeRateConfiguration: S.optional(PoliceRateConfigurationProperties),
+  }),
+).annotate({
+  identifier: "AccessControlListActionPatch",
+}) as any as S.Schema<AccessControlListActionPatch>;
+
+/** List of actions that need to be performed for the matched conditions. */
+export type AccessControlListMatchConfigurationPatchActionsList =
+  ReadonlyArray<AccessControlListActionPatch>;
+export const AccessControlListMatchConfigurationPatchActionsList =
+  /*@__PURE__*/ S.Array(
+    AccessControlListActionPatch,
+  ) as any as S.Schema<AccessControlListMatchConfigurationPatchActionsList>;
+
+/** Defines the match configuration that are supported to filter the traffic. */
+export interface AccessControlListMatchConfigurationPatch {
+  /** The name of the match configuration. */
+  matchConfigurationName?: string;
+  /** Sequence Number of the match configuration. */
+  sequenceNumber?: number;
+  /** Type of IP Address. IPv4 or IPv6 */
+  ipAddressType?: IPAddressType;
+  /** List of the match conditions. */
+  matchConditions?: AccessControlListMatchConfigurationPatchMatchConditionsList;
+  /** List of actions that need to be performed for the matched conditions. */
+  actions?: AccessControlListMatchConfigurationPatchActionsList;
+}
+export const AccessControlListMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      matchConfigurationName: S.optional(S.String),
+      sequenceNumber: S.optional(S.Number),
+      ipAddressType: S.optional(IPAddressType),
+      matchConditions: S.optional(
+        AccessControlListMatchConfigurationPatchMatchConditionsList,
+      ),
+      actions: S.optional(AccessControlListMatchConfigurationPatchActionsList),
+    }),
+).annotate({
+  identifier: "AccessControlListMatchConfigurationPatch",
+}) as any as S.Schema<AccessControlListMatchConfigurationPatch>;
+
+/** List of match configurations. */
+export type AccessControlListPatchPropertiesMatchConfigurationsList =
+  ReadonlyArray<AccessControlListMatchConfigurationPatch>;
+export const AccessControlListPatchPropertiesMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    AccessControlListMatchConfigurationPatch,
+  ) as any as S.Schema<AccessControlListPatchPropertiesMatchConfigurationsList>;
+
+/** List of IP Prefixes. */
+export type IpGroupPatchPropertiesIpPrefixesList = ReadonlyArray<string>;
+export const IpGroupPatchPropertiesIpPrefixesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IpGroupPatchPropertiesIpPrefixesList>;
+
+/** IP Group properties. */
+export interface IpGroupPatchProperties {
+  /** IP Group name. */
+  name?: string;
+  /** IP Address type. */
+  ipAddressType?: IPAddressType;
+  /** List of IP Prefixes. */
+  ipPrefixes?: IpGroupPatchPropertiesIpPrefixesList;
+}
+export const IpGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    ipAddressType: S.optional(IPAddressType),
+    ipPrefixes: S.optional(IpGroupPatchPropertiesIpPrefixesList),
+  }),
+).annotate({
+  identifier: "IpGroupPatchProperties",
+}) as any as S.Schema<IpGroupPatchProperties>;
+
+/** List of IP Groups. */
+export type CommonDynamicMatchConfigurationPatchIpGroupsList =
+  ReadonlyArray<IpGroupPatchProperties>;
+export const CommonDynamicMatchConfigurationPatchIpGroupsList =
+  /*@__PURE__*/ S.Array(
+    IpGroupPatchProperties,
+  ) as any as S.Schema<CommonDynamicMatchConfigurationPatchIpGroupsList>;
+
+/** List of vlans. */
+export type VlanGroupPatchPropertiesVlansList = ReadonlyArray<string>;
+export const VlanGroupPatchPropertiesVlansList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VlanGroupPatchPropertiesVlansList>;
+
+/** Vlan group properties. */
+export interface VlanGroupPatchProperties {
+  /** Vlan group name. */
+  name?: string;
+  /** List of vlans. */
+  vlans?: VlanGroupPatchPropertiesVlansList;
+}
+export const VlanGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    vlans: S.optional(VlanGroupPatchPropertiesVlansList),
+  }),
+).annotate({
+  identifier: "VlanGroupPatchProperties",
+}) as any as S.Schema<VlanGroupPatchProperties>;
+
+/** List of vlan groups. */
+export type CommonDynamicMatchConfigurationPatchVlanGroupsList =
+  ReadonlyArray<VlanGroupPatchProperties>;
+export const CommonDynamicMatchConfigurationPatchVlanGroupsList =
+  /*@__PURE__*/ S.Array(
+    VlanGroupPatchProperties,
+  ) as any as S.Schema<CommonDynamicMatchConfigurationPatchVlanGroupsList>;
+
+/** List of the ports that need to be matched. */
+export type PortGroupPatchPropertiesPortsList = ReadonlyArray<string>;
+export const PortGroupPatchPropertiesPortsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PortGroupPatchPropertiesPortsList>;
+
+/** Port Group Properties */
+export interface PortGroupPatchProperties {
+  /** The name of the port group. */
+  name?: string;
+  /** List of the ports that need to be matched. */
+  ports?: PortGroupPatchPropertiesPortsList;
+}
+export const PortGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    ports: S.optional(PortGroupPatchPropertiesPortsList),
+  }),
+).annotate({
+  identifier: "PortGroupPatchProperties",
+}) as any as S.Schema<PortGroupPatchProperties>;
+
+/** List of the port groups. */
+export type CommonDynamicMatchConfigurationPatchPortGroupsList =
+  ReadonlyArray<PortGroupPatchProperties>;
+export const CommonDynamicMatchConfigurationPatchPortGroupsList =
+  /*@__PURE__*/ S.Array(
+    PortGroupPatchProperties,
+  ) as any as S.Schema<CommonDynamicMatchConfigurationPatchPortGroupsList>;
+
+/** Dynamic match configuration object. */
+export interface CommonDynamicMatchConfigurationPatch {
+  /** List of IP Groups. */
+  ipGroups?: CommonDynamicMatchConfigurationPatchIpGroupsList;
+  /** List of vlan groups. */
+  vlanGroups?: CommonDynamicMatchConfigurationPatchVlanGroupsList;
+  /** List of the port groups. */
+  portGroups?: CommonDynamicMatchConfigurationPatchPortGroupsList;
+}
+export const CommonDynamicMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipGroups: S.optional(CommonDynamicMatchConfigurationPatchIpGroupsList),
+      vlanGroups: S.optional(
+        CommonDynamicMatchConfigurationPatchVlanGroupsList,
+      ),
+      portGroups: S.optional(
+        CommonDynamicMatchConfigurationPatchPortGroupsList,
+      ),
+    }),
+).annotate({
+  identifier: "CommonDynamicMatchConfigurationPatch",
+}) as any as S.Schema<CommonDynamicMatchConfigurationPatch>;
+
+/** List of dynamic match configurations. */
+export type AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfigurationPatch>;
+export const AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    CommonDynamicMatchConfigurationPatch,
+  ) as any as S.Schema<AccessControlListPatchPropertiesDynamicMatchConfigurationsList>;
+
+/** Control Plane Access Control List (ACL) IP condition patch properties */
+export interface ControlPlaneAclIpMatchConditionPatch {
+  /** List of the source IP addresses that need to be matched. */
+  sourceIpPrefix?: string;
+  /** List of the destination IP addresses that need to be matched. */
+  destinationIpPrefix?: string;
+}
+export const ControlPlaneAclIpMatchConditionPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceIpPrefix: S.optional(S.String),
+      destinationIpPrefix: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ControlPlaneAclIpMatchConditionPatch",
+}) as any as S.Schema<ControlPlaneAclIpMatchConditionPatch>;
+
+/** TTL [Time To Live] match conditions patch properties */
+export interface ControlPlaneAclTtlMatchConditionPatch {
+  /** TTL [Time To Live] values that need to be matched. */
+  ttlValue?: string;
+  /** TTL [Time To Live] match type. Example: eq | neq | gt | lt | range */
+  ttlMatchType?: ControlPlaneAclTtlMatchType;
+}
+export const ControlPlaneAclTtlMatchConditionPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ttlValue: S.optional(S.String),
+      ttlMatchType: S.optional(ControlPlaneAclTtlMatchType),
+    }),
+).annotate({
+  identifier: "ControlPlaneAclTtlMatchConditionPatch",
+}) as any as S.Schema<ControlPlaneAclTtlMatchConditionPatch>;
+
+/** Control Plane Access Control List (ACL) Port Match conditions properties */
+export interface ControlPlaneAclPortMatchConditionPatch {
+  /** List of the ports that need to be matched. */
+  sourcePorts?: ControlPlaneAclPortCondition;
+  /** List of the destination ports that need to be matched. */
+  destinationPorts?: ControlPlaneAclPortCondition;
+}
+export const ControlPlaneAclPortMatchConditionPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourcePorts: S.optional(ControlPlaneAclPortCondition),
+      destinationPorts: S.optional(ControlPlaneAclPortCondition),
+    }),
+).annotate({
+  identifier: "ControlPlaneAclPortMatchConditionPatch",
+}) as any as S.Schema<ControlPlaneAclPortMatchConditionPatch>;
+
+/** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
+export type ControlPlaneAclMatchConditionPatchFlagsList = ReadonlyArray<string>;
+export const ControlPlaneAclMatchConditionPatchFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ControlPlaneAclMatchConditionPatchFlagsList>;
+
+/** Control Plane Access Control List (ACL) match conditions properties */
+export interface ControlPlaneAclMatchConditionPatch {
+  /** Protocols that need to be matched. */
+  protocolTypes?: string;
+  /** IP condition that needs to be matched. */
+  ipCondition?: ControlPlaneAclIpMatchConditionPatch;
+  /** TTL [Time To Live] values that need to be matched. */
+  ttlMatchCondition?: ControlPlaneAclTtlMatchConditionPatch;
+  /** Port condition that needs to be matched. */
+  portCondition?: ControlPlaneAclPortMatchConditionPatch;
+  /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
+  flags?: ControlPlaneAclMatchConditionPatchFlagsList;
+  /** Internet Control Message Protocol (ICMP) configuration */
+  icmpConfiguration?: IcmpConfigurationPatchProperties;
+}
+export const ControlPlaneAclMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocolTypes: S.optional(S.String),
+    ipCondition: S.optional(ControlPlaneAclIpMatchConditionPatch),
+    ttlMatchCondition: S.optional(ControlPlaneAclTtlMatchConditionPatch),
+    portCondition: S.optional(ControlPlaneAclPortMatchConditionPatch),
+    flags: S.optional(ControlPlaneAclMatchConditionPatchFlagsList),
+    icmpConfiguration: S.optional(IcmpConfigurationPatchProperties),
+  }),
+).annotate({
+  identifier: "ControlPlaneAclMatchConditionPatch",
+}) as any as S.Schema<ControlPlaneAclMatchConditionPatch>;
+
+/** Control Plane Access Control List (ACL) Actions */
+export interface ControlPlaneAclActionPatch {
+  /** Type of actions that can be performed. */
+  type?: ControlPlaneAclActionType;
+  /** Remark comment */
+  remarkComment?: string;
+}
+export const ControlPlaneAclActionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ControlPlaneAclActionType),
+    remarkComment: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ControlPlaneAclActionPatch",
+}) as any as S.Schema<ControlPlaneAclActionPatch>;
+
+/** Control Plane Access Control List (ACL) match configurations properties */
+export interface ControlPlaneAclMatchConfigurationPatchProperties {
+  /** The name of the match configuration. */
+  matchConfigurationName?: string;
+  /** Sequence Number of the match configuration. */
+  sequenceNumber?: number;
+  /** Match conditions */
+  matchCondition?: ControlPlaneAclMatchConditionPatch;
+  /** Action that need to be performed for the matched conditions. */
+  action?: ControlPlaneAclActionPatch;
+}
+export const ControlPlaneAclMatchConfigurationPatchProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      matchConfigurationName: S.optional(S.String),
+      sequenceNumber: S.optional(S.Number),
+      matchCondition: S.optional(ControlPlaneAclMatchConditionPatch),
+      action: S.optional(ControlPlaneAclActionPatch),
+    }),
+  ).annotate({
+    identifier: "ControlPlaneAclMatchConfigurationPatchProperties",
+  }) as any as S.Schema<ControlPlaneAclMatchConfigurationPatchProperties>;
+
+/** Access Control List (ACL) match configurations. */
+export type ControlPlaneAclPatchPropertiesMatchConfigurationsList =
+  ReadonlyArray<ControlPlaneAclMatchConfigurationPatchProperties>;
+export const ControlPlaneAclPatchPropertiesMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    ControlPlaneAclMatchConfigurationPatchProperties,
+  ) as any as S.Schema<ControlPlaneAclPatchPropertiesMatchConfigurationsList>;
+
+/** Access Control List (ACL) configurations patch properties */
+export interface ControlPlaneAclPatchProperties {
+  /** IP Address Type. IPv4 or IPv6 */
+  ipAddressType?: IPAddressType;
+  /** Access Control List (ACL) match configurations. */
+  matchConfigurations?: ControlPlaneAclPatchPropertiesMatchConfigurationsList;
+}
+export const ControlPlaneAclPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddressType: S.optional(IPAddressType),
+    matchConfigurations: S.optional(
+      ControlPlaneAclPatchPropertiesMatchConfigurationsList,
+    ),
+  }),
+).annotate({
+  identifier: "ControlPlaneAclPatchProperties",
+}) as any as S.Schema<ControlPlaneAclPatchProperties>;
+
+/** Access Control List (ACL) configurations. */
+export type AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
+  ReadonlyArray<ControlPlaneAclPatchProperties>;
+export const AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
+  /*@__PURE__*/ S.Array(
+    ControlPlaneAclPatchProperties,
+  ) as any as S.Schema<AccessControlListPatchPropertiesControlPlaneAclConfigurationList>;
+
+/** Boolean union. Example- True/False */
+export type BooleanEnumProperty = "True" | "False";
+export const BooleanEnumProperty = /*@__PURE__*/ S.String;
+
+/** Global Access Control List actions patch properties */
+export interface GlobalAccessControlListActionPatchProperties {
+  /** Configuration to enable or disable ACL action count. */
+  enableCount?: BooleanEnumProperty;
+}
+export const GlobalAccessControlListActionPatchProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enableCount: S.optional(BooleanEnumProperty),
+    }),
+  ).annotate({
+    identifier: "GlobalAccessControlListActionPatchProperties",
+  }) as any as S.Schema<GlobalAccessControlListActionPatchProperties>;
+
+/** Access Control Lists patch properties. */
+export interface AccessControlListPatchProperties {
+  /** Input method to configure Access Control List. */
+  configurationType?: ConfigurationType;
+  /** Access Control List file URL. */
+  aclsUrl?: string;
+  /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+  defaultAction?: CommunityActionTypes;
+  /** List of match configurations. */
+  matchConfigurations?: AccessControlListPatchPropertiesMatchConfigurationsList;
+  /** List of dynamic match configurations. */
+  dynamicMatchConfigurations?: AccessControlListPatchPropertiesDynamicMatchConfigurationsList;
+  /** Access Control List (ACL) configurations. */
+  controlPlaneAclConfiguration?: AccessControlListPatchPropertiesControlPlaneAclConfigurationList;
+  /** Access Control List (ACL) Type */
+  aclType?: AclType;
+  /** Device Role */
+  deviceRole?: DeviceRole;
+  /** Global Access Control List (ACL) actions */
+  globalAccessControlListActions?: GlobalAccessControlListActionPatchProperties;
+  /** Switch configuration description. */
+  annotation?: string;
+}
+export const AccessControlListPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurationType: S.optional(ConfigurationType),
+    aclsUrl: S.optional(S.String),
+    defaultAction: S.optional(CommunityActionTypes),
+    matchConfigurations: S.optional(
+      AccessControlListPatchPropertiesMatchConfigurationsList,
+    ),
+    dynamicMatchConfigurations: S.optional(
+      AccessControlListPatchPropertiesDynamicMatchConfigurationsList,
+    ),
+    controlPlaneAclConfiguration: S.optional(
+      AccessControlListPatchPropertiesControlPlaneAclConfigurationList,
+    ),
+    aclType: S.optional(AclType),
+    deviceRole: S.optional(DeviceRole),
+    globalAccessControlListActions: S.optional(
+      GlobalAccessControlListActionPatchProperties,
+    ),
+    annotation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccessControlListPatchProperties",
+}) as any as S.Schema<AccessControlListPatchProperties>;
+
 export interface AccessControlListsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1329,14 +2073,18 @@ export interface AccessControlListsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Access Control List. */
   accessControlListName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AccessControlListsUpdateRequestTagsMap;
+  /** Access Control Lists patch properties. */
+  properties?: AccessControlListPatchProperties;
 }
 export const AccessControlListsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accessControlListName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AccessControlListsUpdateRequestTagsMap),
+    properties: S.optional(AccessControlListPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1388,6 +2136,18 @@ export const AccessControlListsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessControlListsUpdateResponse",
 }) as any as S.Schema<AccessControlListsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type AccessControlListsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const AccessControlListsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessControlListsUpdateAdministrativeStateRequestResourceIdsList>;
+
+/** Administrative state. */
+export type EnableDisableState = "Enable" | "Disable" | "UnderMaintenance";
+export const EnableDisableState = /*@__PURE__*/ S.String;
+
 export interface AccessControlListsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1395,7 +2155,10 @@ export interface AccessControlListsUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Access Control List. */
   accessControlListName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: AccessControlListsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const AccessControlListsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1403,7 +2166,10 @@ export const AccessControlListsUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       accessControlListName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        AccessControlListsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1417,7 +2183,8 @@ export const AccessControlListsUpdateAdministrativeStateRequest =
   }) as any as S.Schema<AccessControlListsUpdateAdministrativeStateRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
@@ -1461,7 +2228,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const UpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1509,14 +2276,15 @@ export const UpdateAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsList =
-  UpdateAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<UpdateAdministrativeStateResponseOperationsItem>;
 export const UpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     UpdateAdministrativeStateResponseOperationsItem,
   ) as any as S.Schema<UpdateAdministrativeStateResponseOperationsList>;
 
 /** The error details. */
-export type UpdateAdministrativeStateResponseErrorDetailsList = ErrorDetail[];
+export type UpdateAdministrativeStateResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const UpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1524,7 +2292,7 @@ export const UpdateAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type UpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const UpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1560,7 +2328,7 @@ export const UpdateAdministrativeStateResponseError = /*@__PURE__*/ S.suspend(
 
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList =
-  string[];
+  ReadonlyArray<string>;
 export const UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1568,7 +2336,7 @@ export const UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList 
 
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type UpdateAdministrativeStateResponsePropertiesFailedResourcesList =
-  string[];
+  ReadonlyArray<string>;
 export const UpdateAdministrativeStateResponsePropertiesFailedResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1680,36 +2448,6 @@ export const AccessControlListsValidateConfigurationResponse =
     identifier: "AccessControlListsValidateConfigurationResponse",
   }) as any as S.Schema<AccessControlListsValidateConfigurationResponse>;
 
-export interface ExternalNetworksCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the L3 Isolation Domain. */
-  l3IsolationDomainName: string;
-  /** Name of the External Network. */
-  externalNetworkName: string;
-  body: unknown;
-}
-export const ExternalNetworksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    l3IsolationDomainName: S.String.pipe(T.Label()),
-    externalNetworkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "ExternalNetworksCreateRequest",
-}) as any as S.Schema<ExternalNetworksCreateRequest>;
-
 /** Import Route Policy either IPv4 or IPv6. */
 export interface ImportRoutePolicy {
   /** ARM resource ID of RoutePolicy. */
@@ -1743,44 +2481,48 @@ export const ExportRoutePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportRoutePolicy>;
 
 /** Peering option list. */
-export type PeeringOption = "OptionA" | "OptionB" | (string & {});
+export type PeeringOption = "OptionA" | "OptionB";
 export const PeeringOption = /*@__PURE__*/ S.String;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPropertiesImportRouteTargetsList = string[];
+export type L3OptionBPropertiesImportRouteTargetsList = ReadonlyArray<string>;
 export const L3OptionBPropertiesImportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<L3OptionBPropertiesImportRouteTargetsList>;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
-export type L3OptionBPropertiesExportRouteTargetsList = string[];
+export type L3OptionBPropertiesExportRouteTargetsList = ReadonlyArray<string>;
 export const L3OptionBPropertiesExportRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<L3OptionBPropertiesExportRouteTargetsList>;
 
 /** Route Targets to be applied for incoming routes into CE. */
-export type RouteTargetInformationImportIpv4RouteTargetsList = string[];
+export type RouteTargetInformationImportIpv4RouteTargetsList =
+  ReadonlyArray<string>;
 export const RouteTargetInformationImportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationImportIpv4RouteTargetsList>;
 
 /** Route Targets to be applied for incoming routes from CE. */
-export type RouteTargetInformationImportIpv6RouteTargetsList = string[];
+export type RouteTargetInformationImportIpv6RouteTargetsList =
+  ReadonlyArray<string>;
 export const RouteTargetInformationImportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationImportIpv6RouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes into CE. */
-export type RouteTargetInformationExportIpv4RouteTargetsList = string[];
+export type RouteTargetInformationExportIpv4RouteTargetsList =
+  ReadonlyArray<string>;
 export const RouteTargetInformationExportIpv4RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RouteTargetInformationExportIpv4RouteTargetsList>;
 
 /** Route Targets to be applied for outgoing routes from CE. */
-export type RouteTargetInformationExportIpv6RouteTargetsList = string[];
+export type RouteTargetInformationExportIpv6RouteTargetsList =
+  ReadonlyArray<string>;
 export const RouteTargetInformationExportIpv6RouteTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1835,39 +2577,26 @@ export const L3OptionBProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "L3OptionBProperties",
 }) as any as S.Schema<L3OptionBProperties>;
 
-/** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
-export type BfdConfigurationAdministrativeState =
-  | "Enabled"
-  | "Disabled"
-  | "MAT"
-  | "RMA"
-  | (string & {});
-export const BfdConfigurationAdministrativeState = /*@__PURE__*/ S.String;
-
 /** BFD configuration properties */
-export interface BfdConfiguration {
-  /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
-  administrativeState?: BfdConfigurationAdministrativeState;
+export interface BfdConfigurationInput {
   /** Interval in milliseconds. Example: 300. */
   intervalInMilliSeconds?: number;
   /** Multiplier for the Bfd Configuration. Example: 5. */
   multiplier?: number;
 }
-export const BfdConfiguration = /*@__PURE__*/ S.suspend(() =>
+export const BfdConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    administrativeState: S.optional(BfdConfigurationAdministrativeState),
     intervalInMilliSeconds: S.optional(S.Number),
     multiplier: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "BfdConfiguration",
-}) as any as S.Schema<BfdConfiguration>;
+  identifier: "BfdConfigurationInput",
+}) as any as S.Schema<BfdConfigurationInput>;
 
 /** BMP Configuration State. */
 export type ExternalNetworkBmpPropertiesConfigurationState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ExternalNetworkBmpPropertiesConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -1887,19 +2616,17 @@ export const ExternalNetworkBmpProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalNetworkBmpProperties>;
 
 /** V4OverV6 BGP Session state */
-export type ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
+export type ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
+  | "Disabled";
+export const ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession =
   /*@__PURE__*/ S.String;
 
 /** V6OverV4 BGP Session state */
-export type ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
+export type ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
+  | "Disabled";
+export const ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession =
   /*@__PURE__*/ S.String;
 
 /** Prefix Limit properties. */
@@ -1923,7 +2650,7 @@ export const PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix limits */
 export type NativeIpv4PrefixLimitPropertiesPrefixLimitsList =
-  PrefixLimitProperties[];
+  ReadonlyArray<PrefixLimitProperties>;
 export const NativeIpv4PrefixLimitPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitProperties,
@@ -1944,7 +2671,7 @@ export const NativeIpv4PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Prefix limits */
 export type NativeIpv6PrefixLimitPropertiesPrefixLimitsList =
-  PrefixLimitProperties[];
+  ReadonlyArray<PrefixLimitProperties>;
 export const NativeIpv6PrefixLimitPropertiesPrefixLimitsList =
   /*@__PURE__*/ S.Array(
     PrefixLimitProperties,
@@ -1962,6 +2689,238 @@ export const NativeIpv6PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NativeIpv6PrefixLimitProperties",
 }) as any as S.Schema<NativeIpv6PrefixLimitProperties>;
+
+/** option A properties object */
+export interface ExternalNetworkPropertiesOptionAPropertiesInput {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** MTU to use for option A peering. */
+  mtu?: number;
+  /** Vlan identifier. Example : 501 */
+  vlanId: number;
+  /** Peer ASN number.Example : 28 */
+  peerASN: number;
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** BMP Monitor Configuration. */
+  bmpConfiguration?: ExternalNetworkBmpProperties;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** V4OverV6 BGP Session state */
+  v4OverV6BgpSession?: ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession;
+  /** V6OverV4 BGP Session state */
+  v6OverV4BgpSession?: ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession;
+  /** Native IPv4 prefix limits configuration */
+  nativeIpv4PrefixLimit?: NativeIpv4PrefixLimitProperties;
+  /** Native IPv6 prefix limits configuration */
+  nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitProperties;
+}
+export const ExternalNetworkPropertiesOptionAPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      primaryIpv4Prefix: S.optional(S.String),
+      primaryIpv6Prefix: S.optional(S.String),
+      secondaryIpv4Prefix: S.optional(S.String),
+      secondaryIpv6Prefix: S.optional(S.String),
+      mtu: S.optional(S.Number),
+      vlanId: S.Number,
+      peerASN: S.Number,
+      bfdConfiguration: S.optional(BfdConfigurationInput),
+      ingressAclId: S.optional(S.String),
+      bmpConfiguration: S.optional(ExternalNetworkBmpProperties),
+      egressAclId: S.optional(S.String),
+      v4OverV6BgpSession: S.optional(
+        ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession,
+      ),
+      v6OverV4BgpSession: S.optional(
+        ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession,
+      ),
+      nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
+      nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
+    }),
+  ).annotate({
+    identifier: "ExternalNetworkPropertiesOptionAPropertiesInput",
+  }) as any as S.Schema<ExternalNetworkPropertiesOptionAPropertiesInput>;
+
+/** List of next hop addresses. */
+export type StaticRoutePropertiesNextHopList = ReadonlyArray<string>;
+export const StaticRoutePropertiesNextHopList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StaticRoutePropertiesNextHopList>;
+
+/** Route Properties. */
+export interface StaticRouteProperties {
+  /** Prefix of the route. */
+  prefix: string;
+  /** List of next hop addresses. */
+  nextHop: StaticRoutePropertiesNextHopList;
+}
+export const StaticRouteProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefix: S.String,
+    nextHop: StaticRoutePropertiesNextHopList,
+  }),
+).annotate({
+  identifier: "StaticRouteProperties",
+}) as any as S.Schema<StaticRouteProperties>;
+
+/** List of IPv4 Routes. */
+export type ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList>;
+
+/** Static Route Configuration properties for ExternalNetwork. */
+export interface ExternalNetworkStaticRouteConfigurationInput {
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList;
+}
+export const ExternalNetworkStaticRouteConfigurationInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bfdConfiguration: S.optional(BfdConfigurationInput),
+      ipv4Routes: S.optional(
+        ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList,
+      ),
+      ipv6Routes: S.optional(
+        ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ExternalNetworkStaticRouteConfigurationInput",
+  }) as any as S.Schema<ExternalNetworkStaticRouteConfigurationInput>;
+
+/** External Network Properties. */
+export interface ExternalNetworkPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource. */
+  networkToNetworkInterconnectId?: string;
+  /** Import Route Policy either IPv4 or IPv6. */
+  importRoutePolicy?: ImportRoutePolicy;
+  /** Export Route Policy either IPv4 or IPv6. */
+  exportRoutePolicy?: ExportRoutePolicy;
+  /** Peering option list. */
+  peeringOption: PeeringOption;
+  /** option B properties object */
+  optionBProperties?: L3OptionBProperties;
+  /** option A properties object */
+  optionAProperties?: ExternalNetworkPropertiesOptionAPropertiesInput;
+  /** Static Route Configuration. */
+  staticRouteConfiguration?: ExternalNetworkStaticRouteConfigurationInput;
+}
+export const ExternalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkToNetworkInterconnectId: S.optional(S.String),
+    importRoutePolicy: S.optional(ImportRoutePolicy),
+    exportRoutePolicy: S.optional(ExportRoutePolicy),
+    peeringOption: PeeringOption,
+    optionBProperties: S.optional(L3OptionBProperties),
+    optionAProperties: S.optional(
+      ExternalNetworkPropertiesOptionAPropertiesInput,
+    ),
+    staticRouteConfiguration: S.optional(
+      ExternalNetworkStaticRouteConfigurationInput,
+    ),
+  }),
+).annotate({
+  identifier: "ExternalNetworkPropertiesInput",
+}) as any as S.Schema<ExternalNetworkPropertiesInput>;
+
+export interface ExternalNetworksCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the L3 Isolation Domain. */
+  l3IsolationDomainName: string;
+  /** Name of the External Network. */
+  externalNetworkName: string;
+  /** External Network Properties */
+  properties: ExternalNetworkPropertiesInput;
+}
+export const ExternalNetworksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    l3IsolationDomainName: S.String.pipe(T.Label()),
+    externalNetworkName: S.String.pipe(T.Label()),
+    properties: ExternalNetworkPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "ExternalNetworksCreateRequest",
+}) as any as S.Schema<ExternalNetworksCreateRequest>;
+
+/** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
+export type BfdConfigurationAdministrativeState =
+  | "Enabled"
+  | "Disabled"
+  | "MAT"
+  | "RMA";
+export const BfdConfigurationAdministrativeState = /*@__PURE__*/ S.String;
+
+/** BFD configuration properties */
+export interface BfdConfiguration {
+  /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
+  administrativeState?: BfdConfigurationAdministrativeState;
+  /** Interval in milliseconds. Example: 300. */
+  intervalInMilliSeconds?: number;
+  /** Multiplier for the Bfd Configuration. Example: 5. */
+  multiplier?: number;
+}
+export const BfdConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administrativeState: S.optional(BfdConfigurationAdministrativeState),
+    intervalInMilliSeconds: S.optional(S.Number),
+    multiplier: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BfdConfiguration",
+}) as any as S.Schema<BfdConfiguration>;
+
+/** V4OverV6 BGP Session state */
+export type ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
+  | "Enabled"
+  | "Disabled";
+export const ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession =
+  /*@__PURE__*/ S.String;
+
+/** V6OverV4 BGP Session state */
+export type ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
+  | "Enabled"
+  | "Disabled";
+export const ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession =
+  /*@__PURE__*/ S.String;
 
 /** option A properties object */
 export interface ExternalNetworkPropertiesOptionAProperties {
@@ -2026,31 +2985,9 @@ export const ExternalNetworkPropertiesOptionAProperties =
     identifier: "ExternalNetworkPropertiesOptionAProperties",
   }) as any as S.Schema<ExternalNetworkPropertiesOptionAProperties>;
 
-/** List of next hop addresses. */
-export type StaticRoutePropertiesNextHopList = string[];
-export const StaticRoutePropertiesNextHopList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StaticRoutePropertiesNextHopList>;
-
-/** Route Properties. */
-export interface StaticRouteProperties {
-  /** Prefix of the route. */
-  prefix: string;
-  /** List of next hop addresses. */
-  nextHop: StaticRoutePropertiesNextHopList;
-}
-export const StaticRouteProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.String,
-    nextHop: StaticRoutePropertiesNextHopList,
-  }),
-).annotate({
-  identifier: "StaticRouteProperties",
-}) as any as S.Schema<StaticRouteProperties>;
-
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
-  StaticRouteProperties[];
+  ReadonlyArray<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -2058,7 +2995,7 @@ export const ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
 
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv6RoutesList =
-  StaticRouteProperties[];
+  ReadonlyArray<StaticRouteProperties>;
 export const ExternalNetworkStaticRouteConfigurationIpv6RoutesList =
   /*@__PURE__*/ S.Array(
     StaticRouteProperties,
@@ -2302,7 +3239,7 @@ export const ExternalNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalNetwork>;
 
 /** The ExternalNetwork items on this page */
-export type ExternalNetworksListValueList = ExternalNetwork[];
+export type ExternalNetworksListValueList = ReadonlyArray<ExternalNetwork>;
 export const ExternalNetworksListValueList = /*@__PURE__*/ S.Array(
   ExternalNetwork,
 ) as any as S.Schema<ExternalNetworksListValueList>;
@@ -2323,6 +3260,403 @@ export const ExternalNetworksList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalNetworksList",
 }) as any as S.Schema<ExternalNetworksList>;
 
+/** Import Route Policy either IPv4 or IPv6. */
+export interface ImportRoutePolicyPatch {
+  /** ARM resource ID of RoutePolicy. */
+  importIpv4RoutePolicyId?: string;
+  /** ARM resource ID of RoutePolicy. */
+  importIpv6RoutePolicyId?: string;
+}
+export const ImportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importIpv4RoutePolicyId: S.optional(S.String),
+    importIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportRoutePolicyPatch",
+}) as any as S.Schema<ImportRoutePolicyPatch>;
+
+/** Export Route Policy either IPv4 or IPv6. */
+export interface ExportRoutePolicyPatch {
+  /** ARM resource ID of RoutePolicy. */
+  exportIpv4RoutePolicyId?: string;
+  /** ARM resource ID of RoutePolicy. */
+  exportIpv6RoutePolicyId?: string;
+}
+export const ExportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportIpv4RoutePolicyId: S.optional(S.String),
+    exportIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportRoutePolicyPatch",
+}) as any as S.Schema<ExportRoutePolicyPatch>;
+
+/** RouteTargets to be applied. This is used for the backward compatibility. */
+export type L3OptionBPatchPropertiesImportRouteTargetsList =
+  ReadonlyArray<string>;
+export const L3OptionBPatchPropertiesImportRouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<L3OptionBPatchPropertiesImportRouteTargetsList>;
+
+/** RouteTargets to be applied. This is used for the backward compatibility. */
+export type L3OptionBPatchPropertiesExportRouteTargetsList =
+  ReadonlyArray<string>;
+export const L3OptionBPatchPropertiesExportRouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<L3OptionBPatchPropertiesExportRouteTargetsList>;
+
+/** Route Targets to be applied for incoming routes into CE. */
+export type RouteTargetPatchInformationImportIpv4RouteTargetsList =
+  ReadonlyArray<string>;
+export const RouteTargetPatchInformationImportIpv4RouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RouteTargetPatchInformationImportIpv4RouteTargetsList>;
+
+/** Route Targets to be applied for incoming routes from CE. */
+export type RouteTargetPatchInformationImportIpv6RouteTargetsList =
+  ReadonlyArray<string>;
+export const RouteTargetPatchInformationImportIpv6RouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RouteTargetPatchInformationImportIpv6RouteTargetsList>;
+
+/** Route Targets to be applied for outgoing routes into CE. */
+export type RouteTargetPatchInformationExportIpv4RouteTargetsList =
+  ReadonlyArray<string>;
+export const RouteTargetPatchInformationExportIpv4RouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RouteTargetPatchInformationExportIpv4RouteTargetsList>;
+
+/** Route Targets to be applied for outgoing routes from CE. */
+export type RouteTargetPatchInformationExportIpv6RouteTargetsList =
+  ReadonlyArray<string>;
+export const RouteTargetPatchInformationExportIpv6RouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RouteTargetPatchInformationExportIpv6RouteTargetsList>;
+
+/** Route Target Configuration. */
+export interface RouteTargetPatchInformation {
+  /** Route Targets to be applied for incoming routes into CE. */
+  importIpv4RouteTargets?: RouteTargetPatchInformationImportIpv4RouteTargetsList;
+  /** Route Targets to be applied for incoming routes from CE. */
+  importIpv6RouteTargets?: RouteTargetPatchInformationImportIpv6RouteTargetsList;
+  /** Route Targets to be applied for outgoing routes into CE. */
+  exportIpv4RouteTargets?: RouteTargetPatchInformationExportIpv4RouteTargetsList;
+  /** Route Targets to be applied for outgoing routes from CE. */
+  exportIpv6RouteTargets?: RouteTargetPatchInformationExportIpv6RouteTargetsList;
+}
+export const RouteTargetPatchInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importIpv4RouteTargets: S.optional(
+      RouteTargetPatchInformationImportIpv4RouteTargetsList,
+    ),
+    importIpv6RouteTargets: S.optional(
+      RouteTargetPatchInformationImportIpv6RouteTargetsList,
+    ),
+    exportIpv4RouteTargets: S.optional(
+      RouteTargetPatchInformationExportIpv4RouteTargetsList,
+    ),
+    exportIpv6RouteTargets: S.optional(
+      RouteTargetPatchInformationExportIpv6RouteTargetsList,
+    ),
+  }),
+).annotate({
+  identifier: "RouteTargetPatchInformation",
+}) as any as S.Schema<RouteTargetPatchInformation>;
+
+/** Option B configuration. */
+export interface L3OptionBPatchProperties {
+  /** RouteTargets to be applied. This is used for the backward compatibility. */
+  importRouteTargets?: L3OptionBPatchPropertiesImportRouteTargetsList;
+  /** RouteTargets to be applied. This is used for the backward compatibility. */
+  exportRouteTargets?: L3OptionBPatchPropertiesExportRouteTargetsList;
+  /** RouteTargets to be applied. */
+  routeTargets?: RouteTargetPatchInformation;
+}
+export const L3OptionBPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importRouteTargets: S.optional(
+      L3OptionBPatchPropertiesImportRouteTargetsList,
+    ),
+    exportRouteTargets: S.optional(
+      L3OptionBPatchPropertiesExportRouteTargetsList,
+    ),
+    routeTargets: S.optional(RouteTargetPatchInformation),
+  }),
+).annotate({
+  identifier: "L3OptionBPatchProperties",
+}) as any as S.Schema<L3OptionBPatchProperties>;
+
+/** BFD configuration properties */
+export interface BfdPatchConfiguration {
+  /** Interval in milliseconds. Example: 300. */
+  intervalInMilliSeconds?: number;
+  /** Multiplier for the Bfd Configuration. Example: 5. */
+  multiplier?: number;
+}
+export const BfdPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    intervalInMilliSeconds: S.optional(S.Number),
+    multiplier: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BfdPatchConfiguration",
+}) as any as S.Schema<BfdPatchConfiguration>;
+
+/** BGP Monitoring Protocol (BMP) configuration state. */
+export type BmpConfigurationState = "Enabled" | "Disabled";
+export const BmpConfigurationState = /*@__PURE__*/ S.String;
+
+/** BMP Monitoring Configuration patch properties. */
+export interface ExternalNetworkBmpPatchProperties {
+  /** BMP Configuration State. */
+  configurationState?: BmpConfigurationState;
+}
+export const ExternalNetworkBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurationState: S.optional(BmpConfigurationState),
+  }),
+).annotate({
+  identifier: "ExternalNetworkBmpPatchProperties",
+}) as any as S.Schema<ExternalNetworkBmpPatchProperties>;
+
+/** V4 over V6 BGP session state */
+export type V4OverV6BgpSessionState = "Enabled" | "Disabled";
+export const V4OverV6BgpSessionState = /*@__PURE__*/ S.String;
+
+/** V6 over V4 BGP session state */
+export type V6OverV4BgpSessionState = "Enabled" | "Disabled";
+export const V6OverV4BgpSessionState = /*@__PURE__*/ S.String;
+
+/** Prefix Limit Patch properties. */
+export interface PrefixLimitPatchProperties {
+  /** Maximum routes allowed. */
+  maximumRoutes?: number;
+  /** Limit at which route prefixes a warning is generate. */
+  threshold?: number;
+  /** Idle time expiry in seconds. */
+  idleTimeExpiry?: number;
+}
+export const PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maximumRoutes: S.optional(S.Number),
+    threshold: S.optional(S.Number),
+    idleTimeExpiry: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PrefixLimitPatchProperties",
+}) as any as S.Schema<PrefixLimitPatchProperties>;
+
+/** Prefix limits */
+export type NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList =
+  ReadonlyArray<PrefixLimitPatchProperties>;
+export const NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList =
+  /*@__PURE__*/ S.Array(
+    PrefixLimitPatchProperties,
+  ) as any as S.Schema<NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList>;
+
+/** External Network native IPv4 prefix limits patch properties */
+export interface NativeIpv4PrefixLimitPatchProperties {
+  /** Prefix limits */
+  prefixLimits?: NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList;
+}
+export const NativeIpv4PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      prefixLimits: S.optional(
+        NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList,
+      ),
+    }),
+).annotate({
+  identifier: "NativeIpv4PrefixLimitPatchProperties",
+}) as any as S.Schema<NativeIpv4PrefixLimitPatchProperties>;
+
+/** Prefix limits */
+export type NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList =
+  ReadonlyArray<PrefixLimitPatchProperties>;
+export const NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList =
+  /*@__PURE__*/ S.Array(
+    PrefixLimitPatchProperties,
+  ) as any as S.Schema<NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList>;
+
+/** External Network native IPv6 prefix limits patch properties */
+export interface NativeIpv6PrefixLimitPatchProperties {
+  /** Prefix limits */
+  prefixLimits?: NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList;
+}
+export const NativeIpv6PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      prefixLimits: S.optional(
+        NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList,
+      ),
+    }),
+).annotate({
+  identifier: "NativeIpv6PrefixLimitPatchProperties",
+}) as any as S.Schema<NativeIpv6PrefixLimitPatchProperties>;
+
+/** option A properties object */
+export interface ExternalNetworkPatchPropertiesOptionAPropertiesInput {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** MTU to use for option A peering. */
+  mtu?: number;
+  /** Vlan identifier. Example : 501 */
+  vlanId?: number;
+  /** Peer ASN number.Example : 28 */
+  peerASN?: number;
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** BMP Monitor Configuration. */
+  bmpConfiguration?: ExternalNetworkBmpPatchProperties;
+  /** V4OverV6 BGP Session state */
+  v4OverV6BgpSession?: V4OverV6BgpSessionState;
+  /** V6OverV4 BGP Session state */
+  v6OverV4BgpSession?: V6OverV4BgpSessionState;
+  /** Native IPv4 prefix limit configuration */
+  nativeIpv4PrefixLimit?: NativeIpv4PrefixLimitPatchProperties;
+  /** Native IPv6 prefix limit configuration */
+  nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitPatchProperties;
+}
+export const ExternalNetworkPatchPropertiesOptionAPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      primaryIpv4Prefix: S.optional(S.String),
+      primaryIpv6Prefix: S.optional(S.String),
+      secondaryIpv4Prefix: S.optional(S.String),
+      secondaryIpv6Prefix: S.optional(S.String),
+      mtu: S.optional(S.Number),
+      vlanId: S.optional(S.Number),
+      peerASN: S.optional(S.Number),
+      bfdConfiguration: S.optional(BfdPatchConfiguration),
+      ingressAclId: S.optional(S.String),
+      egressAclId: S.optional(S.String),
+      bmpConfiguration: S.optional(ExternalNetworkBmpPatchProperties),
+      v4OverV6BgpSession: S.optional(V4OverV6BgpSessionState),
+      v6OverV4BgpSession: S.optional(V6OverV4BgpSessionState),
+      nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitPatchProperties),
+      nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitPatchProperties),
+    }),
+  ).annotate({
+    identifier: "ExternalNetworkPatchPropertiesOptionAPropertiesInput",
+  }) as any as S.Schema<ExternalNetworkPatchPropertiesOptionAPropertiesInput>;
+
+/** List of next hop addresses. */
+export type StaticRoutePatchPropertiesNextHopList = ReadonlyArray<string>;
+export const StaticRoutePatchPropertiesNextHopList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StaticRoutePatchPropertiesNextHopList>;
+
+/** Route Properties. */
+export interface StaticRoutePatchProperties {
+  /** Prefix of the route. */
+  prefix: string;
+  /** List of next hop addresses. */
+  nextHop: StaticRoutePatchPropertiesNextHopList;
+}
+export const StaticRoutePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefix: S.String,
+    nextHop: StaticRoutePatchPropertiesNextHopList,
+  }),
+).annotate({
+  identifier: "StaticRoutePatchProperties",
+}) as any as S.Schema<StaticRoutePatchProperties>;
+
+/** List of IPv4 Routes. */
+export type ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList>;
+
+/** Static Route Configuration properties for External Network. */
+export interface ExternalNetworkStaticRoutePatchConfiguration {
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList;
+}
+export const ExternalNetworkStaticRoutePatchConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bfdConfiguration: S.optional(BfdPatchConfiguration),
+      ipv4Routes: S.optional(
+        ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList,
+      ),
+      ipv6Routes: S.optional(
+        ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ExternalNetworkStaticRoutePatchConfiguration",
+  }) as any as S.Schema<ExternalNetworkStaticRoutePatchConfiguration>;
+
+/** External Network Patch properties. */
+export interface ExternalNetworkPatchPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource. */
+  networkToNetworkInterconnectId?: string;
+  /** Import Route Policy either IPv4 or IPv6. */
+  importRoutePolicy?: ImportRoutePolicyPatch;
+  /** Export Route Policy either IPv4 or IPv6. */
+  exportRoutePolicy?: ExportRoutePolicyPatch;
+  /** Peering option list. */
+  peeringOption?: PeeringOption;
+  /** option B properties object */
+  optionBProperties?: L3OptionBPatchProperties;
+  /** option A properties object */
+  optionAProperties?: ExternalNetworkPatchPropertiesOptionAPropertiesInput;
+  /** Static Route Configuration. */
+  staticRouteConfiguration?: ExternalNetworkStaticRoutePatchConfiguration;
+}
+export const ExternalNetworkPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkToNetworkInterconnectId: S.optional(S.String),
+    importRoutePolicy: S.optional(ImportRoutePolicyPatch),
+    exportRoutePolicy: S.optional(ExportRoutePolicyPatch),
+    peeringOption: S.optional(PeeringOption),
+    optionBProperties: S.optional(L3OptionBPatchProperties),
+    optionAProperties: S.optional(
+      ExternalNetworkPatchPropertiesOptionAPropertiesInput,
+    ),
+    staticRouteConfiguration: S.optional(
+      ExternalNetworkStaticRoutePatchConfiguration,
+    ),
+  }),
+).annotate({
+  identifier: "ExternalNetworkPatchPropertiesInput",
+}) as any as S.Schema<ExternalNetworkPatchPropertiesInput>;
+
 export interface ExternalNetworksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2332,7 +3666,8 @@ export interface ExternalNetworksUpdateRequest {
   l3IsolationDomainName: string;
   /** Name of the External Network. */
   externalNetworkName: string;
-  body: unknown;
+  /** External Network Patch properties. */
+  properties?: ExternalNetworkPatchPropertiesInput;
 }
 export const ExternalNetworksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2340,7 +3675,7 @@ export const ExternalNetworksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     l3IsolationDomainName: S.String.pipe(T.Label()),
     externalNetworkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ExternalNetworkPatchPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2377,6 +3712,14 @@ export const ExternalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalNetworksUpdateResponse",
 }) as any as S.Schema<ExternalNetworksUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface ExternalNetworksUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2386,7 +3729,10 @@ export interface ExternalNetworksUpdateAdministrativeStateRequest {
   l3IsolationDomainName: string;
   /** Name of the External Network. */
   externalNetworkName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const ExternalNetworksUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2395,7 +3741,10 @@ export const ExternalNetworksUpdateAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       externalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        ExternalNetworksUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2408,6 +3757,14 @@ export const ExternalNetworksUpdateAdministrativeStateRequest =
     identifier: "ExternalNetworksUpdateAdministrativeStateRequest",
   }) as any as S.Schema<ExternalNetworksUpdateAdministrativeStateRequest>;
 
+/** External Network RouteType. */
+export type ExternalNetworkRouteType = "Static" | "OptionA";
+export const ExternalNetworkRouteType = /*@__PURE__*/ S.String;
+
+/** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
+export type BfdAdministrativeState = "Enabled" | "Disabled" | "MAT" | "RMA";
+export const BfdAdministrativeState = /*@__PURE__*/ S.String;
+
 export interface ExternalNetworksUpdateBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2417,7 +3774,10 @@ export interface ExternalNetworksUpdateBfdAdministrativeStateRequest {
   l3IsolationDomainName: string;
   /** Name of the External Network. */
   externalNetworkName: string;
-  body: unknown;
+  /** Route Type that helps to know which bfd we are updating. */
+  routeType?: ExternalNetworkRouteType;
+  /** Administrative state. */
+  administrativeState?: BfdAdministrativeState;
 }
 export const ExternalNetworksUpdateBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2426,7 +3786,8 @@ export const ExternalNetworksUpdateBfdAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       externalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      routeType: S.optional(ExternalNetworkRouteType),
+      administrativeState: S.optional(BfdAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2441,7 +3802,7 @@ export const ExternalNetworksUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -2490,7 +3851,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -2498,7 +3859,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -2506,7 +3867,7 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2541,19 +3902,6 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponseError =
   ).annotate({
     identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseError",
   }) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseError>;
-
-/** External Network RouteType. */
-export type ExternalNetworkRouteType = "Static" | "OptionA" | (string & {});
-export const ExternalNetworkRouteType = /*@__PURE__*/ S.String;
-
-/** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
-export type BfdAdministrativeState =
-  | "Enabled"
-  | "Disabled"
-  | "MAT"
-  | "RMA"
-  | (string & {});
-export const BfdAdministrativeState = /*@__PURE__*/ S.String;
 
 /** Response properties for External Network BFD Administrative State. */
 export interface ExternalNetworkUpdateBfdAdministrativeStateResponseProperties {
@@ -2619,6 +3967,14 @@ export const ExternalNetworkUpdateBfdAdministrativeStateResponse =
     identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponse",
   }) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
+
 export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2628,7 +3984,10 @@ export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest 
   l3IsolationDomainName: string;
   /** Name of the External Network. */
   externalNetworkName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2637,7 +3996,10 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       externalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2651,42 +4013,9 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
       "ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest",
   }) as any as S.Schema<ExternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest>;
 
-export interface InternalNetworksCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the L3 Isolation Domain. */
-  l3IsolationDomainName: string;
-  /** Name of the Internal Network. */
-  internalNetworkName: string;
-  body: unknown;
-}
-export const InternalNetworksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    l3IsolationDomainName: S.String.pipe(T.Label()),
-    internalNetworkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "InternalNetworksCreateRequest",
-}) as any as S.Schema<InternalNetworksCreateRequest>;
-
 /** Extension. Example: NoExtension | NPB. */
-export type InternalNetworkPropertiesExtension =
-  | "NoExtension"
-  | "NPB"
-  | (string & {});
-export const InternalNetworkPropertiesExtension = /*@__PURE__*/ S.String;
+export type InternalNetworkPropertiesInputExtension = "NoExtension" | "NPB";
+export const InternalNetworkPropertiesInputExtension = /*@__PURE__*/ S.String;
 
 /** Connected Subnet properties. */
 export interface ConnectedSubnet {
@@ -2705,111 +4034,92 @@ export const ConnectedSubnet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedSubnet>;
 
 /** List of Connected IPv4 Subnets. */
-export type InternalNetworkPropertiesConnectedIPv4SubnetsList =
-  ConnectedSubnet[];
-export const InternalNetworkPropertiesConnectedIPv4SubnetsList =
+export type InternalNetworkPropertiesInputConnectedIPv4SubnetsList =
+  ReadonlyArray<ConnectedSubnet>;
+export const InternalNetworkPropertiesInputConnectedIPv4SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
-  ) as any as S.Schema<InternalNetworkPropertiesConnectedIPv4SubnetsList>;
+  ) as any as S.Schema<InternalNetworkPropertiesInputConnectedIPv4SubnetsList>;
 
 /** List of connected IPv6 Subnets. */
-export type InternalNetworkPropertiesConnectedIPv6SubnetsList =
-  ConnectedSubnet[];
-export const InternalNetworkPropertiesConnectedIPv6SubnetsList =
+export type InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
+  ReadonlyArray<ConnectedSubnet>;
+export const InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
   /*@__PURE__*/ S.Array(
     ConnectedSubnet,
-  ) as any as S.Schema<InternalNetworkPropertiesConnectedIPv6SubnetsList>;
+  ) as any as S.Schema<InternalNetworkPropertiesInputConnectedIPv6SubnetsList>;
 
 /** To check whether monitoring of internal network is enabled or not. */
-export type InternalNetworkPropertiesIsMonitoringEnabled =
+export type InternalNetworkPropertiesInputIsMonitoringEnabled =
   | "True"
-  | "False"
-  | (string & {});
-export const InternalNetworkPropertiesIsMonitoringEnabled =
+  | "False";
+export const InternalNetworkPropertiesInputIsMonitoringEnabled =
   /*@__PURE__*/ S.String;
 
-/** Boolean union. Example- True/False */
-export type BooleanEnumProperty = "True" | "False" | (string & {});
-export const BooleanEnumProperty = /*@__PURE__*/ S.String;
-
 /** Enable Or Disable state. */
-export type AllowASOverride = "Enable" | "Disable" | (string & {});
+export type AllowASOverride = "Enable" | "Disable";
 export const AllowASOverride = /*@__PURE__*/ S.String;
 
 /** List of BGP IPv4 Listen Range prefixes. */
-export type BgpConfigurationIpv4ListenRangePrefixesList = string[];
-export const BgpConfigurationIpv4ListenRangePrefixesList =
+export type BgpConfigurationInputIpv4ListenRangePrefixesList =
+  ReadonlyArray<string>;
+export const BgpConfigurationInputIpv4ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<BgpConfigurationIpv4ListenRangePrefixesList>;
+  ) as any as S.Schema<BgpConfigurationInputIpv4ListenRangePrefixesList>;
 
 /** List of BGP IPv6 Listen Ranges prefixes. */
-export type BgpConfigurationIpv6ListenRangePrefixesList = string[];
-export const BgpConfigurationIpv6ListenRangePrefixesList =
+export type BgpConfigurationInputIpv6ListenRangePrefixesList =
+  ReadonlyArray<string>;
+export const BgpConfigurationInputIpv6ListenRangePrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<BgpConfigurationIpv6ListenRangePrefixesList>;
-
-/** Border Gateway Protocol (BGP) Administrative State values */
-export type BgpAdministrativeState = "Enabled" | "Disabled" | (string & {});
-export const BgpAdministrativeState = /*@__PURE__*/ S.String;
+  ) as any as S.Schema<BgpConfigurationInputIpv6ListenRangePrefixesList>;
 
 /** Neighbor Address properties. */
-export interface NeighborAddress {
+export interface NeighborAddressInput {
   /** IP Address. */
   address?: string;
-  /** BFD Administrative State for each Neighbor Address. Example: Enabled | Disabled. */
-  bfdAdministrativeState?: BfdAdministrativeState;
-  /** BGP Administrative State for each Neighbor Address. Example: Enabled | Disabled. */
-  bgpAdministrativeState?: BgpAdministrativeState;
-  /** Configuration state of the resource. */
-  configurationState?: ConfigurationState;
 }
-export const NeighborAddress = /*@__PURE__*/ S.suspend(() =>
+export const NeighborAddressInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
-    bfdAdministrativeState: S.optional(BfdAdministrativeState),
-    bgpAdministrativeState: S.optional(BgpAdministrativeState),
-    configurationState: S.optional(ConfigurationState),
   }),
 ).annotate({
-  identifier: "NeighborAddress",
-}) as any as S.Schema<NeighborAddress>;
+  identifier: "NeighborAddressInput",
+}) as any as S.Schema<NeighborAddressInput>;
 
 /** List with stringified IPv4 Neighbor Addresses. */
-export type BgpConfigurationIpv4NeighborAddressList = NeighborAddress[];
-export const BgpConfigurationIpv4NeighborAddressList = /*@__PURE__*/ S.Array(
-  NeighborAddress,
-) as any as S.Schema<BgpConfigurationIpv4NeighborAddressList>;
+export type BgpConfigurationInputIpv4NeighborAddressList =
+  ReadonlyArray<NeighborAddressInput>;
+export const BgpConfigurationInputIpv4NeighborAddressList =
+  /*@__PURE__*/ S.Array(
+    NeighborAddressInput,
+  ) as any as S.Schema<BgpConfigurationInputIpv4NeighborAddressList>;
 
 /** List with stringified IPv6 Neighbor Address. */
-export type BgpConfigurationIpv6NeighborAddressList = NeighborAddress[];
-export const BgpConfigurationIpv6NeighborAddressList = /*@__PURE__*/ S.Array(
-  NeighborAddress,
-) as any as S.Schema<BgpConfigurationIpv6NeighborAddressList>;
+export type BgpConfigurationInputIpv6NeighborAddressList =
+  ReadonlyArray<NeighborAddressInput>;
+export const BgpConfigurationInputIpv6NeighborAddressList =
+  /*@__PURE__*/ S.Array(
+    NeighborAddressInput,
+  ) as any as S.Schema<BgpConfigurationInputIpv6NeighborAddressList>;
 
 /** BMP Collector Address. */
-export type InternalNetworkBmpPropertiesNeighborIpExclusionsList = string[];
+export type InternalNetworkBmpPropertiesNeighborIpExclusionsList =
+  ReadonlyArray<string>;
 export const InternalNetworkBmpPropertiesNeighborIpExclusionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<InternalNetworkBmpPropertiesNeighborIpExclusionsList>;
 
-/** BGP Monitoring Protocol (BMP) configuration state. */
-export type BmpConfigurationState = "Enabled" | "Disabled" | (string & {});
-export const BmpConfigurationState = /*@__PURE__*/ S.String;
-
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
-export type BmpExportPolicy =
-  | "Pre-Policy"
-  | "Post-Policy"
-  | "All"
-  | "LocalRib"
-  | (string & {});
+export type BmpExportPolicy = "Pre-Policy" | "Post-Policy" | "All" | "LocalRib";
 export const BmpExportPolicy = /*@__PURE__*/ S.String;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
-export type BmpExportPolicyPropertiesExportPoliciesList = BmpExportPolicy[];
+export type BmpExportPolicyPropertiesExportPoliciesList =
+  ReadonlyArray<BmpExportPolicy>;
 export const BmpExportPolicyPropertiesExportPoliciesList =
   /*@__PURE__*/ S.Array(
     BmpExportPolicy,
@@ -2850,17 +4160,289 @@ export const InternalNetworkBmpProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetworkBmpProperties>;
 
 /** V4 over V6 bgp session. */
-export type BgpConfigurationV4OverV6BgpSession =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type BgpConfigurationInputV4OverV6BgpSession = "Enabled" | "Disabled";
+export const BgpConfigurationInputV4OverV6BgpSession = /*@__PURE__*/ S.String;
+
+/** v6 over v4 bgp session. */
+export type BgpConfigurationInputV6OverV4BgpSession = "Enabled" | "Disabled";
+export const BgpConfigurationInputV6OverV4BgpSession = /*@__PURE__*/ S.String;
+
+/** BGP configuration properties */
+export interface BgpConfigurationInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** Originate a defaultRoute. Ex: "True" | "False". */
+  defaultRouteOriginate?: BooleanEnumProperty;
+  /** Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2. */
+  allowAS?: number;
+  /** Enable Or Disable state. */
+  allowASOverride?: AllowASOverride;
+  /** Peer ASN. Example: 65047. */
+  peerASN: number;
+  /** List of BGP IPv4 Listen Range prefixes. */
+  ipv4ListenRangePrefixes?: BgpConfigurationInputIpv4ListenRangePrefixesList;
+  /** List of BGP IPv6 Listen Ranges prefixes. */
+  ipv6ListenRangePrefixes?: BgpConfigurationInputIpv6ListenRangePrefixesList;
+  /** List with stringified IPv4 Neighbor Addresses. */
+  ipv4NeighborAddress?: BgpConfigurationInputIpv4NeighborAddressList;
+  /** List with stringified IPv6 Neighbor Address. */
+  ipv6NeighborAddress?: BgpConfigurationInputIpv6NeighborAddressList;
+  /** InternalNetwork BMP Configuration */
+  bmpConfiguration?: InternalNetworkBmpProperties;
+  /** V4 over V6 bgp session. */
+  v4OverV6BgpSession?: BgpConfigurationInputV4OverV6BgpSession;
+  /** v6 over v4 bgp session. */
+  v6OverV4BgpSession?: BgpConfigurationInputV6OverV4BgpSession;
+}
+export const BgpConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
+    defaultRouteOriginate: S.optional(BooleanEnumProperty),
+    allowAS: S.optional(S.Number),
+    allowASOverride: S.optional(AllowASOverride),
+    peerASN: S.Number,
+    ipv4ListenRangePrefixes: S.optional(
+      BgpConfigurationInputIpv4ListenRangePrefixesList,
+    ),
+    ipv6ListenRangePrefixes: S.optional(
+      BgpConfigurationInputIpv6ListenRangePrefixesList,
+    ),
+    ipv4NeighborAddress: S.optional(
+      BgpConfigurationInputIpv4NeighborAddressList,
+    ),
+    ipv6NeighborAddress: S.optional(
+      BgpConfigurationInputIpv6NeighborAddressList,
+    ),
+    bmpConfiguration: S.optional(InternalNetworkBmpProperties),
+    v4OverV6BgpSession: S.optional(BgpConfigurationInputV4OverV6BgpSession),
+    v6OverV4BgpSession: S.optional(BgpConfigurationInputV6OverV4BgpSession),
+  }),
+).annotate({
+  identifier: "BgpConfigurationInput",
+}) as any as S.Schema<BgpConfigurationInput>;
+
+/** List of IPv4 Routes. */
+export type StaticRouteConfigurationInputIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const StaticRouteConfigurationInputIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<StaticRouteConfigurationInputIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type StaticRouteConfigurationInputIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const StaticRouteConfigurationInputIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<StaticRouteConfigurationInputIpv6RoutesList>;
+
+/** Extension. Example: NoExtension | NPB. */
+export type StaticRouteConfigurationInputExtension = "NoExtension" | "NPB";
+export const StaticRouteConfigurationInputExtension = /*@__PURE__*/ S.String;
+
+/** Static Route Configuration properties. */
+export interface StaticRouteConfigurationInput {
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: StaticRouteConfigurationInputIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: StaticRouteConfigurationInputIpv6RoutesList;
+  /** Extension. Example: NoExtension | NPB. */
+  extension?: StaticRouteConfigurationInputExtension;
+}
+export const StaticRouteConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdConfigurationInput),
+    ipv4Routes: S.optional(StaticRouteConfigurationInputIpv4RoutesList),
+    ipv6Routes: S.optional(StaticRouteConfigurationInputIpv6RoutesList),
+    extension: S.optional(StaticRouteConfigurationInputExtension),
+  }),
+).annotate({
+  identifier: "StaticRouteConfigurationInput",
+}) as any as S.Schema<StaticRouteConfigurationInput>;
+
+/** Internal Network Properties defines the properties of the resource. */
+export interface InternalNetworkPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Extension. Example: NoExtension | NPB. */
+  extension?: InternalNetworkPropertiesInputExtension;
+  /** Maximum transmission unit. Default value is 1500. */
+  mtu?: number;
+  /** List of Connected IPv4 Subnets. */
+  connectedIPv4Subnets?: InternalNetworkPropertiesInputConnectedIPv4SubnetsList;
+  /** List of connected IPv6 Subnets. */
+  connectedIPv6Subnets?: InternalNetworkPropertiesInputConnectedIPv6SubnetsList;
+  /** Import Route Policy either IPv4 or IPv6. */
+  importRoutePolicy?: ImportRoutePolicy;
+  /** Export Route Policy either IPv4 or IPv6. */
+  exportRoutePolicy?: ExportRoutePolicy;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** To check whether monitoring of internal network is enabled or not. */
+  isMonitoringEnabled?: InternalNetworkPropertiesInputIsMonitoringEnabled;
+  /** Vlan identifier. Example: 1001. */
+  vlanId: number;
+  /** BGP configuration properties. */
+  bgpConfiguration?: BgpConfigurationInput;
+  /** Static Route Configuration properties. */
+  staticRouteConfiguration?: StaticRouteConfigurationInput;
+  /** Native IPv4 Prefix Limit Configuration properties. */
+  nativeIpv4PrefixLimit?: NativeIpv4PrefixLimitProperties;
+  /** Native IPv6 Prefix Limit Configuration properties. */
+  nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitProperties;
+}
+export const InternalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    extension: S.optional(InternalNetworkPropertiesInputExtension),
+    mtu: S.optional(S.Number),
+    connectedIPv4Subnets: S.optional(
+      InternalNetworkPropertiesInputConnectedIPv4SubnetsList,
+    ),
+    connectedIPv6Subnets: S.optional(
+      InternalNetworkPropertiesInputConnectedIPv6SubnetsList,
+    ),
+    importRoutePolicy: S.optional(ImportRoutePolicy),
+    exportRoutePolicy: S.optional(ExportRoutePolicy),
+    ingressAclId: S.optional(S.String),
+    egressAclId: S.optional(S.String),
+    isMonitoringEnabled: S.optional(
+      InternalNetworkPropertiesInputIsMonitoringEnabled,
+    ),
+    vlanId: S.Number,
+    bgpConfiguration: S.optional(BgpConfigurationInput),
+    staticRouteConfiguration: S.optional(StaticRouteConfigurationInput),
+    nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
+    nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
+  }),
+).annotate({
+  identifier: "InternalNetworkPropertiesInput",
+}) as any as S.Schema<InternalNetworkPropertiesInput>;
+
+export interface InternalNetworksCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the L3 Isolation Domain. */
+  l3IsolationDomainName: string;
+  /** Name of the Internal Network. */
+  internalNetworkName: string;
+  /** The Internal Network Properties */
+  properties: InternalNetworkPropertiesInput;
+}
+export const InternalNetworksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    l3IsolationDomainName: S.String.pipe(T.Label()),
+    internalNetworkName: S.String.pipe(T.Label()),
+    properties: InternalNetworkPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "InternalNetworksCreateRequest",
+}) as any as S.Schema<InternalNetworksCreateRequest>;
+
+/** Extension. Example: NoExtension | NPB. */
+export type InternalNetworkPropertiesExtension = "NoExtension" | "NPB";
+export const InternalNetworkPropertiesExtension = /*@__PURE__*/ S.String;
+
+/** List of Connected IPv4 Subnets. */
+export type InternalNetworkPropertiesConnectedIPv4SubnetsList =
+  ReadonlyArray<ConnectedSubnet>;
+export const InternalNetworkPropertiesConnectedIPv4SubnetsList =
+  /*@__PURE__*/ S.Array(
+    ConnectedSubnet,
+  ) as any as S.Schema<InternalNetworkPropertiesConnectedIPv4SubnetsList>;
+
+/** List of connected IPv6 Subnets. */
+export type InternalNetworkPropertiesConnectedIPv6SubnetsList =
+  ReadonlyArray<ConnectedSubnet>;
+export const InternalNetworkPropertiesConnectedIPv6SubnetsList =
+  /*@__PURE__*/ S.Array(
+    ConnectedSubnet,
+  ) as any as S.Schema<InternalNetworkPropertiesConnectedIPv6SubnetsList>;
+
+/** To check whether monitoring of internal network is enabled or not. */
+export type InternalNetworkPropertiesIsMonitoringEnabled = "True" | "False";
+export const InternalNetworkPropertiesIsMonitoringEnabled =
+  /*@__PURE__*/ S.String;
+
+/** List of BGP IPv4 Listen Range prefixes. */
+export type BgpConfigurationIpv4ListenRangePrefixesList = ReadonlyArray<string>;
+export const BgpConfigurationIpv4ListenRangePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BgpConfigurationIpv4ListenRangePrefixesList>;
+
+/** List of BGP IPv6 Listen Ranges prefixes. */
+export type BgpConfigurationIpv6ListenRangePrefixesList = ReadonlyArray<string>;
+export const BgpConfigurationIpv6ListenRangePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BgpConfigurationIpv6ListenRangePrefixesList>;
+
+/** Border Gateway Protocol (BGP) Administrative State values */
+export type BgpAdministrativeState = "Enabled" | "Disabled";
+export const BgpAdministrativeState = /*@__PURE__*/ S.String;
+
+/** Neighbor Address properties. */
+export interface NeighborAddress {
+  /** IP Address. */
+  address?: string;
+  /** BFD Administrative State for each Neighbor Address. Example: Enabled | Disabled. */
+  bfdAdministrativeState?: BfdAdministrativeState;
+  /** BGP Administrative State for each Neighbor Address. Example: Enabled | Disabled. */
+  bgpAdministrativeState?: BgpAdministrativeState;
+  /** Configuration state of the resource. */
+  configurationState?: ConfigurationState;
+}
+export const NeighborAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    bfdAdministrativeState: S.optional(BfdAdministrativeState),
+    bgpAdministrativeState: S.optional(BgpAdministrativeState),
+    configurationState: S.optional(ConfigurationState),
+  }),
+).annotate({
+  identifier: "NeighborAddress",
+}) as any as S.Schema<NeighborAddress>;
+
+/** List with stringified IPv4 Neighbor Addresses. */
+export type BgpConfigurationIpv4NeighborAddressList =
+  ReadonlyArray<NeighborAddress>;
+export const BgpConfigurationIpv4NeighborAddressList = /*@__PURE__*/ S.Array(
+  NeighborAddress,
+) as any as S.Schema<BgpConfigurationIpv4NeighborAddressList>;
+
+/** List with stringified IPv6 Neighbor Address. */
+export type BgpConfigurationIpv6NeighborAddressList =
+  ReadonlyArray<NeighborAddress>;
+export const BgpConfigurationIpv6NeighborAddressList = /*@__PURE__*/ S.Array(
+  NeighborAddress,
+) as any as S.Schema<BgpConfigurationIpv6NeighborAddressList>;
+
+/** V4 over V6 bgp session. */
+export type BgpConfigurationV4OverV6BgpSession = "Enabled" | "Disabled";
 export const BgpConfigurationV4OverV6BgpSession = /*@__PURE__*/ S.String;
 
 /** v6 over v4 bgp session. */
-export type BgpConfigurationV6OverV4BgpSession =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type BgpConfigurationV6OverV4BgpSession = "Enabled" | "Disabled";
 export const BgpConfigurationV6OverV4BgpSession = /*@__PURE__*/ S.String;
 
 /** BGP configuration properties */
@@ -2920,22 +4502,21 @@ export const BgpConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BgpConfiguration>;
 
 /** List of IPv4 Routes. */
-export type StaticRouteConfigurationIpv4RoutesList = StaticRouteProperties[];
+export type StaticRouteConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const StaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<StaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
-export type StaticRouteConfigurationIpv6RoutesList = StaticRouteProperties[];
+export type StaticRouteConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const StaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<StaticRouteConfigurationIpv6RoutesList>;
 
 /** Extension. Example: NoExtension | NPB. */
-export type StaticRouteConfigurationExtension =
-  | "NoExtension"
-  | "NPB"
-  | (string & {});
+export type StaticRouteConfigurationExtension = "NoExtension" | "NPB";
 export const StaticRouteConfigurationExtension = /*@__PURE__*/ S.String;
 
 /** Static Route Configuration properties. */
@@ -3199,7 +4780,7 @@ export const InternalNetwork = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetwork>;
 
 /** The InternalNetwork items on this page */
-export type InternalNetworksListValueList = InternalNetwork[];
+export type InternalNetworksListValueList = ReadonlyArray<InternalNetwork>;
 export const InternalNetworksListValueList = /*@__PURE__*/ S.Array(
   InternalNetwork,
 ) as any as S.Schema<InternalNetworksListValueList>;
@@ -3220,6 +4801,258 @@ export const InternalNetworksList = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternalNetworksList",
 }) as any as S.Schema<InternalNetworksList>;
 
+/** Connected Subnet properties. */
+export interface ConnectedSubnetPatch {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Prefix of the Connected Subnet. */
+  prefix: string;
+}
+export const ConnectedSubnetPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    prefix: S.String,
+  }),
+).annotate({
+  identifier: "ConnectedSubnetPatch",
+}) as any as S.Schema<ConnectedSubnetPatch>;
+
+/** List of Connected IPv4 Subnets. */
+export type InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
+  ReadonlyArray<ConnectedSubnetPatch>;
+export const InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
+  /*@__PURE__*/ S.Array(
+    ConnectedSubnetPatch,
+  ) as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList>;
+
+/** List of connected IPv6 Subnets. */
+export type InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
+  ReadonlyArray<ConnectedSubnetPatch>;
+export const InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
+  /*@__PURE__*/ S.Array(
+    ConnectedSubnetPatch,
+  ) as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList>;
+
+/** To check whether monitoring of internal network is enabled or not. */
+export type IsMonitoringEnabled = "True" | "False";
+export const IsMonitoringEnabled = /*@__PURE__*/ S.String;
+
+/** List of BGP IPv4 Listen Range prefixes. */
+export type BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
+  ReadonlyArray<string>;
+export const BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BgpPatchConfigurationInputIpv4ListenRangePrefixesList>;
+
+/** List of BGP IPv6 Listen Ranges prefixes. */
+export type BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
+  ReadonlyArray<string>;
+export const BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BgpPatchConfigurationInputIpv6ListenRangePrefixesList>;
+
+/** Neighbor Address properties. */
+export interface NeighborAddressPatchInput {
+  /** IP Address. */
+  address?: string;
+}
+export const NeighborAddressPatchInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NeighborAddressPatchInput",
+}) as any as S.Schema<NeighborAddressPatchInput>;
+
+/** List with stringified IPv4 Neighbor Addresses. */
+export type BgpPatchConfigurationInputIpv4NeighborAddressList =
+  ReadonlyArray<NeighborAddressPatchInput>;
+export const BgpPatchConfigurationInputIpv4NeighborAddressList =
+  /*@__PURE__*/ S.Array(
+    NeighborAddressPatchInput,
+  ) as any as S.Schema<BgpPatchConfigurationInputIpv4NeighborAddressList>;
+
+/** List with stringified IPv6 Neighbor Address. */
+export type BgpPatchConfigurationInputIpv6NeighborAddressList =
+  ReadonlyArray<NeighborAddressPatchInput>;
+export const BgpPatchConfigurationInputIpv6NeighborAddressList =
+  /*@__PURE__*/ S.Array(
+    NeighborAddressPatchInput,
+  ) as any as S.Schema<BgpPatchConfigurationInputIpv6NeighborAddressList>;
+
+/** Neighbor IP Address exclusions for BMP. */
+export type InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList =
+  ReadonlyArray<string>;
+export const InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList>;
+
+/** Internal Network BMP Configuration */
+export interface InternalNetworkBmpPatchProperties {
+  /** Neighbor IP Address exclusions for BMP. */
+  neighborIpExclusions?: InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList;
+  /** BMP Monitoring configuration state. */
+  bmpConfigurationState?: BmpConfigurationState;
+}
+export const InternalNetworkBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    neighborIpExclusions: S.optional(
+      InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList,
+    ),
+    bmpConfigurationState: S.optional(BmpConfigurationState),
+  }),
+).annotate({
+  identifier: "InternalNetworkBmpPatchProperties",
+}) as any as S.Schema<InternalNetworkBmpPatchProperties>;
+
+/** BGP configuration properties. */
+export interface BgpPatchConfigurationInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** Originate a defaultRoute. Ex: "True" | "False". */
+  defaultRouteOriginate?: BooleanEnumProperty;
+  /** Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2. */
+  allowAS?: number;
+  /** Enable Or Disable state. */
+  allowASOverride?: AllowASOverride;
+  /** Peer ASN. Example: 65047. */
+  peerASN?: number;
+  /** List of BGP IPv4 Listen Range prefixes. */
+  ipv4ListenRangePrefixes?: BgpPatchConfigurationInputIpv4ListenRangePrefixesList;
+  /** List of BGP IPv6 Listen Ranges prefixes. */
+  ipv6ListenRangePrefixes?: BgpPatchConfigurationInputIpv6ListenRangePrefixesList;
+  /** List with stringified IPv4 Neighbor Addresses. */
+  ipv4NeighborAddress?: BgpPatchConfigurationInputIpv4NeighborAddressList;
+  /** List with stringified IPv6 Neighbor Address. */
+  ipv6NeighborAddress?: BgpPatchConfigurationInputIpv6NeighborAddressList;
+  /** InternalNetwork BMP Configuration */
+  bmpConfiguration?: InternalNetworkBmpPatchProperties;
+  /** V4 over V6 bgp session. */
+  v4OverV6BgpSession?: V4OverV6BgpSessionState;
+  /** v6 over v4 bgp session. */
+  v6OverV4BgpSession?: V6OverV4BgpSessionState;
+}
+export const BgpPatchConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    defaultRouteOriginate: S.optional(BooleanEnumProperty),
+    allowAS: S.optional(S.Number),
+    allowASOverride: S.optional(AllowASOverride),
+    peerASN: S.optional(S.Number),
+    ipv4ListenRangePrefixes: S.optional(
+      BgpPatchConfigurationInputIpv4ListenRangePrefixesList,
+    ),
+    ipv6ListenRangePrefixes: S.optional(
+      BgpPatchConfigurationInputIpv6ListenRangePrefixesList,
+    ),
+    ipv4NeighborAddress: S.optional(
+      BgpPatchConfigurationInputIpv4NeighborAddressList,
+    ),
+    ipv6NeighborAddress: S.optional(
+      BgpPatchConfigurationInputIpv6NeighborAddressList,
+    ),
+    bmpConfiguration: S.optional(InternalNetworkBmpPatchProperties),
+    v4OverV6BgpSession: S.optional(V4OverV6BgpSessionState),
+    v6OverV4BgpSession: S.optional(V6OverV4BgpSessionState),
+  }),
+).annotate({
+  identifier: "BgpPatchConfigurationInput",
+}) as any as S.Schema<BgpPatchConfigurationInput>;
+
+/** List of IPv4 Routes. */
+export type StaticRoutePatchConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const StaticRoutePatchConfigurationIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<StaticRoutePatchConfigurationIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type StaticRoutePatchConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const StaticRoutePatchConfigurationIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<StaticRoutePatchConfigurationIpv6RoutesList>;
+
+/** Static Route Configuration properties. */
+export interface StaticRoutePatchConfiguration {
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: StaticRoutePatchConfigurationIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: StaticRoutePatchConfigurationIpv6RoutesList;
+}
+export const StaticRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    ipv4Routes: S.optional(StaticRoutePatchConfigurationIpv4RoutesList),
+    ipv6Routes: S.optional(StaticRoutePatchConfigurationIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "StaticRoutePatchConfiguration",
+}) as any as S.Schema<StaticRoutePatchConfiguration>;
+
+/** InternalNetwork Patch properties. */
+export interface InternalNetworkPatchPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Maximum transmission unit. Default value is 1500. */
+  mtu?: number;
+  /** List of Connected IPv4 Subnets. */
+  connectedIPv4Subnets?: InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList;
+  /** List of connected IPv6 Subnets. */
+  connectedIPv6Subnets?: InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList;
+  /** Import Route Policy either IPv4 or IPv6. */
+  importRoutePolicy?: ImportRoutePolicy;
+  /** Export Route Policy either IPv4 or IPv6. */
+  exportRoutePolicy?: ExportRoutePolicy;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** To check whether monitoring of internal network is enabled or not. */
+  isMonitoringEnabled?: IsMonitoringEnabled;
+  /** BGP configuration properties. */
+  bgpConfiguration?: BgpPatchConfigurationInput;
+  /** Static Route Configuration properties. */
+  staticRouteConfiguration?: StaticRoutePatchConfiguration;
+  /** Native IPv4 Prefix Limit Configuration properties. */
+  nativeIpv4PrefixLimit?: NativeIpv4PrefixLimitPatchProperties;
+  /** Native IPv6 Prefix Limit Configuration properties. */
+  nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitPatchProperties;
+}
+export const InternalNetworkPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    mtu: S.optional(S.Number),
+    connectedIPv4Subnets: S.optional(
+      InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList,
+    ),
+    connectedIPv6Subnets: S.optional(
+      InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList,
+    ),
+    importRoutePolicy: S.optional(ImportRoutePolicy),
+    exportRoutePolicy: S.optional(ExportRoutePolicy),
+    ingressAclId: S.optional(S.String),
+    egressAclId: S.optional(S.String),
+    isMonitoringEnabled: S.optional(IsMonitoringEnabled),
+    bgpConfiguration: S.optional(BgpPatchConfigurationInput),
+    staticRouteConfiguration: S.optional(StaticRoutePatchConfiguration),
+    nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitPatchProperties),
+    nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitPatchProperties),
+  }),
+).annotate({
+  identifier: "InternalNetworkPatchPropertiesInput",
+}) as any as S.Schema<InternalNetworkPatchPropertiesInput>;
+
 export interface InternalNetworksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3229,7 +5062,8 @@ export interface InternalNetworksUpdateRequest {
   l3IsolationDomainName: string;
   /** Name of the Internal Network. */
   internalNetworkName: string;
-  body: unknown;
+  /** InternalNetwork Patch properties. */
+  properties?: InternalNetworkPatchPropertiesInput;
 }
 export const InternalNetworksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3237,7 +5071,7 @@ export const InternalNetworksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     l3IsolationDomainName: S.String.pipe(T.Label()),
     internalNetworkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InternalNetworkPatchPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3274,6 +5108,14 @@ export const InternalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternalNetworksUpdateResponse",
 }) as any as S.Schema<InternalNetworksUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type InternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const InternalNetworksUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InternalNetworksUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface InternalNetworksUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3283,7 +5125,10 @@ export interface InternalNetworksUpdateAdministrativeStateRequest {
   l3IsolationDomainName: string;
   /** Name of the Internal Network. */
   internalNetworkName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: InternalNetworksUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const InternalNetworksUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3292,7 +5137,10 @@ export const InternalNetworksUpdateAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       internalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        InternalNetworksUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3305,6 +5153,10 @@ export const InternalNetworksUpdateAdministrativeStateRequest =
     identifier: "InternalNetworksUpdateAdministrativeStateRequest",
   }) as any as S.Schema<InternalNetworksUpdateAdministrativeStateRequest>;
 
+/** Internal Network RouteType. */
+export type InternalNetworkRouteType = "Static" | "Bgp";
+export const InternalNetworkRouteType = /*@__PURE__*/ S.String;
+
 export interface InternalNetworksUpdateBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3314,7 +5166,12 @@ export interface InternalNetworksUpdateBfdAdministrativeStateRequest {
   l3IsolationDomainName: string;
   /** Name of the Internal Network. */
   internalNetworkName: string;
-  body: unknown;
+  /** Route Type that helps to know which bfd we are updating. */
+  routeType?: InternalNetworkRouteType;
+  /** NeighborAddress - Input should be either All or Specific Ipv4 Address or Specific Ipv6 Address. */
+  neighborAddress?: string;
+  /** BFD Administrative state. */
+  administrativeState?: BfdAdministrativeState;
 }
 export const InternalNetworksUpdateBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3323,7 +5180,9 @@ export const InternalNetworksUpdateBfdAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       internalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      routeType: S.optional(InternalNetworkRouteType),
+      neighborAddress: S.optional(S.String),
+      administrativeState: S.optional(BfdAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3338,7 +5197,7 @@ export const InternalNetworksUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3387,7 +5246,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -3395,7 +5254,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -3403,7 +5262,7 @@ export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3461,7 +5320,7 @@ export const NeighborAddressBfdAdministrativeStatus = /*@__PURE__*/ S.suspend(
 
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  NeighborAddressBfdAdministrativeStatus[];
+  ReadonlyArray<NeighborAddressBfdAdministrativeStatus>;
 export const InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   /*@__PURE__*/ S.Array(
     NeighborAddressBfdAdministrativeStatus,
@@ -3539,7 +5398,10 @@ export interface InternalNetworksUpdateBgpAdministrativeStateRequest {
   l3IsolationDomainName: string;
   /** Name of the Internal Network. */
   internalNetworkName: string;
-  body: unknown;
+  /** NeighborAddress - Input should be either All or Specific Ipv4 Address or Specific Ipv6 Address. */
+  neighborAddress?: string;
+  /** BGP Administrative state. */
+  administrativeState?: BgpAdministrativeState;
 }
 export const InternalNetworksUpdateBgpAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3548,7 +5410,8 @@ export const InternalNetworksUpdateBgpAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       internalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      neighborAddress: S.optional(S.String),
+      administrativeState: S.optional(BgpAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3563,7 +5426,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateRequest =
 
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -3612,7 +5475,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
-  InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem,
@@ -3620,7 +5483,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -3628,7 +5491,7 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList
 
 /** The error additional info. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3686,7 +5549,7 @@ export const NeighborAddressBgpAdministrativeStatus = /*@__PURE__*/ S.suspend(
 
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  NeighborAddressBgpAdministrativeStatus[];
+  ReadonlyArray<NeighborAddressBgpAdministrativeStatus>;
 export const InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   /*@__PURE__*/ S.Array(
     NeighborAddressBgpAdministrativeStatus,
@@ -3755,6 +5618,14 @@ export const InternalNetworkUpdateBgpAdministrativeStateResponse =
     identifier: "InternalNetworkUpdateBgpAdministrativeStateResponse",
   }) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
+
 export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3764,7 +5635,10 @@ export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest 
   l3IsolationDomainName: string;
   /** Name of the Internal Network. */
   internalNetworkName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3773,7 +5647,10 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
       internalNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3787,70 +5664,43 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest =
       "InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest",
   }) as any as S.Schema<InternalNetworksUpdateStaticRouteBfdAdministrativeStateRequest>;
 
-export interface InternetGatewayRulesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Internet Gateway rule. */
-  internetGatewayRuleName: string;
-  body: unknown;
-}
-export const InternetGatewayRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    internetGatewayRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "InternetGatewayRulesCreateRequest",
-}) as any as S.Schema<InternetGatewayRulesCreateRequest>;
-
 /** Resource tags. */
-export type InternetGatewayRulesCreateResponseTagsMap = {
+export type InternetGatewayRulesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const InternetGatewayRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const InternetGatewayRulesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<InternetGatewayRulesCreateResponseTagsMap>;
+) as any as S.Schema<InternetGatewayRulesCreateRequestTagsMap>;
 
 /** Specify action. */
-export type Action = "Allow" | "Deny" | (string & {});
+export type Action = "Allow" | "Deny";
 export const Action = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
-export type RulePropertiesAddressListList = string[];
+export type RulePropertiesAddressListList = ReadonlyArray<string>;
 export const RulePropertiesAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesAddressListList>;
 
 /** Specify Rule condition. */
-export type RuleCondition = "And" | "Or" | (string & {});
+export type RuleCondition = "And" | "Or";
 export const RuleCondition = /*@__PURE__*/ S.String;
 
 /** List of Addresses to be allowed or denied. */
-export type RulePropertiesDestinationAddressListList = string[];
+export type RulePropertiesDestinationAddressListList = ReadonlyArray<string>;
 export const RulePropertiesDestinationAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesDestinationAddressListList>;
 
 /** List of source IPv4 and IPv6 address to be allowed or denied. */
-export type RulePropertiesSourceAddressListList = string[];
+export type RulePropertiesSourceAddressListList = ReadonlyArray<string>;
 export const RulePropertiesSourceAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulePropertiesSourceAddressListList>;
 
 /** List of source remote IP to be allowed or denied. */
-export type HeaderAddressPropertiesAddressListList = string[];
+export type HeaderAddressPropertiesAddressListList = ReadonlyArray<string>;
 export const HeaderAddressPropertiesAddressListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HeaderAddressPropertiesAddressListList>;
@@ -3872,7 +5722,8 @@ export const HeaderAddressProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HeaderAddressProperties>;
 
 /** List of header Name and source addresses associated with the header. */
-export type RulePropertiesHeaderAddressListList = HeaderAddressProperties[];
+export type RulePropertiesHeaderAddressListList =
+  ReadonlyArray<HeaderAddressProperties>;
 export const RulePropertiesHeaderAddressListList = /*@__PURE__*/ S.Array(
   HeaderAddressProperties,
 ) as any as S.Schema<RulePropertiesHeaderAddressListList>;
@@ -3905,8 +5756,68 @@ export const RuleProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleProperties" }) as any as S.Schema<RuleProperties>;
 
+/** Internet Gateway Rule Properties defines the resource properties. */
+export interface InternetGatewayRulePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Rules for the InternetGateways */
+  ruleProperties: RuleProperties;
+}
+export const InternetGatewayRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ruleProperties: RuleProperties,
+  }),
+).annotate({
+  identifier: "InternetGatewayRulePropertiesInput",
+}) as any as S.Schema<InternetGatewayRulePropertiesInput>;
+
+export interface InternetGatewayRulesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Internet Gateway rule. */
+  internetGatewayRuleName: string;
+  /** Resource tags. */
+  tags?: InternetGatewayRulesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The Internet Gateway Rule properties */
+  properties: InternetGatewayRulePropertiesInput;
+}
+export const InternetGatewayRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    internetGatewayRuleName: S.String.pipe(T.Label()),
+    tags: S.optional(InternetGatewayRulesCreateRequestTagsMap),
+    location: S.String,
+    properties: InternetGatewayRulePropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "InternetGatewayRulesCreateRequest",
+}) as any as S.Schema<InternetGatewayRulesCreateRequest>;
+
+/** Resource tags. */
+export type InternetGatewayRulesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InternetGatewayRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InternetGatewayRulesCreateResponseTagsMap>;
+
 /** List of Internet Gateway resource Id. */
-export type InternetGatewayRulePropertiesInternetGatewayIdsList = string[];
+export type InternetGatewayRulePropertiesInternetGatewayIdsList =
+  ReadonlyArray<string>;
 export const InternetGatewayRulePropertiesInternetGatewayIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4127,7 +6038,8 @@ export const InternetGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternetGatewayRule>;
 
 /** The InternetGatewayRule items on this page */
-export type InternetGatewayRulesListResultValueList = InternetGatewayRule[];
+export type InternetGatewayRulesListResultValueList =
+  ReadonlyArray<InternetGatewayRule>;
 export const InternetGatewayRulesListResultValueList = /*@__PURE__*/ S.Array(
   InternetGatewayRule,
 ) as any as S.Schema<InternetGatewayRulesListResultValueList>;
@@ -4168,6 +6080,15 @@ export const InternetGatewayRulesListBySubscriptionRequest =
     identifier: "InternetGatewayRulesListBySubscriptionRequest",
   }) as any as S.Schema<InternetGatewayRulesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type InternetGatewayRulesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InternetGatewayRulesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InternetGatewayRulesUpdateRequestTagsMap>;
+
 export interface InternetGatewayRulesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4175,14 +6096,15 @@ export interface InternetGatewayRulesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Internet Gateway rule. */
   internetGatewayRuleName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: InternetGatewayRulesUpdateRequestTagsMap;
 }
 export const InternetGatewayRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     internetGatewayRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(InternetGatewayRulesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4234,6 +6156,44 @@ export const InternetGatewayRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternetGatewayRulesUpdateResponse",
 }) as any as S.Schema<InternetGatewayRulesUpdateResponse>;
 
+/** Resource tags. */
+export type InternetGatewaysCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InternetGatewaysCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InternetGatewaysCreateRequestTagsMap>;
+
+/** Gateway Type of the resource. */
+export type GatewayType = "Infrastructure" | "Workload";
+export const GatewayType = /*@__PURE__*/ S.String;
+
+/** Internet Gateway Properties defines the properties of the resource. */
+export interface InternetGatewayPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** ARM Resource ID of the Internet Gateway Rule. */
+  internetGatewayRuleId?: string;
+  /** Gateway Type of the resource. */
+  type?: GatewayType;
+  /** Gateway Type of the resource. */
+  internetGatewayType?: GatewayType;
+  /** ARM Resource ID of the Network Fabric Controller. */
+  networkFabricControllerId: string;
+}
+export const InternetGatewayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    internetGatewayRuleId: S.optional(S.String),
+    type: S.optional(GatewayType),
+    internetGatewayType: S.optional(GatewayType),
+    networkFabricControllerId: S.String,
+  }),
+).annotate({
+  identifier: "InternetGatewayPropertiesInput",
+}) as any as S.Schema<InternetGatewayPropertiesInput>;
+
 export interface InternetGatewaysCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4241,14 +6201,21 @@ export interface InternetGatewaysCreateRequest {
   resourceGroupName: string;
   /** Name of the Internet Gateway. */
   internetGatewayName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: InternetGatewaysCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The Internet Gateway Properties */
+  properties: InternetGatewayPropertiesInput;
 }
 export const InternetGatewaysCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     internetGatewayName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(InternetGatewaysCreateRequestTagsMap),
+    location: S.String,
+    properties: InternetGatewayPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4269,10 +6236,6 @@ export const InternetGatewaysCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<InternetGatewaysCreateResponseTagsMap>;
-
-/** Gateway Type of the resource. */
-export type GatewayType = "Infrastructure" | "Workload" | (string & {});
-export const GatewayType = /*@__PURE__*/ S.String;
 
 /** Internet Gateway Properties defines the properties of the resource. */
 export interface InternetGatewayProperties {
@@ -4499,7 +6462,8 @@ export const InternetGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternetGateway>;
 
 /** The InternetGateway items on this page */
-export type InternetGatewaysListResultValueList = InternetGateway[];
+export type InternetGatewaysListResultValueList =
+  ReadonlyArray<InternetGateway>;
 export const InternetGatewaysListResultValueList = /*@__PURE__*/ S.Array(
   InternetGateway,
 ) as any as S.Schema<InternetGatewaysListResultValueList>;
@@ -4540,6 +6504,28 @@ export const InternetGatewaysListBySubscriptionRequest =
     identifier: "InternetGatewaysListBySubscriptionRequest",
   }) as any as S.Schema<InternetGatewaysListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type InternetGatewaysUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InternetGatewaysUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InternetGatewaysUpdateRequestTagsMap>;
+
+/** PatchProperties for InternetGateway */
+export interface InternetGatewayPatchProperties {
+  /** ARM Resource ID of the Internet Gateway Rule. */
+  internetGatewayRuleId?: string;
+}
+export const InternetGatewayPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    internetGatewayRuleId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InternetGatewayPatchProperties",
+}) as any as S.Schema<InternetGatewayPatchProperties>;
+
 export interface InternetGatewaysUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4547,14 +6533,18 @@ export interface InternetGatewaysUpdateRequest {
   resourceGroupName: string;
   /** Name of the Internet Gateway. */
   internetGatewayName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: InternetGatewaysUpdateRequestTagsMap;
+  /** Resource properties. */
+  properties?: InternetGatewayPatchProperties;
 }
 export const InternetGatewaysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     internetGatewayName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(InternetGatewaysUpdateRequestTagsMap),
+    properties: S.optional(InternetGatewayPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4606,45 +6596,14 @@ export const InternetGatewaysUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InternetGatewaysUpdateResponse",
 }) as any as S.Schema<InternetGatewaysUpdateResponse>;
 
-export interface IpCommunitiesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the IP Community. */
-  ipCommunityName: string;
-  body: unknown;
-}
-export const IpCommunitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    ipCommunityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "IpCommunitiesCreateRequest",
-}) as any as S.Schema<IpCommunitiesCreateRequest>;
-
 /** Resource tags. */
-export type IpCommunitiesCreateResponseTagsMap = {
+export type IpCommunitiesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const IpCommunitiesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const IpCommunitiesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<IpCommunitiesCreateResponseTagsMap>;
-
-/** Community action types. Example: Permit | Deny. */
-export type CommunityActionTypes = "Permit" | "Deny" | (string & {});
-export const CommunityActionTypes = /*@__PURE__*/ S.String;
+) as any as S.Schema<IpCommunitiesCreateRequestTagsMap>;
 
 /** `Internet` - Advertise routes to internet community. `LocalAS` - Advertise routes to only localAS peers. `NoAdvertise` - Don't advertise routes to any peer. `NoExport` - Don't export to next AS. `GShut` - Graceful Shutdown (GSHUT) withdraw routes before terminating BGP connection. */
 export type WellKnownCommunities =
@@ -4652,18 +6611,18 @@ export type WellKnownCommunities =
   | "LocalAS"
   | "NoAdvertise"
   | "NoExport"
-  | "GShut"
-  | (string & {});
+  | "GShut";
 export const WellKnownCommunities = /*@__PURE__*/ S.String;
 
 /** Supported well known Community List. */
-export type IpCommunityRuleWellKnownCommunitiesList = WellKnownCommunities[];
+export type IpCommunityRuleWellKnownCommunitiesList =
+  ReadonlyArray<WellKnownCommunities>;
 export const IpCommunityRuleWellKnownCommunitiesList = /*@__PURE__*/ S.Array(
   WellKnownCommunities,
 ) as any as S.Schema<IpCommunityRuleWellKnownCommunitiesList>;
 
 /** List the community members of IP Community. */
-export type IpCommunityRuleCommunityMembersList = string[];
+export type IpCommunityRuleCommunityMembersList = ReadonlyArray<string>;
 export const IpCommunityRuleCommunityMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpCommunityRuleCommunityMembersList>;
@@ -4691,7 +6650,75 @@ export const IpCommunityRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpCommunityRule>;
 
 /** List of IP Community Rules. */
-export type IpCommunityPropertiesIpCommunityRulesList = IpCommunityRule[];
+export type IpCommunityPropertiesInputIpCommunityRulesList =
+  ReadonlyArray<IpCommunityRule>;
+export const IpCommunityPropertiesInputIpCommunityRulesList =
+  /*@__PURE__*/ S.Array(
+    IpCommunityRule,
+  ) as any as S.Schema<IpCommunityPropertiesInputIpCommunityRulesList>;
+
+/** IP Community Properties defines the resource properties. */
+export interface IpCommunityPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** List of IP Community Rules. */
+  ipCommunityRules: IpCommunityPropertiesInputIpCommunityRulesList;
+}
+export const IpCommunityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ipCommunityRules: IpCommunityPropertiesInputIpCommunityRulesList,
+  }),
+).annotate({
+  identifier: "IpCommunityPropertiesInput",
+}) as any as S.Schema<IpCommunityPropertiesInput>;
+
+export interface IpCommunitiesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the IP Community. */
+  ipCommunityName: string;
+  /** Resource tags. */
+  tags?: IpCommunitiesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The IP Community Properties */
+  properties: IpCommunityPropertiesInput;
+}
+export const IpCommunitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    ipCommunityName: S.String.pipe(T.Label()),
+    tags: S.optional(IpCommunitiesCreateRequestTagsMap),
+    location: S.String,
+    properties: IpCommunityPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "IpCommunitiesCreateRequest",
+}) as any as S.Schema<IpCommunitiesCreateRequest>;
+
+/** Resource tags. */
+export type IpCommunitiesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpCommunitiesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpCommunitiesCreateResponseTagsMap>;
+
+/** List of IP Community Rules. */
+export type IpCommunityPropertiesIpCommunityRulesList =
+  ReadonlyArray<IpCommunityRule>;
 export const IpCommunityPropertiesIpCommunityRulesList = /*@__PURE__*/ S.Array(
   IpCommunityRule,
 ) as any as S.Schema<IpCommunityPropertiesIpCommunityRulesList>;
@@ -4913,7 +6940,7 @@ export const IpCommunity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpCommunity" }) as any as S.Schema<IpCommunity>;
 
 /** The IpCommunity items on this page */
-export type IpCommunitiesListResultValueList = IpCommunity[];
+export type IpCommunitiesListResultValueList = ReadonlyArray<IpCommunity>;
 export const IpCommunitiesListResultValueList = /*@__PURE__*/ S.Array(
   IpCommunity,
 ) as any as S.Schema<IpCommunitiesListResultValueList>;
@@ -4954,6 +6981,38 @@ export const IpCommunitiesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "IpCommunitiesListBySubscriptionRequest",
 }) as any as S.Schema<IpCommunitiesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type IpCommunitiesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpCommunitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpCommunitiesUpdateRequestTagsMap>;
+
+/** List of IP Community Rules. */
+export type IpCommunityPatchablePropertiesIpCommunityRulesList =
+  ReadonlyArray<IpCommunityRule>;
+export const IpCommunityPatchablePropertiesIpCommunityRulesList =
+  /*@__PURE__*/ S.Array(
+    IpCommunityRule,
+  ) as any as S.Schema<IpCommunityPatchablePropertiesIpCommunityRulesList>;
+
+/** IP Community patchable properties. */
+export interface IpCommunityPatchableProperties {
+  /** List of IP Community Rules. */
+  ipCommunityRules?: IpCommunityPatchablePropertiesIpCommunityRulesList;
+}
+export const IpCommunityPatchableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipCommunityRules: S.optional(
+      IpCommunityPatchablePropertiesIpCommunityRulesList,
+    ),
+  }),
+).annotate({
+  identifier: "IpCommunityPatchableProperties",
+}) as any as S.Schema<IpCommunityPatchableProperties>;
+
 export interface IpCommunitiesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4961,14 +7020,18 @@ export interface IpCommunitiesUpdateRequest {
   resourceGroupName: string;
   /** Name of the IP Community. */
   ipCommunityName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IpCommunitiesUpdateRequestTagsMap;
+  /** IP Community patchable properties. */
+  properties?: IpCommunityPatchableProperties;
 }
 export const IpCommunitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ipCommunityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(IpCommunitiesUpdateRequestTagsMap),
+    properties: S.optional(IpCommunityPatchableProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5020,45 +7083,17 @@ export const IpCommunitiesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpCommunitiesUpdateResponse",
 }) as any as S.Schema<IpCommunitiesUpdateResponse>;
 
-export interface IpExtendedCommunitiesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the IP Extended Community. */
-  ipExtendedCommunityName: string;
-  body: unknown;
-}
-export const IpExtendedCommunitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    ipExtendedCommunityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "IpExtendedCommunitiesCreateRequest",
-}) as any as S.Schema<IpExtendedCommunitiesCreateRequest>;
-
 /** Resource tags. */
-export type IpExtendedCommunitiesCreateResponseTagsMap = {
+export type IpExtendedCommunitiesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const IpExtendedCommunitiesCreateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<IpExtendedCommunitiesCreateResponseTagsMap>;
+export const IpExtendedCommunitiesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpExtendedCommunitiesCreateRequestTagsMap>;
 
 /** Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295. */
-export type IpExtendedCommunityRuleRouteTargetsList = string[];
+export type IpExtendedCommunityRuleRouteTargetsList = ReadonlyArray<string>;
 export const IpExtendedCommunityRuleRouteTargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpExtendedCommunityRuleRouteTargetsList>;
@@ -5083,8 +7118,77 @@ export const IpExtendedCommunityRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpExtendedCommunityRule>;
 
 /** List of IP Extended Community Rules. */
+export type IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList =
+  ReadonlyArray<IpExtendedCommunityRule>;
+export const IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList =
+  /*@__PURE__*/ S.Array(
+    IpExtendedCommunityRule,
+  ) as any as S.Schema<IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList>;
+
+/** IP Extended Community Properties defines the resource properties. */
+export interface IpExtendedCommunityPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** List of IP Extended Community Rules. */
+  ipExtendedCommunityRules: IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList;
+}
+export const IpExtendedCommunityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ipExtendedCommunityRules:
+      IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList,
+  }),
+).annotate({
+  identifier: "IpExtendedCommunityPropertiesInput",
+}) as any as S.Schema<IpExtendedCommunityPropertiesInput>;
+
+export interface IpExtendedCommunitiesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the IP Extended Community. */
+  ipExtendedCommunityName: string;
+  /** Resource tags. */
+  tags?: IpExtendedCommunitiesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The IpExtendedCommunity properties */
+  properties: IpExtendedCommunityPropertiesInput;
+}
+export const IpExtendedCommunitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    ipExtendedCommunityName: S.String.pipe(T.Label()),
+    tags: S.optional(IpExtendedCommunitiesCreateRequestTagsMap),
+    location: S.String,
+    properties: IpExtendedCommunityPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "IpExtendedCommunitiesCreateRequest",
+}) as any as S.Schema<IpExtendedCommunitiesCreateRequest>;
+
+/** Resource tags. */
+export type IpExtendedCommunitiesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpExtendedCommunitiesCreateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<IpExtendedCommunitiesCreateResponseTagsMap>;
+
+/** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
-  IpExtendedCommunityRule[];
+  ReadonlyArray<IpExtendedCommunityRule>;
 export const IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
   /*@__PURE__*/ S.Array(
     IpExtendedCommunityRule,
@@ -5310,7 +7414,8 @@ export const IpExtendedCommunity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpExtendedCommunity>;
 
 /** The IpExtendedCommunity items on this page */
-export type IpExtendedCommunityListResultValueList = IpExtendedCommunity[];
+export type IpExtendedCommunityListResultValueList =
+  ReadonlyArray<IpExtendedCommunity>;
 export const IpExtendedCommunityListResultValueList = /*@__PURE__*/ S.Array(
   IpExtendedCommunity,
 ) as any as S.Schema<IpExtendedCommunityListResultValueList>;
@@ -5351,6 +7456,41 @@ export const IpExtendedCommunitiesListBySubscriptionRequest =
     identifier: "IpExtendedCommunitiesListBySubscriptionRequest",
   }) as any as S.Schema<IpExtendedCommunitiesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type IpExtendedCommunitiesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpExtendedCommunitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpExtendedCommunitiesUpdateRequestTagsMap>;
+
+/** List of IP Extended Community Rules. */
+export type IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
+  ReadonlyArray<IpExtendedCommunityRule>;
+export const IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
+  /*@__PURE__*/ S.Array(
+    IpExtendedCommunityRule,
+  ) as any as S.Schema<IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList>;
+
+/** IP Extended Community patchable properties. */
+export interface IpExtendedCommunityPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** List of IP Extended Community Rules. */
+  ipExtendedCommunityRules?: IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList;
+}
+export const IpExtendedCommunityPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ipExtendedCommunityRules: S.optional(
+      IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList,
+    ),
+  }),
+).annotate({
+  identifier: "IpExtendedCommunityPatchProperties",
+}) as any as S.Schema<IpExtendedCommunityPatchProperties>;
+
 export interface IpExtendedCommunitiesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5358,14 +7498,18 @@ export interface IpExtendedCommunitiesUpdateRequest {
   resourceGroupName: string;
   /** Name of the IP Extended Community. */
   ipExtendedCommunityName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IpExtendedCommunitiesUpdateRequestTagsMap;
+  /** IP Extended Community patchable properties. */
+  properties?: IpExtendedCommunityPatchProperties;
 }
 export const IpExtendedCommunitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ipExtendedCommunityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(IpExtendedCommunitiesUpdateRequestTagsMap),
+    properties: S.optional(IpExtendedCommunityPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5418,49 +7562,21 @@ export const IpExtendedCommunitiesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpExtendedCommunitiesUpdateResponse",
 }) as any as S.Schema<IpExtendedCommunitiesUpdateResponse>;
 
-export interface IpPrefixesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the IP Prefix. */
-  ipPrefixName: string;
-  body: unknown;
-}
-export const IpPrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    ipPrefixName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "IpPrefixesCreateRequest",
-}) as any as S.Schema<IpPrefixesCreateRequest>;
-
 /** Resource tags. */
-export type IpPrefixesCreateResponseTagsMap = {
+export type IpPrefixesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const IpPrefixesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const IpPrefixesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<IpPrefixesCreateResponseTagsMap>;
+) as any as S.Schema<IpPrefixesCreateRequestTagsMap>;
 
 /** Specify prefix-list bounds. */
 export type Condition =
   | "EqualTo"
   | "GreaterThanOrEqualTo"
   | "LesserThanOrEqualTo"
-  | "Range"
-  | (string & {});
+  | "Range";
 export const Condition = /*@__PURE__*/ S.String;
 
 /** IP Prefix Rule properties. */
@@ -5487,7 +7603,73 @@ export const IpPrefixRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPrefixRule" }) as any as S.Schema<IpPrefixRule>;
 
 /** The list of IP Prefix Rules. */
-export type IpPrefixPropertiesIpPrefixRulesList = IpPrefixRule[];
+export type IpPrefixPropertiesInputIpPrefixRulesList =
+  ReadonlyArray<IpPrefixRule>;
+export const IpPrefixPropertiesInputIpPrefixRulesList = /*@__PURE__*/ S.Array(
+  IpPrefixRule,
+) as any as S.Schema<IpPrefixPropertiesInputIpPrefixRulesList>;
+
+/** IP Prefix Properties defines the properties of the resource. */
+export interface IpPrefixPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The list of IP Prefix Rules. */
+  ipPrefixRules: IpPrefixPropertiesInputIpPrefixRulesList;
+}
+export const IpPrefixPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ipPrefixRules: IpPrefixPropertiesInputIpPrefixRulesList,
+  }),
+).annotate({
+  identifier: "IpPrefixPropertiesInput",
+}) as any as S.Schema<IpPrefixPropertiesInput>;
+
+export interface IpPrefixesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the IP Prefix. */
+  ipPrefixName: string;
+  /** Resource tags. */
+  tags?: IpPrefixesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The IP Prefix properties */
+  properties: IpPrefixPropertiesInput;
+}
+export const IpPrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    ipPrefixName: S.String.pipe(T.Label()),
+    tags: S.optional(IpPrefixesCreateRequestTagsMap),
+    location: S.String,
+    properties: IpPrefixPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "IpPrefixesCreateRequest",
+}) as any as S.Schema<IpPrefixesCreateRequest>;
+
+/** Resource tags. */
+export type IpPrefixesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpPrefixesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpPrefixesCreateResponseTagsMap>;
+
+/** The list of IP Prefix Rules. */
+export type IpPrefixPropertiesIpPrefixRulesList = ReadonlyArray<IpPrefixRule>;
 export const IpPrefixPropertiesIpPrefixRulesList = /*@__PURE__*/ S.Array(
   IpPrefixRule,
 ) as any as S.Schema<IpPrefixPropertiesIpPrefixRulesList>;
@@ -5709,7 +7891,7 @@ export const IpPrefix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPrefix" }) as any as S.Schema<IpPrefix>;
 
 /** The IpPrefix items on this page */
-export type IpPrefixesListResultValueList = IpPrefix[];
+export type IpPrefixesListResultValueList = ReadonlyArray<IpPrefix>;
 export const IpPrefixesListResultValueList = /*@__PURE__*/ S.Array(
   IpPrefix,
 ) as any as S.Schema<IpPrefixesListResultValueList>;
@@ -5749,6 +7931,38 @@ export const IpPrefixesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpPrefixesListBySubscriptionRequest",
 }) as any as S.Schema<IpPrefixesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type IpPrefixesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IpPrefixesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IpPrefixesUpdateRequestTagsMap>;
+
+/** The list of IP Prefix Rules. */
+export type IpPrefixPatchPropertiesIpPrefixRulesList =
+  ReadonlyArray<IpPrefixRule>;
+export const IpPrefixPatchPropertiesIpPrefixRulesList = /*@__PURE__*/ S.Array(
+  IpPrefixRule,
+) as any as S.Schema<IpPrefixPatchPropertiesIpPrefixRulesList>;
+
+/** IP Prefix patchable properties. */
+export interface IpPrefixPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The list of IP Prefix Rules. */
+  ipPrefixRules?: IpPrefixPatchPropertiesIpPrefixRulesList;
+}
+export const IpPrefixPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    ipPrefixRules: S.optional(IpPrefixPatchPropertiesIpPrefixRulesList),
+  }),
+).annotate({
+  identifier: "IpPrefixPatchProperties",
+}) as any as S.Schema<IpPrefixPatchProperties>;
+
 export interface IpPrefixesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5756,14 +7970,18 @@ export interface IpPrefixesUpdateRequest {
   resourceGroupName: string;
   /** Name of the IP Prefix. */
   ipPrefixName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IpPrefixesUpdateRequestTagsMap;
+  /** IP Prefix patchable properties. */
+  properties?: IpPrefixPatchProperties;
 }
 export const IpPrefixesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ipPrefixName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(IpPrefixesUpdateRequestTagsMap),
+    properties: S.optional(IpPrefixPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5857,6 +8075,90 @@ export const L2IsolationDomainsCommitConfigurationResponse =
     identifier: "L2IsolationDomainsCommitConfigurationResponse",
   }) as any as S.Schema<L2IsolationDomainsCommitConfigurationResponse>;
 
+/** Resource tags. */
+export type L2IsolationDomainsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const L2IsolationDomainsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<L2IsolationDomainsCreateRequestTagsMap>;
+
+/** Extended VLAN status, default value is Disabled. */
+export type L2IsolationDomainPropertiesInputExtendedVlan =
+  | "Enabled"
+  | "Disabled";
+export const L2IsolationDomainPropertiesInputExtendedVlan =
+  /*@__PURE__*/ S.String;
+
+/** L2Isolation Domain Properties defines the properties of the resource. */
+export interface L2IsolationDomainPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** ARM Resource ID of the Network Fabric. */
+  networkFabricId: string;
+  /** Vlan Identifier of the Network Fabric. Example: 501. */
+  vlanId: number;
+  /** Maximum transmission unit. Default value is 1500. */
+  mtu?: number;
+  /** Extended VLAN status, default value is Disabled. */
+  extendedVlan?: L2IsolationDomainPropertiesInputExtendedVlan;
+  /** ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource. */
+  networkToNetworkInterconnectId?: string;
+}
+export const L2IsolationDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkFabricId: S.String,
+    vlanId: S.Number,
+    mtu: S.optional(S.Number),
+    extendedVlan: S.optional(L2IsolationDomainPropertiesInputExtendedVlan),
+    networkToNetworkInterconnectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "L2IsolationDomainPropertiesInput",
+}) as any as S.Schema<L2IsolationDomainPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface L2IsolationDomainsCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const L2IsolationDomainsCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "L2IsolationDomainsCreateRequestIdentity",
+}) as any as S.Schema<L2IsolationDomainsCreateRequestIdentity>;
+
 export interface L2IsolationDomainsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5864,14 +8166,24 @@ export interface L2IsolationDomainsCreateRequest {
   resourceGroupName: string;
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: L2IsolationDomainsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The L2IsolationDomain properties */
+  properties: L2IsolationDomainPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const L2IsolationDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     l2IsolationDomainName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(L2IsolationDomainsCreateRequestTagsMap),
+    location: S.String,
+    properties: L2IsolationDomainPropertiesInput,
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5894,10 +8206,7 @@ export const L2IsolationDomainsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainsCreateResponseTagsMap>;
 
 /** Extended VLAN status, default value is Disabled. */
-export type L2IsolationDomainPropertiesExtendedVlan =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type L2IsolationDomainPropertiesExtendedVlan = "Enabled" | "Disabled";
 export const L2IsolationDomainPropertiesExtendedVlan = /*@__PURE__*/ S.String;
 
 /** L2Isolation Domain Properties defines the properties of the resource. */
@@ -5939,15 +8248,6 @@ export const L2IsolationDomainProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "L2IsolationDomainProperties",
 }) as any as S.Schema<L2IsolationDomainProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -6233,7 +8533,8 @@ export const L2IsolationDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L2IsolationDomain>;
 
 /** The L2IsolationDomain items on this page */
-export type L2IsolationDomainsListResultValueList = L2IsolationDomain[];
+export type L2IsolationDomainsListResultValueList =
+  ReadonlyArray<L2IsolationDomain>;
 export const L2IsolationDomainsListResultValueList = /*@__PURE__*/ S.Array(
   L2IsolationDomain,
 ) as any as S.Schema<L2IsolationDomainsListResultValueList>;
@@ -6274,6 +8575,86 @@ export const L2IsolationDomainsListBySubscriptionRequest =
     identifier: "L2IsolationDomainsListBySubscriptionRequest",
   }) as any as S.Schema<L2IsolationDomainsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type L2IsolationDomainsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const L2IsolationDomainsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<L2IsolationDomainsUpdateRequestTagsMap>;
+
+/** Extended VLAN status. */
+export type ExtendedVlan = "Enabled" | "Disabled";
+export const ExtendedVlan = /*@__PURE__*/ S.String;
+
+/** L2 Isolation Domain Patch Properties defines the patchable properties of the resource. */
+export interface L2IsolationDomainPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Maximum transmission unit. Default value is 1500. */
+  mtu?: number;
+  /** Extended VLAN status. */
+  extendedVlan?: ExtendedVlan;
+  /** ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource. */
+  networkToNetworkInterconnectId?: string;
+}
+export const L2IsolationDomainPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    mtu: S.optional(S.Number),
+    extendedVlan: S.optional(ExtendedVlan),
+    networkToNetworkInterconnectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "L2IsolationDomainPatchProperties",
+}) as any as S.Schema<L2IsolationDomainPatchProperties>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityPatchInputType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityPatchInputType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue {}
+export const ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue",
+  }) as any as S.Schema<ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue>;
+
+/** The identities assigned to this resource by the user. */
+export type ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap = {
+  [key: string]:
+    | ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue
+    | undefined;
+};
+export const ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue,
+  ) as any as S.Schema<ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap>;
+
+/** The managed service identities assigned to this resource. */
+export interface ManagedServiceIdentityPatchInput {
+  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+  type?: ManagedServiceIdentityPatchInputType;
+  /** The identities assigned to this resource by the user. */
+  userAssignedIdentities?: ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityPatchInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedServiceIdentityPatchInputType),
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityPatchInput",
+}) as any as S.Schema<ManagedServiceIdentityPatchInput>;
+
 export interface L2IsolationDomainsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6281,14 +8662,21 @@ export interface L2IsolationDomainsUpdateRequest {
   resourceGroupName: string;
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: L2IsolationDomainsUpdateRequestTagsMap;
+  /** L2 Isolation Domain resource patch properties. */
+  properties?: L2IsolationDomainPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const L2IsolationDomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     l2IsolationDomainName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(L2IsolationDomainsUpdateRequestTagsMap),
+    properties: S.optional(L2IsolationDomainPatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6364,6 +8752,14 @@ export const L2IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "L2IsolationDomainsUpdateResponse",
 }) as any as S.Schema<L2IsolationDomainsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface L2IsolationDomainsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6371,7 +8767,10 @@ export interface L2IsolationDomainsUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const L2IsolationDomainsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6379,7 +8778,10 @@ export const L2IsolationDomainsUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       l2IsolationDomainName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        L2IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6479,56 +8881,27 @@ export const L3IsolationDomainsCommitConfigurationResponse =
     identifier: "L3IsolationDomainsCommitConfigurationResponse",
   }) as any as S.Schema<L3IsolationDomainsCommitConfigurationResponse>;
 
-export interface L3IsolationDomainsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the L3 Isolation Domain. */
-  l3IsolationDomainName: string;
-  body: unknown;
-}
-export const L3IsolationDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    l3IsolationDomainName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "L3IsolationDomainsCreateRequest",
-}) as any as S.Schema<L3IsolationDomainsCreateRequest>;
-
 /** Resource tags. */
-export type L3IsolationDomainsCreateResponseTagsMap = {
+export type L3IsolationDomainsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const L3IsolationDomainsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const L3IsolationDomainsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<L3IsolationDomainsCreateResponseTagsMap>;
+) as any as S.Schema<L3IsolationDomainsCreateRequestTagsMap>;
 
 /** Advertise Connected Subnets. Ex: "True" | "False". */
-export type L3IsolationDomainPropertiesRedistributeConnectedSubnets =
+export type L3IsolationDomainPropertiesInputRedistributeConnectedSubnets =
   | "True"
-  | "False"
-  | (string & {});
-export const L3IsolationDomainPropertiesRedistributeConnectedSubnets =
+  | "False";
+export const L3IsolationDomainPropertiesInputRedistributeConnectedSubnets =
   /*@__PURE__*/ S.String;
 
 /** Advertise Static Routes. Ex: "True" | "False". */
-export type L3IsolationDomainPropertiesRedistributeStaticRoutes =
+export type L3IsolationDomainPropertiesInputRedistributeStaticRoutes =
   | "True"
-  | "False"
-  | (string & {});
-export const L3IsolationDomainPropertiesRedistributeStaticRoutes =
+  | "False";
+export const L3IsolationDomainPropertiesInputRedistributeStaticRoutes =
   /*@__PURE__*/ S.String;
 
 /** aggregateIpv4Route model. */
@@ -6543,13 +8916,15 @@ export const AggregateRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateRoute" }) as any as S.Schema<AggregateRoute>;
 
 /** List of IPv4 Route prefixes. */
-export type AggregateRouteConfigurationIpv4RoutesList = AggregateRoute[];
+export type AggregateRouteConfigurationIpv4RoutesList =
+  ReadonlyArray<AggregateRoute>;
 export const AggregateRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   AggregateRoute,
 ) as any as S.Schema<AggregateRouteConfigurationIpv4RoutesList>;
 
 /** List of Ipv6Routes prefixes. */
-export type AggregateRouteConfigurationIpv6RoutesList = AggregateRoute[];
+export type AggregateRouteConfigurationIpv6RoutesList =
+  ReadonlyArray<AggregateRoute>;
 export const AggregateRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   AggregateRoute,
 ) as any as S.Schema<AggregateRouteConfigurationIpv6RoutesList>;
@@ -6612,8 +8987,156 @@ export const StaticRouteRoutePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticRouteRoutePolicy",
 }) as any as S.Schema<StaticRouteRoutePolicy>;
 
+/** Unique Route Distinguisher properties. */
+export interface L3UniqueRouteDistinguisherPropertiesInput {}
+export const L3UniqueRouteDistinguisherPropertiesInput =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "L3UniqueRouteDistinguisherPropertiesInput",
+  }) as any as S.Schema<L3UniqueRouteDistinguisherPropertiesInput>;
+
+/** Layer3 Route prefix limit configuration. */
+export interface RoutePrefixLimitProperties {
+  /** Hard limit for the routes. */
+  hardLimit?: number;
+  /** Threshold for the routes. */
+  threshold?: number;
+}
+export const RoutePrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hardLimit: S.optional(S.Number),
+    threshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutePrefixLimitProperties",
+}) as any as S.Schema<RoutePrefixLimitProperties>;
+
+/** L3 Isolation Domain Properties defines the properties of the resource. */
+export interface L3IsolationDomainPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Advertise Connected Subnets. Ex: "True" | "False". */
+  redistributeConnectedSubnets?: L3IsolationDomainPropertiesInputRedistributeConnectedSubnets;
+  /** Advertise Static Routes. Ex: "True" | "False". */
+  redistributeStaticRoutes?: L3IsolationDomainPropertiesInputRedistributeStaticRoutes;
+  /** Aggregate route configurations. */
+  aggregateRouteConfiguration?: AggregateRouteConfiguration;
+  /** Connected Subnet RoutePolicy */
+  connectedSubnetRoutePolicy?: ConnectedSubnetRoutePolicy;
+  /** ARM Resource ID of the Network Fabric. */
+  networkFabricId: string;
+  /** Static Route - route policy. */
+  staticRouteRoutePolicy?: StaticRouteRoutePolicy;
+  /** Unique Route Distinguisher configuration */
+  uniqueRdConfiguration?: L3UniqueRouteDistinguisherPropertiesInput;
+  /** IPv4 VRF Limit configuration. */
+  v4routePrefixLimit?: RoutePrefixLimitProperties;
+  /** IPv6 VRF Limit configuration. */
+  v6routePrefixLimit?: RoutePrefixLimitProperties;
+  /** BMP Export Policy configuration. */
+  exportPolicyConfiguration?: BmpExportPolicyProperties;
+}
+export const L3IsolationDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    redistributeConnectedSubnets: S.optional(
+      L3IsolationDomainPropertiesInputRedistributeConnectedSubnets,
+    ),
+    redistributeStaticRoutes: S.optional(
+      L3IsolationDomainPropertiesInputRedistributeStaticRoutes,
+    ),
+    aggregateRouteConfiguration: S.optional(AggregateRouteConfiguration),
+    connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+    networkFabricId: S.String,
+    staticRouteRoutePolicy: S.optional(StaticRouteRoutePolicy),
+    uniqueRdConfiguration: S.optional(
+      L3UniqueRouteDistinguisherPropertiesInput,
+    ),
+    v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
+    v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
+    exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
+  }),
+).annotate({
+  identifier: "L3IsolationDomainPropertiesInput",
+}) as any as S.Schema<L3IsolationDomainPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface L3IsolationDomainsCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const L3IsolationDomainsCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "L3IsolationDomainsCreateRequestIdentity",
+}) as any as S.Schema<L3IsolationDomainsCreateRequestIdentity>;
+
+export interface L3IsolationDomainsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the L3 Isolation Domain. */
+  l3IsolationDomainName: string;
+  /** Resource tags. */
+  tags?: L3IsolationDomainsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The L3 Isolation Domain Properties */
+  properties: L3IsolationDomainPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: L3IsolationDomainsCreateRequestIdentity;
+}
+export const L3IsolationDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    l3IsolationDomainName: S.String.pipe(T.Label()),
+    tags: S.optional(L3IsolationDomainsCreateRequestTagsMap),
+    location: S.String,
+    properties: L3IsolationDomainPropertiesInput,
+    identity: S.optional(L3IsolationDomainsCreateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "L3IsolationDomainsCreateRequest",
+}) as any as S.Schema<L3IsolationDomainsCreateRequest>;
+
+/** Resource tags. */
+export type L3IsolationDomainsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const L3IsolationDomainsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<L3IsolationDomainsCreateResponseTagsMap>;
+
+/** Advertise Connected Subnets. Ex: "True" | "False". */
+export type L3IsolationDomainPropertiesRedistributeConnectedSubnets =
+  | "True"
+  | "False";
+export const L3IsolationDomainPropertiesRedistributeConnectedSubnets =
+  /*@__PURE__*/ S.String;
+
+/** Advertise Static Routes. Ex: "True" | "False". */
+export type L3IsolationDomainPropertiesRedistributeStaticRoutes =
+  | "True"
+  | "False";
+export const L3IsolationDomainPropertiesRedistributeStaticRoutes =
+  /*@__PURE__*/ S.String;
+
 /** List of Unique Route Distinguisher addresses. */
-export type L3UniqueRouteDistinguisherPropertiesUniqueRdsList = string[];
+export type L3UniqueRouteDistinguisherPropertiesUniqueRdsList =
+  ReadonlyArray<string>;
 export const L3UniqueRouteDistinguisherPropertiesUniqueRdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6632,22 +9155,6 @@ export const L3UniqueRouteDistinguisherProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "L3UniqueRouteDistinguisherProperties",
 }) as any as S.Schema<L3UniqueRouteDistinguisherProperties>;
-
-/** Layer3 Route prefix limit configuration. */
-export interface RoutePrefixLimitProperties {
-  /** Hard limit for the routes. */
-  hardLimit?: number;
-  /** Threshold for the routes. */
-  threshold?: number;
-}
-export const RoutePrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hardLimit: S.optional(S.Number),
-    threshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutePrefixLimitProperties",
-}) as any as S.Schema<RoutePrefixLimitProperties>;
 
 /** L3 Isolation Domain Properties defines the properties of the resource. */
 export interface L3IsolationDomainProperties {
@@ -6967,7 +9474,8 @@ export const L3IsolationDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L3IsolationDomain>;
 
 /** The L3IsolationDomain items on this page */
-export type L3IsolationDomainsListResultValueList = L3IsolationDomain[];
+export type L3IsolationDomainsListResultValueList =
+  ReadonlyArray<L3IsolationDomain>;
 export const L3IsolationDomainsListResultValueList = /*@__PURE__*/ S.Array(
   L3IsolationDomain,
 ) as any as S.Schema<L3IsolationDomainsListResultValueList>;
@@ -7008,6 +9516,173 @@ export const L3IsolationDomainsListBySubscriptionRequest =
     identifier: "L3IsolationDomainsListBySubscriptionRequest",
   }) as any as S.Schema<L3IsolationDomainsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type L3IsolationDomainsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const L3IsolationDomainsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<L3IsolationDomainsUpdateRequestTagsMap>;
+
+/** Advertise Connected Subnets. Ex: "True" | "False". */
+export type RedistributeConnectedSubnets = "True" | "False";
+export const RedistributeConnectedSubnets = /*@__PURE__*/ S.String;
+
+/** Advertise Static Routes. Ex: "True" | "False". */
+export type RedistributeStaticRoutes = "True" | "False";
+export const RedistributeStaticRoutes = /*@__PURE__*/ S.String;
+
+/** List of IPv4 Route prefixes. */
+export type AggregateRoutePatchConfigurationIpv4RoutesList =
+  ReadonlyArray<AggregateRoute>;
+export const AggregateRoutePatchConfigurationIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    AggregateRoute,
+  ) as any as S.Schema<AggregateRoutePatchConfigurationIpv4RoutesList>;
+
+/** List of Ipv6Routes prefixes. */
+export type AggregateRoutePatchConfigurationIpv6RoutesList =
+  ReadonlyArray<AggregateRoute>;
+export const AggregateRoutePatchConfigurationIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    AggregateRoute,
+  ) as any as S.Schema<AggregateRoutePatchConfigurationIpv6RoutesList>;
+
+/** List of IPv4 and IPv6 aggregate routes. */
+export interface AggregateRoutePatchConfiguration {
+  /** List of IPv4 Route prefixes. */
+  ipv4Routes?: AggregateRoutePatchConfigurationIpv4RoutesList;
+  /** List of Ipv6Routes prefixes. */
+  ipv6Routes?: AggregateRoutePatchConfigurationIpv6RoutesList;
+}
+export const AggregateRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Routes: S.optional(AggregateRoutePatchConfigurationIpv4RoutesList),
+    ipv6Routes: S.optional(AggregateRoutePatchConfigurationIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "AggregateRoutePatchConfiguration",
+}) as any as S.Schema<AggregateRoutePatchConfiguration>;
+
+/** Array of ARM Resource ID of the RoutePolicies. */
+export interface L3ExportRoutePolicyPatch {
+  /** ARM Resource ID of the RoutePolicy. */
+  exportIpv4RoutePolicyId?: string;
+  /** ARM Resource ID of the RoutePolicy. */
+  exportIpv6RoutePolicyId?: string;
+}
+export const L3ExportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportIpv4RoutePolicyId: S.optional(S.String),
+    exportIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "L3ExportRoutePolicyPatch",
+}) as any as S.Schema<L3ExportRoutePolicyPatch>;
+
+/** Connected Subnet Route Policy properties. */
+export interface ConnectedSubnetRoutePolicyPatch {
+  /** Array of ARM Resource ID of the RoutePolicies. */
+  exportRoutePolicy?: L3ExportRoutePolicyPatch;
+}
+export const ConnectedSubnetRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportRoutePolicy: S.optional(L3ExportRoutePolicyPatch),
+  }),
+).annotate({
+  identifier: "ConnectedSubnetRoutePolicyPatch",
+}) as any as S.Schema<ConnectedSubnetRoutePolicyPatch>;
+
+/** Static Route - route policy properties. */
+export interface StaticRouteRoutePolicyPatch {
+  /** Array of ARM Resource ID of the RoutePolicies. */
+  exportRoutePolicy?: L3ExportRoutePolicyPatch;
+}
+export const StaticRouteRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportRoutePolicy: S.optional(L3ExportRoutePolicyPatch),
+  }),
+).annotate({
+  identifier: "StaticRouteRoutePolicyPatch",
+}) as any as S.Schema<StaticRouteRoutePolicyPatch>;
+
+/** VRP Limit patch configuration. */
+export interface RoutePrefixLimitPatchProperties {
+  /** Hard limit for the routes. */
+  hardLimit?: number;
+  /** Threshold for the routes. */
+  threshold?: number;
+}
+export const RoutePrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hardLimit: S.optional(S.Number),
+    threshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutePrefixLimitPatchProperties",
+}) as any as S.Schema<RoutePrefixLimitPatchProperties>;
+
+/** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
+export type BmpExportPolicyPatchPropertiesExportPoliciesList =
+  ReadonlyArray<BmpExportPolicy>;
+export const BmpExportPolicyPatchPropertiesExportPoliciesList =
+  /*@__PURE__*/ S.Array(
+    BmpExportPolicy,
+  ) as any as S.Schema<BmpExportPolicyPatchPropertiesExportPoliciesList>;
+
+/** BMP Export Policy Configuration properties. */
+export interface BmpExportPolicyPatchProperties {
+  /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
+  exportPolicies?: BmpExportPolicyPatchPropertiesExportPoliciesList;
+}
+export const BmpExportPolicyPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportPolicies: S.optional(
+      BmpExportPolicyPatchPropertiesExportPoliciesList,
+    ),
+  }),
+).annotate({
+  identifier: "BmpExportPolicyPatchProperties",
+}) as any as S.Schema<BmpExportPolicyPatchProperties>;
+
+/** Resource properties. */
+export interface L3IsolationDomainPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Advertise Connected Subnets. Ex: "True" | "False". */
+  redistributeConnectedSubnets?: RedistributeConnectedSubnets;
+  /** Advertise Static Routes. Ex: "True" | "False". */
+  redistributeStaticRoutes?: RedistributeStaticRoutes;
+  /** Aggregate route configurations. */
+  aggregateRouteConfiguration?: AggregateRoutePatchConfiguration;
+  /** Connected Subnet RoutePolicy */
+  connectedSubnetRoutePolicy?: ConnectedSubnetRoutePolicyPatch;
+  /** Static Route - route policy. */
+  staticRouteRoutePolicy?: StaticRouteRoutePolicyPatch;
+  /** IPv4 VRF Limit configuration. */
+  v4routePrefixLimit?: RoutePrefixLimitPatchProperties;
+  /** IPv6 VRF Limit configuration. */
+  v6routePrefixLimit?: RoutePrefixLimitPatchProperties;
+  /** BMP Export Policy configuration. */
+  exportPolicyConfiguration?: BmpExportPolicyPatchProperties;
+}
+export const L3IsolationDomainPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    redistributeConnectedSubnets: S.optional(RedistributeConnectedSubnets),
+    redistributeStaticRoutes: S.optional(RedistributeStaticRoutes),
+    aggregateRouteConfiguration: S.optional(AggregateRoutePatchConfiguration),
+    connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicyPatch),
+    staticRouteRoutePolicy: S.optional(StaticRouteRoutePolicyPatch),
+    v4routePrefixLimit: S.optional(RoutePrefixLimitPatchProperties),
+    v6routePrefixLimit: S.optional(RoutePrefixLimitPatchProperties),
+    exportPolicyConfiguration: S.optional(BmpExportPolicyPatchProperties),
+  }),
+).annotate({
+  identifier: "L3IsolationDomainPatchProperties",
+}) as any as S.Schema<L3IsolationDomainPatchProperties>;
+
 export interface L3IsolationDomainsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7015,14 +9690,21 @@ export interface L3IsolationDomainsUpdateRequest {
   resourceGroupName: string;
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: L3IsolationDomainsUpdateRequestTagsMap;
+  /** L3 Isolation Domain resource patch properties. */
+  properties?: L3IsolationDomainPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const L3IsolationDomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     l3IsolationDomainName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(L3IsolationDomainsUpdateRequestTagsMap),
+    properties: S.optional(L3IsolationDomainPatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7098,6 +9780,14 @@ export const L3IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "L3IsolationDomainsUpdateResponse",
 }) as any as S.Schema<L3IsolationDomainsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface L3IsolationDomainsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7105,7 +9795,10 @@ export interface L3IsolationDomainsUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const L3IsolationDomainsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7113,7 +9806,10 @@ export const L3IsolationDomainsUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       l3IsolationDomainName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        L3IsolationDomainsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7171,6 +9867,73 @@ export const L3IsolationDomainsValidateConfigurationResponse =
     identifier: "L3IsolationDomainsValidateConfigurationResponse",
   }) as any as S.Schema<L3IsolationDomainsValidateConfigurationResponse>;
 
+/** Resource tags. */
+export type NeighborGroupsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NeighborGroupsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NeighborGroupsCreateRequestTagsMap>;
+
+/** Array of IPv4 Addresses. */
+export type NeighborGroupDestinationIpv4AddressesList = ReadonlyArray<string>;
+export const NeighborGroupDestinationIpv4AddressesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NeighborGroupDestinationIpv4AddressesList>;
+
+/** Array of IPv6 Addresses. */
+export type NeighborGroupDestinationIpv6AddressesList = ReadonlyArray<string>;
+export const NeighborGroupDestinationIpv6AddressesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NeighborGroupDestinationIpv6AddressesList>;
+
+/** An array of destination IPv4 Addresses or IPv6 Addresses. */
+export interface NeighborGroupDestination {
+  /** Array of IPv4 Addresses. */
+  ipv4Addresses?: NeighborGroupDestinationIpv4AddressesList;
+  /** Array of IPv6 Addresses. */
+  ipv6Addresses?: NeighborGroupDestinationIpv6AddressesList;
+}
+export const NeighborGroupDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Addresses: S.optional(NeighborGroupDestinationIpv4AddressesList),
+    ipv6Addresses: S.optional(NeighborGroupDestinationIpv6AddressesList),
+  }),
+).annotate({
+  identifier: "NeighborGroupDestination",
+}) as any as S.Schema<NeighborGroupDestination>;
+
+/** Neighbor Group Properties defines the properties of the resource. */
+export interface NeighborGroupPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** An array of destination IPv4 Addresses or IPv6 Addresses. */
+  destination: NeighborGroupDestination;
+}
+export const NeighborGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    destination: NeighborGroupDestination,
+  }),
+).annotate({
+  identifier: "NeighborGroupPropertiesInput",
+}) as any as S.Schema<NeighborGroupPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NeighborGroupsCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NeighborGroupsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "NeighborGroupsCreateRequestIdentity",
+}) as any as S.Schema<NeighborGroupsCreateRequestIdentity>;
+
 export interface NeighborGroupsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7178,14 +9941,24 @@ export interface NeighborGroupsCreateRequest {
   resourceGroupName: string;
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NeighborGroupsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NeighborGroup Properties */
+  properties: NeighborGroupPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NeighborGroupsCreateRequestIdentity;
 }
 export const NeighborGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     neighborGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NeighborGroupsCreateRequestTagsMap),
+    location: S.String,
+    properties: NeighborGroupPropertiesInput,
+    identity: S.optional(NeighborGroupsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7207,49 +9980,22 @@ export const NeighborGroupsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<NeighborGroupsCreateResponseTagsMap>;
 
-/** Array of IPv4 Addresses. */
-export type NeighborGroupDestinationIpv4AddressesList = string[];
-export const NeighborGroupDestinationIpv4AddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NeighborGroupDestinationIpv4AddressesList>;
-
-/** Array of IPv6 Addresses. */
-export type NeighborGroupDestinationIpv6AddressesList = string[];
-export const NeighborGroupDestinationIpv6AddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NeighborGroupDestinationIpv6AddressesList>;
-
-/** An array of destination IPv4 Addresses or IPv6 Addresses. */
-export interface NeighborGroupDestination {
-  /** Array of IPv4 Addresses. */
-  ipv4Addresses?: NeighborGroupDestinationIpv4AddressesList;
-  /** Array of IPv6 Addresses. */
-  ipv6Addresses?: NeighborGroupDestinationIpv6AddressesList;
-}
-export const NeighborGroupDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4Addresses: S.optional(NeighborGroupDestinationIpv4AddressesList),
-    ipv6Addresses: S.optional(NeighborGroupDestinationIpv6AddressesList),
-  }),
-).annotate({
-  identifier: "NeighborGroupDestination",
-}) as any as S.Schema<NeighborGroupDestination>;
-
 /** List of NetworkTap IDs where neighbor group is associated. */
-export type NeighborGroupPropertiesNetworkTapIdsList = string[];
+export type NeighborGroupPropertiesNetworkTapIdsList = ReadonlyArray<string>;
 export const NeighborGroupPropertiesNetworkTapIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NeighborGroupPropertiesNetworkTapIdsList>;
 
 /** List of Network Tap Rule IDs where neighbor group is associated. */
-export type NeighborGroupPropertiesNetworkTapRuleIdsList = string[];
+export type NeighborGroupPropertiesNetworkTapRuleIdsList =
+  ReadonlyArray<string>;
 export const NeighborGroupPropertiesNetworkTapRuleIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NeighborGroupPropertiesNetworkTapRuleIdsList>;
 
 /** Associated Network Fabric Resource IDs */
-export type NeighborGroupPropertiesNetworkFabricIdsList = string[];
+export type NeighborGroupPropertiesNetworkFabricIdsList = ReadonlyArray<string>;
 export const NeighborGroupPropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7545,7 +10291,7 @@ export const NeighborGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NeighborGroup" }) as any as S.Schema<NeighborGroup>;
 
 /** The NeighborGroup items on this page */
-export type NeighborGroupsListResultValueList = NeighborGroup[];
+export type NeighborGroupsListResultValueList = ReadonlyArray<NeighborGroup>;
 export const NeighborGroupsListResultValueList = /*@__PURE__*/ S.Array(
   NeighborGroup,
 ) as any as S.Schema<NeighborGroupsListResultValueList>;
@@ -7613,7 +10359,7 @@ export const NeighborGroupsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NeighborGroupResyncResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NeighborGroupResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -7661,13 +10407,14 @@ export const NeighborGroupResyncResponseOperationsItem =
 
 /** The operations list. */
 export type NeighborGroupResyncResponseOperationsList =
-  NeighborGroupResyncResponseOperationsItem[];
+  ReadonlyArray<NeighborGroupResyncResponseOperationsItem>;
 export const NeighborGroupResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NeighborGroupResyncResponseOperationsItem,
 ) as any as S.Schema<NeighborGroupResyncResponseOperationsList>;
 
 /** The error details. */
-export type NeighborGroupResyncResponseErrorDetailsList = ErrorDetail[];
+export type NeighborGroupResyncResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const NeighborGroupResyncResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -7675,7 +10422,7 @@ export const NeighborGroupResyncResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NeighborGroupResyncResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NeighborGroupResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -7745,6 +10492,63 @@ export const NeighborGroupResyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NeighborGroupResyncResponse",
 }) as any as S.Schema<NeighborGroupResyncResponse>;
 
+/** Resource tags. */
+export type NeighborGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NeighborGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NeighborGroupsUpdateRequestTagsMap>;
+
+/** Array of IPv4 Addresses. */
+export type NeighborGroupDestinationPatchIpv4AddressesList =
+  ReadonlyArray<string>;
+export const NeighborGroupDestinationPatchIpv4AddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NeighborGroupDestinationPatchIpv4AddressesList>;
+
+/** Array of IPv6 Addresses. */
+export type NeighborGroupDestinationPatchIpv6AddressesList =
+  ReadonlyArray<string>;
+export const NeighborGroupDestinationPatchIpv6AddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NeighborGroupDestinationPatchIpv6AddressesList>;
+
+/** An array of destination IPv4 Addresses or IPv6 Addresses. */
+export interface NeighborGroupDestinationPatch {
+  /** Array of IPv4 Addresses. */
+  ipv4Addresses?: NeighborGroupDestinationPatchIpv4AddressesList;
+  /** Array of IPv6 Addresses. */
+  ipv6Addresses?: NeighborGroupDestinationPatchIpv6AddressesList;
+}
+export const NeighborGroupDestinationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Addresses: S.optional(NeighborGroupDestinationPatchIpv4AddressesList),
+    ipv6Addresses: S.optional(NeighborGroupDestinationPatchIpv6AddressesList),
+  }),
+).annotate({
+  identifier: "NeighborGroupDestinationPatch",
+}) as any as S.Schema<NeighborGroupDestinationPatch>;
+
+/** Neighbor Group Patch properties. */
+export interface NeighborGroupPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** An array of destination IPv4 Addresses or IPv6 Addresses. */
+  destination?: NeighborGroupDestinationPatch;
+}
+export const NeighborGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    destination: S.optional(NeighborGroupDestinationPatch),
+  }),
+).annotate({
+  identifier: "NeighborGroupPatchProperties",
+}) as any as S.Schema<NeighborGroupPatchProperties>;
+
 export interface NeighborGroupsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7752,14 +10556,21 @@ export interface NeighborGroupsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NeighborGroupsUpdateRequestTagsMap;
+  /** Neighbor Group Patch properties. */
+  properties?: NeighborGroupPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NeighborGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     neighborGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NeighborGroupsUpdateRequestTagsMap),
+    properties: S.optional(NeighborGroupPatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7835,6 +10646,54 @@ export const NeighborGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NeighborGroupsUpdateResponse",
 }) as any as S.Schema<NeighborGroupsUpdateResponse>;
 
+/** Resource tags. */
+export type NetworkBootstrapDevicesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkBootstrapDevicesCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkBootstrapDevicesCreateRequestTagsMap>;
+
+/** Network Bootstrap Device Properties defines the properties of the resource. */
+export interface NetworkBootstrapDevicePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The host name of the device. */
+  hostName?: string;
+  /** Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber?: string;
+  /** Network Bootstrap Device SKU name. */
+  networkDeviceSku?: string;
+}
+export const NetworkBootstrapDevicePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      hostName: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      networkDeviceSku: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "NetworkBootstrapDevicePropertiesInput",
+}) as any as S.Schema<NetworkBootstrapDevicePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkBootstrapDevicesCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkBootstrapDevicesCreateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "NetworkBootstrapDevicesCreateRequestIdentity",
+  }) as any as S.Schema<NetworkBootstrapDevicesCreateRequestIdentity>;
+
 export interface NetworkBootstrapDevicesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7842,7 +10701,14 @@ export interface NetworkBootstrapDevicesCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkBootstrapDevicesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkBootstrapDevice properties */
+  properties: NetworkBootstrapDevicePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkBootstrapDevicesCreateRequestIdentity;
 }
 export const NetworkBootstrapDevicesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7850,7 +10716,10 @@ export const NetworkBootstrapDevicesCreateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkBootstrapDevicesCreateRequestTagsMap),
+      location: S.String,
+      properties: NetworkBootstrapDevicePropertiesInput,
+      identity: S.optional(NetworkBootstrapDevicesCreateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8189,7 +11058,7 @@ export const NetworkBootstrapDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkBootstrapDevice items on this page */
 export type NetworkBootstrapDeviceListResultValueList =
-  NetworkBootstrapDevice[];
+  ReadonlyArray<NetworkBootstrapDevice>;
 export const NetworkBootstrapDeviceListResultValueList = /*@__PURE__*/ S.Array(
   NetworkBootstrapDevice,
 ) as any as S.Schema<NetworkBootstrapDeviceListResultValueList>;
@@ -8258,7 +11127,7 @@ export const NetworkBootstrapDevicesRebootRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRebootResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkBootstrapDeviceRebootResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -8306,7 +11175,7 @@ export const NetworkBootstrapDeviceRebootResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRebootResponseOperationsList =
-  NetworkBootstrapDeviceRebootResponseOperationsItem[];
+  ReadonlyArray<NetworkBootstrapDeviceRebootResponseOperationsItem>;
 export const NetworkBootstrapDeviceRebootResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceRebootResponseOperationsItem,
@@ -8314,7 +11183,7 @@ export const NetworkBootstrapDeviceRebootResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceRebootResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkBootstrapDeviceRebootResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8322,7 +11191,7 @@ export const NetworkBootstrapDeviceRebootResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceRebootResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceRebootResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8424,7 +11293,7 @@ export const NetworkBootstrapDevicesRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -8473,7 +11342,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem[];
+  ReadonlyArray<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem,
@@ -8481,7 +11350,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8489,7 +11358,7 @@ export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList 
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8595,7 +11464,7 @@ export const NetworkBootstrapDevicesResyncPasswordsRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -8643,7 +11512,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
-  NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem[];
+  ReadonlyArray<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem,
@@ -8651,7 +11520,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8659,7 +11528,7 @@ export const NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -8735,6 +11604,36 @@ export const NetworkBootstrapDeviceResyncPasswordsResponse =
     identifier: "NetworkBootstrapDeviceResyncPasswordsResponse",
   }) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>;
 
+/** Resource tags. */
+export type NetworkBootstrapDevicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkBootstrapDevicesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkBootstrapDevicesUpdateRequestTagsMap>;
+
+/** Network Bootstrap Device Patch properties. */
+export interface NetworkBootstrapDevicePatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The host name of the device. */
+  hostName?: string;
+  /** Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber?: string;
+}
+export const NetworkBootstrapDevicePatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      hostName: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "NetworkBootstrapDevicePatchProperties",
+}) as any as S.Schema<NetworkBootstrapDevicePatchProperties>;
+
 export interface NetworkBootstrapDevicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8742,7 +11641,12 @@ export interface NetworkBootstrapDevicesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkBootstrapDevicesUpdateRequestTagsMap;
+  /** Network Bootstrap Device Patch properties. */
+  properties?: NetworkBootstrapDevicePatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkBootstrapDevicesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8750,7 +11654,9 @@ export const NetworkBootstrapDevicesUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkBootstrapDevicesUpdateRequestTagsMap),
+      properties: S.optional(NetworkBootstrapDevicePatchProperties),
+      identity: S.optional(ManagedServiceIdentityPatchInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -8828,6 +11734,27 @@ export const NetworkBootstrapDevicesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkBootstrapDevicesUpdateResponse",
 }) as any as S.Schema<NetworkBootstrapDevicesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList>;
+
+/** Administrative state. */
+export type DeviceAdministrativeState =
+  | "RMA"
+  | "UngracefulRMA"
+  | "Resync"
+  | "GracefulQuarantine"
+  | "UngracefulQuarantine"
+  | "Quarantine"
+  | "UnderMaintenance"
+  | "Enable"
+  | "Disable";
+export const DeviceAdministrativeState = /*@__PURE__*/ S.String;
+
 export interface NetworkBootstrapDevicesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8835,7 +11762,10 @@ export interface NetworkBootstrapDevicesUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: DeviceAdministrativeState;
 }
 export const NetworkBootstrapDevicesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8843,7 +11773,10 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkBootstrapDevicesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(DeviceAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -8858,7 +11791,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateRequest =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -8907,7 +11840,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsIt
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem,
@@ -8915,7 +11848,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsLi
 
 /** The error details. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -8923,7 +11856,7 @@ export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetails
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -9008,7 +11941,8 @@ export interface NetworkBootstrapDevicesUpgradeRequest {
   resourceGroupName: string;
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
-  body: unknown;
+  /** Specify the version. */
+  version?: string;
 }
 export const NetworkBootstrapDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9016,7 +11950,7 @@ export const NetworkBootstrapDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      version: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -9031,7 +11965,7 @@ export const NetworkBootstrapDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -9079,7 +12013,7 @@ export const NetworkBootstrapDeviceUpgradeResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsItem[];
+  ReadonlyArray<NetworkBootstrapDeviceUpgradeResponseOperationsItem>;
 export const NetworkBootstrapDeviceUpgradeResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapDeviceUpgradeResponseOperationsItem,
@@ -9087,7 +12021,7 @@ export const NetworkBootstrapDeviceUpgradeResponseOperationsList =
 
 /** The error details. */
 export type NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -9095,7 +12029,7 @@ export const NetworkBootstrapDeviceUpgradeResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkBootstrapDeviceUpgradeResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkBootstrapDeviceUpgradeResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -9171,6 +12105,26 @@ export const NetworkBootstrapDeviceUpgradeResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkBootstrapDeviceUpgradeResponse",
 }) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>;
 
+/** Network Bootstrap Interface Properties defines the properties of the resource. */
+export interface NetworkBootstrapInterfacePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Additional description of the interface. */
+  additionalDescription?: string;
+  /** Serial number of the interface. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber?: string;
+}
+export const NetworkBootstrapInterfacePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      additionalDescription: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "NetworkBootstrapInterfacePropertiesInput",
+}) as any as S.Schema<NetworkBootstrapInterfacePropertiesInput>;
+
 export interface NetworkBootstrapInterfacesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9180,7 +12134,8 @@ export interface NetworkBootstrapInterfacesCreateRequest {
   networkBootstrapDeviceName: string;
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
-  body: unknown;
+  /** The NetworkBootstrapInterface properties */
+  properties: NetworkBootstrapInterfacePropertiesInput;
 }
 export const NetworkBootstrapInterfacesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9189,7 +12144,7 @@ export const NetworkBootstrapInterfacesCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
       networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: NetworkBootstrapInterfacePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -9203,7 +12158,7 @@ export const NetworkBootstrapInterfacesCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkBootstrapInterfacesCreateRequest>;
 
 /** The Interface Type. Example: Management/Data */
-export type InterfaceType = "Management" | "Data" | (string & {});
+export type InterfaceType = "Management" | "Data";
 export const InterfaceType = /*@__PURE__*/ S.String;
 
 /** Network Bootstrap Interface Properties defines the properties of the resource. */
@@ -9420,7 +12375,7 @@ export const NetworkBootstrapInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkBootstrapInterface items on this page */
 export type NetworkBootstrapInterfaceListResultValueList =
-  NetworkBootstrapInterface[];
+  ReadonlyArray<NetworkBootstrapInterface>;
 export const NetworkBootstrapInterfaceListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkBootstrapInterface,
@@ -9442,6 +12397,26 @@ export const NetworkBootstrapInterfaceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkBootstrapInterfaceListResult",
 }) as any as S.Schema<NetworkBootstrapInterfaceListResult>;
 
+/** Network Bootstrap Interface Patch properties. */
+export interface NetworkBootstrapInterfacePatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Serial number of the interface. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber?: string;
+  /** Additional description of the interface. */
+  additionalDescription?: string;
+}
+export const NetworkBootstrapInterfacePatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      additionalDescription: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "NetworkBootstrapInterfacePatchProperties",
+}) as any as S.Schema<NetworkBootstrapInterfacePatchProperties>;
+
 export interface NetworkBootstrapInterfacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9451,7 +12426,8 @@ export interface NetworkBootstrapInterfacesUpdateRequest {
   networkBootstrapDeviceName: string;
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
-  body: unknown;
+  /** Network Bootstrap Interface Patch properties. */
+  properties?: NetworkBootstrapInterfacePatchProperties;
 }
 export const NetworkBootstrapInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9460,7 +12436,7 @@ export const NetworkBootstrapInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
       networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(NetworkBootstrapInterfacePatchProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -9498,6 +12474,14 @@ export const NetworkBootstrapInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkBootstrapInterfacesUpdateResponse",
 }) as any as S.Schema<NetworkBootstrapInterfacesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkBootstrapInterfacesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9507,7 +12491,10 @@ export interface NetworkBootstrapInterfacesUpdateAdministrativeStateRequest {
   networkBootstrapDeviceName: string;
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9516,7 +12503,10 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       networkBootstrapDeviceName: S.String.pipe(T.Label()),
       networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkBootstrapInterfacesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -9545,6 +12535,76 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateResponse =
     identifier: "NetworkBootstrapInterfacesUpdateAdministrativeStateResponse",
   }) as any as S.Schema<NetworkBootstrapInterfacesUpdateAdministrativeStateResponse>;
 
+/** Resource tags. */
+export type NetworkDevicesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkDevicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkDevicesCreateRequestTagsMap>;
+
+/** The type of managed identity. */
+export type ManagedServiceIdentitySelectorType =
+  | "SystemAssignedIdentity"
+  | "UserAssignedIdentity";
+export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
+
+/** IdentitySelector represents the selection of a managed identity for use. */
+export interface IdentitySelector {
+  /** The type of managed identity that is being selected. */
+  identityType: ManagedServiceIdentitySelectorType;
+  /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
+  userAssignedIdentityResourceId?: string;
+}
+export const IdentitySelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityType: ManagedServiceIdentitySelectorType,
+    userAssignedIdentityResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentitySelector",
+}) as any as S.Schema<IdentitySelector>;
+
+/** Network Device Properties defines the properties of the resource. */
+export interface NetworkDevicePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The host name of the device. */
+  hostName?: string;
+  /** Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber: string;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  identitySelector?: IdentitySelector;
+  /** Network Device SKU name. */
+  networkDeviceSku?: string;
+}
+export const NetworkDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    hostName: S.optional(S.String),
+    serialNumber: S.String,
+    identitySelector: S.optional(IdentitySelector),
+    networkDeviceSku: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkDevicePropertiesInput",
+}) as any as S.Schema<NetworkDevicePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkDevicesCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkDevicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "NetworkDevicesCreateRequestIdentity",
+}) as any as S.Schema<NetworkDevicesCreateRequestIdentity>;
+
 export interface NetworkDevicesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9552,14 +12612,24 @@ export interface NetworkDevicesCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkDevicesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkDevice properties */
+  properties: NetworkDevicePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkDevicesCreateRequestIdentity;
 }
 export const NetworkDevicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkDevicesCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkDevicePropertiesInput,
+    identity: S.optional(NetworkDevicesCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9581,45 +12651,12 @@ export const NetworkDevicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<NetworkDevicesCreateResponseTagsMap>;
 
-/** The type of managed identity. */
-export type ManagedServiceIdentitySelectorType =
-  | "SystemAssignedIdentity"
-  | "UserAssignedIdentity"
-  | (string & {});
-export const ManagedServiceIdentitySelectorType = /*@__PURE__*/ S.String;
-
-/** IdentitySelector represents the selection of a managed identity for use. */
-export interface IdentitySelector {
-  /** The type of managed identity that is being selected. */
-  identityType: ManagedServiceIdentitySelectorType;
-  /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
-  userAssignedIdentityResourceId?: string;
-}
-export const IdentitySelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identityType: ManagedServiceIdentitySelectorType,
-    userAssignedIdentityResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IdentitySelector",
-}) as any as S.Schema<IdentitySelector>;
-
 /** NetworkDeviceRole is the device role: Example: CE | ToR. */
-export type NetworkDeviceRole =
-  | "CE"
-  | "ToR"
-  | "NPB"
-  | "TS"
-  | "Management"
-  | (string & {});
+export type NetworkDeviceRole = "CE" | "ToR" | "NPB" | "TS" | "Management";
 export const NetworkDeviceRole = /*@__PURE__*/ S.String;
 
 /** Synchronization status of a secret or certificate for a device (Network Device or Terminal Server). Whether the device has been configured with the latest version of the secret or certificate. */
-export type SynchronizationStatus =
-  | "InSync"
-  | "Synchronizing"
-  | "OutOfSync"
-  | (string & {});
+export type SynchronizationStatus = "InSync" | "Synchronizing" | "OutOfSync";
 export const SynchronizationStatus = /*@__PURE__*/ S.String;
 
 /** A reference to a version of a secret in a key vault. */
@@ -9668,7 +12705,7 @@ export const SecretRotationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Secret rotation status for the device's secrets. */
 export type NetworkDevicePropertiesSecretRotationStatusList =
-  SecretRotationStatus[];
+  ReadonlyArray<SecretRotationStatus>;
 export const NetworkDevicePropertiesSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -9723,7 +12760,7 @@ export const CertificateRotationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Certificate rotation status for the device's certificates. */
 export type NetworkDevicePropertiesCertificateRotationStatusList =
-  CertificateRotationStatus[];
+  ReadonlyArray<CertificateRotationStatus>;
 export const NetworkDevicePropertiesCertificateRotationStatusList =
   /*@__PURE__*/ S.Array(
     CertificateRotationStatus,
@@ -10016,25 +13053,19 @@ export const SupportedVersionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported version details of network device. */
 export type NetworkDeviceSkuPropertiesSupportedVersionsList =
-  SupportedVersionProperties[];
+  ReadonlyArray<SupportedVersionProperties>;
 export const NetworkDeviceSkuPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     SupportedVersionProperties,
   ) as any as S.Schema<NetworkDeviceSkuPropertiesSupportedVersionsList>;
 
 /** Available roles for the network device. */
-export type NetworkDeviceRoleName =
-  | "CE"
-  | "ToR"
-  | "NPB"
-  | "TS"
-  | "Management"
-  | (string & {});
+export type NetworkDeviceRoleName = "CE" | "ToR" | "NPB" | "TS" | "Management";
 export const NetworkDeviceRoleName = /*@__PURE__*/ S.String;
 
 /** Available roles for the network device. */
 export type NetworkDeviceSkuPropertiesSupportedRoleTypesList =
-  NetworkDeviceRoleName[];
+  ReadonlyArray<NetworkDeviceRoleName>;
 export const NetworkDeviceSkuPropertiesSupportedRoleTypesList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRoleName,
@@ -10058,7 +13089,7 @@ export const SupportedConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported connector types. */
 export type DeviceInterfacePropertiesSupportedConnectorTypesList =
-  SupportedConnectorProperties[];
+  ReadonlyArray<SupportedConnectorProperties>;
 export const DeviceInterfacePropertiesSupportedConnectorTypesList =
   /*@__PURE__*/ S.Array(
     SupportedConnectorProperties,
@@ -10087,7 +13118,7 @@ export const DeviceInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network device interfaces. */
 export type NetworkDeviceSkuPropertiesInterfacesList =
-  DeviceInterfaceProperties[];
+  ReadonlyArray<DeviceInterfaceProperties>;
 export const NetworkDeviceSkuPropertiesInterfacesList = /*@__PURE__*/ S.Array(
   DeviceInterfaceProperties,
 ) as any as S.Schema<NetworkDeviceSkuPropertiesInterfacesList>;
@@ -10194,7 +13225,8 @@ export const NetworkDeviceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkDeviceSku>;
 
 /** The NetworkDeviceSku items on this page */
-export type NetworkDeviceSkusListResultValueList = NetworkDeviceSku[];
+export type NetworkDeviceSkusListResultValueList =
+  ReadonlyArray<NetworkDeviceSku>;
 export const NetworkDeviceSkusListResultValueList = /*@__PURE__*/ S.Array(
   NetworkDeviceSku,
 ) as any as S.Schema<NetworkDeviceSkusListResultValueList>;
@@ -10298,7 +13330,7 @@ export const NetworkDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkDevice" }) as any as S.Schema<NetworkDevice>;
 
 /** The NetworkDevice items on this page */
-export type NetworkDevicesListResultValueList = NetworkDevice[];
+export type NetworkDevicesListResultValueList = ReadonlyArray<NetworkDevice>;
 export const NetworkDevicesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkDevice,
 ) as any as S.Schema<NetworkDevicesListResultValueList>;
@@ -10339,6 +13371,14 @@ export const NetworkDevicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "NetworkDevicesListBySubscriptionRequest",
 }) as any as S.Schema<NetworkDevicesListBySubscriptionRequest>;
 
+/** Type of reboot to be performed. Example: GracefulRebootWithZTP */
+export type RebootType =
+  | "GracefulRebootWithZTP"
+  | "GracefulRebootWithoutZTP"
+  | "UngracefulRebootWithZTP"
+  | "UngracefulRebootWithoutZTP";
+export const RebootType = /*@__PURE__*/ S.String;
+
 export interface NetworkDevicesRebootRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10346,14 +13386,15 @@ export interface NetworkDevicesRebootRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Type of reboot to be performed. Example: GracefulRebootWithZTP */
+  rebootType?: RebootType;
 }
 export const NetworkDevicesRebootRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    rebootType: S.optional(RebootType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -10368,7 +13409,7 @@ export const NetworkDevicesRebootRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDevicesRebootResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDevicesRebootResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<NetworkDevicesRebootResponseOperationsList>;
@@ -10437,7 +13478,7 @@ export const NetworkDevicesRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -10485,7 +13526,7 @@ export const NetworkDeviceRefreshConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsList =
-  NetworkDeviceRefreshConfigurationResponseOperationsItem[];
+  ReadonlyArray<NetworkDeviceRefreshConfigurationResponseOperationsItem>;
 export const NetworkDeviceRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRefreshConfigurationResponseOperationsItem,
@@ -10493,7 +13534,7 @@ export const NetworkDeviceRefreshConfigurationResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -10501,7 +13542,7 @@ export const NetworkDeviceRefreshConfigurationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -10605,7 +13646,7 @@ export const NetworkDevicesResyncCertificatesRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricResyncCertificatesResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricResyncCertificatesResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -10653,7 +13694,7 @@ export const NetworkFabricResyncCertificatesResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricResyncCertificatesResponseOperationsList =
-  NetworkFabricResyncCertificatesResponseOperationsItem[];
+  ReadonlyArray<NetworkFabricResyncCertificatesResponseOperationsItem>;
 export const NetworkFabricResyncCertificatesResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricResyncCertificatesResponseOperationsItem,
@@ -10661,7 +13702,7 @@ export const NetworkFabricResyncCertificatesResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricResyncCertificatesResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkFabricResyncCertificatesResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -10669,7 +13710,7 @@ export const NetworkFabricResyncCertificatesResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricResyncCertificatesResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkFabricResyncCertificatesResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -10773,7 +13814,7 @@ export const NetworkDevicesResyncPasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkDeviceResyncPasswordsResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDeviceResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -10821,7 +13862,7 @@ export const NetworkDeviceResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceResyncPasswordsResponseOperationsList =
-  NetworkDeviceResyncPasswordsResponseOperationsItem[];
+  ReadonlyArray<NetworkDeviceResyncPasswordsResponseOperationsItem>;
 export const NetworkDeviceResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceResyncPasswordsResponseOperationsItem,
@@ -10829,7 +13870,7 @@ export const NetworkDeviceResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceResyncPasswordsResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkDeviceResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -10837,7 +13878,7 @@ export const NetworkDeviceResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceResyncPasswordsResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkDeviceResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -10918,14 +13959,15 @@ export interface NetworkDevicesRunRoCommandRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Specify the command. */
+  command?: string;
 }
 export const NetworkDevicesRunRoCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    command: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -10998,14 +14040,18 @@ export interface NetworkDevicesRunRwCommandRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Specify the command. */
+  command?: string;
+  /** Specify the commands file URL. */
+  commandUrl?: string;
 }
 export const NetworkDevicesRunRwCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    command: S.optional(S.String),
+    commandUrl: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -11020,7 +14066,7 @@ export const NetworkDevicesRunRwCommandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDeviceRunRwCommandResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11068,14 +14114,15 @@ export const NetworkDeviceRunRwCommandResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsList =
-  NetworkDeviceRunRwCommandResponseOperationsItem[];
+  ReadonlyArray<NetworkDeviceRunRwCommandResponseOperationsItem>;
 export const NetworkDeviceRunRwCommandResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceRunRwCommandResponseOperationsItem,
   ) as any as S.Schema<NetworkDeviceRunRwCommandResponseOperationsList>;
 
 /** The error details. */
-export type NetworkDeviceRunRwCommandResponseErrorDetailsList = ErrorDetail[];
+export type NetworkDeviceRunRwCommandResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const NetworkDeviceRunRwCommandResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11083,7 +14130,7 @@ export const NetworkDeviceRunRwCommandResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceRunRwCommandResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkDeviceRunRwCommandResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11174,6 +14221,54 @@ export const NetworkDeviceRunRwCommandResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkDeviceRunRwCommandResponse",
 }) as any as S.Schema<NetworkDeviceRunRwCommandResponse>;
 
+/** Resource tags. */
+export type NetworkDevicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkDevicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkDevicesUpdateRequestTagsMap>;
+
+/** IdentitySelector represents the selection of a managed identity for use. */
+export interface IdentitySelectorPatch {
+  /** The type of managed identity that is being selected. */
+  identityType?: ManagedServiceIdentitySelectorType;
+  /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
+  userAssignedIdentityResourceId?: string;
+}
+export const IdentitySelectorPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityType: S.optional(ManagedServiceIdentitySelectorType),
+    userAssignedIdentityResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentitySelectorPatch",
+}) as any as S.Schema<IdentitySelectorPatch>;
+
+/** Network Device Patch properties. */
+export interface NetworkDevicePatchParametersProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** The host name of the device. */
+  hostName?: string;
+  /** Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
+  serialNumber?: string;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  identitySelector?: IdentitySelectorPatch;
+}
+export const NetworkDevicePatchParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      hostName: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      identitySelector: S.optional(IdentitySelectorPatch),
+    }),
+).annotate({
+  identifier: "NetworkDevicePatchParametersProperties",
+}) as any as S.Schema<NetworkDevicePatchParametersProperties>;
+
 export interface NetworkDevicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11181,14 +14276,21 @@ export interface NetworkDevicesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkDevicesUpdateRequestTagsMap;
+  /** Network Device Patch properties. */
+  properties?: NetworkDevicePatchParametersProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkDevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkDevicesUpdateRequestTagsMap),
+    properties: S.optional(NetworkDevicePatchParametersProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -11264,6 +14366,14 @@ export const NetworkDevicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkDevicesUpdateResponse",
 }) as any as S.Schema<NetworkDevicesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkDevicesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11271,7 +14381,10 @@ export interface NetworkDevicesUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: DeviceAdministrativeState;
 }
 export const NetworkDevicesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -11279,7 +14392,10 @@ export const NetworkDevicesUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkDevicesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(DeviceAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -11294,7 +14410,7 @@ export const NetworkDevicesUpdateAdministrativeStateRequest =
 
 /** The operations list. */
 export type NetworkDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11342,7 +14458,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
-  NetworkDeviceUpdateAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<NetworkDeviceUpdateAdministrativeStateResponseOperationsItem>;
 export const NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkDeviceUpdateAdministrativeStateResponseOperationsItem,
@@ -11350,7 +14466,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11358,7 +14474,7 @@ export const NetworkDeviceUpdateAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11441,14 +14557,18 @@ export interface NetworkDevicesUpgradeRequest {
   resourceGroupName: string;
   /** Name of the Network Device. */
   networkDeviceName: string;
-  body: unknown;
+  /** Version to which the device needs to be upgraded. */
+  version: string;
+  /** URL to the file containing Read-write configuration to be applied on the device during upgrade. */
+  rwDeviceConfigUrl?: string;
 }
 export const NetworkDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    version: S.String,
+    rwDeviceConfigUrl: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -11463,7 +14583,7 @@ export const NetworkDevicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkDeviceUpgradeResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkDeviceUpgradeResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -11511,13 +14631,14 @@ export const NetworkDeviceUpgradeResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkDeviceUpgradeResponseOperationsList =
-  NetworkDeviceUpgradeResponseOperationsItem[];
+  ReadonlyArray<NetworkDeviceUpgradeResponseOperationsItem>;
 export const NetworkDeviceUpgradeResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkDeviceUpgradeResponseOperationsItem,
 ) as any as S.Schema<NetworkDeviceUpgradeResponseOperationsList>;
 
 /** The error details. */
-export type NetworkDeviceUpgradeResponseErrorDetailsList = ErrorDetail[];
+export type NetworkDeviceUpgradeResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const NetworkDeviceUpgradeResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11525,7 +14646,7 @@ export const NetworkDeviceUpgradeResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkDeviceUpgradeResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkDeviceUpgradeResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11595,6 +14716,136 @@ export const NetworkDeviceUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkDeviceUpgradeResponse",
 }) as any as S.Schema<NetworkDeviceUpgradeResponse>;
 
+/** Resource tags. */
+export type NetworkFabricControllersCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFabricControllersCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFabricControllersCreateRequestTagsMap>;
+
+/** The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service. */
+export interface ExpressRouteConnectionInformation {
+  /** The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute Circuit is a mandatory attribute. */
+  expressRouteCircuitId: string;
+  /** Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute. */
+  expressRouteAuthorizationKey: string;
+}
+export const ExpressRouteConnectionInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expressRouteCircuitId: S.String,
+    expressRouteAuthorizationKey: S.String,
+  }),
+).annotate({
+  identifier: "ExpressRouteConnectionInformation",
+}) as any as S.Schema<ExpressRouteConnectionInformation>;
+
+/** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
+export type NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
+  ReadonlyArray<ExpressRouteConnectionInformation>;
+export const NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ExpressRouteConnectionInformation,
+  ) as any as S.Schema<NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList>;
+
+/** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
+export type NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
+  ReadonlyArray<ExpressRouteConnectionInformation>;
+export const NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ExpressRouteConnectionInformation,
+  ) as any as S.Schema<NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList>;
+
+/** Managed Resource Group configuration properties. */
+export interface ManagedResourceGroupConfiguration {
+  /** The NFC service will be hosted in a Managed resource group. */
+  name?: string;
+  /** Managed resource group location. */
+  location?: string;
+}
+export const ManagedResourceGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedResourceGroupConfiguration",
+}) as any as S.Schema<ManagedResourceGroupConfiguration>;
+
+/** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
+export type NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
+  "True" | "False";
+export const NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
+  /*@__PURE__*/ S.String;
+
+/** Network Fabric Controller SKU. */
+export type NetworkFabricControllerPropertiesInputNfcSku =
+  | "Basic"
+  | "Standard"
+  | "HighPerformance";
+export const NetworkFabricControllerPropertiesInputNfcSku =
+  /*@__PURE__*/ S.String;
+
+/** NetworkFabricControllerProperties defines the resource properties. */
+export interface NetworkFabricControllerPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
+  infrastructureExpressRouteConnections?: NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList;
+  /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
+  workloadExpressRouteConnections?: NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList;
+  /** Managed Resource Group configuration properties. */
+  managedResourceGroupConfiguration?: ManagedResourceGroupConfiguration;
+  /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
+  isWorkloadManagementNetworkEnabled?: NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled;
+  /** IPv4 Network Fabric Controller Address Space. */
+  ipv4AddressSpace?: string;
+  /** IPv6 Network Fabric Controller Address Space. */
+  ipv6AddressSpace?: string;
+  /** Network Fabric Controller SKU. */
+  nfcSku?: NetworkFabricControllerPropertiesInputNfcSku;
+}
+export const NetworkFabricControllerPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      annotation: S.optional(S.String),
+      infrastructureExpressRouteConnections: S.optional(
+        NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList,
+      ),
+      workloadExpressRouteConnections: S.optional(
+        NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList,
+      ),
+      managedResourceGroupConfiguration: S.optional(
+        ManagedResourceGroupConfiguration,
+      ),
+      isWorkloadManagementNetworkEnabled: S.optional(
+        NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled,
+      ),
+      ipv4AddressSpace: S.optional(S.String),
+      ipv6AddressSpace: S.optional(S.String),
+      nfcSku: S.optional(NetworkFabricControllerPropertiesInputNfcSku),
+    }),
+).annotate({
+  identifier: "NetworkFabricControllerPropertiesInput",
+}) as any as S.Schema<NetworkFabricControllerPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkFabricControllersCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkFabricControllersCreateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "NetworkFabricControllersCreateRequestIdentity",
+  }) as any as S.Schema<NetworkFabricControllersCreateRequestIdentity>;
+
 export interface NetworkFabricControllersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11602,7 +14853,14 @@ export interface NetworkFabricControllersCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric Controller. */
   networkFabricControllerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFabricControllersCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkFabricController Properties */
+  properties: NetworkFabricControllerPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkFabricControllersCreateRequestIdentity;
 }
 export const NetworkFabricControllersCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11610,7 +14868,10 @@ export const NetworkFabricControllersCreateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricControllerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkFabricControllersCreateRequestTagsMap),
+      location: S.String,
+      properties: NetworkFabricControllerPropertiesInput,
+      identity: S.optional(NetworkFabricControllersCreateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11633,25 +14894,9 @@ export const NetworkFabricControllersCreateResponseTagsMap =
     S.String,
   ) as any as S.Schema<NetworkFabricControllersCreateResponseTagsMap>;
 
-/** The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service. */
-export interface ExpressRouteConnectionInformation {
-  /** The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute Circuit is a mandatory attribute. */
-  expressRouteCircuitId: string;
-  /** Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute. */
-  expressRouteAuthorizationKey: string;
-}
-export const ExpressRouteConnectionInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expressRouteCircuitId: S.String,
-    expressRouteAuthorizationKey: S.String,
-  }),
-).annotate({
-  identifier: "ExpressRouteConnectionInformation",
-}) as any as S.Schema<ExpressRouteConnectionInformation>;
-
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
-  ExpressRouteConnectionInformation[];
+  ReadonlyArray<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
@@ -11659,20 +14904,20 @@ export const NetworkFabricControllerPropertiesInfrastructureExpressRouteConnecti
 
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
-  ExpressRouteConnectionInformation[];
+  ReadonlyArray<ExpressRouteConnectionInformation>;
 export const NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
   /*@__PURE__*/ S.Array(
     ExpressRouteConnectionInformation,
   ) as any as S.Schema<NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList>;
 
 /** The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute. */
-export type ControllerServicesIpv4AddressSpacesList = string[];
+export type ControllerServicesIpv4AddressSpacesList = ReadonlyArray<string>;
 export const ControllerServicesIpv4AddressSpacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControllerServicesIpv4AddressSpacesList>;
 
 /** The IPv6 is not supported right now. */
-export type ControllerServicesIpv6AddressSpacesList = string[];
+export type ControllerServicesIpv6AddressSpacesList = ReadonlyArray<string>;
 export const ControllerServicesIpv6AddressSpacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ControllerServicesIpv6AddressSpacesList>;
@@ -11693,24 +14938,9 @@ export const ControllerServices = /*@__PURE__*/ S.suspend(() =>
   identifier: "ControllerServices",
 }) as any as S.Schema<ControllerServices>;
 
-/** Managed Resource Group configuration properties. */
-export interface ManagedResourceGroupConfiguration {
-  /** The NFC service will be hosted in a Managed resource group. */
-  name?: string;
-  /** Managed resource group location. */
-  location?: string;
-}
-export const ManagedResourceGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedResourceGroupConfiguration",
-}) as any as S.Schema<ManagedResourceGroupConfiguration>;
-
 /** The NF-ID will be an input parameter used by the NF to link and get associated with the parent NFC Service. */
-export type NetworkFabricControllerPropertiesNetworkFabricIdsList = string[];
+export type NetworkFabricControllerPropertiesNetworkFabricIdsList =
+  ReadonlyArray<string>;
 export const NetworkFabricControllerPropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11718,13 +14948,13 @@ export const NetworkFabricControllerPropertiesNetworkFabricIdsList =
 
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
-  "True" | "False" | (string & {});
+  "True" | "False";
 export const NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled =
   /*@__PURE__*/ S.String;
 
 /** List of tenant InternetGateway resource IDs */
 export type NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11734,8 +14964,7 @@ export const NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
 export type NetworkFabricControllerPropertiesNfcSku =
   | "Basic"
   | "Standard"
-  | "HighPerformance"
-  | (string & {});
+  | "HighPerformance";
 export const NetworkFabricControllerPropertiesNfcSku = /*@__PURE__*/ S.String;
 
 /** NetworkFabricControllerProperties defines the resource properties. */
@@ -12067,7 +15296,7 @@ export const NetworkFabricController = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkFabricController items on this page */
 export type NetworkFabricControllersListResultValueList =
-  NetworkFabricController[];
+  ReadonlyArray<NetworkFabricController>;
 export const NetworkFabricControllersListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFabricController,
@@ -12109,6 +15338,53 @@ export const NetworkFabricControllersListBySubscriptionRequest =
     identifier: "NetworkFabricControllersListBySubscriptionRequest",
   }) as any as S.Schema<NetworkFabricControllersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type NetworkFabricControllersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFabricControllersUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFabricControllersUpdateRequestTagsMap>;
+
+/** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
+export type NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
+  ReadonlyArray<ExpressRouteConnectionInformation>;
+export const NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ExpressRouteConnectionInformation,
+  ) as any as S.Schema<NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList>;
+
+/** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
+export type NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
+  ReadonlyArray<ExpressRouteConnectionInformation>;
+export const NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ExpressRouteConnectionInformation,
+  ) as any as S.Schema<NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList>;
+
+/** Network Fabric Controller patch properties. */
+export interface NetworkFabricControllerPatchProperties {
+  /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
+  infrastructureExpressRouteConnections?: NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList;
+  /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
+  workloadExpressRouteConnections?: NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList;
+}
+export const NetworkFabricControllerPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      infrastructureExpressRouteConnections: S.optional(
+        NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList,
+      ),
+      workloadExpressRouteConnections: S.optional(
+        NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList,
+      ),
+    }),
+).annotate({
+  identifier: "NetworkFabricControllerPatchProperties",
+}) as any as S.Schema<NetworkFabricControllerPatchProperties>;
+
 export interface NetworkFabricControllersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12116,7 +15392,12 @@ export interface NetworkFabricControllersUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric Controller. */
   networkFabricControllerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFabricControllersUpdateRequestTagsMap;
+  /** Network Fabric Controller patch properties. */
+  properties?: NetworkFabricControllerPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkFabricControllersUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -12124,7 +15405,9 @@ export const NetworkFabricControllersUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricControllerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkFabricControllersUpdateRequestTagsMap),
+      properties: S.optional(NetworkFabricControllerPatchProperties),
+      identity: S.optional(ManagedServiceIdentityPatchInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -12230,7 +15513,7 @@ export const NetworkFabricsArmConfigurationDiffRequest =
 
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const ArmConfigurationDiffOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -12278,7 +15561,7 @@ export const ArmConfigurationDiffOperationResponseOperationsItem =
 
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsList =
-  ArmConfigurationDiffOperationResponseOperationsItem[];
+  ReadonlyArray<ArmConfigurationDiffOperationResponseOperationsItem>;
 export const ArmConfigurationDiffOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ArmConfigurationDiffOperationResponseOperationsItem,
@@ -12286,7 +15569,7 @@ export const ArmConfigurationDiffOperationResponseOperationsList =
 
 /** The error details. */
 export type ArmConfigurationDiffOperationResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const ArmConfigurationDiffOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -12294,7 +15577,7 @@ export const ArmConfigurationDiffOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type ArmConfigurationDiffOperationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ArmConfigurationDiffOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -12394,7 +15677,8 @@ export interface NetworkFabricsCommitBatchStatusRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Commit Batch Identifier. If not provided, the latest commit batch status will be returned. */
+  commitBatchId?: string;
 }
 export const NetworkFabricsCommitBatchStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -12402,7 +15686,7 @@ export const NetworkFabricsCommitBatchStatusRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      commitBatchId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -12417,7 +15701,7 @@ export const NetworkFabricsCommitBatchStatusRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const CommitBatchStatusOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -12465,14 +15749,15 @@ export const CommitBatchStatusOperationResponseOperationsItem =
 
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsItem[];
+  ReadonlyArray<CommitBatchStatusOperationResponseOperationsItem>;
 export const CommitBatchStatusOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     CommitBatchStatusOperationResponseOperationsItem,
   ) as any as S.Schema<CommitBatchStatusOperationResponseOperationsList>;
 
 /** The error details. */
-export type CommitBatchStatusOperationResponseErrorDetailsList = ErrorDetail[];
+export type CommitBatchStatusOperationResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const CommitBatchStatusOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -12480,7 +15765,7 @@ export const CommitBatchStatusOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type CommitBatchStatusOperationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const CommitBatchStatusOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -12515,15 +15800,11 @@ export const CommitBatchStatusOperationResponseError = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitBatchStatusOperationResponseError>;
 
 /** Commit Batch State. */
-export type CommitBatchState =
-  | "Processing"
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type CommitBatchState = "Processing" | "Succeeded" | "Failed";
 export const CommitBatchState = /*@__PURE__*/ S.String;
 
 /** List of devices for which the commit operation failed. */
-export type CommitBatchDetailsFailedDevicesList = string[];
+export type CommitBatchDetailsFailedDevicesList = ReadonlyArray<string>;
 export const CommitBatchDetailsFailedDevicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommitBatchDetailsFailedDevicesList>;
@@ -12600,6 +15881,22 @@ export const CommitBatchStatusOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommitBatchStatusOperationResponse",
 }) as any as S.Schema<CommitBatchStatusOperationResponse>;
 
+/** Commit stage Action to be performed. */
+export type CommitStage = "Start" | "Continue" | "Rollback";
+export const CommitStage = /*@__PURE__*/ S.String;
+
+/** Indicates Commit configuration staging policy. Supported policy is StageCEConfiguration, which indicates to prepare the configuration for the CE device type. */
+export type CommitConfigurationPolicy = "StageCEConfiguration";
+export const CommitConfigurationPolicy = /*@__PURE__*/ S.String;
+
+/** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
+export type NetworkFabricsCommitConfigurationRequestDevicesList =
+  ReadonlyArray<string>;
+export const NetworkFabricsCommitConfigurationRequestDevicesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricsCommitConfigurationRequestDevicesList>;
+
 export interface NetworkFabricsCommitConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12607,7 +15904,12 @@ export interface NetworkFabricsCommitConfigurationRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body?: unknown;
+  /** Commit stage Action to be performed. */
+  commitStage?: CommitStage;
+  /** Commit configuration Policy. Supported policy is StageCEConfiguration, which indicates to prepare the configuration for the CE device type. */
+  commitPolicy?: CommitConfigurationPolicy;
+  /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
+  devices?: NetworkFabricsCommitConfigurationRequestDevicesList;
 }
 export const NetworkFabricsCommitConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -12615,7 +15917,9 @@ export const NetworkFabricsCommitConfigurationRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      commitStage: S.optional(CommitStage),
+      commitPolicy: S.optional(CommitConfigurationPolicy),
+      devices: S.optional(NetworkFabricsCommitConfigurationRequestDevicesList),
     }).pipe(
       T.Http({
         method: "POST",
@@ -12630,7 +15934,7 @@ export const NetworkFabricsCommitConfigurationRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type CommitConfigurationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const CommitConfigurationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -12678,13 +15982,14 @@ export const CommitConfigurationResponseOperationsItem =
 
 /** The operations list. */
 export type CommitConfigurationResponseOperationsList =
-  CommitConfigurationResponseOperationsItem[];
+  ReadonlyArray<CommitConfigurationResponseOperationsItem>;
 export const CommitConfigurationResponseOperationsList = /*@__PURE__*/ S.Array(
   CommitConfigurationResponseOperationsItem,
 ) as any as S.Schema<CommitConfigurationResponseOperationsList>;
 
 /** The error details. */
-export type CommitConfigurationResponseErrorDetailsList = ErrorDetail[];
+export type CommitConfigurationResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const CommitConfigurationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -12692,7 +15997,7 @@ export const CommitConfigurationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type CommitConfigurationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const CommitConfigurationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -12762,6 +16067,360 @@ export const CommitConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommitConfigurationResponse",
 }) as any as S.Schema<CommitConfigurationResponse>;
 
+/** Resource tags. */
+export type NetworkFabricsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFabricsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkFabricsCreateRequestTagsMap>;
+
+/** Storage account configuration. */
+export interface StorageAccountConfiguration {
+  /** Network Fabric storage account resource identifier. */
+  storageAccountId?: string;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  storageAccountIdentity?: IdentitySelector;
+}
+export const StorageAccountConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageAccountId: S.optional(S.String),
+    storageAccountIdentity: S.optional(IdentitySelector),
+  }),
+).annotate({
+  identifier: "StorageAccountConfiguration",
+}) as any as S.Schema<StorageAccountConfiguration>;
+
+/** Network and credentials configuration currently applied to terminal server. */
+export interface TerminalServerConfigurationInput {
+  /** Username for the terminal server connection. */
+  username: string;
+  /** Password for the terminal server connection. */
+  password: string | Redacted.Redacted<string>;
+  /** Serial Number of Terminal server. */
+  serialNumber?: string;
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+}
+export const TerminalServerConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.String,
+    password: S.String.pipe(T.SensitiveValue({})),
+    serialNumber: S.optional(S.String),
+    primaryIpv4Prefix: S.String,
+    primaryIpv6Prefix: S.optional(S.String),
+    secondaryIpv4Prefix: S.String,
+    secondaryIpv6Prefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TerminalServerConfigurationInput",
+}) as any as S.Schema<TerminalServerConfigurationInput>;
+
+/** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
+export type VpnOptionBPropertiesImportRouteTargetsList = ReadonlyArray<string>;
+export const VpnOptionBPropertiesImportRouteTargetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VpnOptionBPropertiesImportRouteTargetsList>;
+
+/** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
+export type VpnOptionBPropertiesExportRouteTargetsList = ReadonlyArray<string>;
+export const VpnOptionBPropertiesExportRouteTargetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VpnOptionBPropertiesExportRouteTargetsList>;
+
+/** Option B configuration to be used for Management VPN. */
+export interface VpnOptionBProperties {
+  /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
+  importRouteTargets?: VpnOptionBPropertiesImportRouteTargetsList;
+  /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
+  exportRouteTargets?: VpnOptionBPropertiesExportRouteTargetsList;
+  /** Route Targets to be applied. */
+  routeTargets?: RouteTargetInformation;
+}
+export const VpnOptionBProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importRouteTargets: S.optional(VpnOptionBPropertiesImportRouteTargetsList),
+    exportRouteTargets: S.optional(VpnOptionBPropertiesExportRouteTargetsList),
+    routeTargets: S.optional(RouteTargetInformation),
+  }),
+).annotate({
+  identifier: "VpnOptionBProperties",
+}) as any as S.Schema<VpnOptionBProperties>;
+
+/** option A properties */
+export interface VpnOptionAPropertiesInput {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** MTU to use for option A peering. */
+  mtu?: number;
+  /** Vlan Id.Example : 501 */
+  vlanId: number;
+  /** Peer ASN number.Example : 28 */
+  peerASN: number;
+  /** BFD Configuration properties. */
+  bfdConfiguration?: BfdConfigurationInput;
+}
+export const VpnOptionAPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryIpv4Prefix: S.optional(S.String),
+    primaryIpv6Prefix: S.optional(S.String),
+    secondaryIpv4Prefix: S.optional(S.String),
+    secondaryIpv6Prefix: S.optional(S.String),
+    mtu: S.optional(S.Number),
+    vlanId: S.Number,
+    peerASN: S.Number,
+    bfdConfiguration: S.optional(BfdConfigurationInput),
+  }),
+).annotate({
+  identifier: "VpnOptionAPropertiesInput",
+}) as any as S.Schema<VpnOptionAPropertiesInput>;
+
+/** Network and credential configuration currently applied on terminal server. */
+export interface VpnConfigurationPropertiesInput {
+  /** ARM Resource ID of the Network To Network Interconnect. */
+  networkToNetworkInterconnectId?: string;
+  /** Peering option list. */
+  peeringOption: PeeringOption;
+  /** option B properties */
+  optionBProperties?: VpnOptionBProperties;
+  /** option A properties */
+  optionAProperties?: VpnOptionAPropertiesInput;
+}
+export const VpnConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkToNetworkInterconnectId: S.optional(S.String),
+    peeringOption: PeeringOption,
+    optionBProperties: S.optional(VpnOptionBProperties),
+    optionAProperties: S.optional(VpnOptionAPropertiesInput),
+  }),
+).annotate({
+  identifier: "VpnConfigurationPropertiesInput",
+}) as any as S.Schema<VpnConfigurationPropertiesInput>;
+
+/** Configuration to be used to setup the management network. */
+export interface ManagementNetworkConfigurationPropertiesInput {
+  /** VPN Configuration properties. */
+  infrastructureVpnConfiguration: VpnConfigurationPropertiesInput;
+  /** VPN Configuration properties. */
+  workloadVpnConfiguration: VpnConfigurationPropertiesInput;
+}
+export const ManagementNetworkConfigurationPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      infrastructureVpnConfiguration: VpnConfigurationPropertiesInput,
+      workloadVpnConfiguration: VpnConfigurationPropertiesInput,
+    }),
+  ).annotate({
+    identifier: "ManagementNetworkConfigurationPropertiesInput",
+  }) as any as S.Schema<ManagementNetworkConfigurationPropertiesInput>;
+
+/** Control Plane Access Control List ARM resource IDs. */
+export type NetworkFabricPropertiesInputControlPlaneAclsList =
+  ReadonlyArray<string>;
+export const NetworkFabricPropertiesInputControlPlaneAclsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricPropertiesInputControlPlaneAclsList>;
+
+/** Feature flag properties. */
+export interface FeatureFlagProperties {
+  /** Feature flag name. */
+  featureFlagName?: string;
+  /** Feature flag value. */
+  featureFlagValue?: string;
+}
+export const FeatureFlagProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    featureFlagName: S.optional(S.String),
+    featureFlagValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FeatureFlagProperties",
+}) as any as S.Schema<FeatureFlagProperties>;
+
+/** NetworkFabric feature flag configuration information */
+export type NetworkFabricPropertiesInputFeatureFlagsList =
+  ReadonlyArray<FeatureFlagProperties>;
+export const NetworkFabricPropertiesInputFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    FeatureFlagProperties,
+  ) as any as S.Schema<NetworkFabricPropertiesInputFeatureFlagsList>;
+
+/** Trusted IP Prefixes ARM resource IDs. */
+export type NetworkFabricPropertiesInputTrustedIpPrefixesList =
+  ReadonlyArray<string>;
+export const NetworkFabricPropertiesInputTrustedIpPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricPropertiesInputTrustedIpPrefixesList>;
+
+/** Unique Route Distinguisher configuration state. Default is Enabled. */
+export type UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
+  | "Enabled"
+  | "Disabled";
+export const UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
+  /*@__PURE__*/ S.String;
+
+/** NNI derived unique Route Distinguisher state. Default is Disabled. */
+export type UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
+  "Enabled" | "Disabled";
+export const UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
+  /*@__PURE__*/ S.String;
+
+/** Unique Route Distinguisher properties. */
+export interface UniqueRouteDistinguisherPropertiesInput {
+  /** Unique Route Distinguisher configuration state. Default is Enabled. */
+  uniqueRdConfigurationState?: UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState;
+  /** NNI derived unique Route Distinguisher state. Default is Disabled. */
+  nniDerivedUniqueRdConfigurationState?: UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState;
+}
+export const UniqueRouteDistinguisherPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uniqueRdConfigurationState: S.optional(
+        UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState,
+      ),
+      nniDerivedUniqueRdConfigurationState: S.optional(
+        UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState,
+      ),
+    }),
+).annotate({
+  identifier: "UniqueRouteDistinguisherPropertiesInput",
+}) as any as S.Schema<UniqueRouteDistinguisherPropertiesInput>;
+
+/** Authorized Transceiver Properties. */
+export interface AuthorizedTransceiverProperties {
+  /** Vendor of the transceiver. */
+  vendor?: string;
+  /** Key that must be configured on the fabric. */
+  key?: string;
+}
+export const AuthorizedTransceiverProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vendor: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizedTransceiverProperties",
+}) as any as S.Schema<AuthorizedTransceiverProperties>;
+
+/** QoS configuration state. Default is Disabled. */
+export type QosPropertiesQosConfigurationState = "Disabled" | "Enabled";
+export const QosPropertiesQosConfigurationState = /*@__PURE__*/ S.String;
+
+/** NetworkFabric QoS Properties. */
+export interface QosProperties {
+  /** QoS configuration state. Default is Disabled. */
+  qosConfigurationState?: QosPropertiesQosConfigurationState;
+}
+export const QosProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    qosConfigurationState: S.optional(QosPropertiesQosConfigurationState),
+  }),
+).annotate({ identifier: "QosProperties" }) as any as S.Schema<QosProperties>;
+
+/** Network Fabric Properties defines the properties of the resource. */
+export interface NetworkFabricPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric. */
+  networkFabricSku: string;
+  /** The version of Network Fabric. */
+  fabricVersion?: string;
+  /** Bring your own storage account configurations for Network Fabric. */
+  storageAccountConfiguration?: StorageAccountConfiguration;
+  /** Azure resource ID for the NetworkFabricController the NetworkFabric belongs. */
+  networkFabricControllerId: string;
+  /** Number of compute racks associated to Network Fabric. */
+  rackCount?: number;
+  /** Number of servers.Possible values are from 1-16. */
+  serverCountPerRack: number;
+  /** IPv4Prefix for Management Network. Example: 10.1.0.0/19. */
+  ipv4Prefix: string;
+  /** IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59 */
+  ipv6Prefix?: string;
+  /** ASN of CE devices for CE/PE connectivity. */
+  fabricASN: number;
+  /** Network and credentials configuration currently applied to terminal server. */
+  terminalServerConfiguration: TerminalServerConfigurationInput;
+  /** Configuration to be used to setup the management network. */
+  managementNetworkConfiguration: ManagementNetworkConfigurationPropertiesInput;
+  /** Hardware alert threshold percentage. Possible values are from 20 to 100. */
+  hardwareAlertThreshold?: number;
+  /** Control Plane Access Control List ARM resource IDs. */
+  controlPlaneAcls?: NetworkFabricPropertiesInputControlPlaneAclsList;
+  /** NetworkFabric feature flag configuration information */
+  featureFlags?: NetworkFabricPropertiesInputFeatureFlagsList;
+  /** Trusted IP Prefixes ARM resource IDs. */
+  trustedIpPrefixes?: NetworkFabricPropertiesInputTrustedIpPrefixesList;
+  /** Unique Route Distinguisher configuration */
+  uniqueRdConfiguration?: UniqueRouteDistinguisherPropertiesInput;
+  /** Number of Storage arrays associated with the Network Fabric. */
+  storageArrayCount?: number;
+  /** Authorized transciever configuration for NetworkFabric. */
+  authorizedTransceiver?: AuthorizedTransceiverProperties;
+  /** NetworkFabric QoS Configuration */
+  qosConfiguration?: QosProperties;
+}
+export const NetworkFabricPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkFabricSku: S.String,
+    fabricVersion: S.optional(S.String),
+    storageAccountConfiguration: S.optional(StorageAccountConfiguration),
+    networkFabricControllerId: S.String,
+    rackCount: S.optional(S.Number),
+    serverCountPerRack: S.Number,
+    ipv4Prefix: S.String,
+    ipv6Prefix: S.optional(S.String),
+    fabricASN: S.Number,
+    terminalServerConfiguration: TerminalServerConfigurationInput,
+    managementNetworkConfiguration:
+      ManagementNetworkConfigurationPropertiesInput,
+    hardwareAlertThreshold: S.optional(S.Number),
+    controlPlaneAcls: S.optional(
+      NetworkFabricPropertiesInputControlPlaneAclsList,
+    ),
+    featureFlags: S.optional(NetworkFabricPropertiesInputFeatureFlagsList),
+    trustedIpPrefixes: S.optional(
+      NetworkFabricPropertiesInputTrustedIpPrefixesList,
+    ),
+    uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherPropertiesInput),
+    storageArrayCount: S.optional(S.Number),
+    authorizedTransceiver: S.optional(AuthorizedTransceiverProperties),
+    qosConfiguration: S.optional(QosProperties),
+  }),
+).annotate({
+  identifier: "NetworkFabricPropertiesInput",
+}) as any as S.Schema<NetworkFabricPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkFabricsCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkFabricsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "NetworkFabricsCreateRequestIdentity",
+}) as any as S.Schema<NetworkFabricsCreateRequestIdentity>;
+
 export interface NetworkFabricsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12769,14 +16428,24 @@ export interface NetworkFabricsCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFabricsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkFabric Properties */
+  properties: NetworkFabricPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkFabricsCreateRequestIdentity;
 }
 export const NetworkFabricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkFabricName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkFabricsCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkFabricPropertiesInput,
+    identity: S.optional(NetworkFabricsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12799,36 +16468,17 @@ export const NetworkFabricsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricsCreateResponseTagsMap>;
 
 /** Array of router IDs. */
-export type NetworkFabricPropertiesRouterIdsList = string[];
+export type NetworkFabricPropertiesRouterIdsList = ReadonlyArray<string>;
 export const NetworkFabricPropertiesRouterIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkFabricPropertiesRouterIdsList>;
 
-/** Storage account configuration. */
-export interface StorageAccountConfiguration {
-  /** Network Fabric storage account resource identifier. */
-  storageAccountId?: string;
-  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
-  storageAccountIdentity?: IdentitySelector;
-}
-export const StorageAccountConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageAccountId: S.optional(S.String),
-    storageAccountIdentity: S.optional(IdentitySelector),
-  }),
-).annotate({
-  identifier: "StorageAccountConfiguration",
-}) as any as S.Schema<StorageAccountConfiguration>;
-
 /** Lock Configuration State. */
-export type LockConfigurationState = "Enabled" | "Disabled" | (string & {});
+export type LockConfigurationState = "Enabled" | "Disabled";
 export const LockConfigurationState = /*@__PURE__*/ S.String;
 
 /** Network fabric lock type */
-export type NetworkFabricLockType =
-  | "Administrative"
-  | "Configuration"
-  | (string & {});
+export type NetworkFabricLockType = "Administrative" | "Configuration";
 export const NetworkFabricLockType = /*@__PURE__*/ S.String;
 
 /** Network Fabric Lock Configuration. */
@@ -12848,14 +16498,15 @@ export const FabricLockProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FabricLockProperties>;
 
 /** Network Fabric Lock details */
-export type NetworkFabricPropertiesFabricLocksList = FabricLockProperties[];
+export type NetworkFabricPropertiesFabricLocksList =
+  ReadonlyArray<FabricLockProperties>;
 export const NetworkFabricPropertiesFabricLocksList = /*@__PURE__*/ S.Array(
   FabricLockProperties,
 ) as any as S.Schema<NetworkFabricPropertiesFabricLocksList>;
 
 /** Secret rotation status for the terminal server's secrets. */
 export type TerminalServerConfigurationSecretRotationStatusList =
-  SecretRotationStatus[];
+  ReadonlyArray<SecretRotationStatus>;
 export const TerminalServerConfigurationSecretRotationStatusList =
   /*@__PURE__*/ S.Array(
     SecretRotationStatus,
@@ -12899,37 +16550,6 @@ export const TerminalServerConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TerminalServerConfiguration",
 }) as any as S.Schema<TerminalServerConfiguration>;
-
-/** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
-export type VpnOptionBPropertiesImportRouteTargetsList = string[];
-export const VpnOptionBPropertiesImportRouteTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpnOptionBPropertiesImportRouteTargetsList>;
-
-/** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
-export type VpnOptionBPropertiesExportRouteTargetsList = string[];
-export const VpnOptionBPropertiesExportRouteTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpnOptionBPropertiesExportRouteTargetsList>;
-
-/** Option B configuration to be used for Management VPN. */
-export interface VpnOptionBProperties {
-  /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
-  importRouteTargets?: VpnOptionBPropertiesImportRouteTargetsList;
-  /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
-  exportRouteTargets?: VpnOptionBPropertiesExportRouteTargetsList;
-  /** Route Targets to be applied. */
-  routeTargets?: RouteTargetInformation;
-}
-export const VpnOptionBProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    importRouteTargets: S.optional(VpnOptionBPropertiesImportRouteTargetsList),
-    exportRouteTargets: S.optional(VpnOptionBPropertiesExportRouteTargetsList),
-    routeTargets: S.optional(RouteTargetInformation),
-  }),
-).annotate({
-  identifier: "VpnOptionBProperties",
-}) as any as S.Schema<VpnOptionBProperties>;
 
 /** option A properties */
 export interface VpnOptionAProperties {
@@ -13008,56 +16628,44 @@ export const ManagementNetworkConfigurationProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagementNetworkConfigurationProperties>;
 
 /** List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU. */
-export type NetworkFabricPropertiesRacksList = string[];
+export type NetworkFabricPropertiesRacksList = ReadonlyArray<string>;
 export const NetworkFabricPropertiesRacksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkFabricPropertiesRacksList>;
 
 /** List of L2 Isolation Domain resource IDs under the Network Fabric. */
-export type NetworkFabricPropertiesL2IsolationDomainsList = string[];
+export type NetworkFabricPropertiesL2IsolationDomainsList =
+  ReadonlyArray<string>;
 export const NetworkFabricPropertiesL2IsolationDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPropertiesL2IsolationDomainsList>;
 
 /** List of L3 Isolation Domain resource IDs under the Network Fabric. */
-export type NetworkFabricPropertiesL3IsolationDomainsList = string[];
+export type NetworkFabricPropertiesL3IsolationDomainsList =
+  ReadonlyArray<string>;
 export const NetworkFabricPropertiesL3IsolationDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPropertiesL3IsolationDomainsList>;
 
 /** Control Plane Access Control List ARM resource IDs. */
-export type NetworkFabricPropertiesControlPlaneAclsList = string[];
+export type NetworkFabricPropertiesControlPlaneAclsList = ReadonlyArray<string>;
 export const NetworkFabricPropertiesControlPlaneAclsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkFabricPropertiesControlPlaneAclsList>;
 
-/** Feature flag properties. */
-export interface FeatureFlagProperties {
-  /** Feature flag name. */
-  featureFlagName?: string;
-  /** Feature flag value. */
-  featureFlagValue?: string;
-}
-export const FeatureFlagProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    featureFlagName: S.optional(S.String),
-    featureFlagValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagProperties",
-}) as any as S.Schema<FeatureFlagProperties>;
-
 /** NetworkFabric feature flag configuration information */
-export type NetworkFabricPropertiesFeatureFlagsList = FeatureFlagProperties[];
+export type NetworkFabricPropertiesFeatureFlagsList =
+  ReadonlyArray<FeatureFlagProperties>;
 export const NetworkFabricPropertiesFeatureFlagsList = /*@__PURE__*/ S.Array(
   FeatureFlagProperties,
 ) as any as S.Schema<NetworkFabricPropertiesFeatureFlagsList>;
 
 /** Trusted IP Prefixes ARM resource IDs. */
-export type NetworkFabricPropertiesTrustedIpPrefixesList = string[];
+export type NetworkFabricPropertiesTrustedIpPrefixesList =
+  ReadonlyArray<string>;
 export const NetworkFabricPropertiesTrustedIpPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13066,13 +16674,13 @@ export const NetworkFabricPropertiesTrustedIpPrefixesList =
 /** Unique Route Distinguisher configuration state. Default is Enabled. */
 export type UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
 /** List of Unique Route Distinguisher addresses. */
-export type UniqueRouteDistinguisherPropertiesUniqueRdsList = string[];
+export type UniqueRouteDistinguisherPropertiesUniqueRdsList =
+  ReadonlyArray<string>;
 export const UniqueRouteDistinguisherPropertiesUniqueRdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13080,7 +16688,7 @@ export const UniqueRouteDistinguisherPropertiesUniqueRdsList =
 
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
-  "Enabled" | "Disabled" | (string & {});
+  "Enabled" | "Disabled";
 export const UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
   /*@__PURE__*/ S.String;
 
@@ -13108,7 +16716,8 @@ export const UniqueRouteDistinguisherProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UniqueRouteDistinguisherProperties>;
 
 /** Active commit batch identifiers */
-export type NetworkFabricPropertiesActiveCommitBatchesList = string[];
+export type NetworkFabricPropertiesActiveCommitBatchesList =
+  ReadonlyArray<string>;
 export const NetworkFabricPropertiesActiveCommitBatchesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13126,40 +16735,6 @@ export const SecretRotationSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SecretRotationSummary",
 }) as any as S.Schema<SecretRotationSummary>;
-
-/** Authorized Transceiver Properties. */
-export interface AuthorizedTransceiverProperties {
-  /** Vendor of the transceiver. */
-  vendor?: string;
-  /** Key that must be configured on the fabric. */
-  key?: string;
-}
-export const AuthorizedTransceiverProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vendor: S.optional(S.String),
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizedTransceiverProperties",
-}) as any as S.Schema<AuthorizedTransceiverProperties>;
-
-/** QoS configuration state. Default is Disabled. */
-export type QosPropertiesQosConfigurationState =
-  | "Disabled"
-  | "Enabled"
-  | (string & {});
-export const QosPropertiesQosConfigurationState = /*@__PURE__*/ S.String;
-
-/** NetworkFabric QoS Properties. */
-export interface QosProperties {
-  /** QoS configuration state. Default is Disabled. */
-  qosConfigurationState?: QosPropertiesQosConfigurationState;
-}
-export const QosProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    qosConfigurationState: S.optional(QosPropertiesQosConfigurationState),
-  }),
-).annotate({ identifier: "QosProperties" }) as any as S.Schema<QosProperties>;
 
 /** Network Fabric Properties defines the properties of the resource. */
 export interface NetworkFabricProperties {
@@ -13383,7 +16958,7 @@ export const NetworkFabricsDeprovisionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsDeprovisionResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricsDeprovisionResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13432,7 +17007,8 @@ export interface NetworkFabricsDiscardCommitBatchRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Commit Batch Identifier. If not provided, the latest commit batch status will be returned. */
+  commitBatchId?: string;
 }
 export const NetworkFabricsDiscardCommitBatchRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -13440,7 +17016,7 @@ export const NetworkFabricsDiscardCommitBatchRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      commitBatchId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -13455,7 +17031,7 @@ export const NetworkFabricsDiscardCommitBatchRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const DiscardCommitBatchOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13503,14 +17079,15 @@ export const DiscardCommitBatchOperationResponseOperationsItem =
 
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsList =
-  DiscardCommitBatchOperationResponseOperationsItem[];
+  ReadonlyArray<DiscardCommitBatchOperationResponseOperationsItem>;
 export const DiscardCommitBatchOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     DiscardCommitBatchOperationResponseOperationsItem,
   ) as any as S.Schema<DiscardCommitBatchOperationResponseOperationsList>;
 
 /** The error details. */
-export type DiscardCommitBatchOperationResponseErrorDetailsList = ErrorDetail[];
+export type DiscardCommitBatchOperationResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const DiscardCommitBatchOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -13518,7 +17095,7 @@ export const DiscardCommitBatchOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type DiscardCommitBatchOperationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const DiscardCommitBatchOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -13720,7 +17297,7 @@ export const NetworkFabricsGetTopologyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetTopologyResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const GetTopologyResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -13765,19 +17342,20 @@ export const GetTopologyResponseOperationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetTopologyResponseOperationsList =
-  GetTopologyResponseOperationsItem[];
+  ReadonlyArray<GetTopologyResponseOperationsItem>;
 export const GetTopologyResponseOperationsList = /*@__PURE__*/ S.Array(
   GetTopologyResponseOperationsItem,
 ) as any as S.Schema<GetTopologyResponseOperationsList>;
 
 /** The error details. */
-export type GetTopologyResponseErrorDetailsList = ErrorDetail[];
+export type GetTopologyResponseErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const GetTopologyResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<GetTopologyResponseErrorDetailsList>;
 
 /** The error additional info. */
-export type GetTopologyResponseErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type GetTopologyResponseErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const GetTopologyResponseErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<GetTopologyResponseErrorAdditionalInfoList>;
@@ -13883,11 +17461,12 @@ export const NetworkFabricSkusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricSkusGetRequest>;
 
 /** Type of Network Fabric SKU. */
-export type FabricSkuType = "SingleRack" | "MultiRack" | (string & {});
+export type FabricSkuType = "SingleRack" | "MultiRack";
 export const FabricSkuType = /*@__PURE__*/ S.String;
 
 /** List of supported Network Fabric SKU versions. */
-export type NetworkFabricSkuPropertiesSupportedVersionsList = string[];
+export type NetworkFabricSkuPropertiesSupportedVersionsList =
+  ReadonlyArray<string>;
 export const NetworkFabricSkuPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13993,7 +17572,8 @@ export const NetworkFabricSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricSku>;
 
 /** The NetworkFabricSku items on this page */
-export type NetworkFabricSkusListResultValueList = NetworkFabricSku[];
+export type NetworkFabricSkusListResultValueList =
+  ReadonlyArray<NetworkFabricSku>;
 export const NetworkFabricSkusListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFabricSku,
 ) as any as S.Schema<NetworkFabricSkusListResultValueList>;
@@ -14097,7 +17677,7 @@ export const NetworkFabric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkFabric" }) as any as S.Schema<NetworkFabric>;
 
 /** The NetworkFabric items on this page */
-export type NetworkFabricsListResultValueList = NetworkFabric[];
+export type NetworkFabricsListResultValueList = ReadonlyArray<NetworkFabric>;
 export const NetworkFabricsListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFabric,
 ) as any as S.Schema<NetworkFabricsListResultValueList>;
@@ -14138,6 +17718,10 @@ export const NetworkFabricsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "NetworkFabricsListBySubscriptionRequest",
 }) as any as S.Schema<NetworkFabricsListBySubscriptionRequest>;
 
+/** Network fabric lock action */
+export type NetworkFabricLockAction = "Lock" | "Unlock";
+export const NetworkFabricLockAction = /*@__PURE__*/ S.String;
+
 export interface NetworkFabricsLockFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14145,14 +17729,18 @@ export interface NetworkFabricsLockFabricRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Type of lock to be applied */
+  lockType?: NetworkFabricLockType;
+  /** Action to be performed on the lock */
+  action?: NetworkFabricLockAction;
 }
 export const NetworkFabricsLockFabricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkFabricName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    lockType: S.optional(NetworkFabricLockType),
+    action: S.optional(NetworkFabricLockAction),
   }).pipe(
     T.Http({
       method: "POST",
@@ -14167,7 +17755,7 @@ export const NetworkFabricsLockFabricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsLockFabricResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricsLockFabricResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14236,7 +17824,7 @@ export const NetworkFabricsProvisionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsProvisionResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricsProvisionResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14306,7 +17894,7 @@ export const NetworkFabricsRefreshConfigurationRequest =
 
 /** The operations list. */
 export type NetworkFabricsRefreshConfigurationResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricsRefreshConfigurationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14405,7 +17993,7 @@ export const NetworkFabricsResyncPasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricResyncPasswordsResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricResyncPasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14453,7 +18041,7 @@ export const NetworkFabricResyncPasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricResyncPasswordsResponseOperationsList =
-  NetworkFabricResyncPasswordsResponseOperationsItem[];
+  ReadonlyArray<NetworkFabricResyncPasswordsResponseOperationsItem>;
 export const NetworkFabricResyncPasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricResyncPasswordsResponseOperationsItem,
@@ -14461,7 +18049,7 @@ export const NetworkFabricResyncPasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricResyncPasswordsResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkFabricResyncPasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14469,7 +18057,7 @@ export const NetworkFabricResyncPasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricResyncPasswordsResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkFabricResyncPasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14571,7 +18159,7 @@ export const NetworkFabricsRotateCertificatesRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricRotateCertificatesResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricRotateCertificatesResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14619,7 +18207,7 @@ export const NetworkFabricRotateCertificatesResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricRotateCertificatesResponseOperationsList =
-  NetworkFabricRotateCertificatesResponseOperationsItem[];
+  ReadonlyArray<NetworkFabricRotateCertificatesResponseOperationsItem>;
 export const NetworkFabricRotateCertificatesResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricRotateCertificatesResponseOperationsItem,
@@ -14627,7 +18215,7 @@ export const NetworkFabricRotateCertificatesResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricRotateCertificatesResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkFabricRotateCertificatesResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14635,7 +18223,7 @@ export const NetworkFabricRotateCertificatesResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricRotateCertificatesResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkFabricRotateCertificatesResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14739,7 +18327,7 @@ export const NetworkFabricsRotatePasswordsRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkFabricRotatePasswordsResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricRotatePasswordsResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -14787,7 +18375,7 @@ export const NetworkFabricRotatePasswordsResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkFabricRotatePasswordsResponseOperationsList =
-  NetworkFabricRotatePasswordsResponseOperationsItem[];
+  ReadonlyArray<NetworkFabricRotatePasswordsResponseOperationsItem>;
 export const NetworkFabricRotatePasswordsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NetworkFabricRotatePasswordsResponseOperationsItem,
@@ -14795,7 +18383,7 @@ export const NetworkFabricRotatePasswordsResponseOperationsList =
 
 /** The error details. */
 export type NetworkFabricRotatePasswordsResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NetworkFabricRotatePasswordsResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -14803,7 +18391,7 @@ export const NetworkFabricRotatePasswordsResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkFabricRotatePasswordsResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkFabricRotatePasswordsResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14877,6 +18465,330 @@ export const NetworkFabricRotatePasswordsResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkFabricRotatePasswordsResponse",
 }) as any as S.Schema<NetworkFabricRotatePasswordsResponse>;
 
+/** Resource tags. */
+export type NetworkFabricsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFabricsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkFabricsUpdateRequestTagsMap>;
+
+/** Network and credentials configuration already applied to terminal server. */
+export interface TerminalServerPatchConfiguration {
+  /** Username for the terminal server connection. */
+  username?: string;
+  /** Password for the terminal server connection. */
+  password?: string | Redacted.Redacted<string>;
+  /** Serial Number of Terminal server. */
+  serialNumber?: string;
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+}
+export const TerminalServerPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    serialNumber: S.optional(S.String),
+    primaryIpv4Prefix: S.optional(S.String),
+    primaryIpv6Prefix: S.optional(S.String),
+    secondaryIpv4Prefix: S.optional(S.String),
+    secondaryIpv6Prefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TerminalServerPatchConfiguration",
+}) as any as S.Schema<TerminalServerPatchConfiguration>;
+
+/** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
+export type VpnOptionBPatchPropertiesImportRouteTargetsList =
+  ReadonlyArray<string>;
+export const VpnOptionBPatchPropertiesImportRouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VpnOptionBPatchPropertiesImportRouteTargetsList>;
+
+/** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
+export type VpnOptionBPatchPropertiesExportRouteTargetsList =
+  ReadonlyArray<string>;
+export const VpnOptionBPatchPropertiesExportRouteTargetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VpnOptionBPatchPropertiesExportRouteTargetsList>;
+
+/** Option B configuration to be used for Management VPN. */
+export interface VpnOptionBPatchProperties {
+  /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
+  importRouteTargets?: VpnOptionBPatchPropertiesImportRouteTargetsList;
+  /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
+  exportRouteTargets?: VpnOptionBPatchPropertiesExportRouteTargetsList;
+  /** Route Targets to be applied. */
+  routeTargets?: RouteTargetPatchInformation;
+}
+export const VpnOptionBPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importRouteTargets: S.optional(
+      VpnOptionBPatchPropertiesImportRouteTargetsList,
+    ),
+    exportRouteTargets: S.optional(
+      VpnOptionBPatchPropertiesExportRouteTargetsList,
+    ),
+    routeTargets: S.optional(RouteTargetPatchInformation),
+  }),
+).annotate({
+  identifier: "VpnOptionBPatchProperties",
+}) as any as S.Schema<VpnOptionBPatchProperties>;
+
+/** Peering optionA properties */
+export interface VpnOptionAPatchProperties {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** MTU to use for option A peering. */
+  mtu?: number;
+  /** Vlan Id.Example : 501 */
+  vlanId?: number;
+  /** Peer ASN number.Example : 28 */
+  peerASN?: number;
+  /** BFD Configuration properties. */
+  bfdConfiguration?: BfdPatchConfiguration;
+}
+export const VpnOptionAPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryIpv4Prefix: S.optional(S.String),
+    primaryIpv6Prefix: S.optional(S.String),
+    secondaryIpv4Prefix: S.optional(S.String),
+    secondaryIpv6Prefix: S.optional(S.String),
+    mtu: S.optional(S.Number),
+    vlanId: S.optional(S.Number),
+    peerASN: S.optional(S.Number),
+    bfdConfiguration: S.optional(BfdPatchConfiguration),
+  }),
+).annotate({
+  identifier: "VpnOptionAPatchProperties",
+}) as any as S.Schema<VpnOptionAPatchProperties>;
+
+/** Network and credential configuration currently applied on terminal server. */
+export interface VpnConfigurationPatchableProperties {
+  /** ARM Resource ID of the Network To Network Interconnect. */
+  networkToNetworkInterconnectId?: string;
+  /** Peering option list. */
+  peeringOption?: PeeringOption;
+  /** option B properties */
+  optionBProperties?: VpnOptionBPatchProperties;
+  /** option A properties */
+  optionAProperties?: VpnOptionAPatchProperties;
+}
+export const VpnConfigurationPatchableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkToNetworkInterconnectId: S.optional(S.String),
+    peeringOption: S.optional(PeeringOption),
+    optionBProperties: S.optional(VpnOptionBPatchProperties),
+    optionAProperties: S.optional(VpnOptionAPatchProperties),
+  }),
+).annotate({
+  identifier: "VpnConfigurationPatchableProperties",
+}) as any as S.Schema<VpnConfigurationPatchableProperties>;
+
+/** Configuration to be used to setup the management network. */
+export interface ManagementNetworkPatchConfiguration {
+  /** VPN Configuration properties. */
+  infrastructureVpnConfiguration?: VpnConfigurationPatchableProperties;
+  /** VPN Configuration properties. */
+  workloadVpnConfiguration?: VpnConfigurationPatchableProperties;
+}
+export const ManagementNetworkPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infrastructureVpnConfiguration: S.optional(
+      VpnConfigurationPatchableProperties,
+    ),
+    workloadVpnConfiguration: S.optional(VpnConfigurationPatchableProperties),
+  }),
+).annotate({
+  identifier: "ManagementNetworkPatchConfiguration",
+}) as any as S.Schema<ManagementNetworkPatchConfiguration>;
+
+/** Storage account configuration. */
+export interface StorageAccountPatchConfiguration {
+  /** Network Fabric storage account resource identifier. */
+  storageAccountId?: string;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  storageAccountIdentity?: IdentitySelectorPatch;
+}
+export const StorageAccountPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageAccountId: S.optional(S.String),
+    storageAccountIdentity: S.optional(IdentitySelectorPatch),
+  }),
+).annotate({
+  identifier: "StorageAccountPatchConfiguration",
+}) as any as S.Schema<StorageAccountPatchConfiguration>;
+
+/** Control Plane Access Control List ARM resource IDs. */
+export type NetworkFabricPatchPropertiesControlPlaneAclsList =
+  ReadonlyArray<string>;
+export const NetworkFabricPatchPropertiesControlPlaneAclsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricPatchPropertiesControlPlaneAclsList>;
+
+/** Trusted IP Prefix ARM resource IDs. */
+export type NetworkFabricPatchPropertiesTrustedIpPrefixesList =
+  ReadonlyArray<string>;
+export const NetworkFabricPatchPropertiesTrustedIpPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricPatchPropertiesTrustedIpPrefixesList>;
+
+/** Unique Route Distinguisher Configuration State. */
+export type UniqueRouteDistinguisherConfigurationState = "Enabled" | "Disabled";
+export const UniqueRouteDistinguisherConfigurationState =
+  /*@__PURE__*/ S.String;
+
+/** NNI Derived Unique Route Distinguisher Configuration State. */
+export type NNIDerivedUniqueRouteDistinguisherConfigurationState =
+  | "Enabled"
+  | "Disabled";
+export const NNIDerivedUniqueRouteDistinguisherConfigurationState =
+  /*@__PURE__*/ S.String;
+
+/** Unique Route Distinguisher configuration properties. */
+export interface UniqueRouteDistinguisherPatchProperties {
+  /** Unique Route Distinguisher configuration state. Default is Enabled. */
+  uniqueRdConfigurationState?: UniqueRouteDistinguisherConfigurationState;
+  /** NNI derived unique Route Distinguisher state. Default is Disabled. */
+  nniDerivedUniqueRdConfigurationState?: NNIDerivedUniqueRouteDistinguisherConfigurationState;
+}
+export const UniqueRouteDistinguisherPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uniqueRdConfigurationState: S.optional(
+        UniqueRouteDistinguisherConfigurationState,
+      ),
+      nniDerivedUniqueRdConfigurationState: S.optional(
+        NNIDerivedUniqueRouteDistinguisherConfigurationState,
+      ),
+    }),
+).annotate({
+  identifier: "UniqueRouteDistinguisherPatchProperties",
+}) as any as S.Schema<UniqueRouteDistinguisherPatchProperties>;
+
+/** NetworkFabric QoS ConfigurationState. */
+export type QosConfigurationState = "Disabled" | "Enabled";
+export const QosConfigurationState = /*@__PURE__*/ S.String;
+
+/** NetworkFabric QoS Patch Properties. */
+export interface QosPatchProperties {
+  /** QoS configuration state. Default is Disabled. */
+  qosConfigurationState?: QosConfigurationState;
+}
+export const QosPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    qosConfigurationState: S.optional(QosConfigurationState),
+  }),
+).annotate({
+  identifier: "QosPatchProperties",
+}) as any as S.Schema<QosPatchProperties>;
+
+/** NetworkFabric feature flag configuration information */
+export type NetworkFabricPatchPropertiesFeatureFlagsList =
+  ReadonlyArray<FeatureFlagProperties>;
+export const NetworkFabricPatchPropertiesFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    FeatureFlagProperties,
+  ) as any as S.Schema<NetworkFabricPatchPropertiesFeatureFlagsList>;
+
+/** Authorized Transceiver Patch Properties. */
+export interface AuthorizedTransceiverPatchProperties {
+  /** Vendor of the transceiver. */
+  vendor?: string;
+  /** Key that must be configured on the fabric. */
+  key?: string;
+}
+export const AuthorizedTransceiverPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      vendor: S.optional(S.String),
+      key: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AuthorizedTransceiverPatchProperties",
+}) as any as S.Schema<AuthorizedTransceiverPatchProperties>;
+
+/** Network Fabric Patch properties. */
+export interface NetworkFabricPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Number of compute racks associated to Network Fabric. */
+  rackCount?: number;
+  /** Number of servers.Possible values are from 1-16. */
+  serverCountPerRack?: number;
+  /** IPv4Prefix for Management Network. Example: 10.1.0.0/19. */
+  ipv4Prefix?: string;
+  /** IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59. */
+  ipv6Prefix?: string;
+  /** ASN of CE devices for CE/PE connectivity. */
+  fabricASN?: number;
+  /** Network and credentials configuration already applied to terminal server. */
+  terminalServerConfiguration?: TerminalServerPatchConfiguration;
+  /** Configuration to be used to setup the management network. */
+  managementNetworkConfiguration?: ManagementNetworkPatchConfiguration;
+  /** Bring your own storage account configurations for Network Fabric. */
+  storageAccountConfiguration?: StorageAccountPatchConfiguration;
+  /** Hardware alert threshold percentage. Possible values are from 20 to 100. */
+  hardwareAlertThreshold?: number;
+  /** Control Plane Access Control List ARM resource IDs. */
+  controlPlaneAcls?: NetworkFabricPatchPropertiesControlPlaneAclsList;
+  /** Trusted IP Prefix ARM resource IDs. */
+  trustedIpPrefixes?: NetworkFabricPatchPropertiesTrustedIpPrefixesList;
+  /** Unique Route Distinguisher configuration */
+  uniqueRdConfiguration?: UniqueRouteDistinguisherPatchProperties;
+  /** NetworkFabric QoS Configuration */
+  qosConfiguration?: QosPatchProperties;
+  /** NetworkFabric feature flag configuration information */
+  featureFlags?: NetworkFabricPatchPropertiesFeatureFlagsList;
+  /** Authorized transciever configuration for NetworkFabric. */
+  authorizedTransceiver?: AuthorizedTransceiverPatchProperties;
+}
+export const NetworkFabricPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    rackCount: S.optional(S.Number),
+    serverCountPerRack: S.optional(S.Number),
+    ipv4Prefix: S.optional(S.String),
+    ipv6Prefix: S.optional(S.String),
+    fabricASN: S.optional(S.Number),
+    terminalServerConfiguration: S.optional(TerminalServerPatchConfiguration),
+    managementNetworkConfiguration: S.optional(
+      ManagementNetworkPatchConfiguration,
+    ),
+    storageAccountConfiguration: S.optional(StorageAccountPatchConfiguration),
+    hardwareAlertThreshold: S.optional(S.Number),
+    controlPlaneAcls: S.optional(
+      NetworkFabricPatchPropertiesControlPlaneAclsList,
+    ),
+    trustedIpPrefixes: S.optional(
+      NetworkFabricPatchPropertiesTrustedIpPrefixesList,
+    ),
+    uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherPatchProperties),
+    qosConfiguration: S.optional(QosPatchProperties),
+    featureFlags: S.optional(NetworkFabricPatchPropertiesFeatureFlagsList),
+    authorizedTransceiver: S.optional(AuthorizedTransceiverPatchProperties),
+  }),
+).annotate({
+  identifier: "NetworkFabricPatchProperties",
+}) as any as S.Schema<NetworkFabricPatchProperties>;
+
 export interface NetworkFabricsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14884,14 +18796,21 @@ export interface NetworkFabricsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFabricsUpdateRequestTagsMap;
+  /** Network Fabric Patch properties. */
+  properties?: NetworkFabricPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkFabricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkFabricName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkFabricsUpdateRequestTagsMap),
+    properties: S.optional(NetworkFabricPatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -14967,6 +18886,14 @@ export const NetworkFabricsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkFabricsUpdateResponse",
 }) as any as S.Schema<NetworkFabricsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList>;
+
 export interface NetworkFabricsUpdateInfraManagementBfdConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14974,7 +18901,10 @@ export interface NetworkFabricsUpdateInfraManagementBfdConfigurationRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14982,7 +18912,10 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkFabricsUpdateInfraManagementBfdConfigurationRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -14995,6 +18928,14 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationRequest =
     identifier: "NetworkFabricsUpdateInfraManagementBfdConfigurationRequest",
   }) as any as S.Schema<NetworkFabricsUpdateInfraManagementBfdConfigurationRequest>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList>;
+
 export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15002,7 +18943,10 @@ export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15010,7 +18954,10 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -15023,6 +18970,10 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest =
     identifier: "NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest",
   }) as any as S.Schema<NetworkFabricsUpdateWorkloadManagementBfdConfigurationRequest>;
 
+/** Action to be performed while upgrading the fabric. */
+export type NetworkFabricUpgradeAction = "Start" | "Complete";
+export const NetworkFabricUpgradeAction = /*@__PURE__*/ S.String;
+
 export interface NetworkFabricsUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15030,14 +18981,18 @@ export interface NetworkFabricsUpgradeRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Specify the version. */
+  version?: string;
+  /** Action to be performed while upgrading the fabric. */
+  action?: NetworkFabricUpgradeAction;
 }
 export const NetworkFabricsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkFabricName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    version: S.optional(S.String),
+    action: S.optional(NetworkFabricUpgradeAction),
   }).pipe(
     T.Http({
       method: "POST",
@@ -15052,7 +19007,7 @@ export const NetworkFabricsUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkFabricsUpgradeResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkFabricsUpgradeResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -15094,6 +19049,10 @@ export const NetworkFabricsUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkFabricsUpgradeResponse",
 }) as any as S.Schema<NetworkFabricsUpgradeResponse>;
 
+/** Validate action that to be performed */
+export type ValidateAction = "Cabling" | "Configuration" | "Connectivity";
+export const ValidateAction = /*@__PURE__*/ S.String;
+
 export interface NetworkFabricsValidateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15101,7 +19060,8 @@ export interface NetworkFabricsValidateConfigurationRequest {
   resourceGroupName: string;
   /** Name of the Network Fabric. */
   networkFabricName: string;
-  body: unknown;
+  /** Validate action that to be performed */
+  validateAction?: ValidateAction;
 }
 export const NetworkFabricsValidateConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15109,7 +19069,7 @@ export const NetworkFabricsValidateConfigurationRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      validateAction: S.optional(ValidateAction),
     }).pipe(
       T.Http({
         method: "POST",
@@ -15169,7 +19129,7 @@ export const NetworkFabricsViewDeviceConfigurationRequest =
 
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const ViewDeviceConfigurationOperationResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -15217,7 +19177,7 @@ export const ViewDeviceConfigurationOperationResponseOperationsItem =
 
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsList =
-  ViewDeviceConfigurationOperationResponseOperationsItem[];
+  ReadonlyArray<ViewDeviceConfigurationOperationResponseOperationsItem>;
 export const ViewDeviceConfigurationOperationResponseOperationsList =
   /*@__PURE__*/ S.Array(
     ViewDeviceConfigurationOperationResponseOperationsItem,
@@ -15225,7 +19185,7 @@ export const ViewDeviceConfigurationOperationResponseOperationsList =
 
 /** The error details. */
 export type ViewDeviceConfigurationOperationResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const ViewDeviceConfigurationOperationResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -15233,7 +19193,7 @@ export const ViewDeviceConfigurationOperationResponseErrorDetailsList =
 
 /** The error additional info. */
 export type ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -15326,6 +19286,37 @@ export const ViewDeviceConfigurationOperationResponse = /*@__PURE__*/ S.suspend(
   identifier: "ViewDeviceConfigurationOperationResponse",
 }) as any as S.Schema<ViewDeviceConfigurationOperationResponse>;
 
+/** Network Interface Properties defines the properties of the resource. */
+export interface NetworkInterfacePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Additional description of the interface. */
+  additionalDescription?: string;
+}
+export const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    additionalDescription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkInterfacePropertiesInput",
+}) as any as S.Schema<NetworkInterfacePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkInterfacesCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkInterfacesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "NetworkInterfacesCreateRequestIdentity",
+}) as any as S.Schema<NetworkInterfacesCreateRequestIdentity>;
+
 export interface NetworkInterfacesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15335,7 +19326,10 @@ export interface NetworkInterfacesCreateRequest {
   networkDeviceName: string;
   /** Name of the Network Interface. */
   networkInterfaceName: string;
-  body: unknown;
+  /** The NetworkInterface properties */
+  properties: NetworkInterfacePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkInterfacesCreateRequestIdentity;
 }
 export const NetworkInterfacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15343,7 +19337,8 @@ export const NetworkInterfacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
     networkInterfaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: NetworkInterfacePropertiesInput,
+    identity: S.optional(NetworkInterfacesCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -15639,7 +19634,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** The NetworkInterface items on this page */
-export type NetworkInterfacesListValueList = NetworkInterface[];
+export type NetworkInterfacesListValueList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfacesListValueList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfacesListValueList>;
@@ -15660,6 +19655,22 @@ export const NetworkInterfacesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterfacesList",
 }) as any as S.Schema<NetworkInterfacesList>;
 
+/** Network Interface Patch properties. */
+export interface NetworkInterfacePatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Additional description of the interface. */
+  additionalDescription?: string;
+}
+export const NetworkInterfacePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    additionalDescription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkInterfacePatchProperties",
+}) as any as S.Schema<NetworkInterfacePatchProperties>;
+
 export interface NetworkInterfacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15669,7 +19680,10 @@ export interface NetworkInterfacesUpdateRequest {
   networkDeviceName: string;
   /** Name of the Network Interface. */
   networkInterfaceName: string;
-  body: unknown;
+  /** Network Interface Patch properties. */
+  properties?: NetworkInterfacePatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15677,7 +19691,8 @@ export const NetworkInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
     networkInterfaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(NetworkInterfacePatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -15738,6 +19753,14 @@ export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterfacesUpdateResponse",
 }) as any as S.Schema<NetworkInterfacesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkInterfacesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15747,7 +19770,10 @@ export interface NetworkInterfacesUpdateAdministrativeStateRequest {
   networkDeviceName: string;
   /** Name of the Network Interface. */
   networkInterfaceName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkInterfacesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15756,7 +19782,10 @@ export const NetworkInterfacesUpdateAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       networkDeviceName: S.String.pipe(T.Label()),
       networkInterfaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkInterfacesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -15769,48 +19798,21 @@ export const NetworkInterfacesUpdateAdministrativeStateRequest =
     identifier: "NetworkInterfacesUpdateAdministrativeStateRequest",
   }) as any as S.Schema<NetworkInterfacesUpdateAdministrativeStateRequest>;
 
-export interface NetworkMonitorsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Network Monitor. */
-  networkMonitorName: string;
-  body: unknown;
-}
-export const NetworkMonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    networkMonitorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "NetworkMonitorsCreateRequest",
-}) as any as S.Schema<NetworkMonitorsCreateRequest>;
-
 /** Resource tags. */
-export type NetworkMonitorsCreateResponseTagsMap = {
+export type NetworkMonitorsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkMonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NetworkMonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NetworkMonitorsCreateResponseTagsMap>;
+) as any as S.Schema<NetworkMonitorsCreateRequestTagsMap>;
 
 /** Station Configuration State. */
-export type StationConfigurationState = "Enabled" | "Disabled" | (string & {});
+export type StationConfigurationState = "Enabled" | "Disabled";
 export const StationConfigurationState = /*@__PURE__*/ S.String;
 
 /** Station Connection Mode. */
-export type StationConnectionMode = "Active" | "Passive" | (string & {});
+export type StationConnectionMode = "Active" | "Passive";
 export const StationConnectionMode = /*@__PURE__*/ S.String;
 
 /** Station Connection Properties. */
@@ -15833,7 +19835,8 @@ export const StationConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StationConnectionProperties>;
 
 /** The List of Network ID's that need to be monitored. */
-export type BmpConfigurationPropertiesMonitoredNetworksList = string[];
+export type BmpConfigurationPropertiesMonitoredNetworksList =
+  ReadonlyArray<string>;
 export const BmpConfigurationPropertiesMonitoredNetworksList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15844,8 +19847,7 @@ export type BmpConfigurationPropertiesExportPolicy =
   | "Pre-Policy"
   | "Post-Policy"
   | "All"
-  | "LocalRib"
-  | (string & {});
+  | "LocalRib";
 export const BmpConfigurationPropertiesExportPolicy = /*@__PURE__*/ S.String;
 
 /** Monitored Address Family. */
@@ -15854,13 +19856,12 @@ export type BmpMonitoredAddressFamily =
   | "ipv6Unicast"
   | "vpnIpv4"
   | "vpnIpv6"
-  | "All"
-  | (string & {});
+  | "All";
 export const BmpMonitoredAddressFamily = /*@__PURE__*/ S.String;
 
 /** Monitored Address Families for the BMP Configuration. */
 export type BmpConfigurationPropertiesMonitoredAddressFamiliesList =
-  BmpMonitoredAddressFamily[];
+  ReadonlyArray<BmpMonitoredAddressFamily>;
 export const BmpConfigurationPropertiesMonitoredAddressFamiliesList =
   /*@__PURE__*/ S.Array(
     BmpMonitoredAddressFamily,
@@ -15915,6 +19916,65 @@ export const BmpConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BmpConfigurationProperties",
 }) as any as S.Schema<BmpConfigurationProperties>;
+
+/** Network Monitor Properties defines the properties of the resource. */
+export interface NetworkMonitorPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** BMP Configurations for the Network Fabric. */
+  bmpConfiguration?: BmpConfigurationProperties;
+}
+export const NetworkMonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    bmpConfiguration: S.optional(BmpConfigurationProperties),
+  }),
+).annotate({
+  identifier: "NetworkMonitorPropertiesInput",
+}) as any as S.Schema<NetworkMonitorPropertiesInput>;
+
+export interface NetworkMonitorsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Network Monitor. */
+  networkMonitorName: string;
+  /** Resource tags. */
+  tags?: NetworkMonitorsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkMonitor properties. */
+  properties: NetworkMonitorPropertiesInput;
+}
+export const NetworkMonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    networkMonitorName: S.String.pipe(T.Label()),
+    tags: S.optional(NetworkMonitorsCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkMonitorPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "NetworkMonitorsCreateRequest",
+}) as any as S.Schema<NetworkMonitorsCreateRequest>;
+
+/** Resource tags. */
+export type NetworkMonitorsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkMonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkMonitorsCreateResponseTagsMap>;
 
 /** Network Monitor Properties defines the properties of the resource. */
 export interface NetworkMonitorProperties {
@@ -16130,7 +20190,7 @@ export const NetworkMonitor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkMonitor" }) as any as S.Schema<NetworkMonitor>;
 
 /** The NetworkMonitor items on this page */
-export type NetworkMonitorListResultValueList = NetworkMonitor[];
+export type NetworkMonitorListResultValueList = ReadonlyArray<NetworkMonitor>;
 export const NetworkMonitorListResultValueList = /*@__PURE__*/ S.Array(
   NetworkMonitor,
 ) as any as S.Schema<NetworkMonitorListResultValueList>;
@@ -16171,6 +20231,113 @@ export const NetworkMonitorsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "NetworkMonitorsListBySubscriptionRequest",
 }) as any as S.Schema<NetworkMonitorsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type NetworkMonitorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkMonitorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkMonitorsUpdateRequestTagsMap>;
+
+/** Station Connection PATCH Properties. */
+export interface StationConnectionPatchProperties {
+  /** Connection keepalive idle time in seconds */
+  keepaliveIdleTime?: number;
+  /** Probe interval in seconds, default value is 60 */
+  probeInterval?: number;
+  /** Probe count, default value is 10 */
+  probeCount?: number;
+}
+export const StationConnectionPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keepaliveIdleTime: S.optional(S.Number),
+    probeInterval: S.optional(S.Number),
+    probeCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StationConnectionPatchProperties",
+}) as any as S.Schema<StationConnectionPatchProperties>;
+
+/** The List of Network ID's that need to be monitored. */
+export type BmpConfigurationPatchPropertiesMonitoredNetworksList =
+  ReadonlyArray<string>;
+export const BmpConfigurationPatchPropertiesMonitoredNetworksList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BmpConfigurationPatchPropertiesMonitoredNetworksList>;
+
+/** Monitored Address Families for the BMP Configuration. */
+export type BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList =
+  ReadonlyArray<BmpMonitoredAddressFamily>;
+export const BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList =
+  /*@__PURE__*/ S.Array(
+    BmpMonitoredAddressFamily,
+  ) as any as S.Schema<BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList>;
+
+/** BMP Configuration patch properties. */
+export interface BmpConfigurationPatchProperties {
+  /** Enabling a station. Either True/False. */
+  stationConfigurationState?: StationConfigurationState;
+  /** Scope resource ARM Identifier. */
+  scopeResourceId?: string;
+  /** Name of the station. */
+  stationName?: string;
+  /** IP Address of the station. */
+  stationIp?: string;
+  /** Port of the station. Default value is 5000. */
+  stationPort?: number;
+  /** Station Connection Mode. */
+  stationConnectionMode?: StationConnectionMode;
+  /** Station Connection Properties. */
+  stationConnectionProperties?: StationConnectionPatchProperties;
+  /** Network of the station */
+  stationNetwork?: string;
+  /** The List of Network ID's that need to be monitored. */
+  monitoredNetworks?: BmpConfigurationPatchPropertiesMonitoredNetworksList;
+  /** Export Policy for the BMP Configuration. */
+  exportPolicy?: BmpExportPolicy;
+  /** Export Policy configuration properties for the BMP. */
+  exportPolicyConfiguration?: BmpExportPolicyPatchProperties;
+  /** Monitored Address Families for the BMP Configuration. */
+  monitoredAddressFamilies?: BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList;
+}
+export const BmpConfigurationPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stationConfigurationState: S.optional(StationConfigurationState),
+    scopeResourceId: S.optional(S.String),
+    stationName: S.optional(S.String),
+    stationIp: S.optional(S.String),
+    stationPort: S.optional(S.Number),
+    stationConnectionMode: S.optional(StationConnectionMode),
+    stationConnectionProperties: S.optional(StationConnectionPatchProperties),
+    stationNetwork: S.optional(S.String),
+    monitoredNetworks: S.optional(
+      BmpConfigurationPatchPropertiesMonitoredNetworksList,
+    ),
+    exportPolicy: S.optional(BmpExportPolicy),
+    exportPolicyConfiguration: S.optional(BmpExportPolicyPatchProperties),
+    monitoredAddressFamilies: S.optional(
+      BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList,
+    ),
+  }),
+).annotate({
+  identifier: "BmpConfigurationPatchProperties",
+}) as any as S.Schema<BmpConfigurationPatchProperties>;
+
+/** The Network Monitor Patch Properties. */
+export interface NetworkMonitorPatchProperties {
+  /** BGP Monitoring Protocol (BMP) Configurations for the Network Monitor. */
+  bmpConfiguration?: BmpConfigurationPatchProperties;
+}
+export const NetworkMonitorPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bmpConfiguration: S.optional(BmpConfigurationPatchProperties),
+  }),
+).annotate({
+  identifier: "NetworkMonitorPatchProperties",
+}) as any as S.Schema<NetworkMonitorPatchProperties>;
+
 export interface NetworkMonitorsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16178,14 +20345,18 @@ export interface NetworkMonitorsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Monitor. */
   networkMonitorName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkMonitorsUpdateRequestTagsMap;
+  /** Network Monitor Patch properties. */
+  properties?: NetworkMonitorPatchProperties;
 }
 export const NetworkMonitorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkMonitorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkMonitorsUpdateRequestTagsMap),
+    properties: S.optional(NetworkMonitorPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16237,6 +20408,14 @@ export const NetworkMonitorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkMonitorsUpdateResponse",
 }) as any as S.Schema<NetworkMonitorsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkMonitorsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16244,7 +20423,10 @@ export interface NetworkMonitorsUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Network Monitor. */
   networkMonitorName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkMonitorsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16252,7 +20434,10 @@ export const NetworkMonitorsUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkMonitorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkMonitorsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -16267,7 +20452,7 @@ export const NetworkMonitorsUpdateAdministrativeStateRequest =
 
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesList =
-  string[];
+  ReadonlyArray<string>;
 export const NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16275,7 +20460,7 @@ export const NetworkMonitorsUpdateAdministrativeStateResponseSuccessfulDevicesLi
 
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type NetworkMonitorsUpdateAdministrativeStateResponseFailedDevicesList =
-  string[];
+  ReadonlyArray<string>;
 export const NetworkMonitorsUpdateAdministrativeStateResponseFailedDevicesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16307,6 +20492,43 @@ export const NetworkMonitorsUpdateAdministrativeStateResponse =
     identifier: "NetworkMonitorsUpdateAdministrativeStateResponse",
   }) as any as S.Schema<NetworkMonitorsUpdateAdministrativeStateResponse>;
 
+/** Resource tags. */
+export type NetworkPacketBrokersCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkPacketBrokersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkPacketBrokersCreateRequestTagsMap>;
+
+/** Network Packet Broker Properties defines the properties of the resource. */
+export interface NetworkPacketBrokerPropertiesInput {
+  /** ARM resource ID of the Network Fabric. */
+  networkFabricId: string;
+}
+export const NetworkPacketBrokerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkFabricId: S.String,
+  }),
+).annotate({
+  identifier: "NetworkPacketBrokerPropertiesInput",
+}) as any as S.Schema<NetworkPacketBrokerPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkPacketBrokersCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkPacketBrokersCreateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "NetworkPacketBrokersCreateRequestIdentity",
+  }) as any as S.Schema<NetworkPacketBrokersCreateRequestIdentity>;
+
 export interface NetworkPacketBrokersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16314,14 +20536,24 @@ export interface NetworkPacketBrokersCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Packet Broker. */
   networkPacketBrokerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkPacketBrokersCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkPacketBroker properties */
+  properties: NetworkPacketBrokerPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkPacketBrokersCreateRequestIdentity;
 }
 export const NetworkPacketBrokersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkPacketBrokerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkPacketBrokersCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkPacketBrokerPropertiesInput,
+    identity: S.optional(NetworkPacketBrokersCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -16344,28 +20576,32 @@ export const NetworkPacketBrokersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkPacketBrokersCreateResponseTagsMap>;
 
 /** List of ARM resource IDs of Network Devices [NPB]. */
-export type NetworkPacketBrokerPropertiesNetworkDeviceIdsList = string[];
+export type NetworkPacketBrokerPropertiesNetworkDeviceIdsList =
+  ReadonlyArray<string>;
 export const NetworkPacketBrokerPropertiesNetworkDeviceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesNetworkDeviceIdsList>;
 
 /** List of network interfaces across NPB devices that are used to mirror source traffic. */
-export type NetworkPacketBrokerPropertiesSourceInterfaceIdsList = string[];
+export type NetworkPacketBrokerPropertiesSourceInterfaceIdsList =
+  ReadonlyArray<string>;
 export const NetworkPacketBrokerPropertiesSourceInterfaceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesSourceInterfaceIdsList>;
 
 /** List of network Tap IDs configured on NPB. */
-export type NetworkPacketBrokerPropertiesNetworkTapIdsList = string[];
+export type NetworkPacketBrokerPropertiesNetworkTapIdsList =
+  ReadonlyArray<string>;
 export const NetworkPacketBrokerPropertiesNetworkTapIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkPacketBrokerPropertiesNetworkTapIdsList>;
 
 /** List of neighbor group IDs configured on NPB. */
-export type NetworkPacketBrokerPropertiesNeighborGroupIdsList = string[];
+export type NetworkPacketBrokerPropertiesNeighborGroupIdsList =
+  ReadonlyArray<string>;
 export const NetworkPacketBrokerPropertiesNeighborGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16670,7 +20906,8 @@ export const NetworkPacketBroker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPacketBroker>;
 
 /** The NetworkPacketBroker items on this page */
-export type NetworkPacketBrokersListResultValueList = NetworkPacketBroker[];
+export type NetworkPacketBrokersListResultValueList =
+  ReadonlyArray<NetworkPacketBroker>;
 export const NetworkPacketBrokersListResultValueList = /*@__PURE__*/ S.Array(
   NetworkPacketBroker,
 ) as any as S.Schema<NetworkPacketBrokersListResultValueList>;
@@ -16711,6 +20948,15 @@ export const NetworkPacketBrokersListBySubscriptionRequest =
     identifier: "NetworkPacketBrokersListBySubscriptionRequest",
   }) as any as S.Schema<NetworkPacketBrokersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type NetworkPacketBrokersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkPacketBrokersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkPacketBrokersUpdateRequestTagsMap>;
+
 export interface NetworkPacketBrokersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16718,14 +20964,18 @@ export interface NetworkPacketBrokersUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Packet Broker. */
   networkPacketBrokerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkPacketBrokersUpdateRequestTagsMap;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkPacketBrokersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkPacketBrokerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkPacketBrokersUpdateRequestTagsMap),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16801,6 +21051,38 @@ export const NetworkPacketBrokersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkPacketBrokersUpdateResponse",
 }) as any as S.Schema<NetworkPacketBrokersUpdateResponse>;
 
+/** Resource tags. */
+export type NetworkRacksCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkRacksCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkRacksCreateRequestTagsMap>;
+
+/** Network Rack SKU name. */
+export type NetworkRackType = "Aggregate" | "Compute" | "Combined";
+export const NetworkRackType = /*@__PURE__*/ S.String;
+
+/** Network Rack Properties defines the properties of the resource. */
+export interface NetworkRackPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Network Rack SKU name. */
+  networkRackType?: NetworkRackType;
+  /** ARM resource ID of the Network Fabric. */
+  networkFabricId: string;
+}
+export const NetworkRackPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkRackType: S.optional(NetworkRackType),
+    networkFabricId: S.String,
+  }),
+).annotate({
+  identifier: "NetworkRackPropertiesInput",
+}) as any as S.Schema<NetworkRackPropertiesInput>;
+
 export interface NetworkRacksCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16808,14 +21090,21 @@ export interface NetworkRacksCreateRequest {
   resourceGroupName: string;
   /** Name of the Network Rack. */
   networkRackName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkRacksCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Network Rack Properties */
+  properties: NetworkRackPropertiesInput;
 }
 export const NetworkRacksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkRackName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkRacksCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkRackPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -16837,16 +21126,8 @@ export const NetworkRacksCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<NetworkRacksCreateResponseTagsMap>;
 
-/** Network Rack SKU name. */
-export type NetworkRackType =
-  | "Aggregate"
-  | "Compute"
-  | "Combined"
-  | (string & {});
-export const NetworkRackType = /*@__PURE__*/ S.String;
-
 /** List of network device ARM resource IDs. */
-export type NetworkRackPropertiesNetworkDevicesList = string[];
+export type NetworkRackPropertiesNetworkDevicesList = ReadonlyArray<string>;
 export const NetworkRackPropertiesNetworkDevicesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkRackPropertiesNetworkDevicesList>;
@@ -17068,7 +21349,7 @@ export const NetworkRack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkRack" }) as any as S.Schema<NetworkRack>;
 
 /** The NetworkRack items on this page */
-export type NetworkRacksListResultValueList = NetworkRack[];
+export type NetworkRacksListResultValueList = ReadonlyArray<NetworkRack>;
 export const NetworkRacksListResultValueList = /*@__PURE__*/ S.Array(
   NetworkRack,
 ) as any as S.Schema<NetworkRacksListResultValueList>;
@@ -17109,6 +21390,15 @@ export const NetworkRacksListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "NetworkRacksListBySubscriptionRequest",
 }) as any as S.Schema<NetworkRacksListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type NetworkRacksUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkRacksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkRacksUpdateRequestTagsMap>;
+
 export interface NetworkRacksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17116,14 +21406,15 @@ export interface NetworkRacksUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Rack. */
   networkRackName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkRacksUpdateRequestTagsMap;
 }
 export const NetworkRacksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkRackName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkRacksUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -17175,65 +21466,36 @@ export const NetworkRacksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkRacksUpdateResponse",
 }) as any as S.Schema<NetworkRacksUpdateResponse>;
 
-export interface NetworkTapRulesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Network Tap Rule. */
-  networkTapRuleName: string;
-  body: unknown;
-}
-export const NetworkTapRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    networkTapRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "NetworkTapRulesCreateRequest",
-}) as any as S.Schema<NetworkTapRulesCreateRequest>;
-
 /** Resource tags. */
-export type NetworkTapRulesCreateResponseTagsMap = {
+export type NetworkTapRulesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkTapRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NetworkTapRulesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NetworkTapRulesCreateResponseTagsMap>;
+) as any as S.Schema<NetworkTapRulesCreateRequestTagsMap>;
 
 /** List of the protocols that need to be matched. */
-export type NetworkTapRuleMatchConditionProtocolTypesList = string[];
+export type NetworkTapRuleMatchConditionProtocolTypesList =
+  ReadonlyArray<string>;
 export const NetworkTapRuleMatchConditionProtocolTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkTapRuleMatchConditionProtocolTypesList>;
 
 /** Encapsulation Type that needs to be matched. */
-export type NetworkTapRuleMatchConditionEncapsulationType =
-  | "None"
-  | "GTPv1"
-  | (string & {});
+export type NetworkTapRuleMatchConditionEncapsulationType = "None" | "GTPv1";
 export const NetworkTapRuleMatchConditionEncapsulationType =
   /*@__PURE__*/ S.String;
 
 /** List of the Ports that need to be matched. */
-export type PortConditionPortsList = string[];
+export type PortConditionPortsList = ReadonlyArray<string>;
 export const PortConditionPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPortsList>;
 
 /** List of the port Group Names that need to be matched. */
-export type PortConditionPortGroupNamesList = string[];
+export type PortConditionPortGroupNamesList = ReadonlyArray<string>;
 export const PortConditionPortGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PortConditionPortGroupNamesList>;
@@ -17287,7 +21549,7 @@ export const NetworkTapRuleMatchCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the match conditions. */
 export type NetworkTapRuleMatchConfigurationMatchConditionsList =
-  NetworkTapRuleMatchCondition[];
+  ReadonlyArray<NetworkTapRuleMatchCondition>;
 export const NetworkTapRuleMatchConfigurationMatchConditionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchCondition,
@@ -17301,8 +21563,7 @@ export type TapRuleActionType =
   | "Replicate"
   | "Goto"
   | "Redirect"
-  | "Mirror"
-  | (string & {});
+  | "Mirror";
 export const TapRuleActionType = /*@__PURE__*/ S.String;
 
 /** Action that need to performed. */
@@ -17332,7 +21593,7 @@ export const NetworkTapRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationActionsList =
-  NetworkTapRuleAction[];
+  ReadonlyArray<NetworkTapRuleAction>;
 export const NetworkTapRuleMatchConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleAction,
@@ -17366,32 +21627,23 @@ export const NetworkTapRuleMatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkTapRuleMatchConfiguration>;
 
 /** List of match configurations. */
-export type NetworkTapRulePropertiesMatchConfigurationsList =
-  NetworkTapRuleMatchConfiguration[];
-export const NetworkTapRulePropertiesMatchConfigurationsList =
+export type NetworkTapRulePropertiesInputMatchConfigurationsList =
+  ReadonlyArray<NetworkTapRuleMatchConfiguration>;
+export const NetworkTapRulePropertiesInputMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     NetworkTapRuleMatchConfiguration,
-  ) as any as S.Schema<NetworkTapRulePropertiesMatchConfigurationsList>;
+  ) as any as S.Schema<NetworkTapRulePropertiesInputMatchConfigurationsList>;
 
 /** List of dynamic match configurations. */
-export type NetworkTapRulePropertiesDynamicMatchConfigurationsList =
-  CommonDynamicMatchConfiguration[];
-export const NetworkTapRulePropertiesDynamicMatchConfigurationsList =
+export type NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfiguration>;
+export const NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
   /*@__PURE__*/ S.Array(
     CommonDynamicMatchConfiguration,
-  ) as any as S.Schema<NetworkTapRulePropertiesDynamicMatchConfigurationsList>;
-
-/** The ARM resource Id of the NetworkTap Rules. */
-export type NetworkTapRulePropertiesNetworkTapIdsList = string[];
-export const NetworkTapRulePropertiesNetworkTapIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkTapRulePropertiesNetworkTapIdsList>;
+  ) as any as S.Schema<NetworkTapRulePropertiesInputDynamicMatchConfigurationsList>;
 
 /** Configuration to enable network tap rule counter. */
-export type GlobalNetworkTapRuleActionPropertiesEnableCount =
-  | "True"
-  | "False"
-  | (string & {});
+export type GlobalNetworkTapRuleActionPropertiesEnableCount = "True" | "False";
 export const GlobalNetworkTapRuleActionPropertiesEnableCount =
   /*@__PURE__*/ S.String;
 
@@ -17412,8 +21664,132 @@ export const GlobalNetworkTapRuleActionProperties = /*@__PURE__*/ S.suspend(
   identifier: "GlobalNetworkTapRuleActionProperties",
 }) as any as S.Schema<GlobalNetworkTapRuleActionProperties>;
 
+/** Network Tap Rule Properties defines the resource properties. */
+export interface NetworkTapRulePropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Input method to configure Network Tap Rule. */
+  configurationType: ConfigurationType;
+  /** Network Tap Rules file URL. */
+  tapRulesUrl?: string;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  identitySelector?: IdentitySelector;
+  /** List of match configurations. */
+  matchConfigurations?: NetworkTapRulePropertiesInputMatchConfigurationsList;
+  /** List of dynamic match configurations. */
+  dynamicMatchConfigurations?: NetworkTapRulePropertiesInputDynamicMatchConfigurationsList;
+  /** Polling interval in seconds. */
+  pollingIntervalInSeconds?: number;
+  /** Global network tap rule actions */
+  globalNetworkTapRuleActions?: GlobalNetworkTapRuleActionProperties;
+}
+export const NetworkTapRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    configurationType: ConfigurationType,
+    tapRulesUrl: S.optional(S.String),
+    identitySelector: S.optional(IdentitySelector),
+    matchConfigurations: S.optional(
+      NetworkTapRulePropertiesInputMatchConfigurationsList,
+    ),
+    dynamicMatchConfigurations: S.optional(
+      NetworkTapRulePropertiesInputDynamicMatchConfigurationsList,
+    ),
+    pollingIntervalInSeconds: S.optional(S.Number),
+    globalNetworkTapRuleActions: S.optional(
+      GlobalNetworkTapRuleActionProperties,
+    ),
+  }),
+).annotate({
+  identifier: "NetworkTapRulePropertiesInput",
+}) as any as S.Schema<NetworkTapRulePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkTapRulesCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkTapRulesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "NetworkTapRulesCreateRequestIdentity",
+}) as any as S.Schema<NetworkTapRulesCreateRequestIdentity>;
+
+export interface NetworkTapRulesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Network Tap Rule. */
+  networkTapRuleName: string;
+  /** Resource tags. */
+  tags?: NetworkTapRulesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkTapRule Properties */
+  properties: NetworkTapRulePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkTapRulesCreateRequestIdentity;
+}
+export const NetworkTapRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    networkTapRuleName: S.String.pipe(T.Label()),
+    tags: S.optional(NetworkTapRulesCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkTapRulePropertiesInput,
+    identity: S.optional(NetworkTapRulesCreateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "NetworkTapRulesCreateRequest",
+}) as any as S.Schema<NetworkTapRulesCreateRequest>;
+
+/** Resource tags. */
+export type NetworkTapRulesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkTapRulesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkTapRulesCreateResponseTagsMap>;
+
+/** List of match configurations. */
+export type NetworkTapRulePropertiesMatchConfigurationsList =
+  ReadonlyArray<NetworkTapRuleMatchConfiguration>;
+export const NetworkTapRulePropertiesMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    NetworkTapRuleMatchConfiguration,
+  ) as any as S.Schema<NetworkTapRulePropertiesMatchConfigurationsList>;
+
+/** List of dynamic match configurations. */
+export type NetworkTapRulePropertiesDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfiguration>;
+export const NetworkTapRulePropertiesDynamicMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    CommonDynamicMatchConfiguration,
+  ) as any as S.Schema<NetworkTapRulePropertiesDynamicMatchConfigurationsList>;
+
+/** The ARM resource Id of the NetworkTap Rules. */
+export type NetworkTapRulePropertiesNetworkTapIdsList = ReadonlyArray<string>;
+export const NetworkTapRulePropertiesNetworkTapIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NetworkTapRulePropertiesNetworkTapIdsList>;
+
 /** Associated Network Fabric Resource IDs */
-export type NetworkTapRulePropertiesNetworkFabricIdsList = string[];
+export type NetworkTapRulePropertiesNetworkFabricIdsList =
+  ReadonlyArray<string>;
 export const NetworkTapRulePropertiesNetworkFabricIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17739,7 +22115,7 @@ export const NetworkTapRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkTapRule" }) as any as S.Schema<NetworkTapRule>;
 
 /** The NetworkTapRule items on this page */
-export type NetworkTapRulesListResultValueList = NetworkTapRule[];
+export type NetworkTapRulesListResultValueList = ReadonlyArray<NetworkTapRule>;
 export const NetworkTapRulesListResultValueList = /*@__PURE__*/ S.Array(
   NetworkTapRule,
 ) as any as S.Schema<NetworkTapRulesListResultValueList>;
@@ -17807,7 +22183,7 @@ export const NetworkTapRulesResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkTapRuleResyncResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkTapRuleResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -17855,13 +22231,14 @@ export const NetworkTapRuleResyncResponseOperationsItem =
 
 /** The operations list. */
 export type NetworkTapRuleResyncResponseOperationsList =
-  NetworkTapRuleResyncResponseOperationsItem[];
+  ReadonlyArray<NetworkTapRuleResyncResponseOperationsItem>;
 export const NetworkTapRuleResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkTapRuleResyncResponseOperationsItem,
 ) as any as S.Schema<NetworkTapRuleResyncResponseOperationsList>;
 
 /** The error details. */
-export type NetworkTapRuleResyncResponseErrorDetailsList = ErrorDetail[];
+export type NetworkTapRuleResyncResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const NetworkTapRuleResyncResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -17869,7 +22246,7 @@ export const NetworkTapRuleResyncResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NetworkTapRuleResyncResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkTapRuleResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -17939,6 +22316,227 @@ export const NetworkTapRuleResyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkTapRuleResyncResponse",
 }) as any as S.Schema<NetworkTapRuleResyncResponse>;
 
+/** Resource tags. */
+export type NetworkTapRulesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkTapRulesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkTapRulesUpdateRequestTagsMap>;
+
+/** List of the protocols that need to be matched. */
+export type NetworkTapRuleMatchConditionPatchProtocolTypesList =
+  ReadonlyArray<string>;
+export const NetworkTapRuleMatchConditionPatchProtocolTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkTapRuleMatchConditionPatchProtocolTypesList>;
+
+/** Encapsulation Type that needs to be matched. */
+export type EncapsulationType = "None" | "GTPv1";
+export const EncapsulationType = /*@__PURE__*/ S.String;
+
+/** List of the Ports that need to be matched. */
+export type PortConditionPatchPortsList = ReadonlyArray<string>;
+export const PortConditionPatchPortsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PortConditionPatchPortsList>;
+
+/** List of the port Group Names that need to be matched. */
+export type PortConditionPatchPortGroupNamesList = ReadonlyArray<string>;
+export const PortConditionPatchPortGroupNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PortConditionPatchPortGroupNamesList>;
+
+/** Port condition that needs to be matched. */
+export interface PortConditionPatch {
+  /** Port type that needs to be matched. */
+  portType?: PortType;
+  /** Layer4 protocol type that needs to be matched. */
+  layer4Protocol?: Layer4Protocol;
+  /** List of the Ports that need to be matched. */
+  ports?: PortConditionPatchPortsList;
+  /** List of the port Group Names that need to be matched. */
+  portGroupNames?: PortConditionPatchPortGroupNamesList;
+}
+export const PortConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    portType: S.optional(PortType),
+    layer4Protocol: S.optional(Layer4Protocol),
+    ports: S.optional(PortConditionPatchPortsList),
+    portGroupNames: S.optional(PortConditionPatchPortGroupNamesList),
+  }),
+).annotate({
+  identifier: "PortConditionPatch",
+}) as any as S.Schema<PortConditionPatch>;
+
+/** Defines the match condition that is supported to filter the traffic. */
+export interface NetworkTapRuleMatchConditionPatch {
+  /** List of the protocols that need to be matched. */
+  protocolTypes?: NetworkTapRuleMatchConditionPatchProtocolTypesList;
+  /** Vlan match condition that needs to be matched. */
+  vlanMatchCondition?: VlanMatchConditionPatch;
+  /** IP condition that needs to be matched. */
+  ipCondition?: IpMatchConditionPatch;
+  /** Encapsulation Type that needs to be matched. */
+  encapsulationType?: EncapsulationType;
+  /** Defines the port condition that needs to be matched. */
+  portCondition?: PortConditionPatch;
+}
+export const NetworkTapRuleMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocolTypes: S.optional(
+      NetworkTapRuleMatchConditionPatchProtocolTypesList,
+    ),
+    vlanMatchCondition: S.optional(VlanMatchConditionPatch),
+    ipCondition: S.optional(IpMatchConditionPatch),
+    encapsulationType: S.optional(EncapsulationType),
+    portCondition: S.optional(PortConditionPatch),
+  }),
+).annotate({
+  identifier: "NetworkTapRuleMatchConditionPatch",
+}) as any as S.Schema<NetworkTapRuleMatchConditionPatch>;
+
+/** List of the match conditions. */
+export type NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
+  ReadonlyArray<NetworkTapRuleMatchConditionPatch>;
+export const NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
+  /*@__PURE__*/ S.Array(
+    NetworkTapRuleMatchConditionPatch,
+  ) as any as S.Schema<NetworkTapRuleMatchConfigurationPatchMatchConditionsList>;
+
+/** Action that need to performed. */
+export interface NetworkTapRuleActionPatch {
+  /** Type of actions that can be performed. */
+  type?: TapRuleActionType;
+  /** Truncate. 0 indicates do not truncate. */
+  truncate?: string;
+  /** The parameter to enable or disable the timestamp. */
+  isTimestampEnabled?: BooleanEnumProperty;
+  /** Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup. */
+  destinationId?: string;
+  /** The name of the match configuration. This is used when Goto type is provided. */
+  matchConfigurationName?: string;
+}
+export const NetworkTapRuleActionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(TapRuleActionType),
+    truncate: S.optional(S.String),
+    isTimestampEnabled: S.optional(BooleanEnumProperty),
+    destinationId: S.optional(S.String),
+    matchConfigurationName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkTapRuleActionPatch",
+}) as any as S.Schema<NetworkTapRuleActionPatch>;
+
+/** List of actions that need to be performed for the matched conditions. */
+export type NetworkTapRuleMatchConfigurationPatchActionsList =
+  ReadonlyArray<NetworkTapRuleActionPatch>;
+export const NetworkTapRuleMatchConfigurationPatchActionsList =
+  /*@__PURE__*/ S.Array(
+    NetworkTapRuleActionPatch,
+  ) as any as S.Schema<NetworkTapRuleMatchConfigurationPatchActionsList>;
+
+/** Defines the match configuration that are supported to filter the traffic. */
+export interface NetworkTapRuleMatchConfigurationPatch {
+  /** The name of the match configuration. */
+  matchConfigurationName?: string;
+  /** Sequence Number of the match configuration.. */
+  sequenceNumber?: number;
+  /** Type of IP Address. IPv4 or IPv6 */
+  ipAddressType?: IPAddressType;
+  /** List of the match conditions. */
+  matchConditions?: NetworkTapRuleMatchConfigurationPatchMatchConditionsList;
+  /** List of actions that need to be performed for the matched conditions. */
+  actions?: NetworkTapRuleMatchConfigurationPatchActionsList;
+}
+export const NetworkTapRuleMatchConfigurationPatch = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      matchConfigurationName: S.optional(S.String),
+      sequenceNumber: S.optional(S.Number),
+      ipAddressType: S.optional(IPAddressType),
+      matchConditions: S.optional(
+        NetworkTapRuleMatchConfigurationPatchMatchConditionsList,
+      ),
+      actions: S.optional(NetworkTapRuleMatchConfigurationPatchActionsList),
+    }),
+).annotate({
+  identifier: "NetworkTapRuleMatchConfigurationPatch",
+}) as any as S.Schema<NetworkTapRuleMatchConfigurationPatch>;
+
+/** List of match configurations. */
+export type NetworkTapRulePatchPropertiesMatchConfigurationsList =
+  ReadonlyArray<NetworkTapRuleMatchConfigurationPatch>;
+export const NetworkTapRulePatchPropertiesMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    NetworkTapRuleMatchConfigurationPatch,
+  ) as any as S.Schema<NetworkTapRulePatchPropertiesMatchConfigurationsList>;
+
+/** List of dynamic match configurations. */
+export type NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
+  ReadonlyArray<CommonDynamicMatchConfigurationPatch>;
+export const NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    CommonDynamicMatchConfigurationPatch,
+  ) as any as S.Schema<NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList>;
+
+/** Global network tap rule actions patch properties */
+export interface GlobalNetworkTapRuleActionPatchProperties {
+  /** Configuration to enable network tap rule counter. */
+  enableCount?: BooleanEnumProperty;
+  /** Truncate. 0 indicates do not truncate. */
+  truncate?: string;
+}
+export const GlobalNetworkTapRuleActionPatchProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enableCount: S.optional(BooleanEnumProperty),
+      truncate: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GlobalNetworkTapRuleActionPatchProperties",
+  }) as any as S.Schema<GlobalNetworkTapRuleActionPatchProperties>;
+
+/** Network Tap Rule Patch properties. */
+export interface NetworkTapRulePatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Input method to configure Network Tap Rule. */
+  configurationType?: ConfigurationType;
+  /** Network Tap Rules file URL. */
+  tapRulesUrl?: string;
+  /** List of match configurations. */
+  matchConfigurations?: NetworkTapRulePatchPropertiesMatchConfigurationsList;
+  /** List of dynamic match configurations. */
+  dynamicMatchConfigurations?: NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList;
+  /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
+  identitySelector?: IdentitySelectorPatch;
+  /** Global network tap rule actions */
+  globalNetworkTapRuleActions?: GlobalNetworkTapRuleActionPatchProperties;
+}
+export const NetworkTapRulePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    configurationType: S.optional(ConfigurationType),
+    tapRulesUrl: S.optional(S.String),
+    matchConfigurations: S.optional(
+      NetworkTapRulePatchPropertiesMatchConfigurationsList,
+    ),
+    dynamicMatchConfigurations: S.optional(
+      NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList,
+    ),
+    identitySelector: S.optional(IdentitySelectorPatch),
+    globalNetworkTapRuleActions: S.optional(
+      GlobalNetworkTapRuleActionPatchProperties,
+    ),
+  }),
+).annotate({
+  identifier: "NetworkTapRulePatchProperties",
+}) as any as S.Schema<NetworkTapRulePatchProperties>;
+
 export interface NetworkTapRulesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17946,14 +22544,21 @@ export interface NetworkTapRulesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkTapRulesUpdateRequestTagsMap;
+  /** Network Tap Rule Patch properties. */
+  properties?: NetworkTapRulePatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkTapRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkTapRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkTapRulesUpdateRequestTagsMap),
+    properties: S.optional(NetworkTapRulePatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -18029,6 +22634,14 @@ export const NetworkTapRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkTapRulesUpdateResponse",
 }) as any as S.Schema<NetworkTapRulesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkTapRulesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -18036,7 +22649,10 @@ export interface NetworkTapRulesUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkTapRulesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18044,7 +22660,10 @@ export const NetworkTapRulesUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkTapRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkTapRulesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -18118,58 +22737,26 @@ export const NetworkTapRulesValidateConfigurationResponse =
     identifier: "NetworkTapRulesValidateConfigurationResponse",
   }) as any as S.Schema<NetworkTapRulesValidateConfigurationResponse>;
 
-export interface NetworkTapsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Network Tap. */
-  networkTapName: string;
-  body: unknown;
-}
-export const NetworkTapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    networkTapName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "NetworkTapsCreateRequest",
-}) as any as S.Schema<NetworkTapsCreateRequest>;
-
 /** Resource tags. */
-export type NetworkTapsCreateResponseTagsMap = {
+export type NetworkTapsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkTapsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NetworkTapsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NetworkTapsCreateResponseTagsMap>;
-
-/** Associated Network Fabric Resource IDs */
-export type NetworkTapPropertiesNetworkFabricIdsList = string[];
-export const NetworkTapPropertiesNetworkFabricIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkTapPropertiesNetworkFabricIdsList>;
+) as any as S.Schema<NetworkTapsCreateRequestTagsMap>;
 
 /** Type of destination. Input can be IsolationDomain or Direct. */
-export type DestinationType = "IsolationDomain" | "Direct" | (string & {});
+export type DestinationType = "IsolationDomain" | "Direct";
 export const DestinationType = /*@__PURE__*/ S.String;
 
 /** Type of encapsulation. */
-export type Encapsulation = "None" | "GRE" | (string & {});
+export type Encapsulation = "None" | "GRE";
 export const Encapsulation = /*@__PURE__*/ S.String;
 
 /** List of Neighbor Group IDs. */
-export type IsolationDomainPropertiesNeighborGroupIdsList = string[];
+export type IsolationDomainPropertiesNeighborGroupIdsList =
+  ReadonlyArray<string>;
 export const IsolationDomainPropertiesNeighborGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -18217,13 +22804,113 @@ export const DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationProperties>;
 
 /** List of destinations to send the filter traffic. */
-export type NetworkTapPropertiesDestinationsList = DestinationProperties[];
+export type NetworkTapPropertiesInputDestinationsList =
+  ReadonlyArray<DestinationProperties>;
+export const NetworkTapPropertiesInputDestinationsList = /*@__PURE__*/ S.Array(
+  DestinationProperties,
+) as any as S.Schema<NetworkTapPropertiesInputDestinationsList>;
+
+/** Polling type. */
+export type NetworkTapPropertiesInputPollingType = "Pull" | "Push";
+export const NetworkTapPropertiesInputPollingType = /*@__PURE__*/ S.String;
+
+/** Network Tap Properties defines the properties of the resource. */
+export interface NetworkTapPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** ARM resource ID of the Network Packet Broker. */
+  networkPacketBrokerId: string;
+  /** List of destinations to send the filter traffic. */
+  destinations: NetworkTapPropertiesInputDestinationsList;
+  /** Polling type. */
+  pollingType?: NetworkTapPropertiesInputPollingType;
+}
+export const NetworkTapPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    networkPacketBrokerId: S.String,
+    destinations: NetworkTapPropertiesInputDestinationsList,
+    pollingType: S.optional(NetworkTapPropertiesInputPollingType),
+  }),
+).annotate({
+  identifier: "NetworkTapPropertiesInput",
+}) as any as S.Schema<NetworkTapPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkTapsCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const NetworkTapsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "NetworkTapsCreateRequestIdentity",
+}) as any as S.Schema<NetworkTapsCreateRequestIdentity>;
+
+export interface NetworkTapsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Network Tap. */
+  networkTapName: string;
+  /** Resource tags. */
+  tags?: NetworkTapsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The NetworkTap Properties */
+  properties: NetworkTapPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkTapsCreateRequestIdentity;
+}
+export const NetworkTapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    networkTapName: S.String.pipe(T.Label()),
+    tags: S.optional(NetworkTapsCreateRequestTagsMap),
+    location: S.String,
+    properties: NetworkTapPropertiesInput,
+    identity: S.optional(NetworkTapsCreateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "NetworkTapsCreateRequest",
+}) as any as S.Schema<NetworkTapsCreateRequest>;
+
+/** Resource tags. */
+export type NetworkTapsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkTapsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkTapsCreateResponseTagsMap>;
+
+/** Associated Network Fabric Resource IDs */
+export type NetworkTapPropertiesNetworkFabricIdsList = ReadonlyArray<string>;
+export const NetworkTapPropertiesNetworkFabricIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NetworkTapPropertiesNetworkFabricIdsList>;
+
+/** List of destinations to send the filter traffic. */
+export type NetworkTapPropertiesDestinationsList =
+  ReadonlyArray<DestinationProperties>;
 export const NetworkTapPropertiesDestinationsList = /*@__PURE__*/ S.Array(
   DestinationProperties,
 ) as any as S.Schema<NetworkTapPropertiesDestinationsList>;
 
 /** Polling type. */
-export type NetworkTapPropertiesPollingType = "Pull" | "Push" | (string & {});
+export type NetworkTapPropertiesPollingType = "Pull" | "Push";
 export const NetworkTapPropertiesPollingType = /*@__PURE__*/ S.String;
 
 /** Network Tap Properties defines the properties of the resource. */
@@ -18521,7 +23208,7 @@ export const NetworkTap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkTap" }) as any as S.Schema<NetworkTap>;
 
 /** The NetworkTap items on this page */
-export type NetworkTapsListResultValueList = NetworkTap[];
+export type NetworkTapsListResultValueList = ReadonlyArray<NetworkTap>;
 export const NetworkTapsListResultValueList = /*@__PURE__*/ S.Array(
   NetworkTap,
 ) as any as S.Schema<NetworkTapsListResultValueList>;
@@ -18589,7 +23276,7 @@ export const NetworkTapsResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NetworkTapResyncResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -18637,20 +23324,21 @@ export const NetworkTapResyncResponseOperationsItem = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsList =
-  NetworkTapResyncResponseOperationsItem[];
+  ReadonlyArray<NetworkTapResyncResponseOperationsItem>;
 export const NetworkTapResyncResponseOperationsList = /*@__PURE__*/ S.Array(
   NetworkTapResyncResponseOperationsItem,
 ) as any as S.Schema<NetworkTapResyncResponseOperationsList>;
 
 /** The error details. */
-export type NetworkTapResyncResponseErrorDetailsList = ErrorDetail[];
+export type NetworkTapResyncResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const NetworkTapResyncResponseErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<NetworkTapResyncResponseErrorDetailsList>;
 
 /** The error additional info. */
 export type NetworkTapResyncResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NetworkTapResyncResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -18718,6 +23406,96 @@ export const NetworkTapResyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkTapResyncResponse",
 }) as any as S.Schema<NetworkTapResyncResponse>;
 
+/** Resource tags. */
+export type NetworkTapsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkTapsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkTapsUpdateRequestTagsMap>;
+
+/** Polling type. */
+export type PollingType = "Pull" | "Push";
+export const PollingType = /*@__PURE__*/ S.String;
+
+/** List of Neighbor Group IDs. */
+export type IsolationDomainPatchPropertiesNeighborGroupIdsList =
+  ReadonlyArray<string>;
+export const IsolationDomainPatchPropertiesNeighborGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IsolationDomainPatchPropertiesNeighborGroupIdsList>;
+
+/** Isolation Domain Properties. */
+export interface IsolationDomainPatchProperties {
+  /** Type of encapsulation. */
+  encapsulation?: Encapsulation;
+  /** List of Neighbor Group IDs. */
+  neighborGroupIds?: IsolationDomainPatchPropertiesNeighborGroupIdsList;
+}
+export const IsolationDomainPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encapsulation: S.optional(Encapsulation),
+    neighborGroupIds: S.optional(
+      IsolationDomainPatchPropertiesNeighborGroupIdsList,
+    ),
+  }),
+).annotate({
+  identifier: "IsolationDomainPatchProperties",
+}) as any as S.Schema<IsolationDomainPatchProperties>;
+
+/** The network tap destination properties. */
+export interface DestinationPatchProperties {
+  /** Destination name. */
+  name?: string;
+  /** Type of destination. Input can be IsolationDomain or Direct. */
+  destinationType?: DestinationType;
+  /** The destination Id. ARM Resource ID of either NNI or Internal Networks. */
+  destinationId?: string;
+  /** Isolation Domain Properties. */
+  isolationDomainProperties?: IsolationDomainPatchProperties;
+  /** ARM Resource ID of destination Tap Rule that contains match configurations. */
+  destinationTapRuleId?: string;
+}
+export const DestinationPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    destinationType: S.optional(DestinationType),
+    destinationId: S.optional(S.String),
+    isolationDomainProperties: S.optional(IsolationDomainPatchProperties),
+    destinationTapRuleId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationPatchProperties",
+}) as any as S.Schema<DestinationPatchProperties>;
+
+/** List of destination properties to send the filter traffic. */
+export type NetworkTapPatchPropertiesDestinationsList =
+  ReadonlyArray<DestinationPatchProperties>;
+export const NetworkTapPatchPropertiesDestinationsList = /*@__PURE__*/ S.Array(
+  DestinationPatchProperties,
+) as any as S.Schema<NetworkTapPatchPropertiesDestinationsList>;
+
+/** The Network Tap resource patch definition. */
+export interface NetworkTapPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Polling type. */
+  pollingType?: PollingType;
+  /** List of destination properties to send the filter traffic. */
+  destinations?: NetworkTapPatchPropertiesDestinationsList;
+}
+export const NetworkTapPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    pollingType: S.optional(PollingType),
+    destinations: S.optional(NetworkTapPatchPropertiesDestinationsList),
+  }),
+).annotate({
+  identifier: "NetworkTapPatchProperties",
+}) as any as S.Schema<NetworkTapPatchProperties>;
+
 export interface NetworkTapsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -18725,14 +23503,21 @@ export interface NetworkTapsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Tap. */
   networkTapName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkTapsUpdateRequestTagsMap;
+  /** NetworkTap resource patch properties. */
+  properties?: NetworkTapPatchProperties;
+  /** The managed service identities assigned to this resource. */
+  identity?: ManagedServiceIdentityPatchInput;
 }
 export const NetworkTapsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkTapName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkTapsUpdateRequestTagsMap),
+    properties: S.optional(NetworkTapPatchProperties),
+    identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -18807,6 +23592,14 @@ export const NetworkTapsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkTapsUpdateResponse",
 }) as any as S.Schema<NetworkTapsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkTapsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkTapsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkTapsUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkTapsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -18814,7 +23607,10 @@ export interface NetworkTapsUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Network Tap. */
   networkTapName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkTapsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkTapsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18822,7 +23618,10 @@ export const NetworkTapsUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkTapName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkTapsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -18835,55 +23634,20 @@ export const NetworkTapsUpdateAdministrativeStateRequest =
     identifier: "NetworkTapsUpdateAdministrativeStateRequest",
   }) as any as S.Schema<NetworkTapsUpdateAdministrativeStateRequest>;
 
-export interface NetworkToNetworkInterconnectsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Network Fabric. */
-  networkFabricName: string;
-  /** Name of the Network to Network Interconnect. */
-  networkToNetworkInterconnectName: string;
-  body: unknown;
-}
-export const NetworkToNetworkInterconnectsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      networkFabricName: S.String.pipe(T.Label()),
-      networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
-        code: 200,
-        apiVersion: "2025-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "NetworkToNetworkInterconnectsCreateRequest",
-  }) as any as S.Schema<NetworkToNetworkInterconnectsCreateRequest>;
-
 /** Type of NNI used. Example: CE | NPB */
-export type NetworkToNetworkInterconnectPropertiesNniType =
-  | "CE"
-  | "NPB"
-  | (string & {});
-export const NetworkToNetworkInterconnectPropertiesNniType =
+export type NetworkToNetworkInterconnectPropertiesInputNniType = "CE" | "NPB";
+export const NetworkToNetworkInterconnectPropertiesInputNniType =
   /*@__PURE__*/ S.String;
 
 /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
-export type NetworkToNetworkInterconnectPropertiesIsManagementType =
+export type NetworkToNetworkInterconnectPropertiesInputIsManagementType =
   | "True"
-  | "False"
-  | (string & {});
-export const NetworkToNetworkInterconnectPropertiesIsManagementType =
+  | "False";
+export const NetworkToNetworkInterconnectPropertiesInputIsManagementType =
   /*@__PURE__*/ S.String;
 
 /** List of network device interfaces resource IDs. */
-export type Layer2ConfigurationInterfacesList = string[];
+export type Layer2ConfigurationInterfacesList = ReadonlyArray<string>;
 export const Layer2ConfigurationInterfacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Layer2ConfigurationInterfacesList>;
@@ -18905,17 +23669,15 @@ export const Layer2Configuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Layer2Configuration>;
 
 /** Provider Edge (PE) Loopback IP Address. */
-export type OptionBLayer3ConfigurationPeLoopbackIpAddressList = string[];
-export const OptionBLayer3ConfigurationPeLoopbackIpAddressList =
+export type OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
+  ReadonlyArray<string>;
+export const OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<OptionBLayer3ConfigurationPeLoopbackIpAddressList>;
+  ) as any as S.Schema<OptionBLayer3ConfigurationInputPeLoopbackIpAddressList>;
 
 /** BGP Monitoring Protocol (BMP) Configuration State. */
-export type NniBmpPropertiesConfigurationState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type NniBmpPropertiesConfigurationState = "Enabled" | "Disabled";
 export const NniBmpPropertiesConfigurationState = /*@__PURE__*/ S.String;
 
 /** BGP Monitoring Protocol (BMP) properties. */
@@ -18945,8 +23707,299 @@ export const OptionBLayer3PrefixLimitProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptionBLayer3PrefixLimitProperties>;
 
 /** OptionB Layer3 prefix limit configuration. */
+export type OptionBLayer3ConfigurationInputPrefixLimitsList =
+  ReadonlyArray<OptionBLayer3PrefixLimitProperties>;
+export const OptionBLayer3ConfigurationInputPrefixLimitsList =
+  /*@__PURE__*/ S.Array(
+    OptionBLayer3PrefixLimitProperties,
+  ) as any as S.Schema<OptionBLayer3ConfigurationInputPrefixLimitsList>;
+
+/** OptionB Layer3 Configuration properties. */
+export interface OptionBLayer3ConfigurationInput {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** ASN of PE devices for CE/PE connectivity.Example : 28 */
+  peerASN: number;
+  /** VLAN for CE/PE Layer 3 connectivity.Example : 501 */
+  vlanId: number;
+  /** Provider Edge (PE) Loopback IP Address. */
+  peLoopbackIpAddress?: OptionBLayer3ConfigurationInputPeLoopbackIpAddressList;
+  /** BGP Monitoring Protocol (BMP) Configuration. */
+  bmpConfiguration?: NniBmpProperties;
+  /** OptionB Layer3 prefix limit configuration. */
+  prefixLimits?: OptionBLayer3ConfigurationInputPrefixLimitsList;
+}
+export const OptionBLayer3ConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryIpv4Prefix: S.optional(S.String),
+    primaryIpv6Prefix: S.optional(S.String),
+    secondaryIpv4Prefix: S.optional(S.String),
+    secondaryIpv6Prefix: S.optional(S.String),
+    peerASN: S.Number,
+    vlanId: S.Number,
+    peLoopbackIpAddress: S.optional(
+      OptionBLayer3ConfigurationInputPeLoopbackIpAddressList,
+    ),
+    bmpConfiguration: S.optional(NniBmpProperties),
+    prefixLimits: S.optional(OptionBLayer3ConfigurationInputPrefixLimitsList),
+  }),
+).annotate({
+  identifier: "OptionBLayer3ConfigurationInput",
+}) as any as S.Schema<OptionBLayer3ConfigurationInput>;
+
+/** List of IPv4 Routes. */
+export type NpbStaticRouteConfigurationInputIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const NpbStaticRouteConfigurationInputIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<NpbStaticRouteConfigurationInputIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type NpbStaticRouteConfigurationInputIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const NpbStaticRouteConfigurationInputIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<NpbStaticRouteConfigurationInputIpv6RoutesList>;
+
+/** NPB Static Route Configuration properties. */
+export interface NpbStaticRouteConfigurationInput {
+  /** BFD Configuration properties. */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: NpbStaticRouteConfigurationInputIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: NpbStaticRouteConfigurationInputIpv6RoutesList;
+}
+export const NpbStaticRouteConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdConfigurationInput),
+    ipv4Routes: S.optional(NpbStaticRouteConfigurationInputIpv4RoutesList),
+    ipv6Routes: S.optional(NpbStaticRouteConfigurationInputIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "NpbStaticRouteConfigurationInput",
+}) as any as S.Schema<NpbStaticRouteConfigurationInput>;
+
+/** List of IPv4 Routes. */
+export type NniStaticRouteConfigurationInputIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const NniStaticRouteConfigurationInputIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<NniStaticRouteConfigurationInputIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type NniStaticRouteConfigurationInputIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const NniStaticRouteConfigurationInputIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<NniStaticRouteConfigurationInputIpv6RoutesList>;
+
+/** Static Route Configuration properties for NNI. */
+export interface NniStaticRouteConfigurationInput {
+  /** BFD configuration properties */
+  bfdConfiguration?: BfdConfigurationInput;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: NniStaticRouteConfigurationInputIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: NniStaticRouteConfigurationInputIpv6RoutesList;
+}
+export const NniStaticRouteConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdConfigurationInput),
+    ipv4Routes: S.optional(NniStaticRouteConfigurationInputIpv4RoutesList),
+    ipv6Routes: S.optional(NniStaticRouteConfigurationInputIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "NniStaticRouteConfigurationInput",
+}) as any as S.Schema<NniStaticRouteConfigurationInput>;
+
+/** Import Route Policy Configuration. */
+export interface ImportRoutePolicyInformation {
+  /** Import IPv4 Route Policy Id. */
+  importIpv4RoutePolicyId?: string;
+  /** Import IPv6 Route Policy Id. */
+  importIpv6RoutePolicyId?: string;
+}
+export const ImportRoutePolicyInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importIpv4RoutePolicyId: S.optional(S.String),
+    importIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportRoutePolicyInformation",
+}) as any as S.Schema<ImportRoutePolicyInformation>;
+
+/** Export Route Policy Configuration. */
+export interface ExportRoutePolicyInformation {
+  /** Export IPv4 Route Policy Id. */
+  exportIpv4RoutePolicyId?: string;
+  /** Export IPv6 Route Policy Id. */
+  exportIpv6RoutePolicyId?: string;
+}
+export const ExportRoutePolicyInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportIpv4RoutePolicyId: S.optional(S.String),
+    exportIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportRoutePolicyInformation",
+}) as any as S.Schema<ExportRoutePolicyInformation>;
+
+/** Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state. */
+export type MicroBfdState = "Enabled" | "Disabled";
+export const MicroBfdState = /*@__PURE__*/ S.String;
+
+/** List of IPv4 Routes. */
+export type ConditionalDefaultRoutePropertiesIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const ConditionalDefaultRoutePropertiesIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<ConditionalDefaultRoutePropertiesIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type ConditionalDefaultRoutePropertiesIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
+export const ConditionalDefaultRoutePropertiesIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRouteProperties,
+  ) as any as S.Schema<ConditionalDefaultRoutePropertiesIpv6RoutesList>;
+
+/** Conditional Default Route Configuration properties. */
+export interface ConditionalDefaultRouteProperties {
+  /** List of IPv4 Routes. */
+  ipv4Routes?: ConditionalDefaultRoutePropertiesIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: ConditionalDefaultRoutePropertiesIpv6RoutesList;
+}
+export const ConditionalDefaultRouteProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipv4Routes: S.optional(ConditionalDefaultRoutePropertiesIpv4RoutesList),
+    ipv6Routes: S.optional(ConditionalDefaultRoutePropertiesIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "ConditionalDefaultRouteProperties",
+}) as any as S.Schema<ConditionalDefaultRouteProperties>;
+
+/** Configuration used to setup CE-PE connectivity. */
+export interface NetworkToNetworkInterconnectPropertiesInput {
+  /** Type of NNI used. Example: CE | NPB */
+  nniType?: NetworkToNetworkInterconnectPropertiesInputNniType;
+  /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
+  isManagementType?: NetworkToNetworkInterconnectPropertiesInputIsManagementType;
+  /** Based on this option layer3 parameters are mandatory. Example: True/False */
+  useOptionB: BooleanEnumProperty;
+  /** Common properties for Layer2 Configuration. */
+  layer2Configuration?: Layer2Configuration;
+  /** Common properties for Layer3Configuration. */
+  optionBLayer3Configuration?: OptionBLayer3ConfigurationInput;
+  /** NPB Static Route Configuration properties. */
+  npbStaticRouteConfiguration?: NpbStaticRouteConfigurationInput;
+  /** Static Route Configuration. */
+  staticRouteConfiguration?: NniStaticRouteConfigurationInput;
+  /** Import Route Policy information. */
+  importRoutePolicy?: ImportRoutePolicyInformation;
+  /** Export Route Policy information */
+  exportRoutePolicy?: ExportRoutePolicyInformation;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state. */
+  microBfdState?: MicroBfdState;
+  /** Conditional Default Route Configuration properties. */
+  conditionalDefaultRouteConfiguration?: ConditionalDefaultRouteProperties;
+}
+export const NetworkToNetworkInterconnectPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nniType: S.optional(NetworkToNetworkInterconnectPropertiesInputNniType),
+      isManagementType: S.optional(
+        NetworkToNetworkInterconnectPropertiesInputIsManagementType,
+      ),
+      useOptionB: BooleanEnumProperty,
+      layer2Configuration: S.optional(Layer2Configuration),
+      optionBLayer3Configuration: S.optional(OptionBLayer3ConfigurationInput),
+      npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfigurationInput),
+      staticRouteConfiguration: S.optional(NniStaticRouteConfigurationInput),
+      importRoutePolicy: S.optional(ImportRoutePolicyInformation),
+      exportRoutePolicy: S.optional(ExportRoutePolicyInformation),
+      egressAclId: S.optional(S.String),
+      ingressAclId: S.optional(S.String),
+      microBfdState: S.optional(MicroBfdState),
+      conditionalDefaultRouteConfiguration: S.optional(
+        ConditionalDefaultRouteProperties,
+      ),
+    }),
+  ).annotate({
+    identifier: "NetworkToNetworkInterconnectPropertiesInput",
+  }) as any as S.Schema<NetworkToNetworkInterconnectPropertiesInput>;
+
+export interface NetworkToNetworkInterconnectsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Network Fabric. */
+  networkFabricName: string;
+  /** Name of the Network to Network Interconnect. */
+  networkToNetworkInterconnectName: string;
+  /** The NetworkToNetworkInterconnect Properties */
+  properties: NetworkToNetworkInterconnectPropertiesInput;
+}
+export const NetworkToNetworkInterconnectsCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      networkFabricName: S.String.pipe(T.Label()),
+      networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+      properties: NetworkToNetworkInterconnectPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
+        code: 200,
+        apiVersion: "2025-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "NetworkToNetworkInterconnectsCreateRequest",
+  }) as any as S.Schema<NetworkToNetworkInterconnectsCreateRequest>;
+
+/** Type of NNI used. Example: CE | NPB */
+export type NetworkToNetworkInterconnectPropertiesNniType = "CE" | "NPB";
+export const NetworkToNetworkInterconnectPropertiesNniType =
+  /*@__PURE__*/ S.String;
+
+/** Configuration to use NNI for Infrastructure Management. Example: True/False. */
+export type NetworkToNetworkInterconnectPropertiesIsManagementType =
+  | "True"
+  | "False";
+export const NetworkToNetworkInterconnectPropertiesIsManagementType =
+  /*@__PURE__*/ S.String;
+
+/** Provider Edge (PE) Loopback IP Address. */
+export type OptionBLayer3ConfigurationPeLoopbackIpAddressList =
+  ReadonlyArray<string>;
+export const OptionBLayer3ConfigurationPeLoopbackIpAddressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OptionBLayer3ConfigurationPeLoopbackIpAddressList>;
+
+/** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPrefixLimitsList =
-  OptionBLayer3PrefixLimitProperties[];
+  ReadonlyArray<OptionBLayer3PrefixLimitProperties>;
 export const OptionBLayer3ConfigurationPrefixLimitsList = /*@__PURE__*/ S.Array(
   OptionBLayer3PrefixLimitProperties,
 ) as any as S.Schema<OptionBLayer3ConfigurationPrefixLimitsList>;
@@ -18994,13 +24047,15 @@ export const OptionBLayer3Configuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptionBLayer3Configuration>;
 
 /** List of IPv4 Routes. */
-export type NpbStaticRouteConfigurationIpv4RoutesList = StaticRouteProperties[];
+export type NpbStaticRouteConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NpbStaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
-export type NpbStaticRouteConfigurationIpv6RoutesList = StaticRouteProperties[];
+export type NpbStaticRouteConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const NpbStaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NpbStaticRouteConfigurationIpv6RoutesList>;
@@ -19025,13 +24080,15 @@ export const NpbStaticRouteConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NpbStaticRouteConfiguration>;
 
 /** List of IPv4 Routes. */
-export type NniStaticRouteConfigurationIpv4RoutesList = StaticRouteProperties[];
+export type NniStaticRouteConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const NniStaticRouteConfigurationIpv4RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NniStaticRouteConfigurationIpv4RoutesList>;
 
 /** List of IPv6 Routes. */
-export type NniStaticRouteConfigurationIpv6RoutesList = StaticRouteProperties[];
+export type NniStaticRouteConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRouteProperties>;
 export const NniStaticRouteConfigurationIpv6RoutesList = /*@__PURE__*/ S.Array(
   StaticRouteProperties,
 ) as any as S.Schema<NniStaticRouteConfigurationIpv6RoutesList>;
@@ -19054,74 +24111,6 @@ export const NniStaticRouteConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NniStaticRouteConfiguration",
 }) as any as S.Schema<NniStaticRouteConfiguration>;
-
-/** Import Route Policy Configuration. */
-export interface ImportRoutePolicyInformation {
-  /** Import IPv4 Route Policy Id. */
-  importIpv4RoutePolicyId?: string;
-  /** Import IPv6 Route Policy Id. */
-  importIpv6RoutePolicyId?: string;
-}
-export const ImportRoutePolicyInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    importIpv4RoutePolicyId: S.optional(S.String),
-    importIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportRoutePolicyInformation",
-}) as any as S.Schema<ImportRoutePolicyInformation>;
-
-/** Export Route Policy Configuration. */
-export interface ExportRoutePolicyInformation {
-  /** Export IPv4 Route Policy Id. */
-  exportIpv4RoutePolicyId?: string;
-  /** Export IPv6 Route Policy Id. */
-  exportIpv6RoutePolicyId?: string;
-}
-export const ExportRoutePolicyInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportIpv4RoutePolicyId: S.optional(S.String),
-    exportIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportRoutePolicyInformation",
-}) as any as S.Schema<ExportRoutePolicyInformation>;
-
-/** Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state. */
-export type MicroBfdState = "Enabled" | "Disabled" | (string & {});
-export const MicroBfdState = /*@__PURE__*/ S.String;
-
-/** List of IPv4 Routes. */
-export type ConditionalDefaultRoutePropertiesIpv4RoutesList =
-  StaticRouteProperties[];
-export const ConditionalDefaultRoutePropertiesIpv4RoutesList =
-  /*@__PURE__*/ S.Array(
-    StaticRouteProperties,
-  ) as any as S.Schema<ConditionalDefaultRoutePropertiesIpv4RoutesList>;
-
-/** List of IPv6 Routes. */
-export type ConditionalDefaultRoutePropertiesIpv6RoutesList =
-  StaticRouteProperties[];
-export const ConditionalDefaultRoutePropertiesIpv6RoutesList =
-  /*@__PURE__*/ S.Array(
-    StaticRouteProperties,
-  ) as any as S.Schema<ConditionalDefaultRoutePropertiesIpv6RoutesList>;
-
-/** Conditional Default Route Configuration properties. */
-export interface ConditionalDefaultRouteProperties {
-  /** List of IPv4 Routes. */
-  ipv4Routes?: ConditionalDefaultRoutePropertiesIpv4RoutesList;
-  /** List of IPv6 Routes. */
-  ipv6Routes?: ConditionalDefaultRoutePropertiesIpv6RoutesList;
-}
-export const ConditionalDefaultRouteProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipv4Routes: S.optional(ConditionalDefaultRoutePropertiesIpv4RoutesList),
-    ipv6Routes: S.optional(ConditionalDefaultRoutePropertiesIpv6RoutesList),
-  }),
-).annotate({
-  identifier: "ConditionalDefaultRouteProperties",
-}) as any as S.Schema<ConditionalDefaultRouteProperties>;
 
 /** Configuration used to setup CE-PE connectivity. */
 export interface NetworkToNetworkInterconnectProperties {
@@ -19356,7 +24345,7 @@ export const NetworkToNetworkInterconnect = /*@__PURE__*/ S.suspend(() =>
 
 /** The NetworkToNetworkInterconnect items on this page */
 export type NetworkToNetworkInterconnectsListValueList =
-  NetworkToNetworkInterconnect[];
+  ReadonlyArray<NetworkToNetworkInterconnect>;
 export const NetworkToNetworkInterconnectsListValueList = /*@__PURE__*/ S.Array(
   NetworkToNetworkInterconnect,
 ) as any as S.Schema<NetworkToNetworkInterconnectsListValueList>;
@@ -19377,6 +24366,255 @@ export const NetworkToNetworkInterconnectsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkToNetworkInterconnectsList",
 }) as any as S.Schema<NetworkToNetworkInterconnectsList>;
 
+/** List of network device interfaces resource IDs. */
+export type Layer2ConfigurationPatchInterfacesList = ReadonlyArray<string>;
+export const Layer2ConfigurationPatchInterfacesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<Layer2ConfigurationPatchInterfacesList>;
+
+/** Common properties for Layer2 Configuration. */
+export interface Layer2ConfigurationPatch {
+  /** MTU of the packets between PE & CE. */
+  mtu?: number;
+  /** List of network device interfaces resource IDs. */
+  interfaces?: Layer2ConfigurationPatchInterfacesList;
+}
+export const Layer2ConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mtu: S.optional(S.Number),
+    interfaces: S.optional(Layer2ConfigurationPatchInterfacesList),
+  }),
+).annotate({
+  identifier: "Layer2ConfigurationPatch",
+}) as any as S.Schema<Layer2ConfigurationPatch>;
+
+/** Provider Edge (PE) Loopback IP Address. */
+export type OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList =
+  ReadonlyArray<string>;
+export const OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList>;
+
+/** BGP Monitoring Protocol (BMP) patch properties. */
+export interface NniBmpPatchProperties {
+  /** (BGP Monitoring Protocol (BMP) configuration state. */
+  configurationState?: BmpConfigurationState;
+}
+export const NniBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurationState: S.optional(BmpConfigurationState),
+  }),
+).annotate({
+  identifier: "NniBmpPatchProperties",
+}) as any as S.Schema<NniBmpPatchProperties>;
+
+/** OptionB Layer3 prefix limit patch properties. */
+export interface OptionBLayer3PrefixLimitPatchProperties {
+  /** Maximum number of routes allowed. */
+  maximumRoutes?: number;
+}
+export const OptionBLayer3PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maximumRoutes: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "OptionBLayer3PrefixLimitPatchProperties",
+}) as any as S.Schema<OptionBLayer3PrefixLimitPatchProperties>;
+
+/** OptionB Layer3 prefix limit configuration. */
+export type OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
+  ReadonlyArray<OptionBLayer3PrefixLimitPatchProperties>;
+export const OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
+  /*@__PURE__*/ S.Array(
+    OptionBLayer3PrefixLimitPatchProperties,
+  ) as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList>;
+
+/** Common properties for Layer3Configuration. */
+export interface OptionBLayer3ConfigurationPatchPropertiesInput {
+  /** IPv4 Address Prefix. */
+  primaryIpv4Prefix?: string;
+  /** IPv6 Address Prefix. */
+  primaryIpv6Prefix?: string;
+  /** Secondary IPv4 Address Prefix. */
+  secondaryIpv4Prefix?: string;
+  /** Secondary IPv6 Address Prefix. */
+  secondaryIpv6Prefix?: string;
+  /** ASN of PE devices for CE/PE connectivity.Example : 28 */
+  peerASN?: number;
+  /** VLAN for CE/PE Layer 3 connectivity.Example : 501 */
+  vlanId?: number;
+  /** Provider Edge (PE) Loopback IP Address. */
+  peLoopbackIpAddress?: OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList;
+  /** BGP Monitoring Protocol (BMP) Configuration. */
+  bmpConfiguration?: NniBmpPatchProperties;
+  /** OptionB Layer3 prefix limit configuration. */
+  prefixLimits?: OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList;
+}
+export const OptionBLayer3ConfigurationPatchPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      primaryIpv4Prefix: S.optional(S.String),
+      primaryIpv6Prefix: S.optional(S.String),
+      secondaryIpv4Prefix: S.optional(S.String),
+      secondaryIpv6Prefix: S.optional(S.String),
+      peerASN: S.optional(S.Number),
+      vlanId: S.optional(S.Number),
+      peLoopbackIpAddress: S.optional(
+        OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList,
+      ),
+      bmpConfiguration: S.optional(NniBmpPatchProperties),
+      prefixLimits: S.optional(
+        OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "OptionBLayer3ConfigurationPatchPropertiesInput",
+  }) as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInput>;
+
+/** List of IPv4 Routes. */
+export type NpbStaticRouteConfigurationPatchIpv4RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const NpbStaticRouteConfigurationPatchIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<NpbStaticRouteConfigurationPatchIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type NpbStaticRouteConfigurationPatchIpv6RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const NpbStaticRouteConfigurationPatchIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<NpbStaticRouteConfigurationPatchIpv6RoutesList>;
+
+/** NPB Static Route Configuration properties. */
+export interface NpbStaticRouteConfigurationPatch {
+  /** BFD Configuration properties. */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: NpbStaticRouteConfigurationPatchIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: NpbStaticRouteConfigurationPatchIpv6RoutesList;
+}
+export const NpbStaticRouteConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    ipv4Routes: S.optional(NpbStaticRouteConfigurationPatchIpv4RoutesList),
+    ipv6Routes: S.optional(NpbStaticRouteConfigurationPatchIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "NpbStaticRouteConfigurationPatch",
+}) as any as S.Schema<NpbStaticRouteConfigurationPatch>;
+
+/** List of IPv4 Routes. */
+export type NniStaticRoutePatchConfigurationIpv4RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const NniStaticRoutePatchConfigurationIpv4RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<NniStaticRoutePatchConfigurationIpv4RoutesList>;
+
+/** List of IPv6 Routes. */
+export type NniStaticRoutePatchConfigurationIpv6RoutesList =
+  ReadonlyArray<StaticRoutePatchProperties>;
+export const NniStaticRoutePatchConfigurationIpv6RoutesList =
+  /*@__PURE__*/ S.Array(
+    StaticRoutePatchProperties,
+  ) as any as S.Schema<NniStaticRoutePatchConfigurationIpv6RoutesList>;
+
+/** Static Route Configuration properties for NNI. */
+export interface NniStaticRoutePatchConfiguration {
+  /** Bidirectional Forwarding Detection (BFD) configuration properties */
+  bfdConfiguration?: BfdPatchConfiguration;
+  /** List of IPv4 Routes. */
+  ipv4Routes?: NniStaticRoutePatchConfigurationIpv4RoutesList;
+  /** List of IPv6 Routes. */
+  ipv6Routes?: NniStaticRoutePatchConfigurationIpv6RoutesList;
+}
+export const NniStaticRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    ipv4Routes: S.optional(NniStaticRoutePatchConfigurationIpv4RoutesList),
+    ipv6Routes: S.optional(NniStaticRoutePatchConfigurationIpv6RoutesList),
+  }),
+).annotate({
+  identifier: "NniStaticRoutePatchConfiguration",
+}) as any as S.Schema<NniStaticRoutePatchConfiguration>;
+
+/** Import Route Policy Configuration. */
+export interface ImportRoutePolicyInformationPatch {
+  /** Import IPv4 Route Policy Id. */
+  importIpv4RoutePolicyId?: string;
+  /** Import IPv6 Route Policy Id. */
+  importIpv6RoutePolicyId?: string;
+}
+export const ImportRoutePolicyInformationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    importIpv4RoutePolicyId: S.optional(S.String),
+    importIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportRoutePolicyInformationPatch",
+}) as any as S.Schema<ImportRoutePolicyInformationPatch>;
+
+/** Export Route Policy Configuration. */
+export interface ExportRoutePolicyInformationPatch {
+  /** Export IPv4 Route Policy Id. */
+  exportIpv4RoutePolicyId?: string;
+  /** Export IPv6 Route Policy Id. */
+  exportIpv6RoutePolicyId?: string;
+}
+export const ExportRoutePolicyInformationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportIpv4RoutePolicyId: S.optional(S.String),
+    exportIpv6RoutePolicyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportRoutePolicyInformationPatch",
+}) as any as S.Schema<ExportRoutePolicyInformationPatch>;
+
+/** Network Tap Rule Patch properties. */
+export interface NetworkToNetworkInterconnectPatchPropertiesInput {
+  /** Common properties for Layer2Configuration. */
+  layer2Configuration?: Layer2ConfigurationPatch;
+  /** Common properties for Layer3Configuration. */
+  optionBLayer3Configuration?: OptionBLayer3ConfigurationPatchPropertiesInput;
+  /** NPB Static Route Configuration properties. */
+  npbStaticRouteConfiguration?: NpbStaticRouteConfigurationPatch;
+  /** Static Route Configuration. */
+  staticRouteConfiguration?: NniStaticRoutePatchConfiguration;
+  /** Import Route Policy information. */
+  importRoutePolicy?: ImportRoutePolicyInformationPatch;
+  /** Export Route Policy information */
+  exportRoutePolicy?: ExportRoutePolicyInformationPatch;
+  /** Egress Acl. ARM resource ID of Access Control Lists. */
+  egressAclId?: string;
+  /** Ingress Acl. ARM resource ID of Access Control Lists. */
+  ingressAclId?: string;
+  /** Micro BFD enabled/disabled state. */
+  microBfdState?: MicroBfdState;
+}
+export const NetworkToNetworkInterconnectPatchPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      layer2Configuration: S.optional(Layer2ConfigurationPatch),
+      optionBLayer3Configuration: S.optional(
+        OptionBLayer3ConfigurationPatchPropertiesInput,
+      ),
+      npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfigurationPatch),
+      staticRouteConfiguration: S.optional(NniStaticRoutePatchConfiguration),
+      importRoutePolicy: S.optional(ImportRoutePolicyInformationPatch),
+      exportRoutePolicy: S.optional(ExportRoutePolicyInformationPatch),
+      egressAclId: S.optional(S.String),
+      ingressAclId: S.optional(S.String),
+      microBfdState: S.optional(MicroBfdState),
+    }),
+  ).annotate({
+    identifier: "NetworkToNetworkInterconnectPatchPropertiesInput",
+  }) as any as S.Schema<NetworkToNetworkInterconnectPatchPropertiesInput>;
+
 export interface NetworkToNetworkInterconnectsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19386,7 +24624,8 @@ export interface NetworkToNetworkInterconnectsUpdateRequest {
   networkFabricName: string;
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: NetworkToNetworkInterconnectPatchPropertiesInput;
 }
 export const NetworkToNetworkInterconnectsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19395,7 +24634,7 @@ export const NetworkToNetworkInterconnectsUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
       networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(NetworkToNetworkInterconnectPatchPropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -19433,6 +24672,14 @@ export const NetworkToNetworkInterconnectsUpdateResponse =
     identifier: "NetworkToNetworkInterconnectsUpdateResponse",
   }) as any as S.Schema<NetworkToNetworkInterconnectsUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19442,7 +24689,10 @@ export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest {
   networkFabricName: string;
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19451,7 +24701,10 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
       networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkToNetworkInterconnectsUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -19464,6 +24717,10 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest =
     identifier: "NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest",
   }) as any as S.Schema<NetworkToNetworkInterconnectsUpdateAdministrativeStateRequest>;
 
+/** Route type to be used. */
+export type RouteType = "Static" | "OptionA";
+export const RouteType = /*@__PURE__*/ S.String;
+
 export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19473,7 +24730,10 @@ export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateReques
   networkFabricName: string;
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
-  body: unknown;
+  /** Route Type. Choose either Static or OptionA. */
+  routeType?: RouteType;
+  /** State. Select either enable or disable. */
+  administrativeState?: BfdAdministrativeState;
 }
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19482,7 +24742,8 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
       networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      routeType: S.optional(RouteType),
+      administrativeState: S.optional(BfdAdministrativeState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -19498,7 +24759,7 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateRequest =
 
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const NniUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -19546,7 +24807,7 @@ export const NniUpdateBfdAdministrativeStateResponseOperationsItem =
 
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsList =
-  NniUpdateBfdAdministrativeStateResponseOperationsItem[];
+  ReadonlyArray<NniUpdateBfdAdministrativeStateResponseOperationsItem>;
 export const NniUpdateBfdAdministrativeStateResponseOperationsList =
   /*@__PURE__*/ S.Array(
     NniUpdateBfdAdministrativeStateResponseOperationsItem,
@@ -19554,7 +24815,7 @@ export const NniUpdateBfdAdministrativeStateResponseOperationsList =
 
 /** The error details. */
 export type NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -19562,7 +24823,7 @@ export const NniUpdateBfdAdministrativeStateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type NniUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const NniUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -19597,10 +24858,6 @@ export const NniUpdateBfdAdministrativeStateResponseError =
   ).annotate({
     identifier: "NniUpdateBfdAdministrativeStateResponseError",
   }) as any as S.Schema<NniUpdateBfdAdministrativeStateResponseError>;
-
-/** Route type to be used. */
-export type RouteType = "Static" | "OptionA" | (string & {});
-export const RouteType = /*@__PURE__*/ S.String;
 
 /** NNI Bidirectional Forwarding Detection (BFD) Update Administrative State response. */
 export interface NniUpdateBfdAdministrativeStateResponseProperties {
@@ -19662,6 +24919,14 @@ export const NniUpdateBfdAdministrativeStateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NniUpdateBfdAdministrativeStateResponse",
 }) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
+
 export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19671,7 +24936,10 @@ export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrat
   networkFabricName: string;
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19680,7 +24948,10 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
       resourceGroupName: S.String.pipe(T.Label()),
       networkFabricName: S.String.pipe(T.Label()),
       networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -19731,11 +25002,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -19762,7 +25033,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -19824,65 +25095,37 @@ export const RoutePoliciesCommitConfigurationResponse = /*@__PURE__*/ S.suspend(
   identifier: "RoutePoliciesCommitConfigurationResponse",
 }) as any as S.Schema<RoutePoliciesCommitConfigurationResponse>;
 
-export interface RoutePoliciesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Route Policy. */
-  routePolicyName: string;
-  body: unknown;
-}
-export const RoutePoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    routePolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
-      code: 200,
-      apiVersion: "2025-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "RoutePoliciesCreateRequest",
-}) as any as S.Schema<RoutePoliciesCreateRequest>;
-
 /** Resource tags. */
-export type RoutePoliciesCreateResponseTagsMap = {
+export type RoutePoliciesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const RoutePoliciesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const RoutePoliciesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<RoutePoliciesCreateResponseTagsMap>;
+) as any as S.Schema<RoutePoliciesCreateRequestTagsMap>;
 
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
-export type RoutePolicyPropertiesDefaultAction =
-  | "Permit"
-  | "Deny"
-  | (string & {});
-export const RoutePolicyPropertiesDefaultAction = /*@__PURE__*/ S.String;
+export type RoutePolicyPropertiesInputDefaultAction = "Permit" | "Deny";
+export const RoutePolicyPropertiesInputDefaultAction = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
-export type StatementConditionPropertiesIpCommunityIdsList = string[];
+export type StatementConditionPropertiesIpCommunityIdsList =
+  ReadonlyArray<string>;
 export const StatementConditionPropertiesIpCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<StatementConditionPropertiesIpCommunityIdsList>;
 
 /** List of IP Extended Community resource IDs. */
-export type StatementConditionPropertiesIpExtendedCommunityIdsList = string[];
+export type StatementConditionPropertiesIpExtendedCommunityIdsList =
+  ReadonlyArray<string>;
 export const StatementConditionPropertiesIpExtendedCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<StatementConditionPropertiesIpExtendedCommunityIdsList>;
 
 /** Type of the condition used. */
-export type StatementConditionPropertiesType = "Or" | "And" | (string & {});
+export type StatementConditionPropertiesType = "Or" | "And";
 export const StatementConditionPropertiesType = /*@__PURE__*/ S.String;
 
 /** Route policy statement condition properties. */
@@ -19910,15 +25153,11 @@ export const StatementConditionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatementConditionProperties>;
 
 /** Action type. Example: Permit | Deny | Continue. */
-export type RoutePolicyActionType =
-  | "Permit"
-  | "Deny"
-  | "Continue"
-  | (string & {});
+export type RoutePolicyActionType = "Permit" | "Deny" | "Continue";
 export const RoutePolicyActionType = /*@__PURE__*/ S.String;
 
 /** List of IP Community resource IDs. */
-export type IpCommunityIdListIpCommunityIdsList = string[];
+export type IpCommunityIdListIpCommunityIdsList = ReadonlyArray<string>;
 export const IpCommunityIdListIpCommunityIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpCommunityIdListIpCommunityIdsList>;
@@ -19956,7 +25195,8 @@ export const ActionIpCommunityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionIpCommunityProperties>;
 
 /** List of IP Extended Community resource IDs. */
-export type IpExtendedCommunityIdListIpExtendedCommunityIdsList = string[];
+export type IpExtendedCommunityIdListIpExtendedCommunityIdsList =
+  ReadonlyArray<string>;
 export const IpExtendedCommunityIdListIpExtendedCommunityIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20043,17 +25283,98 @@ export const RoutePolicyStatementProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutePolicyStatementProperties>;
 
 /** Route Policy statements. */
+export type RoutePolicyPropertiesInputStatementsList =
+  ReadonlyArray<RoutePolicyStatementProperties>;
+export const RoutePolicyPropertiesInputStatementsList = /*@__PURE__*/ S.Array(
+  RoutePolicyStatementProperties,
+) as any as S.Schema<RoutePolicyPropertiesInputStatementsList>;
+
+/** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
+export type RoutePolicyPropertiesInputAddressFamilyType = "IPv4" | "IPv6";
+export const RoutePolicyPropertiesInputAddressFamilyType =
+  /*@__PURE__*/ S.String;
+
+/** RoutePolicyProperties defines the resource properties. */
+export interface RoutePolicyPropertiesInput {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+  defaultAction?: RoutePolicyPropertiesInputDefaultAction;
+  /** Route Policy statements. */
+  statements: RoutePolicyPropertiesInputStatementsList;
+  /** Arm Resource ID of Network Fabric. */
+  networkFabricId: string;
+  /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
+  addressFamilyType?: RoutePolicyPropertiesInputAddressFamilyType;
+}
+export const RoutePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    defaultAction: S.optional(RoutePolicyPropertiesInputDefaultAction),
+    statements: RoutePolicyPropertiesInputStatementsList,
+    networkFabricId: S.String,
+    addressFamilyType: S.optional(RoutePolicyPropertiesInputAddressFamilyType),
+  }),
+).annotate({
+  identifier: "RoutePolicyPropertiesInput",
+}) as any as S.Schema<RoutePolicyPropertiesInput>;
+
+export interface RoutePoliciesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Route Policy. */
+  routePolicyName: string;
+  /** Resource tags. */
+  tags?: RoutePoliciesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The RoutePolicy properties */
+  properties: RoutePolicyPropertiesInput;
+}
+export const RoutePoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    routePolicyName: S.String.pipe(T.Label()),
+    tags: S.optional(RoutePoliciesCreateRequestTagsMap),
+    location: S.String,
+    properties: RoutePolicyPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
+      code: 200,
+      apiVersion: "2025-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "RoutePoliciesCreateRequest",
+}) as any as S.Schema<RoutePoliciesCreateRequest>;
+
+/** Resource tags. */
+export type RoutePoliciesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RoutePoliciesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoutePoliciesCreateResponseTagsMap>;
+
+/** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+export type RoutePolicyPropertiesDefaultAction = "Permit" | "Deny";
+export const RoutePolicyPropertiesDefaultAction = /*@__PURE__*/ S.String;
+
+/** Route Policy statements. */
 export type RoutePolicyPropertiesStatementsList =
-  RoutePolicyStatementProperties[];
+  ReadonlyArray<RoutePolicyStatementProperties>;
 export const RoutePolicyPropertiesStatementsList = /*@__PURE__*/ S.Array(
   RoutePolicyStatementProperties,
 ) as any as S.Schema<RoutePolicyPropertiesStatementsList>;
 
 /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
-export type RoutePolicyPropertiesAddressFamilyType =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
+export type RoutePolicyPropertiesAddressFamilyType = "IPv4" | "IPv6";
 export const RoutePolicyPropertiesAddressFamilyType = /*@__PURE__*/ S.String;
 
 /** RoutePolicyProperties defines the resource properties. */
@@ -20279,7 +25600,7 @@ export const RoutePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutePolicy" }) as any as S.Schema<RoutePolicy>;
 
 /** The RoutePolicy items on this page */
-export type RoutePoliciesListResultValueList = RoutePolicy[];
+export type RoutePoliciesListResultValueList = ReadonlyArray<RoutePolicy>;
 export const RoutePoliciesListResultValueList = /*@__PURE__*/ S.Array(
   RoutePolicy,
 ) as any as S.Schema<RoutePoliciesListResultValueList>;
@@ -20320,6 +25641,170 @@ export const RoutePoliciesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "RoutePoliciesListBySubscriptionRequest",
 }) as any as S.Schema<RoutePoliciesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type RoutePoliciesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const RoutePoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<RoutePoliciesUpdateRequestTagsMap>;
+
+/** List of IP Community resource IDs. */
+export type StatementConditionPatchPropertiesIpCommunityIdsList =
+  ReadonlyArray<string>;
+export const StatementConditionPatchPropertiesIpCommunityIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<StatementConditionPatchPropertiesIpCommunityIdsList>;
+
+/** List of IP Extended Community resource IDs. */
+export type StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
+  ReadonlyArray<string>;
+export const StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<StatementConditionPatchPropertiesIpExtendedCommunityIdsList>;
+
+/** Type of the condition used. */
+export type RoutePolicyConditionType = "Or" | "And";
+export const RoutePolicyConditionType = /*@__PURE__*/ S.String;
+
+/** Route policy statement condition properties. */
+export interface StatementConditionPatchProperties {
+  /** List of IP Community resource IDs. */
+  ipCommunityIds?: StatementConditionPatchPropertiesIpCommunityIdsList;
+  /** List of IP Extended Community resource IDs. */
+  ipExtendedCommunityIds?: StatementConditionPatchPropertiesIpExtendedCommunityIdsList;
+  /** Type of the condition used. */
+  type?: RoutePolicyConditionType;
+  /** Arm Resource Id of IpPrefix. */
+  ipPrefixId?: string;
+}
+export const StatementConditionPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipCommunityIds: S.optional(
+      StatementConditionPatchPropertiesIpCommunityIdsList,
+    ),
+    ipExtendedCommunityIds: S.optional(
+      StatementConditionPatchPropertiesIpExtendedCommunityIdsList,
+    ),
+    type: S.optional(RoutePolicyConditionType),
+    ipPrefixId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StatementConditionPatchProperties",
+}) as any as S.Schema<StatementConditionPatchProperties>;
+
+/** IP Community Properties. */
+export interface ActionIpCommunityPatchProperties {
+  /** List of IP Community IDs. */
+  add?: IpCommunityIdList;
+  /** List of IP Community IDs. */
+  delete?: IpCommunityIdList;
+  /** List of IP Community IDs. */
+  set?: IpCommunityIdList;
+}
+export const ActionIpCommunityPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    add: S.optional(IpCommunityIdList),
+    delete: S.optional(IpCommunityIdList),
+    set: S.optional(IpCommunityIdList),
+  }),
+).annotate({
+  identifier: "ActionIpCommunityPatchProperties",
+}) as any as S.Schema<ActionIpCommunityPatchProperties>;
+
+/** IP Extended Community Properties. */
+export interface ActionIpExtendedCommunityPatchProperties {
+  /** List of IP Extended Community IDs. */
+  add?: IpExtendedCommunityIdList;
+  /** List of IP Extended Community IDs. */
+  delete?: IpExtendedCommunityIdList;
+  /** List of IP Extended Community IDs. */
+  set?: IpExtendedCommunityIdList;
+}
+export const ActionIpExtendedCommunityPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      add: S.optional(IpExtendedCommunityIdList),
+      delete: S.optional(IpExtendedCommunityIdList),
+      set: S.optional(IpExtendedCommunityIdList),
+    }),
+).annotate({
+  identifier: "ActionIpExtendedCommunityPatchProperties",
+}) as any as S.Schema<ActionIpExtendedCommunityPatchProperties>;
+
+/** Route policy action properties */
+export interface StatementActionPatchProperties {
+  /** Local Preference of the route policy. */
+  localPreference?: number;
+  /** Action type. Example: Permit | Deny | Continue. */
+  actionType: RoutePolicyActionType;
+  /** IP Community Properties. */
+  ipCommunityProperties?: ActionIpCommunityPatchProperties;
+  /** IP Extended Community Properties. */
+  ipExtendedCommunityProperties?: ActionIpExtendedCommunityPatchProperties;
+}
+export const StatementActionPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    localPreference: S.optional(S.Number),
+    actionType: RoutePolicyActionType,
+    ipCommunityProperties: S.optional(ActionIpCommunityPatchProperties),
+    ipExtendedCommunityProperties: S.optional(
+      ActionIpExtendedCommunityPatchProperties,
+    ),
+  }),
+).annotate({
+  identifier: "StatementActionPatchProperties",
+}) as any as S.Schema<StatementActionPatchProperties>;
+
+/** Route Policy Statement properties. */
+export interface RoutePolicyStatementPatchProperties {
+  /** Switch configuration description. */
+  annotation?: string;
+  /** Sequence to insert to/delete from existing route. */
+  sequenceNumber: number;
+  /** Route policy condition properties. */
+  condition: StatementConditionPatchProperties;
+  /** Route policy action properties. */
+  action: StatementActionPatchProperties;
+}
+export const RoutePolicyStatementPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotation: S.optional(S.String),
+    sequenceNumber: S.Number,
+    condition: StatementConditionPatchProperties,
+    action: StatementActionPatchProperties,
+  }),
+).annotate({
+  identifier: "RoutePolicyStatementPatchProperties",
+}) as any as S.Schema<RoutePolicyStatementPatchProperties>;
+
+/** Route Policy statements. */
+export type RoutePolicyPatchablePropertiesStatementsList =
+  ReadonlyArray<RoutePolicyStatementPatchProperties>;
+export const RoutePolicyPatchablePropertiesStatementsList =
+  /*@__PURE__*/ S.Array(
+    RoutePolicyStatementPatchProperties,
+  ) as any as S.Schema<RoutePolicyPatchablePropertiesStatementsList>;
+
+/** Route Policy patchable properties. */
+export interface RoutePolicyPatchableProperties {
+  /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
+  defaultAction?: CommunityActionTypes;
+  /** Route Policy statements. */
+  statements?: RoutePolicyPatchablePropertiesStatementsList;
+}
+export const RoutePolicyPatchableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultAction: S.optional(CommunityActionTypes),
+    statements: S.optional(RoutePolicyPatchablePropertiesStatementsList),
+  }),
+).annotate({
+  identifier: "RoutePolicyPatchableProperties",
+}) as any as S.Schema<RoutePolicyPatchableProperties>;
+
 export interface RoutePoliciesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20327,14 +25812,18 @@ export interface RoutePoliciesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Route Policy. */
   routePolicyName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: RoutePoliciesUpdateRequestTagsMap;
+  /** The RoutePolicy patchable properties. */
+  properties?: RoutePolicyPatchableProperties;
 }
 export const RoutePoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     routePolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(RoutePoliciesUpdateRequestTagsMap),
+    properties: S.optional(RoutePolicyPatchableProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -20386,6 +25875,14 @@ export const RoutePoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutePoliciesUpdateResponse",
 }) as any as S.Schema<RoutePoliciesUpdateResponse>;
 
+/** Network Fabrics or Network Rack resource Id. */
+export type RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList>;
+
 export interface RoutePoliciesUpdateAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20393,7 +25890,10 @@ export interface RoutePoliciesUpdateAdministrativeStateRequest {
   resourceGroupName: string;
   /** Name of the Route Policy. */
   routePolicyName: string;
-  body: unknown;
+  /** Network Fabrics or Network Rack resource Id. */
+  resourceIds?: RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList;
+  /** Administrative state. */
+  state?: EnableDisableState;
 }
 export const RoutePoliciesUpdateAdministrativeStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20401,7 +25901,10 @@ export const RoutePoliciesUpdateAdministrativeStateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       routePolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: S.optional(
+        RoutePoliciesUpdateAdministrativeStateRequestResourceIdsList,
+      ),
+      state: S.optional(EnableDisableState),
     }).pipe(
       T.Http({
         method: "POST",

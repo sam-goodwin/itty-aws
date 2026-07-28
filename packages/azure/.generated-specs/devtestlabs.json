@@ -63,11 +63,16 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "currentResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource Id of the virtual machine on which the schedule operates"
+          }
+        },
+        "targetResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource Id of the virtual machine that the schedule should be retargeted to"
           }
         }
       },
@@ -603,16 +608,27 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#GlobalSchedulesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#GlobalSchedulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#GlobalSchedulesCreateOrUpdate": {
@@ -724,16 +740,116 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#SchedulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#GlobalSchedulesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#GlobalSchedulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#SchedulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.devtestlabs#SchedulePropertiesInputStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the schedule (i.e. Enabled, Disabled)"
+          }
+        },
+        "taskType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart)."
+          }
+        },
+        "weeklyRecurrence": {
+          "target": "com.azure.devtestlabs#WeekDetails",
+          "traits": {
+            "smithy.api#documentation": "If the schedule will occur only some days of the week, specify the weekly recurrence."
+          }
+        },
+        "dailyRecurrence": {
+          "target": "com.azure.devtestlabs#DayDetails",
+          "traits": {
+            "smithy.api#documentation": "If the schedule will occur once each day of the week, specify the daily recurrence."
+          }
+        },
+        "hourlyRecurrence": {
+          "target": "com.azure.devtestlabs#HourDetails",
+          "traits": {
+            "smithy.api#documentation": "If the schedule will occur multiple times a day, specify the hourly recurrence."
+          }
+        },
+        "timeZoneId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)"
+          }
+        },
+        "notificationSettings": {
+          "target": "com.azure.devtestlabs#NotificationSettings",
+          "traits": {
+            "smithy.api#documentation": "Notification settings."
+          }
+        },
+        "targetResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID to which the schedule belongs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a schedule."
+      }
+    },
+    "com.azure.devtestlabs#SchedulePropertiesInputStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the schedule (i.e. Enabled, Disabled)"
       }
     },
     "com.azure.devtestlabs#GlobalSchedulesGet": {
@@ -1459,16 +1575,27 @@
             "smithy.api#documentation": "The name of the virtual network."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualNetworksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualNetworksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#VirtualNetworksCreateOrUpdate": {
@@ -1588,16 +1715,90 @@
             "smithy.api#documentation": "The name of the virtual network."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#VirtualNetworkPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualNetworksCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualNetworksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#VirtualNetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "allowedSubnets": {
+          "target": "com.azure.devtestlabs#VirtualNetworkPropertiesInputAllowedSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "The allowed subnets of the virtual network."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the virtual network."
+          }
+        },
+        "externalProviderResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft.Network resource identifier of the virtual network."
+          }
+        },
+        "subnetOverrides": {
+          "target": "com.azure.devtestlabs#VirtualNetworkPropertiesInputSubnetOverridesList",
+          "traits": {
+            "smithy.api#documentation": "The subnet overrides of the virtual network."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a virtual network."
+      }
+    },
+    "com.azure.devtestlabs#VirtualNetworkPropertiesInputSubnetOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#SubnetOverride"
+      },
+      "traits": {
+        "smithy.api#documentation": "The subnet overrides of the virtual network."
+      }
+    },
+    "com.azure.devtestlabs#VirtualNetworkPropertiesInputAllowedSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#Subnet"
+      },
+      "traits": {
+        "smithy.api#documentation": "The allowed subnets of the virtual network."
       }
     },
     "com.azure.devtestlabs#VirtualNetworksGet": {
@@ -2396,16 +2597,27 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualMachineSchedulesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualMachineSchedulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#VirtualMachineSchedulesCreateOrUpdate": {
@@ -2533,16 +2745,40 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#SchedulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualMachineSchedulesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualMachineSchedulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devtestlabs#VirtualMachineSchedulesGet": {
@@ -2882,11 +3118,10 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "size": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the size of the virtual machine."
           }
         }
       },
@@ -3222,11 +3457,10 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "existingLabDiskId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the disk resource ID to detach from virtual machine."
           }
         }
       },
@@ -3347,16 +3581,103 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "artifacts": {
+          "target": "com.azure.devtestlabs#VirtualMachinesApplyArtifactsRequestArtifactsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of artifacts to apply."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualMachinesApplyArtifactsRequestArtifactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ArtifactInstallProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of artifacts to apply."
+      }
+    },
+    "com.azure.devtestlabs#ArtifactInstallProperties": {
+      "type": "structure",
+      "members": {
+        "artifactId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact's identifier."
+          }
+        },
+        "artifactTitle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact's title."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.devtestlabs#ArtifactInstallPropertiesParametersList",
+          "traits": {
+            "smithy.api#documentation": "The parameters of the artifact."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status of the artifact."
+          }
+        },
+        "deploymentStatusMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status message from the deployment."
+          }
+        },
+        "vmExtensionStatusMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status message from the virtual machine extension."
+          }
+        },
+        "installTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the artifact starts to install on the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an artifact."
+      }
+    },
+    "com.azure.devtestlabs#ArtifactInstallPropertiesParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ArtifactParameterProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters of the artifact."
+      }
+    },
+    "com.azure.devtestlabs#ArtifactParameterProperties": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the artifact parameter."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the artifact parameter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an artifact parameter."
       }
     },
     "com.azure.devtestlabs#VirtualMachinesAddDataDisk": {
@@ -3413,16 +3734,105 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "attachNewDataDiskOptions": {
+          "target": "com.azure.devtestlabs#AttachNewDataDiskOptions",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies options to attach a new disk to the virtual machine."
+          }
+        },
+        "existingLabDiskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the existing lab disk id to attach to virtual machine."
+          }
+        },
+        "hostCaching": {
+          "target": "com.azure.devtestlabs#HostCachingOptions",
+          "traits": {
+            "smithy.api#documentation": "Caching option for a data disk (i.e. None, ReadOnly, ReadWrite)."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#HostCachingOptions": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "READONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReadOnly"
+          }
+        },
+        "READWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReadWrite"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Caching option for a data disk (i.e. None, ReadOnly, ReadWrite)."
+      }
+    },
+    "com.azure.devtestlabs#AttachNewDataDiskOptions": {
+      "type": "structure",
+      "members": {
+        "diskSizeGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Size of the disk to be attached in Gibibytes."
+          }
+        },
+        "diskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the disk to be attached."
+          }
+        },
+        "diskType": {
+          "target": "com.azure.devtestlabs#StorageType",
+          "traits": {
+            "smithy.api#documentation": "The storage type for the disk (i.e. Standard, Premium)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to attach new disk to the Virtual Machine."
+      }
+    },
+    "com.azure.devtestlabs#StorageType": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        },
+        "STANDARDSSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardSSD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage type for the disk (i.e. Standard, Premium)."
       }
     },
     "com.azure.devtestlabs#VirtualMachinesDelete": {
@@ -3949,84 +4359,6 @@
         "smithy.api#documentation": "Request body for adding a new or existing data disk to a virtual machine."
       }
     },
-    "com.azure.devtestlabs#HostCachingOptions": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "None"
-          }
-        },
-        "READONLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReadOnly"
-          }
-        },
-        "READWRITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReadWrite"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Caching option for a data disk (i.e. None, ReadOnly, ReadWrite)."
-      }
-    },
-    "com.azure.devtestlabs#AttachNewDataDiskOptions": {
-      "type": "structure",
-      "members": {
-        "diskSizeGiB": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Size of the disk to be attached in Gibibytes."
-          }
-        },
-        "diskName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the disk to be attached."
-          }
-        },
-        "diskType": {
-          "target": "com.azure.devtestlabs#StorageType",
-          "traits": {
-            "smithy.api#documentation": "The storage type for the disk (i.e. Standard, Premium)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties to attach new disk to the Virtual Machine."
-      }
-    },
-    "com.azure.devtestlabs#StorageType": {
-      "type": "enum",
-      "members": {
-        "STANDARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard"
-          }
-        },
-        "PREMIUM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Premium"
-          }
-        },
-        "STANDARDSSD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "StandardSSD"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The storage type for the disk (i.e. Standard, Premium)."
-      }
-    },
     "com.azure.devtestlabs#VirtualMachineCreationSource": {
       "type": "enum",
       "members": {
@@ -4435,85 +4767,6 @@
         "smithy.api#documentation": "The artifacts to be installed on the virtual machine."
       }
     },
-    "com.azure.devtestlabs#ArtifactInstallProperties": {
-      "type": "structure",
-      "members": {
-        "artifactId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The artifact's identifier."
-          }
-        },
-        "artifactTitle": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The artifact's title."
-          }
-        },
-        "parameters": {
-          "target": "com.azure.devtestlabs#ArtifactInstallPropertiesParametersList",
-          "traits": {
-            "smithy.api#documentation": "The parameters of the artifact."
-          }
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The status of the artifact."
-          }
-        },
-        "deploymentStatusMessage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The status message from the deployment."
-          }
-        },
-        "vmExtensionStatusMessage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The status message from the virtual machine extension."
-          }
-        },
-        "installTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time that the artifact starts to install on the virtual machine."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties of an artifact."
-      }
-    },
-    "com.azure.devtestlabs#ArtifactInstallPropertiesParametersList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.devtestlabs#ArtifactParameterProperties"
-      },
-      "traits": {
-        "smithy.api#documentation": "The parameters of the artifact."
-      }
-    },
-    "com.azure.devtestlabs#ArtifactParameterProperties": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the artifact parameter."
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The value of the artifact parameter."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties of an artifact parameter."
-      }
-    },
     "com.azure.devtestlabs#VirtualMachinesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -4549,16 +4802,27 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualMachinesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualMachinesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#VirtualMachinesCreateOrUpdate": {
@@ -4678,16 +4942,252 @@
             "smithy.api#documentation": "The name of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#LabVirtualMachinePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#VirtualMachinesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#VirtualMachinesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachinePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The notes of the virtual machine."
+          }
+        },
+        "ownerObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object identifier of the owner of the virtual machine."
+          }
+        },
+        "ownerUserPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user principal name of the virtual machine owner."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date of the virtual machine."
+          }
+        },
+        "customImageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom image identifier of the virtual machine."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size of the virtual machine."
+          }
+        },
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user name of the virtual machine."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the virtual machine administrator.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "sshKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SSH key of the virtual machine administrator."
+          }
+        },
+        "isAuthenticationWithSshKey": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this virtual machine uses an SSH key for authentication."
+          }
+        },
+        "labSubnetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lab subnet name of the virtual machine."
+          }
+        },
+        "labVirtualNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lab virtual network identifier of the virtual machine."
+          }
+        },
+        "disallowPublicIpAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the virtual machine is to be created without a public IP address."
+          }
+        },
+        "artifacts": {
+          "target": "com.azure.devtestlabs#LabVirtualMachinePropertiesInputArtifactsList",
+          "traits": {
+            "smithy.api#documentation": "The artifacts to be installed on the virtual machine."
+          }
+        },
+        "galleryImageReference": {
+          "target": "com.azure.devtestlabs#GalleryImageReference",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft Azure Marketplace image reference of the virtual machine."
+          }
+        },
+        "planId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the plan associated with the virtual machine image"
+          }
+        },
+        "networkInterface": {
+          "target": "com.azure.devtestlabs#NetworkInterfaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The network interface properties."
+          }
+        },
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date for VM."
+          }
+        },
+        "allowClaim": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether another user can take ownership of the virtual machine"
+          }
+        },
+        "storageType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage type to use for virtual machine (i.e. Standard, Premium)."
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the environment that contains this virtual machine, if any."
+          }
+        },
+        "dataDiskParameters": {
+          "target": "com.azure.devtestlabs#LabVirtualMachinePropertiesInputDataDiskParametersList",
+          "traits": {
+            "smithy.api#documentation": "New or existing data disks to attach to the virtual machine after creation"
+          }
+        },
+        "scheduleParameters": {
+          "target": "com.azure.devtestlabs#LabVirtualMachinePropertiesInputScheduleParametersList",
+          "traits": {
+            "smithy.api#documentation": "Virtual Machine schedules to be created"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a virtual machine."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachinePropertiesInputScheduleParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ScheduleCreationParameterInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Machine schedules to be created"
+      }
+    },
+    "com.azure.devtestlabs#ScheduleCreationParameterInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.devtestlabs#ScheduleCreationParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the schedule."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the virtual machine or environment"
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#ScheduleCreationParameterInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for creating a schedule."
+      }
+    },
+    "com.azure.devtestlabs#ScheduleCreationParameterInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachinePropertiesInputDataDiskParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#DataDiskProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "New or existing data disks to attach to the virtual machine after creation"
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachinePropertiesInputArtifactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ArtifactInstallProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifacts to be installed on the virtual machine."
       }
     },
     "com.azure.devtestlabs#VirtualMachinesGet": {
@@ -5408,16 +5908,27 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#ServiceFabricSchedulesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ServiceFabricSchedulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#ServiceFabricSchedulesCreateOrUpdate": {
@@ -5553,16 +6064,40 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#SchedulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#ServiceFabricSchedulesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ServiceFabricSchedulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devtestlabs#ServiceFabricSchedulesGet": {
@@ -6165,16 +6700,27 @@
             "smithy.api#documentation": "The name of the service fabric."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#ServiceFabricsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ServiceFabricsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#ServiceFabricsCreateOrUpdate": {
@@ -6302,16 +6848,60 @@
             "smithy.api#documentation": "The name of the service fabric."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#ServiceFabricPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#ServiceFabricsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ServiceFabricsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#ServiceFabricPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "externalServiceFabricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backing service fabric resource's id"
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the environment under which the service fabric resource is present"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a service fabric."
       }
     },
     "com.azure.devtestlabs#ServiceFabricsGet": {
@@ -6849,16 +7439,27 @@
             "smithy.api#documentation": "The name of the secret."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#SecretsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#SecretsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#SecretsCreateOrUpdate": {
@@ -6986,16 +7587,54 @@
             "smithy.api#documentation": "The name of the secret."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#SecretPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#SecretsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#SecretsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#SecretPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the secret for secret creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a secret."
       }
     },
     "com.azure.devtestlabs#SecretsGet": {
@@ -7600,16 +8239,27 @@
             "smithy.api#documentation": "The name of the environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#EnvironmentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#EnvironmentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#EnvironmentsCreateOrUpdate": {
@@ -7737,16 +8387,60 @@
             "smithy.api#documentation": "The name of the environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#EnvironmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the environment.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#EnvironmentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#EnvironmentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#EnvironmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deploymentProperties": {
+          "target": "com.azure.devtestlabs#EnvironmentDeploymentProperties",
+          "traits": {
+            "smithy.api#documentation": "The deployment properties of the environment."
+          }
+        },
+        "armTemplateDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the Azure Resource Manager template that produced the environment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an environment."
       }
     },
     "com.azure.devtestlabs#EnvironmentsGet": {
@@ -8128,11 +8822,10 @@
             "smithy.api#documentation": "The name of the disk."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "leasedByLabVmId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource ID of the Lab VM to which the disk is attached."
           }
         }
       },
@@ -8202,11 +8895,10 @@
             "smithy.api#documentation": "The name of the disk."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "leasedByLabVmId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource ID of the Lab virtual machine to which the disk is attached."
           }
         }
       },
@@ -8480,16 +9172,27 @@
             "smithy.api#documentation": "The name of the disk."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#DisksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#DisksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#DisksCreateOrUpdate": {
@@ -8617,16 +9320,96 @@
             "smithy.api#documentation": "The name of the disk."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#DiskPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the disk.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#DisksCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#DisksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#DiskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "diskType": {
+          "target": "com.azure.devtestlabs#StorageType",
+          "traits": {
+            "smithy.api#documentation": "The storage type for the disk (i.e. Standard, Premium)."
+          }
+        },
+        "diskSizeGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of the disk in Gibibytes."
+          }
+        },
+        "leasedByLabVmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the VM to which this disk is leased."
+          }
+        },
+        "diskBlobName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When backed by a blob, the name of the VHD blob without extension."
+          }
+        },
+        "diskUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When backed by a blob, the URI of underlying blob."
+          }
+        },
+        "storageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When backed by a blob, the storage account where the blob is."
+          }
+        },
+        "hostCaching": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host caching policy of the disk (i.e. None, ReadOnly, ReadWrite)."
+          }
+        },
+        "managedDiskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When backed by managed disk, this is the ID of the compute disk resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a disk."
       }
     },
     "com.azure.devtestlabs#DisksGet": {
@@ -9218,16 +10001,27 @@
             "smithy.api#documentation": "The name of the user profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#UsersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#UsersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#UsersCreateOrUpdate": {
@@ -9347,16 +10141,60 @@
             "smithy.api#documentation": "The name of the user profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#UserPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#UsersCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#UsersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#UserPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "identity": {
+          "target": "com.azure.devtestlabs#UserIdentity",
+          "traits": {
+            "smithy.api#documentation": "The identity of the user."
+          }
+        },
+        "secretStore": {
+          "target": "com.azure.devtestlabs#UserSecretStore",
+          "traits": {
+            "smithy.api#documentation": "The secret store of the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a lab user profile."
       }
     },
     "com.azure.devtestlabs#UsersGet": {
@@ -9899,16 +10737,39 @@
             "smithy.api#documentation": "The name of the service runner."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#ServiceRunnersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "identity": {
+          "target": "com.azure.devtestlabs#IdentityProperties",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ServiceRunnersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devtestlabs#ServiceRunnersGet": {
@@ -10326,16 +11187,27 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#SchedulesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#SchedulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#SchedulesCreateOrUpdate": {
@@ -10455,16 +11327,40 @@
             "smithy.api#documentation": "The name of the Schedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#SchedulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#SchedulesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#SchedulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devtestlabs#SchedulesGet": {
@@ -11037,16 +11933,27 @@
             "smithy.api#documentation": "The name of the Policy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#PoliciesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#PoliciesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#PoliciesCreateOrUpdate": {
@@ -11174,16 +12081,84 @@
             "smithy.api#documentation": "The name of the Policy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#PolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#PoliciesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#PoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.devtestlabs#PolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the policy."
+          }
+        },
+        "status": {
+          "target": "com.azure.devtestlabs#PolicyStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the policy."
+          }
+        },
+        "factName": {
+          "target": "com.azure.devtestlabs#PolicyFactName",
+          "traits": {
+            "smithy.api#documentation": "The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc."
+          }
+        },
+        "factData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fact data of the policy."
+          }
+        },
+        "threshold": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy)."
+          }
+        },
+        "evaluatorType": {
+          "target": "com.azure.devtestlabs#PolicyEvaluatorType",
+          "traits": {
+            "smithy.api#documentation": "The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Policy."
       }
     },
     "com.azure.devtestlabs#PoliciesGet": {
@@ -11629,16 +12604,56 @@
             "smithy.api#documentation": "The name of the PolicySet"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "policies": {
+          "target": "com.azure.devtestlabs#PolicySetsEvaluatePoliciesRequestPoliciesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Policies to evaluate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#PolicySetsEvaluatePoliciesRequestPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#EvaluatePoliciesProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Policies to evaluate."
+      }
+    },
+    "com.azure.devtestlabs#EvaluatePoliciesProperties": {
+      "type": "structure",
+      "members": {
+        "factName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fact name."
+          }
+        },
+        "factData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fact data."
+          }
+        },
+        "valueOffset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value offset."
+          }
+        },
+        "userObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user for which policies will be evaluated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for evaluating a policy set."
       }
     },
     "com.azure.devtestlabs#NotificationChannelsNotify": {
@@ -11695,16 +12710,41 @@
             "smithy.api#documentation": "The name of the notification channel."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "eventName": {
+          "target": "com.azure.devtestlabs#NotificationChannelEventType",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The type of event (i.e. AutoShutdown, Cost)"
+          }
+        },
+        "jsonPayload": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Properties for the notification in json format."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#NotificationChannelEventType": {
+      "type": "enum",
+      "members": {
+        "AUTOSHUTDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AutoShutdown"
+          }
+        },
+        "COST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cost"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event type for which this notification is enabled (i.e. AutoShutdown, Cost)"
       }
     },
     "com.azure.devtestlabs#NotificationChannelsDelete": {
@@ -11927,26 +12967,6 @@
         "smithy.api#documentation": "An event to be notified for."
       }
     },
-    "com.azure.devtestlabs#NotificationChannelEventType": {
-      "type": "enum",
-      "members": {
-        "AUTOSHUTDOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AutoShutdown"
-          }
-        },
-        "COST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Cost"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The event type for which this notification is enabled (i.e. AutoShutdown, Cost)"
-      }
-    },
     "com.azure.devtestlabs#NotificationChannelsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -11982,16 +13002,27 @@
             "smithy.api#documentation": "The name of the notification channel."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#NotificationChannelsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#NotificationChannelsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#NotificationChannelsCreateOrUpdate": {
@@ -12111,16 +13142,87 @@
             "smithy.api#documentation": "The name of the notification channel."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#NotificationChannelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#NotificationChannelsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#NotificationChannelsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#NotificationChannelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "webHookUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The webhook URL to send notifications to."
+          }
+        },
+        "emailRecipient": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email recipient to send notifications to (can be a list of semi-colon separated email addresses)."
+          }
+        },
+        "notificationLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale to use when sending a notification (fallback for unsupported languages is EN)."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of notification."
+          }
+        },
+        "events": {
+          "target": "com.azure.devtestlabs#NotificationChannelPropertiesInputEventsList",
+          "traits": {
+            "smithy.api#documentation": "The list of event for which this notification is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a schedule."
+      }
+    },
+    "com.azure.devtestlabs#NotificationChannelPropertiesInputEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#Event"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of event for which this notification is enabled."
       }
     },
     "com.azure.devtestlabs#NotificationChannelsGet": {
@@ -12565,11 +13667,16 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sourceVirtualMachineResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The full resource ID of the virtual machine to be imported."
+          }
+        },
+        "destinationVirtualMachineName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the virtual machine in the destination lab"
           }
         }
       },
@@ -12637,11 +13744,10 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "blobName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The blob name of the upload URI."
           }
         }
       },
@@ -13361,16 +14467,27 @@
             "smithy.api#documentation": "The name of the formula."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#FormulasUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#FormulasUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#FormulasCreateOrUpdate": {
@@ -13490,16 +14607,296 @@
             "smithy.api#documentation": "The name of the formula."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#FormulaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the formula.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#FormulasCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#FormulasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#FormulaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the formula."
+          }
+        },
+        "osType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OS type of the formula."
+          }
+        },
+        "formulaContent": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterInput",
+          "traits": {
+            "smithy.api#documentation": "The content of the formula."
+          }
+        },
+        "vm": {
+          "target": "com.azure.devtestlabs#FormulaPropertiesFromVm",
+          "traits": {
+            "smithy.api#documentation": "Information about a VM from which a formula is to be created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a formula."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the resource."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the virtual machine or environment"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the new virtual machine or environment"
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for creating a virtual machine."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "bulkCreationParameters": {
+          "target": "com.azure.devtestlabs#BulkCreationParameters",
+          "traits": {
+            "smithy.api#documentation": "The number of virtual machine instances to create."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The notes of the virtual machine."
+          }
+        },
+        "ownerObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object identifier of the owner of the virtual machine."
+          }
+        },
+        "ownerUserPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user principal name of the virtual machine owner."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date of the virtual machine."
+          }
+        },
+        "customImageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom image identifier of the virtual machine."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size of the virtual machine."
+          }
+        },
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user name of the virtual machine."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the virtual machine administrator.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "sshKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SSH key of the virtual machine administrator."
+          }
+        },
+        "isAuthenticationWithSshKey": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this virtual machine uses an SSH key for authentication."
+          }
+        },
+        "labSubnetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lab subnet name of the virtual machine."
+          }
+        },
+        "labVirtualNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lab virtual network identifier of the virtual machine."
+          }
+        },
+        "disallowPublicIpAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the virtual machine is to be created without a public IP address."
+          }
+        },
+        "artifacts": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputArtifactsList",
+          "traits": {
+            "smithy.api#documentation": "The artifacts to be installed on the virtual machine."
+          }
+        },
+        "galleryImageReference": {
+          "target": "com.azure.devtestlabs#GalleryImageReference",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft Azure Marketplace image reference of the virtual machine."
+          }
+        },
+        "planId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the plan associated with the virtual machine image"
+          }
+        },
+        "networkInterface": {
+          "target": "com.azure.devtestlabs#NetworkInterfaceProperties",
+          "traits": {
+            "smithy.api#documentation": "The network interface properties."
+          }
+        },
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date for VM."
+          }
+        },
+        "allowClaim": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether another user can take ownership of the virtual machine"
+          }
+        },
+        "storageType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage type to use for virtual machine (i.e. Standard, Premium)."
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the environment that contains this virtual machine, if any."
+          }
+        },
+        "dataDiskParameters": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList",
+          "traits": {
+            "smithy.api#documentation": "New or existing data disks to attach to the virtual machine after creation"
+          }
+        },
+        "scheduleParameters": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList",
+          "traits": {
+            "smithy.api#documentation": "Virtual Machine schedules to be created"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for virtual machine creation."
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ScheduleCreationParameterInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Machine schedules to be created"
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#DataDiskProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "New or existing data disks to attach to the virtual machine after creation"
+      }
+    },
+    "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInputArtifactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ArtifactInstallProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifacts to be installed on the virtual machine."
       }
     },
     "com.azure.devtestlabs#FormulasGet": {
@@ -13849,11 +15246,16 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "blobStorageAbsoluteSasUri": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The blob storage absolute sas uri with write permission to the container which the usage data needs to be uploaded to."
+          }
+        },
+        "usageStartDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time of the usage. If not provided, usage will be reported since the beginning of data collection."
           }
         }
       },
@@ -14331,16 +15733,27 @@
             "smithy.api#documentation": "The name of the CustomImage"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#CustomImagesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#CustomImagesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#CustomImagesCreateOrUpdate": {
@@ -14460,16 +15873,111 @@
             "smithy.api#documentation": "The name of the CustomImage"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#CustomImagePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#CustomImagesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#CustomImagesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#CustomImagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vm": {
+          "target": "com.azure.devtestlabs#CustomImagePropertiesFromVm",
+          "traits": {
+            "smithy.api#documentation": "The virtual machine from which the image is to be created."
+          }
+        },
+        "vhd": {
+          "target": "com.azure.devtestlabs#CustomImagePropertiesCustom",
+          "traits": {
+            "smithy.api#documentation": "The VHD from which the image is to be created."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the custom image."
+          }
+        },
+        "author": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The author of the custom image."
+          }
+        },
+        "managedImageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Managed Image Id backing the custom image."
+          }
+        },
+        "managedSnapshotId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Managed Snapshot Id backing the custom image."
+          }
+        },
+        "dataDiskStorageInfo": {
+          "target": "com.azure.devtestlabs#CustomImagePropertiesInputDataDiskStorageInfoList",
+          "traits": {
+            "smithy.api#documentation": "Storage information about the data disks present in the custom image"
+          }
+        },
+        "customImagePlan": {
+          "target": "com.azure.devtestlabs#CustomImagePropertiesFromPlan",
+          "traits": {
+            "smithy.api#documentation": "Storage information about the plan related to this custom image"
+          }
+        },
+        "isPlanAuthorized": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a custom image."
+      }
+    },
+    "com.azure.devtestlabs#CustomImagePropertiesInputDataDiskStorageInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#DataDiskStorageTypeInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage information about the data disks present in the custom image"
       }
     },
     "com.azure.devtestlabs#CustomImagesGet": {
@@ -14819,16 +16327,39 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#LabVirtualMachineCreationParameterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the new virtual machine or environment"
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#LabsCreateEnvironmentRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#LabsCreateEnvironmentRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#CostsCreateOrUpdate": {
@@ -15327,16 +16858,78 @@
             "smithy.api#documentation": "The name of the cost."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#LabCostPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#CostsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#CostsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#LabCostPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetCost": {
+          "target": "com.azure.devtestlabs#TargetCostProperties",
+          "traits": {
+            "smithy.api#documentation": "The target cost properties"
+          }
+        },
+        "currencyCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The currency code of the cost."
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time of the cost data."
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end time of the cost data."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date of the cost."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a cost item."
       }
     },
     "com.azure.devtestlabs#CostsGet": {
@@ -15625,16 +17218,82 @@
             "smithy.api#documentation": "The name of the artifact."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "virtualMachineName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource name of the virtual machine."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.devtestlabs#ArtifactsGenerateArmTemplateRequestParametersList",
+          "traits": {
+            "smithy.api#documentation": "The parameters of the ARM template."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the virtual machine."
+          }
+        },
+        "fileUploadOptions": {
+          "target": "com.azure.devtestlabs#FileUploadOptions",
+          "traits": {
+            "smithy.api#documentation": "Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#FileUploadOptions": {
+      "type": "enum",
+      "members": {
+        "UPLOADFILESANDGENERATESASTOKENS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UploadFilesAndGenerateSasTokens"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value."
+      }
+    },
+    "com.azure.devtestlabs#ArtifactsGenerateArmTemplateRequestParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devtestlabs#ParameterInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters of the ARM template."
+      }
+    },
+    "com.azure.devtestlabs#ParameterInfo": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the artifact parameter."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the artifact parameter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about an artifact's parameter."
       }
     },
     "com.azure.devtestlabs#ArtifactsGet": {
@@ -16744,16 +18403,27 @@
             "smithy.api#documentation": "The name of the artifact source."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#ArtifactSourcesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ArtifactSourcesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#ArtifactSourcesCreateOrUpdate": {
@@ -16873,16 +18543,96 @@
             "smithy.api#documentation": "The name of the artifact source."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#ArtifactSourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#ArtifactSourcesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#ArtifactSourcesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#ArtifactSourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact source's display name."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact source's URI."
+          }
+        },
+        "sourceType": {
+          "target": "com.azure.devtestlabs#SourceControlType",
+          "traits": {
+            "smithy.api#documentation": "The artifact source's type."
+          }
+        },
+        "folderPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The folder containing artifacts."
+          }
+        },
+        "armTemplateFolderPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The folder containing Azure Resource Manager templates."
+          }
+        },
+        "branchRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The artifact source's branch reference."
+          }
+        },
+        "securityToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The security token to authenticate to the artifact source."
+          }
+        },
+        "status": {
+          "target": "com.azure.devtestlabs#EnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the artifact source is enabled (values: Enabled, Disabled)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an artifact source."
       }
     },
     "com.azure.devtestlabs#ArtifactSourcesGet": {
@@ -17640,16 +19390,27 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devtestlabs#LabsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#LabsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.devtestlabs#LabsCreateOrUpdate": {
@@ -17761,16 +19522,190 @@
             "smithy.api#documentation": "The name of the lab."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devtestlabs#LabPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.devtestlabs#LabsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devtestlabs#LabsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devtestlabs#LabPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "labStorageType": {
+          "target": "com.azure.devtestlabs#LabPropertiesInputLabStorageType",
+          "traits": {
+            "smithy.api#documentation": "Type of storage used by the lab. It can be either Premium or Standard. Default is Premium."
+          }
+        },
+        "mandatoryArtifactsResourceIdsLinux": {
+          "target": "com.azure.devtestlabs#LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList",
+          "traits": {
+            "smithy.api#documentation": "The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user."
+          }
+        },
+        "mandatoryArtifactsResourceIdsWindows": {
+          "target": "com.azure.devtestlabs#LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList",
+          "traits": {
+            "smithy.api#documentation": "The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user."
+          }
+        },
+        "premiumDataDisks": {
+          "target": "com.azure.devtestlabs#PremiumDataDisk",
+          "traits": {
+            "smithy.api#documentation": "The setting to enable usage of premium data disks.\nWhen its value is 'Enabled', creation of standard or premium data disks is allowed.\nWhen its value is 'Disabled', only creation of standard data disks is allowed."
+          }
+        },
+        "environmentPermission": {
+          "target": "com.azure.devtestlabs#EnvironmentPermission",
+          "traits": {
+            "smithy.api#documentation": "The access rights to be granted to the user when provisioning an environment"
+          }
+        },
+        "announcement": {
+          "target": "com.azure.devtestlabs#LabAnnouncementPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of any lab announcement associated with this lab"
+          }
+        },
+        "support": {
+          "target": "com.azure.devtestlabs#LabSupportProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of any lab support message associated with this lab"
+          }
+        },
+        "extendedProperties": {
+          "target": "com.azure.devtestlabs#LabPropertiesInputExtendedPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Extended properties of the lab used for experimental features"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a lab."
+      }
+    },
+    "com.azure.devtestlabs#LabPropertiesInputExtendedPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Extended properties of the lab used for experimental features"
+      }
+    },
+    "com.azure.devtestlabs#LabAnnouncementPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plain text title for the lab announcement"
+          }
+        },
+        "markdown": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown."
+          }
+        },
+        "enabled": {
+          "target": "com.azure.devtestlabs#EnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Is the lab announcement active/enabled at this time?"
+          }
+        },
+        "expirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the announcement expires (null for never)"
+          }
+        },
+        "expired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Has this announcement expired?"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a lab's announcement banner"
+      }
+    },
+    "com.azure.devtestlabs#LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user."
+      }
+    },
+    "com.azure.devtestlabs#LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user."
+      }
+    },
+    "com.azure.devtestlabs#LabPropertiesInputLabStorageType": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        },
+        "STANDARDSSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardSSD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of storage used by the lab. It can be either Premium or Standard. Default is Premium."
       }
     },
     "com.azure.devtestlabs#LabsGet": {

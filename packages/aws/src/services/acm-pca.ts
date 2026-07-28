@@ -174,8 +174,7 @@ export type KeyAlgorithm =
   | "ML_DSA_44"
   | "ML_DSA_65"
   | "ML_DSA_87"
-  | "SM2"
-  | (string & {});
+  | "SM2";
 export const KeyAlgorithm = /*@__PURE__*/ S.String;
 
 export type SigningAlgorithm =
@@ -188,8 +187,7 @@ export type SigningAlgorithm =
   | "SM3WITHSM2"
   | "ML_DSA_44"
   | "ML_DSA_65"
-  | "ML_DSA_87"
-  | (string & {});
+  | "ML_DSA_87";
 export const SigningAlgorithm = /*@__PURE__*/ S.String;
 
 export type CountryCodeString = string;
@@ -276,8 +274,7 @@ export const KeyUsage = /*@__PURE__*/ S.suspend(() =>
 export type AccessMethodType =
   | "CA_REPOSITORY"
   | "RESOURCE_PKI_MANIFEST"
-  | "RESOURCE_PKI_NOTIFY"
-  | (string & {});
+  | "RESOURCE_PKI_NOTIFY";
 export const AccessMethodType = /*@__PURE__*/ S.String;
 
 export interface AccessMethod {
@@ -369,10 +366,7 @@ export const CertificateAuthorityConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type Integer1To5000 = number;
 export type CnameString = string;
 export type S3BucketName3To255 = string;
-export type S3ObjectAcl =
-  | "PUBLIC_READ"
-  | "BUCKET_OWNER_FULL_CONTROL"
-  | (string & {});
+export type S3ObjectAcl = "PUBLIC_READ" | "BUCKET_OWNER_FULL_CONTROL";
 export const S3ObjectAcl = /*@__PURE__*/ S.String;
 
 export interface CrlDistributionPointExtensionConfiguration {
@@ -384,7 +378,7 @@ export const CrlDistributionPointExtensionConfiguration =
   ).annotate({
     identifier: "CrlDistributionPointExtensionConfiguration",
   }) as any as S.Schema<CrlDistributionPointExtensionConfiguration>;
-export type CrlType = "COMPLETE" | "PARTITIONED" | (string & {});
+export type CrlType = "COMPLETE" | "PARTITIONED";
 export const CrlType = /*@__PURE__*/ S.String;
 
 export type CrlPathString = string;
@@ -435,15 +429,14 @@ export const RevocationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RevocationConfiguration",
 }) as any as S.Schema<RevocationConfiguration>;
-export type CertificateAuthorityType = "ROOT" | "SUBORDINATE" | (string & {});
+export type CertificateAuthorityType = "ROOT" | "SUBORDINATE";
 export const CertificateAuthorityType = /*@__PURE__*/ S.String;
 
 export type IdempotencyToken = string;
 export type KeyStorageSecurityStandard =
   | "FIPS_140_2_LEVEL_2_OR_HIGHER"
   | "FIPS_140_2_LEVEL_3_OR_HIGHER"
-  | "CCPC_LEVEL_1_OR_HIGHER"
-  | (string & {});
+  | "CCPC_LEVEL_1_OR_HIGHER";
 export const KeyStorageSecurityStandard = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -459,8 +452,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type CertificateAuthorityUsageMode =
   | "GENERAL_PURPOSE"
-  | "SHORT_LIVED_CERTIFICATE"
-  | (string & {});
+  | "SHORT_LIVED_CERTIFICATE";
 export const CertificateAuthorityUsageMode = /*@__PURE__*/ S.String;
 
 export interface CreateCertificateAuthorityRequest {
@@ -497,7 +489,7 @@ export const CreateCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCertificateAuthorityResponse",
 }) as any as S.Schema<CreateCertificateAuthorityResponse>;
 export type S3BucketName = string;
-export type AuditReportResponseFormat = "JSON" | "CSV" | (string & {});
+export type AuditReportResponseFormat = "JSON" | "CSV";
 export const AuditReportResponseFormat = /*@__PURE__*/ S.String;
 
 export interface CreateCertificateAuthorityAuditReportRequest {
@@ -537,8 +529,7 @@ export type AccountId = string;
 export type ActionType =
   | "IssueCertificate"
   | "GetCertificate"
-  | "ListPermissions"
-  | (string & {});
+  | "ListPermissions";
 export const ActionType = /*@__PURE__*/ S.String;
 
 export type ActionList = ActionType[];
@@ -643,15 +634,13 @@ export type CertificateAuthorityStatus =
   | "DELETED"
   | "DISABLED"
   | "EXPIRED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const CertificateAuthorityStatus = /*@__PURE__*/ S.String;
 
 export type FailureReason =
   | "REQUEST_TIMED_OUT"
   | "UNSUPPORTED_ALGORITHM"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const FailureReason = /*@__PURE__*/ S.String;
 
 export interface CertificateAuthority {
@@ -721,11 +710,7 @@ export const DescribeCertificateAuthorityAuditReportRequest =
   ).annotate({
     identifier: "DescribeCertificateAuthorityAuditReportRequest",
   }) as any as S.Schema<DescribeCertificateAuthorityAuditReportRequest>;
-export type AuditReportStatus =
-  | "CREATING"
-  | "SUCCESS"
-  | "FAILED"
-  | (string & {});
+export type AuditReportStatus = "CREATING" | "SUCCESS" | "FAILED";
 export const AuditReportStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeCertificateAuthorityAuditReportResponse {
@@ -859,7 +844,7 @@ export const ImportCertificateAuthorityCertificateResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "ImportCertificateAuthorityCertificateResponse",
   }) as any as S.Schema<ImportCertificateAuthorityCertificateResponse>;
-export type PolicyQualifierId = "CPS" | (string & {});
+export type PolicyQualifierId = "CPS";
 export const PolicyQualifierId = /*@__PURE__*/ S.String;
 
 export interface Qualifier {
@@ -903,8 +888,7 @@ export type ExtendedKeyUsageType =
   | "OCSP_SIGNING"
   | "SMART_CARD_LOGIN"
   | "DOCUMENT_SIGNING"
-  | "CERTIFICATE_TRANSPARENCY"
-  | (string & {});
+  | "CERTIFICATE_TRANSPARENCY";
 export const ExtendedKeyUsageType = /*@__PURE__*/ S.String;
 
 export interface ExtendedKeyUsage {
@@ -973,8 +957,7 @@ export type ValidityPeriodType =
   | "ABSOLUTE"
   | "DAYS"
   | "MONTHS"
-  | "YEARS"
-  | (string & {});
+  | "YEARS";
 export const ValidityPeriodType = /*@__PURE__*/ S.String;
 
 export interface Validity {
@@ -1020,7 +1003,7 @@ export const IssueCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueCertificateResponse>;
 export type MaxResults = number;
 export type NextToken = string;
-export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS" | (string & {});
+export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS";
 export const ResourceOwner = /*@__PURE__*/ S.String;
 
 export interface ListCertificateAuthoritiesRequest {
@@ -1168,8 +1151,7 @@ export type RevocationReason =
   | "SUPERSEDED"
   | "CESSATION_OF_OPERATION"
   | "PRIVILEGE_WITHDRAWN"
-  | "A_A_COMPROMISE"
-  | (string & {});
+  | "A_A_COMPROMISE";
 export const RevocationReason = /*@__PURE__*/ S.String;
 
 export interface RevokeCertificateRequest {

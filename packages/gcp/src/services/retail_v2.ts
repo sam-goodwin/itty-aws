@@ -63,24 +63,21 @@ export class NotFound extends T.applyErrorMatchers(
 export type GoogleCloudRetailV2CatalogAttributeTypeEnum =
   | "UNKNOWN"
   | "TEXTUAL"
-  | "NUMERICAL"
-  | (string & {});
+  | "NUMERICAL";
 export const GoogleCloudRetailV2CatalogAttributeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2CatalogAttributeSearchableOptionEnum =
   | "SEARCHABLE_OPTION_UNSPECIFIED"
   | "SEARCHABLE_ENABLED"
-  | "SEARCHABLE_DISABLED"
-  | (string & {});
+  | "SEARCHABLE_DISABLED";
 export const GoogleCloudRetailV2CatalogAttributeSearchableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2CatalogAttributeIndexableOptionEnum =
   | "INDEXABLE_OPTION_UNSPECIFIED"
   | "INDEXABLE_ENABLED"
-  | "INDEXABLE_DISABLED"
-  | (string & {});
+  | "INDEXABLE_DISABLED";
 export const GoogleCloudRetailV2CatalogAttributeIndexableOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -106,12 +103,13 @@ export const GoogleCloudRetailV2Interval = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2Interval",
 }) as any as S.Schema<GoogleCloudRetailV2Interval>;
 
-export type GoogleCloudRetailV2IntervalList = GoogleCloudRetailV2Interval[];
+export type GoogleCloudRetailV2IntervalList =
+  ReadonlyArray<GoogleCloudRetailV2Interval>;
 export const GoogleCloudRetailV2IntervalList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Interval,
 ) as any as S.Schema<GoogleCloudRetailV2IntervalList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -138,7 +136,7 @@ export const GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues =
   }) as any as S.Schema<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues>;
 
 export type GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValuesList =
-  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues[];
+  ReadonlyArray<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues>;
 export const GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValuesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues,
@@ -180,7 +178,7 @@ export const GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue =
   }) as any as S.Schema<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>;
 
 export type GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValueList =
-  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue[];
+  ReadonlyArray<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>;
 export const GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue,
@@ -237,24 +235,21 @@ export const GoogleCloudRetailV2CatalogAttributeFacetConfig =
 export type GoogleCloudRetailV2CatalogAttributeDynamicFacetableOptionEnum =
   | "DYNAMIC_FACETABLE_OPTION_UNSPECIFIED"
   | "DYNAMIC_FACETABLE_ENABLED"
-  | "DYNAMIC_FACETABLE_DISABLED"
-  | (string & {});
+  | "DYNAMIC_FACETABLE_DISABLED";
 export const GoogleCloudRetailV2CatalogAttributeDynamicFacetableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2CatalogAttributeRetrievableOptionEnum =
   | "RETRIEVABLE_OPTION_UNSPECIFIED"
   | "RETRIEVABLE_ENABLED"
-  | "RETRIEVABLE_DISABLED"
-  | (string & {});
+  | "RETRIEVABLE_DISABLED";
 export const GoogleCloudRetailV2CatalogAttributeRetrievableOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2CatalogAttributeExactSearchableOptionEnum =
   | "EXACT_SEARCHABLE_OPTION_UNSPECIFIED"
   | "EXACT_SEARCHABLE_ENABLED"
-  | "EXACT_SEARCHABLE_DISABLED"
-  | (string & {});
+  | "EXACT_SEARCHABLE_DISABLED";
 export const GoogleCloudRetailV2CatalogAttributeExactSearchableOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -347,8 +342,7 @@ export const AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest
 export type GoogleCloudRetailV2AttributesConfigAttributeConfigLevelEnum =
   | "ATTRIBUTE_CONFIG_LEVEL_UNSPECIFIED"
   | "PRODUCT_LEVEL_ATTRIBUTE_CONFIG"
-  | "CATALOG_LEVEL_ATTRIBUTE_CONFIG"
-  | (string & {});
+  | "CATALOG_LEVEL_ATTRIBUTE_CONFIG";
 export const GoogleCloudRetailV2AttributesConfigAttributeConfigLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -420,8 +414,7 @@ export const AddControlProjectsLocationsCatalogsServingConfigsRequest =
 export type GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const GoogleCloudRetailV2SearchRequestDynamicFacetSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -444,21 +437,19 @@ export const GoogleCloudRetailV2SearchRequestDynamicFacetSpec =
 export type GoogleCloudRetailV2ServingConfigDiversityTypeEnum =
   | "DIVERSITY_TYPE_UNSPECIFIED"
   | "RULE_BASED_DIVERSITY"
-  | "DATA_DRIVEN_DIVERSITY"
-  | (string & {});
+  | "DATA_DRIVEN_DIVERSITY";
 export const GoogleCloudRetailV2ServingConfigDiversityTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ServingConfigSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH"
-  | (string & {});
+  | "SOLUTION_TYPE_SEARCH";
 export const GoogleCloudRetailV2ServingConfigSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ServingConfigSolutionTypesItemEnumList =
-  GoogleCloudRetailV2ServingConfigSolutionTypesItemEnum[];
+  ReadonlyArray<GoogleCloudRetailV2ServingConfigSolutionTypesItemEnum>;
 export const GoogleCloudRetailV2ServingConfigSolutionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ServingConfigSolutionTypesItemEnum,
@@ -467,8 +458,7 @@ export const GoogleCloudRetailV2ServingConfigSolutionTypesItemEnumList =
 export type GoogleCloudRetailV2SearchRequestPersonalizationSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "AUTO"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const GoogleCloudRetailV2SearchRequestPersonalizationSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -620,7 +610,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -717,7 +707,7 @@ export const GoogleCloudRetailV2PriceInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2PriceInfo",
 }) as any as S.Schema<GoogleCloudRetailV2PriceInfo>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -775,7 +765,7 @@ export const GoogleCloudRetailV2LocalInventory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2LocalInventory>;
 
 export type GoogleCloudRetailV2LocalInventoryList =
-  GoogleCloudRetailV2LocalInventory[];
+  ReadonlyArray<GoogleCloudRetailV2LocalInventory>;
 export const GoogleCloudRetailV2LocalInventoryList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2LocalInventory,
 ) as any as S.Schema<GoogleCloudRetailV2LocalInventoryList>;
@@ -880,7 +870,7 @@ export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest =
   }) as any as S.Schema<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
 
 export type GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
-  GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest[];
+  ReadonlyArray<GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest>;
 export const GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest,
@@ -930,7 +920,7 @@ export const BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest =
   }) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>;
 
 export type GoogleCloudRetailV2GenerativeQuestionConfigList =
-  GoogleCloudRetailV2GenerativeQuestionConfig[];
+  ReadonlyArray<GoogleCloudRetailV2GenerativeQuestionConfig>;
 export const GoogleCloudRetailV2GenerativeQuestionConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2GenerativeQuestionConfig,
@@ -1080,7 +1070,7 @@ export const GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult =
   }) as any as S.Schema<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>;
 
 export type GoogleCloudRetailV2CompleteQueryResponseRecentSearchResultList =
-  GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult[];
+  ReadonlyArray<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>;
 export const GoogleCloudRetailV2CompleteQueryResponseRecentSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult,
@@ -1104,7 +1094,7 @@ export const GoogleCloudRetailV2CompleteQueryResponseCompletionResult =
   }) as any as S.Schema<GoogleCloudRetailV2CompleteQueryResponseCompletionResult>;
 
 export type GoogleCloudRetailV2CompleteQueryResponseCompletionResultList =
-  GoogleCloudRetailV2CompleteQueryResponseCompletionResult[];
+  ReadonlyArray<GoogleCloudRetailV2CompleteQueryResponseCompletionResult>;
 export const GoogleCloudRetailV2CompleteQueryResponseCompletionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2CompleteQueryResponseCompletionResult,
@@ -1167,8 +1157,7 @@ export const GoogleCloudRetailV2CompleteQueryResponse = /*@__PURE__*/ S.suspend(
 export type GoogleCloudRetailV2SafetySettingMethodEnum =
   | "HARM_BLOCK_METHOD_UNSPECIFIED"
   | "SEVERITY"
-  | "PROBABILITY"
-  | (string & {});
+  | "PROBABILITY";
 export const GoogleCloudRetailV2SafetySettingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1178,8 +1167,7 @@ export type GoogleCloudRetailV2SafetySettingCategoryEnum =
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_CIVIC_INTEGRITY"
-  | (string & {});
+  | "HARM_CATEGORY_CIVIC_INTEGRITY";
 export const GoogleCloudRetailV2SafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1189,8 +1177,7 @@ export type GoogleCloudRetailV2SafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const GoogleCloudRetailV2SafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1214,7 +1201,7 @@ export const GoogleCloudRetailV2SafetySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2SafetySetting>;
 
 export type GoogleCloudRetailV2SafetySettingList =
-  GoogleCloudRetailV2SafetySetting[];
+  ReadonlyArray<GoogleCloudRetailV2SafetySetting>;
 export const GoogleCloudRetailV2SafetySettingList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2SafetySetting,
 ) as any as S.Schema<GoogleCloudRetailV2SafetySettingList>;
@@ -1273,11 +1260,7 @@ export const GoogleCloudRetailV2ConversationalSearchRequestUserAnswer =
   }) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchRequestUserAnswer>;
 
 export type GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
-    | "MODE_UNSPECIFIED"
-    | "DISABLED"
-    | "ENABLED"
-    | "CONVERSATIONAL_FILTER_ONLY"
-    | (string & {});
+  "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | "CONVERSATIONAL_FILTER_ONLY";
 export const GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpecConversationalFilteringModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1352,7 +1335,7 @@ export const GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec =
   }) as any as S.Schema<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>;
 
 export type GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpecList =
-  GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec[];
+  ReadonlyArray<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>;
 export const GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec,
@@ -1473,8 +1456,7 @@ export const ConversationalSearchProjectsLocationsCatalogsPlacementsRequest =
 export type GoogleCloudRetailV2ConversationalSearchResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "STREAMING"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const GoogleCloudRetailV2ConversationalSearchResponseStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1493,7 +1475,7 @@ export const GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch =
   }) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch>;
 
 export type GoogleCloudRetailV2ConversationalSearchResponseRefinedSearchList =
-  GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch[];
+  ReadonlyArray<GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch>;
 export const GoogleCloudRetailV2ConversationalSearchResponseRefinedSearchList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch,
@@ -1517,7 +1499,7 @@ export const GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSugg
   }) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 
 export type GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
-  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer[];
+  ReadonlyArray<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer,
@@ -1666,12 +1648,13 @@ export const GoogleCloudRetailV2Image = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2Image",
 }) as any as S.Schema<GoogleCloudRetailV2Image>;
 
-export type GoogleCloudRetailV2ImageList = GoogleCloudRetailV2Image[];
+export type GoogleCloudRetailV2ImageList =
+  ReadonlyArray<GoogleCloudRetailV2Image>;
 export const GoogleCloudRetailV2ImageList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Image,
 ) as any as S.Schema<GoogleCloudRetailV2ImageList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1728,7 +1711,7 @@ export const GoogleCloudRetailV2FulfillmentInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2FulfillmentInfo>;
 
 export type GoogleCloudRetailV2FulfillmentInfoList =
-  GoogleCloudRetailV2FulfillmentInfo[];
+  ReadonlyArray<GoogleCloudRetailV2FulfillmentInfo>;
 export const GoogleCloudRetailV2FulfillmentInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2FulfillmentInfo,
 ) as any as S.Schema<GoogleCloudRetailV2FulfillmentInfoList>;
@@ -1738,8 +1721,7 @@ export type GoogleCloudRetailV2ProductAvailabilityEnum =
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "PREORDER"
-  | "BACKORDER"
-  | (string & {});
+  | "BACKORDER";
 export const GoogleCloudRetailV2ProductAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1747,11 +1729,11 @@ export type GoogleCloudRetailV2ProductTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PRIMARY"
   | "VARIANT"
-  | "COLLECTION"
-  | (string & {});
+  | "COLLECTION";
 export const GoogleCloudRetailV2ProductTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudRetailV2ProductList = GoogleCloudRetailV2Product[];
+export type GoogleCloudRetailV2ProductList =
+  ReadonlyArray<GoogleCloudRetailV2Product>;
 export const GoogleCloudRetailV2ProductList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudRetailV2Product),
 ) as any as S.Schema<GoogleCloudRetailV2ProductList>;
@@ -1769,7 +1751,8 @@ export const GoogleCloudRetailV2Promotion = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2Promotion",
 }) as any as S.Schema<GoogleCloudRetailV2Promotion>;
 
-export type GoogleCloudRetailV2PromotionList = GoogleCloudRetailV2Promotion[];
+export type GoogleCloudRetailV2PromotionList =
+  ReadonlyArray<GoogleCloudRetailV2Promotion>;
 export const GoogleCloudRetailV2PromotionList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Promotion,
 ) as any as S.Schema<GoogleCloudRetailV2PromotionList>;
@@ -1930,13 +1913,12 @@ export const CreateProjectsLocationsCatalogsBranchesProductsRequest =
 export type GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum =
   | "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
   | "SEARCH_SOLUTION_USE_CASE_SEARCH"
-  | "SEARCH_SOLUTION_USE_CASE_BROWSE"
-  | (string & {});
+  | "SEARCH_SOLUTION_USE_CASE_BROWSE";
 export const GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList =
-  GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum[];
+  ReadonlyArray<GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum>;
 export const GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ControlSearchSolutionUseCaseItemEnum,
@@ -1974,7 +1956,7 @@ export const GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmen
   }) as any as S.Schema<GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>;
 
 export type GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentList =
-  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment[];
+  ReadonlyArray<GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>;
 export const GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment,
@@ -2014,7 +1996,7 @@ export const GoogleCloudRetailV2ConditionTimeRange = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2ConditionTimeRange>;
 
 export type GoogleCloudRetailV2ConditionTimeRangeList =
-  GoogleCloudRetailV2ConditionTimeRange[];
+  ReadonlyArray<GoogleCloudRetailV2ConditionTimeRange>;
 export const GoogleCloudRetailV2ConditionTimeRangeList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2ConditionTimeRange,
 ) as any as S.Schema<GoogleCloudRetailV2ConditionTimeRangeList>;
@@ -2037,7 +2019,7 @@ export const GoogleCloudRetailV2ConditionQueryTerm = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2ConditionQueryTerm>;
 
 export type GoogleCloudRetailV2ConditionQueryTermList =
-  GoogleCloudRetailV2ConditionQueryTerm[];
+  ReadonlyArray<GoogleCloudRetailV2ConditionQueryTerm>;
 export const GoogleCloudRetailV2ConditionQueryTermList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2ConditionQueryTerm,
 ) as any as S.Schema<GoogleCloudRetailV2ConditionQueryTermList>;
@@ -2262,13 +2244,12 @@ export const GoogleCloudRetailV2Rule = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRetailV2ControlSolutionTypesItemEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
   | "SOLUTION_TYPE_RECOMMENDATION"
-  | "SOLUTION_TYPE_SEARCH"
-  | (string & {});
+  | "SOLUTION_TYPE_SEARCH";
 export const GoogleCloudRetailV2ControlSolutionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ControlSolutionTypesItemEnumList =
-  GoogleCloudRetailV2ControlSolutionTypesItemEnum[];
+  ReadonlyArray<GoogleCloudRetailV2ControlSolutionTypesItemEnum>;
 export const GoogleCloudRetailV2ControlSolutionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ControlSolutionTypesItemEnum,
@@ -2346,7 +2327,7 @@ export const GoogleCloudRetailV2ModelServingConfigList =
   }) as any as S.Schema<GoogleCloudRetailV2ModelServingConfigList>;
 
 export type GoogleCloudRetailV2ModelServingConfigListList =
-  GoogleCloudRetailV2ModelServingConfigList[];
+  ReadonlyArray<GoogleCloudRetailV2ModelServingConfigList>;
 export const GoogleCloudRetailV2ModelServingConfigListList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ModelServingConfigList,
@@ -2356,16 +2337,14 @@ export type GoogleCloudRetailV2ModelPeriodicTuningStateEnum =
   | "PERIODIC_TUNING_STATE_UNSPECIFIED"
   | "PERIODIC_TUNING_DISABLED"
   | "ALL_TUNING_DISABLED"
-  | "PERIODIC_TUNING_ENABLED"
-  | (string & {});
+  | "PERIODIC_TUNING_ENABLED";
 export const GoogleCloudRetailV2ModelPeriodicTuningStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
     | "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"
     | "SINGLE_CONTEXT_PRODUCT"
-    | "MULTIPLE_CONTEXT_PRODUCTS"
-    | (string & {});
+    | "MULTIPLE_CONTEXT_PRODUCTS";
 export const GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2405,31 +2384,27 @@ export const GoogleCloudRetailV2ModelModelFeaturesConfig =
 export type GoogleCloudRetailV2ModelDataStateEnum =
   | "DATA_STATE_UNSPECIFIED"
   | "DATA_OK"
-  | "DATA_ERROR"
-  | (string & {});
+  | "DATA_ERROR";
 export const GoogleCloudRetailV2ModelDataStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ModelServingStateEnum =
   | "SERVING_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ACTIVE"
-  | "TUNED"
-  | (string & {});
+  | "TUNED";
 export const GoogleCloudRetailV2ModelServingStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ModelFilteringOptionEnum =
   | "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
   | "RECOMMENDATIONS_FILTERING_DISABLED"
-  | "RECOMMENDATIONS_FILTERING_ENABLED"
-  | (string & {});
+  | "RECOMMENDATIONS_FILTERING_ENABLED";
 export const GoogleCloudRetailV2ModelFilteringOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2ModelTrainingStateEnum =
   | "TRAINING_STATE_UNSPECIFIED"
   | "PAUSED"
-  | "TRAINING"
-  | (string & {});
+  | "TRAINING";
 export const GoogleCloudRetailV2ModelTrainingStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata that describes the training and serving parameters of a Model. A Model can be associated with a ServingConfig and then queried through the Predict API. */
@@ -2910,14 +2885,14 @@ export const GoogleCloudRetailV2IntentClassificationConfigExample =
   }) as any as S.Schema<GoogleCloudRetailV2IntentClassificationConfigExample>;
 
 export type GoogleCloudRetailV2IntentClassificationConfigExampleList =
-  GoogleCloudRetailV2IntentClassificationConfigExample[];
+  ReadonlyArray<GoogleCloudRetailV2IntentClassificationConfigExample>;
 export const GoogleCloudRetailV2IntentClassificationConfigExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2IntentClassificationConfigExample,
   ) as any as S.Schema<GoogleCloudRetailV2IntentClassificationConfigExampleList>;
 
 export type GoogleCloudRetailV2IntentClassificationConfigInlineForceIntentOperationEnum =
-  "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS" | (string & {});
+  "OPERATION_UNSPECIFIED" | "EXACT_MATCH" | "CONTAINS";
 export const GoogleCloudRetailV2IntentClassificationConfigInlineForceIntentOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2945,7 +2920,7 @@ export const GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent =
   }) as any as S.Schema<GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent>;
 
 export type GoogleCloudRetailV2IntentClassificationConfigInlineForceIntentList =
-  GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent[];
+  ReadonlyArray<GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent>;
 export const GoogleCloudRetailV2IntentClassificationConfigInlineForceIntentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent,
@@ -3315,8 +3290,7 @@ export const GoogleCloudRetailV2ProductInputConfig = /*@__PURE__*/ S.suspend(
 export type GoogleCloudRetailV2ImportProductsRequestReconciliationModeEnum =
   | "RECONCILIATION_MODE_UNSPECIFIED"
   | "INCREMENTAL"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GoogleCloudRetailV2ImportProductsRequestReconciliationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3452,7 +3426,7 @@ export const GoogleCloudRetailV2ProductDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2ProductDetail>;
 
 export type GoogleCloudRetailV2ProductDetailList =
-  GoogleCloudRetailV2ProductDetail[];
+  ReadonlyArray<GoogleCloudRetailV2ProductDetail>;
 export const GoogleCloudRetailV2ProductDetailList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2ProductDetail,
 ) as any as S.Schema<GoogleCloudRetailV2ProductDetailList>;
@@ -3485,7 +3459,8 @@ export const GoogleCloudRetailV2PanelInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2PanelInfo",
 }) as any as S.Schema<GoogleCloudRetailV2PanelInfo>;
 
-export type GoogleCloudRetailV2PanelInfoList = GoogleCloudRetailV2PanelInfo[];
+export type GoogleCloudRetailV2PanelInfoList =
+  ReadonlyArray<GoogleCloudRetailV2PanelInfo>;
 export const GoogleCloudRetailV2PanelInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2PanelInfo,
 ) as any as S.Schema<GoogleCloudRetailV2PanelInfoList>;
@@ -3592,7 +3567,8 @@ export const GoogleCloudRetailV2UserEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2UserEvent",
 }) as any as S.Schema<GoogleCloudRetailV2UserEvent>;
 
-export type GoogleCloudRetailV2UserEventList = GoogleCloudRetailV2UserEvent[];
+export type GoogleCloudRetailV2UserEventList =
+  ReadonlyArray<GoogleCloudRetailV2UserEvent>;
 export const GoogleCloudRetailV2UserEventList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2UserEvent,
 ) as any as S.Schema<GoogleCloudRetailV2UserEventList>;
@@ -3735,7 +3711,8 @@ export const GoogleCloudRetailV2Catalog = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2Catalog",
 }) as any as S.Schema<GoogleCloudRetailV2Catalog>;
 
-export type GoogleCloudRetailV2CatalogList = GoogleCloudRetailV2Catalog[];
+export type GoogleCloudRetailV2CatalogList =
+  ReadonlyArray<GoogleCloudRetailV2Catalog>;
 export const GoogleCloudRetailV2CatalogList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Catalog,
 ) as any as S.Schema<GoogleCloudRetailV2CatalogList>;
@@ -3833,7 +3810,8 @@ export const ListProjectsLocationsCatalogsControlsRequest =
     identifier: "ListProjectsLocationsCatalogsControlsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>;
 
-export type GoogleCloudRetailV2ControlList = GoogleCloudRetailV2Control[];
+export type GoogleCloudRetailV2ControlList =
+  ReadonlyArray<GoogleCloudRetailV2Control>;
 export const GoogleCloudRetailV2ControlList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Control,
 ) as any as S.Schema<GoogleCloudRetailV2ControlList>;
@@ -3915,7 +3893,8 @@ export const ListProjectsLocationsCatalogsModelsRequest =
     identifier: "ListProjectsLocationsCatalogsModelsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>;
 
-export type GoogleCloudRetailV2ModelList = GoogleCloudRetailV2Model[];
+export type GoogleCloudRetailV2ModelList =
+  ReadonlyArray<GoogleCloudRetailV2Model>;
 export const GoogleCloudRetailV2ModelList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Model,
 ) as any as S.Schema<GoogleCloudRetailV2ModelList>;
@@ -3968,7 +3947,8 @@ export const ListProjectsLocationsCatalogsOperationsRequest =
     identifier: "ListProjectsLocationsCatalogsOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -4019,7 +3999,7 @@ export const ListProjectsLocationsCatalogsServingConfigsRequest =
   }) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>;
 
 export type GoogleCloudRetailV2ServingConfigList =
-  GoogleCloudRetailV2ServingConfig[];
+  ReadonlyArray<GoogleCloudRetailV2ServingConfig>;
 export const GoogleCloudRetailV2ServingConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2ServingConfig,
 ) as any as S.Schema<GoogleCloudRetailV2ServingConfigList>;
@@ -4331,7 +4311,7 @@ export const GoogleCloudRetailV2PredictResponsePredictionResult =
   }) as any as S.Schema<GoogleCloudRetailV2PredictResponsePredictionResult>;
 
 export type GoogleCloudRetailV2PredictResponsePredictionResultList =
-  GoogleCloudRetailV2PredictResponsePredictionResult[];
+  ReadonlyArray<GoogleCloudRetailV2PredictResponsePredictionResult>;
 export const GoogleCloudRetailV2PredictResponsePredictionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2PredictResponsePredictionResult,
@@ -4464,10 +4444,7 @@ export const PurgeProjectsLocationsCatalogsUserEventsRequest =
   }) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>;
 
 export type GoogleCloudRetailV2RejoinUserEventsRequestUserEventRejoinScopeEnum =
-    | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
-    | "JOINED_EVENTS"
-    | "UNJOINED_EVENTS"
-    | (string & {});
+  "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" | "JOINED_EVENTS" | "UNJOINED_EVENTS";
 export const GoogleCloudRetailV2RejoinUserEventsRequestUserEventRejoinScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4758,16 +4735,14 @@ export const ResumeProjectsLocationsCatalogsModelsRequest =
 export type GoogleCloudRetailV2SearchRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "PRODUCT_SEARCH_ONLY"
-  | "FACETED_SEARCH_ONLY"
-  | (string & {});
+  | "FACETED_SEARCH_ONLY";
 export const GoogleCloudRetailV2SearchRequestSearchModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRetailV2SearchRequestSpellCorrectionSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "SUGGESTION_ONLY"
-  | "AUTO"
-  | (string & {});
+  | "AUTO";
 export const GoogleCloudRetailV2SearchRequestSpellCorrectionSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4790,8 +4765,7 @@ export const GoogleCloudRetailV2SearchRequestSpellCorrectionSpec =
 export type GoogleCloudRetailV2SearchRequestQueryExpansionSpecConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "DISABLED"
-  | "AUTO"
-  | (string & {});
+  | "AUTO";
 export const GoogleCloudRetailV2SearchRequestQueryExpansionSpecConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4876,14 +4850,14 @@ export const GoogleCloudRetailV2SearchRequestFacetSpec =
   }) as any as S.Schema<GoogleCloudRetailV2SearchRequestFacetSpec>;
 
 export type GoogleCloudRetailV2SearchRequestFacetSpecList =
-  GoogleCloudRetailV2SearchRequestFacetSpec[];
+  ReadonlyArray<GoogleCloudRetailV2SearchRequestFacetSpec>;
 export const GoogleCloudRetailV2SearchRequestFacetSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchRequestFacetSpec,
   ) as any as S.Schema<GoogleCloudRetailV2SearchRequestFacetSpecList>;
 
 export type GoogleCloudRetailV2ProductAttributeValueList =
-  GoogleCloudRetailV2ProductAttributeValue[];
+  ReadonlyArray<GoogleCloudRetailV2ProductAttributeValue>;
 export const GoogleCloudRetailV2ProductAttributeValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2ProductAttributeValue,
@@ -4991,7 +4965,8 @@ export const GoogleCloudRetailV2Tile = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRetailV2Tile",
 }) as any as S.Schema<GoogleCloudRetailV2Tile>;
 
-export type GoogleCloudRetailV2TileList = GoogleCloudRetailV2Tile[];
+export type GoogleCloudRetailV2TileList =
+  ReadonlyArray<GoogleCloudRetailV2Tile>;
 export const GoogleCloudRetailV2TileList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2Tile,
 ) as any as S.Schema<GoogleCloudRetailV2TileList>;
@@ -5177,7 +5152,7 @@ export const GoogleCloudRetailV2SearchResponseConversationalSearchResultAddition
   }) as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter>;
 
 export type GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList =
-  GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter[];
+  ReadonlyArray<GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter>;
 export const GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilter,
@@ -5201,7 +5176,7 @@ export const GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggeste
   }) as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer>;
 
 export type GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList =
-  GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer[];
+  ReadonlyArray<GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer>;
 export const GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer,
@@ -5269,7 +5244,7 @@ export const GoogleCloudRetailV2SearchResponseFacetFacetValue =
   }) as any as S.Schema<GoogleCloudRetailV2SearchResponseFacetFacetValue>;
 
 export type GoogleCloudRetailV2SearchResponseFacetFacetValueList =
-  GoogleCloudRetailV2SearchResponseFacetFacetValue[];
+  ReadonlyArray<GoogleCloudRetailV2SearchResponseFacetFacetValue>;
 export const GoogleCloudRetailV2SearchResponseFacetFacetValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchResponseFacetFacetValue,
@@ -5296,7 +5271,7 @@ export const GoogleCloudRetailV2SearchResponseFacet = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRetailV2SearchResponseFacet>;
 
 export type GoogleCloudRetailV2SearchResponseFacetList =
-  GoogleCloudRetailV2SearchResponseFacet[];
+  ReadonlyArray<GoogleCloudRetailV2SearchResponseFacet>;
 export const GoogleCloudRetailV2SearchResponseFacetList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2SearchResponseFacet,
 ) as any as S.Schema<GoogleCloudRetailV2SearchResponseFacetList>;
@@ -5412,7 +5387,7 @@ export const GoogleCloudRetailV2ExperimentInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2ExperimentInfo>;
 
 export type GoogleCloudRetailV2ExperimentInfoList =
-  GoogleCloudRetailV2ExperimentInfo[];
+  ReadonlyArray<GoogleCloudRetailV2ExperimentInfo>;
 export const GoogleCloudRetailV2ExperimentInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudRetailV2ExperimentInfo,
 ) as any as S.Schema<GoogleCloudRetailV2ExperimentInfoList>;
@@ -5471,7 +5446,7 @@ export const GoogleCloudRetailV2SearchResponseSearchResult =
   }) as any as S.Schema<GoogleCloudRetailV2SearchResponseSearchResult>;
 
 export type GoogleCloudRetailV2SearchResponseSearchResultList =
-  GoogleCloudRetailV2SearchResponseSearchResult[];
+  ReadonlyArray<GoogleCloudRetailV2SearchResponseSearchResult>;
 export const GoogleCloudRetailV2SearchResponseSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRetailV2SearchResponseSearchResult,

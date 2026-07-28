@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -102,7 +102,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -124,7 +124,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -142,10 +142,7 @@ export const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeletePhotosResponse",
 }) as any as S.Schema<BatchDeletePhotosResponse>;
 
-export type BatchGetPhotosViewEnum =
-  | "BASIC"
-  | "INCLUDE_DOWNLOAD_URL"
-  | (string & {});
+export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
 export const BatchGetPhotosViewEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetPhotosRequest {
@@ -186,8 +183,7 @@ export const UploadRef = /*@__PURE__*/ S.suspend(() =>
 export type PhotoMapsPublishStatusEnum =
   | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
   | "PUBLISHED"
-  | "REJECTED_UNKNOWN"
-  | (string & {});
+  | "REJECTED_UNKNOWN";
 export const PhotoMapsPublishStatusEnum = /*@__PURE__*/ S.String;
 
 /** Place metadata for an entity. */
@@ -207,7 +203,7 @@ export const Place = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Place" }) as any as S.Schema<Place>;
 
-export type PlaceList = Place[];
+export type PlaceList = ReadonlyArray<Place>;
 export const PlaceList = /*@__PURE__*/ S.Array(
   Place,
 ) as any as S.Schema<PlaceList>;
@@ -234,7 +230,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
-export type ConnectionList = Connection[];
+export type ConnectionList = ReadonlyArray<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;
@@ -307,8 +303,7 @@ export type PhotoTransferStatusEnum =
   | "REJECTED"
   | "EXPIRED"
   | "CANCELLED"
-  | "RECEIVED_VIA_TRANSFER"
-  | (string & {});
+  | "RECEIVED_VIA_TRANSFER";
 export const PhotoTransferStatusEnum = /*@__PURE__*/ S.String;
 
 /** Photo is used to store 360 photos along with photo metadata. */
@@ -372,7 +367,7 @@ export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhotoResponse" }) as any as S.Schema<PhotoResponse>;
 
-export type PhotoResponseList = PhotoResponse[];
+export type PhotoResponseList = ReadonlyArray<PhotoResponse>;
 export const PhotoResponseList = /*@__PURE__*/ S.Array(
   PhotoResponse,
 ) as any as S.Schema<PhotoResponseList>;
@@ -406,7 +401,7 @@ export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePhotoRequest",
 }) as any as S.Schema<UpdatePhotoRequest>;
 
-export type UpdatePhotoRequestList = UpdatePhotoRequest[];
+export type UpdatePhotoRequestList = ReadonlyArray<UpdatePhotoRequest>;
 export const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
   UpdatePhotoRequest,
 ) as any as S.Schema<UpdatePhotoRequestList>;
@@ -476,8 +471,7 @@ export const CreatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreatePhotoSequenceInputTypeEnum =
   | "INPUT_TYPE_UNSPECIFIED"
   | "VIDEO"
-  | "XDM"
-  | (string & {});
+  | "XDM";
 export const CreatePhotoSequenceInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Generic 3d measurement sample. */
@@ -500,7 +494,7 @@ export const Measurement3d = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Measurement3d" }) as any as S.Schema<Measurement3d>;
 
-export type Measurement3dList = Measurement3d[];
+export type Measurement3dList = ReadonlyArray<Measurement3d>;
 export const Measurement3dList = /*@__PURE__*/ S.Array(
   Measurement3d,
 ) as any as S.Schema<Measurement3dList>;
@@ -536,7 +530,7 @@ export const LatLngBounds = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLngBounds" }) as any as S.Schema<LatLngBounds>;
 
-export type PoseList = Pose[];
+export type PoseList = ReadonlyArray<Pose>;
 export const PoseList = /*@__PURE__*/ S.Array(
   Pose,
 ) as any as S.Schema<PoseList>;
@@ -546,14 +540,12 @@ export type PhotoSequenceProcessingStateEnum =
   | "PENDING"
   | "PROCESSING"
   | "PROCESSED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PhotoSequenceProcessingStateEnum = /*@__PURE__*/ S.String;
 
 export type PhotoSequenceGpsSourceEnum =
   | "PHOTO_SEQUENCE"
-  | "CAMERA_MOTION_METADATA_TRACK"
-  | (string & {});
+  | "CAMERA_MOTION_METADATA_TRACK";
 export const PhotoSequenceGpsSourceEnum = /*@__PURE__*/ S.String;
 
 export type PhotoSequenceFailureReasonEnum =
@@ -581,8 +573,7 @@ export type PhotoSequenceFailureReasonEnum =
   | "INSUFFICIENT_VIDEO_FRAMES"
   | "INSUFFICIENT_MOVEMENT"
   | "MAST_DOWN"
-  | "CAMERA_COVERED"
-  | (string & {});
+  | "CAMERA_COVERED";
 export const PhotoSequenceFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** Details related to ProcessingFailureReason#INSUFFICIENT_GPS. */
@@ -690,7 +681,7 @@ export const ProcessingFailureDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProcessingFailureDetails",
 }) as any as S.Schema<ProcessingFailureDetails>;
 
-export type PhotoList = Photo[];
+export type PhotoList = ReadonlyArray<Photo>;
 export const PhotoList = /*@__PURE__*/ S.Array(
   Photo,
 ) as any as S.Schema<PhotoList>;
@@ -834,7 +825,7 @@ export const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePhotoSequenceRequest",
 }) as any as S.Schema<DeletePhotoSequenceRequest>;
 
-export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL" | (string & {});
+export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
 export const GetPhotoViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPhotoRequest {
@@ -861,10 +852,7 @@ export const GetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPhotoRequest",
 }) as any as S.Schema<GetPhotoRequest>;
 
-export type GetPhotoSequenceViewEnum =
-  | "BASIC"
-  | "INCLUDE_DOWNLOAD_URL"
-  | (string & {});
+export type GetPhotoSequenceViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
 export const GetPhotoSequenceViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPhotoSequenceRequest {
@@ -891,10 +879,7 @@ export const GetPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPhotoSequenceRequest",
 }) as any as S.Schema<GetPhotoSequenceRequest>;
 
-export type ListPhotosViewEnum =
-  | "BASIC"
-  | "INCLUDE_DOWNLOAD_URL"
-  | (string & {});
+export type ListPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
 export const ListPhotosViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListPhotosRequest {
@@ -967,7 +952,7 @@ export const ListPhotoSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPhotoSequencesRequest",
 }) as any as S.Schema<ListPhotoSequencesRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

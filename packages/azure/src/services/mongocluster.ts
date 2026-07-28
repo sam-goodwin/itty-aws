@@ -13,6 +13,22 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The properties of a mongo cluster firewall rule. */
+export interface FirewallRulePropertiesInput {
+  /** The start IP address of the mongo cluster firewall rule. Must be IPv4 format. */
+  startIpAddress: string;
+  /** The end IP address of the mongo cluster firewall rule. Must be IPv4 format. */
+  endIpAddress: string;
+}
+export const FirewallRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startIpAddress: S.String,
+    endIpAddress: S.String,
+  }),
+).annotate({
+  identifier: "FirewallRulePropertiesInput",
+}) as any as S.Schema<FirewallRulePropertiesInput>;
+
 export interface FirewallRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22,7 +38,8 @@ export interface FirewallRulesCreateOrUpdateRequest {
   mongoClusterName: string;
   /** The name of the mongo cluster firewall rule. */
   firewallRuleName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: FirewallRulePropertiesInput;
 }
 export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -30,7 +47,7 @@ export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     mongoClusterName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FirewallRulePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -48,8 +65,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +73,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -94,8 +109,7 @@ export type ProvisioningState =
   | "Canceled"
   | "InProgress"
   | "Updating"
-  | "Dropping"
-  | (string & {});
+  | "Dropping";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a mongo cluster firewall rule. */
@@ -278,7 +292,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListResultValueList = FirewallRule[];
+export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -304,14 +318,18 @@ export interface MongoClustersCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const MongoClustersCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -327,8 +345,7 @@ export const MongoClustersCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type MongoClustersCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const MongoClustersCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -351,50 +368,21 @@ export const MongoClustersCheckNameAvailabilityResponse =
     identifier: "MongoClustersCheckNameAvailabilityResponse",
   }) as any as S.Schema<MongoClustersCheckNameAvailabilityResponse>;
 
-export interface MongoClustersCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the mongo cluster. */
-  mongoClusterName: string;
-  body: unknown;
-}
-export const MongoClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    mongoClusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MongoClustersCreateOrUpdateRequest",
-}) as any as S.Schema<MongoClustersCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type MongoClustersCreateOrUpdateResponseTagsMap = {
+export type MongoClustersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MongoClustersCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<MongoClustersCreateOrUpdateResponseTagsMap>;
+export const MongoClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MongoClustersCreateOrUpdateRequestTagsMap>;
 
 /** The mode that the Mongo Cluster is created with. */
 export type CreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "GeoReplica"
-  | "Replica"
-  | (string & {});
+  | "Replica";
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** Parameters used for restore operations */
@@ -445,28 +433,15 @@ export const AdministratorProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdministratorProperties",
 }) as any as S.Schema<AdministratorProperties>;
 
-/** The status of the Mongo cluster resource. */
-export type MongoClusterStatus =
-  | "Ready"
-  | "Provisioning"
-  | "Updating"
-  | "Starting"
-  | "Stopping"
-  | "Stopped"
-  | "Dropping"
-  | (string & {});
-export const MongoClusterStatus = /*@__PURE__*/ S.String;
-
 /** Whether or not public endpoint access is allowed for this Mongo cluster. Value is optional and default value is 'Enabled' */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The high availability modes for a cluster. */
 export type HighAvailabilityMode =
   | "Disabled"
   | "SameZone"
-  | "ZoneRedundantPreferred"
-  | (string & {});
+  | "ZoneRedundantPreferred";
 export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 
 /** The high availability properties of the cluster. */
@@ -483,7 +458,7 @@ export const HighAvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HighAvailabilityProperties>;
 
 /** The type of storage that a mongo cluster can be provisioned with. */
-export type StorageType = "PremiumSSD" | "PremiumSSDv2" | (string & {});
+export type StorageType = "PremiumSSD" | "PremiumSSDv2";
 export const StorageType = /*@__PURE__*/ S.String;
 
 /** The storage properties of the cluster. This includes the data storage size and scaling applied to servers in the cluster. */
@@ -529,20 +504,15 @@ export const ComputeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeProperties>;
 
 /** The backup properties of the cluster. This includes the earliest restore time and retention settings. */
-export interface BackupProperties {
-  /** Earliest restore timestamp in UTC ISO8601 format. */
-  earliestRestoreTime?: string;
-}
-export const BackupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    earliestRestoreTime: S.optional(S.String),
-  }),
+export interface BackupPropertiesInput {}
+export const BackupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "BackupProperties",
-}) as any as S.Schema<BackupProperties>;
+  identifier: "BackupPropertiesInput",
+}) as any as S.Schema<BackupPropertiesInput>;
 
 /** The mode to apply to the Mongo Data API. */
-export type DataApiMode = "Enabled" | "Disabled" | (string & {});
+export type DataApiMode = "Enabled" | "Disabled";
 export const DataApiMode = /*@__PURE__*/ S.String;
 
 /** Data API properties. */
@@ -558,8 +528,270 @@ export const DataApiProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataApiProperties",
 }) as any as S.Schema<DataApiProperties>;
 
+/** Preview features that can be enabled on a mongo cluster. */
+export type PreviewFeature = "GeoReplicas";
+export const PreviewFeature = /*@__PURE__*/ S.String;
+
+/** List of private endpoint connections. */
+export type MongoClusterPropertiesInputPreviewFeaturesList =
+  ReadonlyArray<PreviewFeature>;
+export const MongoClusterPropertiesInputPreviewFeaturesList =
+  /*@__PURE__*/ S.Array(
+    PreviewFeature,
+  ) as any as S.Schema<MongoClusterPropertiesInputPreviewFeaturesList>;
+
+/** The authentication modes supporting on the Mongo cluster. */
+export type AuthenticationMode = "NativeAuth" | "MicrosoftEntraID";
+export const AuthenticationMode = /*@__PURE__*/ S.String;
+
+/** Allowed authentication modes for data access on the cluster. */
+export type AuthConfigPropertiesAllowedModesList =
+  ReadonlyArray<AuthenticationMode>;
+export const AuthConfigPropertiesAllowedModesList = /*@__PURE__*/ S.Array(
+  AuthenticationMode,
+) as any as S.Schema<AuthConfigPropertiesAllowedModesList>;
+
+/** The authentication configuration for the Mongo cluster. */
+export interface AuthConfigProperties {
+  /** Allowed authentication modes for data access on the cluster. */
+  allowedModes?: AuthConfigPropertiesAllowedModesList;
+}
+export const AuthConfigProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedModes: S.optional(AuthConfigPropertiesAllowedModesList),
+  }),
+).annotate({
+  identifier: "AuthConfigProperties",
+}) as any as S.Schema<AuthConfigProperties>;
+
+/** The type of identity for key encryption key. */
+export type KeyEncryptionKeyIdentityType = "UserAssignedIdentity";
+export const KeyEncryptionKeyIdentityType = /*@__PURE__*/ S.String;
+
+/** The identity used for key encryption key. */
+export interface KeyEncryptionKeyIdentity {
+  /** The type of identity. Only 'UserAssignedIdentity' is supported. */
+  identityType?: KeyEncryptionKeyIdentityType;
+  /** The user assigned identity resource id. */
+  userAssignedIdentityResourceId?: string;
+}
+export const KeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityType: S.optional(KeyEncryptionKeyIdentityType),
+    userAssignedIdentityResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KeyEncryptionKeyIdentity",
+}) as any as S.Schema<KeyEncryptionKeyIdentity>;
+
+/** Customer managed key encryption settings. */
+export interface CustomerManagedKeyEncryptionProperties {
+  /** The identity used to access the key encryption key. */
+  keyEncryptionKeyIdentity?: KeyEncryptionKeyIdentity;
+  /** The URI of the key vault key used for encryption. */
+  keyEncryptionKeyUrl?: string;
+}
+export const CustomerManagedKeyEncryptionProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keyEncryptionKeyIdentity: S.optional(KeyEncryptionKeyIdentity),
+      keyEncryptionKeyUrl: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CustomerManagedKeyEncryptionProperties",
+}) as any as S.Schema<CustomerManagedKeyEncryptionProperties>;
+
+/** The encryption configuration for the mongo cluster. */
+export interface EncryptionProperties {
+  /** Customer managed key encryption settings. */
+  customerManagedKeyEncryption?: CustomerManagedKeyEncryptionProperties;
+}
+export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerManagedKeyEncryption: S.optional(
+      CustomerManagedKeyEncryptionProperties,
+    ),
+  }),
+).annotate({
+  identifier: "EncryptionProperties",
+}) as any as S.Schema<EncryptionProperties>;
+
+/** The network bypass mode for the Mongo cluster. */
+export type NetworkBypassMode = "None" | "AzureCosmosDB";
+export const NetworkBypassMode = /*@__PURE__*/ S.String;
+
+/** The properties of a mongo cluster. */
+export interface MongoClusterPropertiesInput {
+  /** The mode to create a mongo cluster. */
+  createMode?: CreateMode;
+  /** The parameters to create a point-in-time restore mongo cluster. */
+  restoreParameters?: MongoClusterRestoreParameters;
+  /** The parameters to create a replica mongo cluster. */
+  replicaParameters?: MongoClusterReplicaParameters;
+  /** The local administrator properties for the mongo cluster. */
+  administrator?: AdministratorProperties;
+  /** The Mongo DB server version. Defaults to the latest available version if not specified. */
+  serverVersion?: string;
+  /** Whether or not public endpoint access is allowed for this mongo cluster. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** The high availability properties of the mongo cluster. */
+  highAvailability?: HighAvailabilityProperties;
+  /** The storage properties of the mongo cluster. */
+  storage?: StorageProperties;
+  /** The sharding properties of the mongo cluster. */
+  sharding?: ShardingProperties;
+  /** The compute properties of the mongo cluster. */
+  compute?: ComputeProperties;
+  /** The backup properties of the mongo cluster. */
+  backup?: BackupPropertiesInput;
+  /** The Data API properties of the mongo cluster. */
+  dataApi?: DataApiProperties;
+  /** List of private endpoint connections. */
+  previewFeatures?: MongoClusterPropertiesInputPreviewFeaturesList;
+  /** The authentication configuration for the cluster. */
+  authConfig?: AuthConfigProperties;
+  /** The encryption configuration for the cluster. Depends on identity being configured. */
+  encryption?: EncryptionProperties;
+  /** The network bypass mode for the cluster. Setting to 'AzureCosmosDB' allows Azure Cosmos DB service to bypass network restrictions. */
+  networkBypassMode?: NetworkBypassMode;
+}
+export const MongoClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createMode: S.optional(CreateMode),
+    restoreParameters: S.optional(MongoClusterRestoreParameters),
+    replicaParameters: S.optional(MongoClusterReplicaParameters),
+    administrator: S.optional(AdministratorProperties),
+    serverVersion: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    highAvailability: S.optional(HighAvailabilityProperties),
+    storage: S.optional(StorageProperties),
+    sharding: S.optional(ShardingProperties),
+    compute: S.optional(ComputeProperties),
+    backup: S.optional(BackupPropertiesInput),
+    dataApi: S.optional(DataApiProperties),
+    previewFeatures: S.optional(MongoClusterPropertiesInputPreviewFeaturesList),
+    authConfig: S.optional(AuthConfigProperties),
+    encryption: S.optional(EncryptionProperties),
+    networkBypassMode: S.optional(NetworkBypassMode),
+  }),
+).annotate({
+  identifier: "MongoClusterPropertiesInput",
+}) as any as S.Schema<MongoClusterPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MongoClustersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const MongoClustersCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "MongoClustersCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<MongoClustersCreateOrUpdateRequestIdentity>;
+
+export interface MongoClustersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the mongo cluster. */
+  mongoClusterName: string;
+  /** Resource tags. */
+  tags?: MongoClustersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: MongoClusterPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MongoClustersCreateOrUpdateRequestIdentity;
+}
+export const MongoClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    mongoClusterName: S.String.pipe(T.Label()),
+    tags: S.optional(MongoClustersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(MongoClusterPropertiesInput),
+    identity: S.optional(MongoClustersCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MongoClustersCreateOrUpdateRequest",
+}) as any as S.Schema<MongoClustersCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type MongoClustersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MongoClustersCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MongoClustersCreateOrUpdateResponseTagsMap>;
+
+/** The status of the Mongo cluster resource. */
+export type MongoClusterStatus =
+  | "Ready"
+  | "Provisioning"
+  | "Updating"
+  | "Starting"
+  | "Stopping"
+  | "Stopped"
+  | "Dropping";
+export const MongoClusterStatus = /*@__PURE__*/ S.String;
+
+/** The backup properties of the cluster. This includes the earliest restore time and retention settings. */
+export interface BackupProperties {
+  /** Earliest restore timestamp in UTC ISO8601 format. */
+  earliestRestoreTime?: string;
+}
+export const BackupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    earliestRestoreTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupProperties",
+}) as any as S.Schema<BackupProperties>;
+
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -582,8 +814,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -610,8 +841,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -665,28 +895,21 @@ export const MongoClusterPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type MongoClusterPropertiesPrivateEndpointConnectionsList =
-  MongoClusterPropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<MongoClusterPropertiesPrivateEndpointConnectionsItem>;
 export const MongoClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     MongoClusterPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<MongoClusterPropertiesPrivateEndpointConnectionsList>;
 
-/** Preview features that can be enabled on a mongo cluster. */
-export type PreviewFeature = "GeoReplicas" | (string & {});
-export const PreviewFeature = /*@__PURE__*/ S.String;
-
 /** List of private endpoint connections. */
-export type MongoClusterPropertiesPreviewFeaturesList = PreviewFeature[];
+export type MongoClusterPropertiesPreviewFeaturesList =
+  ReadonlyArray<PreviewFeature>;
 export const MongoClusterPropertiesPreviewFeaturesList = /*@__PURE__*/ S.Array(
   PreviewFeature,
 ) as any as S.Schema<MongoClusterPropertiesPreviewFeaturesList>;
 
 /** Replication role of the mongo cluster. */
-export type ReplicationRole =
-  | "Primary"
-  | "AsyncReplica"
-  | "GeoAsyncReplica"
-  | (string & {});
+export type ReplicationRole = "Primary" | "AsyncReplica" | "GeoAsyncReplica";
 export const ReplicationRole = /*@__PURE__*/ S.String;
 
 /** The state of the replication link between the replica and source cluster. */
@@ -696,8 +919,7 @@ export type ReplicationState =
   | "Provisioning"
   | "Updating"
   | "Broken"
-  | "Reconfiguring"
-  | (string & {});
+  | "Reconfiguring";
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 /** Replica properties of the mongo cluster. */
@@ -718,90 +940,6 @@ export const ReplicationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationProperties",
 }) as any as S.Schema<ReplicationProperties>;
-
-/** The authentication modes supporting on the Mongo cluster. */
-export type AuthenticationMode =
-  | "NativeAuth"
-  | "MicrosoftEntraID"
-  | (string & {});
-export const AuthenticationMode = /*@__PURE__*/ S.String;
-
-/** Allowed authentication modes for data access on the cluster. */
-export type AuthConfigPropertiesAllowedModesList = AuthenticationMode[];
-export const AuthConfigPropertiesAllowedModesList = /*@__PURE__*/ S.Array(
-  AuthenticationMode,
-) as any as S.Schema<AuthConfigPropertiesAllowedModesList>;
-
-/** The authentication configuration for the Mongo cluster. */
-export interface AuthConfigProperties {
-  /** Allowed authentication modes for data access on the cluster. */
-  allowedModes?: AuthConfigPropertiesAllowedModesList;
-}
-export const AuthConfigProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedModes: S.optional(AuthConfigPropertiesAllowedModesList),
-  }),
-).annotate({
-  identifier: "AuthConfigProperties",
-}) as any as S.Schema<AuthConfigProperties>;
-
-/** The type of identity for key encryption key. */
-export type KeyEncryptionKeyIdentityType =
-  | "UserAssignedIdentity"
-  | (string & {});
-export const KeyEncryptionKeyIdentityType = /*@__PURE__*/ S.String;
-
-/** The identity used for key encryption key. */
-export interface KeyEncryptionKeyIdentity {
-  /** The type of identity. Only 'UserAssignedIdentity' is supported. */
-  identityType?: KeyEncryptionKeyIdentityType;
-  /** The user assigned identity resource id. */
-  userAssignedIdentityResourceId?: string;
-}
-export const KeyEncryptionKeyIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identityType: S.optional(KeyEncryptionKeyIdentityType),
-    userAssignedIdentityResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyEncryptionKeyIdentity",
-}) as any as S.Schema<KeyEncryptionKeyIdentity>;
-
-/** Customer managed key encryption settings. */
-export interface CustomerManagedKeyEncryptionProperties {
-  /** The identity used to access the key encryption key. */
-  keyEncryptionKeyIdentity?: KeyEncryptionKeyIdentity;
-  /** The URI of the key vault key used for encryption. */
-  keyEncryptionKeyUrl?: string;
-}
-export const CustomerManagedKeyEncryptionProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keyEncryptionKeyIdentity: S.optional(KeyEncryptionKeyIdentity),
-      keyEncryptionKeyUrl: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "CustomerManagedKeyEncryptionProperties",
-}) as any as S.Schema<CustomerManagedKeyEncryptionProperties>;
-
-/** The encryption configuration for the mongo cluster. */
-export interface EncryptionProperties {
-  /** Customer managed key encryption settings. */
-  customerManagedKeyEncryption?: CustomerManagedKeyEncryptionProperties;
-}
-export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerManagedKeyEncryption: S.optional(
-      CustomerManagedKeyEncryptionProperties,
-    ),
-  }),
-).annotate({
-  identifier: "EncryptionProperties",
-}) as any as S.Schema<EncryptionProperties>;
-
-/** The network bypass mode for the Mongo cluster. */
-export type NetworkBypassMode = "None" | "AzureCosmosDB" | (string & {});
-export const NetworkBypassMode = /*@__PURE__*/ S.String;
 
 /** The properties of a mongo cluster. */
 export interface MongoClusterProperties {
@@ -880,15 +1018,6 @@ export const MongoClusterProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MongoClusterProperties",
 }) as any as S.Schema<MongoClusterProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1167,7 +1296,7 @@ export const MongoCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MongoCluster" }) as any as S.Schema<MongoCluster>;
 
 /** The MongoCluster items on this page */
-export type MongoClusterListResultValueList = MongoCluster[];
+export type MongoClusterListResultValueList = ReadonlyArray<MongoCluster>;
 export const MongoClusterListResultValueList = /*@__PURE__*/ S.Array(
   MongoCluster,
 ) as any as S.Schema<MongoClusterListResultValueList>;
@@ -1258,7 +1387,7 @@ export const ConnectionString = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the connection strings for a mongo cluster. */
 export type ListConnectionStringsResultConnectionStringsList =
-  ConnectionString[];
+  ReadonlyArray<ConnectionString>;
 export const ListConnectionStringsResultConnectionStringsList =
   /*@__PURE__*/ S.Array(
     ConnectionString,
@@ -1279,6 +1408,14 @@ export const ListConnectionStringsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionStringsResult",
 }) as any as S.Schema<ListConnectionStringsResult>;
 
+/** The option to apply to a promote operation. */
+export type PromoteOption = "Forced";
+export const PromoteOption = /*@__PURE__*/ S.String;
+
+/** The mode to apply to a promote operation. */
+export type PromoteMode = "Switchover";
+export const PromoteMode = /*@__PURE__*/ S.String;
+
 export interface MongoClustersPromoteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1286,14 +1423,18 @@ export interface MongoClustersPromoteRequest {
   resourceGroupName: string;
   /** The name of the mongo cluster. */
   mongoClusterName: string;
-  body: unknown;
+  /** The promote option to apply to the operation. */
+  promoteOption: PromoteOption;
+  /** The mode to apply to the promote operation. Value is optional and default value is 'Switchover'. */
+  mode?: PromoteMode;
 }
 export const MongoClustersPromoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     mongoClusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    promoteOption: PromoteOption,
+    mode: S.optional(PromoteMode),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1313,6 +1454,88 @@ export const MongoClustersPromoteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MongoClustersPromoteResponse",
 }) as any as S.Schema<MongoClustersPromoteResponse>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface MongoClustersUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const MongoClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "MongoClustersUpdateRequestIdentity",
+}) as any as S.Schema<MongoClustersUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type MongoClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MongoClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MongoClustersUpdateRequestTagsMap>;
+
+/** List of private endpoint connections. */
+export type MongoClusterUpdatePropertiesInputPreviewFeaturesList =
+  ReadonlyArray<PreviewFeature>;
+export const MongoClusterUpdatePropertiesInputPreviewFeaturesList =
+  /*@__PURE__*/ S.Array(
+    PreviewFeature,
+  ) as any as S.Schema<MongoClusterUpdatePropertiesInputPreviewFeaturesList>;
+
+/** The updatable properties of the MongoCluster. */
+export interface MongoClusterUpdatePropertiesInput {
+  /** The local administrator properties for the mongo cluster. */
+  administrator?: AdministratorProperties;
+  /** The Mongo DB server version. Defaults to the latest available version if not specified. */
+  serverVersion?: string;
+  /** Whether or not public endpoint access is allowed for this mongo cluster. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** The high availability properties of the mongo cluster. */
+  highAvailability?: HighAvailabilityProperties;
+  /** The storage properties of the mongo cluster. */
+  storage?: StorageProperties;
+  /** The sharding properties of the mongo cluster. */
+  sharding?: ShardingProperties;
+  /** The compute properties of the mongo cluster. */
+  compute?: ComputeProperties;
+  /** The backup properties of the mongo cluster. */
+  backup?: BackupPropertiesInput;
+  /** The Data API properties of the mongo cluster. */
+  dataApi?: DataApiProperties;
+  /** List of private endpoint connections. */
+  previewFeatures?: MongoClusterUpdatePropertiesInputPreviewFeaturesList;
+  /** The authentication configuration for the cluster. */
+  authConfig?: AuthConfigProperties;
+  /** The encryption configuration for the cluster. Depends on identity being configured. */
+  encryption?: EncryptionProperties;
+  /** The network bypass mode for the cluster. Setting to 'AzureCosmosDB' allows Azure Cosmos DB service to bypass network restrictions. */
+  networkBypassMode?: NetworkBypassMode;
+}
+export const MongoClusterUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administrator: S.optional(AdministratorProperties),
+    serverVersion: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    highAvailability: S.optional(HighAvailabilityProperties),
+    storage: S.optional(StorageProperties),
+    sharding: S.optional(ShardingProperties),
+    compute: S.optional(ComputeProperties),
+    backup: S.optional(BackupPropertiesInput),
+    dataApi: S.optional(DataApiProperties),
+    previewFeatures: S.optional(
+      MongoClusterUpdatePropertiesInputPreviewFeaturesList,
+    ),
+    authConfig: S.optional(AuthConfigProperties),
+    encryption: S.optional(EncryptionProperties),
+    networkBypassMode: S.optional(NetworkBypassMode),
+  }),
+).annotate({
+  identifier: "MongoClusterUpdatePropertiesInput",
+}) as any as S.Schema<MongoClusterUpdatePropertiesInput>;
+
 export interface MongoClustersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1320,14 +1543,21 @@ export interface MongoClustersUpdateRequest {
   resourceGroupName: string;
   /** The name of the mongo cluster. */
   mongoClusterName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: MongoClustersUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: MongoClustersUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: MongoClusterUpdatePropertiesInput;
 }
 export const MongoClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     mongoClusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(MongoClustersUpdateRequestIdentity),
+    tags: S.optional(MongoClustersUpdateRequestTagsMap),
+    properties: S.optional(MongoClusterUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1439,11 +1669,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1470,7 +1700,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1490,6 +1720,31 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The private endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionsCreateRequestProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionsCreateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsCreateRequestProperties",
+  }) as any as S.Schema<PrivateEndpointConnectionsCreateRequestProperties>;
+
 export interface PrivateEndpointConnectionsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1499,7 +1754,8 @@ export interface PrivateEndpointConnectionsCreateRequest {
   mongoClusterName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the private endpoint connection. */
+  properties?: PrivateEndpointConnectionsCreateRequestProperties;
 }
 export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1508,7 +1764,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       mongoClusterName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionsCreateRequestProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1523,7 +1779,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1648,7 +1904,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1731,7 +1987,8 @@ export const PrivateEndpointConnectionsListByMongoClusterRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsListByMongoClusterRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionResourcePropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionResourcePropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionResourcePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1789,7 +2046,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionResourceListResultValueList =
-  PrivateEndpointConnectionResource[];
+  ReadonlyArray<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -1839,14 +2096,16 @@ export const PrivateLinksListByMongoClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinksListByMongoClusterRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1901,7 +2160,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -1971,7 +2231,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** The Replica items on this page */
-export type ReplicaListResultValueList = Replica[];
+export type ReplicaListResultValueList = ReadonlyArray<Replica>;
 export const ReplicaListResultValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListResultValueList>;
@@ -1992,38 +2252,8 @@ export const ReplicaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaListResult",
 }) as any as S.Schema<ReplicaListResult>;
 
-export interface UsersCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the mongo cluster. */
-  mongoClusterName: string;
-  /** The name of the mongo cluster user. */
-  userName: string;
-  body: unknown;
-}
-export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    mongoClusterName: S.String.pipe(T.Label()),
-    userName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "UsersCreateOrUpdateRequest",
-}) as any as S.Schema<UsersCreateOrUpdateRequest>;
-
 /** Identity provider types that a a user identity can belong to. */
-export type IdentityProviderType = "MicrosoftEntraID" | (string & {});
+export type IdentityProviderType = "MicrosoftEntraID";
 export const IdentityProviderType = /*@__PURE__*/ S.String;
 
 /** Defines a user's identity provider definition. */
@@ -2040,7 +2270,7 @@ export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityProvider>;
 
 /** Built-in database role that can be assigned to a user. */
-export type UserRole = "root" | (string & {});
+export type UserRole = "root";
 export const UserRole = /*@__PURE__*/ S.String;
 
 /** Database role definition that is assigned to a user. */
@@ -2058,7 +2288,60 @@ export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
 
 /** Database roles that are assigned to the user. */
-export type UserPropertiesRolesList = DatabaseRole[];
+export type UserPropertiesInputRolesList = ReadonlyArray<DatabaseRole>;
+export const UserPropertiesInputRolesList = /*@__PURE__*/ S.Array(
+  DatabaseRole,
+) as any as S.Schema<UserPropertiesInputRolesList>;
+
+/** Definition of Mongo user resource on a cluster. */
+export interface UserPropertiesInput {
+  /** The user's identity provider definition. */
+  identityProvider?: IdentityProvider;
+  /** Database roles that are assigned to the user. */
+  roles?: UserPropertiesInputRolesList;
+}
+export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityProvider: S.optional(IdentityProvider),
+    roles: S.optional(UserPropertiesInputRolesList),
+  }),
+).annotate({
+  identifier: "UserPropertiesInput",
+}) as any as S.Schema<UserPropertiesInput>;
+
+export interface UsersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the mongo cluster. */
+  mongoClusterName: string;
+  /** The name of the mongo cluster user. */
+  userName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: UserPropertiesInput;
+}
+export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    mongoClusterName: S.String.pipe(T.Label()),
+    userName: S.String.pipe(T.Label()),
+    properties: S.optional(UserPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "UsersCreateOrUpdateRequest",
+}) as any as S.Schema<UsersCreateOrUpdateRequest>;
+
+/** Database roles that are assigned to the user. */
+export type UserPropertiesRolesList = ReadonlyArray<DatabaseRole>;
 export const UserPropertiesRolesList = /*@__PURE__*/ S.Array(
   DatabaseRole,
 ) as any as S.Schema<UserPropertiesRolesList>;
@@ -2240,7 +2523,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The User items on this page */
-export type UserListResultValueList = User[];
+export type UserListResultValueList = ReadonlyArray<User>;
 export const UserListResultValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListResultValueList>;

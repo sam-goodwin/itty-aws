@@ -35,6 +35,54 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+/** * `app` - app * `toolbar` - toolbar */
+export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
+  | "app"
+  | "toolbar";
+export const ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
+  /*@__PURE__*/ S.String;
+
+export interface ProductToursCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  name?: string;
+  description?: string;
+  linked_flag_id?: number | null;
+  targeting_flag_filters?: unknown;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  archived?: boolean;
+  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
+  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
+}
+export const ProductToursCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    linked_flag_id: S.optional(S.NullOr(S.Number)),
+    targeting_flag_filters: S.optional(S.Unknown),
+    content: S.optional(S.Unknown),
+    auto_launch: S.optional(S.Boolean),
+    start_date: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+    archived: S.optional(S.Boolean),
+    creation_context: S.optional(
+      ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/product_tours/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ProductToursCreateRequest",
+}) as any as S.Schema<ProductToursCreateRequest>;
+
 export type MinimalFeatureFlagFiltersMap = {
   [key: string]: unknown | undefined;
 };
@@ -44,10 +92,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -58,10 +106,7 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -71,7 +116,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = string[];
+export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -130,8 +175,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -163,112 +207,42 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-/** * `app` - app * `toolbar` - toolbar */
-export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
-  | "app"
-  | "toolbar"
-  | (string & {});
-export const ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
-  /*@__PURE__*/ S.String;
-
-export interface ProductToursCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  name?: string;
-  description?: string;
-  internal_targeting_flag?: MinimalFeatureFlag;
-  linked_flag?: MinimalFeatureFlag;
-  linked_flag_id?: number | null;
-  targeting_flag_filters?: unknown;
-  content?: unknown;
-  auto_launch?: boolean;
-  start_date?: string | null;
-  end_date?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
-  archived?: boolean;
-  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
-}
-export const ProductToursCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    internal_targeting_flag: S.optional(MinimalFeatureFlag),
-    linked_flag: S.optional(MinimalFeatureFlag),
-    linked_flag_id: S.optional(S.NullOr(S.Number)),
-    targeting_flag_filters: S.optional(S.Unknown),
-    content: S.optional(S.Unknown),
-    auto_launch: S.optional(S.Boolean),
-    start_date: S.optional(S.NullOr(S.String)),
-    end_date: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    creation_context: S.optional(
-      ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/product_tours/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProductToursCreateRequest",
-}) as any as S.Schema<ProductToursCreateRequest>;
-
 /** Serializer for creating and updating ProductTour. */
-export interface ProductTourSerializerCreateUpdateOnly {
+export interface ProductTourSerializerCreateUpdateOnlyOutput {
   id?: string;
   name?: string;
   description?: string;
   internal_targeting_flag?: MinimalFeatureFlag;
   linked_flag?: MinimalFeatureFlag;
-  linked_flag_id?: number | null;
-  targeting_flag_filters?: unknown;
   content?: unknown;
   auto_launch?: boolean;
   start_date?: string | null;
   end_date?: string | null;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   updated_at?: string;
   archived?: boolean;
-  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
 }
-export const ProductTourSerializerCreateUpdateOnly = /*@__PURE__*/ S.suspend(
-  () =>
+export const ProductTourSerializerCreateUpdateOnlyOutput =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       description: S.optional(S.String),
       internal_targeting_flag: S.optional(MinimalFeatureFlag),
       linked_flag: S.optional(MinimalFeatureFlag),
-      linked_flag_id: S.optional(S.NullOr(S.Number)),
-      targeting_flag_filters: S.optional(S.Unknown),
       content: S.optional(S.Unknown),
       auto_launch: S.optional(S.Boolean),
       start_date: S.optional(S.NullOr(S.String)),
       end_date: S.optional(S.NullOr(S.String)),
       created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
+      created_by: S.optional(S.NullOr(UserBasic)),
       updated_at: S.optional(S.String),
       archived: S.optional(S.Boolean),
-      creation_context: S.optional(
-        ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
-      ),
     }),
-).annotate({
-  identifier: "ProductTourSerializerCreateUpdateOnly",
-}) as any as S.Schema<ProductTourSerializerCreateUpdateOnly>;
+  ).annotate({
+    identifier: "ProductTourSerializerCreateUpdateOnlyOutput",
+  }) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>;
 
 export interface ProductToursDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -329,7 +303,7 @@ export const ProductTourTargetingFlagFiltersMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Read-only serializer for ProductTour. */
@@ -348,7 +322,7 @@ export interface ProductTour {
   start_date?: string | null;
   end_date?: string | null;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   updated_at?: string;
   archived?: boolean;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
@@ -371,7 +345,7 @@ export const ProductTour = /*@__PURE__*/ S.suspend(() =>
     start_date: S.optional(S.NullOr(S.String)),
     end_date: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     updated_at: S.optional(S.String),
     archived: S.optional(S.Boolean),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
@@ -385,17 +359,12 @@ export interface ProductToursDraftPartialUpdateRequest {
   id: string;
   name?: string;
   description?: string;
-  internal_targeting_flag?: MinimalFeatureFlag;
-  linked_flag?: MinimalFeatureFlag;
   linked_flag_id?: number | null;
   targeting_flag_filters?: unknown;
   content?: unknown;
   auto_launch?: boolean;
   start_date?: string | null;
   end_date?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
@@ -407,17 +376,12 @@ export const ProductToursDraftPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       description: S.optional(S.String),
-      internal_targeting_flag: S.optional(MinimalFeatureFlag),
-      linked_flag: S.optional(MinimalFeatureFlag),
       linked_flag_id: S.optional(S.NullOr(S.Number)),
       targeting_flag_filters: S.optional(S.Unknown),
       content: S.optional(S.Unknown),
       auto_launch: S.optional(S.Boolean),
       start_date: S.optional(S.NullOr(S.String)),
       end_date: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      updated_at: S.optional(S.String),
       archived: S.optional(S.Boolean),
       creation_context: S.optional(
         ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
@@ -478,7 +442,7 @@ export const ProductToursGenerateCreateRequestStepsItemMap =
   ) as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
 
 export type ProductToursGenerateCreateRequestStepsList =
-  ProductToursGenerateCreateRequestStepsItemMap[];
+  ReadonlyArray<ProductToursGenerateCreateRequestStepsItemMap>;
 export const ProductToursGenerateCreateRequestStepsList = /*@__PURE__*/ S.Array(
   ProductToursGenerateCreateRequestStepsItemMap,
 ) as any as S.Schema<ProductToursGenerateCreateRequestStepsList>;
@@ -525,7 +489,7 @@ export const GenerateStepResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateStepResponse",
 }) as any as S.Schema<GenerateStepResponse>;
 
-export type GenerateResponseStepsList = GenerateStepResponse[];
+export type GenerateResponseStepsList = ReadonlyArray<GenerateStepResponse>;
 export const GenerateResponseStepsList = /*@__PURE__*/ S.Array(
   GenerateStepResponse,
 ) as any as S.Schema<GenerateResponseStepsList>;
@@ -568,7 +532,7 @@ export const ProductToursListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductToursListRequest",
 }) as any as S.Schema<ProductToursListRequest>;
 
-export type PaginatedProductTourListResultsList = ProductTour[];
+export type PaginatedProductTourListResultsList = ReadonlyArray<ProductTour>;
 export const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
   ProductTour,
 ) as any as S.Schema<PaginatedProductTourListResultsList>;
@@ -597,17 +561,12 @@ export interface ProductToursPartialUpdateRequest {
   id: string;
   name?: string;
   description?: string;
-  internal_targeting_flag?: MinimalFeatureFlag;
-  linked_flag?: MinimalFeatureFlag;
   linked_flag_id?: number | null;
   targeting_flag_filters?: unknown;
   content?: unknown;
   auto_launch?: boolean;
   start_date?: string | null;
   end_date?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
@@ -618,17 +577,12 @@ export const ProductToursPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
     description: S.optional(S.String),
-    internal_targeting_flag: S.optional(MinimalFeatureFlag),
-    linked_flag: S.optional(MinimalFeatureFlag),
     linked_flag_id: S.optional(S.NullOr(S.Number)),
     targeting_flag_filters: S.optional(S.Unknown),
     content: S.optional(S.Unknown),
     auto_launch: S.optional(S.Boolean),
     start_date: S.optional(S.NullOr(S.String)),
     end_date: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
     archived: S.optional(S.Boolean),
     creation_context: S.optional(
       ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
@@ -651,17 +605,12 @@ export interface ProductToursPublishDraftCreateRequest {
   id: string;
   name?: string;
   description?: string;
-  internal_targeting_flag?: MinimalFeatureFlag;
-  linked_flag?: MinimalFeatureFlag;
   linked_flag_id?: number | null;
   targeting_flag_filters?: unknown;
   content?: unknown;
   auto_launch?: boolean;
   start_date?: string | null;
   end_date?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   archived?: boolean;
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum;
@@ -673,17 +622,12 @@ export const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       description: S.optional(S.String),
-      internal_targeting_flag: S.optional(MinimalFeatureFlag),
-      linked_flag: S.optional(MinimalFeatureFlag),
       linked_flag_id: S.optional(S.NullOr(S.Number)),
       targeting_flag_filters: S.optional(S.Unknown),
       content: S.optional(S.Unknown),
       auto_launch: S.optional(S.Boolean),
       start_date: S.optional(S.NullOr(S.String)),
       end_date: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      updated_at: S.optional(S.String),
       archived: S.optional(S.Boolean),
       creation_context: S.optional(
         ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
@@ -720,16 +664,6 @@ export const ProductToursRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductToursRetrieveRequest",
 }) as any as S.Schema<ProductToursRetrieveRequest>;
 
-/** Return the targeting flag filters, excluding the base exclusion properties. */
-export type ProductToursUpdateRequestTargetingFlagFiltersMap = {
-  [key: string]: unknown | undefined;
-};
-export const ProductToursUpdateRequestTargetingFlagFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProductToursUpdateRequestTargetingFlagFiltersMap>;
-
 export interface ProductToursUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -737,22 +671,11 @@ export interface ProductToursUpdateRequest {
   id: string;
   name?: string;
   description?: string;
-  internal_targeting_flag?: MinimalFeatureFlag;
-  linked_flag?: MinimalFeatureFlag;
-  /** Return the targeting flag filters, excluding the base exclusion properties. */
-  targeting_flag_filters?: ProductToursUpdateRequestTargetingFlagFiltersMap | null;
   content?: unknown;
-  draft_content?: unknown;
-  has_draft?: boolean;
   auto_launch?: boolean;
   start_date?: string | null;
   end_date?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   archived?: boolean;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const ProductToursUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -760,22 +683,11 @@ export const ProductToursUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
     description: S.optional(S.String),
-    internal_targeting_flag: S.optional(MinimalFeatureFlag),
-    linked_flag: S.optional(MinimalFeatureFlag),
-    targeting_flag_filters: S.optional(
-      S.NullOr(ProductToursUpdateRequestTargetingFlagFiltersMap),
-    ),
     content: S.optional(S.Unknown),
-    draft_content: S.optional(S.Unknown),
-    has_draft: S.optional(S.Boolean),
     auto_launch: S.optional(S.Boolean),
     start_date: S.optional(S.NullOr(S.String)),
     end_date: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
     archived: S.optional(S.Boolean),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -795,12 +707,12 @@ export type ProductToursCreateError =
 /** Create, read, update, and manage product tours and their targeting. */
 export const productToursCreate: API.OperationMethod<
   ProductToursCreateRequest,
-  ProductTourSerializerCreateUpdateOnly,
+  ProductTourSerializerCreateUpdateOnlyOutput,
   ProductToursCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProductToursCreateRequest,
-  output: ProductTourSerializerCreateUpdateOnly,
+  output: ProductTourSerializerCreateUpdateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -922,12 +834,12 @@ export type ProductToursPartialUpdateError =
 /** Create, read, update, and manage product tours and their targeting. */
 export const productToursPartialUpdate: API.OperationMethod<
   ProductToursPartialUpdateRequest,
-  ProductTourSerializerCreateUpdateOnly,
+  ProductTourSerializerCreateUpdateOnlyOutput,
   ProductToursPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProductToursPartialUpdateRequest,
-  output: ProductTourSerializerCreateUpdateOnly,
+  output: ProductTourSerializerCreateUpdateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

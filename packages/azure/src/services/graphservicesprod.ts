@@ -12,6 +12,29 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** resource tags. */
+export type AccountsCreateAndUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsCreateAndUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsCreateAndUpdateRequestTagsMap>;
+
+/** Property bag from billing account */
+export interface AccountsCreateAndUpdateRequestProperties {
+  /** Customer owned application ID */
+  appId: string;
+}
+export const AccountsCreateAndUpdateRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appId: S.String,
+    }),
+).annotate({
+  identifier: "AccountsCreateAndUpdateRequestProperties",
+}) as any as S.Schema<AccountsCreateAndUpdateRequestProperties>;
+
 export interface AccountsCreateAndUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,14 +42,21 @@ export interface AccountsCreateAndUpdateRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
-  body: unknown;
+  /** Location of the resource. */
+  location?: string;
+  /** resource tags. */
+  tags?: AccountsCreateAndUpdateRequestTagsMap;
+  /** Property bag from billing account */
+  properties: AccountsCreateAndUpdateRequestProperties;
 }
 export const AccountsCreateAndUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(AccountsCreateAndUpdateRequestTagsMap),
+    properties: AccountsCreateAndUpdateRequestProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -53,8 +83,7 @@ export type AccountsCreateAndUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsCreateAndUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -63,8 +92,7 @@ export type AccountsCreateAndUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsCreateAndUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -99,8 +127,7 @@ export const AccountsCreateAndUpdateResponseSystemData =
 export type AccountsCreateAndUpdateResponsePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountsCreateAndUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -225,8 +252,7 @@ export type AccountsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -235,8 +261,7 @@ export type AccountsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -268,8 +293,7 @@ export const AccountsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 export type AccountsGetResponsePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountsGetResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -358,8 +382,7 @@ export type AccountResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -367,8 +390,7 @@ export type AccountResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -398,8 +420,7 @@ export const AccountResourceSystemData = /*@__PURE__*/ S.suspend(() =>
 export type AccountResourcePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -454,7 +475,7 @@ export const AccountResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountResource>;
 
 /** The list of recommendations. */
-export type AccountResourceListValueList = AccountResource[];
+export type AccountResourceListValueList = ReadonlyArray<AccountResource>;
 export const AccountResourceListValueList = /*@__PURE__*/ S.Array(
   AccountResource,
 ) as any as S.Schema<AccountResourceListValueList>;
@@ -494,6 +515,15 @@ export const AccountsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListBySubscriptionRequest",
 }) as any as S.Schema<AccountsListBySubscriptionRequest>;
 
+/** List of key value pairs that describe the resource. This will overwrite the existing tags. */
+export type AccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateRequestTagsMap>;
+
 export interface AccountsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -501,14 +531,15 @@ export interface AccountsUpdateRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
-  body: unknown;
+  /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
+  tags?: AccountsUpdateRequestTagsMap;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AccountsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -535,8 +566,7 @@ export type AccountsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -545,8 +575,7 @@ export type AccountsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -578,8 +607,7 @@ export const AccountsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 export type AccountsUpdateResponsePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountsUpdateResponsePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -671,11 +699,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -702,7 +730,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
