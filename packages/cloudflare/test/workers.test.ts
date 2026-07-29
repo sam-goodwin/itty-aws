@@ -831,7 +831,7 @@ describe("Workers", () => {
   });
 
   describe("putScript", () => {
-    it("decodes targeted placement responses without the requested target", () => {
+    it("happy path - decodes a targeted placement response without a target", () => {
       expect(
         Schema.decodeUnknownSync(Workers.PutScriptResponse)({
           startup_time_ms: 0,
