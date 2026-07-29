@@ -96286,17 +96286,23 @@ export const GetGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGatewayConfigurationRequest",
 }) as any as S.Schema<GetGatewayConfigurationRequest>;
 
+export type UntypedSettingsMap = { [key: string]: unknown | undefined };
+export const UntypedSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UntypedSettingsMap>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: unknown | null;
+  settings?: UntypedSettingsMap | null;
   updatedAt?: string | null;
 }
 export const GetGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(S.Unknown)),
+    settings: S.optional(S.NullOr(UntypedSettingsMap)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -146521,196 +146527,14 @@ export const PatchDevicePolicyDefaultCertificateResponse =
     identifier: "PatchDevicePolicyDefaultCertificateResponse",
   }) as any as S.Schema<PatchDevicePolicyDefaultCertificateResponse>;
 
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest {
-  /** The Workspace One API URL provided in the Workspace One Admin Dashboard. */
-  apiUrl: string;
-  /** The Workspace One Authorization URL depending on your region. */
-  authUrl: string;
-  /** The Workspace One client ID provided in the Workspace One Admin Dashboard. */
-  clientId: string;
-  /** The Workspace One client secret provided in the Workspace One Admin Dashboard. */
-  clientSecret: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiUrl: S.String.pipe(T.Body("api_url")),
-      authUrl: S.String.pipe(T.Body("auth_url")),
-      clientId: S.String.pipe(T.Body("client_id")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest {
-  /** The Crowdstrike API URL. */
-  apiUrl: string;
-  /** The Crowdstrike client ID. */
-  clientId: string;
-  /** The Crowdstrike client secret. */
-  clientSecret: string;
-  /** The Crowdstrike customer ID. */
-  customerId: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiUrl: S.String.pipe(T.Body("api_url")),
-      clientId: S.String.pipe(T.Body("client_id")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-      customerId: S.String.pipe(T.Body("customer_id")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest {
-  /** The Uptycs API URL. */
-  apiUrl: string;
-  /** The Uptycs client secret. */
-  clientKey: string;
-  /** The Uptycs client secret. */
-  clientSecret: string;
-  /** The Uptycs customer ID. */
-  customerId: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiUrl: S.String.pipe(T.Body("api_url")),
-      clientKey: S.String.pipe(T.Body("client_key")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-      customerId: S.String.pipe(T.Body("customer_id")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest {
-  /** The Intune client ID. */
-  clientId: string;
-  /** The Intune client secret. */
-  clientSecret: string;
-  /** The Intune customer ID. */
-  customerId: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientId: S.String.pipe(T.Body("client_id")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-      customerId: S.String.pipe(T.Body("customer_id")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest {
-  /** The Kolide client ID. */
-  clientId: string;
-  /** The Kolide client secret. */
-  clientSecret: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientId: S.String.pipe(T.Body("client_id")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest {
-  /** The Tanium API URL. */
-  apiUrl: string;
-  /** The Tanium client secret. */
-  clientSecret: string;
-  /** If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
-  accessClientId?: string;
-  /** If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
-  accessClientSecret?: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiUrl: S.String.pipe(T.Body("api_url")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-      accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
-      accessClientSecret: S.optional(
-        S.String.pipe(T.Body("access_client_secret")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest {
-  /** The SentinelOne S2S API URL. */
-  apiUrl: string;
-  /** The SentinelOne S2S client secret. */
-  clientSecret: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiUrl: S.String.pipe(T.Body("api_url")),
-      clientSecret: S.String.pipe(T.Body("client_secret")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest>;
-
-export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest {
-  /** This id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
-  accessClientId: string;
-  /** This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
-  accessClientSecret: string;
-  /** The Custom Device Posture Integration API URL. */
-  apiUrl: string;
-}
-export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessClientId: S.String.pipe(T.Body("access_client_id")),
-      accessClientSecret: S.String.pipe(T.Body("access_client_secret")),
-      apiUrl: S.String.pipe(T.Body("api_url")),
-    }),
-  ).annotate({
-    identifier:
-      "DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest",
-  }) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest>;
-
-export type DevicesPostureIntegrationsEditRequestConfig =
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesWorkspaceOneConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCrowdstrikeConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesUptycsConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesIntuneConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesKolideConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesSentineloneS2sConfigRequest
-  | DevicesPostureIntegrationsEditRequestConfigTeamsDevicesCustomS2sConfigRequest;
+export type DevicesPostureIntegrationsEditRequestConfig = {
+  [key: string]: string | undefined;
+};
 export const DevicesPostureIntegrationsEditRequestConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["apiUrl", "authUrl", "clientId", "clientSecret"],
-      ["apiUrl", "clientId", "clientSecret", "customerId"],
-      ["apiUrl", "clientKey", "clientSecret", "customerId"],
-      ["clientId", "clientSecret", "customerId"],
-      ["clientId", "clientSecret"],
-      ["apiUrl", "clientSecret", "accessClientId", "accessClientSecret"],
-      ["apiUrl", "clientSecret"],
-      ["accessClientId", "accessClientSecret", "apiUrl"],
-    ]),
-  );
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DevicesPostureIntegrationsEditRequestConfig>;
 
 export type DevicesPostureIntegrationsEditRequestType =
   | "workspace_one"
@@ -147163,12 +146987,12 @@ export const PatchDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: unknown;
+  settings?: UntypedSettingsMap;
 }
 export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(S.Unknown),
+    settings: S.optional(UntypedSettingsMap),
   })
     .pipe(
       T.Http({
@@ -147186,13 +147010,13 @@ export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: unknown | null;
+  settings?: UntypedSettingsMap | null;
   updatedAt?: string | null;
 }
 export const PatchGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(S.Unknown)),
+    settings: S.optional(S.NullOr(UntypedSettingsMap)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -150304,12 +150128,12 @@ export const PutGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: unknown;
+  settings?: UntypedSettingsMap;
 }
 export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(S.Unknown),
+    settings: S.optional(UntypedSettingsMap),
   })
     .pipe(
       T.Http({
@@ -150327,13 +150151,13 @@ export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutGatewayConfigurationResponse {
   createdAt?: string | null;
   /** Specify account settings. */
-  settings?: unknown | null;
+  settings?: UntypedSettingsMap | null;
   updatedAt?: string | null;
 }
 export const PutGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    settings: S.optional(S.NullOr(S.Unknown)),
+    settings: S.optional(S.NullOr(UntypedSettingsMap)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

@@ -636,6 +636,12 @@ export const AppsFlagsCreateRequestRulesList = /*@__PURE__*/ S.Array(
   AppsFlagsCreateRequestRulesItem,
 ) as any as S.Schema<AppsFlagsCreateRequestRulesList>;
 
+export type UntypedVariationsMap = { [key: string]: unknown | undefined };
+export const UntypedVariationsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UntypedVariationsMap>;
+
 export type AppsFlagsCreateRequestType =
   | "boolean"
   | "string"
@@ -657,7 +663,7 @@ export interface CreateAppFlagRequest {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsCreateRequestRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsCreateRequestType | (string & {});
@@ -670,7 +676,7 @@ export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsCreateRequestRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsCreateRequestType),
   })
@@ -1222,7 +1228,7 @@ export interface CreateAppFlagResponse {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsCreateResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsCreateResponseType | null;
@@ -1235,7 +1241,7 @@ export const CreateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsCreateResponseRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(AppsFlagsCreateResponseType)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -1994,7 +2000,7 @@ export interface GetAppFlagResponse {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsGetResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsGetResponseType | null;
@@ -2007,7 +2013,7 @@ export const GetAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsGetResponseRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(AppsFlagsGetResponseType)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -2594,7 +2600,7 @@ export interface AppsFlagsChangelogListResultItemCase0After {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsChangelogListResultItemCase0AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsChangelogListResultItemCase0AfterType | null;
@@ -2608,7 +2614,7 @@ export const AppsFlagsChangelogListResultItemCase0After =
       enabled: S.Boolean,
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase0AfterRulesList,
-      variations: S.Unknown,
+      variations: UntypedVariationsMap,
       description: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(AppsFlagsChangelogListResultItemCase0AfterType),
@@ -3185,7 +3191,7 @@ export interface AppsFlagsChangelogListResultItemCase1After {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsChangelogListResultItemCase1AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsChangelogListResultItemCase1AfterType | null;
@@ -3199,7 +3205,7 @@ export const AppsFlagsChangelogListResultItemCase1After =
       enabled: S.Boolean,
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase1AfterRulesList,
-      variations: S.Unknown,
+      variations: UntypedVariationsMap,
       description: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(AppsFlagsChangelogListResultItemCase1AfterType),
@@ -3776,7 +3782,7 @@ export interface AppsFlagsChangelogListResultItemCase2After {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsChangelogListResultItemCase2AfterRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsChangelogListResultItemCase2AfterType | null;
@@ -3790,7 +3796,7 @@ export const AppsFlagsChangelogListResultItemCase2After =
       enabled: S.Boolean,
       key: S.String,
       rules: AppsFlagsChangelogListResultItemCase2AfterRulesList,
-      variations: S.Unknown,
+      variations: UntypedVariationsMap,
       description: S.optional(S.NullOr(S.String)),
       type: S.optional(
         S.NullOr(AppsFlagsChangelogListResultItemCase2AfterType),
@@ -4498,7 +4504,7 @@ export interface AppsFlagsListResultItem {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsListResultItemRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsListResultItemType | null;
@@ -4511,7 +4517,7 @@ export const AppsFlagsListResultItem = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsListResultItemRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(AppsFlagsListResultItemType)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -5213,7 +5219,7 @@ export interface UpdateAppFlagRequest {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsUpdateRequestRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsUpdateRequestType | (string & {});
@@ -5227,7 +5233,7 @@ export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsUpdateRequestRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsUpdateRequestType),
   })
@@ -5779,7 +5785,7 @@ export interface UpdateAppFlagResponse {
   /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsUpdateResponseRulesList;
   /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
-  variations: unknown;
+  variations: UntypedVariationsMap;
   description?: string | null;
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsUpdateResponseType | null;
@@ -5792,7 +5798,7 @@ export const UpdateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsUpdateResponseRulesList,
-    variations: S.Unknown,
+    variations: UntypedVariationsMap,
     description: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(AppsFlagsUpdateResponseType)),
     updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),

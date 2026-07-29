@@ -13,6 +13,19 @@
           "target": "smithy.api#String"
         }
       }
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#DevicesPostureIntegrationsEditRequestConfig",
+      "value": {
+        "type": "map",
+        "key": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "smithy.api#String"
+        }
+      }
     }
   ]
 }

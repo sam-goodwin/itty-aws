@@ -2919,35 +2919,6 @@
           }
         }
       }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.workers#PutScriptBindingGeneric",
-      "value": {
-        "type": "structure",
-        "members": {
-          "name": {
-            "target": "smithy.api#String",
-            "traits": {
-              "smithy.api#required": {}
-            }
-          },
-          "type": {
-            "target": "smithy.api#String",
-            "traits": {
-              "smithy.api#required": {},
-              "smithy.api#documentation": "Any binding kind — escape hatch for callers assembling bindings generically."
-            }
-          }
-        }
-      }
-    },
-    {
-      "op": "add",
-      "path": "/shapes/com.cloudflare.workers#PutScriptBinding/members/caseGeneric",
-      "value": {
-        "target": "com.cloudflare.workers#PutScriptBindingGeneric"
-      }
     }
   ]
 }

@@ -2,29 +2,42 @@
   "description": "gateway configuration settings are freeform (Record<string, unknown> in alchemy)",
   "patches": [
     {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UntypedSettingsMap",
+      "value": {
+        "type": "map",
+        "key": {
+          "target": "smithy.api#String"
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    {
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#PatchGatewayConfigurationRequest/members/settings/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.zero_trust#UntypedSettingsMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#PatchGatewayConfigurationResponse/members/settings/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.zero_trust#UntypedSettingsMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#GetGatewayConfigurationResponse/members/settings/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.zero_trust#UntypedSettingsMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#PutGatewayConfigurationRequest/members/settings/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.zero_trust#UntypedSettingsMap"
     },
     {
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#PutGatewayConfigurationResponse/members/settings/target",
-      "value": "smithy.api#Document"
+      "value": "com.cloudflare.zero_trust#UntypedSettingsMap"
     }
   ]
 }
