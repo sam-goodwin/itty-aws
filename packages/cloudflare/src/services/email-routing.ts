@@ -91,22 +91,21 @@ interface ListAddressesResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListAddressesResponseResultInfo =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListAddressesResponseResultInfo>;
+const ListAddressesResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
+) as unknown as Schema.Codec<ListAddressesResponseResultInfo>;
 
 interface Source {
   pointer?: string | null;
@@ -441,24 +440,23 @@ interface EmailEmailRoutingDNSQueryResponse {
     totalPages?: number | null;
   } | null;
 }
-const EmailEmailRoutingDNSQueryResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-      result: Schema.optional(Schema.Union([Result, Schema.Null])),
-      resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        errors: "errors",
-        messages: "messages",
-        success: "success",
-        result: "result",
-        resultInfo: "result_info",
-      }),
-    ),
-  ) as unknown as Schema.Codec<EmailEmailRoutingDNSQueryResponse>;
+const EmailEmailRoutingDNSQueryResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+    result: Schema.optional(Schema.Union([Result, Schema.Null])),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      errors: "errors",
+      messages: "messages",
+      success: "success",
+      result: "result",
+      resultInfo: "result_info",
+    }),
+  ),
+) as unknown as Schema.Codec<EmailEmailRoutingDNSQueryResponse>;
 
 interface EmailDNSSettingsResponseCollection {
   errors: {
@@ -512,26 +510,25 @@ interface EmailDNSSettingsResponseCollection {
     totalPages?: number | null;
   } | null;
 }
-const EmailDNSSettingsResponseCollection =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-      result: Schema.optional(
-        Schema.Union([Schema.Array(Dnsrecord), Schema.Null]),
-      ),
-      resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        errors: "errors",
-        messages: "messages",
-        success: "success",
-        result: "result",
-        resultInfo: "result_info",
-      }),
+const EmailDNSSettingsResponseCollection = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+    result: Schema.optional(
+      Schema.Union([Schema.Array(Dnsrecord), Schema.Null]),
     ),
-  ) as unknown as Schema.Codec<EmailDNSSettingsResponseCollection>;
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      errors: "errors",
+      messages: "messages",
+      success: "success",
+      result: "result",
+      resultInfo: "result_info",
+    }),
+  ),
+) as unknown as Schema.Codec<EmailDNSSettingsResponseCollection>;
 
 interface Action {
   /** Type of supported action. */
@@ -571,18 +568,17 @@ interface ListRulesResponseResultAction {
   type: "drop" | "forward" | "worker" | (string & {});
   value?: string[] | null;
 }
-const ListRulesResponseResultAction =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.Union([
-        Schema.Literals(["drop", "forward", "worker"]),
-        Schema.String,
-      ]),
-      value: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }),
-  ) as unknown as Schema.Codec<ListRulesResponseResultAction>;
+const ListRulesResponseResultAction = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Union([
+      Schema.Literals(["drop", "forward", "worker"]),
+      Schema.String,
+    ]),
+    value: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<ListRulesResponseResultAction>;
 
 interface ListRulesResponseResultMatcher {
   /** Type of matcher. */
@@ -592,14 +588,13 @@ interface ListRulesResponseResultMatcher {
   /** Value for matcher. */
   value?: string | null;
 }
-const ListRulesResponseResultMatcher =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.Union([Schema.Literals(["all", "literal"]), Schema.String]),
-      field: Schema.optional(Schema.Union([Schema.Literal("to"), Schema.Null])),
-      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ) as unknown as Schema.Codec<ListRulesResponseResultMatcher>;
+const ListRulesResponseResultMatcher = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Union([Schema.Literals(["all", "literal"]), Schema.String]),
+    field: Schema.optional(Schema.Union([Schema.Literal("to"), Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListRulesResponseResultMatcher>;
 
 interface ListRulesResponseResult {
   /** Routing rule identifier. */
@@ -1366,12 +1361,11 @@ export interface GetEmailRoutingRequest {
   zoneId: string;
 }
 
-export const GetEmailRoutingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/email/routing" })),
-  ) as unknown as Schema.Codec<GetEmailRoutingRequest>;
+export const GetEmailRoutingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/email/routing" })),
+) as unknown as Schema.Codec<GetEmailRoutingRequest>;
 
 export interface GetEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -1401,50 +1395,49 @@ export interface GetEmailRoutingResponse {
   tag?: string | null;
 }
 
-export const GetEmailRoutingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      status: Schema.optional(
+export const GetEmailRoutingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "ready",
-              "unconfigured",
-              "misconfigured",
-              "misconfigured/locked",
-              "unlocked",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      supportSubaddress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          name: "name",
-          created: "created",
-          modified: "modified",
-          skipWizard: "skip_wizard",
-          status: "status",
-          supportSubaddress: "support_subaddress",
-          tag: "tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetEmailRoutingResponse>;
+        Schema.Null,
+      ]),
+    ),
+    supportSubaddress: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        name: "name",
+        created: "created",
+        modified: "modified",
+        skipWizard: "skip_wizard",
+        status: "status",
+        supportSubaddress: "support_subaddress",
+        tag: "tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetEmailRoutingResponse>;
 
 export type GetEmailRoutingError = DefaultErrors | Forbidden;
 
@@ -1466,15 +1459,14 @@ export interface EnableEmailRoutingRequest {
   body: unknown;
 }
 
-export const EnableEmailRoutingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/email/routing/enable" }),
-    ),
-  ) as unknown as Schema.Codec<EnableEmailRoutingRequest>;
+export const EnableEmailRoutingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/email/routing/enable" }),
+  ),
+) as unknown as Schema.Codec<EnableEmailRoutingRequest>;
 
 export interface EnableEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -1504,50 +1496,49 @@ export interface EnableEmailRoutingResponse {
   tag?: string | null;
 }
 
-export const EnableEmailRoutingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      status: Schema.optional(
+export const EnableEmailRoutingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "ready",
-              "unconfigured",
-              "misconfigured",
-              "misconfigured/locked",
-              "unlocked",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      supportSubaddress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          name: "name",
-          created: "created",
-          modified: "modified",
-          skipWizard: "skip_wizard",
-          status: "status",
-          supportSubaddress: "support_subaddress",
-          tag: "tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<EnableEmailRoutingResponse>;
+        Schema.Null,
+      ]),
+    ),
+    supportSubaddress: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        name: "name",
+        created: "created",
+        modified: "modified",
+        skipWizard: "skip_wizard",
+        status: "status",
+        supportSubaddress: "support_subaddress",
+        tag: "tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<EnableEmailRoutingResponse>;
 
 export type EnableEmailRoutingError = DefaultErrors | Forbidden;
 
@@ -1569,18 +1560,14 @@ export interface DisableEmailRoutingRequest {
   body: unknown;
 }
 
-export const DisableEmailRoutingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/email/routing/disable",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DisableEmailRoutingRequest>;
+export const DisableEmailRoutingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/email/routing/disable" }),
+  ),
+) as unknown as Schema.Codec<DisableEmailRoutingRequest>;
 
 export interface DisableEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -1610,50 +1597,49 @@ export interface DisableEmailRoutingResponse {
   tag?: string | null;
 }
 
-export const DisableEmailRoutingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      status: Schema.optional(
+export const DisableEmailRoutingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    skipWizard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "ready",
-              "unconfigured",
-              "misconfigured",
-              "misconfigured/locked",
-              "unlocked",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      supportSubaddress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          name: "name",
-          created: "created",
-          modified: "modified",
-          skipWizard: "skip_wizard",
-          status: "status",
-          supportSubaddress: "support_subaddress",
-          tag: "tag",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<DisableEmailRoutingResponse>;
+        Schema.Null,
+      ]),
+    ),
+    supportSubaddress: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        name: "name",
+        created: "created",
+        modified: "modified",
+        skipWizard: "skip_wizard",
+        status: "status",
+        supportSubaddress: "support_subaddress",
+        tag: "tag",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<DisableEmailRoutingResponse>;
 
 export type DisableEmailRoutingError = DefaultErrors | Forbidden;
 
@@ -2092,17 +2078,16 @@ export interface GetRuleCatchAllRequest {
   zoneId: string;
 }
 
-export const GetRuleCatchAllRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/email/routing/rules/catch_all",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetRuleCatchAllRequest>;
+export const GetRuleCatchAllRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/email/routing/rules/catch_all",
+    }),
+  ),
+) as unknown as Schema.Codec<GetRuleCatchAllRequest>;
 
 export interface GetRuleCatchAllResponse {
   /** Routing rule identifier. */
@@ -2124,21 +2109,18 @@ export interface GetRuleCatchAllResponse {
   tag?: string | null;
 }
 
-export const GetRuleCatchAllResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      actions: Schema.optional(
-        Schema.Union([Schema.Array(Action), Schema.Null]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      matchers: Schema.optional(
-        Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetRuleCatchAllResponse>;
+export const GetRuleCatchAllResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    matchers: Schema.optional(
+      Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetRuleCatchAllResponse>;
 
 export type GetRuleCatchAllError = DefaultErrors | Forbidden;
 
@@ -2169,21 +2151,20 @@ export interface PutRuleCatchAllRequest {
   name?: string;
 }
 
-export const PutRuleCatchAllRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      actions: Schema.Array(Action),
-      matchers: Schema.Array(CatchAllMatcher),
-      enabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/email/routing/rules/catch_all",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PutRuleCatchAllRequest>;
+export const PutRuleCatchAllRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    actions: Schema.Array(Action),
+    matchers: Schema.Array(CatchAllMatcher),
+    enabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/email/routing/rules/catch_all",
+    }),
+  ),
+) as unknown as Schema.Codec<PutRuleCatchAllRequest>;
 
 export interface PutRuleCatchAllResponse {
   /** Routing rule identifier. */
@@ -2205,21 +2186,18 @@ export interface PutRuleCatchAllResponse {
   tag?: string | null;
 }
 
-export const PutRuleCatchAllResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      actions: Schema.optional(
-        Schema.Union([Schema.Array(Action), Schema.Null]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      matchers: Schema.optional(
-        Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PutRuleCatchAllResponse>;
+export const PutRuleCatchAllResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    matchers: Schema.optional(
+      Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PutRuleCatchAllResponse>;
 
 export type PutRuleCatchAllError =
   | DefaultErrors
