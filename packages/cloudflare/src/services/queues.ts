@@ -201,11 +201,11 @@ export class WorkerNotFound extends T.applyErrorMatchers(
 
 export interface MessagesAckRequestAcksItem {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
-  leaseId?: string | null;
+  leaseId?: string;
 }
 export const MessagesAckRequestAcksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    leaseId: S.optional(S.NullOr(S.String).pipe(T.Body("lease_id"))),
+    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestAcksItem",
@@ -218,14 +218,14 @@ export const MessagesAckRequestAcksList = /*@__PURE__*/ S.Array(
 
 export interface MessagesAckRequestRetriesItem {
   /** The number of seconds to delay before making the message available for another attempt. */
-  delaySeconds?: number | null;
+  delaySeconds?: number;
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
-  leaseId?: string | null;
+  leaseId?: string;
 }
 export const MessagesAckRequestRetriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
-    leaseId: S.optional(S.NullOr(S.String).pipe(T.Body("lease_id"))),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestRetriesItem",
@@ -242,15 +242,15 @@ export interface AckMessageRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  acks?: MessagesAckRequestAcksList | null;
-  retries?: MessagesAckRequestRetriesList | null;
+  acks?: MessagesAckRequestAcksList;
+  retries?: MessagesAckRequestRetriesList;
 }
 export const AckMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    acks: S.optional(S.NullOr(MessagesAckRequestAcksList)),
-    retries: S.optional(S.NullOr(MessagesAckRequestRetriesList)),
+    acks: S.optional(MessagesAckRequestAcksList),
+    retries: S.optional(MessagesAckRequestRetriesList),
   })
     .pipe(
       T.Http({
@@ -297,26 +297,23 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType =
   /*@__PURE__*/ S.String;
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageText {
-  body?: string | null;
+  body?: string;
   contentType?:
     | MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number | null;
+  delaySeconds?: number;
 }
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageText =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.optional(S.NullOr(S.String)),
+      body: S.optional(S.String),
       contentType: S.optional(
-        S.NullOr(
-          MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType,
-        ).pipe(T.Body("content_type")),
+        MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      delaySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("delay_seconds")),
-      ),
+      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
     }),
   ).annotate({
     identifier: "MessagesBulkPushRequestMessagesItemMqQueueMessageText",
@@ -328,26 +325,23 @@ export const MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType =
   /*@__PURE__*/ S.String;
 
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageJson {
-  body?: unknown | null;
+  body?: unknown;
   contentType?:
     | MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number | null;
+  delaySeconds?: number;
 }
 export const MessagesBulkPushRequestMessagesItemMqQueueMessageJson =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.optional(S.NullOr(S.Unknown)),
+      body: S.optional(S.Unknown),
       contentType: S.optional(
-        S.NullOr(
-          MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType,
-        ).pipe(T.Body("content_type")),
+        MessagesBulkPushRequestMessagesItemMqQueueMessageJsonContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      delaySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("delay_seconds")),
-      ),
+      delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
     }),
   ).annotate({
     identifier: "MessagesBulkPushRequestMessagesItemMqQueueMessageJson",
@@ -375,15 +369,15 @@ export interface BulkPushMessagesRequest {
   /** A Resource identifier. */
   queueId: string;
   /** The number of seconds to wait for attempting to deliver this batch to consumers */
-  delaySeconds?: number | null;
-  messages?: MessagesBulkPushRequestMessagesList | null;
+  delaySeconds?: number;
+  messages?: MessagesBulkPushRequestMessagesList;
 }
 export const BulkPushMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
-    messages: S.optional(S.NullOr(MessagesBulkPushRequestMessagesList)),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    messages: S.optional(MessagesBulkPushRequestMessagesList),
   })
     .pipe(
       T.Http({
@@ -447,28 +441,24 @@ export const ConsumersCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersCreateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
+  batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
+  maxConcurrency?: number;
   /** The maximum number of retries */
-  maxRetries?: number | null;
+  maxRetries?: number;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
+  maxWaitTimeMs?: number;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
+  retryDelay?: number;
 }
 export const ConsumersCreateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "ConsumersCreateRequestSettingsWorker",
@@ -476,22 +466,22 @@ export const ConsumersCreateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
 
 export interface ConsumersCreateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
+  batchSize?: number;
   /** The maximum number of retries */
-  maxRetries?: number | null;
+  maxRetries?: number;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
+  retryDelay?: number;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
+  visibilityTimeoutMs?: number;
 }
 export const ConsumersCreateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
+        S.Number.pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -520,21 +510,19 @@ export interface CreateConsumerRequest {
   /** A Resource identifier. */
   queueId: string;
   /** Name of a Worker */
-  scriptName?: string | null;
+  scriptName?: string;
   type: ConsumersCreateRequestType | (string & {});
-  deadLetterQueue?: string | null;
-  settings?: ConsumersCreateRequestSettings | null;
+  deadLetterQueue?: string;
+  settings?: ConsumersCreateRequestSettings;
 }
 export const CreateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
     type: ConsumersCreateRequestType,
-    deadLetterQueue: S.optional(
-      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
-    ),
-    settings: S.optional(S.NullOr(ConsumersCreateRequestSettings)),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersCreateRequestSettings),
   })
     .pipe(
       T.Http({
@@ -996,15 +984,12 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceImages {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceImagesType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceImages =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(
-        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceImagesType),
-      ),
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceImagesType),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceImages",
@@ -1016,17 +1001,12 @@ export const SubscriptionsCreateRequestSourceMqEventSourceKVType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceKV {
   /** Type of source */
-  type?:
-    | SubscriptionsCreateRequestSourceMqEventSourceKVType
-    | (string & {})
-    | null;
+  type?: SubscriptionsCreateRequestSourceMqEventSourceKVType | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceKV =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(
-        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceKVType),
-      ),
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceKVType),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceKV",
@@ -1038,17 +1018,12 @@ export const SubscriptionsCreateRequestSourceMqEventSourceR2Type =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceR2 {
   /** Type of source */
-  type?:
-    | SubscriptionsCreateRequestSourceMqEventSourceR2Type
-    | (string & {})
-    | null;
+  type?: SubscriptionsCreateRequestSourceMqEventSourceR2Type | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceR2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(
-        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceR2Type),
-      ),
+      type: S.optional(SubscriptionsCreateRequestSourceMqEventSourceR2Type),
     }),
   ).annotate({
     identifier: "SubscriptionsCreateRequestSourceMqEventSourceR2",
@@ -1063,14 +1038,13 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceSuperSlurper =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType),
+        SubscriptionsCreateRequestSourceMqEventSourceSuperSlurperType,
       ),
     }),
   ).annotate({
@@ -1086,14 +1060,13 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceVectorize {
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceVectorizeType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceVectorize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(SubscriptionsCreateRequestSourceMqEventSourceVectorizeType),
+        SubscriptionsCreateRequestSourceMqEventSourceVectorizeType,
       ),
     }),
   ).annotate({
@@ -1107,21 +1080,18 @@ export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType =
 
 export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel {
   /** Name of the Workers AI model */
-  modelName?: string | null;
+  modelName?: string;
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      modelName: S.optional(S.NullOr(S.String).pipe(T.Body("model_name"))),
+      modelName: S.optional(S.String.pipe(T.Body("model_name"))),
       type: S.optional(
-        S.NullOr(
-          SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
-        ),
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersAIModelType,
       ),
     }),
   ).annotate({
@@ -1137,20 +1107,17 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorke
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the worker */
-  workerName?: string | null;
+  workerName?: string;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorker =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(
-          SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
-        ),
+        SubscriptionsCreateRequestSourceMqEventSourceWorkersBuildsWorkerType,
       ),
-      workerName: S.optional(S.NullOr(S.String).pipe(T.Body("worker_name"))),
+      workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
     }),
   ).annotate({
     identifier:
@@ -1166,22 +1133,17 @@ export interface SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow 
   /** Type of source */
   type?:
     | SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the workflow */
-  workflowName?: string | null;
+  workflowName?: string;
 }
 export const SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(
-          SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
-        ),
+        SubscriptionsCreateRequestSourceMqEventSourceWorkflowsWorkflowType,
       ),
-      workflowName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("workflow_name")),
-      ),
+      workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
     }),
   ).annotate({
     identifier:
@@ -1214,24 +1176,24 @@ export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
   /** Destination configuration for the subscription */
-  destination?: SubscriptionsCreateRequestDestination | null;
+  destination?: SubscriptionsCreateRequestDestination;
   /** Whether the subscription is active */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** List of event types this subscription handles */
-  events?: SubscriptionsCreateRequestEventsList | null;
+  events?: SubscriptionsCreateRequestEventsList;
   /** Name of the subscription */
-  name?: string | null;
+  name?: string;
   /** Source configuration for the subscription */
-  source?: SubscriptionsCreateRequestSource | null;
+  source?: SubscriptionsCreateRequestSource;
 }
 export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    destination: S.optional(S.NullOr(SubscriptionsCreateRequestDestination)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    events: S.optional(S.NullOr(SubscriptionsCreateRequestEventsList)),
-    name: S.optional(S.NullOr(S.String)),
-    source: S.optional(S.NullOr(SubscriptionsCreateRequestSource)),
+    destination: S.optional(SubscriptionsCreateRequestDestination),
+    enabled: S.optional(S.Boolean),
+    events: S.optional(SubscriptionsCreateRequestEventsList),
+    name: S.optional(S.String),
+    source: S.optional(SubscriptionsCreateRequestSource),
   })
     .pipe(
       T.Http({
@@ -3401,22 +3363,18 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
+  deliveryDelay?: number;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
+  deliveryPaused?: boolean;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
+  messageRetentionPeriod?: number;
 }
 export const EditRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
     messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
+      S.Number.pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -3428,15 +3386,15 @@ export interface PatchQueueRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  queueName?: string | null;
-  settings?: EditRequestSettings | null;
+  queueName?: string;
+  settings?: EditRequestSettings;
 }
 export const PatchQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(EditRequestSettings)),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(EditRequestSettings),
   })
     .pipe(
       T.Http({
@@ -3728,22 +3686,22 @@ export interface PatchSubscriptionRequest {
   /** A Resource identifier. */
   subscriptionId: string;
   /** Destination configuration for the subscription */
-  destination?: SubscriptionsUpdateRequestDestination | null;
+  destination?: SubscriptionsUpdateRequestDestination;
   /** Whether the subscription is active */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** List of event types this subscription handles */
-  events?: SubscriptionsUpdateRequestEventsList | null;
+  events?: SubscriptionsUpdateRequestEventsList;
   /** Name of the subscription */
-  name?: string | null;
+  name?: string;
 }
 export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subscriptionId: S.String.pipe(T.Label("subscription_id")),
-    destination: S.optional(S.NullOr(SubscriptionsUpdateRequestDestination)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    events: S.optional(S.NullOr(SubscriptionsUpdateRequestEventsList)),
-    name: S.optional(S.NullOr(S.String)),
+    destination: S.optional(SubscriptionsUpdateRequestDestination),
+    enabled: S.optional(S.Boolean),
+    events: S.optional(SubscriptionsUpdateRequestEventsList),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -4022,17 +3980,17 @@ export interface PullMessageRequest {
   /** A Resource identifier. */
   queueId: string;
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
+  batchSize?: number;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
+  visibilityTimeoutMs?: number;
 }
 export const PullMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
+    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
     visibilityTimeoutMs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
+      S.Number.pipe(T.Body("visibility_timeout_ms")),
     ),
   })
     .pipe(
@@ -4134,20 +4092,20 @@ export interface PushMessageRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  body?: unknown | null;
-  contentType?: MessagesPushRequestContentType | (string & {}) | null;
+  body?: unknown;
+  contentType?: MessagesPushRequestContentType | (string & {});
   /** The number of seconds to wait for attempting to deliver this message to consumers */
-  delaySeconds?: number | null;
+  delaySeconds?: number;
 }
 export const PushMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    body: S.optional(S.NullOr(S.Unknown)),
+    body: S.optional(S.Unknown),
     contentType: S.optional(
-      S.NullOr(MessagesPushRequestContentType).pipe(T.Body("content_type")),
+      MessagesPushRequestContentType.pipe(T.Body("content_type")),
     ),
-    delaySeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("delay_seconds"))),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
   })
     .pipe(
       T.Http({
@@ -4211,14 +4169,14 @@ export interface StartPurgeRequest {
   /** A Resource identifier. */
   queueId: string;
   /** Confimation that all messages will be deleted permanently. */
-  deleteMessagesPermanently?: boolean | null;
+  deleteMessagesPermanently?: boolean;
 }
 export const StartPurgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     deleteMessagesPermanently: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delete_messages_permanently")),
+      S.Boolean.pipe(T.Body("delete_messages_permanently")),
     ),
   })
     .pipe(
@@ -4539,28 +4497,24 @@ export const ConsumersUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface ConsumersUpdateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
+  batchSize?: number;
   /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
-  maxConcurrency?: number | null;
+  maxConcurrency?: number;
   /** The maximum number of retries */
-  maxRetries?: number | null;
+  maxRetries?: number;
   /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
-  maxWaitTimeMs?: number | null;
+  maxWaitTimeMs?: number;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
+  retryDelay?: number;
 }
 export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxConcurrency: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_concurrency")),
-      ),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      maxWaitTimeMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max_wait_time_ms")),
-      ),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxConcurrency: S.optional(S.Number.pipe(T.Body("max_concurrency"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      maxWaitTimeMs: S.optional(S.Number.pipe(T.Body("max_wait_time_ms"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
     }),
 ).annotate({
   identifier: "ConsumersUpdateRequestSettingsWorker",
@@ -4568,22 +4522,22 @@ export const ConsumersUpdateRequestSettingsWorker = /*@__PURE__*/ S.suspend(
 
 export interface ConsumersUpdateRequestSettingsHTTPPull {
   /** The maximum number of messages to include in a batch. */
-  batchSize?: number | null;
+  batchSize?: number;
   /** The maximum number of retries */
-  maxRetries?: number | null;
+  maxRetries?: number;
   /** The number of seconds to delay before making the message available for another attempt. */
-  retryDelay?: number | null;
+  retryDelay?: number;
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
-  visibilityTimeoutMs?: number | null;
+  visibilityTimeoutMs?: number;
 }
 export const ConsumersUpdateRequestSettingsHTTPPull = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      batchSize: S.optional(S.NullOr(S.Number).pipe(T.Body("batch_size"))),
-      maxRetries: S.optional(S.NullOr(S.Number).pipe(T.Body("max_retries"))),
-      retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
+      batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+      maxRetries: S.optional(S.Number.pipe(T.Body("max_retries"))),
+      retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
       visibilityTimeoutMs: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("visibility_timeout_ms")),
+        S.Number.pipe(T.Body("visibility_timeout_ms")),
       ),
     }),
 ).annotate({
@@ -4614,22 +4568,20 @@ export interface UpdateConsumerRequest {
   /** A Resource identifier. */
   consumerId: string;
   /** Name of a Worker */
-  scriptName?: string | null;
+  scriptName?: string;
   type: ConsumersUpdateRequestType | (string & {});
-  deadLetterQueue?: string | null;
-  settings?: ConsumersUpdateRequestSettings | null;
+  deadLetterQueue?: string;
+  settings?: ConsumersUpdateRequestSettings;
 }
 export const UpdateConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
     consumerId: S.String.pipe(T.Label("consumer_id")),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
+    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
     type: ConsumersUpdateRequestType,
-    deadLetterQueue: S.optional(
-      S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
-    ),
-    settings: S.optional(S.NullOr(ConsumersUpdateRequestSettings)),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    settings: S.optional(ConsumersUpdateRequestSettings),
   })
     .pipe(
       T.Http({
@@ -4788,22 +4740,18 @@ export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
-  deliveryDelay?: number | null;
+  deliveryDelay?: number;
   /** Indicates if message delivery to consumers is currently paused. */
-  deliveryPaused?: boolean | null;
+  deliveryPaused?: boolean;
   /** Number of seconds after which an unconsumed message will be delayed. */
-  messageRetentionPeriod?: number | null;
+  messageRetentionPeriod?: number;
 }
 export const UpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deliveryDelay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("delivery_delay")),
-    ),
-    deliveryPaused: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delivery_paused")),
-    ),
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
     messageRetentionPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("message_retention_period")),
+      S.Number.pipe(T.Body("message_retention_period")),
     ),
   }),
 ).annotate({
@@ -4815,15 +4763,15 @@ export interface UpdateQueueRequest {
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
-  queueName?: string | null;
-  settings?: UpdateRequestSettings | null;
+  queueName?: string;
+  settings?: UpdateRequestSettings;
 }
 export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queueId: S.String.pipe(T.Label("queue_id")),
-    queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-    settings: S.optional(S.NullOr(UpdateRequestSettings)),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(UpdateRequestSettings),
   })
     .pipe(
       T.Http({

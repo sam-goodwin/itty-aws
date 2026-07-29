@@ -177,17 +177,17 @@ export interface BulkGetNamespacesRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesBulkGetRequestType | (string & {}) | null;
+  type?: NamespacesBulkGetRequestType | (string & {});
   /** Whether to include metadata in the response. */
-  withMetadata?: boolean | null;
+  withMetadata?: boolean;
 }
 export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keys: NamespacesBulkGetRequestKeysList,
-    type: S.optional(S.NullOr(NamespacesBulkGetRequestType)),
-    withMetadata: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(NamespacesBulkGetRequestType),
+    withMetadata: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -302,24 +302,22 @@ export interface NamespacesBulkUpdateRequestBodyItem {
   /** A UTF-8 encoded string to be stored, up to 25 MiB in length. */
   value: string;
   /** Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. */
-  base64?: boolean | null;
+  base64?: boolean;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number | null;
+  expiration?: number;
   /** Expires the key after a number of seconds. Must be at least 60. */
-  expirationTtl?: number | null;
+  expirationTtl?: number;
   /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
-    base64: S.optional(S.NullOr(S.Boolean)),
-    expiration: S.optional(S.NullOr(S.Number)),
-    expirationTtl: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("expiration_ttl")),
-    ),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    base64: S.optional(S.Boolean),
+    expiration: S.optional(S.Number),
+    expirationTtl: S.optional(S.Number.pipe(T.Body("expiration_ttl"))),
+    metadata: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "NamespacesBulkUpdateRequestBodyItem",
@@ -824,17 +822,17 @@ export interface NamespacesKeysBulkGetRequest {
   /** Array of keys to retrieve (maximum of 100). */
   keys: NamespacesKeysBulkGetRequestKeysList;
   /** Whether to parse JSON values in the response. */
-  type?: NamespacesKeysBulkGetRequestType | (string & {}) | null;
+  type?: NamespacesKeysBulkGetRequestType | (string & {});
   /** Whether to include metadata in the response. */
-  withMetadata?: boolean | null;
+  withMetadata?: boolean;
 }
 export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
     keys: NamespacesKeysBulkGetRequestKeysList,
-    type: S.optional(S.NullOr(NamespacesKeysBulkGetRequestType)),
-    withMetadata: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(NamespacesKeysBulkGetRequestType),
+    withMetadata: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -949,25 +947,23 @@ export interface NamespacesKeysBulkUpdateRequestBodyItem {
   /** A UTF-8 encoded string to be stored, up to 25 MiB in length. */
   value: string;
   /** Indicates whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. */
-  base64?: boolean | null;
+  base64?: boolean;
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
-  expiration?: number | null;
+  expiration?: number;
   /** Expires the key after a number of seconds. Must be at least 60. */
-  expirationTtl?: number | null;
+  expirationTtl?: number;
   /** Arbitrary JSON that is associated with a key. */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const NamespacesKeysBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       key: S.String,
       value: S.String,
-      base64: S.optional(S.NullOr(S.Boolean)),
-      expiration: S.optional(S.NullOr(S.Number)),
-      expirationTtl: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("expiration_ttl")),
-      ),
-      metadata: S.optional(S.NullOr(S.Unknown)),
+      base64: S.optional(S.Boolean),
+      expiration: S.optional(S.Number),
+      expirationTtl: S.optional(S.Number.pipe(T.Body("expiration_ttl"))),
+      metadata: S.optional(S.Unknown),
     }),
 ).annotate({
   identifier: "NamespacesKeysBulkUpdateRequestBodyItem",
@@ -1047,7 +1043,7 @@ export interface PutNamespaceValueRequest {
   /** A byte sequence to be stored, up to 25 MiB in length. */
   value: string | File | Blob;
   /** Associates arbitrary JSON data with a key/value pair. */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1057,7 +1053,7 @@ export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     expiration: S.optional(S.Number.pipe(T.Query())),
     expirationTtl: S.optional(S.Number.pipe(T.Query("expiration_ttl"))),
     value: S.String,
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    metadata: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({

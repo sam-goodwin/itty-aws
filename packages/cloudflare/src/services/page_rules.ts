@@ -51,12 +51,12 @@ export const CreateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: CreateRequestActionsItemAlwaysUseHTTPSId | (string & {}) | null;
+  id?: CreateRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const CreateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemAlwaysUseHTTPSId)),
+      id: S.optional(CreateRequestActionsItemAlwaysUseHTTPSId),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemAlwaysUseHTTPS",
@@ -73,22 +73,15 @@ export const CreateRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface CreateRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: CreateRequestActionsItemAutomaticHTTPSRewritesId | (string & {}) | null;
+  id?: CreateRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
-  value?:
-    | CreateRequestActionsItemAutomaticHTTPSRewritesValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
 export const CreateRequestActionsItemAutomaticHTTPSRewrites =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(CreateRequestActionsItemAutomaticHTTPSRewritesId),
-      ),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemAutomaticHTTPSRewritesValue),
-      ),
+      id: S.optional(CreateRequestActionsItemAutomaticHTTPSRewritesId),
+      value: S.optional(CreateRequestActionsItemAutomaticHTTPSRewritesValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemAutomaticHTTPSRewrites",
@@ -99,15 +92,15 @@ export const CreateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: CreateRequestActionsItemBrowserCacheTTLId | (string & {}) | null;
+  id?: CreateRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
-  value?: number | null;
+  value?: number;
 }
 export const CreateRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemBrowserCacheTTLId)),
-      value: S.optional(S.NullOr(S.Number)),
+      id: S.optional(CreateRequestActionsItemBrowserCacheTTLId),
+      value: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemBrowserCacheTTL",
@@ -121,15 +114,15 @@ export const CreateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: CreateRequestActionsItemBrowserCheckId | (string & {}) | null;
+  id?: CreateRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
-  value?: CreateRequestActionsItemBrowserCheckValue | (string & {}) | null;
+  value?: CreateRequestActionsItemBrowserCheckValue | (string & {});
 }
 export const CreateRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemBrowserCheckId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemBrowserCheckValue)),
+      id: S.optional(CreateRequestActionsItemBrowserCheckId),
+      value: S.optional(CreateRequestActionsItemBrowserCheckValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemBrowserCheck",
@@ -142,15 +135,15 @@ export const CreateRequestActionsItemBypassCacheOnCookieId =
 
 export interface CreateRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: CreateRequestActionsItemBypassCacheOnCookieId | (string & {}) | null;
+  id?: CreateRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestActionsItemBypassCacheOnCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemBypassCacheOnCookieId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(CreateRequestActionsItemBypassCacheOnCookieId),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemBypassCacheOnCookie",
@@ -167,17 +160,15 @@ export const CreateRequestActionsItemCacheByDeviceTypeValue =
 
 export interface CreateRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: CreateRequestActionsItemCacheByDeviceTypeId | (string & {}) | null;
+  id?: CreateRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
-  value?: CreateRequestActionsItemCacheByDeviceTypeValue | (string & {}) | null;
+  value?: CreateRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
 export const CreateRequestActionsItemCacheByDeviceType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemCacheByDeviceTypeId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheByDeviceTypeValue),
-      ),
+      id: S.optional(CreateRequestActionsItemCacheByDeviceTypeId),
+      value: S.optional(CreateRequestActionsItemCacheByDeviceTypeValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemCacheByDeviceType",
@@ -194,20 +185,15 @@ export const CreateRequestActionsItemCacheDeceptionArmorValue =
 
 export interface CreateRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: CreateRequestActionsItemCacheDeceptionArmorId | (string & {}) | null;
+  id?: CreateRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
-  value?:
-    | CreateRequestActionsItemCacheDeceptionArmorValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
 export const CreateRequestActionsItemCacheDeceptionArmor =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemCacheDeceptionArmorId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheDeceptionArmorValue),
-      ),
+      id: S.optional(CreateRequestActionsItemCacheDeceptionArmorId),
+      value: S.optional(CreateRequestActionsItemCacheDeceptionArmorValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemCacheDeceptionArmor",
@@ -232,20 +218,20 @@ export const CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without */
-  checkPresence?: CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList | null;
+  checkPresence?: CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList;
   /** A list of cookies to include. */
-  include?: CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList | null;
+  include?: CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValueCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        CreateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList),
+        CreateRequestActionsItemCacheKeyFieldsValueCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -275,25 +261,25 @@ export const CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without */
-  checkPresence?: CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList | null;
+  checkPresence?: CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList;
   /** A list of headers to ignore. */
-  exclude?: CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList | null;
+  exclude?: CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList;
   /** A list of headers to include. */
-  include?: CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
+  include?: CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValueHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        CreateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList),
+        CreateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList,
       ),
       include: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList),
+        CreateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -302,12 +288,12 @@ export const CreateRequestActionsItemCacheKeyFieldsValueHeader =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueHost {
   /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValueHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemCacheKeyFieldsValueHost",
@@ -353,18 +339,18 @@ export const CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueQueryString {
   /** Ignore all query string parameters. */
-  exclude?: CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude | null;
+  exclude?: CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude;
   /** Include all query string parameters. */
-  include?: CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude | null;
+  include?: CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValueQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude),
+        CreateRequestActionsItemCacheKeyFieldsValueQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude),
+        CreateRequestActionsItemCacheKeyFieldsValueQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -373,18 +359,18 @@ export const CreateRequestActionsItemCacheKeyFieldsValueQueryString =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValueUser {
   /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Includes the first language code contained in the */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValueUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemCacheKeyFieldsValueUser",
@@ -392,36 +378,28 @@ export const CreateRequestActionsItemCacheKeyFieldsValueUser =
 
 export interface CreateRequestActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
-  cookie?: CreateRequestActionsItemCacheKeyFieldsValueCookie | null;
+  cookie?: CreateRequestActionsItemCacheKeyFieldsValueCookie;
   /** Controls which headers go into the Cache Key. Exactly one of */
-  header?: CreateRequestActionsItemCacheKeyFieldsValueHeader | null;
+  header?: CreateRequestActionsItemCacheKeyFieldsValueHeader;
   /** Determines which host header to include in the Cache Key. */
-  host?: CreateRequestActionsItemCacheKeyFieldsValueHost | null;
+  host?: CreateRequestActionsItemCacheKeyFieldsValueHost;
   /** Controls which URL query string parameters go into the Cache */
-  queryString?: CreateRequestActionsItemCacheKeyFieldsValueQueryString | null;
+  queryString?: CreateRequestActionsItemCacheKeyFieldsValueQueryString;
   /** Feature fields to add features about the end-user (client) into */
-  user?: CreateRequestActionsItemCacheKeyFieldsValueUser | null;
+  user?: CreateRequestActionsItemCacheKeyFieldsValueUser;
 }
 export const CreateRequestActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cookie: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueCookie),
-      ),
-      header: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueHeader),
-      ),
-      host: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueHost),
-      ),
+      cookie: S.optional(CreateRequestActionsItemCacheKeyFieldsValueCookie),
+      header: S.optional(CreateRequestActionsItemCacheKeyFieldsValueHeader),
+      host: S.optional(CreateRequestActionsItemCacheKeyFieldsValueHost),
       queryString: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueQueryString).pipe(
+        CreateRequestActionsItemCacheKeyFieldsValueQueryString.pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheKeyFieldsValueUser),
-      ),
+      user: S.optional(CreateRequestActionsItemCacheKeyFieldsValueUser),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemCacheKeyFieldsValue",
@@ -429,14 +407,14 @@ export const CreateRequestActionsItemCacheKeyFieldsValue =
 
 export interface CreateRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: CreateRequestActionsItemCacheKeyFieldsId | (string & {}) | null;
-  value?: CreateRequestActionsItemCacheKeyFieldsValue | null;
+  id?: CreateRequestActionsItemCacheKeyFieldsId | (string & {});
+  value?: CreateRequestActionsItemCacheKeyFieldsValue;
 }
 export const CreateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemCacheKeyFieldsId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemCacheKeyFieldsValue)),
+      id: S.optional(CreateRequestActionsItemCacheKeyFieldsId),
+      value: S.optional(CreateRequestActionsItemCacheKeyFieldsValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemCacheKeyFields",
@@ -455,14 +433,14 @@ export const CreateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: CreateRequestActionsItemCacheLevelId | (string & {}) | null;
+  id?: CreateRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
-  value?: CreateRequestActionsItemCacheLevelValue | (string & {}) | null;
+  value?: CreateRequestActionsItemCacheLevelValue | (string & {});
 }
 export const CreateRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemCacheLevelId)),
-    value: S.optional(S.NullOr(CreateRequestActionsItemCacheLevelValue)),
+    id: S.optional(CreateRequestActionsItemCacheLevelId),
+    value: S.optional(CreateRequestActionsItemCacheLevelValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemCacheLevel",
@@ -473,15 +451,15 @@ export const CreateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: CreateRequestActionsItemCacheOnCookieId | (string & {}) | null;
+  id?: CreateRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemCacheOnCookieId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(CreateRequestActionsItemCacheOnCookieId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemCacheOnCookie",
@@ -506,17 +484,15 @@ export const CreateRequestActionsItemCacheTTLByStatusValue =
 
 export interface CreateRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: CreateRequestActionsItemCacheTTLByStatusId | (string & {}) | null;
+  id?: CreateRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
-  value?: CreateRequestActionsItemCacheTTLByStatusValue | null;
+  value?: CreateRequestActionsItemCacheTTLByStatusValue;
 }
 export const CreateRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemCacheTTLByStatusId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemCacheTTLByStatusValue),
-      ),
+      id: S.optional(CreateRequestActionsItemCacheTTLByStatusId),
+      value: S.optional(CreateRequestActionsItemCacheTTLByStatusValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemCacheTTLByStatus",
@@ -527,11 +503,11 @@ export const CreateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: CreateRequestActionsItemDisableAppsId | (string & {}) | null;
+  id?: CreateRequestActionsItemDisableAppsId | (string & {});
 }
 export const CreateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemDisableAppsId)),
+    id: S.optional(CreateRequestActionsItemDisableAppsId),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemDisableApps",
@@ -544,12 +520,12 @@ export const CreateRequestActionsItemDisablePerformanceId =
 
 export interface CreateRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: CreateRequestActionsItemDisablePerformanceId | (string & {}) | null;
+  id?: CreateRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const CreateRequestActionsItemDisablePerformance =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemDisablePerformanceId)),
+      id: S.optional(CreateRequestActionsItemDisablePerformanceId),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemDisablePerformance",
@@ -560,12 +536,12 @@ export const CreateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: CreateRequestActionsItemDisableSecurityId | (string & {}) | null;
+  id?: CreateRequestActionsItemDisableSecurityId | (string & {});
 }
 export const CreateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemDisableSecurityId)),
+      id: S.optional(CreateRequestActionsItemDisableSecurityId),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemDisableSecurity",
@@ -576,12 +552,12 @@ export const CreateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: CreateRequestActionsItemDisableZarazId | (string & {}) | null;
+  id?: CreateRequestActionsItemDisableZarazId | (string & {});
 }
 export const CreateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemDisableZarazId)),
+      id: S.optional(CreateRequestActionsItemDisableZarazId),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemDisableZaraz",
@@ -592,14 +568,14 @@ export const CreateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: CreateRequestActionsItemEdgeCacheTTLId | (string & {}) | null;
-  value?: number | null;
+  id?: CreateRequestActionsItemEdgeCacheTTLId | (string & {});
+  value?: number;
 }
 export const CreateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemEdgeCacheTTLId)),
-      value: S.optional(S.NullOr(S.Number)),
+      id: S.optional(CreateRequestActionsItemEdgeCacheTTLId),
+      value: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemEdgeCacheTTL",
@@ -615,17 +591,15 @@ export const CreateRequestActionsItemEmailObfuscationValue =
 
 export interface CreateRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: CreateRequestActionsItemEmailObfuscationId | (string & {}) | null;
+  id?: CreateRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
-  value?: CreateRequestActionsItemEmailObfuscationValue | (string & {}) | null;
+  value?: CreateRequestActionsItemEmailObfuscationValue | (string & {});
 }
 export const CreateRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemEmailObfuscationId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemEmailObfuscationValue),
-      ),
+      id: S.optional(CreateRequestActionsItemEmailObfuscationId),
+      value: S.optional(CreateRequestActionsItemEmailObfuscationValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemEmailObfuscation",
@@ -642,20 +616,15 @@ export const CreateRequestActionsItemExplicitCacheControlValue =
 
 export interface CreateRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: CreateRequestActionsItemExplicitCacheControlId | (string & {}) | null;
+  id?: CreateRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
-  value?:
-    | CreateRequestActionsItemExplicitCacheControlValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemExplicitCacheControlValue | (string & {});
 }
 export const CreateRequestActionsItemExplicitCacheControl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemExplicitCacheControlId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemExplicitCacheControlValue),
-      ),
+      id: S.optional(CreateRequestActionsItemExplicitCacheControlId),
+      value: S.optional(CreateRequestActionsItemExplicitCacheControlValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemExplicitCacheControl",
@@ -672,20 +641,19 @@ export interface CreateRequestActionsItemForwardingURLValue {
   /** The status code to use for the URL redirect. 301 is a permanent */
   statusCode?:
     | CreateRequestActionsItemForwardingURLValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
   /** The URL to redirect the request to. */
-  url?: string | null;
+  url?: string;
 }
 export const CreateRequestActionsItemForwardingURLValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       statusCode: S.optional(
-        S.NullOr(CreateRequestActionsItemForwardingURLValueStatusCode).pipe(
+        CreateRequestActionsItemForwardingURLValueStatusCode.pipe(
           T.Body("status_code"),
         ),
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemForwardingURLValue",
@@ -693,14 +661,14 @@ export const CreateRequestActionsItemForwardingURLValue =
 
 export interface CreateRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: CreateRequestActionsItemForwardingURLId | (string & {}) | null;
-  value?: CreateRequestActionsItemForwardingURLValue | null;
+  id?: CreateRequestActionsItemForwardingURLId | (string & {});
+  value?: CreateRequestActionsItemForwardingURLValue;
 }
 export const CreateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemForwardingURLId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemForwardingURLValue)),
+      id: S.optional(CreateRequestActionsItemForwardingURLId),
+      value: S.optional(CreateRequestActionsItemForwardingURLValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemForwardingURL",
@@ -713,15 +681,15 @@ export const CreateRequestActionsItemHostHeaderOverrideId =
 
 export interface CreateRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: CreateRequestActionsItemHostHeaderOverrideId | (string & {}) | null;
+  id?: CreateRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestActionsItemHostHeaderOverride =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemHostHeaderOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(CreateRequestActionsItemHostHeaderOverrideId),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemHostHeaderOverride",
@@ -736,15 +704,15 @@ export const CreateRequestActionsItemIPGeolocationValue =
 
 export interface CreateRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: CreateRequestActionsItemIPGeolocationId | (string & {}) | null;
+  id?: CreateRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
-  value?: CreateRequestActionsItemIPGeolocationValue | (string & {}) | null;
+  value?: CreateRequestActionsItemIPGeolocationValue | (string & {});
 }
 export const CreateRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemIPGeolocationId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemIPGeolocationValue)),
+      id: S.optional(CreateRequestActionsItemIPGeolocationId),
+      value: S.optional(CreateRequestActionsItemIPGeolocationValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemIPGeolocation",
@@ -758,14 +726,14 @@ export const CreateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: CreateRequestActionsItemMirageId | (string & {}) | null;
+  id?: CreateRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
-  value?: CreateRequestActionsItemMirageValue | (string & {}) | null;
+  value?: CreateRequestActionsItemMirageValue | (string & {});
 }
 export const CreateRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemMirageId)),
-    value: S.optional(S.NullOr(CreateRequestActionsItemMirageValue)),
+    id: S.optional(CreateRequestActionsItemMirageId),
+    value: S.optional(CreateRequestActionsItemMirageValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemMirage",
@@ -782,22 +750,15 @@ export const CreateRequestActionsItemOpportunisticEncryptionValue =
 
 export interface CreateRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: CreateRequestActionsItemOpportunisticEncryptionId | (string & {}) | null;
+  id?: CreateRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
-  value?:
-    | CreateRequestActionsItemOpportunisticEncryptionValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
 export const CreateRequestActionsItemOpportunisticEncryption =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(CreateRequestActionsItemOpportunisticEncryptionId),
-      ),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemOpportunisticEncryptionValue),
-      ),
+      id: S.optional(CreateRequestActionsItemOpportunisticEncryptionId),
+      value: S.optional(CreateRequestActionsItemOpportunisticEncryptionValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemOpportunisticEncryption",
@@ -814,22 +775,15 @@ export const CreateRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface CreateRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: CreateRequestActionsItemOriginErrorPagePassThruId | (string & {}) | null;
+  id?: CreateRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
-  value?:
-    | CreateRequestActionsItemOriginErrorPagePassThruValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
 export const CreateRequestActionsItemOriginErrorPagePassThru =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(CreateRequestActionsItemOriginErrorPagePassThruId),
-      ),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemOriginErrorPagePassThruValue),
-      ),
+      id: S.optional(CreateRequestActionsItemOriginErrorPagePassThruId),
+      value: S.optional(CreateRequestActionsItemOriginErrorPagePassThruValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemOriginErrorPagePassThru",
@@ -843,14 +797,14 @@ export const CreateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: CreateRequestActionsItemPolishId | (string & {}) | null;
+  id?: CreateRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
-  value?: CreateRequestActionsItemPolishValue | (string & {}) | null;
+  value?: CreateRequestActionsItemPolishValue | (string & {});
 }
 export const CreateRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemPolishId)),
-    value: S.optional(S.NullOr(CreateRequestActionsItemPolishValue)),
+    id: S.optional(CreateRequestActionsItemPolishId),
+    value: S.optional(CreateRequestActionsItemPolishValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemPolish",
@@ -861,15 +815,15 @@ export const CreateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: CreateRequestActionsItemResolveOverrideId | (string & {}) | null;
+  id?: CreateRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemResolveOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(CreateRequestActionsItemResolveOverrideId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemResolveOverride",
@@ -885,17 +839,15 @@ export const CreateRequestActionsItemRespectStrongEtagValue =
 
 export interface CreateRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: CreateRequestActionsItemRespectStrongEtagId | (string & {}) | null;
+  id?: CreateRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
-  value?: CreateRequestActionsItemRespectStrongEtagValue | (string & {}) | null;
+  value?: CreateRequestActionsItemRespectStrongEtagValue | (string & {});
 }
 export const CreateRequestActionsItemRespectStrongEtag =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemRespectStrongEtagId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemRespectStrongEtagValue),
-      ),
+      id: S.optional(CreateRequestActionsItemRespectStrongEtagId),
+      value: S.optional(CreateRequestActionsItemRespectStrongEtagValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemRespectStrongEtag",
@@ -911,17 +863,15 @@ export const CreateRequestActionsItemResponseBufferingValue =
 
 export interface CreateRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: CreateRequestActionsItemResponseBufferingId | (string & {}) | null;
+  id?: CreateRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
-  value?: CreateRequestActionsItemResponseBufferingValue | (string & {}) | null;
+  value?: CreateRequestActionsItemResponseBufferingValue | (string & {});
 }
 export const CreateRequestActionsItemResponseBuffering =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemResponseBufferingId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemResponseBufferingValue),
-      ),
+      id: S.optional(CreateRequestActionsItemResponseBufferingId),
+      value: S.optional(CreateRequestActionsItemResponseBufferingValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemResponseBuffering",
@@ -935,15 +885,15 @@ export const CreateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: CreateRequestActionsItemRocketLoaderId | (string & {}) | null;
+  id?: CreateRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
-  value?: CreateRequestActionsItemRocketLoaderValue | (string & {}) | null;
+  value?: CreateRequestActionsItemRocketLoaderValue | (string & {});
 }
 export const CreateRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemRocketLoaderId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemRocketLoaderValue)),
+      id: S.optional(CreateRequestActionsItemRocketLoaderId),
+      value: S.optional(CreateRequestActionsItemRocketLoaderValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemRocketLoader",
@@ -964,14 +914,14 @@ export const CreateRequestActionsItemSecurityLevelValue =
 
 export interface CreateRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: CreateRequestActionsItemSecurityLevelId | (string & {}) | null;
-  value?: CreateRequestActionsItemSecurityLevelValue | (string & {}) | null;
+  id?: CreateRequestActionsItemSecurityLevelId | (string & {});
+  value?: CreateRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const CreateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemSecurityLevelId)),
-      value: S.optional(S.NullOr(CreateRequestActionsItemSecurityLevelValue)),
+      id: S.optional(CreateRequestActionsItemSecurityLevelId),
+      value: S.optional(CreateRequestActionsItemSecurityLevelValue),
     }),
 ).annotate({
   identifier: "CreateRequestActionsItemSecurityLevel",
@@ -988,22 +938,15 @@ export const CreateRequestActionsItemSortQueryStringForCacheValue =
 
 export interface CreateRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: CreateRequestActionsItemSortQueryStringForCacheId | (string & {}) | null;
+  id?: CreateRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
-  value?:
-    | CreateRequestActionsItemSortQueryStringForCacheValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
 export const CreateRequestActionsItemSortQueryStringForCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(CreateRequestActionsItemSortQueryStringForCacheId),
-      ),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemSortQueryStringForCacheValue),
-      ),
+      id: S.optional(CreateRequestActionsItemSortQueryStringForCacheId),
+      value: S.optional(CreateRequestActionsItemSortQueryStringForCacheValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemSortQueryStringForCache",
@@ -1022,14 +965,14 @@ export const CreateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: CreateRequestActionsItemSSLId | (string & {}) | null;
+  id?: CreateRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
-  value?: CreateRequestActionsItemSSLValue | (string & {}) | null;
+  value?: CreateRequestActionsItemSSLValue | (string & {});
 }
 export const CreateRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemSSLId)),
-    value: S.optional(S.NullOr(CreateRequestActionsItemSSLValue)),
+    id: S.optional(CreateRequestActionsItemSSLId),
+    value: S.optional(CreateRequestActionsItemSSLValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemSSL",
@@ -1046,20 +989,15 @@ export const CreateRequestActionsItemTrueClientIPHeaderValue =
 
 export interface CreateRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: CreateRequestActionsItemTrueClientIPHeaderId | (string & {}) | null;
+  id?: CreateRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
-  value?:
-    | CreateRequestActionsItemTrueClientIPHeaderValue
-    | (string & {})
-    | null;
+  value?: CreateRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
 export const CreateRequestActionsItemTrueClientIPHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(CreateRequestActionsItemTrueClientIPHeaderId)),
-      value: S.optional(
-        S.NullOr(CreateRequestActionsItemTrueClientIPHeaderValue),
-      ),
+      id: S.optional(CreateRequestActionsItemTrueClientIPHeaderId),
+      value: S.optional(CreateRequestActionsItemTrueClientIPHeaderValue),
     }),
   ).annotate({
     identifier: "CreateRequestActionsItemTrueClientIPHeader",
@@ -1073,14 +1011,14 @@ export const CreateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: CreateRequestActionsItemWAFId | (string & {}) | null;
+  id?: CreateRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
-  value?: CreateRequestActionsItemWAFValue | (string & {}) | null;
+  value?: CreateRequestActionsItemWAFValue | (string & {});
 }
 export const CreateRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(CreateRequestActionsItemWAFId)),
-    value: S.optional(S.NullOr(CreateRequestActionsItemWAFValue)),
+    id: S.optional(CreateRequestActionsItemWAFId),
+    value: S.optional(CreateRequestActionsItemWAFValue),
   }),
 ).annotate({
   identifier: "CreateRequestActionsItemWAF",
@@ -1194,14 +1132,14 @@ export const CreateRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface CreateRequestTargetsItem {
   /** String constraint. */
-  constraint?: CreateRequestTargetsItemConstraint | null;
+  constraint?: CreateRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: CreateRequestTargetsItemTarget | (string & {}) | null;
+  target?: CreateRequestTargetsItemTarget | (string & {});
 }
 export const CreateRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    constraint: S.optional(S.NullOr(CreateRequestTargetsItemConstraint)),
-    target: S.optional(S.NullOr(CreateRequestTargetsItemTarget)),
+    constraint: S.optional(CreateRequestTargetsItemConstraint),
+    target: S.optional(CreateRequestTargetsItemTarget),
   }),
 ).annotate({
   identifier: "CreateRequestTargetsItem",
@@ -1223,17 +1161,17 @@ export interface CreatePageRuleRequest {
   /** The rule targets to evaluate on each request. */
   targets: CreateRequestTargetsList;
   /** The priority of the rule, used to define which Page Rule is processed */
-  priority?: number | null;
+  priority?: number;
   /** The status of the Page Rule. */
-  status?: CreateRequestStatus | (string & {}) | null;
+  status?: CreateRequestStatus | (string & {});
 }
 export const CreatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: CreateRequestActionsList,
     targets: CreateRequestTargetsList,
-    priority: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(CreateRequestStatus)),
+    priority: S.optional(S.Number),
+    status: S.optional(CreateRequestStatus),
   })
     .pipe(
       T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }),
@@ -4868,12 +4806,12 @@ export const EditRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: EditRequestActionsItemAlwaysUseHTTPSId | (string & {}) | null;
+  id?: EditRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const EditRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemAlwaysUseHTTPSId)),
+      id: S.optional(EditRequestActionsItemAlwaysUseHTTPSId),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemAlwaysUseHTTPS",
@@ -4890,20 +4828,15 @@ export const EditRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface EditRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: EditRequestActionsItemAutomaticHTTPSRewritesId | (string & {}) | null;
+  id?: EditRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
-  value?:
-    | EditRequestActionsItemAutomaticHTTPSRewritesValue
-    | (string & {})
-    | null;
+  value?: EditRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
 export const EditRequestActionsItemAutomaticHTTPSRewrites =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemAutomaticHTTPSRewritesId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemAutomaticHTTPSRewritesValue),
-      ),
+      id: S.optional(EditRequestActionsItemAutomaticHTTPSRewritesId),
+      value: S.optional(EditRequestActionsItemAutomaticHTTPSRewritesValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemAutomaticHTTPSRewrites",
@@ -4914,15 +4847,15 @@ export const EditRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: EditRequestActionsItemBrowserCacheTTLId | (string & {}) | null;
+  id?: EditRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
-  value?: number | null;
+  value?: number;
 }
 export const EditRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemBrowserCacheTTLId)),
-      value: S.optional(S.NullOr(S.Number)),
+      id: S.optional(EditRequestActionsItemBrowserCacheTTLId),
+      value: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemBrowserCacheTTL",
@@ -4936,14 +4869,14 @@ export const EditRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: EditRequestActionsItemBrowserCheckId | (string & {}) | null;
+  id?: EditRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
-  value?: EditRequestActionsItemBrowserCheckValue | (string & {}) | null;
+  value?: EditRequestActionsItemBrowserCheckValue | (string & {});
 }
 export const EditRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemBrowserCheckId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemBrowserCheckValue)),
+    id: S.optional(EditRequestActionsItemBrowserCheckId),
+    value: S.optional(EditRequestActionsItemBrowserCheckValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemBrowserCheck",
@@ -4956,15 +4889,15 @@ export const EditRequestActionsItemBypassCacheOnCookieId =
 
 export interface EditRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: EditRequestActionsItemBypassCacheOnCookieId | (string & {}) | null;
+  id?: EditRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const EditRequestActionsItemBypassCacheOnCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemBypassCacheOnCookieId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(EditRequestActionsItemBypassCacheOnCookieId),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemBypassCacheOnCookie",
@@ -4979,15 +4912,15 @@ export const EditRequestActionsItemCacheByDeviceTypeValue =
 
 export interface EditRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: EditRequestActionsItemCacheByDeviceTypeId | (string & {}) | null;
+  id?: EditRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
-  value?: EditRequestActionsItemCacheByDeviceTypeValue | (string & {}) | null;
+  value?: EditRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
 export const EditRequestActionsItemCacheByDeviceType = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemCacheByDeviceTypeId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemCacheByDeviceTypeValue)),
+      id: S.optional(EditRequestActionsItemCacheByDeviceTypeId),
+      value: S.optional(EditRequestActionsItemCacheByDeviceTypeValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemCacheByDeviceType",
@@ -5004,17 +4937,15 @@ export const EditRequestActionsItemCacheDeceptionArmorValue =
 
 export interface EditRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: EditRequestActionsItemCacheDeceptionArmorId | (string & {}) | null;
+  id?: EditRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
-  value?: EditRequestActionsItemCacheDeceptionArmorValue | (string & {}) | null;
+  value?: EditRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
 export const EditRequestActionsItemCacheDeceptionArmor =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemCacheDeceptionArmorId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemCacheDeceptionArmorValue),
-      ),
+      id: S.optional(EditRequestActionsItemCacheDeceptionArmorId),
+      value: S.optional(EditRequestActionsItemCacheDeceptionArmorValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemCacheDeceptionArmor",
@@ -5039,20 +4970,20 @@ export const EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList =
 
 export interface EditRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without */
-  checkPresence?: EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList | null;
+  checkPresence?: EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList;
   /** A list of cookies to include. */
-  include?: EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList | null;
+  include?: EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList;
 }
 export const EditRequestActionsItemCacheKeyFieldsValueCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        EditRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList),
+        EditRequestActionsItemCacheKeyFieldsValueCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -5082,25 +5013,25 @@ export const EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
 
 export interface EditRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without */
-  checkPresence?: EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList | null;
+  checkPresence?: EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList;
   /** A list of headers to ignore. */
-  exclude?: EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList | null;
+  exclude?: EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList;
   /** A list of headers to include. */
-  include?: EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
+  include?: EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList;
 }
 export const EditRequestActionsItemCacheKeyFieldsValueHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        EditRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList),
+        EditRequestActionsItemCacheKeyFieldsValueHeaderExcludeList,
       ),
       include: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList),
+        EditRequestActionsItemCacheKeyFieldsValueHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -5109,12 +5040,12 @@ export const EditRequestActionsItemCacheKeyFieldsValueHeader =
 
 export interface EditRequestActionsItemCacheKeyFieldsValueHost {
   /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const EditRequestActionsItemCacheKeyFieldsValueHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemCacheKeyFieldsValueHost",
@@ -5160,18 +5091,18 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
 
 export interface EditRequestActionsItemCacheKeyFieldsValueQueryString {
   /** Ignore all query string parameters. */
-  exclude?: EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude | null;
+  exclude?: EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude;
   /** Include all query string parameters. */
-  include?: EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude | null;
+  include?: EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude;
 }
 export const EditRequestActionsItemCacheKeyFieldsValueQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude),
+        EditRequestActionsItemCacheKeyFieldsValueQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude),
+        EditRequestActionsItemCacheKeyFieldsValueQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -5180,18 +5111,18 @@ export const EditRequestActionsItemCacheKeyFieldsValueQueryString =
 
 export interface EditRequestActionsItemCacheKeyFieldsValueUser {
   /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Includes the first language code contained in the */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const EditRequestActionsItemCacheKeyFieldsValueUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemCacheKeyFieldsValueUser",
@@ -5199,32 +5130,28 @@ export const EditRequestActionsItemCacheKeyFieldsValueUser =
 
 export interface EditRequestActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
-  cookie?: EditRequestActionsItemCacheKeyFieldsValueCookie | null;
+  cookie?: EditRequestActionsItemCacheKeyFieldsValueCookie;
   /** Controls which headers go into the Cache Key. Exactly one of */
-  header?: EditRequestActionsItemCacheKeyFieldsValueHeader | null;
+  header?: EditRequestActionsItemCacheKeyFieldsValueHeader;
   /** Determines which host header to include in the Cache Key. */
-  host?: EditRequestActionsItemCacheKeyFieldsValueHost | null;
+  host?: EditRequestActionsItemCacheKeyFieldsValueHost;
   /** Controls which URL query string parameters go into the Cache */
-  queryString?: EditRequestActionsItemCacheKeyFieldsValueQueryString | null;
+  queryString?: EditRequestActionsItemCacheKeyFieldsValueQueryString;
   /** Feature fields to add features about the end-user (client) into */
-  user?: EditRequestActionsItemCacheKeyFieldsValueUser | null;
+  user?: EditRequestActionsItemCacheKeyFieldsValueUser;
 }
 export const EditRequestActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cookie: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueCookie),
-      ),
-      header: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueHeader),
-      ),
-      host: S.optional(S.NullOr(EditRequestActionsItemCacheKeyFieldsValueHost)),
+      cookie: S.optional(EditRequestActionsItemCacheKeyFieldsValueCookie),
+      header: S.optional(EditRequestActionsItemCacheKeyFieldsValueHeader),
+      host: S.optional(EditRequestActionsItemCacheKeyFieldsValueHost),
       queryString: S.optional(
-        S.NullOr(EditRequestActionsItemCacheKeyFieldsValueQueryString).pipe(
+        EditRequestActionsItemCacheKeyFieldsValueQueryString.pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(S.NullOr(EditRequestActionsItemCacheKeyFieldsValueUser)),
+      user: S.optional(EditRequestActionsItemCacheKeyFieldsValueUser),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemCacheKeyFieldsValue",
@@ -5232,14 +5159,14 @@ export const EditRequestActionsItemCacheKeyFieldsValue =
 
 export interface EditRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: EditRequestActionsItemCacheKeyFieldsId | (string & {}) | null;
-  value?: EditRequestActionsItemCacheKeyFieldsValue | null;
+  id?: EditRequestActionsItemCacheKeyFieldsId | (string & {});
+  value?: EditRequestActionsItemCacheKeyFieldsValue;
 }
 export const EditRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemCacheKeyFieldsId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemCacheKeyFieldsValue)),
+      id: S.optional(EditRequestActionsItemCacheKeyFieldsId),
+      value: S.optional(EditRequestActionsItemCacheKeyFieldsValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemCacheKeyFields",
@@ -5258,14 +5185,14 @@ export const EditRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: EditRequestActionsItemCacheLevelId | (string & {}) | null;
+  id?: EditRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
-  value?: EditRequestActionsItemCacheLevelValue | (string & {}) | null;
+  value?: EditRequestActionsItemCacheLevelValue | (string & {});
 }
 export const EditRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemCacheLevelId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemCacheLevelValue)),
+    id: S.optional(EditRequestActionsItemCacheLevelId),
+    value: S.optional(EditRequestActionsItemCacheLevelValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemCacheLevel",
@@ -5276,14 +5203,14 @@ export const EditRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: EditRequestActionsItemCacheOnCookieId | (string & {}) | null;
+  id?: EditRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const EditRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemCacheOnCookieId)),
-    value: S.optional(S.NullOr(S.String)),
+    id: S.optional(EditRequestActionsItemCacheOnCookieId),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemCacheOnCookie",
@@ -5307,15 +5234,15 @@ export const EditRequestActionsItemCacheTTLByStatusValue =
 
 export interface EditRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: EditRequestActionsItemCacheTTLByStatusId | (string & {}) | null;
+  id?: EditRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
-  value?: EditRequestActionsItemCacheTTLByStatusValue | null;
+  value?: EditRequestActionsItemCacheTTLByStatusValue;
 }
 export const EditRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemCacheTTLByStatusId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemCacheTTLByStatusValue)),
+      id: S.optional(EditRequestActionsItemCacheTTLByStatusId),
+      value: S.optional(EditRequestActionsItemCacheTTLByStatusValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemCacheTTLByStatus",
@@ -5326,11 +5253,11 @@ export const EditRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: EditRequestActionsItemDisableAppsId | (string & {}) | null;
+  id?: EditRequestActionsItemDisableAppsId | (string & {});
 }
 export const EditRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemDisableAppsId)),
+    id: S.optional(EditRequestActionsItemDisableAppsId),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemDisableApps",
@@ -5342,12 +5269,12 @@ export const EditRequestActionsItemDisablePerformanceId =
 
 export interface EditRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: EditRequestActionsItemDisablePerformanceId | (string & {}) | null;
+  id?: EditRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const EditRequestActionsItemDisablePerformance = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemDisablePerformanceId)),
+      id: S.optional(EditRequestActionsItemDisablePerformanceId),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemDisablePerformance",
@@ -5358,12 +5285,12 @@ export const EditRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: EditRequestActionsItemDisableSecurityId | (string & {}) | null;
+  id?: EditRequestActionsItemDisableSecurityId | (string & {});
 }
 export const EditRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemDisableSecurityId)),
+      id: S.optional(EditRequestActionsItemDisableSecurityId),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemDisableSecurity",
@@ -5374,11 +5301,11 @@ export const EditRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: EditRequestActionsItemDisableZarazId | (string & {}) | null;
+  id?: EditRequestActionsItemDisableZarazId | (string & {});
 }
 export const EditRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemDisableZarazId)),
+    id: S.optional(EditRequestActionsItemDisableZarazId),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemDisableZaraz",
@@ -5389,13 +5316,13 @@ export const EditRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: EditRequestActionsItemEdgeCacheTTLId | (string & {}) | null;
-  value?: number | null;
+  id?: EditRequestActionsItemEdgeCacheTTLId | (string & {});
+  value?: number;
 }
 export const EditRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemEdgeCacheTTLId)),
-    value: S.optional(S.NullOr(S.Number)),
+    id: S.optional(EditRequestActionsItemEdgeCacheTTLId),
+    value: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemEdgeCacheTTL",
@@ -5410,15 +5337,15 @@ export const EditRequestActionsItemEmailObfuscationValue =
 
 export interface EditRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: EditRequestActionsItemEmailObfuscationId | (string & {}) | null;
+  id?: EditRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
-  value?: EditRequestActionsItemEmailObfuscationValue | (string & {}) | null;
+  value?: EditRequestActionsItemEmailObfuscationValue | (string & {});
 }
 export const EditRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemEmailObfuscationId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemEmailObfuscationValue)),
+      id: S.optional(EditRequestActionsItemEmailObfuscationId),
+      value: S.optional(EditRequestActionsItemEmailObfuscationValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemEmailObfuscation",
@@ -5435,20 +5362,15 @@ export const EditRequestActionsItemExplicitCacheControlValue =
 
 export interface EditRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: EditRequestActionsItemExplicitCacheControlId | (string & {}) | null;
+  id?: EditRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
-  value?:
-    | EditRequestActionsItemExplicitCacheControlValue
-    | (string & {})
-    | null;
+  value?: EditRequestActionsItemExplicitCacheControlValue | (string & {});
 }
 export const EditRequestActionsItemExplicitCacheControl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemExplicitCacheControlId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemExplicitCacheControlValue),
-      ),
+      id: S.optional(EditRequestActionsItemExplicitCacheControlId),
+      value: S.optional(EditRequestActionsItemExplicitCacheControlValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemExplicitCacheControl",
@@ -5465,20 +5387,19 @@ export interface EditRequestActionsItemForwardingURLValue {
   /** The status code to use for the URL redirect. 301 is a permanent */
   statusCode?:
     | EditRequestActionsItemForwardingURLValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
   /** The URL to redirect the request to. */
-  url?: string | null;
+  url?: string;
 }
 export const EditRequestActionsItemForwardingURLValue = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       statusCode: S.optional(
-        S.NullOr(EditRequestActionsItemForwardingURLValueStatusCode).pipe(
+        EditRequestActionsItemForwardingURLValueStatusCode.pipe(
           T.Body("status_code"),
         ),
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemForwardingURLValue",
@@ -5486,13 +5407,13 @@ export const EditRequestActionsItemForwardingURLValue = /*@__PURE__*/ S.suspend(
 
 export interface EditRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: EditRequestActionsItemForwardingURLId | (string & {}) | null;
-  value?: EditRequestActionsItemForwardingURLValue | null;
+  id?: EditRequestActionsItemForwardingURLId | (string & {});
+  value?: EditRequestActionsItemForwardingURLValue;
 }
 export const EditRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemForwardingURLId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemForwardingURLValue)),
+    id: S.optional(EditRequestActionsItemForwardingURLId),
+    value: S.optional(EditRequestActionsItemForwardingURLValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemForwardingURL",
@@ -5504,15 +5425,15 @@ export const EditRequestActionsItemHostHeaderOverrideId =
 
 export interface EditRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: EditRequestActionsItemHostHeaderOverrideId | (string & {}) | null;
+  id?: EditRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
-  value?: string | null;
+  value?: string;
 }
 export const EditRequestActionsItemHostHeaderOverride = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemHostHeaderOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(EditRequestActionsItemHostHeaderOverrideId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemHostHeaderOverride",
@@ -5526,14 +5447,14 @@ export const EditRequestActionsItemIPGeolocationValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: EditRequestActionsItemIPGeolocationId | (string & {}) | null;
+  id?: EditRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
-  value?: EditRequestActionsItemIPGeolocationValue | (string & {}) | null;
+  value?: EditRequestActionsItemIPGeolocationValue | (string & {});
 }
 export const EditRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemIPGeolocationId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemIPGeolocationValue)),
+    id: S.optional(EditRequestActionsItemIPGeolocationId),
+    value: S.optional(EditRequestActionsItemIPGeolocationValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemIPGeolocation",
@@ -5547,14 +5468,14 @@ export const EditRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: EditRequestActionsItemMirageId | (string & {}) | null;
+  id?: EditRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
-  value?: EditRequestActionsItemMirageValue | (string & {}) | null;
+  value?: EditRequestActionsItemMirageValue | (string & {});
 }
 export const EditRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemMirageId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemMirageValue)),
+    id: S.optional(EditRequestActionsItemMirageId),
+    value: S.optional(EditRequestActionsItemMirageValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemMirage",
@@ -5571,20 +5492,15 @@ export const EditRequestActionsItemOpportunisticEncryptionValue =
 
 export interface EditRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: EditRequestActionsItemOpportunisticEncryptionId | (string & {}) | null;
+  id?: EditRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
-  value?:
-    | EditRequestActionsItemOpportunisticEncryptionValue
-    | (string & {})
-    | null;
+  value?: EditRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
 export const EditRequestActionsItemOpportunisticEncryption =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemOpportunisticEncryptionId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemOpportunisticEncryptionValue),
-      ),
+      id: S.optional(EditRequestActionsItemOpportunisticEncryptionId),
+      value: S.optional(EditRequestActionsItemOpportunisticEncryptionValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemOpportunisticEncryption",
@@ -5601,20 +5517,15 @@ export const EditRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface EditRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: EditRequestActionsItemOriginErrorPagePassThruId | (string & {}) | null;
+  id?: EditRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
-  value?:
-    | EditRequestActionsItemOriginErrorPagePassThruValue
-    | (string & {})
-    | null;
+  value?: EditRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
 export const EditRequestActionsItemOriginErrorPagePassThru =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemOriginErrorPagePassThruId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemOriginErrorPagePassThruValue),
-      ),
+      id: S.optional(EditRequestActionsItemOriginErrorPagePassThruId),
+      value: S.optional(EditRequestActionsItemOriginErrorPagePassThruValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemOriginErrorPagePassThru",
@@ -5628,14 +5539,14 @@ export const EditRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: EditRequestActionsItemPolishId | (string & {}) | null;
+  id?: EditRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
-  value?: EditRequestActionsItemPolishValue | (string & {}) | null;
+  value?: EditRequestActionsItemPolishValue | (string & {});
 }
 export const EditRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemPolishId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemPolishValue)),
+    id: S.optional(EditRequestActionsItemPolishId),
+    value: S.optional(EditRequestActionsItemPolishValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemPolish",
@@ -5646,15 +5557,15 @@ export const EditRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: EditRequestActionsItemResolveOverrideId | (string & {}) | null;
+  id?: EditRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
-  value?: string | null;
+  value?: string;
 }
 export const EditRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemResolveOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(EditRequestActionsItemResolveOverrideId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemResolveOverride",
@@ -5669,15 +5580,15 @@ export const EditRequestActionsItemRespectStrongEtagValue =
 
 export interface EditRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: EditRequestActionsItemRespectStrongEtagId | (string & {}) | null;
+  id?: EditRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
-  value?: EditRequestActionsItemRespectStrongEtagValue | (string & {}) | null;
+  value?: EditRequestActionsItemRespectStrongEtagValue | (string & {});
 }
 export const EditRequestActionsItemRespectStrongEtag = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemRespectStrongEtagId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemRespectStrongEtagValue)),
+      id: S.optional(EditRequestActionsItemRespectStrongEtagId),
+      value: S.optional(EditRequestActionsItemRespectStrongEtagValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemRespectStrongEtag",
@@ -5692,15 +5603,15 @@ export const EditRequestActionsItemResponseBufferingValue =
 
 export interface EditRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: EditRequestActionsItemResponseBufferingId | (string & {}) | null;
+  id?: EditRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
-  value?: EditRequestActionsItemResponseBufferingValue | (string & {}) | null;
+  value?: EditRequestActionsItemResponseBufferingValue | (string & {});
 }
 export const EditRequestActionsItemResponseBuffering = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemResponseBufferingId)),
-      value: S.optional(S.NullOr(EditRequestActionsItemResponseBufferingValue)),
+      id: S.optional(EditRequestActionsItemResponseBufferingId),
+      value: S.optional(EditRequestActionsItemResponseBufferingValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemResponseBuffering",
@@ -5714,14 +5625,14 @@ export const EditRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: EditRequestActionsItemRocketLoaderId | (string & {}) | null;
+  id?: EditRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
-  value?: EditRequestActionsItemRocketLoaderValue | (string & {}) | null;
+  value?: EditRequestActionsItemRocketLoaderValue | (string & {});
 }
 export const EditRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemRocketLoaderId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemRocketLoaderValue)),
+    id: S.optional(EditRequestActionsItemRocketLoaderId),
+    value: S.optional(EditRequestActionsItemRocketLoaderValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemRocketLoader",
@@ -5741,13 +5652,13 @@ export const EditRequestActionsItemSecurityLevelValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: EditRequestActionsItemSecurityLevelId | (string & {}) | null;
-  value?: EditRequestActionsItemSecurityLevelValue | (string & {}) | null;
+  id?: EditRequestActionsItemSecurityLevelId | (string & {});
+  value?: EditRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const EditRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemSecurityLevelId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemSecurityLevelValue)),
+    id: S.optional(EditRequestActionsItemSecurityLevelId),
+    value: S.optional(EditRequestActionsItemSecurityLevelValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemSecurityLevel",
@@ -5764,20 +5675,15 @@ export const EditRequestActionsItemSortQueryStringForCacheValue =
 
 export interface EditRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: EditRequestActionsItemSortQueryStringForCacheId | (string & {}) | null;
+  id?: EditRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
-  value?:
-    | EditRequestActionsItemSortQueryStringForCacheValue
-    | (string & {})
-    | null;
+  value?: EditRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
 export const EditRequestActionsItemSortQueryStringForCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemSortQueryStringForCacheId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemSortQueryStringForCacheValue),
-      ),
+      id: S.optional(EditRequestActionsItemSortQueryStringForCacheId),
+      value: S.optional(EditRequestActionsItemSortQueryStringForCacheValue),
     }),
   ).annotate({
     identifier: "EditRequestActionsItemSortQueryStringForCache",
@@ -5796,14 +5702,14 @@ export const EditRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: EditRequestActionsItemSSLId | (string & {}) | null;
+  id?: EditRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
-  value?: EditRequestActionsItemSSLValue | (string & {}) | null;
+  value?: EditRequestActionsItemSSLValue | (string & {});
 }
 export const EditRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemSSLId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemSSLValue)),
+    id: S.optional(EditRequestActionsItemSSLId),
+    value: S.optional(EditRequestActionsItemSSLValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemSSL",
@@ -5820,17 +5726,15 @@ export const EditRequestActionsItemTrueClientIPHeaderValue =
 
 export interface EditRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: EditRequestActionsItemTrueClientIPHeaderId | (string & {}) | null;
+  id?: EditRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
-  value?: EditRequestActionsItemTrueClientIPHeaderValue | (string & {}) | null;
+  value?: EditRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
 export const EditRequestActionsItemTrueClientIPHeader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(EditRequestActionsItemTrueClientIPHeaderId)),
-      value: S.optional(
-        S.NullOr(EditRequestActionsItemTrueClientIPHeaderValue),
-      ),
+      id: S.optional(EditRequestActionsItemTrueClientIPHeaderId),
+      value: S.optional(EditRequestActionsItemTrueClientIPHeaderValue),
     }),
 ).annotate({
   identifier: "EditRequestActionsItemTrueClientIPHeader",
@@ -5844,14 +5748,14 @@ export const EditRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: EditRequestActionsItemWAFId | (string & {}) | null;
+  id?: EditRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
-  value?: EditRequestActionsItemWAFValue | (string & {}) | null;
+  value?: EditRequestActionsItemWAFValue | (string & {});
 }
 export const EditRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(EditRequestActionsItemWAFId)),
-    value: S.optional(S.NullOr(EditRequestActionsItemWAFValue)),
+    id: S.optional(EditRequestActionsItemWAFId),
+    value: S.optional(EditRequestActionsItemWAFValue),
   }),
 ).annotate({
   identifier: "EditRequestActionsItemWAF",
@@ -5967,14 +5871,14 @@ export const EditRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface EditRequestTargetsItem {
   /** String constraint. */
-  constraint?: EditRequestTargetsItemConstraint | null;
+  constraint?: EditRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: EditRequestTargetsItemTarget | (string & {}) | null;
+  target?: EditRequestTargetsItemTarget | (string & {});
 }
 export const EditRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    constraint: S.optional(S.NullOr(EditRequestTargetsItemConstraint)),
-    target: S.optional(S.NullOr(EditRequestTargetsItemTarget)),
+    constraint: S.optional(EditRequestTargetsItemConstraint),
+    target: S.optional(EditRequestTargetsItemTarget),
   }),
 ).annotate({
   identifier: "EditRequestTargetsItem",
@@ -5991,22 +5895,22 @@ export interface PatchPageRuleRequest {
   /** Identifier. */
   pageruleId: string;
   /** The set of actions to perform if the targets of this rule match the */
-  actions?: EditRequestActionsList | null;
+  actions?: EditRequestActionsList;
   /** The priority of the rule, used to define which Page Rule is processed */
-  priority?: number | null;
+  priority?: number;
   /** The status of the Page Rule. */
-  status?: EditRequestStatus | (string & {}) | null;
+  status?: EditRequestStatus | (string & {});
   /** The rule targets to evaluate on each request. */
-  targets?: EditRequestTargetsList | null;
+  targets?: EditRequestTargetsList;
 }
 export const PatchPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
-    actions: S.optional(S.NullOr(EditRequestActionsList)),
-    priority: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(EditRequestStatus)),
-    targets: S.optional(S.NullOr(EditRequestTargetsList)),
+    actions: S.optional(EditRequestActionsList),
+    priority: S.optional(S.Number),
+    status: S.optional(EditRequestStatus),
+    targets: S.optional(EditRequestTargetsList),
   })
     .pipe(
       T.Http({
@@ -7181,12 +7085,12 @@ export const UpdateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemAlwaysUseHTTPS {
   /** If enabled, any `http://`` URL is converted to`https://` through a */
-  id?: UpdateRequestActionsItemAlwaysUseHTTPSId | (string & {}) | null;
+  id?: UpdateRequestActionsItemAlwaysUseHTTPSId | (string & {});
 }
 export const UpdateRequestActionsItemAlwaysUseHTTPS = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemAlwaysUseHTTPSId)),
+      id: S.optional(UpdateRequestActionsItemAlwaysUseHTTPSId),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemAlwaysUseHTTPS",
@@ -7203,22 +7107,15 @@ export const UpdateRequestActionsItemAutomaticHTTPSRewritesValue =
 
 export interface UpdateRequestActionsItemAutomaticHTTPSRewrites {
   /** Turn on or off Automatic HTTPS Rewrites. */
-  id?: UpdateRequestActionsItemAutomaticHTTPSRewritesId | (string & {}) | null;
+  id?: UpdateRequestActionsItemAutomaticHTTPSRewritesId | (string & {});
   /** The status of Automatic HTTPS Rewrites. */
-  value?:
-    | UpdateRequestActionsItemAutomaticHTTPSRewritesValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemAutomaticHTTPSRewritesValue | (string & {});
 }
 export const UpdateRequestActionsItemAutomaticHTTPSRewrites =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(UpdateRequestActionsItemAutomaticHTTPSRewritesId),
-      ),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemAutomaticHTTPSRewritesValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemAutomaticHTTPSRewritesId),
+      value: S.optional(UpdateRequestActionsItemAutomaticHTTPSRewritesValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemAutomaticHTTPSRewrites",
@@ -7229,15 +7126,15 @@ export const UpdateRequestActionsItemBrowserCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCacheTTL {
   /** Control how long resources cached by client browsers remain valid. */
-  id?: UpdateRequestActionsItemBrowserCacheTTLId | (string & {}) | null;
+  id?: UpdateRequestActionsItemBrowserCacheTTLId | (string & {});
   /** The number of seconds to cache resources for. */
-  value?: number | null;
+  value?: number;
 }
 export const UpdateRequestActionsItemBrowserCacheTTL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemBrowserCacheTTLId)),
-      value: S.optional(S.NullOr(S.Number)),
+      id: S.optional(UpdateRequestActionsItemBrowserCacheTTLId),
+      value: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemBrowserCacheTTL",
@@ -7251,15 +7148,15 @@ export const UpdateRequestActionsItemBrowserCheckValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemBrowserCheck {
   /** Inspect the visitor's browser for headers commonly associated with */
-  id?: UpdateRequestActionsItemBrowserCheckId | (string & {}) | null;
+  id?: UpdateRequestActionsItemBrowserCheckId | (string & {});
   /** The status of Browser Integrity Check. */
-  value?: UpdateRequestActionsItemBrowserCheckValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemBrowserCheckValue | (string & {});
 }
 export const UpdateRequestActionsItemBrowserCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemBrowserCheckId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemBrowserCheckValue)),
+      id: S.optional(UpdateRequestActionsItemBrowserCheckId),
+      value: S.optional(UpdateRequestActionsItemBrowserCheckValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemBrowserCheck",
@@ -7272,15 +7169,15 @@ export const UpdateRequestActionsItemBypassCacheOnCookieId =
 
 export interface UpdateRequestActionsItemBypassCacheOnCookie {
   /** Bypass cache and fetch resources from the origin server if a regular */
-  id?: UpdateRequestActionsItemBypassCacheOnCookieId | (string & {}) | null;
+  id?: UpdateRequestActionsItemBypassCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestActionsItemBypassCacheOnCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemBypassCacheOnCookieId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(UpdateRequestActionsItemBypassCacheOnCookieId),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemBypassCacheOnCookie",
@@ -7297,17 +7194,15 @@ export const UpdateRequestActionsItemCacheByDeviceTypeValue =
 
 export interface UpdateRequestActionsItemCacheByDeviceType {
   /** Separate cached content based on the visitor's device type. */
-  id?: UpdateRequestActionsItemCacheByDeviceTypeId | (string & {}) | null;
+  id?: UpdateRequestActionsItemCacheByDeviceTypeId | (string & {});
   /** The status of Cache By Device Type. */
-  value?: UpdateRequestActionsItemCacheByDeviceTypeValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemCacheByDeviceTypeValue | (string & {});
 }
 export const UpdateRequestActionsItemCacheByDeviceType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemCacheByDeviceTypeId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheByDeviceTypeValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemCacheByDeviceTypeId),
+      value: S.optional(UpdateRequestActionsItemCacheByDeviceTypeValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheByDeviceType",
@@ -7324,20 +7219,15 @@ export const UpdateRequestActionsItemCacheDeceptionArmorValue =
 
 export interface UpdateRequestActionsItemCacheDeceptionArmor {
   /** Protect from web cache deception attacks while still allowing static */
-  id?: UpdateRequestActionsItemCacheDeceptionArmorId | (string & {}) | null;
+  id?: UpdateRequestActionsItemCacheDeceptionArmorId | (string & {});
   /** The status of Cache Deception Armor. */
-  value?:
-    | UpdateRequestActionsItemCacheDeceptionArmorValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemCacheDeceptionArmorValue | (string & {});
 }
 export const UpdateRequestActionsItemCacheDeceptionArmor =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemCacheDeceptionArmorId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheDeceptionArmorValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemCacheDeceptionArmorId),
+      value: S.optional(UpdateRequestActionsItemCacheDeceptionArmorValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheDeceptionArmor",
@@ -7362,20 +7252,20 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueCookie {
   /** A list of cookies to check for the presence of, without */
-  checkPresence?: UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList | null;
+  checkPresence?: UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList;
   /** A list of cookies to include. */
-  include?: UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList | null;
+  include?: UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValueCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        UpdateRequestActionsItemCacheKeyFieldsValueCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList),
+        UpdateRequestActionsItemCacheKeyFieldsValueCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -7405,25 +7295,25 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueHeader {
   /** A list of headers to check for the presence of, without */
-  checkPresence?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList | null;
+  checkPresence?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList;
   /** A list of headers to ignore. */
-  exclude?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList | null;
+  exclude?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList;
   /** A list of headers to include. */
-  include?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList | null;
+  include?: UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValueHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        UpdateRequestActionsItemCacheKeyFieldsValueHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList),
+        UpdateRequestActionsItemCacheKeyFieldsValueHeaderExcludeList,
       ),
       include: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList),
+        UpdateRequestActionsItemCacheKeyFieldsValueHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -7432,12 +7322,12 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueHeader =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueHost {
   /** Whether to include the Host header in the HTTP request sent */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValueHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValueHost",
@@ -7483,18 +7373,18 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueQueryString {
   /** Ignore all query string parameters. */
-  exclude?: UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude | null;
+  exclude?: UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude;
   /** Include all query string parameters. */
-  include?: UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude | null;
+  include?: UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValueQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude),
+        UpdateRequestActionsItemCacheKeyFieldsValueQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude),
+        UpdateRequestActionsItemCacheKeyFieldsValueQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -7503,18 +7393,18 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueQueryString =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValueUser {
   /** Classifies a request as `mobile`, `desktop`, or `tablet` */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Includes the client's country, derived from the IP address. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Includes the first language code contained in the */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValueUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValueUser",
@@ -7522,36 +7412,28 @@ export const UpdateRequestActionsItemCacheKeyFieldsValueUser =
 
 export interface UpdateRequestActionsItemCacheKeyFieldsValue {
   /** Controls which cookies appear in the Cache Key. */
-  cookie?: UpdateRequestActionsItemCacheKeyFieldsValueCookie | null;
+  cookie?: UpdateRequestActionsItemCacheKeyFieldsValueCookie;
   /** Controls which headers go into the Cache Key. Exactly one of */
-  header?: UpdateRequestActionsItemCacheKeyFieldsValueHeader | null;
+  header?: UpdateRequestActionsItemCacheKeyFieldsValueHeader;
   /** Determines which host header to include in the Cache Key. */
-  host?: UpdateRequestActionsItemCacheKeyFieldsValueHost | null;
+  host?: UpdateRequestActionsItemCacheKeyFieldsValueHost;
   /** Controls which URL query string parameters go into the Cache */
-  queryString?: UpdateRequestActionsItemCacheKeyFieldsValueQueryString | null;
+  queryString?: UpdateRequestActionsItemCacheKeyFieldsValueQueryString;
   /** Feature fields to add features about the end-user (client) into */
-  user?: UpdateRequestActionsItemCacheKeyFieldsValueUser | null;
+  user?: UpdateRequestActionsItemCacheKeyFieldsValueUser;
 }
 export const UpdateRequestActionsItemCacheKeyFieldsValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cookie: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueCookie),
-      ),
-      header: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueHeader),
-      ),
-      host: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueHost),
-      ),
+      cookie: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueCookie),
+      header: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHeader),
+      host: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueHost),
       queryString: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueQueryString).pipe(
+        UpdateRequestActionsItemCacheKeyFieldsValueQueryString.pipe(
           T.Body("query_string"),
         ),
       ),
-      user: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValueUser),
-      ),
+      user: S.optional(UpdateRequestActionsItemCacheKeyFieldsValueUser),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemCacheKeyFieldsValue",
@@ -7559,14 +7441,14 @@ export const UpdateRequestActionsItemCacheKeyFieldsValue =
 
 export interface UpdateRequestActionsItemCacheKeyFields {
   /** Control specifically what variables to include when deciding which */
-  id?: UpdateRequestActionsItemCacheKeyFieldsId | (string & {}) | null;
-  value?: UpdateRequestActionsItemCacheKeyFieldsValue | null;
+  id?: UpdateRequestActionsItemCacheKeyFieldsId | (string & {});
+  value?: UpdateRequestActionsItemCacheKeyFieldsValue;
 }
 export const UpdateRequestActionsItemCacheKeyFields = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemCacheKeyFieldsId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemCacheKeyFieldsValue)),
+      id: S.optional(UpdateRequestActionsItemCacheKeyFieldsId),
+      value: S.optional(UpdateRequestActionsItemCacheKeyFieldsValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemCacheKeyFields",
@@ -7585,14 +7467,14 @@ export const UpdateRequestActionsItemCacheLevelValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheLevel {
   /** Apply custom caching based on the option selected. */
-  id?: UpdateRequestActionsItemCacheLevelId | (string & {}) | null;
+  id?: UpdateRequestActionsItemCacheLevelId | (string & {});
   /** * `bypass`: Cloudflare does not cache. */
-  value?: UpdateRequestActionsItemCacheLevelValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemCacheLevelValue | (string & {});
 }
 export const UpdateRequestActionsItemCacheLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemCacheLevelId)),
-    value: S.optional(S.NullOr(UpdateRequestActionsItemCacheLevelValue)),
+    id: S.optional(UpdateRequestActionsItemCacheLevelId),
+    value: S.optional(UpdateRequestActionsItemCacheLevelValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemCacheLevel",
@@ -7603,15 +7485,15 @@ export const UpdateRequestActionsItemCacheOnCookieId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemCacheOnCookie {
   /** Apply the Cache Everything option (Cache Level setting) based on a */
-  id?: UpdateRequestActionsItemCacheOnCookieId | (string & {}) | null;
+  id?: UpdateRequestActionsItemCacheOnCookieId | (string & {});
   /** The regular expression to use for matching cookie names in the */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestActionsItemCacheOnCookie = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemCacheOnCookieId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(UpdateRequestActionsItemCacheOnCookieId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemCacheOnCookie",
@@ -7636,17 +7518,15 @@ export const UpdateRequestActionsItemCacheTTLByStatusValue =
 
 export interface UpdateRequestActionsItemCacheTTLByStatus {
   /** Enterprise customers can set cache time-to-live (TTL) based on the */
-  id?: UpdateRequestActionsItemCacheTTLByStatusId | (string & {}) | null;
+  id?: UpdateRequestActionsItemCacheTTLByStatusId | (string & {});
   /** A JSON object containing status codes and their corresponding TTLs. */
-  value?: UpdateRequestActionsItemCacheTTLByStatusValue | null;
+  value?: UpdateRequestActionsItemCacheTTLByStatusValue;
 }
 export const UpdateRequestActionsItemCacheTTLByStatus = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemCacheTTLByStatusId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemCacheTTLByStatusValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemCacheTTLByStatusId),
+      value: S.optional(UpdateRequestActionsItemCacheTTLByStatusValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemCacheTTLByStatus",
@@ -7657,11 +7537,11 @@ export const UpdateRequestActionsItemDisableAppsId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableApps {
   /** Turn off all active [Cloudflare Apps](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-apps/) */
-  id?: UpdateRequestActionsItemDisableAppsId | (string & {}) | null;
+  id?: UpdateRequestActionsItemDisableAppsId | (string & {});
 }
 export const UpdateRequestActionsItemDisableApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemDisableAppsId)),
+    id: S.optional(UpdateRequestActionsItemDisableAppsId),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemDisableApps",
@@ -7674,12 +7554,12 @@ export const UpdateRequestActionsItemDisablePerformanceId =
 
 export interface UpdateRequestActionsItemDisablePerformance {
   /** Turn off */
-  id?: UpdateRequestActionsItemDisablePerformanceId | (string & {}) | null;
+  id?: UpdateRequestActionsItemDisablePerformanceId | (string & {});
 }
 export const UpdateRequestActionsItemDisablePerformance =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemDisablePerformanceId)),
+      id: S.optional(UpdateRequestActionsItemDisablePerformanceId),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemDisablePerformance",
@@ -7690,12 +7570,12 @@ export const UpdateRequestActionsItemDisableSecurityId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableSecurity {
   /** Turn off */
-  id?: UpdateRequestActionsItemDisableSecurityId | (string & {}) | null;
+  id?: UpdateRequestActionsItemDisableSecurityId | (string & {});
 }
 export const UpdateRequestActionsItemDisableSecurity = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemDisableSecurityId)),
+      id: S.optional(UpdateRequestActionsItemDisableSecurityId),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemDisableSecurity",
@@ -7706,12 +7586,12 @@ export const UpdateRequestActionsItemDisableZarazId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemDisableZaraz {
   /** Turn off [Zaraz](https://developers.cloudflare.com/zaraz/). */
-  id?: UpdateRequestActionsItemDisableZarazId | (string & {}) | null;
+  id?: UpdateRequestActionsItemDisableZarazId | (string & {});
 }
 export const UpdateRequestActionsItemDisableZaraz = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemDisableZarazId)),
+      id: S.optional(UpdateRequestActionsItemDisableZarazId),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemDisableZaraz",
@@ -7722,14 +7602,14 @@ export const UpdateRequestActionsItemEdgeCacheTTLId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemEdgeCacheTTL {
   /** Specify how long to cache a resource in the Cloudflare global */
-  id?: UpdateRequestActionsItemEdgeCacheTTLId | (string & {}) | null;
-  value?: number | null;
+  id?: UpdateRequestActionsItemEdgeCacheTTLId | (string & {});
+  value?: number;
 }
 export const UpdateRequestActionsItemEdgeCacheTTL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemEdgeCacheTTLId)),
-      value: S.optional(S.NullOr(S.Number)),
+      id: S.optional(UpdateRequestActionsItemEdgeCacheTTLId),
+      value: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemEdgeCacheTTL",
@@ -7745,17 +7625,15 @@ export const UpdateRequestActionsItemEmailObfuscationValue =
 
 export interface UpdateRequestActionsItemEmailObfuscation {
   /** Turn on or off **Email Obfuscation**. */
-  id?: UpdateRequestActionsItemEmailObfuscationId | (string & {}) | null;
+  id?: UpdateRequestActionsItemEmailObfuscationId | (string & {});
   /** The status of Email Obfuscation. */
-  value?: UpdateRequestActionsItemEmailObfuscationValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemEmailObfuscationValue | (string & {});
 }
 export const UpdateRequestActionsItemEmailObfuscation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemEmailObfuscationId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemEmailObfuscationValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemEmailObfuscationId),
+      value: S.optional(UpdateRequestActionsItemEmailObfuscationValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemEmailObfuscation",
@@ -7772,20 +7650,15 @@ export const UpdateRequestActionsItemExplicitCacheControlValue =
 
 export interface UpdateRequestActionsItemExplicitCacheControl {
   /** Origin Cache Control is enabled by default for Free, Pro, and */
-  id?: UpdateRequestActionsItemExplicitCacheControlId | (string & {}) | null;
+  id?: UpdateRequestActionsItemExplicitCacheControlId | (string & {});
   /** The status of Origin Cache Control. */
-  value?:
-    | UpdateRequestActionsItemExplicitCacheControlValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemExplicitCacheControlValue | (string & {});
 }
 export const UpdateRequestActionsItemExplicitCacheControl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemExplicitCacheControlId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemExplicitCacheControlValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemExplicitCacheControlId),
+      value: S.optional(UpdateRequestActionsItemExplicitCacheControlValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemExplicitCacheControl",
@@ -7802,20 +7675,19 @@ export interface UpdateRequestActionsItemForwardingURLValue {
   /** The status code to use for the URL redirect. 301 is a permanent */
   statusCode?:
     | UpdateRequestActionsItemForwardingURLValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
   /** The URL to redirect the request to. */
-  url?: string | null;
+  url?: string;
 }
 export const UpdateRequestActionsItemForwardingURLValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       statusCode: S.optional(
-        S.NullOr(UpdateRequestActionsItemForwardingURLValueStatusCode).pipe(
+        UpdateRequestActionsItemForwardingURLValueStatusCode.pipe(
           T.Body("status_code"),
         ),
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemForwardingURLValue",
@@ -7823,14 +7695,14 @@ export const UpdateRequestActionsItemForwardingURLValue =
 
 export interface UpdateRequestActionsItemForwardingURL {
   /** Redirects one URL to another using an `HTTP 301/302` redirect. Refer */
-  id?: UpdateRequestActionsItemForwardingURLId | (string & {}) | null;
-  value?: UpdateRequestActionsItemForwardingURLValue | null;
+  id?: UpdateRequestActionsItemForwardingURLId | (string & {});
+  value?: UpdateRequestActionsItemForwardingURLValue;
 }
 export const UpdateRequestActionsItemForwardingURL = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemForwardingURLId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemForwardingURLValue)),
+      id: S.optional(UpdateRequestActionsItemForwardingURLId),
+      value: S.optional(UpdateRequestActionsItemForwardingURLValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemForwardingURL",
@@ -7843,15 +7715,15 @@ export const UpdateRequestActionsItemHostHeaderOverrideId =
 
 export interface UpdateRequestActionsItemHostHeaderOverride {
   /** Apply a specific host header. */
-  id?: UpdateRequestActionsItemHostHeaderOverrideId | (string & {}) | null;
+  id?: UpdateRequestActionsItemHostHeaderOverrideId | (string & {});
   /** The hostname to use in the `Host` header */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestActionsItemHostHeaderOverride =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemHostHeaderOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(UpdateRequestActionsItemHostHeaderOverrideId),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemHostHeaderOverride",
@@ -7866,15 +7738,15 @@ export const UpdateRequestActionsItemIPGeolocationValue =
 
 export interface UpdateRequestActionsItemIPGeolocation {
   /** Cloudflare adds a CF-IPCountry HTTP header containing the country code that corresponds to the visitor. */
-  id?: UpdateRequestActionsItemIPGeolocationId | (string & {}) | null;
+  id?: UpdateRequestActionsItemIPGeolocationId | (string & {});
   /** The status of adding the IP Geolocation Header. */
-  value?: UpdateRequestActionsItemIPGeolocationValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemIPGeolocationValue | (string & {});
 }
 export const UpdateRequestActionsItemIPGeolocation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemIPGeolocationId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemIPGeolocationValue)),
+      id: S.optional(UpdateRequestActionsItemIPGeolocationId),
+      value: S.optional(UpdateRequestActionsItemIPGeolocationValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemIPGeolocation",
@@ -7888,14 +7760,14 @@ export const UpdateRequestActionsItemMirageValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemMirage {
   /** Cloudflare Mirage reduces bandwidth used by images in mobile browsers. */
-  id?: UpdateRequestActionsItemMirageId | (string & {}) | null;
+  id?: UpdateRequestActionsItemMirageId | (string & {});
   /** The status of Mirage. */
-  value?: UpdateRequestActionsItemMirageValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemMirageValue | (string & {});
 }
 export const UpdateRequestActionsItemMirage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemMirageId)),
-    value: S.optional(S.NullOr(UpdateRequestActionsItemMirageValue)),
+    id: S.optional(UpdateRequestActionsItemMirageId),
+    value: S.optional(UpdateRequestActionsItemMirageValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemMirage",
@@ -7912,22 +7784,15 @@ export const UpdateRequestActionsItemOpportunisticEncryptionValue =
 
 export interface UpdateRequestActionsItemOpportunisticEncryption {
   /** Opportunistic Encryption allows browsers to access HTTP URIs over an encrypted TLS channel. */
-  id?: UpdateRequestActionsItemOpportunisticEncryptionId | (string & {}) | null;
+  id?: UpdateRequestActionsItemOpportunisticEncryptionId | (string & {});
   /** The status of Opportunistic Encryption. */
-  value?:
-    | UpdateRequestActionsItemOpportunisticEncryptionValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemOpportunisticEncryptionValue | (string & {});
 }
 export const UpdateRequestActionsItemOpportunisticEncryption =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(UpdateRequestActionsItemOpportunisticEncryptionId),
-      ),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemOpportunisticEncryptionValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemOpportunisticEncryptionId),
+      value: S.optional(UpdateRequestActionsItemOpportunisticEncryptionValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemOpportunisticEncryption",
@@ -7944,22 +7809,15 @@ export const UpdateRequestActionsItemOriginErrorPagePassThruValue =
 
 export interface UpdateRequestActionsItemOriginErrorPagePassThru {
   /** Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin. */
-  id?: UpdateRequestActionsItemOriginErrorPagePassThruId | (string & {}) | null;
+  id?: UpdateRequestActionsItemOriginErrorPagePassThruId | (string & {});
   /** The status of Origin Error Page Passthru. */
-  value?:
-    | UpdateRequestActionsItemOriginErrorPagePassThruValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemOriginErrorPagePassThruValue | (string & {});
 }
 export const UpdateRequestActionsItemOriginErrorPagePassThru =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(UpdateRequestActionsItemOriginErrorPagePassThruId),
-      ),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemOriginErrorPagePassThruValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemOriginErrorPagePassThruId),
+      value: S.optional(UpdateRequestActionsItemOriginErrorPagePassThruValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemOriginErrorPagePassThru",
@@ -7973,14 +7831,14 @@ export const UpdateRequestActionsItemPolishValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemPolish {
   /** Apply options from the Polish feature of the Cloudflare Speed app. */
-  id?: UpdateRequestActionsItemPolishId | (string & {}) | null;
+  id?: UpdateRequestActionsItemPolishId | (string & {});
   /** The level of Polish you want applied to your origin. */
-  value?: UpdateRequestActionsItemPolishValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemPolishValue | (string & {});
 }
 export const UpdateRequestActionsItemPolish = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemPolishId)),
-    value: S.optional(S.NullOr(UpdateRequestActionsItemPolishValue)),
+    id: S.optional(UpdateRequestActionsItemPolishId),
+    value: S.optional(UpdateRequestActionsItemPolishValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemPolish",
@@ -7991,15 +7849,15 @@ export const UpdateRequestActionsItemResolveOverrideId = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemResolveOverride {
   /** Change the origin address to the value specified in this setting. */
-  id?: UpdateRequestActionsItemResolveOverrideId | (string & {}) | null;
+  id?: UpdateRequestActionsItemResolveOverrideId | (string & {});
   /** The origin address you want to override with. */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestActionsItemResolveOverride = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemResolveOverrideId)),
-      value: S.optional(S.NullOr(S.String)),
+      id: S.optional(UpdateRequestActionsItemResolveOverrideId),
+      value: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemResolveOverride",
@@ -8015,17 +7873,15 @@ export const UpdateRequestActionsItemRespectStrongEtagValue =
 
 export interface UpdateRequestActionsItemRespectStrongEtag {
   /** Turn on or off byte-for-byte equivalency checks between the */
-  id?: UpdateRequestActionsItemRespectStrongEtagId | (string & {}) | null;
+  id?: UpdateRequestActionsItemRespectStrongEtagId | (string & {});
   /** The status of Respect Strong ETags */
-  value?: UpdateRequestActionsItemRespectStrongEtagValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemRespectStrongEtagValue | (string & {});
 }
 export const UpdateRequestActionsItemRespectStrongEtag =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemRespectStrongEtagId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemRespectStrongEtagValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemRespectStrongEtagId),
+      value: S.optional(UpdateRequestActionsItemRespectStrongEtagValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemRespectStrongEtag",
@@ -8041,17 +7897,15 @@ export const UpdateRequestActionsItemResponseBufferingValue =
 
 export interface UpdateRequestActionsItemResponseBuffering {
   /** Turn on or off whether Cloudflare should wait for an entire file */
-  id?: UpdateRequestActionsItemResponseBufferingId | (string & {}) | null;
+  id?: UpdateRequestActionsItemResponseBufferingId | (string & {});
   /** The status of Response Buffering */
-  value?: UpdateRequestActionsItemResponseBufferingValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemResponseBufferingValue | (string & {});
 }
 export const UpdateRequestActionsItemResponseBuffering =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemResponseBufferingId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemResponseBufferingValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemResponseBufferingId),
+      value: S.optional(UpdateRequestActionsItemResponseBufferingValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemResponseBuffering",
@@ -8065,15 +7919,15 @@ export const UpdateRequestActionsItemRocketLoaderValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemRocketLoader {
   /** Turn on or off Rocket Loader in the Cloudflare Speed app. */
-  id?: UpdateRequestActionsItemRocketLoaderId | (string & {}) | null;
+  id?: UpdateRequestActionsItemRocketLoaderId | (string & {});
   /** The status of Rocket Loader */
-  value?: UpdateRequestActionsItemRocketLoaderValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemRocketLoaderValue | (string & {});
 }
 export const UpdateRequestActionsItemRocketLoader = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemRocketLoaderId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemRocketLoaderValue)),
+      id: S.optional(UpdateRequestActionsItemRocketLoaderId),
+      value: S.optional(UpdateRequestActionsItemRocketLoaderValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemRocketLoader",
@@ -8094,14 +7948,14 @@ export const UpdateRequestActionsItemSecurityLevelValue =
 
 export interface UpdateRequestActionsItemSecurityLevel {
   /** Control options for the **Security Level** feature from the **Security** app. */
-  id?: UpdateRequestActionsItemSecurityLevelId | (string & {}) | null;
-  value?: UpdateRequestActionsItemSecurityLevelValue | (string & {}) | null;
+  id?: UpdateRequestActionsItemSecurityLevelId | (string & {});
+  value?: UpdateRequestActionsItemSecurityLevelValue | (string & {});
 }
 export const UpdateRequestActionsItemSecurityLevel = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemSecurityLevelId)),
-      value: S.optional(S.NullOr(UpdateRequestActionsItemSecurityLevelValue)),
+      id: S.optional(UpdateRequestActionsItemSecurityLevelId),
+      value: S.optional(UpdateRequestActionsItemSecurityLevelValue),
     }),
 ).annotate({
   identifier: "UpdateRequestActionsItemSecurityLevel",
@@ -8118,22 +7972,15 @@ export const UpdateRequestActionsItemSortQueryStringForCacheValue =
 
 export interface UpdateRequestActionsItemSortQueryStringForCache {
   /** Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. */
-  id?: UpdateRequestActionsItemSortQueryStringForCacheId | (string & {}) | null;
+  id?: UpdateRequestActionsItemSortQueryStringForCacheId | (string & {});
   /** The status of Query String Sort */
-  value?:
-    | UpdateRequestActionsItemSortQueryStringForCacheValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemSortQueryStringForCacheValue | (string & {});
 }
 export const UpdateRequestActionsItemSortQueryStringForCache =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(
-        S.NullOr(UpdateRequestActionsItemSortQueryStringForCacheId),
-      ),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemSortQueryStringForCacheValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemSortQueryStringForCacheId),
+      value: S.optional(UpdateRequestActionsItemSortQueryStringForCacheValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemSortQueryStringForCache",
@@ -8152,14 +7999,14 @@ export const UpdateRequestActionsItemSSLValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemSSL {
   /** Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app. */
-  id?: UpdateRequestActionsItemSSLId | (string & {}) | null;
+  id?: UpdateRequestActionsItemSSLId | (string & {});
   /** The encryption mode that Cloudflare uses to connect to your origin server. */
-  value?: UpdateRequestActionsItemSSLValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemSSLValue | (string & {});
 }
 export const UpdateRequestActionsItemSSL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemSSLId)),
-    value: S.optional(S.NullOr(UpdateRequestActionsItemSSLValue)),
+    id: S.optional(UpdateRequestActionsItemSSLId),
+    value: S.optional(UpdateRequestActionsItemSSLValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemSSL",
@@ -8176,20 +8023,15 @@ export const UpdateRequestActionsItemTrueClientIPHeaderValue =
 
 export interface UpdateRequestActionsItemTrueClientIPHeader {
   /** Turn on or off the True-Client-IP Header feature of the Cloudflare Network app. */
-  id?: UpdateRequestActionsItemTrueClientIPHeaderId | (string & {}) | null;
+  id?: UpdateRequestActionsItemTrueClientIPHeaderId | (string & {});
   /** The status of True Client IP Header. */
-  value?:
-    | UpdateRequestActionsItemTrueClientIPHeaderValue
-    | (string & {})
-    | null;
+  value?: UpdateRequestActionsItemTrueClientIPHeaderValue | (string & {});
 }
 export const UpdateRequestActionsItemTrueClientIPHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(UpdateRequestActionsItemTrueClientIPHeaderId)),
-      value: S.optional(
-        S.NullOr(UpdateRequestActionsItemTrueClientIPHeaderValue),
-      ),
+      id: S.optional(UpdateRequestActionsItemTrueClientIPHeaderId),
+      value: S.optional(UpdateRequestActionsItemTrueClientIPHeaderValue),
     }),
   ).annotate({
     identifier: "UpdateRequestActionsItemTrueClientIPHeader",
@@ -8203,14 +8045,14 @@ export const UpdateRequestActionsItemWAFValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestActionsItemWAF {
   /** Turn on or off [WAF managed rules (previous version, deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/). */
-  id?: UpdateRequestActionsItemWAFId | (string & {}) | null;
+  id?: UpdateRequestActionsItemWAFId | (string & {});
   /** The status of WAF managed rules (previous version). */
-  value?: UpdateRequestActionsItemWAFValue | (string & {}) | null;
+  value?: UpdateRequestActionsItemWAFValue | (string & {});
 }
 export const UpdateRequestActionsItemWAF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(UpdateRequestActionsItemWAFId)),
-    value: S.optional(S.NullOr(UpdateRequestActionsItemWAFValue)),
+    id: S.optional(UpdateRequestActionsItemWAFId),
+    value: S.optional(UpdateRequestActionsItemWAFValue),
   }),
 ).annotate({
   identifier: "UpdateRequestActionsItemWAF",
@@ -8324,14 +8166,14 @@ export const UpdateRequestTargetsItemTarget = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestTargetsItem {
   /** String constraint. */
-  constraint?: UpdateRequestTargetsItemConstraint | null;
+  constraint?: UpdateRequestTargetsItemConstraint;
   /** A target based on the URL of the request. */
-  target?: UpdateRequestTargetsItemTarget | (string & {}) | null;
+  target?: UpdateRequestTargetsItemTarget | (string & {});
 }
 export const UpdateRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    constraint: S.optional(S.NullOr(UpdateRequestTargetsItemConstraint)),
-    target: S.optional(S.NullOr(UpdateRequestTargetsItemTarget)),
+    constraint: S.optional(UpdateRequestTargetsItemConstraint),
+    target: S.optional(UpdateRequestTargetsItemTarget),
   }),
 ).annotate({
   identifier: "UpdateRequestTargetsItem",
@@ -8355,9 +8197,9 @@ export interface UpdatePageRuleRequest {
   /** The rule targets to evaluate on each request. */
   targets: UpdateRequestTargetsList;
   /** The priority of the rule, used to define which Page Rule is processed */
-  priority?: number | null;
+  priority?: number;
   /** The status of the Page Rule. */
-  status?: UpdateRequestStatus | (string & {}) | null;
+  status?: UpdateRequestStatus | (string & {});
 }
 export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8365,8 +8207,8 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
     actions: UpdateRequestActionsList,
     targets: UpdateRequestTargetsList,
-    priority: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(UpdateRequestStatus)),
+    priority: S.optional(S.Number),
+    status: S.optional(UpdateRequestStatus),
   })
     .pipe(
       T.Http({

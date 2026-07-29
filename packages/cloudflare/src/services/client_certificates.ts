@@ -564,13 +564,13 @@ export interface PatchClientCertificateRequest {
   zoneId: string;
   /** Identifier. */
   clientCertificateId: string;
-  reactivate?: boolean | null;
+  reactivate?: boolean;
 }
 export const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
-    reactivate: S.optional(S.NullOr(S.Boolean)),
+    reactivate: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({

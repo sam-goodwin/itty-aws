@@ -80,19 +80,19 @@ export const RulesBulkCreateRequestRulesItemPathsList = /*@__PURE__*/ S.Array(
 
 export interface RulesBulkCreateRequestRulesItem {
   /** The Web Analytics rule identifier. */
-  id?: string | null;
-  host?: string | null;
-  inclusive?: boolean | null;
-  isPaused?: boolean | null;
-  paths?: RulesBulkCreateRequestRulesItemPathsList | null;
+  id?: string;
+  host?: string;
+  inclusive?: boolean;
+  isPaused?: boolean;
+  paths?: RulesBulkCreateRequestRulesItemPathsList;
 }
 export const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(RulesBulkCreateRequestRulesItemPathsList)),
+    id: S.optional(S.String),
+    host: S.optional(S.String),
+    inclusive: S.optional(S.Boolean),
+    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
+    paths: S.optional(RulesBulkCreateRequestRulesItemPathsList),
   }),
 ).annotate({
   identifier: "RulesBulkCreateRequestRulesItem",
@@ -110,20 +110,18 @@ export interface BulkCreateRulesRequest {
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
   /** A list of rule identifiers to delete. */
-  deleteRules?: RulesBulkCreateRequestDeleteRulesList | null;
+  deleteRules?: RulesBulkCreateRequestDeleteRulesList;
   /** A list of rules to create or update. */
-  rules?: RulesBulkCreateRequestRulesList | null;
+  rules?: RulesBulkCreateRequestRulesList;
 }
 export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     deleteRules: S.optional(
-      S.NullOr(RulesBulkCreateRequestDeleteRulesList).pipe(
-        T.Body("delete_rules"),
-      ),
+      RulesBulkCreateRequestDeleteRulesList.pipe(T.Body("delete_rules")),
     ),
-    rules: S.optional(S.NullOr(RulesBulkCreateRequestRulesList)),
+    rules: S.optional(RulesBulkCreateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -221,21 +219,21 @@ export interface CreateRuleRequest {
   accountId: string;
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
-  host?: string | null;
+  host?: string;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean | null;
+  inclusive?: boolean;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean | null;
-  paths?: RulesCreateRequestPathsList | null;
+  isPaused?: boolean;
+  paths?: RulesCreateRequestPathsList;
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(RulesCreateRequestPathsList)),
+    host: S.optional(S.String),
+    inclusive: S.optional(S.Boolean),
+    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
+    paths: S.optional(RulesCreateRequestPathsList),
   })
     .pipe(
       T.Http({
@@ -287,18 +285,18 @@ export interface CreateSiteInfoRequest {
   /** Identifier. */
   accountId: string;
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean | null;
+  autoInstall?: boolean;
   /** The hostname to use for gray-clouded sites. */
-  host?: string | null;
+  host?: string;
   /** The zone identifier. */
-  zoneTag?: string | null;
+  zoneTag?: string;
 }
 export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
-    host: S.optional(S.NullOr(S.String)),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
+    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
+    host: S.optional(S.String),
+    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
   })
     .pipe(
       T.Http({
@@ -841,22 +839,22 @@ export interface UpdateRuleRequest {
   rulesetId: string;
   /** The Web Analytics rule identifier. */
   ruleId: string;
-  host?: string | null;
+  host?: string;
   /** Whether the rule includes or excludes traffic from being measured. */
-  inclusive?: boolean | null;
+  inclusive?: boolean;
   /** Whether the rule is paused or not. */
-  isPaused?: boolean | null;
-  paths?: RulesUpdateRequestPathsList | null;
+  isPaused?: boolean;
+  paths?: RulesUpdateRequestPathsList;
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    host: S.optional(S.NullOr(S.String)),
-    inclusive: S.optional(S.NullOr(S.Boolean)),
-    isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-    paths: S.optional(S.NullOr(RulesUpdateRequestPathsList)),
+    host: S.optional(S.String),
+    inclusive: S.optional(S.Boolean),
+    isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
+    paths: S.optional(RulesUpdateRequestPathsList),
   })
     .pipe(
       T.Http({
@@ -910,25 +908,25 @@ export interface UpdateSiteInfoRequest {
   /** Identifier. */
   siteId: string;
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
-  autoInstall?: boolean | null;
+  autoInstall?: boolean;
   /** Enables or disables RUM. This option can be used only when auto_install is set to true. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The hostname to use for gray-clouded sites. */
-  host?: string | null;
+  host?: string;
   /** If enabled, the JavaScript snippet will not be injected for visitors from the EU. */
-  lite?: boolean | null;
+  lite?: boolean;
   /** The zone identifier. */
-  zoneTag?: string | null;
+  zoneTag?: string;
 }
 export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    host: S.optional(S.NullOr(S.String)),
-    lite: S.optional(S.NullOr(S.Boolean)),
-    zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
+    autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
+    enabled: S.optional(S.Boolean),
+    host: S.optional(S.String),
+    lite: S.optional(S.Boolean),
+    zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
   })
     .pipe(
       T.Http({

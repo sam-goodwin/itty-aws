@@ -83,16 +83,16 @@ export interface CreateFinetuneRequest {
   accountId: string;
   model: string;
   name: string;
-  description?: string | null;
-  public?: boolean | null;
+  description?: string;
+  public?: boolean;
 }
 export const CreateFinetuneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    public: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    public: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -521,13 +521,13 @@ export type RunRequestResponseFormatType = "json_object" | "json_schema";
 export const RunRequestResponseFormatType = /*@__PURE__*/ S.String;
 
 export interface RunRequestResponseFormat {
-  jsonSchema?: unknown | null;
-  type?: RunRequestResponseFormatType | (string & {}) | null;
+  jsonSchema?: unknown;
+  type?: RunRequestResponseFormatType | (string & {});
 }
 export const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    jsonSchema: S.optional(S.NullOr(S.Unknown).pipe(T.Body("json_schema"))),
-    type: S.optional(S.NullOr(RunRequestResponseFormatType)),
+    jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
+    type: S.optional(RunRequestResponseFormatType),
   }),
 ).annotate({
   identifier: "RunRequestResponseFormat",
@@ -535,15 +535,15 @@ export const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
 
 export interface RunRequestMessagesTextGenerationItemContentCase1Item {
   /** Text content */
-  text?: string | null;
+  text?: string;
   /** Type of the content (text) */
-  type?: string | null;
+  type?: string;
 }
 export const RunRequestMessagesTextGenerationItemContentCase1Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      text: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(S.String)),
+      text: S.optional(S.String),
+      type: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RunRequestMessagesTextGenerationItemContentCase1Item",
@@ -601,20 +601,20 @@ export interface RunRequestMessagesImageTextToTextItemContentCase1Item {
   /** Type of the content part (e.g. 'text', 'image_url'). */
   type: string;
   /** Image URL object (when type is 'image_url'). */
-  imageUrl?: RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl | null;
+  imageUrl?: RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl;
   /** Text content (when type is 'text'). */
-  text?: string | null;
+  text?: string;
 }
 export const RunRequestMessagesImageTextToTextItemContentCase1Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.String,
       imageUrl: S.optional(
-        S.NullOr(
-          RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl,
-        ).pipe(T.Body("image_url")),
+        RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl.pipe(
+          T.Body("image_url"),
+        ),
       ),
-      text: S.optional(S.NullOr(S.String)),
+      text: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RunRequestMessagesImageTextToTextItemContentCase1Item",
@@ -717,15 +717,13 @@ export interface RunRequestToolsItemCase0Parameters {
   /** The type of the parameters object (usually 'object'). */
   type: string;
   /** List of required parameter names. */
-  required?: RunRequestToolsItemCase0ParametersRequiredList | null;
+  required?: RunRequestToolsItemCase0ParametersRequiredList;
 }
 export const RunRequestToolsItemCase0Parameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: RunRequestToolsItemCase0ParametersPropertiesMap,
     type: S.String,
-    required: S.optional(
-      S.NullOr(RunRequestToolsItemCase0ParametersRequiredList),
-    ),
+    required: S.optional(RunRequestToolsItemCase0ParametersRequiredList),
   }),
 ).annotate({
   identifier: "RunRequestToolsItemCase0Parameters",
@@ -789,7 +787,7 @@ export interface RunRequestToolsItemFunctionFunctionParameters {
   /** The type of the parameters object (usually 'object'). */
   type: string;
   /** List of required parameter names. */
-  required?: RunRequestToolsItemFunctionFunctionParametersRequiredList | null;
+  required?: RunRequestToolsItemFunctionFunctionParametersRequiredList;
 }
 export const RunRequestToolsItemFunctionFunctionParameters =
   /*@__PURE__*/ S.suspend(() =>
@@ -797,7 +795,7 @@ export const RunRequestToolsItemFunctionFunctionParameters =
       properties: RunRequestToolsItemFunctionFunctionParametersPropertiesMap,
       type: S.String,
       required: S.optional(
-        S.NullOr(RunRequestToolsItemFunctionFunctionParametersRequiredList),
+        RunRequestToolsItemFunctionFunctionParametersRequiredList,
       ),
     }),
   ).annotate({
@@ -856,117 +854,109 @@ export interface RunAiRequest {
   accountId: string;
   modelName: string;
   /** The text that you want to classify */
-  text?: RunRequestText | null;
+  text?: RunRequestText;
   /** A text description of the image you want to generate */
-  prompt?: string | null;
+  prompt?: string;
   /** Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt */
-  guidance?: number | null;
+  guidance?: number;
   /** The height of the generated image in pixels */
-  height?: number | null;
+  height?: number;
   /** For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values */
-  image?: RunRequestImage | null;
+  image?: RunRequestImage;
   /** For use with img2img tasks. A base64-encoded string of the input image */
-  imageB64?: string | null;
+  imageB64?: string;
   /** An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values */
-  mask?: RunRequestMaskList | null;
+  mask?: RunRequestMaskList;
   /** Text describing elements to avoid in the generated image */
-  negativePrompt?: string | null;
+  negativePrompt?: string;
   /** The number of diffusion steps; higher values can improve quality but take longer */
-  numSteps?: number | null;
+  numSteps?: number;
   /** Random seed for reproducibility of the image generation */
-  seed?: number | null;
+  seed?: number;
   /** A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image */
-  strength?: number | null;
+  strength?: number;
   /** The width of the generated image in pixels */
-  width?: number | null;
+  width?: number;
   /** The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified */
-  lang?: string | null;
+  lang?: string;
   /** An array of integers that represent the audio data constrained to 8-bit unsigned integer values */
-  audio?: RunRequestAudioList | null;
+  audio?: RunRequestAudioList;
   /** The language of the recorded audio */
-  sourceLang?: string | null;
+  sourceLang?: string;
   /** The language to translate the transcription into. Currently only English is supported. */
-  targetLang?: string | null;
+  targetLang?: string;
   /** Decreases the likelihood of the model repeating the same lines verbatim. */
-  frequencyPenalty?: number | null;
+  frequencyPenalty?: number;
   /** Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model. */
-  lora?: string | null;
+  lora?: string;
   /** The maximum number of tokens to generate in the response. */
-  maxTokens?: number | null;
+  maxTokens?: number;
   /** Increases the likelihood of the model introducing new topics. */
-  presencePenalty?: number | null;
+  presencePenalty?: number;
   /** If true, a chat template is not applied and you must adhere to the specific model's expected formatting. */
-  raw?: boolean | null;
+  raw?: boolean;
   /** Penalty for repeated tokens; higher values discourage repetition. */
-  repetitionPenalty?: number | null;
-  responseFormat?: RunRequestResponseFormat | null;
+  repetitionPenalty?: number;
+  responseFormat?: RunRequestResponseFormat;
   /** If true, the response will be streamed back incrementally using SSE, Server Sent Events. */
-  stream?: boolean | null;
+  stream?: boolean;
   /** Controls the randomness of the output; higher values produce more random results. */
-  temperature?: number | null;
+  temperature?: number;
   /** Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises. */
-  topK?: number | null;
+  topK?: number;
   /** Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses. */
-  topP?: number | null;
+  topP?: number;
   /** An array of message objects representing the conversation history. */
-  messages?: RunRequestMessages | null;
-  functions?: RunRequestFunctionsList | null;
+  messages?: RunRequestMessages;
+  functions?: RunRequestFunctionsList;
   /** A list of tools available for the assistant to use. */
-  tools?: RunRequestToolsList | null;
+  tools?: RunRequestToolsList;
   /** The text that you want the model to summarize */
-  inputText?: string | null;
+  inputText?: string;
   /** The maximum length of the generated summary in tokens */
-  maxLength?: number | null;
+  maxLength?: number;
   /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
-  ignoreEos?: boolean | null;
+  ignoreEos?: boolean;
 }
 export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     modelName: S.String.pipe(T.Label("model_name")),
-    text: S.optional(S.NullOr(RunRequestText)),
-    prompt: S.optional(S.NullOr(S.String)),
-    guidance: S.optional(S.NullOr(S.Number)),
-    height: S.optional(S.NullOr(S.Number)),
-    image: S.optional(S.NullOr(RunRequestImage)),
-    imageB64: S.optional(S.NullOr(S.String).pipe(T.Body("image_b64"))),
-    mask: S.optional(S.NullOr(RunRequestMaskList)),
-    negativePrompt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("negative_prompt")),
-    ),
-    numSteps: S.optional(S.NullOr(S.Number).pipe(T.Body("num_steps"))),
-    seed: S.optional(S.NullOr(S.Number)),
-    strength: S.optional(S.NullOr(S.Number)),
-    width: S.optional(S.NullOr(S.Number)),
-    lang: S.optional(S.NullOr(S.String)),
-    audio: S.optional(S.NullOr(RunRequestAudioList)),
-    sourceLang: S.optional(S.NullOr(S.String).pipe(T.Body("source_lang"))),
-    targetLang: S.optional(S.NullOr(S.String).pipe(T.Body("target_lang"))),
-    frequencyPenalty: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("frequency_penalty")),
-    ),
-    lora: S.optional(S.NullOr(S.String)),
-    maxTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("max_tokens"))),
-    presencePenalty: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("presence_penalty")),
-    ),
-    raw: S.optional(S.NullOr(S.Boolean)),
-    repetitionPenalty: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("repetition_penalty")),
-    ),
+    text: S.optional(RunRequestText),
+    prompt: S.optional(S.String),
+    guidance: S.optional(S.Number),
+    height: S.optional(S.Number),
+    image: S.optional(RunRequestImage),
+    imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
+    mask: S.optional(RunRequestMaskList),
+    negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
+    numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
+    seed: S.optional(S.Number),
+    strength: S.optional(S.Number),
+    width: S.optional(S.Number),
+    lang: S.optional(S.String),
+    audio: S.optional(RunRequestAudioList),
+    sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
+    targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
+    frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
+    lora: S.optional(S.String),
+    maxTokens: S.optional(S.Number.pipe(T.Body("max_tokens"))),
+    presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
+    raw: S.optional(S.Boolean),
+    repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
     responseFormat: S.optional(
-      S.NullOr(RunRequestResponseFormat).pipe(T.Body("response_format")),
+      RunRequestResponseFormat.pipe(T.Body("response_format")),
     ),
-    stream: S.optional(S.NullOr(S.Boolean)),
-    temperature: S.optional(S.NullOr(S.Number)),
-    topK: S.optional(S.NullOr(S.Number).pipe(T.Body("top_k"))),
-    topP: S.optional(S.NullOr(S.Number).pipe(T.Body("top_p"))),
-    messages: S.optional(S.NullOr(RunRequestMessages)),
-    functions: S.optional(S.NullOr(RunRequestFunctionsList)),
-    tools: S.optional(S.NullOr(RunRequestToolsList)),
-    inputText: S.optional(S.NullOr(S.String).pipe(T.Body("input_text"))),
-    maxLength: S.optional(S.NullOr(S.Number).pipe(T.Body("max_length"))),
-    ignoreEos: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ignore_eos"))),
+    stream: S.optional(S.Boolean),
+    temperature: S.optional(S.Number),
+    topK: S.optional(S.Number.pipe(T.Body("top_k"))),
+    topP: S.optional(S.Number.pipe(T.Body("top_p"))),
+    messages: S.optional(RunRequestMessages),
+    functions: S.optional(RunRequestFunctionsList),
+    tools: S.optional(RunRequestToolsList),
+    inputText: S.optional(S.String.pipe(T.Body("input_text"))),
+    maxLength: S.optional(S.Number.pipe(T.Body("max_length"))),
+    ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
   })
     .pipe(
       T.Http({

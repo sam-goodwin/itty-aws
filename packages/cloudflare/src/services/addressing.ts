@@ -233,15 +233,15 @@ export const AddressMapsCreateRequestMembershipsItemKind =
 
 export interface AddressMapsCreateRequestMembershipsItem {
   /** The identifier for the membership (eg. a zone or account tag). */
-  identifier?: string | null;
+  identifier?: string;
   /** The type of the membership. */
-  kind?: AddressMapsCreateRequestMembershipsItemKind | (string & {}) | null;
+  kind?: AddressMapsCreateRequestMembershipsItemKind | (string & {});
 }
 export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      identifier: S.optional(S.NullOr(S.String)),
-      kind: S.optional(S.NullOr(AddressMapsCreateRequestMembershipsItemKind)),
+      identifier: S.optional(S.String),
+      kind: S.optional(AddressMapsCreateRequestMembershipsItemKind),
     }),
 ).annotate({
   identifier: "AddressMapsCreateRequestMembershipsItem",
@@ -257,20 +257,20 @@ export interface CreateAddressMapRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** An optional description field which may be used to describe the types of IPs or zones on the map. */
-  description?: string | null;
+  description?: string;
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
-  enabled?: boolean | null;
-  ips?: AddressMapsCreateRequestIpsList | null;
+  enabled?: boolean;
+  ips?: AddressMapsCreateRequestIpsList;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
-  memberships?: AddressMapsCreateRequestMembershipsList | null;
+  memberships?: AddressMapsCreateRequestMembershipsList;
 }
 export const CreateAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    ips: S.optional(S.NullOr(AddressMapsCreateRequestIpsList)),
-    memberships: S.optional(S.NullOr(AddressMapsCreateRequestMembershipsList)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    ips: S.optional(AddressMapsCreateRequestIpsList),
+    memberships: S.optional(AddressMapsCreateRequestMembershipsList),
   })
     .pipe(
       T.Http({
@@ -438,11 +438,11 @@ export interface CreatePrefixRequest {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
   /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
-  delegateLoaCreation?: boolean | null;
+  delegateLoaCreation?: boolean;
   /** Description of the prefix. */
-  description?: string | null;
+  description?: string;
   /** Identifier for the uploaded LOA document. */
-  loaDocumentId?: string | null;
+  loaDocumentId?: string;
 }
 export const CreatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -450,12 +450,10 @@ export const CreatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
     asn: S.Number,
     cidr: S.String,
     delegateLoaCreation: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("delegate_loa_creation")),
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
     ),
-    description: S.optional(S.NullOr(S.String)),
-    loaDocumentId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("loa_document_id")),
-    ),
+    description: S.optional(S.String),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
   })
     .pipe(
       T.Http({
@@ -808,14 +806,14 @@ export interface CreateRegionalHostnameRequest {
   /** Identifying key for the region */
   regionKey: string;
   /** Configure which routing method to use for the regional hostname */
-  routing?: string | null;
+  routing?: string;
 }
 export const CreateRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String,
     regionKey: S.String.pipe(T.Body("region_key")),
-    routing: S.optional(S.NullOr(S.String)),
+    routing: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -2302,19 +2300,19 @@ export interface PatchAddressMapRequest {
   /** Identifier of an Address Map. */
   addressMapId: string;
   /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
-  defaultSni?: string | null;
+  defaultSni?: string;
   /** An optional description field which may be used to describe the types of IPs or zones on the map. */
-  description?: string | null;
+  description?: string;
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const PatchAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
-    defaultSni: S.optional(S.NullOr(S.String).pipe(T.Body("default_sni"))),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -2515,12 +2513,12 @@ export const PatchPrefixAdvertisementStatusResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchPrefixAdvertisementStatusResponse>;
 
 export interface PrefixesBgpPrefixesEditRequestOnDemand {
-  advertised?: boolean | null;
+  advertised?: boolean;
 }
 export const PrefixesBgpPrefixesEditRequestOnDemand = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      advertised: S.optional(S.NullOr(S.Boolean)),
+      advertised: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "PrefixesBgpPrefixesEditRequestOnDemand",
@@ -2534,26 +2532,22 @@ export interface PatchPrefixBgpPrefixRequest {
   /** Identifier of BGP Prefix. */
   bgpPrefixId: string;
   /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
-  asnPrependCount?: number | null;
+  asnPrependCount?: number;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
-  autoAdvertiseWithdraw?: boolean | null;
-  onDemand?: PrefixesBgpPrefixesEditRequestOnDemand | null;
+  autoAdvertiseWithdraw?: boolean;
+  onDemand?: PrefixesBgpPrefixesEditRequestOnDemand;
 }
 export const PatchPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
     bgpPrefixId: S.String.pipe(T.Label("bgp_prefix_id")),
-    asnPrependCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("asn_prepend_count")),
-    ),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
     autoAdvertiseWithdraw: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_advertise_withdraw")),
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
     ),
     onDemand: S.optional(
-      S.NullOr(PrefixesBgpPrefixesEditRequestOnDemand).pipe(
-        T.Body("on_demand"),
-      ),
+      PrefixesBgpPrefixesEditRequestOnDemand.pipe(T.Body("on_demand")),
     ),
   })
     .pipe(

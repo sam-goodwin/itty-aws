@@ -79,19 +79,15 @@ export const HostnameAssociationsUpdateRequestHostnamesList =
 export interface PutHostnameAssociationRequest {
   /** Identifier. */
   zoneId: string;
-  hostnames?: HostnameAssociationsUpdateRequestHostnamesList | null;
+  hostnames?: HostnameAssociationsUpdateRequestHostnamesList;
   /** The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA. */
-  mtlsCertificateId?: string | null;
+  mtlsCertificateId?: string;
 }
 export const PutHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    hostnames: S.optional(
-      S.NullOr(HostnameAssociationsUpdateRequestHostnamesList),
-    ),
-    mtlsCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("mtls_certificate_id")),
-    ),
+    hostnames: S.optional(HostnameAssociationsUpdateRequestHostnamesList),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
   })
     .pipe(
       T.Http({

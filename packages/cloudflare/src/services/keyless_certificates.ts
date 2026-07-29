@@ -78,11 +78,11 @@ export interface CreateKeylessCertificateRequest {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestBundleMethod | (string & {}) | null;
+  bundleMethod?: CreateRequestBundleMethod | (string & {});
   /** The keyless SSL name. */
-  name?: string | null;
+  name?: string;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: CreateRequestTunnel | null;
+  tunnel?: CreateRequestTunnel;
 }
 export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -91,10 +91,10 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     host: S.String,
     port: S.Number,
     bundleMethod: S.optional(
-      S.NullOr(CreateRequestBundleMethod).pipe(T.Body("bundle_method")),
+      CreateRequestBundleMethod.pipe(T.Body("bundle_method")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
+    name: S.optional(S.String),
+    tunnel: S.optional(CreateRequestTunnel),
   })
     .pipe(
       T.Http({
@@ -414,25 +414,25 @@ export interface PatchKeylessCertificateRequest {
   /** Identifier. */
   keylessCertificateId: string;
   /** Whether or not the Keyless SSL is on or off. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The keyless SSL name. */
-  host?: string | null;
+  host?: string;
   /** The keyless SSL name. */
-  name?: string | null;
+  name?: string;
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
-  port?: number | null;
+  port?: number;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditRequestTunnel | null;
+  tunnel?: EditRequestTunnel;
 }
 export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    host: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    port: S.optional(S.NullOr(S.Number)),
-    tunnel: S.optional(S.NullOr(EditRequestTunnel)),
+    enabled: S.optional(S.Boolean),
+    host: S.optional(S.String),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    tunnel: S.optional(EditRequestTunnel),
   })
     .pipe(
       T.Http({

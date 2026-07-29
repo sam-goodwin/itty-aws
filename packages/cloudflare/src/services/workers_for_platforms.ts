@@ -280,9 +280,9 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretK
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
   usages: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string | null;
+  keyBase64?: string;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown | null;
+  keyJwk?: unknown;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
   /*@__PURE__*/ S.suspend(() =>
@@ -294,8 +294,8 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKey =
       type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyType,
       usages:
         DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretKeyUsagesList,
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     }),
   ).annotate({
     identifier:
@@ -330,9 +330,9 @@ export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Name of the script, used in URLs and route configuration. */
   scriptName: string;
   /** Map of secret names to secret values: */
-  secrets?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets | null;
+  secrets?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets;
   /** Optional version tags to apply to the new script version. */
-  versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap | null;
+  versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
 export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -341,12 +341,12 @@ export const BulkUpdateDispatchNamespaceScriptSecretsRequest =
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       secrets: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets),
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestSecrets,
       ),
       versionTags: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap,
-        ).pipe(T.Body("version_tags")),
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(
+          T.Body("version_tags"),
+        ),
       ),
     })
       .pipe(
@@ -475,12 +475,12 @@ export interface CreateDispatchNamespaceRequest {
   /** Identifier. */
   accountId: string;
   /** The name of the dispatch namespace. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -7315,30 +7315,30 @@ export const PutDispatchNamespaceScriptMetadataStringList =
 
 /** JSON-encoded metadata about the uploaded parts and Worker configuration. See https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
 export interface PutDispatchNamespaceScriptMetadata {
-  annotations?: unknown | null;
-  assets?: unknown | null;
-  bindings?: unknown | null;
-  bodyPart?: string | null;
-  cache?: unknown | null;
-  compatibilityDate?: string | null;
-  compatibilityFlags?: PutDispatchNamespaceScriptMetadataStringList | null;
-  containers?: unknown | null;
-  keepAssets?: boolean | null;
-  keepBindings?: PutDispatchNamespaceScriptMetadataStringList | null;
-  limits?: unknown | null;
-  logpush?: boolean | null;
-  mainModule?: string | null;
-  migrations?: unknown | null;
-  observability?: unknown | null;
-  placement?: unknown | null;
-  tags?: PutDispatchNamespaceScriptMetadataStringList | null;
-  tailConsumers?: unknown | null;
-  usageModel?: string | null;
+  annotations?: unknown;
+  assets?: unknown;
+  bindings?: unknown;
+  bodyPart?: string;
+  cache?: unknown;
+  compatibilityDate?: string;
+  compatibilityFlags?: PutDispatchNamespaceScriptMetadataStringList;
+  containers?: unknown;
+  keepAssets?: boolean;
+  keepBindings?: PutDispatchNamespaceScriptMetadataStringList;
+  limits?: unknown;
+  logpush?: boolean;
+  mainModule?: string;
+  migrations?: unknown;
+  observability?: unknown;
+  placement?: unknown;
+  tags?: PutDispatchNamespaceScriptMetadataStringList;
+  tailConsumers?: unknown;
+  usageModel?: string;
 }
 export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7444,7 +7444,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     assets: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7550,7 +7550,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     bindings: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7655,9 +7655,9 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    bodyPart: S.optional(S.NullOr(S.String).pipe(T.Body("body_part"))),
+    bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
     cache: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7762,16 +7762,14 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    compatibilityDate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("compatibility_date")),
-    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
     compatibilityFlags: S.optional(
-      S.NullOr(PutDispatchNamespaceScriptMetadataStringList).pipe(
+      PutDispatchNamespaceScriptMetadataStringList.pipe(
         T.Body("compatibility_flags"),
       ),
     ),
     containers: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7876,14 +7874,14 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    keepAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("keep_assets"))),
+    keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
     keepBindings: S.optional(
-      S.NullOr(PutDispatchNamespaceScriptMetadataStringList).pipe(
+      PutDispatchNamespaceScriptMetadataStringList.pipe(
         T.Body("keep_bindings"),
       ),
     ),
     limits: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7988,10 +7986,10 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    logpush: S.optional(S.NullOr(S.Boolean)),
-    mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
+    logpush: S.optional(S.Boolean),
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
     migrations: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -8097,7 +8095,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     observability: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -8203,7 +8201,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     placement: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.KeyDictionary({
           abrLevel: "abr_level",
           allowedDestinationAddresses: "allowed_destination_addresses",
@@ -8308,9 +8306,9 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    tags: S.optional(S.NullOr(PutDispatchNamespaceScriptMetadataStringList)),
+    tags: S.optional(PutDispatchNamespaceScriptMetadataStringList),
     tailConsumers: S.optional(
-      S.NullOr(S.Unknown).pipe(
+      S.Unknown.pipe(
         T.Body("tail_consumers"),
         T.KeyDictionary({
           abrLevel: "abr_level",
@@ -8416,7 +8414,7 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
         }),
       ),
     ),
-    usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+    usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
   }),
 ).annotate({
   identifier: "PutDispatchNamespaceScriptMetadata",
@@ -10067,22 +10065,19 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The secret value to use. */
-  text?: string | null;
+  text?: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsUpdateRequestType | (string & {});
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
-  algorithm?: unknown | null;
+  algorithm?: unknown;
   /** Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format). */
-  format?:
-    | DispatchNamespacesScriptsSecretsUpdateRequestFormat
-    | (string & {})
-    | null;
+  format?: DispatchNamespacesScriptsSecretsUpdateRequestFormat | (string & {});
   /** Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages). */
-  usages?: DispatchNamespacesScriptsSecretsUpdateRequestUsagesList | null;
+  usages?: DispatchNamespacesScriptsSecretsUpdateRequestUsagesList;
   /** Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki". */
-  keyBase64?: string | null;
+  keyBase64?: string;
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
-  keyJwk?: unknown | null;
+  keyJwk?: unknown;
 }
 export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10091,17 +10086,15 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(
       dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
       scriptName: S.String.pipe(T.Label("script_name")),
       name: S.String,
-      text: S.optional(S.NullOr(S.String)),
+      text: S.optional(S.String),
       type: DispatchNamespacesScriptsSecretsUpdateRequestType,
-      algorithm: S.optional(S.NullOr(S.Unknown)),
-      format: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
-      ),
+      algorithm: S.optional(S.Unknown),
+      format: S.optional(DispatchNamespacesScriptsSecretsUpdateRequestFormat),
       usages: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSecretsUpdateRequestUsagesList),
+        DispatchNamespacesScriptsSecretsUpdateRequestUsagesList,
       ),
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
+      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
     })
       .pipe(
         T.Http({

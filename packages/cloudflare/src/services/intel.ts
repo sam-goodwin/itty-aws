@@ -353,15 +353,15 @@ export interface CreateIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
   /** The description of the example test */
-  description?: string | null;
+  description?: string;
   /** The name of the indicator feed */
-  name?: string | null;
+  name?: string;
 }
 export const CreateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -417,16 +417,16 @@ export interface CreateIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
   /** The Cloudflare account tag of the account to change permissions on */
-  accountTag?: string | null;
+  accountTag?: string;
   /** The ID of the feed to add/remove permissions on */
-  feedId?: number | null;
+  feedId?: number;
 }
 export const CreateIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
-      feedId: S.optional(S.NullOr(S.Number).pipe(T.Body("feed_id"))),
+      accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
+      feedId: S.optional(S.Number.pipe(T.Body("feed_id"))),
     })
       .pipe(
         T.Http({
@@ -490,52 +490,49 @@ export interface CreateMiscategorizationRequest {
   /** Identifier. */
   accountId: string;
   /** Content category IDs to add. */
-  contentAdds?: MiscategorizationsCreateRequestContentAddsList | null;
+  contentAdds?: MiscategorizationsCreateRequestContentAddsList;
   /** Content category IDs to remove. */
-  contentRemoves?: MiscategorizationsCreateRequestContentRemovesList | null;
-  indicatorType?:
-    | MiscategorizationsCreateRequestIndicatorType
-    | (string & {})
-    | null;
+  contentRemoves?: MiscategorizationsCreateRequestContentRemovesList;
+  indicatorType?: MiscategorizationsCreateRequestIndicatorType | (string & {});
   /** Provide only if indicator_type is `ipv4` or `ipv6`. */
-  ip?: string | null;
+  ip?: string;
   /** Security category IDs to add. */
-  securityAdds?: MiscategorizationsCreateRequestSecurityAddsList | null;
+  securityAdds?: MiscategorizationsCreateRequestSecurityAddsList;
   /** Security category IDs to remove. */
-  securityRemoves?: MiscategorizationsCreateRequestSecurityRemovesList | null;
+  securityRemoves?: MiscategorizationsCreateRequestSecurityRemovesList;
   /** Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`. */
-  url?: string | null;
+  url?: string;
 }
 export const CreateMiscategorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     contentAdds: S.optional(
-      S.NullOr(MiscategorizationsCreateRequestContentAddsList).pipe(
+      MiscategorizationsCreateRequestContentAddsList.pipe(
         T.Body("content_adds"),
       ),
     ),
     contentRemoves: S.optional(
-      S.NullOr(MiscategorizationsCreateRequestContentRemovesList).pipe(
+      MiscategorizationsCreateRequestContentRemovesList.pipe(
         T.Body("content_removes"),
       ),
     ),
     indicatorType: S.optional(
-      S.NullOr(MiscategorizationsCreateRequestIndicatorType).pipe(
+      MiscategorizationsCreateRequestIndicatorType.pipe(
         T.Body("indicator_type"),
       ),
     ),
-    ip: S.optional(S.NullOr(S.String)),
+    ip: S.optional(S.String),
     securityAdds: S.optional(
-      S.NullOr(MiscategorizationsCreateRequestSecurityAddsList).pipe(
+      MiscategorizationsCreateRequestSecurityAddsList.pipe(
         T.Body("security_adds"),
       ),
     ),
     securityRemoves: S.optional(
-      S.NullOr(MiscategorizationsCreateRequestSecurityRemovesList).pipe(
+      MiscategorizationsCreateRequestSecurityRemovesList.pipe(
         T.Body("security_removes"),
       ),
     ),
-    url: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -590,16 +587,16 @@ export interface DeleteIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
   /** The Cloudflare account tag of the account to change permissions on */
-  accountTag?: string | null;
+  accountTag?: string;
   /** The ID of the feed to add/remove permissions on */
-  feedId?: number | null;
+  feedId?: number;
 }
 export const DeleteIndicatorFeedPermissionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
-      feedId: S.optional(S.NullOr(S.Number).pipe(T.Body("feed_id"))),
+      accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
+      feedId: S.optional(S.Number.pipe(T.Body("feed_id"))),
     })
       .pipe(
         T.Http({
@@ -631,14 +628,14 @@ export interface DismissAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
   issueId: string;
-  dismiss?: boolean | null;
+  dismiss?: boolean;
 }
 export const DismissAttackSurfaceReportIssueRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
-      dismiss: S.optional(S.NullOr(S.Boolean)),
+      dismiss: S.optional(S.Boolean),
     })
       .pipe(
         T.Http({
@@ -2253,14 +2250,14 @@ export const ListAttackSurfaceReportIssuesResponse = /*@__PURE__*/ S.suspend(
 
 export interface DnsListRequestStartEndParams {
   /** Defaults to the current date. */
-  end?: string | null;
+  end?: string;
   /** Defaults to 30 days before the end parameter value. */
-  start?: string | null;
+  start?: string;
 }
 export const DnsListRequestStartEndParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    end: S.optional(S.NullOr(S.String)),
-    start: S.optional(S.NullOr(S.String)),
+    end: S.optional(S.String),
+    start: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DnsListRequestStartEndParams",
@@ -2274,7 +2271,7 @@ export interface ListDnsRequest {
   page?: number;
   /** Maximum number of results requested. */
   perPage?: number;
-  startEndParams?: DnsListRequestStartEndParams | null;
+  startEndParams?: DnsListRequestStartEndParams;
 }
 export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2283,7 +2280,7 @@ export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     startEndParams: S.optional(
-      S.NullOr(DnsListRequestStartEndParams).pipe(
+      DnsListRequestStartEndParams.pipe(
         T.Body("start_end_params"),
         T.DeepQuery("start_end_params"),
       ),
@@ -2568,13 +2565,13 @@ export interface PutIndicatorFeedSnapshotRequest {
   /** Indicator feed ID */
   feedId: number;
   /** The file to upload. Either a plain STIX2/CRDF body or a gzipped one (recognised by 0x1f 0x8b magic bytes or a .gz filename suffix). */
-  source?: string | null;
+  source?: string;
 }
 export const PutIndicatorFeedSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.Number.pipe(T.Label("feed_id")),
-    source: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -2955,29 +2952,25 @@ export interface UpdateIndicatorFeedRequest {
   /** Indicator feed ID */
   feedId: number;
   /** The new description of the feed */
-  description?: string | null;
+  description?: string;
   /** The new is_attributable value of the feed */
-  isAttributable?: boolean | null;
+  isAttributable?: boolean;
   /** The new is_downloadable value of the feed */
-  isDownloadable?: boolean | null;
+  isDownloadable?: boolean;
   /** The new is_public value of the feed */
-  isPublic?: boolean | null;
+  isPublic?: boolean;
   /** The new name of the feed */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateIndicatorFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.Number.pipe(T.Label("feed_id")),
-    description: S.optional(S.NullOr(S.String)),
-    isAttributable: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_attributable")),
-    ),
-    isDownloadable: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_downloadable")),
-    ),
-    isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    isAttributable: S.optional(S.Boolean.pipe(T.Body("is_attributable"))),
+    isDownloadable: S.optional(S.Boolean.pipe(T.Body("is_downloadable"))),
+    isPublic: S.optional(S.Boolean.pipe(T.Body("is_public"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({

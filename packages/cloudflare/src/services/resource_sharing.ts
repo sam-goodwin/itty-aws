@@ -74,19 +74,17 @@ export interface CreateRecipientRequest {
   /** Share identifier tag. */
   shareId: string;
   /** Organization identifier. */
-  organizationId?: string | null;
+  organizationId?: string;
   /** The account that will receive the share. */
-  recipientAccountId?: string | null;
+  recipientAccountId?: string;
 }
 export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
-    organizationId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("organization_id")),
-    ),
+    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
     recipientAccountId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("recipient_account_id")),
+      S.String.pipe(T.Body("recipient_account_id")),
     ),
   })
     .pipe(
@@ -264,20 +262,18 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestRecipientsItem {
   /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
-  accountId?: string | null;
+  accountId?: string;
   /** Organization identifier. */
-  organizationId?: string | null;
+  organizationId?: string;
   /** The account that will receive the share. */
-  recipientAccountId?: string | null;
+  recipientAccountId?: string;
 }
 export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
-    organizationId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("organization_id")),
-    ),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
     recipientAccountId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("recipient_account_id")),
+      S.String.pipe(T.Body("recipient_account_id")),
     ),
   }),
 ).annotate({

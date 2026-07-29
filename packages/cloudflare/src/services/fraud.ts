@@ -198,16 +198,16 @@ export interface UpdateRequestAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList | null;
+  statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
 }
 export const UpdateRequestAuthenticationSettingsFailureCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind,
       statusCodes: S.optional(
-        S.NullOr(
-          UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList,
-        ).pipe(T.Body("status_codes")),
+        UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
       ),
     }),
   ).annotate({
@@ -230,16 +230,16 @@ export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind | (string & {});
   /** HTTP status codes to match against the origin response. */
-  statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList | null;
+  statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
 }
 export const UpdateRequestAuthenticationSettingsSuccessCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind,
       statusCodes: S.optional(
-        S.NullOr(
-          UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList,
-        ).pipe(T.Body("status_codes")),
+        UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
       ),
     }),
   ).annotate({
@@ -248,19 +248,19 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteria =
 
 export interface UpdateRequestAuthenticationSettings {
   /** Criterion for identifying failed login responses. */
-  failureCriteria?: UpdateRequestAuthenticationSettingsFailureCriteria | null;
+  failureCriteria?: UpdateRequestAuthenticationSettingsFailureCriteria;
   /** Criterion for identifying successful login responses. */
-  successCriteria?: UpdateRequestAuthenticationSettingsSuccessCriteria | null;
+  successCriteria?: UpdateRequestAuthenticationSettingsSuccessCriteria;
 }
 export const UpdateRequestAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCriteria: S.optional(
-      S.NullOr(UpdateRequestAuthenticationSettingsFailureCriteria).pipe(
+      UpdateRequestAuthenticationSettingsFailureCriteria.pipe(
         T.Body("failure_criteria"),
       ),
     ),
     successCriteria: S.optional(
-      S.NullOr(UpdateRequestAuthenticationSettingsSuccessCriteria).pipe(
+      UpdateRequestAuthenticationSettingsSuccessCriteria.pipe(
         T.Body("success_criteria"),
       ),
     ),
@@ -281,27 +281,25 @@ export interface PutFraudRequest {
   /** Identifier. */
   zoneId: string;
   /** Configuration for classifying login authentication outcomes based on the origin response. */
-  authenticationSettings?: UpdateRequestAuthenticationSettings | null;
+  authenticationSettings?: UpdateRequestAuthenticationSettings;
   /** Whether Fraud User Profiles is enabled for the zone. */
-  userProfiles?: UpdateRequestUserProfiles | (string & {}) | null;
+  userProfiles?: UpdateRequestUserProfiles | (string & {});
   /** List of expressions to detect usernames in write HTTP requests. */
-  usernameExpressions?: UpdateRequestUsernameExpressionsList | null;
+  usernameExpressions?: UpdateRequestUsernameExpressionsList;
 }
 export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     authenticationSettings: S.optional(
-      S.NullOr(UpdateRequestAuthenticationSettings).pipe(
+      UpdateRequestAuthenticationSettings.pipe(
         T.Body("authentication_settings"),
       ),
     ),
     userProfiles: S.optional(
-      S.NullOr(UpdateRequestUserProfiles).pipe(T.Body("user_profiles")),
+      UpdateRequestUserProfiles.pipe(T.Body("user_profiles")),
     ),
     usernameExpressions: S.optional(
-      S.NullOr(UpdateRequestUsernameExpressionsList).pipe(
-        T.Body("username_expressions"),
-      ),
+      UpdateRequestUsernameExpressionsList.pipe(T.Body("username_expressions")),
     ),
   })
     .pipe(

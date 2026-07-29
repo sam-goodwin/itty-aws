@@ -66,17 +66,17 @@ export interface CreateHostnameRequest {
   /** Specify the target gateway of the hostname. */
   target: HostnamesCreateRequestTarget | (string & {});
   /** Specify an optional description of the hostname. */
-  description?: string | null;
+  description?: string;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string | null;
+  dnslink?: string;
 }
 export const CreateHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     target: HostnamesCreateRequestTarget,
-    description: S.optional(S.NullOr(S.String)),
-    dnslink: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    dnslink: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -153,7 +153,7 @@ export interface CreateHostnameIpfsUniversalPathContentListEntryRequest {
     | HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType
     | (string & {});
   /** Specify an optional description of the content list entry. */
-  description?: string | null;
+  description?: string;
 }
 export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -162,7 +162,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
       identifier: S.String.pipe(T.Label()),
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -643,16 +643,16 @@ export interface PatchHostnameRequest {
   /** Specify the identifier of the hostname. */
   identifier: string;
   /** Specify an optional description of the hostname. */
-  description?: string | null;
+  description?: string;
   /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string | null;
+  dnslink?: string;
 }
 export const PatchHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
-    description: S.optional(S.NullOr(S.String)),
-    dnslink: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    dnslink: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -723,31 +723,28 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType
 
 export interface HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem {
   /** Specify the identifier of the hostname. */
-  id?: string | null;
+  id?: string;
   /** Specify the CID or content path of content to block. */
-  content?: string | null;
-  createdOn?: string | null;
+  content?: string;
+  createdOn?: string;
   /** Specify an optional description of the content list entry. */
-  description?: string | null;
-  modifiedOn?: string | null;
+  description?: string;
+  modifiedOn?: string;
   /** Specify the type of content list entry to block. */
   type?:
     | HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      content: S.optional(S.NullOr(S.String)),
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      description: S.optional(S.NullOr(S.String)),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       type: S.optional(
-        S.NullOr(
-          HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
-        ),
+        HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
       ),
     }),
   ).annotate({
@@ -835,7 +832,7 @@ export interface UpdateHostnameIpfsUniversalPathContentListEntryRequest {
     | HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType
     | (string & {});
   /** Specify an optional description of the content list entry. */
-  description?: string | null;
+  description?: string;
 }
 export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -847,7 +844,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
       ),
       content: S.String,
       type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     })
       .pipe(
         T.Http({

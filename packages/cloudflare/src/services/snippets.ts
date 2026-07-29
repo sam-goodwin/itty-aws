@@ -285,9 +285,9 @@ export interface RulesUpdateRequestRulesItem {
   /** Identify the snippet. */
   snippetName: string;
   /** Provide an informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Indicate whether to execute the rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -295,8 +295,8 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
     expression: S.String,
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestRulesItem",

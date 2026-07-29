@@ -374,13 +374,13 @@ export interface SendRequestFromEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestFromEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestFromEmailSendingEmailAddressObject",
@@ -466,13 +466,13 @@ export interface SendRequestBccEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestBccEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestBccEmailSendingEmailAddressObject",
@@ -482,13 +482,13 @@ export interface SendRequestBccCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestBccCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestBccCase2ItemEmailSendingEmailAddressObject",
@@ -518,13 +518,13 @@ export interface SendRequestCcEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestCcEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestCcEmailSendingEmailAddressObject",
@@ -534,13 +534,13 @@ export interface SendRequestCcCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestCcCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestCcCase2ItemEmailSendingEmailAddressObject",
@@ -576,13 +576,13 @@ export interface SendRequestReplyToEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestReplyToEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestReplyToEmailSendingEmailAddressObject",
@@ -599,13 +599,13 @@ export interface SendRequestToEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestToEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestToEmailSendingEmailAddressObject",
@@ -615,13 +615,13 @@ export interface SendRequestToCase2ItemEmailSendingEmailAddressObject {
   /** Email address (e.g., 'user@example.com'). */
   address: string;
   /** Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name. */
-  name?: string | null;
+  name?: string;
 }
 export const SendRequestToCase2ItemEmailSendingEmailAddressObject =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SendRequestToCase2ItemEmailSendingEmailAddressObject",
@@ -655,35 +655,35 @@ export interface SendEmailSendingRequest {
   /** Email subject line. */
   subject: string;
   /** File attachments and inline images. */
-  attachments?: SendRequestAttachmentsList | null;
+  attachments?: SendRequestAttachmentsList;
   /** BCC recipient(s). A single email string, a named address object, or an array of either. */
-  bcc?: SendRequestBcc | null;
+  bcc?: SendRequestBcc;
   /** CC recipient(s). A single email string, a named address object, or an array of either. */
-  cc?: SendRequestCc | null;
+  cc?: SendRequestCc;
   /** Custom email headers as key-value pairs. */
-  headers?: SendRequestHeadersMap | null;
+  headers?: SendRequestHeadersMap;
   /** HTML body of the email. At least one of text or html must be provided (non-empty). */
-  html?: string | null;
+  html?: string;
   /** Reply-to address. Either a plain string or an object with address and name. */
-  replyTo?: SendRequestReplyTo | null;
+  replyTo?: SendRequestReplyTo;
   /** Plain text body of the email. At least one of text or html must be provided (non-empty). */
-  text?: string | null;
+  text?: string;
   /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
-  to?: SendRequestTo | null;
+  to?: SendRequestTo;
 }
 export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: SendRequestFrom,
     subject: S.String,
-    attachments: S.optional(S.NullOr(SendRequestAttachmentsList)),
-    bcc: S.optional(S.NullOr(SendRequestBcc)),
-    cc: S.optional(S.NullOr(SendRequestCc)),
-    headers: S.optional(S.NullOr(SendRequestHeadersMap)),
-    html: S.optional(S.NullOr(S.String)),
-    replyTo: S.optional(S.NullOr(SendRequestReplyTo).pipe(T.Body("reply_to"))),
-    text: S.optional(S.NullOr(S.String)),
-    to: S.optional(S.NullOr(SendRequestTo)),
+    attachments: S.optional(SendRequestAttachmentsList),
+    bcc: S.optional(SendRequestBcc),
+    cc: S.optional(SendRequestCc),
+    headers: S.optional(SendRequestHeadersMap),
+    html: S.optional(S.String),
+    replyTo: S.optional(SendRequestReplyTo.pipe(T.Body("reply_to"))),
+    text: S.optional(S.String),
+    to: S.optional(SendRequestTo),
   })
     .pipe(
       T.Http({

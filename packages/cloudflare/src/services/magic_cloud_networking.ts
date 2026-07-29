@@ -199,8 +199,8 @@ export interface CreateCatalogSyncRequest {
   destinationType: CatalogSyncsCreateRequestDestinationType | (string & {});
   name: string;
   updateMode: CatalogSyncsCreateRequestUpdateMode | (string & {});
-  description?: string | null;
-  policy?: string | null;
+  description?: string;
+  policy?: string;
 }
 export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -211,8 +211,8 @@ export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     updateMode: CatalogSyncsCreateRequestUpdateMode.pipe(T.Body("update_mode")),
-    description: S.optional(S.NullOr(S.String)),
-    policy: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    policy: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -518,7 +518,7 @@ export interface CreateCloudIntegrationRequest {
   forwarded?: string;
   cloudType: CloudIntegrationsCreateRequestCloudType | (string & {});
   friendlyName: string;
-  description?: string | null;
+  description?: string;
 }
 export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -528,7 +528,7 @@ export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("cloud_type"),
     ),
     friendlyName: S.String.pipe(T.Body("friendly_name")),
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -809,17 +809,17 @@ export interface CreateOnRampRequest {
   installRoutesInMagicWan: boolean;
   name: string;
   type: OnRampsCreateRequestType | (string & {});
-  adoptedHubId?: string | null;
-  attachedHubs?: OnRampsCreateRequestAttachedHubsList | null;
-  attachedVpcs?: OnRampsCreateRequestAttachedVpcsList | null;
+  adoptedHubId?: string;
+  attachedHubs?: OnRampsCreateRequestAttachedHubsList;
+  attachedVpcs?: OnRampsCreateRequestAttachedVpcsList;
   /** Sets the cloud-side ASN. If unset or zero, the cloud's default ASN takes effect. */
-  cloudAsn?: number | null;
-  description?: string | null;
-  hubProviderId?: string | null;
-  manageHubToHubAttachments?: boolean | null;
-  manageVpcToHubAttachments?: boolean | null;
-  region?: string | null;
-  vpc?: string | null;
+  cloudAsn?: number;
+  description?: string;
+  hubProviderId?: string;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  region?: string;
+  vpc?: string;
 }
 export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -833,30 +833,24 @@ export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     name: S.String,
     type: OnRampsCreateRequestType,
-    adoptedHubId: S.optional(S.NullOr(S.String).pipe(T.Body("adopted_hub_id"))),
+    adoptedHubId: S.optional(S.String.pipe(T.Body("adopted_hub_id"))),
     attachedHubs: S.optional(
-      S.NullOr(OnRampsCreateRequestAttachedHubsList).pipe(
-        T.Body("attached_hubs"),
-      ),
+      OnRampsCreateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
     ),
     attachedVpcs: S.optional(
-      S.NullOr(OnRampsCreateRequestAttachedVpcsList).pipe(
-        T.Body("attached_vpcs"),
-      ),
+      OnRampsCreateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
     ),
-    cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.NullOr(S.String)),
-    hubProviderId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("hub_provider_id")),
-    ),
+    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.String),
+    hubProviderId: S.optional(S.String.pipe(T.Body("hub_provider_id"))),
     manageHubToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    region: S.optional(S.NullOr(S.String)),
-    vpc: S.optional(S.NullOr(S.String)),
+    region: S.optional(S.String),
+    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -13303,20 +13297,20 @@ export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
 export interface PatchCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string | null;
-  name?: string | null;
-  policy?: string | null;
-  updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {}) | null;
+  description?: string;
+  name?: string;
+  policy?: string;
+  updateMode?: CatalogSyncsEditRequestUpdateMode | (string & {});
 }
 export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    policy: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    policy: S.optional(S.String),
     updateMode: S.optional(
-      S.NullOr(CatalogSyncsEditRequestUpdateMode).pipe(T.Body("update_mode")),
+      CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
     ),
   })
     .pipe(
@@ -13611,30 +13605,28 @@ export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PatchCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string | null;
-  azureSubscriptionId?: string | null;
-  azureTenantId?: string | null;
-  description?: string | null;
-  friendlyName?: string | null;
-  gcpProjectId?: string | null;
-  gcpServiceAccountEmail?: string | null;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  friendlyName?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
 }
 export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
+      S.String.pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    friendlyName: S.optional(S.NullOr(S.String).pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+      S.String.pipe(T.Body("gcp_service_account_email")),
     ),
   })
     .pipe(
@@ -13901,45 +13893,41 @@ export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
 export interface PatchOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsEditRequestAttachedHubsList | null;
-  attachedVpcs?: OnRampsEditRequestAttachedVpcsList | null;
-  description?: string | null;
-  installRoutesInCloud?: boolean | null;
-  installRoutesInMagicWan?: boolean | null;
-  manageHubToHubAttachments?: boolean | null;
-  manageVpcToHubAttachments?: boolean | null;
-  name?: string | null;
-  vpc?: string | null;
+  attachedHubs?: OnRampsEditRequestAttachedHubsList;
+  attachedVpcs?: OnRampsEditRequestAttachedVpcsList;
+  description?: string;
+  installRoutesInCloud?: boolean;
+  installRoutesInMagicWan?: boolean;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  name?: string;
+  vpc?: string;
 }
 export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
     attachedHubs: S.optional(
-      S.NullOr(OnRampsEditRequestAttachedHubsList).pipe(
-        T.Body("attached_hubs"),
-      ),
+      OnRampsEditRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
     ),
     attachedVpcs: S.optional(
-      S.NullOr(OnRampsEditRequestAttachedVpcsList).pipe(
-        T.Body("attached_vpcs"),
-      ),
+      OnRampsEditRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
     ),
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
     installRoutesInCloud: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_cloud")),
+      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
     ),
     installRoutesInMagicWan: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_magic_wan")),
+      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
     ),
     manageHubToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    vpc: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -16932,20 +16920,20 @@ export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
 export interface UpdateCatalogSyncRequest {
   accountId: string;
   syncId: string;
-  description?: string | null;
-  name?: string | null;
-  policy?: string | null;
-  updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {}) | null;
+  description?: string;
+  name?: string;
+  policy?: string;
+  updateMode?: CatalogSyncsUpdateRequestUpdateMode | (string & {});
 }
 export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    policy: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    policy: S.optional(S.String),
     updateMode: S.optional(
-      S.NullOr(CatalogSyncsUpdateRequestUpdateMode).pipe(T.Body("update_mode")),
+      CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
     ),
   })
     .pipe(
@@ -17243,30 +17231,28 @@ export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCloudIntegrationRequest {
   accountId: string;
   providerId: string;
-  awsArn?: string | null;
-  azureSubscriptionId?: string | null;
-  azureTenantId?: string | null;
-  description?: string | null;
-  friendlyName?: string | null;
-  gcpProjectId?: string | null;
-  gcpServiceAccountEmail?: string | null;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  friendlyName?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
 }
 export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
     azureSubscriptionId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("azure_subscription_id")),
+      S.String.pipe(T.Body("azure_subscription_id")),
     ),
-    azureTenantId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("azure_tenant_id")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    friendlyName: S.optional(S.NullOr(S.String).pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
     gcpServiceAccountEmail: S.optional(
-      S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+      S.String.pipe(T.Body("gcp_service_account_email")),
     ),
   })
     .pipe(
@@ -17535,45 +17521,41 @@ export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
 export interface UpdateOnRampRequest {
   accountId: string;
   onrampId: string;
-  attachedHubs?: OnRampsUpdateRequestAttachedHubsList | null;
-  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList | null;
-  description?: string | null;
-  installRoutesInCloud?: boolean | null;
-  installRoutesInMagicWan?: boolean | null;
-  manageHubToHubAttachments?: boolean | null;
-  manageVpcToHubAttachments?: boolean | null;
-  name?: string | null;
-  vpc?: string | null;
+  attachedHubs?: OnRampsUpdateRequestAttachedHubsList;
+  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList;
+  description?: string;
+  installRoutesInCloud?: boolean;
+  installRoutesInMagicWan?: boolean;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  name?: string;
+  vpc?: string;
 }
 export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
     attachedHubs: S.optional(
-      S.NullOr(OnRampsUpdateRequestAttachedHubsList).pipe(
-        T.Body("attached_hubs"),
-      ),
+      OnRampsUpdateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
     ),
     attachedVpcs: S.optional(
-      S.NullOr(OnRampsUpdateRequestAttachedVpcsList).pipe(
-        T.Body("attached_vpcs"),
-      ),
+      OnRampsUpdateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
     ),
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
     installRoutesInCloud: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_cloud")),
+      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
     ),
     installRoutesInMagicWan: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("install_routes_in_magic_wan")),
+      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
     ),
     manageHubToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
     ),
     manageVpcToHubAttachments: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    vpc: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    vpc: S.optional(S.String),
   })
     .pipe(
       T.Http({

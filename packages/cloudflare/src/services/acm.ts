@@ -414,15 +414,14 @@ export interface TotalTlsUpdateRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?:
     | TotalTlsUpdateRequestCertificateAuthority
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     certificateAuthority: S.optional(
-      S.NullOr(TotalTlsUpdateRequestCertificateAuthority).pipe(
+      TotalTlsUpdateRequestCertificateAuthority.pipe(
         T.Body("certificate_authority"),
       ),
     ),
@@ -490,15 +489,14 @@ export interface UpdateTotalTlRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?:
     | TotalTlsEditRequestCertificateAuthority
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const UpdateTotalTlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     certificateAuthority: S.optional(
-      S.NullOr(TotalTlsEditRequestCertificateAuthority).pipe(
+      TotalTlsEditRequestCertificateAuthority.pipe(
         T.Body("certificate_authority"),
       ),
     ),

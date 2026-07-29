@@ -261,30 +261,21 @@ export interface CreateAiGatewayRequest {
   collectLogs: boolean;
   rateLimitingInterval: number | null;
   rateLimitingLimit: number | null;
-  authentication?: boolean | null;
-  logManagement?: number | null;
-  logManagementStrategy?:
-    | CreateRequestLogManagementStrategy
-    | (string & {})
-    | null;
-  logpush?: boolean | null;
-  logpushPublicKey?: string | null;
-  rateLimitingTechnique?:
-    | CreateRequestRateLimitingTechnique
-    | (string & {})
-    | null;
+  authentication?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: CreateRequestLogManagementStrategy | (string & {});
+  logpush?: boolean;
+  logpushPublicKey?: string;
+  rateLimitingTechnique?: CreateRequestRateLimitingTechnique | (string & {});
   /** Backoff strategy for retry delays */
-  retryBackoff?: CreateRequestRetryBackoff | (string & {}) | null;
+  retryBackoff?: CreateRequestRetryBackoff | (string & {});
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number | null;
+  retryDelay?: number;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number | null;
+  retryMaxAttempts?: number;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?:
-    | CreateRequestWorkersAiBillingMode
-    | (string & {})
-    | null;
-  zdr?: boolean | null;
+  workersAiBillingMode?: CreateRequestWorkersAiBillingMode | (string & {});
+  zdr?: boolean;
 }
 export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -299,37 +290,29 @@ export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("rate_limiting_interval"),
     ),
     rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.NullOr(S.Boolean)),
-    logManagement: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("log_management")),
-    ),
+    authentication: S.optional(S.Boolean),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
     logManagementStrategy: S.optional(
-      S.NullOr(CreateRequestLogManagementStrategy).pipe(
+      CreateRequestLogManagementStrategy.pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.NullOr(S.Boolean)),
-    logpushPublicKey: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
-    ),
+    logpush: S.optional(S.Boolean),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     rateLimitingTechnique: S.optional(
-      S.NullOr(CreateRequestRateLimitingTechnique).pipe(
+      CreateRequestRateLimitingTechnique.pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      S.NullOr(CreateRequestRetryBackoff).pipe(T.Body("retry_backoff")),
+      CreateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
-    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
     workersAiBillingMode: S.optional(
-      S.NullOr(CreateRequestWorkersAiBillingMode).pipe(
-        T.Body("workers_ai_billing_mode"),
-      ),
+      CreateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
     ),
-    zdr: S.optional(S.NullOr(S.Boolean)),
+    zdr: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -1073,14 +1056,14 @@ export interface CreateCustomProviderRequest {
   baseUrl: string;
   name: string;
   slug: string;
-  beta?: boolean | null;
-  curlExample?: string | null;
-  description?: string | null;
-  enable?: boolean | null;
-  headers?: string | null;
-  jsExample?: string | null;
-  link?: string | null;
-  position?: number | null;
+  beta?: boolean;
+  curlExample?: string;
+  description?: string;
+  enable?: boolean;
+  headers?: string;
+  jsExample?: string;
+  link?: string;
+  position?: number;
 }
 export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1088,14 +1071,14 @@ export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
     baseUrl: S.String.pipe(T.Body("base_url")),
     name: S.String,
     slug: S.String,
-    beta: S.optional(S.NullOr(S.Boolean)),
-    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
-    description: S.optional(S.NullOr(S.String)),
-    enable: S.optional(S.NullOr(S.Boolean)),
-    headers: S.optional(S.NullOr(S.String)),
-    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
-    link: S.optional(S.NullOr(S.String)),
-    position: S.optional(S.NullOr(S.Number)),
+    beta: S.optional(S.Boolean),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
+    description: S.optional(S.String),
+    enable: S.optional(S.Boolean),
+    headers: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
+    link: S.optional(S.String),
+    position: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -2779,10 +2762,10 @@ export interface CreateProviderConfigRequest {
   alias: string;
   defaultConfig: boolean;
   providerSlug: string;
-  rateLimit?: number | null;
-  rateLimitPeriod?: number | null;
-  secret?: string | null;
-  secretId?: string | null;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
+  secret?: string;
+  secretId?: string;
 }
 export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2791,12 +2774,10 @@ export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
     alias: S.String,
     defaultConfig: S.Boolean.pipe(T.Body("default_config")),
     providerSlug: S.String.pipe(T.Body("provider_slug")),
-    rateLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("rate_limit_period")),
-    ),
-    secret: S.optional(S.NullOr(S.String)),
-    secretId: S.optional(S.NullOr(S.String).pipe(T.Body("secret_id"))),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
+    secret: S.optional(S.String),
+    secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
   })
     .pipe(
       T.Http({
@@ -2929,12 +2910,12 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase1Outputs =
   }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase1Outputs>;
 
 export interface DynamicRoutingCreateVersionRequestElementsItemCase1Properties {
-  conditions?: unknown | null;
+  conditions?: unknown;
 }
 export const DynamicRoutingCreateVersionRequestElementsItemCase1Properties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      conditions: S.optional(S.NullOr(S.Unknown)),
+      conditions: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier: "DynamicRoutingCreateVersionRequestElementsItemCase1Properties",
@@ -10097,18 +10078,18 @@ export interface PatchLogRequest {
   /** gateway id */
   gatewayId: string;
   id: string;
-  feedback?: number | null;
-  metadata?: LogsEditRequestMetadata | null;
-  score?: number | null;
+  feedback?: number;
+  metadata?: LogsEditRequestMetadata;
+  score?: number;
 }
 export const PatchLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-    feedback: S.optional(S.NullOr(S.Number)),
-    metadata: S.optional(S.NullOr(LogsEditRequestMetadata)),
-    score: S.optional(S.NullOr(S.Number)),
+    feedback: S.optional(S.Number),
+    metadata: S.optional(LogsEditRequestMetadata),
+    score: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -10362,65 +10343,37 @@ export type UpdateRequestGuardrailsPromptS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsPromptS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsPrompt {
-  p1?: UpdateRequestGuardrailsPromptP1 | (string & {}) | null;
-  s1?: UpdateRequestGuardrailsPromptS1 | (string & {}) | null;
-  s10?: UpdateRequestGuardrailsPromptS10 | (string & {}) | null;
-  s11?: UpdateRequestGuardrailsPromptS11 | (string & {}) | null;
-  s12?: UpdateRequestGuardrailsPromptS12 | (string & {}) | null;
-  s13?: UpdateRequestGuardrailsPromptS13 | (string & {}) | null;
-  s2?: UpdateRequestGuardrailsPromptS2 | (string & {}) | null;
-  s3?: UpdateRequestGuardrailsPromptS3 | (string & {}) | null;
-  s4?: UpdateRequestGuardrailsPromptS4 | (string & {}) | null;
-  s5?: UpdateRequestGuardrailsPromptS5 | (string & {}) | null;
-  s6?: UpdateRequestGuardrailsPromptS6 | (string & {}) | null;
-  s7?: UpdateRequestGuardrailsPromptS7 | (string & {}) | null;
-  s8?: UpdateRequestGuardrailsPromptS8 | (string & {}) | null;
-  s9?: UpdateRequestGuardrailsPromptS9 | (string & {}) | null;
+  p1?: UpdateRequestGuardrailsPromptP1 | (string & {});
+  s1?: UpdateRequestGuardrailsPromptS1 | (string & {});
+  s10?: UpdateRequestGuardrailsPromptS10 | (string & {});
+  s11?: UpdateRequestGuardrailsPromptS11 | (string & {});
+  s12?: UpdateRequestGuardrailsPromptS12 | (string & {});
+  s13?: UpdateRequestGuardrailsPromptS13 | (string & {});
+  s2?: UpdateRequestGuardrailsPromptS2 | (string & {});
+  s3?: UpdateRequestGuardrailsPromptS3 | (string & {});
+  s4?: UpdateRequestGuardrailsPromptS4 | (string & {});
+  s5?: UpdateRequestGuardrailsPromptS5 | (string & {});
+  s6?: UpdateRequestGuardrailsPromptS6 | (string & {});
+  s7?: UpdateRequestGuardrailsPromptS7 | (string & {});
+  s8?: UpdateRequestGuardrailsPromptS8 | (string & {});
+  s9?: UpdateRequestGuardrailsPromptS9 | (string & {});
 }
 export const UpdateRequestGuardrailsPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptP1).pipe(T.Body("P1")),
-    ),
-    s1: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS1).pipe(T.Body("S1")),
-    ),
-    s10: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS10).pipe(T.Body("S10")),
-    ),
-    s11: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS11).pipe(T.Body("S11")),
-    ),
-    s12: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS12).pipe(T.Body("S12")),
-    ),
-    s13: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS13).pipe(T.Body("S13")),
-    ),
-    s2: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS2).pipe(T.Body("S2")),
-    ),
-    s3: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS3).pipe(T.Body("S3")),
-    ),
-    s4: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS4).pipe(T.Body("S4")),
-    ),
-    s5: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS5).pipe(T.Body("S5")),
-    ),
-    s6: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS6).pipe(T.Body("S6")),
-    ),
-    s7: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS7).pipe(T.Body("S7")),
-    ),
-    s8: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS8).pipe(T.Body("S8")),
-    ),
-    s9: S.optional(
-      S.NullOr(UpdateRequestGuardrailsPromptS9).pipe(T.Body("S9")),
-    ),
+    p1: S.optional(UpdateRequestGuardrailsPromptP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateRequestGuardrailsPromptS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateRequestGuardrailsPromptS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateRequestGuardrailsPromptS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateRequestGuardrailsPromptS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateRequestGuardrailsPromptS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateRequestGuardrailsPromptS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateRequestGuardrailsPromptS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateRequestGuardrailsPromptS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateRequestGuardrailsPromptS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateRequestGuardrailsPromptS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateRequestGuardrailsPromptS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateRequestGuardrailsPromptS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateRequestGuardrailsPromptS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsPrompt",
@@ -10469,65 +10422,37 @@ export type UpdateRequestGuardrailsResponseS9 = "FLAG" | "BLOCK";
 export const UpdateRequestGuardrailsResponseS9 = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestGuardrailsResponse {
-  p1?: UpdateRequestGuardrailsResponseP1 | (string & {}) | null;
-  s1?: UpdateRequestGuardrailsResponseS1 | (string & {}) | null;
-  s10?: UpdateRequestGuardrailsResponseS10 | (string & {}) | null;
-  s11?: UpdateRequestGuardrailsResponseS11 | (string & {}) | null;
-  s12?: UpdateRequestGuardrailsResponseS12 | (string & {}) | null;
-  s13?: UpdateRequestGuardrailsResponseS13 | (string & {}) | null;
-  s2?: UpdateRequestGuardrailsResponseS2 | (string & {}) | null;
-  s3?: UpdateRequestGuardrailsResponseS3 | (string & {}) | null;
-  s4?: UpdateRequestGuardrailsResponseS4 | (string & {}) | null;
-  s5?: UpdateRequestGuardrailsResponseS5 | (string & {}) | null;
-  s6?: UpdateRequestGuardrailsResponseS6 | (string & {}) | null;
-  s7?: UpdateRequestGuardrailsResponseS7 | (string & {}) | null;
-  s8?: UpdateRequestGuardrailsResponseS8 | (string & {}) | null;
-  s9?: UpdateRequestGuardrailsResponseS9 | (string & {}) | null;
+  p1?: UpdateRequestGuardrailsResponseP1 | (string & {});
+  s1?: UpdateRequestGuardrailsResponseS1 | (string & {});
+  s10?: UpdateRequestGuardrailsResponseS10 | (string & {});
+  s11?: UpdateRequestGuardrailsResponseS11 | (string & {});
+  s12?: UpdateRequestGuardrailsResponseS12 | (string & {});
+  s13?: UpdateRequestGuardrailsResponseS13 | (string & {});
+  s2?: UpdateRequestGuardrailsResponseS2 | (string & {});
+  s3?: UpdateRequestGuardrailsResponseS3 | (string & {});
+  s4?: UpdateRequestGuardrailsResponseS4 | (string & {});
+  s5?: UpdateRequestGuardrailsResponseS5 | (string & {});
+  s6?: UpdateRequestGuardrailsResponseS6 | (string & {});
+  s7?: UpdateRequestGuardrailsResponseS7 | (string & {});
+  s8?: UpdateRequestGuardrailsResponseS8 | (string & {});
+  s9?: UpdateRequestGuardrailsResponseS9 | (string & {});
 }
 export const UpdateRequestGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    p1: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseP1).pipe(T.Body("P1")),
-    ),
-    s1: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS1).pipe(T.Body("S1")),
-    ),
-    s10: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS10).pipe(T.Body("S10")),
-    ),
-    s11: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS11).pipe(T.Body("S11")),
-    ),
-    s12: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS12).pipe(T.Body("S12")),
-    ),
-    s13: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS13).pipe(T.Body("S13")),
-    ),
-    s2: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS2).pipe(T.Body("S2")),
-    ),
-    s3: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS3).pipe(T.Body("S3")),
-    ),
-    s4: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS4).pipe(T.Body("S4")),
-    ),
-    s5: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS5).pipe(T.Body("S5")),
-    ),
-    s6: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS6).pipe(T.Body("S6")),
-    ),
-    s7: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS7).pipe(T.Body("S7")),
-    ),
-    s8: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS8).pipe(T.Body("S8")),
-    ),
-    s9: S.optional(
-      S.NullOr(UpdateRequestGuardrailsResponseS9).pipe(T.Body("S9")),
-    ),
+    p1: S.optional(UpdateRequestGuardrailsResponseP1.pipe(T.Body("P1"))),
+    s1: S.optional(UpdateRequestGuardrailsResponseS1.pipe(T.Body("S1"))),
+    s10: S.optional(UpdateRequestGuardrailsResponseS10.pipe(T.Body("S10"))),
+    s11: S.optional(UpdateRequestGuardrailsResponseS11.pipe(T.Body("S11"))),
+    s12: S.optional(UpdateRequestGuardrailsResponseS12.pipe(T.Body("S12"))),
+    s13: S.optional(UpdateRequestGuardrailsResponseS13.pipe(T.Body("S13"))),
+    s2: S.optional(UpdateRequestGuardrailsResponseS2.pipe(T.Body("S2"))),
+    s3: S.optional(UpdateRequestGuardrailsResponseS3.pipe(T.Body("S3"))),
+    s4: S.optional(UpdateRequestGuardrailsResponseS4.pipe(T.Body("S4"))),
+    s5: S.optional(UpdateRequestGuardrailsResponseS5.pipe(T.Body("S5"))),
+    s6: S.optional(UpdateRequestGuardrailsResponseS6.pipe(T.Body("S6"))),
+    s7: S.optional(UpdateRequestGuardrailsResponseS7.pipe(T.Body("S7"))),
+    s8: S.optional(UpdateRequestGuardrailsResponseS8.pipe(T.Body("S8"))),
+    s9: S.optional(UpdateRequestGuardrailsResponseS9.pipe(T.Body("S9"))),
   }),
 ).annotate({
   identifier: "UpdateRequestGuardrailsResponse",
@@ -10565,16 +10490,16 @@ export const UpdateRequestOtelItemContentType = /*@__PURE__*/ S.String;
 export interface UpdateRequestOtelItem {
   headers: UpdateRequestOtelItemHeadersMap;
   url: string;
-  authorization?: string | null;
-  contentType?: UpdateRequestOtelItemContentType | (string & {}) | null;
+  authorization?: string;
+  contentType?: UpdateRequestOtelItemContentType | (string & {});
 }
 export const UpdateRequestOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: UpdateRequestOtelItemHeadersMap,
     url: S.String,
-    authorization: S.optional(S.NullOr(S.String)),
+    authorization: S.optional(S.String),
     contentType: S.optional(
-      S.NullOr(UpdateRequestOtelItemContentType).pipe(T.Body("content_type")),
+      UpdateRequestOtelItemContentType.pipe(T.Body("content_type")),
     ),
   }),
 ).annotate({
@@ -10652,24 +10577,24 @@ export interface UpdateRequestSpendLimitsRulesItem {
   limit: number;
   limitType: UpdateRequestSpendLimitsRulesItemLimitType | (string & {});
   window: number;
-  id?: string | null;
-  enabled?: boolean | null;
-  metadata?: unknown | null;
-  model?: UpdateRequestSpendLimitsRulesItemModel | null;
-  provider?: UpdateRequestSpendLimitsRulesItemProvider | null;
-  technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {}) | null;
+  id?: string;
+  enabled?: boolean;
+  metadata?: unknown;
+  model?: UpdateRequestSpendLimitsRulesItemModel;
+  provider?: UpdateRequestSpendLimitsRulesItemProvider;
+  technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {});
 }
 export const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     limitType: UpdateRequestSpendLimitsRulesItemLimitType,
     window: S.Number,
-    id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
-    model: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemModel)),
-    provider: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemProvider)),
-    technique: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesItemTechnique)),
+    id: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    metadata: S.optional(S.Unknown),
+    model: S.optional(UpdateRequestSpendLimitsRulesItemModel),
+    provider: S.optional(UpdateRequestSpendLimitsRulesItemProvider),
+    technique: S.optional(UpdateRequestSpendLimitsRulesItemTechnique),
   }),
 ).annotate({
   identifier: "UpdateRequestSpendLimitsRulesItem",
@@ -10682,13 +10607,13 @@ export const UpdateRequestSpendLimitsRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestSpendLimitsRulesList>;
 
 export interface UpdateRequestSpendLimits {
-  enabled?: boolean | null;
-  rules?: UpdateRequestSpendLimitsRulesList | null;
+  enabled?: boolean;
+  rules?: UpdateRequestSpendLimitsRulesList;
 }
 export const UpdateRequestSpendLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    rules: S.optional(S.NullOr(UpdateRequestSpendLimitsRulesList)),
+    enabled: S.optional(S.Boolean),
+    rules: S.optional(UpdateRequestSpendLimitsRulesList),
   }),
 ).annotate({
   identifier: "UpdateRequestSpendLimits",
@@ -10738,36 +10663,27 @@ export interface UpdateAiGatewayRequest {
   collectLogs: boolean;
   rateLimitingInterval: number | null;
   rateLimitingLimit: number | null;
-  authentication?: boolean | null;
-  dlp?: UpdateRequestDlp | null;
-  guardrails?: UpdateRequestGuardrails | null;
-  logManagement?: number | null;
-  logManagementStrategy?:
-    | UpdateRequestLogManagementStrategy
-    | (string & {})
-    | null;
-  logpush?: boolean | null;
-  logpushPublicKey?: string | null;
-  otel?: UpdateRequestOtelList | null;
-  rateLimitingTechnique?:
-    | UpdateRequestRateLimitingTechnique
-    | (string & {})
-    | null;
+  authentication?: boolean;
+  dlp?: UpdateRequestDlp;
+  guardrails?: UpdateRequestGuardrails;
+  logManagement?: number;
+  logManagementStrategy?: UpdateRequestLogManagementStrategy | (string & {});
+  logpush?: boolean;
+  logpushPublicKey?: string;
+  otel?: UpdateRequestOtelList;
+  rateLimitingTechnique?: UpdateRequestRateLimitingTechnique | (string & {});
   /** Backoff strategy for retry delays */
-  retryBackoff?: UpdateRequestRetryBackoff | (string & {}) | null;
+  retryBackoff?: UpdateRequestRetryBackoff | (string & {});
   /** Delay between retry attempts in milliseconds (0-5000) */
-  retryDelay?: number | null;
+  retryDelay?: number;
   /** Maximum number of retry attempts for failed requests (1-5) */
-  retryMaxAttempts?: number | null;
-  spendLimits?: UpdateRequestSpendLimits | null;
-  storeId?: string | null;
-  stripe?: UpdateRequestStripe | null;
+  retryMaxAttempts?: number;
+  spendLimits?: UpdateRequestSpendLimits;
+  storeId?: string;
+  stripe?: UpdateRequestStripe;
   /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
-  workersAiBillingMode?:
-    | UpdateRequestWorkersAiBillingMode
-    | (string & {})
-    | null;
-  zdr?: boolean | null;
+  workersAiBillingMode?: UpdateRequestWorkersAiBillingMode | (string & {});
+  zdr?: boolean;
 }
 export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10782,45 +10698,37 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("rate_limiting_interval"),
     ),
     rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
-    authentication: S.optional(S.NullOr(S.Boolean)),
-    dlp: S.optional(S.NullOr(UpdateRequestDlp)),
-    guardrails: S.optional(S.NullOr(UpdateRequestGuardrails)),
-    logManagement: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("log_management")),
-    ),
+    authentication: S.optional(S.Boolean),
+    dlp: S.optional(UpdateRequestDlp),
+    guardrails: S.optional(UpdateRequestGuardrails),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
     logManagementStrategy: S.optional(
-      S.NullOr(UpdateRequestLogManagementStrategy).pipe(
+      UpdateRequestLogManagementStrategy.pipe(
         T.Body("log_management_strategy"),
       ),
     ),
-    logpush: S.optional(S.NullOr(S.Boolean)),
-    logpushPublicKey: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpush_public_key")),
-    ),
-    otel: S.optional(S.NullOr(UpdateRequestOtelList)),
+    logpush: S.optional(S.Boolean),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
+    otel: S.optional(UpdateRequestOtelList),
     rateLimitingTechnique: S.optional(
-      S.NullOr(UpdateRequestRateLimitingTechnique).pipe(
+      UpdateRequestRateLimitingTechnique.pipe(
         T.Body("rate_limiting_technique"),
       ),
     ),
     retryBackoff: S.optional(
-      S.NullOr(UpdateRequestRetryBackoff).pipe(T.Body("retry_backoff")),
+      UpdateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
     ),
-    retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
-    retryMaxAttempts: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("retry_max_attempts")),
-    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
     spendLimits: S.optional(
-      S.NullOr(UpdateRequestSpendLimits).pipe(T.Body("spend_limits")),
+      UpdateRequestSpendLimits.pipe(T.Body("spend_limits")),
     ),
-    storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-    stripe: S.optional(S.NullOr(UpdateRequestStripe)),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
+    stripe: S.optional(UpdateRequestStripe),
     workersAiBillingMode: S.optional(
-      S.NullOr(UpdateRequestWorkersAiBillingMode).pipe(
-        T.Body("workers_ai_billing_mode"),
-      ),
+      UpdateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
     ),
-    zdr: S.optional(S.NullOr(S.Boolean)),
+    zdr: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({

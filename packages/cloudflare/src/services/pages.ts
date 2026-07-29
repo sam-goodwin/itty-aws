@@ -151,32 +151,26 @@ export class ProjectNotFound extends T.applyErrorMatchers(
 
 export interface ProjectsCreateRequestBuildConfig {
   /** Enable build caching for the project. */
-  buildCaching?: boolean | null;
+  buildCaching?: boolean;
   /** Command used to build project. */
-  buildCommand?: string | null;
+  buildCommand?: string;
   /** Output directory of the build. */
-  destinationDir?: string | null;
+  destinationDir?: string;
   /** Directory to run the command. */
-  rootDir?: string | null;
+  rootDir?: string;
   /** The classifying tag for analytics. */
-  webAnalyticsTag?: string | null;
+  webAnalyticsTag?: string;
   /** The auth token for analytics. */
-  webAnalyticsToken?: string | null;
+  webAnalyticsToken?: string;
 }
 export const ProjectsCreateRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    buildCaching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("build_caching"))),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    destinationDir: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_dir")),
-    ),
-    rootDir: S.optional(S.NullOr(S.String).pipe(T.Body("root_dir"))),
-    webAnalyticsTag: S.optional(
-      S.NullOr(S.String).pipe(T.Body("web_analytics_tag")),
-    ),
-    webAnalyticsToken: S.optional(
-      S.NullOr(S.String).pipe(T.Body("web_analytics_token")),
-    ),
+    buildCaching: S.optional(S.Boolean.pipe(T.Body("build_caching"))),
+    buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
+    destinationDir: S.optional(S.String.pipe(T.Body("destination_dir"))),
+    rootDir: S.optional(S.String.pipe(T.Body("root_dir"))),
+    webAnalyticsTag: S.optional(S.String.pipe(T.Body("web_analytics_tag"))),
+    webAnalyticsToken: S.optional(S.String.pipe(T.Body("web_analytics_token"))),
   }),
 ).annotate({
   identifier: "ProjectsCreateRequestBuildConfig",
@@ -410,16 +404,16 @@ export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
   /** The Service name. */
   service: string;
   /** The entrypoint to bind to. */
-  entrypoint?: string | null;
+  entrypoint?: string;
   /** The Service environment. */
-  environment?: string | null;
+  environment?: string;
 }
 export const ProjectsCreateRequestDeploymentConfigsPreviewServicesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ProjectsCreateRequestDeploymentConfigsPreviewServicesValue",
@@ -470,143 +464,138 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap =
 
 export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
-  aiBindings?: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap | null;
+  aiBindings?: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap;
   /** Whether to always use the latest compatibility date for Pages Functions. */
-  alwaysUseLatestCompatibilityDate?: boolean | null;
+  alwaysUseLatestCompatibilityDate?: boolean;
   /** Analytics Engine bindings used for Pages Functions. */
-  analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap | null;
+  analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
-  browsers?: ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap | null;
+  browsers?: ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap;
   /** The major version of the build image to use for Pages Functions. */
-  buildImageMajorVersion?: number | null;
+  buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
-  compatibilityDate?: string | null;
+  compatibilityDate?: string;
   /** Compatibility flags used for Pages Functions. */
-  compatibilityFlags?: ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList | null;
+  compatibilityFlags?: ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList;
   /** D1 databases used for Pages Functions. */
-  d1Databases?: ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap | null;
+  d1Databases?: ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap;
   /** Durable Object namespaces used for Pages Functions. */
-  durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap | null;
+  durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: UntypedBindingMap | null;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
-  failOpen?: boolean | null;
+  failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
-  hyperdriveBindings?: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap | null;
+  hyperdriveBindings?: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap;
   /** KV namespaces used for Pages Functions. */
-  kvNamespaces?: ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap | null;
+  kvNamespaces?: ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap;
   /** Limits for Pages Functions. */
-  limits?: ProjectsCreateRequestDeploymentConfigsPreviewLimits | null;
+  limits?: ProjectsCreateRequestDeploymentConfigsPreviewLimits;
   /** mTLS bindings used for Pages Functions. */
-  mtlsCertificates?: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap | null;
+  mtlsCertificates?: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap;
   /** Placement setting used for Pages Functions. */
-  placement?: ProjectsCreateRequestDeploymentConfigsPreviewPlacement | null;
+  placement?: ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
   /** Queue Producer bindings used for Pages Functions. */
-  queueProducers?: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap | null;
+  queueProducers?: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap;
   /** R2 buckets used for Pages Functions. */
-  r2Buckets?: ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap | null;
+  r2Buckets?: ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap;
   /** Services used for Pages Functions. */
-  services?: ProjectsCreateRequestDeploymentConfigsPreviewServicesMap | null;
+  services?: ProjectsCreateRequestDeploymentConfigsPreviewServicesMap;
   /** The usage model for Pages Functions. */
   usageModel?:
     | ProjectsCreateRequestDeploymentConfigsPreviewUsageModel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Vectorize bindings used for Pages Functions. */
-  vectorizeBindings?: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap | null;
+  vectorizeBindings?: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap;
   /** Hash of the Wrangler configuration used for the deployment. */
-  wranglerConfigHash?: string | null;
+  wranglerConfigHash?: string;
 }
 export const ProjectsCreateRequestDeploymentConfigsPreview =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aiBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap,
-        ).pipe(T.Body("ai_bindings")),
-      ),
-      alwaysUseLatestCompatibilityDate: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("always_use_latest_compatibility_date"),
+        ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap.pipe(
+          T.Body("ai_bindings"),
         ),
       ),
+      alwaysUseLatestCompatibilityDate: S.optional(
+        S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
+      ),
       analyticsEngineDatasets: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap,
-        ).pipe(T.Body("analytics_engine_datasets")),
+        ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap.pipe(
+          T.Body("analytics_engine_datasets"),
+        ),
       ),
       browsers: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap),
+        ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap,
       ),
       buildImageMajorVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("build_image_major_version")),
+        S.Number.pipe(T.Body("build_image_major_version")),
       ),
       compatibilityDate: S.optional(
-        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
+        S.String.pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList,
-        ).pipe(T.Body("compatibility_flags")),
+        ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       d1Databases: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap,
-        ).pipe(T.Body("d1_databases")),
+        ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap.pipe(
+          T.Body("d1_databases"),
+        ),
       ),
       durableObjectNamespaces: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap,
-        ).pipe(T.Body("durable_object_namespaces")),
+        ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap.pipe(
+          T.Body("durable_object_namespaces"),
+        ),
       ),
-      envVars: S.optional(S.NullOr(UntypedBindingMap).pipe(T.Body("env_vars"))),
-      failOpen: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_open"))),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
+      failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap,
-        ).pipe(T.Body("hyperdrive_bindings")),
+        ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
+          T.Body("hyperdrive_bindings"),
+        ),
       ),
       kvNamespaces: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap,
-        ).pipe(T.Body("kv_namespaces")),
+        ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap.pipe(
+          T.Body("kv_namespaces"),
+        ),
       ),
-      limits: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
-      ),
+      limits: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
       mtlsCertificates: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap,
-        ).pipe(T.Body("mtls_certificates")),
+        ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap.pipe(
+          T.Body("mtls_certificates"),
+        ),
       ),
       placement: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement),
+        ProjectsCreateRequestDeploymentConfigsPreviewPlacement,
       ),
       queueProducers: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap,
-        ).pipe(T.Body("queue_producers")),
+        ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap.pipe(
+          T.Body("queue_producers"),
+        ),
       ),
       r2Buckets: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap,
-        ).pipe(T.Body("r2_buckets")),
+        ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap.pipe(
+          T.Body("r2_buckets"),
+        ),
       ),
       services: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewServicesMap),
+        ProjectsCreateRequestDeploymentConfigsPreviewServicesMap,
       ),
       usageModel: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewUsageModel).pipe(
+        ProjectsCreateRequestDeploymentConfigsPreviewUsageModel.pipe(
           T.Body("usage_model"),
         ),
       ),
       vectorizeBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap,
-        ).pipe(T.Body("vectorize_bindings")),
+        ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap.pipe(
+          T.Body("vectorize_bindings"),
+        ),
       ),
       wranglerConfigHash: S.optional(
-        S.NullOr(S.String).pipe(T.Body("wrangler_config_hash")),
+        S.String.pipe(T.Body("wrangler_config_hash")),
       ),
     }),
   ).annotate({
@@ -838,16 +827,16 @@ export interface ProjectsCreateRequestDeploymentConfigsProductionServicesValue {
   /** The Service name. */
   service: string;
   /** The entrypoint to bind to. */
-  entrypoint?: string | null;
+  entrypoint?: string;
   /** The Service environment. */
-  environment?: string | null;
+  environment?: string;
 }
 export const ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ProjectsCreateRequestDeploymentConfigsProductionServicesValue",
@@ -898,143 +887,140 @@ export const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMa
 
 export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
-  aiBindings?: ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap | null;
+  aiBindings?: ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap;
   /** Whether to always use the latest compatibility date for Pages Functions. */
-  alwaysUseLatestCompatibilityDate?: boolean | null;
+  alwaysUseLatestCompatibilityDate?: boolean;
   /** Analytics Engine bindings used for Pages Functions. */
-  analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap | null;
+  analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
-  browsers?: ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap | null;
+  browsers?: ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap;
   /** The major version of the build image to use for Pages Functions. */
-  buildImageMajorVersion?: number | null;
+  buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
-  compatibilityDate?: string | null;
+  compatibilityDate?: string;
   /** Compatibility flags used for Pages Functions. */
-  compatibilityFlags?: ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList | null;
+  compatibilityFlags?: ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList;
   /** D1 databases used for Pages Functions. */
-  d1Databases?: ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap | null;
+  d1Databases?: ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap;
   /** Durable Object namespaces used for Pages Functions. */
-  durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap | null;
+  durableObjectNamespaces?: ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: UntypedBindingMap | null;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
-  failOpen?: boolean | null;
+  failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
-  hyperdriveBindings?: ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap | null;
+  hyperdriveBindings?: ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap;
   /** KV namespaces used for Pages Functions. */
-  kvNamespaces?: ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap | null;
+  kvNamespaces?: ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap;
   /** Limits for Pages Functions. */
-  limits?: ProjectsCreateRequestDeploymentConfigsProductionLimits | null;
+  limits?: ProjectsCreateRequestDeploymentConfigsProductionLimits;
   /** mTLS bindings used for Pages Functions. */
-  mtlsCertificates?: ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap | null;
+  mtlsCertificates?: ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap;
   /** Placement setting used for Pages Functions. */
-  placement?: ProjectsCreateRequestDeploymentConfigsProductionPlacement | null;
+  placement?: ProjectsCreateRequestDeploymentConfigsProductionPlacement;
   /** Queue Producer bindings used for Pages Functions. */
-  queueProducers?: ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap | null;
+  queueProducers?: ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap;
   /** R2 buckets used for Pages Functions. */
-  r2Buckets?: ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap | null;
+  r2Buckets?: ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap;
   /** Services used for Pages Functions. */
-  services?: ProjectsCreateRequestDeploymentConfigsProductionServicesMap | null;
+  services?: ProjectsCreateRequestDeploymentConfigsProductionServicesMap;
   /** The usage model for Pages Functions. */
   usageModel?:
     | ProjectsCreateRequestDeploymentConfigsProductionUsageModel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Vectorize bindings used for Pages Functions. */
-  vectorizeBindings?: ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap | null;
+  vectorizeBindings?: ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap;
   /** Hash of the Wrangler configuration used for the deployment. */
-  wranglerConfigHash?: string | null;
+  wranglerConfigHash?: string;
 }
 export const ProjectsCreateRequestDeploymentConfigsProduction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aiBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap,
-        ).pipe(T.Body("ai_bindings")),
-      ),
-      alwaysUseLatestCompatibilityDate: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("always_use_latest_compatibility_date"),
+        ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap.pipe(
+          T.Body("ai_bindings"),
         ),
       ),
+      alwaysUseLatestCompatibilityDate: S.optional(
+        S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
+      ),
       analyticsEngineDatasets: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap,
-        ).pipe(T.Body("analytics_engine_datasets")),
+        ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap.pipe(
+          T.Body("analytics_engine_datasets"),
+        ),
       ),
       browsers: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap),
+        ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap,
       ),
       buildImageMajorVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("build_image_major_version")),
+        S.Number.pipe(T.Body("build_image_major_version")),
       ),
       compatibilityDate: S.optional(
-        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
+        S.String.pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList,
-        ).pipe(T.Body("compatibility_flags")),
+        ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       d1Databases: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap,
-        ).pipe(T.Body("d1_databases")),
+        ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap.pipe(
+          T.Body("d1_databases"),
+        ),
       ),
       durableObjectNamespaces: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap,
-        ).pipe(T.Body("durable_object_namespaces")),
+        ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap.pipe(
+          T.Body("durable_object_namespaces"),
+        ),
       ),
-      envVars: S.optional(S.NullOr(UntypedBindingMap).pipe(T.Body("env_vars"))),
-      failOpen: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_open"))),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
+      failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap,
-        ).pipe(T.Body("hyperdrive_bindings")),
+        ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
+          T.Body("hyperdrive_bindings"),
+        ),
       ),
       kvNamespaces: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap,
-        ).pipe(T.Body("kv_namespaces")),
+        ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap.pipe(
+          T.Body("kv_namespaces"),
+        ),
       ),
       limits: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsProductionLimits),
+        ProjectsCreateRequestDeploymentConfigsProductionLimits,
       ),
       mtlsCertificates: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap,
-        ).pipe(T.Body("mtls_certificates")),
+        ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap.pipe(
+          T.Body("mtls_certificates"),
+        ),
       ),
       placement: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsProductionPlacement),
+        ProjectsCreateRequestDeploymentConfigsProductionPlacement,
       ),
       queueProducers: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap,
-        ).pipe(T.Body("queue_producers")),
+        ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap.pipe(
+          T.Body("queue_producers"),
+        ),
       ),
       r2Buckets: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap,
-        ).pipe(T.Body("r2_buckets")),
+        ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap.pipe(
+          T.Body("r2_buckets"),
+        ),
       ),
       services: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsProductionServicesMap),
+        ProjectsCreateRequestDeploymentConfigsProductionServicesMap,
       ),
       usageModel: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionUsageModel,
-        ).pipe(T.Body("usage_model")),
+        ProjectsCreateRequestDeploymentConfigsProductionUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
       vectorizeBindings: S.optional(
-        S.NullOr(
-          ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap,
-        ).pipe(T.Body("vectorize_bindings")),
+        ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap.pipe(
+          T.Body("vectorize_bindings"),
+        ),
       ),
       wranglerConfigHash: S.optional(
-        S.NullOr(S.String).pipe(T.Body("wrangler_config_hash")),
+        S.String.pipe(T.Body("wrangler_config_hash")),
       ),
     }),
   ).annotate({
@@ -1043,19 +1029,15 @@ export const ProjectsCreateRequestDeploymentConfigsProduction =
 
 export interface ProjectsCreateRequestDeploymentConfigs {
   /** Configs for preview deploys. */
-  preview?: ProjectsCreateRequestDeploymentConfigsPreview | null;
+  preview?: ProjectsCreateRequestDeploymentConfigsPreview;
   /** Configs for production deploys. */
-  production?: ProjectsCreateRequestDeploymentConfigsProduction | null;
+  production?: ProjectsCreateRequestDeploymentConfigsProduction;
 }
 export const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      preview: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsPreview),
-      ),
-      production: S.optional(
-        S.NullOr(ProjectsCreateRequestDeploymentConfigsProduction),
-      ),
+      preview: S.optional(ProjectsCreateRequestDeploymentConfigsPreview),
+      production: S.optional(ProjectsCreateRequestDeploymentConfigsProduction),
     }),
 ).annotate({
   identifier: "ProjectsCreateRequestDeploymentConfigs",
@@ -1096,78 +1078,75 @@ export const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting =
 
 export interface ProjectsCreateRequestSourceConfig {
   /** Whether to enable automatic deployments when pushing to the source repository. */
-  deploymentsEnabled?: boolean | null;
+  deploymentsEnabled?: boolean;
   /** The owner of the repository. */
-  owner?: string | null;
+  owner?: string;
   /** The owner ID of the repository. */
-  ownerId?: string | null;
+  ownerId?: string;
   /** A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported. */
-  pathExcludes?: ProjectsCreateRequestSourceConfigPathExcludesList | null;
+  pathExcludes?: ProjectsCreateRequestSourceConfigPathExcludesList;
   /** A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported. */
-  pathIncludes?: ProjectsCreateRequestSourceConfigPathIncludesList | null;
+  pathIncludes?: ProjectsCreateRequestSourceConfigPathIncludesList;
   /** Whether to enable PR comments. */
-  prCommentsEnabled?: boolean | null;
+  prCommentsEnabled?: boolean;
   /** A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`. */
-  previewBranchExcludes?: ProjectsCreateRequestSourceConfigPreviewBranchExcludesList | null;
+  previewBranchExcludes?: ProjectsCreateRequestSourceConfigPreviewBranchExcludesList;
   /** A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`. */
-  previewBranchIncludes?: ProjectsCreateRequestSourceConfigPreviewBranchIncludesList | null;
+  previewBranchIncludes?: ProjectsCreateRequestSourceConfigPreviewBranchIncludesList;
   /** Controls whether commits to preview branches trigger a preview deployment. */
   previewDeploymentSetting?:
     | ProjectsCreateRequestSourceConfigPreviewDeploymentSetting
-    | (string & {})
-    | null;
+    | (string & {});
   /** The production branch of the repository. */
-  productionBranch?: string | null;
+  productionBranch?: string;
   /** Whether to trigger a production deployment on commits to the production branch. */
-  productionDeploymentsEnabled?: boolean | null;
+  productionDeploymentsEnabled?: boolean;
   /** The ID of the repository. */
-  repoId?: string | null;
+  repoId?: string;
   /** The name of the repository. */
-  repoName?: string | null;
+  repoName?: string;
 }
 export const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deployments_enabled")),
+      S.Boolean.pipe(T.Body("deployments_enabled")),
     ),
-    owner: S.optional(S.NullOr(S.String)),
-    ownerId: S.optional(S.NullOr(S.String).pipe(T.Body("owner_id"))),
+    owner: S.optional(S.String),
+    ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
     pathExcludes: S.optional(
-      S.NullOr(ProjectsCreateRequestSourceConfigPathExcludesList).pipe(
+      ProjectsCreateRequestSourceConfigPathExcludesList.pipe(
         T.Body("path_excludes"),
       ),
     ),
     pathIncludes: S.optional(
-      S.NullOr(ProjectsCreateRequestSourceConfigPathIncludesList).pipe(
+      ProjectsCreateRequestSourceConfigPathIncludesList.pipe(
         T.Body("path_includes"),
       ),
     ),
     prCommentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("pr_comments_enabled")),
+      S.Boolean.pipe(T.Body("pr_comments_enabled")),
     ),
     previewBranchExcludes: S.optional(
-      S.NullOr(ProjectsCreateRequestSourceConfigPreviewBranchExcludesList).pipe(
+      ProjectsCreateRequestSourceConfigPreviewBranchExcludesList.pipe(
         T.Body("preview_branch_excludes"),
       ),
     ),
     previewBranchIncludes: S.optional(
-      S.NullOr(ProjectsCreateRequestSourceConfigPreviewBranchIncludesList).pipe(
+      ProjectsCreateRequestSourceConfigPreviewBranchIncludesList.pipe(
         T.Body("preview_branch_includes"),
       ),
     ),
     previewDeploymentSetting: S.optional(
-      S.NullOr(ProjectsCreateRequestSourceConfigPreviewDeploymentSetting).pipe(
+      ProjectsCreateRequestSourceConfigPreviewDeploymentSetting.pipe(
         T.Body("preview_deployment_setting"),
       ),
     ),
-    productionBranch: S.optional(
-      S.NullOr(S.String).pipe(T.Body("production_branch")),
-    ),
+    productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
     productionDeploymentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("production_deployments_enabled")),
+      S.Boolean.pipe(T.Body("production_deployments_enabled")),
     ),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+    repoId: S.optional(S.String.pipe(T.Body("repo_id"))),
+    repoName: S.optional(S.String.pipe(T.Body("repo_name"))),
   }),
 ).annotate({
   identifier: "ProjectsCreateRequestSourceConfig",
@@ -1198,11 +1177,11 @@ export interface CreateProjectRequest {
   /** Production branch of the project. Used to identify production deployments. */
   productionBranch: string;
   /** Configs for the project build process. */
-  buildConfig?: ProjectsCreateRequestBuildConfig | null;
+  buildConfig?: ProjectsCreateRequestBuildConfig;
   /** Configs for deployments in a project. */
-  deploymentConfigs?: ProjectsCreateRequestDeploymentConfigs | null;
+  deploymentConfigs?: ProjectsCreateRequestDeploymentConfigs;
   /** Configs for the project source control. */
-  source?: ProjectsCreateRequestSource | null;
+  source?: ProjectsCreateRequestSource;
 }
 export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1210,14 +1189,12 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     productionBranch: S.String.pipe(T.Body("production_branch")),
     buildConfig: S.optional(
-      S.NullOr(ProjectsCreateRequestBuildConfig).pipe(T.Body("build_config")),
+      ProjectsCreateRequestBuildConfig.pipe(T.Body("build_config")),
     ),
     deploymentConfigs: S.optional(
-      S.NullOr(ProjectsCreateRequestDeploymentConfigs).pipe(
-        T.Body("deployment_configs"),
-      ),
+      ProjectsCreateRequestDeploymentConfigs.pipe(T.Body("deployment_configs")),
     ),
-    source: S.optional(S.NullOr(ProjectsCreateRequestSource)),
+    source: S.optional(ProjectsCreateRequestSource),
   })
     .pipe(
       T.Http({
@@ -2655,49 +2632,43 @@ export interface CreateProjectDeploymentRequest {
   /** Name of the project. */
   projectName: string;
   /** The branch to build the new deployment from. */
-  branch?: string | null;
-  commitDirty?: boolean | null;
-  commitHash?: string | null;
-  commitMessage?: string | null;
+  branch?: string;
+  commitDirty?: boolean;
+  commitHash?: string;
+  commitMessage?: string;
   /** JSON string mapping file paths to their content hashes. */
-  manifest?: string | null;
-  pagesBuildOutputDir?: string | null;
-  wranglerConfigHash?: string | null;
-  headers?: unknown | null;
-  redirects?: unknown | null;
-  routesJson?: unknown | null;
-  workerBundle?: unknown | null;
-  workerJs?: unknown | null;
-  functionsFilepathRoutingConfigJson?: unknown | null;
+  manifest?: string;
+  pagesBuildOutputDir?: string;
+  wranglerConfigHash?: string;
+  headers?: unknown;
+  redirects?: unknown;
+  routesJson?: unknown;
+  workerBundle?: unknown;
+  workerJs?: unknown;
+  functionsFilepathRoutingConfigJson?: unknown;
 }
 export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
-    branch: S.optional(S.NullOr(S.String)),
-    commitDirty: S.optional(S.NullOr(S.Boolean).pipe(T.Body("commit_dirty"))),
-    commitHash: S.optional(S.NullOr(S.String).pipe(T.Body("commit_hash"))),
-    commitMessage: S.optional(
-      S.NullOr(S.String).pipe(T.Body("commit_message")),
-    ),
-    manifest: S.optional(S.NullOr(S.String)),
+    branch: S.optional(S.String),
+    commitDirty: S.optional(S.Boolean.pipe(T.Body("commit_dirty"))),
+    commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
+    commitMessage: S.optional(S.String.pipe(T.Body("commit_message"))),
+    manifest: S.optional(S.String),
     pagesBuildOutputDir: S.optional(
-      S.NullOr(S.String).pipe(T.Body("pages_build_output_dir")),
+      S.String.pipe(T.Body("pages_build_output_dir")),
     ),
     wranglerConfigHash: S.optional(
-      S.NullOr(S.String).pipe(T.Body("wrangler_config_hash")),
+      S.String.pipe(T.Body("wrangler_config_hash")),
     ),
-    headers: S.optional(S.NullOr(S.Unknown).pipe(T.Body("_headers"))),
-    redirects: S.optional(S.NullOr(S.Unknown).pipe(T.Body("_redirects"))),
-    routesJson: S.optional(S.NullOr(S.Unknown).pipe(T.Body("_routes.json"))),
-    workerBundle: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("_worker.bundle")),
-    ),
-    workerJs: S.optional(S.NullOr(S.Unknown).pipe(T.Body("_worker.js"))),
+    headers: S.optional(S.Unknown.pipe(T.Body("_headers"))),
+    redirects: S.optional(S.Unknown.pipe(T.Body("_redirects"))),
+    routesJson: S.optional(S.Unknown.pipe(T.Body("_routes.json"))),
+    workerBundle: S.optional(S.Unknown.pipe(T.Body("_worker.bundle"))),
+    workerJs: S.optional(S.Unknown.pipe(T.Body("_worker.js"))),
     functionsFilepathRoutingConfigJson: S.optional(
-      S.NullOr(S.Unknown).pipe(
-        T.Body("functions-filepath-routing-config.json"),
-      ),
+      S.Unknown.pipe(T.Body("functions-filepath-routing-config.json")),
     ),
   })
     .pipe(
@@ -7319,32 +7290,26 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ProjectsEditRequestBuildConfig {
   /** Enable build caching for the project. */
-  buildCaching?: boolean | null;
+  buildCaching?: boolean;
   /** Command used to build project. */
-  buildCommand?: string | null;
+  buildCommand?: string;
   /** Output directory of the build. */
-  destinationDir?: string | null;
+  destinationDir?: string;
   /** Directory to run the command. */
-  rootDir?: string | null;
+  rootDir?: string;
   /** The classifying tag for analytics. */
-  webAnalyticsTag?: string | null;
+  webAnalyticsTag?: string;
   /** The auth token for analytics. */
-  webAnalyticsToken?: string | null;
+  webAnalyticsToken?: string;
 }
 export const ProjectsEditRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    buildCaching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("build_caching"))),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    destinationDir: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_dir")),
-    ),
-    rootDir: S.optional(S.NullOr(S.String).pipe(T.Body("root_dir"))),
-    webAnalyticsTag: S.optional(
-      S.NullOr(S.String).pipe(T.Body("web_analytics_tag")),
-    ),
-    webAnalyticsToken: S.optional(
-      S.NullOr(S.String).pipe(T.Body("web_analytics_token")),
-    ),
+    buildCaching: S.optional(S.Boolean.pipe(T.Body("build_caching"))),
+    buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
+    destinationDir: S.optional(S.String.pipe(T.Body("destination_dir"))),
+    rootDir: S.optional(S.String.pipe(T.Body("root_dir"))),
+    webAnalyticsTag: S.optional(S.String.pipe(T.Body("web_analytics_tag"))),
+    webAnalyticsToken: S.optional(S.String.pipe(T.Body("web_analytics_token"))),
   }),
 ).annotate({
   identifier: "ProjectsEditRequestBuildConfig",
@@ -7571,16 +7536,16 @@ export interface ProjectsEditRequestDeploymentConfigsPreviewServicesValue {
   /** The Service name. */
   service: string;
   /** The entrypoint to bind to. */
-  entrypoint?: string | null;
+  entrypoint?: string;
   /** The Service environment. */
-  environment?: string | null;
+  environment?: string;
 }
 export const ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ProjectsEditRequestDeploymentConfigsPreviewServicesValue",
@@ -7630,143 +7595,138 @@ export const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap =
 
 export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
-  aiBindings?: ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap | null;
+  aiBindings?: ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap;
   /** Whether to always use the latest compatibility date for Pages Functions. */
-  alwaysUseLatestCompatibilityDate?: boolean | null;
+  alwaysUseLatestCompatibilityDate?: boolean;
   /** Analytics Engine bindings used for Pages Functions. */
-  analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap | null;
+  analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
-  browsers?: ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap | null;
+  browsers?: ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap;
   /** The major version of the build image to use for Pages Functions. */
-  buildImageMajorVersion?: number | null;
+  buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
-  compatibilityDate?: string | null;
+  compatibilityDate?: string;
   /** Compatibility flags used for Pages Functions. */
-  compatibilityFlags?: ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList | null;
+  compatibilityFlags?: ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList;
   /** D1 databases used for Pages Functions. */
-  d1Databases?: ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap | null;
+  d1Databases?: ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap;
   /** Durable Object namespaces used for Pages Functions. */
-  durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap | null;
+  durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: UntypedBindingMap | null;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
-  failOpen?: boolean | null;
+  failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
-  hyperdriveBindings?: ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap | null;
+  hyperdriveBindings?: ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap;
   /** KV namespaces used for Pages Functions. */
-  kvNamespaces?: ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap | null;
+  kvNamespaces?: ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap;
   /** Limits for Pages Functions. */
-  limits?: ProjectsEditRequestDeploymentConfigsPreviewLimits | null;
+  limits?: ProjectsEditRequestDeploymentConfigsPreviewLimits;
   /** mTLS bindings used for Pages Functions. */
-  mtlsCertificates?: ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap | null;
+  mtlsCertificates?: ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap;
   /** Placement setting used for Pages Functions. */
-  placement?: ProjectsEditRequestDeploymentConfigsPreviewPlacement | null;
+  placement?: ProjectsEditRequestDeploymentConfigsPreviewPlacement;
   /** Queue Producer bindings used for Pages Functions. */
-  queueProducers?: ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap | null;
+  queueProducers?: ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap;
   /** R2 buckets used for Pages Functions. */
-  r2Buckets?: ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap | null;
+  r2Buckets?: ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap;
   /** Services used for Pages Functions. */
-  services?: ProjectsEditRequestDeploymentConfigsPreviewServicesMap | null;
+  services?: ProjectsEditRequestDeploymentConfigsPreviewServicesMap;
   /** The usage model for Pages Functions. */
   usageModel?:
     | ProjectsEditRequestDeploymentConfigsPreviewUsageModel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Vectorize bindings used for Pages Functions. */
-  vectorizeBindings?: ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap | null;
+  vectorizeBindings?: ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap;
   /** Hash of the Wrangler configuration used for the deployment. */
-  wranglerConfigHash?: string | null;
+  wranglerConfigHash?: string;
 }
 export const ProjectsEditRequestDeploymentConfigsPreview =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aiBindings: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap).pipe(
+        ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap.pipe(
           T.Body("ai_bindings"),
         ),
       ),
       alwaysUseLatestCompatibilityDate: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("always_use_latest_compatibility_date"),
-        ),
+        S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
       ),
       analyticsEngineDatasets: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap,
-        ).pipe(T.Body("analytics_engine_datasets")),
+        ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap.pipe(
+          T.Body("analytics_engine_datasets"),
+        ),
       ),
       browsers: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap),
+        ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap,
       ),
       buildImageMajorVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("build_image_major_version")),
+        S.Number.pipe(T.Body("build_image_major_version")),
       ),
       compatibilityDate: S.optional(
-        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
+        S.String.pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList,
-        ).pipe(T.Body("compatibility_flags")),
+        ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       d1Databases: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap,
-        ).pipe(T.Body("d1_databases")),
+        ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap.pipe(
+          T.Body("d1_databases"),
+        ),
       ),
       durableObjectNamespaces: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap,
-        ).pipe(T.Body("durable_object_namespaces")),
+        ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap.pipe(
+          T.Body("durable_object_namespaces"),
+        ),
       ),
-      envVars: S.optional(S.NullOr(UntypedBindingMap).pipe(T.Body("env_vars"))),
-      failOpen: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_open"))),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
+      failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap,
-        ).pipe(T.Body("hyperdrive_bindings")),
+        ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
+          T.Body("hyperdrive_bindings"),
+        ),
       ),
       kvNamespaces: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap,
-        ).pipe(T.Body("kv_namespaces")),
+        ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap.pipe(
+          T.Body("kv_namespaces"),
+        ),
       ),
-      limits: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewLimits),
-      ),
+      limits: S.optional(ProjectsEditRequestDeploymentConfigsPreviewLimits),
       mtlsCertificates: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap,
-        ).pipe(T.Body("mtls_certificates")),
+        ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap.pipe(
+          T.Body("mtls_certificates"),
+        ),
       ),
       placement: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewPlacement),
+        ProjectsEditRequestDeploymentConfigsPreviewPlacement,
       ),
       queueProducers: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap,
-        ).pipe(T.Body("queue_producers")),
+        ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap.pipe(
+          T.Body("queue_producers"),
+        ),
       ),
       r2Buckets: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap).pipe(
+        ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap.pipe(
           T.Body("r2_buckets"),
         ),
       ),
       services: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewServicesMap),
+        ProjectsEditRequestDeploymentConfigsPreviewServicesMap,
       ),
       usageModel: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreviewUsageModel).pipe(
+        ProjectsEditRequestDeploymentConfigsPreviewUsageModel.pipe(
           T.Body("usage_model"),
         ),
       ),
       vectorizeBindings: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap,
-        ).pipe(T.Body("vectorize_bindings")),
+        ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap.pipe(
+          T.Body("vectorize_bindings"),
+        ),
       ),
       wranglerConfigHash: S.optional(
-        S.NullOr(S.String).pipe(T.Body("wrangler_config_hash")),
+        S.String.pipe(T.Body("wrangler_config_hash")),
       ),
     }),
   ).annotate({
@@ -7996,16 +7956,16 @@ export interface ProjectsEditRequestDeploymentConfigsProductionServicesValue {
   /** The Service name. */
   service: string;
   /** The entrypoint to bind to. */
-  entrypoint?: string | null;
+  entrypoint?: string;
   /** The Service environment. */
-  environment?: string | null;
+  environment?: string;
 }
 export const ProjectsEditRequestDeploymentConfigsProductionServicesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
+      entrypoint: S.optional(S.String),
+      environment: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ProjectsEditRequestDeploymentConfigsProductionServicesValue",
@@ -8056,143 +8016,138 @@ export const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap 
 
 export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
-  aiBindings?: ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap | null;
+  aiBindings?: ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap;
   /** Whether to always use the latest compatibility date for Pages Functions. */
-  alwaysUseLatestCompatibilityDate?: boolean | null;
+  alwaysUseLatestCompatibilityDate?: boolean;
   /** Analytics Engine bindings used for Pages Functions. */
-  analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap | null;
+  analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
-  browsers?: ProjectsEditRequestDeploymentConfigsProductionBrowsersMap | null;
+  browsers?: ProjectsEditRequestDeploymentConfigsProductionBrowsersMap;
   /** The major version of the build image to use for Pages Functions. */
-  buildImageMajorVersion?: number | null;
+  buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
-  compatibilityDate?: string | null;
+  compatibilityDate?: string;
   /** Compatibility flags used for Pages Functions. */
-  compatibilityFlags?: ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList | null;
+  compatibilityFlags?: ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList;
   /** D1 databases used for Pages Functions. */
-  d1Databases?: ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap | null;
+  d1Databases?: ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap;
   /** Durable Object namespaces used for Pages Functions. */
-  durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap | null;
+  durableObjectNamespaces?: ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap;
   /** Environment variables used for builds and Pages Functions. */
-  envVars?: UntypedBindingMap | null;
+  envVars?: UntypedBindingMap;
   /** Whether to fail open when the deployment config cannot be applied. */
-  failOpen?: boolean | null;
+  failOpen?: boolean;
   /** Hyperdrive bindings used for Pages Functions. */
-  hyperdriveBindings?: ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap | null;
+  hyperdriveBindings?: ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap;
   /** KV namespaces used for Pages Functions. */
-  kvNamespaces?: ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap | null;
+  kvNamespaces?: ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap;
   /** Limits for Pages Functions. */
-  limits?: ProjectsEditRequestDeploymentConfigsProductionLimits | null;
+  limits?: ProjectsEditRequestDeploymentConfigsProductionLimits;
   /** mTLS bindings used for Pages Functions. */
-  mtlsCertificates?: ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap | null;
+  mtlsCertificates?: ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap;
   /** Placement setting used for Pages Functions. */
-  placement?: ProjectsEditRequestDeploymentConfigsProductionPlacement | null;
+  placement?: ProjectsEditRequestDeploymentConfigsProductionPlacement;
   /** Queue Producer bindings used for Pages Functions. */
-  queueProducers?: ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap | null;
+  queueProducers?: ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap;
   /** R2 buckets used for Pages Functions. */
-  r2Buckets?: ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap | null;
+  r2Buckets?: ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap;
   /** Services used for Pages Functions. */
-  services?: ProjectsEditRequestDeploymentConfigsProductionServicesMap | null;
+  services?: ProjectsEditRequestDeploymentConfigsProductionServicesMap;
   /** The usage model for Pages Functions. */
   usageModel?:
     | ProjectsEditRequestDeploymentConfigsProductionUsageModel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Vectorize bindings used for Pages Functions. */
-  vectorizeBindings?: ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap | null;
+  vectorizeBindings?: ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap;
   /** Hash of the Wrangler configuration used for the deployment. */
-  wranglerConfigHash?: string | null;
+  wranglerConfigHash?: string;
 }
 export const ProjectsEditRequestDeploymentConfigsProduction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aiBindings: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap,
-        ).pipe(T.Body("ai_bindings")),
-      ),
-      alwaysUseLatestCompatibilityDate: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("always_use_latest_compatibility_date"),
+        ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap.pipe(
+          T.Body("ai_bindings"),
         ),
       ),
+      alwaysUseLatestCompatibilityDate: S.optional(
+        S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
+      ),
       analyticsEngineDatasets: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap,
-        ).pipe(T.Body("analytics_engine_datasets")),
+        ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap.pipe(
+          T.Body("analytics_engine_datasets"),
+        ),
       ),
       browsers: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProductionBrowsersMap),
+        ProjectsEditRequestDeploymentConfigsProductionBrowsersMap,
       ),
       buildImageMajorVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("build_image_major_version")),
+        S.Number.pipe(T.Body("build_image_major_version")),
       ),
       compatibilityDate: S.optional(
-        S.NullOr(S.String).pipe(T.Body("compatibility_date")),
+        S.String.pipe(T.Body("compatibility_date")),
       ),
       compatibilityFlags: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList,
-        ).pipe(T.Body("compatibility_flags")),
+        ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       d1Databases: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap,
-        ).pipe(T.Body("d1_databases")),
+        ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap.pipe(
+          T.Body("d1_databases"),
+        ),
       ),
       durableObjectNamespaces: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap,
-        ).pipe(T.Body("durable_object_namespaces")),
+        ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap.pipe(
+          T.Body("durable_object_namespaces"),
+        ),
       ),
-      envVars: S.optional(S.NullOr(UntypedBindingMap).pipe(T.Body("env_vars"))),
-      failOpen: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_open"))),
+      envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
+      failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
       hyperdriveBindings: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap,
-        ).pipe(T.Body("hyperdrive_bindings")),
+        ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
+          T.Body("hyperdrive_bindings"),
+        ),
       ),
       kvNamespaces: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap,
-        ).pipe(T.Body("kv_namespaces")),
+        ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap.pipe(
+          T.Body("kv_namespaces"),
+        ),
       ),
-      limits: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProductionLimits),
-      ),
+      limits: S.optional(ProjectsEditRequestDeploymentConfigsProductionLimits),
       mtlsCertificates: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap,
-        ).pipe(T.Body("mtls_certificates")),
+        ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap.pipe(
+          T.Body("mtls_certificates"),
+        ),
       ),
       placement: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProductionPlacement),
+        ProjectsEditRequestDeploymentConfigsProductionPlacement,
       ),
       queueProducers: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap,
-        ).pipe(T.Body("queue_producers")),
+        ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap.pipe(
+          T.Body("queue_producers"),
+        ),
       ),
       r2Buckets: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap,
-        ).pipe(T.Body("r2_buckets")),
+        ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap.pipe(
+          T.Body("r2_buckets"),
+        ),
       ),
       services: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProductionServicesMap),
+        ProjectsEditRequestDeploymentConfigsProductionServicesMap,
       ),
       usageModel: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProductionUsageModel).pipe(
+        ProjectsEditRequestDeploymentConfigsProductionUsageModel.pipe(
           T.Body("usage_model"),
         ),
       ),
       vectorizeBindings: S.optional(
-        S.NullOr(
-          ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap,
-        ).pipe(T.Body("vectorize_bindings")),
+        ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap.pipe(
+          T.Body("vectorize_bindings"),
+        ),
       ),
       wranglerConfigHash: S.optional(
-        S.NullOr(S.String).pipe(T.Body("wrangler_config_hash")),
+        S.String.pipe(T.Body("wrangler_config_hash")),
       ),
     }),
   ).annotate({
@@ -8201,19 +8156,15 @@ export const ProjectsEditRequestDeploymentConfigsProduction =
 
 export interface ProjectsEditRequestDeploymentConfigs {
   /** Configs for preview deploys. */
-  preview?: ProjectsEditRequestDeploymentConfigsPreview | null;
+  preview?: ProjectsEditRequestDeploymentConfigsPreview;
   /** Configs for production deploys. */
-  production?: ProjectsEditRequestDeploymentConfigsProduction | null;
+  production?: ProjectsEditRequestDeploymentConfigsProduction;
 }
 export const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      preview: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsPreview),
-      ),
-      production: S.optional(
-        S.NullOr(ProjectsEditRequestDeploymentConfigsProduction),
-      ),
+      preview: S.optional(ProjectsEditRequestDeploymentConfigsPreview),
+      production: S.optional(ProjectsEditRequestDeploymentConfigsProduction),
     }),
 ).annotate({
   identifier: "ProjectsEditRequestDeploymentConfigs",
@@ -8254,78 +8205,75 @@ export const ProjectsEditRequestSourceConfigPreviewDeploymentSetting =
 
 export interface ProjectsEditRequestSourceConfig {
   /** Whether to enable automatic deployments when pushing to the source repository. */
-  deploymentsEnabled?: boolean | null;
+  deploymentsEnabled?: boolean;
   /** The owner of the repository. */
-  owner?: string | null;
+  owner?: string;
   /** The owner ID of the repository. */
-  ownerId?: string | null;
+  ownerId?: string;
   /** A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported. */
-  pathExcludes?: ProjectsEditRequestSourceConfigPathExcludesList | null;
+  pathExcludes?: ProjectsEditRequestSourceConfigPathExcludesList;
   /** A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported. */
-  pathIncludes?: ProjectsEditRequestSourceConfigPathIncludesList | null;
+  pathIncludes?: ProjectsEditRequestSourceConfigPathIncludesList;
   /** Whether to enable PR comments. */
-  prCommentsEnabled?: boolean | null;
+  prCommentsEnabled?: boolean;
   /** A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`. */
-  previewBranchExcludes?: ProjectsEditRequestSourceConfigPreviewBranchExcludesList | null;
+  previewBranchExcludes?: ProjectsEditRequestSourceConfigPreviewBranchExcludesList;
   /** A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `preview_deployment_setting` set to `custom`. */
-  previewBranchIncludes?: ProjectsEditRequestSourceConfigPreviewBranchIncludesList | null;
+  previewBranchIncludes?: ProjectsEditRequestSourceConfigPreviewBranchIncludesList;
   /** Controls whether commits to preview branches trigger a preview deployment. */
   previewDeploymentSetting?:
     | ProjectsEditRequestSourceConfigPreviewDeploymentSetting
-    | (string & {})
-    | null;
+    | (string & {});
   /** The production branch of the repository. */
-  productionBranch?: string | null;
+  productionBranch?: string;
   /** Whether to trigger a production deployment on commits to the production branch. */
-  productionDeploymentsEnabled?: boolean | null;
+  productionDeploymentsEnabled?: boolean;
   /** The ID of the repository. */
-  repoId?: string | null;
+  repoId?: string;
   /** The name of the repository. */
-  repoName?: string | null;
+  repoName?: string;
 }
 export const ProjectsEditRequestSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deployments_enabled")),
+      S.Boolean.pipe(T.Body("deployments_enabled")),
     ),
-    owner: S.optional(S.NullOr(S.String)),
-    ownerId: S.optional(S.NullOr(S.String).pipe(T.Body("owner_id"))),
+    owner: S.optional(S.String),
+    ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
     pathExcludes: S.optional(
-      S.NullOr(ProjectsEditRequestSourceConfigPathExcludesList).pipe(
+      ProjectsEditRequestSourceConfigPathExcludesList.pipe(
         T.Body("path_excludes"),
       ),
     ),
     pathIncludes: S.optional(
-      S.NullOr(ProjectsEditRequestSourceConfigPathIncludesList).pipe(
+      ProjectsEditRequestSourceConfigPathIncludesList.pipe(
         T.Body("path_includes"),
       ),
     ),
     prCommentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("pr_comments_enabled")),
+      S.Boolean.pipe(T.Body("pr_comments_enabled")),
     ),
     previewBranchExcludes: S.optional(
-      S.NullOr(ProjectsEditRequestSourceConfigPreviewBranchExcludesList).pipe(
+      ProjectsEditRequestSourceConfigPreviewBranchExcludesList.pipe(
         T.Body("preview_branch_excludes"),
       ),
     ),
     previewBranchIncludes: S.optional(
-      S.NullOr(ProjectsEditRequestSourceConfigPreviewBranchIncludesList).pipe(
+      ProjectsEditRequestSourceConfigPreviewBranchIncludesList.pipe(
         T.Body("preview_branch_includes"),
       ),
     ),
     previewDeploymentSetting: S.optional(
-      S.NullOr(ProjectsEditRequestSourceConfigPreviewDeploymentSetting).pipe(
+      ProjectsEditRequestSourceConfigPreviewDeploymentSetting.pipe(
         T.Body("preview_deployment_setting"),
       ),
     ),
-    productionBranch: S.optional(
-      S.NullOr(S.String).pipe(T.Body("production_branch")),
-    ),
+    productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
     productionDeploymentsEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("production_deployments_enabled")),
+      S.Boolean.pipe(T.Body("production_deployments_enabled")),
     ),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+    repoId: S.optional(S.String.pipe(T.Body("repo_id"))),
+    repoName: S.optional(S.String.pipe(T.Body("repo_name"))),
   }),
 ).annotate({
   identifier: "ProjectsEditRequestSourceConfig",
@@ -8354,33 +8302,29 @@ export interface PatchProjectRequest {
   /** Name of the project. */
   projectName: string;
   /** Configs for the project build process. */
-  buildConfig?: ProjectsEditRequestBuildConfig | null;
+  buildConfig?: ProjectsEditRequestBuildConfig;
   /** Configs for deployments in a project. */
-  deploymentConfigs?: ProjectsEditRequestDeploymentConfigs | null;
+  deploymentConfigs?: ProjectsEditRequestDeploymentConfigs;
   /** Name of the project. */
-  name?: string | null;
+  name?: string;
   /** Production branch of the project. Used to identify production deployments. */
-  productionBranch?: string | null;
+  productionBranch?: string;
   /** Configs for the project source control. */
-  source?: ProjectsEditRequestSource | null;
+  source?: ProjectsEditRequestSource;
 }
 export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
     buildConfig: S.optional(
-      S.NullOr(ProjectsEditRequestBuildConfig).pipe(T.Body("build_config")),
+      ProjectsEditRequestBuildConfig.pipe(T.Body("build_config")),
     ),
     deploymentConfigs: S.optional(
-      S.NullOr(ProjectsEditRequestDeploymentConfigs).pipe(
-        T.Body("deployment_configs"),
-      ),
+      ProjectsEditRequestDeploymentConfigs.pipe(T.Body("deployment_configs")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    productionBranch: S.optional(
-      S.NullOr(S.String).pipe(T.Body("production_branch")),
-    ),
-    source: S.optional(S.NullOr(ProjectsEditRequestSource)),
+    name: S.optional(S.String),
+    productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
+    source: S.optional(ProjectsEditRequestSource),
   })
     .pipe(
       T.Http({

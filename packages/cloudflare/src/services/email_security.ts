@@ -233,27 +233,24 @@ export interface BulkInvestigateMoveRequest {
   destination: InvestigateMoveBulkRequestDestination | (string & {});
   expectedDisposition?:
     | InvestigateMoveBulkRequestExpectedDisposition
-    | (string & {})
-    | null;
+    | (string & {});
   /** List of message IDs to move */
-  ids?: InvestigateMoveBulkRequestIdsList | null;
+  ids?: InvestigateMoveBulkRequestIdsList;
   /** Deprecated, use `ids` instead. End of life: November 1, 2026. List of message IDs to move. */
-  postfixIds?: InvestigateMoveBulkRequestPostfixIdsList | null;
+  postfixIds?: InvestigateMoveBulkRequestPostfixIdsList;
 }
 export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destination: InvestigateMoveBulkRequestDestination,
     expectedDisposition: S.optional(
-      S.NullOr(InvestigateMoveBulkRequestExpectedDisposition).pipe(
+      InvestigateMoveBulkRequestExpectedDisposition.pipe(
         T.Body("expected_disposition"),
       ),
     ),
-    ids: S.optional(S.NullOr(InvestigateMoveBulkRequestIdsList)),
+    ids: S.optional(InvestigateMoveBulkRequestIdsList),
     postfixIds: S.optional(
-      S.NullOr(InvestigateMoveBulkRequestPostfixIdsList).pipe(
-        T.Body("postfix_ids"),
-      ),
+      InvestigateMoveBulkRequestPostfixIdsList.pipe(T.Body("postfix_ids")),
     ),
   })
     .pipe(
@@ -454,72 +451,65 @@ export const InvestigateBulkCreateRequestSearchParamsMessageAction =
 
 export interface InvestigateBulkCreateRequestSearchParams {
   /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean | null;
-  alertId?: string | null;
+  actionLog?: boolean;
+  alertId?: string;
   /** Delivery status of the message. */
   deliveryStatus?:
     | InvestigateBulkCreateRequestSearchParamsDeliveryStatus
-    | (string & {})
-    | null;
-  detectionsOnly?: boolean | null;
-  domain?: string | null;
+    | (string & {});
+  detectionsOnly?: boolean;
+  domain?: string;
   /** End of search date range */
-  end?: string | null;
-  exactSubject?: string | null;
+  end?: string;
+  exactSubject?: string;
   finalDisposition?:
     | InvestigateBulkCreateRequestSearchParamsFinalDisposition
-    | (string & {})
-    | null;
+    | (string & {});
   messageAction?:
     | InvestigateBulkCreateRequestSearchParamsMessageAction
-    | (string & {})
-    | null;
-  messageId?: string | null;
-  metric?: string | null;
-  query?: string | null;
-  recipient?: string | null;
-  sender?: string | null;
+    | (string & {});
+  messageId?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
   /** Beginning of search date range */
-  start?: string | null;
-  subject?: string | null;
-  submissions?: boolean | null;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
 }
 export const InvestigateBulkCreateRequestSearchParams = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
-      alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
+      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
       deliveryStatus: S.optional(
-        S.NullOr(InvestigateBulkCreateRequestSearchParamsDeliveryStatus).pipe(
+        InvestigateBulkCreateRequestSearchParamsDeliveryStatus.pipe(
           T.Body("delivery_status"),
         ),
       ),
-      detectionsOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("detections_only")),
-      ),
-      domain: S.optional(S.NullOr(S.String)),
-      end: S.optional(S.NullOr(S.String)),
-      exactSubject: S.optional(
-        S.NullOr(S.String).pipe(T.Body("exact_subject")),
-      ),
+      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
       finalDisposition: S.optional(
-        S.NullOr(InvestigateBulkCreateRequestSearchParamsFinalDisposition).pipe(
+        InvestigateBulkCreateRequestSearchParamsFinalDisposition.pipe(
           T.Body("final_disposition"),
         ),
       ),
       messageAction: S.optional(
-        S.NullOr(InvestigateBulkCreateRequestSearchParamsMessageAction).pipe(
+        InvestigateBulkCreateRequestSearchParamsMessageAction.pipe(
           T.Body("message_action"),
         ),
       ),
-      messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-      metric: S.optional(S.NullOr(S.String)),
-      query: S.optional(S.NullOr(S.String)),
-      recipient: S.optional(S.NullOr(S.String)),
-      sender: S.optional(S.NullOr(S.String)),
-      start: S.optional(S.NullOr(S.String)),
-      subject: S.optional(S.NullOr(S.String)),
-      submissions: S.optional(S.NullOr(S.Boolean)),
+      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "InvestigateBulkCreateRequestSearchParams",
@@ -552,12 +542,11 @@ export interface CreateInvestigateBulkRequest {
   accountId: string;
   action: InvestigateBulkCreateRequestAction | (string & {});
   searchParams: InvestigateBulkCreateRequestSearchParams;
-  comment?: string | null;
-  destination?: InvestigateBulkCreateRequestDestination | (string & {}) | null;
+  comment?: string;
+  destination?: InvestigateBulkCreateRequestDestination | (string & {});
   expectedDisposition?:
     | InvestigateBulkCreateRequestExpectedDisposition
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -566,10 +555,10 @@ export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
     searchParams: InvestigateBulkCreateRequestSearchParams.pipe(
       T.Body("search_params"),
     ),
-    comment: S.optional(S.NullOr(S.String)),
-    destination: S.optional(S.NullOr(InvestigateBulkCreateRequestDestination)),
+    comment: S.optional(S.String),
+    destination: S.optional(InvestigateBulkCreateRequestDestination),
     expectedDisposition: S.optional(
-      S.NullOr(InvestigateBulkCreateRequestExpectedDisposition).pipe(
+      InvestigateBulkCreateRequestExpectedDisposition.pipe(
         T.Body("expected_disposition"),
       ),
     ),
@@ -1093,8 +1082,7 @@ export interface CreateInvestigateMoveRequest {
   destination: InvestigateMoveCreateRequestDestination | (string & {});
   expectedDisposition?:
     | InvestigateMoveCreateRequestExpectedDisposition
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1102,7 +1090,7 @@ export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
     investigateId: S.String.pipe(T.Label("investigate_id")),
     destination: InvestigateMoveCreateRequestDestination,
     expectedDisposition: S.optional(
-      S.NullOr(InvestigateMoveCreateRequestExpectedDisposition).pipe(
+      InvestigateMoveCreateRequestExpectedDisposition.pipe(
         T.Body("expected_disposition"),
       ),
     ),
@@ -1233,8 +1221,8 @@ export interface CreateInvestigateReclassifyRequest {
     | InvestigateReclassifyCreateRequestExpectedDisposition
     | (string & {});
   /** Base64 encoded content of the EML file. */
-  emlContent?: string | null;
-  escalatedSubmissionId?: string | null;
+  emlContent?: string;
+  escalatedSubmissionId?: string;
 }
 export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1244,9 +1232,9 @@ export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
       InvestigateReclassifyCreateRequestExpectedDisposition.pipe(
         T.Body("expected_disposition"),
       ),
-    emlContent: S.optional(S.NullOr(S.String).pipe(T.Body("eml_content"))),
+    emlContent: S.optional(S.String.pipe(T.Body("eml_content"))),
     escalatedSubmissionId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("escalated_submission_id")),
+      S.String.pipe(T.Body("escalated_submission_id")),
     ),
   })
     .pipe(
@@ -1291,13 +1279,13 @@ export interface CreateSettingAllowPolicyRequest {
   patternType: SettingsAllowPoliciesCreateRequestPatternType | (string & {});
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender: boolean;
-  comments?: string | null;
+  comments?: string;
   /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
+  isRecipient?: boolean;
   /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
+  isSender?: boolean;
   /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
+  isSpoof?: boolean;
 }
 export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1311,10 +1299,10 @@ export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("pattern_type"),
     ),
     verifySender: S.Boolean.pipe(T.Body("verify_sender")),
-    comments: S.optional(S.NullOr(S.String)),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
+    comments: S.optional(S.String),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
   })
     .pipe(
       T.Http({
@@ -1411,7 +1399,7 @@ export interface CreateSettingBlockSenderRequest {
   pattern: string;
   /** Type of pattern matching. */
   patternType: SettingsBlockSendersCreateRequestPatternType | (string & {});
-  comments?: string | null;
+  comments?: string;
 }
 export const CreateSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1421,7 +1409,7 @@ export const CreateSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
     patternType: SettingsBlockSendersCreateRequestPatternType.pipe(
       T.Body("pattern_type"),
     ),
-    comments: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1490,14 +1478,13 @@ export interface CreateSettingImpersonationRegistryRequest {
   email: string;
   isEmailRegex: boolean;
   name: string;
-  comments?: string | null;
-  directoryId?: number | null;
-  directoryNodeId?: number | null;
-  externalDirectoryNodeId?: string | null;
+  comments?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  externalDirectoryNodeId?: string;
   provenance?:
     | SettingsImpersonationRegistryCreateRequestProvenance
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateSettingImpersonationRegistryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1506,16 +1493,14 @@ export const CreateSettingImpersonationRegistryRequest =
       email: S.String,
       isEmailRegex: S.Boolean.pipe(T.Body("is_email_regex")),
       name: S.String,
-      comments: S.optional(S.NullOr(S.String)),
-      directoryId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
-      ),
+      comments: S.optional(S.String),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
       externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+        S.String.pipe(T.Body("external_directory_node_id")),
       ),
       provenance: S.optional(
-        S.NullOr(SettingsImpersonationRegistryCreateRequestProvenance),
+        SettingsImpersonationRegistryCreateRequestProvenance,
       ),
     })
       .pipe(
@@ -1599,7 +1584,7 @@ export interface CreateSettingSendingDomainRestrictionRequest {
   domain: string;
   /** Excluded subdomains that are exempt from TLS requirements. */
   exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList;
-  comments?: string | null;
+  comments?: string;
 }
 export const CreateSettingSendingDomainRestrictionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1607,7 +1592,7 @@ export const CreateSettingSendingDomainRestrictionRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       domain: S.String,
       exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList,
-      comments: S.optional(S.NullOr(S.String)),
+      comments: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -1670,7 +1655,7 @@ export interface CreateSettingTrustedDomainRequest {
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
   isSimilarity: boolean;
   pattern: string;
-  comments?: string | null;
+  comments?: string;
 }
 export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1679,7 +1664,7 @@ export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
     isRegex: S.Boolean.pipe(T.Body("is_regex")),
     isSimilarity: S.Boolean.pipe(T.Body("is_similarity")),
     pattern: S.String,
-    comments: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1731,14 +1716,14 @@ export interface CreateSettingUrlIgnorePatternRequest {
   /** Regular expression matching URLs that should not be rewritten. */
   pattern: string;
   /** Optional note describing the reason for the ignore pattern. */
-  comments?: string | null;
+  comments?: string;
 }
 export const CreateSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       pattern: S.String,
-      comments: S.optional(S.NullOr(S.String)),
+      comments: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -6428,54 +6413,47 @@ export interface PatchSettingAllowPolicyRequest {
   accountId: string;
   /** Allow policy identifier */
   policyId: string;
-  comments?: string | null;
+  comments?: string;
   /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender?: boolean | null;
+  isAcceptableSender?: boolean;
   /** Messages to this recipient will bypass all detections */
-  isExemptRecipient?: boolean | null;
+  isExemptRecipient?: boolean;
   /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean | null;
-  isRegex?: boolean | null;
+  isRecipient?: boolean;
+  isRegex?: boolean;
   /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean | null;
+  isSender?: boolean;
   /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean | null;
+  isSpoof?: boolean;
   /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender?: boolean | null;
-  pattern?: string | null;
+  isTrustedSender?: boolean;
+  pattern?: string;
   /** Type of pattern matching. */
-  patternType?:
-    | SettingsAllowPoliciesEditRequestPatternType
-    | (string & {})
-    | null;
+  patternType?: SettingsAllowPoliciesEditRequestPatternType | (string & {});
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender?: boolean | null;
+  verifySender?: boolean;
 }
 export const PatchSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    comments: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
     isAcceptableSender: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender")),
+      S.Boolean.pipe(T.Body("is_acceptable_sender")),
     ),
     isExemptRecipient: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient")),
+      S.Boolean.pipe(T.Body("is_exempt_recipient")),
     ),
-    isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_trusted_sender")),
-    ),
-    pattern: S.optional(S.NullOr(S.String)),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
+    pattern: S.optional(S.String),
     patternType: S.optional(
-      S.NullOr(SettingsAllowPoliciesEditRequestPatternType).pipe(
-        T.Body("pattern_type"),
-      ),
+      SettingsAllowPoliciesEditRequestPatternType.pipe(T.Body("pattern_type")),
     ),
-    verifySender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verify_sender"))),
+    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
   })
     .pipe(
       T.Http({
@@ -6570,26 +6548,21 @@ export interface PatchSettingBlockSenderRequest {
   accountId: string;
   /** Blocked sender pattern identifier */
   patternId: string;
-  comments?: string | null;
-  isRegex?: boolean | null;
-  pattern?: string | null;
+  comments?: string;
+  isRegex?: boolean;
+  pattern?: string;
   /** Type of pattern matching. */
-  patternType?:
-    | SettingsBlockSendersEditRequestPatternType
-    | (string & {})
-    | null;
+  patternType?: SettingsBlockSendersEditRequestPatternType | (string & {});
 }
 export const PatchSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     patternId: S.String.pipe(T.Label("pattern_id")),
-    comments: S.optional(S.NullOr(S.String)),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    pattern: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    pattern: S.optional(S.String),
     patternType: S.optional(
-      S.NullOr(SettingsBlockSendersEditRequestPatternType).pipe(
-        T.Body("pattern_type"),
-      ),
+      SettingsBlockSendersEditRequestPatternType.pipe(T.Body("pattern_type")),
     ),
   })
     .pipe(
@@ -6713,51 +6686,49 @@ export interface PatchSettingDomainRequest {
   accountId: string;
   /** Domain identifier */
   domainId: string;
-  allowedDeliveryModes?: SettingsDomainsEditRequestAllowedDeliveryModesList | null;
-  domain?: string | null;
-  dropDispositions?: SettingsDomainsEditRequestDropDispositionsList | null;
-  folder?: SettingsDomainsEditRequestFolder | (string & {}) | null;
-  integrationId?: string | null;
-  ipRestrictions?: SettingsDomainsEditRequestIpRestrictionsList | null;
-  lookbackHops?: number | null;
-  regions?: SettingsDomainsEditRequestRegionsList | null;
-  requireTlsInbound?: boolean | null;
-  requireTlsOutbound?: boolean | null;
-  transport?: string | null;
+  allowedDeliveryModes?: SettingsDomainsEditRequestAllowedDeliveryModesList;
+  domain?: string;
+  dropDispositions?: SettingsDomainsEditRequestDropDispositionsList;
+  folder?: SettingsDomainsEditRequestFolder | (string & {});
+  integrationId?: string;
+  ipRestrictions?: SettingsDomainsEditRequestIpRestrictionsList;
+  lookbackHops?: number;
+  regions?: SettingsDomainsEditRequestRegionsList;
+  requireTlsInbound?: boolean;
+  requireTlsOutbound?: boolean;
+  transport?: string;
 }
 export const PatchSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainId: S.String.pipe(T.Label("domain_id")),
     allowedDeliveryModes: S.optional(
-      S.NullOr(SettingsDomainsEditRequestAllowedDeliveryModesList).pipe(
+      SettingsDomainsEditRequestAllowedDeliveryModesList.pipe(
         T.Body("allowed_delivery_modes"),
       ),
     ),
-    domain: S.optional(S.NullOr(S.String)),
+    domain: S.optional(S.String),
     dropDispositions: S.optional(
-      S.NullOr(SettingsDomainsEditRequestDropDispositionsList).pipe(
+      SettingsDomainsEditRequestDropDispositionsList.pipe(
         T.Body("drop_dispositions"),
       ),
     ),
-    folder: S.optional(S.NullOr(SettingsDomainsEditRequestFolder)),
-    integrationId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("integration_id")),
-    ),
+    folder: S.optional(SettingsDomainsEditRequestFolder),
+    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
     ipRestrictions: S.optional(
-      S.NullOr(SettingsDomainsEditRequestIpRestrictionsList).pipe(
+      SettingsDomainsEditRequestIpRestrictionsList.pipe(
         T.Body("ip_restrictions"),
       ),
     ),
-    lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
-    regions: S.optional(S.NullOr(SettingsDomainsEditRequestRegionsList)),
+    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
+    regions: S.optional(SettingsDomainsEditRequestRegionsList),
     requireTlsInbound: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound")),
+      S.Boolean.pipe(T.Body("require_tls_inbound")),
     ),
     requireTlsOutbound: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound")),
+      S.Boolean.pipe(T.Body("require_tls_outbound")),
     ),
-    transport: S.optional(S.NullOr(S.String)),
+    transport: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -6994,17 +6965,16 @@ export interface PatchSettingImpersonationRegistryRequest {
   accountId: string;
   /** Impersonation registry entry identifier */
   impersonationRegistryId: string;
-  comments?: string | null;
-  directoryId?: number | null;
-  directoryNodeId?: number | null;
-  email?: string | null;
-  externalDirectoryNodeId?: string | null;
-  isEmailRegex?: boolean | null;
-  name?: string | null;
+  comments?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  email?: string;
+  externalDirectoryNodeId?: string;
+  isEmailRegex?: boolean;
+  name?: string;
   provenance?:
     | SettingsImpersonationRegistryEditRequestProvenance
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PatchSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7013,21 +6983,17 @@ export const PatchSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
       impersonationRegistryId: S.String.pipe(
         T.Label("impersonation_registry_id"),
       ),
-      comments: S.optional(S.NullOr(S.String)),
-      directoryId: S.optional(S.NullOr(S.Number).pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("directory_node_id")),
-      ),
-      email: S.optional(S.NullOr(S.String)),
+      comments: S.optional(S.String),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      email: S.optional(S.String),
       externalDirectoryNodeId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("external_directory_node_id")),
+        S.String.pipe(T.Body("external_directory_node_id")),
       ),
-      isEmailRegex: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("is_email_regex")),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
+      name: S.optional(S.String),
       provenance: S.optional(
-        S.NullOr(SettingsImpersonationRegistryEditRequestProvenance),
+        SettingsImpersonationRegistryEditRequestProvenance,
       ),
     })
       .pipe(
@@ -7109,11 +7075,11 @@ export interface PatchSettingSendingDomainRestrictionRequest {
   accountId: string;
   /** Sending domain restriction identifier. */
   sendingDomainRestrictionId: string;
-  comments?: string | null;
+  comments?: string;
   /** Domain that requires TLS enforcement. */
-  domain?: string | null;
+  domain?: string;
   /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude?: SettingsSendingDomainRestrictionsEditRequestExcludeList | null;
+  exclude?: SettingsSendingDomainRestrictionsEditRequestExcludeList;
 }
 export const PatchSettingSendingDomainRestrictionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7122,10 +7088,10 @@ export const PatchSettingSendingDomainRestrictionRequest =
       sendingDomainRestrictionId: S.String.pipe(
         T.Label("sending_domain_restriction_id"),
       ),
-      comments: S.optional(S.NullOr(S.String)),
-      domain: S.optional(S.NullOr(S.String)),
+      comments: S.optional(S.String),
+      domain: S.optional(S.String),
       exclude: S.optional(
-        S.NullOr(SettingsSendingDomainRestrictionsEditRequestExcludeList),
+        SettingsSendingDomainRestrictionsEditRequestExcludeList,
       ),
     })
       .pipe(
@@ -7185,23 +7151,23 @@ export interface PatchSettingTrustedDomainRequest {
   accountId: string;
   /** Trusted domain identifier */
   trustedDomainId: string;
-  comments?: string | null;
+  comments?: string;
   /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent?: boolean | null;
-  isRegex?: boolean | null;
+  isRecent?: boolean;
+  isRegex?: boolean;
   /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity?: boolean | null;
-  pattern?: string | null;
+  isSimilarity?: boolean;
+  pattern?: string;
 }
 export const PatchSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-    comments: S.optional(S.NullOr(S.String)),
-    isRecent: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recent"))),
-    isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
-    isSimilarity: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_similarity"))),
-    pattern: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
+    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
+    pattern: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -7253,16 +7219,16 @@ export interface PatchSettingUrlIgnorePatternRequest {
   /** URL ignore pattern identifier */
   patternId: string;
   /** Optional note describing the reason for the ignore pattern. */
-  comments?: string | null;
+  comments?: string;
   /** Regular expression matching URLs that should not be rewritten. */
-  pattern?: string | null;
+  pattern?: string;
 }
 export const PatchSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     patternId: S.String.pipe(T.Label("pattern_id")),
-    comments: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(S.String)),
+    comments: S.optional(S.String),
+    pattern: S.optional(S.String),
   })
     .pipe(
       T.Http({

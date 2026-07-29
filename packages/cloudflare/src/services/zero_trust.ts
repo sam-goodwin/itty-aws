@@ -1294,17 +1294,15 @@ export const BulkPatchDlpEmailRulesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4",
@@ -1312,17 +1310,15 @@ export const AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4 =
 
 export interface AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6",
@@ -1330,18 +1326,18 @@ export const AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6 =
 
 export interface AccessInfrastructureTargetsBulkUpdateRequestBodyItemIp {
   /** The target's IPv4 address */
-  ipv4?: AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4 | null;
+  ipv4?: AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4;
   /** The target's IPv6 address */
-  ipv6?: AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6 | null;
+  ipv6?: AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6;
 }
 export const AccessInfrastructureTargetsBulkUpdateRequestBodyItemIp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ipv4: S.optional(
-        S.NullOr(AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4),
+        AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv4,
       ),
       ipv6: S.optional(
-        S.NullOr(AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6),
+        AccessInfrastructureTargetsBulkUpdateRequestBodyItemIpIpv6,
       ),
     }),
   ).annotate({
@@ -2240,13 +2236,13 @@ export interface CasbIntegrationsCreateRequest {
   /** Name of the integration. */
   name: string;
   /** Authentication method slug (uses default if omitted). */
-  authMethod?: string | null;
+  authMethod?: string;
   /** List of DLP profile IDs to associate. */
-  dlpProfiles?: CasbIntegrationsCreateRequestDlpProfilesList | null;
+  dlpProfiles?: CasbIntegrationsCreateRequestDlpProfilesList;
   /** List of permission scopes (uses policy defaults if empty). */
-  permissions?: CasbIntegrationsCreateRequestPermissionsList | null;
+  permissions?: CasbIntegrationsCreateRequestPermissionsList;
   /** List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']). */
-  useCases?: CasbIntegrationsCreateRequestUseCasesList | null;
+  useCases?: CasbIntegrationsCreateRequestUseCasesList;
 }
 export const CasbIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2254,19 +2250,13 @@ export const CasbIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     application: CasbIntegrationsCreateRequestApplication,
     credentials: CasbIntegrationsCreateRequestCredentialsMap,
     name: S.String,
-    authMethod: S.optional(S.NullOr(S.String).pipe(T.Body("auth_method"))),
+    authMethod: S.optional(S.String.pipe(T.Body("auth_method"))),
     dlpProfiles: S.optional(
-      S.NullOr(CasbIntegrationsCreateRequestDlpProfilesList).pipe(
-        T.Body("dlp_profiles"),
-      ),
+      CasbIntegrationsCreateRequestDlpProfilesList.pipe(T.Body("dlp_profiles")),
     ),
-    permissions: S.optional(
-      S.NullOr(CasbIntegrationsCreateRequestPermissionsList),
-    ),
+    permissions: S.optional(CasbIntegrationsCreateRequestPermissionsList),
     useCases: S.optional(
-      S.NullOr(CasbIntegrationsCreateRequestUseCasesList).pipe(
-        T.Body("use_cases"),
-      ),
+      CasbIntegrationsCreateRequestUseCasesList.pipe(T.Body("use_cases")),
     ),
   })
     .pipe(
@@ -3043,36 +3033,28 @@ export interface CasbIntegrationsUpdateRequest {
   accountId: string;
   id: string;
   /** Partial credential fields to merge with existing. */
-  credentials?: CasbIntegrationsUpdateRequestCredentialsMap | null;
+  credentials?: CasbIntegrationsUpdateRequestCredentialsMap;
   /** List of DLP profile IDs to associate with the integration. */
-  dlpProfiles?: CasbIntegrationsUpdateRequestDlpProfilesList | null;
+  dlpProfiles?: CasbIntegrationsUpdateRequestDlpProfilesList;
   /** Name of the integration. */
-  name?: string | null;
+  name?: string;
   /** List of permission scopes granted to the integration. */
-  permissions?: CasbIntegrationsUpdateRequestPermissionsList | null;
+  permissions?: CasbIntegrationsUpdateRequestPermissionsList;
   /** List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']). */
-  useCases?: CasbIntegrationsUpdateRequestUseCasesList | null;
+  useCases?: CasbIntegrationsUpdateRequestUseCasesList;
 }
 export const CasbIntegrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    credentials: S.optional(
-      S.NullOr(CasbIntegrationsUpdateRequestCredentialsMap),
-    ),
+    credentials: S.optional(CasbIntegrationsUpdateRequestCredentialsMap),
     dlpProfiles: S.optional(
-      S.NullOr(CasbIntegrationsUpdateRequestDlpProfilesList).pipe(
-        T.Body("dlp_profiles"),
-      ),
+      CasbIntegrationsUpdateRequestDlpProfilesList.pipe(T.Body("dlp_profiles")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    permissions: S.optional(
-      S.NullOr(CasbIntegrationsUpdateRequestPermissionsList),
-    ),
+    name: S.optional(S.String),
+    permissions: S.optional(CasbIntegrationsUpdateRequestPermissionsList),
     useCases: S.optional(
-      S.NullOr(CasbIntegrationsUpdateRequestUseCasesList).pipe(
-        T.Body("use_cases"),
-      ),
+      CasbIntegrationsUpdateRequestUseCasesList.pipe(T.Body("use_cases")),
     ),
   })
     .pipe(
@@ -3231,17 +3213,17 @@ export const CasbIntegrationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -3257,17 +3239,17 @@ export const AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsLis
 
 export interface AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -3284,28 +3266,26 @@ export const AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsList 
 export interface AccessAiControlsMcpPortalsCreateRequestServersItem {
   /** server id */
   serverId: string;
-  defaultDisabled?: boolean | null;
-  onBehalf?: boolean | null;
-  updatedPrompts?: AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsList | null;
-  updatedTools?: AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsList | null;
+  defaultDisabled?: boolean;
+  onBehalf?: boolean;
+  updatedPrompts?: AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsList;
+  updatedTools?: AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsList;
 }
 export const AccessAiControlsMcpPortalsCreateRequestServersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serverId: S.String.pipe(T.Body("server_id")),
-      defaultDisabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("default_disabled")),
-      ),
-      onBehalf: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_behalf"))),
+      defaultDisabled: S.optional(S.Boolean.pipe(T.Body("default_disabled"))),
+      onBehalf: S.optional(S.Boolean.pipe(T.Body("on_behalf"))),
       updatedPrompts: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsList,
-        ).pipe(T.Body("updated_prompts")),
+        AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedPromptsList.pipe(
+          T.Body("updated_prompts"),
+        ),
       ),
       updatedTools: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsList,
-        ).pipe(T.Body("updated_tools")),
+        AccessAiControlsMcpPortalsCreateRequestServersItemUpdatedToolsList.pipe(
+          T.Body("updated_tools"),
+        ),
       ),
     }),
   ).annotate({
@@ -3326,11 +3306,11 @@ export interface CreateAccessAiControlMcpPortalRequest {
   hostname: string;
   name: string;
   /** Allow remote code execution in Dynamic Workers (beta) */
-  allowCodeMode?: boolean | null;
-  description?: string | null;
+  allowCodeMode?: boolean;
+  description?: string;
   /** Route outbound MCP traffic through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean | null;
-  servers?: AccessAiControlsMcpPortalsCreateRequestServersList | null;
+  secureWebGateway?: boolean;
+  servers?: AccessAiControlsMcpPortalsCreateRequestServersList;
 }
 export const CreateAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3339,16 +3319,12 @@ export const CreateAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
       id: S.String,
       hostname: S.String,
       name: S.String,
-      allowCodeMode: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_code_mode")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
+      allowCodeMode: S.optional(S.Boolean.pipe(T.Body("allow_code_mode"))),
+      description: S.optional(S.String),
       secureWebGateway: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("secure_web_gateway")),
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-      servers: S.optional(
-        S.NullOr(AccessAiControlsMcpPortalsCreateRequestServersList),
-      ),
+      servers: S.optional(AccessAiControlsMcpPortalsCreateRequestServersList),
     })
       .pipe(
         T.Http({
@@ -3633,17 +3609,17 @@ export const AccessAiControlsMcpServersCreateRequestAuthType =
 
 export interface AccessAiControlsMcpServersCreateRequestUpdatedPromptsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpServersCreateRequestUpdatedPromptsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "AccessAiControlsMcpServersCreateRequestUpdatedPromptsItem",
@@ -3658,17 +3634,17 @@ export const AccessAiControlsMcpServersCreateRequestUpdatedPromptsList =
 
 export interface AccessAiControlsMcpServersCreateRequestUpdatedToolsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpServersCreateRequestUpdatedToolsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "AccessAiControlsMcpServersCreateRequestUpdatedToolsItem",
@@ -3688,14 +3664,14 @@ export interface CreateAccessAiControlMcpServerRequest {
   authType: AccessAiControlsMcpServersCreateRequestAuthType | (string & {});
   hostname: string;
   name: string;
-  authCredentials?: string | null;
-  description?: string | null;
+  authCredentials?: string;
+  description?: string;
   /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key. */
-  isSharedOauthCallbackEnabled?: boolean | null;
+  isSharedOauthCallbackEnabled?: boolean;
   /** Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean | null;
-  updatedPrompts?: AccessAiControlsMcpServersCreateRequestUpdatedPromptsList | null;
-  updatedTools?: AccessAiControlsMcpServersCreateRequestUpdatedToolsList | null;
+  secureWebGateway?: boolean;
+  updatedPrompts?: AccessAiControlsMcpServersCreateRequestUpdatedPromptsList;
+  updatedTools?: AccessAiControlsMcpServersCreateRequestUpdatedToolsList;
 }
 export const CreateAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3707,23 +3683,21 @@ export const CreateAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
       ),
       hostname: S.String,
       name: S.String,
-      authCredentials: S.optional(
-        S.NullOr(S.String).pipe(T.Body("auth_credentials")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
+      authCredentials: S.optional(S.String.pipe(T.Body("auth_credentials"))),
+      description: S.optional(S.String),
       isSharedOauthCallbackEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("is_shared_oauth_callback_enabled")),
+        S.Boolean.pipe(T.Body("is_shared_oauth_callback_enabled")),
       ),
       secureWebGateway: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("secure_web_gateway")),
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
       updatedPrompts: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpServersCreateRequestUpdatedPromptsList,
-        ).pipe(T.Body("updated_prompts")),
+        AccessAiControlsMcpServersCreateRequestUpdatedPromptsList.pipe(
+          T.Body("updated_prompts"),
+        ),
       ),
       updatedTools: S.optional(
-        S.NullOr(AccessAiControlsMcpServersCreateRequestUpdatedToolsList).pipe(
+        AccessAiControlsMcpServersCreateRequestUpdatedToolsList.pipe(
           T.Body("updated_tools"),
         ),
       ),
@@ -4085,53 +4059,45 @@ export const AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllo
 
 export interface AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication {
   /** Allows all HTTP request headers. */
-  allowAllHeaders?: boolean | null;
+  allowAllHeaders?: boolean;
   /** Allows all HTTP request methods. */
-  allowAllMethods?: boolean | null;
+  allowAllMethods?: boolean;
   /** Allows all origins. */
-  allowAllOrigins?: boolean | null;
+  allowAllOrigins?: boolean;
   /** When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests. */
-  allowCredentials?: boolean | null;
+  allowCredentials?: boolean;
   /** Allowed HTTP request headers. */
-  allowedHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList | null;
+  allowedHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList;
   /** Allowed HTTP request methods. */
-  allowedMethods?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList | null;
+  allowedMethods?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList;
   /** Allowed origins. */
-  allowedOrigins?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList | null;
+  allowedOrigins?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList;
   /** The maximum number of seconds the results of a preflight request can be cached. */
-  maxAge?: number | null;
+  maxAge?: number;
 }
 export const AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      allowAllHeaders: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_headers")),
-      ),
-      allowAllMethods: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_methods")),
-      ),
-      allowAllOrigins: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_origins")),
-      ),
-      allowCredentials: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_credentials")),
-      ),
+      allowAllHeaders: S.optional(S.Boolean.pipe(T.Body("allow_all_headers"))),
+      allowAllMethods: S.optional(S.Boolean.pipe(T.Body("allow_all_methods"))),
+      allowAllOrigins: S.optional(S.Boolean.pipe(T.Body("allow_all_origins"))),
+      allowCredentials: S.optional(S.Boolean.pipe(T.Body("allow_credentials"))),
       allowedHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList,
-        ).pipe(T.Body("allowed_headers")),
+        AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList.pipe(
+          T.Body("allowed_headers"),
+        ),
       ),
       allowedMethods: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList,
-        ).pipe(T.Body("allowed_methods")),
+        AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList.pipe(
+          T.Body("allowed_methods"),
+        ),
       ),
       allowedOrigins: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList,
-        ).pipe(T.Body("allowed_origins")),
+        AccessApplicationsCreateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList.pipe(
+          T.Body("allowed_origins"),
+        ),
       ),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
     }),
   ).annotate({
     identifier:
@@ -4152,20 +4118,17 @@ export const AccessApplicationsCreateRequestDestinationsItemPublicDestinationTyp
 export interface AccessApplicationsCreateRequestDestinationsItemPublicDestination {
   type?:
     | AccessApplicationsCreateRequestDestinationsItemPublicDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
-  uri?: string | null;
+  uri?: string;
 }
 export const AccessApplicationsCreateRequestDestinationsItemPublicDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestDestinationsItemPublicDestinationType,
-        ),
+        AccessApplicationsCreateRequestDestinationsItemPublicDestinationType,
       ),
-      uri: S.optional(S.NullOr(S.String)),
+      uri: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -4184,40 +4147,36 @@ export const AccessApplicationsCreateRequestDestinationsItemPrivateDestinationTy
 
 export interface AccessApplicationsCreateRequestDestinationsItemPrivateDestination {
   /** The CIDR range of the destination. Single IPs will be computed as /32. */
-  cidr?: string | null;
+  cidr?: string;
   /** The hostname of the destination. Matches a valid SNI served by an HTTPS origin. */
-  hostname?: string | null;
+  hostname?: string;
   /** The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match. */
   l4Protocol?:
     | AccessApplicationsCreateRequestDestinationsItemPrivateDestinationL4Protocol
-    | (string & {})
-    | null;
+    | (string & {});
   /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
-  portRange?: string | null;
+  portRange?: string;
   type?:
     | AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The VNET ID to match the destination. When omitted, all VNETs will match. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const AccessApplicationsCreateRequestDestinationsItemPrivateDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cidr: S.optional(S.NullOr(S.String)),
-      hostname: S.optional(S.NullOr(S.String)),
+      cidr: S.optional(S.String),
+      hostname: S.optional(S.String),
       l4Protocol: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestDestinationsItemPrivateDestinationL4Protocol,
-        ).pipe(T.Body("l4_protocol")),
-      ),
-      portRange: S.optional(S.NullOr(S.String).pipe(T.Body("port_range"))),
-      type: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType,
+        AccessApplicationsCreateRequestDestinationsItemPrivateDestinationL4Protocol.pipe(
+          T.Body("l4_protocol"),
         ),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      portRange: S.optional(S.String.pipe(T.Body("port_range"))),
+      type: S.optional(
+        AccessApplicationsCreateRequestDestinationsItemPrivateDestinationType,
+      ),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier:
@@ -4231,20 +4190,17 @@ export const AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDe
 
 export interface AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestination {
   /** The MCP server id configured in ai-controls. */
-  mcpServerId?: string | null;
+  mcpServerId?: string;
   type?:
     | AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mcpServerId: S.optional(S.NullOr(S.String).pipe(T.Body("mcp_server_id"))),
+      mcpServerId: S.optional(S.String.pipe(T.Body("mcp_server_id"))),
       type: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType,
-        ),
+        AccessApplicationsCreateRequestDestinationsItemViaMcpServerPortalDestinationType,
       ),
     }),
   ).annotate({
@@ -4377,24 +4333,22 @@ export const AccessApplicationsCreateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface AccessApplicationsCreateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsCreateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsCreateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsCreateRequestMfaConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsCreateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
 ).annotate({
   identifier: "AccessApplicationsCreateRequestMfaConfig",
@@ -4409,29 +4363,29 @@ export const AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegis
 
 export interface AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration {
   /** Allows any client with redirect URIs on localhost. */
-  allowAnyOnLocalhost?: boolean | null;
+  allowAnyOnLocalhost?: boolean;
   /** Allows any client with redirect URIs on 127.0.0.1. */
-  allowAnyOnLoopback?: boolean | null;
+  allowAnyOnLoopback?: boolean;
   /** The URIs that are allowed as redirect URIs for dynamically registered clients. Must use the `https` protocol. Paths may end in `/*` to match all sub-paths. */
-  allowedUris?: AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList | null;
+  allowedUris?: AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList;
   /** Whether dynamic client registration is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowAnyOnLocalhost: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_any_on_localhost")),
+        S.Boolean.pipe(T.Body("allow_any_on_localhost")),
       ),
       allowAnyOnLoopback: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_any_on_loopback")),
+        S.Boolean.pipe(T.Body("allow_any_on_loopback")),
       ),
       allowedUris: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList,
-        ).pipe(T.Body("allowed_uris")),
+        AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList.pipe(
+          T.Body("allowed_uris"),
+        ),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -4440,19 +4394,17 @@ export const AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegis
 
 export interface AccessApplicationsCreateRequestOauthConfigurationGrant {
   /** The lifetime of the access token. Must be in the format `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h. */
-  accessTokenLifetime?: string | null;
+  accessTokenLifetime?: string;
   /** The duration of the OAuth session. Must be in the format `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsCreateRequestOauthConfigurationGrant =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessTokenLifetime: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_token_lifetime")),
+        S.String.pipe(T.Body("access_token_lifetime")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsCreateRequestOauthConfigurationGrant",
@@ -4460,24 +4412,22 @@ export const AccessApplicationsCreateRequestOauthConfigurationGrant =
 
 export interface AccessApplicationsCreateRequestOauthConfiguration {
   /** Settings for OAuth dynamic client registration. */
-  dynamicClientRegistration?: AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration | null;
+  dynamicClientRegistration?: AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration;
   /** Whether the OAuth configuration is enabled for this application. When set to `false`, Access will not handle OAuth for this application. Defaults to `true` if omitted. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Settings for OAuth grant behavior. */
-  grant?: AccessApplicationsCreateRequestOauthConfigurationGrant | null;
+  grant?: AccessApplicationsCreateRequestOauthConfigurationGrant;
 }
 export const AccessApplicationsCreateRequestOauthConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dynamicClientRegistration: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration,
-        ).pipe(T.Body("dynamic_client_registration")),
+        AccessApplicationsCreateRequestOauthConfigurationDynamicClientRegistration.pipe(
+          T.Body("dynamic_client_registration"),
+        ),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      grant: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestOauthConfigurationGrant),
-      ),
+      enabled: S.optional(S.Boolean),
+      grant: S.optional(AccessApplicationsCreateRequestOauthConfigurationGrant),
     }),
   ).annotate({
     identifier: "AccessApplicationsCreateRequestOauthConfiguration",
@@ -4485,15 +4435,15 @@ export const AccessApplicationsCreateRequestOauthConfiguration =
 
 export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink {
   /** The UUID of the policy */
-  id?: string | null;
+  id?: string;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      precedence: S.optional(S.NullOr(S.Number)),
+      id: S.optional(S.String),
+      precedence: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -4511,22 +4461,20 @@ export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationIte
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier:
@@ -4572,22 +4520,22 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -4597,15 +4545,13 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp | null;
+  rdp?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rdp: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp,
-        ),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp,
       ),
     }),
   ).annotate({
@@ -4630,24 +4576,22 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -4656,61 +4600,57 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2 {
   /** The UUID of the policy */
-  id?: string | null;
+  id?: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules | null;
+  connectionRules?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig | null;
+  mfaConfig?: AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules,
-        ).pipe(T.Body("connection_rules")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules.pipe(
+          T.Body("connection_rules"),
+        ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig,
-        ).pipe(T.Body("mfa_config")),
+        AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig.pipe(
+          T.Body("mfa_config"),
+        ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -5133,14 +5073,14 @@ export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicatio
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -5487,12 +5427,12 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -5592,16 +5532,14 @@ export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicatio
   /** Contains the Unix usernames that may be used when connecting over SSH. */
   usernames: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSshUsernamesList;
   /** Enables using Identity Provider email alias as SSH username. */
-  allowEmailAlias?: boolean | null;
+  allowEmailAlias?: boolean;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       usernames:
         AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSshUsernamesList,
-      allowEmailAlias: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_email_alias")),
-      ),
+      allowEmailAlias: S.optional(S.Boolean.pipe(T.Body("allow_email_alias"))),
     }),
   ).annotate({
     identifier:
@@ -5610,15 +5548,13 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules {
   /** The SSH-specific rules that define how users may connect to the targets secured by your application. */
-  ssh?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh | null;
+  ssh?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ssh: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh,
-        ),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh,
       ),
     }),
   ).annotate({
@@ -5891,24 +5827,22 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig {
   /** Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported. */
-  allowedAuthenticators?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples: `5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -6173,13 +6107,13 @@ export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicatio
   /** The name of the Access policy. */
   name: string;
   /** The rules that define how users may connect to the targets secured by your application. */
-  connectionRules?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules | null;
+  connectionRules?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules;
   /** Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeList | null;
+  exclude?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeList;
   /** Configures multi-factor authentication (MFA) settings for infrastructure applications. */
-  mfaConfig?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig | null;
+  mfaConfig?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig;
   /** Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. */
-  require?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireList | null;
+  require?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireList;
 }
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6190,24 +6124,20 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
         AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeList,
       name: S.String,
       connectionRules: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules,
-        ).pipe(T.Body("connection_rules")),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules.pipe(
+          T.Body("connection_rules"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeList,
-        ),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeList,
       ),
       mfaConfig: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig,
-        ).pipe(T.Body("mfa_config")),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig.pipe(
+          T.Body("mfa_config"),
+        ),
       ),
       require: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireList,
-        ),
+        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireList,
       ),
     }),
   ).annotate({
@@ -6301,7 +6231,7 @@ export interface AccessApplicationsCreateRequestScimConfigSelfHostedApplicationA
   /** URL used to generate the token used to authenticate with the remote SCIM service. */
   tokenUrl: string;
   /** The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. */
-  scopes?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList | null;
+  scopes?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList;
 }
 export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -6313,9 +6243,7 @@ export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthe
         AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2Scheme,
       tokenUrl: S.String.pipe(T.Body("token_url")),
       scopes: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList,
-        ),
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList,
       ),
     }),
   ).annotate({
@@ -6439,18 +6367,18 @@ export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthe
 
 export interface AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations {
   /** Whether or not this mapping applies to create (POST) operations. */
-  create?: boolean | null;
+  create?: boolean;
   /** Whether or not this mapping applies to DELETE operations. */
-  delete?: boolean | null;
+  delete?: boolean;
   /** Whether or not this mapping applies to update (PATCH/PUT) operations. */
-  update?: boolean | null;
+  update?: boolean;
 }
 export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      create: S.optional(S.NullOr(S.Boolean)),
-      delete: S.optional(S.NullOr(S.Boolean)),
-      update: S.optional(S.NullOr(S.Boolean)),
+      create: S.optional(S.Boolean),
+      delete: S.optional(S.Boolean),
+      update: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -6466,38 +6394,31 @@ export interface AccessApplicationsCreateRequestScimConfigSelfHostedApplicationM
   /** Which SCIM resource type this mapping applies to. */
   schema: string;
   /** Whether or not this mapping is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application. */
-  filter?: string | null;
+  filter?: string;
   /** Whether or not this mapping applies to creates, updates, or deletes. */
-  operations?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations | null;
+  operations?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations;
   /** The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target. */
   strictness?:
     | AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemStrictness
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application. */
-  transformJsonata?: string | null;
+  transformJsonata?: string;
 }
 export const AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schema: S.String,
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      filter: S.optional(S.NullOr(S.String)),
+      enabled: S.optional(S.Boolean),
+      filter: S.optional(S.String),
       operations: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations,
-        ),
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemOperations,
       ),
       strictness: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemStrictness,
-        ),
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsItemStrictness,
       ),
-      transformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("transform_jsonata")),
-      ),
+      transformJsonata: S.optional(S.String.pipe(T.Body("transform_jsonata"))),
     }),
   ).annotate({
     identifier:
@@ -6517,13 +6438,13 @@ export interface AccessApplicationsCreateRequestScimConfigSelfHostedApplication 
   /** The base URI for the application's SCIM-compatible API. */
   remoteUri: string;
   /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
-  authentication?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication | null;
+  authentication?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication;
   /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
-  deactivateOnDelete?: boolean | null;
+  deactivateOnDelete?: boolean;
   /** Whether SCIM provisioning is turned on for this application. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
-  mappings?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList | null;
+  mappings?: AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList;
 }
 export const AccessApplicationsCreateRequestScimConfigSelfHostedApplication =
   /*@__PURE__*/ S.suspend(() =>
@@ -6531,18 +6452,14 @@ export const AccessApplicationsCreateRequestScimConfigSelfHostedApplication =
       idpUid: S.String.pipe(T.Body("idp_uid")),
       remoteUri: S.String.pipe(T.Body("remote_uri")),
       authentication: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication,
-        ),
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationAuthentication,
       ),
       deactivateOnDelete: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("deactivate_on_delete")),
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       mappings: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList,
-        ),
+        AccessApplicationsCreateRequestScimConfigSelfHostedApplicationMappingsList,
       ),
     }),
   ).annotate({
@@ -6681,34 +6598,29 @@ export interface AccessApplicationsCreateRequestScimConfigSaaSApplicationMapping
   /** Which SCIM resource type this mapping applies to. */
   schema: string;
   /** Whether or not this mapping is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application. */
-  filter?: string | null;
+  filter?: string;
   /** Whether or not this mapping applies to creates, updates, or deletes. */
-  operations?: unknown | null;
+  operations?: unknown;
   /** The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target. */
   strictness?:
     | AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsItemStrictness
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application. */
-  transformJsonata?: string | null;
+  transformJsonata?: string;
 }
 export const AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schema: S.String,
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      filter: S.optional(S.NullOr(S.String)),
-      operations: S.optional(S.NullOr(S.Unknown)),
+      enabled: S.optional(S.Boolean),
+      filter: S.optional(S.String),
+      operations: S.optional(S.Unknown),
       strictness: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsItemStrictness,
-        ),
+        AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsItemStrictness,
       ),
-      transformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("transform_jsonata")),
-      ),
+      transformJsonata: S.optional(S.String.pipe(T.Body("transform_jsonata"))),
     }),
   ).annotate({
     identifier:
@@ -6728,13 +6640,13 @@ export interface AccessApplicationsCreateRequestScimConfigSaaSApplication {
   /** The base URI for the application's SCIM-compatible API. */
   remoteUri: string;
   /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
-  authentication?: AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication | null;
+  authentication?: AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication;
   /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
-  deactivateOnDelete?: boolean | null;
+  deactivateOnDelete?: boolean;
   /** Whether SCIM provisioning is turned on for this application. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
-  mappings?: AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList | null;
+  mappings?: AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList;
 }
 export const AccessApplicationsCreateRequestScimConfigSaaSApplication =
   /*@__PURE__*/ S.suspend(() =>
@@ -6742,18 +6654,14 @@ export const AccessApplicationsCreateRequestScimConfigSaaSApplication =
       idpUid: S.String.pipe(T.Body("idp_uid")),
       remoteUri: S.String.pipe(T.Body("remote_uri")),
       authentication: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication,
-        ),
+        AccessApplicationsCreateRequestScimConfigSaaSApplicationAuthentication,
       ),
       deactivateOnDelete: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("deactivate_on_delete")),
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       mappings: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList,
-        ),
+        AccessApplicationsCreateRequestScimConfigSaaSApplicationMappingsList,
       ),
     }),
   ).annotate({
@@ -6812,15 +6720,15 @@ export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpItem {
   /** The UID of the IdP. */
-  idpId?: string | null;
+  idpId?: string;
   /** The name of the IdP provided attribute. */
-  sourceName?: string | null;
+  sourceName?: string;
 }
 export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      idpId: S.optional(S.NullOr(S.String).pipe(T.Body("idp_id"))),
-      sourceName: S.optional(S.NullOr(S.String).pipe(T.Body("source_name"))),
+      idpId: S.optional(S.String.pipe(T.Body("idp_id"))),
+      sourceName: S.optional(S.String.pipe(T.Body("source_name"))),
     }),
   ).annotate({
     identifier:
@@ -6836,18 +6744,18 @@ export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource {
   /** The name of the IdP attribute. */
-  name?: string | null;
+  name?: string;
   /** A mapping from IdP ID to attribute name. */
-  nameByIdp?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList | null;
+  nameByIdp?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList;
 }
 export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       nameByIdp: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList,
-        ).pipe(T.Body("name_by_idp")),
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList.pipe(
+          T.Body("name_by_idp"),
+        ),
       ),
     }),
   ).annotate({
@@ -6857,35 +6765,30 @@ export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItem {
   /** The SAML FriendlyName of the attribute. */
-  friendlyName?: string | null;
+  friendlyName?: string;
   /** The name of the attribute. */
-  name?: string | null;
+  name?: string;
   /** A globally unique name for an identity or service provider. */
   nameFormat?:
     | AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** If the attribute is required when building a SAML assertion. */
-  required?: boolean | null;
-  source?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource | null;
+  required?: boolean;
+  source?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource;
 }
 export const AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      friendlyName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("friendly_name")),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+      name: S.optional(S.String),
       nameFormat: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat,
-        ).pipe(T.Body("name_format")),
-      ),
-      required: S.optional(S.NullOr(S.Boolean)),
-      source: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource,
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat.pipe(
+          T.Body("name_format"),
         ),
+      ),
+      required: S.optional(S.Boolean),
+      source: S.optional(
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource,
       ),
     }),
   ).annotate({
@@ -6910,65 +6813,63 @@ export interface AccessApplicationsCreateRequestSaasAppSAMLSaaSApp {
   /** Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml" */
   authType?:
     | AccessApplicationsCreateRequestSaasAppSAMLSaaSAppAuthType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The service provider's endpoint that is responsible for receiving and parsing a SAML assertion. */
-  consumerServiceUrl?: string | null;
-  customAttributes?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList | null;
+  consumerServiceUrl?: string;
+  customAttributes?: AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList;
   /** The URL that the user will be redirected to after a successful login for IDP initiated logins. */
-  defaultRelayState?: string | null;
+  defaultRelayState?: string;
   /** The unique identifier for your SaaS application. */
-  idpEntityId?: string | null;
+  idpEntityId?: string;
   /** The format of the name identifier sent to the SaaS application. */
   nameIdFormat?:
     | AccessApplicationsCreateRequestSaasAppSAMLSaaSAppNameIdFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting. */
-  nameIdTransformJsonata?: string | null;
+  nameIdTransformJsonata?: string;
   /** The Access public certificate that will be used to verify your identity. */
-  publicKey?: string | null;
+  publicKey?: string;
   /** A [JSONata] (https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object. */
-  samlAttributeTransformJsonata?: string | null;
+  samlAttributeTransformJsonata?: string;
   /** A globally unique name for an identity or service provider. */
-  spEntityId?: string | null;
+  spEntityId?: string;
   /** The endpoint where your SaaS application will send login requests. */
-  ssoEndpoint?: string | null;
+  ssoEndpoint?: string;
 }
 export const AccessApplicationsCreateRequestSaasAppSAMLSaaSApp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authType: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppAuthType,
-        ).pipe(T.Body("auth_type")),
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppAuthType.pipe(
+          T.Body("auth_type"),
+        ),
       ),
       consumerServiceUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("consumer_service_url")),
+        S.String.pipe(T.Body("consumer_service_url")),
       ),
       customAttributes: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList,
-        ).pipe(T.Body("custom_attributes")),
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppCustomAttributesList.pipe(
+          T.Body("custom_attributes"),
+        ),
       ),
       defaultRelayState: S.optional(
-        S.NullOr(S.String).pipe(T.Body("default_relay_state")),
+        S.String.pipe(T.Body("default_relay_state")),
       ),
-      idpEntityId: S.optional(S.NullOr(S.String).pipe(T.Body("idp_entity_id"))),
+      idpEntityId: S.optional(S.String.pipe(T.Body("idp_entity_id"))),
       nameIdFormat: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppSAMLSaaSAppNameIdFormat,
-        ).pipe(T.Body("name_id_format")),
+        AccessApplicationsCreateRequestSaasAppSAMLSaaSAppNameIdFormat.pipe(
+          T.Body("name_id_format"),
+        ),
       ),
       nameIdTransformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("name_id_transform_jsonata")),
+        S.String.pipe(T.Body("name_id_transform_jsonata")),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
       samlAttributeTransformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_attribute_transform_jsonata")),
+        S.String.pipe(T.Body("saml_attribute_transform_jsonata")),
       ),
-      spEntityId: S.optional(S.NullOr(S.String).pipe(T.Body("sp_entity_id"))),
-      ssoEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("sso_endpoint"))),
+      spEntityId: S.optional(S.String.pipe(T.Body("sp_entity_id"))),
+      ssoEndpoint: S.optional(S.String.pipe(T.Body("sso_endpoint"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsCreateRequestSaasAppSAMLSaaSApp",
@@ -6995,18 +6896,18 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSo
 
 export interface AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource {
   /** The name of the IdP claim. */
-  name?: string | null;
+  name?: string;
   /** A mapping from IdP ID to claim name. */
-  nameByIdp?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap | null;
+  nameByIdp?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap;
 }
 export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       nameByIdp: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap,
-        ).pipe(T.Body("name_by_idp")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap.pipe(
+          T.Body("name_by_idp"),
+        ),
       ),
     }),
   ).annotate({
@@ -7016,30 +6917,25 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSo
 
 export interface AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItem {
   /** The name of the claim. */
-  name?: string | null;
+  name?: string;
   /** If the claim is required when building an OIDC token. */
-  required?: boolean | null;
+  required?: boolean;
   /** The scope of the claim. */
   scope?:
     | AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope
-    | (string & {})
-    | null;
-  source?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource | null;
+    | (string & {});
+  source?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource;
 }
 export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
-      required: S.optional(S.NullOr(S.Boolean)),
+      name: S.optional(S.String),
+      required: S.optional(S.Boolean),
       scope: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope,
-        ),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope,
       ),
       source: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource,
-        ),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource,
       ),
     }),
   ).annotate({
@@ -7075,22 +6971,20 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList =
 
 export interface AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions {
   /** If an Access Token should be returned from the OIDC Authorization endpoint */
-  returnAccessTokenFromAuthorizationEndpoint?: boolean | null;
+  returnAccessTokenFromAuthorizationEndpoint?: boolean;
   /** If an ID Token should be returned from the OIDC Authorization endpoint */
-  returnIdTokenFromAuthorizationEndpoint?: boolean | null;
+  returnIdTokenFromAuthorizationEndpoint?: boolean;
 }
 export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       returnAccessTokenFromAuthorizationEndpoint: S.optional(
-        S.NullOr(S.Boolean).pipe(
+        S.Boolean.pipe(
           T.Body("return_access_token_from_authorization_endpoint"),
         ),
       ),
       returnIdTokenFromAuthorizationEndpoint: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("return_id_token_from_authorization_endpoint"),
-        ),
+        S.Boolean.pipe(T.Body("return_id_token_from_authorization_endpoint")),
       ),
     }),
   ).annotate({
@@ -7107,12 +7001,12 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList =
 
 export interface AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions {
   /** How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m. */
-  lifetime?: string | null;
+  lifetime?: string;
 }
 export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lifetime: S.optional(S.NullOr(S.String)),
+      lifetime: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -7137,86 +7031,79 @@ export const AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList =
 
 export interface AccessApplicationsCreateRequestSaasAppOIDCSaaSApp {
   /** The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h. */
-  accessTokenLifetime?: string | null;
+  accessTokenLifetime?: string;
   /** If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used. */
-  allowPkceWithoutClientSecret?: boolean | null;
+  allowPkceWithoutClientSecret?: boolean;
   /** The URL where this applications tile redirects users */
-  appLauncherUrl?: string | null;
+  appLauncherUrl?: string;
   /** Identifier of the authentication protocol used for the saas app. Required for OIDC. */
   authType?:
     | AccessApplicationsCreateRequestSaasAppOIDCSaaSAppAuthType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The application client id */
-  clientId?: string | null;
+  clientId?: string;
   /** The application client secret, only returned on POST request. */
-  clientSecret?: string | null;
-  customClaims?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList | null;
+  clientSecret?: string;
+  customClaims?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList;
   /** The OIDC flows supported by this application */
-  grantTypes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList | null;
+  grantTypes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList;
   /** A regex to filter Cloudflare groups returned in ID token and userinfo endpoint */
-  groupFilterRegex?: string | null;
-  hybridAndImplicitOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions | null;
+  groupFilterRegex?: string;
+  hybridAndImplicitOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions;
   /** The Access public certificate that will be used to verify your identity. */
-  publicKey?: string | null;
+  publicKey?: string;
   /** The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens */
-  redirectUris?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList | null;
-  refreshTokenOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions | null;
+  redirectUris?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList;
+  refreshTokenOptions?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions;
   /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
-  scopes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList | null;
+  scopes?: AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList;
 }
 export const AccessApplicationsCreateRequestSaasAppOIDCSaaSApp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessTokenLifetime: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_token_lifetime")),
+        S.String.pipe(T.Body("access_token_lifetime")),
       ),
       allowPkceWithoutClientSecret: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_pkce_without_client_secret")),
+        S.Boolean.pipe(T.Body("allow_pkce_without_client_secret")),
       ),
-      appLauncherUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_url")),
-      ),
+      appLauncherUrl: S.optional(S.String.pipe(T.Body("app_launcher_url"))),
       authType: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppAuthType,
-        ).pipe(T.Body("auth_type")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppAuthType.pipe(
+          T.Body("auth_type"),
+        ),
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       customClaims: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList,
-        ).pipe(T.Body("custom_claims")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppCustomClaimsList.pipe(
+          T.Body("custom_claims"),
+        ),
       ),
       grantTypes: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList,
-        ).pipe(T.Body("grant_types")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppGrantTypesList.pipe(
+          T.Body("grant_types"),
+        ),
       ),
-      groupFilterRegex: S.optional(
-        S.NullOr(S.String).pipe(T.Body("group_filter_regex")),
-      ),
+      groupFilterRegex: S.optional(S.String.pipe(T.Body("group_filter_regex"))),
       hybridAndImplicitOptions: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions,
-        ).pipe(T.Body("hybrid_and_implicit_options")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions.pipe(
+          T.Body("hybrid_and_implicit_options"),
+        ),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
       redirectUris: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList,
-        ).pipe(T.Body("redirect_uris")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRedirectUrisList.pipe(
+          T.Body("redirect_uris"),
+        ),
       ),
       refreshTokenOptions: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions,
-        ).pipe(T.Body("refresh_token_options")),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppRefreshTokenOptions.pipe(
+          T.Body("refresh_token_options"),
+        ),
       ),
       scopes: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList),
+        AccessApplicationsCreateRequestSaasAppOIDCSaaSAppScopesList,
       ),
     }),
   ).annotate({
@@ -7286,26 +7173,24 @@ export const AccessApplicationsCreateRequestFooterLinksList =
 
 export interface AccessApplicationsCreateRequestLandingPageDesign {
   /** The background color of the log in button on the landing page. */
-  buttonColor?: string | null;
+  buttonColor?: string;
   /** The color of the text in the log in button on the landing page. */
-  buttonTextColor?: string | null;
+  buttonTextColor?: string;
   /** The URL of the image shown on the landing page. */
-  imageUrl?: string | null;
+  imageUrl?: string;
   /** The message shown on the landing page. */
-  message?: string | null;
+  message?: string;
   /** The title shown on the landing page. */
-  title?: string | null;
+  title?: string;
 }
 export const AccessApplicationsCreateRequestLandingPageDesign =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      buttonColor: S.optional(S.NullOr(S.String).pipe(T.Body("button_color"))),
-      buttonTextColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("button_text_color")),
-      ),
-      imageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("image_url"))),
-      message: S.optional(S.NullOr(S.String)),
-      title: S.optional(S.NullOr(S.String)),
+      buttonColor: S.optional(S.String.pipe(T.Body("button_color"))),
+      buttonTextColor: S.optional(S.String.pipe(T.Body("button_text_color"))),
+      imageUrl: S.optional(S.String.pipe(T.Body("image_url"))),
+      message: S.optional(S.String),
+      title: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessApplicationsCreateRequestLandingPageDesign",
@@ -7435,212 +7320,192 @@ export interface CreateAccessApplicationForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain?: string | null;
+  domain?: string;
   /** The application type. */
-  type?: AccessApplicationsCreateRequestType | null;
+  type?: AccessApplicationsCreateRequestType;
   /** When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: AccessApplicationsCreateRequestAllowedIdpsList | null;
+  allowedIdps?: AccessApplicationsCreateRequestAllowedIdpsList;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean | null;
-  corsHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication | null;
+  autoRedirectToIdentity?: boolean;
+  corsHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication;
   /** The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string | null;
+  customDenyMessage?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string | null;
+  customDenyUrl?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string | null;
+  customNonIdentityDenyUrl?: string;
   /** The custom pages that will be displayed when applicable for this application */
-  customPages?: AccessApplicationsCreateRequestCustomPagesList | null;
+  customPages?: AccessApplicationsCreateRequestCustomPagesList;
   /** List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  destinations?: AccessApplicationsCreateRequestDestinationsList | null;
+  destinations?: AccessApplicationsCreateRequestDestinationsList;
   /** Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior. */
-  eagerRedirectCookieSetting?: boolean | null;
+  eagerRedirectCookieSetting?: boolean;
   /** Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean | null;
+  enableBindingCookie?: boolean;
   /** Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean | null;
+  httpOnlyCookieAttribute?: boolean;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsCreateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsCreateRequestMfaConfig;
   /** The name of the application. */
-  name?: string | null;
+  name?: string;
   /** **Beta:** Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. Only compatible with OAuth clients that support [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707) (Resource Indicators for OAuth 2.0). This feature is currently in beta. */
-  oauthConfiguration?: AccessApplicationsCreateRequestOauthConfiguration | null;
+  oauthConfiguration?: AccessApplicationsCreateRequestOauthConfiguration;
   /** Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean | null;
+  optionsPreflightBypass?: boolean;
   /** Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean | null;
+  pathCookieAttribute?: boolean;
   /** The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive. */
-  policies?: AccessApplicationsCreateForAccountRequestPolicies | null;
+  policies?: AccessApplicationsCreateForAccountRequestPolicies;
   /** Allows matching Access Service Tokens passed HTTP in a single header with this name. */
-  readServiceTokensFromHeader?: string | null;
+  readServiceTokensFromHeader?: string;
   /** Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string | null;
+  sameSiteCookieAttribute?: string;
   /** Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: AccessApplicationsCreateRequestScimConfig | null;
+  scimConfig?: AccessApplicationsCreateRequestScimConfig;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList | null;
+  selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  service_auth_401_redirect?: boolean | null;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: AccessApplicationsCreateRequestTagsList | null;
+  tags?: AccessApplicationsCreateRequestTagsList;
   /** Determines if users can access this application via a clientless browser isolation URL. */
-  useClientlessIsolationAppLauncherUrl?: boolean | null;
-  saasApp?: AccessApplicationsCreateRequestSaasApp | null;
+  useClientlessIsolationAppLauncherUrl?: boolean;
+  saasApp?: AccessApplicationsCreateRequestSaasApp;
   /** The image URL of the logo shown in the App Launcher header. */
-  appLauncherLogoUrl?: string | null;
+  appLauncherLogoUrl?: string;
   /** The background color of the App Launcher page. */
-  bgColor?: string | null;
+  bgColor?: string;
   /** The links in the App Launcher footer. */
-  footerLinks?: AccessApplicationsCreateRequestFooterLinksList | null;
+  footerLinks?: AccessApplicationsCreateRequestFooterLinksList;
   /** The background color of the App Launcher header. */
-  headerBgColor?: string | null;
+  headerBgColor?: string;
   /** The design of the App Launcher landing page shown to users when they log in. */
-  landingPageDesign?: AccessApplicationsCreateRequestLandingPageDesign | null;
+  landingPageDesign?: AccessApplicationsCreateRequestLandingPageDesign;
   /** Determines when to skip the App Launcher landing page. */
-  skipAppLauncherLoginPage?: boolean | null;
-  targetCriteria?: AccessApplicationsCreateRequestTargetCriteria | null;
+  skipAppLauncherLoginPage?: boolean;
+  targetCriteria?: AccessApplicationsCreateRequestTargetCriteria;
 }
 export const CreateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
-      domain: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(AccessApplicationsCreateRequestType)),
+      domain: S.optional(S.String),
+      type: S.optional(AccessApplicationsCreateRequestType),
       allowAuthenticateViaWarp: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+        S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
       ),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       allowedIdps: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestAllowedIdpsList).pipe(
+        AccessApplicationsCreateRequestAllowedIdpsList.pipe(
           T.Body("allowed_idps"),
         ),
       ),
       appLauncherVisible: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+        S.Boolean.pipe(T.Body("app_launcher_visible")),
       ),
       autoRedirectToIdentity: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+        S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
       ),
       corsHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication,
-        ).pipe(T.Body("cors_headers")),
+        AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication.pipe(
+          T.Body("cors_headers"),
+        ),
       ),
       customDenyMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_message")),
+        S.String.pipe(T.Body("custom_deny_message")),
       ),
-      customDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_url")),
-      ),
+      customDenyUrl: S.optional(S.String.pipe(T.Body("custom_deny_url"))),
       customNonIdentityDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_non_identity_deny_url")),
+        S.String.pipe(T.Body("custom_non_identity_deny_url")),
       ),
       customPages: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestCustomPagesList).pipe(
+        AccessApplicationsCreateRequestCustomPagesList.pipe(
           T.Body("custom_pages"),
         ),
       ),
-      destinations: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestDestinationsList),
-      ),
+      destinations: S.optional(AccessApplicationsCreateRequestDestinationsList),
       eagerRedirectCookieSetting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("eager_redirect_cookie_setting")),
+        S.Boolean.pipe(T.Body("eager_redirect_cookie_setting")),
       ),
       enableBindingCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_binding_cookie")),
+        S.Boolean.pipe(T.Body("enable_binding_cookie")),
       ),
       httpOnlyCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("http_only_cookie_attribute")),
+        S.Boolean.pipe(T.Body("http_only_cookie_attribute")),
       ),
-      logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
+      logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestMfaConfig).pipe(
-          T.Body("mfa_config"),
-        ),
+        AccessApplicationsCreateRequestMfaConfig.pipe(T.Body("mfa_config")),
       ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       oauthConfiguration: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestOauthConfiguration).pipe(
+        AccessApplicationsCreateRequestOauthConfiguration.pipe(
           T.Body("oauth_configuration"),
         ),
       ),
       optionsPreflightBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("options_preflight_bypass")),
+        S.Boolean.pipe(T.Body("options_preflight_bypass")),
       ),
       pathCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("path_cookie_attribute")),
+        S.Boolean.pipe(T.Body("path_cookie_attribute")),
       ),
-      policies: S.optional(
-        S.NullOr(AccessApplicationsCreateForAccountRequestPolicies),
-      ),
+      policies: S.optional(AccessApplicationsCreateForAccountRequestPolicies),
       readServiceTokensFromHeader: S.optional(
-        S.NullOr(S.String).pipe(T.Body("read_service_tokens_from_header")),
+        S.String.pipe(T.Body("read_service_tokens_from_header")),
       ),
       sameSiteCookieAttribute: S.optional(
-        S.NullOr(S.String).pipe(T.Body("same_site_cookie_attribute")),
+        S.String.pipe(T.Body("same_site_cookie_attribute")),
       ),
       scimConfig: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestScimConfig).pipe(
-          T.Body("scim_config"),
-        ),
+        AccessApplicationsCreateRequestScimConfig.pipe(T.Body("scim_config")),
       ),
       selfHostedDomains: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestSelfHostedDomainsList).pipe(
+        AccessApplicationsCreateRequestSelfHostedDomainsList.pipe(
           T.Body("self_hosted_domains"),
         ),
       ),
-      service_auth_401_redirect: S.optional(S.NullOr(S.Boolean)),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
-      tags: S.optional(S.NullOr(AccessApplicationsCreateRequestTagsList)),
+      service_auth_401_redirect: S.optional(S.Boolean),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
+      tags: S.optional(AccessApplicationsCreateRequestTagsList),
       useClientlessIsolationAppLauncherUrl: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("use_clientless_isolation_app_launcher_url"),
-        ),
+        S.Boolean.pipe(T.Body("use_clientless_isolation_app_launcher_url")),
       ),
       saasApp: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestSaasApp).pipe(
-          T.Body("saas_app"),
-        ),
+        AccessApplicationsCreateRequestSaasApp.pipe(T.Body("saas_app")),
       ),
       appLauncherLogoUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_logo_url")),
+        S.String.pipe(T.Body("app_launcher_logo_url")),
       ),
-      bgColor: S.optional(S.NullOr(S.String).pipe(T.Body("bg_color"))),
+      bgColor: S.optional(S.String.pipe(T.Body("bg_color"))),
       footerLinks: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestFooterLinksList).pipe(
+        AccessApplicationsCreateRequestFooterLinksList.pipe(
           T.Body("footer_links"),
         ),
       ),
-      headerBgColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("header_bg_color")),
-      ),
+      headerBgColor: S.optional(S.String.pipe(T.Body("header_bg_color"))),
       landingPageDesign: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestLandingPageDesign).pipe(
+        AccessApplicationsCreateRequestLandingPageDesign.pipe(
           T.Body("landing_page_design"),
         ),
       ),
       skipAppLauncherLoginPage: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_app_launcher_login_page")),
+        S.Boolean.pipe(T.Body("skip_app_launcher_login_page")),
       ),
       targetCriteria: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestTargetCriteria).pipe(
+        AccessApplicationsCreateRequestTargetCriteria.pipe(
           T.Body("target_criteria"),
         ),
       ),
@@ -27272,212 +27137,192 @@ export interface CreateAccessApplicationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain?: string | null;
+  domain?: string;
   /** The application type. */
-  type?: AccessApplicationsCreateRequestType | null;
+  type?: AccessApplicationsCreateRequestType;
   /** When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: AccessApplicationsCreateRequestAllowedIdpsList | null;
+  allowedIdps?: AccessApplicationsCreateRequestAllowedIdpsList;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean | null;
-  corsHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication | null;
+  autoRedirectToIdentity?: boolean;
+  corsHeaders?: AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication;
   /** The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string | null;
+  customDenyMessage?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string | null;
+  customDenyUrl?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string | null;
+  customNonIdentityDenyUrl?: string;
   /** The custom pages that will be displayed when applicable for this application */
-  customPages?: AccessApplicationsCreateRequestCustomPagesList | null;
+  customPages?: AccessApplicationsCreateRequestCustomPagesList;
   /** List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  destinations?: AccessApplicationsCreateRequestDestinationsList | null;
+  destinations?: AccessApplicationsCreateRequestDestinationsList;
   /** Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior. */
-  eagerRedirectCookieSetting?: boolean | null;
+  eagerRedirectCookieSetting?: boolean;
   /** Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean | null;
+  enableBindingCookie?: boolean;
   /** Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean | null;
+  httpOnlyCookieAttribute?: boolean;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsCreateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsCreateRequestMfaConfig;
   /** The name of the application. */
-  name?: string | null;
+  name?: string;
   /** **Beta:** Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. Only compatible with OAuth clients that support [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707) (Resource Indicators for OAuth 2.0). This feature is currently in beta. */
-  oauthConfiguration?: AccessApplicationsCreateRequestOauthConfiguration | null;
+  oauthConfiguration?: AccessApplicationsCreateRequestOauthConfiguration;
   /** Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean | null;
+  optionsPreflightBypass?: boolean;
   /** Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean | null;
+  pathCookieAttribute?: boolean;
   /** The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive. */
-  policies?: AccessApplicationsCreateForZoneRequestPolicies | null;
+  policies?: AccessApplicationsCreateForZoneRequestPolicies;
   /** Allows matching Access Service Tokens passed HTTP in a single header with this name. */
-  readServiceTokensFromHeader?: string | null;
+  readServiceTokensFromHeader?: string;
   /** Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string | null;
+  sameSiteCookieAttribute?: string;
   /** Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: AccessApplicationsCreateRequestScimConfig | null;
+  scimConfig?: AccessApplicationsCreateRequestScimConfig;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList | null;
+  selfHostedDomains?: AccessApplicationsCreateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  service_auth_401_redirect?: boolean | null;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: AccessApplicationsCreateRequestTagsList | null;
+  tags?: AccessApplicationsCreateRequestTagsList;
   /** Determines if users can access this application via a clientless browser isolation URL. */
-  useClientlessIsolationAppLauncherUrl?: boolean | null;
-  saasApp?: AccessApplicationsCreateRequestSaasApp | null;
+  useClientlessIsolationAppLauncherUrl?: boolean;
+  saasApp?: AccessApplicationsCreateRequestSaasApp;
   /** The image URL of the logo shown in the App Launcher header. */
-  appLauncherLogoUrl?: string | null;
+  appLauncherLogoUrl?: string;
   /** The background color of the App Launcher page. */
-  bgColor?: string | null;
+  bgColor?: string;
   /** The links in the App Launcher footer. */
-  footerLinks?: AccessApplicationsCreateRequestFooterLinksList | null;
+  footerLinks?: AccessApplicationsCreateRequestFooterLinksList;
   /** The background color of the App Launcher header. */
-  headerBgColor?: string | null;
+  headerBgColor?: string;
   /** The design of the App Launcher landing page shown to users when they log in. */
-  landingPageDesign?: AccessApplicationsCreateRequestLandingPageDesign | null;
+  landingPageDesign?: AccessApplicationsCreateRequestLandingPageDesign;
   /** Determines when to skip the App Launcher landing page. */
-  skipAppLauncherLoginPage?: boolean | null;
-  targetCriteria?: AccessApplicationsCreateRequestTargetCriteria | null;
+  skipAppLauncherLoginPage?: boolean;
+  targetCriteria?: AccessApplicationsCreateRequestTargetCriteria;
 }
 export const CreateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
-      domain: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(AccessApplicationsCreateRequestType)),
+      domain: S.optional(S.String),
+      type: S.optional(AccessApplicationsCreateRequestType),
       allowAuthenticateViaWarp: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+        S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
       ),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       allowedIdps: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestAllowedIdpsList).pipe(
+        AccessApplicationsCreateRequestAllowedIdpsList.pipe(
           T.Body("allowed_idps"),
         ),
       ),
       appLauncherVisible: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+        S.Boolean.pipe(T.Body("app_launcher_visible")),
       ),
       autoRedirectToIdentity: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+        S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
       ),
       corsHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication,
-        ).pipe(T.Body("cors_headers")),
+        AccessApplicationsCreateRequestCorsHeadersSelfHostedApplication.pipe(
+          T.Body("cors_headers"),
+        ),
       ),
       customDenyMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_message")),
+        S.String.pipe(T.Body("custom_deny_message")),
       ),
-      customDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_url")),
-      ),
+      customDenyUrl: S.optional(S.String.pipe(T.Body("custom_deny_url"))),
       customNonIdentityDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_non_identity_deny_url")),
+        S.String.pipe(T.Body("custom_non_identity_deny_url")),
       ),
       customPages: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestCustomPagesList).pipe(
+        AccessApplicationsCreateRequestCustomPagesList.pipe(
           T.Body("custom_pages"),
         ),
       ),
-      destinations: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestDestinationsList),
-      ),
+      destinations: S.optional(AccessApplicationsCreateRequestDestinationsList),
       eagerRedirectCookieSetting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("eager_redirect_cookie_setting")),
+        S.Boolean.pipe(T.Body("eager_redirect_cookie_setting")),
       ),
       enableBindingCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_binding_cookie")),
+        S.Boolean.pipe(T.Body("enable_binding_cookie")),
       ),
       httpOnlyCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("http_only_cookie_attribute")),
+        S.Boolean.pipe(T.Body("http_only_cookie_attribute")),
       ),
-      logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
+      logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestMfaConfig).pipe(
-          T.Body("mfa_config"),
-        ),
+        AccessApplicationsCreateRequestMfaConfig.pipe(T.Body("mfa_config")),
       ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       oauthConfiguration: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestOauthConfiguration).pipe(
+        AccessApplicationsCreateRequestOauthConfiguration.pipe(
           T.Body("oauth_configuration"),
         ),
       ),
       optionsPreflightBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("options_preflight_bypass")),
+        S.Boolean.pipe(T.Body("options_preflight_bypass")),
       ),
       pathCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("path_cookie_attribute")),
+        S.Boolean.pipe(T.Body("path_cookie_attribute")),
       ),
-      policies: S.optional(
-        S.NullOr(AccessApplicationsCreateForZoneRequestPolicies),
-      ),
+      policies: S.optional(AccessApplicationsCreateForZoneRequestPolicies),
       readServiceTokensFromHeader: S.optional(
-        S.NullOr(S.String).pipe(T.Body("read_service_tokens_from_header")),
+        S.String.pipe(T.Body("read_service_tokens_from_header")),
       ),
       sameSiteCookieAttribute: S.optional(
-        S.NullOr(S.String).pipe(T.Body("same_site_cookie_attribute")),
+        S.String.pipe(T.Body("same_site_cookie_attribute")),
       ),
       scimConfig: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestScimConfig).pipe(
-          T.Body("scim_config"),
-        ),
+        AccessApplicationsCreateRequestScimConfig.pipe(T.Body("scim_config")),
       ),
       selfHostedDomains: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestSelfHostedDomainsList).pipe(
+        AccessApplicationsCreateRequestSelfHostedDomainsList.pipe(
           T.Body("self_hosted_domains"),
         ),
       ),
-      service_auth_401_redirect: S.optional(S.NullOr(S.Boolean)),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
-      tags: S.optional(S.NullOr(AccessApplicationsCreateRequestTagsList)),
+      service_auth_401_redirect: S.optional(S.Boolean),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
+      tags: S.optional(AccessApplicationsCreateRequestTagsList),
       useClientlessIsolationAppLauncherUrl: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("use_clientless_isolation_app_launcher_url"),
-        ),
+        S.Boolean.pipe(T.Body("use_clientless_isolation_app_launcher_url")),
       ),
       saasApp: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestSaasApp).pipe(
-          T.Body("saas_app"),
-        ),
+        AccessApplicationsCreateRequestSaasApp.pipe(T.Body("saas_app")),
       ),
       appLauncherLogoUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_logo_url")),
+        S.String.pipe(T.Body("app_launcher_logo_url")),
       ),
-      bgColor: S.optional(S.NullOr(S.String).pipe(T.Body("bg_color"))),
+      bgColor: S.optional(S.String.pipe(T.Body("bg_color"))),
       footerLinks: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestFooterLinksList).pipe(
+        AccessApplicationsCreateRequestFooterLinksList.pipe(
           T.Body("footer_links"),
         ),
       ),
-      headerBgColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("header_bg_color")),
-      ),
+      headerBgColor: S.optional(S.String.pipe(T.Body("header_bg_color"))),
       landingPageDesign: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestLandingPageDesign).pipe(
+        AccessApplicationsCreateRequestLandingPageDesign.pipe(
           T.Body("landing_page_design"),
         ),
       ),
       skipAppLauncherLoginPage: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_app_launcher_login_page")),
+        S.Boolean.pipe(T.Body("skip_app_launcher_login_page")),
       ),
       targetCriteria: S.optional(
-        S.NullOr(AccessApplicationsCreateRequestTargetCriteria).pipe(
+        AccessApplicationsCreateRequestTargetCriteria.pipe(
           T.Body("target_criteria"),
         ),
       ),
@@ -27505,22 +27350,20 @@ export interface AccessApplicationsPoliciesCreateRequestApprovalGroupsItem {
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessApplicationsPoliciesCreateRequestApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessApplicationsPoliciesCreateRequestApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessApplicationsPoliciesCreateRequestApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessApplicationsPoliciesCreateRequestApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsPoliciesCreateRequestApprovalGroupsItem",
@@ -27565,22 +27408,22 @@ export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedCli
 
 export interface AccessApplicationsPoliciesCreateRequestConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessApplicationsPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -27589,13 +27432,13 @@ export const AccessApplicationsPoliciesCreateRequestConnectionRulesRdp =
 
 export interface AccessApplicationsPoliciesCreateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdp | null;
+  rdp?: AccessApplicationsPoliciesCreateRequestConnectionRulesRdp;
 }
 export const AccessApplicationsPoliciesCreateRequestConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rdp: S.optional(
-        S.NullOr(AccessApplicationsPoliciesCreateRequestConnectionRulesRdp),
+        AccessApplicationsPoliciesCreateRequestConnectionRulesRdp,
       ),
     }),
   ).annotate({
@@ -27619,24 +27462,22 @@ export const AccessApplicationsPoliciesCreateRequestMfaConfigAllowedAuthenticato
 
 export interface AccessApplicationsPoliciesCreateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsPoliciesCreateRequestMfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsPoliciesCreateRequestMfaConfig",
@@ -27648,23 +27489,23 @@ export interface CreateAccessApplicationPolicyForAccountRequest {
   /** UUID. */
   appId: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsPoliciesCreateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsPoliciesCreateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsPoliciesCreateRequestConnectionRules | null;
+  connectionRules?: AccessApplicationsPoliciesCreateRequestConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsPoliciesCreateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsPoliciesCreateRequestMfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const CreateAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27672,36 +27513,32 @@ export const CreateAccessApplicationPolicyForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsPoliciesCreateRequestApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(AccessApplicationsPoliciesCreateRequestConnectionRules).pipe(
+        AccessApplicationsPoliciesCreateRequestConnectionRules.pipe(
           T.Body("connection_rules"),
         ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsPoliciesCreateRequestMfaConfig).pipe(
+        AccessApplicationsPoliciesCreateRequestMfaConfig.pipe(
           T.Body("mfa_config"),
         ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     })
       .pipe(
         T.Http({
@@ -29261,23 +29098,23 @@ export interface CreateAccessApplicationPolicyForZoneRequest {
   /** UUID. */
   appId: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsPoliciesCreateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsPoliciesCreateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsPoliciesCreateRequestConnectionRules | null;
+  connectionRules?: AccessApplicationsPoliciesCreateRequestConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsPoliciesCreateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsPoliciesCreateRequestMfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const CreateAccessApplicationPolicyForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -29285,36 +29122,32 @@ export const CreateAccessApplicationPolicyForZoneRequest =
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesCreateRequestApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsPoliciesCreateRequestApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(AccessApplicationsPoliciesCreateRequestConnectionRules).pipe(
+        AccessApplicationsPoliciesCreateRequestConnectionRules.pipe(
           T.Body("connection_rules"),
         ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsPoliciesCreateRequestMfaConfig).pipe(
+        AccessApplicationsPoliciesCreateRequestMfaConfig.pipe(
           T.Body("mfa_config"),
         ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     })
       .pipe(
         T.Http({
@@ -29713,14 +29546,14 @@ export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Incl
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -30067,12 +29900,12 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeI
 
 export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -30172,22 +30005,20 @@ export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Appr
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier:
@@ -30233,22 +30064,22 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Connecti
 
 export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -30258,15 +30089,13 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Connecti
 
 export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp | null;
+  rdp?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rdp: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp,
-        ),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRulesRdp,
       ),
     }),
   ).annotate({
@@ -30539,24 +30368,22 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfi
 
 export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -30821,25 +30648,25 @@ export interface AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0 {
   /** The name of the Access policy. */
   name: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules | null;
+  connectionRules?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules;
   /** Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeList | null;
+  exclude?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeList;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig | null;
+  mfaConfig?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. */
-  require?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireList | null;
+  require?: AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireList;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -30850,45 +30677,37 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0 =
         AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeList,
       name: S.String,
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules,
-        ).pipe(T.Body("connection_rules")),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules.pipe(
+          T.Body("connection_rules"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeList,
-        ),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeList,
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig,
-        ).pipe(T.Body("mfa_config")),
-      ),
-      purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
-      ),
-      purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
-      ),
-      require: S.optional(
-        S.NullOr(
-          AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireList,
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig.pipe(
+          T.Body("mfa_config"),
         ),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
+      purposeJustificationPrompt: S.optional(
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
+      purposeJustificationRequired: S.optional(
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
+      ),
+      require: S.optional(
+        AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireList,
+      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0",
@@ -30929,14 +30748,14 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesList =
 export interface CreateAccessApplicationPolicyTestRequest {
   /** Identifier. */
   accountId: string;
-  policies?: AccessApplicationsPolicyTestsCreateRequestPoliciesList | null;
+  policies?: AccessApplicationsPolicyTestsCreateRequestPoliciesList;
 }
 export const CreateAccessApplicationPolicyTestRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       policies: S.optional(
-        S.NullOr(AccessApplicationsPolicyTestsCreateRequestPoliciesList),
+        AccessApplicationsPolicyTestsCreateRequestPoliciesList,
       ),
     })
       .pipe(
@@ -30979,24 +30798,24 @@ export interface CreateAccessBookmarkRequest {
   /** UUID. */
   bookmarkId: string;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** The domain of the Bookmark application. */
-  domain?: string | null;
+  domain?: string;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** The name of the Bookmark application. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
     appLauncherVisible: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+      S.Boolean.pipe(T.Body("app_launcher_visible")),
     ),
-    domain: S.optional(S.NullOr(S.String)),
-    logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
-    name: S.optional(S.NullOr(S.String)),
+    domain: S.optional(S.String),
+    logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -31052,7 +30871,7 @@ export interface CreateAccessCertificateForAccountRequest {
   /** The name of the certificate. */
   name: string;
   /** The hostnames of the applications that will use this certificate. */
-  associatedHostnames?: AccessCertificatesCreateRequestAssociatedHostnamesList | null;
+  associatedHostnames?: AccessCertificatesCreateRequestAssociatedHostnamesList;
 }
 export const CreateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -31061,7 +30880,7 @@ export const CreateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
       certificate: S.String,
       name: S.String,
       associatedHostnames: S.optional(
-        S.NullOr(AccessCertificatesCreateRequestAssociatedHostnamesList).pipe(
+        AccessCertificatesCreateRequestAssociatedHostnamesList.pipe(
           T.Body("associated_hostnames"),
         ),
       ),
@@ -31121,7 +30940,7 @@ export interface CreateAccessCertificateForZoneRequest {
   /** The name of the certificate. */
   name: string;
   /** The hostnames of the applications that will use this certificate. */
-  associatedHostnames?: AccessCertificatesCreateRequestAssociatedHostnamesList | null;
+  associatedHostnames?: AccessCertificatesCreateRequestAssociatedHostnamesList;
 }
 export const CreateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -31130,7 +30949,7 @@ export const CreateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
       certificate: S.String,
       name: S.String,
       associatedHostnames: S.optional(
-        S.NullOr(AccessCertificatesCreateRequestAssociatedHostnamesList).pipe(
+        AccessCertificatesCreateRequestAssociatedHostnamesList.pipe(
           T.Body("associated_hostnames"),
         ),
       ),
@@ -31598,14 +31417,14 @@ export interface AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithu
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -31933,12 +31752,12 @@ export const AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule =
 
 export interface AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -32478,20 +32297,20 @@ export interface CreateAccessGroupForAccountRequest {
   /** The name of the Access group. */
   name: string;
   /** Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessGroupsCreateRequestExcludeList | null;
+  exclude?: AccessGroupsCreateRequestExcludeList;
   /** Whether this is the default group */
-  isDefault?: boolean | null;
+  isDefault?: boolean;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: AccessGroupsCreateRequestRequireList | null;
+  require?: AccessGroupsCreateRequestRequireList;
 }
 export const CreateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     include: AccessGroupsCreateRequestIncludeList,
     name: S.String,
-    exclude: S.optional(S.NullOr(AccessGroupsCreateRequestExcludeList)),
-    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-    require: S.optional(S.NullOr(AccessGroupsCreateRequestRequireList)),
+    exclude: S.optional(AccessGroupsCreateRequestExcludeList),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    require: S.optional(AccessGroupsCreateRequestRequireList),
   })
     .pipe(
       T.Http({
@@ -33767,20 +33586,20 @@ export interface CreateAccessGroupForZoneRequest {
   /** The name of the Access group. */
   name: string;
   /** Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessGroupsCreateRequestExcludeList | null;
+  exclude?: AccessGroupsCreateRequestExcludeList;
   /** Whether this is the default group */
-  isDefault?: boolean | null;
+  isDefault?: boolean;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: AccessGroupsCreateRequestRequireList | null;
+  require?: AccessGroupsCreateRequestRequireList;
 }
 export const CreateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     include: AccessGroupsCreateRequestIncludeList,
     name: S.String,
-    exclude: S.optional(S.NullOr(AccessGroupsCreateRequestExcludeList)),
-    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-    require: S.optional(S.NullOr(AccessGroupsCreateRequestRequireList)),
+    exclude: S.optional(AccessGroupsCreateRequestExcludeList),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    require: S.optional(AccessGroupsCreateRequestRequireList),
   })
     .pipe(
       T.Http({
@@ -33837,17 +33656,15 @@ export const CreateAccessIdpFederationGrantResponse = /*@__PURE__*/ S.suspend(
 
 export interface AccessInfrastructureTargetsCreateRequestIpIpv4 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsCreateRequestIpIpv4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsCreateRequestIpIpv4",
@@ -33855,17 +33672,15 @@ export const AccessInfrastructureTargetsCreateRequestIpIpv4 =
 
 export interface AccessInfrastructureTargetsCreateRequestIpIpv6 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsCreateRequestIpIpv6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsCreateRequestIpIpv6",
@@ -33873,19 +33688,15 @@ export const AccessInfrastructureTargetsCreateRequestIpIpv6 =
 
 export interface AccessInfrastructureTargetsCreateRequestIp {
   /** The target's IPv4 address */
-  ipv4?: AccessInfrastructureTargetsCreateRequestIpIpv4 | null;
+  ipv4?: AccessInfrastructureTargetsCreateRequestIpIpv4;
   /** The target's IPv6 address */
-  ipv6?: AccessInfrastructureTargetsCreateRequestIpIpv6 | null;
+  ipv6?: AccessInfrastructureTargetsCreateRequestIpIpv6;
 }
 export const AccessInfrastructureTargetsCreateRequestIp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipv4: S.optional(
-        S.NullOr(AccessInfrastructureTargetsCreateRequestIpIpv4),
-      ),
-      ipv6: S.optional(
-        S.NullOr(AccessInfrastructureTargetsCreateRequestIpIpv6),
-      ),
+      ipv4: S.optional(AccessInfrastructureTargetsCreateRequestIpIpv4),
+      ipv6: S.optional(AccessInfrastructureTargetsCreateRequestIpIpv6),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsCreateRequestIp",
@@ -34366,14 +34177,14 @@ export interface AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGit
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -34702,12 +34513,12 @@ export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule =
 
 export interface AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -34806,22 +34617,20 @@ export interface AccessPoliciesCreateRequestApprovalGroupsItem {
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessPoliciesCreateRequestApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier: "AccessPoliciesCreateRequestApprovalGroupsItem",
@@ -34866,22 +34675,22 @@ export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemote
 
 export interface AccessPoliciesCreateRequestConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessPoliciesCreateRequestConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -34890,12 +34699,12 @@ export const AccessPoliciesCreateRequestConnectionRulesRdp =
 
 export interface AccessPoliciesCreateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessPoliciesCreateRequestConnectionRulesRdp | null;
+  rdp?: AccessPoliciesCreateRequestConnectionRulesRdp;
 }
 export const AccessPoliciesCreateRequestConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rdp: S.optional(S.NullOr(AccessPoliciesCreateRequestConnectionRulesRdp)),
+      rdp: S.optional(AccessPoliciesCreateRequestConnectionRulesRdp),
     }),
   ).annotate({
     identifier: "AccessPoliciesCreateRequestConnectionRules",
@@ -35145,24 +34954,22 @@ export const AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface AccessPoliciesCreateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessPoliciesCreateRequestMfaConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
 ).annotate({
   identifier: "AccessPoliciesCreateRequestMfaConfig",
@@ -35403,25 +35210,25 @@ export interface CreateAccessPolicyRequest {
   /** The name of the Access policy. */
   name: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessPoliciesCreateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessPoliciesCreateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessPoliciesCreateRequestConnectionRules | null;
+  connectionRules?: AccessPoliciesCreateRequestConnectionRules;
   /** Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessPoliciesCreateRequestExcludeList | null;
+  exclude?: AccessPoliciesCreateRequestExcludeList;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessPoliciesCreateRequestMfaConfig | null;
+  mfaConfig?: AccessPoliciesCreateRequestMfaConfig;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. */
-  require?: AccessPoliciesCreateRequestRequireList | null;
+  require?: AccessPoliciesCreateRequestRequireList;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -35430,35 +35237,29 @@ export const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     include: AccessPoliciesCreateRequestIncludeList,
     name: S.String,
     approvalGroups: S.optional(
-      S.NullOr(AccessPoliciesCreateRequestApprovalGroupsList).pipe(
+      AccessPoliciesCreateRequestApprovalGroupsList.pipe(
         T.Body("approval_groups"),
       ),
     ),
-    approvalRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-    ),
+    approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
     connectionRules: S.optional(
-      S.NullOr(AccessPoliciesCreateRequestConnectionRules).pipe(
+      AccessPoliciesCreateRequestConnectionRules.pipe(
         T.Body("connection_rules"),
       ),
     ),
-    exclude: S.optional(S.NullOr(AccessPoliciesCreateRequestExcludeList)),
-    isolationRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
-    ),
+    exclude: S.optional(AccessPoliciesCreateRequestExcludeList),
+    isolationRequired: S.optional(S.Boolean.pipe(T.Body("isolation_required"))),
     mfaConfig: S.optional(
-      S.NullOr(AccessPoliciesCreateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      AccessPoliciesCreateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     purposeJustificationPrompt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+      S.String.pipe(T.Body("purpose_justification_prompt")),
     ),
     purposeJustificationRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+      S.Boolean.pipe(T.Body("purpose_justification_required")),
     ),
-    require: S.optional(S.NullOr(AccessPoliciesCreateRequestRequireList)),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    require: S.optional(AccessPoliciesCreateRequestRequireList),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
   })
     .pipe(
       T.Http({
@@ -36949,11 +36750,11 @@ export interface CreateAccessServiceTokenForAccountRequest {
   /** The name of the service token. */
   name: string;
   /** A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. */
-  clientSecretVersion?: number | null;
+  clientSecretVersion?: number;
   /** The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h). */
-  duration?: string | null;
+  duration?: string;
   /** The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. */
-  previousClientSecretExpiresAt?: string | null;
+  previousClientSecretExpiresAt?: string;
 }
 export const CreateAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -36961,11 +36762,11 @@ export const CreateAccessServiceTokenForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       name: S.String,
       clientSecretVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("client_secret_version")),
+        S.Number.pipe(T.Body("client_secret_version")),
       ),
-      duration: S.optional(S.NullOr(S.String)),
+      duration: S.optional(S.String),
       previousClientSecretExpiresAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("previous_client_secret_expires_at")),
+        S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
     })
       .pipe(
@@ -37011,11 +36812,11 @@ export interface CreateAccessServiceTokenForZoneRequest {
   /** The name of the service token. */
   name: string;
   /** A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. */
-  clientSecretVersion?: number | null;
+  clientSecretVersion?: number;
   /** The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h). */
-  duration?: string | null;
+  duration?: string;
   /** The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. */
-  previousClientSecretExpiresAt?: string | null;
+  previousClientSecretExpiresAt?: string;
 }
 export const CreateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -37023,11 +36824,11 @@ export const CreateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       name: S.String,
       clientSecretVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("client_secret_version")),
+        S.Number.pipe(T.Body("client_secret_version")),
       ),
-      duration: S.optional(S.NullOr(S.String)),
+      duration: S.optional(S.String),
       previousClientSecretExpiresAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("previous_client_secret_expires_at")),
+        S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
     })
       .pipe(
@@ -37046,12 +36847,12 @@ export interface CreateAccessTagRequest {
   /** Identifier. */
   accountId: string;
   /** The name of the tag */
-  name?: string | null;
+  name?: string;
 }
 export const CreateAccessTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -37084,13 +36885,13 @@ export interface CreateAccessUserRequest {
   /** The email of the user. */
   email: string;
   /** The name of the user. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -37185,7 +36986,7 @@ export interface CreateDeviceDeploymentGroupRequest {
   /** Contains at least one version configuration. */
   versionConfig: DevicesDeploymentGroupsCreateRequestVersionConfigList;
   /** Contains an optional list of policy IDs assigned to a group. */
-  policyIds?: DevicesDeploymentGroupsCreateRequestPolicyIdsList | null;
+  policyIds?: DevicesDeploymentGroupsCreateRequestPolicyIdsList;
 }
 export const CreateDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37195,7 +36996,7 @@ export const CreateDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("version_config"),
     ),
     policyIds: S.optional(
-      S.NullOr(DevicesDeploymentGroupsCreateRequestPolicyIdsList).pipe(
+      DevicesDeploymentGroupsCreateRequestPolicyIdsList.pipe(
         T.Body("policy_ids"),
       ),
     ),
@@ -37287,13 +37088,13 @@ export interface DevicesDexTestsCreateRequestData {
   /** The type of test. */
   kind: DevicesDexTestsCreateRequestDataKind | (string & {});
   /** The HTTP request method type. */
-  method?: DevicesDexTestsCreateRequestDataMethod | (string & {}) | null;
+  method?: DevicesDexTestsCreateRequestDataMethod | (string & {});
 }
 export const DevicesDexTestsCreateRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     kind: DevicesDexTestsCreateRequestDataKind,
-    method: S.optional(S.NullOr(DevicesDexTestsCreateRequestDataMethod)),
+    method: S.optional(DevicesDexTestsCreateRequestDataMethod),
   }),
 ).annotate({
   identifier: "DevicesDexTestsCreateRequestData",
@@ -37303,16 +37104,16 @@ export interface DevicesDexTestsCreateRequestTargetPoliciesItem {
   /** The id of the DEX rule. */
   id: string;
   /** Whether the DEX rule is the account default. */
-  default?: boolean | null;
+  default?: boolean;
   /** The name of the DEX rule. */
-  name?: string | null;
+  name?: string;
 }
 export const DevicesDexTestsCreateRequestTargetPoliciesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      default: S.optional(S.NullOr(S.Boolean)),
-      name: S.optional(S.NullOr(S.String)),
+      default: S.optional(S.Boolean),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesDexTestsCreateRequestTargetPoliciesItem",
@@ -37337,10 +37138,10 @@ export interface CreateDeviceDexTestRequest {
   /** The name of the DEX test. Must be unique. */
   name: string;
   /** Additional details about the test. */
-  description?: string | null;
+  description?: string;
   /** DEX rules targeted by this test */
-  targetPolicies?: DevicesDexTestsCreateRequestTargetPoliciesList | null;
-  targeted?: boolean | null;
+  targetPolicies?: DevicesDexTestsCreateRequestTargetPoliciesList;
+  targeted?: boolean;
 }
 export const CreateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37349,13 +37150,13 @@ export const CreateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     interval: S.String,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
     targetPolicies: S.optional(
-      S.NullOr(DevicesDexTestsCreateRequestTargetPoliciesList).pipe(
+      DevicesDexTestsCreateRequestTargetPoliciesList.pipe(
         T.Body("target_policies"),
       ),
     ),
-    targeted: S.optional(S.NullOr(S.Boolean)),
+    targeted: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -37467,9 +37268,9 @@ export interface CreateDeviceIpProfileRequest {
   /** The ID of the Subnet. */
   subnetId: string;
   /** An optional description of the Device IP profile. */
-  description?: string | null;
+  description?: string;
   /** Whether the Device IP profile will be applied to matching devices. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const CreateDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37478,8 +37279,8 @@ export const CreateDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     precedence: S.Number,
     subnetId: S.String.pipe(T.Body("subnet_id")),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -37534,12 +37335,12 @@ export interface DevicesNetworksCreateRequestConfig {
   /** A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host. */
   tlsSockaddr: string;
   /** The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate. */
-  sha256?: string | null;
+  sha256?: string;
 }
 export const DevicesNetworksCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsSockaddr: S.String.pipe(T.Body("tls_sockaddr")),
-    sha256: S.optional(S.NullOr(S.String)),
+    sha256: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DevicesNetworksCreateRequestConfig",
@@ -37620,13 +37421,13 @@ export interface DevicesPoliciesCustomCreateRequestDnsSearchSuffixesItem {
   /** The DNS search suffix to append when resolving short hostnames. */
   suffix: string;
   /** A description of the DNS search suffix. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomCreateRequestDnsSearchSuffixesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suffix: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPoliciesCustomCreateRequestDnsSearchSuffixesItem",
@@ -37643,13 +37444,13 @@ export interface DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExclud
   /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -37660,13 +37461,13 @@ export interface DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExclud
   /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomCreateRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -37747,13 +37548,13 @@ export interface DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesInclud
   /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -37764,13 +37565,13 @@ export interface DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesInclud
   /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomCreateRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -37797,15 +37598,15 @@ export const DevicesPoliciesCustomCreateRequestIncludeList =
 
 export interface DevicesPoliciesCustomCreateRequestServiceModeV2 {
   /** The mode to run the WARP client under. */
-  mode?: string | null;
+  mode?: string;
   /** The port number when used with proxy mode. */
-  port?: number | null;
+  port?: number;
 }
 export const DevicesPoliciesCustomCreateRequestServiceModeV2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      mode: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "DevicesPoliciesCustomCreateRequestServiceModeV2",
@@ -37843,48 +37644,48 @@ export interface CreateDevicePolicyCustomRequest {
   /** The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field. */
   precedence: number;
   /** Whether to allow the user to switch WARP between modes. */
-  allowModeSwitch?: boolean | null;
+  allowModeSwitch?: boolean;
   /** Whether to receive update notifications when a new version of the client is available. */
-  allowUpdates?: boolean | null;
+  allowUpdates?: boolean;
   /** Whether to allow devices to leave the organization. */
-  allowedToLeave?: boolean | null;
+  allowedToLeave?: boolean;
   /** The amount of time in seconds to reconnect after having been disabled. */
-  autoConnect?: number | null;
+  autoConnect?: number;
   /** Turn on the captive portal after the specified amount of time. */
-  captivePortal?: number | null;
+  captivePortal?: number;
   /** A description of the policy. */
-  description?: string | null;
+  description?: string;
   /** If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`. */
-  disableAutoFallback?: boolean | null;
+  disableAutoFallback?: boolean;
   /** List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear. */
-  dnsSearchSuffixes?: DevicesPoliciesCustomCreateRequestDnsSearchSuffixesList | null;
+  dnsSearchSuffixes?: DevicesPoliciesCustomCreateRequestDnsSearchSuffixesList;
   /** Whether the policy will be applied to matching devices. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  exclude?: DevicesPoliciesCustomCreateRequestExcludeList | null;
+  exclude?: DevicesPoliciesCustomCreateRequestExcludeList;
   /** Whether to add Microsoft IPs to Split Tunnel exclusions. */
-  excludeOfficeIps?: boolean | null;
+  excludeOfficeIps?: boolean;
   /** Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/. */
-  globalAcceleration?: DevicesPoliciesCustomCreateRequestGlobalAcceleration | null;
+  globalAcceleration?: DevicesPoliciesCustomCreateRequestGlobalAcceleration;
   /** List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  include?: DevicesPoliciesCustomCreateRequestIncludeList | null;
+  include?: DevicesPoliciesCustomCreateRequestIncludeList;
   /** The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset. */
-  lanAllowMinutes?: number | null;
+  lanAllowMinutes?: number;
   /** The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset. */
-  lanAllowSubnetSize?: number | null;
+  lanAllowSubnetSize?: number;
   /** Determines if the operating system will register WARP's local interface IP with your on-premises DNS server. */
-  registerInterfaceIpWithDns?: boolean | null;
+  registerInterfaceIpWithDns?: boolean;
   /** Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only). */
-  sccmVpnBoundarySupport?: boolean | null;
-  serviceModeV2?: DevicesPoliciesCustomCreateRequestServiceModeV2 | null;
+  sccmVpnBoundarySupport?: boolean;
+  serviceModeV2?: DevicesPoliciesCustomCreateRequestServiceModeV2;
   /** The URL to launch when the Send Feedback button is clicked. */
-  supportUrl?: string | null;
+  supportUrl?: string;
   /** Whether to allow the user to turn off the WARP switch and disconnect the client. */
-  switchLocked?: boolean | null;
+  switchLocked?: boolean;
   /** Determines which tunnel protocol to use. */
-  tunnelProtocol?: string | null;
+  tunnelProtocol?: string;
   /** Virtual network access settings for the device. */
-  virtualNetworks?: DevicesPoliciesCustomCreateRequestVirtualNetworks | null;
+  virtualNetworks?: DevicesPoliciesCustomCreateRequestVirtualNetworks;
 }
 export const CreateDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -37892,65 +37693,49 @@ export const CreateDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
     match: S.String,
     name: S.String,
     precedence: S.Number,
-    allowModeSwitch: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_mode_switch")),
-    ),
-    allowUpdates: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_updates"))),
-    allowedToLeave: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allowed_to_leave")),
-    ),
-    autoConnect: S.optional(S.NullOr(S.Number).pipe(T.Body("auto_connect"))),
-    captivePortal: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("captive_portal")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
+    allowModeSwitch: S.optional(S.Boolean.pipe(T.Body("allow_mode_switch"))),
+    allowUpdates: S.optional(S.Boolean.pipe(T.Body("allow_updates"))),
+    allowedToLeave: S.optional(S.Boolean.pipe(T.Body("allowed_to_leave"))),
+    autoConnect: S.optional(S.Number.pipe(T.Body("auto_connect"))),
+    captivePortal: S.optional(S.Number.pipe(T.Body("captive_portal"))),
+    description: S.optional(S.String),
     disableAutoFallback: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_auto_fallback")),
+      S.Boolean.pipe(T.Body("disable_auto_fallback")),
     ),
     dnsSearchSuffixes: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestDnsSearchSuffixesList).pipe(
+      DevicesPoliciesCustomCreateRequestDnsSearchSuffixesList.pipe(
         T.Body("dns_search_suffixes"),
       ),
     ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    exclude: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestExcludeList),
-    ),
-    excludeOfficeIps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("exclude_office_ips")),
-    ),
+    enabled: S.optional(S.Boolean),
+    exclude: S.optional(DevicesPoliciesCustomCreateRequestExcludeList),
+    excludeOfficeIps: S.optional(S.Boolean.pipe(T.Body("exclude_office_ips"))),
     globalAcceleration: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestGlobalAcceleration).pipe(
+      DevicesPoliciesCustomCreateRequestGlobalAcceleration.pipe(
         T.Body("global_acceleration"),
       ),
     ),
-    include: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestIncludeList),
-    ),
-    lanAllowMinutes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_minutes")),
-    ),
+    include: S.optional(DevicesPoliciesCustomCreateRequestIncludeList),
+    lanAllowMinutes: S.optional(S.Number.pipe(T.Body("lan_allow_minutes"))),
     lanAllowSubnetSize: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_subnet_size")),
+      S.Number.pipe(T.Body("lan_allow_subnet_size")),
     ),
     registerInterfaceIpWithDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("register_interface_ip_with_dns")),
+      S.Boolean.pipe(T.Body("register_interface_ip_with_dns")),
     ),
     sccmVpnBoundarySupport: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("sccm_vpn_boundary_support")),
+      S.Boolean.pipe(T.Body("sccm_vpn_boundary_support")),
     ),
     serviceModeV2: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestServiceModeV2).pipe(
+      DevicesPoliciesCustomCreateRequestServiceModeV2.pipe(
         T.Body("service_mode_v2"),
       ),
     ),
-    supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
-    switchLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("switch_locked"))),
-    tunnelProtocol: S.optional(
-      S.NullOr(S.String).pipe(T.Body("tunnel_protocol")),
-    ),
+    supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
+    switchLocked: S.optional(S.Boolean.pipe(T.Body("switch_locked"))),
+    tunnelProtocol: S.optional(S.String.pipe(T.Body("tunnel_protocol"))),
     virtualNetworks: S.optional(
-      S.NullOr(DevicesPoliciesCustomCreateRequestVirtualNetworks).pipe(
+      DevicesPoliciesCustomCreateRequestVirtualNetworks.pipe(
         T.Body("virtual_networks"),
       ),
     ),
@@ -38431,11 +38216,11 @@ export interface DevicesPostureCreateRequestInputFileInput {
   /** File path. */
   path: string;
   /** Whether or not file exists. */
-  exists?: boolean | null;
+  exists?: boolean;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureCreateRequestInputFileInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -38445,9 +38230,9 @@ export const DevicesPostureCreateRequestInputFileInput =
           T.Body("operating_system"),
         ),
       path: S.String,
-      exists: S.optional(S.NullOr(S.Boolean)),
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      exists: S.optional(S.Boolean),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputFileInput",
@@ -38488,7 +38273,7 @@ export interface DevicesPostureCreateRequestInputDomainJoinedInput {
   /** Operating System. */
   operatingSystem: DevicesPostureCreateRequestInputDomainJoinedInputOperatingSystem;
   /** Domain. */
-  domain?: string | null;
+  domain?: string;
 }
 export const DevicesPostureCreateRequestInputDomainJoinedInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -38497,7 +38282,7 @@ export const DevicesPostureCreateRequestInputDomainJoinedInput =
         DevicesPostureCreateRequestInputDomainJoinedInputOperatingSystem.pipe(
           T.Body("operating_system"),
         ),
-      domain: S.optional(S.NullOr(S.String)),
+      domain: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputDomainJoinedInput",
@@ -38527,11 +38312,11 @@ export interface DevicesPostureCreateRequestInputOSVersionInput {
   /** Version of OS. */
   version: string;
   /** Operating System Distribution Name (linux only). */
-  osDistroName?: string | null;
+  osDistroName?: string;
   /** Version of OS Distribution (linux only). */
-  osDistroRevision?: string | null;
+  osDistroRevision?: string;
   /** Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. */
-  osVersionExtra?: string | null;
+  osVersionExtra?: string;
 }
 export const DevicesPostureCreateRequestInputOSVersionInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -38542,15 +38327,9 @@ export const DevicesPostureCreateRequestInputOSVersionInput =
         ),
       operator: DevicesPostureCreateRequestInputOSVersionInputOperator,
       version: S.String,
-      osDistroName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_distro_name")),
-      ),
-      osDistroRevision: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_distro_revision")),
-      ),
-      osVersionExtra: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_version_extra")),
-      ),
+      osDistroName: S.optional(S.String.pipe(T.Body("os_distro_name"))),
+      osDistroRevision: S.optional(S.String.pipe(T.Body("os_distro_revision"))),
+      osVersionExtra: S.optional(S.String.pipe(T.Body("os_version_extra"))),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputOSVersionInput",
@@ -38598,9 +38377,9 @@ export interface DevicesPostureCreateRequestInputSentineloneInput {
   /** File path. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureCreateRequestInputSentineloneInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -38610,8 +38389,8 @@ export const DevicesPostureCreateRequestInputSentineloneInput =
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputSentineloneInput",
@@ -38630,9 +38409,9 @@ export interface DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputReq
   /** File path. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38642,8 +38421,8 @@ export const DevicesPostureCreateRequestInputTeamsDevicesCarbonblackInputRequest
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -38673,19 +38452,17 @@ export const DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList =
 
 export interface DevicesPostureCreateRequestInputDiskEncryptionInput {
   /** List of volume names to be checked for encryption. */
-  checkDisks?: DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList | null;
+  checkDisks?: DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList;
   /** Whether to check all disks for encryption. */
-  requireAll?: boolean | null;
+  requireAll?: boolean;
 }
 export const DevicesPostureCreateRequestInputDiskEncryptionInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkDisks: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList,
-        ),
+        DevicesPostureCreateRequestInputDiskEncryptionInputCheckDisksList,
       ),
-      requireAll: S.optional(S.NullOr(S.Boolean)),
+      requireAll: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputDiskEncryptionInput",
@@ -38704,9 +38481,9 @@ export interface DevicesPostureCreateRequestInputTeamsDevicesApplicationInputReq
   /** Path for the application. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureCreateRequestInputTeamsDevicesApplicationInputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38716,8 +38493,8 @@ export const DevicesPostureCreateRequestInputTeamsDevicesApplicationInputRequest
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -38784,22 +38561,20 @@ export const DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2Inpu
 
 export interface DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations {
   /** List of paths to check for client certificate on linux. */
-  paths?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList | null;
+  paths?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList;
   /** List of trust stores to check for client certificate. */
-  trustStores?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList | null;
+  trustStores?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList;
 }
 export const DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       paths: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList,
-        ),
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList,
       ),
       trustStores: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList,
-        ).pipe(T.Body("trust_stores")),
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList.pipe(
+          T.Body("trust_stores"),
+        ),
       ),
     }),
   ).annotate({
@@ -38824,12 +38599,12 @@ export interface DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2
     | DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem
     | (string & {});
   /** Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables. */
-  cn?: string | null;
+  cn?: string;
   /** List of values indicating purposes for which the certificate public key can be used. */
-  extendedKeyUsage?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList | null;
-  locations?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations | null;
+  extendedKeyUsage?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList;
+  locations?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations;
   /** List of certificate Subject Alternative Names. */
-  subjectAlternativeNames?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList | null;
+  subjectAlternativeNames?: DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList;
 }
 export const DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38840,21 +38615,19 @@ export const DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2Inpu
         DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem.pipe(
           T.Body("operating_system"),
         ),
-      cn: S.optional(S.NullOr(S.String)),
+      cn: S.optional(S.String),
       extendedKeyUsage: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList,
-        ).pipe(T.Body("extended_key_usage")),
-      ),
-      locations: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList.pipe(
+          T.Body("extended_key_usage"),
         ),
       ),
+      locations: S.optional(
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+      ),
       subjectAlternativeNames: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList,
-        ).pipe(T.Body("subject_alternative_names")),
+        DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList.pipe(
+          T.Body("subject_alternative_names"),
+        ),
       ),
     }),
   ).annotate({
@@ -38864,14 +38637,12 @@ export const DevicesPostureCreateRequestInputTeamsDevicesClientCertificateV2Inpu
 
 export interface DevicesPostureCreateRequestInputTeamsDevicesAntivirusInputRequest {
   /** Number of days that the antivirus should be updated within. */
-  updateWindowDays?: number | null;
+  updateWindowDays?: number;
 }
 export const DevicesPostureCreateRequestInputTeamsDevicesAntivirusInputRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateWindowDays: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("update_window_days")),
-      ),
+      updateWindowDays: S.optional(S.Number.pipe(T.Body("update_window_days"))),
     }),
   ).annotate({
     identifier:
@@ -38935,52 +38706,41 @@ export interface DevicesPostureCreateRequestInputCrowdstrikeInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** For more details on last seen, please refer to the Crowdstrike documentation. */
-  lastSeen?: string | null;
+  lastSeen?: string;
   /** Operator. */
   operator?:
     | DevicesPostureCreateRequestInputCrowdstrikeInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** Os Version. */
-  os?: string | null;
+  os?: string;
   /** Overall. */
-  overall?: string | null;
+  overall?: string;
   /** SensorConfig. */
-  sensorConfig?: string | null;
+  sensorConfig?: string;
   /** For more details on state, please refer to the Crowdstrike documentation. */
-  state?:
-    | DevicesPostureCreateRequestInputCrowdstrikeInputState
-    | (string & {})
-    | null;
+  state?: DevicesPostureCreateRequestInputCrowdstrikeInputState | (string & {});
   /** Version. */
-  version?: string | null;
+  version?: string;
   /** Version Operator. */
   versionOperator?:
     | DevicesPostureCreateRequestInputCrowdstrikeInputVersionOperator
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DevicesPostureCreateRequestInputCrowdstrikeInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      lastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen"))),
+      lastSeen: S.optional(S.String.pipe(T.Body("last_seen"))),
       operator: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputCrowdstrikeInputOperator),
+        DevicesPostureCreateRequestInputCrowdstrikeInputOperator,
       ),
-      os: S.optional(S.NullOr(S.String)),
-      overall: S.optional(S.NullOr(S.String)),
-      sensorConfig: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sensor_config")),
-      ),
-      state: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputCrowdstrikeInputState),
-      ),
-      version: S.optional(S.NullOr(S.String)),
+      os: S.optional(S.String),
+      overall: S.optional(S.String),
+      sensorConfig: S.optional(S.String.pipe(T.Body("sensor_config"))),
+      state: S.optional(DevicesPostureCreateRequestInputCrowdstrikeInputState),
+      version: S.optional(S.String),
       versionOperator: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputCrowdstrikeInputVersionOperator,
-        ),
+        DevicesPostureCreateRequestInputCrowdstrikeInputVersionOperator,
       ),
     }),
   ).annotate({
@@ -39047,28 +38807,27 @@ export interface DevicesPostureCreateRequestInputKolideInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states. */
-  authState?: DevicesPostureCreateRequestInputKolideInputAuthStateList | null;
+  authState?: DevicesPostureCreateRequestInputKolideInputAuthStateList;
   /** Count Operator. */
   countOperator?:
     | DevicesPostureCreateRequestInputKolideInputCountOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** The Number of Issues. */
-  issueCount?: string | null;
+  issueCount?: string;
 }
 export const DevicesPostureCreateRequestInputKolideInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
       authState: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputKolideInputAuthStateList).pipe(
+        DevicesPostureCreateRequestInputKolideInputAuthStateList.pipe(
           T.Body("auth_state"),
         ),
       ),
       countOperator: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputKolideInputCountOperator),
+        DevicesPostureCreateRequestInputKolideInputCountOperator,
       ),
-      issueCount: S.optional(S.NullOr(S.String).pipe(T.Body("issue_count"))),
+      issueCount: S.optional(S.String.pipe(T.Body("issue_count"))),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputKolideInput",
@@ -39104,42 +38863,37 @@ export interface DevicesPostureCreateRequestInputTaniumInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** For more details on eid last seen, refer to the Tanium documentation. */
-  eidLastSeen?: string | null;
+  eidLastSeen?: string;
   /** Operator to evaluate risk_level or eid_last_seen. */
   operator?:
     | DevicesPostureCreateRequestInputTaniumInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** For more details on risk level, refer to the Tanium documentation. */
   riskLevel?:
     | DevicesPostureCreateRequestInputTaniumInputRiskLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Score Operator. */
   scoreOperator?:
     | DevicesPostureCreateRequestInputTaniumInputScoreOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** For more details on total score, refer to the Tanium documentation. */
-  totalScore?: number | null;
+  totalScore?: number;
 }
 export const DevicesPostureCreateRequestInputTaniumInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      eidLastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("eid_last_seen"))),
-      operator: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputTaniumInputOperator),
-      ),
+      eidLastSeen: S.optional(S.String.pipe(T.Body("eid_last_seen"))),
+      operator: S.optional(DevicesPostureCreateRequestInputTaniumInputOperator),
       riskLevel: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputTaniumInputRiskLevel).pipe(
+        DevicesPostureCreateRequestInputTaniumInputRiskLevel.pipe(
           T.Body("risk_level"),
         ),
       ),
       scoreOperator: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputTaniumInputScoreOperator),
+        DevicesPostureCreateRequestInputTaniumInputScoreOperator,
       ),
-      totalScore: S.optional(S.NullOr(S.Number).pipe(T.Body("total_score"))),
+      totalScore: S.optional(S.Number.pipe(T.Body("total_score"))),
     }),
   ).annotate({
     identifier: "DevicesPostureCreateRequestInputTaniumInput",
@@ -39177,48 +38931,43 @@ export interface DevicesPostureCreateRequestInputSentineloneS2sInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** The Number of active threats. */
-  activeThreats?: number | null;
+  activeThreats?: number;
   /** Whether device is infected. */
-  infected?: boolean | null;
+  infected?: boolean;
   /** Whether device is active. */
-  isActive?: boolean | null;
+  isActive?: boolean;
   /** Network status of device. */
   networkStatus?:
     | DevicesPostureCreateRequestInputSentineloneS2sInputNetworkStatus
-    | (string & {})
-    | null;
+    | (string & {});
   /** Agent operational state. */
   operationalState?:
     | DevicesPostureCreateRequestInputSentineloneS2sInputOperationalState
-    | (string & {})
-    | null;
+    | (string & {});
   /** Operator. */
   operator?:
     | DevicesPostureCreateRequestInputSentineloneS2sInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DevicesPostureCreateRequestInputSentineloneS2sInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      activeThreats: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("active_threats")),
-      ),
-      infected: S.optional(S.NullOr(S.Boolean)),
-      isActive: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_active"))),
+      activeThreats: S.optional(S.Number.pipe(T.Body("active_threats"))),
+      infected: S.optional(S.Boolean),
+      isActive: S.optional(S.Boolean.pipe(T.Body("is_active"))),
       networkStatus: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputSentineloneS2sInputNetworkStatus,
-        ).pipe(T.Body("network_status")),
+        DevicesPostureCreateRequestInputSentineloneS2sInputNetworkStatus.pipe(
+          T.Body("network_status"),
+        ),
       ),
       operationalState: S.optional(
-        S.NullOr(
-          DevicesPostureCreateRequestInputSentineloneS2sInputOperationalState,
-        ).pipe(T.Body("operational_state")),
+        DevicesPostureCreateRequestInputSentineloneS2sInputOperationalState.pipe(
+          T.Body("operational_state"),
+        ),
       ),
       operator: S.optional(
-        S.NullOr(DevicesPostureCreateRequestInputSentineloneS2sInputOperator),
+        DevicesPostureCreateRequestInputSentineloneS2sInputOperator,
       ),
     }),
   ).annotate({
@@ -39350,17 +39099,12 @@ export const DevicesPostureCreateRequestMatchItemPlatform =
   /*@__PURE__*/ S.String;
 
 export interface DevicesPostureCreateRequestMatchItem {
-  platform?:
-    | DevicesPostureCreateRequestMatchItemPlatform
-    | (string & {})
-    | null;
+  platform?: DevicesPostureCreateRequestMatchItemPlatform | (string & {});
 }
 export const DevicesPostureCreateRequestMatchItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      platform: S.optional(
-        S.NullOr(DevicesPostureCreateRequestMatchItemPlatform),
-      ),
+      platform: S.optional(DevicesPostureCreateRequestMatchItemPlatform),
     }),
 ).annotate({
   identifier: "DevicesPostureCreateRequestMatchItem",
@@ -39379,26 +39123,26 @@ export interface CreateDevicePostureRequest {
   /** The type of device posture rule. */
   type: DevicesPostureCreateRequestType | (string & {});
   /** The description of the device posture rule. */
-  description?: string | null;
+  description?: string;
   /** Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client. */
-  expiration?: string | null;
+  expiration?: string;
   /** The value to be checked against. */
-  input?: DevicesPostureCreateRequestInput | null;
+  input?: DevicesPostureCreateRequestInput;
   /** The conditions that the client must match to run the rule. */
-  match?: DevicesPostureCreateRequestMatchList | null;
+  match?: DevicesPostureCreateRequestMatchList;
   /** Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`. */
-  schedule?: string | null;
+  schedule?: string;
 }
 export const CreateDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     type: DevicesPostureCreateRequestType,
-    description: S.optional(S.NullOr(S.String)),
-    expiration: S.optional(S.NullOr(S.String)),
-    input: S.optional(S.NullOr(DevicesPostureCreateRequestInput)),
-    match: S.optional(S.NullOr(DevicesPostureCreateRequestMatchList)),
-    schedule: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    expiration: S.optional(S.String),
+    input: S.optional(DevicesPostureCreateRequestInput),
+    match: S.optional(DevicesPostureCreateRequestMatchList),
+    schedule: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -40476,20 +40220,18 @@ export interface DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesTanium
   /** The Tanium client secret. */
   clientSecret: string;
   /** If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
-  accessClientId?: string | null;
+  accessClientId?: string;
   /** If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
-  accessClientSecret?: string | null;
+  accessClientSecret?: string;
 }
 export const DevicesPostureIntegrationsCreateRequestConfigTeamsDevicesTaniumConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiUrl: S.String.pipe(T.Body("api_url")),
       clientSecret: S.String.pipe(T.Body("client_secret")),
-      accessClientId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_client_id")),
-      ),
+      accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
       accessClientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_client_secret")),
+        S.String.pipe(T.Body("access_client_secret")),
       ),
     }),
   ).annotate({
@@ -40665,14 +40407,14 @@ export interface CreateDeviceResilienceGlobalWarpOverrideRequest {
   /** Disconnects all devices on the account using Global WARP override. */
   disconnect: boolean;
   /** Reasoning for setting the Global WARP override state. This will be surfaced in the audit log. */
-  justification?: string | null;
+  justification?: string;
 }
 export const CreateDeviceResilienceGlobalWarpOverrideRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       disconnect: S.Boolean,
-      justification: S.optional(S.NullOr(S.String)),
+      justification: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -40779,14 +40521,12 @@ export const DexCommandsCreateRequestCommandsItemType = /*@__PURE__*/ S.String;
 
 export interface DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs {
   /** Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag. */
-  testAllRoutes?: boolean | null;
+  testAllRoutes?: boolean;
 }
 export const DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      testAllRoutes: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("test-all-routes")),
-      ),
+      testAllRoutes: S.optional(S.Boolean.pipe(T.Body("test-all-routes"))),
     }),
   ).annotate({
     identifier: "DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs",
@@ -40794,24 +40534,18 @@ export const DexCommandsCreateRequestCommandsItemArgsWARPDiagArgs =
 
 export interface DexCommandsCreateRequestCommandsItemArgsPCAPArgs {
   /** Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded. */
-  maxFileSizeMb?: number | null;
+  maxFileSizeMb?: number;
   /** Maximum number of bytes to save for each packet */
-  packetSizeBytes?: number | null;
+  packetSizeBytes?: number;
   /** Limit on capture duration (in minutes) */
-  timeLimitMin?: number | null;
+  timeLimitMin?: number;
 }
 export const DexCommandsCreateRequestCommandsItemArgsPCAPArgs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxFileSizeMb: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("max-file-size-mb")),
-      ),
-      packetSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("packet-size-bytes")),
-      ),
-      timeLimitMin: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("time-limit-min")),
-      ),
+      maxFileSizeMb: S.optional(S.Number.pipe(T.Body("max-file-size-mb"))),
+      packetSizeBytes: S.optional(S.Number.pipe(T.Body("packet-size-bytes"))),
+      timeLimitMin: S.optional(S.Number.pipe(T.Body("time-limit-min"))),
     }),
   ).annotate({
     identifier: "DexCommandsCreateRequestCommandsItemArgsPCAPArgs",
@@ -40834,15 +40568,13 @@ export const DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList
 
 export interface DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs {
   /** List of interfaces to run the speed test on */
-  interfaces?: DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList | null;
+  interfaces?: DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList;
 }
 export const DexCommandsCreateRequestCommandsItemArgsSpeedTestArgs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       interfaces: S.optional(
-        S.NullOr(
-          DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList,
-        ),
+        DexCommandsCreateRequestCommandsItemArgsSpeedTestArgsInterfacesList,
       ),
     }),
   ).annotate({
@@ -40870,9 +40602,9 @@ export interface DexCommandsCreateRequestCommandsItem {
   /** Email tied to the device */
   userEmail: string;
   /** Command arguments. Allowed fields depend on `type`. */
-  args?: DexCommandsCreateRequestCommandsItemArgs | null;
+  args?: DexCommandsCreateRequestCommandsItemArgs;
   /** Unique identifier for the device registration. Required for multi-user devices to target the correct user session. */
-  registrationId?: string | null;
+  registrationId?: string;
 }
 export const DexCommandsCreateRequestCommandsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -40880,10 +40612,8 @@ export const DexCommandsCreateRequestCommandsItem = /*@__PURE__*/ S.suspend(
       deviceId: S.String.pipe(T.Body("device_id")),
       type: DexCommandsCreateRequestCommandsItemType,
       userEmail: S.String.pipe(T.Body("user_email")),
-      args: S.optional(S.NullOr(DexCommandsCreateRequestCommandsItemArgs)),
-      registrationId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("registration_id")),
-      ),
+      args: S.optional(DexCommandsCreateRequestCommandsItemArgs),
+      registrationId: S.optional(S.String.pipe(T.Body("registration_id"))),
     }),
 ).annotate({
   identifier: "DexCommandsCreateRequestCommandsItem",
@@ -40991,14 +40721,14 @@ export interface CreateDexRuleRequest {
   match: string;
   /** The name of the Rule. */
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const CreateDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     match: S.String,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -41102,8 +40832,8 @@ export interface CreateDlpCustomPromptTopicRequest {
   enabled: boolean;
   name: string;
   topic: string;
-  description?: string | null;
-  profileId?: string | null;
+  description?: string;
+  profileId?: string;
 }
 export const CreateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41111,8 +40841,8 @@ export const CreateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     topic: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    profileId: S.optional(S.NullOr(S.String).pipe(T.Body("profile_id"))),
+    description: S.optional(S.String),
+    profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
   })
     .pipe(
       T.Http({
@@ -41184,7 +40914,7 @@ export interface CreateDlpDataClassRequest {
   expression: string;
   name: string;
   sensitivityLevels: DlpDataClassesCreateRequestSensitivityLevelsList;
-  description?: string | null;
+  description?: string;
 }
 export const CreateDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41195,7 +40925,7 @@ export const CreateDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
     sensitivityLevels: DlpDataClassesCreateRequestSensitivityLevelsList.pipe(
       T.Body("sensitivity_levels"),
     ),
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -41269,26 +40999,22 @@ export interface CreateDlpDatasetRequest {
   accountId: string;
   name: string;
   /** Only applies to custom word lists. */
-  caseSensitive?: boolean | null;
+  caseSensitive?: boolean;
   /** The description of the dataset. */
-  description?: string | null;
+  description?: string;
   /** Dataset encoding version */
-  encodingVersion?: number | null;
+  encodingVersion?: number;
   /** Generate a secret dataset. */
-  secret?: boolean | null;
+  secret?: boolean;
 }
 export const CreateDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    caseSensitive: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("case_sensitive")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    encodingVersion: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("encoding_version")),
-    ),
-    secret: S.optional(S.NullOr(S.Boolean)),
+    caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
+    description: S.optional(S.String),
+    encodingVersion: S.optional(S.Number.pipe(T.Body("encoding_version"))),
+    secret: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -41525,15 +41251,15 @@ export const CreateDlpDatasetUploadResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DlpDatasetsVersionsCreateRequestBodyItemExistingColumn {
   entryId: string;
-  headerName?: string | null;
-  numCells?: number | null;
+  headerName?: string;
+  numCells?: number;
 }
 export const DlpDatasetsVersionsCreateRequestBodyItemExistingColumn =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entryId: S.String.pipe(T.Body("entry_id")),
-      headerName: S.optional(S.NullOr(S.String).pipe(T.Body("header_name"))),
-      numCells: S.optional(S.NullOr(S.Number).pipe(T.Body("num_cells"))),
+      headerName: S.optional(S.String.pipe(T.Body("header_name"))),
+      numCells: S.optional(S.Number.pipe(T.Body("num_cells"))),
     }),
   ).annotate({
     identifier: "DlpDatasetsVersionsCreateRequestBodyItemExistingColumn",
@@ -41541,15 +41267,15 @@ export const DlpDatasetsVersionsCreateRequestBodyItemExistingColumn =
 
 export interface DlpDatasetsVersionsCreateRequestBodyItemNewColumn {
   entryName: string;
-  headerName?: string | null;
-  numCells?: number | null;
+  headerName?: string;
+  numCells?: number;
 }
 export const DlpDatasetsVersionsCreateRequestBodyItemNewColumn =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entryName: S.String.pipe(T.Body("entry_name")),
-      headerName: S.optional(S.NullOr(S.String).pipe(T.Body("header_name"))),
-      numCells: S.optional(S.NullOr(S.Number).pipe(T.Body("num_cells"))),
+      headerName: S.optional(S.String.pipe(T.Body("header_name"))),
+      numCells: S.optional(S.Number.pipe(T.Body("num_cells"))),
     }),
   ).annotate({
     identifier: "DlpDatasetsVersionsCreateRequestBodyItemNewColumn",
@@ -41705,13 +41431,13 @@ export const CreateDlpDatasetVersionEntryResponse = /*@__PURE__*/ S.suspend(
 
 export interface DlpDataTagCategoriesCreateRequestTagsItem {
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const DlpDataTagCategoriesCreateRequestTagsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DlpDataTagCategoriesCreateRequestTagsItem",
@@ -41726,18 +41452,18 @@ export const DlpDataTagCategoriesCreateRequestTagsList = /*@__PURE__*/ S.Array(
 export interface CreateDlpDataTagCategoryRequest {
   accountId: string;
   name: string;
-  description?: string | null;
+  description?: string;
   /** Tags to create with the category. Mutually exclusive with `template_id`. */
-  tags?: DlpDataTagCategoriesCreateRequestTagsList | null;
-  templateId?: string | null;
+  tags?: DlpDataTagCategoriesCreateRequestTagsList;
+  templateId?: string;
 }
 export const CreateDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    tags: S.optional(S.NullOr(DlpDataTagCategoriesCreateRequestTagsList)),
-    templateId: S.optional(S.NullOr(S.String).pipe(T.Body("template_id"))),
+    description: S.optional(S.String),
+    tags: S.optional(DlpDataTagCategoriesCreateRequestTagsList),
+    templateId: S.optional(S.String.pipe(T.Body("template_id"))),
   })
     .pipe(
       T.Http({
@@ -41805,7 +41531,7 @@ export interface CreateDlpDataTagCategoryDataTagRequest {
   accountId: string;
   categoryId: string;
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const CreateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -41813,7 +41539,7 @@ export const CreateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       categoryId: S.String.pipe(T.Label("category_id")),
       name: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -42002,12 +41728,12 @@ export const DlpEmailRulesCreateRequestActionAction = /*@__PURE__*/ S.String;
 
 export interface DlpEmailRulesCreateRequestAction {
   action: DlpEmailRulesCreateRequestActionAction | (string & {});
-  message?: string | null;
+  message?: string;
 }
 export const DlpEmailRulesCreateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DlpEmailRulesCreateRequestActionAction,
-    message: S.optional(S.NullOr(S.String)),
+    message: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DlpEmailRulesCreateRequestAction",
@@ -42070,7 +41796,7 @@ export interface CreateDlpEmailRuleRequest {
   conditions: DlpEmailRulesCreateRequestConditionsList;
   enabled: boolean;
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const CreateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -42079,7 +41805,7 @@ export const CreateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
     conditions: DlpEmailRulesCreateRequestConditionsList,
     enabled: S.Boolean,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -42193,12 +41919,12 @@ export const DlpEntriesCreateRequestPatternValidation = /*@__PURE__*/ S.String;
 
 export interface DlpEntriesCreateRequestPattern {
   regex: string;
-  validation?: DlpEntriesCreateRequestPatternValidation | (string & {}) | null;
+  validation?: DlpEntriesCreateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCreateRequestPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regex: S.String,
-    validation: S.optional(S.NullOr(DlpEntriesCreateRequestPatternValidation)),
+    validation: S.optional(DlpEntriesCreateRequestPatternValidation),
   }),
 ).annotate({
   identifier: "DlpEntriesCreateRequestPattern",
@@ -42209,8 +41935,8 @@ export interface CreateDlpEntryRequest {
   enabled: boolean;
   name: string;
   pattern: DlpEntriesCreateRequestPattern;
-  description?: string | null;
-  profileId?: string | null;
+  description?: string;
+  profileId?: string;
 }
 export const CreateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -42218,8 +41944,8 @@ export const CreateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     pattern: DlpEntriesCreateRequestPattern,
-    description: S.optional(S.NullOr(S.String)),
-    profileId: S.optional(S.NullOr(S.String).pipe(T.Body("profile_id"))),
+    description: S.optional(S.String),
+    profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
   })
     .pipe(
       T.Http({
@@ -42280,14 +42006,14 @@ export interface CreateDlpEntryIntegrationRequest {
   enabled: boolean;
   entryId: string;
   /** This field is not used as the owning profile. */
-  profileId?: string | null;
+  profileId?: string;
 }
 export const CreateDlpEntryIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     enabled: S.Boolean,
     entryId: S.String.pipe(T.Body("entry_id")),
-    profileId: S.optional(S.NullOr(S.String).pipe(T.Body("profile_id"))),
+    profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
   })
     .pipe(
       T.Http({
@@ -42328,14 +42054,14 @@ export interface CreateDlpEntryPredefinedRequest {
   enabled: boolean;
   entryId: string;
   /** This field is not used as the owning profile. */
-  profileId?: string | null;
+  profileId?: string;
 }
 export const CreateDlpEntryPredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     enabled: S.Boolean,
     entryId: S.String.pipe(T.Body("entry_id")),
-    profileId: S.optional(S.NullOr(S.String).pipe(T.Body("profile_id"))),
+    profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
   })
     .pipe(
       T.Http({
@@ -42496,17 +42222,14 @@ export interface DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatte
   regex: string;
   validation?:
     | DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternValidation
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPattern =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       regex: S.String,
       validation: S.optional(
-        S.NullOr(
-          DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternValidation,
-        ),
+        DlpProfilesCustomCreateRequestEntriesItemDLPNewCustomEntryPatternValidation,
       ),
     }),
   ).annotate({
@@ -42619,63 +42342,57 @@ export const DlpProfilesCustomCreateRequestSharedEntriesList =
 export interface CreateDlpProfileCustomRequest {
   accountId: string;
   name: string;
-  aiContextEnabled?: boolean | null;
+  aiContextEnabled?: boolean;
   /** Related DLP policies will trigger when the match count exceeds the number set. */
-  allowedMatchCount?: number | null;
-  confidenceThreshold?: string | null;
+  allowedMatchCount?: number;
+  confidenceThreshold?: string;
   /** Scan the context of predefined entries to only return matches surrounded by keywords. */
-  contextAwareness?: DlpProfilesCustomCreateRequestContextAwareness | null;
+  contextAwareness?: DlpProfilesCustomCreateRequestContextAwareness;
   /** Data class IDs to associate with the profile. */
-  dataClasses?: DlpProfilesCustomCreateRequestDataClassesList | null;
+  dataClasses?: DlpProfilesCustomCreateRequestDataClassesList;
   /** Data tag IDs to associate with the profile. */
-  dataTags?: DlpProfilesCustomCreateRequestDataTagsList | null;
+  dataTags?: DlpProfilesCustomCreateRequestDataTagsList;
   /** The description of the profile. */
   description?: string | null;
-  entries?: DlpProfilesCustomCreateRequestEntriesList | null;
-  ocrEnabled?: boolean | null;
+  entries?: DlpProfilesCustomCreateRequestEntriesList;
+  ocrEnabled?: boolean;
   /** Sensitivity levels to associate with the profile. */
-  sensitivityLevels?: DlpProfilesCustomCreateRequestSensitivityLevelsList | null;
+  sensitivityLevels?: DlpProfilesCustomCreateRequestSensitivityLevelsList;
   /** Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles). */
-  sharedEntries?: DlpProfilesCustomCreateRequestSharedEntriesList | null;
+  sharedEntries?: DlpProfilesCustomCreateRequestSharedEntriesList;
 }
 export const CreateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    aiContextEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ai_context_enabled")),
-    ),
-    allowedMatchCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("allowed_match_count")),
-    ),
+    aiContextEnabled: S.optional(S.Boolean.pipe(T.Body("ai_context_enabled"))),
+    allowedMatchCount: S.optional(S.Number.pipe(T.Body("allowed_match_count"))),
     confidenceThreshold: S.optional(
-      S.NullOr(S.String).pipe(T.Body("confidence_threshold")),
+      S.String.pipe(T.Body("confidence_threshold")),
     ),
     contextAwareness: S.optional(
-      S.NullOr(DlpProfilesCustomCreateRequestContextAwareness).pipe(
+      DlpProfilesCustomCreateRequestContextAwareness.pipe(
         T.Body("context_awareness"),
       ),
     ),
     dataClasses: S.optional(
-      S.NullOr(DlpProfilesCustomCreateRequestDataClassesList).pipe(
+      DlpProfilesCustomCreateRequestDataClassesList.pipe(
         T.Body("data_classes"),
       ),
     ),
     dataTags: S.optional(
-      S.NullOr(DlpProfilesCustomCreateRequestDataTagsList).pipe(
-        T.Body("data_tags"),
-      ),
+      DlpProfilesCustomCreateRequestDataTagsList.pipe(T.Body("data_tags")),
     ),
     description: S.optional(S.NullOr(S.String)),
-    entries: S.optional(S.NullOr(DlpProfilesCustomCreateRequestEntriesList)),
-    ocrEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ocr_enabled"))),
+    entries: S.optional(DlpProfilesCustomCreateRequestEntriesList),
+    ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     sensitivityLevels: S.optional(
-      S.NullOr(DlpProfilesCustomCreateRequestSensitivityLevelsList).pipe(
+      DlpProfilesCustomCreateRequestSensitivityLevelsList.pipe(
         T.Body("sensitivity_levels"),
       ),
     ),
     sharedEntries: S.optional(
-      S.NullOr(DlpProfilesCustomCreateRequestSharedEntriesList).pipe(
+      DlpProfilesCustomCreateRequestSharedEntriesList.pipe(
         T.Body("shared_entries"),
       ),
     ),
@@ -44942,13 +44659,13 @@ export const CreateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DlpSensitivityGroupsCreateRequestLevelsItem {
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const DlpSensitivityGroupsCreateRequestLevelsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DlpSensitivityGroupsCreateRequestLevelsItem",
@@ -44964,18 +44681,18 @@ export const DlpSensitivityGroupsCreateRequestLevelsList =
 export interface CreateDlpSensitivityGroupRequest {
   accountId: string;
   name: string;
-  description?: string | null;
+  description?: string;
   /** Levels to create with the group. Mutually exclusive with `template_id`. */
-  levels?: DlpSensitivityGroupsCreateRequestLevelsList | null;
-  templateId?: string | null;
+  levels?: DlpSensitivityGroupsCreateRequestLevelsList;
+  templateId?: string;
 }
 export const CreateDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    levels: S.optional(S.NullOr(DlpSensitivityGroupsCreateRequestLevelsList)),
-    templateId: S.optional(S.NullOr(S.String).pipe(T.Body("template_id"))),
+    description: S.optional(S.String),
+    levels: S.optional(DlpSensitivityGroupsCreateRequestLevelsList),
+    templateId: S.optional(S.String.pipe(T.Body("template_id"))),
   })
     .pipe(
       T.Http({
@@ -45044,7 +44761,7 @@ export interface CreateDlpSensitivityGroupLevelRequest {
   accountId: string;
   sensitivityGroupId: string;
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const CreateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -45052,7 +44769,7 @@ export const CreateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
       name: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -45128,13 +44845,13 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGatewayCertificateRequest {
   accountId: string;
   /** Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation. Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle. */
-  validityPeriodDays?: number | null;
+  validityPeriodDays?: number;
 }
 export const CreateGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     validityPeriodDays: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("validity_period_days")),
+      S.Number.pipe(T.Body("validity_period_days")),
     ),
   })
     .pipe(
@@ -45222,14 +44939,14 @@ export const GatewayListsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface GatewayListsCreateRequestItemsItem {
   /** Provide the list item description (optional). */
-  description?: string | null;
+  description?: string;
   /** Specify the item value. */
-  value?: string | null;
+  value?: string;
 }
 export const GatewayListsCreateRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GatewayListsCreateRequestItemsItem",
@@ -45248,17 +44965,17 @@ export interface CreateGatewayListRequest {
   /** Specify the list type. */
   type: GatewayListsCreateRequestType | (string & {});
   /** Provide the list description. */
-  description?: string | null;
+  description?: string;
   /** Add items to the list. */
-  items?: GatewayListsCreateRequestItemsList | null;
+  items?: GatewayListsCreateRequestItemsList;
 }
 export const CreateGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     type: GatewayListsCreateRequestType,
-    description: S.optional(S.NullOr(S.String)),
-    items: S.optional(S.NullOr(GatewayListsCreateRequestItemsList)),
+    description: S.optional(S.String),
+    items: S.optional(GatewayListsCreateRequestItemsList),
   })
     .pipe(
       T.Http({
@@ -45358,22 +45075,20 @@ export const GatewayLocationsCreateRequestEndpointsDohNetworksList =
 
 export interface GatewayLocationsCreateRequestEndpointsDoh {
   /** Indicate whether the DOH endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsCreateRequestEndpointsDohNetworksList | null;
+  networks?: GatewayLocationsCreateRequestEndpointsDohNetworksList;
   /** Specify whether the DOH endpoint requires user identity authentication. */
-  requireToken?: boolean | null;
+  requireToken?: boolean;
 }
 export const GatewayLocationsCreateRequestEndpointsDoh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsCreateRequestEndpointsDohNetworksList),
+        GatewayLocationsCreateRequestEndpointsDohNetworksList,
       ),
-      requireToken: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("require_token")),
-      ),
+      requireToken: S.optional(S.Boolean.pipe(T.Body("require_token"))),
     }),
   ).annotate({
     identifier: "GatewayLocationsCreateRequestEndpointsDoh",
@@ -45401,16 +45116,16 @@ export const GatewayLocationsCreateRequestEndpointsDotNetworksList =
 
 export interface GatewayLocationsCreateRequestEndpointsDot {
   /** Indicate whether the DOT endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsCreateRequestEndpointsDotNetworksList | null;
+  networks?: GatewayLocationsCreateRequestEndpointsDotNetworksList;
 }
 export const GatewayLocationsCreateRequestEndpointsDot =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsCreateRequestEndpointsDotNetworksList),
+        GatewayLocationsCreateRequestEndpointsDotNetworksList,
       ),
     }),
   ).annotate({
@@ -45419,12 +45134,12 @@ export const GatewayLocationsCreateRequestEndpointsDot =
 
 export interface GatewayLocationsCreateRequestEndpointsIpv4 {
   /** Indicate whether the IPv4 endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayLocationsCreateRequestEndpointsIpv4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayLocationsCreateRequestEndpointsIpv4",
@@ -45452,16 +45167,16 @@ export const GatewayLocationsCreateRequestEndpointsIpv6NetworksList =
 
 export interface GatewayLocationsCreateRequestEndpointsIpv6 {
   /** Indicate whether the IPV6 endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsCreateRequestEndpointsIpv6NetworksList | null;
+  networks?: GatewayLocationsCreateRequestEndpointsIpv6NetworksList;
 }
 export const GatewayLocationsCreateRequestEndpointsIpv6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsCreateRequestEndpointsIpv6NetworksList),
+        GatewayLocationsCreateRequestEndpointsIpv6NetworksList,
       ),
     }),
   ).annotate({
@@ -45496,12 +45211,12 @@ export interface GatewayLocationsCreateRequestMaxTtl {
   /** `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged. */
   mode: GatewayLocationsCreateRequestMaxTtlMode | (string & {});
   /** Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`. */
-  ttlSecs?: number | null;
+  ttlSecs?: number;
 }
 export const GatewayLocationsCreateRequestMaxTtl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: GatewayLocationsCreateRequestMaxTtlMode,
-    ttlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("ttl_secs"))),
+    ttlSecs: S.optional(S.Number.pipe(T.Body("ttl_secs"))),
   }),
 ).annotate({
   identifier: "GatewayLocationsCreateRequestMaxTtl",
@@ -45531,34 +45246,32 @@ export interface CreateGatewayLocationRequest {
   /** Specify the location name. */
   name: string;
   /** Indicate whether this location is the default location. */
-  clientDefault?: boolean | null;
+  clientDefault?: boolean;
   /** Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged. */
-  dnsDestinationIpsId?: string | null;
+  dnsDestinationIpsId?: string;
   /** Indicate whether the location must resolve EDNS queries. */
-  ecsSupport?: boolean | null;
+  ecsSupport?: boolean;
   /** Configure the destination endpoints for this location. */
-  endpoints?: GatewayLocationsCreateRequestEndpoints | null;
+  endpoints?: GatewayLocationsCreateRequestEndpoints;
   /** Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`. */
-  maxTtl?: GatewayLocationsCreateRequestMaxTtl | null;
+  maxTtl?: GatewayLocationsCreateRequestMaxTtl;
   /** Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location. */
-  networks?: GatewayLocationsCreateRequestNetworksList | null;
+  networks?: GatewayLocationsCreateRequestNetworksList;
 }
 export const CreateGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    clientDefault: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("client_default")),
-    ),
+    clientDefault: S.optional(S.Boolean.pipe(T.Body("client_default"))),
     dnsDestinationIpsId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("dns_destination_ips_id")),
+      S.String.pipe(T.Body("dns_destination_ips_id")),
     ),
-    ecsSupport: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ecs_support"))),
-    endpoints: S.optional(S.NullOr(GatewayLocationsCreateRequestEndpoints)),
+    ecsSupport: S.optional(S.Boolean.pipe(T.Body("ecs_support"))),
+    endpoints: S.optional(GatewayLocationsCreateRequestEndpoints),
     maxTtl: S.optional(
-      S.NullOr(GatewayLocationsCreateRequestMaxTtl).pipe(T.Body("max_ttl")),
+      GatewayLocationsCreateRequestMaxTtl.pipe(T.Body("max_ttl")),
     ),
-    networks: S.optional(S.NullOr(GatewayLocationsCreateRequestNetworksList)),
+    networks: S.optional(GatewayLocationsCreateRequestNetworksList),
   })
     .pipe(
       T.Http({
@@ -45834,17 +45547,17 @@ export interface CreateGatewayPacfileRequest {
   /** Name of the PAC file. */
   name: string;
   /** Detailed description of the PAC file. */
-  description?: string | null;
+  description?: string;
   /** URL-friendly version of the PAC file name. If not provided, it will be auto-generated */
-  slug?: string | null;
+  slug?: string;
 }
 export const CreateGatewayPacfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     contents: S.String,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    slug: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    slug: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -45902,16 +45615,16 @@ export interface CreateGatewayProxyEndpointRequest {
   /** Specify the name of the proxy endpoint. */
   name: string;
   /** The proxy endpoint kind */
-  kind?: GatewayProxyEndpointsCreateRequestKind | (string & {}) | null;
+  kind?: GatewayProxyEndpointsCreateRequestKind | (string & {});
   /** Specify the list of CIDRs to restrict ingress connections. Required when creating an ip-kind proxy endpoint. */
-  ips?: CreateGatewayProxyEndpointRequestIpsList | null;
+  ips?: CreateGatewayProxyEndpointRequestIpsList;
 }
 export const CreateGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    kind: S.optional(S.NullOr(GatewayProxyEndpointsCreateRequestKind)),
-    ips: S.optional(S.NullOr(CreateGatewayProxyEndpointRequestIpsList)),
+    kind: S.optional(GatewayProxyEndpointsCreateRequestKind),
+    ips: S.optional(CreateGatewayProxyEndpointRequestIpsList),
   })
     .pipe(
       T.Http({
@@ -46030,15 +45743,15 @@ export interface GatewayRulesCreateRequestExpiration {
   /** Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time. */
   expiresAt: string;
   /** Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule. */
-  duration?: number | null;
+  duration?: number;
   /** Indicates whether the policy is expired. */
-  expired?: boolean | null;
+  expired?: boolean;
 }
 export const GatewayRulesCreateRequestExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiresAt: S.String.pipe(T.Body("expires_at")),
-    duration: S.optional(S.NullOr(S.Number)),
-    expired: S.optional(S.NullOr(S.Boolean)),
+    duration: S.optional(S.Number),
+    expired: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "GatewayRulesCreateRequestExpiration",
@@ -46079,14 +45792,12 @@ export const GatewayRulesCreateRequestRuleSettingsAddHeadersMap =
 
 export interface GatewayRulesCreateRequestRuleSettingsAuditSsh {
   /** Enable SSH command logging. */
-  commandLogging?: boolean | null;
+  commandLogging?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsAuditSsh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      commandLogging: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("command_logging")),
-      ),
+      commandLogging: S.optional(S.Boolean.pipe(T.Body("command_logging"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsAuditSsh",
@@ -46141,87 +45852,74 @@ export interface GatewayRulesCreateRequestRuleSettingsBisoAdminControls {
   /** Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2". */
   copy?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsCopy
-    | (string & {})
-    | null;
+    | (string & {});
   /** Set to false to enable copy-pasting. Only applies when `version == "v1"`. */
-  dcp?: boolean | null;
+  dcp?: boolean;
   /** Set to false to enable downloading. Only applies when `version == "v1"`. */
-  dd?: boolean | null;
+  dd?: boolean;
   /** Set to false to enable keyboard usage. Only applies when `version == "v1"`. */
-  dk?: boolean | null;
+  dk?: boolean;
   /** Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2". */
   download?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsDownload
-    | (string & {})
-    | null;
+    | (string & {});
   /** Set to false to enable printing. Only applies when `version == "v1"`. */
-  dp?: boolean | null;
+  dp?: boolean;
   /** Set to false to enable uploading. Only applies when `version == "v1"`. */
-  du?: boolean | null;
+  du?: boolean;
   /** Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". */
   keyboard?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsKeyboard
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2". */
   paste?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPaste
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure print behavior. Default, Printing is enabled. Applies only when version == "v2". */
   printing?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPrinting
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2". */
   upload?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsUpload
-    | (string & {})
-    | null;
+    | (string & {});
   /** Indicate which version of the browser isolation controls should apply. */
   version?:
     | GatewayRulesCreateRequestRuleSettingsBisoAdminControlsVersion
-    | (string & {})
-    | null;
+    | (string & {});
   /** Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser. */
-  wmId?: string | null;
+  wmId?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsBisoAdminControls =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       copy: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBisoAdminControlsCopy),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsCopy,
       ),
-      dcp: S.optional(S.NullOr(S.Boolean)),
-      dd: S.optional(S.NullOr(S.Boolean)),
-      dk: S.optional(S.NullOr(S.Boolean)),
+      dcp: S.optional(S.Boolean),
+      dd: S.optional(S.Boolean),
+      dk: S.optional(S.Boolean),
       download: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsBisoAdminControlsDownload,
-        ),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsDownload,
       ),
-      dp: S.optional(S.NullOr(S.Boolean)),
-      du: S.optional(S.NullOr(S.Boolean)),
+      dp: S.optional(S.Boolean),
+      du: S.optional(S.Boolean),
       keyboard: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsBisoAdminControlsKeyboard,
-        ),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsKeyboard,
       ),
       paste: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPaste),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPaste,
       ),
       printing: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPrinting,
-        ),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsPrinting,
       ),
       upload: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBisoAdminControlsUpload),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsUpload,
       ),
       version: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBisoAdminControlsVersion),
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControlsVersion,
       ),
-      wmId: S.optional(S.NullOr(S.String).pipe(T.Body("wm_id"))),
+      wmId: S.optional(S.String.pipe(T.Body("wm_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsBisoAdminControls",
@@ -46231,15 +45929,13 @@ export interface GatewayRulesCreateRequestRuleSettingsBlockPage {
   /** Specify the URI to which the user is redirected. */
   targetUri: string;
   /** Specify whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsBlockPage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetUri: S.String.pipe(T.Body("target_uri")),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsBlockPage",
@@ -46247,15 +45943,15 @@ export const GatewayRulesCreateRequestRuleSettingsBlockPage =
 
 export interface GatewayRulesCreateRequestRuleSettingsCheckSession {
   /** Sets the required session freshness threshold. The API returns a normalized version of this value. */
-  duration?: string | null;
+  duration?: string;
   /** Enable session enforcement. */
-  enforce?: boolean | null;
+  enforce?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsCheckSession =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      duration: S.optional(S.NullOr(S.String)),
-      enforce: S.optional(S.NullOr(S.Boolean)),
+      duration: S.optional(S.String),
+      enforce: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsCheckSession",
@@ -46265,21 +45961,21 @@ export interface GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4Item {
   /** Specify the IPv4 address of the upstream resolver. */
   ip: string;
   /** Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified. */
-  port?: number | null;
+  port?: number;
   /** Indicate whether to connect to this resolver over a private network. Must set when vnet_id set. */
-  routeThroughPrivateNetwork?: boolean | null;
+  routeThroughPrivateNetwork?: boolean;
   /** Specify an optional virtual network for this resolver. Uses default virtual network id if omitted. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ip: S.String,
-      port: S.optional(S.NullOr(S.Number)),
+      port: S.optional(S.Number),
       routeThroughPrivateNetwork: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("route_through_private_network")),
+        S.Boolean.pipe(T.Body("route_through_private_network")),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4Item",
@@ -46296,21 +45992,21 @@ export interface GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6Item {
   /** Specify the IPv6 address of the upstream resolver. */
   ip: string;
   /** Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified. */
-  port?: number | null;
+  port?: number;
   /** Indicate whether to connect to this resolver over a private network. Must set when vnet_id set. */
-  routeThroughPrivateNetwork?: boolean | null;
+  routeThroughPrivateNetwork?: boolean;
   /** Specify an optional virtual network for this resolver. Uses default virtual network id if omitted. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ip: S.String,
-      port: S.optional(S.NullOr(S.Number)),
+      port: S.optional(S.Number),
       routeThroughPrivateNetwork: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("route_through_private_network")),
+        S.Boolean.pipe(T.Body("route_through_private_network")),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6Item",
@@ -46324,17 +46020,17 @@ export const GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List =
   ) as any as S.Schema<GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List>;
 
 export interface GatewayRulesCreateRequestRuleSettingsDnsResolvers {
-  ipv4?: GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4List | null;
-  ipv6?: GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List | null;
+  ipv4?: GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4List;
+  ipv6?: GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List;
 }
 export const GatewayRulesCreateRequestRuleSettingsDnsResolvers =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ipv4: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4List),
+        GatewayRulesCreateRequestRuleSettingsDnsResolversIpv4List,
       ),
       ipv6: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List),
+        GatewayRulesCreateRequestRuleSettingsDnsResolversIpv6List,
       ),
     }),
   ).annotate({
@@ -46343,20 +46039,18 @@ export const GatewayRulesCreateRequestRuleSettingsDnsResolvers =
 
 export interface GatewayRulesCreateRequestRuleSettingsEgress {
   /** Specify the IPv4 address to use for egress. */
-  ipv4?: string | null;
+  ipv4?: string;
   /** Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs. */
-  ipv4Fallback?: string | null;
+  ipv4Fallback?: string;
   /** Specify the IPv6 range to use for egress. */
-  ipv6?: string | null;
+  ipv6?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsEgress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipv4: S.optional(S.NullOr(S.String)),
-      ipv4Fallback: S.optional(
-        S.NullOr(S.String).pipe(T.Body("ipv4_fallback")),
-      ),
-      ipv6: S.optional(S.NullOr(S.String)),
+      ipv4: S.optional(S.String),
+      ipv4Fallback: S.optional(S.String.pipe(T.Body("ipv4_fallback"))),
+      ipv6: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsEgress",
@@ -46364,12 +46058,12 @@ export const GatewayRulesCreateRequestRuleSettingsEgress =
 
 export interface GatewayRulesCreateRequestRuleSettingsForensicCopy {
   /** Enable sending the copy to storage. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsForensicCopy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsForensicCopy",
@@ -46377,15 +46071,15 @@ export const GatewayRulesCreateRequestRuleSettingsForensicCopy =
 
 export interface GatewayRulesCreateRequestRuleSettingsL4override {
   /** Defines the IPv4 or IPv6 address. */
-  ip?: string | null;
+  ip?: string;
   /** Defines a port number to use for TCP/UDP overrides. */
-  port?: number | null;
+  port?: number;
 }
 export const GatewayRulesCreateRequestRuleSettingsL4override =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ip: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      ip: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsL4override",
@@ -46393,23 +46087,21 @@ export const GatewayRulesCreateRequestRuleSettingsL4override =
 
 export interface GatewayRulesCreateRequestRuleSettingsNotificationSettings {
   /** Enable notification. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicates whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Customize the message shown in the notification. */
-  msg?: string | null;
+  msg?: string;
   /** Defines an optional URL to direct users to additional information. If unset, the notification opens a block page. */
-  supportUrl?: string | null;
+  supportUrl?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsNotificationSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      msg: S.optional(S.NullOr(S.String)),
-      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsNotificationSettings",
@@ -46424,12 +46116,12 @@ export const GatewayRulesCreateRequestRuleSettingsOverrideIpsList =
 
 export interface GatewayRulesCreateRequestRuleSettingsPayloadLog {
   /** Enable DLP payload logging for this rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsPayloadLog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsPayloadLog",
@@ -46463,15 +46155,15 @@ export const GatewayRulesCreateRequestRuleSettingsQuarantineFileTypesList =
 
 export interface GatewayRulesCreateRequestRuleSettingsQuarantine {
   /** Specify the types of files to sandbox. */
-  fileTypes?: GatewayRulesCreateRequestRuleSettingsQuarantineFileTypesList | null;
+  fileTypes?: GatewayRulesCreateRequestRuleSettingsQuarantineFileTypesList;
 }
 export const GatewayRulesCreateRequestRuleSettingsQuarantine =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fileTypes: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsQuarantineFileTypesList,
-        ).pipe(T.Body("file_types")),
+        GatewayRulesCreateRequestRuleSettingsQuarantineFileTypesList.pipe(
+          T.Body("file_types"),
+        ),
       ),
     }),
   ).annotate({
@@ -46482,19 +46174,17 @@ export interface GatewayRulesCreateRequestRuleSettingsRedirect {
   /** Specify the URI to which the user is redirected. */
   targetUri: string;
   /** Specify whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify whether to append the path and query parameters from the original request to target_uri. */
-  preservePathAndQuery?: boolean | null;
+  preservePathAndQuery?: boolean;
 }
 export const GatewayRulesCreateRequestRuleSettingsRedirect =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetUri: S.String.pipe(T.Body("target_uri")),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
       preservePathAndQuery: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_path_and_query")),
+        S.Boolean.pipe(T.Body("preserve_path_and_query")),
       ),
     }),
   ).annotate({
@@ -46511,20 +46201,17 @@ export interface GatewayRulesCreateRequestRuleSettingsResolveDnsInternally {
   /** Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries. */
   fallback?:
     | GatewayRulesCreateRequestRuleSettingsResolveDnsInternallyFallback
-    | (string & {})
-    | null;
+    | (string & {});
   /** Specify the internal DNS view identifier to pass to the internal DNS service. */
-  viewId?: string | null;
+  viewId?: string;
 }
 export const GatewayRulesCreateRequestRuleSettingsResolveDnsInternally =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fallback: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsResolveDnsInternallyFallback,
-        ),
+        GatewayRulesCreateRequestRuleSettingsResolveDnsInternallyFallback,
       ),
-      viewId: S.optional(S.NullOr(S.String).pipe(T.Body("view_id"))),
+      viewId: S.optional(S.String.pipe(T.Body("view_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesCreateRequestRuleSettingsResolveDnsInternally",
@@ -46541,14 +46228,13 @@ export interface GatewayRulesCreateRequestRuleSettingsUntrustedCert {
   /** Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526. */
   action?:
     | GatewayRulesCreateRequestRuleSettingsUntrustedCertAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayRulesCreateRequestRuleSettingsUntrustedCert =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsUntrustedCertAction),
+        GatewayRulesCreateRequestRuleSettingsUntrustedCertAction,
       ),
     }),
   ).annotate({
@@ -46557,156 +46243,144 @@ export const GatewayRulesCreateRequestRuleSettingsUntrustedCert =
 
 export interface GatewayRulesCreateRequestRuleSettings {
   /** Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`. */
-  addHeaders?: GatewayRulesCreateRequestRuleSettingsAddHeadersMap | null;
+  addHeaders?: GatewayRulesCreateRequestRuleSettingsAddHeadersMap;
   /** Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules. */
-  allowChildBypass?: boolean | null;
+  allowChildBypass?: boolean;
   /** Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action. */
-  auditSsh?: GatewayRulesCreateRequestRuleSettingsAuditSsh | null;
+  auditSsh?: GatewayRulesCreateRequestRuleSettingsAuditSsh;
   /** Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`. */
-  bisoAdminControls?: GatewayRulesCreateRequestRuleSettingsBisoAdminControls | null;
+  bisoAdminControls?: GatewayRulesCreateRequestRuleSettingsBisoAdminControls;
   /** Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`. */
-  blockPage?: GatewayRulesCreateRequestRuleSettingsBlockPage | null;
+  blockPage?: GatewayRulesCreateRequestRuleSettingsBlockPage;
   /** Enable the custom block page. Settable only for `dns` rules with action `block`. */
-  blockPageEnabled?: boolean | null;
+  blockPageEnabled?: boolean;
   /** Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`. */
-  blockReason?: string | null;
+  blockReason?: string;
   /** Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules. */
-  bypassParentRule?: boolean | null;
+  bypassParentRule?: boolean;
   /** Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`. */
-  checkSession?: GatewayRulesCreateRequestRuleSettingsCheckSession | null;
+  checkSession?: GatewayRulesCreateRequestRuleSettingsCheckSession;
   /** Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  dnsResolvers?: GatewayRulesCreateRequestRuleSettingsDnsResolvers | null;
+  dnsResolvers?: GatewayRulesCreateRequestRuleSettingsDnsResolvers;
   /** Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules. */
-  egress?: GatewayRulesCreateRequestRuleSettingsEgress | null;
+  egress?: GatewayRulesCreateRequestRuleSettingsEgress;
   /** Configure whether a copy of the HTTP request will be sent to storage when the rule matches. */
-  forensicCopy?: GatewayRulesCreateRequestRuleSettingsForensicCopy | null;
+  forensicCopy?: GatewayRulesCreateRequestRuleSettingsForensicCopy;
   /** Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules. */
-  ignoreCnameCategoryMatches?: boolean | null;
+  ignoreCnameCategoryMatches?: boolean;
   /** Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules. */
-  insecureDisableDnssecValidation?: boolean | null;
+  insecureDisableDnssecValidation?: boolean;
   /** Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules. */
-  ipCategories?: boolean | null;
+  ipCategories?: boolean;
   /** Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules. */
-  ipIndicatorFeeds?: boolean | null;
+  ipIndicatorFeeds?: boolean;
   /** Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`. */
-  l4override?: GatewayRulesCreateRequestRuleSettingsL4override | null;
+  l4override?: GatewayRulesCreateRequestRuleSettingsL4override;
   /** Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`. */
-  notificationSettings?: GatewayRulesCreateRequestRuleSettingsNotificationSettings | null;
+  notificationSettings?: GatewayRulesCreateRequestRuleSettingsNotificationSettings;
   /** Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`. */
-  overrideHost?: string | null;
+  overrideHost?: string;
   /** Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`. */
-  overrideIps?: GatewayRulesCreateRequestRuleSettingsOverrideIpsList | null;
+  overrideIps?: GatewayRulesCreateRequestRuleSettingsOverrideIpsList;
   /** Configure DLP payload logging. Settable only for `http` rules. */
-  payloadLog?: GatewayRulesCreateRequestRuleSettingsPayloadLog | null;
+  payloadLog?: GatewayRulesCreateRequestRuleSettingsPayloadLog;
   /** Configure settings that apply to quarantine rules. Settable only for `http` rules. */
-  quarantine?: GatewayRulesCreateRequestRuleSettingsQuarantine | null;
+  quarantine?: GatewayRulesCreateRequestRuleSettingsQuarantine;
   /** Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`. */
-  redirect?: GatewayRulesCreateRequestRuleSettingsRedirect | null;
+  redirect?: GatewayRulesCreateRequestRuleSettingsRedirect;
   /** Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  resolveDnsInternally?: GatewayRulesCreateRequestRuleSettingsResolveDnsInternally | null;
+  resolveDnsInternally?: GatewayRulesCreateRequestRuleSettingsResolveDnsInternally;
   /** Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  resolveDnsThroughCloudflare?: boolean | null;
+  resolveDnsThroughCloudflare?: boolean;
   /** Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`. */
-  untrustedCert?: GatewayRulesCreateRequestRuleSettingsUntrustedCert | null;
+  untrustedCert?: GatewayRulesCreateRequestRuleSettingsUntrustedCert;
 }
 export const GatewayRulesCreateRequestRuleSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       addHeaders: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsAddHeadersMap).pipe(
+        GatewayRulesCreateRequestRuleSettingsAddHeadersMap.pipe(
           T.Body("add_headers"),
         ),
       ),
       allowChildBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_child_bypass")),
+        S.Boolean.pipe(T.Body("allow_child_bypass")),
       ),
       auditSsh: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsAuditSsh).pipe(
-          T.Body("audit_ssh"),
-        ),
+        GatewayRulesCreateRequestRuleSettingsAuditSsh.pipe(T.Body("audit_ssh")),
       ),
       bisoAdminControls: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBisoAdminControls).pipe(
+        GatewayRulesCreateRequestRuleSettingsBisoAdminControls.pipe(
           T.Body("biso_admin_controls"),
         ),
       ),
       blockPage: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsBlockPage).pipe(
+        GatewayRulesCreateRequestRuleSettingsBlockPage.pipe(
           T.Body("block_page"),
         ),
       ),
       blockPageEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("block_page_enabled")),
+        S.Boolean.pipe(T.Body("block_page_enabled")),
       ),
-      blockReason: S.optional(S.NullOr(S.String).pipe(T.Body("block_reason"))),
+      blockReason: S.optional(S.String.pipe(T.Body("block_reason"))),
       bypassParentRule: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("bypass_parent_rule")),
+        S.Boolean.pipe(T.Body("bypass_parent_rule")),
       ),
       checkSession: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsCheckSession).pipe(
+        GatewayRulesCreateRequestRuleSettingsCheckSession.pipe(
           T.Body("check_session"),
         ),
       ),
       dnsResolvers: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsDnsResolvers).pipe(
+        GatewayRulesCreateRequestRuleSettingsDnsResolvers.pipe(
           T.Body("dns_resolvers"),
         ),
       ),
-      egress: S.optional(S.NullOr(GatewayRulesCreateRequestRuleSettingsEgress)),
+      egress: S.optional(GatewayRulesCreateRequestRuleSettingsEgress),
       forensicCopy: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsForensicCopy).pipe(
+        GatewayRulesCreateRequestRuleSettingsForensicCopy.pipe(
           T.Body("forensic_copy"),
         ),
       ),
       ignoreCnameCategoryMatches: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ignore_cname_category_matches")),
+        S.Boolean.pipe(T.Body("ignore_cname_category_matches")),
       ),
       insecureDisableDnssecValidation: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("insecure_disable_dnssec_validation")),
+        S.Boolean.pipe(T.Body("insecure_disable_dnssec_validation")),
       ),
-      ipCategories: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ip_categories")),
-      ),
+      ipCategories: S.optional(S.Boolean.pipe(T.Body("ip_categories"))),
       ipIndicatorFeeds: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ip_indicator_feeds")),
+        S.Boolean.pipe(T.Body("ip_indicator_feeds")),
       ),
-      l4override: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsL4override),
-      ),
+      l4override: S.optional(GatewayRulesCreateRequestRuleSettingsL4override),
       notificationSettings: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsNotificationSettings,
-        ).pipe(T.Body("notification_settings")),
+        GatewayRulesCreateRequestRuleSettingsNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
       ),
-      overrideHost: S.optional(
-        S.NullOr(S.String).pipe(T.Body("override_host")),
-      ),
+      overrideHost: S.optional(S.String.pipe(T.Body("override_host"))),
       overrideIps: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsOverrideIpsList).pipe(
+        GatewayRulesCreateRequestRuleSettingsOverrideIpsList.pipe(
           T.Body("override_ips"),
         ),
       ),
       payloadLog: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsPayloadLog).pipe(
+        GatewayRulesCreateRequestRuleSettingsPayloadLog.pipe(
           T.Body("payload_log"),
         ),
       ),
-      quarantine: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsQuarantine),
-      ),
-      redirect: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsRedirect),
-      ),
+      quarantine: S.optional(GatewayRulesCreateRequestRuleSettingsQuarantine),
+      redirect: S.optional(GatewayRulesCreateRequestRuleSettingsRedirect),
       resolveDnsInternally: S.optional(
-        S.NullOr(
-          GatewayRulesCreateRequestRuleSettingsResolveDnsInternally,
-        ).pipe(T.Body("resolve_dns_internally")),
+        GatewayRulesCreateRequestRuleSettingsResolveDnsInternally.pipe(
+          T.Body("resolve_dns_internally"),
+        ),
       ),
       resolveDnsThroughCloudflare: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("resolve_dns_through_cloudflare")),
+        S.Boolean.pipe(T.Body("resolve_dns_through_cloudflare")),
       ),
       untrustedCert: S.optional(
-        S.NullOr(GatewayRulesCreateRequestRuleSettingsUntrustedCert).pipe(
+        GatewayRulesCreateRequestRuleSettingsUntrustedCert.pipe(
           T.Body("untrusted_cert"),
         ),
       ),
@@ -46717,32 +46391,32 @@ export const GatewayRulesCreateRequestRuleSettings = /*@__PURE__*/ S.suspend(
 
 export interface GatewayRulesCreateRequestSchedule {
   /** Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  fri?: string | null;
+  fri?: string;
   /** Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  mon?: string | null;
+  mon?: string;
   /** Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  sat?: string | null;
+  sat?: string;
   /** Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  sun?: string | null;
+  sun?: string;
   /** Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  thu?: string | null;
+  thu?: string;
   /** Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location. */
-  timeZone?: string | null;
+  timeZone?: string;
   /** Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  tue?: string | null;
+  tue?: string;
   /** Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  wed?: string | null;
+  wed?: string;
 }
 export const GatewayRulesCreateRequestSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fri: S.optional(S.NullOr(S.String)),
-    mon: S.optional(S.NullOr(S.String)),
-    sat: S.optional(S.NullOr(S.String)),
-    sun: S.optional(S.NullOr(S.String)),
-    thu: S.optional(S.NullOr(S.String)),
-    timeZone: S.optional(S.NullOr(S.String).pipe(T.Body("time_zone"))),
-    tue: S.optional(S.NullOr(S.String)),
-    wed: S.optional(S.NullOr(S.String)),
+    fri: S.optional(S.String),
+    mon: S.optional(S.String),
+    sat: S.optional(S.String),
+    sun: S.optional(S.String),
+    thu: S.optional(S.String),
+    timeZone: S.optional(S.String.pipe(T.Body("time_zone"))),
+    tue: S.optional(S.String),
+    wed: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GatewayRulesCreateRequestSchedule",
@@ -46755,47 +46429,43 @@ export interface CreateGatewayRuleRequest {
   /** Specify the rule name. */
   name: string;
   /** Specify the rule description. */
-  description?: string | null;
+  description?: string;
   /** Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  devicePosture?: string | null;
+  devicePosture?: string;
   /** Specify whether the rule is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules. */
-  expiration?: GatewayRulesCreateRequestExpiration | null;
+  expiration?: GatewayRulesCreateRequestExpiration;
   /** Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value. */
-  filters?: GatewayRulesCreateRequestFiltersList | null;
+  filters?: GatewayRulesCreateRequestFiltersList;
   /** Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  identity?: string | null;
+  identity?: string;
   /** Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform. */
-  precedence?: number | null;
+  precedence?: number;
   /** Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift. */
-  ruleSettings?: GatewayRulesCreateRequestRuleSettings | null;
+  ruleSettings?: GatewayRulesCreateRequestRuleSettings;
   /** Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules. */
-  schedule?: GatewayRulesCreateRequestSchedule | null;
+  schedule?: GatewayRulesCreateRequestSchedule;
   /** Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  traffic?: string | null;
+  traffic?: string;
 }
 export const CreateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     action: GatewayRulesCreateRequestAction,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    devicePosture: S.optional(
-      S.NullOr(S.String).pipe(T.Body("device_posture")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expiration: S.optional(S.NullOr(GatewayRulesCreateRequestExpiration)),
-    filters: S.optional(S.NullOr(GatewayRulesCreateRequestFiltersList)),
-    identity: S.optional(S.NullOr(S.String)),
-    precedence: S.optional(S.NullOr(S.Number)),
+    description: S.optional(S.String),
+    devicePosture: S.optional(S.String.pipe(T.Body("device_posture"))),
+    enabled: S.optional(S.Boolean),
+    expiration: S.optional(GatewayRulesCreateRequestExpiration),
+    filters: S.optional(GatewayRulesCreateRequestFiltersList),
+    identity: S.optional(S.String),
+    precedence: S.optional(S.Number),
     ruleSettings: S.optional(
-      S.NullOr(GatewayRulesCreateRequestRuleSettings).pipe(
-        T.Body("rule_settings"),
-      ),
+      GatewayRulesCreateRequestRuleSettings.pipe(T.Body("rule_settings")),
     ),
-    schedule: S.optional(S.NullOr(GatewayRulesCreateRequestSchedule)),
-    traffic: S.optional(S.NullOr(S.String)),
+    schedule: S.optional(GatewayRulesCreateRequestSchedule),
+    traffic: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -47621,48 +47291,35 @@ export const IdentityProvidersCreateRequestConfigAzureADPrompt =
 
 export interface IdentityProvidersCreateRequestConfigAzureAD {
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAzureADClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAzureADClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** Should Cloudflare try to load authentication contexts from your account */
-  conditionalAccessEnabled?: boolean | null;
+  conditionalAccessEnabled?: boolean;
   /** Your Azure directory uuid */
-  directoryId?: string | null;
+  directoryId?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether. */
-  prompt?:
-    | IdentityProvidersCreateRequestConfigAzureADPrompt
-    | (string & {})
-    | null;
+  prompt?: IdentityProvidersCreateRequestConfigAzureADPrompt | (string & {});
   /** Should Cloudflare try to load groups from your account */
-  supportGroups?: boolean | null;
+  supportGroups?: boolean;
 }
 export const IdentityProvidersCreateRequestConfigAzureAD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAzureADClaimsList),
-      ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      claims: S.optional(IdentityProvidersCreateRequestConfigAzureADClaimsList),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       conditionalAccessEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("conditional_access_enabled")),
+        S.Boolean.pipe(T.Body("conditional_access_enabled")),
       ),
-      directoryId: S.optional(S.NullOr(S.String).pipe(T.Body("directory_id"))),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      prompt: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAzureADPrompt),
-      ),
-      supportGroups: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("support_groups")),
-      ),
+      directoryId: S.optional(S.String.pipe(T.Body("directory_id"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      prompt: S.optional(IdentityProvidersCreateRequestConfigAzureADPrompt),
+      supportGroups: S.optional(S.Boolean.pipe(T.Body("support_groups"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAzureAD",
@@ -47677,37 +47334,29 @@ export const IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessCentrify {
   /** Your centrify account url */
-  centrifyAccount?: string | null;
+  centrifyAccount?: string;
   /** Your centrify app id */
-  centrifyAppId?: string | null;
+  centrifyAppId?: string;
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessCentrify =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      centrifyAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("centrify_account")),
-      ),
-      centrifyAppId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("centrify_app_id")),
-      ),
+      centrifyAccount: S.optional(S.String.pipe(T.Body("centrify_account"))),
+      centrifyAppId: S.optional(S.String.pipe(T.Body("centrify_app_id"))),
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList),
+        IdentityProvidersCreateRequestConfigAccessCentrifyClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessCentrify",
@@ -47715,17 +47364,15 @@ export const IdentityProvidersCreateRequestConfigAccessCentrify =
 
 export interface IdentityProvidersCreateRequestConfigAccessFacebook {
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessFacebook =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessFacebook",
@@ -47740,27 +47387,23 @@ export const IdentityProvidersCreateRequestConfigAccessGoogleClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessGoogle {
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessGoogleClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessGoogleClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessGoogle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessGoogleClaimsList),
+        IdentityProvidersCreateRequestConfigAccessGoogleClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessGoogle",
@@ -47775,32 +47418,26 @@ export const IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessGoogleApps {
   /** Your companies TLD */
-  appsDomain?: string | null;
+  appsDomain?: string;
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessGoogleApps =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      appsDomain: S.optional(S.NullOr(S.String).pipe(T.Body("apps_domain"))),
+      appsDomain: S.optional(S.String.pipe(T.Body("apps_domain"))),
       claims: S.optional(
-        S.NullOr(
-          IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList,
-        ),
+        IdentityProvidersCreateRequestConfigAccessGoogleAppsClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessGoogleApps",
@@ -47822,44 +47459,40 @@ export const IdentityProvidersCreateRequestConfigAccessOIDCScopesList =
 
 export interface IdentityProvidersCreateRequestConfigAccessOIDC {
   /** The authorization_endpoint URL of your IdP */
-  authUrl?: string | null;
+  authUrl?: string;
   /** The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens */
-  certsUrl?: string | null;
+  certsUrl?: string;
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessOIDCClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessOIDCClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Enable Proof Key for Code Exchange (PKCE) */
-  pkceEnabled?: boolean | null;
+  pkceEnabled?: boolean;
   /** OAuth scopes */
-  scopes?: IdentityProvidersCreateRequestConfigAccessOIDCScopesList | null;
+  scopes?: IdentityProvidersCreateRequestConfigAccessOIDCScopesList;
   /** The token_endpoint URL of your IdP */
-  tokenUrl?: string | null;
+  tokenUrl?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessOIDC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authUrl: S.optional(S.NullOr(S.String).pipe(T.Body("auth_url"))),
-      certsUrl: S.optional(S.NullOr(S.String).pipe(T.Body("certs_url"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      certsUrl: S.optional(S.String.pipe(T.Body("certs_url"))),
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessOIDCClaimsList),
+        IdentityProvidersCreateRequestConfigAccessOIDCClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      pkceEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("pkce_enabled"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      pkceEnabled: S.optional(S.Boolean.pipe(T.Body("pkce_enabled"))),
       scopes: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessOIDCScopesList),
+        IdentityProvidersCreateRequestConfigAccessOIDCScopesList,
       ),
-      tokenUrl: S.optional(S.NullOr(S.String).pipe(T.Body("token_url"))),
+      tokenUrl: S.optional(S.String.pipe(T.Body("token_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessOIDC",
@@ -47874,35 +47507,31 @@ export const IdentityProvidersCreateRequestConfigAccessOktaClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessOkta {
   /** Your okta authorization server id */
-  authorizationServerId?: string | null;
+  authorizationServerId?: string;
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessOktaClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessOktaClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your okta account url */
-  oktaAccount?: string | null;
+  oktaAccount?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessOkta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizationServerId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("authorization_server_id")),
+        S.String.pipe(T.Body("authorization_server_id")),
       ),
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessOktaClaimsList),
+        IdentityProvidersCreateRequestConfigAccessOktaClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      oktaAccount: S.optional(S.NullOr(S.String).pipe(T.Body("okta_account"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      oktaAccount: S.optional(S.String.pipe(T.Body("okta_account"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessOkta",
@@ -47917,32 +47546,26 @@ export const IdentityProvidersCreateRequestConfigAccessOneloginClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessOnelogin {
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessOneloginClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessOneloginClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your OneLogin account url */
-  oneloginAccount?: string | null;
+  oneloginAccount?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessOnelogin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessOneloginClaimsList),
+        IdentityProvidersCreateRequestConfigAccessOneloginClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      oneloginAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("onelogin_account")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      oneloginAccount: S.optional(S.String.pipe(T.Body("onelogin_account"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessOnelogin",
@@ -47957,30 +47580,26 @@ export const IdentityProvidersCreateRequestConfigAccessPingoneClaimsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessPingone {
   /** Custom claims */
-  claims?: IdentityProvidersCreateRequestConfigAccessPingoneClaimsList | null;
+  claims?: IdentityProvidersCreateRequestConfigAccessPingoneClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your PingOne environment identifier */
-  pingEnvId?: string | null;
+  pingEnvId?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessPingone =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessPingoneClaimsList),
+        IdentityProvidersCreateRequestConfigAccessPingoneClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      pingEnvId: S.optional(S.NullOr(S.String).pipe(T.Body("ping_env_id"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      pingEnvId: S.optional(S.String.pipe(T.Body("ping_env_id"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessPingone",
@@ -47995,17 +47614,15 @@ export const IdentityProvidersCreateRequestConfigAccessSAMLAttributesList =
 
 export interface IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesItem {
   /** attribute name from the IDP */
-  attributeName?: string | null;
+  attributeName?: string;
   /** header that will be added on the request to the origin */
-  headerName?: string | null;
+  headerName?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      attributeName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("attribute_name")),
-      ),
-      headerName: S.optional(S.NullOr(S.String).pipe(T.Body("header_name"))),
+      attributeName: S.optional(S.String.pipe(T.Body("attribute_name"))),
+      headerName: S.optional(S.String.pipe(T.Body("header_name"))),
     }),
   ).annotate({
     identifier:
@@ -48028,77 +47645,73 @@ export const IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList =
 
 export interface IdentityProvidersCreateRequestConfigAccessSAML {
   /** A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules. */
-  attributes?: IdentityProvidersCreateRequestConfigAccessSAMLAttributesList | null;
+  attributes?: IdentityProvidersCreateRequestConfigAccessSAMLAttributesList;
   /** The attribute name for email in the SAML response. */
-  emailAttributeName?: string | null;
+  emailAttributeName?: string;
   /** Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt */
-  enableEncryption?: boolean | null;
+  enableEncryption?: boolean;
   /** Add a list of attribute names that will be returned in the response header from the Access callback. */
-  headerAttributes?: IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList | null;
+  headerAttributes?: IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList;
   /** X509 certificate to verify the signature in the SAML authentication response */
-  idpPublicCerts?: IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList | null;
+  idpPublicCerts?: IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList;
   /** IdP Entity ID or Issuer URL */
-  issuerUrl?: string | null;
+  issuerUrl?: string;
   /** Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints. */
-  signRequest?: boolean | null;
+  signRequest?: boolean;
   /** URL to send the SAML authentication requests to */
-  ssoTargetUrl?: string | null;
+  ssoTargetUrl?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessSAML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributes: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestConfigAccessSAMLAttributesList),
+        IdentityProvidersCreateRequestConfigAccessSAMLAttributesList,
       ),
       emailAttributeName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_attribute_name")),
+        S.String.pipe(T.Body("email_attribute_name")),
       ),
-      enableEncryption: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_encryption")),
-      ),
+      enableEncryption: S.optional(S.Boolean.pipe(T.Body("enable_encryption"))),
       headerAttributes: S.optional(
-        S.NullOr(
-          IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList,
-        ).pipe(T.Body("header_attributes")),
+        IdentityProvidersCreateRequestConfigAccessSAMLHeaderAttributesList.pipe(
+          T.Body("header_attributes"),
+        ),
       ),
       idpPublicCerts: S.optional(
-        S.NullOr(
-          IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList,
-        ).pipe(T.Body("idp_public_certs")),
+        IdentityProvidersCreateRequestConfigAccessSAMLIdpPublicCertsList.pipe(
+          T.Body("idp_public_certs"),
+        ),
       ),
-      issuerUrl: S.optional(S.NullOr(S.String).pipe(T.Body("issuer_url"))),
-      signRequest: S.optional(S.NullOr(S.Boolean).pipe(T.Body("sign_request"))),
-      ssoTargetUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sso_target_url")),
-      ),
+      issuerUrl: S.optional(S.String.pipe(T.Body("issuer_url"))),
+      signRequest: S.optional(S.Boolean.pipe(T.Body("sign_request"))),
+      ssoTargetUrl: S.optional(S.String.pipe(T.Body("sso_target_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessSAML",
   }) as any as S.Schema<IdentityProvidersCreateRequestConfigAccessSAML>;
 
 export interface IdentityProvidersCreateRequestConfigAccessOnetimepin {
-  redirectUrl?: string | null;
+  redirectUrl?: string;
 }
 export const IdentityProvidersCreateRequestConfigAccessOnetimepin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      redirectUrl: S.optional(S.NullOr(S.String).pipe(T.Body("redirect_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestConfigAccessOnetimepin",
   }) as any as S.Schema<IdentityProvidersCreateRequestConfigAccessOnetimepin>;
 
 export interface IdentityProvidersCreateRequestConfigAccessCloudflare {
-  redirectUrl?: string | null;
+  redirectUrl?: string;
   /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies. */
-  restrictToAccountMembers?: boolean | null;
+  restrictToAccountMembers?: boolean;
 }
 export const IdentityProvidersCreateRequestConfigAccessCloudflare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      redirectUrl: S.optional(S.NullOr(S.String).pipe(T.Body("redirect_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
       restrictToAccountMembers: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("restrict_to_account_members")),
+        S.Boolean.pipe(T.Body("restrict_to_account_members")),
       ),
     }),
   ).annotate({
@@ -48233,9 +47846,9 @@ export interface IdentityProvidersCreateRequestSamlCertificateSet {
   /** Timestamp when the certificate set was last updated (e.g., during rotation) */
   updatedAt: string;
   /** The currently active certificate used for encrypting SAML assertions */
-  currentCertificate?: IdentityProvidersCreateRequestSamlCertificateSetCurrentCertificate | null;
+  currentCertificate?: IdentityProvidersCreateRequestSamlCertificateSetCurrentCertificate;
   /** The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`. */
-  previousCertificate?: unknown | null;
+  previousCertificate?: unknown;
 }
 export const IdentityProvidersCreateRequestSamlCertificateSet =
   /*@__PURE__*/ S.suspend(() =>
@@ -48244,12 +47857,12 @@ export const IdentityProvidersCreateRequestSamlCertificateSet =
       uid: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       currentCertificate: S.optional(
-        S.NullOr(
-          IdentityProvidersCreateRequestSamlCertificateSetCurrentCertificate,
-        ).pipe(T.Body("current_certificate")),
+        IdentityProvidersCreateRequestSamlCertificateSetCurrentCertificate.pipe(
+          T.Body("current_certificate"),
+        ),
       ),
       previousCertificate: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("previous_certificate")),
+        S.Unknown.pipe(T.Body("previous_certificate")),
       ),
     }),
   ).annotate({
@@ -48263,38 +47876,33 @@ export const IdentityProvidersCreateRequestScimConfigAzureADIdentityUpdateBehavi
 
 export interface IdentityProvidersCreateRequestScimConfigAzureAD {
   /** A flag to enable or disable SCIM for the identity provider. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate. */
   identityUpdateBehavior?:
     | IdentityProvidersCreateRequestScimConfigAzureADIdentityUpdateBehavior
-    | (string & {})
-    | null;
+    | (string & {});
   /** The base URL of Cloudflare's SCIM V2.0 API endpoint. */
-  scimBaseUrl?: string | null;
+  scimBaseUrl?: string;
   /** A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider. This cannot be enabled unless user_deprovision is also enabled. */
-  seatDeprovision?: boolean | null;
+  seatDeprovision?: boolean;
   /** A read-only token generated when the SCIM integration is enabled for the first time. It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret. */
-  secret?: string | null;
+  secret?: string;
   /** A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider. */
-  userDeprovision?: boolean | null;
+  userDeprovision?: boolean;
 }
 export const IdentityProvidersCreateRequestScimConfigAzureAD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       identityUpdateBehavior: S.optional(
-        S.NullOr(
-          IdentityProvidersCreateRequestScimConfigAzureADIdentityUpdateBehavior,
-        ).pipe(T.Body("identity_update_behavior")),
+        IdentityProvidersCreateRequestScimConfigAzureADIdentityUpdateBehavior.pipe(
+          T.Body("identity_update_behavior"),
+        ),
       ),
-      scimBaseUrl: S.optional(S.NullOr(S.String).pipe(T.Body("scim_base_url"))),
-      seatDeprovision: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("seat_deprovision")),
-      ),
-      secret: S.optional(S.NullOr(S.String)),
-      userDeprovision: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("user_deprovision")),
-      ),
+      scimBaseUrl: S.optional(S.String.pipe(T.Body("scim_base_url"))),
+      seatDeprovision: S.optional(S.Boolean.pipe(T.Body("seat_deprovision"))),
+      secret: S.optional(S.String),
+      userDeprovision: S.optional(S.Boolean.pipe(T.Body("user_deprovision"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersCreateRequestScimConfigAzureAD",
@@ -48310,15 +47918,15 @@ export interface CreateIdentityProviderForAccountRequest {
   /** The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/). */
   type: IdentityProvidersCreateRequestTypeAzureAD | (string & {});
   /** UUID. */
-  id?: string | null;
+  id?: string;
   /** Indicates that the identity provider is immutable and cannot be updated or deleted via the API. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** The SAML encryption certificate set details, including current and previous certificates. */
-  samlCertificateSet?: IdentityProvidersCreateRequestSamlCertificateSet | null;
+  samlCertificateSet?: IdentityProvidersCreateRequestSamlCertificateSet;
   /** The UID of the SAML encryption certificate set assigned to this Identity Provider. */
-  samlCertificateSetId?: string | null;
+  samlCertificateSetId?: string;
   /** The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: IdentityProvidersCreateRequestScimConfigAzureAD | null;
+  scimConfig?: IdentityProvidersCreateRequestScimConfigAzureAD;
 }
 export const CreateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -48327,18 +47935,18 @@ export const CreateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
       config: IdentityProvidersCreateRequestConfig,
       name: S.String,
       type: IdentityProvidersCreateRequestTypeAzureAD,
-      id: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      id: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
       samlCertificateSet: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestSamlCertificateSet).pipe(
+        IdentityProvidersCreateRequestSamlCertificateSet.pipe(
           T.Body("saml_certificate_set"),
         ),
       ),
       samlCertificateSetId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_certificate_set_id")),
+        S.String.pipe(T.Body("saml_certificate_set_id")),
       ),
       scimConfig: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestScimConfigAzureAD).pipe(
+        IdentityProvidersCreateRequestScimConfigAzureAD.pipe(
           T.Body("scim_config"),
         ),
       ),
@@ -50570,15 +50178,15 @@ export interface CreateIdentityProviderForZoneRequest {
   /** The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/). */
   type: IdentityProvidersCreateRequestTypeAzureAD | (string & {});
   /** UUID. */
-  id?: string | null;
+  id?: string;
   /** Indicates that the identity provider is immutable and cannot be updated or deleted via the API. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** The SAML encryption certificate set details, including current and previous certificates. */
-  samlCertificateSet?: IdentityProvidersCreateRequestSamlCertificateSet | null;
+  samlCertificateSet?: IdentityProvidersCreateRequestSamlCertificateSet;
   /** The UID of the SAML encryption certificate set assigned to this Identity Provider. */
-  samlCertificateSetId?: string | null;
+  samlCertificateSetId?: string;
   /** The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: IdentityProvidersCreateRequestScimConfigAzureAD | null;
+  scimConfig?: IdentityProvidersCreateRequestScimConfigAzureAD;
 }
 export const CreateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -50587,18 +50195,18 @@ export const CreateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
       config: IdentityProvidersCreateRequestConfig,
       name: S.String,
       type: IdentityProvidersCreateRequestTypeAzureAD,
-      id: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      id: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
       samlCertificateSet: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestSamlCertificateSet).pipe(
+        IdentityProvidersCreateRequestSamlCertificateSet.pipe(
           T.Body("saml_certificate_set"),
         ),
       ),
       samlCertificateSetId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_certificate_set_id")),
+        S.String.pipe(T.Body("saml_certificate_set_id")),
       ),
       scimConfig: S.optional(
-        S.NullOr(IdentityProvidersCreateRequestScimConfigAzureAD).pipe(
+        IdentityProvidersCreateRequestScimConfigAzureAD.pipe(
           T.Body("scim_config"),
         ),
       ),
@@ -50698,18 +50306,18 @@ export interface CreateNetworkHostnameRouteRequest {
   /** Cloudflare account ID */
   accountId: string;
   /** An optional description of the hostname route. */
-  comment?: string | null;
+  comment?: string;
   /** The hostname of the route. */
-  hostname?: string | null;
+  hostname?: string;
   /** UUID of the tunnel. */
-  tunnelId?: string | null;
+  tunnelId?: string;
 }
 export const CreateNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    hostname: S.optional(S.NullOr(S.String)),
-    tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
+    comment: S.optional(S.String),
+    hostname: S.optional(S.String),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
   })
     .pipe(
       T.Http({
@@ -50780,19 +50388,17 @@ export interface CreateNetworkRouteRequest {
   /** UUID of the tunnel. */
   tunnelId: string;
   /** Optional remark describing the route. */
-  comment?: string | null;
+  comment?: string;
   /** UUID of the virtual network. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const CreateNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     network: S.String,
     tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    virtualNetworkId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-    ),
+    comment: S.optional(S.String),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
   })
     .pipe(
       T.Http({
@@ -50847,19 +50453,17 @@ export interface CreateNetworkRouteNetworkRequest {
   /** UUID of the tunnel. */
   tunnelId: string;
   /** Optional remark describing the route. */
-  comment?: string | null;
+  comment?: string;
   /** UUID of the virtual network. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const CreateNetworkRouteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipNetworkEncoded: S.String.pipe(T.Label("ip_network_encoded")),
     tunnelId: S.String.pipe(T.Body("tunnel_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    virtualNetworkId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-    ),
+    comment: S.optional(S.String),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
   })
     .pipe(
       T.Http({
@@ -50914,19 +50518,17 @@ export interface CreateNetworkSubnetWarpRequest {
   /** The private IPv4 or IPv6 range defining the subnet, in CIDR notation. */
   network: string;
   /** An optional description of the subnet. */
-  comment?: string | null;
+  comment?: string;
   /** If `true`, this is the default subnet for the account. There can only be one default subnet per account. */
-  isDefaultNetwork?: boolean | null;
+  isDefaultNetwork?: boolean;
 }
 export const CreateNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     network: S.String,
-    comment: S.optional(S.NullOr(S.String)),
-    isDefaultNetwork: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_default_network")),
-    ),
+    comment: S.optional(S.String),
+    isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
   })
     .pipe(
       T.Http({
@@ -50992,21 +50594,19 @@ export interface CreateNetworkVirtualNetworkRequest {
   /** A user-friendly name for the virtual network. */
   name: string;
   /** Optional remark describing the virtual network. */
-  comment?: string | null;
+  comment?: string;
   /** If `true`, this virtual network is the default for the account. */
-  isDefault?: boolean | null;
+  isDefault?: boolean;
   /** If `true`, this virtual network is the default for the account. */
-  isDefaultNetwork?: boolean | null;
+  isDefaultNetwork?: boolean;
 }
 export const CreateNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    comment: S.optional(S.NullOr(S.String)),
-    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-    isDefaultNetwork: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_default_network")),
-    ),
+    comment: S.optional(S.String),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
   })
     .pipe(
       T.Http({
@@ -51057,26 +50657,24 @@ export const OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesLis
 
 export interface OrganizationsCreateRequestLoginDesign {
   /** The background color on your login page. */
-  backgroundColor?: string | null;
+  backgroundColor?: string;
   /** The text at the bottom of your login page. */
-  footerText?: string | null;
+  footerText?: string;
   /** The text at the top of your login page. */
-  headerText?: string | null;
+  headerText?: string;
   /** The URL of the logo on your login page. */
-  logoPath?: string | null;
+  logoPath?: string;
   /** The text color on your login page. */
-  textColor?: string | null;
+  textColor?: string;
 }
 export const OrganizationsCreateRequestLoginDesign = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      backgroundColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("background_color")),
-      ),
-      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
-      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
-      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
-      textColor: S.optional(S.NullOr(S.String).pipe(T.Body("text_color"))),
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      textColor: S.optional(S.String.pipe(T.Body("text_color"))),
     }),
 ).annotate({
   identifier: "OrganizationsCreateRequestLoginDesign",
@@ -51101,30 +50699,26 @@ export const OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface OrganizationsCreateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsList;
   /** Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). */
-  amrMatchingSessionDuration?: string | null;
+  amrMatchingSessionDuration?: string;
   /** Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs. */
-  requiredAaguids?: string | null;
+  requiredAaguids?: string;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const OrganizationsCreateRequestMfaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedAuthenticators: S.optional(
-      S.NullOr(
-        OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsList,
-      ).pipe(T.Body("allowed_authenticators")),
+      OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+        T.Body("allowed_authenticators"),
+      ),
     ),
     amrMatchingSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("amr_matching_session_duration")),
+      S.String.pipe(T.Body("amr_matching_session_duration")),
     ),
-    requiredAaguids: S.optional(
-      S.NullOr(S.String).pipe(T.Body("required_aaguids")),
-    ),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    requiredAaguids: S.optional(S.String.pipe(T.Body("required_aaguids"))),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
   }),
 ).annotate({
   identifier: "OrganizationsCreateRequestMfaConfig",
@@ -51185,45 +50779,43 @@ export interface OrganizationsCreateRequestMfaPivKeyRequirements {
   /** Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use). */
   pinPolicy?:
     | OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy
-    | (string & {})
-    | null;
+    | (string & {});
   /** Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device. */
-  requireFipsDevice?: boolean | null;
+  requireFipsDevice?: boolean;
   /** Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter. */
-  sshKeySize?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList | null;
+  sshKeySize?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList;
   /** Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`. */
-  sshKeyType?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList | null;
+  sshKeyType?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList;
   /** Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds). */
   touchPolicy?:
     | OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const OrganizationsCreateRequestMfaPivKeyRequirements =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pinPolicy: S.optional(
-        S.NullOr(OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy).pipe(
+        OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy.pipe(
           T.Body("pin_policy"),
         ),
       ),
       requireFipsDevice: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("require_fips_device")),
+        S.Boolean.pipe(T.Body("require_fips_device")),
       ),
       sshKeySize: S.optional(
-        S.NullOr(
-          OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList,
-        ).pipe(T.Body("ssh_key_size")),
+        OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList.pipe(
+          T.Body("ssh_key_size"),
+        ),
       ),
       sshKeyType: S.optional(
-        S.NullOr(
-          OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList,
-        ).pipe(T.Body("ssh_key_type")),
+        OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList.pipe(
+          T.Body("ssh_key_type"),
+        ),
       ),
       touchPolicy: S.optional(
-        S.NullOr(
-          OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy,
-        ).pipe(T.Body("touch_policy")),
+        OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy.pipe(
+          T.Body("touch_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -51238,30 +50830,30 @@ export interface CreateOrganizationForAccountRequest {
   /** The name of your Zero Trust organization. */
   name: string;
   /** When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean | null;
+  autoRedirectToIdentity?: boolean;
   /** Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array. */
-  denyUnmatchedRequests?: boolean | null;
+  denyUnmatchedRequests?: boolean;
   /** Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request. */
-  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList | null;
+  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList;
   /** Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean | null;
-  loginDesign?: OrganizationsCreateRequestLoginDesign | null;
+  isUiReadOnly?: boolean;
+  loginDesign?: OrganizationsCreateRequestLoginDesign;
   /** Configures multi-factor authentication (MFA) settings for an organization. */
-  mfaConfig?: OrganizationsCreateRequestMfaConfig | null;
+  mfaConfig?: OrganizationsCreateRequestMfaConfig;
   /** Configures PIV key requirements for MFA using hardware security keys. */
-  mfaPivKeyRequirements?: OrganizationsCreateRequestMfaPivKeyRequirements | null;
+  mfaPivKeyRequirements?: OrganizationsCreateRequestMfaPivKeyRequirements;
   /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps. */
-  mfaRequiredForAllApps?: boolean | null;
+  mfaRequiredForAllApps?: boolean;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string | null;
+  uiReadOnlyToggleReason?: string;
   /** The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. */
-  userSeatExpirationInactiveTime?: string | null;
+  userSeatExpirationInactiveTime?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string | null;
+  warpAuthSessionDuration?: string;
 }
 export const CreateOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51269,49 +50861,43 @@ export const CreateOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     authDomain: S.String.pipe(T.Body("auth_domain")),
     name: S.String,
     allowAuthenticateViaWarp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+      S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
     ),
     autoRedirectToIdentity: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+      S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
     ),
     denyUnmatchedRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deny_unmatched_requests")),
+      S.Boolean.pipe(T.Body("deny_unmatched_requests")),
     ),
     denyUnmatchedRequestsExemptedZoneNames: S.optional(
-      S.NullOr(
-        OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList,
-      ).pipe(T.Body("deny_unmatched_requests_exempted_zone_names")),
-    ),
-    isUiReadOnly: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_ui_read_only")),
-    ),
-    loginDesign: S.optional(
-      S.NullOr(OrganizationsCreateRequestLoginDesign).pipe(
-        T.Body("login_design"),
+      OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList.pipe(
+        T.Body("deny_unmatched_requests_exempted_zone_names"),
       ),
     ),
+    isUiReadOnly: S.optional(S.Boolean.pipe(T.Body("is_ui_read_only"))),
+    loginDesign: S.optional(
+      OrganizationsCreateRequestLoginDesign.pipe(T.Body("login_design")),
+    ),
     mfaConfig: S.optional(
-      S.NullOr(OrganizationsCreateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      OrganizationsCreateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     mfaPivKeyRequirements: S.optional(
-      S.NullOr(OrganizationsCreateRequestMfaPivKeyRequirements).pipe(
+      OrganizationsCreateRequestMfaPivKeyRequirements.pipe(
         T.Body("mfa_piv_key_requirements"),
       ),
     ),
     mfaRequiredForAllApps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("mfa_required_for_all_apps")),
+      S.Boolean.pipe(T.Body("mfa_required_for_all_apps")),
     ),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     uiReadOnlyToggleReason: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ui_read_only_toggle_reason")),
+      S.String.pipe(T.Body("ui_read_only_toggle_reason")),
     ),
     userSeatExpirationInactiveTime: S.optional(
-      S.NullOr(S.String).pipe(T.Body("user_seat_expiration_inactive_time")),
+      S.String.pipe(T.Body("user_seat_expiration_inactive_time")),
     ),
     warpAuthSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("warp_auth_session_duration")),
+      S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
   })
     .pipe(
@@ -51613,30 +51199,30 @@ export interface CreateOrganizationForZoneRequest {
   /** The name of your Zero Trust organization. */
   name: string;
   /** When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean | null;
+  autoRedirectToIdentity?: boolean;
   /** Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array. */
-  denyUnmatchedRequests?: boolean | null;
+  denyUnmatchedRequests?: boolean;
   /** Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request. */
-  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList | null;
+  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList;
   /** Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean | null;
-  loginDesign?: OrganizationsCreateRequestLoginDesign | null;
+  isUiReadOnly?: boolean;
+  loginDesign?: OrganizationsCreateRequestLoginDesign;
   /** Configures multi-factor authentication (MFA) settings for an organization. */
-  mfaConfig?: OrganizationsCreateRequestMfaConfig | null;
+  mfaConfig?: OrganizationsCreateRequestMfaConfig;
   /** Configures PIV key requirements for MFA using hardware security keys. */
-  mfaPivKeyRequirements?: OrganizationsCreateRequestMfaPivKeyRequirements | null;
+  mfaPivKeyRequirements?: OrganizationsCreateRequestMfaPivKeyRequirements;
   /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps. */
-  mfaRequiredForAllApps?: boolean | null;
+  mfaRequiredForAllApps?: boolean;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string | null;
+  uiReadOnlyToggleReason?: string;
   /** The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. */
-  userSeatExpirationInactiveTime?: string | null;
+  userSeatExpirationInactiveTime?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string | null;
+  warpAuthSessionDuration?: string;
 }
 export const CreateOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51644,49 +51230,43 @@ export const CreateOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     authDomain: S.String.pipe(T.Body("auth_domain")),
     name: S.String,
     allowAuthenticateViaWarp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+      S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
     ),
     autoRedirectToIdentity: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+      S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
     ),
     denyUnmatchedRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deny_unmatched_requests")),
+      S.Boolean.pipe(T.Body("deny_unmatched_requests")),
     ),
     denyUnmatchedRequestsExemptedZoneNames: S.optional(
-      S.NullOr(
-        OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList,
-      ).pipe(T.Body("deny_unmatched_requests_exempted_zone_names")),
-    ),
-    isUiReadOnly: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_ui_read_only")),
-    ),
-    loginDesign: S.optional(
-      S.NullOr(OrganizationsCreateRequestLoginDesign).pipe(
-        T.Body("login_design"),
+      OrganizationsCreateRequestDenyUnmatchedRequestsExemptedZoneNamesList.pipe(
+        T.Body("deny_unmatched_requests_exempted_zone_names"),
       ),
     ),
+    isUiReadOnly: S.optional(S.Boolean.pipe(T.Body("is_ui_read_only"))),
+    loginDesign: S.optional(
+      OrganizationsCreateRequestLoginDesign.pipe(T.Body("login_design")),
+    ),
     mfaConfig: S.optional(
-      S.NullOr(OrganizationsCreateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      OrganizationsCreateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     mfaPivKeyRequirements: S.optional(
-      S.NullOr(OrganizationsCreateRequestMfaPivKeyRequirements).pipe(
+      OrganizationsCreateRequestMfaPivKeyRequirements.pipe(
         T.Body("mfa_piv_key_requirements"),
       ),
     ),
     mfaRequiredForAllApps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("mfa_required_for_all_apps")),
+      S.Boolean.pipe(T.Body("mfa_required_for_all_apps")),
     ),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     uiReadOnlyToggleReason: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ui_read_only_toggle_reason")),
+      S.String.pipe(T.Body("ui_read_only_toggle_reason")),
     ),
     userSeatExpirationInactiveTime: S.optional(
-      S.NullOr(S.String).pipe(T.Body("user_seat_expiration_inactive_time")),
+      S.String.pipe(T.Body("user_seat_expiration_inactive_time")),
     ),
     warpAuthSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("warp_auth_session_duration")),
+      S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
   })
     .pipe(
@@ -51713,7 +51293,7 @@ export interface CreateRiskScoringIntegrationRequest {
   /** The base url of the tenant, e.g. "https://tenant.okta.com". */
   tenantUrl: string;
   /** A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). */
-  referenceId?: string | null;
+  referenceId?: string;
 }
 export const CreateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51722,7 +51302,7 @@ export const CreateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("integration_type"),
     ),
     tenantUrl: S.String.pipe(T.Body("tenant_url")),
-    referenceId: S.optional(S.NullOr(S.String).pipe(T.Body("reference_id"))),
+    referenceId: S.optional(S.String.pipe(T.Body("reference_id"))),
   })
     .pipe(
       T.Http({
@@ -51786,20 +51366,18 @@ export interface CreateTunnelCloudflaredRequest {
   /** A user-friendly name for a tunnel. */
   name: string;
   /** Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard. */
-  configSrc?: TunnelsCloudflaredCreateRequestConfigSrc | (string & {}) | null;
+  configSrc?: TunnelsCloudflaredCreateRequestConfigSrc | (string & {});
   /** Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string. */
-  tunnelSecret?: string | null;
+  tunnelSecret?: string;
 }
 export const CreateTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     configSrc: S.optional(
-      S.NullOr(TunnelsCloudflaredCreateRequestConfigSrc).pipe(
-        T.Body("config_src"),
-      ),
+      TunnelsCloudflaredCreateRequestConfigSrc.pipe(T.Body("config_src")),
     ),
-    tunnelSecret: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_secret"))),
+    tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
   })
     .pipe(
       T.Http({
@@ -51993,13 +51571,13 @@ export interface CreateTunnelWarpConnectorRequest {
   /** A user-friendly name for a tunnel. */
   name: string;
   /** Indicates that the tunnel will be created to be highly available. If omitted, defaults to false. */
-  ha?: boolean | null;
+  ha?: boolean;
 }
 export const CreateTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    ha: S.optional(S.NullOr(S.Boolean)),
+    ha: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -55621,18 +55199,13 @@ export const DlpEntriesCustomCreateRequestPatternValidation =
 
 export interface DlpEntriesCustomCreateRequestPattern {
   regex: string;
-  validation?:
-    | DlpEntriesCustomCreateRequestPatternValidation
-    | (string & {})
-    | null;
+  validation?: DlpEntriesCustomCreateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCustomCreateRequestPattern = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       regex: S.String,
-      validation: S.optional(
-        S.NullOr(DlpEntriesCustomCreateRequestPatternValidation),
-      ),
+      validation: S.optional(DlpEntriesCustomCreateRequestPatternValidation),
     }),
 ).annotate({
   identifier: "DlpEntriesCustomCreateRequestPattern",
@@ -55643,8 +55216,8 @@ export interface DlpEntriesCustomCreateRequest {
   enabled: boolean;
   name: string;
   pattern: DlpEntriesCustomCreateRequestPattern;
-  description?: string | null;
-  profileId?: string | null;
+  description?: string;
+  profileId?: string;
 }
 export const DlpEntriesCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -55652,8 +55225,8 @@ export const DlpEntriesCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     pattern: DlpEntriesCustomCreateRequestPattern,
-    description: S.optional(S.NullOr(S.String)),
-    profileId: S.optional(S.NullOr(S.String).pipe(T.Body("profile_id"))),
+    description: S.optional(S.String),
+    profileId: S.optional(S.String.pipe(T.Body("profile_id"))),
   })
     .pipe(
       T.Http({
@@ -130019,12 +129592,12 @@ export const DevicesDevicesListRequestActiveRegistrations =
 
 export interface DevicesDevicesListRequestLastSeenUser {
   /** Filter by the last seen user's email. */
-  email?: string | null;
+  email?: string;
 }
 export const DevicesDevicesListRequestLastSeenUser = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      email: S.optional(S.NullOr(S.String)),
+      email: S.optional(S.String),
     }),
 ).annotate({
   identifier: "DevicesDevicesListRequestLastSeenUser",
@@ -130055,7 +129628,7 @@ export interface ListDeviceDevicesRequest {
   cursor?: string;
   /** Comma-separated list of additional information that should be included in the device response. Supported values are: "last_seen_registration.policy". */
   include?: string;
-  lastSeenUser?: DevicesDevicesListRequestLastSeenUser | null;
+  lastSeenUser?: DevicesDevicesListRequestLastSeenUser;
   /** The maximum number of devices to return in a single response. */
   perPage?: number;
   /** Search by device details. */
@@ -130081,7 +129654,7 @@ export const ListDeviceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     include: S.optional(S.String.pipe(T.Query())),
     lastSeenUser: S.optional(
-      S.NullOr(DevicesDevicesListRequestLastSeenUser).pipe(
+      DevicesDevicesListRequestLastSeenUser.pipe(
         T.Body("last_seen_user"),
         T.DeepQuery("last_seen_user"),
       ),
@@ -132172,12 +131745,12 @@ export const DevicesRegistrationsListRequestIdList = /*@__PURE__*/ S.Array(
 
 export interface DevicesRegistrationsListRequestDevice {
   /** Filter by WARP device ID. */
-  id?: string | null;
+  id?: string;
 }
 export const DevicesRegistrationsListRequestDevice = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
     }),
 ).annotate({
   identifier: "DevicesRegistrationsListRequestDevice",
@@ -132207,11 +131780,11 @@ export const DevicesRegistrationsListRequestUserIdList = /*@__PURE__*/ S.Array(
 
 export interface DevicesRegistrationsListRequestUser {
   /** Filter by user ID. */
-  id?: DevicesRegistrationsListRequestUserIdList | null;
+  id?: DevicesRegistrationsListRequestUserIdList;
 }
 export const DevicesRegistrationsListRequestUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(DevicesRegistrationsListRequestUserIdList)),
+    id: S.optional(DevicesRegistrationsListRequestUserIdList),
   }),
 ).annotate({
   identifier: "DevicesRegistrationsListRequestUser",
@@ -132223,7 +131796,7 @@ export interface ListDeviceRegistrationsRequest {
   id?: DevicesRegistrationsListRequestIdList;
   /** Opaque token indicating the starting position when requesting the next set of records. A cursor value can be obtained from the result_info.cursor field in the response. */
   cursor?: string;
-  device?: DevicesRegistrationsListRequestDevice | null;
+  device?: DevicesRegistrationsListRequestDevice;
   /** Comma-separated list of additional information that should be included in the registration response. Supported values are: "policy". */
   include?: string;
   /** The maximum number of devices to return in a single response. */
@@ -132240,7 +131813,7 @@ export interface ListDeviceRegistrationsRequest {
   sortOrder?: DevicesRegistrationsListRequestSortOrder | (string & {});
   /** Filter by registration status. Defaults to 'active'. */
   status?: DevicesRegistrationsListRequestStatus | (string & {});
-  user?: DevicesRegistrationsListRequestUser | null;
+  user?: DevicesRegistrationsListRequestUser;
 }
 export const ListDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -132248,9 +131821,7 @@ export const ListDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(DevicesRegistrationsListRequestIdList.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
     device: S.optional(
-      S.NullOr(DevicesRegistrationsListRequestDevice).pipe(
-        T.DeepQuery("device"),
-      ),
+      DevicesRegistrationsListRequestDevice.pipe(T.DeepQuery("device")),
     ),
     include: S.optional(S.String.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -132265,7 +131836,7 @@ export const ListDeviceRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     status: S.optional(DevicesRegistrationsListRequestStatus.pipe(T.Query())),
     user: S.optional(
-      S.NullOr(DevicesRegistrationsListRequestUser).pipe(T.DeepQuery("user")),
+      DevicesRegistrationsListRequestUser.pipe(T.DeepQuery("user")),
     ),
   })
     .pipe(
@@ -145765,19 +145336,17 @@ export interface PatchAccessApplicationSettingForAccountRequest {
   /** Identifier. */
   appId: string;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
 }
 export const PatchAccessApplicationSettingForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
     })
       .pipe(
         T.Http({
@@ -145816,19 +145385,17 @@ export interface PatchAccessApplicationSettingForZoneRequest {
   /** Identifier. */
   appId: string;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
 }
 export const PatchAccessApplicationSettingForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
     })
       .pipe(
         T.Http({
@@ -145846,18 +145413,16 @@ export interface PatchConnectivitySettingRequest {
   /** Cloudflare account ID */
   accountId: string;
   /** A flag to enable the ICMP proxy for the account network. */
-  icmpProxyEnabled?: boolean | null;
+  icmpProxyEnabled?: boolean;
   /** A flag to enable WARP to WARP traffic. */
-  offrampWarpEnabled?: boolean | null;
+  offrampWarpEnabled?: boolean;
 }
 export const PatchConnectivitySettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    icmpProxyEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("icmp_proxy_enabled")),
-    ),
+    icmpProxyEnabled: S.optional(S.Boolean.pipe(T.Body("icmp_proxy_enabled"))),
     offrampWarpEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("offramp_warp_enabled")),
+      S.Boolean.pipe(T.Body("offramp_warp_enabled")),
     ),
   })
     .pipe(
@@ -145925,24 +145490,24 @@ export interface PatchDeviceDeploymentGroupRequest {
   accountId: string;
   groupId: string;
   /** A user-friendly name for the deployment group. */
-  name?: string | null;
+  name?: string;
   /** Replaces the entire list of policy IDs. */
-  policyIds?: DevicesDeploymentGroupsEditRequestPolicyIdsList | null;
+  policyIds?: DevicesDeploymentGroupsEditRequestPolicyIdsList;
   /** Replaces the entire version_config array. */
-  versionConfig?: DevicesDeploymentGroupsEditRequestVersionConfigList | null;
+  versionConfig?: DevicesDeploymentGroupsEditRequestVersionConfigList;
 }
 export const PatchDeviceDeploymentGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     groupId: S.String.pipe(T.Label("group_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
     policyIds: S.optional(
-      S.NullOr(DevicesDeploymentGroupsEditRequestPolicyIdsList).pipe(
+      DevicesDeploymentGroupsEditRequestPolicyIdsList.pipe(
         T.Body("policy_ids"),
       ),
     ),
     versionConfig: S.optional(
-      S.NullOr(DevicesDeploymentGroupsEditRequestVersionConfigList).pipe(
+      DevicesDeploymentGroupsEditRequestVersionConfigList.pipe(
         T.Body("version_config"),
       ),
     ),
@@ -146026,28 +145591,28 @@ export interface PatchDeviceIpProfileRequest {
   accountId: string;
   profileId: string;
   /** An optional description of the Device IP profile. */
-  description?: string | null;
+  description?: string;
   /** Whether the Device IP profile is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The wirefilter expression to match registrations. Available values: "identity.name", "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.saml_attributes". */
-  match?: string | null;
+  match?: string;
   /** A user-friendly name for the Device IP profile. */
-  name?: string | null;
+  name?: string;
   /** The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field. */
-  precedence?: number | null;
+  precedence?: number;
   /** The ID of the Subnet. */
-  subnetId?: string | null;
+  subnetId?: string;
 }
 export const PatchDeviceIpProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    match: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    precedence: S.optional(S.NullOr(S.Number)),
-    subnetId: S.optional(S.NullOr(S.String).pipe(T.Body("subnet_id"))),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    match: S.optional(S.String),
+    name: S.optional(S.String),
+    precedence: S.optional(S.Number),
+    subnetId: S.optional(S.String.pipe(T.Body("subnet_id"))),
   })
     .pipe(
       T.Http({
@@ -146102,13 +145667,13 @@ export interface DevicesPoliciesCustomEditRequestDnsSearchSuffixesItem {
   /** The DNS search suffix to append when resolving short hostnames. */
   suffix: string;
   /** A description of the DNS search suffix. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomEditRequestDnsSearchSuffixesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suffix: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPoliciesCustomEditRequestDnsSearchSuffixesItem",
@@ -146125,13 +145690,13 @@ export interface DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeS
   /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146142,13 +145707,13 @@ export interface DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeS
   /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146229,13 +145794,13 @@ export interface DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeS
   /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146246,13 +145811,13 @@ export interface DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeS
   /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146279,15 +145844,15 @@ export const DevicesPoliciesCustomEditRequestIncludeList =
 
 export interface DevicesPoliciesCustomEditRequestServiceModeV2 {
   /** The mode to run the WARP client under. */
-  mode?: string | null;
+  mode?: string;
   /** The port number when used with proxy mode. */
-  port?: number | null;
+  port?: number;
 }
 export const DevicesPoliciesCustomEditRequestServiceModeV2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      mode: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "DevicesPoliciesCustomEditRequestServiceModeV2",
@@ -146320,117 +145885,105 @@ export interface PatchDevicePolicyCustomRequest {
   accountId: string;
   policyId: string;
   /** Whether to allow the user to switch WARP between modes. */
-  allowModeSwitch?: boolean | null;
+  allowModeSwitch?: boolean;
   /** Whether to receive update notifications when a new version of the client is available. */
-  allowUpdates?: boolean | null;
+  allowUpdates?: boolean;
   /** Whether to allow devices to leave the organization. */
-  allowedToLeave?: boolean | null;
+  allowedToLeave?: boolean;
   /** The amount of time in seconds to reconnect after having been disabled. */
-  autoConnect?: number | null;
+  autoConnect?: number;
   /** Turn on the captive portal after the specified amount of time. */
-  captivePortal?: number | null;
+  captivePortal?: number;
   /** A description of the policy. */
-  description?: string | null;
+  description?: string;
   /** If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`. */
-  disableAutoFallback?: boolean | null;
+  disableAutoFallback?: boolean;
   /** List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear. */
-  dnsSearchSuffixes?: DevicesPoliciesCustomEditRequestDnsSearchSuffixesList | null;
+  dnsSearchSuffixes?: DevicesPoliciesCustomEditRequestDnsSearchSuffixesList;
   /** Whether the policy will be applied to matching devices. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  exclude?: DevicesPoliciesCustomEditRequestExcludeList | null;
+  exclude?: DevicesPoliciesCustomEditRequestExcludeList;
   /** Whether to add Microsoft IPs to Split Tunnel exclusions. */
-  excludeOfficeIps?: boolean | null;
+  excludeOfficeIps?: boolean;
   /** Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/. */
-  globalAcceleration?: DevicesPoliciesCustomEditRequestGlobalAcceleration | null;
+  globalAcceleration?: DevicesPoliciesCustomEditRequestGlobalAcceleration;
   /** List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  include?: DevicesPoliciesCustomEditRequestIncludeList | null;
+  include?: DevicesPoliciesCustomEditRequestIncludeList;
   /** The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset. */
-  lanAllowMinutes?: number | null;
+  lanAllowMinutes?: number;
   /** The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset. */
-  lanAllowSubnetSize?: number | null;
+  lanAllowSubnetSize?: number;
   /** The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service_token_uuid", "identity.saml_attributes", "network", "os.name", "os.version". */
-  match?: string | null;
+  match?: string;
   /** The name of the device settings profile. */
-  name?: string | null;
+  name?: string;
   /** The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field. */
-  precedence?: number | null;
+  precedence?: number;
   /** Determines if the operating system will register WARP's local interface IP with your on-premises DNS server. */
-  registerInterfaceIpWithDns?: boolean | null;
+  registerInterfaceIpWithDns?: boolean;
   /** Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only). */
-  sccmVpnBoundarySupport?: boolean | null;
-  serviceModeV2?: DevicesPoliciesCustomEditRequestServiceModeV2 | null;
+  sccmVpnBoundarySupport?: boolean;
+  serviceModeV2?: DevicesPoliciesCustomEditRequestServiceModeV2;
   /** The URL to launch when the Send Feedback button is clicked. */
-  supportUrl?: string | null;
+  supportUrl?: string;
   /** Whether to allow the user to turn off the WARP switch and disconnect the client. */
-  switchLocked?: boolean | null;
+  switchLocked?: boolean;
   /** Determines which tunnel protocol to use. */
-  tunnelProtocol?: string | null;
+  tunnelProtocol?: string;
   /** Virtual network access settings for the device. */
-  virtualNetworks?: DevicesPoliciesCustomEditRequestVirtualNetworks | null;
+  virtualNetworks?: DevicesPoliciesCustomEditRequestVirtualNetworks;
 }
 export const PatchDevicePolicyCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    allowModeSwitch: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_mode_switch")),
-    ),
-    allowUpdates: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_updates"))),
-    allowedToLeave: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allowed_to_leave")),
-    ),
-    autoConnect: S.optional(S.NullOr(S.Number).pipe(T.Body("auto_connect"))),
-    captivePortal: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("captive_portal")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
+    allowModeSwitch: S.optional(S.Boolean.pipe(T.Body("allow_mode_switch"))),
+    allowUpdates: S.optional(S.Boolean.pipe(T.Body("allow_updates"))),
+    allowedToLeave: S.optional(S.Boolean.pipe(T.Body("allowed_to_leave"))),
+    autoConnect: S.optional(S.Number.pipe(T.Body("auto_connect"))),
+    captivePortal: S.optional(S.Number.pipe(T.Body("captive_portal"))),
+    description: S.optional(S.String),
     disableAutoFallback: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_auto_fallback")),
+      S.Boolean.pipe(T.Body("disable_auto_fallback")),
     ),
     dnsSearchSuffixes: S.optional(
-      S.NullOr(DevicesPoliciesCustomEditRequestDnsSearchSuffixesList).pipe(
+      DevicesPoliciesCustomEditRequestDnsSearchSuffixesList.pipe(
         T.Body("dns_search_suffixes"),
       ),
     ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    exclude: S.optional(S.NullOr(DevicesPoliciesCustomEditRequestExcludeList)),
-    excludeOfficeIps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("exclude_office_ips")),
-    ),
+    enabled: S.optional(S.Boolean),
+    exclude: S.optional(DevicesPoliciesCustomEditRequestExcludeList),
+    excludeOfficeIps: S.optional(S.Boolean.pipe(T.Body("exclude_office_ips"))),
     globalAcceleration: S.optional(
-      S.NullOr(DevicesPoliciesCustomEditRequestGlobalAcceleration).pipe(
+      DevicesPoliciesCustomEditRequestGlobalAcceleration.pipe(
         T.Body("global_acceleration"),
       ),
     ),
-    include: S.optional(S.NullOr(DevicesPoliciesCustomEditRequestIncludeList)),
-    lanAllowMinutes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_minutes")),
-    ),
+    include: S.optional(DevicesPoliciesCustomEditRequestIncludeList),
+    lanAllowMinutes: S.optional(S.Number.pipe(T.Body("lan_allow_minutes"))),
     lanAllowSubnetSize: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_subnet_size")),
+      S.Number.pipe(T.Body("lan_allow_subnet_size")),
     ),
-    match: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    precedence: S.optional(S.NullOr(S.Number)),
+    match: S.optional(S.String),
+    name: S.optional(S.String),
+    precedence: S.optional(S.Number),
     registerInterfaceIpWithDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("register_interface_ip_with_dns")),
+      S.Boolean.pipe(T.Body("register_interface_ip_with_dns")),
     ),
     sccmVpnBoundarySupport: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("sccm_vpn_boundary_support")),
+      S.Boolean.pipe(T.Body("sccm_vpn_boundary_support")),
     ),
     serviceModeV2: S.optional(
-      S.NullOr(DevicesPoliciesCustomEditRequestServiceModeV2).pipe(
+      DevicesPoliciesCustomEditRequestServiceModeV2.pipe(
         T.Body("service_mode_v2"),
       ),
     ),
-    supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
-    switchLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("switch_locked"))),
-    tunnelProtocol: S.optional(
-      S.NullOr(S.String).pipe(T.Body("tunnel_protocol")),
-    ),
+    supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
+    switchLocked: S.optional(S.Boolean.pipe(T.Body("switch_locked"))),
+    tunnelProtocol: S.optional(S.String.pipe(T.Body("tunnel_protocol"))),
     virtualNetworks: S.optional(
-      S.NullOr(DevicesPoliciesCustomEditRequestVirtualNetworks).pipe(
+      DevicesPoliciesCustomEditRequestVirtualNetworks.pipe(
         T.Body("virtual_networks"),
       ),
     ),
@@ -146870,13 +146423,13 @@ export interface DevicesPoliciesDefaultEditRequestDnsSearchSuffixesItem {
   /** The DNS search suffix to append when resolving short hostnames. */
   suffix: string;
   /** A description of the DNS search suffix. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultEditRequestDnsSearchSuffixesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suffix: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPoliciesDefaultEditRequestDnsSearchSuffixesItem",
@@ -146893,13 +146446,13 @@ export interface DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExclude
   /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146910,13 +146463,13 @@ export interface DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExclude
   /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultEditRequestExcludeItemTeamsDevicesExcludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -146997,13 +146550,13 @@ export interface DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesInclude
   /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -147014,13 +146567,13 @@ export interface DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesInclude
   /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultEditRequestIncludeItemTeamsDevicesIncludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -147047,15 +146600,15 @@ export const DevicesPoliciesDefaultEditRequestIncludeList =
 
 export interface DevicesPoliciesDefaultEditRequestServiceModeV2 {
   /** The mode to run the WARP client under. */
-  mode?: string | null;
+  mode?: string;
   /** The port number when used with proxy mode. */
-  port?: number | null;
+  port?: number;
 }
 export const DevicesPoliciesDefaultEditRequestServiceModeV2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      mode: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "DevicesPoliciesDefaultEditRequestServiceModeV2",
@@ -147087,101 +146640,89 @@ export const DevicesPoliciesDefaultEditRequestVirtualNetworks =
 export interface PatchDevicePolicyDefaultRequest {
   accountId: string;
   /** Whether to allow the user to switch WARP between modes. */
-  allowModeSwitch?: boolean | null;
+  allowModeSwitch?: boolean;
   /** Whether to receive update notifications when a new version of the client is available. */
-  allowUpdates?: boolean | null;
+  allowUpdates?: boolean;
   /** Whether to allow devices to leave the organization. */
-  allowedToLeave?: boolean | null;
+  allowedToLeave?: boolean;
   /** The amount of time in seconds to reconnect after having been disabled. */
-  autoConnect?: number | null;
+  autoConnect?: number;
   /** Turn on the captive portal after the specified amount of time. */
-  captivePortal?: number | null;
+  captivePortal?: number;
   /** If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`. */
-  disableAutoFallback?: boolean | null;
+  disableAutoFallback?: boolean;
   /** List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear. */
-  dnsSearchSuffixes?: DevicesPoliciesDefaultEditRequestDnsSearchSuffixesList | null;
+  dnsSearchSuffixes?: DevicesPoliciesDefaultEditRequestDnsSearchSuffixesList;
   /** List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  exclude?: DevicesPoliciesDefaultEditRequestExcludeList | null;
+  exclude?: DevicesPoliciesDefaultEditRequestExcludeList;
   /** Whether to add Microsoft IPs to Split Tunnel exclusions. */
-  excludeOfficeIps?: boolean | null;
+  excludeOfficeIps?: boolean;
   /** Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/. */
-  globalAcceleration?: DevicesPoliciesDefaultEditRequestGlobalAcceleration | null;
+  globalAcceleration?: DevicesPoliciesDefaultEditRequestGlobalAcceleration;
   /** List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request. */
-  include?: DevicesPoliciesDefaultEditRequestIncludeList | null;
+  include?: DevicesPoliciesDefaultEditRequestIncludeList;
   /** The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset. */
-  lanAllowMinutes?: number | null;
+  lanAllowMinutes?: number;
   /** The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset. */
-  lanAllowSubnetSize?: number | null;
+  lanAllowSubnetSize?: number;
   /** Determines if the operating system will register WARP's local interface IP with your on-premises DNS server. */
-  registerInterfaceIpWithDns?: boolean | null;
+  registerInterfaceIpWithDns?: boolean;
   /** Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only). */
-  sccmVpnBoundarySupport?: boolean | null;
-  serviceModeV2?: DevicesPoliciesDefaultEditRequestServiceModeV2 | null;
+  sccmVpnBoundarySupport?: boolean;
+  serviceModeV2?: DevicesPoliciesDefaultEditRequestServiceModeV2;
   /** The URL to launch when the Send Feedback button is clicked. */
-  supportUrl?: string | null;
+  supportUrl?: string;
   /** Whether to allow the user to turn off the WARP switch and disconnect the client. */
-  switchLocked?: boolean | null;
+  switchLocked?: boolean;
   /** Determines which tunnel protocol to use. */
-  tunnelProtocol?: string | null;
+  tunnelProtocol?: string;
   /** Virtual network access settings for the device. */
-  virtualNetworks?: DevicesPoliciesDefaultEditRequestVirtualNetworks | null;
+  virtualNetworks?: DevicesPoliciesDefaultEditRequestVirtualNetworks;
 }
 export const PatchDevicePolicyDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    allowModeSwitch: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_mode_switch")),
-    ),
-    allowUpdates: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_updates"))),
-    allowedToLeave: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allowed_to_leave")),
-    ),
-    autoConnect: S.optional(S.NullOr(S.Number).pipe(T.Body("auto_connect"))),
-    captivePortal: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("captive_portal")),
-    ),
+    allowModeSwitch: S.optional(S.Boolean.pipe(T.Body("allow_mode_switch"))),
+    allowUpdates: S.optional(S.Boolean.pipe(T.Body("allow_updates"))),
+    allowedToLeave: S.optional(S.Boolean.pipe(T.Body("allowed_to_leave"))),
+    autoConnect: S.optional(S.Number.pipe(T.Body("auto_connect"))),
+    captivePortal: S.optional(S.Number.pipe(T.Body("captive_portal"))),
     disableAutoFallback: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_auto_fallback")),
+      S.Boolean.pipe(T.Body("disable_auto_fallback")),
     ),
     dnsSearchSuffixes: S.optional(
-      S.NullOr(DevicesPoliciesDefaultEditRequestDnsSearchSuffixesList).pipe(
+      DevicesPoliciesDefaultEditRequestDnsSearchSuffixesList.pipe(
         T.Body("dns_search_suffixes"),
       ),
     ),
-    exclude: S.optional(S.NullOr(DevicesPoliciesDefaultEditRequestExcludeList)),
-    excludeOfficeIps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("exclude_office_ips")),
-    ),
+    exclude: S.optional(DevicesPoliciesDefaultEditRequestExcludeList),
+    excludeOfficeIps: S.optional(S.Boolean.pipe(T.Body("exclude_office_ips"))),
     globalAcceleration: S.optional(
-      S.NullOr(DevicesPoliciesDefaultEditRequestGlobalAcceleration).pipe(
+      DevicesPoliciesDefaultEditRequestGlobalAcceleration.pipe(
         T.Body("global_acceleration"),
       ),
     ),
-    include: S.optional(S.NullOr(DevicesPoliciesDefaultEditRequestIncludeList)),
-    lanAllowMinutes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_minutes")),
-    ),
+    include: S.optional(DevicesPoliciesDefaultEditRequestIncludeList),
+    lanAllowMinutes: S.optional(S.Number.pipe(T.Body("lan_allow_minutes"))),
     lanAllowSubnetSize: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("lan_allow_subnet_size")),
+      S.Number.pipe(T.Body("lan_allow_subnet_size")),
     ),
     registerInterfaceIpWithDns: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("register_interface_ip_with_dns")),
+      S.Boolean.pipe(T.Body("register_interface_ip_with_dns")),
     ),
     sccmVpnBoundarySupport: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("sccm_vpn_boundary_support")),
+      S.Boolean.pipe(T.Body("sccm_vpn_boundary_support")),
     ),
     serviceModeV2: S.optional(
-      S.NullOr(DevicesPoliciesDefaultEditRequestServiceModeV2).pipe(
+      DevicesPoliciesDefaultEditRequestServiceModeV2.pipe(
         T.Body("service_mode_v2"),
       ),
     ),
-    supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
-    switchLocked: S.optional(S.NullOr(S.Boolean).pipe(T.Body("switch_locked"))),
-    tunnelProtocol: S.optional(
-      S.NullOr(S.String).pipe(T.Body("tunnel_protocol")),
-    ),
+    supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
+    switchLocked: S.optional(S.Boolean.pipe(T.Body("switch_locked"))),
+    tunnelProtocol: S.optional(S.String.pipe(T.Body("tunnel_protocol"))),
     virtualNetworks: S.optional(
-      S.NullOr(DevicesPoliciesDefaultEditRequestVirtualNetworks).pipe(
+      DevicesPoliciesDefaultEditRequestVirtualNetworks.pipe(
         T.Body("virtual_networks"),
       ),
     ),
@@ -147719,20 +147260,18 @@ export interface DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumCo
   /** The Tanium client secret. */
   clientSecret: string;
   /** If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`. */
-  accessClientId?: string | null;
+  accessClientId?: string;
   /** If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`. */
-  accessClientSecret?: string | null;
+  accessClientSecret?: string;
 }
 export const DevicesPostureIntegrationsEditRequestConfigTeamsDevicesTaniumConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiUrl: S.String.pipe(T.Body("api_url")),
       clientSecret: S.String.pipe(T.Body("client_secret")),
-      accessClientId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_client_id")),
-      ),
+      accessClientId: S.optional(S.String.pipe(T.Body("access_client_id"))),
       accessClientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_client_secret")),
+        S.String.pipe(T.Body("access_client_secret")),
       ),
     }),
   ).annotate({
@@ -147816,23 +147355,23 @@ export interface PatchDevicePostureIntegrationRequest {
   /** API UUID. */
   integrationId: string;
   /** The configuration object containing third-party integration information. */
-  config?: DevicesPostureIntegrationsEditRequestConfig | null;
+  config?: DevicesPostureIntegrationsEditRequestConfig;
   /** The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`). */
-  interval?: string | null;
+  interval?: string;
   /** The name of the device posture integration. */
-  name?: string | null;
+  name?: string;
   /** The type of device posture integration. */
-  type?: DevicesPostureIntegrationsEditRequestType | (string & {}) | null;
+  type?: DevicesPostureIntegrationsEditRequestType | (string & {});
 }
 export const PatchDevicePostureIntegrationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       integrationId: S.String.pipe(T.Label("integration_id")),
-      config: S.optional(S.NullOr(DevicesPostureIntegrationsEditRequestConfig)),
-      interval: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(DevicesPostureIntegrationsEditRequestType)),
+      config: S.optional(DevicesPostureIntegrationsEditRequestConfig),
+      interval: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(DevicesPostureIntegrationsEditRequestType),
     })
       .pipe(
         T.Http({
@@ -147908,54 +147447,50 @@ export const PatchDevicePostureIntegrationResponse = /*@__PURE__*/ S.suspend(
 export interface PatchDeviceSettingRequest {
   accountId: string;
   /** Sets the time limit, in seconds, that a user can use an override code to bypass WARP. */
-  disableForTime?: number | null;
+  disableForTime?: number;
   /** Controls whether the external emergency disconnect feature is enabled. */
-  externalEmergencySignalEnabled?: boolean | null;
+  externalEmergencySignalEnabled?: boolean;
   /** The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value. */
-  externalEmergencySignalFingerprint?: string | null;
+  externalEmergencySignalFingerprint?: string;
   /** The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds. */
-  externalEmergencySignalInterval?: string | null;
+  externalEmergencySignalInterval?: string;
   /** The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host. */
-  externalEmergencySignalUrl?: string | null;
+  externalEmergencySignalUrl?: string;
   /** Enable gateway proxy filtering on TCP. */
-  gatewayProxyEnabled?: boolean | null;
+  gatewayProxyEnabled?: boolean;
   /** Enable gateway proxy filtering on UDP. */
-  gatewayUdpProxyEnabled?: boolean | null;
+  gatewayUdpProxyEnabled?: boolean;
   /** Enable installation of cloudflare managed root certificate. */
-  rootCertificateInstallationEnabled?: boolean | null;
+  rootCertificateInstallationEnabled?: boolean;
   /** Enable using CGNAT virtual IPv4. */
-  useZtVirtualIp?: boolean | null;
+  useZtVirtualIp?: boolean;
 }
 export const PatchDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    disableForTime: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disable_for_time")),
-    ),
+    disableForTime: S.optional(S.Number.pipe(T.Body("disable_for_time"))),
     externalEmergencySignalEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("external_emergency_signal_enabled")),
+      S.Boolean.pipe(T.Body("external_emergency_signal_enabled")),
     ),
     externalEmergencySignalFingerprint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_fingerprint")),
+      S.String.pipe(T.Body("external_emergency_signal_fingerprint")),
     ),
     externalEmergencySignalInterval: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_interval")),
+      S.String.pipe(T.Body("external_emergency_signal_interval")),
     ),
     externalEmergencySignalUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_url")),
+      S.String.pipe(T.Body("external_emergency_signal_url")),
     ),
     gatewayProxyEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("gateway_proxy_enabled")),
+      S.Boolean.pipe(T.Body("gateway_proxy_enabled")),
     ),
     gatewayUdpProxyEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("gateway_udp_proxy_enabled")),
+      S.Boolean.pipe(T.Body("gateway_udp_proxy_enabled")),
     ),
     rootCertificateInstallationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("root_certificate_installation_enabled")),
+      S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
-    useZtVirtualIp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_zt_virtual_ip")),
-    ),
+    useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
   })
     .pipe(
       T.Http({
@@ -148029,19 +147564,19 @@ export interface PatchDexRuleRequest {
   accountId: string;
   /** API Resource UUID tag. */
   ruleId: string;
-  description?: string | null;
+  description?: string;
   /** The wirefilter expression to match. */
-  match?: string | null;
+  match?: string;
   /** The name of the Rule. */
-  name?: string | null;
+  name?: string;
 }
 export const PatchDexRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
-    description: S.optional(S.NullOr(S.String)),
-    match: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    match: S.optional(S.String),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -148152,20 +147687,19 @@ export interface DlpSettingsEditRequestPayloadLogging {
   /** Masking level for payload logs. */
   maskingLevel?:
     | DlpSettingsEditRequestPayloadLoggingMaskingLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Base64-encoded public key for encrypting payload logs. */
-  publicKey?: string | null;
+  publicKey?: string;
 }
 export const DlpSettingsEditRequestPayloadLogging = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       maskingLevel: S.optional(
-        S.NullOr(DlpSettingsEditRequestPayloadLoggingMaskingLevel).pipe(
+        DlpSettingsEditRequestPayloadLoggingMaskingLevel.pipe(
           T.Body("masking_level"),
         ),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     }),
 ).annotate({
   identifier: "DlpSettingsEditRequestPayloadLogging",
@@ -148174,23 +147708,21 @@ export const DlpSettingsEditRequestPayloadLogging = /*@__PURE__*/ S.suspend(
 export interface PatchDlpSettingRequest {
   accountId: string;
   /** Whether AI context analysis is enabled at the account level. */
-  aiContextAnalysis?: boolean | null;
+  aiContextAnalysis?: boolean;
   /** Whether OCR is enabled at the account level. */
-  ocr?: boolean | null;
+  ocr?: boolean;
   /** Request model for payload log settings within the DLP settings endpoint. */
-  payloadLogging?: DlpSettingsEditRequestPayloadLogging | null;
+  payloadLogging?: DlpSettingsEditRequestPayloadLogging;
 }
 export const PatchDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aiContextAnalysis: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ai_context_analysis")),
+      S.Boolean.pipe(T.Body("ai_context_analysis")),
     ),
-    ocr: S.optional(S.NullOr(S.Boolean)),
+    ocr: S.optional(S.Boolean),
     payloadLogging: S.optional(
-      S.NullOr(DlpSettingsEditRequestPayloadLogging).pipe(
-        T.Body("payload_logging"),
-      ),
+      DlpSettingsEditRequestPayloadLogging.pipe(T.Body("payload_logging")),
     ),
   })
     .pipe(
@@ -148257,12 +147789,12 @@ export const PatchDlpSettingResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GatewayConfigurationsEditRequestSettingsActivityLog {
   /** Specify whether to log activity. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsActivityLog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsActivityLog",
@@ -148270,23 +147802,21 @@ export const GatewayConfigurationsEditRequestSettingsActivityLog =
 
 export interface GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings {
   /** Specify whether to enable notifications. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify whether to include context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify the message to show in the notification. */
-  msg?: string | null;
+  msg?: string;
   /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
-  supportUrl?: string | null;
+  supportUrl?: string;
 }
 export const GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      msg: S.optional(S.NullOr(S.String)),
-      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
     }),
   ).annotate({
     identifier:
@@ -148295,28 +147825,28 @@ export const GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettin
 
 export interface GatewayConfigurationsEditRequestSettingsAntivirus {
   /** Specify whether to enable anti-virus scanning on downloads. */
-  enabledDownloadPhase?: boolean | null;
+  enabledDownloadPhase?: boolean;
   /** Specify whether to enable anti-virus scanning on uploads. */
-  enabledUploadPhase?: boolean | null;
+  enabledUploadPhase?: boolean;
   /** Specify whether to block requests for unscannable files. */
-  failClosed?: boolean | null;
+  failClosed?: boolean;
   /** Configure the message the user's device shows during an antivirus scan. */
-  notificationSettings?: GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings | null;
+  notificationSettings?: GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings;
 }
 export const GatewayConfigurationsEditRequestSettingsAntivirus =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabledDownloadPhase: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enabled_download_phase")),
+        S.Boolean.pipe(T.Body("enabled_download_phase")),
       ),
       enabledUploadPhase: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enabled_upload_phase")),
+        S.Boolean.pipe(T.Body("enabled_upload_phase")),
       ),
-      failClosed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_closed"))),
+      failClosed: S.optional(S.Boolean.pipe(T.Body("fail_closed"))),
       notificationSettings: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings,
-        ).pipe(T.Body("notification_settings")),
+        GatewayConfigurationsEditRequestSettingsAntivirusNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
       ),
     }),
   ).annotate({
@@ -148332,71 +147862,54 @@ export const GatewayConfigurationsEditRequestSettingsBlockPageMode =
 
 export interface GatewayConfigurationsEditRequestSettingsBlockPage {
   /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
-  backgroundColor?: string | null;
+  backgroundColor?: string;
   /** Specify whether to enable the custom block page. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the block page footer text when the mode is customized_block_page. */
-  footerText?: string | null;
+  footerText?: string;
   /** Specify the block page header text when the mode is customized_block_page. */
-  headerText?: string | null;
+  headerText?: string;
   /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify the full URL to the logo file when the mode is customized_block_page. */
-  logoPath?: string | null;
+  logoPath?: string;
   /** Specify the admin email for users to contact when the mode is customized_block_page. */
-  mailtoAddress?: string | null;
+  mailtoAddress?: string;
   /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
-  mailtoSubject?: string | null;
+  mailtoSubject?: string;
   /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
-  mode?:
-    | GatewayConfigurationsEditRequestSettingsBlockPageMode
-    | (string & {})
-    | null;
+  mode?: GatewayConfigurationsEditRequestSettingsBlockPageMode | (string & {});
   /** Specify the block page title when the mode is customized_block_page. */
-  name?: string | null;
+  name?: string;
   /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** Indicate the account tag of the account that shared this setting. */
-  sourceAccount?: string | null;
+  sourceAccount?: string;
   /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
-  suppressFooter?: boolean | null;
+  suppressFooter?: boolean;
   /** Specify the URI to redirect users to when the mode is redirect_uri. */
-  targetUri?: string | null;
+  targetUri?: string;
   /** Indicate the version number of the setting. */
-  version?: number | null;
+  version?: number;
 }
 export const GatewayConfigurationsEditRequestSettingsBlockPage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      backgroundColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("background_color")),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
-      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
-      mailtoAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("mailto_address")),
-      ),
-      mailtoSubject: S.optional(
-        S.NullOr(S.String).pipe(T.Body("mailto_subject")),
-      ),
-      mode: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsBlockPageMode),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
-      sourceAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("source_account")),
-      ),
-      suppressFooter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("suppress_footer")),
-      ),
-      targetUri: S.optional(S.NullOr(S.String).pipe(T.Body("target_uri"))),
-      version: S.optional(S.NullOr(S.Number)),
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      enabled: S.optional(S.Boolean),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(S.String.pipe(T.Body("mailto_address"))),
+      mailtoSubject: S.optional(S.String.pipe(T.Body("mailto_subject"))),
+      mode: S.optional(GatewayConfigurationsEditRequestSettingsBlockPageMode),
+      name: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      suppressFooter: S.optional(S.Boolean.pipe(T.Body("suppress_footer"))),
+      targetUri: S.optional(S.String.pipe(T.Body("target_uri"))),
+      version: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsBlockPage",
@@ -148411,16 +147924,15 @@ export interface GatewayConfigurationsEditRequestSettingsBodyScanning {
   /** Specify the inspection mode as either `deep` or `shallow`. */
   inspectionMode?:
     | GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayConfigurationsEditRequestSettingsBodyScanning =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       inspectionMode: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode,
-        ).pipe(T.Body("inspection_mode")),
+        GatewayConfigurationsEditRequestSettingsBodyScanningInspectionMode.pipe(
+          T.Body("inspection_mode"),
+        ),
       ),
     }),
   ).annotate({
@@ -148429,18 +147941,18 @@ export const GatewayConfigurationsEditRequestSettingsBodyScanning =
 
 export interface GatewayConfigurationsEditRequestSettingsBrowserIsolation {
   /** Specify whether to enable non-identity onramp support for Browser Isolation. */
-  nonIdentityEnabled?: boolean | null;
+  nonIdentityEnabled?: boolean;
   /** Specify whether to enable Clientless Browser Isolation. */
-  urlBrowserIsolationEnabled?: boolean | null;
+  urlBrowserIsolationEnabled?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsBrowserIsolation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nonIdentityEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("non_identity_enabled")),
+        S.Boolean.pipe(T.Body("non_identity_enabled")),
       ),
       urlBrowserIsolationEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("url_browser_isolation_enabled")),
+        S.Boolean.pipe(T.Body("url_browser_isolation_enabled")),
       ),
     }),
   ).annotate({
@@ -148464,20 +147976,18 @@ export interface GatewayConfigurationsEditRequestSettingsCustomCertificate {
   /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
   enabled: boolean;
   /** Specify the UUID of the certificate (ID from MTLS certificate store). */
-  id?: string | null;
+  id?: string;
   /** Indicate the internal certificate status. */
-  bindingStatus?: string | null;
-  updatedAt?: string | null;
+  bindingStatus?: string;
+  updatedAt?: string;
 }
 export const GatewayConfigurationsEditRequestSettingsCustomCertificate =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      id: S.optional(S.NullOr(S.String)),
-      bindingStatus: S.optional(
-        S.NullOr(S.String).pipe(T.Body("binding_status")),
-      ),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      id: S.optional(S.String),
+      bindingStatus: S.optional(S.String.pipe(T.Body("binding_status"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsCustomCertificate",
@@ -148485,23 +147995,21 @@ export const GatewayConfigurationsEditRequestSettingsCustomCertificate =
 
 export interface GatewayConfigurationsEditRequestSettingsExtendedEmailMatching {
   /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** Indicate the account tag of the account that shared this setting. */
-  sourceAccount?: string | null;
+  sourceAccount?: string;
   /** Indicate the version number of the setting. */
-  version?: number | null;
+  version?: number;
 }
 export const GatewayConfigurationsEditRequestSettingsExtendedEmailMatching =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
-      sourceAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("source_account")),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
+      enabled: S.optional(S.Boolean),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      version: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsExtendedEmailMatching",
@@ -148509,12 +148017,12 @@ export const GatewayConfigurationsEditRequestSettingsExtendedEmailMatching =
 
 export interface GatewayConfigurationsEditRequestSettingsFips {
   /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
-  tls?: boolean | null;
+  tls?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsFips =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      tls: S.optional(S.NullOr(S.Boolean)),
+      tls: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsFips",
@@ -148522,12 +148030,12 @@ export const GatewayConfigurationsEditRequestSettingsFips =
 
 export interface GatewayConfigurationsEditRequestSettingsHostSelector {
   /** Specify whether to enable filtering via hosts for egress policies. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsHostSelector =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsHostSelector",
@@ -148541,17 +148049,12 @@ export const GatewayConfigurationsEditRequestSettingsInspectionMode =
 
 export interface GatewayConfigurationsEditRequestSettingsInspection {
   /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
-  mode?:
-    | GatewayConfigurationsEditRequestSettingsInspectionMode
-    | (string & {})
-    | null;
+  mode?: GatewayConfigurationsEditRequestSettingsInspectionMode | (string & {});
 }
 export const GatewayConfigurationsEditRequestSettingsInspection =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mode: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsInspectionMode),
-      ),
+      mode: S.optional(GatewayConfigurationsEditRequestSettingsInspectionMode),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsInspection",
@@ -148559,12 +148062,12 @@ export const GatewayConfigurationsEditRequestSettingsInspection =
 
 export interface GatewayConfigurationsEditRequestSettingsProtocolDetection {
   /** Specify whether to detect protocols from the initial bytes of client traffic. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsProtocolDetection =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsProtocolDetection",
@@ -148578,21 +148081,20 @@ export const GatewayConfigurationsEditRequestSettingsSandboxFallbackAction =
 
 export interface GatewayConfigurationsEditRequestSettingsSandbox {
   /** Specify whether to enable the sandbox. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the action to take when the system cannot scan the file. */
   fallbackAction?:
     | GatewayConfigurationsEditRequestSettingsSandboxFallbackAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayConfigurationsEditRequestSettingsSandbox =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       fallbackAction: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsSandboxFallbackAction,
-        ).pipe(T.Body("fallback_action")),
+        GatewayConfigurationsEditRequestSettingsSandboxFallbackAction.pipe(
+          T.Body("fallback_action"),
+        ),
       ),
     }),
   ).annotate({
@@ -148601,12 +148103,12 @@ export const GatewayConfigurationsEditRequestSettingsSandbox =
 
 export interface GatewayConfigurationsEditRequestSettingsTlsDecrypt {
   /** Specify whether to inspect encrypted HTTP traffic. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsEditRequestSettingsTlsDecrypt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsEditRequestSettingsTlsDecrypt",
@@ -148614,95 +148116,91 @@ export const GatewayConfigurationsEditRequestSettingsTlsDecrypt =
 
 export interface GatewayConfigurationsEditRequestSettings {
   /** Specify activity log settings. */
-  activityLog?: GatewayConfigurationsEditRequestSettingsActivityLog | null;
+  activityLog?: GatewayConfigurationsEditRequestSettingsActivityLog;
   /** Specify anti-virus settings. */
-  antivirus?: GatewayConfigurationsEditRequestSettingsAntivirus | null;
+  antivirus?: GatewayConfigurationsEditRequestSettingsAntivirus;
   /** Specify block page layout settings. */
-  blockPage?: GatewayConfigurationsEditRequestSettingsBlockPage | null;
+  blockPage?: GatewayConfigurationsEditRequestSettingsBlockPage;
   /** Specify the DLP inspection mode. */
-  bodyScanning?: GatewayConfigurationsEditRequestSettingsBodyScanning | null;
+  bodyScanning?: GatewayConfigurationsEditRequestSettingsBodyScanning;
   /** Specify Clientless Browser Isolation settings. */
-  browserIsolation?: GatewayConfigurationsEditRequestSettingsBrowserIsolation | null;
+  browserIsolation?: GatewayConfigurationsEditRequestSettingsBrowserIsolation;
   /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
-  certificate?: GatewayConfigurationsEditRequestSettingsCertificate | null;
+  certificate?: GatewayConfigurationsEditRequestSettingsCertificate;
   /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
-  customCertificate?: GatewayConfigurationsEditRequestSettingsCustomCertificate | null;
+  customCertificate?: GatewayConfigurationsEditRequestSettingsCustomCertificate;
   /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
-  extendedEmailMatching?: GatewayConfigurationsEditRequestSettingsExtendedEmailMatching | null;
+  extendedEmailMatching?: GatewayConfigurationsEditRequestSettingsExtendedEmailMatching;
   /** Specify FIPS settings. */
-  fips?: GatewayConfigurationsEditRequestSettingsFips | null;
+  fips?: GatewayConfigurationsEditRequestSettingsFips;
   /** Enable host selection in egress policies. */
-  hostSelector?: GatewayConfigurationsEditRequestSettingsHostSelector | null;
+  hostSelector?: GatewayConfigurationsEditRequestSettingsHostSelector;
   /** Define the proxy inspection mode. */
-  inspection?: GatewayConfigurationsEditRequestSettingsInspection | null;
+  inspection?: GatewayConfigurationsEditRequestSettingsInspection;
   /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
-  maxTtlSecs?: number | null;
+  maxTtlSecs?: number;
   /** Specify whether to detect protocols from the initial bytes of client traffic. */
-  protocolDetection?: GatewayConfigurationsEditRequestSettingsProtocolDetection | null;
+  protocolDetection?: GatewayConfigurationsEditRequestSettingsProtocolDetection;
   /** Specify whether to enable the sandbox. */
-  sandbox?: GatewayConfigurationsEditRequestSettingsSandbox | null;
+  sandbox?: GatewayConfigurationsEditRequestSettingsSandbox;
   /** Specify whether to inspect encrypted HTTP traffic. */
-  tlsDecrypt?: GatewayConfigurationsEditRequestSettingsTlsDecrypt | null;
+  tlsDecrypt?: GatewayConfigurationsEditRequestSettingsTlsDecrypt;
 }
 export const GatewayConfigurationsEditRequestSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       activityLog: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsActivityLog).pipe(
+        GatewayConfigurationsEditRequestSettingsActivityLog.pipe(
           T.Body("activity_log"),
         ),
       ),
-      antivirus: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsAntivirus),
-      ),
+      antivirus: S.optional(GatewayConfigurationsEditRequestSettingsAntivirus),
       blockPage: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsBlockPage).pipe(
+        GatewayConfigurationsEditRequestSettingsBlockPage.pipe(
           T.Body("block_page"),
         ),
       ),
       bodyScanning: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsBodyScanning).pipe(
+        GatewayConfigurationsEditRequestSettingsBodyScanning.pipe(
           T.Body("body_scanning"),
         ),
       ),
       browserIsolation: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsBrowserIsolation).pipe(
+        GatewayConfigurationsEditRequestSettingsBrowserIsolation.pipe(
           T.Body("browser_isolation"),
         ),
       ),
       certificate: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsCertificate),
+        GatewayConfigurationsEditRequestSettingsCertificate,
       ),
       customCertificate: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsCustomCertificate,
-        ).pipe(T.Body("custom_certificate")),
+        GatewayConfigurationsEditRequestSettingsCustomCertificate.pipe(
+          T.Body("custom_certificate"),
+        ),
       ),
       extendedEmailMatching: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsExtendedEmailMatching,
-        ).pipe(T.Body("extended_email_matching")),
+        GatewayConfigurationsEditRequestSettingsExtendedEmailMatching.pipe(
+          T.Body("extended_email_matching"),
+        ),
       ),
-      fips: S.optional(S.NullOr(GatewayConfigurationsEditRequestSettingsFips)),
+      fips: S.optional(GatewayConfigurationsEditRequestSettingsFips),
       hostSelector: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsHostSelector).pipe(
+        GatewayConfigurationsEditRequestSettingsHostSelector.pipe(
           T.Body("host_selector"),
         ),
       ),
       inspection: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsInspection),
+        GatewayConfigurationsEditRequestSettingsInspection,
       ),
-      maxTtlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl_secs"))),
+      maxTtlSecs: S.optional(S.Number.pipe(T.Body("max_ttl_secs"))),
       protocolDetection: S.optional(
-        S.NullOr(
-          GatewayConfigurationsEditRequestSettingsProtocolDetection,
-        ).pipe(T.Body("protocol_detection")),
+        GatewayConfigurationsEditRequestSettingsProtocolDetection.pipe(
+          T.Body("protocol_detection"),
+        ),
       ),
-      sandbox: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsSandbox),
-      ),
+      sandbox: S.optional(GatewayConfigurationsEditRequestSettingsSandbox),
       tlsDecrypt: S.optional(
-        S.NullOr(GatewayConfigurationsEditRequestSettingsTlsDecrypt).pipe(
+        GatewayConfigurationsEditRequestSettingsTlsDecrypt.pipe(
           T.Body("tls_decrypt"),
         ),
       ),
@@ -148714,12 +148212,12 @@ export const GatewayConfigurationsEditRequestSettings = /*@__PURE__*/ S.suspend(
 export interface PatchGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: GatewayConfigurationsEditRequestSettings | null;
+  settings?: GatewayConfigurationsEditRequestSettings;
 }
 export const PatchGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(S.NullOr(GatewayConfigurationsEditRequestSettings)),
+    settings: S.optional(GatewayConfigurationsEditRequestSettings),
   })
     .pipe(
       T.Http({
@@ -149197,14 +148695,14 @@ export const PatchGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GatewayListsEditRequestAppendItem {
   /** Provide the list item description (optional). */
-  description?: string | null;
+  description?: string;
   /** Specify the item value. */
-  value?: string | null;
+  value?: string;
 }
 export const GatewayListsEditRequestAppendItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GatewayListsEditRequestAppendItem",
@@ -149226,16 +148724,16 @@ export interface PatchGatewayListRequest {
   /** Identify the API resource with a UUID. */
   listId: string;
   /** Add items to the list. */
-  append?: GatewayListsEditRequestAppendList | null;
+  append?: GatewayListsEditRequestAppendList;
   /** Lists of item values you want to remove. */
-  remove?: GatewayListsEditRequestRemoveList | null;
+  remove?: GatewayListsEditRequestRemoveList;
 }
 export const PatchGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
-    append: S.optional(S.NullOr(GatewayListsEditRequestAppendList)),
-    remove: S.optional(S.NullOr(GatewayListsEditRequestRemoveList)),
+    append: S.optional(GatewayListsEditRequestAppendList),
+    remove: S.optional(GatewayListsEditRequestRemoveList),
   })
     .pipe(
       T.Http({
@@ -149325,16 +148823,16 @@ export interface PatchGatewayProxyEndpointRequest {
   accountId: string;
   proxyEndpointId: string;
   /** Specify the list of CIDRs to restrict ingress connections. */
-  ips?: GatewayProxyEndpointsEditRequestIpsList | null;
+  ips?: GatewayProxyEndpointsEditRequestIpsList;
   /** Specify the name of the proxy endpoint. */
-  name?: string | null;
+  name?: string;
 }
 export const PatchGatewayProxyEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     proxyEndpointId: S.String.pipe(T.Label("proxy_endpoint_id")),
-    ips: S.optional(S.NullOr(GatewayProxyEndpointsEditRequestIpsList)),
-    name: S.optional(S.NullOr(S.String)),
+    ips: S.optional(GatewayProxyEndpointsEditRequestIpsList),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -149435,19 +148933,19 @@ export interface PatchNetworkHostnameRouteRequest {
   /** The hostname route ID. */
   hostnameRouteId: string;
   /** An optional description of the hostname route. */
-  comment?: string | null;
+  comment?: string;
   /** The hostname of the route. */
-  hostname?: string | null;
+  hostname?: string;
   /** UUID of the tunnel. */
-  tunnelId?: string | null;
+  tunnelId?: string;
 }
 export const PatchNetworkHostnameRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hostnameRouteId: S.String.pipe(T.Label("hostname_route_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    hostname: S.optional(S.NullOr(S.String)),
-    tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
+    comment: S.optional(S.String),
+    hostname: S.optional(S.String),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
   })
     .pipe(
       T.Http({
@@ -149515,24 +149013,22 @@ export interface PatchNetworkRouteRequest {
   /** UUID of the route. */
   routeId: string;
   /** Optional remark describing the route. */
-  comment?: string | null;
+  comment?: string;
   /** The private IPv4 or IPv6 range connected by the route, in CIDR notation. */
-  network?: string | null;
+  network?: string;
   /** UUID of the tunnel. */
-  tunnelId?: string | null;
+  tunnelId?: string;
   /** UUID of the virtual network. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const PatchNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     routeId: S.String.pipe(T.Label("route_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    network: S.optional(S.NullOr(S.String)),
-    tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-    virtualNetworkId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-    ),
+    comment: S.optional(S.String),
+    network: S.optional(S.String),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
   })
     .pipe(
       T.Http({
@@ -149649,11 +149145,11 @@ export interface PatchNetworkSubnetCloudflareSourceRequest {
     | NetworksSubnetsCloudflareSourceUpdateRequestAddressFamily
     | (string & {});
   /** An optional description of the subnet. */
-  comment?: string | null;
+  comment?: string;
   /** A user-friendly name for the subnet. */
-  name?: string | null;
+  name?: string;
   /** The private IPv4 or IPv6 range defining the subnet, in CIDR notation. */
-  network?: string | null;
+  network?: string;
 }
 export const PatchNetworkSubnetCloudflareSourceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -149663,9 +149159,9 @@ export const PatchNetworkSubnetCloudflareSourceRequest =
         NetworksSubnetsCloudflareSourceUpdateRequestAddressFamily.pipe(
           T.Label("address_family"),
         ),
-      comment: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      network: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.String),
+      name: S.optional(S.String),
+      network: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -149732,24 +149228,22 @@ export interface PatchNetworkSubnetWarpRequest {
   /** The UUID of the subnet. */
   subnetId: string;
   /** An optional description of the subnet. */
-  comment?: string | null;
+  comment?: string;
   /** If `true`, this is the default subnet for the account. There can only be one default subnet per account. */
-  isDefaultNetwork?: boolean | null;
+  isDefaultNetwork?: boolean;
   /** A user-friendly name for the subnet. */
-  name?: string | null;
+  name?: string;
   /** The private IPv4 or IPv6 range defining the subnet, in CIDR notation. */
-  network?: string | null;
+  network?: string;
 }
 export const PatchNetworkSubnetWarpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subnetId: S.String.pipe(T.Label("subnet_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    isDefaultNetwork: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_default_network")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    network: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
+    isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
+    name: S.optional(S.String),
+    network: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -149814,21 +149308,19 @@ export interface PatchNetworkVirtualNetworkRequest {
   /** UUID of the virtual network. */
   virtualNetworkId: string;
   /** Optional remark describing the virtual network. */
-  comment?: string | null;
+  comment?: string;
   /** If `true`, this virtual network is the default for the account. */
-  isDefaultNetwork?: boolean | null;
+  isDefaultNetwork?: boolean;
   /** A user-friendly name for the virtual network. */
-  name?: string | null;
+  name?: string;
 }
 export const PatchNetworkVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     virtualNetworkId: S.String.pipe(T.Label("virtual_network_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    isDefaultNetwork: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_default_network")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
+    isDefaultNetwork: S.optional(S.Boolean.pipe(T.Body("is_default_network"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -149963,16 +149455,16 @@ export interface PatchTunnelCloudflaredRequest {
   /** UUID of the tunnel. */
   tunnelId: string;
   /** A user-friendly name for a tunnel. */
-  name?: string | null;
+  name?: string;
   /** Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string. */
-  tunnelSecret?: string | null;
+  tunnelSecret?: string;
 }
 export const PatchTunnelCloudflaredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    name: S.optional(S.NullOr(S.String)),
-    tunnelSecret: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_secret"))),
+    name: S.optional(S.String),
+    tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
   })
     .pipe(
       T.Http({
@@ -150118,16 +149610,16 @@ export interface PatchTunnelWarpConnectorRequest {
   /** UUID of the tunnel. */
   tunnelId: string;
   /** A user-friendly name for a tunnel. */
-  name?: string | null;
+  name?: string;
   /** Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string. */
-  tunnelSecret?: string | null;
+  tunnelSecret?: string;
 }
 export const PatchTunnelWarpConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tunnelId: S.String.pipe(T.Label("tunnel_id")),
-    name: S.optional(S.NullOr(S.String)),
-    tunnelSecret: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_secret"))),
+    name: S.optional(S.String),
+    tunnelSecret: S.optional(S.String.pipe(T.Body("tunnel_secret"))),
   })
     .pipe(
       T.Http({
@@ -150350,19 +149842,17 @@ export interface PutAccessApplicationSettingForAccountRequest {
   /** Identifier. */
   appId: string;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
 }
 export const PutAccessApplicationSettingForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
     })
       .pipe(
         T.Http({
@@ -150400,19 +149890,17 @@ export interface PutAccessApplicationSettingForZoneRequest {
   /** Identifier. */
   appId: string;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
 }
 export const PutAccessApplicationSettingForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
     })
       .pipe(
         T.Http({
@@ -150598,13 +150086,13 @@ export interface DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesE
   /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -150615,13 +150103,13 @@ export interface DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesE
   /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -150750,19 +150238,19 @@ export interface DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItem {
   /** The domain suffix to match when resolving locally. */
   suffix: string;
   /** A description of the fallback domain, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
   /** A list of IP addresses to handle domain resolution. */
-  dnsServer?: DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItemDnsServerList | null;
+  dnsServer?: DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItemDnsServerList;
 }
 export const DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suffix: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
       dnsServer: S.optional(
-        S.NullOr(
-          DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItemDnsServerList,
-        ).pipe(T.Body("dns_server")),
+        DevicesPoliciesCustomFallbackDomainsUpdateRequestDomainsItemDnsServerList.pipe(
+          T.Body("dns_server"),
+        ),
       ),
     }),
   ).annotate({
@@ -150859,13 +150347,13 @@ export interface DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesI
   /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -150876,13 +150364,13 @@ export interface DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesI
   /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesCustomIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -151004,13 +150492,13 @@ export interface DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevices
   /** The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -151021,13 +150509,13 @@ export interface DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevices
   /** The domain name to exclude from the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultExcludesUpdateRequestBodyItemTeamsDevicesExcludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -151157,19 +150645,19 @@ export interface DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItem {
   /** The domain suffix to match when resolving locally. */
   suffix: string;
   /** A description of the fallback domain, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
   /** A list of IP addresses to handle domain resolution. */
-  dnsServer?: DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItemDnsServerList | null;
+  dnsServer?: DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItemDnsServerList;
 }
 export const DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suffix: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
       dnsServer: S.optional(
-        S.NullOr(
-          DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItemDnsServerList,
-        ).pipe(T.Body("dns_server")),
+        DevicesPoliciesDefaultFallbackDomainsUpdateRequestDomainsItemDnsServerList.pipe(
+          T.Body("dns_server"),
+        ),
       ),
     }),
   ).annotate({
@@ -151264,13 +150752,13 @@ export interface DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevices
   /** The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present. */
   address: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithAddress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -151281,13 +150769,13 @@ export interface DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevices
   /** The domain name to include in the tunnel. If `host` is present, `address` must not be present. */
   host: string;
   /** A description of the Split Tunnel item, displayed in the client UI. */
-  description?: string | null;
+  description?: string;
 }
 export const DevicesPoliciesDefaultIncludesUpdateRequestBodyItemTeamsDevicesIncludeSplitTunnelWithHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       host: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -151409,54 +150897,50 @@ export const PutDevicePolicyDefaultIncludeResponse = /*@__PURE__*/ S.suspend(
 export interface PutDeviceSettingRequest {
   accountId: string;
   /** Sets the time limit, in seconds, that a user can use an override code to bypass WARP. */
-  disableForTime?: number | null;
+  disableForTime?: number;
   /** Controls whether the external emergency disconnect feature is enabled. */
-  externalEmergencySignalEnabled?: boolean | null;
+  externalEmergencySignalEnabled?: boolean;
   /** The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value. */
-  externalEmergencySignalFingerprint?: string | null;
+  externalEmergencySignalFingerprint?: string;
   /** The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds. */
-  externalEmergencySignalInterval?: string | null;
+  externalEmergencySignalInterval?: string;
   /** The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host. */
-  externalEmergencySignalUrl?: string | null;
+  externalEmergencySignalUrl?: string;
   /** Enable gateway proxy filtering on TCP. */
-  gatewayProxyEnabled?: boolean | null;
+  gatewayProxyEnabled?: boolean;
   /** Enable gateway proxy filtering on UDP. */
-  gatewayUdpProxyEnabled?: boolean | null;
+  gatewayUdpProxyEnabled?: boolean;
   /** Enable installation of cloudflare managed root certificate. */
-  rootCertificateInstallationEnabled?: boolean | null;
+  rootCertificateInstallationEnabled?: boolean;
   /** Enable using CGNAT virtual IPv4. */
-  useZtVirtualIp?: boolean | null;
+  useZtVirtualIp?: boolean;
 }
 export const PutDeviceSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    disableForTime: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("disable_for_time")),
-    ),
+    disableForTime: S.optional(S.Number.pipe(T.Body("disable_for_time"))),
     externalEmergencySignalEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("external_emergency_signal_enabled")),
+      S.Boolean.pipe(T.Body("external_emergency_signal_enabled")),
     ),
     externalEmergencySignalFingerprint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_fingerprint")),
+      S.String.pipe(T.Body("external_emergency_signal_fingerprint")),
     ),
     externalEmergencySignalInterval: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_interval")),
+      S.String.pipe(T.Body("external_emergency_signal_interval")),
     ),
     externalEmergencySignalUrl: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_emergency_signal_url")),
+      S.String.pipe(T.Body("external_emergency_signal_url")),
     ),
     gatewayProxyEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("gateway_proxy_enabled")),
+      S.Boolean.pipe(T.Body("gateway_proxy_enabled")),
     ),
     gatewayUdpProxyEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("gateway_udp_proxy_enabled")),
+      S.Boolean.pipe(T.Body("gateway_udp_proxy_enabled")),
     ),
     rootCertificateInstallationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("root_certificate_installation_enabled")),
+      S.Boolean.pipe(T.Body("root_certificate_installation_enabled")),
     ),
-    useZtVirtualIp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_zt_virtual_ip")),
-    ),
+    useZtVirtualIp: S.optional(S.Boolean.pipe(T.Body("use_zt_virtual_ip"))),
   })
     .pipe(
       T.Http({
@@ -151535,19 +151019,17 @@ export const DlpPayloadLogsUpdateRequestMaskingLevel = /*@__PURE__*/ S.String;
 export interface PutDlpPayloadLogRequest {
   accountId: string;
   /** Masking level for payload logs. */
-  maskingLevel?: DlpPayloadLogsUpdateRequestMaskingLevel | (string & {}) | null;
+  maskingLevel?: DlpPayloadLogsUpdateRequestMaskingLevel | (string & {});
   /** Base64-encoded public key for encrypting payload logs. */
-  publicKey?: string | null;
+  publicKey?: string;
 }
 export const PutDlpPayloadLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     maskingLevel: S.optional(
-      S.NullOr(DlpPayloadLogsUpdateRequestMaskingLevel).pipe(
-        T.Body("masking_level"),
-      ),
+      DlpPayloadLogsUpdateRequestMaskingLevel.pipe(T.Body("masking_level")),
     ),
-    publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
   })
     .pipe(
       T.Http({
@@ -151621,35 +151103,29 @@ export const DlpProfilesPredefinedUpdateRequestEntriesList =
 export interface PutDlpProfilePredefinedRequest {
   accountId: string;
   profileId: string;
-  aiContextEnabled?: boolean | null;
-  allowedMatchCount?: number | null;
-  confidenceThreshold?: string | null;
-  enabledEntries?: DlpProfilesPredefinedUpdateRequestEnabledEntriesList | null;
-  entries?: DlpProfilesPredefinedUpdateRequestEntriesList | null;
-  ocrEnabled?: boolean | null;
+  aiContextEnabled?: boolean;
+  allowedMatchCount?: number;
+  confidenceThreshold?: string;
+  enabledEntries?: DlpProfilesPredefinedUpdateRequestEnabledEntriesList;
+  entries?: DlpProfilesPredefinedUpdateRequestEntriesList;
+  ocrEnabled?: boolean;
 }
 export const PutDlpProfilePredefinedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
-    aiContextEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ai_context_enabled")),
-    ),
-    allowedMatchCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("allowed_match_count")),
-    ),
+    aiContextEnabled: S.optional(S.Boolean.pipe(T.Body("ai_context_enabled"))),
+    allowedMatchCount: S.optional(S.Number.pipe(T.Body("allowed_match_count"))),
     confidenceThreshold: S.optional(
-      S.NullOr(S.String).pipe(T.Body("confidence_threshold")),
+      S.String.pipe(T.Body("confidence_threshold")),
     ),
     enabledEntries: S.optional(
-      S.NullOr(DlpProfilesPredefinedUpdateRequestEnabledEntriesList).pipe(
+      DlpProfilesPredefinedUpdateRequestEnabledEntriesList.pipe(
         T.Body("enabled_entries"),
       ),
     ),
-    entries: S.optional(
-      S.NullOr(DlpProfilesPredefinedUpdateRequestEntriesList),
-    ),
-    ocrEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ocr_enabled"))),
+    entries: S.optional(DlpProfilesPredefinedUpdateRequestEntriesList),
+    ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
   })
     .pipe(
       T.Http({
@@ -152177,20 +151653,19 @@ export interface DlpSettingsUpdateRequestPayloadLogging {
   /** Masking level for payload logs. */
   maskingLevel?:
     | DlpSettingsUpdateRequestPayloadLoggingMaskingLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Base64-encoded public key for encrypting payload logs. */
-  publicKey?: string | null;
+  publicKey?: string;
 }
 export const DlpSettingsUpdateRequestPayloadLogging = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       maskingLevel: S.optional(
-        S.NullOr(DlpSettingsUpdateRequestPayloadLoggingMaskingLevel).pipe(
+        DlpSettingsUpdateRequestPayloadLoggingMaskingLevel.pipe(
           T.Body("masking_level"),
         ),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
     }),
 ).annotate({
   identifier: "DlpSettingsUpdateRequestPayloadLogging",
@@ -152199,23 +151674,21 @@ export const DlpSettingsUpdateRequestPayloadLogging = /*@__PURE__*/ S.suspend(
 export interface PutDlpSettingRequest {
   accountId: string;
   /** Whether AI context analysis is enabled at the account level. */
-  aiContextAnalysis?: boolean | null;
+  aiContextAnalysis?: boolean;
   /** Whether OCR is enabled at the account level. */
-  ocr?: boolean | null;
+  ocr?: boolean;
   /** Request model for payload log settings within the DLP settings endpoint. */
-  payloadLogging?: DlpSettingsUpdateRequestPayloadLogging | null;
+  payloadLogging?: DlpSettingsUpdateRequestPayloadLogging;
 }
 export const PutDlpSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aiContextAnalysis: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ai_context_analysis")),
+      S.Boolean.pipe(T.Body("ai_context_analysis")),
     ),
-    ocr: S.optional(S.NullOr(S.Boolean)),
+    ocr: S.optional(S.Boolean),
     payloadLogging: S.optional(
-      S.NullOr(DlpSettingsUpdateRequestPayloadLogging).pipe(
-        T.Body("payload_logging"),
-      ),
+      DlpSettingsUpdateRequestPayloadLogging.pipe(T.Body("payload_logging")),
     ),
   })
     .pipe(
@@ -152324,12 +151797,12 @@ export const PutGatewayAuditSshSettingResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GatewayConfigurationsUpdateRequestSettingsActivityLog {
   /** Specify whether to log activity. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsActivityLog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsActivityLog",
@@ -152337,23 +151810,21 @@ export const GatewayConfigurationsUpdateRequestSettingsActivityLog =
 
 export interface GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings {
   /** Specify whether to enable notifications. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify whether to include context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify the message to show in the notification. */
-  msg?: string | null;
+  msg?: string;
   /** Specify a URL that directs users to more information. If unset, the notification opens a block page. */
-  supportUrl?: string | null;
+  supportUrl?: string;
 }
 export const GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      msg: S.optional(S.NullOr(S.String)),
-      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
     }),
   ).annotate({
     identifier:
@@ -152362,28 +151833,28 @@ export const GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSett
 
 export interface GatewayConfigurationsUpdateRequestSettingsAntivirus {
   /** Specify whether to enable anti-virus scanning on downloads. */
-  enabledDownloadPhase?: boolean | null;
+  enabledDownloadPhase?: boolean;
   /** Specify whether to enable anti-virus scanning on uploads. */
-  enabledUploadPhase?: boolean | null;
+  enabledUploadPhase?: boolean;
   /** Specify whether to block requests for unscannable files. */
-  failClosed?: boolean | null;
+  failClosed?: boolean;
   /** Configure the message the user's device shows during an antivirus scan. */
-  notificationSettings?: GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings | null;
+  notificationSettings?: GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings;
 }
 export const GatewayConfigurationsUpdateRequestSettingsAntivirus =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabledDownloadPhase: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enabled_download_phase")),
+        S.Boolean.pipe(T.Body("enabled_download_phase")),
       ),
       enabledUploadPhase: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enabled_upload_phase")),
+        S.Boolean.pipe(T.Body("enabled_upload_phase")),
       ),
-      failClosed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fail_closed"))),
+      failClosed: S.optional(S.Boolean.pipe(T.Body("fail_closed"))),
       notificationSettings: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings,
-        ).pipe(T.Body("notification_settings")),
+        GatewayConfigurationsUpdateRequestSettingsAntivirusNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
       ),
     }),
   ).annotate({
@@ -152399,71 +151870,56 @@ export const GatewayConfigurationsUpdateRequestSettingsBlockPageMode =
 
 export interface GatewayConfigurationsUpdateRequestSettingsBlockPage {
   /** Specify the block page background color in `#rrggbb` format when the mode is customized_block_page. */
-  backgroundColor?: string | null;
+  backgroundColor?: string;
   /** Specify whether to enable the custom block page. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the block page footer text when the mode is customized_block_page. */
-  footerText?: string | null;
+  footerText?: string;
   /** Specify the block page header text when the mode is customized_block_page. */
-  headerText?: string | null;
+  headerText?: string;
   /** Specify whether to append context to target_uri as query parameters. This applies only when the mode is redirect_uri. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify the full URL to the logo file when the mode is customized_block_page. */
-  logoPath?: string | null;
+  logoPath?: string;
   /** Specify the admin email for users to contact when the mode is customized_block_page. */
-  mailtoAddress?: string | null;
+  mailtoAddress?: string;
   /** Specify the subject line for emails created from the block page when the mode is customized_block_page. */
-  mailtoSubject?: string | null;
+  mailtoSubject?: string;
   /** Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI. */
   mode?:
     | GatewayConfigurationsUpdateRequestSettingsBlockPageMode
-    | (string & {})
-    | null;
+    | (string & {});
   /** Specify the block page title when the mode is customized_block_page. */
-  name?: string | null;
+  name?: string;
   /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** Indicate the account tag of the account that shared this setting. */
-  sourceAccount?: string | null;
+  sourceAccount?: string;
   /** Specify whether to suppress detailed information at the bottom of the block page when the mode is customized_block_page. */
-  suppressFooter?: boolean | null;
+  suppressFooter?: boolean;
   /** Specify the URI to redirect users to when the mode is redirect_uri. */
-  targetUri?: string | null;
+  targetUri?: string;
   /** Indicate the version number of the setting. */
-  version?: number | null;
+  version?: number;
 }
 export const GatewayConfigurationsUpdateRequestSettingsBlockPage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      backgroundColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("background_color")),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
-      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
-      mailtoAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("mailto_address")),
-      ),
-      mailtoSubject: S.optional(
-        S.NullOr(S.String).pipe(T.Body("mailto_subject")),
-      ),
-      mode: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsBlockPageMode),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
-      sourceAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("source_account")),
-      ),
-      suppressFooter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("suppress_footer")),
-      ),
-      targetUri: S.optional(S.NullOr(S.String).pipe(T.Body("target_uri"))),
-      version: S.optional(S.NullOr(S.Number)),
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      enabled: S.optional(S.Boolean),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      mailtoAddress: S.optional(S.String.pipe(T.Body("mailto_address"))),
+      mailtoSubject: S.optional(S.String.pipe(T.Body("mailto_subject"))),
+      mode: S.optional(GatewayConfigurationsUpdateRequestSettingsBlockPageMode),
+      name: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      suppressFooter: S.optional(S.Boolean.pipe(T.Body("suppress_footer"))),
+      targetUri: S.optional(S.String.pipe(T.Body("target_uri"))),
+      version: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsBlockPage",
@@ -152478,16 +151934,15 @@ export interface GatewayConfigurationsUpdateRequestSettingsBodyScanning {
   /** Specify the inspection mode as either `deep` or `shallow`. */
   inspectionMode?:
     | GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayConfigurationsUpdateRequestSettingsBodyScanning =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       inspectionMode: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode,
-        ).pipe(T.Body("inspection_mode")),
+        GatewayConfigurationsUpdateRequestSettingsBodyScanningInspectionMode.pipe(
+          T.Body("inspection_mode"),
+        ),
       ),
     }),
   ).annotate({
@@ -152496,18 +151951,18 @@ export const GatewayConfigurationsUpdateRequestSettingsBodyScanning =
 
 export interface GatewayConfigurationsUpdateRequestSettingsBrowserIsolation {
   /** Specify whether to enable non-identity onramp support for Browser Isolation. */
-  nonIdentityEnabled?: boolean | null;
+  nonIdentityEnabled?: boolean;
   /** Specify whether to enable Clientless Browser Isolation. */
-  urlBrowserIsolationEnabled?: boolean | null;
+  urlBrowserIsolationEnabled?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsBrowserIsolation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nonIdentityEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("non_identity_enabled")),
+        S.Boolean.pipe(T.Body("non_identity_enabled")),
       ),
       urlBrowserIsolationEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("url_browser_isolation_enabled")),
+        S.Boolean.pipe(T.Body("url_browser_isolation_enabled")),
       ),
     }),
   ).annotate({
@@ -152531,20 +151986,18 @@ export interface GatewayConfigurationsUpdateRequestSettingsCustomCertificate {
   /** Specify whether to enable a custom certificate authority for signing Gateway traffic. */
   enabled: boolean;
   /** Specify the UUID of the certificate (ID from MTLS certificate store). */
-  id?: string | null;
+  id?: string;
   /** Indicate the internal certificate status. */
-  bindingStatus?: string | null;
-  updatedAt?: string | null;
+  bindingStatus?: string;
+  updatedAt?: string;
 }
 export const GatewayConfigurationsUpdateRequestSettingsCustomCertificate =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      id: S.optional(S.NullOr(S.String)),
-      bindingStatus: S.optional(
-        S.NullOr(S.String).pipe(T.Body("binding_status")),
-      ),
-      updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+      id: S.optional(S.String),
+      bindingStatus: S.optional(S.String.pipe(T.Body("binding_status"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsCustomCertificate",
@@ -152552,23 +152005,21 @@ export const GatewayConfigurationsUpdateRequestSettingsCustomCertificate =
 
 export interface GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching {
   /** Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicate that this setting was shared via the Orgs API and read only for the current account. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** Indicate the account tag of the account that shared this setting. */
-  sourceAccount?: string | null;
+  sourceAccount?: string;
   /** Indicate the version number of the setting. */
-  version?: number | null;
+  version?: number;
 }
 export const GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
-      sourceAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("source_account")),
-      ),
-      version: S.optional(S.NullOr(S.Number)),
+      enabled: S.optional(S.Boolean),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
+      sourceAccount: S.optional(S.String.pipe(T.Body("source_account"))),
+      version: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -152577,12 +152028,12 @@ export const GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching =
 
 export interface GatewayConfigurationsUpdateRequestSettingsFips {
   /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
-  tls?: boolean | null;
+  tls?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsFips =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      tls: S.optional(S.NullOr(S.Boolean)),
+      tls: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsFips",
@@ -152590,12 +152041,12 @@ export const GatewayConfigurationsUpdateRequestSettingsFips =
 
 export interface GatewayConfigurationsUpdateRequestSettingsHostSelector {
   /** Specify whether to enable filtering via hosts for egress policies. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsHostSelector =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsHostSelector",
@@ -152611,14 +152062,13 @@ export interface GatewayConfigurationsUpdateRequestSettingsInspection {
   /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic. */
   mode?:
     | GatewayConfigurationsUpdateRequestSettingsInspectionMode
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayConfigurationsUpdateRequestSettingsInspection =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsInspectionMode),
+        GatewayConfigurationsUpdateRequestSettingsInspectionMode,
       ),
     }),
   ).annotate({
@@ -152627,12 +152077,12 @@ export const GatewayConfigurationsUpdateRequestSettingsInspection =
 
 export interface GatewayConfigurationsUpdateRequestSettingsProtocolDetection {
   /** Specify whether to detect protocols from the initial bytes of client traffic. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsProtocolDetection =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsProtocolDetection",
@@ -152646,21 +152096,20 @@ export const GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction =
 
 export interface GatewayConfigurationsUpdateRequestSettingsSandbox {
   /** Specify whether to enable the sandbox. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the action to take when the system cannot scan the file. */
   fallbackAction?:
     | GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayConfigurationsUpdateRequestSettingsSandbox =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       fallbackAction: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction,
-        ).pipe(T.Body("fallback_action")),
+        GatewayConfigurationsUpdateRequestSettingsSandboxFallbackAction.pipe(
+          T.Body("fallback_action"),
+        ),
       ),
     }),
   ).annotate({
@@ -152669,12 +152118,12 @@ export const GatewayConfigurationsUpdateRequestSettingsSandbox =
 
 export interface GatewayConfigurationsUpdateRequestSettingsTlsDecrypt {
   /** Specify whether to inspect encrypted HTTP traffic. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayConfigurationsUpdateRequestSettingsTlsDecrypt =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayConfigurationsUpdateRequestSettingsTlsDecrypt",
@@ -152682,97 +152131,93 @@ export const GatewayConfigurationsUpdateRequestSettingsTlsDecrypt =
 
 export interface GatewayConfigurationsUpdateRequestSettings {
   /** Specify activity log settings. */
-  activityLog?: GatewayConfigurationsUpdateRequestSettingsActivityLog | null;
+  activityLog?: GatewayConfigurationsUpdateRequestSettingsActivityLog;
   /** Specify anti-virus settings. */
-  antivirus?: GatewayConfigurationsUpdateRequestSettingsAntivirus | null;
+  antivirus?: GatewayConfigurationsUpdateRequestSettingsAntivirus;
   /** Specify block page layout settings. */
-  blockPage?: GatewayConfigurationsUpdateRequestSettingsBlockPage | null;
+  blockPage?: GatewayConfigurationsUpdateRequestSettingsBlockPage;
   /** Specify the DLP inspection mode. */
-  bodyScanning?: GatewayConfigurationsUpdateRequestSettingsBodyScanning | null;
+  bodyScanning?: GatewayConfigurationsUpdateRequestSettingsBodyScanning;
   /** Specify Clientless Browser Isolation settings. */
-  browserIsolation?: GatewayConfigurationsUpdateRequestSettingsBrowserIsolation | null;
+  browserIsolation?: GatewayConfigurationsUpdateRequestSettingsBrowserIsolation;
   /** Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception. */
-  certificate?: GatewayConfigurationsUpdateRequestSettingsCertificate | null;
+  certificate?: GatewayConfigurationsUpdateRequestSettingsCertificate;
   /** Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead. */
-  customCertificate?: GatewayConfigurationsUpdateRequestSettingsCustomCertificate | null;
+  customCertificate?: GatewayConfigurationsUpdateRequestSettingsCustomCertificate;
   /** Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers. */
-  extendedEmailMatching?: GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching | null;
+  extendedEmailMatching?: GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching;
   /** Specify FIPS settings. */
-  fips?: GatewayConfigurationsUpdateRequestSettingsFips | null;
+  fips?: GatewayConfigurationsUpdateRequestSettingsFips;
   /** Enable host selection in egress policies. */
-  hostSelector?: GatewayConfigurationsUpdateRequestSettingsHostSelector | null;
+  hostSelector?: GatewayConfigurationsUpdateRequestSettingsHostSelector;
   /** Define the proxy inspection mode. */
-  inspection?: GatewayConfigurationsUpdateRequestSettingsInspection | null;
+  inspection?: GatewayConfigurationsUpdateRequestSettingsInspection;
   /** Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting. */
-  maxTtlSecs?: number | null;
+  maxTtlSecs?: number;
   /** Specify whether to detect protocols from the initial bytes of client traffic. */
-  protocolDetection?: GatewayConfigurationsUpdateRequestSettingsProtocolDetection | null;
+  protocolDetection?: GatewayConfigurationsUpdateRequestSettingsProtocolDetection;
   /** Specify whether to enable the sandbox. */
-  sandbox?: GatewayConfigurationsUpdateRequestSettingsSandbox | null;
+  sandbox?: GatewayConfigurationsUpdateRequestSettingsSandbox;
   /** Specify whether to inspect encrypted HTTP traffic. */
-  tlsDecrypt?: GatewayConfigurationsUpdateRequestSettingsTlsDecrypt | null;
+  tlsDecrypt?: GatewayConfigurationsUpdateRequestSettingsTlsDecrypt;
 }
 export const GatewayConfigurationsUpdateRequestSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activityLog: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsActivityLog).pipe(
+        GatewayConfigurationsUpdateRequestSettingsActivityLog.pipe(
           T.Body("activity_log"),
         ),
       ),
       antivirus: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsAntivirus),
+        GatewayConfigurationsUpdateRequestSettingsAntivirus,
       ),
       blockPage: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsBlockPage).pipe(
+        GatewayConfigurationsUpdateRequestSettingsBlockPage.pipe(
           T.Body("block_page"),
         ),
       ),
       bodyScanning: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsBodyScanning).pipe(
+        GatewayConfigurationsUpdateRequestSettingsBodyScanning.pipe(
           T.Body("body_scanning"),
         ),
       ),
       browserIsolation: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsBrowserIsolation,
-        ).pipe(T.Body("browser_isolation")),
+        GatewayConfigurationsUpdateRequestSettingsBrowserIsolation.pipe(
+          T.Body("browser_isolation"),
+        ),
       ),
       certificate: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsCertificate),
+        GatewayConfigurationsUpdateRequestSettingsCertificate,
       ),
       customCertificate: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsCustomCertificate,
-        ).pipe(T.Body("custom_certificate")),
+        GatewayConfigurationsUpdateRequestSettingsCustomCertificate.pipe(
+          T.Body("custom_certificate"),
+        ),
       ),
       extendedEmailMatching: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching,
-        ).pipe(T.Body("extended_email_matching")),
+        GatewayConfigurationsUpdateRequestSettingsExtendedEmailMatching.pipe(
+          T.Body("extended_email_matching"),
+        ),
       ),
-      fips: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsFips),
-      ),
+      fips: S.optional(GatewayConfigurationsUpdateRequestSettingsFips),
       hostSelector: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsHostSelector).pipe(
+        GatewayConfigurationsUpdateRequestSettingsHostSelector.pipe(
           T.Body("host_selector"),
         ),
       ),
       inspection: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsInspection),
+        GatewayConfigurationsUpdateRequestSettingsInspection,
       ),
-      maxTtlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl_secs"))),
+      maxTtlSecs: S.optional(S.Number.pipe(T.Body("max_ttl_secs"))),
       protocolDetection: S.optional(
-        S.NullOr(
-          GatewayConfigurationsUpdateRequestSettingsProtocolDetection,
-        ).pipe(T.Body("protocol_detection")),
+        GatewayConfigurationsUpdateRequestSettingsProtocolDetection.pipe(
+          T.Body("protocol_detection"),
+        ),
       ),
-      sandbox: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsSandbox),
-      ),
+      sandbox: S.optional(GatewayConfigurationsUpdateRequestSettingsSandbox),
       tlsDecrypt: S.optional(
-        S.NullOr(GatewayConfigurationsUpdateRequestSettingsTlsDecrypt).pipe(
+        GatewayConfigurationsUpdateRequestSettingsTlsDecrypt.pipe(
           T.Body("tls_decrypt"),
         ),
       ),
@@ -152784,12 +152229,12 @@ export const GatewayConfigurationsUpdateRequestSettings =
 export interface PutGatewayConfigurationRequest {
   accountId: string;
   /** Specify account settings. */
-  settings?: GatewayConfigurationsUpdateRequestSettings | null;
+  settings?: GatewayConfigurationsUpdateRequestSettings;
 }
 export const PutGatewayConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    settings: S.optional(S.NullOr(GatewayConfigurationsUpdateRequestSettings)),
+    settings: S.optional(GatewayConfigurationsUpdateRequestSettings),
   })
     .pipe(
       T.Http({
@@ -153269,15 +152714,15 @@ export const PutGatewayConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface GatewayLoggingUpdateRequestSettingsByRuleTypeDns {
   /** Specify whether to log all requests to this service. */
-  logAll?: boolean | null;
+  logAll?: boolean;
   /** Specify whether to log only blocking requests to this service. */
-  logBlocks?: boolean | null;
+  logBlocks?: boolean;
 }
 export const GatewayLoggingUpdateRequestSettingsByRuleTypeDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      logAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_all"))),
-      logBlocks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_blocks"))),
+      logAll: S.optional(S.Boolean.pipe(T.Body("log_all"))),
+      logBlocks: S.optional(S.Boolean.pipe(T.Body("log_blocks"))),
     }),
   ).annotate({
     identifier: "GatewayLoggingUpdateRequestSettingsByRuleTypeDns",
@@ -153285,15 +152730,15 @@ export const GatewayLoggingUpdateRequestSettingsByRuleTypeDns =
 
 export interface GatewayLoggingUpdateRequestSettingsByRuleTypeHttp {
   /** Specify whether to log all requests to this service. */
-  logAll?: boolean | null;
+  logAll?: boolean;
   /** Specify whether to log only blocking requests to this service. */
-  logBlocks?: boolean | null;
+  logBlocks?: boolean;
 }
 export const GatewayLoggingUpdateRequestSettingsByRuleTypeHttp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      logAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_all"))),
-      logBlocks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_blocks"))),
+      logAll: S.optional(S.Boolean.pipe(T.Body("log_all"))),
+      logBlocks: S.optional(S.Boolean.pipe(T.Body("log_blocks"))),
     }),
   ).annotate({
     identifier: "GatewayLoggingUpdateRequestSettingsByRuleTypeHttp",
@@ -153301,15 +152746,15 @@ export const GatewayLoggingUpdateRequestSettingsByRuleTypeHttp =
 
 export interface GatewayLoggingUpdateRequestSettingsByRuleTypeL4 {
   /** Specify whether to log all requests to this service. */
-  logAll?: boolean | null;
+  logAll?: boolean;
   /** Specify whether to log only blocking requests to this service. */
-  logBlocks?: boolean | null;
+  logBlocks?: boolean;
 }
 export const GatewayLoggingUpdateRequestSettingsByRuleTypeL4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      logAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_all"))),
-      logBlocks: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_blocks"))),
+      logAll: S.optional(S.Boolean.pipe(T.Body("log_all"))),
+      logBlocks: S.optional(S.Boolean.pipe(T.Body("log_blocks"))),
     }),
   ).annotate({
     identifier: "GatewayLoggingUpdateRequestSettingsByRuleTypeL4",
@@ -153317,22 +152762,18 @@ export const GatewayLoggingUpdateRequestSettingsByRuleTypeL4 =
 
 export interface GatewayLoggingUpdateRequestSettingsByRuleType {
   /** Configure logging settings for DNS firewall. */
-  dns?: GatewayLoggingUpdateRequestSettingsByRuleTypeDns | null;
+  dns?: GatewayLoggingUpdateRequestSettingsByRuleTypeDns;
   /** Configure logging settings for HTTP/HTTPS firewall. */
-  http?: GatewayLoggingUpdateRequestSettingsByRuleTypeHttp | null;
+  http?: GatewayLoggingUpdateRequestSettingsByRuleTypeHttp;
   /** Configure logging settings for Network firewall. */
-  l4?: GatewayLoggingUpdateRequestSettingsByRuleTypeL4 | null;
+  l4?: GatewayLoggingUpdateRequestSettingsByRuleTypeL4;
 }
 export const GatewayLoggingUpdateRequestSettingsByRuleType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      dns: S.optional(
-        S.NullOr(GatewayLoggingUpdateRequestSettingsByRuleTypeDns),
-      ),
-      http: S.optional(
-        S.NullOr(GatewayLoggingUpdateRequestSettingsByRuleTypeHttp),
-      ),
-      l4: S.optional(S.NullOr(GatewayLoggingUpdateRequestSettingsByRuleTypeL4)),
+      dns: S.optional(GatewayLoggingUpdateRequestSettingsByRuleTypeDns),
+      http: S.optional(GatewayLoggingUpdateRequestSettingsByRuleTypeHttp),
+      l4: S.optional(GatewayLoggingUpdateRequestSettingsByRuleTypeL4),
     }),
   ).annotate({
     identifier: "GatewayLoggingUpdateRequestSettingsByRuleType",
@@ -153341,16 +152782,16 @@ export const GatewayLoggingUpdateRequestSettingsByRuleType =
 export interface PutGatewayLoggingRequest {
   accountId: string;
   /** Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent). */
-  redactPii?: boolean | null;
+  redactPii?: boolean;
   /** Configure logging settings for each rule type. */
-  settingsByRuleType?: GatewayLoggingUpdateRequestSettingsByRuleType | null;
+  settingsByRuleType?: GatewayLoggingUpdateRequestSettingsByRuleType;
 }
 export const PutGatewayLoggingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    redactPii: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_pii"))),
+    redactPii: S.optional(S.Boolean.pipe(T.Body("redact_pii"))),
     settingsByRuleType: S.optional(
-      S.NullOr(GatewayLoggingUpdateRequestSettingsByRuleType).pipe(
+      GatewayLoggingUpdateRequestSettingsByRuleType.pipe(
         T.Body("settings_by_rule_type"),
       ),
     ),
@@ -153464,19 +152905,15 @@ export interface PutOrganizationDohRequest {
   /** Identifier. */
   accountId: string;
   /** The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note that the maximum duration for this setting is the same as the key rotation period on the account. Default expiration is 24h */
-  dohJwtDuration?: string | null;
+  dohJwtDuration?: string;
   /** The uuid of the service token you want to use for DoH authentication */
-  serviceTokenId?: string | null;
+  serviceTokenId?: string;
 }
 export const PutOrganizationDohRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    dohJwtDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("doh_jwt_duration")),
-    ),
-    serviceTokenId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("service_token_id")),
-    ),
+    dohJwtDuration: S.optional(S.String.pipe(T.Body("doh_jwt_duration"))),
+    serviceTokenId: S.optional(S.String.pipe(T.Body("service_token_id"))),
   })
     .pipe(
       T.Http({
@@ -153631,7 +153068,7 @@ export interface TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemO
   audTag: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccessAudTagList;
   teamName: string;
   /** Deny traffic that has not fulfilled Access authorization. */
-  required?: boolean | null;
+  required?: boolean;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccess =
   /*@__PURE__*/ S.suspend(() =>
@@ -153639,7 +153076,7 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOrigi
       audTag:
         TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccessAudTagList,
       teamName: S.String,
-      required: S.optional(S.NullOr(S.Boolean)),
+      required: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -153648,58 +153085,56 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOrigi
 
 export interface TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest {
   /** For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header. */
-  access?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccess | null;
+  access?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccess;
   /** Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. */
-  caPool?: string | null;
+  caPool?: string;
   /** Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout. */
-  connectTimeout?: number | null;
+  connectTimeout?: number;
   /** Disables chunked transfer encoding. Useful if you are running a WSGI server. */
-  disableChunkedEncoding?: boolean | null;
+  disableChunkedEncoding?: boolean;
   /** Attempt to connect to origin using HTTP2. Origin must be configured as https. */
-  http2Origin?: boolean | null;
+  http2Origin?: boolean;
   /** Sets the HTTP Host header on requests sent to the local service. */
-  httpHostHeader?: string | null;
+  httpHostHeader?: string;
   /** Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. */
-  keepAliveConnections?: number | null;
+  keepAliveConnections?: number;
   /** Timeout after which an idle keepalive connection can be discarded. */
-  keepAliveTimeout?: number | null;
+  keepAliveTimeout?: number;
   /** Auto configure the Hostname on the origin server certificate. */
-  matchSNItoHost?: boolean | null;
+  matchSNItoHost?: boolean;
   /** Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. */
-  noHappyEyeballs?: boolean | null;
+  noHappyEyeballs?: boolean;
   /** Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. */
-  noTLSVerify?: boolean | null;
+  noTLSVerify?: boolean;
   /** Hostname that cloudflared should expect from your origin server certificate. */
-  originServerName?: string | null;
+  originServerName?: string;
   /** cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy. */
-  proxyType?: string | null;
+  proxyType?: string;
   /** The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. */
-  tcpKeepAlive?: number | null;
+  tcpKeepAlive?: number;
   /** Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. */
-  tlsTimeout?: number | null;
+  tlsTimeout?: number;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       access: S.optional(
-        S.NullOr(
-          TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccess,
-        ),
+        TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequestAccess,
       ),
-      caPool: S.optional(S.NullOr(S.String)),
-      connectTimeout: S.optional(S.NullOr(S.Number)),
-      disableChunkedEncoding: S.optional(S.NullOr(S.Boolean)),
-      http2Origin: S.optional(S.NullOr(S.Boolean)),
-      httpHostHeader: S.optional(S.NullOr(S.String)),
-      keepAliveConnections: S.optional(S.NullOr(S.Number)),
-      keepAliveTimeout: S.optional(S.NullOr(S.Number)),
-      matchSNItoHost: S.optional(S.NullOr(S.Boolean)),
-      noHappyEyeballs: S.optional(S.NullOr(S.Boolean)),
-      noTLSVerify: S.optional(S.NullOr(S.Boolean)),
-      originServerName: S.optional(S.NullOr(S.String)),
-      proxyType: S.optional(S.NullOr(S.String)),
-      tcpKeepAlive: S.optional(S.NullOr(S.Number)),
-      tlsTimeout: S.optional(S.NullOr(S.Number)),
+      caPool: S.optional(S.String),
+      connectTimeout: S.optional(S.Number),
+      disableChunkedEncoding: S.optional(S.Boolean),
+      http2Origin: S.optional(S.Boolean),
+      httpHostHeader: S.optional(S.String),
+      keepAliveConnections: S.optional(S.Number),
+      keepAliveTimeout: S.optional(S.Number),
+      matchSNItoHost: S.optional(S.Boolean),
+      noHappyEyeballs: S.optional(S.Boolean),
+      noTLSVerify: S.optional(S.Boolean),
+      originServerName: S.optional(S.String),
+      proxyType: S.optional(S.String),
+      tcpKeepAlive: S.optional(S.Number),
+      tlsTimeout: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -153708,25 +153143,23 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOrigi
 
 export interface TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItem {
   /** Public hostname for this service. */
-  hostname?: string | null;
+  hostname?: string;
   /** Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'. */
   service: string;
   /** Configuration parameters for the public hostname specific connection settings between cloudflared and origin server. */
-  originRequest?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest | null;
+  originRequest?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest;
   /** Requests with this path route to this public hostname. */
-  path?: string | null;
+  path?: string;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      hostname: S.optional(S.NullOr(S.String)),
+      hostname: S.optional(S.String),
       service: S.String,
       originRequest: S.optional(
-        S.NullOr(
-          TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest,
-        ),
+        TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressItemOriginRequest,
       ),
-      path: S.optional(S.NullOr(S.String)),
+      path: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -153752,7 +153185,7 @@ export interface TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginReques
   audTag: TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccessAudTagList;
   teamName: string;
   /** Deny traffic that has not fulfilled Access authorization. */
-  required?: boolean | null;
+  required?: boolean;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccess =
   /*@__PURE__*/ S.suspend(() =>
@@ -153760,7 +153193,7 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAcc
       audTag:
         TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccessAudTagList,
       teamName: S.String,
-      required: S.optional(S.NullOr(S.Boolean)),
+      required: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -153769,58 +153202,56 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAcc
 
 export interface TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest {
   /** For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header. */
-  access?: TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccess | null;
+  access?: TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccess;
   /** Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare. */
-  caPool?: string | null;
+  caPool?: string;
   /** Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout. */
-  connectTimeout?: number | null;
+  connectTimeout?: number;
   /** Disables chunked transfer encoding. Useful if you are running a WSGI server. */
-  disableChunkedEncoding?: boolean | null;
+  disableChunkedEncoding?: boolean;
   /** Attempt to connect to origin using HTTP2. Origin must be configured as https. */
-  http2Origin?: boolean | null;
+  http2Origin?: boolean;
   /** Sets the HTTP Host header on requests sent to the local service. */
-  httpHostHeader?: string | null;
+  httpHostHeader?: string;
   /** Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections. */
-  keepAliveConnections?: number | null;
+  keepAliveConnections?: number;
   /** Timeout after which an idle keepalive connection can be discarded. */
-  keepAliveTimeout?: number | null;
+  keepAliveTimeout?: number;
   /** Auto configure the Hostname on the origin server certificate. */
-  matchSNItoHost?: boolean | null;
+  matchSNItoHost?: boolean;
   /** Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols. */
-  noHappyEyeballs?: boolean | null;
+  noHappyEyeballs?: boolean;
   /** Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted. */
-  noTLSVerify?: boolean | null;
+  noTLSVerify?: boolean;
   /** Hostname that cloudflared should expect from your origin server certificate. */
-  originServerName?: string | null;
+  originServerName?: string;
   /** cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy. */
-  proxyType?: string | null;
+  proxyType?: string;
   /** The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server. */
-  tcpKeepAlive?: number | null;
+  tcpKeepAlive?: number;
   /** Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. */
-  tlsTimeout?: number | null;
+  tlsTimeout?: number;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       access: S.optional(
-        S.NullOr(
-          TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccess,
-        ),
+        TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequestAccess,
       ),
-      caPool: S.optional(S.NullOr(S.String)),
-      connectTimeout: S.optional(S.NullOr(S.Number)),
-      disableChunkedEncoding: S.optional(S.NullOr(S.Boolean)),
-      http2Origin: S.optional(S.NullOr(S.Boolean)),
-      httpHostHeader: S.optional(S.NullOr(S.String)),
-      keepAliveConnections: S.optional(S.NullOr(S.Number)),
-      keepAliveTimeout: S.optional(S.NullOr(S.Number)),
-      matchSNItoHost: S.optional(S.NullOr(S.Boolean)),
-      noHappyEyeballs: S.optional(S.NullOr(S.Boolean)),
-      noTLSVerify: S.optional(S.NullOr(S.Boolean)),
-      originServerName: S.optional(S.NullOr(S.String)),
-      proxyType: S.optional(S.NullOr(S.String)),
-      tcpKeepAlive: S.optional(S.NullOr(S.Number)),
-      tlsTimeout: S.optional(S.NullOr(S.Number)),
+      caPool: S.optional(S.String),
+      connectTimeout: S.optional(S.Number),
+      disableChunkedEncoding: S.optional(S.Boolean),
+      http2Origin: S.optional(S.Boolean),
+      httpHostHeader: S.optional(S.String),
+      keepAliveConnections: S.optional(S.Number),
+      keepAliveTimeout: S.optional(S.Number),
+      matchSNItoHost: S.optional(S.Boolean),
+      noHappyEyeballs: S.optional(S.Boolean),
+      noTLSVerify: S.optional(S.Boolean),
+      originServerName: S.optional(S.String),
+      proxyType: S.optional(S.String),
+      tcpKeepAlive: S.optional(S.Number),
+      tlsTimeout: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -153829,22 +153260,18 @@ export const TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest =
 
 export interface TunnelsCloudflaredConfigurationsUpdateRequestConfig {
   /** List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel. */
-  ingress?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressList | null;
+  ingress?: TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressList;
   /** Configuration parameters for the public hostname specific connection settings between cloudflared and origin server. */
-  originRequest?: TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest | null;
+  originRequest?: TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest;
 }
 export const TunnelsCloudflaredConfigurationsUpdateRequestConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ingress: S.optional(
-        S.NullOr(
-          TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressList,
-        ),
+        TunnelsCloudflaredConfigurationsUpdateRequestConfigIngressList,
       ),
       originRequest: S.optional(
-        S.NullOr(
-          TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest,
-        ),
+        TunnelsCloudflaredConfigurationsUpdateRequestConfigOriginRequest,
       ),
     }),
   ).annotate({
@@ -153857,16 +153284,14 @@ export interface PutTunnelCloudflaredConfigurationRequest {
   /** UUID of the tunnel. */
   tunnelId: string;
   /** The tunnel configuration and ingress rules. */
-  config?: TunnelsCloudflaredConfigurationsUpdateRequestConfig | null;
+  config?: TunnelsCloudflaredConfigurationsUpdateRequestConfig;
 }
 export const PutTunnelCloudflaredConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       tunnelId: S.String.pipe(T.Label("tunnel_id")),
-      config: S.optional(
-        S.NullOr(TunnelsCloudflaredConfigurationsUpdateRequestConfig),
-      ),
+      config: S.optional(TunnelsCloudflaredConfigurationsUpdateRequestConfig),
     })
       .pipe(
         T.Http({
@@ -154166,7 +153591,7 @@ export interface PutTunnelWarpConnectorConfigurationRequest {
   /** High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface. */
   haMode: TunnelsWarpConnectorConfigurationsUpdateRequestHaMode | (string & {});
   /** Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted. */
-  config?: unknown | null;
+  config?: unknown;
 }
 export const PutTunnelWarpConnectorConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -154176,7 +153601,7 @@ export const PutTunnelWarpConnectorConfigurationRequest =
       haMode: TunnelsWarpConnectorConfigurationsUpdateRequestHaMode.pipe(
         T.Body("ha_mode"),
       ),
-      config: S.optional(S.NullOr(S.Unknown)),
+      config: S.optional(S.Unknown),
     })
       .pipe(
         T.Http({
@@ -155871,9 +155296,9 @@ export interface RevokeUsersOrganizationForAccountRequest {
   /** The email of the user to revoke. */
   email: string;
   /** The uuid of the user to revoke. */
-  userUid?: string | null;
+  userUid?: string;
   /** When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active */
-  warpSessionReauth?: boolean | null;
+  warpSessionReauth?: boolean;
 }
 export const RevokeUsersOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -155881,9 +155306,9 @@ export const RevokeUsersOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       devices: S.optional(S.Boolean.pipe(T.Query())),
       email: S.String,
-      userUid: S.optional(S.NullOr(S.String).pipe(T.Body("user_uid"))),
+      userUid: S.optional(S.String.pipe(T.Body("user_uid"))),
       warpSessionReauth: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("warp_session_reauth")),
+        S.Boolean.pipe(T.Body("warp_session_reauth")),
       ),
     })
       .pipe(
@@ -155913,9 +155338,9 @@ export interface RevokeUsersOrganizationForZoneRequest {
   /** The email of the user to revoke. */
   email: string;
   /** The uuid of the user to revoke. */
-  userUid?: string | null;
+  userUid?: string;
   /** When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active */
-  warpSessionReauth?: boolean | null;
+  warpSessionReauth?: boolean;
 }
 export const RevokeUsersOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -155923,9 +155348,9 @@ export const RevokeUsersOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       devices: S.optional(S.Boolean.pipe(T.Query())),
       email: S.String,
-      userUid: S.optional(S.NullOr(S.String).pipe(T.Body("user_uid"))),
+      userUid: S.optional(S.String.pipe(T.Body("user_uid"))),
       warpSessionReauth: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("warp_session_reauth")),
+        S.Boolean.pipe(T.Body("warp_session_reauth")),
       ),
     })
       .pipe(
@@ -156067,14 +155492,14 @@ export interface RotateAccessServiceTokenRequest {
   /** UUID. */
   serviceTokenId: string;
   /** The expiration of the previous `client_secret`. If not provided, it defaults to the current timestamp in order to immediately expire the previous secret. */
-  previousClientSecretExpiresAt?: string | null;
+  previousClientSecretExpiresAt?: string;
 }
 export const RotateAccessServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     serviceTokenId: S.String.pipe(T.Label("service_token_id")),
     previousClientSecretExpiresAt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("previous_client_secret_expires_at")),
+      S.String.pipe(T.Body("previous_client_secret_expires_at")),
     ),
   })
     .pipe(
@@ -156259,17 +155684,17 @@ export const UnrevokeDeviceRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -156285,17 +155710,17 @@ export const AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsLis
 
 export interface AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -156312,28 +155737,26 @@ export const AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsList 
 export interface AccessAiControlsMcpPortalsUpdateRequestServersItem {
   /** server id */
   serverId: string;
-  defaultDisabled?: boolean | null;
-  onBehalf?: boolean | null;
-  updatedPrompts?: AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsList | null;
-  updatedTools?: AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsList | null;
+  defaultDisabled?: boolean;
+  onBehalf?: boolean;
+  updatedPrompts?: AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsList;
+  updatedTools?: AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsList;
 }
 export const AccessAiControlsMcpPortalsUpdateRequestServersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serverId: S.String.pipe(T.Body("server_id")),
-      defaultDisabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("default_disabled")),
-      ),
-      onBehalf: S.optional(S.NullOr(S.Boolean).pipe(T.Body("on_behalf"))),
+      defaultDisabled: S.optional(S.Boolean.pipe(T.Body("default_disabled"))),
+      onBehalf: S.optional(S.Boolean.pipe(T.Body("on_behalf"))),
       updatedPrompts: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsList,
-        ).pipe(T.Body("updated_prompts")),
+        AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedPromptsList.pipe(
+          T.Body("updated_prompts"),
+        ),
       ),
       updatedTools: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsList,
-        ).pipe(T.Body("updated_tools")),
+        AccessAiControlsMcpPortalsUpdateRequestServersItemUpdatedToolsList.pipe(
+          T.Body("updated_tools"),
+        ),
       ),
     }),
   ).annotate({
@@ -156352,31 +155775,27 @@ export interface UpdateAccessAiControlMcpPortalRequest {
   /** portal id */
   id: string;
   /** Allow remote code execution in Dynamic Workers (beta) */
-  allowCodeMode?: boolean | null;
-  description?: string | null;
-  hostname?: string | null;
-  name?: string | null;
+  allowCodeMode?: boolean;
+  description?: string;
+  hostname?: string;
+  name?: string;
   /** Route outbound MCP traffic through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean | null;
-  servers?: AccessAiControlsMcpPortalsUpdateRequestServersList | null;
+  secureWebGateway?: boolean;
+  servers?: AccessAiControlsMcpPortalsUpdateRequestServersList;
 }
 export const UpdateAccessAiControlMcpPortalRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
-      allowCodeMode: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_code_mode")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
-      hostname: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      allowCodeMode: S.optional(S.Boolean.pipe(T.Body("allow_code_mode"))),
+      description: S.optional(S.String),
+      hostname: S.optional(S.String),
+      name: S.optional(S.String),
       secureWebGateway: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("secure_web_gateway")),
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
-      servers: S.optional(
-        S.NullOr(AccessAiControlsMcpPortalsUpdateRequestServersList),
-      ),
+      servers: S.optional(AccessAiControlsMcpPortalsUpdateRequestServersList),
     })
       .pipe(
         T.Http({
@@ -156654,17 +156073,17 @@ export const UpdateAccessAiControlMcpPortalResponse = /*@__PURE__*/ S.suspend(
 
 export interface AccessAiControlsMcpServersUpdateRequestUpdatedPromptsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpServersUpdateRequestUpdatedPromptsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "AccessAiControlsMcpServersUpdateRequestUpdatedPromptsItem",
@@ -156679,17 +156098,17 @@ export const AccessAiControlsMcpServersUpdateRequestUpdatedPromptsList =
 
 export interface AccessAiControlsMcpServersUpdateRequestUpdatedToolsItem {
   name: string;
-  alias?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
+  alias?: string;
+  description?: string;
+  enabled?: boolean;
 }
 export const AccessAiControlsMcpServersUpdateRequestUpdatedToolsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      alias: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      alias: S.optional(S.String),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "AccessAiControlsMcpServersUpdateRequestUpdatedToolsItem",
@@ -156706,39 +156125,37 @@ export interface UpdateAccessAiControlMcpServerRequest {
   accountId: string;
   /** server id */
   id: string;
-  authCredentials?: string | null;
-  description?: string | null;
+  authCredentials?: string;
+  description?: string;
   /** When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key. */
-  isSharedOauthCallbackEnabled?: boolean | null;
-  name?: string | null;
+  isSharedOauthCallbackEnabled?: boolean;
+  name?: string;
   /** Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway */
-  secureWebGateway?: boolean | null;
-  updatedPrompts?: AccessAiControlsMcpServersUpdateRequestUpdatedPromptsList | null;
-  updatedTools?: AccessAiControlsMcpServersUpdateRequestUpdatedToolsList | null;
+  secureWebGateway?: boolean;
+  updatedPrompts?: AccessAiControlsMcpServersUpdateRequestUpdatedPromptsList;
+  updatedTools?: AccessAiControlsMcpServersUpdateRequestUpdatedToolsList;
 }
 export const UpdateAccessAiControlMcpServerRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
-      authCredentials: S.optional(
-        S.NullOr(S.String).pipe(T.Body("auth_credentials")),
-      ),
-      description: S.optional(S.NullOr(S.String)),
+      authCredentials: S.optional(S.String.pipe(T.Body("auth_credentials"))),
+      description: S.optional(S.String),
       isSharedOauthCallbackEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("is_shared_oauth_callback_enabled")),
+        S.Boolean.pipe(T.Body("is_shared_oauth_callback_enabled")),
       ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       secureWebGateway: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("secure_web_gateway")),
+        S.Boolean.pipe(T.Body("secure_web_gateway")),
       ),
       updatedPrompts: S.optional(
-        S.NullOr(
-          AccessAiControlsMcpServersUpdateRequestUpdatedPromptsList,
-        ).pipe(T.Body("updated_prompts")),
+        AccessAiControlsMcpServersUpdateRequestUpdatedPromptsList.pipe(
+          T.Body("updated_prompts"),
+        ),
       ),
       updatedTools: S.optional(
-        S.NullOr(AccessAiControlsMcpServersUpdateRequestUpdatedToolsList).pipe(
+        AccessAiControlsMcpServersUpdateRequestUpdatedToolsList.pipe(
           T.Body("updated_tools"),
         ),
       ),
@@ -157033,53 +156450,45 @@ export const AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllo
 
 export interface AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication {
   /** Allows all HTTP request headers. */
-  allowAllHeaders?: boolean | null;
+  allowAllHeaders?: boolean;
   /** Allows all HTTP request methods. */
-  allowAllMethods?: boolean | null;
+  allowAllMethods?: boolean;
   /** Allows all origins. */
-  allowAllOrigins?: boolean | null;
+  allowAllOrigins?: boolean;
   /** When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests. */
-  allowCredentials?: boolean | null;
+  allowCredentials?: boolean;
   /** Allowed HTTP request headers. */
-  allowedHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList | null;
+  allowedHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList;
   /** Allowed HTTP request methods. */
-  allowedMethods?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList | null;
+  allowedMethods?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList;
   /** Allowed origins. */
-  allowedOrigins?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList | null;
+  allowedOrigins?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList;
   /** The maximum number of seconds the results of a preflight request can be cached. */
-  maxAge?: number | null;
+  maxAge?: number;
 }
 export const AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      allowAllHeaders: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_headers")),
-      ),
-      allowAllMethods: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_methods")),
-      ),
-      allowAllOrigins: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_all_origins")),
-      ),
-      allowCredentials: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_credentials")),
-      ),
+      allowAllHeaders: S.optional(S.Boolean.pipe(T.Body("allow_all_headers"))),
+      allowAllMethods: S.optional(S.Boolean.pipe(T.Body("allow_all_methods"))),
+      allowAllOrigins: S.optional(S.Boolean.pipe(T.Body("allow_all_origins"))),
+      allowCredentials: S.optional(S.Boolean.pipe(T.Body("allow_credentials"))),
       allowedHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList,
-        ).pipe(T.Body("allowed_headers")),
+        AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedHeadersList.pipe(
+          T.Body("allowed_headers"),
+        ),
       ),
       allowedMethods: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList,
-        ).pipe(T.Body("allowed_methods")),
+        AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedMethodsList.pipe(
+          T.Body("allowed_methods"),
+        ),
       ),
       allowedOrigins: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList,
-        ).pipe(T.Body("allowed_origins")),
+        AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplicationAllowedOriginsList.pipe(
+          T.Body("allowed_origins"),
+        ),
       ),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
     }),
   ).annotate({
     identifier:
@@ -157100,20 +156509,17 @@ export const AccessApplicationsUpdateRequestDestinationsItemPublicDestinationTyp
 export interface AccessApplicationsUpdateRequestDestinationsItemPublicDestination {
   type?:
     | AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
-  uri?: string | null;
+  uri?: string;
 }
 export const AccessApplicationsUpdateRequestDestinationsItemPublicDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType,
-        ),
+        AccessApplicationsUpdateRequestDestinationsItemPublicDestinationType,
       ),
-      uri: S.optional(S.NullOr(S.String)),
+      uri: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -157132,40 +156538,36 @@ export const AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationTy
 
 export interface AccessApplicationsUpdateRequestDestinationsItemPrivateDestination {
   /** The CIDR range of the destination. Single IPs will be computed as /32. */
-  cidr?: string | null;
+  cidr?: string;
   /** The hostname of the destination. Matches a valid SNI served by an HTTPS origin. */
-  hostname?: string | null;
+  hostname?: string;
   /** The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match. */
   l4Protocol?:
     | AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationL4Protocol
-    | (string & {})
-    | null;
+    | (string & {});
   /** The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match. */
-  portRange?: string | null;
+  portRange?: string;
   type?:
     | AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The VNET ID to match the destination. When omitted, all VNETs will match. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const AccessApplicationsUpdateRequestDestinationsItemPrivateDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cidr: S.optional(S.NullOr(S.String)),
-      hostname: S.optional(S.NullOr(S.String)),
+      cidr: S.optional(S.String),
+      hostname: S.optional(S.String),
       l4Protocol: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationL4Protocol,
-        ).pipe(T.Body("l4_protocol")),
-      ),
-      portRange: S.optional(S.NullOr(S.String).pipe(T.Body("port_range"))),
-      type: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType,
+        AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationL4Protocol.pipe(
+          T.Body("l4_protocol"),
         ),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      portRange: S.optional(S.String.pipe(T.Body("port_range"))),
+      type: S.optional(
+        AccessApplicationsUpdateRequestDestinationsItemPrivateDestinationType,
+      ),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier:
@@ -157179,20 +156581,17 @@ export const AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDe
 
 export interface AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestination {
   /** The MCP server id configured in ai-controls. */
-  mcpServerId?: string | null;
+  mcpServerId?: string;
   type?:
     | AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mcpServerId: S.optional(S.NullOr(S.String).pipe(T.Body("mcp_server_id"))),
+      mcpServerId: S.optional(S.String.pipe(T.Body("mcp_server_id"))),
       type: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType,
-        ),
+        AccessApplicationsUpdateRequestDestinationsItemViaMcpServerPortalDestinationType,
       ),
     }),
   ).annotate({
@@ -157325,24 +156724,22 @@ export const AccessApplicationsUpdateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface AccessApplicationsUpdateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsUpdateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsUpdateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsUpdateRequestMfaConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsUpdateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
 ).annotate({
   identifier: "AccessApplicationsUpdateRequestMfaConfig",
@@ -157357,29 +156754,29 @@ export const AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegis
 
 export interface AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration {
   /** Allows any client with redirect URIs on localhost. */
-  allowAnyOnLocalhost?: boolean | null;
+  allowAnyOnLocalhost?: boolean;
   /** Allows any client with redirect URIs on 127.0.0.1. */
-  allowAnyOnLoopback?: boolean | null;
+  allowAnyOnLoopback?: boolean;
   /** The URIs that are allowed as redirect URIs for dynamically registered clients. Must use the `https` protocol. Paths may end in `/*` to match all sub-paths. */
-  allowedUris?: AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList | null;
+  allowedUris?: AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList;
   /** Whether dynamic client registration is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowAnyOnLocalhost: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_any_on_localhost")),
+        S.Boolean.pipe(T.Body("allow_any_on_localhost")),
       ),
       allowAnyOnLoopback: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_any_on_loopback")),
+        S.Boolean.pipe(T.Body("allow_any_on_loopback")),
       ),
       allowedUris: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList,
-        ).pipe(T.Body("allowed_uris")),
+        AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistrationAllowedUrisList.pipe(
+          T.Body("allowed_uris"),
+        ),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -157388,19 +156785,17 @@ export const AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegis
 
 export interface AccessApplicationsUpdateRequestOauthConfigurationGrant {
   /** The lifetime of the access token. Must be in the format `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h. */
-  accessTokenLifetime?: string | null;
+  accessTokenLifetime?: string;
   /** The duration of the OAuth session. Must be in the format `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsUpdateRequestOauthConfigurationGrant =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessTokenLifetime: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_token_lifetime")),
+        S.String.pipe(T.Body("access_token_lifetime")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsUpdateRequestOauthConfigurationGrant",
@@ -157408,24 +156803,22 @@ export const AccessApplicationsUpdateRequestOauthConfigurationGrant =
 
 export interface AccessApplicationsUpdateRequestOauthConfiguration {
   /** Settings for OAuth dynamic client registration. */
-  dynamicClientRegistration?: AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration | null;
+  dynamicClientRegistration?: AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration;
   /** Whether the OAuth configuration is enabled for this application. When set to `false`, Access will not handle OAuth for this application. Defaults to `true` if omitted. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Settings for OAuth grant behavior. */
-  grant?: AccessApplicationsUpdateRequestOauthConfigurationGrant | null;
+  grant?: AccessApplicationsUpdateRequestOauthConfigurationGrant;
 }
 export const AccessApplicationsUpdateRequestOauthConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dynamicClientRegistration: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration,
-        ).pipe(T.Body("dynamic_client_registration")),
+        AccessApplicationsUpdateRequestOauthConfigurationDynamicClientRegistration.pipe(
+          T.Body("dynamic_client_registration"),
+        ),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      grant: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestOauthConfigurationGrant),
-      ),
+      enabled: S.optional(S.Boolean),
+      grant: S.optional(AccessApplicationsUpdateRequestOauthConfigurationGrant),
     }),
   ).annotate({
     identifier: "AccessApplicationsUpdateRequestOauthConfiguration",
@@ -157433,15 +156826,15 @@ export const AccessApplicationsUpdateRequestOauthConfiguration =
 
 export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink {
   /** The UUID of the policy */
-  id?: string | null;
+  id?: string;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      precedence: S.optional(S.NullOr(S.Number)),
+      id: S.optional(S.String),
+      precedence: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -157459,22 +156852,20 @@ export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationIte
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier:
@@ -157520,22 +156911,22 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -157545,15 +156936,13 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp | null;
+  rdp?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rdp: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp,
-        ),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRulesRdp,
       ),
     }),
   ).annotate({
@@ -157578,24 +156967,22 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -157604,61 +156991,57 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
 
 export interface AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2 {
   /** The UUID of the policy */
-  id?: string | null;
+  id?: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules | null;
+  connectionRules?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig | null;
+  mfaConfig?: AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules,
-        ).pipe(T.Body("connection_rules")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules.pipe(
+          T.Body("connection_rules"),
+        ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig,
-        ).pipe(T.Body("mfa_config")),
+        AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2MfaConfig.pipe(
+          T.Body("mfa_config"),
+        ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -158081,14 +157464,14 @@ export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicatio
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -158435,12 +157818,12 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -158540,16 +157923,14 @@ export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicatio
   /** Contains the Unix usernames that may be used when connecting over SSH. */
   usernames: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSshUsernamesList;
   /** Enables using Identity Provider email alias as SSH username. */
-  allowEmailAlias?: boolean | null;
+  allowEmailAlias?: boolean;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       usernames:
         AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSshUsernamesList,
-      allowEmailAlias: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_email_alias")),
-      ),
+      allowEmailAlias: S.optional(S.Boolean.pipe(T.Body("allow_email_alias"))),
     }),
   ).annotate({
     identifier:
@@ -158558,15 +157939,13 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules {
   /** The SSH-specific rules that define how users may connect to the targets secured by your application. */
-  ssh?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh | null;
+  ssh?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ssh: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh,
-        ),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh,
       ),
     }),
   ).annotate({
@@ -158839,24 +158218,22 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
 
 export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig {
   /** Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported. */
-  allowedAuthenticators?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples: `5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier:
@@ -159121,13 +158498,13 @@ export interface AccessApplicationsUpdateRequestPoliciesInfrastructureApplicatio
   /** The name of the Access policy. */
   name: string;
   /** The rules that define how users may connect to the targets secured by your application. */
-  connectionRules?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules | null;
+  connectionRules?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules;
   /** Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeList | null;
+  exclude?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeList;
   /** Configures multi-factor authentication (MFA) settings for infrastructure applications. */
-  mfaConfig?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig | null;
+  mfaConfig?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig;
   /** Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. */
-  require?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireList | null;
+  require?: AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireList;
 }
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -159138,24 +158515,20 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
         AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeList,
       name: S.String,
       connectionRules: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules,
-        ).pipe(T.Body("connection_rules")),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules.pipe(
+          T.Body("connection_rules"),
+        ),
       ),
       exclude: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeList,
-        ),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeList,
       ),
       mfaConfig: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig,
-        ).pipe(T.Body("mfa_config")),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig.pipe(
+          T.Body("mfa_config"),
+        ),
       ),
       require: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireList,
-        ),
+        AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireList,
       ),
     }),
   ).annotate({
@@ -159249,7 +158622,7 @@ export interface AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationA
   /** URL used to generate the token used to authenticate with the remote SCIM service. */
   tokenUrl: string;
   /** The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. */
-  scopes?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList | null;
+  scopes?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList;
 }
 export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2 =
   /*@__PURE__*/ S.suspend(() =>
@@ -159261,9 +158634,7 @@ export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthe
         AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2Scheme,
       tokenUrl: S.String.pipe(T.Body("token_url")),
       scopes: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthenticationSCIMConfigAuthenticationOauth2ScopesList,
       ),
     }),
   ).annotate({
@@ -159387,18 +158758,18 @@ export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthe
 
 export interface AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations {
   /** Whether or not this mapping applies to create (POST) operations. */
-  create?: boolean | null;
+  create?: boolean;
   /** Whether or not this mapping applies to DELETE operations. */
-  delete?: boolean | null;
+  delete?: boolean;
   /** Whether or not this mapping applies to update (PATCH/PUT) operations. */
-  update?: boolean | null;
+  update?: boolean;
 }
 export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      create: S.optional(S.NullOr(S.Boolean)),
-      delete: S.optional(S.NullOr(S.Boolean)),
-      update: S.optional(S.NullOr(S.Boolean)),
+      create: S.optional(S.Boolean),
+      delete: S.optional(S.Boolean),
+      update: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -159414,38 +158785,31 @@ export interface AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationM
   /** Which SCIM resource type this mapping applies to. */
   schema: string;
   /** Whether or not this mapping is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application. */
-  filter?: string | null;
+  filter?: string;
   /** Whether or not this mapping applies to creates, updates, or deletes. */
-  operations?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations | null;
+  operations?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations;
   /** The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target. */
   strictness?:
     | AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemStrictness
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application. */
-  transformJsonata?: string | null;
+  transformJsonata?: string;
 }
 export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schema: S.String,
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      filter: S.optional(S.NullOr(S.String)),
+      enabled: S.optional(S.Boolean),
+      filter: S.optional(S.String),
       operations: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemOperations,
       ),
       strictness: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemStrictness,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsItemStrictness,
       ),
-      transformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("transform_jsonata")),
-      ),
+      transformJsonata: S.optional(S.String.pipe(T.Body("transform_jsonata"))),
     }),
   ).annotate({
     identifier:
@@ -159465,13 +158829,13 @@ export interface AccessApplicationsUpdateRequestScimConfigSelfHostedApplication 
   /** The base URI for the application's SCIM-compatible API. */
   remoteUri: string;
   /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
-  authentication?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication | null;
+  authentication?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication;
   /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
-  deactivateOnDelete?: boolean | null;
+  deactivateOnDelete?: boolean;
   /** Whether SCIM provisioning is turned on for this application. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
-  mappings?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList | null;
+  mappings?: AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList;
 }
 export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplication =
   /*@__PURE__*/ S.suspend(() =>
@@ -159479,18 +158843,14 @@ export const AccessApplicationsUpdateRequestScimConfigSelfHostedApplication =
       idpUid: S.String.pipe(T.Body("idp_uid")),
       remoteUri: S.String.pipe(T.Body("remote_uri")),
       authentication: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationAuthentication,
       ),
       deactivateOnDelete: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("deactivate_on_delete")),
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       mappings: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSelfHostedApplicationMappingsList,
       ),
     }),
   ).annotate({
@@ -159629,34 +158989,29 @@ export interface AccessApplicationsUpdateRequestScimConfigSaaSApplicationMapping
   /** Which SCIM resource type this mapping applies to. */
   schema: string;
   /** Whether or not this mapping is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application. */
-  filter?: string | null;
+  filter?: string;
   /** Whether or not this mapping applies to creates, updates, or deletes. */
-  operations?: unknown | null;
+  operations?: unknown;
   /** The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target. */
   strictness?:
     | AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsItemStrictness
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application. */
-  transformJsonata?: string | null;
+  transformJsonata?: string;
 }
 export const AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schema: S.String,
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      filter: S.optional(S.NullOr(S.String)),
-      operations: S.optional(S.NullOr(S.Unknown)),
+      enabled: S.optional(S.Boolean),
+      filter: S.optional(S.String),
+      operations: S.optional(S.Unknown),
       strictness: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsItemStrictness,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsItemStrictness,
       ),
-      transformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("transform_jsonata")),
-      ),
+      transformJsonata: S.optional(S.String.pipe(T.Body("transform_jsonata"))),
     }),
   ).annotate({
     identifier:
@@ -159676,13 +159031,13 @@ export interface AccessApplicationsUpdateRequestScimConfigSaaSApplication {
   /** The base URI for the application's SCIM-compatible API. */
   remoteUri: string;
   /** Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application. */
-  authentication?: AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication | null;
+  authentication?: AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication;
   /** If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations. */
-  deactivateOnDelete?: boolean | null;
+  deactivateOnDelete?: boolean;
   /** Whether SCIM provisioning is turned on for this application. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned. */
-  mappings?: AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList | null;
+  mappings?: AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList;
 }
 export const AccessApplicationsUpdateRequestScimConfigSaaSApplication =
   /*@__PURE__*/ S.suspend(() =>
@@ -159690,18 +159045,14 @@ export const AccessApplicationsUpdateRequestScimConfigSaaSApplication =
       idpUid: S.String.pipe(T.Body("idp_uid")),
       remoteUri: S.String.pipe(T.Body("remote_uri")),
       authentication: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSaaSApplicationAuthentication,
       ),
       deactivateOnDelete: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("deactivate_on_delete")),
+        S.Boolean.pipe(T.Body("deactivate_on_delete")),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       mappings: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList,
-        ),
+        AccessApplicationsUpdateRequestScimConfigSaaSApplicationMappingsList,
       ),
     }),
   ).annotate({
@@ -159760,15 +159111,15 @@ export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpItem {
   /** The UID of the IdP. */
-  idpId?: string | null;
+  idpId?: string;
   /** The name of the IdP provided attribute. */
-  sourceName?: string | null;
+  sourceName?: string;
 }
 export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      idpId: S.optional(S.NullOr(S.String).pipe(T.Body("idp_id"))),
-      sourceName: S.optional(S.NullOr(S.String).pipe(T.Body("source_name"))),
+      idpId: S.optional(S.String.pipe(T.Body("idp_id"))),
+      sourceName: S.optional(S.String.pipe(T.Body("source_name"))),
     }),
   ).annotate({
     identifier:
@@ -159784,18 +159135,18 @@ export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource {
   /** The name of the IdP attribute. */
-  name?: string | null;
+  name?: string;
   /** A mapping from IdP ID to attribute name. */
-  nameByIdp?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList | null;
+  nameByIdp?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList;
 }
 export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       nameByIdp: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList,
-        ).pipe(T.Body("name_by_idp")),
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSourceNameByIdpList.pipe(
+          T.Body("name_by_idp"),
+        ),
       ),
     }),
   ).annotate({
@@ -159805,35 +159156,30 @@ export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesIt
 
 export interface AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItem {
   /** The SAML FriendlyName of the attribute. */
-  friendlyName?: string | null;
+  friendlyName?: string;
   /** The name of the attribute. */
-  name?: string | null;
+  name?: string;
   /** A globally unique name for an identity or service provider. */
   nameFormat?:
     | AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** If the attribute is required when building a SAML assertion. */
-  required?: boolean | null;
-  source?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource | null;
+  required?: boolean;
+  source?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource;
 }
 export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      friendlyName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("friendly_name")),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+      name: S.optional(S.String),
       nameFormat: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat,
-        ).pipe(T.Body("name_format")),
-      ),
-      required: S.optional(S.NullOr(S.Boolean)),
-      source: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource,
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemNameFormat.pipe(
+          T.Body("name_format"),
         ),
+      ),
+      required: S.optional(S.Boolean),
+      source: S.optional(
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesItemSource,
       ),
     }),
   ).annotate({
@@ -159858,65 +159204,63 @@ export interface AccessApplicationsUpdateRequestSaasAppSAMLSaaSApp {
   /** Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is "saml" */
   authType?:
     | AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppAuthType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The service provider's endpoint that is responsible for receiving and parsing a SAML assertion. */
-  consumerServiceUrl?: string | null;
-  customAttributes?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList | null;
+  consumerServiceUrl?: string;
+  customAttributes?: AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList;
   /** The URL that the user will be redirected to after a successful login for IDP initiated logins. */
-  defaultRelayState?: string | null;
+  defaultRelayState?: string;
   /** The unique identifier for your SaaS application. */
-  idpEntityId?: string | null;
+  idpEntityId?: string;
   /** The format of the name identifier sent to the SaaS application. */
   nameIdFormat?:
     | AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppNameIdFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting. */
-  nameIdTransformJsonata?: string | null;
+  nameIdTransformJsonata?: string;
   /** The Access public certificate that will be used to verify your identity. */
-  publicKey?: string | null;
+  publicKey?: string;
   /** A [JSONata] (https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml_attributes or oidc_fields of the identity provider used to authenticate. The output of this expression must be a JSON object. */
-  samlAttributeTransformJsonata?: string | null;
+  samlAttributeTransformJsonata?: string;
   /** A globally unique name for an identity or service provider. */
-  spEntityId?: string | null;
+  spEntityId?: string;
   /** The endpoint where your SaaS application will send login requests. */
-  ssoEndpoint?: string | null;
+  ssoEndpoint?: string;
 }
 export const AccessApplicationsUpdateRequestSaasAppSAMLSaaSApp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authType: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppAuthType,
-        ).pipe(T.Body("auth_type")),
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppAuthType.pipe(
+          T.Body("auth_type"),
+        ),
       ),
       consumerServiceUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("consumer_service_url")),
+        S.String.pipe(T.Body("consumer_service_url")),
       ),
       customAttributes: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList,
-        ).pipe(T.Body("custom_attributes")),
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppCustomAttributesList.pipe(
+          T.Body("custom_attributes"),
+        ),
       ),
       defaultRelayState: S.optional(
-        S.NullOr(S.String).pipe(T.Body("default_relay_state")),
+        S.String.pipe(T.Body("default_relay_state")),
       ),
-      idpEntityId: S.optional(S.NullOr(S.String).pipe(T.Body("idp_entity_id"))),
+      idpEntityId: S.optional(S.String.pipe(T.Body("idp_entity_id"))),
       nameIdFormat: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppNameIdFormat,
-        ).pipe(T.Body("name_id_format")),
+        AccessApplicationsUpdateRequestSaasAppSAMLSaaSAppNameIdFormat.pipe(
+          T.Body("name_id_format"),
+        ),
       ),
       nameIdTransformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("name_id_transform_jsonata")),
+        S.String.pipe(T.Body("name_id_transform_jsonata")),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
       samlAttributeTransformJsonata: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_attribute_transform_jsonata")),
+        S.String.pipe(T.Body("saml_attribute_transform_jsonata")),
       ),
-      spEntityId: S.optional(S.NullOr(S.String).pipe(T.Body("sp_entity_id"))),
-      ssoEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("sso_endpoint"))),
+      spEntityId: S.optional(S.String.pipe(T.Body("sp_entity_id"))),
+      ssoEndpoint: S.optional(S.String.pipe(T.Body("sso_endpoint"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsUpdateRequestSaasAppSAMLSaaSApp",
@@ -159943,18 +159287,18 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSo
 
 export interface AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource {
   /** The name of the IdP claim. */
-  name?: string | null;
+  name?: string;
   /** A mapping from IdP ID to claim name. */
-  nameByIdp?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap | null;
+  nameByIdp?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap;
 }
 export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       nameByIdp: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap,
-        ).pipe(T.Body("name_by_idp")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSourceNameByIdpMap.pipe(
+          T.Body("name_by_idp"),
+        ),
       ),
     }),
   ).annotate({
@@ -159964,30 +159308,25 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSo
 
 export interface AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItem {
   /** The name of the claim. */
-  name?: string | null;
+  name?: string;
   /** If the claim is required when building an OIDC token. */
-  required?: boolean | null;
+  required?: boolean;
   /** The scope of the claim. */
   scope?:
     | AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope
-    | (string & {})
-    | null;
-  source?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource | null;
+    | (string & {});
+  source?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource;
 }
 export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.NullOr(S.String)),
-      required: S.optional(S.NullOr(S.Boolean)),
+      name: S.optional(S.String),
+      required: S.optional(S.Boolean),
       scope: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope,
-        ),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemScope,
       ),
       source: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource,
-        ),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsItemSource,
       ),
     }),
   ).annotate({
@@ -160023,22 +159362,20 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList =
 
 export interface AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions {
   /** If an Access Token should be returned from the OIDC Authorization endpoint */
-  returnAccessTokenFromAuthorizationEndpoint?: boolean | null;
+  returnAccessTokenFromAuthorizationEndpoint?: boolean;
   /** If an ID Token should be returned from the OIDC Authorization endpoint */
-  returnIdTokenFromAuthorizationEndpoint?: boolean | null;
+  returnIdTokenFromAuthorizationEndpoint?: boolean;
 }
 export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       returnAccessTokenFromAuthorizationEndpoint: S.optional(
-        S.NullOr(S.Boolean).pipe(
+        S.Boolean.pipe(
           T.Body("return_access_token_from_authorization_endpoint"),
         ),
       ),
       returnIdTokenFromAuthorizationEndpoint: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("return_id_token_from_authorization_endpoint"),
-        ),
+        S.Boolean.pipe(T.Body("return_id_token_from_authorization_endpoint")),
       ),
     }),
   ).annotate({
@@ -160055,12 +159392,12 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList =
 
 export interface AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions {
   /** How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m. */
-  lifetime?: string | null;
+  lifetime?: string;
 }
 export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      lifetime: S.optional(S.NullOr(S.String)),
+      lifetime: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -160085,86 +159422,79 @@ export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList =
 
 export interface AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp {
   /** The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h. */
-  accessTokenLifetime?: string | null;
+  accessTokenLifetime?: string;
   /** If client secret should be required on the token endpoint when authorization_code_with_pkce grant is used. */
-  allowPkceWithoutClientSecret?: boolean | null;
+  allowPkceWithoutClientSecret?: boolean;
   /** The URL where this applications tile redirects users */
-  appLauncherUrl?: string | null;
+  appLauncherUrl?: string;
   /** Identifier of the authentication protocol used for the saas app. Required for OIDC. */
   authType?:
     | AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppAuthType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The application client id */
-  clientId?: string | null;
+  clientId?: string;
   /** The application client secret, only returned on POST request. */
-  clientSecret?: string | null;
-  customClaims?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList | null;
+  clientSecret?: string;
+  customClaims?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList;
   /** The OIDC flows supported by this application */
-  grantTypes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList | null;
+  grantTypes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList;
   /** A regex to filter Cloudflare groups returned in ID token and userinfo endpoint */
-  groupFilterRegex?: string | null;
-  hybridAndImplicitOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions | null;
+  groupFilterRegex?: string;
+  hybridAndImplicitOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions;
   /** The Access public certificate that will be used to verify your identity. */
-  publicKey?: string | null;
+  publicKey?: string;
   /** The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens */
-  redirectUris?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList | null;
-  refreshTokenOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions | null;
+  redirectUris?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList;
+  refreshTokenOptions?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions;
   /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
-  scopes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList | null;
+  scopes?: AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList;
 }
 export const AccessApplicationsUpdateRequestSaasAppOIDCSaaSApp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessTokenLifetime: S.optional(
-        S.NullOr(S.String).pipe(T.Body("access_token_lifetime")),
+        S.String.pipe(T.Body("access_token_lifetime")),
       ),
       allowPkceWithoutClientSecret: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_pkce_without_client_secret")),
+        S.Boolean.pipe(T.Body("allow_pkce_without_client_secret")),
       ),
-      appLauncherUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_url")),
-      ),
+      appLauncherUrl: S.optional(S.String.pipe(T.Body("app_launcher_url"))),
       authType: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppAuthType,
-        ).pipe(T.Body("auth_type")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppAuthType.pipe(
+          T.Body("auth_type"),
+        ),
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       customClaims: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList,
-        ).pipe(T.Body("custom_claims")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppCustomClaimsList.pipe(
+          T.Body("custom_claims"),
+        ),
       ),
       grantTypes: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList,
-        ).pipe(T.Body("grant_types")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppGrantTypesList.pipe(
+          T.Body("grant_types"),
+        ),
       ),
-      groupFilterRegex: S.optional(
-        S.NullOr(S.String).pipe(T.Body("group_filter_regex")),
-      ),
+      groupFilterRegex: S.optional(S.String.pipe(T.Body("group_filter_regex"))),
       hybridAndImplicitOptions: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions,
-        ).pipe(T.Body("hybrid_and_implicit_options")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppHybridAndImplicitOptions.pipe(
+          T.Body("hybrid_and_implicit_options"),
+        ),
       ),
-      publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
+      publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
       redirectUris: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList,
-        ).pipe(T.Body("redirect_uris")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRedirectUrisList.pipe(
+          T.Body("redirect_uris"),
+        ),
       ),
       refreshTokenOptions: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions,
-        ).pipe(T.Body("refresh_token_options")),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppRefreshTokenOptions.pipe(
+          T.Body("refresh_token_options"),
+        ),
       ),
       scopes: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList),
+        AccessApplicationsUpdateRequestSaasAppOIDCSaaSAppScopesList,
       ),
     }),
   ).annotate({
@@ -160234,26 +159564,24 @@ export const AccessApplicationsUpdateRequestFooterLinksList =
 
 export interface AccessApplicationsUpdateRequestLandingPageDesign {
   /** The background color of the log in button on the landing page. */
-  buttonColor?: string | null;
+  buttonColor?: string;
   /** The color of the text in the log in button on the landing page. */
-  buttonTextColor?: string | null;
+  buttonTextColor?: string;
   /** The URL of the image shown on the landing page. */
-  imageUrl?: string | null;
+  imageUrl?: string;
   /** The message shown on the landing page. */
-  message?: string | null;
+  message?: string;
   /** The title shown on the landing page. */
-  title?: string | null;
+  title?: string;
 }
 export const AccessApplicationsUpdateRequestLandingPageDesign =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      buttonColor: S.optional(S.NullOr(S.String).pipe(T.Body("button_color"))),
-      buttonTextColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("button_text_color")),
-      ),
-      imageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("image_url"))),
-      message: S.optional(S.NullOr(S.String)),
-      title: S.optional(S.NullOr(S.String)),
+      buttonColor: S.optional(S.String.pipe(T.Body("button_color"))),
+      buttonTextColor: S.optional(S.String.pipe(T.Body("button_text_color"))),
+      imageUrl: S.optional(S.String.pipe(T.Body("image_url"))),
+      message: S.optional(S.String),
+      title: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AccessApplicationsUpdateRequestLandingPageDesign",
@@ -160385,213 +159713,193 @@ export interface UpdateAccessApplicationForAccountRequest {
   /** Identifier. */
   appId: string;
   /** The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain?: string | null;
+  domain?: string;
   /** The application type. */
-  type?: AccessApplicationsUpdateRequestType | null;
+  type?: AccessApplicationsUpdateRequestType;
   /** When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: AccessApplicationsUpdateRequestAllowedIdpsList | null;
+  allowedIdps?: AccessApplicationsUpdateRequestAllowedIdpsList;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean | null;
-  corsHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication | null;
+  autoRedirectToIdentity?: boolean;
+  corsHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication;
   /** The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string | null;
+  customDenyMessage?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string | null;
+  customDenyUrl?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string | null;
+  customNonIdentityDenyUrl?: string;
   /** The custom pages that will be displayed when applicable for this application */
-  customPages?: AccessApplicationsUpdateRequestCustomPagesList | null;
+  customPages?: AccessApplicationsUpdateRequestCustomPagesList;
   /** List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  destinations?: AccessApplicationsUpdateRequestDestinationsList | null;
+  destinations?: AccessApplicationsUpdateRequestDestinationsList;
   /** Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior. */
-  eagerRedirectCookieSetting?: boolean | null;
+  eagerRedirectCookieSetting?: boolean;
   /** Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean | null;
+  enableBindingCookie?: boolean;
   /** Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean | null;
+  httpOnlyCookieAttribute?: boolean;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsUpdateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsUpdateRequestMfaConfig;
   /** The name of the application. */
-  name?: string | null;
+  name?: string;
   /** **Beta:** Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. Only compatible with OAuth clients that support [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707) (Resource Indicators for OAuth 2.0). This feature is currently in beta. */
-  oauthConfiguration?: AccessApplicationsUpdateRequestOauthConfiguration | null;
+  oauthConfiguration?: AccessApplicationsUpdateRequestOauthConfiguration;
   /** Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean | null;
+  optionsPreflightBypass?: boolean;
   /** Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean | null;
+  pathCookieAttribute?: boolean;
   /** The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive. */
-  policies?: AccessApplicationsUpdateForAccountRequestPolicies | null;
+  policies?: AccessApplicationsUpdateForAccountRequestPolicies;
   /** Allows matching Access Service Tokens passed HTTP in a single header with this name. */
-  readServiceTokensFromHeader?: string | null;
+  readServiceTokensFromHeader?: string;
   /** Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string | null;
+  sameSiteCookieAttribute?: string;
   /** Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: AccessApplicationsUpdateRequestScimConfig | null;
+  scimConfig?: AccessApplicationsUpdateRequestScimConfig;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList | null;
+  selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  service_auth_401_redirect?: boolean | null;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: AccessApplicationsUpdateRequestTagsList | null;
+  tags?: AccessApplicationsUpdateRequestTagsList;
   /** Determines if users can access this application via a clientless browser isolation URL. */
-  useClientlessIsolationAppLauncherUrl?: boolean | null;
-  saasApp?: AccessApplicationsUpdateRequestSaasApp | null;
+  useClientlessIsolationAppLauncherUrl?: boolean;
+  saasApp?: AccessApplicationsUpdateRequestSaasApp;
   /** The image URL of the logo shown in the App Launcher header. */
-  appLauncherLogoUrl?: string | null;
+  appLauncherLogoUrl?: string;
   /** The background color of the App Launcher page. */
-  bgColor?: string | null;
+  bgColor?: string;
   /** The links in the App Launcher footer. */
-  footerLinks?: AccessApplicationsUpdateRequestFooterLinksList | null;
+  footerLinks?: AccessApplicationsUpdateRequestFooterLinksList;
   /** The background color of the App Launcher header. */
-  headerBgColor?: string | null;
+  headerBgColor?: string;
   /** The design of the App Launcher landing page shown to users when they log in. */
-  landingPageDesign?: AccessApplicationsUpdateRequestLandingPageDesign | null;
+  landingPageDesign?: AccessApplicationsUpdateRequestLandingPageDesign;
   /** Determines when to skip the App Launcher landing page. */
-  skipAppLauncherLoginPage?: boolean | null;
-  targetCriteria?: AccessApplicationsUpdateRequestTargetCriteria | null;
+  skipAppLauncherLoginPage?: boolean;
+  targetCriteria?: AccessApplicationsUpdateRequestTargetCriteria;
 }
 export const UpdateAccessApplicationForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      domain: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(AccessApplicationsUpdateRequestType)),
+      domain: S.optional(S.String),
+      type: S.optional(AccessApplicationsUpdateRequestType),
       allowAuthenticateViaWarp: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+        S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
       ),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       allowedIdps: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestAllowedIdpsList).pipe(
+        AccessApplicationsUpdateRequestAllowedIdpsList.pipe(
           T.Body("allowed_idps"),
         ),
       ),
       appLauncherVisible: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+        S.Boolean.pipe(T.Body("app_launcher_visible")),
       ),
       autoRedirectToIdentity: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+        S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
       ),
       corsHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication,
-        ).pipe(T.Body("cors_headers")),
+        AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication.pipe(
+          T.Body("cors_headers"),
+        ),
       ),
       customDenyMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_message")),
+        S.String.pipe(T.Body("custom_deny_message")),
       ),
-      customDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_url")),
-      ),
+      customDenyUrl: S.optional(S.String.pipe(T.Body("custom_deny_url"))),
       customNonIdentityDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_non_identity_deny_url")),
+        S.String.pipe(T.Body("custom_non_identity_deny_url")),
       ),
       customPages: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestCustomPagesList).pipe(
+        AccessApplicationsUpdateRequestCustomPagesList.pipe(
           T.Body("custom_pages"),
         ),
       ),
-      destinations: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestDestinationsList),
-      ),
+      destinations: S.optional(AccessApplicationsUpdateRequestDestinationsList),
       eagerRedirectCookieSetting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("eager_redirect_cookie_setting")),
+        S.Boolean.pipe(T.Body("eager_redirect_cookie_setting")),
       ),
       enableBindingCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_binding_cookie")),
+        S.Boolean.pipe(T.Body("enable_binding_cookie")),
       ),
       httpOnlyCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("http_only_cookie_attribute")),
+        S.Boolean.pipe(T.Body("http_only_cookie_attribute")),
       ),
-      logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
+      logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestMfaConfig).pipe(
-          T.Body("mfa_config"),
-        ),
+        AccessApplicationsUpdateRequestMfaConfig.pipe(T.Body("mfa_config")),
       ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       oauthConfiguration: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestOauthConfiguration).pipe(
+        AccessApplicationsUpdateRequestOauthConfiguration.pipe(
           T.Body("oauth_configuration"),
         ),
       ),
       optionsPreflightBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("options_preflight_bypass")),
+        S.Boolean.pipe(T.Body("options_preflight_bypass")),
       ),
       pathCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("path_cookie_attribute")),
+        S.Boolean.pipe(T.Body("path_cookie_attribute")),
       ),
-      policies: S.optional(
-        S.NullOr(AccessApplicationsUpdateForAccountRequestPolicies),
-      ),
+      policies: S.optional(AccessApplicationsUpdateForAccountRequestPolicies),
       readServiceTokensFromHeader: S.optional(
-        S.NullOr(S.String).pipe(T.Body("read_service_tokens_from_header")),
+        S.String.pipe(T.Body("read_service_tokens_from_header")),
       ),
       sameSiteCookieAttribute: S.optional(
-        S.NullOr(S.String).pipe(T.Body("same_site_cookie_attribute")),
+        S.String.pipe(T.Body("same_site_cookie_attribute")),
       ),
       scimConfig: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestScimConfig).pipe(
-          T.Body("scim_config"),
-        ),
+        AccessApplicationsUpdateRequestScimConfig.pipe(T.Body("scim_config")),
       ),
       selfHostedDomains: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestSelfHostedDomainsList).pipe(
+        AccessApplicationsUpdateRequestSelfHostedDomainsList.pipe(
           T.Body("self_hosted_domains"),
         ),
       ),
-      service_auth_401_redirect: S.optional(S.NullOr(S.Boolean)),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
-      tags: S.optional(S.NullOr(AccessApplicationsUpdateRequestTagsList)),
+      service_auth_401_redirect: S.optional(S.Boolean),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
+      tags: S.optional(AccessApplicationsUpdateRequestTagsList),
       useClientlessIsolationAppLauncherUrl: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("use_clientless_isolation_app_launcher_url"),
-        ),
+        S.Boolean.pipe(T.Body("use_clientless_isolation_app_launcher_url")),
       ),
       saasApp: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestSaasApp).pipe(
-          T.Body("saas_app"),
-        ),
+        AccessApplicationsUpdateRequestSaasApp.pipe(T.Body("saas_app")),
       ),
       appLauncherLogoUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_logo_url")),
+        S.String.pipe(T.Body("app_launcher_logo_url")),
       ),
-      bgColor: S.optional(S.NullOr(S.String).pipe(T.Body("bg_color"))),
+      bgColor: S.optional(S.String.pipe(T.Body("bg_color"))),
       footerLinks: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestFooterLinksList).pipe(
+        AccessApplicationsUpdateRequestFooterLinksList.pipe(
           T.Body("footer_links"),
         ),
       ),
-      headerBgColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("header_bg_color")),
-      ),
+      headerBgColor: S.optional(S.String.pipe(T.Body("header_bg_color"))),
       landingPageDesign: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestLandingPageDesign).pipe(
+        AccessApplicationsUpdateRequestLandingPageDesign.pipe(
           T.Body("landing_page_design"),
         ),
       ),
       skipAppLauncherLoginPage: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_app_launcher_login_page")),
+        S.Boolean.pipe(T.Body("skip_app_launcher_login_page")),
       ),
       targetCriteria: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestTargetCriteria).pipe(
+        AccessApplicationsUpdateRequestTargetCriteria.pipe(
           T.Body("target_criteria"),
         ),
       ),
@@ -180225,213 +179533,193 @@ export interface UpdateAccessApplicationForZoneRequest {
   /** Identifier. */
   appId: string;
   /** The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain?: string | null;
+  domain?: string;
   /** The application type. */
-  type?: AccessApplicationsUpdateRequestType | null;
+  type?: AccessApplicationsUpdateRequestType;
   /** When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** Enables loading application content in an iFrame. */
-  allowIframe?: boolean | null;
+  allowIframe?: boolean;
   /** The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: AccessApplicationsUpdateRequestAllowedIdpsList | null;
+  allowedIdps?: AccessApplicationsUpdateRequestAllowedIdpsList;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean | null;
-  corsHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication | null;
+  autoRedirectToIdentity?: boolean;
+  corsHeaders?: AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication;
   /** The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string | null;
+  customDenyMessage?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string | null;
+  customDenyUrl?: string;
   /** The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string | null;
+  customNonIdentityDenyUrl?: string;
   /** The custom pages that will be displayed when applicable for this application */
-  customPages?: AccessApplicationsUpdateRequestCustomPagesList | null;
+  customPages?: AccessApplicationsUpdateRequestCustomPagesList;
   /** List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  destinations?: AccessApplicationsUpdateRequestDestinationsList | null;
+  destinations?: AccessApplicationsUpdateRequestDestinationsList;
   /** Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior. */
-  eagerRedirectCookieSetting?: boolean | null;
+  eagerRedirectCookieSetting?: boolean;
   /** Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean | null;
+  enableBindingCookie?: boolean;
   /** Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean | null;
+  httpOnlyCookieAttribute?: boolean;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsUpdateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsUpdateRequestMfaConfig;
   /** The name of the application. */
-  name?: string | null;
+  name?: string;
   /** **Beta:** Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. Only compatible with OAuth clients that support [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707) (Resource Indicators for OAuth 2.0). This feature is currently in beta. */
-  oauthConfiguration?: AccessApplicationsUpdateRequestOauthConfiguration | null;
+  oauthConfiguration?: AccessApplicationsUpdateRequestOauthConfiguration;
   /** Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean | null;
+  optionsPreflightBypass?: boolean;
   /** Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean | null;
+  pathCookieAttribute?: boolean;
   /** The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. Reusable and inline policies are mutually exclusive. */
-  policies?: AccessApplicationsUpdateForZoneRequestPolicies | null;
+  policies?: AccessApplicationsUpdateForZoneRequestPolicies;
   /** Allows matching Access Service Tokens passed HTTP in a single header with this name. */
-  readServiceTokensFromHeader?: string | null;
+  readServiceTokensFromHeader?: string;
   /** Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string | null;
+  sameSiteCookieAttribute?: string;
   /** Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: AccessApplicationsUpdateRequestScimConfig | null;
+  scimConfig?: AccessApplicationsUpdateRequestScimConfig;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored. */
-  selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList | null;
+  selfHostedDomains?: AccessApplicationsUpdateRequestSelfHostedDomainsList;
   /** Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  service_auth_401_redirect?: boolean | null;
+  service_auth_401_redirect?: boolean;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean | null;
+  skipInterstitial?: boolean;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: AccessApplicationsUpdateRequestTagsList | null;
+  tags?: AccessApplicationsUpdateRequestTagsList;
   /** Determines if users can access this application via a clientless browser isolation URL. */
-  useClientlessIsolationAppLauncherUrl?: boolean | null;
-  saasApp?: AccessApplicationsUpdateRequestSaasApp | null;
+  useClientlessIsolationAppLauncherUrl?: boolean;
+  saasApp?: AccessApplicationsUpdateRequestSaasApp;
   /** The image URL of the logo shown in the App Launcher header. */
-  appLauncherLogoUrl?: string | null;
+  appLauncherLogoUrl?: string;
   /** The background color of the App Launcher page. */
-  bgColor?: string | null;
+  bgColor?: string;
   /** The links in the App Launcher footer. */
-  footerLinks?: AccessApplicationsUpdateRequestFooterLinksList | null;
+  footerLinks?: AccessApplicationsUpdateRequestFooterLinksList;
   /** The background color of the App Launcher header. */
-  headerBgColor?: string | null;
+  headerBgColor?: string;
   /** The design of the App Launcher landing page shown to users when they log in. */
-  landingPageDesign?: AccessApplicationsUpdateRequestLandingPageDesign | null;
+  landingPageDesign?: AccessApplicationsUpdateRequestLandingPageDesign;
   /** Determines when to skip the App Launcher landing page. */
-  skipAppLauncherLoginPage?: boolean | null;
-  targetCriteria?: AccessApplicationsUpdateRequestTargetCriteria | null;
+  skipAppLauncherLoginPage?: boolean;
+  targetCriteria?: AccessApplicationsUpdateRequestTargetCriteria;
 }
 export const UpdateAccessApplicationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      domain: S.optional(S.NullOr(S.String)),
-      type: S.optional(S.NullOr(AccessApplicationsUpdateRequestType)),
+      domain: S.optional(S.String),
+      type: S.optional(AccessApplicationsUpdateRequestType),
       allowAuthenticateViaWarp: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+        S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
       ),
-      allowIframe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_iframe"))),
+      allowIframe: S.optional(S.Boolean.pipe(T.Body("allow_iframe"))),
       allowedIdps: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestAllowedIdpsList).pipe(
+        AccessApplicationsUpdateRequestAllowedIdpsList.pipe(
           T.Body("allowed_idps"),
         ),
       ),
       appLauncherVisible: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+        S.Boolean.pipe(T.Body("app_launcher_visible")),
       ),
       autoRedirectToIdentity: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+        S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
       ),
       corsHeaders: S.optional(
-        S.NullOr(
-          AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication,
-        ).pipe(T.Body("cors_headers")),
+        AccessApplicationsUpdateRequestCorsHeadersSelfHostedApplication.pipe(
+          T.Body("cors_headers"),
+        ),
       ),
       customDenyMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_message")),
+        S.String.pipe(T.Body("custom_deny_message")),
       ),
-      customDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_deny_url")),
-      ),
+      customDenyUrl: S.optional(S.String.pipe(T.Body("custom_deny_url"))),
       customNonIdentityDenyUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("custom_non_identity_deny_url")),
+        S.String.pipe(T.Body("custom_non_identity_deny_url")),
       ),
       customPages: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestCustomPagesList).pipe(
+        AccessApplicationsUpdateRequestCustomPagesList.pipe(
           T.Body("custom_pages"),
         ),
       ),
-      destinations: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestDestinationsList),
-      ),
+      destinations: S.optional(AccessApplicationsUpdateRequestDestinationsList),
       eagerRedirectCookieSetting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("eager_redirect_cookie_setting")),
+        S.Boolean.pipe(T.Body("eager_redirect_cookie_setting")),
       ),
       enableBindingCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_binding_cookie")),
+        S.Boolean.pipe(T.Body("enable_binding_cookie")),
       ),
       httpOnlyCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("http_only_cookie_attribute")),
+        S.Boolean.pipe(T.Body("http_only_cookie_attribute")),
       ),
-      logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
+      logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestMfaConfig).pipe(
-          T.Body("mfa_config"),
-        ),
+        AccessApplicationsUpdateRequestMfaConfig.pipe(T.Body("mfa_config")),
       ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       oauthConfiguration: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestOauthConfiguration).pipe(
+        AccessApplicationsUpdateRequestOauthConfiguration.pipe(
           T.Body("oauth_configuration"),
         ),
       ),
       optionsPreflightBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("options_preflight_bypass")),
+        S.Boolean.pipe(T.Body("options_preflight_bypass")),
       ),
       pathCookieAttribute: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("path_cookie_attribute")),
+        S.Boolean.pipe(T.Body("path_cookie_attribute")),
       ),
-      policies: S.optional(
-        S.NullOr(AccessApplicationsUpdateForZoneRequestPolicies),
-      ),
+      policies: S.optional(AccessApplicationsUpdateForZoneRequestPolicies),
       readServiceTokensFromHeader: S.optional(
-        S.NullOr(S.String).pipe(T.Body("read_service_tokens_from_header")),
+        S.String.pipe(T.Body("read_service_tokens_from_header")),
       ),
       sameSiteCookieAttribute: S.optional(
-        S.NullOr(S.String).pipe(T.Body("same_site_cookie_attribute")),
+        S.String.pipe(T.Body("same_site_cookie_attribute")),
       ),
       scimConfig: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestScimConfig).pipe(
-          T.Body("scim_config"),
-        ),
+        AccessApplicationsUpdateRequestScimConfig.pipe(T.Body("scim_config")),
       ),
       selfHostedDomains: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestSelfHostedDomainsList).pipe(
+        AccessApplicationsUpdateRequestSelfHostedDomainsList.pipe(
           T.Body("self_hosted_domains"),
         ),
       ),
-      service_auth_401_redirect: S.optional(S.NullOr(S.Boolean)),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
-      skipInterstitial: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_interstitial")),
-      ),
-      tags: S.optional(S.NullOr(AccessApplicationsUpdateRequestTagsList)),
+      service_auth_401_redirect: S.optional(S.Boolean),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
+      skipInterstitial: S.optional(S.Boolean.pipe(T.Body("skip_interstitial"))),
+      tags: S.optional(AccessApplicationsUpdateRequestTagsList),
       useClientlessIsolationAppLauncherUrl: S.optional(
-        S.NullOr(S.Boolean).pipe(
-          T.Body("use_clientless_isolation_app_launcher_url"),
-        ),
+        S.Boolean.pipe(T.Body("use_clientless_isolation_app_launcher_url")),
       ),
       saasApp: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestSaasApp).pipe(
-          T.Body("saas_app"),
-        ),
+        AccessApplicationsUpdateRequestSaasApp.pipe(T.Body("saas_app")),
       ),
       appLauncherLogoUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("app_launcher_logo_url")),
+        S.String.pipe(T.Body("app_launcher_logo_url")),
       ),
-      bgColor: S.optional(S.NullOr(S.String).pipe(T.Body("bg_color"))),
+      bgColor: S.optional(S.String.pipe(T.Body("bg_color"))),
       footerLinks: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestFooterLinksList).pipe(
+        AccessApplicationsUpdateRequestFooterLinksList.pipe(
           T.Body("footer_links"),
         ),
       ),
-      headerBgColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("header_bg_color")),
-      ),
+      headerBgColor: S.optional(S.String.pipe(T.Body("header_bg_color"))),
       landingPageDesign: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestLandingPageDesign).pipe(
+        AccessApplicationsUpdateRequestLandingPageDesign.pipe(
           T.Body("landing_page_design"),
         ),
       ),
       skipAppLauncherLoginPage: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("skip_app_launcher_login_page")),
+        S.Boolean.pipe(T.Body("skip_app_launcher_login_page")),
       ),
       targetCriteria: S.optional(
-        S.NullOr(AccessApplicationsUpdateRequestTargetCriteria).pipe(
+        AccessApplicationsUpdateRequestTargetCriteria.pipe(
           T.Body("target_criteria"),
         ),
       ),
@@ -180459,22 +179747,20 @@ export interface AccessApplicationsPoliciesUpdateRequestApprovalGroupsItem {
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessApplicationsPoliciesUpdateRequestApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessApplicationsPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsPoliciesUpdateRequestApprovalGroupsItem",
@@ -180519,22 +179805,22 @@ export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedCli
 
 export interface AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessApplicationsPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -180543,13 +179829,13 @@ export const AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp =
 
 export interface AccessApplicationsPoliciesUpdateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp | null;
+  rdp?: AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp;
 }
 export const AccessApplicationsPoliciesUpdateRequestConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       rdp: S.optional(
-        S.NullOr(AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp),
+        AccessApplicationsPoliciesUpdateRequestConnectionRulesRdp,
       ),
     }),
   ).annotate({
@@ -180573,24 +179859,22 @@ export const AccessApplicationsPoliciesUpdateRequestMfaConfigAllowedAuthenticato
 
 export interface AccessApplicationsPoliciesUpdateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessApplicationsPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessApplicationsPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessApplicationsPoliciesUpdateRequestMfaConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessApplicationsPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
   ).annotate({
     identifier: "AccessApplicationsPoliciesUpdateRequestMfaConfig",
@@ -180604,23 +179888,23 @@ export interface UpdateAccessApplicationPolicyForAccountRequest {
   /** UUID. */
   policyId: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsPoliciesUpdateRequestConnectionRules | null;
+  connectionRules?: AccessApplicationsPoliciesUpdateRequestConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsPoliciesUpdateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsPoliciesUpdateRequestMfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const UpdateAccessApplicationPolicyForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -180629,36 +179913,32 @@ export const UpdateAccessApplicationPolicyForAccountRequest =
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsPoliciesUpdateRequestApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(AccessApplicationsPoliciesUpdateRequestConnectionRules).pipe(
+        AccessApplicationsPoliciesUpdateRequestConnectionRules.pipe(
           T.Body("connection_rules"),
         ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsPoliciesUpdateRequestMfaConfig).pipe(
+        AccessApplicationsPoliciesUpdateRequestMfaConfig.pipe(
           T.Body("mfa_config"),
         ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     })
       .pipe(
         T.Http({
@@ -182220,23 +181500,23 @@ export interface UpdateAccessApplicationPolicyForZoneRequest {
   /** UUID. */
   policyId: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessApplicationsPoliciesUpdateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessApplicationsPoliciesUpdateRequestConnectionRules | null;
+  connectionRules?: AccessApplicationsPoliciesUpdateRequestConnectionRules;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessApplicationsPoliciesUpdateRequestMfaConfig | null;
+  mfaConfig?: AccessApplicationsPoliciesUpdateRequestMfaConfig;
   /** The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number | null;
+  precedence?: number;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const UpdateAccessApplicationPolicyForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -182245,36 +181525,32 @@ export const UpdateAccessApplicationPolicyForZoneRequest =
       appId: S.String.pipe(T.Label("app_id")),
       policyId: S.String.pipe(T.Label("policy_id")),
       approvalGroups: S.optional(
-        S.NullOr(
-          AccessApplicationsPoliciesUpdateRequestApprovalGroupsList,
-        ).pipe(T.Body("approval_groups")),
+        AccessApplicationsPoliciesUpdateRequestApprovalGroupsList.pipe(
+          T.Body("approval_groups"),
+        ),
       ),
-      approvalRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-      ),
+      approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
       connectionRules: S.optional(
-        S.NullOr(AccessApplicationsPoliciesUpdateRequestConnectionRules).pipe(
+        AccessApplicationsPoliciesUpdateRequestConnectionRules.pipe(
           T.Body("connection_rules"),
         ),
       ),
       isolationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
+        S.Boolean.pipe(T.Body("isolation_required")),
       ),
       mfaConfig: S.optional(
-        S.NullOr(AccessApplicationsPoliciesUpdateRequestMfaConfig).pipe(
+        AccessApplicationsPoliciesUpdateRequestMfaConfig.pipe(
           T.Body("mfa_config"),
         ),
       ),
-      precedence: S.optional(S.NullOr(S.Number)),
+      precedence: S.optional(S.Number),
       purposeJustificationPrompt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+        S.String.pipe(T.Body("purpose_justification_prompt")),
       ),
       purposeJustificationRequired: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+        S.Boolean.pipe(T.Body("purpose_justification_required")),
       ),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     })
       .pipe(
         T.Http({
@@ -182293,24 +181569,24 @@ export interface UpdateAccessBookmarkRequest {
   /** UUID. */
   bookmarkId: string;
   /** Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean | null;
+  appLauncherVisible?: boolean;
   /** The domain of the Bookmark application. */
-  domain?: string | null;
+  domain?: string;
   /** The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string | null;
+  logoUrl?: string;
   /** The name of the Bookmark application. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateAccessBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bookmarkId: S.String.pipe(T.Label("bookmark_id")),
     appLauncherVisible: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("app_launcher_visible")),
+      S.Boolean.pipe(T.Body("app_launcher_visible")),
     ),
-    domain: S.optional(S.NullOr(S.String)),
-    logoUrl: S.optional(S.NullOr(S.String).pipe(T.Body("logo_url"))),
-    name: S.optional(S.NullOr(S.String)),
+    domain: S.optional(S.String),
+    logoUrl: S.optional(S.String.pipe(T.Body("logo_url"))),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -182366,7 +181642,7 @@ export interface UpdateAccessCertificateForAccountRequest {
   /** The hostnames of the applications that will use this certificate. */
   associatedHostnames: AccessCertificatesUpdateRequestAssociatedHostnamesList;
   /** The name of the certificate. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -182377,7 +181653,7 @@ export const UpdateAccessCertificateForAccountRequest = /*@__PURE__*/ S.suspend(
         AccessCertificatesUpdateRequestAssociatedHostnamesList.pipe(
           T.Body("associated_hostnames"),
         ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -182434,7 +181710,7 @@ export interface UpdateAccessCertificateForZoneRequest {
   /** The hostnames of the applications that will use this certificate. */
   associatedHostnames: AccessCertificatesUpdateRequestAssociatedHostnamesList;
   /** The name of the certificate. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -182445,7 +181721,7 @@ export const UpdateAccessCertificateForZoneRequest = /*@__PURE__*/ S.suspend(
         AccessCertificatesUpdateRequestAssociatedHostnamesList.pipe(
           T.Body("associated_hostnames"),
         ),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -182877,14 +182153,14 @@ export interface AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithu
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -183212,12 +182488,12 @@ export const AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule =
 
 export interface AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -183759,11 +183035,11 @@ export interface UpdateAccessGroupForAccountRequest {
   /** The name of the Access group. */
   name: string;
   /** Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessGroupsUpdateRequestExcludeList | null;
+  exclude?: AccessGroupsUpdateRequestExcludeList;
   /** Whether this is the default group */
-  isDefault?: boolean | null;
+  isDefault?: boolean;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: AccessGroupsUpdateRequestRequireList | null;
+  require?: AccessGroupsUpdateRequestRequireList;
 }
 export const UpdateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -183771,9 +183047,9 @@ export const UpdateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     groupId: S.String.pipe(T.Label("group_id")),
     include: AccessGroupsUpdateRequestIncludeList,
     name: S.String,
-    exclude: S.optional(S.NullOr(AccessGroupsUpdateRequestExcludeList)),
-    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-    require: S.optional(S.NullOr(AccessGroupsUpdateRequestRequireList)),
+    exclude: S.optional(AccessGroupsUpdateRequestExcludeList),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    require: S.optional(AccessGroupsUpdateRequestRequireList),
   })
     .pipe(
       T.Http({
@@ -185051,11 +184327,11 @@ export interface UpdateAccessGroupForZoneRequest {
   /** The name of the Access group. */
   name: string;
   /** Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessGroupsUpdateRequestExcludeList | null;
+  exclude?: AccessGroupsUpdateRequestExcludeList;
   /** Whether this is the default group */
-  isDefault?: boolean | null;
+  isDefault?: boolean;
   /** Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: AccessGroupsUpdateRequestRequireList | null;
+  require?: AccessGroupsUpdateRequestRequireList;
 }
 export const UpdateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -185063,9 +184339,9 @@ export const UpdateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     groupId: S.String.pipe(T.Label("group_id")),
     include: AccessGroupsUpdateRequestIncludeList,
     name: S.String,
-    exclude: S.optional(S.NullOr(AccessGroupsUpdateRequestExcludeList)),
-    isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
-    require: S.optional(S.NullOr(AccessGroupsUpdateRequestRequireList)),
+    exclude: S.optional(AccessGroupsUpdateRequestExcludeList),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    require: S.optional(AccessGroupsUpdateRequestRequireList),
   })
     .pipe(
       T.Http({
@@ -185081,17 +184357,15 @@ export const UpdateAccessGroupForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AccessInfrastructureTargetsUpdateRequestIpIpv4 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsUpdateRequestIpIpv4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsUpdateRequestIpIpv4",
@@ -185099,17 +184373,15 @@ export const AccessInfrastructureTargetsUpdateRequestIpIpv4 =
 
 export interface AccessInfrastructureTargetsUpdateRequestIpIpv6 {
   /** IP address of the target */
-  ipAddr?: string | null;
+  ipAddr?: string;
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
-  virtualNetworkId?: string | null;
+  virtualNetworkId?: string;
 }
 export const AccessInfrastructureTargetsUpdateRequestIpIpv6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipAddr: S.optional(S.NullOr(S.String).pipe(T.Body("ip_addr"))),
-      virtualNetworkId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_network_id")),
-      ),
+      ipAddr: S.optional(S.String.pipe(T.Body("ip_addr"))),
+      virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsUpdateRequestIpIpv6",
@@ -185117,19 +184389,15 @@ export const AccessInfrastructureTargetsUpdateRequestIpIpv6 =
 
 export interface AccessInfrastructureTargetsUpdateRequestIp {
   /** The target's IPv4 address */
-  ipv4?: AccessInfrastructureTargetsUpdateRequestIpIpv4 | null;
+  ipv4?: AccessInfrastructureTargetsUpdateRequestIpIpv4;
   /** The target's IPv6 address */
-  ipv6?: AccessInfrastructureTargetsUpdateRequestIpIpv6 | null;
+  ipv6?: AccessInfrastructureTargetsUpdateRequestIpIpv6;
 }
 export const AccessInfrastructureTargetsUpdateRequestIp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipv4: S.optional(
-        S.NullOr(AccessInfrastructureTargetsUpdateRequestIpIpv4),
-      ),
-      ipv6: S.optional(
-        S.NullOr(AccessInfrastructureTargetsUpdateRequestIpIpv6),
-      ),
+      ipv4: S.optional(AccessInfrastructureTargetsUpdateRequestIpIpv4),
+      ipv6: S.optional(AccessInfrastructureTargetsUpdateRequestIpIpv6),
     }),
   ).annotate({
     identifier: "AccessInfrastructureTargetsUpdateRequestIp",
@@ -185613,14 +184881,14 @@ export interface AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGit
   /** The name of the organization. */
   name: string;
   /** The name of the team */
-  team?: string | null;
+  team?: string;
 }
 export const AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
       name: S.String,
-      team: S.optional(S.NullOr(S.String)),
+      team: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -185949,12 +185217,12 @@ export const AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule =
 
 export interface AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
   /** Identifier. */
-  accountId?: string | null;
+  accountId?: string;
 }
 export const AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     }),
   ).annotate({
     identifier:
@@ -186053,22 +185321,20 @@ export interface AccessPoliciesUpdateRequestApprovalGroupsItem {
   /** The number of approvals needed to obtain access. */
   approvalsNeeded: number;
   /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList | null;
+  emailAddresses?: AccessPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList;
   /** The UUID of an re-usable email list. */
-  emailListUuid?: string | null;
+  emailListUuid?: string;
 }
 export const AccessPoliciesUpdateRequestApprovalGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
       emailAddresses: S.optional(
-        S.NullOr(
-          AccessPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList,
-        ).pipe(T.Body("email_addresses")),
+        AccessPoliciesUpdateRequestApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
       ),
-      emailListUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_list_uuid")),
-      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
     }),
   ).annotate({
     identifier: "AccessPoliciesUpdateRequestApprovalGroupsItem",
@@ -186113,22 +185379,22 @@ export const AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemote
 
 export interface AccessPoliciesUpdateRequestConnectionRulesRdp {
   /** Clipboard formats allowed when copying from local machine to remote RDP session. */
-  allowedClipboardLocalToRemoteFormats?: AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList | null;
+  allowedClipboardLocalToRemoteFormats?: AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList;
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
-  allowedClipboardRemoteToLocalFormats?: AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
+  allowedClipboardRemoteToLocalFormats?: AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList;
 }
 export const AccessPoliciesUpdateRequestConnectionRulesRdp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedClipboardLocalToRemoteFormats: S.optional(
-        S.NullOr(
-          AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList,
-        ).pipe(T.Body("allowed_clipboard_local_to_remote_formats")),
+        AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsList.pipe(
+          T.Body("allowed_clipboard_local_to_remote_formats"),
+        ),
       ),
       allowedClipboardRemoteToLocalFormats: S.optional(
-        S.NullOr(
-          AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList,
-        ).pipe(T.Body("allowed_clipboard_remote_to_local_formats")),
+        AccessPoliciesUpdateRequestConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList.pipe(
+          T.Body("allowed_clipboard_remote_to_local_formats"),
+        ),
       ),
     }),
   ).annotate({
@@ -186137,12 +185403,12 @@ export const AccessPoliciesUpdateRequestConnectionRulesRdp =
 
 export interface AccessPoliciesUpdateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
-  rdp?: AccessPoliciesUpdateRequestConnectionRulesRdp | null;
+  rdp?: AccessPoliciesUpdateRequestConnectionRulesRdp;
 }
 export const AccessPoliciesUpdateRequestConnectionRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rdp: S.optional(S.NullOr(AccessPoliciesUpdateRequestConnectionRulesRdp)),
+      rdp: S.optional(AccessPoliciesUpdateRequestConnectionRulesRdp),
     }),
   ).annotate({
     identifier: "AccessPoliciesUpdateRequestConnectionRules",
@@ -186392,24 +185658,22 @@ export const AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface AccessPoliciesUpdateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList;
   /** Indicates whether to disable MFA for this resource. This option is available at the application and policy level. */
-  mfaDisabled?: boolean | null;
+  mfaDisabled?: boolean;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const AccessPoliciesUpdateRequestMfaConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       allowedAuthenticators: S.optional(
-        S.NullOr(
-          AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList,
-        ).pipe(T.Body("allowed_authenticators")),
+        AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+          T.Body("allowed_authenticators"),
+        ),
       ),
-      mfaDisabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("mfa_disabled"))),
-      sessionDuration: S.optional(
-        S.NullOr(S.String).pipe(T.Body("session_duration")),
-      ),
+      mfaDisabled: S.optional(S.Boolean.pipe(T.Body("mfa_disabled"))),
+      sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     }),
 ).annotate({
   identifier: "AccessPoliciesUpdateRequestMfaConfig",
@@ -186652,25 +185916,25 @@ export interface UpdateAccessPolicyRequest {
   /** The name of the Access policy. */
   name: string;
   /** Administrators who can approve a temporary authentication request. */
-  approvalGroups?: AccessPoliciesUpdateRequestApprovalGroupsList | null;
+  approvalGroups?: AccessPoliciesUpdateRequestApprovalGroupsList;
   /** Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean | null;
+  approvalRequired?: boolean;
   /** The rules that define how users may connect to targets secured by your application. */
-  connectionRules?: AccessPoliciesUpdateRequestConnectionRules | null;
+  connectionRules?: AccessPoliciesUpdateRequestConnectionRules;
   /** Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules. */
-  exclude?: AccessPoliciesUpdateRequestExcludeList | null;
+  exclude?: AccessPoliciesUpdateRequestExcludeList;
   /** Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean | null;
+  isolationRequired?: boolean;
   /** Configures multi-factor authentication (MFA) settings. */
-  mfaConfig?: AccessPoliciesUpdateRequestMfaConfig | null;
+  mfaConfig?: AccessPoliciesUpdateRequestMfaConfig;
   /** A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string | null;
+  purposeJustificationPrompt?: string;
   /** Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean | null;
+  purposeJustificationRequired?: boolean;
   /** Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules. */
-  require?: AccessPoliciesUpdateRequestRequireList | null;
+  require?: AccessPoliciesUpdateRequestRequireList;
   /** The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -186680,35 +185944,29 @@ export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     include: AccessPoliciesUpdateRequestIncludeList,
     name: S.String,
     approvalGroups: S.optional(
-      S.NullOr(AccessPoliciesUpdateRequestApprovalGroupsList).pipe(
+      AccessPoliciesUpdateRequestApprovalGroupsList.pipe(
         T.Body("approval_groups"),
       ),
     ),
-    approvalRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("approval_required")),
-    ),
+    approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
     connectionRules: S.optional(
-      S.NullOr(AccessPoliciesUpdateRequestConnectionRules).pipe(
+      AccessPoliciesUpdateRequestConnectionRules.pipe(
         T.Body("connection_rules"),
       ),
     ),
-    exclude: S.optional(S.NullOr(AccessPoliciesUpdateRequestExcludeList)),
-    isolationRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("isolation_required")),
-    ),
+    exclude: S.optional(AccessPoliciesUpdateRequestExcludeList),
+    isolationRequired: S.optional(S.Boolean.pipe(T.Body("isolation_required"))),
     mfaConfig: S.optional(
-      S.NullOr(AccessPoliciesUpdateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      AccessPoliciesUpdateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     purposeJustificationPrompt: S.optional(
-      S.NullOr(S.String).pipe(T.Body("purpose_justification_prompt")),
+      S.String.pipe(T.Body("purpose_justification_prompt")),
     ),
     purposeJustificationRequired: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("purpose_justification_required")),
+      S.Boolean.pipe(T.Body("purpose_justification_required")),
     ),
-    require: S.optional(S.NullOr(AccessPoliciesUpdateRequestRequireList)),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    require: S.optional(AccessPoliciesUpdateRequestRequireList),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
   })
     .pipe(
       T.Http({
@@ -188199,13 +187457,13 @@ export interface UpdateAccessServiceTokenForAccountRequest {
   /** UUID. */
   serviceTokenId: string;
   /** A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. */
-  clientSecretVersion?: number | null;
+  clientSecretVersion?: number;
   /** The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h). */
-  duration?: string | null;
+  duration?: string;
   /** The name of the service token. */
-  name?: string | null;
+  name?: string;
   /** The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. */
-  previousClientSecretExpiresAt?: string | null;
+  previousClientSecretExpiresAt?: string;
 }
 export const UpdateAccessServiceTokenForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -188213,12 +187471,12 @@ export const UpdateAccessServiceTokenForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       serviceTokenId: S.String.pipe(T.Label("service_token_id")),
       clientSecretVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("client_secret_version")),
+        S.Number.pipe(T.Body("client_secret_version")),
       ),
-      duration: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      duration: S.optional(S.String),
+      name: S.optional(S.String),
       previousClientSecretExpiresAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("previous_client_secret_expires_at")),
+        S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
     })
       .pipe(
@@ -188263,13 +187521,13 @@ export interface UpdateAccessServiceTokenForZoneRequest {
   /** UUID. */
   serviceTokenId: string;
   /** A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`. */
-  clientSecretVersion?: number | null;
+  clientSecretVersion?: number;
   /** The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h). */
-  duration?: string | null;
+  duration?: string;
   /** The name of the service token. */
-  name?: string | null;
+  name?: string;
   /** The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. */
-  previousClientSecretExpiresAt?: string | null;
+  previousClientSecretExpiresAt?: string;
 }
 export const UpdateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -188277,12 +187535,12 @@ export const UpdateAccessServiceTokenForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       serviceTokenId: S.String.pipe(T.Label("service_token_id")),
       clientSecretVersion: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("client_secret_version")),
+        S.Number.pipe(T.Body("client_secret_version")),
       ),
-      duration: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      duration: S.optional(S.String),
+      name: S.optional(S.String),
       previousClientSecretExpiresAt: S.optional(
-        S.NullOr(S.String).pipe(T.Body("previous_client_secret_expires_at")),
+        S.String.pipe(T.Body("previous_client_secret_expires_at")),
       ),
     })
       .pipe(
@@ -188422,13 +187680,13 @@ export interface DevicesDexTestsUpdateRequestData {
   /** The type of test. */
   kind: DevicesDexTestsUpdateRequestDataKind | (string & {});
   /** The HTTP request method type. */
-  method?: DevicesDexTestsUpdateRequestDataMethod | (string & {}) | null;
+  method?: DevicesDexTestsUpdateRequestDataMethod | (string & {});
 }
 export const DevicesDexTestsUpdateRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     kind: DevicesDexTestsUpdateRequestDataKind,
-    method: S.optional(S.NullOr(DevicesDexTestsUpdateRequestDataMethod)),
+    method: S.optional(DevicesDexTestsUpdateRequestDataMethod),
   }),
 ).annotate({
   identifier: "DevicesDexTestsUpdateRequestData",
@@ -188438,16 +187696,16 @@ export interface DevicesDexTestsUpdateRequestTargetPoliciesItem {
   /** The id of the DEX rule. */
   id: string;
   /** Whether the DEX rule is the account default. */
-  default?: boolean | null;
+  default?: boolean;
   /** The name of the DEX rule. */
-  name?: string | null;
+  name?: string;
 }
 export const DevicesDexTestsUpdateRequestTargetPoliciesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      default: S.optional(S.NullOr(S.Boolean)),
-      name: S.optional(S.NullOr(S.String)),
+      default: S.optional(S.Boolean),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesDexTestsUpdateRequestTargetPoliciesItem",
@@ -188474,10 +187732,10 @@ export interface UpdateDeviceDexTestRequest {
   /** The name of the DEX test. Must be unique. */
   name: string;
   /** Additional details about the test. */
-  description?: string | null;
+  description?: string;
   /** DEX rules targeted by this test */
-  targetPolicies?: DevicesDexTestsUpdateRequestTargetPoliciesList | null;
-  targeted?: boolean | null;
+  targetPolicies?: DevicesDexTestsUpdateRequestTargetPoliciesList;
+  targeted?: boolean;
 }
 export const UpdateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -188487,13 +187745,13 @@ export const UpdateDeviceDexTestRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     interval: S.String,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
     targetPolicies: S.optional(
-      S.NullOr(DevicesDexTestsUpdateRequestTargetPoliciesList).pipe(
+      DevicesDexTestsUpdateRequestTargetPoliciesList.pipe(
         T.Body("target_policies"),
       ),
     ),
-    targeted: S.optional(S.NullOr(S.Boolean)),
+    targeted: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -188598,12 +187856,12 @@ export interface DevicesNetworksUpdateRequestConfig {
   /** A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host. */
   tlsSockaddr: string;
   /** The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate. */
-  sha256?: string | null;
+  sha256?: string;
 }
 export const DevicesNetworksUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsSockaddr: S.String.pipe(T.Body("tls_sockaddr")),
-    sha256: S.optional(S.NullOr(S.String)),
+    sha256: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DevicesNetworksUpdateRequestConfig",
@@ -188617,19 +187875,19 @@ export interface UpdateDeviceNetworkRequest {
   /** API UUID. */
   networkId: string;
   /** The configuration object containing information for the WARP client to detect the managed network. */
-  config?: DevicesNetworksUpdateRequestConfig | null;
+  config?: DevicesNetworksUpdateRequestConfig;
   /** The name of the device managed network. This name must be unique. */
-  name?: string | null;
+  name?: string;
   /** The type of device managed network. */
-  type?: DevicesNetworksUpdateRequestType | (string & {}) | null;
+  type?: DevicesNetworksUpdateRequestType | (string & {});
 }
 export const UpdateDeviceNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     networkId: S.String.pipe(T.Label("network_id")),
-    config: S.optional(S.NullOr(DevicesNetworksUpdateRequestConfig)),
-    name: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(DevicesNetworksUpdateRequestType)),
+    config: S.optional(DevicesNetworksUpdateRequestConfig),
+    name: S.optional(S.String),
+    type: S.optional(DevicesNetworksUpdateRequestType),
   })
     .pipe(
       T.Http({
@@ -188724,11 +187982,11 @@ export interface DevicesPostureUpdateRequestInputFileInput {
   /** File path. */
   path: string;
   /** Whether or not file exists. */
-  exists?: boolean | null;
+  exists?: boolean;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureUpdateRequestInputFileInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -188738,9 +187996,9 @@ export const DevicesPostureUpdateRequestInputFileInput =
           T.Body("operating_system"),
         ),
       path: S.String,
-      exists: S.optional(S.NullOr(S.Boolean)),
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      exists: S.optional(S.Boolean),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputFileInput",
@@ -188781,7 +188039,7 @@ export interface DevicesPostureUpdateRequestInputDomainJoinedInput {
   /** Operating System. */
   operatingSystem: DevicesPostureUpdateRequestInputDomainJoinedInputOperatingSystem;
   /** Domain. */
-  domain?: string | null;
+  domain?: string;
 }
 export const DevicesPostureUpdateRequestInputDomainJoinedInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -188790,7 +188048,7 @@ export const DevicesPostureUpdateRequestInputDomainJoinedInput =
         DevicesPostureUpdateRequestInputDomainJoinedInputOperatingSystem.pipe(
           T.Body("operating_system"),
         ),
-      domain: S.optional(S.NullOr(S.String)),
+      domain: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputDomainJoinedInput",
@@ -188820,11 +188078,11 @@ export interface DevicesPostureUpdateRequestInputOSVersionInput {
   /** Version of OS. */
   version: string;
   /** Operating System Distribution Name (linux only). */
-  osDistroName?: string | null;
+  osDistroName?: string;
   /** Version of OS Distribution (linux only). */
-  osDistroRevision?: string | null;
+  osDistroRevision?: string;
   /** Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. */
-  osVersionExtra?: string | null;
+  osVersionExtra?: string;
 }
 export const DevicesPostureUpdateRequestInputOSVersionInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -188835,15 +188093,9 @@ export const DevicesPostureUpdateRequestInputOSVersionInput =
         ),
       operator: DevicesPostureUpdateRequestInputOSVersionInputOperator,
       version: S.String,
-      osDistroName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_distro_name")),
-      ),
-      osDistroRevision: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_distro_revision")),
-      ),
-      osVersionExtra: S.optional(
-        S.NullOr(S.String).pipe(T.Body("os_version_extra")),
-      ),
+      osDistroName: S.optional(S.String.pipe(T.Body("os_distro_name"))),
+      osDistroRevision: S.optional(S.String.pipe(T.Body("os_distro_revision"))),
+      osVersionExtra: S.optional(S.String.pipe(T.Body("os_version_extra"))),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputOSVersionInput",
@@ -188891,9 +188143,9 @@ export interface DevicesPostureUpdateRequestInputSentineloneInput {
   /** File path. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureUpdateRequestInputSentineloneInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -188903,8 +188155,8 @@ export const DevicesPostureUpdateRequestInputSentineloneInput =
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputSentineloneInput",
@@ -188923,9 +188175,9 @@ export interface DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputReq
   /** File path. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -188935,8 +188187,8 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesCarbonblackInputRequest
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -188966,19 +188218,17 @@ export const DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList =
 
 export interface DevicesPostureUpdateRequestInputDiskEncryptionInput {
   /** List of volume names to be checked for encryption. */
-  checkDisks?: DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList | null;
+  checkDisks?: DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList;
   /** Whether to check all disks for encryption. */
-  requireAll?: boolean | null;
+  requireAll?: boolean;
 }
 export const DevicesPostureUpdateRequestInputDiskEncryptionInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkDisks: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList,
-        ),
+        DevicesPostureUpdateRequestInputDiskEncryptionInputCheckDisksList,
       ),
-      requireAll: S.optional(S.NullOr(S.Boolean)),
+      requireAll: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputDiskEncryptionInput",
@@ -188997,9 +188247,9 @@ export interface DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputReq
   /** Path for the application. */
   path: string;
   /** SHA-256. */
-  sha256?: string | null;
+  sha256?: string;
   /** Signing certificate thumbprint. */
-  thumbprint?: string | null;
+  thumbprint?: string;
 }
 export const DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -189009,8 +188259,8 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesApplicationInputRequest
           T.Body("operating_system"),
         ),
       path: S.String,
-      sha256: S.optional(S.NullOr(S.String)),
-      thumbprint: S.optional(S.NullOr(S.String)),
+      sha256: S.optional(S.String),
+      thumbprint: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -189077,22 +188327,20 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2Inpu
 
 export interface DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations {
   /** List of paths to check for client certificate on linux. */
-  paths?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList | null;
+  paths?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList;
   /** List of trust stores to check for client certificate. */
-  trustStores?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList | null;
+  trustStores?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList;
 }
 export const DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       paths: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList,
-        ),
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsPathsList,
       ),
       trustStores: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList,
-        ).pipe(T.Body("trust_stores")),
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocationsTrustStoresList.pipe(
+          T.Body("trust_stores"),
+        ),
       ),
     }),
   ).annotate({
@@ -189117,12 +188365,12 @@ export interface DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2
     | DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem
     | (string & {});
   /** Certificate Common Name. This may include one or more variables in the ${ } notation. Only ${serial_number} and ${hostname} are valid variables. */
-  cn?: string | null;
+  cn?: string;
   /** List of values indicating purposes for which the certificate public key can be used. */
-  extendedKeyUsage?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList | null;
-  locations?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations | null;
+  extendedKeyUsage?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList;
+  locations?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations;
   /** List of certificate Subject Alternative Names. */
-  subjectAlternativeNames?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList | null;
+  subjectAlternativeNames?: DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList;
 }
 export const DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -189133,21 +188381,19 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2Inpu
         DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestOperatingSystem.pipe(
           T.Body("operating_system"),
         ),
-      cn: S.optional(S.NullOr(S.String)),
+      cn: S.optional(S.String),
       extendedKeyUsage: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList,
-        ).pipe(T.Body("extended_key_usage")),
-      ),
-      locations: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestExtendedKeyUsageList.pipe(
+          T.Body("extended_key_usage"),
         ),
       ),
+      locations: S.optional(
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestLocations,
+      ),
       subjectAlternativeNames: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList,
-        ).pipe(T.Body("subject_alternative_names")),
+        DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2InputRequestSubjectAlternativeNamesList.pipe(
+          T.Body("subject_alternative_names"),
+        ),
       ),
     }),
   ).annotate({
@@ -189157,14 +188403,12 @@ export const DevicesPostureUpdateRequestInputTeamsDevicesClientCertificateV2Inpu
 
 export interface DevicesPostureUpdateRequestInputTeamsDevicesAntivirusInputRequest {
   /** Number of days that the antivirus should be updated within. */
-  updateWindowDays?: number | null;
+  updateWindowDays?: number;
 }
 export const DevicesPostureUpdateRequestInputTeamsDevicesAntivirusInputRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateWindowDays: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("update_window_days")),
-      ),
+      updateWindowDays: S.optional(S.Number.pipe(T.Body("update_window_days"))),
     }),
   ).annotate({
     identifier:
@@ -189228,52 +188472,41 @@ export interface DevicesPostureUpdateRequestInputCrowdstrikeInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** For more details on last seen, please refer to the Crowdstrike documentation. */
-  lastSeen?: string | null;
+  lastSeen?: string;
   /** Operator. */
   operator?:
     | DevicesPostureUpdateRequestInputCrowdstrikeInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** Os Version. */
-  os?: string | null;
+  os?: string;
   /** Overall. */
-  overall?: string | null;
+  overall?: string;
   /** SensorConfig. */
-  sensorConfig?: string | null;
+  sensorConfig?: string;
   /** For more details on state, please refer to the Crowdstrike documentation. */
-  state?:
-    | DevicesPostureUpdateRequestInputCrowdstrikeInputState
-    | (string & {})
-    | null;
+  state?: DevicesPostureUpdateRequestInputCrowdstrikeInputState | (string & {});
   /** Version. */
-  version?: string | null;
+  version?: string;
   /** Version Operator. */
   versionOperator?:
     | DevicesPostureUpdateRequestInputCrowdstrikeInputVersionOperator
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DevicesPostureUpdateRequestInputCrowdstrikeInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      lastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen"))),
+      lastSeen: S.optional(S.String.pipe(T.Body("last_seen"))),
       operator: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputCrowdstrikeInputOperator),
+        DevicesPostureUpdateRequestInputCrowdstrikeInputOperator,
       ),
-      os: S.optional(S.NullOr(S.String)),
-      overall: S.optional(S.NullOr(S.String)),
-      sensorConfig: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sensor_config")),
-      ),
-      state: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputCrowdstrikeInputState),
-      ),
-      version: S.optional(S.NullOr(S.String)),
+      os: S.optional(S.String),
+      overall: S.optional(S.String),
+      sensorConfig: S.optional(S.String.pipe(T.Body("sensor_config"))),
+      state: S.optional(DevicesPostureUpdateRequestInputCrowdstrikeInputState),
+      version: S.optional(S.String),
       versionOperator: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputCrowdstrikeInputVersionOperator,
-        ),
+        DevicesPostureUpdateRequestInputCrowdstrikeInputVersionOperator,
       ),
     }),
   ).annotate({
@@ -189340,28 +188573,27 @@ export interface DevicesPostureUpdateRequestInputKolideInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states. */
-  authState?: DevicesPostureUpdateRequestInputKolideInputAuthStateList | null;
+  authState?: DevicesPostureUpdateRequestInputKolideInputAuthStateList;
   /** Count Operator. */
   countOperator?:
     | DevicesPostureUpdateRequestInputKolideInputCountOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** The Number of Issues. */
-  issueCount?: string | null;
+  issueCount?: string;
 }
 export const DevicesPostureUpdateRequestInputKolideInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
       authState: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputKolideInputAuthStateList).pipe(
+        DevicesPostureUpdateRequestInputKolideInputAuthStateList.pipe(
           T.Body("auth_state"),
         ),
       ),
       countOperator: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputKolideInputCountOperator),
+        DevicesPostureUpdateRequestInputKolideInputCountOperator,
       ),
-      issueCount: S.optional(S.NullOr(S.String).pipe(T.Body("issue_count"))),
+      issueCount: S.optional(S.String.pipe(T.Body("issue_count"))),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputKolideInput",
@@ -189397,42 +188629,37 @@ export interface DevicesPostureUpdateRequestInputTaniumInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** For more details on eid last seen, refer to the Tanium documentation. */
-  eidLastSeen?: string | null;
+  eidLastSeen?: string;
   /** Operator to evaluate risk_level or eid_last_seen. */
   operator?:
     | DevicesPostureUpdateRequestInputTaniumInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** For more details on risk level, refer to the Tanium documentation. */
   riskLevel?:
     | DevicesPostureUpdateRequestInputTaniumInputRiskLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Score Operator. */
   scoreOperator?:
     | DevicesPostureUpdateRequestInputTaniumInputScoreOperator
-    | (string & {})
-    | null;
+    | (string & {});
   /** For more details on total score, refer to the Tanium documentation. */
-  totalScore?: number | null;
+  totalScore?: number;
 }
 export const DevicesPostureUpdateRequestInputTaniumInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      eidLastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("eid_last_seen"))),
-      operator: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputTaniumInputOperator),
-      ),
+      eidLastSeen: S.optional(S.String.pipe(T.Body("eid_last_seen"))),
+      operator: S.optional(DevicesPostureUpdateRequestInputTaniumInputOperator),
       riskLevel: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputTaniumInputRiskLevel).pipe(
+        DevicesPostureUpdateRequestInputTaniumInputRiskLevel.pipe(
           T.Body("risk_level"),
         ),
       ),
       scoreOperator: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputTaniumInputScoreOperator),
+        DevicesPostureUpdateRequestInputTaniumInputScoreOperator,
       ),
-      totalScore: S.optional(S.NullOr(S.Number).pipe(T.Body("total_score"))),
+      totalScore: S.optional(S.Number.pipe(T.Body("total_score"))),
     }),
   ).annotate({
     identifier: "DevicesPostureUpdateRequestInputTaniumInput",
@@ -189470,48 +188697,43 @@ export interface DevicesPostureUpdateRequestInputSentineloneS2sInput {
   /** Posture Integration ID. */
   connectionId: string;
   /** The Number of active threats. */
-  activeThreats?: number | null;
+  activeThreats?: number;
   /** Whether device is infected. */
-  infected?: boolean | null;
+  infected?: boolean;
   /** Whether device is active. */
-  isActive?: boolean | null;
+  isActive?: boolean;
   /** Network status of device. */
   networkStatus?:
     | DevicesPostureUpdateRequestInputSentineloneS2sInputNetworkStatus
-    | (string & {})
-    | null;
+    | (string & {});
   /** Agent operational state. */
   operationalState?:
     | DevicesPostureUpdateRequestInputSentineloneS2sInputOperationalState
-    | (string & {})
-    | null;
+    | (string & {});
   /** Operator. */
   operator?:
     | DevicesPostureUpdateRequestInputSentineloneS2sInputOperator
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DevicesPostureUpdateRequestInputSentineloneS2sInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connectionId: S.String.pipe(T.Body("connection_id")),
-      activeThreats: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("active_threats")),
-      ),
-      infected: S.optional(S.NullOr(S.Boolean)),
-      isActive: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_active"))),
+      activeThreats: S.optional(S.Number.pipe(T.Body("active_threats"))),
+      infected: S.optional(S.Boolean),
+      isActive: S.optional(S.Boolean.pipe(T.Body("is_active"))),
       networkStatus: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputSentineloneS2sInputNetworkStatus,
-        ).pipe(T.Body("network_status")),
+        DevicesPostureUpdateRequestInputSentineloneS2sInputNetworkStatus.pipe(
+          T.Body("network_status"),
+        ),
       ),
       operationalState: S.optional(
-        S.NullOr(
-          DevicesPostureUpdateRequestInputSentineloneS2sInputOperationalState,
-        ).pipe(T.Body("operational_state")),
+        DevicesPostureUpdateRequestInputSentineloneS2sInputOperationalState.pipe(
+          T.Body("operational_state"),
+        ),
       ),
       operator: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestInputSentineloneS2sInputOperator),
+        DevicesPostureUpdateRequestInputSentineloneS2sInputOperator,
       ),
     }),
   ).annotate({
@@ -189643,17 +188865,12 @@ export const DevicesPostureUpdateRequestMatchItemPlatform =
   /*@__PURE__*/ S.String;
 
 export interface DevicesPostureUpdateRequestMatchItem {
-  platform?:
-    | DevicesPostureUpdateRequestMatchItemPlatform
-    | (string & {})
-    | null;
+  platform?: DevicesPostureUpdateRequestMatchItemPlatform | (string & {});
 }
 export const DevicesPostureUpdateRequestMatchItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      platform: S.optional(
-        S.NullOr(DevicesPostureUpdateRequestMatchItemPlatform),
-      ),
+      platform: S.optional(DevicesPostureUpdateRequestMatchItemPlatform),
     }),
 ).annotate({
   identifier: "DevicesPostureUpdateRequestMatchItem",
@@ -189674,15 +188891,15 @@ export interface UpdateDevicePostureRequest {
   /** The type of device posture rule. */
   type: DevicesPostureUpdateRequestType | (string & {});
   /** The description of the device posture rule. */
-  description?: string | null;
+  description?: string;
   /** Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client. */
-  expiration?: string | null;
+  expiration?: string;
   /** The value to be checked against. */
-  input?: DevicesPostureUpdateRequestInput | null;
+  input?: DevicesPostureUpdateRequestInput;
   /** The conditions that the client must match to run the rule. */
-  match?: DevicesPostureUpdateRequestMatchList | null;
+  match?: DevicesPostureUpdateRequestMatchList;
   /** Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`. */
-  schedule?: string | null;
+  schedule?: string;
 }
 export const UpdateDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189690,11 +188907,11 @@ export const UpdateDevicePostureRequest = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Label("rule_id")),
     name: S.String,
     type: DevicesPostureUpdateRequestType,
-    description: S.optional(S.NullOr(S.String)),
-    expiration: S.optional(S.NullOr(S.String)),
-    input: S.optional(S.NullOr(DevicesPostureUpdateRequestInput)),
-    match: S.optional(S.NullOr(DevicesPostureUpdateRequestMatchList)),
-    schedule: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    expiration: S.optional(S.String),
+    input: S.optional(DevicesPostureUpdateRequestInput),
+    match: S.optional(DevicesPostureUpdateRequestMatchList),
+    schedule: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -190666,7 +189883,7 @@ export interface UpdateDlpCustomPromptTopicRequest {
   enabled: boolean;
   name: string;
   topic: string;
-  description?: string | null;
+  description?: string;
 }
 export const UpdateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -190675,7 +189892,7 @@ export const UpdateDlpCustomPromptTopicRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     topic: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -190744,26 +189961,24 @@ export const DlpDataClassesUpdateRequestSensitivityLevelsList =
 export interface UpdateDlpDataClassRequest {
   accountId: string;
   dataClassId: string;
-  dataTags?: DlpDataClassesUpdateRequestDataTagsList | null;
-  description?: string | null;
-  expression?: string | null;
-  name?: string | null;
-  sensitivityLevels?: DlpDataClassesUpdateRequestSensitivityLevelsList | null;
+  dataTags?: DlpDataClassesUpdateRequestDataTagsList;
+  description?: string;
+  expression?: string;
+  name?: string;
+  sensitivityLevels?: DlpDataClassesUpdateRequestSensitivityLevelsList;
 }
 export const UpdateDlpDataClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dataClassId: S.String.pipe(T.Label("data_class_id")),
     dataTags: S.optional(
-      S.NullOr(DlpDataClassesUpdateRequestDataTagsList).pipe(
-        T.Body("data_tags"),
-      ),
+      DlpDataClassesUpdateRequestDataTagsList.pipe(T.Body("data_tags")),
     ),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    name: S.optional(S.String),
     sensitivityLevels: S.optional(
-      S.NullOr(DlpDataClassesUpdateRequestSensitivityLevelsList).pipe(
+      DlpDataClassesUpdateRequestSensitivityLevelsList.pipe(
         T.Body("sensitivity_levels"),
       ),
     ),
@@ -190840,21 +190055,19 @@ export interface UpdateDlpDatasetRequest {
   accountId: string;
   datasetId: string;
   /** Determines if the words should be matched in a case-sensitive manner. */
-  caseSensitive?: boolean | null;
+  caseSensitive?: boolean;
   /** The description of the dataset. */
-  description?: string | null;
+  description?: string;
   /** The name of the dataset, must be unique. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateDlpDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
-    caseSensitive: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("case_sensitive")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
+    caseSensitive: S.optional(S.Boolean.pipe(T.Body("case_sensitive"))),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -190985,16 +190198,16 @@ export const UpdateDlpDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DlpDataTagCategoriesUpdateRequestTagsItem {
   /** If `None` (omitted), a new tag will be created. Otherwise, an existing tag will be */
-  id?: string | null;
-  description?: string | null;
-  name?: string | null;
+  id?: string;
+  description?: string;
+  name?: string;
 }
 export const DlpDataTagCategoriesUpdateRequestTagsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
+      description: S.optional(S.String),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DlpDataTagCategoriesUpdateRequestTagsItem",
@@ -191009,18 +190222,18 @@ export const DlpDataTagCategoriesUpdateRequestTagsList = /*@__PURE__*/ S.Array(
 export interface UpdateDlpDataTagCategoryRequest {
   accountId: string;
   categoryId: string;
-  description?: string | null;
-  name?: string | null;
+  description?: string;
+  name?: string;
   /** The desired final state of tags. */
-  tags?: DlpDataTagCategoriesUpdateRequestTagsList | null;
+  tags?: DlpDataTagCategoriesUpdateRequestTagsList;
 }
 export const UpdateDlpDataTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    tags: S.optional(S.NullOr(DlpDataTagCategoriesUpdateRequestTagsList)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    tags: S.optional(DlpDataTagCategoriesUpdateRequestTagsList),
   })
     .pipe(
       T.Http({
@@ -191088,8 +190301,8 @@ export interface UpdateDlpDataTagCategoryDataTagRequest {
   accountId: string;
   categoryId: string;
   tagId: string;
-  description?: string | null;
-  name?: string | null;
+  description?: string;
+  name?: string;
 }
 export const UpdateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -191097,8 +190310,8 @@ export const UpdateDlpDataTagCategoryDataTagRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       categoryId: S.String.pipe(T.Label("category_id")),
       tagId: S.String.pipe(T.Label("tag_id")),
-      description: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
+      name: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -191138,12 +190351,12 @@ export const DlpEmailRulesUpdateRequestActionAction = /*@__PURE__*/ S.String;
 
 export interface DlpEmailRulesUpdateRequestAction {
   action: DlpEmailRulesUpdateRequestActionAction | (string & {});
-  message?: string | null;
+  message?: string;
 }
 export const DlpEmailRulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DlpEmailRulesUpdateRequestActionAction,
-    message: S.optional(S.NullOr(S.String)),
+    message: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DlpEmailRulesUpdateRequestAction",
@@ -191207,7 +190420,7 @@ export interface UpdateDlpEmailRuleRequest {
   conditions: DlpEmailRulesUpdateRequestConditionsList;
   enabled: boolean;
   name: string;
-  description?: string | null;
+  description?: string;
 }
 export const UpdateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -191217,7 +190430,7 @@ export const UpdateDlpEmailRuleRequest = /*@__PURE__*/ S.suspend(() =>
     conditions: DlpEmailRulesUpdateRequestConditionsList,
     enabled: S.Boolean,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -191331,12 +190544,12 @@ export const DlpEntriesUpdateRequestPatternValidation = /*@__PURE__*/ S.String;
 
 export interface DlpEntriesUpdateRequestPattern {
   regex: string;
-  validation?: DlpEntriesUpdateRequestPatternValidation | (string & {}) | null;
+  validation?: DlpEntriesUpdateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesUpdateRequestPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regex: S.String,
-    validation: S.optional(S.NullOr(DlpEntriesUpdateRequestPatternValidation)),
+    validation: S.optional(DlpEntriesUpdateRequestPatternValidation),
   }),
 ).annotate({
   identifier: "DlpEntriesUpdateRequestPattern",
@@ -191351,21 +190564,21 @@ export const DlpEntriesUpdateRequestType = /*@__PURE__*/ S.String;
 export interface UpdateDlpEntryRequest {
   accountId: string;
   entryId: string;
-  name?: string | null;
-  pattern?: DlpEntriesUpdateRequestPattern | null;
+  name?: string;
+  pattern?: DlpEntriesUpdateRequestPattern;
   type: DlpEntriesUpdateRequestType | (string & {});
-  description?: string | null;
-  enabled?: boolean | null;
+  description?: string;
+  enabled?: boolean;
 }
 export const UpdateDlpEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     entryId: S.String.pipe(T.Label("entry_id")),
-    name: S.optional(S.NullOr(S.String)),
-    pattern: S.optional(S.NullOr(DlpEntriesUpdateRequestPattern)),
+    name: S.optional(S.String),
+    pattern: S.optional(DlpEntriesUpdateRequestPattern),
     type: DlpEntriesUpdateRequestType,
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -191747,18 +190960,13 @@ export const DlpEntriesCustomUpdateRequestPatternValidation =
 
 export interface DlpEntriesCustomUpdateRequestPattern {
   regex: string;
-  validation?:
-    | DlpEntriesCustomUpdateRequestPatternValidation
-    | (string & {})
-    | null;
+  validation?: DlpEntriesCustomUpdateRequestPatternValidation | (string & {});
 }
 export const DlpEntriesCustomUpdateRequestPattern = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       regex: S.String,
-      validation: S.optional(
-        S.NullOr(DlpEntriesCustomUpdateRequestPatternValidation),
-      ),
+      validation: S.optional(DlpEntriesCustomUpdateRequestPatternValidation),
     }),
 ).annotate({
   identifier: "DlpEntriesCustomUpdateRequestPattern",
@@ -191770,7 +190978,7 @@ export interface UpdateDlpEntryCustomRequest {
   enabled: boolean;
   name: string;
   pattern: DlpEntriesCustomUpdateRequestPattern;
-  description?: string | null;
+  description?: string;
 }
 export const UpdateDlpEntryCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -191779,7 +190987,7 @@ export const UpdateDlpEntryCustomRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.Boolean,
     name: S.String,
     pattern: DlpEntriesCustomUpdateRequestPattern,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -192054,17 +191262,14 @@ export interface DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithI
   regex: string;
   validation?:
     | DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPatternValidation
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPattern =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       regex: S.String,
       validation: S.optional(
-        S.NullOr(
-          DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPatternValidation,
-        ),
+        DlpProfilesCustomUpdateRequestEntriesItemDLPNewCustomEntryWithIDPatternValidation,
       ),
     }),
   ).annotate({
@@ -192176,64 +191381,58 @@ export interface UpdateDlpProfileCustomRequest {
   accountId: string;
   profileId: string;
   name: string;
-  aiContextEnabled?: boolean | null;
-  allowedMatchCount?: number | null;
-  confidenceThreshold?: string | null;
+  aiContextEnabled?: boolean;
+  allowedMatchCount?: number;
+  confidenceThreshold?: string;
   /** Scan the context of predefined entries to only return matches surrounded by keywords. */
-  contextAwareness?: DlpProfilesCustomUpdateRequestContextAwareness | null;
+  contextAwareness?: DlpProfilesCustomUpdateRequestContextAwareness;
   /** Data class IDs to associate with the profile. If omitted, existing associations are unchanged. */
-  dataClasses?: DlpProfilesCustomUpdateRequestDataClassesList | null;
+  dataClasses?: DlpProfilesCustomUpdateRequestDataClassesList;
   /** Data tag IDs to associate with the profile. If omitted, existing associations are unchanged. */
-  dataTags?: DlpProfilesCustomUpdateRequestDataTagsList | null;
+  dataTags?: DlpProfilesCustomUpdateRequestDataTagsList;
   /** The description of the profile. */
   description?: string | null;
   /** Custom entries from this profile. */
-  entries?: DlpProfilesCustomUpdateRequestEntriesList | null;
-  ocrEnabled?: boolean | null;
+  entries?: DlpProfilesCustomUpdateRequestEntriesList;
+  ocrEnabled?: boolean;
   /** Sensitivity levels to associate with the profile. If omitted, existing associations are unchanged. */
-  sensitivityLevels?: DlpProfilesCustomUpdateRequestSensitivityLevelsList | null;
+  sensitivityLevels?: DlpProfilesCustomUpdateRequestSensitivityLevelsList;
   /** Other entries, e.g. predefined or integration. */
-  sharedEntries?: DlpProfilesCustomUpdateRequestSharedEntriesList | null;
+  sharedEntries?: DlpProfilesCustomUpdateRequestSharedEntriesList;
 }
 export const UpdateDlpProfileCustomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     profileId: S.String.pipe(T.Label("profile_id")),
     name: S.String,
-    aiContextEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ai_context_enabled")),
-    ),
-    allowedMatchCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("allowed_match_count")),
-    ),
+    aiContextEnabled: S.optional(S.Boolean.pipe(T.Body("ai_context_enabled"))),
+    allowedMatchCount: S.optional(S.Number.pipe(T.Body("allowed_match_count"))),
     confidenceThreshold: S.optional(
-      S.NullOr(S.String).pipe(T.Body("confidence_threshold")),
+      S.String.pipe(T.Body("confidence_threshold")),
     ),
     contextAwareness: S.optional(
-      S.NullOr(DlpProfilesCustomUpdateRequestContextAwareness).pipe(
+      DlpProfilesCustomUpdateRequestContextAwareness.pipe(
         T.Body("context_awareness"),
       ),
     ),
     dataClasses: S.optional(
-      S.NullOr(DlpProfilesCustomUpdateRequestDataClassesList).pipe(
+      DlpProfilesCustomUpdateRequestDataClassesList.pipe(
         T.Body("data_classes"),
       ),
     ),
     dataTags: S.optional(
-      S.NullOr(DlpProfilesCustomUpdateRequestDataTagsList).pipe(
-        T.Body("data_tags"),
-      ),
+      DlpProfilesCustomUpdateRequestDataTagsList.pipe(T.Body("data_tags")),
     ),
     description: S.optional(S.NullOr(S.String)),
-    entries: S.optional(S.NullOr(DlpProfilesCustomUpdateRequestEntriesList)),
-    ocrEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ocr_enabled"))),
+    entries: S.optional(DlpProfilesCustomUpdateRequestEntriesList),
+    ocrEnabled: S.optional(S.Boolean.pipe(T.Body("ocr_enabled"))),
     sensitivityLevels: S.optional(
-      S.NullOr(DlpProfilesCustomUpdateRequestSensitivityLevelsList).pipe(
+      DlpProfilesCustomUpdateRequestSensitivityLevelsList.pipe(
         T.Body("sensitivity_levels"),
       ),
     ),
     sharedEntries: S.optional(
-      S.NullOr(DlpProfilesCustomUpdateRequestSharedEntriesList).pipe(
+      DlpProfilesCustomUpdateRequestSharedEntriesList.pipe(
         T.Body("shared_entries"),
       ),
     ),
@@ -194500,16 +193699,16 @@ export const UpdateDlpProfileCustomResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DlpSensitivityGroupsUpdateRequestLevelsItem {
   /** If `None` (omitted), a new level will be created. Otherwise, an existing level will */
-  id?: string | null;
-  description?: string | null;
-  name?: string | null;
+  id?: string;
+  description?: string;
+  name?: string;
 }
 export const DlpSensitivityGroupsUpdateRequestLevelsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
+      description: S.optional(S.String),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DlpSensitivityGroupsUpdateRequestLevelsItem",
@@ -194525,18 +193724,18 @@ export const DlpSensitivityGroupsUpdateRequestLevelsList =
 export interface UpdateDlpSensitivityGroupRequest {
   accountId: string;
   sensitivityGroupId: string;
-  description?: string | null;
+  description?: string;
   /** The desired final state of levels. */
-  levels?: DlpSensitivityGroupsUpdateRequestLevelsList | null;
-  name?: string | null;
+  levels?: DlpSensitivityGroupsUpdateRequestLevelsList;
+  name?: string;
 }
 export const UpdateDlpSensitivityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
-    description: S.optional(S.NullOr(S.String)),
-    levels: S.optional(S.NullOr(DlpSensitivityGroupsUpdateRequestLevelsList)),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    levels: S.optional(DlpSensitivityGroupsUpdateRequestLevelsList),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -194605,8 +193804,8 @@ export interface UpdateDlpSensitivityGroupLevelRequest {
   accountId: string;
   sensitivityGroupId: string;
   sensitivityLevelId: string;
-  description?: string | null;
-  name?: string | null;
+  description?: string;
+  name?: string;
 }
 export const UpdateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -194614,8 +193813,8 @@ export const UpdateDlpSensitivityGroupLevelRequest = /*@__PURE__*/ S.suspend(
       accountId: S.String.pipe(T.Label("account_id")),
       sensitivityGroupId: S.String.pipe(T.Label("sensitivity_group_id")),
       sensitivityLevelId: S.String.pipe(T.Label("sensitivity_level_id")),
-      description: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
+      name: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -194652,14 +193851,14 @@ export const UpdateDlpSensitivityGroupLevelResponse = /*@__PURE__*/ S.suspend(
 
 export interface GatewayListsUpdateRequestItemsItem {
   /** Provide the list item description (optional). */
-  description?: string | null;
+  description?: string;
   /** Specify the item value. */
-  value?: string | null;
+  value?: string;
 }
 export const GatewayListsUpdateRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GatewayListsUpdateRequestItemsItem",
@@ -194678,17 +193877,17 @@ export interface UpdateGatewayListRequest {
   /** Specify the list name. */
   name: string;
   /** Provide the list description. */
-  description?: string | null;
+  description?: string;
   /** Add items to the list. */
-  items?: GatewayListsUpdateRequestItemsList | null;
+  items?: GatewayListsUpdateRequestItemsList;
 }
 export const UpdateGatewayListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    items: S.optional(S.NullOr(GatewayListsUpdateRequestItemsList)),
+    description: S.optional(S.String),
+    items: S.optional(GatewayListsUpdateRequestItemsList),
   })
     .pipe(
       T.Http({
@@ -194791,22 +193990,20 @@ export const GatewayLocationsUpdateRequestEndpointsDohNetworksList =
 
 export interface GatewayLocationsUpdateRequestEndpointsDoh {
   /** Indicate whether the DOH endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsUpdateRequestEndpointsDohNetworksList | null;
+  networks?: GatewayLocationsUpdateRequestEndpointsDohNetworksList;
   /** Specify whether the DOH endpoint requires user identity authentication. */
-  requireToken?: boolean | null;
+  requireToken?: boolean;
 }
 export const GatewayLocationsUpdateRequestEndpointsDoh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsUpdateRequestEndpointsDohNetworksList),
+        GatewayLocationsUpdateRequestEndpointsDohNetworksList,
       ),
-      requireToken: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("require_token")),
-      ),
+      requireToken: S.optional(S.Boolean.pipe(T.Body("require_token"))),
     }),
   ).annotate({
     identifier: "GatewayLocationsUpdateRequestEndpointsDoh",
@@ -194834,16 +194031,16 @@ export const GatewayLocationsUpdateRequestEndpointsDotNetworksList =
 
 export interface GatewayLocationsUpdateRequestEndpointsDot {
   /** Indicate whether the DOT endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsUpdateRequestEndpointsDotNetworksList | null;
+  networks?: GatewayLocationsUpdateRequestEndpointsDotNetworksList;
 }
 export const GatewayLocationsUpdateRequestEndpointsDot =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsUpdateRequestEndpointsDotNetworksList),
+        GatewayLocationsUpdateRequestEndpointsDotNetworksList,
       ),
     }),
   ).annotate({
@@ -194852,12 +194049,12 @@ export const GatewayLocationsUpdateRequestEndpointsDot =
 
 export interface GatewayLocationsUpdateRequestEndpointsIpv4 {
   /** Indicate whether the IPv4 endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayLocationsUpdateRequestEndpointsIpv4 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayLocationsUpdateRequestEndpointsIpv4",
@@ -194885,16 +194082,16 @@ export const GatewayLocationsUpdateRequestEndpointsIpv6NetworksList =
 
 export interface GatewayLocationsUpdateRequestEndpointsIpv6 {
   /** Indicate whether the IPV6 endpoint is enabled for this location. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location. */
-  networks?: GatewayLocationsUpdateRequestEndpointsIpv6NetworksList | null;
+  networks?: GatewayLocationsUpdateRequestEndpointsIpv6NetworksList;
 }
 export const GatewayLocationsUpdateRequestEndpointsIpv6 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       networks: S.optional(
-        S.NullOr(GatewayLocationsUpdateRequestEndpointsIpv6NetworksList),
+        GatewayLocationsUpdateRequestEndpointsIpv6NetworksList,
       ),
     }),
   ).annotate({
@@ -194929,12 +194126,12 @@ export interface GatewayLocationsUpdateRequestMaxTtl {
   /** `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged. */
   mode: GatewayLocationsUpdateRequestMaxTtlMode | (string & {});
   /** Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`. */
-  ttlSecs?: number | null;
+  ttlSecs?: number;
 }
 export const GatewayLocationsUpdateRequestMaxTtl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: GatewayLocationsUpdateRequestMaxTtlMode,
-    ttlSecs: S.optional(S.NullOr(S.Number).pipe(T.Body("ttl_secs"))),
+    ttlSecs: S.optional(S.Number.pipe(T.Body("ttl_secs"))),
   }),
 ).annotate({
   identifier: "GatewayLocationsUpdateRequestMaxTtl",
@@ -194965,35 +194162,33 @@ export interface UpdateGatewayLocationRequest {
   /** Specify the location name. */
   name: string;
   /** Indicate whether this location is the default location. */
-  clientDefault?: boolean | null;
+  clientDefault?: boolean;
   /** Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged. */
-  dnsDestinationIpsId?: string | null;
+  dnsDestinationIpsId?: string;
   /** Indicate whether the location must resolve EDNS queries. */
-  ecsSupport?: boolean | null;
+  ecsSupport?: boolean;
   /** Configure the destination endpoints for this location. */
-  endpoints?: GatewayLocationsUpdateRequestEndpoints | null;
+  endpoints?: GatewayLocationsUpdateRequestEndpoints;
   /** Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`. */
-  maxTtl?: GatewayLocationsUpdateRequestMaxTtl | null;
+  maxTtl?: GatewayLocationsUpdateRequestMaxTtl;
   /** Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location. */
-  networks?: GatewayLocationsUpdateRequestNetworksList | null;
+  networks?: GatewayLocationsUpdateRequestNetworksList;
 }
 export const UpdateGatewayLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     locationId: S.String.pipe(T.Label("location_id")),
     name: S.String,
-    clientDefault: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("client_default")),
-    ),
+    clientDefault: S.optional(S.Boolean.pipe(T.Body("client_default"))),
     dnsDestinationIpsId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("dns_destination_ips_id")),
+      S.String.pipe(T.Body("dns_destination_ips_id")),
     ),
-    ecsSupport: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ecs_support"))),
-    endpoints: S.optional(S.NullOr(GatewayLocationsUpdateRequestEndpoints)),
+    ecsSupport: S.optional(S.Boolean.pipe(T.Body("ecs_support"))),
+    endpoints: S.optional(GatewayLocationsUpdateRequestEndpoints),
     maxTtl: S.optional(
-      S.NullOr(GatewayLocationsUpdateRequestMaxTtl).pipe(T.Body("max_ttl")),
+      GatewayLocationsUpdateRequestMaxTtl.pipe(T.Body("max_ttl")),
     ),
-    networks: S.optional(S.NullOr(GatewayLocationsUpdateRequestNetworksList)),
+    networks: S.optional(GatewayLocationsUpdateRequestNetworksList),
   })
     .pipe(
       T.Http({
@@ -195346,15 +194541,15 @@ export interface GatewayRulesUpdateRequestExpiration {
   /** Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time. */
   expiresAt: string;
   /** Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule. */
-  duration?: number | null;
+  duration?: number;
   /** Indicates whether the policy is expired. */
-  expired?: boolean | null;
+  expired?: boolean;
 }
 export const GatewayRulesUpdateRequestExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiresAt: S.String.pipe(T.Body("expires_at")),
-    duration: S.optional(S.NullOr(S.Number)),
-    expired: S.optional(S.NullOr(S.Boolean)),
+    duration: S.optional(S.Number),
+    expired: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "GatewayRulesUpdateRequestExpiration",
@@ -195395,14 +194590,12 @@ export const GatewayRulesUpdateRequestRuleSettingsAddHeadersMap =
 
 export interface GatewayRulesUpdateRequestRuleSettingsAuditSsh {
   /** Enable SSH command logging. */
-  commandLogging?: boolean | null;
+  commandLogging?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsAuditSsh =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      commandLogging: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("command_logging")),
-      ),
+      commandLogging: S.optional(S.Boolean.pipe(T.Body("command_logging"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsAuditSsh",
@@ -195457,87 +194650,74 @@ export interface GatewayRulesUpdateRequestRuleSettingsBisoAdminControls {
   /** Configure copy behavior. If set to remote_only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2". */
   copy?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsCopy
-    | (string & {})
-    | null;
+    | (string & {});
   /** Set to false to enable copy-pasting. Only applies when `version == "v1"`. */
-  dcp?: boolean | null;
+  dcp?: boolean;
   /** Set to false to enable downloading. Only applies when `version == "v1"`. */
-  dd?: boolean | null;
+  dd?: boolean;
   /** Set to false to enable keyboard usage. Only applies when `version == "v1"`. */
-  dk?: boolean | null;
+  dk?: boolean;
   /** Configure download behavior. When set to remote_only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2". */
   download?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsDownload
-    | (string & {})
-    | null;
+    | (string & {});
   /** Set to false to enable printing. Only applies when `version == "v1"`. */
-  dp?: boolean | null;
+  dp?: boolean;
   /** Set to false to enable uploading. Only applies when `version == "v1"`. */
-  du?: boolean | null;
+  du?: boolean;
   /** Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2". */
   keyboard?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsKeyboard
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure paste behavior. If set to remote_only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2". */
   paste?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPaste
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure print behavior. Default, Printing is enabled. Applies only when version == "v2". */
   printing?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPrinting
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2". */
   upload?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsUpload
-    | (string & {})
-    | null;
+    | (string & {});
   /** Indicate which version of the browser isolation controls should apply. */
   version?:
     | GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsVersion
-    | (string & {})
-    | null;
+    | (string & {});
   /** Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser. */
-  wmId?: string | null;
+  wmId?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsBisoAdminControls =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       copy: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsCopy),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsCopy,
       ),
-      dcp: S.optional(S.NullOr(S.Boolean)),
-      dd: S.optional(S.NullOr(S.Boolean)),
-      dk: S.optional(S.NullOr(S.Boolean)),
+      dcp: S.optional(S.Boolean),
+      dd: S.optional(S.Boolean),
+      dk: S.optional(S.Boolean),
       download: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsDownload,
-        ),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsDownload,
       ),
-      dp: S.optional(S.NullOr(S.Boolean)),
-      du: S.optional(S.NullOr(S.Boolean)),
+      dp: S.optional(S.Boolean),
+      du: S.optional(S.Boolean),
       keyboard: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsKeyboard,
-        ),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsKeyboard,
       ),
       paste: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPaste),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPaste,
       ),
       printing: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPrinting,
-        ),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsPrinting,
       ),
       upload: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsUpload),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsUpload,
       ),
       version: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsVersion),
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControlsVersion,
       ),
-      wmId: S.optional(S.NullOr(S.String).pipe(T.Body("wm_id"))),
+      wmId: S.optional(S.String.pipe(T.Body("wm_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsBisoAdminControls",
@@ -195547,15 +194727,13 @@ export interface GatewayRulesUpdateRequestRuleSettingsBlockPage {
   /** Specify the URI to which the user is redirected. */
   targetUri: string;
   /** Specify whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsBlockPage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetUri: S.String.pipe(T.Body("target_uri")),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsBlockPage",
@@ -195563,15 +194741,15 @@ export const GatewayRulesUpdateRequestRuleSettingsBlockPage =
 
 export interface GatewayRulesUpdateRequestRuleSettingsCheckSession {
   /** Sets the required session freshness threshold. The API returns a normalized version of this value. */
-  duration?: string | null;
+  duration?: string;
   /** Enable session enforcement. */
-  enforce?: boolean | null;
+  enforce?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsCheckSession =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      duration: S.optional(S.NullOr(S.String)),
-      enforce: S.optional(S.NullOr(S.Boolean)),
+      duration: S.optional(S.String),
+      enforce: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsCheckSession",
@@ -195581,21 +194759,21 @@ export interface GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4Item {
   /** Specify the IPv4 address of the upstream resolver. */
   ip: string;
   /** Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified. */
-  port?: number | null;
+  port?: number;
   /** Indicate whether to connect to this resolver over a private network. Must set when vnet_id set. */
-  routeThroughPrivateNetwork?: boolean | null;
+  routeThroughPrivateNetwork?: boolean;
   /** Specify an optional virtual network for this resolver. Uses default virtual network id if omitted. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ip: S.String,
-      port: S.optional(S.NullOr(S.Number)),
+      port: S.optional(S.Number),
       routeThroughPrivateNetwork: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("route_through_private_network")),
+        S.Boolean.pipe(T.Body("route_through_private_network")),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4Item",
@@ -195612,21 +194790,21 @@ export interface GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6Item {
   /** Specify the IPv6 address of the upstream resolver. */
   ip: string;
   /** Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified. */
-  port?: number | null;
+  port?: number;
   /** Indicate whether to connect to this resolver over a private network. Must set when vnet_id set. */
-  routeThroughPrivateNetwork?: boolean | null;
+  routeThroughPrivateNetwork?: boolean;
   /** Specify an optional virtual network for this resolver. Uses default virtual network id if omitted. */
-  vnetId?: string | null;
+  vnetId?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6Item =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ip: S.String,
-      port: S.optional(S.NullOr(S.Number)),
+      port: S.optional(S.Number),
       routeThroughPrivateNetwork: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("route_through_private_network")),
+        S.Boolean.pipe(T.Body("route_through_private_network")),
       ),
-      vnetId: S.optional(S.NullOr(S.String).pipe(T.Body("vnet_id"))),
+      vnetId: S.optional(S.String.pipe(T.Body("vnet_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6Item",
@@ -195640,17 +194818,17 @@ export const GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List =
   ) as any as S.Schema<GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List>;
 
 export interface GatewayRulesUpdateRequestRuleSettingsDnsResolvers {
-  ipv4?: GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4List | null;
-  ipv6?: GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List | null;
+  ipv4?: GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4List;
+  ipv6?: GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List;
 }
 export const GatewayRulesUpdateRequestRuleSettingsDnsResolvers =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ipv4: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4List),
+        GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv4List,
       ),
       ipv6: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List),
+        GatewayRulesUpdateRequestRuleSettingsDnsResolversIpv6List,
       ),
     }),
   ).annotate({
@@ -195659,20 +194837,18 @@ export const GatewayRulesUpdateRequestRuleSettingsDnsResolvers =
 
 export interface GatewayRulesUpdateRequestRuleSettingsEgress {
   /** Specify the IPv4 address to use for egress. */
-  ipv4?: string | null;
+  ipv4?: string;
   /** Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs. */
-  ipv4Fallback?: string | null;
+  ipv4Fallback?: string;
   /** Specify the IPv6 range to use for egress. */
-  ipv6?: string | null;
+  ipv6?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsEgress =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ipv4: S.optional(S.NullOr(S.String)),
-      ipv4Fallback: S.optional(
-        S.NullOr(S.String).pipe(T.Body("ipv4_fallback")),
-      ),
-      ipv6: S.optional(S.NullOr(S.String)),
+      ipv4: S.optional(S.String),
+      ipv4Fallback: S.optional(S.String.pipe(T.Body("ipv4_fallback"))),
+      ipv6: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsEgress",
@@ -195680,12 +194856,12 @@ export const GatewayRulesUpdateRequestRuleSettingsEgress =
 
 export interface GatewayRulesUpdateRequestRuleSettingsForensicCopy {
   /** Enable sending the copy to storage. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsForensicCopy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsForensicCopy",
@@ -195693,15 +194869,15 @@ export const GatewayRulesUpdateRequestRuleSettingsForensicCopy =
 
 export interface GatewayRulesUpdateRequestRuleSettingsL4override {
   /** Defines the IPv4 or IPv6 address. */
-  ip?: string | null;
+  ip?: string;
   /** Defines a port number to use for TCP/UDP overrides. */
-  port?: number | null;
+  port?: number;
 }
 export const GatewayRulesUpdateRequestRuleSettingsL4override =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      ip: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      ip: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsL4override",
@@ -195709,23 +194885,21 @@ export const GatewayRulesUpdateRequestRuleSettingsL4override =
 
 export interface GatewayRulesUpdateRequestRuleSettingsNotificationSettings {
   /** Enable notification. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicates whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Customize the message shown in the notification. */
-  msg?: string | null;
+  msg?: string;
   /** Defines an optional URL to direct users to additional information. If unset, the notification opens a block page. */
-  supportUrl?: string | null;
+  supportUrl?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsNotificationSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
-      msg: S.optional(S.NullOr(S.String)),
-      supportUrl: S.optional(S.NullOr(S.String).pipe(T.Body("support_url"))),
+      enabled: S.optional(S.Boolean),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
+      msg: S.optional(S.String),
+      supportUrl: S.optional(S.String.pipe(T.Body("support_url"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsNotificationSettings",
@@ -195740,12 +194914,12 @@ export const GatewayRulesUpdateRequestRuleSettingsOverrideIpsList =
 
 export interface GatewayRulesUpdateRequestRuleSettingsPayloadLog {
   /** Enable DLP payload logging for this rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsPayloadLog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsPayloadLog",
@@ -195779,15 +194953,15 @@ export const GatewayRulesUpdateRequestRuleSettingsQuarantineFileTypesList =
 
 export interface GatewayRulesUpdateRequestRuleSettingsQuarantine {
   /** Specify the types of files to sandbox. */
-  fileTypes?: GatewayRulesUpdateRequestRuleSettingsQuarantineFileTypesList | null;
+  fileTypes?: GatewayRulesUpdateRequestRuleSettingsQuarantineFileTypesList;
 }
 export const GatewayRulesUpdateRequestRuleSettingsQuarantine =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fileTypes: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsQuarantineFileTypesList,
-        ).pipe(T.Body("file_types")),
+        GatewayRulesUpdateRequestRuleSettingsQuarantineFileTypesList.pipe(
+          T.Body("file_types"),
+        ),
       ),
     }),
   ).annotate({
@@ -195798,19 +194972,17 @@ export interface GatewayRulesUpdateRequestRuleSettingsRedirect {
   /** Specify the URI to which the user is redirected. */
   targetUri: string;
   /** Specify whether to pass the context information as query parameters. */
-  includeContext?: boolean | null;
+  includeContext?: boolean;
   /** Specify whether to append the path and query parameters from the original request to target_uri. */
-  preservePathAndQuery?: boolean | null;
+  preservePathAndQuery?: boolean;
 }
 export const GatewayRulesUpdateRequestRuleSettingsRedirect =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetUri: S.String.pipe(T.Body("target_uri")),
-      includeContext: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("include_context")),
-      ),
+      includeContext: S.optional(S.Boolean.pipe(T.Body("include_context"))),
       preservePathAndQuery: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_path_and_query")),
+        S.Boolean.pipe(T.Body("preserve_path_and_query")),
       ),
     }),
   ).annotate({
@@ -195827,20 +194999,17 @@ export interface GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally {
   /** Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries. */
   fallback?:
     | GatewayRulesUpdateRequestRuleSettingsResolveDnsInternallyFallback
-    | (string & {})
-    | null;
+    | (string & {});
   /** Specify the internal DNS view identifier to pass to the internal DNS service. */
-  viewId?: string | null;
+  viewId?: string;
 }
 export const GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fallback: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsResolveDnsInternallyFallback,
-        ),
+        GatewayRulesUpdateRequestRuleSettingsResolveDnsInternallyFallback,
       ),
-      viewId: S.optional(S.NullOr(S.String).pipe(T.Body("view_id"))),
+      viewId: S.optional(S.String.pipe(T.Body("view_id"))),
     }),
   ).annotate({
     identifier: "GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally",
@@ -195857,14 +195026,13 @@ export interface GatewayRulesUpdateRequestRuleSettingsUntrustedCert {
   /** Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526. */
   action?:
     | GatewayRulesUpdateRequestRuleSettingsUntrustedCertAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const GatewayRulesUpdateRequestRuleSettingsUntrustedCert =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsUntrustedCertAction),
+        GatewayRulesUpdateRequestRuleSettingsUntrustedCertAction,
       ),
     }),
   ).annotate({
@@ -195873,156 +195041,144 @@ export const GatewayRulesUpdateRequestRuleSettingsUntrustedCert =
 
 export interface GatewayRulesUpdateRequestRuleSettings {
   /** Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`. */
-  addHeaders?: GatewayRulesUpdateRequestRuleSettingsAddHeadersMap | null;
+  addHeaders?: GatewayRulesUpdateRequestRuleSettingsAddHeadersMap;
   /** Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules. */
-  allowChildBypass?: boolean | null;
+  allowChildBypass?: boolean;
   /** Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action. */
-  auditSsh?: GatewayRulesUpdateRequestRuleSettingsAuditSsh | null;
+  auditSsh?: GatewayRulesUpdateRequestRuleSettingsAuditSsh;
   /** Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`. */
-  bisoAdminControls?: GatewayRulesUpdateRequestRuleSettingsBisoAdminControls | null;
+  bisoAdminControls?: GatewayRulesUpdateRequestRuleSettingsBisoAdminControls;
   /** Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`. */
-  blockPage?: GatewayRulesUpdateRequestRuleSettingsBlockPage | null;
+  blockPage?: GatewayRulesUpdateRequestRuleSettingsBlockPage;
   /** Enable the custom block page. Settable only for `dns` rules with action `block`. */
-  blockPageEnabled?: boolean | null;
+  blockPageEnabled?: boolean;
   /** Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`. */
-  blockReason?: string | null;
+  blockReason?: string;
   /** Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules. */
-  bypassParentRule?: boolean | null;
+  bypassParentRule?: boolean;
   /** Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`. */
-  checkSession?: GatewayRulesUpdateRequestRuleSettingsCheckSession | null;
+  checkSession?: GatewayRulesUpdateRequestRuleSettingsCheckSession;
   /** Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  dnsResolvers?: GatewayRulesUpdateRequestRuleSettingsDnsResolvers | null;
+  dnsResolvers?: GatewayRulesUpdateRequestRuleSettingsDnsResolvers;
   /** Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules. */
-  egress?: GatewayRulesUpdateRequestRuleSettingsEgress | null;
+  egress?: GatewayRulesUpdateRequestRuleSettingsEgress;
   /** Configure whether a copy of the HTTP request will be sent to storage when the rule matches. */
-  forensicCopy?: GatewayRulesUpdateRequestRuleSettingsForensicCopy | null;
+  forensicCopy?: GatewayRulesUpdateRequestRuleSettingsForensicCopy;
   /** Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules. */
-  ignoreCnameCategoryMatches?: boolean | null;
+  ignoreCnameCategoryMatches?: boolean;
   /** Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules. */
-  insecureDisableDnssecValidation?: boolean | null;
+  insecureDisableDnssecValidation?: boolean;
   /** Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules. */
-  ipCategories?: boolean | null;
+  ipCategories?: boolean;
   /** Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules. */
-  ipIndicatorFeeds?: boolean | null;
+  ipIndicatorFeeds?: boolean;
   /** Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`. */
-  l4override?: GatewayRulesUpdateRequestRuleSettingsL4override | null;
+  l4override?: GatewayRulesUpdateRequestRuleSettingsL4override;
   /** Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`. */
-  notificationSettings?: GatewayRulesUpdateRequestRuleSettingsNotificationSettings | null;
+  notificationSettings?: GatewayRulesUpdateRequestRuleSettingsNotificationSettings;
   /** Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`. */
-  overrideHost?: string | null;
+  overrideHost?: string;
   /** Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`. */
-  overrideIps?: GatewayRulesUpdateRequestRuleSettingsOverrideIpsList | null;
+  overrideIps?: GatewayRulesUpdateRequestRuleSettingsOverrideIpsList;
   /** Configure DLP payload logging. Settable only for `http` rules. */
-  payloadLog?: GatewayRulesUpdateRequestRuleSettingsPayloadLog | null;
+  payloadLog?: GatewayRulesUpdateRequestRuleSettingsPayloadLog;
   /** Configure settings that apply to quarantine rules. Settable only for `http` rules. */
-  quarantine?: GatewayRulesUpdateRequestRuleSettingsQuarantine | null;
+  quarantine?: GatewayRulesUpdateRequestRuleSettingsQuarantine;
   /** Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`. */
-  redirect?: GatewayRulesUpdateRequestRuleSettingsRedirect | null;
+  redirect?: GatewayRulesUpdateRequestRuleSettingsRedirect;
   /** Configure to forward the query to the internal DNS service, passing the specified 'view_id' as input. Not used when 'dns_resolvers' is specified or 'resolve_dns_through_cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  resolveDnsInternally?: GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally | null;
+  resolveDnsInternally?: GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally;
   /** Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns_resolvers' specified or 'resolve_dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules. */
-  resolveDnsThroughCloudflare?: boolean | null;
+  resolveDnsThroughCloudflare?: boolean;
   /** Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`. */
-  untrustedCert?: GatewayRulesUpdateRequestRuleSettingsUntrustedCert | null;
+  untrustedCert?: GatewayRulesUpdateRequestRuleSettingsUntrustedCert;
 }
 export const GatewayRulesUpdateRequestRuleSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       addHeaders: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsAddHeadersMap).pipe(
+        GatewayRulesUpdateRequestRuleSettingsAddHeadersMap.pipe(
           T.Body("add_headers"),
         ),
       ),
       allowChildBypass: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("allow_child_bypass")),
+        S.Boolean.pipe(T.Body("allow_child_bypass")),
       ),
       auditSsh: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsAuditSsh).pipe(
-          T.Body("audit_ssh"),
-        ),
+        GatewayRulesUpdateRequestRuleSettingsAuditSsh.pipe(T.Body("audit_ssh")),
       ),
       bisoAdminControls: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBisoAdminControls).pipe(
+        GatewayRulesUpdateRequestRuleSettingsBisoAdminControls.pipe(
           T.Body("biso_admin_controls"),
         ),
       ),
       blockPage: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsBlockPage).pipe(
+        GatewayRulesUpdateRequestRuleSettingsBlockPage.pipe(
           T.Body("block_page"),
         ),
       ),
       blockPageEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("block_page_enabled")),
+        S.Boolean.pipe(T.Body("block_page_enabled")),
       ),
-      blockReason: S.optional(S.NullOr(S.String).pipe(T.Body("block_reason"))),
+      blockReason: S.optional(S.String.pipe(T.Body("block_reason"))),
       bypassParentRule: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("bypass_parent_rule")),
+        S.Boolean.pipe(T.Body("bypass_parent_rule")),
       ),
       checkSession: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsCheckSession).pipe(
+        GatewayRulesUpdateRequestRuleSettingsCheckSession.pipe(
           T.Body("check_session"),
         ),
       ),
       dnsResolvers: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsDnsResolvers).pipe(
+        GatewayRulesUpdateRequestRuleSettingsDnsResolvers.pipe(
           T.Body("dns_resolvers"),
         ),
       ),
-      egress: S.optional(S.NullOr(GatewayRulesUpdateRequestRuleSettingsEgress)),
+      egress: S.optional(GatewayRulesUpdateRequestRuleSettingsEgress),
       forensicCopy: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsForensicCopy).pipe(
+        GatewayRulesUpdateRequestRuleSettingsForensicCopy.pipe(
           T.Body("forensic_copy"),
         ),
       ),
       ignoreCnameCategoryMatches: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ignore_cname_category_matches")),
+        S.Boolean.pipe(T.Body("ignore_cname_category_matches")),
       ),
       insecureDisableDnssecValidation: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("insecure_disable_dnssec_validation")),
+        S.Boolean.pipe(T.Body("insecure_disable_dnssec_validation")),
       ),
-      ipCategories: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ip_categories")),
-      ),
+      ipCategories: S.optional(S.Boolean.pipe(T.Body("ip_categories"))),
       ipIndicatorFeeds: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ip_indicator_feeds")),
+        S.Boolean.pipe(T.Body("ip_indicator_feeds")),
       ),
-      l4override: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsL4override),
-      ),
+      l4override: S.optional(GatewayRulesUpdateRequestRuleSettingsL4override),
       notificationSettings: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsNotificationSettings,
-        ).pipe(T.Body("notification_settings")),
+        GatewayRulesUpdateRequestRuleSettingsNotificationSettings.pipe(
+          T.Body("notification_settings"),
+        ),
       ),
-      overrideHost: S.optional(
-        S.NullOr(S.String).pipe(T.Body("override_host")),
-      ),
+      overrideHost: S.optional(S.String.pipe(T.Body("override_host"))),
       overrideIps: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsOverrideIpsList).pipe(
+        GatewayRulesUpdateRequestRuleSettingsOverrideIpsList.pipe(
           T.Body("override_ips"),
         ),
       ),
       payloadLog: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsPayloadLog).pipe(
+        GatewayRulesUpdateRequestRuleSettingsPayloadLog.pipe(
           T.Body("payload_log"),
         ),
       ),
-      quarantine: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsQuarantine),
-      ),
-      redirect: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsRedirect),
-      ),
+      quarantine: S.optional(GatewayRulesUpdateRequestRuleSettingsQuarantine),
+      redirect: S.optional(GatewayRulesUpdateRequestRuleSettingsRedirect),
       resolveDnsInternally: S.optional(
-        S.NullOr(
-          GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally,
-        ).pipe(T.Body("resolve_dns_internally")),
+        GatewayRulesUpdateRequestRuleSettingsResolveDnsInternally.pipe(
+          T.Body("resolve_dns_internally"),
+        ),
       ),
       resolveDnsThroughCloudflare: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("resolve_dns_through_cloudflare")),
+        S.Boolean.pipe(T.Body("resolve_dns_through_cloudflare")),
       ),
       untrustedCert: S.optional(
-        S.NullOr(GatewayRulesUpdateRequestRuleSettingsUntrustedCert).pipe(
+        GatewayRulesUpdateRequestRuleSettingsUntrustedCert.pipe(
           T.Body("untrusted_cert"),
         ),
       ),
@@ -196033,32 +195189,32 @@ export const GatewayRulesUpdateRequestRuleSettings = /*@__PURE__*/ S.suspend(
 
 export interface GatewayRulesUpdateRequestSchedule {
   /** Specify the time intervals when the rule is active on Fridays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Fridays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  fri?: string | null;
+  fri?: string;
   /** Specify the time intervals when the rule is active on Mondays, in the increasing order from 00:00-24:00(capped at maximum of 6 time splits). If this parameter omitted, the rule is deactivated on Mondays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  mon?: string | null;
+  mon?: string;
   /** Specify the time intervals when the rule is active on Saturdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Saturdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  sat?: string | null;
+  sat?: string;
   /** Specify the time intervals when the rule is active on Sundays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Sundays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  sun?: string | null;
+  sun?: string;
   /** Specify the time intervals when the rule is active on Thursdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Thursdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  thu?: string | null;
+  thu?: string;
   /** Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location. */
-  timeZone?: string | null;
+  timeZone?: string;
   /** Specify the time intervals when the rule is active on Tuesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Tuesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  tue?: string | null;
+  tue?: string;
   /** Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted version of this string, which may cause Terraform drift if a unformatted value is used. */
-  wed?: string | null;
+  wed?: string;
 }
 export const GatewayRulesUpdateRequestSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fri: S.optional(S.NullOr(S.String)),
-    mon: S.optional(S.NullOr(S.String)),
-    sat: S.optional(S.NullOr(S.String)),
-    sun: S.optional(S.NullOr(S.String)),
-    thu: S.optional(S.NullOr(S.String)),
-    timeZone: S.optional(S.NullOr(S.String).pipe(T.Body("time_zone"))),
-    tue: S.optional(S.NullOr(S.String)),
-    wed: S.optional(S.NullOr(S.String)),
+    fri: S.optional(S.String),
+    mon: S.optional(S.String),
+    sat: S.optional(S.String),
+    sun: S.optional(S.String),
+    thu: S.optional(S.String),
+    timeZone: S.optional(S.String.pipe(T.Body("time_zone"))),
+    tue: S.optional(S.String),
+    wed: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GatewayRulesUpdateRequestSchedule",
@@ -196073,25 +195229,25 @@ export interface UpdateGatewayRuleRequest {
   /** Specify the rule name. */
   name: string;
   /** Specify the rule description. */
-  description?: string | null;
+  description?: string;
   /** Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  devicePosture?: string | null;
+  devicePosture?: string;
   /** Specify whether the rule is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules. */
-  expiration?: GatewayRulesUpdateRequestExpiration | null;
+  expiration?: GatewayRulesUpdateRequestExpiration;
   /** Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value. */
-  filters?: GatewayRulesUpdateRequestFiltersList | null;
+  filters?: GatewayRulesUpdateRequestFiltersList;
   /** Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  identity?: string | null;
+  identity?: string;
   /** Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to [Order of enforcement](http://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#manage-precedence-with-terraform) to manage precedence via Terraform. */
-  precedence?: number | null;
+  precedence?: number;
   /** Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift. */
-  ruleSettings?: GatewayRulesUpdateRequestRuleSettings | null;
+  ruleSettings?: GatewayRulesUpdateRequestRuleSettings;
   /** Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules. */
-  schedule?: GatewayRulesUpdateRequestSchedule | null;
+  schedule?: GatewayRulesUpdateRequestSchedule;
   /** Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response. */
-  traffic?: string | null;
+  traffic?: string;
 }
 export const UpdateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -196099,22 +195255,18 @@ export const UpdateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleId: S.String.pipe(T.Label("rule_id")),
     action: GatewayRulesUpdateRequestAction,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    devicePosture: S.optional(
-      S.NullOr(S.String).pipe(T.Body("device_posture")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expiration: S.optional(S.NullOr(GatewayRulesUpdateRequestExpiration)),
-    filters: S.optional(S.NullOr(GatewayRulesUpdateRequestFiltersList)),
-    identity: S.optional(S.NullOr(S.String)),
-    precedence: S.optional(S.NullOr(S.Number)),
+    description: S.optional(S.String),
+    devicePosture: S.optional(S.String.pipe(T.Body("device_posture"))),
+    enabled: S.optional(S.Boolean),
+    expiration: S.optional(GatewayRulesUpdateRequestExpiration),
+    filters: S.optional(GatewayRulesUpdateRequestFiltersList),
+    identity: S.optional(S.String),
+    precedence: S.optional(S.Number),
     ruleSettings: S.optional(
-      S.NullOr(GatewayRulesUpdateRequestRuleSettings).pipe(
-        T.Body("rule_settings"),
-      ),
+      GatewayRulesUpdateRequestRuleSettings.pipe(T.Body("rule_settings")),
     ),
-    schedule: S.optional(S.NullOr(GatewayRulesUpdateRequestSchedule)),
-    traffic: S.optional(S.NullOr(S.String)),
+    schedule: S.optional(GatewayRulesUpdateRequestSchedule),
+    traffic: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -196940,48 +196092,35 @@ export const IdentityProvidersUpdateRequestConfigAzureADPrompt =
 
 export interface IdentityProvidersUpdateRequestConfigAzureAD {
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAzureADClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAzureADClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** Should Cloudflare try to load authentication contexts from your account */
-  conditionalAccessEnabled?: boolean | null;
+  conditionalAccessEnabled?: boolean;
   /** Your Azure directory uuid */
-  directoryId?: string | null;
+  directoryId?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether. */
-  prompt?:
-    | IdentityProvidersUpdateRequestConfigAzureADPrompt
-    | (string & {})
-    | null;
+  prompt?: IdentityProvidersUpdateRequestConfigAzureADPrompt | (string & {});
   /** Should Cloudflare try to load groups from your account */
-  supportGroups?: boolean | null;
+  supportGroups?: boolean;
 }
 export const IdentityProvidersUpdateRequestConfigAzureAD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAzureADClaimsList),
-      ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      claims: S.optional(IdentityProvidersUpdateRequestConfigAzureADClaimsList),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
       conditionalAccessEnabled: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("conditional_access_enabled")),
+        S.Boolean.pipe(T.Body("conditional_access_enabled")),
       ),
-      directoryId: S.optional(S.NullOr(S.String).pipe(T.Body("directory_id"))),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      prompt: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAzureADPrompt),
-      ),
-      supportGroups: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("support_groups")),
-      ),
+      directoryId: S.optional(S.String.pipe(T.Body("directory_id"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      prompt: S.optional(IdentityProvidersUpdateRequestConfigAzureADPrompt),
+      supportGroups: S.optional(S.Boolean.pipe(T.Body("support_groups"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAzureAD",
@@ -196996,37 +196135,29 @@ export const IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessCentrify {
   /** Your centrify account url */
-  centrifyAccount?: string | null;
+  centrifyAccount?: string;
   /** Your centrify app id */
-  centrifyAppId?: string | null;
+  centrifyAppId?: string;
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessCentrify =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      centrifyAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("centrify_account")),
-      ),
-      centrifyAppId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("centrify_app_id")),
-      ),
+      centrifyAccount: S.optional(S.String.pipe(T.Body("centrify_account"))),
+      centrifyAppId: S.optional(S.String.pipe(T.Body("centrify_app_id"))),
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessCentrifyClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessCentrify",
@@ -197034,17 +196165,15 @@ export const IdentityProvidersUpdateRequestConfigAccessCentrify =
 
 export interface IdentityProvidersUpdateRequestConfigAccessFacebook {
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessFacebook =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessFacebook",
@@ -197059,27 +196188,23 @@ export const IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessGoogle {
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessGoogle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessGoogleClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessGoogle",
@@ -197094,32 +196219,26 @@ export const IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessGoogleApps {
   /** Your companies TLD */
-  appsDomain?: string | null;
+  appsDomain?: string;
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessGoogleApps =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      appsDomain: S.optional(S.NullOr(S.String).pipe(T.Body("apps_domain"))),
+      appsDomain: S.optional(S.String.pipe(T.Body("apps_domain"))),
       claims: S.optional(
-        S.NullOr(
-          IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList,
-        ),
+        IdentityProvidersUpdateRequestConfigAccessGoogleAppsClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessGoogleApps",
@@ -197141,44 +196260,40 @@ export const IdentityProvidersUpdateRequestConfigAccessOIDCScopesList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessOIDC {
   /** The authorization_endpoint URL of your IdP */
-  authUrl?: string | null;
+  authUrl?: string;
   /** The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens */
-  certsUrl?: string | null;
+  certsUrl?: string;
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Enable Proof Key for Code Exchange (PKCE) */
-  pkceEnabled?: boolean | null;
+  pkceEnabled?: boolean;
   /** OAuth scopes */
-  scopes?: IdentityProvidersUpdateRequestConfigAccessOIDCScopesList | null;
+  scopes?: IdentityProvidersUpdateRequestConfigAccessOIDCScopesList;
   /** The token_endpoint URL of your IdP */
-  tokenUrl?: string | null;
+  tokenUrl?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessOIDC =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      authUrl: S.optional(S.NullOr(S.String).pipe(T.Body("auth_url"))),
-      certsUrl: S.optional(S.NullOr(S.String).pipe(T.Body("certs_url"))),
+      authUrl: S.optional(S.String.pipe(T.Body("auth_url"))),
+      certsUrl: S.optional(S.String.pipe(T.Body("certs_url"))),
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessOIDCClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      pkceEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("pkce_enabled"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      pkceEnabled: S.optional(S.Boolean.pipe(T.Body("pkce_enabled"))),
       scopes: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessOIDCScopesList),
+        IdentityProvidersUpdateRequestConfigAccessOIDCScopesList,
       ),
-      tokenUrl: S.optional(S.NullOr(S.String).pipe(T.Body("token_url"))),
+      tokenUrl: S.optional(S.String.pipe(T.Body("token_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessOIDC",
@@ -197193,35 +196308,31 @@ export const IdentityProvidersUpdateRequestConfigAccessOktaClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessOkta {
   /** Your okta authorization server id */
-  authorizationServerId?: string | null;
+  authorizationServerId?: string;
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessOktaClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessOktaClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your okta account url */
-  oktaAccount?: string | null;
+  oktaAccount?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessOkta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authorizationServerId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("authorization_server_id")),
+        S.String.pipe(T.Body("authorization_server_id")),
       ),
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessOktaClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessOktaClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      oktaAccount: S.optional(S.NullOr(S.String).pipe(T.Body("okta_account"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      oktaAccount: S.optional(S.String.pipe(T.Body("okta_account"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessOkta",
@@ -197236,32 +196347,26 @@ export const IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessOnelogin {
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your OneLogin account url */
-  oneloginAccount?: string | null;
+  oneloginAccount?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessOnelogin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessOneloginClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      oneloginAccount: S.optional(
-        S.NullOr(S.String).pipe(T.Body("onelogin_account")),
-      ),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      oneloginAccount: S.optional(S.String.pipe(T.Body("onelogin_account"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessOnelogin",
@@ -197276,30 +196381,26 @@ export const IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessPingone {
   /** Custom claims */
-  claims?: IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList | null;
+  claims?: IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList;
   /** Your OAuth Client ID */
-  clientId?: string | null;
+  clientId?: string;
   /** Your OAuth Client Secret */
-  clientSecret?: string | null;
+  clientSecret?: string;
   /** The claim name for email in the id_token response. */
-  emailClaimName?: string | null;
+  emailClaimName?: string;
   /** Your PingOne environment identifier */
-  pingEnvId?: string | null;
+  pingEnvId?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessPingone =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claims: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList),
+        IdentityProvidersUpdateRequestConfigAccessPingoneClaimsList,
       ),
-      clientId: S.optional(S.NullOr(S.String).pipe(T.Body("client_id"))),
-      clientSecret: S.optional(
-        S.NullOr(S.String).pipe(T.Body("client_secret")),
-      ),
-      emailClaimName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_claim_name")),
-      ),
-      pingEnvId: S.optional(S.NullOr(S.String).pipe(T.Body("ping_env_id"))),
+      clientId: S.optional(S.String.pipe(T.Body("client_id"))),
+      clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+      emailClaimName: S.optional(S.String.pipe(T.Body("email_claim_name"))),
+      pingEnvId: S.optional(S.String.pipe(T.Body("ping_env_id"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessPingone",
@@ -197314,17 +196415,15 @@ export const IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesItem {
   /** attribute name from the IDP */
-  attributeName?: string | null;
+  attributeName?: string;
   /** header that will be added on the request to the origin */
-  headerName?: string | null;
+  headerName?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      attributeName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("attribute_name")),
-      ),
-      headerName: S.optional(S.NullOr(S.String).pipe(T.Body("header_name"))),
+      attributeName: S.optional(S.String.pipe(T.Body("attribute_name"))),
+      headerName: S.optional(S.String.pipe(T.Body("header_name"))),
     }),
   ).annotate({
     identifier:
@@ -197347,77 +196446,73 @@ export const IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList =
 
 export interface IdentityProvidersUpdateRequestConfigAccessSAML {
   /** A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules. */
-  attributes?: IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList | null;
+  attributes?: IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList;
   /** The attribute name for email in the SAML response. */
-  emailAttributeName?: string | null;
+  emailAttributeName?: string;
   /** Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt */
-  enableEncryption?: boolean | null;
+  enableEncryption?: boolean;
   /** Add a list of attribute names that will be returned in the response header from the Access callback. */
-  headerAttributes?: IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList | null;
+  headerAttributes?: IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList;
   /** X509 certificate to verify the signature in the SAML authentication response */
-  idpPublicCerts?: IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList | null;
+  idpPublicCerts?: IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList;
   /** IdP Entity ID or Issuer URL */
-  issuerUrl?: string | null;
+  issuerUrl?: string;
   /** Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints. */
-  signRequest?: boolean | null;
+  signRequest?: boolean;
   /** URL to send the SAML authentication requests to */
-  ssoTargetUrl?: string | null;
+  ssoTargetUrl?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessSAML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributes: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList),
+        IdentityProvidersUpdateRequestConfigAccessSAMLAttributesList,
       ),
       emailAttributeName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("email_attribute_name")),
+        S.String.pipe(T.Body("email_attribute_name")),
       ),
-      enableEncryption: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_encryption")),
-      ),
+      enableEncryption: S.optional(S.Boolean.pipe(T.Body("enable_encryption"))),
       headerAttributes: S.optional(
-        S.NullOr(
-          IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList,
-        ).pipe(T.Body("header_attributes")),
+        IdentityProvidersUpdateRequestConfigAccessSAMLHeaderAttributesList.pipe(
+          T.Body("header_attributes"),
+        ),
       ),
       idpPublicCerts: S.optional(
-        S.NullOr(
-          IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList,
-        ).pipe(T.Body("idp_public_certs")),
+        IdentityProvidersUpdateRequestConfigAccessSAMLIdpPublicCertsList.pipe(
+          T.Body("idp_public_certs"),
+        ),
       ),
-      issuerUrl: S.optional(S.NullOr(S.String).pipe(T.Body("issuer_url"))),
-      signRequest: S.optional(S.NullOr(S.Boolean).pipe(T.Body("sign_request"))),
-      ssoTargetUrl: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sso_target_url")),
-      ),
+      issuerUrl: S.optional(S.String.pipe(T.Body("issuer_url"))),
+      signRequest: S.optional(S.Boolean.pipe(T.Body("sign_request"))),
+      ssoTargetUrl: S.optional(S.String.pipe(T.Body("sso_target_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessSAML",
   }) as any as S.Schema<IdentityProvidersUpdateRequestConfigAccessSAML>;
 
 export interface IdentityProvidersUpdateRequestConfigAccessOnetimepin {
-  redirectUrl?: string | null;
+  redirectUrl?: string;
 }
 export const IdentityProvidersUpdateRequestConfigAccessOnetimepin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      redirectUrl: S.optional(S.NullOr(S.String).pipe(T.Body("redirect_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestConfigAccessOnetimepin",
   }) as any as S.Schema<IdentityProvidersUpdateRequestConfigAccessOnetimepin>;
 
 export interface IdentityProvidersUpdateRequestConfigAccessCloudflare {
-  redirectUrl?: string | null;
+  redirectUrl?: string;
   /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies. */
-  restrictToAccountMembers?: boolean | null;
+  restrictToAccountMembers?: boolean;
 }
 export const IdentityProvidersUpdateRequestConfigAccessCloudflare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      redirectUrl: S.optional(S.NullOr(S.String).pipe(T.Body("redirect_url"))),
+      redirectUrl: S.optional(S.String.pipe(T.Body("redirect_url"))),
       restrictToAccountMembers: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("restrict_to_account_members")),
+        S.Boolean.pipe(T.Body("restrict_to_account_members")),
       ),
     }),
   ).annotate({
@@ -197552,9 +196647,9 @@ export interface IdentityProvidersUpdateRequestSamlCertificateSet {
   /** Timestamp when the certificate set was last updated (e.g., during rotation) */
   updatedAt: string;
   /** The currently active certificate used for encrypting SAML assertions */
-  currentCertificate?: IdentityProvidersUpdateRequestSamlCertificateSetCurrentCertificate | null;
+  currentCertificate?: IdentityProvidersUpdateRequestSamlCertificateSetCurrentCertificate;
   /** The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `saml_certificate`. */
-  previousCertificate?: unknown | null;
+  previousCertificate?: unknown;
 }
 export const IdentityProvidersUpdateRequestSamlCertificateSet =
   /*@__PURE__*/ S.suspend(() =>
@@ -197563,12 +196658,12 @@ export const IdentityProvidersUpdateRequestSamlCertificateSet =
       uid: S.String,
       updatedAt: S.String.pipe(T.Body("updated_at")),
       currentCertificate: S.optional(
-        S.NullOr(
-          IdentityProvidersUpdateRequestSamlCertificateSetCurrentCertificate,
-        ).pipe(T.Body("current_certificate")),
+        IdentityProvidersUpdateRequestSamlCertificateSetCurrentCertificate.pipe(
+          T.Body("current_certificate"),
+        ),
       ),
       previousCertificate: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("previous_certificate")),
+        S.Unknown.pipe(T.Body("previous_certificate")),
       ),
     }),
   ).annotate({
@@ -197582,38 +196677,33 @@ export const IdentityProvidersUpdateRequestScimConfigAzureADIdentityUpdateBehavi
 
 export interface IdentityProvidersUpdateRequestScimConfigAzureAD {
   /** A flag to enable or disable SCIM for the identity provider. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no_action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate. */
   identityUpdateBehavior?:
     | IdentityProvidersUpdateRequestScimConfigAzureADIdentityUpdateBehavior
-    | (string & {})
-    | null;
+    | (string & {});
   /** The base URL of Cloudflare's SCIM V2.0 API endpoint. */
-  scimBaseUrl?: string | null;
+  scimBaseUrl?: string;
   /** A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider. This cannot be enabled unless user_deprovision is also enabled. */
-  seatDeprovision?: boolean | null;
+  seatDeprovision?: boolean;
   /** A read-only token generated when the SCIM integration is enabled for the first time. It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret. */
-  secret?: string | null;
+  secret?: string;
   /** A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider. */
-  userDeprovision?: boolean | null;
+  userDeprovision?: boolean;
 }
 export const IdentityProvidersUpdateRequestScimConfigAzureAD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       identityUpdateBehavior: S.optional(
-        S.NullOr(
-          IdentityProvidersUpdateRequestScimConfigAzureADIdentityUpdateBehavior,
-        ).pipe(T.Body("identity_update_behavior")),
+        IdentityProvidersUpdateRequestScimConfigAzureADIdentityUpdateBehavior.pipe(
+          T.Body("identity_update_behavior"),
+        ),
       ),
-      scimBaseUrl: S.optional(S.NullOr(S.String).pipe(T.Body("scim_base_url"))),
-      seatDeprovision: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("seat_deprovision")),
-      ),
-      secret: S.optional(S.NullOr(S.String)),
-      userDeprovision: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("user_deprovision")),
-      ),
+      scimBaseUrl: S.optional(S.String.pipe(T.Body("scim_base_url"))),
+      seatDeprovision: S.optional(S.Boolean.pipe(T.Body("seat_deprovision"))),
+      secret: S.optional(S.String),
+      userDeprovision: S.optional(S.Boolean.pipe(T.Body("user_deprovision"))),
     }),
   ).annotate({
     identifier: "IdentityProvidersUpdateRequestScimConfigAzureAD",
@@ -197631,15 +196721,15 @@ export interface UpdateIdentityProviderForAccountRequest {
   /** The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/). */
   type: IdentityProvidersUpdateRequestTypeAzureAD | (string & {});
   /** UUID. */
-  id?: string | null;
+  id?: string;
   /** Indicates that the identity provider is immutable and cannot be updated or deleted via the API. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** The SAML encryption certificate set details, including current and previous certificates. */
-  samlCertificateSet?: IdentityProvidersUpdateRequestSamlCertificateSet | null;
+  samlCertificateSet?: IdentityProvidersUpdateRequestSamlCertificateSet;
   /** The UID of the SAML encryption certificate set assigned to this Identity Provider. */
-  samlCertificateSetId?: string | null;
+  samlCertificateSetId?: string;
   /** The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: IdentityProvidersUpdateRequestScimConfigAzureAD | null;
+  scimConfig?: IdentityProvidersUpdateRequestScimConfigAzureAD;
 }
 export const UpdateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -197649,18 +196739,18 @@ export const UpdateIdentityProviderForAccountRequest = /*@__PURE__*/ S.suspend(
       config: IdentityProvidersUpdateRequestConfig,
       name: S.String,
       type: IdentityProvidersUpdateRequestTypeAzureAD,
-      id: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      id: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
       samlCertificateSet: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestSamlCertificateSet).pipe(
+        IdentityProvidersUpdateRequestSamlCertificateSet.pipe(
           T.Body("saml_certificate_set"),
         ),
       ),
       samlCertificateSetId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_certificate_set_id")),
+        S.String.pipe(T.Body("saml_certificate_set_id")),
       ),
       scimConfig: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestScimConfigAzureAD).pipe(
+        IdentityProvidersUpdateRequestScimConfigAzureAD.pipe(
           T.Body("scim_config"),
         ),
       ),
@@ -199894,15 +198984,15 @@ export interface UpdateIdentityProviderForZoneRequest {
   /** The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/). */
   type: IdentityProvidersUpdateRequestTypeAzureAD | (string & {});
   /** UUID. */
-  id?: string | null;
+  id?: string;
   /** Indicates that the identity provider is immutable and cannot be updated or deleted via the API. */
-  readOnly?: boolean | null;
+  readOnly?: boolean;
   /** The SAML encryption certificate set details, including current and previous certificates. */
-  samlCertificateSet?: IdentityProvidersUpdateRequestSamlCertificateSet | null;
+  samlCertificateSet?: IdentityProvidersUpdateRequestSamlCertificateSet;
   /** The UID of the SAML encryption certificate set assigned to this Identity Provider. */
-  samlCertificateSetId?: string | null;
+  samlCertificateSetId?: string;
   /** The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: IdentityProvidersUpdateRequestScimConfigAzureAD | null;
+  scimConfig?: IdentityProvidersUpdateRequestScimConfigAzureAD;
 }
 export const UpdateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -199912,18 +199002,18 @@ export const UpdateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
       config: IdentityProvidersUpdateRequestConfig,
       name: S.String,
       type: IdentityProvidersUpdateRequestTypeAzureAD,
-      id: S.optional(S.NullOr(S.String)),
-      readOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("read_only"))),
+      id: S.optional(S.String),
+      readOnly: S.optional(S.Boolean.pipe(T.Body("read_only"))),
       samlCertificateSet: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestSamlCertificateSet).pipe(
+        IdentityProvidersUpdateRequestSamlCertificateSet.pipe(
           T.Body("saml_certificate_set"),
         ),
       ),
       samlCertificateSetId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("saml_certificate_set_id")),
+        S.String.pipe(T.Body("saml_certificate_set_id")),
       ),
       scimConfig: S.optional(
-        S.NullOr(IdentityProvidersUpdateRequestScimConfigAzureAD).pipe(
+        IdentityProvidersUpdateRequestScimConfigAzureAD.pipe(
           T.Body("scim_config"),
         ),
       ),
@@ -199942,17 +199032,15 @@ export const UpdateIdentityProviderForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export interface OrganizationsUpdateRequestCustomPages {
   /** The uid of the custom page to use when a user is denied access after failing a non-identity rule. */
-  forbidden?: string | null;
+  forbidden?: string;
   /** The uid of the custom page to use when a user is denied access. */
-  identityDenied?: string | null;
+  identityDenied?: string;
 }
 export const OrganizationsUpdateRequestCustomPages = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      forbidden: S.optional(S.NullOr(S.String)),
-      identityDenied: S.optional(
-        S.NullOr(S.String).pipe(T.Body("identity_denied")),
-      ),
+      forbidden: S.optional(S.String),
+      identityDenied: S.optional(S.String.pipe(T.Body("identity_denied"))),
     }),
 ).annotate({
   identifier: "OrganizationsUpdateRequestCustomPages",
@@ -199967,26 +199055,24 @@ export const OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesLis
 
 export interface OrganizationsUpdateRequestLoginDesign {
   /** The background color on your login page. */
-  backgroundColor?: string | null;
+  backgroundColor?: string;
   /** The text at the bottom of your login page. */
-  footerText?: string | null;
+  footerText?: string;
   /** The text at the top of your login page. */
-  headerText?: string | null;
+  headerText?: string;
   /** The URL of the logo on your login page. */
-  logoPath?: string | null;
+  logoPath?: string;
   /** The text color on your login page. */
-  textColor?: string | null;
+  textColor?: string;
 }
 export const OrganizationsUpdateRequestLoginDesign = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      backgroundColor: S.optional(
-        S.NullOr(S.String).pipe(T.Body("background_color")),
-      ),
-      footerText: S.optional(S.NullOr(S.String).pipe(T.Body("footer_text"))),
-      headerText: S.optional(S.NullOr(S.String).pipe(T.Body("header_text"))),
-      logoPath: S.optional(S.NullOr(S.String).pipe(T.Body("logo_path"))),
-      textColor: S.optional(S.NullOr(S.String).pipe(T.Body("text_color"))),
+      backgroundColor: S.optional(S.String.pipe(T.Body("background_color"))),
+      footerText: S.optional(S.String.pipe(T.Body("footer_text"))),
+      headerText: S.optional(S.String.pipe(T.Body("header_text"))),
+      logoPath: S.optional(S.String.pipe(T.Body("logo_path"))),
+      textColor: S.optional(S.String.pipe(T.Body("text_color"))),
     }),
 ).annotate({
   identifier: "OrganizationsUpdateRequestLoginDesign",
@@ -200011,30 +199097,26 @@ export const OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsList =
 
 export interface OrganizationsUpdateRequestMfaConfig {
   /** Lists the MFA methods that users can authenticate with. */
-  allowedAuthenticators?: OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsList | null;
+  allowedAuthenticators?: OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsList;
   /** Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). */
-  amrMatchingSessionDuration?: string | null;
+  amrMatchingSessionDuration?: string;
   /** Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs. */
-  requiredAaguids?: string | null;
+  requiredAaguids?: string;
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
 }
 export const OrganizationsUpdateRequestMfaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedAuthenticators: S.optional(
-      S.NullOr(
-        OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsList,
-      ).pipe(T.Body("allowed_authenticators")),
+      OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsList.pipe(
+        T.Body("allowed_authenticators"),
+      ),
     ),
     amrMatchingSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("amr_matching_session_duration")),
+      S.String.pipe(T.Body("amr_matching_session_duration")),
     ),
-    requiredAaguids: S.optional(
-      S.NullOr(S.String).pipe(T.Body("required_aaguids")),
-    ),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    requiredAaguids: S.optional(S.String.pipe(T.Body("required_aaguids"))),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
   }),
 ).annotate({
   identifier: "OrganizationsUpdateRequestMfaConfig",
@@ -200095,45 +199177,43 @@ export interface OrganizationsUpdateRequestMfaPivKeyRequirements {
   /** Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use). */
   pinPolicy?:
     | OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy
-    | (string & {})
-    | null;
+    | (string & {});
   /** Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device. */
-  requireFipsDevice?: boolean | null;
+  requireFipsDevice?: boolean;
   /** Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter. */
-  sshKeySize?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList | null;
+  sshKeySize?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList;
   /** Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`. */
-  sshKeyType?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList | null;
+  sshKeyType?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList;
   /** Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds). */
   touchPolicy?:
     | OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const OrganizationsUpdateRequestMfaPivKeyRequirements =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pinPolicy: S.optional(
-        S.NullOr(OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy).pipe(
+        OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy.pipe(
           T.Body("pin_policy"),
         ),
       ),
       requireFipsDevice: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("require_fips_device")),
+        S.Boolean.pipe(T.Body("require_fips_device")),
       ),
       sshKeySize: S.optional(
-        S.NullOr(
-          OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList,
-        ).pipe(T.Body("ssh_key_size")),
+        OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList.pipe(
+          T.Body("ssh_key_size"),
+        ),
       ),
       sshKeyType: S.optional(
-        S.NullOr(
-          OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList,
-        ).pipe(T.Body("ssh_key_type")),
+        OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList.pipe(
+          T.Body("ssh_key_type"),
+        ),
       ),
       touchPolicy: S.optional(
-        S.NullOr(
-          OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy,
-        ).pipe(T.Body("touch_policy")),
+        OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy.pipe(
+          T.Body("touch_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -200144,90 +199224,82 @@ export interface UpdateOrganizationForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** The unique subdomain assigned to your Zero Trust organization. */
-  authDomain?: string | null;
+  authDomain?: string;
   /** When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean | null;
-  customPages?: OrganizationsUpdateRequestCustomPages | null;
+  autoRedirectToIdentity?: boolean;
+  customPages?: OrganizationsUpdateRequestCustomPages;
   /** Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array. */
-  denyUnmatchedRequests?: boolean | null;
+  denyUnmatchedRequests?: boolean;
   /** Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request. */
-  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList | null;
+  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList;
   /** Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean | null;
-  loginDesign?: OrganizationsUpdateRequestLoginDesign | null;
+  isUiReadOnly?: boolean;
+  loginDesign?: OrganizationsUpdateRequestLoginDesign;
   /** Configures multi-factor authentication (MFA) settings for an organization. */
-  mfaConfig?: OrganizationsUpdateRequestMfaConfig | null;
+  mfaConfig?: OrganizationsUpdateRequestMfaConfig;
   /** Configures PIV key requirements for MFA using hardware security keys. */
-  mfaPivKeyRequirements?: OrganizationsUpdateRequestMfaPivKeyRequirements | null;
+  mfaPivKeyRequirements?: OrganizationsUpdateRequestMfaPivKeyRequirements;
   /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps. */
-  mfaRequiredForAllApps?: boolean | null;
+  mfaRequiredForAllApps?: boolean;
   /** The name of your Zero Trust organization. */
-  name?: string | null;
+  name?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string | null;
+  uiReadOnlyToggleReason?: string;
   /** The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. */
-  userSeatExpirationInactiveTime?: string | null;
+  userSeatExpirationInactiveTime?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string | null;
+  warpAuthSessionDuration?: string;
 }
 export const UpdateOrganizationForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowAuthenticateViaWarp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+      S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
     ),
-    authDomain: S.optional(S.NullOr(S.String).pipe(T.Body("auth_domain"))),
+    authDomain: S.optional(S.String.pipe(T.Body("auth_domain"))),
     autoRedirectToIdentity: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+      S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
     ),
     customPages: S.optional(
-      S.NullOr(OrganizationsUpdateRequestCustomPages).pipe(
-        T.Body("custom_pages"),
-      ),
+      OrganizationsUpdateRequestCustomPages.pipe(T.Body("custom_pages")),
     ),
     denyUnmatchedRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deny_unmatched_requests")),
+      S.Boolean.pipe(T.Body("deny_unmatched_requests")),
     ),
     denyUnmatchedRequestsExemptedZoneNames: S.optional(
-      S.NullOr(
-        OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList,
-      ).pipe(T.Body("deny_unmatched_requests_exempted_zone_names")),
-    ),
-    isUiReadOnly: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_ui_read_only")),
-    ),
-    loginDesign: S.optional(
-      S.NullOr(OrganizationsUpdateRequestLoginDesign).pipe(
-        T.Body("login_design"),
+      OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList.pipe(
+        T.Body("deny_unmatched_requests_exempted_zone_names"),
       ),
     ),
+    isUiReadOnly: S.optional(S.Boolean.pipe(T.Body("is_ui_read_only"))),
+    loginDesign: S.optional(
+      OrganizationsUpdateRequestLoginDesign.pipe(T.Body("login_design")),
+    ),
     mfaConfig: S.optional(
-      S.NullOr(OrganizationsUpdateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      OrganizationsUpdateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     mfaPivKeyRequirements: S.optional(
-      S.NullOr(OrganizationsUpdateRequestMfaPivKeyRequirements).pipe(
+      OrganizationsUpdateRequestMfaPivKeyRequirements.pipe(
         T.Body("mfa_piv_key_requirements"),
       ),
     ),
     mfaRequiredForAllApps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("mfa_required_for_all_apps")),
+      S.Boolean.pipe(T.Body("mfa_required_for_all_apps")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    name: S.optional(S.String),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     uiReadOnlyToggleReason: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ui_read_only_toggle_reason")),
+      S.String.pipe(T.Body("ui_read_only_toggle_reason")),
     ),
     userSeatExpirationInactiveTime: S.optional(
-      S.NullOr(S.String).pipe(T.Body("user_seat_expiration_inactive_time")),
+      S.String.pipe(T.Body("user_seat_expiration_inactive_time")),
     ),
     warpAuthSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("warp_auth_session_duration")),
+      S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
   })
     .pipe(
@@ -200525,90 +199597,82 @@ export interface UpdateOrganizationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean | null;
+  allowAuthenticateViaWarp?: boolean;
   /** The unique subdomain assigned to your Zero Trust organization. */
-  authDomain?: string | null;
+  authDomain?: string;
   /** When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean | null;
-  customPages?: OrganizationsUpdateRequestCustomPages | null;
+  autoRedirectToIdentity?: boolean;
+  customPages?: OrganizationsUpdateRequestCustomPages;
   /** Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array. */
-  denyUnmatchedRequests?: boolean | null;
+  denyUnmatchedRequests?: boolean;
   /** Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request. */
-  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList | null;
+  denyUnmatchedRequestsExemptedZoneNames?: OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList;
   /** Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean | null;
-  loginDesign?: OrganizationsUpdateRequestLoginDesign | null;
+  isUiReadOnly?: boolean;
+  loginDesign?: OrganizationsUpdateRequestLoginDesign;
   /** Configures multi-factor authentication (MFA) settings for an organization. */
-  mfaConfig?: OrganizationsUpdateRequestMfaConfig | null;
+  mfaConfig?: OrganizationsUpdateRequestMfaConfig;
   /** Configures PIV key requirements for MFA using hardware security keys. */
-  mfaPivKeyRequirements?: OrganizationsUpdateRequestMfaPivKeyRequirements | null;
+  mfaPivKeyRequirements?: OrganizationsUpdateRequestMfaPivKeyRequirements;
   /** Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps. */
-  mfaRequiredForAllApps?: boolean | null;
+  mfaRequiredForAllApps?: boolean;
   /** The name of your Zero Trust organization. */
-  name?: string | null;
+  name?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string | null;
+  sessionDuration?: string;
   /** A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string | null;
+  uiReadOnlyToggleReason?: string;
   /** The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. */
-  userSeatExpirationInactiveTime?: string | null;
+  userSeatExpirationInactiveTime?: string;
   /** The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string | null;
+  warpAuthSessionDuration?: string;
 }
 export const UpdateOrganizationForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     allowAuthenticateViaWarp: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_authenticate_via_warp")),
+      S.Boolean.pipe(T.Body("allow_authenticate_via_warp")),
     ),
-    authDomain: S.optional(S.NullOr(S.String).pipe(T.Body("auth_domain"))),
+    authDomain: S.optional(S.String.pipe(T.Body("auth_domain"))),
     autoRedirectToIdentity: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_redirect_to_identity")),
+      S.Boolean.pipe(T.Body("auto_redirect_to_identity")),
     ),
     customPages: S.optional(
-      S.NullOr(OrganizationsUpdateRequestCustomPages).pipe(
-        T.Body("custom_pages"),
-      ),
+      OrganizationsUpdateRequestCustomPages.pipe(T.Body("custom_pages")),
     ),
     denyUnmatchedRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("deny_unmatched_requests")),
+      S.Boolean.pipe(T.Body("deny_unmatched_requests")),
     ),
     denyUnmatchedRequestsExemptedZoneNames: S.optional(
-      S.NullOr(
-        OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList,
-      ).pipe(T.Body("deny_unmatched_requests_exempted_zone_names")),
-    ),
-    isUiReadOnly: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_ui_read_only")),
-    ),
-    loginDesign: S.optional(
-      S.NullOr(OrganizationsUpdateRequestLoginDesign).pipe(
-        T.Body("login_design"),
+      OrganizationsUpdateRequestDenyUnmatchedRequestsExemptedZoneNamesList.pipe(
+        T.Body("deny_unmatched_requests_exempted_zone_names"),
       ),
     ),
+    isUiReadOnly: S.optional(S.Boolean.pipe(T.Body("is_ui_read_only"))),
+    loginDesign: S.optional(
+      OrganizationsUpdateRequestLoginDesign.pipe(T.Body("login_design")),
+    ),
     mfaConfig: S.optional(
-      S.NullOr(OrganizationsUpdateRequestMfaConfig).pipe(T.Body("mfa_config")),
+      OrganizationsUpdateRequestMfaConfig.pipe(T.Body("mfa_config")),
     ),
     mfaPivKeyRequirements: S.optional(
-      S.NullOr(OrganizationsUpdateRequestMfaPivKeyRequirements).pipe(
+      OrganizationsUpdateRequestMfaPivKeyRequirements.pipe(
         T.Body("mfa_piv_key_requirements"),
       ),
     ),
     mfaRequiredForAllApps: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("mfa_required_for_all_apps")),
+      S.Boolean.pipe(T.Body("mfa_required_for_all_apps")),
     ),
-    name: S.optional(S.NullOr(S.String)),
-    sessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("session_duration")),
-    ),
+    name: S.optional(S.String),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
     uiReadOnlyToggleReason: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ui_read_only_toggle_reason")),
+      S.String.pipe(T.Body("ui_read_only_toggle_reason")),
     ),
     userSeatExpirationInactiveTime: S.optional(
-      S.NullOr(S.String).pipe(T.Body("user_seat_expiration_inactive_time")),
+      S.String.pipe(T.Body("user_seat_expiration_inactive_time")),
     ),
     warpAuthSessionDuration: S.optional(
-      S.NullOr(S.String).pipe(T.Body("warp_auth_session_duration")),
+      S.String.pipe(T.Body("warp_auth_session_duration")),
     ),
   })
     .pipe(
@@ -200631,7 +199695,7 @@ export interface UpdateRiskScoringIntegrationRequest {
   /** The base url of the tenant, e.g. "https://tenant.okta.com". */
   tenantUrl: string;
   /** A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4). */
-  referenceId?: string | null;
+  referenceId?: string;
 }
 export const UpdateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -200639,7 +199703,7 @@ export const UpdateRiskScoringIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
     integrationId: S.String.pipe(T.Label("integration_id")),
     active: S.Boolean,
     tenantUrl: S.String.pipe(T.Body("tenant_url")),
-    referenceId: S.optional(S.NullOr(S.String).pipe(T.Body("reference_id"))),
+    referenceId: S.optional(S.String.pipe(T.Body("reference_id"))),
   })
     .pipe(
       T.Http({
@@ -200698,15 +199762,13 @@ export interface ValidateDlpPatternRequest {
   accountId: string;
   regex: string;
   /** Maximum number of bytes that the regular expression can match. */
-  maxMatchBytes?: number | null;
+  maxMatchBytes?: number;
 }
 export const ValidateDlpPatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     regex: S.String,
-    maxMatchBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_match_bytes")),
-    ),
+    maxMatchBytes: S.optional(S.Number.pipe(T.Body("max_match_bytes"))),
   })
     .pipe(
       T.Http({

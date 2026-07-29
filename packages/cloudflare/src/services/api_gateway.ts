@@ -123,15 +123,15 @@ export interface LabelsUserBulkCreateRequestBodyItem {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string | null;
+  description?: string;
   /** Metadata for the label */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const LabelsUserBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    description: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "LabelsUserBulkCreateRequestBodyItem",
@@ -256,14 +256,12 @@ export const OperationsLabelsBulkCreateRequestManagedLabelsList =
 
 export interface OperationsLabelsBulkCreateRequestManaged {
   /** List of managed label names. */
-  labels?: OperationsLabelsBulkCreateRequestManagedLabelsList | null;
+  labels?: OperationsLabelsBulkCreateRequestManagedLabelsList;
 }
 export const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      labels: S.optional(
-        S.NullOr(OperationsLabelsBulkCreateRequestManagedLabelsList),
-      ),
+      labels: S.optional(OperationsLabelsBulkCreateRequestManagedLabelsList),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkCreateRequestManaged",
@@ -277,14 +275,12 @@ export const OperationsLabelsBulkCreateRequestUserLabelsList =
 
 export interface OperationsLabelsBulkCreateRequestUser {
   /** List of user label names. */
-  labels?: OperationsLabelsBulkCreateRequestUserLabelsList | null;
+  labels?: OperationsLabelsBulkCreateRequestUserLabelsList;
 }
 export const OperationsLabelsBulkCreateRequestUser = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      labels: S.optional(
-        S.NullOr(OperationsLabelsBulkCreateRequestUserLabelsList),
-      ),
+      labels: S.optional(OperationsLabelsBulkCreateRequestUserLabelsList),
     }),
 ).annotate({
   identifier: "OperationsLabelsBulkCreateRequestUser",
@@ -295,15 +291,15 @@ export interface BulkCreateOperationLabelsRequest {
   zoneId: string;
   /** Operation IDs selector */
   selector: OperationsLabelsBulkCreateRequestSelector;
-  managed?: OperationsLabelsBulkCreateRequestManaged | null;
-  user?: OperationsLabelsBulkCreateRequestUser | null;
+  managed?: OperationsLabelsBulkCreateRequestManaged;
+  user?: OperationsLabelsBulkCreateRequestUser;
 }
 export const BulkCreateOperationLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     selector: OperationsLabelsBulkCreateRequestSelector,
-    managed: S.optional(S.NullOr(OperationsLabelsBulkCreateRequestManaged)),
-    user: S.optional(S.NullOr(OperationsLabelsBulkCreateRequestUser)),
+    managed: S.optional(OperationsLabelsBulkCreateRequestManaged),
+    user: S.optional(OperationsLabelsBulkCreateRequestUser),
   })
     .pipe(
       T.Http({
@@ -1147,17 +1143,12 @@ export const DiscoveryOperationsBulkEditRequestBodyValueState =
 
 export interface DiscoveryOperationsBulkEditRequestBodyValue {
   /** Mark state of operation in API Discovery */
-  state?:
-    | DiscoveryOperationsBulkEditRequestBodyValueState
-    | (string & {})
-    | null;
+  state?: DiscoveryOperationsBulkEditRequestBodyValueState | (string & {});
 }
 export const DiscoveryOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      state: S.optional(
-        S.NullOr(DiscoveryOperationsBulkEditRequestBodyValueState),
-      ),
+      state: S.optional(DiscoveryOperationsBulkEditRequestBodyValueState),
     }),
   ).annotate({
     identifier: "DiscoveryOperationsBulkEditRequestBodyValue",
@@ -2065,16 +2056,16 @@ export interface CreateOperationLabelRequest {
   /** UUID. */
   operationId: string;
   /** List of managed label names. */
-  managed?: OperationsLabelsCreateRequestManagedList | null;
+  managed?: OperationsLabelsCreateRequestManagedList;
   /** List of user label names. */
-  user?: OperationsLabelsCreateRequestUserList | null;
+  user?: OperationsLabelsCreateRequestUserList;
 }
 export const CreateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-    managed: S.optional(S.NullOr(OperationsLabelsCreateRequestManagedList)),
-    user: S.optional(S.NullOr(OperationsLabelsCreateRequestUserList)),
+    managed: S.optional(OperationsLabelsCreateRequestManagedList),
+    user: S.optional(OperationsLabelsCreateRequestUserList),
   })
     .pipe(
       T.Http({
@@ -2170,19 +2161,17 @@ export interface CreateUserSchemaRequest {
   /** Kind of schema (openapi_v3). */
   kind: string;
   /** Name of the schema. */
-  name?: string | null;
+  name?: string;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean | null;
+  validationEnabled?: boolean;
 }
 export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     file: S.Unknown,
     kind: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    validationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
-    ),
+    name: S.optional(S.String),
+    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
   })
     .pipe(
       T.Http({
@@ -5116,16 +5105,16 @@ export interface PatchLabelUserRequest {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string | null;
+  description?: string;
   /** Metadata for the label */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const PatchLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String.pipe(T.Label()),
-    description: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    description: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({
@@ -5177,16 +5166,15 @@ export interface OperationsSchemaValidationEditRequestSettingsMultipleRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?:
     | OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mitigationAction: S.optional(
-        S.NullOr(
-          OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction,
-        ).pipe(T.Body("mitigation_action")),
+        OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction.pipe(
+          T.Body("mitigation_action"),
+        ),
       ),
     }),
   ).annotate({
@@ -5260,26 +5248,24 @@ export interface PatchSettingSchemaValidationRequest {
   /** The default mitigation action used when there is no mitigation action defined on the operation */
   validationDefaultMitigationAction?:
     | SettingsSchemaValidationEditRequestValidationDefaultMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsSchemaValidationEditRequestValidationOverrideMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     validationDefaultMitigationAction: S.optional(
-      S.NullOr(
-        SettingsSchemaValidationEditRequestValidationDefaultMitigationAction,
-      ).pipe(T.Body("validation_default_mitigation_action")),
+      SettingsSchemaValidationEditRequestValidationDefaultMitigationAction.pipe(
+        T.Body("validation_default_mitigation_action"),
+      ),
     ),
     validationOverrideMitigationAction: S.optional(
-      S.NullOr(
-        SettingsSchemaValidationEditRequestValidationOverrideMitigationAction,
-      ).pipe(T.Body("validation_override_mitigation_action")),
+      SettingsSchemaValidationEditRequestValidationOverrideMitigationAction.pipe(
+        T.Body("validation_override_mitigation_action"),
+      ),
     ),
   })
     .pipe(
@@ -5307,15 +5293,13 @@ export interface PatchUserSchemaRequest {
   zoneId: string;
   schemaId: string;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean | null;
+  validationEnabled?: boolean;
 }
 export const PatchUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-    validationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
-    ),
+    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
   })
     .pipe(
       T.Http({
@@ -5635,16 +5619,16 @@ export interface PutLabelUserRequest {
   /** The name of the label */
   name: string;
   /** The description of the label */
-  description?: string | null;
+  description?: string;
   /** Metadata for the label */
-  metadata?: unknown | null;
+  metadata?: unknown;
 }
 export const PutLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String.pipe(T.Label()),
-    description: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
+    description: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({
@@ -5801,15 +5785,14 @@ export interface PutOperationSchemaValidationRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?:
     | OperationsSchemaValidationUpdateRequestMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
     mitigationAction: S.optional(
-      S.NullOr(OperationsSchemaValidationUpdateRequestMitigationAction).pipe(
+      OperationsSchemaValidationUpdateRequestMitigationAction.pipe(
         T.Body("mitigation_action"),
       ),
     ),
@@ -5874,8 +5857,7 @@ export interface PutSettingSchemaValidationRequest {
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5885,9 +5867,9 @@ export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      S.NullOr(
-        SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction,
-      ).pipe(T.Body("validation_override_mitigation_action")),
+      SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction.pipe(
+        T.Body("validation_override_mitigation_action"),
+      ),
     ),
   })
     .pipe(
@@ -5926,16 +5908,16 @@ export interface UpdateOperationLabelRequest {
   /** UUID. */
   operationId: string;
   /** List of managed label names. Omitting this property or passing an empty array will result in all managed labels being removed from the operation */
-  managed?: OperationsLabelsUpdateRequestManagedList | null;
+  managed?: OperationsLabelsUpdateRequestManagedList;
   /** List of user label names. Omitting this property or passing an empty array will result in all user labels being removed from the operation */
-  user?: OperationsLabelsUpdateRequestUserList | null;
+  user?: OperationsLabelsUpdateRequestUserList;
 }
 export const UpdateOperationLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
-    managed: S.optional(S.NullOr(OperationsLabelsUpdateRequestManagedList)),
-    user: S.optional(S.NullOr(OperationsLabelsUpdateRequestUserList)),
+    managed: S.optional(OperationsLabelsUpdateRequestManagedList),
+    user: S.optional(OperationsLabelsUpdateRequestUserList),
   })
     .pipe(
       T.Http({

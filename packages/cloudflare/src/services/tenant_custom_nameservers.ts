@@ -28,13 +28,13 @@ export interface CreateTenantCustomNameserverRequest {
   /** The FQDN of the name server. */
   nsName: string;
   /** The number of the set that this name server belongs to. */
-  nsSet?: number | null;
+  nsSet?: number;
 }
 export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     nsName: S.String.pipe(T.Body("ns_name")),
-    nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   })
     .pipe(
       T.Http({

@@ -45,12 +45,12 @@ export interface CreateSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of Calls app, not shown to end users. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -93,12 +93,12 @@ export interface CreateTurnRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of a TURN key, not shown to end users. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -439,13 +439,13 @@ export interface UpdateSfuRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
   /** A short description of Calls app, not shown to end users. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -487,13 +487,13 @@ export interface UpdateTurnRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   keyId: string;
   /** A short description of a TURN key, not shown to end users. */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({

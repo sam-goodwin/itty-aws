@@ -195,14 +195,14 @@ export interface StoresSecretsCreateRequestBodyItem {
   /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
   value: string;
   /** Freeform text describing the secret */
-  comment?: string | null;
+  comment?: string;
 }
 export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scopes: StoresSecretsCreateRequestBodyItemScopesList,
     value: S.String,
-    comment: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
   }),
 ).annotate({
   identifier: "StoresSecretsCreateRequestBodyItem",
@@ -386,7 +386,7 @@ export interface DuplicateStoreSecretRequest {
   /** The list of services that can use this secret. */
   scopes: StoresSecretsDuplicateRequestScopesList;
   /** Freeform text describing the secret */
-  comment?: string | null;
+  comment?: string;
 }
 export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -395,7 +395,7 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
     secretId: S.String.pipe(T.Label("secret_id")),
     name: S.String,
     scopes: StoresSecretsDuplicateRequestScopesList,
-    comment: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -835,20 +835,20 @@ export interface PatchStoreSecretRequest {
   /** Secret identifier tag. */
   secretId: string;
   /** Freeform text describing the secret */
-  comment?: string | null;
+  comment?: string;
   /** The list of services that can use this secret. */
-  scopes?: StoresSecretsEditRequestScopesList | null;
+  scopes?: StoresSecretsEditRequestScopesList;
   /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
-  value?: string | null;
+  value?: string;
 }
 export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
     secretId: S.String.pipe(T.Label("secret_id")),
-    comment: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(S.NullOr(StoresSecretsEditRequestScopesList)),
-    value: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
+    scopes: S.optional(StoresSecretsEditRequestScopesList),
+    value: S.optional(S.String),
   })
     .pipe(
       T.Http({

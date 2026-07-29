@@ -41,13 +41,13 @@ export interface DismissInsightForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   issueId: string;
-  dismiss?: boolean | null;
+  dismiss?: boolean;
 }
 export const DismissInsightForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
-    dismiss: S.optional(S.NullOr(S.Boolean)),
+    dismiss: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -72,13 +72,13 @@ export interface DismissInsightForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   issueId: string;
-  dismiss?: boolean | null;
+  dismiss?: boolean;
 }
 export const DismissInsightForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     issueId: S.String.pipe(T.Label("issue_id")),
-    dismiss: S.optional(S.NullOr(S.Boolean)),
+    dismiss: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -1371,10 +1371,9 @@ export interface PatchInsightClassificationForAccountRequest {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   classification?:
     | InsightsClassificationUpdateRequestClassification
-    | (string & {})
-    | null;
+    | (string & {});
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
-  rationale?: string | null;
+  rationale?: string;
 }
 export const PatchInsightClassificationForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1382,9 +1381,9 @@ export const PatchInsightClassificationForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        S.NullOr(InsightsClassificationUpdateRequestClassification),
+        InsightsClassificationUpdateRequestClassification,
       ),
-      rationale: S.optional(S.NullOr(S.String)),
+      rationale: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -1413,10 +1412,9 @@ export interface PatchInsightClassificationForZoneRequest {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   classification?:
     | InsightsClassificationUpdateRequestClassification
-    | (string & {})
-    | null;
+    | (string & {});
   /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
-  rationale?: string | null;
+  rationale?: string;
 }
 export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1424,9 +1422,9 @@ export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       issueId: S.String.pipe(T.Label("issue_id")),
       classification: S.optional(
-        S.NullOr(InsightsClassificationUpdateRequestClassification),
+        InsightsClassificationUpdateRequestClassification,
       ),
-      rationale: S.optional(S.NullOr(S.String)),
+      rationale: S.optional(S.String),
     })
       .pipe(
         T.Http({

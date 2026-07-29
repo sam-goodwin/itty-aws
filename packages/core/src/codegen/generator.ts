@@ -506,7 +506,22 @@ export const generateService = (
           : (extraBindingOf(traits) ??
             ("smithy.api#httpPayload" in traits ? "rawBody" : "body"));
 
-  const memberInfos = (d: any): EmittedMember[] =>
+  // Shapes reachable from any response/error root — used to scope the
+  // blanket-nullable-optionals rule to reads (the wire returns explicit
+  // nulls; requests only accept null where a nullable trait says so).
+  const responseReachable =
+    spec.optionalsNullable === true
+      ? reachableFrom(
+          shapes,
+          [
+            ...selected.map((op) => op.def.__output),
+            ...collectOpErrorIds(selected, shapes),
+          ],
+          shapeDeps,
+        )
+      : undefined;
+
+  const memberInfos = (d: any, ownerId?: string): EmittedMember[] =>
     memberBases(d, memberName).map((base) => {
       const traits = base.traits;
       const binding = bindingOf(traits);
@@ -517,8 +532,11 @@ export const generateService = (
         nullable:
           (spec.nullableTrait ? spec.nullableTrait in traits : false) ||
           // Blanket-nullable optionals (v0 surface): every optional BODY
-          // member accepts/announces null in addition to being omittable.
-          (spec.optionalsNullable === true &&
+          // member of a response-reachable shape accepts/announces null
+          // in addition to being omittable.
+          (responseReachable !== undefined &&
+            ownerId !== undefined &&
+            responseReachable.has(ownerId) &&
             !base.required &&
             binding === "body"),
       };
@@ -742,7 +760,7 @@ export const generateService = (
 
       // Paginated outputs always deliver their items member — required.
       const itemsRoot = paginatedItemsRoot.get(id);
-      const infos = memberInfos(d).map((info) =>
+      const infos = memberInfos(d, id).map((info) =>
         info.tsName === itemsRoot ? { ...info, required: true } : info,
       );
       const fields = infos.flatMap((info) =>

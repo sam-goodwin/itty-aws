@@ -61,12 +61,12 @@ export const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
 
 export interface BulkQueryRequest {
   accountId: string;
-  queries?: QueriesBulkRequestQueriesList | null;
+  queries?: QueriesBulkRequestQueriesList;
 }
 export const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    queries: S.optional(S.NullOr(QueriesBulkRequestQueriesList)),
+    queries: S.optional(QueriesBulkRequestQueriesList),
   })
     .pipe(
       T.Http({
@@ -133,11 +133,11 @@ export interface CreateQueryRequest {
   id?: string;
   scan?: boolean;
   tag?: string;
-  maxTime?: string | null;
-  minTime?: string | null;
-  stringMatches?: unknown | null;
-  bodyScan?: boolean | null;
-  bodyTag?: string | null;
+  maxTime?: string;
+  minTime?: string;
+  stringMatches?: unknown;
+  bodyScan?: boolean;
+  bodyTag?: string;
 }
 export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -145,13 +145,11 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String.pipe(T.Query())),
     scan: S.optional(S.Boolean.pipe(T.Query())),
     tag: S.optional(S.String.pipe(T.Query())),
-    maxTime: S.optional(S.NullOr(S.String).pipe(T.Body("max_time"))),
-    minTime: S.optional(S.NullOr(S.String).pipe(T.Body("min_time"))),
-    stringMatches: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("string_matches")),
-    ),
-    bodyScan: S.optional(S.NullOr(S.Boolean).pipe(T.Body("scan"))),
-    bodyTag: S.optional(S.NullOr(S.String).pipe(T.Body("tag"))),
+    maxTime: S.optional(S.String.pipe(T.Body("max_time"))),
+    minTime: S.optional(S.String.pipe(T.Body("min_time"))),
+    stringMatches: S.optional(S.Unknown.pipe(T.Body("string_matches"))),
+    bodyScan: S.optional(S.Boolean.pipe(T.Body("scan"))),
+    bodyTag: S.optional(S.String.pipe(T.Body("tag"))),
   })
     .pipe(
       T.Http({
@@ -181,7 +179,7 @@ export interface CreateV2LogoRequest {
   /** Unique identifier for the logo query */
   tag: string;
   /** If true, search historic scanned images for matches above the similarity threshold */
-  searchLookback?: boolean | null;
+  searchLookback?: boolean;
 }
 export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -189,9 +187,7 @@ export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
     imageData: S.String.pipe(T.Body("image_data")),
     similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
     tag: S.String,
-    searchLookback: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("search_lookback")),
-    ),
+    searchLookback: S.optional(S.Boolean.pipe(T.Body("search_lookback"))),
   })
     .pipe(
       T.Http({

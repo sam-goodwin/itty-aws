@@ -163,12 +163,12 @@ export interface CreateDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string | null;
+  name?: string;
 }
 export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -240,12 +240,12 @@ export const RulesCreateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesCreateRequestActionsItem {
   /** Type of supported action. */
   type: RulesCreateRequestActionsItemType | (string & {});
-  value?: RulesCreateRequestActionsItemValueList | null;
+  value?: RulesCreateRequestActionsItemValueList;
 }
 export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestActionsItemType,
-    value: S.optional(S.NullOr(RulesCreateRequestActionsItemValueList)),
+    value: S.optional(RulesCreateRequestActionsItemValueList),
   }),
 ).annotate({
   identifier: "RulesCreateRequestActionsItem",
@@ -267,15 +267,15 @@ export interface RulesCreateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesCreateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesCreateRequestMatchersItemField | (string & {}) | null;
+  field?: RulesCreateRequestMatchersItemField | (string & {});
   /** Value for matcher. */
-  value?: string | null;
+  value?: string;
 }
 export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestMatchersItemType,
-    field: S.optional(S.NullOr(RulesCreateRequestMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
+    field: S.optional(RulesCreateRequestMatchersItemField),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RulesCreateRequestMatchersItem",
@@ -298,28 +298,26 @@ export interface CreateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesCreateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Routing rule name. */
-  name?: string | null;
+  name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string | null;
+  ownerWorkerTag?: string;
   /** Priority of the routing rule. */
-  priority?: number | null;
+  priority?: number;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCreateRequestSource | (string & {}) | null;
+  source?: RulesCreateRequestSource | (string & {});
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCreateRequestActionsList,
     matchers: RulesCreateRequestMatchersList,
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.NullOr(S.String)),
-    ownerWorkerTag: S.optional(
-      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    source: S.optional(S.NullOr(RulesCreateRequestSource)),
+    enabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
+    priority: S.optional(S.Number),
+    source: S.optional(RulesCreateRequestSource),
   })
     .pipe(
       T.Http({
@@ -1266,12 +1264,12 @@ export interface PatchDnsRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string | null;
+  name?: string;
 }
 export const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1348,15 +1346,13 @@ export const RulesCatchAllsUpdateRequestActionsItemValueList =
 export interface RulesCatchAllsUpdateRequestActionsItem {
   /** Type of action for catch-all rule. */
   type: RulesCatchAllsUpdateRequestActionsItemType | (string & {});
-  value?: RulesCatchAllsUpdateRequestActionsItemValueList | null;
+  value?: RulesCatchAllsUpdateRequestActionsItemValueList;
 }
 export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: RulesCatchAllsUpdateRequestActionsItemType,
-      value: S.optional(
-        S.NullOr(RulesCatchAllsUpdateRequestActionsItemValueList),
-      ),
+      value: S.optional(RulesCatchAllsUpdateRequestActionsItemValueList),
     }),
 ).annotate({
   identifier: "RulesCatchAllsUpdateRequestActionsItem",
@@ -1402,25 +1398,23 @@ export interface PutRuleCatchAllRequest {
   /** List of matchers for the catch-all routing rule. */
   matchers: RulesCatchAllsUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Routing rule name. */
-  name?: string | null;
+  name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string | null;
+  ownerWorkerTag?: string;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesCatchAllsUpdateRequestSource | (string & {}) | null;
+  source?: RulesCatchAllsUpdateRequestSource | (string & {});
 }
 export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCatchAllsUpdateRequestActionsList,
     matchers: RulesCatchAllsUpdateRequestMatchersList,
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.NullOr(S.String)),
-    ownerWorkerTag: S.optional(
-      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
-    ),
-    source: S.optional(S.NullOr(RulesCatchAllsUpdateRequestSource)),
+    enabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
+    source: S.optional(RulesCatchAllsUpdateRequestSource),
   })
     .pipe(
       T.Http({
@@ -1531,12 +1525,12 @@ export interface UnlockRequest {
   /** Identifier. */
   zoneId: string;
   /** Domain of your zone. */
-  name?: string | null;
+  name?: string;
 }
 export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1604,12 +1598,12 @@ export const RulesUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
 export interface RulesUpdateRequestActionsItem {
   /** Type of supported action. */
   type: RulesUpdateRequestActionsItemType | (string & {});
-  value?: RulesUpdateRequestActionsItemValueList | null;
+  value?: RulesUpdateRequestActionsItemValueList;
 }
 export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateRequestActionsItemType,
-    value: S.optional(S.NullOr(RulesUpdateRequestActionsItemValueList)),
+    value: S.optional(RulesUpdateRequestActionsItemValueList),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestActionsItem",
@@ -1631,15 +1625,15 @@ export interface RulesUpdateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateRequestMatchersItemType | (string & {});
   /** Field for type matcher. */
-  field?: RulesUpdateRequestMatchersItemField | (string & {}) | null;
+  field?: RulesUpdateRequestMatchersItemField | (string & {});
   /** Value for matcher. */
-  value?: string | null;
+  value?: string;
 }
 export const RulesUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateRequestMatchersItemType,
-    field: S.optional(S.NullOr(RulesUpdateRequestMatchersItemField)),
-    value: S.optional(S.NullOr(S.String)),
+    field: S.optional(RulesUpdateRequestMatchersItemField),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestMatchersItem",
@@ -1664,15 +1658,15 @@ export interface UpdateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Routing rule name. */
-  name?: string | null;
+  name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
-  ownerWorkerTag?: string | null;
+  ownerWorkerTag?: string;
   /** Priority of the routing rule. */
-  priority?: number | null;
+  priority?: number;
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; */
-  source?: RulesUpdateRequestSource | (string & {}) | null;
+  source?: RulesUpdateRequestSource | (string & {});
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1680,13 +1674,11 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
     actions: RulesUpdateRequestActionsList,
     matchers: RulesUpdateRequestMatchersList,
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.NullOr(S.String)),
-    ownerWorkerTag: S.optional(
-      S.NullOr(S.String).pipe(T.Body("owner_worker_tag")),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    source: S.optional(S.NullOr(RulesUpdateRequestSource)),
+    enabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
+    priority: S.optional(S.Number),
+    source: S.optional(RulesUpdateRequestSource),
   })
     .pipe(
       T.Http({

@@ -53,15 +53,15 @@ export const ThreatEventsBulkCreateRequestDataItemRawDataMap =
 
 export interface ThreatEventsBulkCreateRequestDataItemRaw {
   data: ThreatEventsBulkCreateRequestDataItemRawDataMap;
-  source?: string | null;
-  tlp?: string | null;
+  source?: string;
+  tlp?: string;
 }
 export const ThreatEventsBulkCreateRequestDataItemRaw = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: ThreatEventsBulkCreateRequestDataItemRawDataMap,
-      source: S.optional(S.NullOr(S.String)),
-      tlp: S.optional(S.NullOr(S.String)),
+      source: S.optional(S.String),
+      tlp: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ThreatEventsBulkCreateRequestDataItemRaw",
@@ -102,18 +102,18 @@ export interface ThreatEventsBulkCreateRequestDataItem {
   event: string;
   raw: ThreatEventsBulkCreateRequestDataItemRaw;
   tlp: string;
-  accountId?: number | null;
-  attacker?: string | null;
-  attackerCountry?: string | null;
-  datasetId?: string | null;
-  indicator?: string | null;
+  accountId?: number;
+  attacker?: string;
+  attackerCountry?: string;
+  datasetId?: string;
+  indicator?: string;
   /** Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
-  indicators?: ThreatEventsBulkCreateRequestDataItemIndicatorsList | null;
-  indicatorType?: string | null;
-  insight?: string | null;
-  tags?: ThreatEventsBulkCreateRequestDataItemTagsList | null;
-  targetCountry?: string | null;
-  targetIndustry?: string | null;
+  indicators?: ThreatEventsBulkCreateRequestDataItemIndicatorsList;
+  indicatorType?: string;
+  insight?: string;
+  tags?: ThreatEventsBulkCreateRequestDataItemTagsList;
+  targetCountry?: string;
+  targetIndustry?: string;
 }
 export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -123,19 +123,19 @@ export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(
       event: S.String,
       raw: ThreatEventsBulkCreateRequestDataItemRaw,
       tlp: S.String,
-      accountId: S.optional(S.NullOr(S.Number)),
-      attacker: S.optional(S.NullOr(S.String)),
-      attackerCountry: S.optional(S.NullOr(S.String)),
-      datasetId: S.optional(S.NullOr(S.String)),
-      indicator: S.optional(S.NullOr(S.String)),
+      accountId: S.optional(S.Number),
+      attacker: S.optional(S.String),
+      attackerCountry: S.optional(S.String),
+      datasetId: S.optional(S.String),
+      indicator: S.optional(S.String),
       indicators: S.optional(
-        S.NullOr(ThreatEventsBulkCreateRequestDataItemIndicatorsList),
+        ThreatEventsBulkCreateRequestDataItemIndicatorsList,
       ),
-      indicatorType: S.optional(S.NullOr(S.String)),
-      insight: S.optional(S.NullOr(S.String)),
-      tags: S.optional(S.NullOr(ThreatEventsBulkCreateRequestDataItemTagsList)),
-      targetCountry: S.optional(S.NullOr(S.String)),
-      targetIndustry: S.optional(S.NullOr(S.String)),
+      indicatorType: S.optional(S.String),
+      insight: S.optional(S.String),
+      tags: S.optional(ThreatEventsBulkCreateRequestDataItemTagsList),
+      targetCountry: S.optional(S.String),
+      targetIndustry: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ThreatEventsBulkCreateRequestDataItem",
@@ -153,14 +153,14 @@ export interface BulkCreateThreatEventsRequest {
   data: ThreatEventsBulkCreateRequestDataList;
   datasetId: string;
   /** When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where. */
-  includeCreatedEvents?: boolean | null;
+  includeCreatedEvents?: boolean;
 }
 export const BulkCreateThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     data: ThreatEventsBulkCreateRequestDataList,
     datasetId: S.String,
-    includeCreatedEvents: S.optional(S.NullOr(S.Boolean)),
+    includeCreatedEvents: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -280,24 +280,24 @@ export interface CreateRequestRequest {
   /** Identifier. */
   accountId: string;
   /** Request content. */
-  content?: string | null;
+  content?: string;
   /** Priority for analyzing the request. */
-  priority?: string | null;
+  priority?: string;
   /** Requested information from request. */
-  requestType?: string | null;
+  requestType?: string;
   /** Brief description of the request. */
-  summary?: string | null;
+  summary?: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsCreateRequestTlp | (string & {}) | null;
+  tlp?: RequestsCreateRequestTlp | (string & {});
 }
 export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    content: S.optional(S.NullOr(S.String)),
-    priority: S.optional(S.NullOr(S.String)),
-    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
-    summary: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(RequestsCreateRequestTlp)),
+    content: S.optional(S.String),
+    priority: S.optional(S.String),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    summary: S.optional(S.String),
+    tlp: S.optional(RequestsCreateRequestTlp),
   })
     .pipe(
       T.Http({
@@ -455,13 +455,13 @@ export interface CreateRequestMessageRequest {
   /** UUID. */
   requestId: string;
   /** Content of message. */
-  content?: string | null;
+  content?: string;
 }
 export const CreateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-    content: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -608,16 +608,16 @@ export interface CreateScanConfigRequest {
   /** Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000. */
   ips: ScansConfigCreateRequestIpsList;
   /** Defines the number of days between each scan (0 = One-off scan). */
-  frequency?: number | null;
+  frequency?: number;
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
-  ports?: ScansConfigCreateRequestPortsList | null;
+  ports?: ScansConfigCreateRequestPortsList;
 }
 export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ips: ScansConfigCreateRequestIpsList,
-    frequency: S.optional(S.NullOr(S.Number)),
-    ports: S.optional(S.NullOr(ScansConfigCreateRequestPortsList)),
+    frequency: S.optional(S.Number),
+    ports: S.optional(ScansConfigCreateRequestPortsList),
   })
     .pipe(
       T.Http({
@@ -675,14 +675,14 @@ export const ThreatEventsCreateRequestRawDataMap = /*@__PURE__*/ S.Record(
 
 export interface ThreatEventsCreateRequestRaw {
   data: ThreatEventsCreateRequestRawDataMap;
-  source?: string | null;
-  tlp?: string | null;
+  source?: string;
+  tlp?: string;
 }
 export const ThreatEventsCreateRequestRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ThreatEventsCreateRequestRawDataMap,
-    source: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.String),
+    tlp: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsCreateRequestRaw",
@@ -723,17 +723,17 @@ export interface CreateThreatEventRequest {
   event: string;
   raw: ThreatEventsCreateRequestRaw;
   tlp: string;
-  attacker?: string | null;
-  attackerCountry?: string | null;
-  datasetId?: string | null;
-  indicator?: string | null;
+  attacker?: string;
+  attackerCountry?: string;
+  datasetId?: string;
+  indicator?: string;
   /** Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
-  indicators?: ThreatEventsCreateRequestIndicatorsList | null;
-  indicatorType?: string | null;
-  insight?: string | null;
-  tags?: ThreatEventsCreateRequestTagsList | null;
-  targetCountry?: string | null;
-  targetIndustry?: string | null;
+  indicators?: ThreatEventsCreateRequestIndicatorsList;
+  indicatorType?: string;
+  insight?: string;
+  tags?: ThreatEventsCreateRequestTagsList;
+  targetCountry?: string;
+  targetIndustry?: string;
 }
 export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -743,16 +743,16 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
     event: S.String,
     raw: ThreatEventsCreateRequestRaw,
     tlp: S.String,
-    attacker: S.optional(S.NullOr(S.String)),
-    attackerCountry: S.optional(S.NullOr(S.String)),
-    datasetId: S.optional(S.NullOr(S.String)),
-    indicator: S.optional(S.NullOr(S.String)),
-    indicators: S.optional(S.NullOr(ThreatEventsCreateRequestIndicatorsList)),
-    indicatorType: S.optional(S.NullOr(S.String)),
-    insight: S.optional(S.NullOr(S.String)),
-    tags: S.optional(S.NullOr(ThreatEventsCreateRequestTagsList)),
-    targetCountry: S.optional(S.NullOr(S.String)),
-    targetIndustry: S.optional(S.NullOr(S.String)),
+    attacker: S.optional(S.String),
+    attackerCountry: S.optional(S.String),
+    datasetId: S.optional(S.String),
+    indicator: S.optional(S.String),
+    indicators: S.optional(ThreatEventsCreateRequestIndicatorsList),
+    indicatorType: S.optional(S.String),
+    insight: S.optional(S.String),
+    tags: S.optional(ThreatEventsCreateRequestTagsList),
+    targetCountry: S.optional(S.String),
+    targetIndustry: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -888,22 +888,18 @@ export interface CreateThreatEventCategoryRequest {
   accountId: string;
   killChain: number;
   name: string;
-  mitreAttack?: ThreatEventsCategoriesCreateRequestMitreAttackList | null;
-  mitreCapec?: ThreatEventsCategoriesCreateRequestMitreCapecList | null;
-  shortname?: string | null;
+  mitreAttack?: ThreatEventsCategoriesCreateRequestMitreAttackList;
+  mitreCapec?: ThreatEventsCategoriesCreateRequestMitreCapecList;
+  shortname?: string;
 }
 export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     killChain: S.Number,
     name: S.String,
-    mitreAttack: S.optional(
-      S.NullOr(ThreatEventsCategoriesCreateRequestMitreAttackList),
-    ),
-    mitreCapec: S.optional(
-      S.NullOr(ThreatEventsCategoriesCreateRequestMitreCapecList),
-    ),
-    shortname: S.optional(S.NullOr(S.String)),
+    mitreAttack: S.optional(ThreatEventsCategoriesCreateRequestMitreAttackList),
+    mitreCapec: S.optional(ThreatEventsCategoriesCreateRequestMitreCapecList),
+    shortname: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1051,15 +1047,15 @@ export const ThreatEventsTagsCreateRequestAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateRequestAliasesItem {
   value: string;
-  confidence?: number | null;
-  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {}) | null;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {});
 }
 export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateRequestAliasesItemTlp)),
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateRequestAliasesItemTlp),
     }),
 ).annotate({
   identifier: "ThreatEventsTagsCreateRequestAliasesItem",
@@ -1093,13 +1089,13 @@ export const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
 
 export interface ThreatEventsTagsCreateRequestExternalReferencesItem {
   url: string;
-  description?: string | null;
+  description?: string;
 }
 export const ThreatEventsTagsCreateRequestExternalReferencesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       url: S.String,
-      description: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateRequestExternalReferencesItem",
@@ -1122,20 +1118,15 @@ export const ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
 
 export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
   value: string;
-  confidence?: number | null;
-  tlp?:
-    | ThreatEventsTagsCreateRequestInternalAliasesItemTlp
-    | (string & {})
-    | null;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp | (string & {});
 }
 export const ThreatEventsTagsCreateRequestInternalAliasesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(
-        S.NullOr(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
-      ),
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
     }),
   ).annotate({
     identifier: "ThreatEventsTagsCreateRequestInternalAliasesItem",
@@ -1160,84 +1151,81 @@ export interface CreateThreatEventTagRequest {
   /** Account ID. */
   accountId: string;
   value: string;
-  activeDuration?: string | null;
+  activeDuration?: string;
   /** Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated. */
-  actorCategory?: string | null;
+  actorCategory?: string;
   /** Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts. */
-  actorCategoryConfidence?: number | null;
+  actorCategoryConfidence?: number;
   /** Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts. */
-  aliases?: ThreatEventsTagsCreateRequestAliasesList | null;
-  aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList | null;
-  aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList | null;
-  analyticPriority?: number | null;
-  attributionConfidence?: string | null;
-  attributionConfidenceScore?: number | null;
-  attributionOrganization?: string | null;
-  categoryUuid?: string | null;
+  aliases?: ThreatEventsTagsCreateRequestAliasesList;
+  aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList;
+  aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList;
+  analyticPriority?: number;
+  attributionConfidence?: string;
+  attributionConfidenceScore?: number;
+  attributionOrganization?: string;
+  categoryUuid?: string;
   /** Date the actor was discovered (ISO YYYY-MM-DD). */
-  dateOfDiscovery?: string | null;
-  externalReferenceLinks?: ThreatEventsTagsCreateRequestExternalReferenceLinksList | null;
+  dateOfDiscovery?: string;
+  externalReferenceLinks?: ThreatEventsTagsCreateRequestExternalReferenceLinksList;
   /** Structured external references ({ url, description }). Public: returned to all accounts. */
-  externalReferences?: ThreatEventsTagsCreateRequestExternalReferencesList | null;
+  externalReferences?: ThreatEventsTagsCreateRequestExternalReferencesList;
   /** Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts. */
-  internalAliases?: ThreatEventsTagsCreateRequestInternalAliasesList | null;
-  internalDescription?: string | null;
+  internalAliases?: ThreatEventsTagsCreateRequestInternalAliasesList;
+  internalDescription?: string;
   /** Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage. */
-  motive?: string | null;
+  motive?: string;
   /** Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts. */
-  motiveConfidence?: number | null;
-  opsecLevel?: string | null;
+  motiveConfidence?: number;
+  opsecLevel?: string;
   /** Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
-  originCountryConfidence?: number | null;
-  originCountryISO?: string | null;
+  originCountryConfidence?: number;
+  originCountryISO?: string;
   /** TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts. */
   originCountryTlp?:
     | ThreatEventsTagsCreateRequestOriginCountryTlp
-    | (string & {})
-    | null;
-  priority?: number | null;
-  sophisticationLevel?: string | null;
+    | (string & {});
+  priority?: number;
+  sophisticationLevel?: string;
 }
 export const CreateThreatEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     value: S.String,
-    activeDuration: S.optional(S.NullOr(S.String)),
-    actorCategory: S.optional(S.NullOr(S.String)),
-    actorCategoryConfidence: S.optional(S.NullOr(S.Number)),
-    aliases: S.optional(S.NullOr(ThreatEventsTagsCreateRequestAliasesList)),
+    activeDuration: S.optional(S.String),
+    actorCategory: S.optional(S.String),
+    actorCategoryConfidence: S.optional(S.Number),
+    aliases: S.optional(ThreatEventsTagsCreateRequestAliasesList),
     aliasGroupNames: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestAliasGroupNamesList),
+      ThreatEventsTagsCreateRequestAliasGroupNamesList,
     ),
     aliasGroupNamesInternal: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestAliasGroupNamesInternalList),
+      ThreatEventsTagsCreateRequestAliasGroupNamesInternalList,
     ),
-    analyticPriority: S.optional(S.NullOr(S.Number)),
-    attributionConfidence: S.optional(S.NullOr(S.String)),
-    attributionConfidenceScore: S.optional(S.NullOr(S.Number)),
-    attributionOrganization: S.optional(S.NullOr(S.String)),
-    categoryUuid: S.optional(S.NullOr(S.String)),
-    dateOfDiscovery: S.optional(S.NullOr(S.String)),
+    analyticPriority: S.optional(S.Number),
+    attributionConfidence: S.optional(S.String),
+    attributionConfidenceScore: S.optional(S.Number),
+    attributionOrganization: S.optional(S.String),
+    categoryUuid: S.optional(S.String),
+    dateOfDiscovery: S.optional(S.String),
     externalReferenceLinks: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestExternalReferenceLinksList),
+      ThreatEventsTagsCreateRequestExternalReferenceLinksList,
     ),
     externalReferences: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestExternalReferencesList),
+      ThreatEventsTagsCreateRequestExternalReferencesList,
     ),
     internalAliases: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestInternalAliasesList),
+      ThreatEventsTagsCreateRequestInternalAliasesList,
     ),
-    internalDescription: S.optional(S.NullOr(S.String)),
-    motive: S.optional(S.NullOr(S.String)),
-    motiveConfidence: S.optional(S.NullOr(S.Number)),
-    opsecLevel: S.optional(S.NullOr(S.String)),
-    originCountryConfidence: S.optional(S.NullOr(S.Number)),
-    originCountryISO: S.optional(S.NullOr(S.String)),
-    originCountryTlp: S.optional(
-      S.NullOr(ThreatEventsTagsCreateRequestOriginCountryTlp),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    sophisticationLevel: S.optional(S.NullOr(S.String)),
+    internalDescription: S.optional(S.String),
+    motive: S.optional(S.String),
+    motiveConfidence: S.optional(S.Number),
+    opsecLevel: S.optional(S.String),
+    originCountryConfidence: S.optional(S.Number),
+    originCountryISO: S.optional(S.String),
+    originCountryTlp: S.optional(ThreatEventsTagsCreateRequestOriginCountryTlp),
+    priority: S.optional(S.Number),
+    sophisticationLevel: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1808,13 +1796,13 @@ export interface GetRequestMessageRequest {
   /** Number of results per page. */
   perPage: number;
   /** Retrieve mes ges created after this time. */
-  after?: string | null;
+  after?: string;
   /** Retrieve messages created before this time. */
-  before?: string | null;
+  before?: string;
   /** Field to sort results by. */
-  sortBy?: string | null;
+  sortBy?: string;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsMessageGetRequestSortOrder | (string & {}) | null;
+  sortOrder?: RequestsMessageGetRequestSortOrder | (string & {});
 }
 export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1822,11 +1810,11 @@ export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
     requestId: S.String.pipe(T.Label("request_id")),
     page: S.Number,
     perPage: S.Number.pipe(T.Body("per_page")),
-    after: S.optional(S.NullOr(S.String)),
-    before: S.optional(S.NullOr(S.String)),
-    sortBy: S.optional(S.NullOr(S.String).pipe(T.Body("sort_by"))),
+    after: S.optional(S.String),
+    before: S.optional(S.String),
+    sortBy: S.optional(S.String.pipe(T.Body("sort_by"))),
     sortOrder: S.optional(
-      S.NullOr(RequestsMessageGetRequestSortOrder).pipe(T.Body("sort_order")),
+      RequestsMessageGetRequestSortOrder.pipe(T.Body("sort_order")),
     ),
   })
     .pipe(
@@ -2887,19 +2875,19 @@ export interface PatchScanConfigRequest {
   /** Defines the Config ID. */
   configId: string;
   /** Defines the number of days between each scan (0 = One-off scan). */
-  frequency?: number | null;
+  frequency?: number;
   /** Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000. */
-  ips?: ScansConfigEditRequestIpsList | null;
+  ips?: ScansConfigEditRequestIpsList;
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
-  ports?: ScansConfigEditRequestPortsList | null;
+  ports?: ScansConfigEditRequestPortsList;
 }
 export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
-    frequency: S.optional(S.NullOr(S.Number)),
-    ips: S.optional(S.NullOr(ScansConfigEditRequestIpsList)),
-    ports: S.optional(S.NullOr(ScansConfigEditRequestPortsList)),
+    frequency: S.optional(S.Number),
+    ips: S.optional(ScansConfigEditRequestIpsList),
+    ports: S.optional(ScansConfigEditRequestPortsList),
   })
     .pipe(
       T.Http({
@@ -2956,15 +2944,15 @@ export const ThreatEventsEditRequestRawDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ThreatEventsEditRequestRawDataMap>;
 
 export interface ThreatEventsEditRequestRaw {
-  data?: ThreatEventsEditRequestRawDataMap | null;
-  source?: string | null;
-  tlp?: string | null;
+  data?: ThreatEventsEditRequestRawDataMap;
+  source?: string;
+  tlp?: string;
 }
 export const ThreatEventsEditRequestRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(S.NullOr(ThreatEventsEditRequestRawDataMap)),
-    source: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(S.String)),
+    data: S.optional(ThreatEventsEditRequestRawDataMap),
+    source: S.optional(S.String),
+    tlp: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsEditRequestRaw",
@@ -2977,38 +2965,38 @@ export interface PatchThreatEventRequest {
   eventId: string;
   /** Dataset ID containing the event to update. */
   datasetId: string;
-  attacker?: string | null;
-  attackerCountry?: string | null;
-  category?: string | null;
-  createdAt?: string | null;
-  date?: string | null;
-  event?: string | null;
-  indicator?: string | null;
-  indicatorType?: string | null;
-  insight?: string | null;
-  raw?: ThreatEventsEditRequestRaw | null;
-  targetCountry?: string | null;
-  targetIndustry?: string | null;
-  tlp?: string | null;
+  attacker?: string;
+  attackerCountry?: string;
+  category?: string;
+  createdAt?: string;
+  date?: string;
+  event?: string;
+  indicator?: string;
+  indicatorType?: string;
+  insight?: string;
+  raw?: ThreatEventsEditRequestRaw;
+  targetCountry?: string;
+  targetIndustry?: string;
+  tlp?: string;
 }
 export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     datasetId: S.String,
-    attacker: S.optional(S.NullOr(S.String)),
-    attackerCountry: S.optional(S.NullOr(S.String)),
-    category: S.optional(S.NullOr(S.String)),
-    createdAt: S.optional(S.NullOr(S.String)),
-    date: S.optional(S.NullOr(S.String)),
-    event: S.optional(S.NullOr(S.String)),
-    indicator: S.optional(S.NullOr(S.String)),
-    indicatorType: S.optional(S.NullOr(S.String)),
-    insight: S.optional(S.NullOr(S.String)),
-    raw: S.optional(S.NullOr(ThreatEventsEditRequestRaw)),
-    targetCountry: S.optional(S.NullOr(S.String)),
-    targetIndustry: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(S.String)),
+    attacker: S.optional(S.String),
+    attackerCountry: S.optional(S.String),
+    category: S.optional(S.String),
+    createdAt: S.optional(S.String),
+    date: S.optional(S.String),
+    event: S.optional(S.String),
+    indicator: S.optional(S.String),
+    indicatorType: S.optional(S.String),
+    insight: S.optional(S.String),
+    raw: S.optional(ThreatEventsEditRequestRaw),
+    targetCountry: S.optional(S.String),
+    targetIndustry: S.optional(S.String),
+    tlp: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3142,25 +3130,21 @@ export interface PatchThreatEventCategoryRequest {
   accountId: string;
   /** Category UUID. */
   categoryId: string;
-  killChain?: number | null;
-  mitreAttack?: ThreatEventsCategoriesEditRequestMitreAttackList | null;
-  mitreCapec?: ThreatEventsCategoriesEditRequestMitreCapecList | null;
-  name?: string | null;
-  shortname?: string | null;
+  killChain?: number;
+  mitreAttack?: ThreatEventsCategoriesEditRequestMitreAttackList;
+  mitreCapec?: ThreatEventsCategoriesEditRequestMitreCapecList;
+  name?: string;
+  shortname?: string;
 }
 export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
-    killChain: S.optional(S.NullOr(S.Number)),
-    mitreAttack: S.optional(
-      S.NullOr(ThreatEventsCategoriesEditRequestMitreAttackList),
-    ),
-    mitreCapec: S.optional(
-      S.NullOr(ThreatEventsCategoriesEditRequestMitreCapecList),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    shortname: S.optional(S.NullOr(S.String)),
+    killChain: S.optional(S.Number),
+    mitreAttack: S.optional(ThreatEventsCategoriesEditRequestMitreAttackList),
+    mitreCapec: S.optional(ThreatEventsCategoriesEditRequestMitreCapecList),
+    name: S.optional(S.String),
+    shortname: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3266,18 +3250,18 @@ export interface PatchThreatEventRawRequest {
   eventId: string;
   /** Raw Event UUID. */
   rawId: string;
-  data?: unknown | null;
-  source?: string | null;
-  tlp?: string | null;
+  data?: unknown;
+  source?: string;
+  tlp?: string;
 }
 export const PatchThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
     rawId: S.String.pipe(T.Label("raw_id")),
-    data: S.optional(S.NullOr(S.Unknown)),
-    source: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(S.String)),
+    data: S.optional(S.Unknown),
+    source: S.optional(S.String),
+    tlp: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3588,43 +3572,37 @@ export interface RequestsListRequest {
   /** Number of results per page. */
   perPage: number;
   /** Retrieve requests completed after this time. */
-  completedAfter?: string | null;
+  completedAfter?: string;
   /** Retrieve requests completed before this time. */
-  completedBefore?: string | null;
+  completedBefore?: string;
   /** Retrieve requests created after this time. */
-  createdAfter?: string | null;
+  createdAfter?: string;
   /** Retrieve requests created before this time. */
-  createdBefore?: string | null;
+  createdBefore?: string;
   /** Requested information from request. */
-  requestType?: string | null;
+  requestType?: string;
   /** Field to sort results by. */
-  sortBy?: string | null;
+  sortBy?: string;
   /** Sort order (asc or desc). */
-  sortOrder?: RequestsListRequestSortOrder | (string & {}) | null;
+  sortOrder?: RequestsListRequestSortOrder | (string & {});
   /** Request Status. */
-  status?: RequestsListRequestStatus | (string & {}) | null;
+  status?: RequestsListRequestStatus | (string & {});
 }
 export const RequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.Number,
     perPage: S.Number.pipe(T.Body("per_page")),
-    completedAfter: S.optional(
-      S.NullOr(S.String).pipe(T.Body("completed_after")),
-    ),
-    completedBefore: S.optional(
-      S.NullOr(S.String).pipe(T.Body("completed_before")),
-    ),
-    createdAfter: S.optional(S.NullOr(S.String).pipe(T.Body("created_after"))),
-    createdBefore: S.optional(
-      S.NullOr(S.String).pipe(T.Body("created_before")),
-    ),
-    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
-    sortBy: S.optional(S.NullOr(S.String).pipe(T.Body("sort_by"))),
+    completedAfter: S.optional(S.String.pipe(T.Body("completed_after"))),
+    completedBefore: S.optional(S.String.pipe(T.Body("completed_before"))),
+    createdAfter: S.optional(S.String.pipe(T.Body("created_after"))),
+    createdBefore: S.optional(S.String.pipe(T.Body("created_before"))),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    sortBy: S.optional(S.String.pipe(T.Body("sort_by"))),
     sortOrder: S.optional(
-      S.NullOr(RequestsListRequestSortOrder).pipe(T.Body("sort_order")),
+      RequestsListRequestSortOrder.pipe(T.Body("sort_order")),
     ),
-    status: S.optional(S.NullOr(RequestsListRequestStatus)),
+    status: S.optional(RequestsListRequestStatus),
   })
     .pipe(
       T.Http({
@@ -3803,25 +3781,25 @@ export interface RequestsUpdateRequest {
   /** UUID. */
   requestId: string;
   /** Request content. */
-  content?: string | null;
+  content?: string;
   /** Priority for analyzing the request. */
-  priority?: string | null;
+  priority?: string;
   /** Requested information from request. */
-  requestType?: string | null;
+  requestType?: string;
   /** Brief description of the request. */
-  summary?: string | null;
+  summary?: string;
   /** The CISA defined Traffic Light Protocol (TLP). */
-  tlp?: RequestsUpdateRequestTlp | (string & {}) | null;
+  tlp?: RequestsUpdateRequestTlp | (string & {});
 }
 export const RequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
-    content: S.optional(S.NullOr(S.String)),
-    priority: S.optional(S.NullOr(S.String)),
-    requestType: S.optional(S.NullOr(S.String).pipe(T.Body("request_type"))),
-    summary: S.optional(S.NullOr(S.String)),
-    tlp: S.optional(S.NullOr(RequestsUpdateRequestTlp)),
+    content: S.optional(S.String),
+    priority: S.optional(S.String),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    summary: S.optional(S.String),
+    tlp: S.optional(RequestsUpdateRequestTlp),
   })
     .pipe(
       T.Http({
@@ -3907,14 +3885,14 @@ export interface UpdateRequestAssetRequest {
   /** UUID. */
   assetId: string;
   /** Asset file to upload. */
-  source?: string | null;
+  source?: string;
 }
 export const UpdateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     assetId: S.String.pipe(T.Label("asset_id")),
-    source: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3960,14 +3938,14 @@ export interface UpdateRequestMessageRequest {
   requestId: string;
   messageId: number;
   /** Content of message. */
-  content?: string | null;
+  content?: string;
 }
 export const UpdateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
     messageId: S.Number.pipe(T.Label("message_id")),
-    content: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.String),
   })
     .pipe(
       T.Http({

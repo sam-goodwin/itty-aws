@@ -639,19 +639,19 @@ export interface PutDomainRequest {
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
   /** Auto-renew controls whether subscription is automatically renewed upon domain expiration. */
-  autoRenew?: boolean | null;
+  autoRenew?: boolean;
   /** Shows whether a registrar lock is in place for a domain. */
-  locked?: boolean | null;
+  locked?: boolean;
   /** Privacy option controls redacting WHOIS information. */
-  privacy?: boolean | null;
+  privacy?: boolean;
 }
 export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
-    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
-    locked: S.optional(S.NullOr(S.Boolean)),
-    privacy: S.optional(S.NullOr(S.Boolean)),
+    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+    locked: S.optional(S.Boolean),
+    privacy: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -703,14 +703,14 @@ export interface RegistrationsCreateRequestContactsRegistrantPostalInfo {
   /** Full legal name of the registrant (individual or authorized representative). */
   name: string;
   /** Organization or company name. Optional for individual registrants. */
-  organization?: string | null;
+  organization?: string;
 }
 export const RegistrationsCreateRequestContactsRegistrantPostalInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: RegistrationsCreateRequestContactsRegistrantPostalInfoAddress,
       name: S.String,
-      organization: S.optional(S.NullOr(S.String)),
+      organization: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RegistrationsCreateRequestContactsRegistrantPostalInfo",
@@ -724,7 +724,7 @@ export interface RegistrationsCreateRequestContactsRegistrant {
   /** Postal/mailing information for the registrant contact. */
   postalInfo: RegistrationsCreateRequestContactsRegistrantPostalInfo;
   /** Fax number in E.164 format (e.g., `+1.5555555555`). Optional. */
-  fax?: string | null;
+  fax?: string;
 }
 export const RegistrationsCreateRequestContactsRegistrant =
   /*@__PURE__*/ S.suspend(() =>
@@ -734,7 +734,7 @@ export const RegistrationsCreateRequestContactsRegistrant =
       postalInfo: RegistrationsCreateRequestContactsRegistrantPostalInfo.pipe(
         T.Body("postal_info"),
       ),
-      fax: S.optional(S.NullOr(S.String)),
+      fax: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RegistrationsCreateRequestContactsRegistrant",
@@ -742,13 +742,11 @@ export const RegistrationsCreateRequestContactsRegistrant =
 
 export interface RegistrationsCreateRequestContacts {
   /** Registrant contact data for the domain registration. This information */
-  registrant?: RegistrationsCreateRequestContactsRegistrant | null;
+  registrant?: RegistrationsCreateRequestContactsRegistrant;
 }
 export const RegistrationsCreateRequestContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    registrant: S.optional(
-      S.NullOr(RegistrationsCreateRequestContactsRegistrant),
-    ),
+    registrant: S.optional(RegistrationsCreateRequestContactsRegistrant),
   }),
 ).annotate({
   identifier: "RegistrationsCreateRequestContacts",
@@ -764,27 +762,25 @@ export interface RegistrationsCreateRequest {
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
   /** Enable or disable automatic renewal. Defaults to `false` if omitted. */
-  autoRenew?: boolean | null;
+  autoRenew?: boolean;
   /** Contact data for the registration request. */
-  contacts?: RegistrationsCreateRequestContacts | null;
+  contacts?: RegistrationsCreateRequestContacts;
   /** WHOIS privacy mode for the registration. Defaults to `redaction`. */
-  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {}) | null;
+  privacyMode?: RegistrationsCreateRequestPrivacyMode | (string & {});
   /** Number of years to register (1–10). If omitted, defaults to the */
-  years?: number | null;
+  years?: number;
 }
 export const RegistrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     domainName: S.String.pipe(T.Body("domain_name")),
-    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
-    contacts: S.optional(S.NullOr(RegistrationsCreateRequestContacts)),
+    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+    contacts: S.optional(RegistrationsCreateRequestContacts),
     privacyMode: S.optional(
-      S.NullOr(RegistrationsCreateRequestPrivacyMode).pipe(
-        T.Body("privacy_mode"),
-      ),
+      RegistrationsCreateRequestPrivacyMode.pipe(T.Body("privacy_mode")),
     ),
-    years: S.optional(S.NullOr(S.Number)),
+    years: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -883,14 +879,14 @@ export interface RegistrationsEditRequest {
   domainName: string;
   prefer?: RegistrationsEditRequestPrefer | (string & {});
   /** Enable or disable automatic renewal. */
-  autoRenew?: boolean | null;
+  autoRenew?: boolean;
 }
 export const RegistrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
     prefer: S.optional(RegistrationsEditRequestPrefer.pipe(T.Header("Prefer"))),
-    autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
+    autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
   })
     .pipe(
       T.Http({

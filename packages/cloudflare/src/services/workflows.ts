@@ -122,22 +122,22 @@ export const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention =
 
 export interface InstancesBulkRequestBodyItemInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  errorRetention?: InstancesBulkRequestBodyItemInstanceRetentionErrorRetention | null;
+  errorRetention?: InstancesBulkRequestBodyItemInstanceRetentionErrorRetention;
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention | null;
+  successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention;
 }
 export const InstancesBulkRequestBodyItemInstanceRetention =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       errorRetention: S.optional(
-        S.NullOr(
-          InstancesBulkRequestBodyItemInstanceRetentionErrorRetention,
-        ).pipe(T.Body("error_retention")),
+        InstancesBulkRequestBodyItemInstanceRetentionErrorRetention.pipe(
+          T.Body("error_retention"),
+        ),
       ),
       successRetention: S.optional(
-        S.NullOr(
-          InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention,
-        ).pipe(T.Body("success_retention")),
+        InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention.pipe(
+          T.Body("success_retention"),
+        ),
       ),
     }),
   ).annotate({
@@ -145,19 +145,19 @@ export const InstancesBulkRequestBodyItemInstanceRetention =
   }) as any as S.Schema<InstancesBulkRequestBodyItemInstanceRetention>;
 
 export interface InstancesBulkRequestBodyItem {
-  instanceId?: string | null;
-  instanceRetention?: InstancesBulkRequestBodyItemInstanceRetention | null;
-  params?: unknown | null;
+  instanceId?: string;
+  instanceRetention?: InstancesBulkRequestBodyItemInstanceRetention;
+  params?: unknown;
 }
 export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    instanceId: S.optional(S.NullOr(S.String).pipe(T.Body("instance_id"))),
+    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
     instanceRetention: S.optional(
-      S.NullOr(InstancesBulkRequestBodyItemInstanceRetention).pipe(
+      InstancesBulkRequestBodyItemInstanceRetention.pipe(
         T.Body("instance_retention"),
       ),
     ),
-    params: S.optional(S.NullOr(S.Unknown)),
+    params: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "InstancesBulkRequestBodyItem",
@@ -268,20 +268,20 @@ export const InstancesCreateRequestInstanceRetentionSuccessRetention =
 
 export interface InstancesCreateRequestInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  errorRetention?: InstancesCreateRequestInstanceRetentionErrorRetention | null;
+  errorRetention?: InstancesCreateRequestInstanceRetentionErrorRetention;
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
-  successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention | null;
+  successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention;
 }
 export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       errorRetention: S.optional(
-        S.NullOr(InstancesCreateRequestInstanceRetentionErrorRetention).pipe(
+        InstancesCreateRequestInstanceRetentionErrorRetention.pipe(
           T.Body("error_retention"),
         ),
       ),
       successRetention: S.optional(
-        S.NullOr(InstancesCreateRequestInstanceRetentionSuccessRetention).pipe(
+        InstancesCreateRequestInstanceRetentionSuccessRetention.pipe(
           T.Body("success_retention"),
         ),
       ),
@@ -293,21 +293,21 @@ export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
 export interface CreateInstanceRequest {
   accountId: string;
   workflowName: string;
-  instanceId?: string | null;
-  instanceRetention?: InstancesCreateRequestInstanceRetention | null;
-  params?: unknown | null;
+  instanceId?: string;
+  instanceRetention?: InstancesCreateRequestInstanceRetention;
+  params?: unknown;
 }
 export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
-    instanceId: S.optional(S.NullOr(S.String).pipe(T.Body("instance_id"))),
+    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
     instanceRetention: S.optional(
-      S.NullOr(InstancesCreateRequestInstanceRetention).pipe(
+      InstancesCreateRequestInstanceRetention.pipe(
         T.Body("instance_retention"),
       ),
     ),
-    params: S.optional(S.NullOr(S.Unknown)),
+    params: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({
@@ -2314,14 +2314,14 @@ export const InstancesStatusEditRequestFromType = /*@__PURE__*/ S.String;
 
 export interface InstancesStatusEditRequestFrom {
   name: string;
-  count?: number | null;
-  type?: InstancesStatusEditRequestFromType | (string & {}) | null;
+  count?: number;
+  type?: InstancesStatusEditRequestFromType | (string & {});
 }
 export const InstancesStatusEditRequestFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    count: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(InstancesStatusEditRequestFromType)),
+    count: S.optional(S.Number),
+    type: S.optional(InstancesStatusEditRequestFromType),
   }),
 ).annotate({
   identifier: "InstancesStatusEditRequestFrom",
@@ -2332,20 +2332,20 @@ export interface PatchInstanceStatusRequest {
   workflowName: string;
   /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
   instanceId: string;
-  status?: InstancesStatusEditRequestStatus | (string & {}) | null;
+  status?: InstancesStatusEditRequestStatus | (string & {});
   /** Run rollback before terminating. */
-  rollback?: boolean | null;
+  rollback?: boolean;
   /** Step to restart from. */
-  from?: InstancesStatusEditRequestFrom | null;
+  from?: InstancesStatusEditRequestFrom;
 }
 export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
     instanceId: S.String.pipe(T.Label("instance_id")),
-    status: S.optional(S.NullOr(InstancesStatusEditRequestStatus)),
-    rollback: S.optional(S.NullOr(S.Boolean)),
-    from: S.optional(S.NullOr(InstancesStatusEditRequestFrom)),
+    status: S.optional(InstancesStatusEditRequestStatus),
+    rollback: S.optional(S.Boolean),
+    from: S.optional(InstancesStatusEditRequestFrom),
   })
     .pipe(
       T.Http({
@@ -2387,11 +2387,11 @@ export const PatchInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchInstanceStatusResponse>;
 
 export interface UpdateRequestLimits {
-  steps?: number | null;
+  steps?: number;
 }
 export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    steps: S.optional(S.NullOr(S.Number)),
+    steps: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "UpdateRequestLimits",
@@ -2418,8 +2418,8 @@ export interface PutWorkflowRequest {
   workflowName: string;
   className: string;
   scriptName: string;
-  limits?: UpdateRequestLimits | null;
-  schedules?: UpdateRequestSchedulesList | null;
+  limits?: UpdateRequestLimits;
+  schedules?: UpdateRequestSchedulesList;
 }
 export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2427,8 +2427,8 @@ export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
     workflowName: S.String.pipe(T.Label("workflow_name")),
     className: S.String.pipe(T.Body("class_name")),
     scriptName: S.String.pipe(T.Body("script_name")),
-    limits: S.optional(S.NullOr(UpdateRequestLimits)),
-    schedules: S.optional(S.NullOr(UpdateRequestSchedulesList)),
+    limits: S.optional(UpdateRequestLimits),
+    schedules: S.optional(UpdateRequestSchedulesList),
   })
     .pipe(
       T.Http({

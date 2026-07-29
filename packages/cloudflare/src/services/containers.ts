@@ -170,12 +170,12 @@ export interface CreateContainerApplicationRequest {
   name: string;
   maxInstances: number;
   configuration: ContainerConfiguration;
-  durableObjects?: DurableObjectsRef | null;
-  instances?: number | null;
-  schedulingPolicy?: string | null;
-  constraints?: unknown | null;
-  affinities?: unknown | null;
-  jobs?: boolean | null;
+  durableObjects?: DurableObjectsRef;
+  instances?: number;
+  schedulingPolicy?: string;
+  constraints?: unknown;
+  affinities?: unknown;
+  jobs?: boolean;
 }
 export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -184,15 +184,13 @@ export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
     maxInstances: S.Number.pipe(T.Body("max_instances")),
     configuration: ContainerConfiguration,
     durableObjects: S.optional(
-      S.NullOr(DurableObjectsRef).pipe(T.Body("durable_objects")),
+      DurableObjectsRef.pipe(T.Body("durable_objects")),
     ),
-    instances: S.optional(S.NullOr(S.Number)),
-    schedulingPolicy: S.optional(
-      S.NullOr(S.String).pipe(T.Body("scheduling_policy")),
-    ),
-    constraints: S.optional(S.NullOr(S.Unknown)),
-    affinities: S.optional(S.NullOr(S.Unknown)),
-    jobs: S.optional(S.NullOr(S.Boolean)),
+    instances: S.optional(S.Number),
+    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
+    constraints: S.optional(S.Unknown),
+    affinities: S.optional(S.Unknown),
+    jobs: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -251,9 +249,9 @@ export interface CreateContainerApplicationRolloutRequest {
   applicationId: string;
   description: string;
   strategy: string;
-  kind?: string | null;
-  stepPercentage?: number | null;
-  targetConfiguration?: ContainerConfiguration | null;
+  kind?: string;
+  stepPercentage?: number;
+  targetConfiguration?: ContainerConfiguration;
 }
 export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -262,12 +260,10 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
       applicationId: S.String.pipe(T.Label("application_id")),
       description: S.String,
       strategy: S.String,
-      kind: S.optional(S.NullOr(S.String)),
-      stepPercentage: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("step_percentage")),
-      ),
+      kind: S.optional(S.String),
+      stepPercentage: S.optional(S.Number.pipe(T.Body("step_percentage"))),
       targetConfiguration: S.optional(
-        S.NullOr(ContainerConfiguration).pipe(T.Body("target_configuration")),
+        ContainerConfiguration.pipe(T.Body("target_configuration")),
       ),
     }).pipe(
       T.Http({
@@ -447,25 +443,23 @@ export const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateContainerApplicationRequest {
   accountId: string;
   applicationId: string;
-  maxInstances?: number | null;
-  configuration?: ContainerConfiguration | null;
-  instances?: number | null;
-  schedulingPolicy?: string | null;
-  constraints?: unknown | null;
-  affinities?: unknown | null;
+  maxInstances?: number;
+  configuration?: ContainerConfiguration;
+  instances?: number;
+  schedulingPolicy?: string;
+  constraints?: unknown;
+  affinities?: unknown;
 }
 export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
-    maxInstances: S.optional(S.NullOr(S.Number).pipe(T.Body("max_instances"))),
-    configuration: S.optional(S.NullOr(ContainerConfiguration)),
-    instances: S.optional(S.NullOr(S.Number)),
-    schedulingPolicy: S.optional(
-      S.NullOr(S.String).pipe(T.Body("scheduling_policy")),
-    ),
-    constraints: S.optional(S.NullOr(S.Unknown)),
-    affinities: S.optional(S.NullOr(S.Unknown)),
+    maxInstances: S.optional(S.Number.pipe(T.Body("max_instances"))),
+    configuration: S.optional(ContainerConfiguration),
+    instances: S.optional(S.Number),
+    schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
+    constraints: S.optional(S.Unknown),
+    affinities: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",

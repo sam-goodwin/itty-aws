@@ -128,12 +128,12 @@ export class RulesetNotFound extends T.applyErrorMatchers(
 
 export interface RulesCreateRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyBlockRulePositionBeforePosition",
@@ -141,12 +141,12 @@ export const RulesCreateRequestBodyBlockRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyBlockRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyBlockRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyBlockRulePositionAfterPosition",
@@ -154,12 +154,12 @@ export const RulesCreateRequestBodyBlockRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyBlockRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyBlockRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyBlockRulePositionIndexPosition",
@@ -176,11 +176,11 @@ export const RulesCreateRequestBodyBlockRulePosition =
 
 export interface RulesCreateRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyBlockRulePosition | null;
+  position?: RulesCreateRequestBodyBlockRulePosition;
 }
 export const RulesCreateRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyBlockRulePosition)),
+    position: S.optional(RulesCreateRequestBodyBlockRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyBlockRule",
@@ -226,12 +226,12 @@ export const RulesCreateRequestBodyChallengeRuleLogging =
 
 export interface RulesCreateRequestBodyChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyChallengeRulePositionBeforePosition",
@@ -239,12 +239,12 @@ export const RulesCreateRequestBodyChallengeRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyChallengeRulePositionAfterPosition",
@@ -252,12 +252,12 @@ export const RulesCreateRequestBodyChallengeRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyChallengeRulePositionIndexPosition",
@@ -285,17 +285,17 @@ export interface RulesCreateRequestBodyChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesCreateRequestBodyChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -304,22 +304,20 @@ export const RulesCreateRequestBodyChallengeRuleRatelimit =
         RulesCreateRequestBodyChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -332,56 +330,50 @@ export interface RulesCreateRequestBodyChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodyChallengeRuleAction | (string & {}) | null;
+  action?: RulesCreateRequestBodyChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: RulesCreateRequestBodyChallengeRuleCategoriesList | null;
+  categories?: RulesCreateRequestBodyChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesCreateRequestBodyChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesCreateRequestBodyChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesCreateRequestBodyChallengeRuleLogging | null;
+  logging?: RulesCreateRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyChallengeRulePosition | null;
+  position?: RulesCreateRequestBodyChallengeRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesCreateRequestBodyChallengeRuleRatelimit | null;
+  ratelimit?: RulesCreateRequestBodyChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesCreateRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(RulesCreateRequestBodyChallengeRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(RulesCreateRequestBodyChallengeRuleAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(RulesCreateRequestBodyChallengeRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(RulesCreateRequestBodyChallengeRuleExposedCredentialCheck).pipe(
+      RulesCreateRequestBodyChallengeRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleLogging)),
-    position: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRulePosition)),
-    ratelimit: S.optional(
-      S.NullOr(RulesCreateRequestBodyChallengeRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(RulesCreateRequestBodyChallengeRuleLogging),
+    position: S.optional(RulesCreateRequestBodyChallengeRulePosition),
+    ratelimit: S.optional(RulesCreateRequestBodyChallengeRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyChallengeRule",
@@ -389,12 +381,12 @@ export const RulesCreateRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -403,12 +395,12 @@ export const RulesCreateRequestBodyResponseCompressionRulePositionBeforePosition
 
 export interface RulesCreateRequestBodyResponseCompressionRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyResponseCompressionRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -417,12 +409,12 @@ export const RulesCreateRequestBodyResponseCompressionRulePositionAfterPosition 
 
 export interface RulesCreateRequestBodyResponseCompressionRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyResponseCompressionRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -440,13 +432,13 @@ export const RulesCreateRequestBodyResponseCompressionRulePosition =
 
 export interface RulesCreateRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyResponseCompressionRulePosition | null;
+  position?: RulesCreateRequestBodyResponseCompressionRulePosition;
 }
 export const RulesCreateRequestBodyResponseCompressionRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(RulesCreateRequestBodyResponseCompressionRulePosition),
+        RulesCreateRequestBodyResponseCompressionRulePosition,
       ),
     }),
   ).annotate({
@@ -455,12 +447,12 @@ export const RulesCreateRequestBodyResponseCompressionRule =
 
 export interface RulesCreateRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyDDoSDynamicRulePositionBeforePosition",
@@ -468,12 +460,12 @@ export const RulesCreateRequestBodyDDoSDynamicRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyDDoSDynamicRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyDDoSDynamicRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyDDoSDynamicRulePositionAfterPosition",
@@ -481,12 +473,12 @@ export const RulesCreateRequestBodyDDoSDynamicRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyDDoSDynamicRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyDDoSDynamicRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyDDoSDynamicRulePositionIndexPosition",
@@ -503,14 +495,12 @@ export const RulesCreateRequestBodyDDoSDynamicRulePosition =
 
 export interface RulesCreateRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyDDoSDynamicRulePosition | null;
+  position?: RulesCreateRequestBodyDDoSDynamicRulePosition;
 }
 export const RulesCreateRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodyDDoSDynamicRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodyDDoSDynamicRulePosition),
     }),
 ).annotate({
   identifier: "RulesCreateRequestBodyDDoSDynamicRule",
@@ -518,12 +508,12 @@ export const RulesCreateRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesCreateRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyExecuteRulePositionBeforePosition",
@@ -531,12 +521,12 @@ export const RulesCreateRequestBodyExecuteRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyExecuteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyExecuteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyExecuteRulePositionAfterPosition",
@@ -544,12 +534,12 @@ export const RulesCreateRequestBodyExecuteRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyExecuteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyExecuteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyExecuteRulePositionIndexPosition",
@@ -566,11 +556,11 @@ export const RulesCreateRequestBodyExecuteRulePosition =
 
 export interface RulesCreateRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyExecuteRulePosition | null;
+  position?: RulesCreateRequestBodyExecuteRulePosition;
 }
 export const RulesCreateRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyExecuteRulePosition)),
+    position: S.optional(RulesCreateRequestBodyExecuteRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyExecuteRule",
@@ -578,12 +568,12 @@ export const RulesCreateRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -592,12 +582,12 @@ export const RulesCreateRequestBodyForceConnectionCloseRulePositionBeforePositio
 
 export interface RulesCreateRequestBodyForceConnectionCloseRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyForceConnectionCloseRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -606,12 +596,12 @@ export const RulesCreateRequestBodyForceConnectionCloseRulePositionAfterPosition
 
 export interface RulesCreateRequestBodyForceConnectionCloseRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyForceConnectionCloseRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -629,13 +619,13 @@ export const RulesCreateRequestBodyForceConnectionCloseRulePosition =
 
 export interface RulesCreateRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyForceConnectionCloseRulePosition | null;
+  position?: RulesCreateRequestBodyForceConnectionCloseRulePosition;
 }
 export const RulesCreateRequestBodyForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(RulesCreateRequestBodyForceConnectionCloseRulePosition),
+        RulesCreateRequestBodyForceConnectionCloseRulePosition,
       ),
     }),
   ).annotate({
@@ -673,12 +663,12 @@ export const RulesCreateRequestBodyJavaScriptChallengeRuleExposedCredentialCheck
 
 export interface RulesCreateRequestBodyJavaScriptChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyJavaScriptChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -687,12 +677,12 @@ export const RulesCreateRequestBodyJavaScriptChallengeRulePositionBeforePosition
 
 export interface RulesCreateRequestBodyJavaScriptChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyJavaScriptChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -701,12 +691,12 @@ export const RulesCreateRequestBodyJavaScriptChallengeRulePositionAfterPosition 
 
 export interface RulesCreateRequestBodyJavaScriptChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyJavaScriptChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -735,17 +725,17 @@ export interface RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -754,22 +744,20 @@ export const RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit =
         RulesCreateRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -782,64 +770,57 @@ export interface RulesCreateRequestBodyJavaScriptChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | RulesCreateRequestBodyJavaScriptChallengeRuleAction
-    | (string & {})
-    | null;
+  action?: RulesCreateRequestBodyJavaScriptChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList | null;
+  categories?: RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesCreateRequestBodyJavaScriptChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesCreateRequestBodyJavaScriptChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesCreateRequestBodyChallengeRuleLogging | null;
+  logging?: RulesCreateRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyJavaScriptChallengeRulePosition | null;
+  position?: RulesCreateRequestBodyJavaScriptChallengeRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit | null;
+  ratelimit?: RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesCreateRequestBodyJavaScriptChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesCreateRequestBodyJavaScriptChallengeRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesCreateRequestBodyJavaScriptChallengeRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList),
+        RulesCreateRequestBodyJavaScriptChallengeRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodyJavaScriptChallengeRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesCreateRequestBodyJavaScriptChallengeRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesCreateRequestBodyChallengeRuleLogging),
       position: S.optional(
-        S.NullOr(RulesCreateRequestBodyJavaScriptChallengeRulePosition),
+        RulesCreateRequestBodyJavaScriptChallengeRulePosition,
       ),
       ratelimit: S.optional(
-        S.NullOr(RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit),
+        RulesCreateRequestBodyJavaScriptChallengeRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyJavaScriptChallengeRule",
@@ -847,12 +828,12 @@ export const RulesCreateRequestBodyJavaScriptChallengeRule =
 
 export interface RulesCreateRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyLogRulePositionBeforePosition",
@@ -860,12 +841,12 @@ export const RulesCreateRequestBodyLogRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyLogRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyLogRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyLogRulePositionAfterPosition",
@@ -873,12 +854,12 @@ export const RulesCreateRequestBodyLogRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyLogRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyLogRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyLogRulePositionIndexPosition",
@@ -895,11 +876,11 @@ export const RulesCreateRequestBodyLogRulePosition =
 
 export interface RulesCreateRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyLogRulePosition | null;
+  position?: RulesCreateRequestBodyLogRulePosition;
 }
 export const RulesCreateRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyLogRulePosition)),
+    position: S.optional(RulesCreateRequestBodyLogRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyLogRule",
@@ -907,12 +888,12 @@ export const RulesCreateRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -921,12 +902,12 @@ export const RulesCreateRequestBodyLogCustomFieldRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyLogCustomFieldRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyLogCustomFieldRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyLogCustomFieldRulePositionAfterPosition",
@@ -934,12 +915,12 @@ export const RulesCreateRequestBodyLogCustomFieldRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyLogCustomFieldRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyLogCustomFieldRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyLogCustomFieldRulePositionIndexPosition",
@@ -956,14 +937,12 @@ export const RulesCreateRequestBodyLogCustomFieldRulePosition =
 
 export interface RulesCreateRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyLogCustomFieldRulePosition | null;
+  position?: RulesCreateRequestBodyLogCustomFieldRulePosition;
 }
 export const RulesCreateRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodyLogCustomFieldRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodyLogCustomFieldRulePosition),
     }),
 ).annotate({
   identifier: "RulesCreateRequestBodyLogCustomFieldRule",
@@ -971,12 +950,12 @@ export const RulesCreateRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesCreateRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -985,12 +964,12 @@ export const RulesCreateRequestBodyManagedChallengeRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyManagedChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyManagedChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -999,12 +978,12 @@ export const RulesCreateRequestBodyManagedChallengeRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyManagedChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyManagedChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -1022,14 +1001,12 @@ export const RulesCreateRequestBodyManagedChallengeRulePosition =
 
 export interface RulesCreateRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyManagedChallengeRulePosition | null;
+  position?: RulesCreateRequestBodyManagedChallengeRulePosition;
 }
 export const RulesCreateRequestBodyManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodyManagedChallengeRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodyManagedChallengeRulePosition),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyManagedChallengeRule",
@@ -1037,12 +1014,12 @@ export const RulesCreateRequestBodyManagedChallengeRule =
 
 export interface RulesCreateRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRedirectRulePositionBeforePosition",
@@ -1050,12 +1027,12 @@ export const RulesCreateRequestBodyRedirectRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyRedirectRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyRedirectRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRedirectRulePositionAfterPosition",
@@ -1063,12 +1040,12 @@ export const RulesCreateRequestBodyRedirectRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyRedirectRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyRedirectRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRedirectRulePositionIndexPosition",
@@ -1085,11 +1062,11 @@ export const RulesCreateRequestBodyRedirectRulePosition =
 
 export interface RulesCreateRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyRedirectRulePosition | null;
+  position?: RulesCreateRequestBodyRedirectRulePosition;
 }
 export const RulesCreateRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyRedirectRulePosition)),
+    position: S.optional(RulesCreateRequestBodyRedirectRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyRedirectRule",
@@ -1097,12 +1074,12 @@ export const RulesCreateRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRewriteRulePositionBeforePosition",
@@ -1110,12 +1087,12 @@ export const RulesCreateRequestBodyRewriteRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyRewriteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyRewriteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRewriteRulePositionAfterPosition",
@@ -1123,12 +1100,12 @@ export const RulesCreateRequestBodyRewriteRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyRewriteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyRewriteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRewriteRulePositionIndexPosition",
@@ -1145,11 +1122,11 @@ export const RulesCreateRequestBodyRewriteRulePosition =
 
 export interface RulesCreateRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyRewriteRulePosition | null;
+  position?: RulesCreateRequestBodyRewriteRulePosition;
 }
 export const RulesCreateRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyRewriteRulePosition)),
+    position: S.optional(RulesCreateRequestBodyRewriteRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyRewriteRule",
@@ -1157,12 +1134,12 @@ export const RulesCreateRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRouteRulePositionBeforePosition",
@@ -1170,12 +1147,12 @@ export const RulesCreateRequestBodyRouteRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyRouteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyRouteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRouteRulePositionAfterPosition",
@@ -1183,12 +1160,12 @@ export const RulesCreateRequestBodyRouteRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyRouteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyRouteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyRouteRulePositionIndexPosition",
@@ -1205,11 +1182,11 @@ export const RulesCreateRequestBodyRouteRulePosition =
 
 export interface RulesCreateRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyRouteRulePosition | null;
+  position?: RulesCreateRequestBodyRouteRulePosition;
 }
 export const RulesCreateRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyRouteRulePosition)),
+    position: S.optional(RulesCreateRequestBodyRouteRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyRouteRule",
@@ -1217,12 +1194,12 @@ export const RulesCreateRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyScoreRulePositionBeforePosition",
@@ -1230,12 +1207,12 @@ export const RulesCreateRequestBodyScoreRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyScoreRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyScoreRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyScoreRulePositionAfterPosition",
@@ -1243,12 +1220,12 @@ export const RulesCreateRequestBodyScoreRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyScoreRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyScoreRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyScoreRulePositionIndexPosition",
@@ -1265,11 +1242,11 @@ export const RulesCreateRequestBodyScoreRulePosition =
 
 export interface RulesCreateRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyScoreRulePosition | null;
+  position?: RulesCreateRequestBodyScoreRulePosition;
 }
 export const RulesCreateRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodyScoreRulePosition)),
+    position: S.optional(RulesCreateRequestBodyScoreRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodyScoreRule",
@@ -1277,12 +1254,12 @@ export const RulesCreateRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesCreateRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyServeErrorRulePositionBeforePosition",
@@ -1290,12 +1267,12 @@ export const RulesCreateRequestBodyServeErrorRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodyServeErrorRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyServeErrorRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyServeErrorRulePositionAfterPosition",
@@ -1303,12 +1280,12 @@ export const RulesCreateRequestBodyServeErrorRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodyServeErrorRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyServeErrorRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyServeErrorRulePositionIndexPosition",
@@ -1325,14 +1302,12 @@ export const RulesCreateRequestBodyServeErrorRulePosition =
 
 export interface RulesCreateRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyServeErrorRulePosition | null;
+  position?: RulesCreateRequestBodyServeErrorRulePosition;
 }
 export const RulesCreateRequestBodyServeErrorRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodyServeErrorRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodyServeErrorRulePosition),
     }),
 ).annotate({
   identifier: "RulesCreateRequestBodyServeErrorRule",
@@ -1354,16 +1329,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersImmuta
     | RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1381,16 +1354,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersImmuta
     | RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1421,7 +1392,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -1429,9 +1400,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetD
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1449,16 +1418,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge
     | RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1487,16 +1454,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustRe
     | RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1514,16 +1479,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustRe
     | RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1552,16 +1515,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustUn
     | RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1579,16 +1540,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersMustUn
     | RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1624,22 +1583,18 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoCach
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList | null;
+  qualifiers?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList,
-        ),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -1658,16 +1613,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoCach
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1696,16 +1649,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoStor
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1723,16 +1674,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoStor
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1761,16 +1710,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoTran
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1788,16 +1735,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersNoTran
     | RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1833,22 +1778,18 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPrivat
     | RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList | null;
+  qualifiers?: RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList,
-        ),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -1867,16 +1808,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPrivat
     | RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1905,16 +1844,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersProxyR
     | RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1932,16 +1869,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersProxyR
     | RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1970,16 +1905,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPublic
     | RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -1997,16 +1930,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersPublic
     | RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2037,7 +1968,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxag
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -2045,9 +1976,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSet
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2065,16 +1994,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxag
     | RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2105,7 +2032,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleI
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -2113,9 +2040,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErr
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2133,16 +2058,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleI
     | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2173,7 +2096,7 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleW
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -2181,9 +2104,7 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhile
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2201,16 +2122,14 @@ export interface RulesCreateRequestBodySetCacheControlRuleActionParametersStaleW
     | RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -2230,99 +2149,93 @@ export const RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhile
 
 export interface RulesCreateRequestBodySetCacheControlRuleActionParameters {
   /** A cache-control directive configuration. */
-  immutable?: RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable | null;
+  immutable?: RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  maxAge?: RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge | null;
+  maxAge?: RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge;
   /** A cache-control directive configuration. */
-  mustRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate | null;
+  mustRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate;
   /** A cache-control directive configuration. */
-  mustUnderstand?: RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand | null;
+  mustUnderstand?: RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  noCache?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache | null;
+  noCache?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache;
   /** A cache-control directive configuration. */
-  noStore?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore | null;
+  noStore?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore;
   /** A cache-control directive configuration. */
-  noTransform?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform | null;
+  noTransform?: RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  private?: RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate | null;
+  private?: RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate;
   /** A cache-control directive configuration. */
-  proxyRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate | null;
+  proxyRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate;
   /** A cache-control directive configuration. */
-  public?: RulesCreateRequestBodySetCacheControlRuleActionParametersPublic | null;
+  public?: RulesCreateRequestBodySetCacheControlRuleActionParametersPublic;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  sMaxage?: RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage | null;
+  sMaxage?: RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleIfError?: RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError | null;
+  staleIfError?: RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleWhileRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate | null;
+  staleWhileRevalidate?: RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate;
 }
 export const RulesCreateRequestBodySetCacheControlRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immutable: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable,
-        ),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersImmutable,
       ),
       maxAge: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge,
-        ).pipe(T.Body("max-age")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersMaxAge.pipe(
+          T.Body("max-age"),
+        ),
       ),
       mustRevalidate: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate,
-        ).pipe(T.Body("must-revalidate")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersMustRevalidate.pipe(
+          T.Body("must-revalidate"),
+        ),
       ),
       mustUnderstand: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand,
-        ).pipe(T.Body("must-understand")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersMustUnderstand.pipe(
+          T.Body("must-understand"),
+        ),
       ),
       noCache: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache,
-        ).pipe(T.Body("no-cache")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersNoCache.pipe(
+          T.Body("no-cache"),
+        ),
       ),
       noStore: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore,
-        ).pipe(T.Body("no-store")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersNoStore.pipe(
+          T.Body("no-store"),
+        ),
       ),
       noTransform: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform,
-        ).pipe(T.Body("no-transform")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersNoTransform.pipe(
+          T.Body("no-transform"),
+        ),
       ),
       private: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate,
-        ),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersPrivate,
       ),
       proxyRevalidate: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate,
-        ).pipe(T.Body("proxy-revalidate")),
-      ),
-      public: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersPublic,
+        RulesCreateRequestBodySetCacheControlRuleActionParametersProxyRevalidate.pipe(
+          T.Body("proxy-revalidate"),
         ),
       ),
+      public: S.optional(
+        RulesCreateRequestBodySetCacheControlRuleActionParametersPublic,
+      ),
       sMaxage: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage,
-        ).pipe(T.Body("s-maxage")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersSMaxage.pipe(
+          T.Body("s-maxage"),
+        ),
       ),
       staleIfError: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError,
-        ).pipe(T.Body("stale-if-error")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersStaleIfError.pipe(
+          T.Body("stale-if-error"),
+        ),
       ),
       staleWhileRevalidate: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate,
-        ).pipe(T.Body("stale-while-revalidate")),
+        RulesCreateRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate.pipe(
+          T.Body("stale-while-revalidate"),
+        ),
       ),
     }),
   ).annotate({
@@ -2355,12 +2268,12 @@ export const RulesCreateRequestBodySetCacheControlRuleExposedCredentialCheck =
 
 export interface RulesCreateRequestBodySetCacheControlRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodySetCacheControlRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2369,12 +2282,12 @@ export const RulesCreateRequestBodySetCacheControlRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodySetCacheControlRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodySetCacheControlRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2383,12 +2296,12 @@ export const RulesCreateRequestBodySetCacheControlRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodySetCacheControlRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodySetCacheControlRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -2417,17 +2330,17 @@ export interface RulesCreateRequestBodySetCacheControlRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesCreateRequestBodySetCacheControlRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -2436,22 +2349,20 @@ export const RulesCreateRequestBodySetCacheControlRuleRatelimit =
         RulesCreateRequestBodySetCacheControlRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -2464,66 +2375,57 @@ export interface RulesCreateRequestBodySetCacheControlRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | RulesCreateRequestBodySetCacheControlRuleAction
-    | (string & {})
-    | null;
+  action?: RulesCreateRequestBodySetCacheControlRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesCreateRequestBodySetCacheControlRuleActionParameters | null;
+  actionParameters?: RulesCreateRequestBodySetCacheControlRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesCreateRequestBodySetCacheControlRuleCategoriesList | null;
+  categories?: RulesCreateRequestBodySetCacheControlRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesCreateRequestBodySetCacheControlRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesCreateRequestBodySetCacheControlRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesCreateRequestBodyChallengeRuleLogging | null;
+  logging?: RulesCreateRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodySetCacheControlRulePosition | null;
+  position?: RulesCreateRequestBodySetCacheControlRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesCreateRequestBodySetCacheControlRuleRatelimit | null;
+  ratelimit?: RulesCreateRequestBodySetCacheControlRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesCreateRequestBodySetCacheControlRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheControlRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesCreateRequestBodySetCacheControlRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        RulesCreateRequestBodySetCacheControlRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheControlRuleCategoriesList),
+        RulesCreateRequestBodySetCacheControlRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheControlRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesCreateRequestBodySetCacheControlRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleLogging)),
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheControlRulePosition),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheControlRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesCreateRequestBodyChallengeRuleLogging),
+      position: S.optional(RulesCreateRequestBodySetCacheControlRulePosition),
+      ratelimit: S.optional(RulesCreateRequestBodySetCacheControlRuleRatelimit),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetCacheControlRule",
@@ -2531,12 +2433,12 @@ export const RulesCreateRequestBodySetCacheControlRule =
 
 export interface RulesCreateRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2545,12 +2447,12 @@ export const RulesCreateRequestBodySetCacheSettingsRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodySetCacheSettingsRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodySetCacheSettingsRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2559,12 +2461,12 @@ export const RulesCreateRequestBodySetCacheSettingsRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodySetCacheSettingsRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodySetCacheSettingsRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -2582,14 +2484,12 @@ export const RulesCreateRequestBodySetCacheSettingsRulePosition =
 
 export interface RulesCreateRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodySetCacheSettingsRulePosition | null;
+  position?: RulesCreateRequestBodySetCacheSettingsRulePosition;
 }
 export const RulesCreateRequestBodySetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheSettingsRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodySetCacheSettingsRulePosition),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetCacheSettingsRule",
@@ -2817,12 +2717,12 @@ export const RulesCreateRequestBodySetCacheTagsRuleExposedCredentialCheck =
 
 export interface RulesCreateRequestBodySetCacheTagsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodySetCacheTagsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetCacheTagsRulePositionBeforePosition",
@@ -2830,12 +2730,12 @@ export const RulesCreateRequestBodySetCacheTagsRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodySetCacheTagsRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodySetCacheTagsRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetCacheTagsRulePositionAfterPosition",
@@ -2843,12 +2743,12 @@ export const RulesCreateRequestBodySetCacheTagsRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodySetCacheTagsRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodySetCacheTagsRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetCacheTagsRulePositionIndexPosition",
@@ -2876,17 +2776,17 @@ export interface RulesCreateRequestBodySetCacheTagsRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesCreateRequestBodySetCacheTagsRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -2895,22 +2795,20 @@ export const RulesCreateRequestBodySetCacheTagsRuleRatelimit =
         RulesCreateRequestBodySetCacheTagsRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -2923,63 +2821,57 @@ export interface RulesCreateRequestBodySetCacheTagsRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesCreateRequestBodySetCacheTagsRuleAction | (string & {}) | null;
+  action?: RulesCreateRequestBodySetCacheTagsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesCreateRequestBodySetCacheTagsRuleActionParameters | null;
+  actionParameters?: RulesCreateRequestBodySetCacheTagsRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesCreateRequestBodySetCacheTagsRuleCategoriesList | null;
+  categories?: RulesCreateRequestBodySetCacheTagsRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesCreateRequestBodySetCacheTagsRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesCreateRequestBodySetCacheTagsRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesCreateRequestBodyChallengeRuleLogging | null;
+  logging?: RulesCreateRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodySetCacheTagsRulePosition | null;
+  position?: RulesCreateRequestBodySetCacheTagsRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesCreateRequestBodySetCacheTagsRuleRatelimit | null;
+  ratelimit?: RulesCreateRequestBodySetCacheTagsRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesCreateRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheTagsRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesCreateRequestBodySetCacheTagsRuleAction),
       actionParameters: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheTagsRuleActionParameters).pipe(
+        RulesCreateRequestBodySetCacheTagsRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheTagsRuleCategoriesList),
+        RulesCreateRequestBodySetCacheTagsRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodySetCacheTagsRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesCreateRequestBodySetCacheTagsRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleLogging)),
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheTagsRulePosition),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(RulesCreateRequestBodySetCacheTagsRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesCreateRequestBodyChallengeRuleLogging),
+      position: S.optional(RulesCreateRequestBodySetCacheTagsRulePosition),
+      ratelimit: S.optional(RulesCreateRequestBodySetCacheTagsRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "RulesCreateRequestBodySetCacheTagsRule",
@@ -2987,12 +2879,12 @@ export const RulesCreateRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesCreateRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3001,12 +2893,12 @@ export const RulesCreateRequestBodySetConfigurationRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodySetConfigurationRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodySetConfigurationRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3015,12 +2907,12 @@ export const RulesCreateRequestBodySetConfigurationRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodySetConfigurationRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodySetConfigurationRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -3038,14 +2930,12 @@ export const RulesCreateRequestBodySetConfigurationRulePosition =
 
 export interface RulesCreateRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodySetConfigurationRulePosition | null;
+  position?: RulesCreateRequestBodySetConfigurationRulePosition;
 }
 export const RulesCreateRequestBodySetConfigurationRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesCreateRequestBodySetConfigurationRulePosition),
-      ),
+      position: S.optional(RulesCreateRequestBodySetConfigurationRulePosition),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySetConfigurationRule",
@@ -3053,12 +2943,12 @@ export const RulesCreateRequestBodySetConfigurationRule =
 
 export interface RulesCreateRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySkipRulePositionBeforePosition",
@@ -3066,12 +2956,12 @@ export const RulesCreateRequestBodySkipRulePositionBeforePosition =
 
 export interface RulesCreateRequestBodySkipRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodySkipRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySkipRulePositionAfterPosition",
@@ -3079,12 +2969,12 @@ export const RulesCreateRequestBodySkipRulePositionAfterPosition =
 
 export interface RulesCreateRequestBodySkipRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodySkipRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodySkipRulePositionIndexPosition",
@@ -3101,11 +2991,11 @@ export const RulesCreateRequestBodySkipRulePosition =
 
 export interface RulesCreateRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodySkipRulePosition | null;
+  position?: RulesCreateRequestBodySkipRulePosition;
 }
 export const RulesCreateRequestBodySkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesCreateRequestBodySkipRulePosition)),
+    position: S.optional(RulesCreateRequestBodySkipRulePosition),
   }),
 ).annotate({
   identifier: "RulesCreateRequestBodySkipRule",
@@ -3156,12 +3046,12 @@ export const RulesCreateRequestBodyTransformResponseHTMLRuleExposedCredentialChe
 
 export interface RulesCreateRequestBodyTransformResponseHTMLRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesCreateRequestBodyTransformResponseHTMLRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3170,12 +3060,12 @@ export const RulesCreateRequestBodyTransformResponseHTMLRulePositionBeforePositi
 
 export interface RulesCreateRequestBodyTransformResponseHTMLRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesCreateRequestBodyTransformResponseHTMLRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -3184,12 +3074,12 @@ export const RulesCreateRequestBodyTransformResponseHTMLRulePositionAfterPositio
 
 export interface RulesCreateRequestBodyTransformResponseHTMLRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesCreateRequestBodyTransformResponseHTMLRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -3218,17 +3108,17 @@ export interface RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -3237,22 +3127,20 @@ export const RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit =
         RulesCreateRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -3265,66 +3153,63 @@ export interface RulesCreateRequestBodyTransformResponseHTMLRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | RulesCreateRequestBodyTransformResponseHTMLRuleAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters | null;
+  actionParameters?: RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList | null;
+  categories?: RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesCreateRequestBodyTransformResponseHTMLRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesCreateRequestBodyTransformResponseHTMLRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesCreateRequestBodyChallengeRuleLogging | null;
+  logging?: RulesCreateRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesCreateRequestBodyTransformResponseHTMLRulePosition | null;
+  position?: RulesCreateRequestBodyTransformResponseHTMLRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit | null;
+  ratelimit?: RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesCreateRequestBodyTransformResponseHTMLRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesCreateRequestBodyTransformResponseHTMLRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesCreateRequestBodyTransformResponseHTMLRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        RulesCreateRequestBodyTransformResponseHTMLRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList),
+        RulesCreateRequestBodyTransformResponseHTMLRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesCreateRequestBodyTransformResponseHTMLRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesCreateRequestBodyTransformResponseHTMLRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesCreateRequestBodyChallengeRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesCreateRequestBodyChallengeRuleLogging),
       position: S.optional(
-        S.NullOr(RulesCreateRequestBodyTransformResponseHTMLRulePosition),
+        RulesCreateRequestBodyTransformResponseHTMLRulePosition,
       ),
       ratelimit: S.optional(
-        S.NullOr(RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit),
+        RulesCreateRequestBodyTransformResponseHTMLRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesCreateRequestBodyTransformResponseHTMLRule",
@@ -10003,13 +9888,13 @@ export const CreateRequestRulesItemBlockRuleActionParametersResponse =
 
 export interface CreateRequestRulesItemBlockRuleActionParameters {
   /** The response to show when the block is applied. */
-  response?: CreateRequestRulesItemBlockRuleActionParametersResponse | null;
+  response?: CreateRequestRulesItemBlockRuleActionParametersResponse;
 }
 export const CreateRequestRulesItemBlockRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       response: S.optional(
-        S.NullOr(CreateRequestRulesItemBlockRuleActionParametersResponse),
+        CreateRequestRulesItemBlockRuleActionParametersResponse,
       ),
     }),
   ).annotate({
@@ -10064,17 +9949,17 @@ export interface CreateRequestRulesItemBlockRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -10083,22 +9968,20 @@ export const CreateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemBlockRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -10111,53 +9994,51 @@ export interface CreateRequestRulesItemBlockRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemBlockRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemBlockRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemBlockRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemBlockRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemBlockRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemBlockRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemBlockRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemBlockRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemBlockRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemBlockRuleActionParameters).pipe(
+      CreateRequestRulesItemBlockRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemBlockRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemBlockRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemBlockRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemBlockRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemBlockRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemBlockRule",
@@ -10201,17 +10082,17 @@ export interface CreateRequestRulesItemChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -10220,22 +10101,20 @@ export const CreateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -10248,51 +10127,47 @@ export interface CreateRequestRulesItemChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemChallengeAction | (string & {}) | null;
+  action?: CreateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemChallengeCategoriesList | null;
+  categories?: CreateRequestRulesItemChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemChallengeRatelimit | null;
+  ratelimit?: CreateRequestRulesItemChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemChallengeAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemChallengeCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemChallengeAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(CreateRequestRulesItemChallengeCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemChallengeExposedCredentialCheck).pipe(
+      CreateRequestRulesItemChallengeExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemChallengeRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemChallengeRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemChallenge",
@@ -10312,16 +10187,13 @@ export interface CreateRequestRulesItemCompressResponseRuleActionParametersAlgor
   /** Name of the compression algorithm to enable. */
   name?:
     | CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
-        ),
+        CreateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
       ),
     }),
   ).annotate({
@@ -10387,17 +10259,17 @@ export interface CreateRequestRulesItemCompressResponseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemCompressResponseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -10406,22 +10278,20 @@ export const CreateRequestRulesItemCompressResponseRuleRatelimit =
         CreateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -10434,61 +10304,56 @@ export interface CreateRequestRulesItemCompressResponseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemCompressResponseRuleAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemCompressResponseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemCompressResponseRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemCompressResponseRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemCompressResponseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemCompressResponseRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemCompressResponseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemCompressResponseRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemCompressResponseRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemCompressResponseRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        CreateRequestRulesItemCompressResponseRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemCompressResponseRuleCategoriesList),
+        CreateRequestRulesItemCompressResponseRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemCompressResponseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemCompressResponseRuleRatelimit),
+        CreateRequestRulesItemCompressResponseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemCompressResponseRule",
@@ -10533,17 +10398,17 @@ export interface CreateRequestRulesItemDDoSDynamicRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemDDoSDynamicRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -10552,22 +10417,20 @@ export const CreateRequestRulesItemDDoSDynamicRuleRatelimit =
         CreateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -10580,54 +10443,50 @@ export interface CreateRequestRulesItemDDoSDynamicRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemDDoSDynamicRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemDDoSDynamicRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemDDoSDynamicRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemDDoSDynamicRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemDDoSDynamicRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemDDoSDynamicRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(CreateRequestRulesItemDDoSDynamicRuleAction)),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemDDoSDynamicRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemDDoSDynamicRuleCategoriesList),
+        CreateRequestRulesItemDDoSDynamicRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemDDoSDynamicRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(CreateRequestRulesItemDDoSDynamicRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestRulesItemDDoSDynamicRule",
@@ -10658,25 +10517,24 @@ export interface CreateRequestRulesItemExecuteRuleActionParametersOverridesCateg
   /** The name of the category to override. */
   category: string;
   /** The action to override rules in the category with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of rules in the category. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -10700,30 +10558,27 @@ export interface CreateRequestRulesItemExecuteRuleActionParametersOverridesRules
   /** The ID of the rule to override. */
   id: string;
   /** The action to override the rule with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of the rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The score threshold to use for the rule. */
-  scoreThreshold?: number | null;
+  scoreThreshold?: number;
   /** The sensitivity level to use for the rule. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_threshold")),
-      ),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
+      scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -10745,38 +10600,33 @@ export const CreateRequestRulesItemExecuteRuleActionParametersOverridesSensitivi
 
 export interface CreateRequestRulesItemExecuteRuleActionParametersOverrides {
   /** An action to override all rules with. This option has lower precedence than rule and category overrides. */
-  action?: string | null;
+  action?: string;
   /** A list of category-level overrides. This option has the second-highest precedence after rule-level overrides. */
-  categories?: CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList | null;
+  categories?: CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList;
   /** Whether to enable execution of all rules. This option has lower precedence than rule and category overrides. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of rule-level overrides. This option has the highest precedence. */
-  rules?: CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList | null;
+  rules?: CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList;
   /** A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases. */
   sensitivityLevel?:
     | CreateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateRequestRulesItemExecuteRuleActionParametersOverrides =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      action: S.optional(S.NullOr(S.String)),
+      action: S.optional(S.String),
       categories: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
+        CreateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       rules: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
-        ),
+        CreateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
       ),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        CreateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -10787,21 +10637,21 @@ export interface CreateRequestRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
   id: string;
   /** The configuration to use for matched data logging. */
-  matchedData?: CreateRequestRulesItemExecuteRuleActionParametersMatchedData | null;
+  matchedData?: CreateRequestRulesItemExecuteRuleActionParametersMatchedData;
   /** A set of overrides to apply to the target ruleset. */
-  overrides?: CreateRequestRulesItemExecuteRuleActionParametersOverrides | null;
+  overrides?: CreateRequestRulesItemExecuteRuleActionParametersOverrides;
 }
 export const CreateRequestRulesItemExecuteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       matchedData: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemExecuteRuleActionParametersMatchedData,
-        ).pipe(T.Body("matched_data")),
+        CreateRequestRulesItemExecuteRuleActionParametersMatchedData.pipe(
+          T.Body("matched_data"),
+        ),
       ),
       overrides: S.optional(
-        S.NullOr(CreateRequestRulesItemExecuteRuleActionParametersOverrides),
+        CreateRequestRulesItemExecuteRuleActionParametersOverrides,
       ),
     }),
   ).annotate({
@@ -10843,17 +10693,17 @@ export interface CreateRequestRulesItemExecuteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemExecuteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -10862,22 +10712,20 @@ export const CreateRequestRulesItemExecuteRuleRatelimit =
         CreateRequestRulesItemExecuteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -10890,53 +10738,51 @@ export interface CreateRequestRulesItemExecuteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemExecuteRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemExecuteRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemExecuteRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemExecuteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemExecuteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemExecuteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemExecuteRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemExecuteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemExecuteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemExecuteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemExecuteRuleActionParameters).pipe(
+      CreateRequestRulesItemExecuteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemExecuteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemExecuteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemExecuteRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemExecuteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemExecuteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemExecuteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemExecuteRule",
@@ -10984,17 +10830,17 @@ export interface CreateRequestRulesItemForceConnectionCloseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemForceConnectionCloseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -11003,22 +10849,20 @@ export const CreateRequestRulesItemForceConnectionCloseRuleRatelimit =
         CreateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -11031,59 +10875,52 @@ export interface CreateRequestRulesItemForceConnectionCloseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemForceConnectionCloseRuleAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemForceConnectionCloseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemForceConnectionCloseRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemForceConnectionCloseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemForceConnectionCloseRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemForceConnectionCloseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemForceConnectionCloseRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemForceConnectionCloseRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemForceConnectionCloseRuleCategoriesList),
+        CreateRequestRulesItemForceConnectionCloseRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemForceConnectionCloseRuleRatelimit),
+        CreateRequestRulesItemForceConnectionCloseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemForceConnectionCloseRule",
@@ -11127,17 +10964,17 @@ export interface CreateRequestRulesItemJSChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemJSChallengeRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -11146,22 +10983,20 @@ export const CreateRequestRulesItemJSChallengeRatelimit =
         CreateRequestRulesItemJSChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -11174,51 +11009,47 @@ export interface CreateRequestRulesItemJSChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemJSChallengeAction | (string & {}) | null;
+  action?: CreateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemJSChallengeCategoriesList | null;
+  categories?: CreateRequestRulesItemJSChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemJSChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemJSChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemJSChallengeRatelimit | null;
+  ratelimit?: CreateRequestRulesItemJSChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemJSChallengeAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemJSChallengeCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemJSChallengeAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(CreateRequestRulesItemJSChallengeCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemJSChallengeExposedCredentialCheck).pipe(
+      CreateRequestRulesItemJSChallengeExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemJSChallengeRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemJSChallengeRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemJSChallenge",
@@ -11262,17 +11093,17 @@ export interface CreateRequestRulesItemLogRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -11281,22 +11112,20 @@ export const CreateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemLogRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -11309,51 +11138,47 @@ export interface CreateRequestRulesItemLogRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemLogRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemLogRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemLogRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemLogRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemLogRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemLogRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemLogRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemLogRuleAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemLogRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemLogRuleAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(CreateRequestRulesItemLogRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemLogRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemLogRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemLogRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemLogRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemLogRule",
@@ -11388,14 +11213,14 @@ export interface CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResp
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -11435,14 +11260,14 @@ export interface CreateRequestRulesItemLogCustomFieldRuleActionParametersRespons
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -11480,43 +11305,43 @@ export const CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformed
 
 export interface CreateRequestRulesItemLogCustomFieldRuleActionParameters {
   /** The cookie fields to log. */
-  cookieFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList | null;
+  cookieFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList;
   /** The raw response fields to log. */
-  rawResponseFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList | null;
+  rawResponseFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList;
   /** The raw request fields to log. */
-  requestFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList | null;
+  requestFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList;
   /** The transformed response fields to log. */
-  responseFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList | null;
+  responseFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList;
   /** The transformed request fields to log. */
-  transformedRequestFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList | null;
+  transformedRequestFields?: CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList;
 }
 export const CreateRequestRulesItemLogCustomFieldRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookieFields: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList,
-        ).pipe(T.Body("cookie_fields")),
+        CreateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList.pipe(
+          T.Body("cookie_fields"),
+        ),
       ),
       rawResponseFields: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList,
-        ).pipe(T.Body("raw_response_fields")),
+        CreateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList.pipe(
+          T.Body("raw_response_fields"),
+        ),
       ),
       requestFields: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList,
-        ).pipe(T.Body("request_fields")),
+        CreateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList.pipe(
+          T.Body("request_fields"),
+        ),
       ),
       responseFields: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList,
-        ).pipe(T.Body("response_fields")),
+        CreateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList.pipe(
+          T.Body("response_fields"),
+        ),
       ),
       transformedRequestFields: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList,
-        ).pipe(T.Body("transformed_request_fields")),
+        CreateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList.pipe(
+          T.Body("transformed_request_fields"),
+        ),
       ),
     }),
   ).annotate({
@@ -11560,17 +11385,17 @@ export interface CreateRequestRulesItemLogCustomFieldRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemLogCustomFieldRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -11579,22 +11404,20 @@ export const CreateRequestRulesItemLogCustomFieldRuleRatelimit =
         CreateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -11607,61 +11430,54 @@ export interface CreateRequestRulesItemLogCustomFieldRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemLogCustomFieldRuleAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemLogCustomFieldRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemLogCustomFieldRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemLogCustomFieldRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemLogCustomFieldRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemLogCustomFieldRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemLogCustomFieldRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
-        S.NullOr(CreateRequestRulesItemLogCustomFieldRuleActionParameters).pipe(
+        CreateRequestRulesItemLogCustomFieldRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemLogCustomFieldRuleCategoriesList),
+        CreateRequestRulesItemLogCustomFieldRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemLogCustomFieldRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(CreateRequestRulesItemLogCustomFieldRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestRulesItemLogCustomFieldRule",
@@ -11709,17 +11525,17 @@ export interface CreateRequestRulesItemManagedChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemManagedChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -11728,22 +11544,20 @@ export const CreateRequestRulesItemManagedChallengeRuleRatelimit =
         CreateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -11756,59 +11570,52 @@ export interface CreateRequestRulesItemManagedChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemManagedChallengeRuleAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemManagedChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemManagedChallengeRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemManagedChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemManagedChallengeRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemManagedChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemManagedChallengeRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemManagedChallengeRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemManagedChallengeRuleCategoriesList),
+        CreateRequestRulesItemManagedChallengeRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemManagedChallengeRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemManagedChallengeRuleRatelimit),
+        CreateRequestRulesItemManagedChallengeRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemManagedChallengeRule",
@@ -11835,15 +11642,15 @@ export const CreateRequestRulesItemRedirectRuleActionParametersFromList =
 
 export interface CreateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl {
   /** An expression that evaluates to a URL to redirect the request to. */
-  expression?: string | null;
+  expression?: string;
   /** A URL to redirect the request to. */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -11859,12 +11666,11 @@ export interface CreateRequestRulesItemRedirectRuleActionParametersFromValue {
   /** A URL to redirect the request to. */
   targetUrl: CreateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl;
   /** Whether to keep the query string of the original request. */
-  preserveQueryString?: boolean | null;
+  preserveQueryString?: boolean;
   /** The status code to use for the redirect. */
   statusCode?:
     | CreateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
 }
 export const CreateRequestRulesItemRedirectRuleActionParametersFromValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -11874,12 +11680,12 @@ export const CreateRequestRulesItemRedirectRuleActionParametersFromValue =
           T.Body("target_url"),
         ),
       preserveQueryString: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string")),
+        S.Boolean.pipe(T.Body("preserve_query_string")),
       ),
       statusCode: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
+        CreateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode.pipe(
+          T.Body("status_code"),
+        ),
       ),
     }),
   ).annotate({
@@ -11888,22 +11694,22 @@ export const CreateRequestRulesItemRedirectRuleActionParametersFromValue =
 
 export interface CreateRequestRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
-  fromList?: CreateRequestRulesItemRedirectRuleActionParametersFromList | null;
+  fromList?: CreateRequestRulesItemRedirectRuleActionParametersFromList;
   /** A redirect based on the request properties. */
-  fromValue?: CreateRequestRulesItemRedirectRuleActionParametersFromValue | null;
+  fromValue?: CreateRequestRulesItemRedirectRuleActionParametersFromValue;
 }
 export const CreateRequestRulesItemRedirectRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fromList: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemRedirectRuleActionParametersFromList,
-        ).pipe(T.Body("from_list")),
+        CreateRequestRulesItemRedirectRuleActionParametersFromList.pipe(
+          T.Body("from_list"),
+        ),
       ),
       fromValue: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemRedirectRuleActionParametersFromValue,
-        ).pipe(T.Body("from_value")),
+        CreateRequestRulesItemRedirectRuleActionParametersFromValue.pipe(
+          T.Body("from_value"),
+        ),
       ),
     }),
   ).annotate({
@@ -11945,17 +11751,17 @@ export interface CreateRequestRulesItemRedirectRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemRedirectRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -11964,22 +11770,20 @@ export const CreateRequestRulesItemRedirectRuleRatelimit =
         CreateRequestRulesItemRedirectRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -11992,55 +11796,51 @@ export interface CreateRequestRulesItemRedirectRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRedirectRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemRedirectRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemRedirectRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemRedirectRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemRedirectRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemRedirectRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemRedirectRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemRedirectRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemRedirectRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemRedirectRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemRedirectRuleActionParameters).pipe(
+      CreateRequestRulesItemRedirectRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemRedirectRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemRedirectRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemRedirectRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemRedirectRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(CreateRequestRulesItemRedirectRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemRedirectRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemRedirectRule",
@@ -12180,15 +11980,15 @@ export const CreateRequestRulesItemRewriteRuleActionParametersHeaders =
 
 export interface CreateRequestRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI path to. */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersUriURIPathPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -12199,13 +11999,13 @@ export interface CreateRequestRulesItemRewriteRuleActionParametersUriURIPath {
   /** A URI path rewrite. */
   path: CreateRequestRulesItemRewriteRuleActionParametersUriURIPathPath;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersUriURIPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: CreateRequestRulesItemRewriteRuleActionParametersUriURIPathPath,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemRewriteRuleActionParametersUriURIPath",
@@ -12213,15 +12013,15 @@ export const CreateRequestRulesItemRewriteRuleActionParametersUriURIPath =
 
 export interface CreateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery {
   /** An expression that evaluates to a value to rewrite the URI query to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI query to. */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -12232,13 +12032,13 @@ export interface CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery {
   /** A URI query rewrite. */
   query: CreateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       query: CreateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemRewriteRuleActionParametersUriURIQuery",
@@ -12257,19 +12057,17 @@ export const CreateRequestRulesItemRewriteRuleActionParametersUri =
 
 export interface CreateRequestRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
-  headers?: CreateRequestRulesItemRewriteRuleActionParametersHeaders | null;
+  headers?: CreateRequestRulesItemRewriteRuleActionParametersHeaders;
   /** A URI path rewrite. */
-  uri?: CreateRequestRulesItemRewriteRuleActionParametersUri | null;
+  uri?: CreateRequestRulesItemRewriteRuleActionParametersUri;
 }
 export const CreateRequestRulesItemRewriteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(
-        S.NullOr(CreateRequestRulesItemRewriteRuleActionParametersHeaders),
+        CreateRequestRulesItemRewriteRuleActionParametersHeaders,
       ),
-      uri: S.optional(
-        S.NullOr(CreateRequestRulesItemRewriteRuleActionParametersUri),
-      ),
+      uri: S.optional(CreateRequestRulesItemRewriteRuleActionParametersUri),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemRewriteRuleActionParameters",
@@ -12310,17 +12108,17 @@ export interface CreateRequestRulesItemRewriteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemRewriteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -12329,22 +12127,20 @@ export const CreateRequestRulesItemRewriteRuleRatelimit =
         CreateRequestRulesItemRewriteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -12357,53 +12153,51 @@ export interface CreateRequestRulesItemRewriteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRewriteRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemRewriteRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemRewriteRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemRewriteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemRewriteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemRewriteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemRewriteRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemRewriteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemRewriteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemRewriteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemRewriteRuleActionParameters).pipe(
+      CreateRequestRulesItemRewriteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemRewriteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemRewriteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemRewriteRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemRewriteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemRewriteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemRewriteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemRewriteRule",
@@ -12414,15 +12208,15 @@ export const CreateRequestRulesItemRouteRuleAction = /*@__PURE__*/ S.String;
 
 export interface CreateRequestRulesItemRouteRuleActionParametersOrigin {
   /** A resolved host to route to. */
-  host?: string | null;
+  host?: string;
   /** A destination port to route to. */
-  port?: number | null;
+  port?: number;
 }
 export const CreateRequestRulesItemRouteRuleActionParametersOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      host: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemRouteRuleActionParametersOrigin",
@@ -12443,22 +12237,18 @@ export const CreateRequestRulesItemRouteRuleActionParametersSni =
 
 export interface CreateRequestRulesItemRouteRuleActionParameters {
   /** A value to rewrite the HTTP host header to. */
-  hostHeader?: string | null;
+  hostHeader?: string;
   /** An origin to route to. */
-  origin?: CreateRequestRulesItemRouteRuleActionParametersOrigin | null;
+  origin?: CreateRequestRulesItemRouteRuleActionParametersOrigin;
   /** A Server Name Indication (SNI) override. */
-  sni?: CreateRequestRulesItemRouteRuleActionParametersSni | null;
+  sni?: CreateRequestRulesItemRouteRuleActionParametersSni;
 }
 export const CreateRequestRulesItemRouteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      hostHeader: S.optional(S.NullOr(S.String).pipe(T.Body("host_header"))),
-      origin: S.optional(
-        S.NullOr(CreateRequestRulesItemRouteRuleActionParametersOrigin),
-      ),
-      sni: S.optional(
-        S.NullOr(CreateRequestRulesItemRouteRuleActionParametersSni),
-      ),
+      hostHeader: S.optional(S.String.pipe(T.Body("host_header"))),
+      origin: S.optional(CreateRequestRulesItemRouteRuleActionParametersOrigin),
+      sni: S.optional(CreateRequestRulesItemRouteRuleActionParametersSni),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemRouteRuleActionParameters",
@@ -12499,17 +12289,17 @@ export interface CreateRequestRulesItemRouteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -12518,22 +12308,20 @@ export const CreateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemRouteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -12546,53 +12334,51 @@ export interface CreateRequestRulesItemRouteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemRouteRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemRouteRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemRouteRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemRouteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemRouteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemRouteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemRouteRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemRouteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemRouteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemRouteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemRouteRuleActionParameters).pipe(
+      CreateRequestRulesItemRouteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemRouteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemRouteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemRouteRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemRouteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemRouteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemRouteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemRouteRule",
@@ -12649,17 +12435,17 @@ export interface CreateRequestRulesItemScoreRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -12668,22 +12454,20 @@ export const CreateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemScoreRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -12696,53 +12480,51 @@ export interface CreateRequestRulesItemScoreRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemScoreRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemScoreRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemScoreRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemScoreRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemScoreRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemScoreRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemScoreRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemScoreRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemScoreRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemScoreRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemScoreRuleActionParameters).pipe(
+      CreateRequestRulesItemScoreRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemScoreRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemScoreRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemScoreRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemScoreRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemScoreRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemScoreRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemScoreRule",
@@ -12763,21 +12545,20 @@ export interface CreateRequestRulesItemServeErrorRuleActionParametersActionParam
   /** The content type header to set with the error response. */
   contentType?:
     | CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.String,
       contentType: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
+        CreateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -12795,21 +12576,20 @@ export interface CreateRequestRulesItemServeErrorRuleActionParametersActionParam
   /** The content type header to set with the error response. */
   contentType?:
     | CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       assetName: S.String.pipe(T.Body("asset_name")),
       contentType: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
+        CreateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -12862,17 +12642,17 @@ export interface CreateRequestRulesItemServeErrorRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemServeErrorRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -12881,22 +12661,20 @@ export const CreateRequestRulesItemServeErrorRuleRatelimit =
         CreateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -12909,56 +12687,54 @@ export interface CreateRequestRulesItemServeErrorRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemServeErrorRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemServeErrorRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemServeErrorRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemServeErrorRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemServeErrorRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemServeErrorRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemServeErrorRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemServeErrorRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemServeErrorRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(CreateRequestRulesItemServeErrorRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
-        S.NullOr(CreateRequestRulesItemServeErrorRuleActionParameters).pipe(
+        CreateRequestRulesItemServeErrorRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemServeErrorRuleCategoriesList),
+        CreateRequestRulesItemServeErrorRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemServeErrorRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemServeErrorRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemServeErrorRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(CreateRequestRulesItemServeErrorRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestRulesItemServeErrorRule",
@@ -12979,16 +12755,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersImmutableS
     | CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13006,16 +12780,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersImmutableR
     | CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13046,7 +12818,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetD
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -13054,9 +12826,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirec
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13074,16 +12844,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemo
     | CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13112,16 +12880,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustRevali
     | CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13139,16 +12905,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustRevali
     | CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13177,16 +12941,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustUnders
     | CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13204,16 +12966,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersMustUnders
     | CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13249,22 +13009,18 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoCacheSet
     | CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList | null;
+  qualifiers?: CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
-        ),
+        CreateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -13283,16 +13039,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoCacheRem
     | CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13321,16 +13075,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoStoreSet
     | CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13348,16 +13100,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoStoreRem
     | CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13386,16 +13136,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoTransfor
     | CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13413,16 +13161,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersNoTransfor
     | CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13458,22 +13204,18 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPrivateSet
     | CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList | null;
+  qualifiers?: CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
-        ),
+        CreateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -13492,16 +13234,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPrivateRem
     | CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13530,16 +13270,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersProxyReval
     | CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13557,16 +13295,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersProxyReval
     | CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13595,16 +13331,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPublicSetD
     | CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13622,16 +13356,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersPublicRemo
     | CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13662,7 +13394,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersSMaxageSet
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -13670,9 +13402,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDire
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13690,16 +13420,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersSMaxageRem
     | CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13730,7 +13458,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -13738,9 +13466,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSe
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13758,16 +13484,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleIfErr
     | CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13798,7 +13522,7 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleWhile
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -13806,9 +13530,7 @@ export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileReva
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13826,16 +13548,14 @@ export interface CreateRequestRulesItemSetCacheControlActionParametersStaleWhile
     | CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -13855,95 +13575,93 @@ export const CreateRequestRulesItemSetCacheControlActionParametersStaleWhileReva
 
 export interface CreateRequestRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
-  immutable?: CreateRequestRulesItemSetCacheControlActionParametersImmutable | null;
+  immutable?: CreateRequestRulesItemSetCacheControlActionParametersImmutable;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  maxAge?: CreateRequestRulesItemSetCacheControlActionParametersMaxAge | null;
+  maxAge?: CreateRequestRulesItemSetCacheControlActionParametersMaxAge;
   /** A cache-control directive configuration. */
-  mustRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate | null;
+  mustRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate;
   /** A cache-control directive configuration. */
-  mustUnderstand?: CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand | null;
+  mustUnderstand?: CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  noCache?: CreateRequestRulesItemSetCacheControlActionParametersNoCache | null;
+  noCache?: CreateRequestRulesItemSetCacheControlActionParametersNoCache;
   /** A cache-control directive configuration. */
-  noStore?: CreateRequestRulesItemSetCacheControlActionParametersNoStore | null;
+  noStore?: CreateRequestRulesItemSetCacheControlActionParametersNoStore;
   /** A cache-control directive configuration. */
-  noTransform?: CreateRequestRulesItemSetCacheControlActionParametersNoTransform | null;
+  noTransform?: CreateRequestRulesItemSetCacheControlActionParametersNoTransform;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  private?: CreateRequestRulesItemSetCacheControlActionParametersPrivate | null;
+  private?: CreateRequestRulesItemSetCacheControlActionParametersPrivate;
   /** A cache-control directive configuration. */
-  proxyRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate | null;
+  proxyRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate;
   /** A cache-control directive configuration. */
-  public?: CreateRequestRulesItemSetCacheControlActionParametersPublic | null;
+  public?: CreateRequestRulesItemSetCacheControlActionParametersPublic;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  sMaxage?: CreateRequestRulesItemSetCacheControlActionParametersSMaxage | null;
+  sMaxage?: CreateRequestRulesItemSetCacheControlActionParametersSMaxage;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleIfError?: CreateRequestRulesItemSetCacheControlActionParametersStaleIfError | null;
+  staleIfError?: CreateRequestRulesItemSetCacheControlActionParametersStaleIfError;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleWhileRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate | null;
+  staleWhileRevalidate?: CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate;
 }
 export const CreateRequestRulesItemSetCacheControlActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immutable: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersImmutable,
-        ),
+        CreateRequestRulesItemSetCacheControlActionParametersImmutable,
       ),
       maxAge: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersMaxAge,
-        ).pipe(T.Body("max-age")),
+        CreateRequestRulesItemSetCacheControlActionParametersMaxAge.pipe(
+          T.Body("max-age"),
+        ),
       ),
       mustRevalidate: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate,
-        ).pipe(T.Body("must-revalidate")),
+        CreateRequestRulesItemSetCacheControlActionParametersMustRevalidate.pipe(
+          T.Body("must-revalidate"),
+        ),
       ),
       mustUnderstand: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand,
-        ).pipe(T.Body("must-understand")),
+        CreateRequestRulesItemSetCacheControlActionParametersMustUnderstand.pipe(
+          T.Body("must-understand"),
+        ),
       ),
       noCache: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersNoCache,
-        ).pipe(T.Body("no-cache")),
+        CreateRequestRulesItemSetCacheControlActionParametersNoCache.pipe(
+          T.Body("no-cache"),
+        ),
       ),
       noStore: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersNoStore,
-        ).pipe(T.Body("no-store")),
+        CreateRequestRulesItemSetCacheControlActionParametersNoStore.pipe(
+          T.Body("no-store"),
+        ),
       ),
       noTransform: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersNoTransform,
-        ).pipe(T.Body("no-transform")),
+        CreateRequestRulesItemSetCacheControlActionParametersNoTransform.pipe(
+          T.Body("no-transform"),
+        ),
       ),
       private: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheControlActionParametersPrivate),
+        CreateRequestRulesItemSetCacheControlActionParametersPrivate,
       ),
       proxyRevalidate: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate,
-        ).pipe(T.Body("proxy-revalidate")),
+        CreateRequestRulesItemSetCacheControlActionParametersProxyRevalidate.pipe(
+          T.Body("proxy-revalidate"),
+        ),
       ),
       public: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheControlActionParametersPublic),
+        CreateRequestRulesItemSetCacheControlActionParametersPublic,
       ),
       sMaxage: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersSMaxage,
-        ).pipe(T.Body("s-maxage")),
+        CreateRequestRulesItemSetCacheControlActionParametersSMaxage.pipe(
+          T.Body("s-maxage"),
+        ),
       ),
       staleIfError: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersStaleIfError,
-        ).pipe(T.Body("stale-if-error")),
+        CreateRequestRulesItemSetCacheControlActionParametersStaleIfError.pipe(
+          T.Body("stale-if-error"),
+        ),
       ),
       staleWhileRevalidate: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate,
-        ).pipe(T.Body("stale-while-revalidate")),
+        CreateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate.pipe(
+          T.Body("stale-while-revalidate"),
+        ),
       ),
     }),
   ).annotate({
@@ -13985,17 +13703,17 @@ export interface CreateRequestRulesItemSetCacheControlRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemSetCacheControlRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -14004,22 +13722,20 @@ export const CreateRequestRulesItemSetCacheControlRatelimit =
         CreateRequestRulesItemSetCacheControlRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -14032,56 +13748,54 @@ export interface CreateRequestRulesItemSetCacheControl {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetCacheControlAction | (string & {}) | null;
+  action?: CreateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemSetCacheControlActionParameters | null;
+  actionParameters?: CreateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemSetCacheControlCategoriesList | null;
+  categories?: CreateRequestRulesItemSetCacheControlCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemSetCacheControlExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemSetCacheControlExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemSetCacheControlRatelimit | null;
+  ratelimit?: CreateRequestRulesItemSetCacheControlRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemSetCacheControl = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(CreateRequestRulesItemSetCacheControlAction)),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheControlActionParameters).pipe(
+        CreateRequestRulesItemSetCacheControlActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheControlCategoriesList),
+        CreateRequestRulesItemSetCacheControlCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheControlExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemSetCacheControlExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheControlRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(CreateRequestRulesItemSetCacheControlRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "CreateRequestRulesItemSetCacheControl",
@@ -14110,13 +13824,13 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrows
     | CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode
     | (string & {});
   /** The browser TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -14139,22 +13853,20 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie {
   /** A list of cookies to check for the presence of. The presence of these cookies is included in the cache key. */
-  checkPresence?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList | null;
+  checkPresence?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList;
   /** A list of cookies to include in the cache key. */
-  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList | null;
+  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -14197,34 +13909,28 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader {
   /** A list of headers to check for the presence of. The presence of these headers is included in the cache key. */
-  checkPresence?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList | null;
+  checkPresence?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList;
   /** A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key. */
-  contains?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap | null;
+  contains?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap;
   /** Whether to exclude the origin header in the cache key. */
-  excludeOrigin?: boolean | null;
+  excludeOrigin?: boolean;
   /** A list of headers to include in the cache key. */
-  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList | null;
+  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       contains: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
       ),
-      excludeOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("exclude_origin")),
-      ),
+      excludeOrigin: S.optional(S.Boolean.pipe(T.Body("exclude_origin"))),
       include: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -14234,12 +13940,12 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost {
   /** Whether to use the resolved host in the cache key. */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -14255,18 +13961,16 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
   /** Whether to exclude all query string parameters from the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to exclude from the cache key. */
-  list?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList | null;
+  list?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
       ),
     }),
   ).annotate({
@@ -14283,18 +13987,16 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
   /** Whether to include all query string parameters in the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to include in the cache key. */
-  list?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList | null;
+  list?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
       ),
     }),
   ).annotate({
@@ -14304,22 +14006,18 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString {
   /** Which query string parameters to exclude from the cache key. */
-  exclude?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude | null;
+  exclude?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
   /** Which query string parameters to include in the cache key. */
-  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude | null;
+  include?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -14329,18 +14027,18 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser {
   /** Whether to use the user agent's device type in the cache key. */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Whether to use the user agents's country in the cache key. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Whether to use the user agent's language in the cache key. */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -14349,43 +14047,35 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey {
   /** Which cookies to include in the cache key. */
-  cookie?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie | null;
+  cookie?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie;
   /** Which headers to include in the cache key. */
-  header?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader | null;
+  header?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader;
   /** How to use the host in the cache key. */
-  host?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost | null;
+  host?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost;
   /** Which query string parameters to include in or exclude from the cache key. */
-  queryString?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString | null;
+  queryString?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString;
   /** How to use characteristics of the request user agent in the cache key. */
-  user?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser | null;
+  user?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookie: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
       ),
       header: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
       ),
       host: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
       ),
       queryString: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString,
-        ).pipe(T.Body("query_string")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString.pipe(
+          T.Body("query_string"),
+        ),
       ),
       user: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
       ),
     }),
   ).annotate({
@@ -14395,30 +14085,30 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey {
   /** Whether to separate cached content based on the visitor's device type. */
-  cacheByDeviceType?: boolean | null;
+  cacheByDeviceType?: boolean;
   /** Whether to protect from web cache deception attacks, while allowing static assets to be cached. */
-  cacheDeceptionArmor?: boolean | null;
+  cacheDeceptionArmor?: boolean;
   /** Which components of the request are included or excluded from the cache key. */
-  customKey?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey | null;
+  customKey?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey;
   /** Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in. */
-  ignoreQueryStringsOrder?: boolean | null;
+  ignoreQueryStringsOrder?: boolean;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheByDeviceType: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_by_device_type")),
+        S.Boolean.pipe(T.Body("cache_by_device_type")),
       ),
       cacheDeceptionArmor: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_deception_armor")),
+        S.Boolean.pipe(T.Body("cache_deception_armor")),
       ),
       customKey: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey,
-        ).pipe(T.Body("custom_key")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey.pipe(
+          T.Body("custom_key"),
+        ),
       ),
       ignoreQueryStringsOrder: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ignore_query_strings_order")),
+        S.Boolean.pipe(T.Body("ignore_query_strings_order")),
       ),
     }),
   ).annotate({
@@ -14430,15 +14120,13 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersCache
   /** Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve. */
   eligible: boolean;
   /** The minimum file size eligible for storage in Cache Reserve. */
-  minimumFileSize?: number | null;
+  minimumFileSize?: number;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eligible: S.Boolean,
-      minimumFileSize: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("minimum_file_size")),
-      ),
+      minimumFileSize: S.optional(S.Number.pipe(T.Body("minimum_file_size"))),
     }),
   ).annotate({
     identifier:
@@ -14452,15 +14140,15 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMo
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange {
   /** The lower bound of the range. */
-  from?: number | null;
+  from?: number;
   /** The upper bound of the range. */
-  to?: number | null;
+  to?: number;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.NullOr(S.Number)),
-      to: S.optional(S.NullOr(S.Number)),
+      from: S.optional(S.Number),
+      to: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -14471,19 +14159,19 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeT
   /** The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store". */
   value: number;
   /** A single status code to apply the TTL to. */
-  statusCode?: number | null;
+  statusCode?: number;
   /** A range of status codes to apply the TTL to. */
-  statusCodeRange?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange | null;
+  statusCodeRange?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.Number,
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
       statusCodeRange: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange,
-        ).pipe(T.Body("status_code_range")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange.pipe(
+          T.Body("status_code_range"),
+        ),
       ),
     }),
   ).annotate({
@@ -14504,19 +14192,19 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeT
     | CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode
     | (string & {});
   /** The edge TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
   /** A list of TTLs to apply to specific status codes or status code ranges. */
-  statusCodeTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList | null;
+  statusCodeTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
       statusCodeTtl: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList,
-        ).pipe(T.Body("status_code_ttl")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList.pipe(
+          T.Body("status_code_ttl"),
+        ),
       ),
     }),
   ).annotate({
@@ -14526,13 +14214,13 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl =
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale {
   /** Whether Cloudflare should disable serving stale content while getting the latest content from the origin. */
-  disableStaleWhileUpdating?: boolean | null;
+  disableStaleWhileUpdating?: boolean;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disableStaleWhileUpdating: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_stale_while_updating")),
+        S.Boolean.pipe(T.Body("disable_stale_while_updating")),
       ),
     }),
   ).annotate({
@@ -14601,9 +14289,9 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryH
     | CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction
     | (string & {});
   /** The set of languages to normalize against. Only valid for the `accept-language` header. */
-  languages?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList | null;
+  languages?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList;
   /** The set of media types to normalize against. Only valid for the `accept` header. */
-  mediaTypes?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList | null;
+  mediaTypes?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -14611,14 +14299,12 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
       action:
         CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction,
       languages: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
       ),
       mediaTypes: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList,
-        ).pipe(T.Body("media_types")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList.pipe(
+          T.Body("media_types"),
+        ),
       ),
     }),
   ).annotate({
@@ -14640,22 +14326,18 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary {
   /** Controls how response Vary headers without a per-header override contribute to the cache key. */
-  default?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault | null;
+  default?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault;
   /** A mapping of lowercase request header names to their vary configuration. */
-  headers?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap | null;
+  headers?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       default: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
       ),
       headers: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
-        ),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
       ),
     }),
   ).annotate({
@@ -14665,98 +14347,94 @@ export const CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary =
 
 export interface CreateRequestRulesItemSetCacheSettingsRuleActionParameters {
   /** A list of additional ports that caching should be enabled on. */
-  additionalCacheablePorts?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList | null;
+  additionalCacheablePorts?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList;
   /** How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content. */
-  browserTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl | null;
+  browserTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl;
   /** Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations. */
-  cache?: boolean | null;
+  cache?: boolean;
   /** Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache. */
-  cacheKey?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey | null;
+  cacheKey?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey;
   /** Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan). */
-  cacheReserve?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve | null;
+  cacheReserve?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve;
   /** How long the Cloudflare edge network should cache the response. */
-  edgeTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl | null;
+  edgeTtl?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl;
   /** Whether Cloudflare will aim to strictly adhere to RFC 7234. */
-  originCacheControl?: boolean | null;
+  originCacheControl?: boolean;
   /** Whether to generate Cloudflare error pages for issues from the origin server. */
-  originErrorPagePassthru?: boolean | null;
+  originErrorPagePassthru?: boolean;
   /** A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value. */
-  readTimeout?: number | null;
+  readTimeout?: number;
   /** Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers. */
-  respectStrongEtags?: boolean | null;
+  respectStrongEtags?: boolean;
   /** When to serve stale content from cache. */
-  serveStale?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale | null;
+  serveStale?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale;
   /** Configuration for shared dictionary compression. When set, Cloudflare injects Use-As-Dictionary headers on matching cacheable responses. */
-  sharedDictionary?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary | null;
+  sharedDictionary?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary;
   /** Whether to strip ETag headers from the origin response before caching. */
-  stripEtags?: boolean | null;
+  stripEtags?: boolean;
   /** Whether to strip Last-Modified headers from the origin response before caching. */
-  stripLastModified?: boolean | null;
+  stripLastModified?: boolean;
   /** Whether to strip Set-Cookie headers from the origin response before caching. */
-  stripSetCookie?: boolean | null;
+  stripSetCookie?: boolean;
   /** Controls how cached responses vary based on request headers. `default` is required by the API and applies to any Vary response header that does not have a per-header override. */
-  vary?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary | null;
+  vary?: CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       additionalCacheablePorts: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList,
-        ).pipe(T.Body("additional_cacheable_ports")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList.pipe(
+          T.Body("additional_cacheable_ports"),
+        ),
       ),
       browserTtl: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl,
-        ).pipe(T.Body("browser_ttl")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl.pipe(
+          T.Body("browser_ttl"),
+        ),
       ),
-      cache: S.optional(S.NullOr(S.Boolean)),
+      cache: S.optional(S.Boolean),
       cacheKey: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey,
-        ).pipe(T.Body("cache_key")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey.pipe(
+          T.Body("cache_key"),
+        ),
       ),
       cacheReserve: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve,
-        ).pipe(T.Body("cache_reserve")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve.pipe(
+          T.Body("cache_reserve"),
+        ),
       ),
       edgeTtl: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl,
-        ).pipe(T.Body("edge_ttl")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl.pipe(
+          T.Body("edge_ttl"),
+        ),
       ),
       originCacheControl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_cache_control")),
+        S.Boolean.pipe(T.Body("origin_cache_control")),
       ),
       originErrorPagePassthru: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_error_page_passthru")),
+        S.Boolean.pipe(T.Body("origin_error_page_passthru")),
       ),
-      readTimeout: S.optional(S.NullOr(S.Number).pipe(T.Body("read_timeout"))),
+      readTimeout: S.optional(S.Number.pipe(T.Body("read_timeout"))),
       respectStrongEtags: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("respect_strong_etags")),
+        S.Boolean.pipe(T.Body("respect_strong_etags")),
       ),
       serveStale: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale,
-        ).pipe(T.Body("serve_stale")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale.pipe(
+          T.Body("serve_stale"),
+        ),
       ),
       sharedDictionary: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary,
-        ).pipe(T.Body("shared_dictionary")),
-      ),
-      stripEtags: S.optional(S.NullOr(S.Boolean).pipe(T.Body("strip_etags"))),
-      stripLastModified: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_last_modified")),
-      ),
-      stripSetCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_set_cookie")),
-      ),
-      vary: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary.pipe(
+          T.Body("shared_dictionary"),
         ),
+      ),
+      stripEtags: S.optional(S.Boolean.pipe(T.Body("strip_etags"))),
+      stripLastModified: S.optional(
+        S.Boolean.pipe(T.Body("strip_last_modified")),
+      ),
+      stripSetCookie: S.optional(S.Boolean.pipe(T.Body("strip_set_cookie"))),
+      vary: S.optional(
+        CreateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
       ),
     }),
   ).annotate({
@@ -14800,17 +14478,17 @@ export interface CreateRequestRulesItemSetCacheSettingsRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemSetCacheSettingsRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -14819,22 +14497,20 @@ export const CreateRequestRulesItemSetCacheSettingsRuleRatelimit =
         CreateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -14847,61 +14523,56 @@ export interface CreateRequestRulesItemSetCacheSettingsRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemSetCacheSettingsRuleAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemSetCacheSettingsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemSetCacheSettingsRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemSetCacheSettingsRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemSetCacheSettingsRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemSetCacheSettingsRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemSetCacheSettingsRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheSettingsRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemSetCacheSettingsRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        CreateRequestRulesItemSetCacheSettingsRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheSettingsRuleCategoriesList),
+        CreateRequestRulesItemSetCacheSettingsRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemSetCacheSettingsRuleRatelimit),
+        CreateRequestRulesItemSetCacheSettingsRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemSetCacheSettingsRule",
@@ -15138,17 +14809,17 @@ export interface CreateRequestRulesItemSetCacheTagsRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemSetCacheTagsRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -15157,22 +14828,20 @@ export const CreateRequestRulesItemSetCacheTagsRatelimit =
         CreateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -15185,55 +14854,51 @@ export interface CreateRequestRulesItemSetCacheTags {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetCacheTagsAction | (string & {}) | null;
+  action?: CreateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemSetCacheTagsActionParameters | null;
+  actionParameters?: CreateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemSetCacheTagsCategoriesList | null;
+  categories?: CreateRequestRulesItemSetCacheTagsCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemSetCacheTagsExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemSetCacheTagsExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemSetCacheTagsRatelimit | null;
+  ratelimit?: CreateRequestRulesItemSetCacheTagsRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemSetCacheTagsAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemSetCacheTagsAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemSetCacheTagsActionParameters).pipe(
+      CreateRequestRulesItemSetCacheTagsActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemSetCacheTagsCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemSetCacheTagsCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemSetCacheTagsExposedCredentialCheck).pipe(
+      CreateRequestRulesItemSetCacheTagsExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(CreateRequestRulesItemSetCacheTagsRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemSetCacheTagsRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemSetCacheTags",
@@ -15244,18 +14909,18 @@ export const CreateRequestRulesItemSetConfigRuleAction = /*@__PURE__*/ S.String;
 
 export interface CreateRequestRulesItemSetConfigRuleActionParametersAutominify {
   /** Whether to minify CSS files. */
-  css?: boolean | null;
+  css?: boolean;
   /** Whether to minify HTML files. */
-  html?: boolean | null;
+  html?: boolean;
   /** Whether to minify JavaScript files. */
-  js?: boolean | null;
+  js?: boolean;
 }
 export const CreateRequestRulesItemSetConfigRuleActionParametersAutominify =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      css: S.optional(S.NullOr(S.Boolean)),
-      html: S.optional(S.NullOr(S.Boolean)),
-      js: S.optional(S.NullOr(S.Boolean)),
+      css: S.optional(S.Boolean),
+      html: S.optional(S.Boolean),
+      js: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemSetConfigRuleActionParametersAutominify",
@@ -15300,128 +14965,111 @@ export const CreateRequestRulesItemSetConfigRuleActionParametersSsl =
 
 export interface CreateRequestRulesItemSetConfigRuleActionParameters {
   /** Whether to enable Automatic HTTPS Rewrites. */
-  automaticHttpsRewrites?: boolean | null;
+  automaticHttpsRewrites?: boolean;
   /** Which file extensions to minify automatically. */
-  autominify?: CreateRequestRulesItemSetConfigRuleActionParametersAutominify | null;
+  autominify?: CreateRequestRulesItemSetConfigRuleActionParametersAutominify;
   /** Whether to enable Browser Integrity Check (BIC). */
-  bic?: boolean | null;
+  bic?: boolean;
   /** Whether to enable content conversion (e.g., HTML to Markdown). */
-  contentConverter?: boolean | null;
+  contentConverter?: boolean;
   /** Whether to disable Cloudflare Apps. */
-  disableApps?: boolean | null;
+  disableApps?: boolean;
   /** Whether to disable Pay Per Crawl. */
-  disablePayPerCrawl?: boolean | null;
+  disablePayPerCrawl?: boolean;
   /** Whether to disable Real User Monitoring (RUM). */
-  disableRum?: boolean | null;
+  disableRum?: boolean;
   /** Whether to disable Zaraz. */
-  disableZaraz?: boolean | null;
+  disableZaraz?: boolean;
   /** Whether to enable Email Obfuscation. */
-  emailObfuscation?: boolean | null;
+  emailObfuscation?: boolean;
   /** Whether to enable Cloudflare Fonts. */
-  fonts?: boolean | null;
+  fonts?: boolean;
   /** Whether to enable Hotlink Protection. */
-  hotlinkProtection?: boolean | null;
+  hotlinkProtection?: boolean;
   /** Whether to enable Mirage. */
-  mirage?: boolean | null;
+  mirage?: boolean;
   /** Whether to enable Opportunistic Encryption. */
-  opportunisticEncryption?: boolean | null;
+  opportunisticEncryption?: boolean;
   /** The Polish level to configure. */
   polish?:
     | CreateRequestRulesItemSetConfigRuleActionParametersPolish
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to redirect verified AI training crawlers to canonical URLs found in the HTML response. */
-  redirectsForAiTraining?: boolean | null;
+  redirectsForAiTraining?: boolean;
   /** The request body buffering mode. */
   requestBodyBuffering?:
     | CreateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** The response body buffering mode. */
   responseBodyBuffering?:
     | CreateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Rocket Loader. */
-  rocketLoader?: boolean | null;
+  rocketLoader?: boolean;
   /** The Security Level to configure. */
   securityLevel?:
     | CreateRequestRulesItemSetConfigRuleActionParametersSecurityLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Server-Side Excludes. */
-  serverSideExcludes?: boolean | null;
+  serverSideExcludes?: boolean;
   /** The SSL level to configure. */
-  ssl?:
-    | CreateRequestRulesItemSetConfigRuleActionParametersSsl
-    | (string & {})
-    | null;
+  ssl?: CreateRequestRulesItemSetConfigRuleActionParametersSsl | (string & {});
   /** Whether to enable Signed Exchanges (SXG). */
-  sxg?: boolean | null;
+  sxg?: boolean;
 }
 export const CreateRequestRulesItemSetConfigRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       automaticHttpsRewrites: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_https_rewrites")),
+        S.Boolean.pipe(T.Body("automatic_https_rewrites")),
       ),
       autominify: S.optional(
-        S.NullOr(CreateRequestRulesItemSetConfigRuleActionParametersAutominify),
+        CreateRequestRulesItemSetConfigRuleActionParametersAutominify,
       ),
-      bic: S.optional(S.NullOr(S.Boolean)),
-      contentConverter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("content_converter")),
-      ),
-      disableApps: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_apps"))),
+      bic: S.optional(S.Boolean),
+      contentConverter: S.optional(S.Boolean.pipe(T.Body("content_converter"))),
+      disableApps: S.optional(S.Boolean.pipe(T.Body("disable_apps"))),
       disablePayPerCrawl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_pay_per_crawl")),
+        S.Boolean.pipe(T.Body("disable_pay_per_crawl")),
       ),
-      disableRum: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_rum"))),
-      disableZaraz: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_zaraz")),
-      ),
-      emailObfuscation: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("email_obfuscation")),
-      ),
-      fonts: S.optional(S.NullOr(S.Boolean)),
+      disableRum: S.optional(S.Boolean.pipe(T.Body("disable_rum"))),
+      disableZaraz: S.optional(S.Boolean.pipe(T.Body("disable_zaraz"))),
+      emailObfuscation: S.optional(S.Boolean.pipe(T.Body("email_obfuscation"))),
+      fonts: S.optional(S.Boolean),
       hotlinkProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("hotlink_protection")),
+        S.Boolean.pipe(T.Body("hotlink_protection")),
       ),
-      mirage: S.optional(S.NullOr(S.Boolean)),
+      mirage: S.optional(S.Boolean),
       opportunisticEncryption: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("opportunistic_encryption")),
+        S.Boolean.pipe(T.Body("opportunistic_encryption")),
       ),
       polish: S.optional(
-        S.NullOr(CreateRequestRulesItemSetConfigRuleActionParametersPolish),
+        CreateRequestRulesItemSetConfigRuleActionParametersPolish,
       ),
       redirectsForAiTraining: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("redirects_for_ai_training")),
+        S.Boolean.pipe(T.Body("redirects_for_ai_training")),
       ),
       requestBodyBuffering: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering,
-        ).pipe(T.Body("request_body_buffering")),
+        CreateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering.pipe(
+          T.Body("request_body_buffering"),
+        ),
       ),
       responseBodyBuffering: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering,
-        ).pipe(T.Body("response_body_buffering")),
+        CreateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering.pipe(
+          T.Body("response_body_buffering"),
+        ),
       ),
-      rocketLoader: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("rocket_loader")),
-      ),
+      rocketLoader: S.optional(S.Boolean.pipe(T.Body("rocket_loader"))),
       securityLevel: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemSetConfigRuleActionParametersSecurityLevel,
-        ).pipe(T.Body("security_level")),
+        CreateRequestRulesItemSetConfigRuleActionParametersSecurityLevel.pipe(
+          T.Body("security_level"),
+        ),
       ),
       serverSideExcludes: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("server_side_excludes")),
+        S.Boolean.pipe(T.Body("server_side_excludes")),
       ),
-      ssl: S.optional(
-        S.NullOr(CreateRequestRulesItemSetConfigRuleActionParametersSsl),
-      ),
-      sxg: S.optional(S.NullOr(S.Boolean)),
+      ssl: S.optional(CreateRequestRulesItemSetConfigRuleActionParametersSsl),
+      sxg: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemSetConfigRuleActionParameters",
@@ -15462,17 +15110,17 @@ export interface CreateRequestRulesItemSetConfigRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemSetConfigRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -15481,22 +15129,20 @@ export const CreateRequestRulesItemSetConfigRuleRatelimit =
         CreateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -15509,55 +15155,51 @@ export interface CreateRequestRulesItemSetConfigRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSetConfigRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemSetConfigRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemSetConfigRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemSetConfigRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemSetConfigRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemSetConfigRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemSetConfigRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemSetConfigRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemSetConfigRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemSetConfigRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemSetConfigRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemSetConfigRuleActionParameters).pipe(
+      CreateRequestRulesItemSetConfigRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemSetConfigRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemSetConfigRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemSetConfigRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemSetConfigRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(CreateRequestRulesItemSetConfigRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemSetConfigRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemSetConfigRule",
@@ -15656,44 +15298,36 @@ export const CreateRequestRulesItemSkipRuleActionParametersRulesetsList =
 
 export interface CreateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
-  phase?:
-    | CreateRequestRulesItemSkipRuleActionParametersPhase
-    | (string & {})
-    | null;
+  phase?: CreateRequestRulesItemSkipRuleActionParametersPhase | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
-  phases?: CreateRequestRulesItemSkipRuleActionParametersPhasesList | null;
+  phases?: CreateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
-  products?: CreateRequestRulesItemSkipRuleActionParametersProductsList | null;
+  products?: CreateRequestRulesItemSkipRuleActionParametersProductsList;
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
-  rules?: CreateRequestRulesItemSkipRuleActionParametersRulesMap | null;
+  rules?: CreateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
   ruleset?:
     | CreateRequestRulesItemSkipRuleActionParametersRuleset
-    | (string & {})
-    | null;
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
-  rulesets?: CreateRequestRulesItemSkipRuleActionParametersRulesetsList | null;
+  rulesets?: CreateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
 export const CreateRequestRulesItemSkipRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      phase: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersPhase),
-      ),
+      phase: S.optional(CreateRequestRulesItemSkipRuleActionParametersPhase),
       phases: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersPhasesList),
+        CreateRequestRulesItemSkipRuleActionParametersPhasesList,
       ),
       products: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersProductsList),
+        CreateRequestRulesItemSkipRuleActionParametersProductsList,
       ),
-      rules: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersRulesMap),
-      ),
+      rules: S.optional(CreateRequestRulesItemSkipRuleActionParametersRulesMap),
       ruleset: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersRuleset),
+        CreateRequestRulesItemSkipRuleActionParametersRuleset,
       ),
       rulesets: S.optional(
-        S.NullOr(CreateRequestRulesItemSkipRuleActionParametersRulesetsList),
+        CreateRequestRulesItemSkipRuleActionParametersRulesetsList,
       ),
     }),
   ).annotate({
@@ -15735,17 +15369,17 @@ export interface CreateRequestRulesItemSkipRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -15754,22 +15388,20 @@ export const CreateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
         CreateRequestRulesItemSkipRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -15782,53 +15414,51 @@ export interface CreateRequestRulesItemSkipRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: CreateRequestRulesItemSkipRuleAction | (string & {}) | null;
+  action?: CreateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemSkipRuleActionParameters | null;
+  actionParameters?: CreateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemSkipRuleCategoriesList | null;
+  categories?: CreateRequestRulesItemSkipRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemSkipRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemSkipRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemSkipRuleRatelimit | null;
+  ratelimit?: CreateRequestRulesItemSkipRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(CreateRequestRulesItemSkipRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(CreateRequestRulesItemSkipRuleAction),
     actionParameters: S.optional(
-      S.NullOr(CreateRequestRulesItemSkipRuleActionParameters).pipe(
+      CreateRequestRulesItemSkipRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(CreateRequestRulesItemSkipRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(CreateRequestRulesItemSkipRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(CreateRequestRulesItemSkipRuleExposedCredentialCheck).pipe(
+      CreateRequestRulesItemSkipRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(CreateRequestRulesItemSkipRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(CreateRequestRulesItemSkipRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestRulesItemSkipRule",
@@ -15889,17 +15519,17 @@ export interface CreateRequestRulesItemTransformResponseHTMLRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const CreateRequestRulesItemTransformResponseHTMLRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -15908,22 +15538,20 @@ export const CreateRequestRulesItemTransformResponseHTMLRatelimit =
         CreateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -15936,61 +15564,56 @@ export interface CreateRequestRulesItemTransformResponseHTML {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | CreateRequestRulesItemTransformResponseHTMLAction
-    | (string & {})
-    | null;
+  action?: CreateRequestRulesItemTransformResponseHTMLAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: CreateRequestRulesItemTransformResponseHTMLActionParameters | null;
+  actionParameters?: CreateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */
-  categories?: CreateRequestRulesItemTransformResponseHTMLCategoriesList | null;
+  categories?: CreateRequestRulesItemTransformResponseHTMLCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck | null;
+  exposedCredentialCheck?: CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: CreateRequestRulesItemBlockRuleLogging | null;
+  logging?: CreateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: CreateRequestRulesItemTransformResponseHTMLRatelimit | null;
+  ratelimit?: CreateRequestRulesItemTransformResponseHTMLRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(CreateRequestRulesItemTransformResponseHTMLAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(CreateRequestRulesItemTransformResponseHTMLAction),
       actionParameters: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemTransformResponseHTMLActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        CreateRequestRulesItemTransformResponseHTMLActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(CreateRequestRulesItemTransformResponseHTMLCategoriesList),
+        CreateRequestRulesItemTransformResponseHTMLCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        CreateRequestRulesItemTransformResponseHTMLExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(CreateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(CreateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(CreateRequestRulesItemTransformResponseHTMLRatelimit),
+        CreateRequestRulesItemTransformResponseHTMLRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateRequestRulesItemTransformResponseHTML",
@@ -16353,9 +15976,9 @@ export interface CreateRulesetForAccountRequest {
   /** The phase of the ruleset. */
   phase: CreateRequestPhase | (string & {});
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The list of rules in the ruleset. */
-  rules?: CreateRequestRulesList | null;
+  rules?: CreateRequestRulesList;
 }
 export const CreateRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16363,8 +15986,8 @@ export const CreateRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     kind: CreateRequestKind,
     name: S.String,
     phase: CreateRequestPhase,
-    description: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(CreateRequestRulesList)),
+    description: S.optional(S.String),
+    rules: S.optional(CreateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -22700,9 +22323,9 @@ export interface CreateRulesetForZoneRequest {
   /** The phase of the ruleset. */
   phase: CreateRequestPhase | (string & {});
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The list of rules in the ruleset. */
-  rules?: CreateRequestRulesList | null;
+  rules?: CreateRequestRulesList;
 }
 export const CreateRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22710,8 +22333,8 @@ export const CreateRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     kind: CreateRequestKind,
     name: S.String,
     phase: CreateRequestPhase,
-    description: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(CreateRequestRulesList)),
+    description: S.optional(S.String),
+    rules: S.optional(CreateRequestRulesList),
   })
     .pipe(
       T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }),
@@ -55534,12 +55157,12 @@ export const ListVersionsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyBlockRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyBlockRulePositionBeforePosition",
@@ -55547,12 +55170,12 @@ export const RulesEditRequestBodyBlockRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyBlockRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyBlockRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyBlockRulePositionAfterPosition",
@@ -55560,12 +55183,12 @@ export const RulesEditRequestBodyBlockRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyBlockRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyBlockRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyBlockRulePositionIndexPosition",
@@ -55582,11 +55205,11 @@ export const RulesEditRequestBodyBlockRulePosition =
 
 export interface RulesEditRequestBodyBlockRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyBlockRulePosition | null;
+  position?: RulesEditRequestBodyBlockRulePosition;
 }
 export const RulesEditRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyBlockRulePosition)),
+    position: S.optional(RulesEditRequestBodyBlockRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyBlockRule",
@@ -55632,12 +55255,12 @@ export const RulesEditRequestBodyChallengeRuleLogging = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodyChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyChallengeRulePositionBeforePosition",
@@ -55645,12 +55268,12 @@ export const RulesEditRequestBodyChallengeRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyChallengeRulePositionAfterPosition",
@@ -55658,12 +55281,12 @@ export const RulesEditRequestBodyChallengeRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyChallengeRulePositionIndexPosition",
@@ -55691,17 +55314,17 @@ export interface RulesEditRequestBodyChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesEditRequestBodyChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -55710,22 +55333,20 @@ export const RulesEditRequestBodyChallengeRuleRatelimit =
         RulesEditRequestBodyChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -55738,54 +55359,50 @@ export interface RulesEditRequestBodyChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodyChallengeRuleAction | (string & {}) | null;
+  action?: RulesEditRequestBodyChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: RulesEditRequestBodyChallengeRuleCategoriesList | null;
+  categories?: RulesEditRequestBodyChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesEditRequestBodyChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesEditRequestBodyChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesEditRequestBodyChallengeRuleLogging | null;
+  logging?: RulesEditRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyChallengeRulePosition | null;
+  position?: RulesEditRequestBodyChallengeRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesEditRequestBodyChallengeRuleRatelimit | null;
+  ratelimit?: RulesEditRequestBodyChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesEditRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(RulesEditRequestBodyChallengeRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(RulesEditRequestBodyChallengeRuleAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(RulesEditRequestBodyChallengeRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(RulesEditRequestBodyChallengeRuleExposedCredentialCheck).pipe(
+      RulesEditRequestBodyChallengeRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleLogging)),
-    position: S.optional(S.NullOr(RulesEditRequestBodyChallengeRulePosition)),
-    ratelimit: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(RulesEditRequestBodyChallengeRuleLogging),
+    position: S.optional(RulesEditRequestBodyChallengeRulePosition),
+    ratelimit: S.optional(RulesEditRequestBodyChallengeRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyChallengeRule",
@@ -55793,12 +55410,12 @@ export const RulesEditRequestBodyChallengeRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyResponseCompressionRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyResponseCompressionRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -55807,12 +55424,12 @@ export const RulesEditRequestBodyResponseCompressionRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyResponseCompressionRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyResponseCompressionRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -55821,12 +55438,12 @@ export const RulesEditRequestBodyResponseCompressionRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyResponseCompressionRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyResponseCompressionRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -55844,14 +55461,12 @@ export const RulesEditRequestBodyResponseCompressionRulePosition =
 
 export interface RulesEditRequestBodyResponseCompressionRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyResponseCompressionRulePosition | null;
+  position?: RulesEditRequestBodyResponseCompressionRulePosition;
 }
 export const RulesEditRequestBodyResponseCompressionRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodyResponseCompressionRulePosition),
-      ),
+      position: S.optional(RulesEditRequestBodyResponseCompressionRulePosition),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyResponseCompressionRule",
@@ -55859,12 +55474,12 @@ export const RulesEditRequestBodyResponseCompressionRule =
 
 export interface RulesEditRequestBodyDDoSDynamicRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyDDoSDynamicRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyDDoSDynamicRulePositionBeforePosition",
@@ -55872,12 +55487,12 @@ export const RulesEditRequestBodyDDoSDynamicRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyDDoSDynamicRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyDDoSDynamicRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyDDoSDynamicRulePositionAfterPosition",
@@ -55885,12 +55500,12 @@ export const RulesEditRequestBodyDDoSDynamicRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyDDoSDynamicRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyDDoSDynamicRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyDDoSDynamicRulePositionIndexPosition",
@@ -55907,11 +55522,11 @@ export const RulesEditRequestBodyDDoSDynamicRulePosition =
 
 export interface RulesEditRequestBodyDDoSDynamicRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyDDoSDynamicRulePosition | null;
+  position?: RulesEditRequestBodyDDoSDynamicRulePosition;
 }
 export const RulesEditRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyDDoSDynamicRulePosition)),
+    position: S.optional(RulesEditRequestBodyDDoSDynamicRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyDDoSDynamicRule",
@@ -55919,12 +55534,12 @@ export const RulesEditRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyExecuteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyExecuteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyExecuteRulePositionBeforePosition",
@@ -55932,12 +55547,12 @@ export const RulesEditRequestBodyExecuteRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyExecuteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyExecuteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyExecuteRulePositionAfterPosition",
@@ -55945,12 +55560,12 @@ export const RulesEditRequestBodyExecuteRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyExecuteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyExecuteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyExecuteRulePositionIndexPosition",
@@ -55967,11 +55582,11 @@ export const RulesEditRequestBodyExecuteRulePosition =
 
 export interface RulesEditRequestBodyExecuteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyExecuteRulePosition | null;
+  position?: RulesEditRequestBodyExecuteRulePosition;
 }
 export const RulesEditRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyExecuteRulePosition)),
+    position: S.optional(RulesEditRequestBodyExecuteRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyExecuteRule",
@@ -55979,12 +55594,12 @@ export const RulesEditRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyForceConnectionCloseRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyForceConnectionCloseRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -55993,12 +55608,12 @@ export const RulesEditRequestBodyForceConnectionCloseRulePositionBeforePosition 
 
 export interface RulesEditRequestBodyForceConnectionCloseRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyForceConnectionCloseRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -56007,12 +55622,12 @@ export const RulesEditRequestBodyForceConnectionCloseRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyForceConnectionCloseRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyForceConnectionCloseRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -56030,13 +55645,13 @@ export const RulesEditRequestBodyForceConnectionCloseRulePosition =
 
 export interface RulesEditRequestBodyForceConnectionCloseRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyForceConnectionCloseRulePosition | null;
+  position?: RulesEditRequestBodyForceConnectionCloseRulePosition;
 }
 export const RulesEditRequestBodyForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(RulesEditRequestBodyForceConnectionCloseRulePosition),
+        RulesEditRequestBodyForceConnectionCloseRulePosition,
       ),
     }),
   ).annotate({
@@ -56073,12 +55688,12 @@ export const RulesEditRequestBodyJavaScriptChallengeRuleExposedCredentialCheck =
 
 export interface RulesEditRequestBodyJavaScriptChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyJavaScriptChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -56087,12 +55702,12 @@ export const RulesEditRequestBodyJavaScriptChallengeRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyJavaScriptChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyJavaScriptChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -56101,12 +55716,12 @@ export const RulesEditRequestBodyJavaScriptChallengeRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyJavaScriptChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyJavaScriptChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -56135,17 +55750,17 @@ export interface RulesEditRequestBodyJavaScriptChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesEditRequestBodyJavaScriptChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -56154,22 +55769,20 @@ export const RulesEditRequestBodyJavaScriptChallengeRuleRatelimit =
         RulesEditRequestBodyJavaScriptChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -56182,64 +55795,55 @@ export interface RulesEditRequestBodyJavaScriptChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | RulesEditRequestBodyJavaScriptChallengeRuleAction
-    | (string & {})
-    | null;
+  action?: RulesEditRequestBodyJavaScriptChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList | null;
+  categories?: RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesEditRequestBodyJavaScriptChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesEditRequestBodyJavaScriptChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesEditRequestBodyChallengeRuleLogging | null;
+  logging?: RulesEditRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyJavaScriptChallengeRulePosition | null;
+  position?: RulesEditRequestBodyJavaScriptChallengeRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesEditRequestBodyJavaScriptChallengeRuleRatelimit | null;
+  ratelimit?: RulesEditRequestBodyJavaScriptChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesEditRequestBodyJavaScriptChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesEditRequestBodyJavaScriptChallengeRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesEditRequestBodyJavaScriptChallengeRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList),
+        RulesEditRequestBodyJavaScriptChallengeRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesEditRequestBodyJavaScriptChallengeRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesEditRequestBodyJavaScriptChallengeRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleLogging)),
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodyJavaScriptChallengeRulePosition),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesEditRequestBodyChallengeRuleLogging),
+      position: S.optional(RulesEditRequestBodyJavaScriptChallengeRulePosition),
       ratelimit: S.optional(
-        S.NullOr(RulesEditRequestBodyJavaScriptChallengeRuleRatelimit),
+        RulesEditRequestBodyJavaScriptChallengeRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyJavaScriptChallengeRule",
@@ -56247,12 +55851,12 @@ export const RulesEditRequestBodyJavaScriptChallengeRule =
 
 export interface RulesEditRequestBodyLogRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyLogRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogRulePositionBeforePosition",
@@ -56260,12 +55864,12 @@ export const RulesEditRequestBodyLogRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyLogRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyLogRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogRulePositionAfterPosition",
@@ -56273,12 +55877,12 @@ export const RulesEditRequestBodyLogRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyLogRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyLogRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogRulePositionIndexPosition",
@@ -56294,11 +55898,11 @@ export const RulesEditRequestBodyLogRulePosition = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface RulesEditRequestBodyLogRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyLogRulePosition | null;
+  position?: RulesEditRequestBodyLogRulePosition;
 }
 export const RulesEditRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyLogRulePosition)),
+    position: S.optional(RulesEditRequestBodyLogRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyLogRule",
@@ -56306,12 +55910,12 @@ export const RulesEditRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyLogCustomFieldRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyLogCustomFieldRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogCustomFieldRulePositionBeforePosition",
@@ -56319,12 +55923,12 @@ export const RulesEditRequestBodyLogCustomFieldRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyLogCustomFieldRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyLogCustomFieldRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogCustomFieldRulePositionAfterPosition",
@@ -56332,12 +55936,12 @@ export const RulesEditRequestBodyLogCustomFieldRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyLogCustomFieldRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyLogCustomFieldRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyLogCustomFieldRulePositionIndexPosition",
@@ -56354,14 +55958,12 @@ export const RulesEditRequestBodyLogCustomFieldRulePosition =
 
 export interface RulesEditRequestBodyLogCustomFieldRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyLogCustomFieldRulePosition | null;
+  position?: RulesEditRequestBodyLogCustomFieldRulePosition;
 }
 export const RulesEditRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodyLogCustomFieldRulePosition),
-      ),
+      position: S.optional(RulesEditRequestBodyLogCustomFieldRulePosition),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodyLogCustomFieldRule",
@@ -56369,12 +55971,12 @@ export const RulesEditRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodyManagedChallengeRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyManagedChallengeRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -56383,12 +55985,12 @@ export const RulesEditRequestBodyManagedChallengeRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyManagedChallengeRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyManagedChallengeRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyManagedChallengeRulePositionAfterPosition",
@@ -56396,12 +55998,12 @@ export const RulesEditRequestBodyManagedChallengeRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyManagedChallengeRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyManagedChallengeRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyManagedChallengeRulePositionIndexPosition",
@@ -56418,14 +56020,12 @@ export const RulesEditRequestBodyManagedChallengeRulePosition =
 
 export interface RulesEditRequestBodyManagedChallengeRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyManagedChallengeRulePosition | null;
+  position?: RulesEditRequestBodyManagedChallengeRulePosition;
 }
 export const RulesEditRequestBodyManagedChallengeRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodyManagedChallengeRulePosition),
-      ),
+      position: S.optional(RulesEditRequestBodyManagedChallengeRulePosition),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodyManagedChallengeRule",
@@ -56433,12 +56033,12 @@ export const RulesEditRequestBodyManagedChallengeRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodyRedirectRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyRedirectRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRedirectRulePositionBeforePosition",
@@ -56446,12 +56046,12 @@ export const RulesEditRequestBodyRedirectRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyRedirectRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyRedirectRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRedirectRulePositionAfterPosition",
@@ -56459,12 +56059,12 @@ export const RulesEditRequestBodyRedirectRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyRedirectRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyRedirectRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRedirectRulePositionIndexPosition",
@@ -56481,11 +56081,11 @@ export const RulesEditRequestBodyRedirectRulePosition =
 
 export interface RulesEditRequestBodyRedirectRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyRedirectRulePosition | null;
+  position?: RulesEditRequestBodyRedirectRulePosition;
 }
 export const RulesEditRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyRedirectRulePosition)),
+    position: S.optional(RulesEditRequestBodyRedirectRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyRedirectRule",
@@ -56493,12 +56093,12 @@ export const RulesEditRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyRewriteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyRewriteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRewriteRulePositionBeforePosition",
@@ -56506,12 +56106,12 @@ export const RulesEditRequestBodyRewriteRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyRewriteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyRewriteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRewriteRulePositionAfterPosition",
@@ -56519,12 +56119,12 @@ export const RulesEditRequestBodyRewriteRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyRewriteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyRewriteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRewriteRulePositionIndexPosition",
@@ -56541,11 +56141,11 @@ export const RulesEditRequestBodyRewriteRulePosition =
 
 export interface RulesEditRequestBodyRewriteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyRewriteRulePosition | null;
+  position?: RulesEditRequestBodyRewriteRulePosition;
 }
 export const RulesEditRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyRewriteRulePosition)),
+    position: S.optional(RulesEditRequestBodyRewriteRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyRewriteRule",
@@ -56553,12 +56153,12 @@ export const RulesEditRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyRouteRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyRouteRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRouteRulePositionBeforePosition",
@@ -56566,12 +56166,12 @@ export const RulesEditRequestBodyRouteRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyRouteRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyRouteRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRouteRulePositionAfterPosition",
@@ -56579,12 +56179,12 @@ export const RulesEditRequestBodyRouteRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyRouteRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyRouteRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyRouteRulePositionIndexPosition",
@@ -56601,11 +56201,11 @@ export const RulesEditRequestBodyRouteRulePosition =
 
 export interface RulesEditRequestBodyRouteRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyRouteRulePosition | null;
+  position?: RulesEditRequestBodyRouteRulePosition;
 }
 export const RulesEditRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyRouteRulePosition)),
+    position: S.optional(RulesEditRequestBodyRouteRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyRouteRule",
@@ -56613,12 +56213,12 @@ export const RulesEditRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyScoreRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyScoreRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyScoreRulePositionBeforePosition",
@@ -56626,12 +56226,12 @@ export const RulesEditRequestBodyScoreRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyScoreRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyScoreRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyScoreRulePositionAfterPosition",
@@ -56639,12 +56239,12 @@ export const RulesEditRequestBodyScoreRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyScoreRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyScoreRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyScoreRulePositionIndexPosition",
@@ -56661,11 +56261,11 @@ export const RulesEditRequestBodyScoreRulePosition =
 
 export interface RulesEditRequestBodyScoreRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyScoreRulePosition | null;
+  position?: RulesEditRequestBodyScoreRulePosition;
 }
 export const RulesEditRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyScoreRulePosition)),
+    position: S.optional(RulesEditRequestBodyScoreRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyScoreRule",
@@ -56673,12 +56273,12 @@ export const RulesEditRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesEditRequestBodyServeErrorRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyServeErrorRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyServeErrorRulePositionBeforePosition",
@@ -56686,12 +56286,12 @@ export const RulesEditRequestBodyServeErrorRulePositionBeforePosition =
 
 export interface RulesEditRequestBodyServeErrorRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyServeErrorRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyServeErrorRulePositionAfterPosition",
@@ -56699,12 +56299,12 @@ export const RulesEditRequestBodyServeErrorRulePositionAfterPosition =
 
 export interface RulesEditRequestBodyServeErrorRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyServeErrorRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyServeErrorRulePositionIndexPosition",
@@ -56721,11 +56321,11 @@ export const RulesEditRequestBodyServeErrorRulePosition =
 
 export interface RulesEditRequestBodyServeErrorRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyServeErrorRulePosition | null;
+  position?: RulesEditRequestBodyServeErrorRulePosition;
 }
 export const RulesEditRequestBodyServeErrorRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodyServeErrorRulePosition)),
+    position: S.optional(RulesEditRequestBodyServeErrorRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodyServeErrorRule",
@@ -56746,16 +56346,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersImmutabl
     | RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56773,16 +56371,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersImmutabl
     | RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56813,7 +56409,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSe
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -56821,9 +56417,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDir
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56841,16 +56435,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRe
     | RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56879,16 +56471,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustReva
     | RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56906,16 +56496,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustReva
     | RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56944,16 +56532,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustUnde
     | RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -56971,16 +56557,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersMustUnde
     | RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57016,22 +56600,18 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheS
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList | null;
+  qualifiers?: RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList,
-        ),
+        RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -57050,16 +56630,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheR
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57088,16 +56666,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreS
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57115,16 +56691,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreR
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57153,16 +56727,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoTransf
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57180,16 +56752,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersNoTransf
     | RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57225,22 +56795,18 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPrivateS
     | RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList | null;
+  qualifiers?: RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList,
-        ),
+        RulesEditRequestBodySetCacheControlRuleActionParametersPrivateSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -57259,16 +56825,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPrivateR
     | RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57297,16 +56861,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersProxyRev
     | RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57324,16 +56886,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersProxyRev
     | RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57362,16 +56922,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPublicSe
     | RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57389,16 +56947,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersPublicRe
     | RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57429,7 +56985,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageS
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -57437,9 +56993,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDi
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57457,16 +57011,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageR
     | RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57497,7 +57049,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfE
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -57505,9 +57057,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57525,16 +57075,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfE
     | RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57565,7 +57113,7 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhi
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -57573,9 +57121,7 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRe
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57593,16 +57139,14 @@ export interface RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhi
     | RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -57622,97 +57166,93 @@ export const RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRe
 
 export interface RulesEditRequestBodySetCacheControlRuleActionParameters {
   /** A cache-control directive configuration. */
-  immutable?: RulesEditRequestBodySetCacheControlRuleActionParametersImmutable | null;
+  immutable?: RulesEditRequestBodySetCacheControlRuleActionParametersImmutable;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  maxAge?: RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge | null;
+  maxAge?: RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge;
   /** A cache-control directive configuration. */
-  mustRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate | null;
+  mustRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate;
   /** A cache-control directive configuration. */
-  mustUnderstand?: RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand | null;
+  mustUnderstand?: RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  noCache?: RulesEditRequestBodySetCacheControlRuleActionParametersNoCache | null;
+  noCache?: RulesEditRequestBodySetCacheControlRuleActionParametersNoCache;
   /** A cache-control directive configuration. */
-  noStore?: RulesEditRequestBodySetCacheControlRuleActionParametersNoStore | null;
+  noStore?: RulesEditRequestBodySetCacheControlRuleActionParametersNoStore;
   /** A cache-control directive configuration. */
-  noTransform?: RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform | null;
+  noTransform?: RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  private?: RulesEditRequestBodySetCacheControlRuleActionParametersPrivate | null;
+  private?: RulesEditRequestBodySetCacheControlRuleActionParametersPrivate;
   /** A cache-control directive configuration. */
-  proxyRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate | null;
+  proxyRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate;
   /** A cache-control directive configuration. */
-  public?: RulesEditRequestBodySetCacheControlRuleActionParametersPublic | null;
+  public?: RulesEditRequestBodySetCacheControlRuleActionParametersPublic;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  sMaxage?: RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage | null;
+  sMaxage?: RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleIfError?: RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError | null;
+  staleIfError?: RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleWhileRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate | null;
+  staleWhileRevalidate?: RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate;
 }
 export const RulesEditRequestBodySetCacheControlRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immutable: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersImmutable,
-        ),
+        RulesEditRequestBodySetCacheControlRuleActionParametersImmutable,
       ),
       maxAge: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge,
-        ).pipe(T.Body("max-age")),
-      ),
-      mustRevalidate: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate,
-        ).pipe(T.Body("must-revalidate")),
-      ),
-      mustUnderstand: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand,
-        ).pipe(T.Body("must-understand")),
-      ),
-      noCache: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersNoCache,
-        ).pipe(T.Body("no-cache")),
-      ),
-      noStore: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersNoStore,
-        ).pipe(T.Body("no-store")),
-      ),
-      noTransform: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform,
-        ).pipe(T.Body("no-transform")),
-      ),
-      private: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersPrivate,
+        RulesEditRequestBodySetCacheControlRuleActionParametersMaxAge.pipe(
+          T.Body("max-age"),
         ),
       ),
+      mustRevalidate: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersMustRevalidate.pipe(
+          T.Body("must-revalidate"),
+        ),
+      ),
+      mustUnderstand: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersMustUnderstand.pipe(
+          T.Body("must-understand"),
+        ),
+      ),
+      noCache: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersNoCache.pipe(
+          T.Body("no-cache"),
+        ),
+      ),
+      noStore: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersNoStore.pipe(
+          T.Body("no-store"),
+        ),
+      ),
+      noTransform: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersNoTransform.pipe(
+          T.Body("no-transform"),
+        ),
+      ),
+      private: S.optional(
+        RulesEditRequestBodySetCacheControlRuleActionParametersPrivate,
+      ),
       proxyRevalidate: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate,
-        ).pipe(T.Body("proxy-revalidate")),
+        RulesEditRequestBodySetCacheControlRuleActionParametersProxyRevalidate.pipe(
+          T.Body("proxy-revalidate"),
+        ),
       ),
       public: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRuleActionParametersPublic),
+        RulesEditRequestBodySetCacheControlRuleActionParametersPublic,
       ),
       sMaxage: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage,
-        ).pipe(T.Body("s-maxage")),
+        RulesEditRequestBodySetCacheControlRuleActionParametersSMaxage.pipe(
+          T.Body("s-maxage"),
+        ),
       ),
       staleIfError: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError,
-        ).pipe(T.Body("stale-if-error")),
+        RulesEditRequestBodySetCacheControlRuleActionParametersStaleIfError.pipe(
+          T.Body("stale-if-error"),
+        ),
       ),
       staleWhileRevalidate: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate,
-        ).pipe(T.Body("stale-while-revalidate")),
+        RulesEditRequestBodySetCacheControlRuleActionParametersStaleWhileRevalidate.pipe(
+          T.Body("stale-while-revalidate"),
+        ),
       ),
     }),
   ).annotate({
@@ -57744,12 +57284,12 @@ export const RulesEditRequestBodySetCacheControlRuleExposedCredentialCheck =
 
 export interface RulesEditRequestBodySetCacheControlRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodySetCacheControlRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheControlRulePositionBeforePosition",
@@ -57757,12 +57297,12 @@ export const RulesEditRequestBodySetCacheControlRulePositionBeforePosition =
 
 export interface RulesEditRequestBodySetCacheControlRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodySetCacheControlRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheControlRulePositionAfterPosition",
@@ -57770,12 +57310,12 @@ export const RulesEditRequestBodySetCacheControlRulePositionAfterPosition =
 
 export interface RulesEditRequestBodySetCacheControlRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodySetCacheControlRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheControlRulePositionIndexPosition",
@@ -57803,17 +57343,17 @@ export interface RulesEditRequestBodySetCacheControlRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesEditRequestBodySetCacheControlRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -57822,22 +57362,20 @@ export const RulesEditRequestBodySetCacheControlRuleRatelimit =
         RulesEditRequestBodySetCacheControlRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -57850,63 +57388,57 @@ export interface RulesEditRequestBodySetCacheControlRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodySetCacheControlRuleAction | (string & {}) | null;
+  action?: RulesEditRequestBodySetCacheControlRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesEditRequestBodySetCacheControlRuleActionParameters | null;
+  actionParameters?: RulesEditRequestBodySetCacheControlRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesEditRequestBodySetCacheControlRuleCategoriesList | null;
+  categories?: RulesEditRequestBodySetCacheControlRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesEditRequestBodySetCacheControlRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesEditRequestBodySetCacheControlRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesEditRequestBodyChallengeRuleLogging | null;
+  logging?: RulesEditRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodySetCacheControlRulePosition | null;
+  position?: RulesEditRequestBodySetCacheControlRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesEditRequestBodySetCacheControlRuleRatelimit | null;
+  ratelimit?: RulesEditRequestBodySetCacheControlRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesEditRequestBodySetCacheControlRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesEditRequestBodySetCacheControlRuleAction),
       actionParameters: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRuleActionParameters).pipe(
+        RulesEditRequestBodySetCacheControlRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRuleCategoriesList),
+        RulesEditRequestBodySetCacheControlRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheControlRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesEditRequestBodySetCacheControlRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleLogging)),
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRulePosition),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheControlRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesEditRequestBodyChallengeRuleLogging),
+      position: S.optional(RulesEditRequestBodySetCacheControlRulePosition),
+      ratelimit: S.optional(RulesEditRequestBodySetCacheControlRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodySetCacheControlRule",
@@ -57914,12 +57446,12 @@ export const RulesEditRequestBodySetCacheControlRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodySetCacheSettingsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodySetCacheSettingsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -57928,12 +57460,12 @@ export const RulesEditRequestBodySetCacheSettingsRulePositionBeforePosition =
 
 export interface RulesEditRequestBodySetCacheSettingsRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodySetCacheSettingsRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheSettingsRulePositionAfterPosition",
@@ -57941,12 +57473,12 @@ export const RulesEditRequestBodySetCacheSettingsRulePositionAfterPosition =
 
 export interface RulesEditRequestBodySetCacheSettingsRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodySetCacheSettingsRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheSettingsRulePositionIndexPosition",
@@ -57963,14 +57495,12 @@ export const RulesEditRequestBodySetCacheSettingsRulePosition =
 
 export interface RulesEditRequestBodySetCacheSettingsRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodySetCacheSettingsRulePosition | null;
+  position?: RulesEditRequestBodySetCacheSettingsRulePosition;
 }
 export const RulesEditRequestBodySetCacheSettingsRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheSettingsRulePosition),
-      ),
+      position: S.optional(RulesEditRequestBodySetCacheSettingsRulePosition),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodySetCacheSettingsRule",
@@ -58197,12 +57727,12 @@ export const RulesEditRequestBodySetCacheTagsRuleExposedCredentialCheck =
 
 export interface RulesEditRequestBodySetCacheTagsRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodySetCacheTagsRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheTagsRulePositionBeforePosition",
@@ -58210,12 +57740,12 @@ export const RulesEditRequestBodySetCacheTagsRulePositionBeforePosition =
 
 export interface RulesEditRequestBodySetCacheTagsRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodySetCacheTagsRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheTagsRulePositionAfterPosition",
@@ -58223,12 +57753,12 @@ export const RulesEditRequestBodySetCacheTagsRulePositionAfterPosition =
 
 export interface RulesEditRequestBodySetCacheTagsRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodySetCacheTagsRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetCacheTagsRulePositionIndexPosition",
@@ -58256,17 +57786,17 @@ export interface RulesEditRequestBodySetCacheTagsRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesEditRequestBodySetCacheTagsRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -58275,22 +57805,20 @@ export const RulesEditRequestBodySetCacheTagsRuleRatelimit =
         RulesEditRequestBodySetCacheTagsRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -58303,61 +57831,57 @@ export interface RulesEditRequestBodySetCacheTagsRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: RulesEditRequestBodySetCacheTagsRuleAction | (string & {}) | null;
+  action?: RulesEditRequestBodySetCacheTagsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesEditRequestBodySetCacheTagsRuleActionParameters | null;
+  actionParameters?: RulesEditRequestBodySetCacheTagsRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesEditRequestBodySetCacheTagsRuleCategoriesList | null;
+  categories?: RulesEditRequestBodySetCacheTagsRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesEditRequestBodySetCacheTagsRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesEditRequestBodySetCacheTagsRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesEditRequestBodyChallengeRuleLogging | null;
+  logging?: RulesEditRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodySetCacheTagsRulePosition | null;
+  position?: RulesEditRequestBodySetCacheTagsRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesEditRequestBodySetCacheTagsRuleRatelimit | null;
+  ratelimit?: RulesEditRequestBodySetCacheTagsRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesEditRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(RulesEditRequestBodySetCacheTagsRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(RulesEditRequestBodySetCacheTagsRuleAction),
       actionParameters: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheTagsRuleActionParameters).pipe(
+        RulesEditRequestBodySetCacheTagsRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheTagsRuleCategoriesList),
+        RulesEditRequestBodySetCacheTagsRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesEditRequestBodySetCacheTagsRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesEditRequestBodySetCacheTagsRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleLogging)),
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheTagsRulePosition),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(RulesEditRequestBodySetCacheTagsRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesEditRequestBodyChallengeRuleLogging),
+      position: S.optional(RulesEditRequestBodySetCacheTagsRulePosition),
+      ratelimit: S.optional(RulesEditRequestBodySetCacheTagsRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodySetCacheTagsRule",
@@ -58365,12 +57889,12 @@ export const RulesEditRequestBodySetCacheTagsRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodySetConfigurationRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodySetConfigurationRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -58379,12 +57903,12 @@ export const RulesEditRequestBodySetConfigurationRulePositionBeforePosition =
 
 export interface RulesEditRequestBodySetConfigurationRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodySetConfigurationRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetConfigurationRulePositionAfterPosition",
@@ -58392,12 +57916,12 @@ export const RulesEditRequestBodySetConfigurationRulePositionAfterPosition =
 
 export interface RulesEditRequestBodySetConfigurationRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodySetConfigurationRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySetConfigurationRulePositionIndexPosition",
@@ -58414,14 +57938,12 @@ export const RulesEditRequestBodySetConfigurationRulePosition =
 
 export interface RulesEditRequestBodySetConfigurationRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodySetConfigurationRulePosition | null;
+  position?: RulesEditRequestBodySetConfigurationRulePosition;
 }
 export const RulesEditRequestBodySetConfigurationRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      position: S.optional(
-        S.NullOr(RulesEditRequestBodySetConfigurationRulePosition),
-      ),
+      position: S.optional(RulesEditRequestBodySetConfigurationRulePosition),
     }),
 ).annotate({
   identifier: "RulesEditRequestBodySetConfigurationRule",
@@ -58429,12 +57951,12 @@ export const RulesEditRequestBodySetConfigurationRule = /*@__PURE__*/ S.suspend(
 
 export interface RulesEditRequestBodySkipRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodySkipRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySkipRulePositionBeforePosition",
@@ -58442,12 +57964,12 @@ export const RulesEditRequestBodySkipRulePositionBeforePosition =
 
 export interface RulesEditRequestBodySkipRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodySkipRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySkipRulePositionAfterPosition",
@@ -58455,12 +57977,12 @@ export const RulesEditRequestBodySkipRulePositionAfterPosition =
 
 export interface RulesEditRequestBodySkipRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodySkipRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodySkipRulePositionIndexPosition",
@@ -58477,11 +57999,11 @@ export const RulesEditRequestBodySkipRulePosition =
 
 export interface RulesEditRequestBodySkipRule {
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodySkipRulePosition | null;
+  position?: RulesEditRequestBodySkipRulePosition;
 }
 export const RulesEditRequestBodySkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    position: S.optional(S.NullOr(RulesEditRequestBodySkipRulePosition)),
+    position: S.optional(RulesEditRequestBodySkipRulePosition),
   }),
 ).annotate({
   identifier: "RulesEditRequestBodySkipRule",
@@ -58531,12 +58053,12 @@ export const RulesEditRequestBodyTransformResponseHTMLRuleExposedCredentialCheck
 
 export interface RulesEditRequestBodyTransformResponseHTMLRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */
-  before?: string | null;
+  before?: string;
 }
 export const RulesEditRequestBodyTransformResponseHTMLRulePositionBeforePosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      before: S.optional(S.NullOr(S.String)),
+      before: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -58545,12 +58067,12 @@ export const RulesEditRequestBodyTransformResponseHTMLRulePositionBeforePosition
 
 export interface RulesEditRequestBodyTransformResponseHTMLRulePositionAfterPosition {
   /** The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom. */
-  after?: string | null;
+  after?: string;
 }
 export const RulesEditRequestBodyTransformResponseHTMLRulePositionAfterPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      after: S.optional(S.NullOr(S.String)),
+      after: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -58559,12 +58081,12 @@ export const RulesEditRequestBodyTransformResponseHTMLRulePositionAfterPosition 
 
 export interface RulesEditRequestBodyTransformResponseHTMLRulePositionIndexPosition {
   /** An index at which to place the rule, where index 1 is the first rule. */
-  index?: number | null;
+  index?: number;
 }
 export const RulesEditRequestBodyTransformResponseHTMLRulePositionIndexPosition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      index: S.optional(S.NullOr(S.Number)),
+      index: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -58593,17 +58115,17 @@ export interface RulesEditRequestBodyTransformResponseHTMLRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const RulesEditRequestBodyTransformResponseHTMLRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -58612,22 +58134,20 @@ export const RulesEditRequestBodyTransformResponseHTMLRuleRatelimit =
         RulesEditRequestBodyTransformResponseHTMLRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -58640,66 +58160,61 @@ export interface RulesEditRequestBodyTransformResponseHTMLRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | RulesEditRequestBodyTransformResponseHTMLRuleAction
-    | (string & {})
-    | null;
+  action?: RulesEditRequestBodyTransformResponseHTMLRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: RulesEditRequestBodyTransformResponseHTMLRuleActionParameters | null;
+  actionParameters?: RulesEditRequestBodyTransformResponseHTMLRuleActionParameters;
   /** The categories of the rule. */
-  categories?: RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList | null;
+  categories?: RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: RulesEditRequestBodyTransformResponseHTMLRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: RulesEditRequestBodyTransformResponseHTMLRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: RulesEditRequestBodyChallengeRuleLogging | null;
+  logging?: RulesEditRequestBodyChallengeRuleLogging;
   /** An object configuring where the rule will be placed. */
-  position?: RulesEditRequestBodyTransformResponseHTMLRulePosition | null;
+  position?: RulesEditRequestBodyTransformResponseHTMLRulePosition;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: RulesEditRequestBodyTransformResponseHTMLRuleRatelimit | null;
+  ratelimit?: RulesEditRequestBodyTransformResponseHTMLRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const RulesEditRequestBodyTransformResponseHTMLRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(RulesEditRequestBodyTransformResponseHTMLRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(RulesEditRequestBodyTransformResponseHTMLRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          RulesEditRequestBodyTransformResponseHTMLRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        RulesEditRequestBodyTransformResponseHTMLRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList),
+        RulesEditRequestBodyTransformResponseHTMLRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          RulesEditRequestBodyTransformResponseHTMLRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        RulesEditRequestBodyTransformResponseHTMLRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(RulesEditRequestBodyChallengeRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(RulesEditRequestBodyChallengeRuleLogging),
       position: S.optional(
-        S.NullOr(RulesEditRequestBodyTransformResponseHTMLRulePosition),
+        RulesEditRequestBodyTransformResponseHTMLRulePosition,
       ),
       ratelimit: S.optional(
-        S.NullOr(RulesEditRequestBodyTransformResponseHTMLRuleRatelimit),
+        RulesEditRequestBodyTransformResponseHTMLRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RulesEditRequestBodyTransformResponseHTMLRule",
@@ -65275,13 +64790,13 @@ export const PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse =
 
 export interface PhasesUpdateRequestRulesItemBlockRuleActionParameters {
   /** The response to show when the block is applied. */
-  response?: PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse | null;
+  response?: PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse;
 }
 export const PhasesUpdateRequestRulesItemBlockRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       response: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse),
+        PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse,
       ),
     }),
   ).annotate({
@@ -65336,17 +64851,17 @@ export interface PhasesUpdateRequestRulesItemBlockRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemBlockRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -65355,22 +64870,20 @@ export const PhasesUpdateRequestRulesItemBlockRuleRatelimit =
         PhasesUpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -65383,58 +64896,54 @@ export interface PhasesUpdateRequestRulesItemBlockRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemBlockRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemBlockRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemBlockRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemBlockRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemBlockRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemBlockRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemBlockRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemBlockRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemBlockRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemBlockRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemBlockRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleCategoriesList),
+        PhasesUpdateRequestRulesItemBlockRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemBlockRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemBlockRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemBlockRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemBlockRule",
@@ -65479,17 +64988,17 @@ export interface PhasesUpdateRequestRulesItemChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemChallengeRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -65498,22 +65007,20 @@ export const PhasesUpdateRequestRulesItemChallengeRatelimit =
         PhasesUpdateRequestRulesItemChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -65526,56 +65033,50 @@ export interface PhasesUpdateRequestRulesItemChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemChallengeAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemChallengeCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemChallengeRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemChallengeAction)),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemChallengeAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemChallengeCategoriesList),
+        PhasesUpdateRequestRulesItemChallengeCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemChallengeExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemChallengeRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemChallengeRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemChallenge",
@@ -65595,16 +65096,13 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRuleActionParameter
   /** Name of the compression algorithm to enable. */
   name?:
     | PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
-        ),
+        PhasesUpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
       ),
     }),
   ).annotate({
@@ -65671,17 +65169,17 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -65690,22 +65188,20 @@ export const PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit =
         PhasesUpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -65718,65 +65214,60 @@ export interface PhasesUpdateRequestRulesItemCompressResponseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | PhasesUpdateRequestRulesItemCompressResponseRuleAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemCompressResponseRuleAction),
+        PhasesUpdateRequestRulesItemCompressResponseRuleAction,
       ),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
-      ),
-      categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList,
+        PhasesUpdateRequestRulesItemCompressResponseRuleActionParameters.pipe(
+          T.Body("action_parameters"),
         ),
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      categories: S.optional(
+        PhasesUpdateRequestRulesItemCompressResponseRuleCategoriesList,
+      ),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit),
+        PhasesUpdateRequestRulesItemCompressResponseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemCompressResponseRule",
@@ -65823,17 +65314,17 @@ export interface PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -65842,22 +65333,20 @@ export const PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit =
         PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -65870,61 +65359,52 @@ export interface PhasesUpdateRequestRulesItemDDoSDynamicRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemDDoSDynamicRuleAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemDDoSDynamicRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemDDoSDynamicRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemDDoSDynamicRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList),
+        PhasesUpdateRequestRulesItemDDoSDynamicRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit),
+        PhasesUpdateRequestRulesItemDDoSDynamicRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemDDoSDynamicRule",
@@ -65957,25 +65437,24 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverride
   /** The name of the category to override. */
   category: string;
   /** The action to override rules in the category with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of rules in the category. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -65999,30 +65478,27 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverride
   /** The ID of the rule to override. */
   id: string;
   /** The action to override the rule with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of the rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The score threshold to use for the rule. */
-  scoreThreshold?: number | null;
+  scoreThreshold?: number;
   /** The sensitivity level to use for the rule. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_threshold")),
-      ),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
+      scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -66044,38 +65520,33 @@ export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesSen
 
 export interface PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides {
   /** An action to override all rules with. This option has lower precedence than rule and category overrides. */
-  action?: string | null;
+  action?: string;
   /** A list of category-level overrides. This option has the second-highest precedence after rule-level overrides. */
-  categories?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList;
   /** Whether to enable execution of all rules. This option has lower precedence than rule and category overrides. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of rule-level overrides. This option has the highest precedence. */
-  rules?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList | null;
+  rules?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList;
   /** A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases. */
   sensitivityLevel?:
     | PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      action: S.optional(S.NullOr(S.String)),
+      action: S.optional(S.String),
       categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       rules: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
-        ),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
       ),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -66087,23 +65558,21 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
   id: string;
   /** The configuration to use for matched data logging. */
-  matchedData?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersMatchedData | null;
+  matchedData?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersMatchedData;
   /** A set of overrides to apply to the target ruleset. */
-  overrides?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides | null;
+  overrides?: PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides;
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       matchedData: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersMatchedData,
-        ).pipe(T.Body("matched_data")),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersMatchedData.pipe(
+          T.Body("matched_data"),
+        ),
       ),
       overrides: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides,
-        ),
+        PhasesUpdateRequestRulesItemExecuteRuleActionParametersOverrides,
       ),
     }),
   ).annotate({
@@ -66146,17 +65615,17 @@ export interface PhasesUpdateRequestRulesItemExecuteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemExecuteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -66165,22 +65634,20 @@ export const PhasesUpdateRequestRulesItemExecuteRuleRatelimit =
         PhasesUpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -66193,60 +65660,54 @@ export interface PhasesUpdateRequestRulesItemExecuteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemExecuteRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemExecuteRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemExecuteRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemExecuteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemExecuteRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemExecuteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemExecuteRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemExecuteRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemExecuteRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemExecuteRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemExecuteRuleCategoriesList),
+        PhasesUpdateRequestRulesItemExecuteRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemExecuteRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemExecuteRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemExecuteRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemExecuteRule",
@@ -66294,17 +65755,17 @@ export interface PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -66313,22 +65774,20 @@ export const PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
         PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -66341,63 +65800,56 @@ export interface PhasesUpdateRequestRulesItemForceConnectionCloseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction),
+        PhasesUpdateRequestRulesItemForceConnectionCloseRuleAction,
       ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList,
+        PhasesUpdateRequestRulesItemForceConnectionCloseRuleCategoriesList,
+      ),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
+      exposedCredentialCheck: S.optional(
+        PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
         ),
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
-      ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit),
+        PhasesUpdateRequestRulesItemForceConnectionCloseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemForceConnectionCloseRule",
@@ -66443,17 +65895,17 @@ export interface PhasesUpdateRequestRulesItemJSChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemJSChallengeRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -66462,22 +65914,20 @@ export const PhasesUpdateRequestRulesItemJSChallengeRatelimit =
         PhasesUpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -66490,58 +65940,50 @@ export interface PhasesUpdateRequestRulesItemJSChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemJSChallengeAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemJSChallengeCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemJSChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemJSChallengeRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemJSChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemJSChallengeAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemJSChallengeAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemJSChallengeCategoriesList),
+        PhasesUpdateRequestRulesItemJSChallengeCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemJSChallengeExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemJSChallengeRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemJSChallengeRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemJSChallenge",
@@ -66585,17 +66027,17 @@ export interface PhasesUpdateRequestRulesItemLogRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemLogRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -66604,22 +66046,20 @@ export const PhasesUpdateRequestRulesItemLogRuleRatelimit =
         PhasesUpdateRequestRulesItemLogRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -66632,53 +66072,47 @@ export interface PhasesUpdateRequestRulesItemLogRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemLogRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemLogRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemLogRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemLogRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemLogRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemLogRuleAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(PhasesUpdateRequestRulesItemLogRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(PhasesUpdateRequestRulesItemLogRuleAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(PhasesUpdateRequestRulesItemLogRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck).pipe(
+      PhasesUpdateRequestRulesItemLogRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(PhasesUpdateRequestRulesItemLogRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(PhasesUpdateRequestRulesItemLogRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemLogRule",
@@ -66714,14 +66148,14 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersR
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -66761,14 +66195,14 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersR
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -66806,43 +66240,43 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTrans
 
 export interface PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters {
   /** The cookie fields to log. */
-  cookieFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList | null;
+  cookieFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList;
   /** The raw response fields to log. */
-  rawResponseFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList | null;
+  rawResponseFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList;
   /** The raw request fields to log. */
-  requestFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList | null;
+  requestFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList;
   /** The transformed response fields to log. */
-  responseFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList | null;
+  responseFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList;
   /** The transformed request fields to log. */
-  transformedRequestFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList | null;
+  transformedRequestFields?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList;
 }
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookieFields: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList,
-        ).pipe(T.Body("cookie_fields")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList.pipe(
+          T.Body("cookie_fields"),
+        ),
       ),
       rawResponseFields: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList,
-        ).pipe(T.Body("raw_response_fields")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList.pipe(
+          T.Body("raw_response_fields"),
+        ),
       ),
       requestFields: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList,
-        ).pipe(T.Body("request_fields")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList.pipe(
+          T.Body("request_fields"),
+        ),
       ),
       responseFields: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList,
-        ).pipe(T.Body("response_fields")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList.pipe(
+          T.Body("response_fields"),
+        ),
       ),
       transformedRequestFields: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList,
-        ).pipe(T.Body("transformed_request_fields")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList.pipe(
+          T.Body("transformed_request_fields"),
+        ),
       ),
     }),
   ).annotate({
@@ -66887,17 +66321,17 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -66906,22 +66340,20 @@ export const PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit =
         PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -66934,63 +66366,56 @@ export interface PhasesUpdateRequestRulesItemLogCustomFieldRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemLogCustomFieldRuleAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemLogCustomFieldRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemLogCustomFieldRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit),
+        PhasesUpdateRequestRulesItemLogCustomFieldRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemLogCustomFieldRule",
@@ -67038,17 +66463,17 @@ export interface PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -67057,22 +66482,20 @@ export const PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit =
         PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -67085,63 +66508,56 @@ export interface PhasesUpdateRequestRulesItemManagedChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | PhasesUpdateRequestRulesItemManagedChallengeRuleAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemManagedChallengeRuleAction),
+        PhasesUpdateRequestRulesItemManagedChallengeRuleAction,
       ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList,
+        PhasesUpdateRequestRulesItemManagedChallengeRuleCategoriesList,
+      ),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
+      exposedCredentialCheck: S.optional(
+        PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
         ),
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
-      ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit),
+        PhasesUpdateRequestRulesItemManagedChallengeRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemManagedChallengeRule",
@@ -67170,15 +66586,15 @@ export const PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromList =
 
 export interface PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl {
   /** An expression that evaluates to a URL to redirect the request to. */
-  expression?: string | null;
+  expression?: string;
   /** A URL to redirect the request to. */
-  value?: string | null;
+  value?: string;
 }
 export const PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -67194,12 +66610,11 @@ export interface PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromVal
   /** A URL to redirect the request to. */
   targetUrl: PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl;
   /** Whether to keep the query string of the original request. */
-  preserveQueryString?: boolean | null;
+  preserveQueryString?: boolean;
   /** The status code to use for the redirect. */
   statusCode?:
     | PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
 }
 export const PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -67209,12 +66624,12 @@ export const PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue =
           T.Body("target_url"),
         ),
       preserveQueryString: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string")),
+        S.Boolean.pipe(T.Body("preserve_query_string")),
       ),
       statusCode: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
+        PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode.pipe(
+          T.Body("status_code"),
+        ),
       ),
     }),
   ).annotate({
@@ -67224,22 +66639,22 @@ export const PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue =
 
 export interface PhasesUpdateRequestRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
-  fromList?: PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromList | null;
+  fromList?: PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromList;
   /** A redirect based on the request properties. */
-  fromValue?: PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue | null;
+  fromValue?: PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue;
 }
 export const PhasesUpdateRequestRulesItemRedirectRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fromList: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromList,
-        ).pipe(T.Body("from_list")),
+        PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromList.pipe(
+          T.Body("from_list"),
+        ),
       ),
       fromValue: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue,
-        ).pipe(T.Body("from_value")),
+        PhasesUpdateRequestRulesItemRedirectRuleActionParametersFromValue.pipe(
+          T.Body("from_value"),
+        ),
       ),
     }),
   ).annotate({
@@ -67283,17 +66698,17 @@ export interface PhasesUpdateRequestRulesItemRedirectRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemRedirectRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -67302,22 +66717,20 @@ export const PhasesUpdateRequestRulesItemRedirectRuleRatelimit =
         PhasesUpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -67330,63 +66743,54 @@ export interface PhasesUpdateRequestRulesItemRedirectRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemRedirectRuleAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemRedirectRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemRedirectRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemRedirectRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemRedirectRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemRedirectRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRedirectRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemRedirectRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRedirectRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemRedirectRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRedirectRuleCategoriesList),
+        PhasesUpdateRequestRulesItemRedirectRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemRedirectRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRedirectRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemRedirectRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemRedirectRule",
@@ -67527,15 +66931,15 @@ export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeaders =
 
 export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI path to. */
-  value?: string | null;
+  value?: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -67546,13 +66950,13 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPa
   /** A URI path rewrite. */
   path: PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -67561,15 +66965,15 @@ export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIPath =
 
 export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery {
   /** An expression that evaluates to a value to rewrite the URI query to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI query to. */
-  value?: string | null;
+  value?: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -67580,14 +66984,14 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQu
   /** A URI query rewrite. */
   query: PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       query:
         PhasesUpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -67607,20 +67011,18 @@ export const PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri =
 
 export interface PhasesUpdateRequestRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
-  headers?: PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeaders | null;
+  headers?: PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeaders;
   /** A URI path rewrite. */
-  uri?: PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri | null;
+  uri?: PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeaders,
-        ),
+        PhasesUpdateRequestRulesItemRewriteRuleActionParametersHeaders,
       ),
       uri: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri),
+        PhasesUpdateRequestRulesItemRewriteRuleActionParametersUri,
       ),
     }),
   ).annotate({
@@ -67663,17 +67065,17 @@ export interface PhasesUpdateRequestRulesItemRewriteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -67682,22 +67084,20 @@ export const PhasesUpdateRequestRulesItemRewriteRuleRatelimit =
         PhasesUpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -67710,60 +67110,54 @@ export interface PhasesUpdateRequestRulesItemRewriteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemRewriteRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemRewriteRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemRewriteRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemRewriteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemRewriteRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemRewriteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRewriteRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemRewriteRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRewriteRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemRewriteRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRewriteRuleCategoriesList),
+        PhasesUpdateRequestRulesItemRewriteRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemRewriteRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRewriteRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemRewriteRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemRewriteRule",
@@ -67775,15 +67169,15 @@ export const PhasesUpdateRequestRulesItemRouteRuleAction =
 
 export interface PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin {
   /** A resolved host to route to. */
-  host?: string | null;
+  host?: string;
   /** A destination port to route to. */
-  port?: number | null;
+  port?: number;
 }
 export const PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      host: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin",
@@ -67804,22 +67198,20 @@ export const PhasesUpdateRequestRulesItemRouteRuleActionParametersSni =
 
 export interface PhasesUpdateRequestRulesItemRouteRuleActionParameters {
   /** A value to rewrite the HTTP host header to. */
-  hostHeader?: string | null;
+  hostHeader?: string;
   /** An origin to route to. */
-  origin?: PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin | null;
+  origin?: PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin;
   /** A Server Name Indication (SNI) override. */
-  sni?: PhasesUpdateRequestRulesItemRouteRuleActionParametersSni | null;
+  sni?: PhasesUpdateRequestRulesItemRouteRuleActionParametersSni;
 }
 export const PhasesUpdateRequestRulesItemRouteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      hostHeader: S.optional(S.NullOr(S.String).pipe(T.Body("host_header"))),
+      hostHeader: S.optional(S.String.pipe(T.Body("host_header"))),
       origin: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin),
+        PhasesUpdateRequestRulesItemRouteRuleActionParametersOrigin,
       ),
-      sni: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRouteRuleActionParametersSni),
-      ),
+      sni: S.optional(PhasesUpdateRequestRulesItemRouteRuleActionParametersSni),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemRouteRuleActionParameters",
@@ -67860,17 +67252,17 @@ export interface PhasesUpdateRequestRulesItemRouteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemRouteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -67879,22 +67271,20 @@ export const PhasesUpdateRequestRulesItemRouteRuleRatelimit =
         PhasesUpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -67907,58 +67297,54 @@ export interface PhasesUpdateRequestRulesItemRouteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemRouteRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemRouteRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemRouteRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemRouteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemRouteRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemRouteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemRouteRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemRouteRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRouteRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemRouteRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRouteRuleCategoriesList),
+        PhasesUpdateRequestRulesItemRouteRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemRouteRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemRouteRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemRouteRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemRouteRule",
@@ -68016,17 +67402,17 @@ export interface PhasesUpdateRequestRulesItemScoreRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemScoreRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -68035,22 +67421,20 @@ export const PhasesUpdateRequestRulesItemScoreRuleRatelimit =
         PhasesUpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -68063,58 +67447,54 @@ export interface PhasesUpdateRequestRulesItemScoreRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemScoreRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemScoreRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemScoreRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemScoreRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemScoreRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemScoreRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemScoreRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemScoreRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemScoreRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemScoreRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemScoreRuleCategoriesList),
+        PhasesUpdateRequestRulesItemScoreRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemScoreRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemScoreRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemScoreRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemScoreRule",
@@ -68135,21 +67515,20 @@ export interface PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActio
   /** The content type header to set with the error response. */
   contentType?:
     | PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.String,
       contentType: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
+        PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -68167,21 +67546,20 @@ export interface PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActio
   /** The content type header to set with the error response. */
   contentType?:
     | PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       assetName: S.String.pipe(T.Body("asset_name")),
       contentType: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
+        PhasesUpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -68236,17 +67614,17 @@ export interface PhasesUpdateRequestRulesItemServeErrorRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -68255,22 +67633,20 @@ export const PhasesUpdateRequestRulesItemServeErrorRuleRatelimit =
         PhasesUpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -68283,63 +67659,56 @@ export interface PhasesUpdateRequestRulesItemServeErrorRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemServeErrorRuleAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemServeErrorRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemServeErrorRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemServeErrorRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemServeErrorRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemServeErrorRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemServeErrorRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        PhasesUpdateRequestRulesItemServeErrorRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList),
+        PhasesUpdateRequestRulesItemServeErrorRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemServeErrorRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemServeErrorRuleRatelimit),
+        PhasesUpdateRequestRulesItemServeErrorRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemServeErrorRule",
@@ -68361,16 +67730,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmu
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68388,16 +67755,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmu
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68428,7 +67793,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxA
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -68436,9 +67801,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSe
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68456,16 +67819,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxA
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68494,16 +67855,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68521,16 +67880,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68559,16 +67916,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68586,16 +67941,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersMust
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68631,22 +67984,18 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCa
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList | null;
+  qualifiers?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -68665,16 +68014,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCa
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68703,16 +68050,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoSt
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68730,16 +68075,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoSt
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68768,16 +68111,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTr
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68795,16 +68136,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTr
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68840,22 +68179,18 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPriv
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList | null;
+  qualifiers?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -68874,16 +68209,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPriv
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68912,16 +68245,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersProx
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68939,16 +68270,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersProx
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -68977,16 +68306,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPubl
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69004,16 +68331,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersPubl
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69044,7 +68369,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMax
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -69052,9 +68377,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageS
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69072,16 +68395,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMax
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69112,7 +68433,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -69120,9 +68441,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfE
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69140,16 +68459,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69180,7 +68497,7 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -69188,9 +68505,7 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhi
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69208,16 +68523,14 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlActionParametersStal
     | PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -69237,99 +68550,93 @@ export const PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhi
 
 export interface PhasesUpdateRequestRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
-  immutable?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable | null;
+  immutable?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  maxAge?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge | null;
+  maxAge?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge;
   /** A cache-control directive configuration. */
-  mustRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate | null;
+  mustRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate;
   /** A cache-control directive configuration. */
-  mustUnderstand?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand | null;
+  mustUnderstand?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  noCache?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache | null;
+  noCache?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache;
   /** A cache-control directive configuration. */
-  noStore?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore | null;
+  noStore?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore;
   /** A cache-control directive configuration. */
-  noTransform?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform | null;
+  noTransform?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  private?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate | null;
+  private?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate;
   /** A cache-control directive configuration. */
-  proxyRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate | null;
+  proxyRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate;
   /** A cache-control directive configuration. */
-  public?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic | null;
+  public?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  sMaxage?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage | null;
+  sMaxage?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleIfError?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError | null;
+  staleIfError?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleWhileRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate | null;
+  staleWhileRevalidate?: PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immutable: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersImmutable,
       ),
       maxAge: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge,
-        ).pipe(T.Body("max-age")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMaxAge.pipe(
+          T.Body("max-age"),
+        ),
       ),
       mustRevalidate: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate,
-        ).pipe(T.Body("must-revalidate")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate.pipe(
+          T.Body("must-revalidate"),
+        ),
       ),
       mustUnderstand: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand,
-        ).pipe(T.Body("must-understand")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand.pipe(
+          T.Body("must-understand"),
+        ),
       ),
       noCache: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache,
-        ).pipe(T.Body("no-cache")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoCache.pipe(
+          T.Body("no-cache"),
+        ),
       ),
       noStore: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore,
-        ).pipe(T.Body("no-store")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoStore.pipe(
+          T.Body("no-store"),
+        ),
       ),
       noTransform: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform,
-        ).pipe(T.Body("no-transform")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersNoTransform.pipe(
+          T.Body("no-transform"),
+        ),
       ),
       private: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPrivate,
       ),
       proxyRevalidate: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate,
-        ).pipe(T.Body("proxy-revalidate")),
-      ),
-      public: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic,
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate.pipe(
+          T.Body("proxy-revalidate"),
         ),
       ),
+      public: S.optional(
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersPublic,
+      ),
       sMaxage: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage,
-        ).pipe(T.Body("s-maxage")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersSMaxage.pipe(
+          T.Body("s-maxage"),
+        ),
       ),
       staleIfError: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError,
-        ).pipe(T.Body("stale-if-error")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleIfError.pipe(
+          T.Body("stale-if-error"),
+        ),
       ),
       staleWhileRevalidate: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate,
-        ).pipe(T.Body("stale-while-revalidate")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate.pipe(
+          T.Body("stale-while-revalidate"),
+        ),
       ),
     }),
   ).annotate({
@@ -69373,17 +68680,17 @@ export interface PhasesUpdateRequestRulesItemSetCacheControlRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControlRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -69392,22 +68699,20 @@ export const PhasesUpdateRequestRulesItemSetCacheControlRatelimit =
         PhasesUpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -69420,63 +68725,56 @@ export interface PhasesUpdateRequestRulesItemSetCacheControl {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemSetCacheControlAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemSetCacheControlActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemSetCacheControlCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemSetCacheControlCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemSetCacheControlRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemSetCacheControlRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheControl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheControlAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        PhasesUpdateRequestRulesItemSetCacheControlActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheControlCategoriesList),
+        PhasesUpdateRequestRulesItemSetCacheControlCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemSetCacheControlExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheControlRatelimit),
+        PhasesUpdateRequestRulesItemSetCacheControlRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemSetCacheControl",
@@ -69505,13 +68803,13 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
     | PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode
     | (string & {});
   /** The browser TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -69534,22 +68832,20 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie {
   /** A list of cookies to check for the presence of. The presence of these cookies is included in the cache key. */
-  checkPresence?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList | null;
+  checkPresence?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList;
   /** A list of cookies to include in the cache key. */
-  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList | null;
+  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -69592,34 +68888,28 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader {
   /** A list of headers to check for the presence of. The presence of these headers is included in the cache key. */
-  checkPresence?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList | null;
+  checkPresence?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList;
   /** A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key. */
-  contains?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap | null;
+  contains?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap;
   /** Whether to exclude the origin header in the cache key. */
-  excludeOrigin?: boolean | null;
+  excludeOrigin?: boolean;
   /** A list of headers to include in the cache key. */
-  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList | null;
+  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       contains: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
       ),
-      excludeOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("exclude_origin")),
-      ),
+      excludeOrigin: S.optional(S.Boolean.pipe(T.Body("exclude_origin"))),
       include: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -69629,12 +68919,12 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost {
   /** Whether to use the resolved host in the cache key. */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -69650,18 +68940,16 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
   /** Whether to exclude all query string parameters from the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to exclude from the cache key. */
-  list?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList | null;
+  list?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
       ),
     }),
   ).annotate({
@@ -69678,18 +68966,16 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
   /** Whether to include all query string parameters in the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to include in the cache key. */
-  list?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList | null;
+  list?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
       ),
     }),
   ).annotate({
@@ -69699,22 +68985,18 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString {
   /** Which query string parameters to exclude from the cache key. */
-  exclude?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude | null;
+  exclude?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
   /** Which query string parameters to include in the cache key. */
-  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude | null;
+  include?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -69724,18 +69006,18 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser {
   /** Whether to use the user agent's device type in the cache key. */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Whether to use the user agents's country in the cache key. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Whether to use the user agent's language in the cache key. */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -69744,43 +69026,35 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey {
   /** Which cookies to include in the cache key. */
-  cookie?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie | null;
+  cookie?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie;
   /** Which headers to include in the cache key. */
-  header?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader | null;
+  header?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader;
   /** How to use the host in the cache key. */
-  host?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost | null;
+  host?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost;
   /** Which query string parameters to include in or exclude from the cache key. */
-  queryString?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString | null;
+  queryString?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString;
   /** How to use characteristics of the request user agent in the cache key. */
-  user?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser | null;
+  user?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookie: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
       ),
       header: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
       ),
       host: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
       ),
       queryString: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString,
-        ).pipe(T.Body("query_string")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString.pipe(
+          T.Body("query_string"),
+        ),
       ),
       user: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
       ),
     }),
   ).annotate({
@@ -69790,30 +69064,30 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCac
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey {
   /** Whether to separate cached content based on the visitor's device type. */
-  cacheByDeviceType?: boolean | null;
+  cacheByDeviceType?: boolean;
   /** Whether to protect from web cache deception attacks, while allowing static assets to be cached. */
-  cacheDeceptionArmor?: boolean | null;
+  cacheDeceptionArmor?: boolean;
   /** Which components of the request are included or excluded from the cache key. */
-  customKey?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey | null;
+  customKey?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey;
   /** Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in. */
-  ignoreQueryStringsOrder?: boolean | null;
+  ignoreQueryStringsOrder?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheByDeviceType: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_by_device_type")),
+        S.Boolean.pipe(T.Body("cache_by_device_type")),
       ),
       cacheDeceptionArmor: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_deception_armor")),
+        S.Boolean.pipe(T.Body("cache_deception_armor")),
       ),
       customKey: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey,
-        ).pipe(T.Body("custom_key")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey.pipe(
+          T.Body("custom_key"),
+        ),
       ),
       ignoreQueryStringsOrder: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ignore_query_strings_order")),
+        S.Boolean.pipe(T.Body("ignore_query_strings_order")),
       ),
     }),
   ).annotate({
@@ -69825,15 +69099,13 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
   /** Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve. */
   eligible: boolean;
   /** The minimum file size eligible for storage in Cache Reserve. */
-  minimumFileSize?: number | null;
+  minimumFileSize?: number;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eligible: S.Boolean,
-      minimumFileSize: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("minimum_file_size")),
-      ),
+      minimumFileSize: S.optional(S.Number.pipe(T.Body("minimum_file_size"))),
     }),
   ).annotate({
     identifier:
@@ -69847,15 +69119,15 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdg
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange {
   /** The lower bound of the range. */
-  from?: number | null;
+  from?: number;
   /** The upper bound of the range. */
-  to?: number | null;
+  to?: number;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.NullOr(S.Number)),
-      to: S.optional(S.NullOr(S.Number)),
+      from: S.optional(S.Number),
+      to: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -69866,19 +69138,19 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
   /** The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store". */
   value: number;
   /** A single status code to apply the TTL to. */
-  statusCode?: number | null;
+  statusCode?: number;
   /** A range of status codes to apply the TTL to. */
-  statusCodeRange?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange | null;
+  statusCodeRange?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.Number,
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
       statusCodeRange: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange,
-        ).pipe(T.Body("status_code_range")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange.pipe(
+          T.Body("status_code_range"),
+        ),
       ),
     }),
   ).annotate({
@@ -69899,19 +69171,19 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
     | PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode
     | (string & {});
   /** The edge TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
   /** A list of TTLs to apply to specific status codes or status code ranges. */
-  statusCodeTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList | null;
+  statusCodeTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
       statusCodeTtl: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList,
-        ).pipe(T.Body("status_code_ttl")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList.pipe(
+          T.Body("status_code_ttl"),
+        ),
       ),
     }),
   ).annotate({
@@ -69921,13 +69193,13 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdg
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale {
   /** Whether Cloudflare should disable serving stale content while getting the latest content from the origin. */
-  disableStaleWhileUpdating?: boolean | null;
+  disableStaleWhileUpdating?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disableStaleWhileUpdating: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_stale_while_updating")),
+        S.Boolean.pipe(T.Body("disable_stale_while_updating")),
       ),
     }),
   ).annotate({
@@ -69996,9 +69268,9 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameter
     | PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction
     | (string & {});
   /** The set of languages to normalize against. Only valid for the `accept-language` header. */
-  languages?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList | null;
+  languages?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList;
   /** The set of media types to normalize against. Only valid for the `accept` header. */
-  mediaTypes?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList | null;
+  mediaTypes?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -70006,14 +69278,12 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVar
       action:
         PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction,
       languages: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
       ),
       mediaTypes: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList,
-        ).pipe(T.Body("media_types")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList.pipe(
+          T.Body("media_types"),
+        ),
       ),
     }),
   ).annotate({
@@ -70035,22 +69305,18 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVar
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary {
   /** Controls how response Vary headers without a per-header override contribute to the cache key. */
-  default?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault | null;
+  default?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault;
   /** A mapping of lowercase request header names to their vary configuration. */
-  headers?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap | null;
+  headers?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       default: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
       ),
       headers: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
-        ),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
       ),
     }),
   ).annotate({
@@ -70060,98 +69326,94 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVar
 
 export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters {
   /** A list of additional ports that caching should be enabled on. */
-  additionalCacheablePorts?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList | null;
+  additionalCacheablePorts?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList;
   /** How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content. */
-  browserTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl | null;
+  browserTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl;
   /** Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations. */
-  cache?: boolean | null;
+  cache?: boolean;
   /** Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache. */
-  cacheKey?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey | null;
+  cacheKey?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey;
   /** Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan). */
-  cacheReserve?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve | null;
+  cacheReserve?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve;
   /** How long the Cloudflare edge network should cache the response. */
-  edgeTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl | null;
+  edgeTtl?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl;
   /** Whether Cloudflare will aim to strictly adhere to RFC 7234. */
-  originCacheControl?: boolean | null;
+  originCacheControl?: boolean;
   /** Whether to generate Cloudflare error pages for issues from the origin server. */
-  originErrorPagePassthru?: boolean | null;
+  originErrorPagePassthru?: boolean;
   /** A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value. */
-  readTimeout?: number | null;
+  readTimeout?: number;
   /** Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers. */
-  respectStrongEtags?: boolean | null;
+  respectStrongEtags?: boolean;
   /** When to serve stale content from cache. */
-  serveStale?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale | null;
+  serveStale?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale;
   /** Configuration for shared dictionary compression. When set, Cloudflare injects Use-As-Dictionary headers on matching cacheable responses. */
-  sharedDictionary?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary | null;
+  sharedDictionary?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary;
   /** Whether to strip ETag headers from the origin response before caching. */
-  stripEtags?: boolean | null;
+  stripEtags?: boolean;
   /** Whether to strip Last-Modified headers from the origin response before caching. */
-  stripLastModified?: boolean | null;
+  stripLastModified?: boolean;
   /** Whether to strip Set-Cookie headers from the origin response before caching. */
-  stripSetCookie?: boolean | null;
+  stripSetCookie?: boolean;
   /** Controls how cached responses vary based on request headers. `default` is required by the API and applies to any Vary response header that does not have a per-header override. */
-  vary?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary | null;
+  vary?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       additionalCacheablePorts: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList,
-        ).pipe(T.Body("additional_cacheable_ports")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList.pipe(
+          T.Body("additional_cacheable_ports"),
+        ),
       ),
       browserTtl: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl,
-        ).pipe(T.Body("browser_ttl")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl.pipe(
+          T.Body("browser_ttl"),
+        ),
       ),
-      cache: S.optional(S.NullOr(S.Boolean)),
+      cache: S.optional(S.Boolean),
       cacheKey: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey,
-        ).pipe(T.Body("cache_key")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey.pipe(
+          T.Body("cache_key"),
+        ),
       ),
       cacheReserve: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve,
-        ).pipe(T.Body("cache_reserve")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve.pipe(
+          T.Body("cache_reserve"),
+        ),
       ),
       edgeTtl: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl,
-        ).pipe(T.Body("edge_ttl")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl.pipe(
+          T.Body("edge_ttl"),
+        ),
       ),
       originCacheControl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_cache_control")),
+        S.Boolean.pipe(T.Body("origin_cache_control")),
       ),
       originErrorPagePassthru: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_error_page_passthru")),
+        S.Boolean.pipe(T.Body("origin_error_page_passthru")),
       ),
-      readTimeout: S.optional(S.NullOr(S.Number).pipe(T.Body("read_timeout"))),
+      readTimeout: S.optional(S.Number.pipe(T.Body("read_timeout"))),
       respectStrongEtags: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("respect_strong_etags")),
+        S.Boolean.pipe(T.Body("respect_strong_etags")),
       ),
       serveStale: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale,
-        ).pipe(T.Body("serve_stale")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale.pipe(
+          T.Body("serve_stale"),
+        ),
       ),
       sharedDictionary: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary,
-        ).pipe(T.Body("shared_dictionary")),
-      ),
-      stripEtags: S.optional(S.NullOr(S.Boolean).pipe(T.Body("strip_etags"))),
-      stripLastModified: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_last_modified")),
-      ),
-      stripSetCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_set_cookie")),
-      ),
-      vary: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary.pipe(
+          T.Body("shared_dictionary"),
         ),
+      ),
+      stripEtags: S.optional(S.Boolean.pipe(T.Body("strip_etags"))),
+      stripLastModified: S.optional(
+        S.Boolean.pipe(T.Body("strip_last_modified")),
+      ),
+      stripSetCookie: S.optional(S.Boolean.pipe(T.Body("strip_set_cookie"))),
+      vary: S.optional(
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
       ),
     }),
   ).annotate({
@@ -70196,17 +69458,17 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -70215,22 +69477,20 @@ export const PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
         PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -70243,65 +69503,60 @@ export interface PhasesUpdateRequestRulesItemSetCacheSettingsRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleAction,
       ),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
-      ),
-      categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList,
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleActionParameters.pipe(
+          T.Body("action_parameters"),
         ),
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      categories: S.optional(
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleCategoriesList,
+      ),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit),
+        PhasesUpdateRequestRulesItemSetCacheSettingsRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemSetCacheSettingsRule",
@@ -70541,17 +69796,17 @@ export interface PhasesUpdateRequestRulesItemSetCacheTagsRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheTagsRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -70560,22 +69815,20 @@ export const PhasesUpdateRequestRulesItemSetCacheTagsRatelimit =
         PhasesUpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -70588,63 +69841,54 @@ export interface PhasesUpdateRequestRulesItemSetCacheTags {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemSetCacheTagsAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemSetCacheTagsActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemSetCacheTagsRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemSetCacheTagsRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheTagsAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemSetCacheTagsAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheTagsActionParameters).pipe(
+        PhasesUpdateRequestRulesItemSetCacheTagsActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList),
+        PhasesUpdateRequestRulesItemSetCacheTagsCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemSetCacheTagsExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetCacheTagsRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemSetCacheTagsRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemSetCacheTags",
@@ -70656,18 +69900,18 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleAction =
 
 export interface PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify {
   /** Whether to minify CSS files. */
-  css?: boolean | null;
+  css?: boolean;
   /** Whether to minify HTML files. */
-  html?: boolean | null;
+  html?: boolean;
   /** Whether to minify JavaScript files. */
-  js?: boolean | null;
+  js?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      css: S.optional(S.NullOr(S.Boolean)),
-      html: S.optional(S.NullOr(S.Boolean)),
-      js: S.optional(S.NullOr(S.Boolean)),
+      css: S.optional(S.Boolean),
+      html: S.optional(S.Boolean),
+      js: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -70708,132 +69952,115 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSsl =
 
 export interface PhasesUpdateRequestRulesItemSetConfigRuleActionParameters {
   /** Whether to enable Automatic HTTPS Rewrites. */
-  automaticHttpsRewrites?: boolean | null;
+  automaticHttpsRewrites?: boolean;
   /** Which file extensions to minify automatically. */
-  autominify?: PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify | null;
+  autominify?: PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify;
   /** Whether to enable Browser Integrity Check (BIC). */
-  bic?: boolean | null;
+  bic?: boolean;
   /** Whether to enable content conversion (e.g., HTML to Markdown). */
-  contentConverter?: boolean | null;
+  contentConverter?: boolean;
   /** Whether to disable Cloudflare Apps. */
-  disableApps?: boolean | null;
+  disableApps?: boolean;
   /** Whether to disable Pay Per Crawl. */
-  disablePayPerCrawl?: boolean | null;
+  disablePayPerCrawl?: boolean;
   /** Whether to disable Real User Monitoring (RUM). */
-  disableRum?: boolean | null;
+  disableRum?: boolean;
   /** Whether to disable Zaraz. */
-  disableZaraz?: boolean | null;
+  disableZaraz?: boolean;
   /** Whether to enable Email Obfuscation. */
-  emailObfuscation?: boolean | null;
+  emailObfuscation?: boolean;
   /** Whether to enable Cloudflare Fonts. */
-  fonts?: boolean | null;
+  fonts?: boolean;
   /** Whether to enable Hotlink Protection. */
-  hotlinkProtection?: boolean | null;
+  hotlinkProtection?: boolean;
   /** Whether to enable Mirage. */
-  mirage?: boolean | null;
+  mirage?: boolean;
   /** Whether to enable Opportunistic Encryption. */
-  opportunisticEncryption?: boolean | null;
+  opportunisticEncryption?: boolean;
   /** The Polish level to configure. */
   polish?:
     | PhasesUpdateRequestRulesItemSetConfigRuleActionParametersPolish
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to redirect verified AI training crawlers to canonical URLs found in the HTML response. */
-  redirectsForAiTraining?: boolean | null;
+  redirectsForAiTraining?: boolean;
   /** The request body buffering mode. */
   requestBodyBuffering?:
     | PhasesUpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** The response body buffering mode. */
   responseBodyBuffering?:
     | PhasesUpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Rocket Loader. */
-  rocketLoader?: boolean | null;
+  rocketLoader?: boolean;
   /** The Security Level to configure. */
   securityLevel?:
     | PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Server-Side Excludes. */
-  serverSideExcludes?: boolean | null;
+  serverSideExcludes?: boolean;
   /** The SSL level to configure. */
   ssl?:
     | PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSsl
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Signed Exchanges (SXG). */
-  sxg?: boolean | null;
+  sxg?: boolean;
 }
 export const PhasesUpdateRequestRulesItemSetConfigRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       automaticHttpsRewrites: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_https_rewrites")),
+        S.Boolean.pipe(T.Body("automatic_https_rewrites")),
       ),
       autominify: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify,
-        ),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersAutominify,
       ),
-      bic: S.optional(S.NullOr(S.Boolean)),
-      contentConverter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("content_converter")),
-      ),
-      disableApps: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_apps"))),
+      bic: S.optional(S.Boolean),
+      contentConverter: S.optional(S.Boolean.pipe(T.Body("content_converter"))),
+      disableApps: S.optional(S.Boolean.pipe(T.Body("disable_apps"))),
       disablePayPerCrawl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_pay_per_crawl")),
+        S.Boolean.pipe(T.Body("disable_pay_per_crawl")),
       ),
-      disableRum: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_rum"))),
-      disableZaraz: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_zaraz")),
-      ),
-      emailObfuscation: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("email_obfuscation")),
-      ),
-      fonts: S.optional(S.NullOr(S.Boolean)),
+      disableRum: S.optional(S.Boolean.pipe(T.Body("disable_rum"))),
+      disableZaraz: S.optional(S.Boolean.pipe(T.Body("disable_zaraz"))),
+      emailObfuscation: S.optional(S.Boolean.pipe(T.Body("email_obfuscation"))),
+      fonts: S.optional(S.Boolean),
       hotlinkProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("hotlink_protection")),
+        S.Boolean.pipe(T.Body("hotlink_protection")),
       ),
-      mirage: S.optional(S.NullOr(S.Boolean)),
+      mirage: S.optional(S.Boolean),
       opportunisticEncryption: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("opportunistic_encryption")),
+        S.Boolean.pipe(T.Body("opportunistic_encryption")),
       ),
       polish: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParametersPolish,
-        ),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersPolish,
       ),
       redirectsForAiTraining: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("redirects_for_ai_training")),
+        S.Boolean.pipe(T.Body("redirects_for_ai_training")),
       ),
       requestBodyBuffering: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering,
-        ).pipe(T.Body("request_body_buffering")),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering.pipe(
+          T.Body("request_body_buffering"),
+        ),
       ),
       responseBodyBuffering: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering,
-        ).pipe(T.Body("response_body_buffering")),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering.pipe(
+          T.Body("response_body_buffering"),
+        ),
       ),
-      rocketLoader: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("rocket_loader")),
-      ),
+      rocketLoader: S.optional(S.Boolean.pipe(T.Body("rocket_loader"))),
       securityLevel: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel,
-        ).pipe(T.Body("security_level")),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel.pipe(
+          T.Body("security_level"),
+        ),
       ),
       serverSideExcludes: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("server_side_excludes")),
+        S.Boolean.pipe(T.Body("server_side_excludes")),
       ),
       ssl: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSsl),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParametersSsl,
       ),
-      sxg: S.optional(S.NullOr(S.Boolean)),
+      sxg: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemSetConfigRuleActionParameters",
@@ -70876,17 +70103,17 @@ export interface PhasesUpdateRequestRulesItemSetConfigRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemSetConfigRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -70895,22 +70122,20 @@ export const PhasesUpdateRequestRulesItemSetConfigRuleRatelimit =
         PhasesUpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -70923,63 +70148,54 @@ export interface PhasesUpdateRequestRulesItemSetConfigRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | PhasesUpdateRequestRulesItemSetConfigRuleAction
-    | (string & {})
-    | null;
+  action?: PhasesUpdateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemSetConfigRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemSetConfigRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemSetConfigRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemSetConfigRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetConfigRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemSetConfigRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        PhasesUpdateRequestRulesItemSetConfigRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList),
+        PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemSetConfigRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSetConfigRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemSetConfigRuleRatelimit),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemSetConfigRule",
@@ -71087,48 +70303,40 @@ export interface PhasesUpdateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
   phase?:
     | PhasesUpdateRequestRulesItemSkipRuleActionParametersPhase
-    | (string & {})
-    | null;
+    | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
-  phases?: PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList | null;
+  phases?: PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
-  products?: PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList | null;
+  products?: PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList;
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
-  rules?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesMap | null;
+  rules?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
   ruleset?:
     | PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset
-    | (string & {})
-    | null;
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
-  rulesets?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList | null;
+  rulesets?: PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
 export const PhasesUpdateRequestRulesItemSkipRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       phase: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleActionParametersPhase),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersPhase,
       ),
       phases: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList,
-        ),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesList,
       ),
       products: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList,
-        ),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersProductsList,
       ),
       rules: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesMap),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesMap,
       ),
       ruleset: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersRuleset,
       ),
       rulesets: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList,
-        ),
+        PhasesUpdateRequestRulesItemSkipRuleActionParametersRulesetsList,
       ),
     }),
   ).annotate({
@@ -71170,17 +70378,17 @@ export interface PhasesUpdateRequestRulesItemSkipRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemSkipRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -71189,22 +70397,20 @@ export const PhasesUpdateRequestRulesItemSkipRuleRatelimit =
         PhasesUpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -71217,58 +70423,54 @@ export interface PhasesUpdateRequestRulesItemSkipRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: PhasesUpdateRequestRulesItemSkipRuleAction | (string & {}) | null;
+  action?: PhasesUpdateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemSkipRuleActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemSkipRuleCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemSkipRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemSkipRuleRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemSkipRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(PhasesUpdateRequestRulesItemSkipRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(PhasesUpdateRequestRulesItemSkipRuleAction),
       actionParameters: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleActionParameters).pipe(
+        PhasesUpdateRequestRulesItemSkipRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleCategoriesList),
+        PhasesUpdateRequestRulesItemSkipRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemSkipRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
-      ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemSkipRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(PhasesUpdateRequestRulesItemSkipRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PhasesUpdateRequestRulesItemSkipRule",
@@ -71330,17 +70532,17 @@ export interface PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -71349,22 +70551,20 @@ export const PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit =
         PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -71377,65 +70577,60 @@ export interface PhasesUpdateRequestRulesItemTransformResponseHTML {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
   action?:
     | PhasesUpdateRequestRulesItemTransformResponseHTMLAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters | null;
+  actionParameters?: PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */
-  categories?: PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList | null;
+  categories?: PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck | null;
+  exposedCredentialCheck?: PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: PhasesUpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit | null;
+  ratelimit?: PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const PhasesUpdateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
+      id: S.optional(S.String),
       action: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemTransformResponseHTMLAction),
+        PhasesUpdateRequestRulesItemTransformResponseHTMLAction,
       ),
       actionParameters: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters,
-        ).pipe(T.Body("action_parameters")),
-      ),
-      categories: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList,
+        PhasesUpdateRequestRulesItemTransformResponseHTMLActionParameters.pipe(
+          T.Body("action_parameters"),
         ),
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      categories: S.optional(
+        PhasesUpdateRequestRulesItemTransformResponseHTMLCategoriesList,
+      ),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        PhasesUpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemBlockRuleLogging),
-      ),
+      expression: S.optional(S.String),
+      logging: S.optional(PhasesUpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit),
+        PhasesUpdateRequestRulesItemTransformResponseHTMLRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PhasesUpdateRequestRulesItemTransformResponseHTML",
@@ -71794,19 +70989,19 @@ export interface PutPhasForAccountRequest {
   /** The phase of the ruleset. */
   rulesetPhase: string;
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The human-readable name of the ruleset. */
-  name?: string | null;
+  name?: string;
   /** The list of rules in the ruleset. */
-  rules?: PhasesUpdateRequestRulesList | null;
+  rules?: PhasesUpdateRequestRulesList;
 }
 export const PutPhasForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(PhasesUpdateRequestRulesList)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    rules: S.optional(PhasesUpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -78298,19 +77493,19 @@ export interface PutPhasForZoneRequest {
   /** The phase of the ruleset. */
   rulesetPhase: string;
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The human-readable name of the ruleset. */
-  name?: string | null;
+  name?: string;
   /** The list of rules in the ruleset. */
-  rules?: PhasesUpdateRequestRulesList | null;
+  rules?: PhasesUpdateRequestRulesList;
 }
 export const PutPhasForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    rules: S.optional(S.NullOr(PhasesUpdateRequestRulesList)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    rules: S.optional(PhasesUpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -78378,13 +77573,13 @@ export const UpdateRequestRulesItemBlockRuleActionParametersResponse =
 
 export interface UpdateRequestRulesItemBlockRuleActionParameters {
   /** The response to show when the block is applied. */
-  response?: UpdateRequestRulesItemBlockRuleActionParametersResponse | null;
+  response?: UpdateRequestRulesItemBlockRuleActionParametersResponse;
 }
 export const UpdateRequestRulesItemBlockRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       response: S.optional(
-        S.NullOr(UpdateRequestRulesItemBlockRuleActionParametersResponse),
+        UpdateRequestRulesItemBlockRuleActionParametersResponse,
       ),
     }),
   ).annotate({
@@ -78439,17 +77634,17 @@ export interface UpdateRequestRulesItemBlockRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -78458,22 +77653,20 @@ export const UpdateRequestRulesItemBlockRuleRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemBlockRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -78486,53 +77679,51 @@ export interface UpdateRequestRulesItemBlockRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemBlockRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemBlockRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemBlockRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemBlockRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemBlockRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemBlockRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemBlockRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemBlockRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemBlockRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemBlockRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemBlockRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemBlockRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemBlockRuleActionParameters).pipe(
+      UpdateRequestRulesItemBlockRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemBlockRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemBlockRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemBlockRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemBlockRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemBlockRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemBlockRule",
@@ -78576,17 +77767,17 @@ export interface UpdateRequestRulesItemChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -78595,22 +77786,20 @@ export const UpdateRequestRulesItemChallengeRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -78623,51 +77812,47 @@ export interface UpdateRequestRulesItemChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemChallengeAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemChallengeCategoriesList | null;
+  categories?: UpdateRequestRulesItemChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemChallengeRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemChallengeAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemChallengeCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemChallengeAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(UpdateRequestRulesItemChallengeCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemChallengeExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemChallengeExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemChallengeRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemChallengeRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemChallenge",
@@ -78687,16 +77872,13 @@ export interface UpdateRequestRulesItemCompressResponseRuleActionParametersAlgor
   /** Name of the compression algorithm to enable. */
   name?:
     | UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
-        ),
+        UpdateRequestRulesItemCompressResponseRuleActionParametersAlgorithmsItemName,
       ),
     }),
   ).annotate({
@@ -78762,17 +77944,17 @@ export interface UpdateRequestRulesItemCompressResponseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemCompressResponseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -78781,22 +77963,20 @@ export const UpdateRequestRulesItemCompressResponseRuleRatelimit =
         UpdateRequestRulesItemCompressResponseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -78809,61 +77989,56 @@ export interface UpdateRequestRulesItemCompressResponseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemCompressResponseRuleAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemCompressResponseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemCompressResponseRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemCompressResponseRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemCompressResponseRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemCompressResponseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemCompressResponseRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemCompressResponseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemCompressResponseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemCompressResponseRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemCompressResponseRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemCompressResponseRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        UpdateRequestRulesItemCompressResponseRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemCompressResponseRuleCategoriesList),
+        UpdateRequestRulesItemCompressResponseRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemCompressResponseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemCompressResponseRuleRatelimit),
+        UpdateRequestRulesItemCompressResponseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemCompressResponseRule",
@@ -78908,17 +78083,17 @@ export interface UpdateRequestRulesItemDDoSDynamicRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemDDoSDynamicRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -78927,22 +78102,20 @@ export const UpdateRequestRulesItemDDoSDynamicRuleRatelimit =
         UpdateRequestRulesItemDDoSDynamicRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -78955,54 +78128,50 @@ export interface UpdateRequestRulesItemDDoSDynamicRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemDDoSDynamicRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemDDoSDynamicRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemDDoSDynamicRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemDDoSDynamicRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemDDoSDynamicRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemDDoSDynamicRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemDDoSDynamicRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(UpdateRequestRulesItemDDoSDynamicRuleAction)),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemDDoSDynamicRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemDDoSDynamicRuleCategoriesList),
+        UpdateRequestRulesItemDDoSDynamicRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemDDoSDynamicRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemDDoSDynamicRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(UpdateRequestRulesItemDDoSDynamicRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestRulesItemDDoSDynamicRule",
@@ -79033,25 +78202,24 @@ export interface UpdateRequestRulesItemExecuteRuleActionParametersOverridesCateg
   /** The name of the category to override. */
   category: string;
   /** The action to override rules in the category with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of rules in the category. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       category: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -79075,30 +78243,27 @@ export interface UpdateRequestRulesItemExecuteRuleActionParametersOverridesRules
   /** The ID of the rule to override. */
   id: string;
   /** The action to override the rule with. */
-  action?: string | null;
+  action?: string;
   /** Whether to enable execution of the rule. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The score threshold to use for the rule. */
-  scoreThreshold?: number | null;
+  scoreThreshold?: number;
   /** The sensitivity level to use for the rule. This option is only applicable for DDoS phases. */
   sensitivityLevel?:
     | UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      action: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      scoreThreshold: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_threshold")),
-      ),
+      action: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
+      scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesItemSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -79120,38 +78285,33 @@ export const UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivi
 
 export interface UpdateRequestRulesItemExecuteRuleActionParametersOverrides {
   /** An action to override all rules with. This option has lower precedence than rule and category overrides. */
-  action?: string | null;
+  action?: string;
   /** A list of category-level overrides. This option has the second-highest precedence after rule-level overrides. */
-  categories?: UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList | null;
+  categories?: UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList;
   /** Whether to enable execution of all rules. This option has lower precedence than rule and category overrides. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A list of rule-level overrides. This option has the highest precedence. */
-  rules?: UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList | null;
+  rules?: UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList;
   /** A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases. */
   sensitivityLevel?:
     | UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const UpdateRequestRulesItemExecuteRuleActionParametersOverrides =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      action: S.optional(S.NullOr(S.String)),
+      action: S.optional(S.String),
       categories: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
-        ),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverridesCategoriesList,
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      enabled: S.optional(S.Boolean),
       rules: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
-        ),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverridesRulesList,
       ),
       sensitivityLevel: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel,
-        ).pipe(T.Body("sensitivity_level")),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverridesSensitivityLevel.pipe(
+          T.Body("sensitivity_level"),
+        ),
       ),
     }),
   ).annotate({
@@ -79162,21 +78322,21 @@ export interface UpdateRequestRulesItemExecuteRuleActionParameters {
   /** The ID of the ruleset to execute. */
   id: string;
   /** The configuration to use for matched data logging. */
-  matchedData?: UpdateRequestRulesItemExecuteRuleActionParametersMatchedData | null;
+  matchedData?: UpdateRequestRulesItemExecuteRuleActionParametersMatchedData;
   /** A set of overrides to apply to the target ruleset. */
-  overrides?: UpdateRequestRulesItemExecuteRuleActionParametersOverrides | null;
+  overrides?: UpdateRequestRulesItemExecuteRuleActionParametersOverrides;
 }
 export const UpdateRequestRulesItemExecuteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       matchedData: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemExecuteRuleActionParametersMatchedData,
-        ).pipe(T.Body("matched_data")),
+        UpdateRequestRulesItemExecuteRuleActionParametersMatchedData.pipe(
+          T.Body("matched_data"),
+        ),
       ),
       overrides: S.optional(
-        S.NullOr(UpdateRequestRulesItemExecuteRuleActionParametersOverrides),
+        UpdateRequestRulesItemExecuteRuleActionParametersOverrides,
       ),
     }),
   ).annotate({
@@ -79218,17 +78378,17 @@ export interface UpdateRequestRulesItemExecuteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemExecuteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -79237,22 +78397,20 @@ export const UpdateRequestRulesItemExecuteRuleRatelimit =
         UpdateRequestRulesItemExecuteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -79265,53 +78423,51 @@ export interface UpdateRequestRulesItemExecuteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemExecuteRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemExecuteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemExecuteRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemExecuteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemExecuteRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemExecuteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemExecuteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemExecuteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemExecuteRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemExecuteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemExecuteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemExecuteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemExecuteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemExecuteRuleActionParameters).pipe(
+      UpdateRequestRulesItemExecuteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemExecuteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemExecuteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemExecuteRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemExecuteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemExecuteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemExecuteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemExecuteRule",
@@ -79359,17 +78515,17 @@ export interface UpdateRequestRulesItemForceConnectionCloseRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -79378,22 +78534,20 @@ export const UpdateRequestRulesItemForceConnectionCloseRuleRatelimit =
         UpdateRequestRulesItemForceConnectionCloseRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -79406,59 +78560,52 @@ export interface UpdateRequestRulesItemForceConnectionCloseRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemForceConnectionCloseRuleAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemForceConnectionCloseRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemForceConnectionCloseRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemForceConnectionCloseRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemForceConnectionCloseRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemForceConnectionCloseRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemForceConnectionCloseRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList),
+        UpdateRequestRulesItemForceConnectionCloseRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemForceConnectionCloseRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemForceConnectionCloseRuleRatelimit),
+        UpdateRequestRulesItemForceConnectionCloseRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemForceConnectionCloseRule",
@@ -79502,17 +78649,17 @@ export interface UpdateRequestRulesItemJSChallengeRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemJSChallengeRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -79521,22 +78668,20 @@ export const UpdateRequestRulesItemJSChallengeRatelimit =
         UpdateRequestRulesItemJSChallengeRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -79549,51 +78694,47 @@ export interface UpdateRequestRulesItemJSChallenge {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemJSChallengeAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemJSChallengeAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemJSChallengeCategoriesList | null;
+  categories?: UpdateRequestRulesItemJSChallengeCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemJSChallengeExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemJSChallengeExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemJSChallengeRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemJSChallengeRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemJSChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemJSChallengeAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemJSChallengeCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemJSChallengeAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(UpdateRequestRulesItemJSChallengeCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemJSChallengeExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemJSChallengeExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemJSChallengeRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemJSChallengeRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemJSChallenge",
@@ -79637,17 +78778,17 @@ export interface UpdateRequestRulesItemLogRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -79656,22 +78797,20 @@ export const UpdateRequestRulesItemLogRuleRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemLogRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -79684,51 +78823,47 @@ export interface UpdateRequestRulesItemLogRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemLogRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemLogRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemLogRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemLogRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemLogRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemLogRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemLogRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemLogRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemLogRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemLogRuleAction)),
-    actionParameters: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-    ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemLogRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemLogRuleAction),
+    actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
+    categories: S.optional(UpdateRequestRulesItemLogRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemLogRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemLogRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemLogRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemLogRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemLogRule",
@@ -79763,14 +78898,14 @@ export interface UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResp
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -79810,14 +78945,14 @@ export interface UpdateRequestRulesItemLogCustomFieldRuleActionParametersRespons
   /** The name of the response header. */
   name: string;
   /** Whether to log duplicate values of the same header. */
-  preserveDuplicates?: boolean | null;
+  preserveDuplicates?: boolean;
 }
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
       preserveDuplicates: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_duplicates")),
+        S.Boolean.pipe(T.Body("preserve_duplicates")),
       ),
     }),
   ).annotate({
@@ -79855,43 +78990,43 @@ export const UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformed
 
 export interface UpdateRequestRulesItemLogCustomFieldRuleActionParameters {
   /** The cookie fields to log. */
-  cookieFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList | null;
+  cookieFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList;
   /** The raw response fields to log. */
-  rawResponseFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList | null;
+  rawResponseFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList;
   /** The raw request fields to log. */
-  requestFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList | null;
+  requestFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList;
   /** The transformed response fields to log. */
-  responseFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList | null;
+  responseFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList;
   /** The transformed request fields to log. */
-  transformedRequestFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList | null;
+  transformedRequestFields?: UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList;
 }
 export const UpdateRequestRulesItemLogCustomFieldRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookieFields: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList,
-        ).pipe(T.Body("cookie_fields")),
+        UpdateRequestRulesItemLogCustomFieldRuleActionParametersCookieFieldsList.pipe(
+          T.Body("cookie_fields"),
+        ),
       ),
       rawResponseFields: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList,
-        ).pipe(T.Body("raw_response_fields")),
+        UpdateRequestRulesItemLogCustomFieldRuleActionParametersRawResponseFieldsList.pipe(
+          T.Body("raw_response_fields"),
+        ),
       ),
       requestFields: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList,
-        ).pipe(T.Body("request_fields")),
+        UpdateRequestRulesItemLogCustomFieldRuleActionParametersRequestFieldsList.pipe(
+          T.Body("request_fields"),
+        ),
       ),
       responseFields: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList,
-        ).pipe(T.Body("response_fields")),
+        UpdateRequestRulesItemLogCustomFieldRuleActionParametersResponseFieldsList.pipe(
+          T.Body("response_fields"),
+        ),
       ),
       transformedRequestFields: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList,
-        ).pipe(T.Body("transformed_request_fields")),
+        UpdateRequestRulesItemLogCustomFieldRuleActionParametersTransformedRequestFieldsList.pipe(
+          T.Body("transformed_request_fields"),
+        ),
       ),
     }),
   ).annotate({
@@ -79935,17 +79070,17 @@ export interface UpdateRequestRulesItemLogCustomFieldRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemLogCustomFieldRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -79954,22 +79089,20 @@ export const UpdateRequestRulesItemLogCustomFieldRuleRatelimit =
         UpdateRequestRulesItemLogCustomFieldRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -79982,61 +79115,54 @@ export interface UpdateRequestRulesItemLogCustomFieldRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemLogCustomFieldRuleAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemLogCustomFieldRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemLogCustomFieldRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemLogCustomFieldRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemLogCustomFieldRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemLogCustomFieldRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemLogCustomFieldRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemLogCustomFieldRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemLogCustomFieldRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemLogCustomFieldRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemLogCustomFieldRuleAction),
       actionParameters: S.optional(
-        S.NullOr(UpdateRequestRulesItemLogCustomFieldRuleActionParameters).pipe(
+        UpdateRequestRulesItemLogCustomFieldRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemLogCustomFieldRuleCategoriesList),
+        UpdateRequestRulesItemLogCustomFieldRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemLogCustomFieldRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemLogCustomFieldRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(UpdateRequestRulesItemLogCustomFieldRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestRulesItemLogCustomFieldRule",
@@ -80084,17 +79210,17 @@ export interface UpdateRequestRulesItemManagedChallengeRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemManagedChallengeRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -80103,22 +79229,20 @@ export const UpdateRequestRulesItemManagedChallengeRuleRatelimit =
         UpdateRequestRulesItemManagedChallengeRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -80131,59 +79255,52 @@ export interface UpdateRequestRulesItemManagedChallengeRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemManagedChallengeRuleAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemManagedChallengeRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: unknown | null;
+  actionParameters?: unknown;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemManagedChallengeRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemManagedChallengeRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemManagedChallengeRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemManagedChallengeRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemManagedChallengeRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemManagedChallengeRuleAction),
-      ),
-      actionParameters: S.optional(
-        S.NullOr(S.Unknown).pipe(T.Body("action_parameters")),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemManagedChallengeRuleAction),
+      actionParameters: S.optional(S.Unknown.pipe(T.Body("action_parameters"))),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemManagedChallengeRuleCategoriesList),
+        UpdateRequestRulesItemManagedChallengeRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemManagedChallengeRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemManagedChallengeRuleRatelimit),
+        UpdateRequestRulesItemManagedChallengeRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemManagedChallengeRule",
@@ -80210,15 +79327,15 @@ export const UpdateRequestRulesItemRedirectRuleActionParametersFromList =
 
 export interface UpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl {
   /** An expression that evaluates to a URL to redirect the request to. */
-  expression?: string | null;
+  expression?: string;
   /** A URL to redirect the request to. */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -80234,12 +79351,11 @@ export interface UpdateRequestRulesItemRedirectRuleActionParametersFromValue {
   /** A URL to redirect the request to. */
   targetUrl: UpdateRequestRulesItemRedirectRuleActionParametersFromValueTargetUrl;
   /** Whether to keep the query string of the original request. */
-  preserveQueryString?: boolean | null;
+  preserveQueryString?: boolean;
   /** The status code to use for the redirect. */
   statusCode?:
     | UpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode
-    | (number & {})
-    | null;
+    | (number & {});
 }
 export const UpdateRequestRulesItemRedirectRuleActionParametersFromValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -80249,12 +79365,12 @@ export const UpdateRequestRulesItemRedirectRuleActionParametersFromValue =
           T.Body("target_url"),
         ),
       preserveQueryString: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string")),
+        S.Boolean.pipe(T.Body("preserve_query_string")),
       ),
       statusCode: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode,
-        ).pipe(T.Body("status_code")),
+        UpdateRequestRulesItemRedirectRuleActionParametersFromValueStatusCode.pipe(
+          T.Body("status_code"),
+        ),
       ),
     }),
   ).annotate({
@@ -80263,22 +79379,22 @@ export const UpdateRequestRulesItemRedirectRuleActionParametersFromValue =
 
 export interface UpdateRequestRulesItemRedirectRuleActionParameters {
   /** A redirect based on a bulk list lookup. */
-  fromList?: UpdateRequestRulesItemRedirectRuleActionParametersFromList | null;
+  fromList?: UpdateRequestRulesItemRedirectRuleActionParametersFromList;
   /** A redirect based on the request properties. */
-  fromValue?: UpdateRequestRulesItemRedirectRuleActionParametersFromValue | null;
+  fromValue?: UpdateRequestRulesItemRedirectRuleActionParametersFromValue;
 }
 export const UpdateRequestRulesItemRedirectRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fromList: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemRedirectRuleActionParametersFromList,
-        ).pipe(T.Body("from_list")),
+        UpdateRequestRulesItemRedirectRuleActionParametersFromList.pipe(
+          T.Body("from_list"),
+        ),
       ),
       fromValue: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemRedirectRuleActionParametersFromValue,
-        ).pipe(T.Body("from_value")),
+        UpdateRequestRulesItemRedirectRuleActionParametersFromValue.pipe(
+          T.Body("from_value"),
+        ),
       ),
     }),
   ).annotate({
@@ -80320,17 +79436,17 @@ export interface UpdateRequestRulesItemRedirectRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemRedirectRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -80339,22 +79455,20 @@ export const UpdateRequestRulesItemRedirectRuleRatelimit =
         UpdateRequestRulesItemRedirectRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -80367,55 +79481,51 @@ export interface UpdateRequestRulesItemRedirectRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRedirectRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemRedirectRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemRedirectRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemRedirectRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemRedirectRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemRedirectRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemRedirectRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemRedirectRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemRedirectRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemRedirectRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemRedirectRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemRedirectRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemRedirectRuleActionParameters).pipe(
+      UpdateRequestRulesItemRedirectRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemRedirectRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemRedirectRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemRedirectRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemRedirectRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(UpdateRequestRulesItemRedirectRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemRedirectRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemRedirectRule",
@@ -80555,15 +79665,15 @@ export const UpdateRequestRulesItemRewriteRuleActionParametersHeaders =
 
 export interface UpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI path to. */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -80574,13 +79684,13 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersUriURIPath {
   /** A URI path rewrite. */
   path: UpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersUriURIPath =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: UpdateRequestRulesItemRewriteRuleActionParametersUriURIPathPath,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemRewriteRuleActionParametersUriURIPath",
@@ -80588,15 +79698,15 @@ export const UpdateRequestRulesItemRewriteRuleActionParametersUriURIPath =
 
 export interface UpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery {
   /** An expression that evaluates to a value to rewrite the URI query to. */
-  expression?: string | null;
+  expression?: string;
   /** A value to rewrite the URI query to. */
-  value?: string | null;
+  value?: string;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      expression: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -80607,13 +79717,13 @@ export interface UpdateRequestRulesItemRewriteRuleActionParametersUriURIQuery {
   /** A URI query rewrite. */
   query: UpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery;
   /** Whether to propagate the rewritten URI to origin. */
-  origin?: boolean | null;
+  origin?: boolean;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParametersUriURIQuery =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       query: UpdateRequestRulesItemRewriteRuleActionParametersUriURIQueryQuery,
-      origin: S.optional(S.NullOr(S.Boolean)),
+      origin: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemRewriteRuleActionParametersUriURIQuery",
@@ -80632,19 +79742,17 @@ export const UpdateRequestRulesItemRewriteRuleActionParametersUri =
 
 export interface UpdateRequestRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
-  headers?: UpdateRequestRulesItemRewriteRuleActionParametersHeaders | null;
+  headers?: UpdateRequestRulesItemRewriteRuleActionParametersHeaders;
   /** A URI path rewrite. */
-  uri?: UpdateRequestRulesItemRewriteRuleActionParametersUri | null;
+  uri?: UpdateRequestRulesItemRewriteRuleActionParametersUri;
 }
 export const UpdateRequestRulesItemRewriteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(
-        S.NullOr(UpdateRequestRulesItemRewriteRuleActionParametersHeaders),
+        UpdateRequestRulesItemRewriteRuleActionParametersHeaders,
       ),
-      uri: S.optional(
-        S.NullOr(UpdateRequestRulesItemRewriteRuleActionParametersUri),
-      ),
+      uri: S.optional(UpdateRequestRulesItemRewriteRuleActionParametersUri),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemRewriteRuleActionParameters",
@@ -80685,17 +79793,17 @@ export interface UpdateRequestRulesItemRewriteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemRewriteRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -80704,22 +79812,20 @@ export const UpdateRequestRulesItemRewriteRuleRatelimit =
         UpdateRequestRulesItemRewriteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -80732,53 +79838,51 @@ export interface UpdateRequestRulesItemRewriteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRewriteRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemRewriteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemRewriteRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemRewriteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemRewriteRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemRewriteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemRewriteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemRewriteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemRewriteRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemRewriteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemRewriteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemRewriteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemRewriteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemRewriteRuleActionParameters).pipe(
+      UpdateRequestRulesItemRewriteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemRewriteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemRewriteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemRewriteRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemRewriteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemRewriteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemRewriteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemRewriteRule",
@@ -80789,15 +79893,15 @@ export const UpdateRequestRulesItemRouteRuleAction = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestRulesItemRouteRuleActionParametersOrigin {
   /** A resolved host to route to. */
-  host?: string | null;
+  host?: string;
   /** A destination port to route to. */
-  port?: number | null;
+  port?: number;
 }
 export const UpdateRequestRulesItemRouteRuleActionParametersOrigin =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      host: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
+      host: S.optional(S.String),
+      port: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemRouteRuleActionParametersOrigin",
@@ -80818,22 +79922,18 @@ export const UpdateRequestRulesItemRouteRuleActionParametersSni =
 
 export interface UpdateRequestRulesItemRouteRuleActionParameters {
   /** A value to rewrite the HTTP host header to. */
-  hostHeader?: string | null;
+  hostHeader?: string;
   /** An origin to route to. */
-  origin?: UpdateRequestRulesItemRouteRuleActionParametersOrigin | null;
+  origin?: UpdateRequestRulesItemRouteRuleActionParametersOrigin;
   /** A Server Name Indication (SNI) override. */
-  sni?: UpdateRequestRulesItemRouteRuleActionParametersSni | null;
+  sni?: UpdateRequestRulesItemRouteRuleActionParametersSni;
 }
 export const UpdateRequestRulesItemRouteRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      hostHeader: S.optional(S.NullOr(S.String).pipe(T.Body("host_header"))),
-      origin: S.optional(
-        S.NullOr(UpdateRequestRulesItemRouteRuleActionParametersOrigin),
-      ),
-      sni: S.optional(
-        S.NullOr(UpdateRequestRulesItemRouteRuleActionParametersSni),
-      ),
+      hostHeader: S.optional(S.String.pipe(T.Body("host_header"))),
+      origin: S.optional(UpdateRequestRulesItemRouteRuleActionParametersOrigin),
+      sni: S.optional(UpdateRequestRulesItemRouteRuleActionParametersSni),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemRouteRuleActionParameters",
@@ -80874,17 +79974,17 @@ export interface UpdateRequestRulesItemRouteRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -80893,22 +79993,20 @@ export const UpdateRequestRulesItemRouteRuleRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemRouteRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -80921,53 +80019,51 @@ export interface UpdateRequestRulesItemRouteRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemRouteRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemRouteRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemRouteRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemRouteRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemRouteRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemRouteRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemRouteRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemRouteRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemRouteRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemRouteRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemRouteRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemRouteRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemRouteRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemRouteRuleActionParameters).pipe(
+      UpdateRequestRulesItemRouteRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemRouteRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemRouteRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemRouteRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemRouteRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemRouteRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemRouteRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemRouteRule",
@@ -81024,17 +80120,17 @@ export interface UpdateRequestRulesItemScoreRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -81043,22 +80139,20 @@ export const UpdateRequestRulesItemScoreRuleRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemScoreRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -81071,53 +80165,51 @@ export interface UpdateRequestRulesItemScoreRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemScoreRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemScoreRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemScoreRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemScoreRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemScoreRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemScoreRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemScoreRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemScoreRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemScoreRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemScoreRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemScoreRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemScoreRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemScoreRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemScoreRuleActionParameters).pipe(
+      UpdateRequestRulesItemScoreRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemScoreRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemScoreRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemScoreRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemScoreRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemScoreRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemScoreRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemScoreRule",
@@ -81138,21 +80230,20 @@ export interface UpdateRequestRulesItemServeErrorRuleActionParametersActionParam
   /** The content type header to set with the error response. */
   contentType?:
     | UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.String,
       contentType: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
-        ).pipe(T.Body("content_type")),
+        UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersContentContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -81170,21 +80261,20 @@ export interface UpdateRequestRulesItemServeErrorRuleActionParametersActionParam
   /** The content type header to set with the error response. */
   contentType?:
     | UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType
-    | (string & {})
-    | null;
+    | (string & {});
   /** The status code to use for the error. */
-  statusCode?: number | null;
+  statusCode?: number;
 }
 export const UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAsset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       assetName: S.String.pipe(T.Body("asset_name")),
       contentType: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
-        ).pipe(T.Body("content_type")),
+        UpdateRequestRulesItemServeErrorRuleActionParametersActionParametersAssetContentType.pipe(
+          T.Body("content_type"),
+        ),
       ),
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     }),
   ).annotate({
     identifier:
@@ -81237,17 +80327,17 @@ export interface UpdateRequestRulesItemServeErrorRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemServeErrorRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -81256,22 +80346,20 @@ export const UpdateRequestRulesItemServeErrorRuleRatelimit =
         UpdateRequestRulesItemServeErrorRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -81284,56 +80372,54 @@ export interface UpdateRequestRulesItemServeErrorRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemServeErrorRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemServeErrorRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemServeErrorRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemServeErrorRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemServeErrorRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemServeErrorRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemServeErrorRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemServeErrorRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemServeErrorRule = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(UpdateRequestRulesItemServeErrorRuleAction)),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemServeErrorRuleAction),
       actionParameters: S.optional(
-        S.NullOr(UpdateRequestRulesItemServeErrorRuleActionParameters).pipe(
+        UpdateRequestRulesItemServeErrorRuleActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemServeErrorRuleCategoriesList),
+        UpdateRequestRulesItemServeErrorRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemServeErrorRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemServeErrorRuleRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(UpdateRequestRulesItemServeErrorRuleRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestRulesItemServeErrorRule",
@@ -81354,16 +80440,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersImmutableS
     | UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81381,16 +80465,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersImmutableR
     | UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81421,7 +80503,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetD
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -81429,9 +80511,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirec
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81449,16 +80529,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemo
     | UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81487,16 +80565,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustRevali
     | UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81514,16 +80590,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustRevali
     | UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81552,16 +80626,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustUnders
     | UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81579,16 +80651,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersMustUnders
     | UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81624,22 +80694,18 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSet
     | UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList | null;
+  qualifiers?: UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
-        ),
+        UpdateRequestRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -81658,16 +80724,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRem
     | UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81696,16 +80760,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSet
     | UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81723,16 +80785,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRem
     | UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81761,16 +80821,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoTransfor
     | UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81788,16 +80846,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersNoTransfor
     | UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81833,22 +80889,18 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPrivateSet
     | UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
   /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
-  qualifiers?: UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList | null;
+  qualifiers?: UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
       qualifiers: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
-        ),
+        UpdateRequestRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
       ),
     }),
   ).annotate({
@@ -81867,16 +80919,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPrivateRem
     | UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81905,16 +80955,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersProxyReval
     | UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81932,16 +80980,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersProxyReval
     | UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81970,16 +81016,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPublicSetD
     | UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -81997,16 +81041,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersPublicRemo
     | UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82037,7 +81079,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSet
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -82045,9 +81087,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDire
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82065,16 +81105,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRem
     | UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82105,7 +81143,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErr
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -82113,9 +81151,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSe
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82133,16 +81169,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErr
     | UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82173,7 +81207,7 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleWhile
   /** The duration value in seconds for the directive. */
   value: number;
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective =
   /*@__PURE__*/ S.suspend(() =>
@@ -82181,9 +81215,7 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileReva
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
       value: S.Number,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82201,16 +81233,14 @@ export interface UpdateRequestRulesItemSetCacheControlActionParametersStaleWhile
     | UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation
     | (string & {});
   /** Whether the directive should only be applied to the Cloudflare CDN cache. */
-  cloudflareOnly?: boolean | null;
+  cloudflareOnly?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operation:
         UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
-      cloudflareOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cloudflare_only")),
-      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
     }),
   ).annotate({
     identifier:
@@ -82230,95 +81260,93 @@ export const UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileReva
 
 export interface UpdateRequestRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
-  immutable?: UpdateRequestRulesItemSetCacheControlActionParametersImmutable | null;
+  immutable?: UpdateRequestRulesItemSetCacheControlActionParametersImmutable;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  maxAge?: UpdateRequestRulesItemSetCacheControlActionParametersMaxAge | null;
+  maxAge?: UpdateRequestRulesItemSetCacheControlActionParametersMaxAge;
   /** A cache-control directive configuration. */
-  mustRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate | null;
+  mustRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate;
   /** A cache-control directive configuration. */
-  mustUnderstand?: UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand | null;
+  mustUnderstand?: UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  noCache?: UpdateRequestRulesItemSetCacheControlActionParametersNoCache | null;
+  noCache?: UpdateRequestRulesItemSetCacheControlActionParametersNoCache;
   /** A cache-control directive configuration. */
-  noStore?: UpdateRequestRulesItemSetCacheControlActionParametersNoStore | null;
+  noStore?: UpdateRequestRulesItemSetCacheControlActionParametersNoStore;
   /** A cache-control directive configuration. */
-  noTransform?: UpdateRequestRulesItemSetCacheControlActionParametersNoTransform | null;
+  noTransform?: UpdateRequestRulesItemSetCacheControlActionParametersNoTransform;
   /** A cache-control directive configuration that accepts optional qualifiers (header names). */
-  private?: UpdateRequestRulesItemSetCacheControlActionParametersPrivate | null;
+  private?: UpdateRequestRulesItemSetCacheControlActionParametersPrivate;
   /** A cache-control directive configuration. */
-  proxyRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate | null;
+  proxyRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate;
   /** A cache-control directive configuration. */
-  public?: UpdateRequestRulesItemSetCacheControlActionParametersPublic | null;
+  public?: UpdateRequestRulesItemSetCacheControlActionParametersPublic;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  sMaxage?: UpdateRequestRulesItemSetCacheControlActionParametersSMaxage | null;
+  sMaxage?: UpdateRequestRulesItemSetCacheControlActionParametersSMaxage;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleIfError?: UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError | null;
+  staleIfError?: UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError;
   /** A cache-control directive configuration that accepts a duration value in seconds. */
-  staleWhileRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate | null;
+  staleWhileRevalidate?: UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate;
 }
 export const UpdateRequestRulesItemSetCacheControlActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       immutable: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersImmutable,
-        ),
+        UpdateRequestRulesItemSetCacheControlActionParametersImmutable,
       ),
       maxAge: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersMaxAge,
-        ).pipe(T.Body("max-age")),
+        UpdateRequestRulesItemSetCacheControlActionParametersMaxAge.pipe(
+          T.Body("max-age"),
+        ),
       ),
       mustRevalidate: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate,
-        ).pipe(T.Body("must-revalidate")),
+        UpdateRequestRulesItemSetCacheControlActionParametersMustRevalidate.pipe(
+          T.Body("must-revalidate"),
+        ),
       ),
       mustUnderstand: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand,
-        ).pipe(T.Body("must-understand")),
+        UpdateRequestRulesItemSetCacheControlActionParametersMustUnderstand.pipe(
+          T.Body("must-understand"),
+        ),
       ),
       noCache: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersNoCache,
-        ).pipe(T.Body("no-cache")),
+        UpdateRequestRulesItemSetCacheControlActionParametersNoCache.pipe(
+          T.Body("no-cache"),
+        ),
       ),
       noStore: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersNoStore,
-        ).pipe(T.Body("no-store")),
+        UpdateRequestRulesItemSetCacheControlActionParametersNoStore.pipe(
+          T.Body("no-store"),
+        ),
       ),
       noTransform: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersNoTransform,
-        ).pipe(T.Body("no-transform")),
+        UpdateRequestRulesItemSetCacheControlActionParametersNoTransform.pipe(
+          T.Body("no-transform"),
+        ),
       ),
       private: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheControlActionParametersPrivate),
+        UpdateRequestRulesItemSetCacheControlActionParametersPrivate,
       ),
       proxyRevalidate: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate,
-        ).pipe(T.Body("proxy-revalidate")),
+        UpdateRequestRulesItemSetCacheControlActionParametersProxyRevalidate.pipe(
+          T.Body("proxy-revalidate"),
+        ),
       ),
       public: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheControlActionParametersPublic),
+        UpdateRequestRulesItemSetCacheControlActionParametersPublic,
       ),
       sMaxage: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersSMaxage,
-        ).pipe(T.Body("s-maxage")),
+        UpdateRequestRulesItemSetCacheControlActionParametersSMaxage.pipe(
+          T.Body("s-maxage"),
+        ),
       ),
       staleIfError: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError,
-        ).pipe(T.Body("stale-if-error")),
+        UpdateRequestRulesItemSetCacheControlActionParametersStaleIfError.pipe(
+          T.Body("stale-if-error"),
+        ),
       ),
       staleWhileRevalidate: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate,
-        ).pipe(T.Body("stale-while-revalidate")),
+        UpdateRequestRulesItemSetCacheControlActionParametersStaleWhileRevalidate.pipe(
+          T.Body("stale-while-revalidate"),
+        ),
       ),
     }),
   ).annotate({
@@ -82360,17 +81388,17 @@ export interface UpdateRequestRulesItemSetCacheControlRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemSetCacheControlRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -82379,22 +81407,20 @@ export const UpdateRequestRulesItemSetCacheControlRatelimit =
         UpdateRequestRulesItemSetCacheControlRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -82407,56 +81433,54 @@ export interface UpdateRequestRulesItemSetCacheControl {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetCacheControlAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemSetCacheControlAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemSetCacheControlActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemSetCacheControlActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemSetCacheControlCategoriesList | null;
+  categories?: UpdateRequestRulesItemSetCacheControlCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheControlExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheControlExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemSetCacheControlRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemSetCacheControlRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemSetCacheControl = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(S.NullOr(UpdateRequestRulesItemSetCacheControlAction)),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemSetCacheControlAction),
       actionParameters: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheControlActionParameters).pipe(
+        UpdateRequestRulesItemSetCacheControlActionParameters.pipe(
           T.Body("action_parameters"),
         ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheControlCategoriesList),
+        UpdateRequestRulesItemSetCacheControlCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheControlExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemSetCacheControlExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-      ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheControlRatelimit),
-      ),
-      ref: S.optional(S.NullOr(S.String)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+      ratelimit: S.optional(UpdateRequestRulesItemSetCacheControlRatelimit),
+      ref: S.optional(S.String),
     }),
 ).annotate({
   identifier: "UpdateRequestRulesItemSetCacheControl",
@@ -82485,13 +81509,13 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrows
     | UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode
     | (string & {});
   /** The browser TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -82514,22 +81538,20 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie {
   /** A list of cookies to check for the presence of. The presence of these cookies is included in the cache key. */
-  checkPresence?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList | null;
+  checkPresence?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList;
   /** A list of cookies to include in the cache key. */
-  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList | null;
+  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       include: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookieIncludeList,
       ),
     }),
   ).annotate({
@@ -82572,34 +81594,28 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader {
   /** A list of headers to check for the presence of. The presence of these headers is included in the cache key. */
-  checkPresence?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList | null;
+  checkPresence?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList;
   /** A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key. */
-  contains?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap | null;
+  contains?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap;
   /** Whether to exclude the origin header in the cache key. */
-  excludeOrigin?: boolean | null;
+  excludeOrigin?: boolean;
   /** A list of headers to include in the cache key. */
-  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList | null;
+  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       checkPresence: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList,
-        ).pipe(T.Body("check_presence")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderCheckPresenceList.pipe(
+          T.Body("check_presence"),
+        ),
       ),
       contains: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderContainsMap,
       ),
-      excludeOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("exclude_origin")),
-      ),
+      excludeOrigin: S.optional(S.Boolean.pipe(T.Body("exclude_origin"))),
       include: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeaderIncludeList,
       ),
     }),
   ).annotate({
@@ -82609,12 +81625,12 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost {
   /** Whether to use the resolved host in the cache key. */
-  resolved?: boolean | null;
+  resolved?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resolved: S.optional(S.NullOr(S.Boolean)),
+      resolved: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -82630,18 +81646,16 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
   /** Whether to exclude all query string parameters from the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to exclude from the cache key. */
-  list?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList | null;
+  list?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExcludeListList,
       ),
     }),
   ).annotate({
@@ -82658,18 +81672,16 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
   /** Whether to include all query string parameters in the cache key. */
-  all?: boolean | null;
+  all?: boolean;
   /** A list of query string parameters to include in the cache key. */
-  list?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList | null;
+  list?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      all: S.optional(S.NullOr(S.Boolean)),
+      all: S.optional(S.Boolean),
       list: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringIncludeListList,
       ),
     }),
   ).annotate({
@@ -82679,22 +81691,18 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString {
   /** Which query string parameters to exclude from the cache key. */
-  exclude?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude | null;
+  exclude?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
   /** Which query string parameters to include in the cache key. */
-  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude | null;
+  include?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       exclude: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringExclude,
       ),
       include: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryStringInclude,
       ),
     }),
   ).annotate({
@@ -82704,18 +81712,18 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser {
   /** Whether to use the user agent's device type in the cache key. */
-  deviceType?: boolean | null;
+  deviceType?: boolean;
   /** Whether to use the user agents's country in the cache key. */
-  geo?: boolean | null;
+  geo?: boolean;
   /** Whether to use the user agent's language in the cache key. */
-  lang?: boolean | null;
+  lang?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deviceType: S.optional(S.NullOr(S.Boolean).pipe(T.Body("device_type"))),
-      geo: S.optional(S.NullOr(S.Boolean)),
-      lang: S.optional(S.NullOr(S.Boolean)),
+      deviceType: S.optional(S.Boolean.pipe(T.Body("device_type"))),
+      geo: S.optional(S.Boolean),
+      lang: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier:
@@ -82724,43 +81732,35 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey {
   /** Which cookies to include in the cache key. */
-  cookie?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie | null;
+  cookie?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie;
   /** Which headers to include in the cache key. */
-  header?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader | null;
+  header?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader;
   /** How to use the host in the cache key. */
-  host?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost | null;
+  host?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost;
   /** Which query string parameters to include in or exclude from the cache key. */
-  queryString?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString | null;
+  queryString?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString;
   /** How to use characteristics of the request user agent in the cache key. */
-  user?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser | null;
+  user?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cookie: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyCookie,
       ),
       header: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHeader,
       ),
       host: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyHost,
       ),
       queryString: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString,
-        ).pipe(T.Body("query_string")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyQueryString.pipe(
+          T.Body("query_string"),
+        ),
       ),
       user: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKeyUser,
       ),
     }),
   ).annotate({
@@ -82770,30 +81770,30 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyC
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey {
   /** Whether to separate cached content based on the visitor's device type. */
-  cacheByDeviceType?: boolean | null;
+  cacheByDeviceType?: boolean;
   /** Whether to protect from web cache deception attacks, while allowing static assets to be cached. */
-  cacheDeceptionArmor?: boolean | null;
+  cacheDeceptionArmor?: boolean;
   /** Which components of the request are included or excluded from the cache key. */
-  customKey?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey | null;
+  customKey?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey;
   /** Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in. */
-  ignoreQueryStringsOrder?: boolean | null;
+  ignoreQueryStringsOrder?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cacheByDeviceType: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_by_device_type")),
+        S.Boolean.pipe(T.Body("cache_by_device_type")),
       ),
       cacheDeceptionArmor: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("cache_deception_armor")),
+        S.Boolean.pipe(T.Body("cache_deception_armor")),
       ),
       customKey: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey,
-        ).pipe(T.Body("custom_key")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKeyCustomKey.pipe(
+          T.Body("custom_key"),
+        ),
       ),
       ignoreQueryStringsOrder: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("ignore_query_strings_order")),
+        S.Boolean.pipe(T.Body("ignore_query_strings_order")),
       ),
     }),
   ).annotate({
@@ -82805,15 +81805,13 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCache
   /** Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve. */
   eligible: boolean;
   /** The minimum file size eligible for storage in Cache Reserve. */
-  minimumFileSize?: number | null;
+  minimumFileSize?: number;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eligible: S.Boolean,
-      minimumFileSize: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("minimum_file_size")),
-      ),
+      minimumFileSize: S.optional(S.Number.pipe(T.Body("minimum_file_size"))),
     }),
   ).annotate({
     identifier:
@@ -82827,15 +81825,15 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMo
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange {
   /** The lower bound of the range. */
-  from?: number | null;
+  from?: number;
   /** The upper bound of the range. */
-  to?: number | null;
+  to?: number;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      from: S.optional(S.NullOr(S.Number)),
-      to: S.optional(S.NullOr(S.Number)),
+      from: S.optional(S.Number),
+      to: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -82846,19 +81844,19 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeT
   /** The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store". */
   value: number;
   /** A single status code to apply the TTL to. */
-  statusCode?: number | null;
+  statusCode?: number;
   /** A range of status codes to apply the TTL to. */
-  statusCodeRange?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange | null;
+  statusCodeRange?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.Number,
-      statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
       statusCodeRange: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange,
-        ).pipe(T.Body("status_code_range")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlItemStatusCodeRange.pipe(
+          T.Body("status_code_range"),
+        ),
       ),
     }),
   ).annotate({
@@ -82879,19 +81877,19 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeT
     | UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode
     | (string & {});
   /** The edge TTL (in seconds) if you choose the "override_origin" mode. */
-  default?: number | null;
+  default?: number;
   /** A list of TTLs to apply to specific status codes or status code ranges. */
-  statusCodeTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList | null;
+  statusCodeTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlMode,
-      default: S.optional(S.NullOr(S.Number)),
+      default: S.optional(S.Number),
       statusCodeTtl: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList,
-        ).pipe(T.Body("status_code_ttl")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtlStatusCodeTtlList.pipe(
+          T.Body("status_code_ttl"),
+        ),
       ),
     }),
   ).annotate({
@@ -82901,13 +81899,13 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl =
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale {
   /** Whether Cloudflare should disable serving stale content while getting the latest content from the origin. */
-  disableStaleWhileUpdating?: boolean | null;
+  disableStaleWhileUpdating?: boolean;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disableStaleWhileUpdating: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_stale_while_updating")),
+        S.Boolean.pipe(T.Body("disable_stale_while_updating")),
       ),
     }),
   ).annotate({
@@ -82976,9 +81974,9 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryH
     | UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction
     | (string & {});
   /** The set of languages to normalize against. Only valid for the `accept-language` header. */
-  languages?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList | null;
+  languages?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList;
   /** The set of media types to normalize against. Only valid for the `accept` header. */
-  mediaTypes?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList | null;
+  mediaTypes?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -82986,14 +81984,12 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
       action:
         UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueAction,
       languages: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueLanguagesList,
       ),
       mediaTypes: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList,
-        ).pipe(T.Body("media_types")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersValueMediaTypesList.pipe(
+          T.Body("media_types"),
+        ),
       ),
     }),
   ).annotate({
@@ -83015,22 +82011,18 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeade
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary {
   /** Controls how response Vary headers without a per-header override contribute to the cache key. */
-  default?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault | null;
+  default?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault;
   /** A mapping of lowercase request header names to their vary configuration. */
-  headers?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap | null;
+  headers?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       default: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryDefault,
       ),
       headers: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
-        ),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVaryHeadersMap,
       ),
     }),
   ).annotate({
@@ -83040,98 +82032,94 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary =
 
 export interface UpdateRequestRulesItemSetCacheSettingsRuleActionParameters {
   /** A list of additional ports that caching should be enabled on. */
-  additionalCacheablePorts?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList | null;
+  additionalCacheablePorts?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList;
   /** How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content. */
-  browserTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl | null;
+  browserTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl;
   /** Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations. */
-  cache?: boolean | null;
+  cache?: boolean;
   /** Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache. */
-  cacheKey?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey | null;
+  cacheKey?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey;
   /** Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan). */
-  cacheReserve?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve | null;
+  cacheReserve?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve;
   /** How long the Cloudflare edge network should cache the response. */
-  edgeTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl | null;
+  edgeTtl?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl;
   /** Whether Cloudflare will aim to strictly adhere to RFC 7234. */
-  originCacheControl?: boolean | null;
+  originCacheControl?: boolean;
   /** Whether to generate Cloudflare error pages for issues from the origin server. */
-  originErrorPagePassthru?: boolean | null;
+  originErrorPagePassthru?: boolean;
   /** A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value. */
-  readTimeout?: number | null;
+  readTimeout?: number;
   /** Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers. */
-  respectStrongEtags?: boolean | null;
+  respectStrongEtags?: boolean;
   /** When to serve stale content from cache. */
-  serveStale?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale | null;
+  serveStale?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale;
   /** Configuration for shared dictionary compression. When set, Cloudflare injects Use-As-Dictionary headers on matching cacheable responses. */
-  sharedDictionary?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary | null;
+  sharedDictionary?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary;
   /** Whether to strip ETag headers from the origin response before caching. */
-  stripEtags?: boolean | null;
+  stripEtags?: boolean;
   /** Whether to strip Last-Modified headers from the origin response before caching. */
-  stripLastModified?: boolean | null;
+  stripLastModified?: boolean;
   /** Whether to strip Set-Cookie headers from the origin response before caching. */
-  stripSetCookie?: boolean | null;
+  stripSetCookie?: boolean;
   /** Controls how cached responses vary based on request headers. `default` is required by the API and applies to any Vary response header that does not have a per-header override. */
-  vary?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary | null;
+  vary?: UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       additionalCacheablePorts: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList,
-        ).pipe(T.Body("additional_cacheable_ports")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersAdditionalCacheablePortsList.pipe(
+          T.Body("additional_cacheable_ports"),
+        ),
       ),
       browserTtl: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl,
-        ).pipe(T.Body("browser_ttl")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersBrowserTtl.pipe(
+          T.Body("browser_ttl"),
+        ),
       ),
-      cache: S.optional(S.NullOr(S.Boolean)),
+      cache: S.optional(S.Boolean),
       cacheKey: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey,
-        ).pipe(T.Body("cache_key")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheKey.pipe(
+          T.Body("cache_key"),
+        ),
       ),
       cacheReserve: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve,
-        ).pipe(T.Body("cache_reserve")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersCacheReserve.pipe(
+          T.Body("cache_reserve"),
+        ),
       ),
       edgeTtl: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl,
-        ).pipe(T.Body("edge_ttl")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersEdgeTtl.pipe(
+          T.Body("edge_ttl"),
+        ),
       ),
       originCacheControl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_cache_control")),
+        S.Boolean.pipe(T.Body("origin_cache_control")),
       ),
       originErrorPagePassthru: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("origin_error_page_passthru")),
+        S.Boolean.pipe(T.Body("origin_error_page_passthru")),
       ),
-      readTimeout: S.optional(S.NullOr(S.Number).pipe(T.Body("read_timeout"))),
+      readTimeout: S.optional(S.Number.pipe(T.Body("read_timeout"))),
       respectStrongEtags: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("respect_strong_etags")),
+        S.Boolean.pipe(T.Body("respect_strong_etags")),
       ),
       serveStale: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale,
-        ).pipe(T.Body("serve_stale")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersServeStale.pipe(
+          T.Body("serve_stale"),
+        ),
       ),
       sharedDictionary: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary,
-        ).pipe(T.Body("shared_dictionary")),
-      ),
-      stripEtags: S.optional(S.NullOr(S.Boolean).pipe(T.Body("strip_etags"))),
-      stripLastModified: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_last_modified")),
-      ),
-      stripSetCookie: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("strip_set_cookie")),
-      ),
-      vary: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersSharedDictionary.pipe(
+          T.Body("shared_dictionary"),
         ),
+      ),
+      stripEtags: S.optional(S.Boolean.pipe(T.Body("strip_etags"))),
+      stripLastModified: S.optional(
+        S.Boolean.pipe(T.Body("strip_last_modified")),
+      ),
+      stripSetCookie: S.optional(S.Boolean.pipe(T.Body("strip_set_cookie"))),
+      vary: S.optional(
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParametersVary,
       ),
     }),
   ).annotate({
@@ -83175,17 +82163,17 @@ export interface UpdateRequestRulesItemSetCacheSettingsRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -83194,22 +82182,20 @@ export const UpdateRequestRulesItemSetCacheSettingsRuleRatelimit =
         UpdateRequestRulesItemSetCacheSettingsRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -83222,61 +82208,56 @@ export interface UpdateRequestRulesItemSetCacheSettingsRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemSetCacheSettingsRuleAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemSetCacheSettingsRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemSetCacheSettingsRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemSetCacheSettingsRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemSetCacheSettingsRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemSetCacheSettingsRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemSetCacheSettingsRule =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheSettingsRuleAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemSetCacheSettingsRuleAction),
       actionParameters: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        UpdateRequestRulesItemSetCacheSettingsRuleActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList),
+        UpdateRequestRulesItemSetCacheSettingsRuleCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemSetCacheSettingsRuleExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetCacheSettingsRuleRatelimit),
+        UpdateRequestRulesItemSetCacheSettingsRuleRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemSetCacheSettingsRule",
@@ -83513,17 +82494,17 @@ export interface UpdateRequestRulesItemSetCacheTagsRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemSetCacheTagsRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -83532,22 +82513,20 @@ export const UpdateRequestRulesItemSetCacheTagsRatelimit =
         UpdateRequestRulesItemSetCacheTagsRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -83560,55 +82539,51 @@ export interface UpdateRequestRulesItemSetCacheTags {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetCacheTagsAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemSetCacheTagsAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemSetCacheTagsActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemSetCacheTagsActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemSetCacheTagsCategoriesList | null;
+  categories?: UpdateRequestRulesItemSetCacheTagsCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemSetCacheTagsRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemSetCacheTagsRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemSetCacheTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemSetCacheTagsAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemSetCacheTagsAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetCacheTagsActionParameters).pipe(
+      UpdateRequestRulesItemSetCacheTagsActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetCacheTagsCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemSetCacheTagsCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemSetCacheTagsExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetCacheTagsRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemSetCacheTagsRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemSetCacheTags",
@@ -83619,18 +82594,18 @@ export const UpdateRequestRulesItemSetConfigRuleAction = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestRulesItemSetConfigRuleActionParametersAutominify {
   /** Whether to minify CSS files. */
-  css?: boolean | null;
+  css?: boolean;
   /** Whether to minify HTML files. */
-  html?: boolean | null;
+  html?: boolean;
   /** Whether to minify JavaScript files. */
-  js?: boolean | null;
+  js?: boolean;
 }
 export const UpdateRequestRulesItemSetConfigRuleActionParametersAutominify =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      css: S.optional(S.NullOr(S.Boolean)),
-      html: S.optional(S.NullOr(S.Boolean)),
-      js: S.optional(S.NullOr(S.Boolean)),
+      css: S.optional(S.Boolean),
+      html: S.optional(S.Boolean),
+      js: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemSetConfigRuleActionParametersAutominify",
@@ -83675,128 +82650,111 @@ export const UpdateRequestRulesItemSetConfigRuleActionParametersSsl =
 
 export interface UpdateRequestRulesItemSetConfigRuleActionParameters {
   /** Whether to enable Automatic HTTPS Rewrites. */
-  automaticHttpsRewrites?: boolean | null;
+  automaticHttpsRewrites?: boolean;
   /** Which file extensions to minify automatically. */
-  autominify?: UpdateRequestRulesItemSetConfigRuleActionParametersAutominify | null;
+  autominify?: UpdateRequestRulesItemSetConfigRuleActionParametersAutominify;
   /** Whether to enable Browser Integrity Check (BIC). */
-  bic?: boolean | null;
+  bic?: boolean;
   /** Whether to enable content conversion (e.g., HTML to Markdown). */
-  contentConverter?: boolean | null;
+  contentConverter?: boolean;
   /** Whether to disable Cloudflare Apps. */
-  disableApps?: boolean | null;
+  disableApps?: boolean;
   /** Whether to disable Pay Per Crawl. */
-  disablePayPerCrawl?: boolean | null;
+  disablePayPerCrawl?: boolean;
   /** Whether to disable Real User Monitoring (RUM). */
-  disableRum?: boolean | null;
+  disableRum?: boolean;
   /** Whether to disable Zaraz. */
-  disableZaraz?: boolean | null;
+  disableZaraz?: boolean;
   /** Whether to enable Email Obfuscation. */
-  emailObfuscation?: boolean | null;
+  emailObfuscation?: boolean;
   /** Whether to enable Cloudflare Fonts. */
-  fonts?: boolean | null;
+  fonts?: boolean;
   /** Whether to enable Hotlink Protection. */
-  hotlinkProtection?: boolean | null;
+  hotlinkProtection?: boolean;
   /** Whether to enable Mirage. */
-  mirage?: boolean | null;
+  mirage?: boolean;
   /** Whether to enable Opportunistic Encryption. */
-  opportunisticEncryption?: boolean | null;
+  opportunisticEncryption?: boolean;
   /** The Polish level to configure. */
   polish?:
     | UpdateRequestRulesItemSetConfigRuleActionParametersPolish
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to redirect verified AI training crawlers to canonical URLs found in the HTML response. */
-  redirectsForAiTraining?: boolean | null;
+  redirectsForAiTraining?: boolean;
   /** The request body buffering mode. */
   requestBodyBuffering?:
     | UpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** The response body buffering mode. */
   responseBodyBuffering?:
     | UpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Rocket Loader. */
-  rocketLoader?: boolean | null;
+  rocketLoader?: boolean;
   /** The Security Level to configure. */
   securityLevel?:
     | UpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Whether to enable Server-Side Excludes. */
-  serverSideExcludes?: boolean | null;
+  serverSideExcludes?: boolean;
   /** The SSL level to configure. */
-  ssl?:
-    | UpdateRequestRulesItemSetConfigRuleActionParametersSsl
-    | (string & {})
-    | null;
+  ssl?: UpdateRequestRulesItemSetConfigRuleActionParametersSsl | (string & {});
   /** Whether to enable Signed Exchanges (SXG). */
-  sxg?: boolean | null;
+  sxg?: boolean;
 }
 export const UpdateRequestRulesItemSetConfigRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       automaticHttpsRewrites: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("automatic_https_rewrites")),
+        S.Boolean.pipe(T.Body("automatic_https_rewrites")),
       ),
       autominify: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetConfigRuleActionParametersAutominify),
+        UpdateRequestRulesItemSetConfigRuleActionParametersAutominify,
       ),
-      bic: S.optional(S.NullOr(S.Boolean)),
-      contentConverter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("content_converter")),
-      ),
-      disableApps: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_apps"))),
+      bic: S.optional(S.Boolean),
+      contentConverter: S.optional(S.Boolean.pipe(T.Body("content_converter"))),
+      disableApps: S.optional(S.Boolean.pipe(T.Body("disable_apps"))),
       disablePayPerCrawl: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_pay_per_crawl")),
+        S.Boolean.pipe(T.Body("disable_pay_per_crawl")),
       ),
-      disableRum: S.optional(S.NullOr(S.Boolean).pipe(T.Body("disable_rum"))),
-      disableZaraz: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("disable_zaraz")),
-      ),
-      emailObfuscation: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("email_obfuscation")),
-      ),
-      fonts: S.optional(S.NullOr(S.Boolean)),
+      disableRum: S.optional(S.Boolean.pipe(T.Body("disable_rum"))),
+      disableZaraz: S.optional(S.Boolean.pipe(T.Body("disable_zaraz"))),
+      emailObfuscation: S.optional(S.Boolean.pipe(T.Body("email_obfuscation"))),
+      fonts: S.optional(S.Boolean),
       hotlinkProtection: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("hotlink_protection")),
+        S.Boolean.pipe(T.Body("hotlink_protection")),
       ),
-      mirage: S.optional(S.NullOr(S.Boolean)),
+      mirage: S.optional(S.Boolean),
       opportunisticEncryption: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("opportunistic_encryption")),
+        S.Boolean.pipe(T.Body("opportunistic_encryption")),
       ),
       polish: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetConfigRuleActionParametersPolish),
+        UpdateRequestRulesItemSetConfigRuleActionParametersPolish,
       ),
       redirectsForAiTraining: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("redirects_for_ai_training")),
+        S.Boolean.pipe(T.Body("redirects_for_ai_training")),
       ),
       requestBodyBuffering: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering,
-        ).pipe(T.Body("request_body_buffering")),
+        UpdateRequestRulesItemSetConfigRuleActionParametersRequestBodyBuffering.pipe(
+          T.Body("request_body_buffering"),
+        ),
       ),
       responseBodyBuffering: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering,
-        ).pipe(T.Body("response_body_buffering")),
+        UpdateRequestRulesItemSetConfigRuleActionParametersResponseBodyBuffering.pipe(
+          T.Body("response_body_buffering"),
+        ),
       ),
-      rocketLoader: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("rocket_loader")),
-      ),
+      rocketLoader: S.optional(S.Boolean.pipe(T.Body("rocket_loader"))),
       securityLevel: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel,
-        ).pipe(T.Body("security_level")),
+        UpdateRequestRulesItemSetConfigRuleActionParametersSecurityLevel.pipe(
+          T.Body("security_level"),
+        ),
       ),
       serverSideExcludes: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("server_side_excludes")),
+        S.Boolean.pipe(T.Body("server_side_excludes")),
       ),
-      ssl: S.optional(
-        S.NullOr(UpdateRequestRulesItemSetConfigRuleActionParametersSsl),
-      ),
-      sxg: S.optional(S.NullOr(S.Boolean)),
+      ssl: S.optional(UpdateRequestRulesItemSetConfigRuleActionParametersSsl),
+      sxg: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemSetConfigRuleActionParameters",
@@ -83837,17 +82795,17 @@ export interface UpdateRequestRulesItemSetConfigRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemSetConfigRuleRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -83856,22 +82814,20 @@ export const UpdateRequestRulesItemSetConfigRuleRatelimit =
         UpdateRequestRulesItemSetConfigRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -83884,55 +82840,51 @@ export interface UpdateRequestRulesItemSetConfigRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSetConfigRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemSetConfigRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemSetConfigRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemSetConfigRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemSetConfigRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemSetConfigRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemSetConfigRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemSetConfigRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemSetConfigRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemSetConfigRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemSetConfigRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetConfigRuleActionParameters).pipe(
+      UpdateRequestRulesItemSetConfigRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetConfigRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemSetConfigRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemSetConfigRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(
-      S.NullOr(UpdateRequestRulesItemSetConfigRuleRatelimit),
-    ),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemSetConfigRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemSetConfigRule",
@@ -84031,44 +82983,36 @@ export const UpdateRequestRulesItemSkipRuleActionParametersRulesetsList =
 
 export interface UpdateRequestRulesItemSkipRuleActionParameters {
   /** A phase to skip the execution of. This option is only compatible with the products option. */
-  phase?:
-    | UpdateRequestRulesItemSkipRuleActionParametersPhase
-    | (string & {})
-    | null;
+  phase?: UpdateRequestRulesItemSkipRuleActionParametersPhase | (string & {});
   /** A list of phases to skip the execution of. This option is incompatible with the rulesets option. */
-  phases?: UpdateRequestRulesItemSkipRuleActionParametersPhasesList | null;
+  phases?: UpdateRequestRulesItemSkipRuleActionParametersPhasesList;
   /** A list of legacy security products to skip the execution of. */
-  products?: UpdateRequestRulesItemSkipRuleActionParametersProductsList | null;
+  products?: UpdateRequestRulesItemSkipRuleActionParametersProductsList;
   /** A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option. */
-  rules?: UpdateRequestRulesItemSkipRuleActionParametersRulesMap | null;
+  rules?: UpdateRequestRulesItemSkipRuleActionParametersRulesMap;
   /** A ruleset to skip the execution of. This option is incompatible with the rulesets option. */
   ruleset?:
     | UpdateRequestRulesItemSkipRuleActionParametersRuleset
-    | (string & {})
-    | null;
+    | (string & {});
   /** A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options. */
-  rulesets?: UpdateRequestRulesItemSkipRuleActionParametersRulesetsList | null;
+  rulesets?: UpdateRequestRulesItemSkipRuleActionParametersRulesetsList;
 }
 export const UpdateRequestRulesItemSkipRuleActionParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      phase: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersPhase),
-      ),
+      phase: S.optional(UpdateRequestRulesItemSkipRuleActionParametersPhase),
       phases: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersPhasesList),
+        UpdateRequestRulesItemSkipRuleActionParametersPhasesList,
       ),
       products: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersProductsList),
+        UpdateRequestRulesItemSkipRuleActionParametersProductsList,
       ),
-      rules: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersRulesMap),
-      ),
+      rules: S.optional(UpdateRequestRulesItemSkipRuleActionParametersRulesMap),
       ruleset: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersRuleset),
+        UpdateRequestRulesItemSkipRuleActionParametersRuleset,
       ),
       rulesets: S.optional(
-        S.NullOr(UpdateRequestRulesItemSkipRuleActionParametersRulesetsList),
+        UpdateRequestRulesItemSkipRuleActionParametersRulesetsList,
       ),
     }),
   ).annotate({
@@ -84110,17 +83054,17 @@ export interface UpdateRequestRulesItemSkipRuleRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
   () =>
@@ -84129,22 +83073,20 @@ export const UpdateRequestRulesItemSkipRuleRatelimit = /*@__PURE__*/ S.suspend(
         UpdateRequestRulesItemSkipRuleRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
 ).annotate({
@@ -84157,53 +83099,51 @@ export interface UpdateRequestRulesItemSkipRule {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?: UpdateRequestRulesItemSkipRuleAction | (string & {}) | null;
+  action?: UpdateRequestRulesItemSkipRuleAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemSkipRuleActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemSkipRuleActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemSkipRuleCategoriesList | null;
+  categories?: UpdateRequestRulesItemSkipRuleCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemSkipRuleExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemSkipRuleExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemSkipRuleRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemSkipRuleRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemSkipRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.String.pipe(T.Body("last_updated")),
     version: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.NullOr(UpdateRequestRulesItemSkipRuleAction)),
+    id: S.optional(S.String),
+    action: S.optional(UpdateRequestRulesItemSkipRuleAction),
     actionParameters: S.optional(
-      S.NullOr(UpdateRequestRulesItemSkipRuleActionParameters).pipe(
+      UpdateRequestRulesItemSkipRuleActionParameters.pipe(
         T.Body("action_parameters"),
       ),
     ),
-    categories: S.optional(
-      S.NullOr(UpdateRequestRulesItemSkipRuleCategoriesList),
-    ),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    categories: S.optional(UpdateRequestRulesItemSkipRuleCategoriesList),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
     exposedCredentialCheck: S.optional(
-      S.NullOr(UpdateRequestRulesItemSkipRuleExposedCredentialCheck).pipe(
+      UpdateRequestRulesItemSkipRuleExposedCredentialCheck.pipe(
         T.Body("exposed_credential_check"),
       ),
     ),
-    expression: S.optional(S.NullOr(S.String)),
-    logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
-    ratelimit: S.optional(S.NullOr(UpdateRequestRulesItemSkipRuleRatelimit)),
-    ref: S.optional(S.NullOr(S.String)),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
+    ratelimit: S.optional(UpdateRequestRulesItemSkipRuleRatelimit),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestRulesItemSkipRule",
@@ -84264,17 +83204,17 @@ export interface UpdateRequestRulesItemTransformResponseHTMLRatelimit {
   /** Period in seconds over which the counter is being incremented. */
   period: number;
   /** An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression. */
-  countingExpression?: string | null;
+  countingExpression?: string;
   /** Period of time in seconds after which the action will be disabled following its first execution. */
-  mitigationTimeout?: number | null;
+  mitigationTimeout?: number;
   /** The threshold of requests per period after which the action will be executed for the first time. */
-  requestsPerPeriod?: number | null;
+  requestsPerPeriod?: number;
   /** Whether counting is only performed when an origin is reached. */
-  requestsToOrigin?: boolean | null;
+  requestsToOrigin?: boolean;
   /** The score threshold per period for which the action will be executed the first time. */
-  scorePerPeriod?: number | null;
+  scorePerPeriod?: number;
   /** A response header name provided by the origin, which contains the score to increment rate limit counter with. */
-  scoreResponseHeaderName?: string | null;
+  scoreResponseHeaderName?: string;
 }
 export const UpdateRequestRulesItemTransformResponseHTMLRatelimit =
   /*@__PURE__*/ S.suspend(() =>
@@ -84283,22 +83223,20 @@ export const UpdateRequestRulesItemTransformResponseHTMLRatelimit =
         UpdateRequestRulesItemTransformResponseHTMLRatelimitCharacteristicsList,
       period: S.Number,
       countingExpression: S.optional(
-        S.NullOr(S.String).pipe(T.Body("counting_expression")),
+        S.String.pipe(T.Body("counting_expression")),
       ),
       mitigationTimeout: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("mitigation_timeout")),
+        S.Number.pipe(T.Body("mitigation_timeout")),
       ),
       requestsPerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("requests_per_period")),
+        S.Number.pipe(T.Body("requests_per_period")),
       ),
       requestsToOrigin: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("requests_to_origin")),
+        S.Boolean.pipe(T.Body("requests_to_origin")),
       ),
-      scorePerPeriod: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("score_per_period")),
-      ),
+      scorePerPeriod: S.optional(S.Number.pipe(T.Body("score_per_period"))),
       scoreResponseHeaderName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("score_response_header_name")),
+        S.String.pipe(T.Body("score_response_header_name")),
       ),
     }),
   ).annotate({
@@ -84311,61 +83249,56 @@ export interface UpdateRequestRulesItemTransformResponseHTML {
   /** The version of the rule. */
   version: string;
   /** The unique ID of the rule. */
-  id?: string | null;
+  id?: string;
   /** The action to perform when the rule matches. */
-  action?:
-    | UpdateRequestRulesItemTransformResponseHTMLAction
-    | (string & {})
-    | null;
+  action?: UpdateRequestRulesItemTransformResponseHTMLAction | (string & {});
   /** The parameters configuring the rule's action. */
-  actionParameters?: UpdateRequestRulesItemTransformResponseHTMLActionParameters | null;
+  actionParameters?: UpdateRequestRulesItemTransformResponseHTMLActionParameters;
   /** The categories of the rule. */
-  categories?: UpdateRequestRulesItemTransformResponseHTMLCategoriesList | null;
+  categories?: UpdateRequestRulesItemTransformResponseHTMLCategoriesList;
   /** An informative description of the rule. */
-  description?: string | null;
+  description?: string;
   /** Whether the rule should be executed. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Configuration for exposed credential checking. */
-  exposedCredentialCheck?: UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck | null;
+  exposedCredentialCheck?: UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck;
   /** The expression defining which traffic will match the rule. */
-  expression?: string | null;
+  expression?: string;
   /** An object configuring the rule's logging behavior. */
-  logging?: UpdateRequestRulesItemBlockRuleLogging | null;
+  logging?: UpdateRequestRulesItemBlockRuleLogging;
   /** An object configuring the rule's rate limit behavior. */
-  ratelimit?: UpdateRequestRulesItemTransformResponseHTMLRatelimit | null;
+  ratelimit?: UpdateRequestRulesItemTransformResponseHTMLRatelimit;
   /** The reference of the rule (the rule's ID by default). */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateRequestRulesItemTransformResponseHTML =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.String.pipe(T.Body("last_updated")),
       version: S.String,
-      id: S.optional(S.NullOr(S.String)),
-      action: S.optional(
-        S.NullOr(UpdateRequestRulesItemTransformResponseHTMLAction),
-      ),
+      id: S.optional(S.String),
+      action: S.optional(UpdateRequestRulesItemTransformResponseHTMLAction),
       actionParameters: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemTransformResponseHTMLActionParameters,
-        ).pipe(T.Body("action_parameters")),
+        UpdateRequestRulesItemTransformResponseHTMLActionParameters.pipe(
+          T.Body("action_parameters"),
+        ),
       ),
       categories: S.optional(
-        S.NullOr(UpdateRequestRulesItemTransformResponseHTMLCategoriesList),
+        UpdateRequestRulesItemTransformResponseHTMLCategoriesList,
       ),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      enabled: S.optional(S.Boolean),
       exposedCredentialCheck: S.optional(
-        S.NullOr(
-          UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck,
-        ).pipe(T.Body("exposed_credential_check")),
+        UpdateRequestRulesItemTransformResponseHTMLExposedCredentialCheck.pipe(
+          T.Body("exposed_credential_check"),
+        ),
       ),
-      expression: S.optional(S.NullOr(S.String)),
-      logging: S.optional(S.NullOr(UpdateRequestRulesItemBlockRuleLogging)),
+      expression: S.optional(S.String),
+      logging: S.optional(UpdateRequestRulesItemBlockRuleLogging),
       ratelimit: S.optional(
-        S.NullOr(UpdateRequestRulesItemTransformResponseHTMLRatelimit),
+        UpdateRequestRulesItemTransformResponseHTMLRatelimit,
       ),
-      ref: S.optional(S.NullOr(S.String)),
+      ref: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdateRequestRulesItemTransformResponseHTML",
@@ -84724,25 +83657,25 @@ export interface UpdateRulesetForAccountRequest {
   /** The unique ID of the ruleset. */
   rulesetId: string;
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The kind of the ruleset. */
-  kind?: UpdateRequestKind | (string & {}) | null;
+  kind?: UpdateRequestKind | (string & {});
   /** The human-readable name of the ruleset. */
-  name?: string | null;
+  name?: string;
   /** The phase of the ruleset. */
-  phase?: UpdateRequestPhase | (string & {}) | null;
+  phase?: UpdateRequestPhase | (string & {});
   /** The list of rules in the ruleset. */
-  rules?: UpdateRequestRulesList | null;
+  rules?: UpdateRequestRulesList;
 }
 export const UpdateRulesetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    description: S.optional(S.NullOr(S.String)),
-    kind: S.optional(S.NullOr(UpdateRequestKind)),
-    name: S.optional(S.NullOr(S.String)),
-    phase: S.optional(S.NullOr(UpdateRequestPhase)),
-    rules: S.optional(S.NullOr(UpdateRequestRulesList)),
+    description: S.optional(S.String),
+    kind: S.optional(UpdateRequestKind),
+    name: S.optional(S.String),
+    phase: S.optional(UpdateRequestPhase),
+    rules: S.optional(UpdateRequestRulesList),
   })
     .pipe(
       T.Http({
@@ -91074,25 +90007,25 @@ export interface UpdateRulesetForZoneRequest {
   /** The unique ID of the ruleset. */
   rulesetId: string;
   /** An informative description of the ruleset. */
-  description?: string | null;
+  description?: string;
   /** The kind of the ruleset. */
-  kind?: UpdateRequestKind | (string & {}) | null;
+  kind?: UpdateRequestKind | (string & {});
   /** The human-readable name of the ruleset. */
-  name?: string | null;
+  name?: string;
   /** The phase of the ruleset. */
-  phase?: UpdateRequestPhase | (string & {}) | null;
+  phase?: UpdateRequestPhase | (string & {});
   /** The list of rules in the ruleset. */
-  rules?: UpdateRequestRulesList | null;
+  rules?: UpdateRequestRulesList;
 }
 export const UpdateRulesetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
-    description: S.optional(S.NullOr(S.String)),
-    kind: S.optional(S.NullOr(UpdateRequestKind)),
-    name: S.optional(S.NullOr(S.String)),
-    phase: S.optional(S.NullOr(UpdateRequestPhase)),
-    rules: S.optional(S.NullOr(UpdateRequestRulesList)),
+    description: S.optional(S.String),
+    kind: S.optional(UpdateRequestKind),
+    name: S.optional(S.String),
+    phase: S.optional(UpdateRequestPhase),
+    rules: S.optional(UpdateRequestRulesList),
   })
     .pipe(
       T.Http({

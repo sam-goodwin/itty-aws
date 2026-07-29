@@ -152,29 +152,26 @@ export interface CreateDatabaseRequest {
   /** D1 database name. */
   name: string;
   /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseCreateRequestJurisdiction | (string & {}) | null;
+  jurisdiction?: DatabaseCreateRequestJurisdiction | (string & {});
   /** Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user. */
   primaryLocationHint?:
     | DatabaseCreateRequestPrimaryLocationHint
-    | (string & {})
-    | null;
+    | (string & {});
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseCreateRequestReadReplication | null;
+  readReplication?: DatabaseCreateRequestReadReplication;
 }
 export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    jurisdiction: S.optional(S.NullOr(DatabaseCreateRequestJurisdiction)),
+    jurisdiction: S.optional(DatabaseCreateRequestJurisdiction),
     primaryLocationHint: S.optional(
-      S.NullOr(DatabaseCreateRequestPrimaryLocationHint).pipe(
+      DatabaseCreateRequestPrimaryLocationHint.pipe(
         T.Body("primary_location_hint"),
       ),
     ),
     readReplication: S.optional(
-      S.NullOr(DatabaseCreateRequestReadReplication).pipe(
-        T.Body("read_replication"),
-      ),
+      DatabaseCreateRequestReadReplication.pipe(T.Body("read_replication")),
     ),
   })
     .pipe(
@@ -284,17 +281,17 @@ export const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
 
 export interface DatabaseExportRequestDumpOptions {
   /** Export only the table definitions, not their contents */
-  noData?: boolean | null;
+  noData?: boolean;
   /** Export only each table's contents, not its definition */
-  noSchema?: boolean | null;
+  noSchema?: boolean;
   /** Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables. */
-  tables?: DatabaseExportRequestDumpOptionsTablesList | null;
+  tables?: DatabaseExportRequestDumpOptionsTablesList;
 }
 export const DatabaseExportRequestDumpOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    noData: S.optional(S.NullOr(S.Boolean).pipe(T.Body("no_data"))),
-    noSchema: S.optional(S.NullOr(S.Boolean).pipe(T.Body("no_schema"))),
-    tables: S.optional(S.NullOr(DatabaseExportRequestDumpOptionsTablesList)),
+    noData: S.optional(S.Boolean.pipe(T.Body("no_data"))),
+    noSchema: S.optional(S.Boolean.pipe(T.Body("no_schema"))),
+    tables: S.optional(DatabaseExportRequestDumpOptionsTablesList),
   }),
 ).annotate({
   identifier: "DatabaseExportRequestDumpOptions",
@@ -308,8 +305,8 @@ export interface ExportDatabaseRequest {
   /** Specifies that you will poll this endpoint until the export completes */
   outputFormat: DatabaseExportRequestOutputFormat | (string & {});
   /** To poll an in-progress export, provide the current bookmark (returned by your first polling response) */
-  currentBookmark?: string | null;
-  dumpOptions?: DatabaseExportRequestDumpOptions | null;
+  currentBookmark?: string;
+  dumpOptions?: DatabaseExportRequestDumpOptions;
 }
 export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -318,11 +315,9 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     outputFormat: DatabaseExportRequestOutputFormat.pipe(
       T.Body("output_format"),
     ),
-    currentBookmark: S.optional(
-      S.NullOr(S.String).pipe(T.Body("current_bookmark")),
-    ),
+    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
     dumpOptions: S.optional(
-      S.NullOr(DatabaseExportRequestDumpOptions).pipe(T.Body("dump_options")),
+      DatabaseExportRequestDumpOptions.pipe(T.Body("dump_options")),
     ),
   })
     .pipe(
@@ -542,22 +537,20 @@ export interface ImportDatabaseRequest {
   /** Indicates you have a new SQL file to upload. */
   action: DatabaseImportRequestAction | (string & {});
   /** Required when action is 'init' or 'ingest'. An md5 hash of the file you're uploading. Used to check if it already exists, and validate its contents before ingesting. */
-  etag?: string | null;
+  etag?: string;
   /** The filename you have successfully uploaded. */
-  filename?: string | null;
+  filename?: string;
   /** This identifies the currently-running import, checking its status. */
-  currentBookmark?: string | null;
+  currentBookmark?: string;
 }
 export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     action: DatabaseImportRequestAction,
-    etag: S.optional(S.NullOr(S.String)),
-    filename: S.optional(S.NullOr(S.String)),
-    currentBookmark: S.optional(
-      S.NullOr(S.String).pipe(T.Body("current_bookmark")),
-    ),
+    etag: S.optional(S.String),
+    filename: S.optional(S.String),
+    currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
   })
     .pipe(
       T.Http({
@@ -804,16 +797,14 @@ export interface PatchDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Configuration for D1 read replication. */
-  readReplication?: DatabaseEditRequestReadReplication | null;
+  readReplication?: DatabaseEditRequestReadReplication;
 }
 export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
     readReplication: S.optional(
-      S.NullOr(DatabaseEditRequestReadReplication).pipe(
-        T.Body("read_replication"),
-      ),
+      DatabaseEditRequestReadReplication.pipe(T.Body("read_replication")),
     ),
   })
     .pipe(
@@ -895,12 +886,12 @@ export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
 export interface DatabaseQueryRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseQueryRequestBatchItemParamsList | null;
+  params?: DatabaseQueryRequestBatchItemParamsList;
 }
 export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
-    params: S.optional(S.NullOr(DatabaseQueryRequestBatchItemParamsList)),
+    params: S.optional(DatabaseQueryRequestBatchItemParamsList),
   }),
 ).annotate({
   identifier: "DatabaseQueryRequestBatchItem",
@@ -918,17 +909,17 @@ export interface QueryDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string | null;
-  params?: DatabaseQueryRequestParamsList | null;
-  batch?: DatabaseQueryRequestBatchList | null;
+  sql?: string;
+  params?: DatabaseQueryRequestParamsList;
+  batch?: DatabaseQueryRequestBatchList;
 }
 export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.NullOr(S.String)),
-    params: S.optional(S.NullOr(DatabaseQueryRequestParamsList)),
-    batch: S.optional(S.NullOr(DatabaseQueryRequestBatchList)),
+    sql: S.optional(S.String),
+    params: S.optional(DatabaseQueryRequestParamsList),
+    batch: S.optional(DatabaseQueryRequestBatchList),
   })
     .pipe(
       T.Http({
@@ -1066,12 +1057,12 @@ export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
 export interface DatabaseRawRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: DatabaseRawRequestBatchItemParamsList | null;
+  params?: DatabaseRawRequestBatchItemParamsList;
 }
 export const DatabaseRawRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
-    params: S.optional(S.NullOr(DatabaseRawRequestBatchItemParamsList)),
+    params: S.optional(DatabaseRawRequestBatchItemParamsList),
   }),
 ).annotate({
   identifier: "DatabaseRawRequestBatchItem",
@@ -1088,17 +1079,17 @@ export interface RawDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string | null;
-  params?: DatabaseRawRequestParamsList | null;
-  batch?: DatabaseRawRequestBatchList | null;
+  sql?: string;
+  params?: DatabaseRawRequestParamsList;
+  batch?: DatabaseRawRequestBatchList;
 }
 export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
-    sql: S.optional(S.NullOr(S.String)),
-    params: S.optional(S.NullOr(DatabaseRawRequestParamsList)),
-    batch: S.optional(S.NullOr(DatabaseRawRequestBatchList)),
+    sql: S.optional(S.String),
+    params: S.optional(DatabaseRawRequestParamsList),
+    batch: S.optional(DatabaseRawRequestBatchList),
   })
     .pipe(
       T.Http({

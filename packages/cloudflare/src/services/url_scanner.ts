@@ -53,29 +53,27 @@ export const ScansBulkCreateRequestBodyItemVisibility = /*@__PURE__*/ S.String;
 export interface ScansBulkCreateRequestBodyItem {
   url: string;
   /** Enable agent readiness checks. */
-  agentReadiness?: boolean | null;
-  customagent?: string | null;
+  agentReadiness?: boolean;
+  customagent?: string;
   /** Set custom headers. */
-  customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap | null;
-  referer?: string | null;
+  customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap;
+  referer?: string;
   /** Take multiple screenshots targeting different device types. */
-  screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList | null;
+  screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {}) | null;
+  visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
 }
 export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
-    agentReadiness: S.optional(S.NullOr(S.Boolean)),
-    customagent: S.optional(S.NullOr(S.String)),
-    customHeaders: S.optional(
-      S.NullOr(ScansBulkCreateRequestBodyItemCustomHeadersMap),
-    ),
-    referer: S.optional(S.NullOr(S.String)),
+    agentReadiness: S.optional(S.Boolean),
+    customagent: S.optional(S.String),
+    customHeaders: S.optional(ScansBulkCreateRequestBodyItemCustomHeadersMap),
+    referer: S.optional(S.String),
     screenshotsResolutions: S.optional(
-      S.NullOr(ScansBulkCreateRequestBodyItemScreenshotsResolutionsList),
+      ScansBulkCreateRequestBodyItemScreenshotsResolutionsList,
     ),
-    visibility: S.optional(S.NullOr(ScansBulkCreateRequestBodyItemVisibility)),
+    visibility: S.optional(ScansBulkCreateRequestBodyItemVisibility),
   }),
 ).annotate({
   identifier: "ScansBulkCreateRequestBodyItem",
@@ -346,31 +344,31 @@ export interface CreateScanRequest {
   accountId: string;
   url: string;
   /** Enable agent readiness checks. */
-  agentReadiness?: boolean | null;
+  agentReadiness?: boolean;
   /** Country to geo egress from */
-  country?: ScansCreateRequestCountry | (string & {}) | null;
-  customagent?: string | null;
+  country?: ScansCreateRequestCountry | (string & {});
+  customagent?: string;
   /** Set custom headers. */
-  customHeaders?: ScansCreateRequestCustomHeadersMap | null;
-  referer?: string | null;
+  customHeaders?: ScansCreateRequestCustomHeadersMap;
+  referer?: string;
   /** Take multiple screenshots targeting different device types. */
-  screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList | null;
+  screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList;
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
-  visibility?: ScansCreateRequestVisibility | (string & {}) | null;
+  visibility?: ScansCreateRequestVisibility | (string & {});
 }
 export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     url: S.String,
-    agentReadiness: S.optional(S.NullOr(S.Boolean)),
-    country: S.optional(S.NullOr(ScansCreateRequestCountry)),
-    customagent: S.optional(S.NullOr(S.String)),
-    customHeaders: S.optional(S.NullOr(ScansCreateRequestCustomHeadersMap)),
-    referer: S.optional(S.NullOr(S.String)),
+    agentReadiness: S.optional(S.Boolean),
+    country: S.optional(ScansCreateRequestCountry),
+    customagent: S.optional(S.String),
+    customHeaders: S.optional(ScansCreateRequestCustomHeadersMap),
+    referer: S.optional(S.String),
     screenshotsResolutions: S.optional(
-      S.NullOr(ScansCreateRequestScreenshotsResolutionsList),
+      ScansCreateRequestScreenshotsResolutionsList,
     ),
-    visibility: S.optional(S.NullOr(ScansCreateRequestVisibility)),
+    visibility: S.optional(ScansCreateRequestVisibility),
   })
     .pipe(
       T.Http({

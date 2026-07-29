@@ -1927,41 +1927,41 @@ export const VariantsEditRequestValueWebpList = /*@__PURE__*/ S.Array(
 
 export interface VariantsEditRequestValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
-  avif?: VariantsEditRequestValueAvifList | null;
+  avif?: VariantsEditRequestValueAvifList;
   /** List of strings with the MIME types of all the variants that should be served for bmp. */
-  bmp?: VariantsEditRequestValueBmpList | null;
+  bmp?: VariantsEditRequestValueBmpList;
   /** List of strings with the MIME types of all the variants that should be served for gif. */
-  gif?: VariantsEditRequestValueGifList | null;
+  gif?: VariantsEditRequestValueGifList;
   /** List of strings with the MIME types of all the variants that should be served for jp2. */
-  jp2?: VariantsEditRequestValueJp2List | null;
+  jp2?: VariantsEditRequestValueJp2List;
   /** List of strings with the MIME types of all the variants that should be served for jpeg. */
-  jpeg?: VariantsEditRequestValueJpegList | null;
+  jpeg?: VariantsEditRequestValueJpegList;
   /** List of strings with the MIME types of all the variants that should be served for jpg. */
-  jpg?: VariantsEditRequestValueJpgList | null;
+  jpg?: VariantsEditRequestValueJpgList;
   /** List of strings with the MIME types of all the variants that should be served for jpg2. */
-  jpg2?: VariantsEditRequestValueJpg2List | null;
+  jpg2?: VariantsEditRequestValueJpg2List;
   /** List of strings with the MIME types of all the variants that should be served for png. */
-  png?: VariantsEditRequestValuePngList | null;
+  png?: VariantsEditRequestValuePngList;
   /** List of strings with the MIME types of all the variants that should be served for tif. */
-  tif?: VariantsEditRequestValueTifList | null;
+  tif?: VariantsEditRequestValueTifList;
   /** List of strings with the MIME types of all the variants that should be served for tiff. */
-  tiff?: VariantsEditRequestValueTiffList | null;
+  tiff?: VariantsEditRequestValueTiffList;
   /** List of strings with the MIME types of all the variants that should be served for webp. */
-  webp?: VariantsEditRequestValueWebpList | null;
+  webp?: VariantsEditRequestValueWebpList;
 }
 export const VariantsEditRequestValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    avif: S.optional(S.NullOr(VariantsEditRequestValueAvifList)),
-    bmp: S.optional(S.NullOr(VariantsEditRequestValueBmpList)),
-    gif: S.optional(S.NullOr(VariantsEditRequestValueGifList)),
-    jp2: S.optional(S.NullOr(VariantsEditRequestValueJp2List)),
-    jpeg: S.optional(S.NullOr(VariantsEditRequestValueJpegList)),
-    jpg: S.optional(S.NullOr(VariantsEditRequestValueJpgList)),
-    jpg2: S.optional(S.NullOr(VariantsEditRequestValueJpg2List)),
-    png: S.optional(S.NullOr(VariantsEditRequestValuePngList)),
-    tif: S.optional(S.NullOr(VariantsEditRequestValueTifList)),
-    tiff: S.optional(S.NullOr(VariantsEditRequestValueTiffList)),
-    webp: S.optional(S.NullOr(VariantsEditRequestValueWebpList)),
+    avif: S.optional(VariantsEditRequestValueAvifList),
+    bmp: S.optional(VariantsEditRequestValueBmpList),
+    gif: S.optional(VariantsEditRequestValueGifList),
+    jp2: S.optional(VariantsEditRequestValueJp2List),
+    jpeg: S.optional(VariantsEditRequestValueJpegList),
+    jpg: S.optional(VariantsEditRequestValueJpgList),
+    jpg2: S.optional(VariantsEditRequestValueJpg2List),
+    png: S.optional(VariantsEditRequestValuePngList),
+    tif: S.optional(VariantsEditRequestValueTifList),
+    tiff: S.optional(VariantsEditRequestValueTiffList),
+    webp: S.optional(VariantsEditRequestValueWebpList),
   }),
 ).annotate({
   identifier: "VariantsEditRequestValue",
@@ -2141,18 +2141,16 @@ export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMa
   ) as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
 
 export interface PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem {
-  headers?: PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap | null;
-  url?: string | null;
+  headers?: PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap;
+  url?: string;
 }
 export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(
-        S.NullOr(
-          PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
-        ),
+        PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier: "PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem",
@@ -2175,26 +2173,24 @@ export const PurgeRequestFiles = /*@__PURE__*/ S.Unknown.pipe(
 export interface PurgeCacheRequest {
   zoneId: string;
   /** For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
-  tags?: PurgeRequestTagsList | null;
+  tags?: PurgeRequestTagsList;
   /** For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/). */
-  hosts?: PurgeRequestHostsList | null;
+  hosts?: PurgeRequestHostsList;
   /** For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/). */
-  prefixes?: PurgeRequestPrefixesList | null;
+  prefixes?: PurgeRequestPrefixesList;
   /** For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/). */
-  purgeEverything?: boolean | null;
+  purgeEverything?: boolean;
   /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
-  files?: PurgeRequestFiles | null;
+  files?: PurgeRequestFiles;
 }
 export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    tags: S.optional(S.NullOr(PurgeRequestTagsList)),
-    hosts: S.optional(S.NullOr(PurgeRequestHostsList)),
-    prefixes: S.optional(S.NullOr(PurgeRequestPrefixesList)),
-    purgeEverything: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("purge_everything")),
-    ),
-    files: S.optional(S.NullOr(PurgeRequestFiles)),
+    tags: S.optional(PurgeRequestTagsList),
+    hosts: S.optional(PurgeRequestHostsList),
+    prefixes: S.optional(PurgeRequestPrefixesList),
+    purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
+    files: S.optional(PurgeRequestFiles),
   })
     .pipe(
       T.Http({
@@ -2251,18 +2247,16 @@ export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersIt
   ) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
 
 export interface PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem {
-  headers?: PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap | null;
-  url?: string | null;
+  headers?: PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap;
+  url?: string;
 }
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(
-        S.NullOr(
-          PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
-        ),
+        PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2287,27 +2281,25 @@ export interface PurgeEnvironmentCacheRequest {
   zoneId: string;
   environmentId: string;
   /** For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/). */
-  tags?: PurgeEnvironmentRequestTagsList | null;
+  tags?: PurgeEnvironmentRequestTagsList;
   /** For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/). */
-  hosts?: PurgeEnvironmentRequestHostsList | null;
+  hosts?: PurgeEnvironmentRequestHostsList;
   /** For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/). */
-  prefixes?: PurgeEnvironmentRequestPrefixesList | null;
+  prefixes?: PurgeEnvironmentRequestPrefixesList;
   /** For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/). */
-  purgeEverything?: boolean | null;
+  purgeEverything?: boolean;
   /** For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/). */
-  files?: PurgeEnvironmentRequestFiles | null;
+  files?: PurgeEnvironmentRequestFiles;
 }
 export const PurgeEnvironmentCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     environmentId: S.String.pipe(T.Label("environment_id")),
-    tags: S.optional(S.NullOr(PurgeEnvironmentRequestTagsList)),
-    hosts: S.optional(S.NullOr(PurgeEnvironmentRequestHostsList)),
-    prefixes: S.optional(S.NullOr(PurgeEnvironmentRequestPrefixesList)),
-    purgeEverything: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("purge_everything")),
-    ),
-    files: S.optional(S.NullOr(PurgeEnvironmentRequestFiles)),
+    tags: S.optional(PurgeEnvironmentRequestTagsList),
+    hosts: S.optional(PurgeEnvironmentRequestHostsList),
+    prefixes: S.optional(PurgeEnvironmentRequestPrefixesList),
+    purgeEverything: S.optional(S.Boolean.pipe(T.Body("purge_everything"))),
+    files: S.optional(PurgeEnvironmentRequestFiles),
   })
     .pipe(
       T.Http({

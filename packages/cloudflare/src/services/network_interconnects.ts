@@ -59,7 +59,7 @@ export interface CnisCreateRequestBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisCreateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string | null;
+  md5Key?: string;
 }
 export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67,7 +67,7 @@ export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisCreateRequestBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisCreateRequestBgp",
@@ -80,7 +80,7 @@ export interface CreateCniRequest {
   account: string;
   interconnect: string;
   magic: CnisCreateRequestMagic;
-  bgp?: CnisCreateRequestBgp | null;
+  bgp?: CnisCreateRequestBgp;
 }
 export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -88,7 +88,7 @@ export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
     account: S.String,
     interconnect: S.String,
     magic: CnisCreateRequestMagic,
-    bgp: S.optional(S.NullOr(CnisCreateRequestBgp)),
+    bgp: S.optional(CnisCreateRequestBgp),
   })
     .pipe(
       T.Http({
@@ -189,23 +189,23 @@ export interface CreateInterconnectRequest {
   /** Customer account tag */
   accountId: string;
   account: string;
-  slotId?: string | null;
+  slotId?: string;
   type: string;
-  speed?: string | null;
+  speed?: string;
   /** Bandwidth structure as visible through the customer-facing API. */
-  bandwidth?: InterconnectsCreateRequestBandwidth | (string & {}) | null;
+  bandwidth?: InterconnectsCreateRequestBandwidth | (string & {});
   /** Pairing key provided by GCP */
-  pairingKey?: string | null;
+  pairingKey?: string;
 }
 export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     account: S.String,
-    slotId: S.optional(S.NullOr(S.String).pipe(T.Body("slot_id"))),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
     type: S.String,
-    speed: S.optional(S.NullOr(S.String)),
-    bandwidth: S.optional(S.NullOr(InterconnectsCreateRequestBandwidth)),
-    pairingKey: S.optional(S.NullOr(S.String).pipe(T.Body("pairing_key"))),
+    speed: S.optional(S.String),
+    bandwidth: S.optional(InterconnectsCreateRequestBandwidth),
+    pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
   })
     .pipe(
       T.Http({
@@ -896,12 +896,12 @@ export const LoaInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PutSettingRequest {
   accountId: string;
-  defaultAsn?: number | null;
+  defaultAsn?: number;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("default_asn"))),
+    defaultAsn: S.optional(S.Number.pipe(T.Body("default_asn"))),
   })
     .pipe(
       T.Http({
@@ -983,7 +983,7 @@ export interface CnisUpdateRequestBgp {
   /** Extra set of static prefixes to advertise to the customer's end of the session */
   extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
-  md5Key?: string | null;
+  md5Key?: string;
 }
 export const CnisUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -991,7 +991,7 @@ export const CnisUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
     extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList.pipe(
       T.Body("extra_prefixes"),
     ),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisUpdateRequestBgp",
@@ -1011,7 +1011,7 @@ export interface UpdateCniRequest {
   magic: CnisUpdateRequestMagic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: CnisUpdateRequestBgp | null;
+  bgp?: CnisUpdateRequestBgp;
 }
 export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1023,7 +1023,7 @@ export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
     interconnect: S.String,
     magic: CnisUpdateRequestMagic,
     p2pIp: S.String.pipe(T.Body("p2p_ip")),
-    bgp: S.optional(S.NullOr(CnisUpdateRequestBgp)),
+    bgp: S.optional(CnisUpdateRequestBgp),
   })
     .pipe(
       T.Http({

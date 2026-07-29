@@ -181,29 +181,29 @@ export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
 export interface PutSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
-  acknowledgments?: UpdateRequestAcknowledgmentsList | null;
-  canonical?: UpdateRequestCanonicalList | null;
-  contact?: UpdateRequestContactList | null;
-  enabled?: boolean | null;
-  encryption?: UpdateRequestEncryptionList | null;
-  expires?: string | null;
-  hiring?: UpdateRequestHiringList | null;
-  policy?: UpdateRequestPolicyList | null;
-  preferredLanguages?: string | null;
+  acknowledgments?: UpdateRequestAcknowledgmentsList;
+  canonical?: UpdateRequestCanonicalList;
+  contact?: UpdateRequestContactList;
+  enabled?: boolean;
+  encryption?: UpdateRequestEncryptionList;
+  expires?: string;
+  hiring?: UpdateRequestHiringList;
+  policy?: UpdateRequestPolicyList;
+  preferredLanguages?: string;
 }
 export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    acknowledgments: S.optional(S.NullOr(UpdateRequestAcknowledgmentsList)),
-    canonical: S.optional(S.NullOr(UpdateRequestCanonicalList)),
-    contact: S.optional(S.NullOr(UpdateRequestContactList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    encryption: S.optional(S.NullOr(UpdateRequestEncryptionList)),
-    expires: S.optional(S.NullOr(S.String)),
-    hiring: S.optional(S.NullOr(UpdateRequestHiringList)),
-    policy: S.optional(S.NullOr(UpdateRequestPolicyList)),
+    acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
+    canonical: S.optional(UpdateRequestCanonicalList),
+    contact: S.optional(UpdateRequestContactList),
+    enabled: S.optional(S.Boolean),
+    encryption: S.optional(UpdateRequestEncryptionList),
+    expires: S.optional(S.String),
+    hiring: S.optional(UpdateRequestHiringList),
+    policy: S.optional(UpdateRequestPolicyList),
     preferredLanguages: S.optional(
-      S.NullOr(S.String).pipe(T.Body("preferred_languages")),
+      S.String.pipe(T.Body("preferred_languages")),
     ),
   })
     .pipe(

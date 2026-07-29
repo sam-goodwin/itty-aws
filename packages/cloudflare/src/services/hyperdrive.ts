@@ -201,12 +201,12 @@ export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
 }
 export const ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
+      disabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon",
@@ -214,19 +214,19 @@ export const ConfigsCreateRequestCachingHyperdriveHyperdriveCachingCommon =
 
 export interface ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
   /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
-  maxAge?: number | null;
+  maxAge?: number;
   /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
-  staleWhileRevalidate?: number | null;
+  staleWhileRevalidate?: number;
 }
 export const ConfigsCreateRequestCachingHyperdriveHyperdriveCachingEnabled =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+      disabled: S.optional(S.Boolean),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
       staleWhileRevalidate: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("stale_while_revalidate")),
+        S.Number.pipe(T.Body("stale_while_revalidate")),
       ),
     }),
   ).annotate({
@@ -242,21 +242,17 @@ export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface ConfigsCreateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
-  caCertificateId?: string | null;
+  caCertificateId?: string;
   /** Define mTLS certificate ID obtained after uploading client cert. */
-  mtlsCertificateId?: string | null;
+  mtlsCertificateId?: string;
   /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
-  sslmode?: string | null;
+  sslmode?: string;
 }
 export const ConfigsCreateRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    caCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ca_certificate_id")),
-    ),
-    mtlsCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("mtls_certificate_id")),
-    ),
-    sslmode: S.optional(S.NullOr(S.String)),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConfigsCreateRequestMtls",
@@ -268,21 +264,21 @@ export interface CreateConfigRequest {
   /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
   origin: ConfigsCreateRequestOrigin;
-  caching?: ConfigsCreateRequestCaching | null;
+  caching?: ConfigsCreateRequestCaching;
   /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
-  mtls?: ConfigsCreateRequestMtls | null;
+  mtls?: ConfigsCreateRequestMtls;
   /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
-  originConnectionLimit?: number | null;
+  originConnectionLimit?: number;
 }
 export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     origin: ConfigsCreateRequestOrigin,
-    caching: S.optional(S.NullOr(ConfigsCreateRequestCaching)),
-    mtls: S.optional(S.NullOr(ConfigsCreateRequestMtls)),
+    caching: S.optional(ConfigsCreateRequestCaching),
+    mtls: S.optional(ConfigsCreateRequestMtls),
     originConnectionLimit: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+      S.Number.pipe(T.Body("origin_connection_limit")),
     ),
   })
     .pipe(
@@ -1059,12 +1055,12 @@ export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
 }
 export const ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
+      disabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon",
@@ -1072,19 +1068,19 @@ export const ConfigsEditRequestCachingHyperdriveHyperdriveCachingCommon =
 
 export interface ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
   /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
-  maxAge?: number | null;
+  maxAge?: number;
   /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
-  staleWhileRevalidate?: number | null;
+  staleWhileRevalidate?: number;
 }
 export const ConfigsEditRequestCachingHyperdriveHyperdriveCachingEnabled =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+      disabled: S.optional(S.Boolean),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
       staleWhileRevalidate: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("stale_while_revalidate")),
+        S.Number.pipe(T.Body("stale_while_revalidate")),
       ),
     }),
   ).annotate({
@@ -1100,21 +1096,17 @@ export const ConfigsEditRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface ConfigsEditRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
-  caCertificateId?: string | null;
+  caCertificateId?: string;
   /** Define mTLS certificate ID obtained after uploading client cert. */
-  mtlsCertificateId?: string | null;
+  mtlsCertificateId?: string;
   /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
-  sslmode?: string | null;
+  sslmode?: string;
 }
 export const ConfigsEditRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    caCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ca_certificate_id")),
-    ),
-    mtlsCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("mtls_certificate_id")),
-    ),
-    sslmode: S.optional(S.NullOr(S.String)),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConfigsEditRequestMtls",
@@ -1129,26 +1121,25 @@ export const ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme =
 
 export interface ConfigsEditRequestOriginHyperdriveHyperdriveDatabase {
   /** Set the name of your origin database. */
-  database?: string | null;
+  database?: string;
   /** Set the password needed to access your origin database. The API never returns this write-only value. */
-  password?: string | null;
+  password?: string;
   /** Specifies the URL scheme used to connect to your origin database. */
   scheme?:
     | ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme
-    | (string & {})
-    | null;
+    | (string & {});
   /** Set the user of your origin database. */
-  user?: string | null;
+  user?: string;
 }
 export const ConfigsEditRequestOriginHyperdriveHyperdriveDatabase =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      database: S.optional(S.NullOr(S.String)),
-      password: S.optional(S.NullOr(S.String)),
+      database: S.optional(S.String),
+      password: S.optional(S.String),
       scheme: S.optional(
-        S.NullOr(ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme),
+        ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme,
       ),
-      user: S.optional(S.NullOr(S.String)),
+      user: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ConfigsEditRequestOriginHyperdriveHyperdriveDatabase",
@@ -1221,26 +1212,26 @@ export interface PatchConfigRequest {
   accountId: string;
   /** Define configurations using a unique string identifier. */
   hyperdriveId: string;
-  caching?: ConfigsEditRequestCaching | null;
+  caching?: ConfigsEditRequestCaching;
   /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
-  mtls?: ConfigsEditRequestMtls | null;
+  mtls?: ConfigsEditRequestMtls;
   /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
-  name?: string | null;
+  name?: string;
   /** Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself. */
-  origin?: ConfigsEditRequestOrigin | null;
+  origin?: ConfigsEditRequestOrigin;
   /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
-  originConnectionLimit?: number | null;
+  originConnectionLimit?: number;
 }
 export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
-    caching: S.optional(S.NullOr(ConfigsEditRequestCaching)),
-    mtls: S.optional(S.NullOr(ConfigsEditRequestMtls)),
-    name: S.optional(S.NullOr(S.String)),
-    origin: S.optional(S.NullOr(ConfigsEditRequestOrigin)),
+    caching: S.optional(ConfigsEditRequestCaching),
+    mtls: S.optional(ConfigsEditRequestMtls),
+    name: S.optional(S.String),
+    origin: S.optional(ConfigsEditRequestOrigin),
     originConnectionLimit: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+      S.Number.pipe(T.Body("origin_connection_limit")),
     ),
   })
     .pipe(
@@ -1606,12 +1597,12 @@ export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
 }
 export const ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
+      disabled: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon",
@@ -1619,19 +1610,19 @@ export const ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingCommon =
 
 export interface ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled {
   /** Set to true to disable caching of SQL responses. Default is false. */
-  disabled?: boolean | null;
+  disabled?: boolean;
   /** Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified. */
-  maxAge?: number | null;
+  maxAge?: number;
   /** Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified. */
-  staleWhileRevalidate?: number | null;
+  staleWhileRevalidate?: number;
 }
 export const ConfigsUpdateRequestCachingHyperdriveHyperdriveCachingEnabled =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-      maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+      disabled: S.optional(S.Boolean),
+      maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
       staleWhileRevalidate: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("stale_while_revalidate")),
+        S.Number.pipe(T.Body("stale_while_revalidate")),
       ),
     }),
   ).annotate({
@@ -1647,21 +1638,17 @@ export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.Unknown.pipe(
 
 export interface ConfigsUpdateRequestMtls {
   /** Define CA certificate ID obtained after uploading CA cert. */
-  caCertificateId?: string | null;
+  caCertificateId?: string;
   /** Define mTLS certificate ID obtained after uploading client cert. */
-  mtlsCertificateId?: string | null;
+  mtlsCertificateId?: string;
   /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
-  sslmode?: string | null;
+  sslmode?: string;
 }
 export const ConfigsUpdateRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    caCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ca_certificate_id")),
-    ),
-    mtlsCertificateId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("mtls_certificate_id")),
-    ),
-    sslmode: S.optional(S.NullOr(S.String)),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConfigsUpdateRequestMtls",
@@ -1675,11 +1662,11 @@ export interface UpdateConfigRequest {
   /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
   origin: ConfigsUpdateRequestOrigin;
-  caching?: ConfigsUpdateRequestCaching | null;
+  caching?: ConfigsUpdateRequestCaching;
   /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
-  mtls?: ConfigsUpdateRequestMtls | null;
+  mtls?: ConfigsUpdateRequestMtls;
   /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
-  originConnectionLimit?: number | null;
+  originConnectionLimit?: number;
 }
 export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1687,10 +1674,10 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
     name: S.String,
     origin: ConfigsUpdateRequestOrigin,
-    caching: S.optional(S.NullOr(ConfigsUpdateRequestCaching)),
-    mtls: S.optional(S.NullOr(ConfigsUpdateRequestMtls)),
+    caching: S.optional(ConfigsUpdateRequestCaching),
+    mtls: S.optional(ConfigsUpdateRequestMtls),
     originConnectionLimit: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("origin_connection_limit")),
+      S.Number.pipe(T.Body("origin_connection_limit")),
     ),
   })
     .pipe(

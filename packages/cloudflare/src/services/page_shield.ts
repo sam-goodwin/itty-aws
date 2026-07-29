@@ -1236,21 +1236,21 @@ export interface PutPageShieldRequest {
   /** Identifier */
   zoneId: string;
   /** When true, indicates that Page Shield is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
-  useCloudflareReportingEndpoint?: boolean | null;
+  useCloudflareReportingEndpoint?: boolean;
   /** When true, the paths associated with connections URLs will also be analyzed. */
-  useConnectionUrlPath?: boolean | null;
+  useConnectionUrlPath?: boolean;
 }
 export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
     useCloudflareReportingEndpoint: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_cloudflare_reporting_endpoint")),
+      S.Boolean.pipe(T.Body("use_cloudflare_reporting_endpoint")),
     ),
     useConnectionUrlPath: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_connection_url_path")),
+      S.Boolean.pipe(T.Body("use_connection_url_path")),
     ),
   })
     .pipe(
@@ -1297,25 +1297,25 @@ export interface UpdatePolicyRequest {
   /** Identifier */
   policyId: string;
   /** The action to take if the expression matches */
-  action?: PoliciesUpdateRequestAction | (string & {}) | null;
+  action?: PoliciesUpdateRequestAction | (string & {});
   /** A description for the policy */
-  description?: string | null;
+  description?: string;
   /** Whether the policy is enabled */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression?: string | null;
+  expression?: string;
   /** The policy which will be applied */
-  value?: string | null;
+  value?: string;
 }
 export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
-    action: S.optional(S.NullOr(PoliciesUpdateRequestAction)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
+    action: S.optional(PoliciesUpdateRequestAction),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    expression: S.optional(S.String),
+    value: S.optional(S.String),
   })
     .pipe(
       T.Http({

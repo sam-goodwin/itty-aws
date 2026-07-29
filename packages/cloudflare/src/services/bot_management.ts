@@ -75,7 +75,7 @@ export interface FeedbackCreateRequest {
   requestsByScoreSrc: unknown;
   /** Type of feedback report. */
   type: FeedbackCreateRequestType | (string & {});
-  subtype?: string | null;
+  subtype?: string;
 }
 export const FeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -91,7 +91,7 @@ export const FeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
     requestsByScore: S.Unknown.pipe(T.Body("requests_by_score")),
     requestsByScoreSrc: S.Unknown.pipe(T.Body("requests_by_score_src")),
     type: FeedbackCreateRequestType,
-    subtype: S.optional(S.NullOr(S.String)),
+    subtype: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -835,38 +835,36 @@ export const UpdateRequestCrawlerProtection = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestStaleZoneConfigurationBotFightModeConfiguration {
   /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
-  optimizeWordpress?: boolean | null;
+  optimizeWordpress?: boolean;
   /** Indicates that the zone's definitely automated requests are being blocked or challenged. */
-  sbfmDefinitelyAutomated?: string | null;
+  sbfmDefinitelyAutomated?: string;
   /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
+  sbfmLikelyAutomated?: string;
   /** Indicates that the zone's static resource protection is turned on. */
-  sbfmStaticResourceProtection?: string | null;
+  sbfmStaticResourceProtection?: string;
   /** Indicates that the zone's verified bot requests are being blocked. */
-  sbfmVerifiedBots?: string | null;
+  sbfmVerifiedBots?: string;
   /** Indicates that the zone's session score tracking is disabled. */
-  suppressSessionScore?: boolean | null;
+  suppressSessionScore?: boolean;
 }
 export const UpdateRequestStaleZoneConfigurationBotFightModeConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       optimizeWordpress: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("optimize_wordpress")),
+        S.Boolean.pipe(T.Body("optimize_wordpress")),
       ),
       sbfmDefinitelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_definitely_automated")),
+        S.String.pipe(T.Body("sbfm_definitely_automated")),
       ),
       sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
+        S.String.pipe(T.Body("sbfm_likely_automated")),
       ),
       sbfmStaticResourceProtection: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_static_resource_protection")),
+        S.String.pipe(T.Body("sbfm_static_resource_protection")),
       ),
-      sbfmVerifiedBots: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_verified_bots")),
-      ),
+      sbfmVerifiedBots: S.optional(S.String.pipe(T.Body("sbfm_verified_bots"))),
       suppressSessionScore: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("suppress_session_score")),
+        S.Boolean.pipe(T.Body("suppress_session_score")),
       ),
     }),
   ).annotate({
@@ -875,16 +873,16 @@ export const UpdateRequestStaleZoneConfigurationBotFightModeConfiguration =
 
 export interface UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration {
   /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
+  fightMode?: boolean;
   /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
+  sbfmLikelyAutomated?: string;
 }
 export const UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
+      fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
       sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
+        S.String.pipe(T.Body("sbfm_likely_automated")),
       ),
     }),
   ).annotate({
@@ -894,12 +892,12 @@ export const UpdateRequestStaleZoneConfigurationSuperBotFightModeDefinitelyConfi
 
 export interface UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration {
   /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
+  fightMode?: boolean;
 }
 export const UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
+      fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
     }),
   ).annotate({
     identifier:
@@ -908,37 +906,35 @@ export const UpdateRequestStaleZoneConfigurationSuperBotFightModeLikelyConfigura
 
 export interface UpdateRequestStaleZoneConfigurationSubscriptionConfiguration {
   /** Indicates that the zone's Bot Fight Mode is turned on. */
-  fightMode?: boolean | null;
+  fightMode?: boolean;
   /** Indicates that the zone's wordpress optimization for SBFM is turned on. */
-  optimizeWordpress?: boolean | null;
+  optimizeWordpress?: boolean;
   /** Indicates that the zone's definitely automated requests are being blocked or challenged. */
-  sbfmDefinitelyAutomated?: string | null;
+  sbfmDefinitelyAutomated?: string;
   /** Indicates that the zone's likely automated requests are being blocked or challenged. */
-  sbfmLikelyAutomated?: string | null;
+  sbfmLikelyAutomated?: string;
   /** Indicates that the zone's static resource protection is turned on. */
-  sbfmStaticResourceProtection?: string | null;
+  sbfmStaticResourceProtection?: string;
   /** Indicates that the zone's verified bot requests are being blocked. */
-  sbfmVerifiedBots?: string | null;
+  sbfmVerifiedBots?: string;
 }
 export const UpdateRequestStaleZoneConfigurationSubscriptionConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
+      fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
       optimizeWordpress: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("optimize_wordpress")),
+        S.Boolean.pipe(T.Body("optimize_wordpress")),
       ),
       sbfmDefinitelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_definitely_automated")),
+        S.String.pipe(T.Body("sbfm_definitely_automated")),
       ),
       sbfmLikelyAutomated: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_likely_automated")),
+        S.String.pipe(T.Body("sbfm_likely_automated")),
       ),
       sbfmStaticResourceProtection: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_static_resource_protection")),
+        S.String.pipe(T.Body("sbfm_static_resource_protection")),
       ),
-      sbfmVerifiedBots: S.optional(
-        S.NullOr(S.String).pipe(T.Body("sbfm_verified_bots")),
-      ),
+      sbfmVerifiedBots: S.optional(S.String.pipe(T.Body("sbfm_verified_bots"))),
     }),
   ).annotate({
     identifier: "UpdateRequestStaleZoneConfigurationSubscriptionConfiguration",
@@ -991,109 +987,89 @@ export interface PutBotManagementRequest {
   /** Identifier. */
   zoneId: string;
   /** Enable rule to block AI Scrapers and Crawlers. */
-  aiBotsProtection?: UpdateRequestAiBotsProtection | (string & {}) | null;
+  aiBotsProtection?: UpdateRequestAiBotsProtection | (string & {});
   /** Specifies the Robots Access Control License variant to use. */
-  cfRobotsVariant?: UpdateRequestCfRobotsVariant | (string & {}) | null;
+  cfRobotsVariant?: UpdateRequestCfRobotsVariant | (string & {});
   /** Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules. */
-  contentBotsProtection?:
-    | UpdateRequestContentBotsProtection
-    | (string & {})
-    | null;
+  contentBotsProtection?: UpdateRequestContentBotsProtection | (string & {});
   /** Enable rule to punish AI Scrapers and Crawlers via a link maze. */
-  crawlerProtection?: UpdateRequestCrawlerProtection | (string & {}) | null;
+  crawlerProtection?: UpdateRequestCrawlerProtection | (string & {});
   /** Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/). */
-  enableJs?: boolean | null;
+  enableJs?: boolean;
   /** Whether to enable Bot Fight Mode. */
-  fightMode?: boolean | null;
+  fightMode?: boolean;
   /** Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt. */
-  isRobotsTxtManaged?: boolean | null;
+  isRobotsTxtManaged?: boolean;
   /** A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades. */
-  staleZoneConfiguration?: UpdateRequestStaleZoneConfiguration | null;
+  staleZoneConfiguration?: UpdateRequestStaleZoneConfiguration;
   /** A read-only field that indicates whether the zone currently is running the latest ML model. */
-  usingLatestModel?: boolean | null;
+  usingLatestModel?: boolean;
   /** Whether to optimize Super Bot Fight Mode protections for Wordpress. */
-  optimizeWordpress?: boolean | null;
+  optimizeWordpress?: boolean;
   /** Super Bot Fight Mode (SBFM) action to take on definitely automated requests. */
   sbfmDefinitelyAutomated?:
     | UpdateRequestSbfmDefinitelyAutomated
-    | (string & {})
-    | null;
+    | (string & {});
   /** Super Bot Fight Mode (SBFM) to enable static resource protection. */
-  sbfmStaticResourceProtection?: boolean | null;
+  sbfmStaticResourceProtection?: boolean;
   /** Super Bot Fight Mode (SBFM) action to take on verified bots requests. */
-  sbfmVerifiedBots?: UpdateRequestSbfmVerifiedBots | (string & {}) | null;
+  sbfmVerifiedBots?: UpdateRequestSbfmVerifiedBots | (string & {});
   /** Super Bot Fight Mode (SBFM) action to take on likely automated requests. */
-  sbfmLikelyAutomated?: UpdateRequestSbfmLikelyAutomated | (string & {}) | null;
+  sbfmLikelyAutomated?: UpdateRequestSbfmLikelyAutomated | (string & {});
   /** Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes) */
-  autoUpdateModel?: boolean | null;
+  autoUpdateModel?: boolean;
   /** Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true */
-  bmCookieEnabled?: boolean | null;
+  bmCookieEnabled?: boolean;
   /** Whether to disable tracking the highest bot score for a session in the Bot Management cookie. */
-  suppressSessionScore?: boolean | null;
+  suppressSessionScore?: boolean;
 }
 export const PutBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     aiBotsProtection: S.optional(
-      S.NullOr(UpdateRequestAiBotsProtection).pipe(
-        T.Body("ai_bots_protection"),
-      ),
+      UpdateRequestAiBotsProtection.pipe(T.Body("ai_bots_protection")),
     ),
     cfRobotsVariant: S.optional(
-      S.NullOr(UpdateRequestCfRobotsVariant).pipe(T.Body("cf_robots_variant")),
+      UpdateRequestCfRobotsVariant.pipe(T.Body("cf_robots_variant")),
     ),
     contentBotsProtection: S.optional(
-      S.NullOr(UpdateRequestContentBotsProtection).pipe(
+      UpdateRequestContentBotsProtection.pipe(
         T.Body("content_bots_protection"),
       ),
     ),
     crawlerProtection: S.optional(
-      S.NullOr(UpdateRequestCrawlerProtection).pipe(
-        T.Body("crawler_protection"),
-      ),
+      UpdateRequestCrawlerProtection.pipe(T.Body("crawler_protection")),
     ),
-    enableJs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enable_js"))),
-    fightMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("fight_mode"))),
+    enableJs: S.optional(S.Boolean.pipe(T.Body("enable_js"))),
+    fightMode: S.optional(S.Boolean.pipe(T.Body("fight_mode"))),
     isRobotsTxtManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_robots_txt_managed")),
+      S.Boolean.pipe(T.Body("is_robots_txt_managed")),
     ),
     staleZoneConfiguration: S.optional(
-      S.NullOr(UpdateRequestStaleZoneConfiguration).pipe(
+      UpdateRequestStaleZoneConfiguration.pipe(
         T.Body("stale_zone_configuration"),
       ),
     ),
-    usingLatestModel: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("using_latest_model")),
-    ),
-    optimizeWordpress: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("optimize_wordpress")),
-    ),
+    usingLatestModel: S.optional(S.Boolean.pipe(T.Body("using_latest_model"))),
+    optimizeWordpress: S.optional(S.Boolean.pipe(T.Body("optimize_wordpress"))),
     sbfmDefinitelyAutomated: S.optional(
-      S.NullOr(UpdateRequestSbfmDefinitelyAutomated).pipe(
+      UpdateRequestSbfmDefinitelyAutomated.pipe(
         T.Body("sbfm_definitely_automated"),
       ),
     ),
     sbfmStaticResourceProtection: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("sbfm_static_resource_protection")),
+      S.Boolean.pipe(T.Body("sbfm_static_resource_protection")),
     ),
     sbfmVerifiedBots: S.optional(
-      S.NullOr(UpdateRequestSbfmVerifiedBots).pipe(
-        T.Body("sbfm_verified_bots"),
-      ),
+      UpdateRequestSbfmVerifiedBots.pipe(T.Body("sbfm_verified_bots")),
     ),
     sbfmLikelyAutomated: S.optional(
-      S.NullOr(UpdateRequestSbfmLikelyAutomated).pipe(
-        T.Body("sbfm_likely_automated"),
-      ),
+      UpdateRequestSbfmLikelyAutomated.pipe(T.Body("sbfm_likely_automated")),
     ),
-    autoUpdateModel: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("auto_update_model")),
-    ),
-    bmCookieEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("bm_cookie_enabled")),
-    ),
+    autoUpdateModel: S.optional(S.Boolean.pipe(T.Body("auto_update_model"))),
+    bmCookieEnabled: S.optional(S.Boolean.pipe(T.Body("bm_cookie_enabled"))),
     suppressSessionScore: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("suppress_session_score")),
+      S.Boolean.pipe(T.Body("suppress_session_score")),
     ),
   })
     .pipe(

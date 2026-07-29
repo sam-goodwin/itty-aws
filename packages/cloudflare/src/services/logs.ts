@@ -53,17 +53,17 @@ export interface CreateControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
   /** Allow out of region access */
-  allowOutOfRegionAccess?: boolean | null;
+  allowOutOfRegionAccess?: boolean;
   /** Name of the region. */
-  regions?: string | null;
+  regions?: string;
 }
 export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowOutOfRegionAccess: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
+      S.Boolean.pipe(T.Body("allow_out_of_region_access")),
     ),
-    regions: S.optional(S.NullOr(S.String)),
+    regions: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -99,12 +99,12 @@ export interface CreateControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
   /** The log retention flag for Logpull API. */
-  flag?: boolean | null;
+  flag?: boolean;
 }
 export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    flag: S.optional(S.NullOr(S.Boolean)),
+    flag: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -159,14 +159,14 @@ export interface CreateLogExplorerDatasetForAccountRequest {
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
   /** Controls which fields the API ingests. Defaults to all available */
-  fields?: LogExplorerDatasetsCreateRequestFieldsList | null;
+  fields?: LogExplorerDatasetsCreateRequestFieldsList;
 }
 export const CreateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       dataset: S.String,
-      fields: S.optional(S.NullOr(LogExplorerDatasetsCreateRequestFieldsList)),
+      fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
     })
       .pipe(
         T.Http({
@@ -249,14 +249,14 @@ export interface CreateLogExplorerDatasetForZoneRequest {
   /** Dataset type name to create (e.g. `http_requests`). */
   dataset: string;
   /** Controls which fields the API ingests. Defaults to all available */
-  fields?: LogExplorerDatasetsCreateRequestFieldsList | null;
+  fields?: LogExplorerDatasetsCreateRequestFieldsList;
 }
 export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       dataset: S.String,
-      fields: S.optional(S.NullOr(LogExplorerDatasetsCreateRequestFieldsList)),
+      fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
     })
       .pipe(
         T.Http({
@@ -849,7 +849,7 @@ export interface UpdateLogExplorerDatasetForAccountRequest {
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
   /** Controls which fields the API ingests after the update. Defaults */
-  fields?: LogExplorerDatasetsUpdateRequestFieldsList | null;
+  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
 }
 export const UpdateLogExplorerDatasetForAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -857,7 +857,7 @@ export const UpdateLogExplorerDatasetForAccountRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
-      fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateRequestFieldsList)),
+      fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
     })
       .pipe(
         T.Http({
@@ -941,7 +941,7 @@ export interface UpdateLogExplorerDatasetForZoneRequest {
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
   /** Controls which fields the API ingests after the update. Defaults */
-  fields?: LogExplorerDatasetsUpdateRequestFieldsList | null;
+  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
 }
 export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -949,7 +949,7 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
       zoneId: S.String.pipe(T.Label("zone_id")),
       datasetId: S.String.pipe(T.Label("dataset_id")),
       enabled: S.Boolean,
-      fields: S.optional(S.NullOr(LogExplorerDatasetsUpdateRequestFieldsList)),
+      fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
     })
       .pipe(
         T.Http({

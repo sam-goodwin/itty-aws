@@ -182,14 +182,14 @@ export interface CreateV1VariantRequest {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateRequestOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean | null;
+  neverRequireSignedURLs?: boolean;
 }
 export const CreateV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
     options: V1VariantsCreateRequestOptions,
-    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    neverRequireSignedURLs: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -868,13 +868,11 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface V2ListRequestMeta {
   /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
-  fieldOperator__?: unknown | null;
+  fieldOperator__?: unknown;
 }
 export const V2ListRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldOperator__: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("<field>[<operator>]")),
-    ),
+    fieldOperator__: S.optional(S.Unknown.pipe(T.Body("<field>[<operator>]"))),
   }),
 ).annotate({
   identifier: "V2ListRequestMeta",
@@ -890,7 +888,7 @@ export interface ListV2sRequest {
   continuationToken?: string;
   /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
-  meta?: V2ListRequestMeta | null;
+  meta?: V2ListRequestMeta;
   /** Number of items per page */
   perPage?: number;
   /** Sorting order by upload time */
@@ -901,7 +899,7 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
-    meta: S.optional(S.NullOr(V2ListRequestMeta).pipe(T.DeepQuery("meta"))),
+    meta: S.optional(V2ListRequestMeta.pipe(T.DeepQuery("meta"))),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   })
@@ -978,19 +976,19 @@ export interface PatchV1Request {
   /** Image unique identifier. */
   imageId: string;
   /** Can set the creator field with an internal user ID. */
-  creator?: string | null;
+  creator?: string;
   /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified. */
-  metadata?: unknown | null;
+  metadata?: unknown;
   /** Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
 }
 export const PatchV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     imageId: S.String.pipe(T.Label("image_id")),
-    creator: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(S.NullOr(S.Unknown)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    creator: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -1080,14 +1078,14 @@ export interface PatchV1VariantRequest {
   /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditRequestOptions;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
-  neverRequireSignedURLs?: boolean | null;
+  neverRequireSignedURLs?: boolean;
 }
 export const PatchV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     variantId: S.String.pipe(T.Label("variant_id")),
     options: V1VariantsEditRequestOptions,
-    neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+    neverRequireSignedURLs: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({

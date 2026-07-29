@@ -1239,20 +1239,20 @@ export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
 
 export interface RoutesBulkUpdateRequestRoutesItemScope {
   /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesBulkUpdateRequestRoutesItemScopeColoNamesList | null;
+  coloNames?: RoutesBulkUpdateRequestRoutesItemScopeColoNamesList;
   /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList | null;
+  coloRegions?: RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList;
 }
 export const RoutesBulkUpdateRequestRoutesItemScope = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       coloNames: S.optional(
-        S.NullOr(RoutesBulkUpdateRequestRoutesItemScopeColoNamesList).pipe(
+        RoutesBulkUpdateRequestRoutesItemScopeColoNamesList.pipe(
           T.Body("colo_names"),
         ),
       ),
       coloRegions: S.optional(
-        S.NullOr(RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList).pipe(
+        RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList.pipe(
           T.Body("colo_regions"),
         ),
       ),
@@ -1271,11 +1271,11 @@ export interface RoutesBulkUpdateRequestRoutesItem {
   /** Priority of the static route. */
   priority: number;
   /** An optional human provided description of the static route. */
-  description?: string | null;
+  description?: string;
   /** Used only for ECMP routes. */
-  scope?: RoutesBulkUpdateRequestRoutesItemScope | null;
+  scope?: RoutesBulkUpdateRequestRoutesItemScope;
   /** Optional weight of the ECMP scope - if provided. */
-  weight?: number | null;
+  weight?: number;
 }
 export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1283,9 +1283,9 @@ export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
     nexthop: S.String,
     prefix: S.String,
     priority: S.Number,
-    description: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(RoutesBulkUpdateRequestRoutesItemScope)),
-    weight: S.optional(S.NullOr(S.Number)),
+    description: S.optional(S.String),
+    scope: S.optional(RoutesBulkUpdateRequestRoutesItemScope),
+    weight: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "RoutesBulkUpdateRequestRoutesItem",
@@ -1443,25 +1443,23 @@ export interface CreateAppRequest {
   /** Category of the app. */
   type: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsCreateRequestHostnamesList | null;
+  hostnames?: AppsCreateRequestHostnamesList;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsCreateRequestIpSubnetsList | null;
+  ipSubnets?: AppsCreateRequestIpSubnetsList;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsCreateRequestSourceSubnetsList | null;
+  sourceSubnets?: AppsCreateRequestSourceSubnetsList;
 }
 export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     type: S.String,
-    hostnames: S.optional(S.NullOr(AppsCreateRequestHostnamesList)),
+    hostnames: S.optional(AppsCreateRequestHostnamesList),
     ipSubnets: S.optional(
-      S.NullOr(AppsCreateRequestIpSubnetsList).pipe(T.Body("ip_subnets")),
+      AppsCreateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
     sourceSubnets: S.optional(
-      S.NullOr(AppsCreateRequestSourceSubnetsList).pipe(
-        T.Body("source_subnets"),
-      ),
+      AppsCreateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
   })
     .pipe(
@@ -1527,18 +1525,18 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface Cf1SitesCreateRequestBodyItemLocation {
   /** Latitude of the CF1 Site. */
-  lat?: number | null;
+  lat?: number;
   /** Longitude of the CF1 Site. */
-  long?: number | null;
+  long?: number;
   /** Name of nearest town, city, or village. */
-  name?: string | null;
+  name?: string;
 }
 export const Cf1SitesCreateRequestBodyItemLocation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      lat: S.optional(S.NullOr(S.Number)),
-      long: S.optional(S.NullOr(S.Number)),
-      name: S.optional(S.NullOr(S.String)),
+      lat: S.optional(S.Number),
+      long: S.optional(S.Number),
+      name: S.optional(S.String),
     }),
 ).annotate({
   identifier: "Cf1SitesCreateRequestBodyItemLocation",
@@ -1548,21 +1546,21 @@ export interface Cf1SitesCreateRequestBodyItem {
   /** A human-provided name describing the CF1 Site that should be unique within the account. */
   name: string;
   /** Identifier */
-  id?: string | null;
-  createdOn?: string | null;
+  id?: string;
+  createdOn?: string;
   /** A human-provided description of the CF1 Site. */
-  description?: string | null;
-  location?: Cf1SitesCreateRequestBodyItemLocation | null;
-  modifiedOn?: string | null;
+  description?: string;
+  location?: Cf1SitesCreateRequestBodyItemLocation;
+  modifiedOn?: string;
 }
 export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(Cf1SitesCreateRequestBodyItemLocation)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesCreateRequestBodyItemLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "Cf1SitesCreateRequestBodyItem",
@@ -1847,18 +1845,16 @@ export const CreateCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCf1SiteRampResponse>;
 
 export interface ConnectorsCreateRequestDevice {
-  id?: string | null;
+  id?: string;
   /** When true, create and provision a new licence key for the connector. */
-  provisionLicense?: boolean | null;
-  serialNumber?: string | null;
+  provisionLicense?: boolean;
+  serialNumber?: string;
 }
 export const ConnectorsCreateRequestDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    provisionLicense: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("provision_license")),
-    ),
-    serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+    id: S.optional(S.String),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
   }),
 ).annotate({
   identifier: "ConnectorsCreateRequestDevice",
@@ -1895,43 +1891,43 @@ export interface CreateConnectorRequest {
   accountId: string;
   /** Exactly one of id, serial_number, or provision_license must be provided. */
   device: ConnectorsCreateRequestDevice;
-  activated?: boolean | null;
+  activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsCreateRequestInterruptWindowDaysOfWeekList | null;
-  interruptWindowDurationHours?: number | null;
+  interruptWindowDaysOfWeek?: ConnectorsCreateRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList | null;
-  interruptWindowHourOfDay?: number | null;
-  notes?: string | null;
-  primary?: boolean | null;
-  siteId?: string | null;
-  timezone?: string | null;
+  interruptWindowEmbargoDates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
+  siteId?: string;
+  timezone?: string;
 }
 export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     device: ConnectorsCreateRequestDevice,
-    activated: S.optional(S.NullOr(S.Boolean)),
+    activated: S.optional(S.Boolean),
     interruptWindowDaysOfWeek: S.optional(
-      S.NullOr(ConnectorsCreateRequestInterruptWindowDaysOfWeekList).pipe(
+      ConnectorsCreateRequestInterruptWindowDaysOfWeekList.pipe(
         T.Body("interrupt_window_days_of_week"),
       ),
     ),
     interruptWindowDurationHours: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_duration_hours")),
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
     ),
     interruptWindowEmbargoDates: S.optional(
-      S.NullOr(ConnectorsCreateRequestInterruptWindowEmbargoDatesList).pipe(
+      ConnectorsCreateRequestInterruptWindowEmbargoDatesList.pipe(
         T.Body("interrupt_window_embargo_dates"),
       ),
     ),
     interruptWindowHourOfDay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_hour_of_day")),
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
     ),
-    notes: S.optional(S.NullOr(S.String)),
-    primary: S.optional(S.NullOr(S.Boolean)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    timezone: S.optional(S.NullOr(S.String)),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -2054,29 +2050,25 @@ export interface GreTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string | null;
+  exportFilterId?: string;
   /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList | null;
+  extraPrefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string | null;
+  importFilterId?: string;
   /** MD5 key to use for session authentication. */
-  md5Key?: string | null;
+  md5Key?: string;
 }
 export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("export_filter_id")),
-    ),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
     extraPrefixes: S.optional(
-      S.NullOr(GreTunnelsCreateRequestBgpExtraPrefixesList).pipe(
+      GreTunnelsCreateRequestBgpExtraPrefixesList.pipe(
         T.Body("extra_prefixes"),
       ),
     ),
-    importFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("import_filter_id")),
-    ),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateRequestBgp",
@@ -2093,15 +2085,15 @@ export const GreTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string | null;
+  effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string | null;
+  saved?: string;
 }
 export const GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      effective: S.optional(S.NullOr(S.String)),
-      saved: S.optional(S.NullOr(S.String)),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2119,28 +2111,23 @@ export const GreTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?:
-    | GreTunnelsCreateRequestHealthCheckDirection
-    | (string & {})
-    | null;
+  direction?: GreTunnelsCreateRequestHealthCheckDirection | (string & {});
   /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsCreateRequestHealthCheckRate | (string & {}) | null;
+  rate?: GreTunnelsCreateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsCreateRequestHealthCheckTarget | null;
+  target?: GreTunnelsCreateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsCreateRequestHealthCheckType | (string & {}) | null;
+  type?: GreTunnelsCreateRequestHealthCheckType | (string & {});
 }
 export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    direction: S.optional(
-      S.NullOr(GreTunnelsCreateRequestHealthCheckDirection),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    rate: S.optional(S.NullOr(GreTunnelsCreateRequestHealthCheckRate)),
-    target: S.optional(S.NullOr(GreTunnelsCreateRequestHealthCheckTarget)),
-    type: S.optional(S.NullOr(GreTunnelsCreateRequestHealthCheckType)),
+    direction: S.optional(GreTunnelsCreateRequestHealthCheckDirection),
+    enabled: S.optional(S.Boolean),
+    rate: S.optional(GreTunnelsCreateRequestHealthCheckRate),
+    target: S.optional(GreTunnelsCreateRequestHealthCheckTarget),
+    type: S.optional(GreTunnelsCreateRequestHealthCheckType),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateRequestHealthCheck",
@@ -2158,17 +2145,17 @@ export interface CreateGreTunnelRequest {
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  bgp?: GreTunnelsCreateRequestBgp | null;
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsCreateRequestBgp;
   /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsCreateRequestHealthCheck | null;
+  description?: string;
+  healthCheck?: GreTunnelsCreateRequestHealthCheck;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
+  interfaceAddress6?: string;
   /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
+  mtu?: number;
   /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
+  ttl?: number;
   xMagicNewHcTarget?: boolean;
 }
 export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2179,18 +2166,16 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
     automaticReturnRouting: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    bgp: S.optional(S.NullOr(GreTunnelsCreateRequestBgp)),
-    description: S.optional(S.NullOr(S.String)),
+    bgp: S.optional(GreTunnelsCreateRequestBgp),
+    description: S.optional(S.String),
     healthCheck: S.optional(
-      S.NullOr(GreTunnelsCreateRequestHealthCheck).pipe(T.Body("health_check")),
+      GreTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    mtu: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -2415,29 +2400,25 @@ export interface IpsecTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string | null;
+  exportFilterId?: string;
   /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList | null;
+  extraPrefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string | null;
+  importFilterId?: string;
   /** MD5 key to use for session authentication. */
-  md5Key?: string | null;
+  md5Key?: string;
 }
 export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("export_filter_id")),
-    ),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
     extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsCreateRequestBgpExtraPrefixesList).pipe(
+      IpsecTunnelsCreateRequestBgpExtraPrefixesList.pipe(
         T.Body("extra_prefixes"),
       ),
     ),
-    importFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("import_filter_id")),
-    ),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "IpsecTunnelsCreateRequestBgp",
@@ -2445,12 +2426,12 @@ export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
 
 export interface IpsecTunnelsCreateRequestCustomRemoteIdentities {
   /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string | null;
+  fqdnId?: string;
 }
 export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fqdnId: S.optional(S.NullOr(S.String).pipe(T.Body("fqdn_id"))),
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
     }),
   ).annotate({
     identifier: "IpsecTunnelsCreateRequestCustomRemoteIdentities",
@@ -2467,15 +2448,15 @@ export const IpsecTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string | null;
+  effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string | null;
+  saved?: string;
 }
 export const IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      effective: S.optional(S.NullOr(S.String)),
-      saved: S.optional(S.NullOr(S.String)),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -2493,29 +2474,24 @@ export const IpsecTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?:
-    | IpsecTunnelsCreateRequestHealthCheckDirection
-    | (string & {})
-    | null;
+  direction?: IpsecTunnelsCreateRequestHealthCheckDirection | (string & {});
   /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsCreateRequestHealthCheckRate | (string & {}) | null;
+  rate?: IpsecTunnelsCreateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsCreateRequestHealthCheckTarget | null;
+  target?: IpsecTunnelsCreateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsCreateRequestHealthCheckType | (string & {}) | null;
+  type?: IpsecTunnelsCreateRequestHealthCheckType | (string & {});
 }
 export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      direction: S.optional(
-        S.NullOr(IpsecTunnelsCreateRequestHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(S.NullOr(IpsecTunnelsCreateRequestHealthCheckRate)),
-      target: S.optional(S.NullOr(IpsecTunnelsCreateRequestHealthCheckTarget)),
-      type: S.optional(S.NullOr(IpsecTunnelsCreateRequestHealthCheckType)),
+      direction: S.optional(IpsecTunnelsCreateRequestHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(IpsecTunnelsCreateRequestHealthCheckRate),
+      target: S.optional(IpsecTunnelsCreateRequestHealthCheckTarget),
+      type: S.optional(IpsecTunnelsCreateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "IpsecTunnelsCreateRequestHealthCheck",
@@ -2531,20 +2507,20 @@ export interface CreateIpsecTunnelRequest {
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  bgp?: IpsecTunnelsCreateRequestBgp | null;
-  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities | null;
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsCreateRequestBgp;
+  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities;
   /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
+  customerEndpoint?: string;
   /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsCreateRequestHealthCheck | null;
+  description?: string;
+  healthCheck?: IpsecTunnelsCreateRequestHealthCheck;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
+  interfaceAddress6?: string;
   /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string | null;
+  psk?: string;
   /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
+  replayProtection?: boolean;
   xMagicNewHcTarget?: boolean;
 }
 export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2554,30 +2530,22 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
     automaticReturnRouting: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    bgp: S.optional(S.NullOr(IpsecTunnelsCreateRequestBgp)),
+    bgp: S.optional(IpsecTunnelsCreateRequestBgp),
     customRemoteIdentities: S.optional(
-      S.NullOr(IpsecTunnelsCreateRequestCustomRemoteIdentities).pipe(
+      IpsecTunnelsCreateRequestCustomRemoteIdentities.pipe(
         T.Body("custom_remote_identities"),
       ),
     ),
-    customerEndpoint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
     healthCheck: S.optional(
-      S.NullOr(IpsecTunnelsCreateRequestHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
+      IpsecTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    psk: S.optional(S.NullOr(S.String)),
-    replayProtection: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
-    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    psk: S.optional(S.String),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -2848,30 +2816,26 @@ export const PcapsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple {
   /** The destination IP address of the packet. */
-  destinationAddress?: string | null;
+  destinationAddress?: string;
   /** The destination port of the packet. */
-  destinationPort?: number | null;
+  destinationPort?: number;
   /** The protocol number of the packet. */
-  protocol?: number | null;
+  protocol?: number;
   /** The source IP address of the packet. */
-  sourceAddress?: string | null;
+  sourceAddress?: string;
   /** The source port of the packet. */
-  sourcePort?: number | null;
+  sourcePort?: number;
 }
 export const PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinationAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("destination_address")),
+        S.String.pipe(T.Body("destination_address")),
       ),
-      destinationPort: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("destination_port")),
-      ),
-      protocol: S.optional(S.NullOr(S.Number)),
-      sourceAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("source_address")),
-      ),
-      sourcePort: S.optional(S.NullOr(S.Number).pipe(T.Body("source_port"))),
+      destinationPort: S.optional(S.Number.pipe(T.Body("destination_port"))),
+      protocol: S.optional(S.Number),
+      sourceAddress: S.optional(S.String.pipe(T.Body("source_address"))),
+      sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
     }),
   ).annotate({
     identifier:
@@ -2882,7 +2846,7 @@ export interface CreatePcapRequest {
   /** Identifier. */
   accountId: string;
   /** The limit of packets contained in a packet capture. */
-  packetLimit?: number | null;
+  packetLimit?: number;
   /** The system used to collect packet captures. */
   system: PcapsCreateRequestSystem | (string & {});
   /** The packet capture duration in seconds. */
@@ -2890,34 +2854,32 @@ export interface CreatePcapRequest {
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
   type: PcapsCreateRequestType | (string & {});
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple | null;
+  filterV1?: PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple;
   /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
-  offsetTime?: string | null;
+  offsetTime?: string;
   /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
-  coloName?: string | null;
+  coloName?: string;
   /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf?: string | null;
+  destinationConf?: string;
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
-  byteLimit?: number | null;
+  byteLimit?: number;
 }
 export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    packetLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_limit"))),
+    packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
     system: PcapsCreateRequestSystem,
     timeLimit: S.Number.pipe(T.Body("time_limit")),
     type: PcapsCreateRequestType,
     filterV1: S.optional(
-      S.NullOr(
-        PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple,
-      ).pipe(T.Body("filter_v1")),
+      PcapsCreateRequestFilterV1MagicVisibilityPCAPsPCAPsRequestSimple.pipe(
+        T.Body("filter_v1"),
+      ),
     ),
-    offsetTime: S.optional(S.NullOr(S.String).pipe(T.Body("offset_time"))),
-    coloName: S.optional(S.NullOr(S.String).pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_conf")),
-    ),
-    byteLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("byte_limit"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
   })
     .pipe(
       T.Http({
@@ -3210,21 +3172,17 @@ export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
 
 export interface RoutesCreateRequestScope {
   /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesCreateRequestScopeColoNamesList | null;
+  coloNames?: RoutesCreateRequestScopeColoNamesList;
   /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesCreateRequestScopeColoRegionsList | null;
+  coloRegions?: RoutesCreateRequestScopeColoRegionsList;
 }
 export const RoutesCreateRequestScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coloNames: S.optional(
-      S.NullOr(RoutesCreateRequestScopeColoNamesList).pipe(
-        T.Body("colo_names"),
-      ),
+      RoutesCreateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
     ),
     coloRegions: S.optional(
-      S.NullOr(RoutesCreateRequestScopeColoRegionsList).pipe(
-        T.Body("colo_regions"),
-      ),
+      RoutesCreateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
     ),
   }),
 ).annotate({
@@ -3241,11 +3199,11 @@ export interface CreateRouteRequest {
   /** Priority of the static route. */
   priority: number;
   /** An optional human provided description of the static route. */
-  description?: string | null;
+  description?: string;
   /** Used only for ECMP routes. */
-  scope?: RoutesCreateRequestScope | null;
+  scope?: RoutesCreateRequestScope;
   /** Optional weight of the ECMP scope - if provided. */
-  weight?: number | null;
+  weight?: number;
 }
 export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3253,9 +3211,9 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     nexthop: S.String,
     prefix: S.String,
     priority: S.Number,
-    description: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(RoutesCreateRequestScope)),
-    weight: S.optional(S.NullOr(S.Number)),
+    description: S.optional(S.String),
+    scope: S.optional(RoutesCreateRequestScope),
+    weight: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -3341,14 +3299,14 @@ export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesCreateRequestLocation {
   /** Latitude */
-  lat?: string | null;
+  lat?: string;
   /** Longitude */
-  lon?: string | null;
+  lon?: string;
 }
 export const SitesCreateRequestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lat: S.optional(S.NullOr(S.String)),
-    lon: S.optional(S.NullOr(S.String)),
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SitesCreateRequestLocation",
@@ -3360,25 +3318,25 @@ export interface CreateSiteRequest {
   /** The name of the site. */
   name: string;
   /** Magic Connector identifier tag. */
-  connectorId?: string | null;
-  description?: string | null;
+  connectorId?: string;
+  description?: string;
   /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean | null;
+  haMode?: boolean;
   /** Location of site in latitude and longitude. */
-  location?: SitesCreateRequestLocation | null;
+  location?: SitesCreateRequestLocation;
   /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string | null;
+  secondaryConnectorId?: string;
 }
 export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    haMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_mode"))),
-    location: S.optional(S.NullOr(SitesCreateRequestLocation)),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesCreateRequestLocation),
     secondaryConnectorId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("secondary_connector_id")),
+      S.String.pipe(T.Body("secondary_connector_id")),
     ),
   })
     .pipe(
@@ -3459,25 +3417,23 @@ export interface SitesAclsCreateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
   /** The name of the LAN based on the provided lan_id. */
-  lanName?: string | null;
+  lanName?: string;
   /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsCreateRequestLan1PortRangesList | null;
+  portRanges?: SitesAclsCreateRequestLan1PortRangesList;
   /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsCreateRequestLan1PortsList | null;
+  ports?: SitesAclsCreateRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsCreateRequestLan1SubnetsList | null;
+  subnets?: SitesAclsCreateRequestLan1SubnetsList;
 }
 export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
     portRanges: S.optional(
-      S.NullOr(SitesAclsCreateRequestLan1PortRangesList).pipe(
-        T.Body("port_ranges"),
-      ),
+      SitesAclsCreateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
     ),
-    ports: S.optional(S.NullOr(SitesAclsCreateRequestLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsCreateRequestLan1SubnetsList)),
+    ports: S.optional(SitesAclsCreateRequestLan1PortsList),
+    subnets: S.optional(SitesAclsCreateRequestLan1SubnetsList),
   }),
 ).annotate({
   identifier: "SitesAclsCreateRequestLan1",
@@ -3503,12 +3459,12 @@ export interface CreateSiteAclRequest {
   /** The name of the ACL. */
   name: string;
   /** Description for the ACL. */
-  description?: string | null;
+  description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean | null;
-  protocols?: SitesAclsCreateRequestProtocolsList | null;
+  forwardLocally?: boolean;
+  protocols?: SitesAclsCreateRequestProtocolsList;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
+  unidirectional?: boolean;
 }
 export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3517,12 +3473,10 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     lan_1: SitesAclsCreateRequestLan1,
     lan_2: SitesAclsCreateRequestLan1,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    forwardLocally: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
-    ),
-    protocols: S.optional(S.NullOr(SitesAclsCreateRequestProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    protocols: S.optional(SitesAclsCreateRequestProtocolsList),
+    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -3623,11 +3577,11 @@ export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesLansCreateRequestNat {
   /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string | null;
+  staticPrefix?: string;
 }
 export const SitesLansCreateRequestNat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    staticPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("static_prefix"))),
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
   }),
 ).annotate({
   identifier: "SitesLansCreateRequestNat",
@@ -3638,14 +3592,14 @@ export interface SitesLansCreateRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: SitesLansCreateRequestNat | null;
+  nat?: SitesLansCreateRequestNat;
 }
 export const SitesLansCreateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.NullOr(SitesLansCreateRequestNat)),
+      nat: S.optional(SitesLansCreateRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansCreateRequestRoutedSubnetsItem",
@@ -3666,15 +3620,15 @@ export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList 
 
 export interface SitesLansCreateRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList | null;
+  serverAddresses?: SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList;
 }
 export const SitesLansCreateRequestStaticAddressingDhcpRelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serverAddresses: S.optional(
-        S.NullOr(
-          SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList,
-        ).pipe(T.Body("server_addresses")),
+        SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
       ),
     }),
   ).annotate({
@@ -3733,39 +3687,35 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap =
 
 export interface SitesLansCreateRequestStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList | null;
+  dhcpOptions?: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList;
   /** A valid IPv4 address. */
-  dhcpPoolEnd?: string | null;
+  dhcpPoolEnd?: string;
   /** A valid IPv4 address. */
-  dhcpPoolStart?: string | null;
+  dhcpPoolStart?: string;
   /** A valid IPv4 address. */
-  dnsServer?: string | null;
-  dnsServers?: SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList | null;
+  dnsServer?: string;
+  dnsServers?: SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap | null;
+  reservations?: SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap;
 }
 export const SitesLansCreateRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dhcpOptions: S.optional(
-        S.NullOr(
-          SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList,
-        ).pipe(T.Body("dhcp_options")),
+        SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
       ),
-      dhcpPoolEnd: S.optional(S.NullOr(S.String).pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(
-        S.NullOr(S.String).pipe(T.Body("dhcp_pool_start")),
-      ),
-      dnsServer: S.optional(S.NullOr(S.String).pipe(T.Body("dns_server"))),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
       dnsServers: S.optional(
-        S.NullOr(
-          SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList,
-        ).pipe(T.Body("dns_servers")),
+        SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
       ),
       reservations: S.optional(
-        S.NullOr(
-          SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap,
-        ),
+        SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap,
       ),
     }),
   ).annotate({
@@ -3775,33 +3725,29 @@ export const SitesLansCreateRequestStaticAddressingDhcpServer =
 export interface SitesLansCreateRequestStaticAddressing {
   /** A valid CIDR notation representing an IP range. */
   address: string;
-  dhcpRelay?: SitesLansCreateRequestStaticAddressingDhcpRelay | null;
-  dhcpServer?: SitesLansCreateRequestStaticAddressingDhcpServer | null;
+  dhcpRelay?: SitesLansCreateRequestStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansCreateRequestStaticAddressingDhcpServer;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
   /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
+  virtualAddress?: string;
 }
 export const SitesLansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       dhcpRelay: S.optional(
-        S.NullOr(SitesLansCreateRequestStaticAddressingDhcpRelay).pipe(
+        SitesLansCreateRequestStaticAddressingDhcpRelay.pipe(
           T.Body("dhcp_relay"),
         ),
       ),
       dhcpServer: S.optional(
-        S.NullOr(SitesLansCreateRequestStaticAddressingDhcpServer).pipe(
+        SitesLansCreateRequestStaticAddressingDhcpServer.pipe(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansCreateRequestStaticAddressing",
@@ -3812,46 +3758,40 @@ export interface CreateSiteLanRequest {
   accountId: string;
   /** Identifier */
   siteId: string;
-  bondId?: number | null;
+  bondId?: number;
   /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean | null;
+  haLink?: boolean;
   /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean | null;
+  isBreakout?: boolean;
   /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean | null;
-  name?: string | null;
-  nat?: SitesLansCreateRequestNat | null;
-  physport?: number | null;
-  routedSubnets?: SitesLansCreateRequestRoutedSubnetsList | null;
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansCreateRequestNat;
+  physport?: number;
+  routedSubnets?: SitesLansCreateRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansCreateRequestStaticAddressing | null;
+  staticAddressing?: SitesLansCreateRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const CreateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    bondId: S.optional(S.NullOr(S.Number).pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_prioritized")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    nat: S.optional(S.NullOr(SitesLansCreateRequestNat)),
-    physport: S.optional(S.NullOr(S.Number)),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansCreateRequestNat),
+    physport: S.optional(S.Number),
     routedSubnets: S.optional(
-      S.NullOr(SitesLansCreateRequestRoutedSubnetsList).pipe(
-        T.Body("routed_subnets"),
-      ),
+      SitesLansCreateRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
     ),
     staticAddressing: S.optional(
-      S.NullOr(SitesLansCreateRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesLansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -4124,16 +4064,14 @@ export interface SitesWansCreateRequestStaticAddressing {
   /** A valid IPv4 address. */
   gatewayAddress: string;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
 }
 export const SitesWansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
     }),
 ).annotate({
   identifier: "SitesWansCreateRequestStaticAddressing",
@@ -4145,26 +4083,24 @@ export interface CreateSiteWanRequest {
   /** Identifier */
   siteId: string;
   physport: number;
-  name?: string | null;
-  priority?: number | null;
+  name?: string;
+  priority?: number;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansCreateRequestStaticAddressing | null;
+  staticAddressing?: SitesWansCreateRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const CreateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     physport: S.Number,
-    name: S.optional(S.NullOr(S.String)),
-    priority: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
     staticAddressing: S.optional(
-      S.NullOr(SitesWansCreateRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesWansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -13940,29 +13876,29 @@ export interface PatchAppRequest {
   /** Identifier */
   accountAppId: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsEditRequestHostnamesList | null;
+  hostnames?: AppsEditRequestHostnamesList;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsEditRequestIpSubnetsList | null;
+  ipSubnets?: AppsEditRequestIpSubnetsList;
   /** Display name for the app. */
-  name?: string | null;
+  name?: string;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsEditRequestSourceSubnetsList | null;
+  sourceSubnets?: AppsEditRequestSourceSubnetsList;
   /** Category of the app. */
-  type?: string | null;
+  type?: string;
 }
 export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     accountAppId: S.String.pipe(T.Label("account_app_id")),
-    hostnames: S.optional(S.NullOr(AppsEditRequestHostnamesList)),
+    hostnames: S.optional(AppsEditRequestHostnamesList),
     ipSubnets: S.optional(
-      S.NullOr(AppsEditRequestIpSubnetsList).pipe(T.Body("ip_subnets")),
+      AppsEditRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
     sourceSubnets: S.optional(
-      S.NullOr(AppsEditRequestSourceSubnetsList).pipe(T.Body("source_subnets")),
+      AppsEditRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
-    type: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -14027,17 +13963,17 @@ export const PatchAppResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface Cf1SitesUpdateRequestLocation {
   /** Latitude of the CF1 Site. */
-  lat?: number | null;
+  lat?: number;
   /** Longitude of the CF1 Site. */
-  long?: number | null;
+  long?: number;
   /** Name of nearest town, city, or village. */
-  name?: string | null;
+  name?: string;
 }
 export const Cf1SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lat: S.optional(S.NullOr(S.Number)),
-    long: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "Cf1SitesUpdateRequestLocation",
@@ -14049,18 +13985,18 @@ export interface PatchCf1SiteRequest {
   /** Identifier */
   cf1SiteId: string;
   /** A human-provided description of the CF1 Site. */
-  description?: string | null;
-  location?: Cf1SitesUpdateRequestLocation | null;
+  description?: string;
+  location?: Cf1SitesUpdateRequestLocation;
   /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name?: string | null;
+  name?: string;
 }
 export const PatchCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(Cf1SitesUpdateRequestLocation)),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesUpdateRequestLocation),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -14147,48 +14083,46 @@ export interface PatchConnectorRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
-  activated?: boolean | null;
+  activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsEditRequestInterruptWindowDaysOfWeekList | null;
-  interruptWindowDurationHours?: number | null;
+  interruptWindowDaysOfWeek?: ConnectorsEditRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList | null;
-  interruptWindowHourOfDay?: number | null;
-  notes?: string | null;
-  primary?: boolean | null;
+  interruptWindowEmbargoDates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
   /** When true, regenerate license key for the connector. */
-  provisionLicense?: boolean | null;
-  siteId?: string | null;
-  timezone?: string | null;
+  provisionLicense?: boolean;
+  siteId?: string;
+  timezone?: string;
 }
 export const PatchConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-    activated: S.optional(S.NullOr(S.Boolean)),
+    activated: S.optional(S.Boolean),
     interruptWindowDaysOfWeek: S.optional(
-      S.NullOr(ConnectorsEditRequestInterruptWindowDaysOfWeekList).pipe(
+      ConnectorsEditRequestInterruptWindowDaysOfWeekList.pipe(
         T.Body("interrupt_window_days_of_week"),
       ),
     ),
     interruptWindowDurationHours: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_duration_hours")),
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
     ),
     interruptWindowEmbargoDates: S.optional(
-      S.NullOr(ConnectorsEditRequestInterruptWindowEmbargoDatesList).pipe(
+      ConnectorsEditRequestInterruptWindowEmbargoDatesList.pipe(
         T.Body("interrupt_window_embargo_dates"),
       ),
     ),
     interruptWindowHourOfDay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_hour_of_day")),
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
     ),
-    notes: S.optional(S.NullOr(S.String)),
-    primary: S.optional(S.NullOr(S.Boolean)),
-    provisionLicense: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("provision_license")),
-    ),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    timezone: S.optional(S.NullOr(S.String)),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -14303,14 +14237,14 @@ export const PatchConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesEditRequestLocation {
   /** Latitude */
-  lat?: string | null;
+  lat?: string;
   /** Longitude */
-  lon?: string | null;
+  lon?: string;
 }
 export const SitesEditRequestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lat: S.optional(S.NullOr(S.String)),
-    lon: S.optional(S.NullOr(S.String)),
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SitesEditRequestLocation",
@@ -14322,25 +14256,25 @@ export interface PatchSiteRequest {
   /** Identifier */
   siteId: string;
   /** Magic Connector identifier tag. */
-  connectorId?: string | null;
-  description?: string | null;
+  connectorId?: string;
+  description?: string;
   /** Location of site in latitude and longitude. */
-  location?: SitesEditRequestLocation | null;
+  location?: SitesEditRequestLocation;
   /** The name of the site. */
-  name?: string | null;
+  name?: string;
   /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string | null;
+  secondaryConnectorId?: string;
 }
 export const PatchSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(SitesEditRequestLocation)),
-    name: S.optional(S.NullOr(S.String)),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    location: S.optional(SitesEditRequestLocation),
+    name: S.optional(S.String),
     secondaryConnectorId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("secondary_connector_id")),
+      S.String.pipe(T.Body("secondary_connector_id")),
     ),
   })
     .pipe(
@@ -14421,25 +14355,23 @@ export interface SitesAclsEditRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
   /** The name of the LAN based on the provided lan_id. */
-  lanName?: string | null;
+  lanName?: string;
   /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsEditRequestLan1PortRangesList | null;
+  portRanges?: SitesAclsEditRequestLan1PortRangesList;
   /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsEditRequestLan1PortsList | null;
+  ports?: SitesAclsEditRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsEditRequestLan1SubnetsList | null;
+  subnets?: SitesAclsEditRequestLan1SubnetsList;
 }
 export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
     portRanges: S.optional(
-      S.NullOr(SitesAclsEditRequestLan1PortRangesList).pipe(
-        T.Body("port_ranges"),
-      ),
+      SitesAclsEditRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
     ),
-    ports: S.optional(S.NullOr(SitesAclsEditRequestLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsEditRequestLan1SubnetsList)),
+    ports: S.optional(SitesAclsEditRequestLan1PortsList),
+    subnets: S.optional(SitesAclsEditRequestLan1SubnetsList),
   }),
 ).annotate({
   identifier: "SitesAclsEditRequestLan1",
@@ -14463,31 +14395,29 @@ export interface PatchSiteAclRequest {
   /** Identifier */
   aclId: string;
   /** Description for the ACL. */
-  description?: string | null;
+  description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean | null;
-  lan_1?: SitesAclsEditRequestLan1 | null;
-  lan_2?: SitesAclsEditRequestLan1 | null;
+  forwardLocally?: boolean;
+  lan_1?: SitesAclsEditRequestLan1;
+  lan_2?: SitesAclsEditRequestLan1;
   /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsEditRequestProtocolsList | null;
+  name?: string;
+  protocols?: SitesAclsEditRequestProtocolsList;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
+  unidirectional?: boolean;
 }
 export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-    description: S.optional(S.NullOr(S.String)),
-    forwardLocally: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
-    ),
-    lan_1: S.optional(S.NullOr(SitesAclsEditRequestLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsEditRequestLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsEditRequestProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan_1: S.optional(SitesAclsEditRequestLan1),
+    lan_2: S.optional(SitesAclsEditRequestLan1),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsEditRequestProtocolsList),
+    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -14588,11 +14518,11 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesLansEditRequestNat {
   /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string | null;
+  staticPrefix?: string;
 }
 export const SitesLansEditRequestNat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    staticPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("static_prefix"))),
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
   }),
 ).annotate({
   identifier: "SitesLansEditRequestNat",
@@ -14603,14 +14533,14 @@ export interface SitesLansEditRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: SitesLansEditRequestNat | null;
+  nat?: SitesLansEditRequestNat;
 }
 export const SitesLansEditRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.NullOr(SitesLansEditRequestNat)),
+      nat: S.optional(SitesLansEditRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansEditRequestRoutedSubnetsItem",
@@ -14631,15 +14561,15 @@ export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
 
 export interface SitesLansEditRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList | null;
+  serverAddresses?: SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList;
 }
 export const SitesLansEditRequestStaticAddressingDhcpRelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serverAddresses: S.optional(
-        S.NullOr(
-          SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList,
-        ).pipe(T.Body("server_addresses")),
+        SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
       ),
     }),
   ).annotate({
@@ -14702,37 +14632,35 @@ export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
 
 export interface SitesLansEditRequestStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList | null;
+  dhcpOptions?: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList;
   /** A valid IPv4 address. */
-  dhcpPoolEnd?: string | null;
+  dhcpPoolEnd?: string;
   /** A valid IPv4 address. */
-  dhcpPoolStart?: string | null;
+  dhcpPoolStart?: string;
   /** A valid IPv4 address. */
-  dnsServer?: string | null;
-  dnsServers?: SitesLansEditRequestStaticAddressingDhcpServerDnsServersList | null;
+  dnsServer?: string;
+  dnsServers?: SitesLansEditRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansEditRequestStaticAddressingDhcpServerReservationsMap | null;
+  reservations?: SitesLansEditRequestStaticAddressingDhcpServerReservationsMap;
 }
 export const SitesLansEditRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dhcpOptions: S.optional(
-        S.NullOr(
-          SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList,
-        ).pipe(T.Body("dhcp_options")),
+        SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
       ),
-      dhcpPoolEnd: S.optional(S.NullOr(S.String).pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(
-        S.NullOr(S.String).pipe(T.Body("dhcp_pool_start")),
-      ),
-      dnsServer: S.optional(S.NullOr(S.String).pipe(T.Body("dns_server"))),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
       dnsServers: S.optional(
-        S.NullOr(
-          SitesLansEditRequestStaticAddressingDhcpServerDnsServersList,
-        ).pipe(T.Body("dns_servers")),
+        SitesLansEditRequestStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
       ),
       reservations: S.optional(
-        S.NullOr(SitesLansEditRequestStaticAddressingDhcpServerReservationsMap),
+        SitesLansEditRequestStaticAddressingDhcpServerReservationsMap,
       ),
     }),
   ).annotate({
@@ -14742,33 +14670,29 @@ export const SitesLansEditRequestStaticAddressingDhcpServer =
 export interface SitesLansEditRequestStaticAddressing {
   /** A valid CIDR notation representing an IP range. */
   address: string;
-  dhcpRelay?: SitesLansEditRequestStaticAddressingDhcpRelay | null;
-  dhcpServer?: SitesLansEditRequestStaticAddressingDhcpServer | null;
+  dhcpRelay?: SitesLansEditRequestStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansEditRequestStaticAddressingDhcpServer;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
   /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
+  virtualAddress?: string;
 }
 export const SitesLansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       dhcpRelay: S.optional(
-        S.NullOr(SitesLansEditRequestStaticAddressingDhcpRelay).pipe(
+        SitesLansEditRequestStaticAddressingDhcpRelay.pipe(
           T.Body("dhcp_relay"),
         ),
       ),
       dhcpServer: S.optional(
-        S.NullOr(SitesLansEditRequestStaticAddressingDhcpServer).pipe(
+        SitesLansEditRequestStaticAddressingDhcpServer.pipe(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansEditRequestStaticAddressing",
@@ -14781,44 +14705,38 @@ export interface PatchSiteLanRequest {
   siteId: string;
   /** Identifier */
   lanId: string;
-  bondId?: number | null;
+  bondId?: number;
   /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean | null;
+  isBreakout?: boolean;
   /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean | null;
-  name?: string | null;
-  nat?: SitesLansEditRequestNat | null;
-  physport?: number | null;
-  routedSubnets?: SitesLansEditRequestRoutedSubnetsList | null;
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansEditRequestNat;
+  physport?: number;
+  routedSubnets?: SitesLansEditRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansEditRequestStaticAddressing | null;
+  staticAddressing?: SitesLansEditRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lanId: S.String.pipe(T.Label("lan_id")),
-    bondId: S.optional(S.NullOr(S.Number).pipe(T.Body("bond_id"))),
-    isBreakout: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_prioritized")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    nat: S.optional(S.NullOr(SitesLansEditRequestNat)),
-    physport: S.optional(S.NullOr(S.Number)),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansEditRequestNat),
+    physport: S.optional(S.Number),
     routedSubnets: S.optional(
-      S.NullOr(SitesLansEditRequestRoutedSubnetsList).pipe(
-        T.Body("routed_subnets"),
-      ),
+      SitesLansEditRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
     ),
     staticAddressing: S.optional(
-      S.NullOr(SitesLansEditRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesLansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -15073,16 +14991,14 @@ export interface SitesWansEditRequestStaticAddressing {
   /** A valid IPv4 address. */
   gatewayAddress: string;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
 }
 export const SitesWansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
     }),
 ).annotate({
   identifier: "SitesWansEditRequestStaticAddressing",
@@ -15095,28 +15011,26 @@ export interface PatchSiteWanRequest {
   siteId: string;
   /** Identifier */
   wanId: string;
-  name?: string | null;
-  physport?: number | null;
-  priority?: number | null;
+  name?: string;
+  physport?: number;
+  priority?: number;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansEditRequestStaticAddressing | null;
+  staticAddressing?: SitesWansEditRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const PatchSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     wanId: S.String.pipe(T.Label("wan_id")),
-    name: S.optional(S.NullOr(S.String)),
-    physport: S.optional(S.NullOr(S.Number)),
-    priority: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
     staticAddressing: S.optional(
-      S.NullOr(SitesWansEditRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesWansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -15391,12 +15305,12 @@ export const PskSetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CfInterconnectsUpdateRequestGre {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
-  cloudflareEndpoint?: string | null;
+  cloudflareEndpoint?: string;
 }
 export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudflareEndpoint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("cloudflare_endpoint")),
+      S.String.pipe(T.Body("cloudflare_endpoint")),
     ),
   }),
 ).annotate({
@@ -15412,15 +15326,15 @@ export const CfInterconnectsUpdateRequestHealthCheckRate =
 
 export interface CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string | null;
+  effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string | null;
+  saved?: string;
 }
 export const CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      effective: S.optional(S.NullOr(S.String)),
-      saved: S.optional(S.NullOr(S.String)),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -15439,23 +15353,21 @@ export const CfInterconnectsUpdateRequestHealthCheckType =
 
 export interface CfInterconnectsUpdateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: CfInterconnectsUpdateRequestHealthCheckRate | (string & {}) | null;
+  rate?: CfInterconnectsUpdateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsUpdateRequestHealthCheckTarget | null;
+  target?: CfInterconnectsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: CfInterconnectsUpdateRequestHealthCheckType | (string & {}) | null;
+  type?: CfInterconnectsUpdateRequestHealthCheckType | (string & {});
 }
 export const CfInterconnectsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(S.NullOr(CfInterconnectsUpdateRequestHealthCheckRate)),
-      target: S.optional(
-        S.NullOr(CfInterconnectsUpdateRequestHealthCheckTarget),
-      ),
-      type: S.optional(S.NullOr(CfInterconnectsUpdateRequestHealthCheckType)),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(CfInterconnectsUpdateRequestHealthCheckRate),
+      target: S.optional(CfInterconnectsUpdateRequestHealthCheckTarget),
+      type: S.optional(CfInterconnectsUpdateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "CfInterconnectsUpdateRequestHealthCheck",
@@ -15467,20 +15379,20 @@ export interface PutCfInterconnectRequest {
   /** Identifier */
   cfInterconnectId: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
+  automaticReturnRouting?: boolean;
   /** An optional description of the interconnect. */
-  description?: string | null;
+  description?: string;
   /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsUpdateRequestGre | null;
-  healthCheck?: CfInterconnectsUpdateRequestHealthCheck | null;
+  gre?: CfInterconnectsUpdateRequestGre;
+  healthCheck?: CfInterconnectsUpdateRequestHealthCheck;
   /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress?: string | null;
+  interfaceAddress?: string;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
+  interfaceAddress6?: string;
   /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
-  mtu?: number | null;
+  mtu?: number;
   /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  name?: string | null;
+  name?: string;
   xMagicNewHcTarget?: boolean;
 }
 export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15488,23 +15400,17 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
     automaticReturnRouting: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    description: S.optional(S.NullOr(S.String)),
-    gre: S.optional(S.NullOr(CfInterconnectsUpdateRequestGre)),
+    description: S.optional(S.String),
+    gre: S.optional(CfInterconnectsUpdateRequestGre),
     healthCheck: S.optional(
-      S.NullOr(CfInterconnectsUpdateRequestHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
+      CfInterconnectsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address")),
-    ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    mtu: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
+    interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    name: S.optional(S.String),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -15698,29 +15604,29 @@ export interface SitesAppConfigurationCreateRequest {
   /** Identifier */
   siteId: string;
   /** Magic account app ID. */
-  accountAppId?: string | null;
+  accountAppId?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateRequestPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationCreateRequestPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority?: number;
   /** Managed app ID. */
-  managedAppId?: string | null;
+  managedAppId?: string;
 }
 export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    accountAppId: S.optional(S.NullOr(S.String).pipe(T.Body("account_app_id"))),
-    breakout: S.optional(S.NullOr(S.Boolean)),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    breakout: S.optional(S.Boolean),
     preferredWans: S.optional(
-      S.NullOr(SitesAppConfigurationCreateRequestPreferredWansList).pipe(
+      SitesAppConfigurationCreateRequestPreferredWansList.pipe(
         T.Body("preferred_wans"),
       ),
     ),
-    priority: S.optional(S.NullOr(S.Number)),
-    managedAppId: S.optional(S.NullOr(S.String).pipe(T.Body("managed_app_id"))),
+    priority: S.optional(S.Number),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   })
     .pipe(
       T.Http({
@@ -15966,30 +15872,30 @@ export interface SitesAppConfigurationEditRequest {
   /** Identifier */
   appConfigId: string;
   /** Magic account app ID. */
-  accountAppId?: string | null;
+  accountAppId?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  breakout?: boolean;
   /** Managed app ID. */
-  managedAppId?: string | null;
+  managedAppId?: string;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationEditRequestPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationEditRequestPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority?: number;
 }
 export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     appConfigId: S.String.pipe(T.Label("app_config_id")),
-    accountAppId: S.optional(S.NullOr(S.String).pipe(T.Body("account_app_id"))),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    managedAppId: S.optional(S.NullOr(S.String).pipe(T.Body("managed_app_id"))),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    breakout: S.optional(S.Boolean),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
     preferredWans: S.optional(
-      S.NullOr(SitesAppConfigurationEditRequestPreferredWansList).pipe(
+      SitesAppConfigurationEditRequestPreferredWansList.pipe(
         T.Body("preferred_wans"),
       ),
     ),
-    priority: S.optional(S.NullOr(S.Number)),
+    priority: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -16237,30 +16143,30 @@ export interface SitesAppConfigurationUpdateRequest {
   /** Identifier */
   appConfigId: string;
   /** Magic account app ID. */
-  accountAppId?: string | null;
+  accountAppId?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
-  breakout?: boolean | null;
+  breakout?: boolean;
   /** Managed app ID. */
-  managedAppId?: string | null;
+  managedAppId?: string;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationUpdateRequestPreferredWansList | null;
+  preferredWans?: SitesAppConfigurationUpdateRequestPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
-  priority?: number | null;
+  priority?: number;
 }
 export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     appConfigId: S.String.pipe(T.Label("app_config_id")),
-    accountAppId: S.optional(S.NullOr(S.String).pipe(T.Body("account_app_id"))),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    managedAppId: S.optional(S.NullOr(S.String).pipe(T.Body("managed_app_id"))),
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    breakout: S.optional(S.Boolean),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
     preferredWans: S.optional(
-      S.NullOr(SitesAppConfigurationUpdateRequestPreferredWansList).pipe(
+      SitesAppConfigurationUpdateRequestPreferredWansList.pipe(
         T.Body("preferred_wans"),
       ),
     ),
-    priority: S.optional(S.NullOr(S.Number)),
+    priority: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -16421,31 +16327,29 @@ export interface UpdateAppRequest {
   /** Identifier */
   accountAppId: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsUpdateRequestHostnamesList | null;
+  hostnames?: AppsUpdateRequestHostnamesList;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsUpdateRequestIpSubnetsList | null;
+  ipSubnets?: AppsUpdateRequestIpSubnetsList;
   /** Display name for the app. */
-  name?: string | null;
+  name?: string;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsUpdateRequestSourceSubnetsList | null;
+  sourceSubnets?: AppsUpdateRequestSourceSubnetsList;
   /** Category of the app. */
-  type?: string | null;
+  type?: string;
 }
 export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     accountAppId: S.String.pipe(T.Label("account_app_id")),
-    hostnames: S.optional(S.NullOr(AppsUpdateRequestHostnamesList)),
+    hostnames: S.optional(AppsUpdateRequestHostnamesList),
     ipSubnets: S.optional(
-      S.NullOr(AppsUpdateRequestIpSubnetsList).pipe(T.Body("ip_subnets")),
+      AppsUpdateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
     sourceSubnets: S.optional(
-      S.NullOr(AppsUpdateRequestSourceSubnetsList).pipe(
-        T.Body("source_subnets"),
-      ),
+      AppsUpdateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
     ),
-    type: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -16538,48 +16442,46 @@ export interface UpdateConnectorRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
-  activated?: boolean | null;
+  activated?: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsUpdateRequestInterruptWindowDaysOfWeekList | null;
-  interruptWindowDurationHours?: number | null;
+  interruptWindowDaysOfWeek?: ConnectorsUpdateRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList | null;
-  interruptWindowHourOfDay?: number | null;
-  notes?: string | null;
-  primary?: boolean | null;
+  interruptWindowEmbargoDates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
   /** When true, regenerate license key for the connector. */
-  provisionLicense?: boolean | null;
-  siteId?: string | null;
-  timezone?: string | null;
+  provisionLicense?: boolean;
+  siteId?: string;
+  timezone?: string;
 }
 export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
-    activated: S.optional(S.NullOr(S.Boolean)),
+    activated: S.optional(S.Boolean),
     interruptWindowDaysOfWeek: S.optional(
-      S.NullOr(ConnectorsUpdateRequestInterruptWindowDaysOfWeekList).pipe(
+      ConnectorsUpdateRequestInterruptWindowDaysOfWeekList.pipe(
         T.Body("interrupt_window_days_of_week"),
       ),
     ),
     interruptWindowDurationHours: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_duration_hours")),
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
     ),
     interruptWindowEmbargoDates: S.optional(
-      S.NullOr(ConnectorsUpdateRequestInterruptWindowEmbargoDatesList).pipe(
+      ConnectorsUpdateRequestInterruptWindowEmbargoDatesList.pipe(
         T.Body("interrupt_window_embargo_dates"),
       ),
     ),
     interruptWindowHourOfDay: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("interrupt_window_hour_of_day")),
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
     ),
-    notes: S.optional(S.NullOr(S.String)),
-    primary: S.optional(S.NullOr(S.Boolean)),
-    provisionLicense: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("provision_license")),
-    ),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-    timezone: S.optional(S.NullOr(S.String)),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -16703,15 +16605,15 @@ export const GreTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string | null;
+  effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string | null;
+  saved?: string;
 }
 export const GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      effective: S.optional(S.NullOr(S.String)),
-      saved: S.optional(S.NullOr(S.String)),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -16729,28 +16631,23 @@ export const GreTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?:
-    | GreTunnelsUpdateRequestHealthCheckDirection
-    | (string & {})
-    | null;
+  direction?: GreTunnelsUpdateRequestHealthCheckDirection | (string & {});
   /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: GreTunnelsUpdateRequestHealthCheckRate | (string & {}) | null;
+  rate?: GreTunnelsUpdateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsUpdateRequestHealthCheckTarget | null;
+  target?: GreTunnelsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: GreTunnelsUpdateRequestHealthCheckType | (string & {}) | null;
+  type?: GreTunnelsUpdateRequestHealthCheckType | (string & {});
 }
 export const GreTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    direction: S.optional(
-      S.NullOr(GreTunnelsUpdateRequestHealthCheckDirection),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    rate: S.optional(S.NullOr(GreTunnelsUpdateRequestHealthCheckRate)),
-    target: S.optional(S.NullOr(GreTunnelsUpdateRequestHealthCheckTarget)),
-    type: S.optional(S.NullOr(GreTunnelsUpdateRequestHealthCheckType)),
+    direction: S.optional(GreTunnelsUpdateRequestHealthCheckDirection),
+    enabled: S.optional(S.Boolean),
+    rate: S.optional(GreTunnelsUpdateRequestHealthCheckRate),
+    target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget),
+    type: S.optional(GreTunnelsUpdateRequestHealthCheckType),
   }),
 ).annotate({
   identifier: "GreTunnelsUpdateRequestHealthCheck",
@@ -16770,16 +16667,16 @@ export interface UpdateGreTunnelRequest {
   /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
   name: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
+  automaticReturnRouting?: boolean;
   /** An optional description of the GRE tunnel. */
-  description?: string | null;
-  healthCheck?: GreTunnelsUpdateRequestHealthCheck | null;
+  description?: string;
+  healthCheck?: GreTunnelsUpdateRequestHealthCheck;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
+  interfaceAddress6?: string;
   /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number | null;
+  mtu?: number;
   /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number | null;
+  ttl?: number;
   xMagicNewHcTarget?: boolean;
 }
 export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16791,17 +16688,15 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
     automaticReturnRouting: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
     healthCheck: S.optional(
-      S.NullOr(GreTunnelsUpdateRequestHealthCheck).pipe(T.Body("health_check")),
+      GreTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    mtu: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -17064,29 +16959,25 @@ export interface IpsecTunnelsUpdateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string | null;
+  exportFilterId?: string;
   /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList | null;
+  extraPrefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string | null;
+  importFilterId?: string;
   /** MD5 key to use for session authentication. */
-  md5Key?: string | null;
+  md5Key?: string;
 }
 export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("export_filter_id")),
-    ),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
     extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsUpdateRequestBgpExtraPrefixesList).pipe(
+      IpsecTunnelsUpdateRequestBgpExtraPrefixesList.pipe(
         T.Body("extra_prefixes"),
       ),
     ),
-    importFilterId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("import_filter_id")),
-    ),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "IpsecTunnelsUpdateRequestBgp",
@@ -17094,12 +16985,12 @@ export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
 
 export interface IpsecTunnelsUpdateRequestCustomRemoteIdentities {
   /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string | null;
+  fqdnId?: string;
 }
 export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fqdnId: S.optional(S.NullOr(S.String).pipe(T.Body("fqdn_id"))),
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
     }),
   ).annotate({
     identifier: "IpsecTunnelsUpdateRequestCustomRemoteIdentities",
@@ -17116,15 +17007,15 @@ export const IpsecTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
-  effective?: string | null;
+  effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
-  saved?: string | null;
+  saved?: string;
 }
 export const IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      effective: S.optional(S.NullOr(S.String)),
-      saved: S.optional(S.NullOr(S.String)),
+      effective: S.optional(S.String),
+      saved: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -17142,29 +17033,24 @@ export const IpsecTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?:
-    | IpsecTunnelsUpdateRequestHealthCheckDirection
-    | (string & {})
-    | null;
+  direction?: IpsecTunnelsUpdateRequestHealthCheckDirection | (string & {});
   /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: IpsecTunnelsUpdateRequestHealthCheckRate | (string & {}) | null;
+  rate?: IpsecTunnelsUpdateRequestHealthCheckRate | (string & {});
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsUpdateRequestHealthCheckTarget | null;
+  target?: IpsecTunnelsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: IpsecTunnelsUpdateRequestHealthCheckType | (string & {}) | null;
+  type?: IpsecTunnelsUpdateRequestHealthCheckType | (string & {});
 }
 export const IpsecTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      direction: S.optional(
-        S.NullOr(IpsecTunnelsUpdateRequestHealthCheckDirection),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      rate: S.optional(S.NullOr(IpsecTunnelsUpdateRequestHealthCheckRate)),
-      target: S.optional(S.NullOr(IpsecTunnelsUpdateRequestHealthCheckTarget)),
-      type: S.optional(S.NullOr(IpsecTunnelsUpdateRequestHealthCheckType)),
+      direction: S.optional(IpsecTunnelsUpdateRequestHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(IpsecTunnelsUpdateRequestHealthCheckRate),
+      target: S.optional(IpsecTunnelsUpdateRequestHealthCheckTarget),
+      type: S.optional(IpsecTunnelsUpdateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "IpsecTunnelsUpdateRequestHealthCheck",
@@ -17182,20 +17068,20 @@ export interface UpdateIpsecTunnelRequest {
   /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
   name: string;
   /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean | null;
-  bgp?: IpsecTunnelsUpdateRequestBgp | null;
-  customRemoteIdentities?: IpsecTunnelsUpdateRequestCustomRemoteIdentities | null;
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsUpdateRequestBgp;
+  customRemoteIdentities?: IpsecTunnelsUpdateRequestCustomRemoteIdentities;
   /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string | null;
+  customerEndpoint?: string;
   /** An optional description forthe IPsec tunnel. */
-  description?: string | null;
-  healthCheck?: IpsecTunnelsUpdateRequestHealthCheck | null;
+  description?: string;
+  healthCheck?: IpsecTunnelsUpdateRequestHealthCheck;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string | null;
+  interfaceAddress6?: string;
   /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string | null;
+  psk?: string;
   /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean | null;
+  replayProtection?: boolean;
   xMagicNewHcTarget?: boolean;
 }
 export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17206,30 +17092,22 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
     interfaceAddress: S.String.pipe(T.Body("interface_address")),
     name: S.String,
     automaticReturnRouting: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("automatic_return_routing")),
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
     ),
-    bgp: S.optional(S.NullOr(IpsecTunnelsUpdateRequestBgp)),
+    bgp: S.optional(IpsecTunnelsUpdateRequestBgp),
     customRemoteIdentities: S.optional(
-      S.NullOr(IpsecTunnelsUpdateRequestCustomRemoteIdentities).pipe(
+      IpsecTunnelsUpdateRequestCustomRemoteIdentities.pipe(
         T.Body("custom_remote_identities"),
       ),
     ),
-    customerEndpoint: S.optional(
-      S.NullOr(S.String).pipe(T.Body("customer_endpoint")),
-    ),
-    description: S.optional(S.NullOr(S.String)),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
     healthCheck: S.optional(
-      S.NullOr(IpsecTunnelsUpdateRequestHealthCheck).pipe(
-        T.Body("health_check"),
-      ),
+      IpsecTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
     ),
-    interfaceAddress6: S.optional(
-      S.NullOr(S.String).pipe(T.Body("interface_address6")),
-    ),
-    psk: S.optional(S.NullOr(S.String)),
-    replayProtection: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("replay_protection")),
-    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    psk: S.optional(S.String),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -17548,21 +17426,17 @@ export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
 
 export interface RoutesUpdateRequestScope {
   /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesUpdateRequestScopeColoNamesList | null;
+  coloNames?: RoutesUpdateRequestScopeColoNamesList;
   /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesUpdateRequestScopeColoRegionsList | null;
+  coloRegions?: RoutesUpdateRequestScopeColoRegionsList;
 }
 export const RoutesUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coloNames: S.optional(
-      S.NullOr(RoutesUpdateRequestScopeColoNamesList).pipe(
-        T.Body("colo_names"),
-      ),
+      RoutesUpdateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
     ),
     coloRegions: S.optional(
-      S.NullOr(RoutesUpdateRequestScopeColoRegionsList).pipe(
-        T.Body("colo_regions"),
-      ),
+      RoutesUpdateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
     ),
   }),
 ).annotate({
@@ -17581,11 +17455,11 @@ export interface UpdateRouteRequest {
   /** Priority of the static route. */
   priority: number;
   /** An optional human provided description of the static route. */
-  description?: string | null;
+  description?: string;
   /** Used only for ECMP routes. */
-  scope?: RoutesUpdateRequestScope | null;
+  scope?: RoutesUpdateRequestScope;
   /** Optional weight of the ECMP scope - if provided. */
-  weight?: number | null;
+  weight?: number;
 }
 export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17594,9 +17468,9 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
     nexthop: S.String,
     prefix: S.String,
     priority: S.Number,
-    description: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(RoutesUpdateRequestScope)),
-    weight: S.optional(S.NullOr(S.Number)),
+    description: S.optional(S.String),
+    scope: S.optional(RoutesUpdateRequestScope),
+    weight: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -17703,14 +17577,14 @@ export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesUpdateRequestLocation {
   /** Latitude */
-  lat?: string | null;
+  lat?: string;
   /** Longitude */
-  lon?: string | null;
+  lon?: string;
 }
 export const SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lat: S.optional(S.NullOr(S.String)),
-    lon: S.optional(S.NullOr(S.String)),
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SitesUpdateRequestLocation",
@@ -17722,25 +17596,25 @@ export interface UpdateSiteRequest {
   /** Identifier */
   siteId: string;
   /** Magic Connector identifier tag. */
-  connectorId?: string | null;
-  description?: string | null;
+  connectorId?: string;
+  description?: string;
   /** Location of site in latitude and longitude. */
-  location?: SitesUpdateRequestLocation | null;
+  location?: SitesUpdateRequestLocation;
   /** The name of the site. */
-  name?: string | null;
+  name?: string;
   /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string | null;
+  secondaryConnectorId?: string;
 }
 export const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(SitesUpdateRequestLocation)),
-    name: S.optional(S.NullOr(S.String)),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    location: S.optional(SitesUpdateRequestLocation),
+    name: S.optional(S.String),
     secondaryConnectorId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("secondary_connector_id")),
+      S.String.pipe(T.Body("secondary_connector_id")),
     ),
   })
     .pipe(
@@ -17821,25 +17695,23 @@ export interface SitesAclsUpdateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
   /** The name of the LAN based on the provided lan_id. */
-  lanName?: string | null;
+  lanName?: string;
   /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsUpdateRequestLan1PortRangesList | null;
+  portRanges?: SitesAclsUpdateRequestLan1PortRangesList;
   /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsUpdateRequestLan1PortsList | null;
+  ports?: SitesAclsUpdateRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsUpdateRequestLan1SubnetsList | null;
+  subnets?: SitesAclsUpdateRequestLan1SubnetsList;
 }
 export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
     portRanges: S.optional(
-      S.NullOr(SitesAclsUpdateRequestLan1PortRangesList).pipe(
-        T.Body("port_ranges"),
-      ),
+      SitesAclsUpdateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
     ),
-    ports: S.optional(S.NullOr(SitesAclsUpdateRequestLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsUpdateRequestLan1SubnetsList)),
+    ports: S.optional(SitesAclsUpdateRequestLan1PortsList),
+    subnets: S.optional(SitesAclsUpdateRequestLan1SubnetsList),
   }),
 ).annotate({
   identifier: "SitesAclsUpdateRequestLan1",
@@ -17863,31 +17735,29 @@ export interface UpdateSiteAclRequest {
   /** Identifier */
   aclId: string;
   /** Description for the ACL. */
-  description?: string | null;
+  description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean | null;
-  lan_1?: SitesAclsUpdateRequestLan1 | null;
-  lan_2?: SitesAclsUpdateRequestLan1 | null;
+  forwardLocally?: boolean;
+  lan_1?: SitesAclsUpdateRequestLan1;
+  lan_2?: SitesAclsUpdateRequestLan1;
   /** The name of the ACL. */
-  name?: string | null;
-  protocols?: SitesAclsUpdateRequestProtocolsList | null;
+  name?: string;
+  protocols?: SitesAclsUpdateRequestProtocolsList;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean | null;
+  unidirectional?: boolean;
 }
 export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
-    description: S.optional(S.NullOr(S.String)),
-    forwardLocally: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("forward_locally")),
-    ),
-    lan_1: S.optional(S.NullOr(SitesAclsUpdateRequestLan1)),
-    lan_2: S.optional(S.NullOr(SitesAclsUpdateRequestLan1)),
-    name: S.optional(S.NullOr(S.String)),
-    protocols: S.optional(S.NullOr(SitesAclsUpdateRequestProtocolsList)),
-    unidirectional: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan_1: S.optional(SitesAclsUpdateRequestLan1),
+    lan_2: S.optional(SitesAclsUpdateRequestLan1),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
+    unidirectional: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -17988,11 +17858,11 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface SitesLansUpdateRequestNat {
   /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string | null;
+  staticPrefix?: string;
 }
 export const SitesLansUpdateRequestNat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    staticPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("static_prefix"))),
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
   }),
 ).annotate({
   identifier: "SitesLansUpdateRequestNat",
@@ -18003,14 +17873,14 @@ export interface SitesLansUpdateRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: SitesLansUpdateRequestNat | null;
+  nat?: SitesLansUpdateRequestNat;
 }
 export const SitesLansUpdateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.NullOr(SitesLansUpdateRequestNat)),
+      nat: S.optional(SitesLansUpdateRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansUpdateRequestRoutedSubnetsItem",
@@ -18031,15 +17901,15 @@ export const SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList 
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList | null;
+  serverAddresses?: SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList;
 }
 export const SitesLansUpdateRequestStaticAddressingDhcpRelay =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serverAddresses: S.optional(
-        S.NullOr(
-          SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList,
-        ).pipe(T.Body("server_addresses")),
+        SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
       ),
     }),
   ).annotate({
@@ -18098,39 +17968,35 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap =
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList | null;
+  dhcpOptions?: SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList;
   /** A valid IPv4 address. */
-  dhcpPoolEnd?: string | null;
+  dhcpPoolEnd?: string;
   /** A valid IPv4 address. */
-  dhcpPoolStart?: string | null;
+  dhcpPoolStart?: string;
   /** A valid IPv4 address. */
-  dnsServer?: string | null;
-  dnsServers?: SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList | null;
+  dnsServer?: string;
+  dnsServers?: SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList;
   /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap | null;
+  reservations?: SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap;
 }
 export const SitesLansUpdateRequestStaticAddressingDhcpServer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dhcpOptions: S.optional(
-        S.NullOr(
-          SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList,
-        ).pipe(T.Body("dhcp_options")),
+        SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
       ),
-      dhcpPoolEnd: S.optional(S.NullOr(S.String).pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(
-        S.NullOr(S.String).pipe(T.Body("dhcp_pool_start")),
-      ),
-      dnsServer: S.optional(S.NullOr(S.String).pipe(T.Body("dns_server"))),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
       dnsServers: S.optional(
-        S.NullOr(
-          SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList,
-        ).pipe(T.Body("dns_servers")),
+        SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
       ),
       reservations: S.optional(
-        S.NullOr(
-          SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap,
-        ),
+        SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap,
       ),
     }),
   ).annotate({
@@ -18140,33 +18006,29 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServer =
 export interface SitesLansUpdateRequestStaticAddressing {
   /** A valid CIDR notation representing an IP range. */
   address: string;
-  dhcpRelay?: SitesLansUpdateRequestStaticAddressingDhcpRelay | null;
-  dhcpServer?: SitesLansUpdateRequestStaticAddressingDhcpServer | null;
+  dhcpRelay?: SitesLansUpdateRequestStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansUpdateRequestStaticAddressingDhcpServer;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
   /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string | null;
+  virtualAddress?: string;
 }
 export const SitesLansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       dhcpRelay: S.optional(
-        S.NullOr(SitesLansUpdateRequestStaticAddressingDhcpRelay).pipe(
+        SitesLansUpdateRequestStaticAddressingDhcpRelay.pipe(
           T.Body("dhcp_relay"),
         ),
       ),
       dhcpServer: S.optional(
-        S.NullOr(SitesLansUpdateRequestStaticAddressingDhcpServer).pipe(
+        SitesLansUpdateRequestStaticAddressingDhcpServer.pipe(
           T.Body("dhcp_server"),
         ),
       ),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
-      virtualAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("virtual_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
     }),
 ).annotate({
   identifier: "SitesLansUpdateRequestStaticAddressing",
@@ -18179,44 +18041,38 @@ export interface UpdateSiteLanRequest {
   siteId: string;
   /** Identifier */
   lanId: string;
-  bondId?: number | null;
+  bondId?: number;
   /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean | null;
+  isBreakout?: boolean;
   /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean | null;
-  name?: string | null;
-  nat?: SitesLansUpdateRequestNat | null;
-  physport?: number | null;
-  routedSubnets?: SitesLansUpdateRequestRoutedSubnetsList | null;
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansUpdateRequestNat;
+  physport?: number;
+  routedSubnets?: SitesLansUpdateRequestRoutedSubnetsList;
   /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansUpdateRequestStaticAddressing | null;
+  staticAddressing?: SitesLansUpdateRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lanId: S.String.pipe(T.Label("lan_id")),
-    bondId: S.optional(S.NullOr(S.Number).pipe(T.Body("bond_id"))),
-    isBreakout: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("is_prioritized")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
-    nat: S.optional(S.NullOr(SitesLansUpdateRequestNat)),
-    physport: S.optional(S.NullOr(S.Number)),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansUpdateRequestNat),
+    physport: S.optional(S.Number),
     routedSubnets: S.optional(
-      S.NullOr(SitesLansUpdateRequestRoutedSubnetsList).pipe(
-        T.Body("routed_subnets"),
-      ),
+      SitesLansUpdateRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
     ),
     staticAddressing: S.optional(
-      S.NullOr(SitesLansUpdateRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesLansUpdateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({
@@ -18471,16 +18327,14 @@ export interface SitesWansUpdateRequestStaticAddressing {
   /** A valid IPv4 address. */
   gatewayAddress: string;
   /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string | null;
+  secondaryAddress?: string;
 }
 export const SitesWansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       address: S.String,
       gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(
-        S.NullOr(S.String).pipe(T.Body("secondary_address")),
-      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
     }),
 ).annotate({
   identifier: "SitesWansUpdateRequestStaticAddressing",
@@ -18493,28 +18347,26 @@ export interface UpdateSiteWanRequest {
   siteId: string;
   /** Identifier */
   wanId: string;
-  name?: string | null;
-  physport?: number | null;
-  priority?: number | null;
+  name?: string;
+  physport?: number;
+  priority?: number;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansUpdateRequestStaticAddressing | null;
+  staticAddressing?: SitesWansUpdateRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number | null;
+  vlanTag?: number;
 }
 export const UpdateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     wanId: S.String.pipe(T.Label("wan_id")),
-    name: S.optional(S.NullOr(S.String)),
-    physport: S.optional(S.NullOr(S.Number)),
-    priority: S.optional(S.NullOr(S.Number)),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
     staticAddressing: S.optional(
-      S.NullOr(SitesWansUpdateRequestStaticAddressing).pipe(
-        T.Body("static_addressing"),
-      ),
+      SitesWansUpdateRequestStaticAddressing.pipe(T.Body("static_addressing")),
     ),
-    vlanTag: S.optional(S.NullOr(S.Number).pipe(T.Body("vlan_tag"))),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   })
     .pipe(
       T.Http({

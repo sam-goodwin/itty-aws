@@ -405,11 +405,11 @@ export const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListRequestAccount {
   /** Account name */
-  name?: string | null;
+  name?: string;
 }
 export const ListRequestAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRequestAccount",
@@ -425,7 +425,7 @@ export type ListRequestStatus = "accepted" | "pending" | "rejected";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListMembershipsRequest {
-  account?: ListRequestAccount | null;
+  account?: ListRequestAccount;
   /** Direction to order memberships. */
   direction?: ListRequestDirection | (string & {});
   /** Account name */
@@ -441,9 +441,7 @@ export interface ListMembershipsRequest {
 }
 export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account: S.optional(
-      S.NullOr(ListRequestAccount).pipe(T.DeepQuery("account")),
-    ),
+    account: S.optional(ListRequestAccount.pipe(T.DeepQuery("account"))),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(ListRequestOrder.pipe(T.Query())),

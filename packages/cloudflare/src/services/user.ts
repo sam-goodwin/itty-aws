@@ -142,14 +142,14 @@ export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
+  key?: string;
+  value?: string;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      key: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -159,18 +159,16 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta | null;
+  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
   /** Name of the permission group. */
-  name?: string | null;
+  name?: string;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      meta: S.optional(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItem",
@@ -246,18 +244,16 @@ export const TokensCreateRequestConditionRequestIpNotInList =
 
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensCreateRequestConditionRequestIpInList | null;
+  in?: TokensCreateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensCreateRequestConditionRequestIpNotInList | null;
+  notIn?: TokensCreateRequestConditionRequestIpNotInList;
 }
 export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(S.NullOr(TokensCreateRequestConditionRequestIpInList)),
+      in: S.optional(TokensCreateRequestConditionRequestIpInList),
       notIn: S.optional(
-        S.NullOr(TokensCreateRequestConditionRequestIpNotInList).pipe(
-          T.Body("not_in"),
-        ),
+        TokensCreateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
       ),
     }),
 ).annotate({
@@ -266,14 +262,12 @@ export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensCreateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensCreateRequestConditionRequestIp | null;
+  requestIp?: TokensCreateRequestConditionRequestIp;
 }
 export const TokensCreateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      S.NullOr(TokensCreateRequestConditionRequestIp).pipe(
-        T.Body("request_ip"),
-      ),
+      TokensCreateRequestConditionRequestIp.pipe(T.Body("request_ip")),
     ),
   }),
 ).annotate({
@@ -285,19 +279,19 @@ export interface CreateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensCreateRequestPoliciesList;
-  condition?: TokensCreateRequestCondition | null;
+  condition?: TokensCreateRequestCondition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string | null;
+  expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string | null;
+  notBefore?: string;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     policies: TokensCreateRequestPoliciesList,
-    condition: S.optional(S.NullOr(TokensCreateRequestCondition)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    condition: S.optional(TokensCreateRequestCondition),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
   })
     .pipe(T.Http({ method: "POST", uri: "/user/tokens", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1269,11 +1263,11 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface AuditLogsListRequestAction {
   /** Filters by the action type. */
-  type?: string | null;
+  type?: string;
 }
 export const AuditLogsListRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestAction",
@@ -1281,14 +1275,14 @@ export const AuditLogsListRequestAction = /*@__PURE__*/ S.suspend(() =>
 
 export interface AuditLogsListRequestActor {
   /** Filters by the email address of the actor that made the change. */
-  email?: string | null;
+  email?: string;
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
-  ip?: string | null;
+  ip?: string;
 }
 export const AuditLogsListRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.NullOr(S.String)),
-    ip: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.String),
+    ip: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestActor",
@@ -1299,11 +1293,11 @@ export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface AuditLogsListRequestZone {
   /** Filters by the name of the zone associated to the change. */
-  name?: string | null;
+  name?: string;
 }
 export const AuditLogsListRequestZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuditLogsListRequestZone",
@@ -1312,8 +1306,8 @@ export const AuditLogsListRequestZone = /*@__PURE__*/ S.suspend(() =>
 export interface ListAuditLogsRequest {
   /** Finds a specific log by its ID. */
   id?: string;
-  action?: AuditLogsListRequestAction | null;
-  actor?: AuditLogsListRequestActor | null;
+  action?: AuditLogsListRequestAction;
+  actor?: AuditLogsListRequestActor;
   /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: string;
   /** Changes the direction of the chronological sorting. */
@@ -1328,17 +1322,13 @@ export interface ListAuditLogsRequest {
   perPage?: number;
   /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: string;
-  zone?: AuditLogsListRequestZone | null;
+  zone?: AuditLogsListRequestZone;
 }
 export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(
-      S.NullOr(AuditLogsListRequestAction).pipe(T.DeepQuery("action")),
-    ),
-    actor: S.optional(
-      S.NullOr(AuditLogsListRequestActor).pipe(T.DeepQuery("actor")),
-    ),
+    action: S.optional(AuditLogsListRequestAction.pipe(T.DeepQuery("action"))),
+    actor: S.optional(AuditLogsListRequestActor.pipe(T.DeepQuery("actor"))),
     before: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
     export: S.optional(S.Boolean.pipe(T.Query())),
@@ -1346,9 +1336,7 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-    zone: S.optional(
-      S.NullOr(AuditLogsListRequestZone).pipe(T.DeepQuery("zone")),
-    ),
+    zone: S.optional(AuditLogsListRequestZone.pipe(T.DeepQuery("zone"))),
   })
     .pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2192,23 +2180,23 @@ export const PatchInviteResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface PatchUserRequest {
   /** The country in which the user lives. */
-  country?: string | null;
+  country?: string;
   /** User's first name */
-  firstName?: string | null;
+  firstName?: string;
   /** User's last name */
-  lastName?: string | null;
+  lastName?: string;
   /** User's telephone number */
-  telephone?: string | null;
+  telephone?: string;
   /** The zipcode or postal code where the user lives. */
-  zipcode?: string | null;
+  zipcode?: string;
 }
 export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    country: S.optional(S.NullOr(S.String)),
-    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
-    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-    telephone: S.optional(S.NullOr(S.String)),
-    zipcode: S.optional(S.NullOr(S.String)),
+    country: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    telephone: S.optional(S.String),
+    zipcode: S.optional(S.String),
   })
     .pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2356,31 +2344,29 @@ export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsUpdateRequestRatePlanId | (string & {}) | null;
+  id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
   /** The currency applied to the rate plan subscription. */
-  currency?: string | null;
+  currency?: string;
   /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean | null;
+  externallyManaged?: boolean;
   /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean | null;
+  isContract?: boolean;
   /** The full name of the rate plan. */
-  publicName?: string | null;
+  publicName?: string;
   /** The scope that this rate plan applies to. */
-  scope?: string | null;
+  scope?: string;
   /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsUpdateRequestRatePlanSetsList | null;
+  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
 }
 export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanId)),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
-    scope: S.optional(S.NullOr(S.String)),
-    sets: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanSetsList)),
+    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
   }),
 ).annotate({
   identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -2390,16 +2376,16 @@ export interface PutSubscriptionRequest {
   /** Subscription identifier tag. */
   identifier: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsUpdateRequestFrequency | (string & {}) | null;
+  frequency?: SubscriptionsUpdateRequestFrequency | (string & {});
   /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsUpdateRequestRatePlan | null;
+  ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
 export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String.pipe(T.Label()),
-    frequency: S.optional(S.NullOr(SubscriptionsUpdateRequestFrequency)),
+    frequency: S.optional(SubscriptionsUpdateRequestFrequency),
     ratePlan: S.optional(
-      S.NullOr(SubscriptionsUpdateRequestRatePlan).pipe(T.Body("rate_plan")),
+      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
   })
     .pipe(
@@ -2452,14 +2438,14 @@ export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
+  key?: string;
+  value?: string;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      key: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -2469,18 +2455,16 @@ export interface TokensUpdateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta | null;
+  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta;
   /** Name of the permission group. */
-  name?: string | null;
+  name?: string;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      meta: S.optional(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItem",
@@ -2556,18 +2540,16 @@ export const TokensUpdateRequestConditionRequestIpNotInList =
 
 export interface TokensUpdateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensUpdateRequestConditionRequestIpInList | null;
+  in?: TokensUpdateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensUpdateRequestConditionRequestIpNotInList | null;
+  notIn?: TokensUpdateRequestConditionRequestIpNotInList;
 }
 export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(S.NullOr(TokensUpdateRequestConditionRequestIpInList)),
+      in: S.optional(TokensUpdateRequestConditionRequestIpInList),
       notIn: S.optional(
-        S.NullOr(TokensUpdateRequestConditionRequestIpNotInList).pipe(
-          T.Body("not_in"),
-        ),
+        TokensUpdateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
       ),
     }),
 ).annotate({
@@ -2576,14 +2558,12 @@ export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensUpdateRequestConditionRequestIp | null;
+  requestIp?: TokensUpdateRequestConditionRequestIp;
 }
 export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      S.NullOr(TokensUpdateRequestConditionRequestIp).pipe(
-        T.Body("request_ip"),
-      ),
+      TokensUpdateRequestConditionRequestIp.pipe(T.Body("request_ip")),
     ),
   }),
 ).annotate({
@@ -2600,23 +2580,23 @@ export interface UpdateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensUpdateRequestPoliciesList;
-  condition?: TokensUpdateRequestCondition | null;
+  condition?: TokensUpdateRequestCondition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string | null;
+  expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string | null;
+  notBefore?: string;
   /** Status of the token. */
-  status?: TokensUpdateRequestStatus | (string & {}) | null;
+  status?: TokensUpdateRequestStatus | (string & {});
 }
 export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
     name: S.String,
     policies: TokensUpdateRequestPoliciesList,
-    condition: S.optional(S.NullOr(TokensUpdateRequestCondition)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-    status: S.optional(S.NullOr(TokensUpdateRequestStatus)),
+    condition: S.optional(TokensUpdateRequestCondition),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
+    status: S.optional(TokensUpdateRequestStatus),
   })
     .pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

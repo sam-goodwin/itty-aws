@@ -815,17 +815,17 @@ export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface HostnamesUpdateRequestConfigItem {
   /** Certificate identifier tag. */
-  certId?: string | null;
+  certId?: string;
   /** Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
-  hostname?: string | null;
+  hostname?: string;
 }
 export const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    hostname: S.optional(S.NullOr(S.String)),
+    certId: S.optional(S.String.pipe(T.Body("cert_id"))),
+    enabled: S.optional(S.Boolean),
+    hostname: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HostnamesUpdateRequestConfigItem",

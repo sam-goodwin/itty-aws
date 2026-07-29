@@ -53,15 +53,15 @@ export interface CreateDetectionRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string | null;
+  password?: string;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string | null;
+  username?: string;
 }
 export const CreateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    password: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.String),
+    username: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -96,12 +96,12 @@ export interface CreateLeakedCredentialCheckRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Determines whether or not Leaked Credential Checks are enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -287,16 +287,16 @@ export interface UpdateDetectionRequest {
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
   /** Defines ehe ruleset expression to use in matching the password in a request. */
-  password?: string | null;
+  password?: string;
   /** Defines the ruleset expression to use in matching the username in a request. */
-  username?: string | null;
+  username?: string;
 }
 export const UpdateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     detectionId: S.String.pipe(T.Label("detection_id")),
-    password: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
+    password: S.optional(S.String),
+    username: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",

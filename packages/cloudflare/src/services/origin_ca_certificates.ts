@@ -97,7 +97,7 @@ export interface CreateOriginCaCertificateRequest {
   /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
   requestType: CreateRequestRequestType | (string & {});
   /** The number of days for which the certificate should be valid. */
-  requestedValidity?: CreateRequestRequestedValidity | (number & {}) | null;
+  requestedValidity?: CreateRequestRequestedValidity | (number & {});
 }
 export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -105,9 +105,7 @@ export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     hostnames: CreateRequestHostnamesList,
     requestType: CreateRequestRequestType.pipe(T.Body("request_type")),
     requestedValidity: S.optional(
-      S.NullOr(CreateRequestRequestedValidity).pipe(
-        T.Body("requested_validity"),
-      ),
+      CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
     ),
   })
     .pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 }))

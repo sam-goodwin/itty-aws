@@ -66,13 +66,13 @@ export interface CreateCustomNameserverRequest {
   /** The FQDN of the name server. */
   nsName: string;
   /** The number of the set that this name server belongs to. */
-  nsSet?: number | null;
+  nsSet?: number;
 }
 export const CreateCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     nsName: S.String.pipe(T.Body("ns_name")),
-    nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   })
     .pipe(
       T.Http({

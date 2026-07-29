@@ -123,12 +123,12 @@ export interface PutAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -178,12 +178,12 @@ export interface PutCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Custom topic categories for AI Security for Apps content detection. */
-  topics?: CustomTopicsUpdateRequestTopicsList | null;
+  topics?: CustomTopicsUpdateRequestTopicsList;
 }
 export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    topics: S.optional(S.NullOr(CustomTopicsUpdateRequestTopicsList)),
+    topics: S.optional(CustomTopicsUpdateRequestTopicsList),
   }).pipe(
     T.Http({
       method: "PUT",

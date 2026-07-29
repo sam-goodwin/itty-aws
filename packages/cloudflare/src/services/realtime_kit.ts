@@ -213,9 +213,9 @@ export interface AddParticipantMeetingRequest {
   /** Name of the preset to apply to this participant. */
   presetName: string;
   /** (Optional) Name of the participant. */
-  name?: string | null;
+  name?: string;
   /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string | null;
+  picture?: string;
 }
 export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -224,8 +224,8 @@ export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     meetingId: S.String.pipe(T.Label("meeting_id")),
     customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
     presetName: S.String.pipe(T.Body("preset_name")),
-    name: S.optional(S.NullOr(S.String)),
-    picture: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    picture: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -291,14 +291,14 @@ export interface CreateIndependentLivestreamLivestreamRequest {
   /** The app identifier tag. */
   appId: string;
   /** Name of the livestream */
-  name?: string | null;
+  name?: string;
 }
 export const CreateIndependentLivestreamLivestreamRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
     })
       .pipe(
         T.Http({
@@ -393,30 +393,28 @@ export interface MeetingsCreateRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsCreateRequestAiConfigSummarizationSummaryType
-    | (string & {})
-    | null;
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsCreateRequestAiConfigSummarizationTextFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number | null;
+  wordLimit?: number;
 }
 export const MeetingsCreateRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        S.NullOr(MeetingsCreateRequestAiConfigSummarizationSummaryType).pipe(
+        MeetingsCreateRequestAiConfigSummarizationSummaryType.pipe(
           T.Body("summary_type"),
         ),
       ),
       textFormat: S.optional(
-        S.NullOr(MeetingsCreateRequestAiConfigSummarizationTextFormat).pipe(
+        MeetingsCreateRequestAiConfigSummarizationTextFormat.pipe(
           T.Body("text_format"),
         ),
       ),
-      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestAiConfigSummarization",
@@ -445,27 +443,20 @@ export const MeetingsCreateRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsCreateRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList | null;
+  keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
-  language?:
-    | MeetingsCreateRequestAiConfigTranscriptionLanguage
-    | (string & {})
-    | null;
+  language?: MeetingsCreateRequestAiConfigTranscriptionLanguage | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean | null;
+  profanityFilter?: boolean;
 }
 export const MeetingsCreateRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        S.NullOr(MeetingsCreateRequestAiConfigTranscriptionKeywordsList),
+        MeetingsCreateRequestAiConfigTranscriptionKeywordsList,
       ),
-      language: S.optional(
-        S.NullOr(MeetingsCreateRequestAiConfigTranscriptionLanguage),
-      ),
-      profanityFilter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
-      ),
+      language: S.optional(MeetingsCreateRequestAiConfigTranscriptionLanguage),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestAiConfigTranscription",
@@ -473,18 +464,14 @@ export const MeetingsCreateRequestAiConfigTranscription =
 
 export interface MeetingsCreateRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsCreateRequestAiConfigSummarization | null;
+  summarization?: MeetingsCreateRequestAiConfigSummarization;
   /** Transcription Configurations */
-  transcription?: MeetingsCreateRequestAiConfigTranscription | null;
+  transcription?: MeetingsCreateRequestAiConfigTranscription;
 }
 export const MeetingsCreateRequestAiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    summarization: S.optional(
-      S.NullOr(MeetingsCreateRequestAiConfigSummarization),
-    ),
-    transcription: S.optional(
-      S.NullOr(MeetingsCreateRequestAiConfigTranscription),
-    ),
+    summarization: S.optional(MeetingsCreateRequestAiConfigSummarization),
+    transcription: S.optional(MeetingsCreateRequestAiConfigTranscription),
   }),
 ).annotate({
   identifier: "MeetingsCreateRequestAiConfig",
@@ -506,26 +493,20 @@ export interface MeetingsCreateRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsCreateRequestRecordingConfigAudioConfigChannel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?:
-    | MeetingsCreateRequestRecordingConfigAudioConfigCodec
-    | (string & {})
-    | null;
+  codec?: MeetingsCreateRequestRecordingConfigAudioConfigCodec | (string & {});
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
 }
 export const MeetingsCreateRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfigChannel),
+        MeetingsCreateRequestRecordingConfigAudioConfigChannel,
       ),
-      codec: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfigCodec),
-      ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      codec: S.optional(MeetingsCreateRequestRecordingConfigAudioConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigAudioConfig",
@@ -533,12 +514,12 @@ export const MeetingsCreateRequestRecordingConfigAudioConfig =
 
 export interface MeetingsCreateRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string | null;
+  rtmpUrl?: string;
 }
 export const MeetingsCreateRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigLiveStreamingConfig",
@@ -576,50 +557,49 @@ export interface MeetingsCreateRequestRecordingConfigStorageConfig {
   /** Type of storage media. */
   type: MeetingsCreateRequestRecordingConfigStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string | null;
+  accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the storage medium's bucket. */
-  bucket?: string | null;
+  bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string | null;
+  host?: string;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string | null;
+  password?: string;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string | null;
+  path?: string;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number | null;
+  port?: number;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string | null;
+  privateKey?: string;
   /** Region of the storage medium. */
-  region?: string | null;
+  region?: string;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string | null;
+  secret?: string;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string | null;
+  username?: string;
 }
 export const MeetingsCreateRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsCreateRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        S.NullOr(
-          MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod,
-        ).pipe(T.Body("auth_method")),
+        MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
       ),
-      bucket: S.optional(S.NullOr(S.String)),
-      host: S.optional(S.NullOr(S.String)),
-      password: S.optional(S.NullOr(S.String)),
-      path: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
-      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-      region: S.optional(S.NullOr(S.String)),
-      secret: S.optional(S.NullOr(S.String)),
-      username: S.optional(S.NullOr(S.String)),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigStorageConfig",
@@ -641,15 +621,15 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number | null;
+  height?: number;
   /** Width of the watermark in px */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.NullOr(S.Number)),
-      width: S.optional(S.NullOr(S.Number)),
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize",
@@ -659,25 +639,22 @@ export interface MeetingsCreateRequestRecordingConfigVideoConfigWatermark {
   /** Position of the watermark */
   position?:
     | MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {})
-    | null;
+    | (string & {});
   /** Size of the watermark */
-  size?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize | null;
+  size?: MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
-  url?: string | null;
+  url?: string;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(
-          MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition,
-        ),
+        MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition,
       ),
       size: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize),
+        MeetingsCreateRequestRecordingConfigVideoConfigWatermarkSize,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfigWatermark",
@@ -685,31 +662,26 @@ export const MeetingsCreateRequestRecordingConfigVideoConfigWatermark =
 
 export interface MeetingsCreateRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?:
-    | MeetingsCreateRequestRecordingConfigVideoConfigCodec
-    | (string & {})
-    | null;
+  codec?: MeetingsCreateRequestRecordingConfigVideoConfigCodec | (string & {});
   /** Controls whether to export video file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
   /** Height of the recording video in pixels */
-  height?: number | null;
+  height?: number;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsCreateRequestRecordingConfigVideoConfigWatermark | null;
+  watermark?: MeetingsCreateRequestRecordingConfigVideoConfigWatermark;
   /** Width of the recording video in pixels */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsCreateRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      codec: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigCodec),
-      ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-      height: S.optional(S.NullOr(S.Number)),
+      codec: S.optional(MeetingsCreateRequestRecordingConfigVideoConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
       watermark: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfigWatermark),
+        MeetingsCreateRequestRecordingConfigVideoConfigWatermark,
       ),
-      width: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "MeetingsCreateRequestRecordingConfigVideoConfig",
@@ -717,45 +689,43 @@ export const MeetingsCreateRequestRecordingConfigVideoConfig =
 
 export interface MeetingsCreateRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsCreateRequestRecordingConfigAudioConfig | null;
+  audioConfig?: MeetingsCreateRequestRecordingConfigAudioConfig;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string | null;
-  liveStreamingConfig?: MeetingsCreateRequestRecordingConfigLiveStreamingConfig | null;
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsCreateRequestRecordingConfigLiveStreamingConfig;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number | null;
-  realtimekitBucketConfig?: MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig | null;
-  storageConfig?: MeetingsCreateRequestRecordingConfigStorageConfig | null;
-  videoConfig?: MeetingsCreateRequestRecordingConfigVideoConfig | null;
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsCreateRequestRecordingConfigStorageConfig;
+  videoConfig?: MeetingsCreateRequestRecordingConfigVideoConfig;
 }
 export const MeetingsCreateRequestRecordingConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       audioConfig: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigAudioConfig).pipe(
+        MeetingsCreateRequestRecordingConfigAudioConfig.pipe(
           T.Body("audio_config"),
         ),
       ),
-      fileNamePrefix: S.optional(
-        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
-      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
       liveStreamingConfig: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigLiveStreamingConfig).pipe(
+        MeetingsCreateRequestRecordingConfigLiveStreamingConfig.pipe(
           T.Body("live_streaming_config"),
         ),
       ),
-      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        S.NullOr(
-          MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig,
-        ).pipe(T.Body("realtimekit_bucket_config")),
+        MeetingsCreateRequestRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
       ),
       storageConfig: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigStorageConfig).pipe(
+        MeetingsCreateRequestRecordingConfigStorageConfig.pipe(
           T.Body("storage_config"),
         ),
       ),
       videoConfig: S.optional(
-        S.NullOr(MeetingsCreateRequestRecordingConfigVideoConfig).pipe(
+        MeetingsCreateRequestRecordingConfigVideoConfig.pipe(
           T.Body("video_config"),
         ),
       ),
@@ -770,53 +740,45 @@ export interface CreateMeetingRequest {
   /** The app identifier tag. */
   appId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsCreateRequestAiConfig | null;
+  aiConfig?: MeetingsCreateRequestAiConfig;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean | null;
+  liveStreamOnStart?: boolean;
   /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean | null;
+  persistChat?: boolean;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean | null;
+  recordOnStart?: boolean;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsCreateRequestRecordingConfig | null;
+  recordingConfig?: MeetingsCreateRequestRecordingConfig;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number | null;
+  sessionKeepAliveTimeInSecs?: number;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean | null;
+  summarizeOnEnd?: boolean;
   /** Title of the meeting */
-  title?: string | null;
+  title?: string;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean | null;
+  transcribeOnEnd?: boolean;
 }
 export const CreateMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     aiConfig: S.optional(
-      S.NullOr(MeetingsCreateRequestAiConfig).pipe(T.Body("ai_config")),
+      MeetingsCreateRequestAiConfig.pipe(T.Body("ai_config")),
     ),
     liveStreamOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
-    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
     recordingConfig: S.optional(
-      S.NullOr(MeetingsCreateRequestRecordingConfig).pipe(
-        T.Body("recording_config"),
-      ),
+      MeetingsCreateRequestRecordingConfig.pipe(T.Body("recording_config")),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    summarizeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
-    ),
-    title: S.optional(S.NullOr(S.String)),
-    transcribeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
-    ),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
   })
     .pipe(
       T.Http({
@@ -1297,9 +1259,9 @@ export interface CreatePollActiveSessionRequest {
   /** Question of the poll */
   question: string;
   /** if voters on a poll are anonymous */
-  anonymous?: boolean | null;
+  anonymous?: boolean;
   /** if votes on an option are visible before a person votes */
-  hideVotes?: boolean | null;
+  hideVotes?: boolean;
 }
 export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1308,8 +1270,8 @@ export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
     meetingId: S.String.pipe(T.Label("meeting_id")),
     options: ActiveSessionCreatePollRequestOptionsList,
     question: S.String,
-    anonymous: S.optional(S.NullOr(S.Boolean)),
-    hideVotes: S.optional(S.NullOr(S.Boolean).pipe(T.Body("hide_votes"))),
+    anonymous: S.optional(S.Boolean),
+    hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
   })
     .pipe(
       T.Http({
@@ -1484,14 +1446,14 @@ export interface PresetsCreateRequestConfigMediaVideo {
   /** Video quality of participants */
   quality: PresetsCreateRequestConfigMediaVideoQuality | (string & {});
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean | null;
+  simulcast?: boolean;
 }
 export const PresetsCreateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       frameRate: S.Number.pipe(T.Body("frame_rate")),
       quality: PresetsCreateRequestConfigMediaVideoQuality,
-      simulcast: S.optional(S.NullOr(S.Boolean)),
+      simulcast: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMediaVideo",
@@ -1499,19 +1461,17 @@ export const PresetsCreateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
 
 export interface PresetsCreateRequestConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean | null;
+  enableHighBitrate?: boolean;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean | null;
+  enableStereo?: boolean;
 }
 export const PresetsCreateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
+        S.Boolean.pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
-      ),
+      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
     }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMediaAudio",
@@ -1523,13 +1483,13 @@ export interface PresetsCreateRequestConfigMedia {
   /** Configuration options for participant videos */
   video: PresetsCreateRequestConfigMediaVideo;
   /** Control options for Audio quality. */
-  audio?: PresetsCreateRequestConfigMediaAudio | null;
+  audio?: PresetsCreateRequestConfigMediaAudio;
 }
 export const PresetsCreateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshare: PresetsCreateRequestConfigMediaScreenshare,
     video: PresetsCreateRequestConfigMediaVideo,
-    audio: S.optional(S.NullOr(PresetsCreateRequestConfigMediaAudio)),
+    audio: S.optional(PresetsCreateRequestConfigMediaAudio),
   }),
 ).annotate({
   identifier: "PresetsCreateRequestConfigMedia",
@@ -1559,7 +1519,7 @@ export interface PresetsCreateRequestConfig {
   /** Type of the meeting */
   viewType: PresetsCreateRequestConfigViewType | (string & {});
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList | null;
+  livestreamViewerQualities?: PresetsCreateRequestConfigLivestreamViewerQualitiesList;
 }
 export const PresetsCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1570,7 +1530,7 @@ export const PresetsCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
     media: PresetsCreateRequestConfigMedia,
     viewType: PresetsCreateRequestConfigViewType.pipe(T.Body("view_type")),
     livestreamViewerQualities: S.optional(
-      S.NullOr(PresetsCreateRequestConfigLivestreamViewerQualitiesList).pipe(
+      PresetsCreateRequestConfigLivestreamViewerQualitiesList.pipe(
         T.Body("livestream_viewer_qualities"),
       ),
     ),
@@ -1752,21 +1712,18 @@ export const PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
 export interface PresetsCreateRequestPermissionsPluginsConfigValue {
   accessControl?:
     | PresetsCreateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {})
-    | null;
-  handlesViewOnly?: boolean | null;
+    | (string & {});
+  handlesViewOnly?: boolean;
 }
 export const PresetsCreateRequestPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        S.NullOr(
-          PresetsCreateRequestPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
+        PresetsCreateRequestPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
       ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
     }),
   ).annotate({
     identifier: "PresetsCreateRequestPermissionsPluginsConfigValue",
@@ -1874,14 +1831,11 @@ export interface PresetsCreateRequestPermissions {
   waitingRoomType:
     | PresetsCreateRequestPermissionsWaitingRoomType
     | (string & {});
-  acceptStageRequests?: boolean | null;
-  isRecorder?: boolean | null;
-  stageAccess?:
-    | PresetsCreateRequestPermissionsStageAccess
-    | (string & {})
-    | null;
-  stageEnabled?: boolean | null;
-  transcriptionEnabled?: boolean | null;
+  acceptStageRequests?: boolean;
+  isRecorder?: boolean;
+  stageAccess?: PresetsCreateRequestPermissionsStageAccess | (string & {});
+  stageEnabled?: boolean;
+  transcriptionEnabled?: boolean;
 }
 export const PresetsCreateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1923,17 +1877,15 @@ export const PresetsCreateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
       T.Body("waiting_room_type"),
     ),
     acceptStageRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
+      S.Boolean.pipe(T.Body("accept_stage_requests")),
     ),
-    isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
+    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
     stageAccess: S.optional(
-      S.NullOr(PresetsCreateRequestPermissionsStageAccess).pipe(
-        T.Body("stage_access"),
-      ),
+      PresetsCreateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
     ),
-    stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
+    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
     transcriptionEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
+      S.Boolean.pipe(T.Body("transcription_enabled")),
     ),
   }),
 ).annotate({
@@ -2033,9 +1985,9 @@ export interface PresetsCreateRequestUiDesignTokens {
   colors: PresetsCreateRequestUiDesignTokensColors;
   spacingBase: number;
   theme: PresetsCreateRequestUiDesignTokensTheme | (string & {});
-  fontFamily?: string | null;
-  googleFont?: string | null;
-  logo?: string | null;
+  fontFamily?: string;
+  googleFont?: string;
+  logo?: string;
 }
 export const PresetsCreateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2048,9 +2000,9 @@ export const PresetsCreateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
     colors: PresetsCreateRequestUiDesignTokensColors,
     spacingBase: S.Number.pipe(T.Body("spacing_base")),
     theme: PresetsCreateRequestUiDesignTokensTheme,
-    fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
-    googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
-    logo: S.optional(S.NullOr(S.String)),
+    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+    logo: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PresetsCreateRequestUiDesignTokens",
@@ -2808,7 +2760,7 @@ export interface CreateWebhookWebhookRequest {
   /** URL this webhook will send events to */
   url: string;
   /** Set whether or not the webhook should be active when created */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2817,7 +2769,7 @@ export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     events: WebhooksCreateWebhookRequestEventsList,
     name: S.String,
     url: S.String,
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -3753,11 +3705,11 @@ export interface EditParticipantMeetingRequest {
   meetingId: string;
   participantId: string;
   /** (Optional) Name of the participant. */
-  name?: string | null;
+  name?: string;
   /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string | null;
+  picture?: string;
   /** (Optional) Name of the preset to apply to this participant. */
-  presetName?: string | null;
+  presetName?: string;
 }
 export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3765,9 +3717,9 @@ export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     participantId: S.String.pipe(T.Label("participant_id")),
-    name: S.optional(S.NullOr(S.String)),
-    picture: S.optional(S.NullOr(S.String)),
-    presetName: S.optional(S.NullOr(S.String).pipe(T.Body("preset_name"))),
+    name: S.optional(S.String),
+    picture: S.optional(S.String),
+    presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
   })
     .pipe(
       T.Http({
@@ -3852,23 +3804,23 @@ export interface EditWebhookWebhookRequest {
   /** The app identifier tag. */
   appId: string;
   webhookId: string;
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Events that the webhook will get triggered by */
-  events?: WebhooksEditWebhookRequestEventsList | null;
+  events?: WebhooksEditWebhookRequestEventsList;
   /** Name of the webhook */
-  name?: string | null;
+  name?: string;
   /** URL the webhook will send events to */
-  url?: string | null;
+  url?: string;
 }
 export const EditWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     webhookId: S.String.pipe(T.Label("webhook_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    events: S.optional(S.NullOr(WebhooksEditWebhookRequestEventsList)),
-    name: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.Boolean),
+    events: S.optional(WebhooksEditWebhookRequestEventsList),
+    name: S.optional(S.String),
+    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -12394,15 +12346,15 @@ export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
 
 export interface PresetsUpdateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
-  desktop?: number | null;
+  desktop?: number;
   /** Maximum number of streams visible on mobile devices */
-  mobile?: number | null;
+  mobile?: number;
 }
 export const PresetsUpdateRequestConfigMaxVideoStreams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      desktop: S.optional(S.NullOr(S.Number)),
-      mobile: S.optional(S.NullOr(S.Number)),
+      desktop: S.optional(S.Number),
+      mobile: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestConfigMaxVideoStreams",
@@ -12410,19 +12362,17 @@ export const PresetsUpdateRequestConfigMaxVideoStreams =
 
 export interface PresetsUpdateRequestConfigMediaAudio {
   /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean | null;
+  enableHighBitrate?: boolean;
   /** Enable Stereo for your meetings */
-  enableStereo?: boolean | null;
+  enableStereo?: boolean;
 }
 export const PresetsUpdateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enableHighBitrate: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_high_bitrate")),
+        S.Boolean.pipe(T.Body("enable_high_bitrate")),
       ),
-      enableStereo: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("enable_stereo")),
-      ),
+      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMediaAudio",
@@ -12439,20 +12389,15 @@ export const PresetsUpdateRequestConfigMediaScreenshareQuality =
 
 export interface PresetsUpdateRequestConfigMediaScreenshare {
   /** Frame rate of screen share */
-  frameRate?: number | null;
+  frameRate?: number;
   /** Quality of screen share */
-  quality?:
-    | PresetsUpdateRequestConfigMediaScreenshareQuality
-    | (string & {})
-    | null;
+  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality | (string & {});
 }
 export const PresetsUpdateRequestConfigMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      frameRate: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_rate"))),
-      quality: S.optional(
-        S.NullOr(PresetsUpdateRequestConfigMediaScreenshareQuality),
-      ),
+      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
+      quality: S.optional(PresetsUpdateRequestConfigMediaScreenshareQuality),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestConfigMediaScreenshare",
@@ -12469,20 +12414,18 @@ export const PresetsUpdateRequestConfigMediaVideoQuality =
 
 export interface PresetsUpdateRequestConfigMediaVideo {
   /** Frame rate of participants' video */
-  frameRate?: number | null;
+  frameRate?: number;
   /** Video quality of participants */
-  quality?: PresetsUpdateRequestConfigMediaVideoQuality | (string & {}) | null;
+  quality?: PresetsUpdateRequestConfigMediaVideoQuality | (string & {});
   /** Enable simulcast for participant videos. */
-  simulcast?: boolean | null;
+  simulcast?: boolean;
 }
 export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      frameRate: S.optional(S.NullOr(S.Number).pipe(T.Body("frame_rate"))),
-      quality: S.optional(
-        S.NullOr(PresetsUpdateRequestConfigMediaVideoQuality),
-      ),
-      simulcast: S.optional(S.NullOr(S.Boolean)),
+      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
+      quality: S.optional(PresetsUpdateRequestConfigMediaVideoQuality),
+      simulcast: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMediaVideo",
@@ -12490,19 +12433,17 @@ export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
 
 export interface PresetsUpdateRequestConfigMedia {
   /** Control options for Audio quality. */
-  audio?: PresetsUpdateRequestConfigMediaAudio | null;
+  audio?: PresetsUpdateRequestConfigMediaAudio;
   /** Configuration options for participant screen shares */
-  screenshare?: PresetsUpdateRequestConfigMediaScreenshare | null;
+  screenshare?: PresetsUpdateRequestConfigMediaScreenshare;
   /** Configuration options for participant videos */
-  video?: PresetsUpdateRequestConfigMediaVideo | null;
+  video?: PresetsUpdateRequestConfigMediaVideo;
 }
 export const PresetsUpdateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(S.NullOr(PresetsUpdateRequestConfigMediaAudio)),
-    screenshare: S.optional(
-      S.NullOr(PresetsUpdateRequestConfigMediaScreenshare),
-    ),
-    video: S.optional(S.NullOr(PresetsUpdateRequestConfigMediaVideo)),
+    audio: S.optional(PresetsUpdateRequestConfigMediaAudio),
+    screenshare: S.optional(PresetsUpdateRequestConfigMediaScreenshare),
+    video: S.optional(PresetsUpdateRequestConfigMediaVideo),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestConfigMedia",
@@ -12517,34 +12458,34 @@ export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestConfig {
   /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList | null;
+  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList;
   /** Maximum number of screen shares that can be active at a given time */
-  maxScreenshareCount?: number | null;
+  maxScreenshareCount?: number;
   /** Maximum number of streams that are visible on a device */
-  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams | null;
+  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams;
   /** Media configuration options. eg: Video quality */
-  media?: PresetsUpdateRequestConfigMedia | null;
+  media?: PresetsUpdateRequestConfigMedia;
   /** Type of the meeting */
-  viewType?: PresetsUpdateRequestConfigViewType | (string & {}) | null;
+  viewType?: PresetsUpdateRequestConfigViewType | (string & {});
 }
 export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     livestreamViewerQualities: S.optional(
-      S.NullOr(PresetsUpdateRequestConfigLivestreamViewerQualitiesList).pipe(
+      PresetsUpdateRequestConfigLivestreamViewerQualitiesList.pipe(
         T.Body("livestream_viewer_qualities"),
       ),
     ),
     maxScreenshareCount: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_screenshare_count")),
+      S.Number.pipe(T.Body("max_screenshare_count")),
     ),
     maxVideoStreams: S.optional(
-      S.NullOr(PresetsUpdateRequestConfigMaxVideoStreams).pipe(
+      PresetsUpdateRequestConfigMaxVideoStreams.pipe(
         T.Body("max_video_streams"),
       ),
     ),
-    media: S.optional(S.NullOr(PresetsUpdateRequestConfigMedia)),
+    media: S.optional(PresetsUpdateRequestConfigMedia),
     viewType: S.optional(
-      S.NullOr(PresetsUpdateRequestConfigViewType).pipe(T.Body("view_type")),
+      PresetsUpdateRequestConfigViewType.pipe(T.Body("view_type")),
     ),
   }),
 ).annotate({
@@ -12552,18 +12493,18 @@ export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PresetsUpdateRequestConfig>;
 
 export interface PresetsUpdateRequestPermissionsChatPrivate {
-  canReceive?: boolean | null;
-  canSend?: boolean | null;
-  files?: boolean | null;
-  text?: boolean | null;
+  canReceive?: boolean;
+  canSend?: boolean;
+  files?: boolean;
+  text?: boolean;
 }
 export const PresetsUpdateRequestPermissionsChatPrivate =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      canReceive: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_receive"))),
-      canSend: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_send"))),
-      files: S.optional(S.NullOr(S.Boolean)),
-      text: S.optional(S.NullOr(S.Boolean)),
+      canReceive: S.optional(S.Boolean.pipe(T.Body("can_receive"))),
+      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
+      files: S.optional(S.Boolean),
+      text: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsChatPrivate",
@@ -12571,52 +12512,52 @@ export const PresetsUpdateRequestPermissionsChatPrivate =
 
 export interface PresetsUpdateRequestPermissionsChatPublic {
   /** Can send messages in general */
-  canSend?: boolean | null;
+  canSend?: boolean;
   /** Can send file messages */
-  files?: boolean | null;
+  files?: boolean;
   /** Can send text messages */
-  text?: boolean | null;
+  text?: boolean;
 }
 export const PresetsUpdateRequestPermissionsChatPublic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      canSend: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_send"))),
-      files: S.optional(S.NullOr(S.Boolean)),
-      text: S.optional(S.NullOr(S.Boolean)),
+      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
+      files: S.optional(S.Boolean),
+      text: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsChatPublic",
   }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPublic>;
 
 export interface PresetsUpdateRequestPermissionsChat {
-  private?: PresetsUpdateRequestPermissionsChatPrivate | null;
-  public?: PresetsUpdateRequestPermissionsChatPublic | null;
+  private?: PresetsUpdateRequestPermissionsChatPrivate;
+  public?: PresetsUpdateRequestPermissionsChatPublic;
 }
 export const PresetsUpdateRequestPermissionsChat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    private: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChatPrivate)),
-    public: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChatPublic)),
+    private: S.optional(PresetsUpdateRequestPermissionsChatPrivate),
+    public: S.optional(PresetsUpdateRequestPermissionsChatPublic),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsChat",
 }) as any as S.Schema<PresetsUpdateRequestPermissionsChat>;
 
 export interface PresetsUpdateRequestPermissionsConnectedMeetings {
-  canAlterConnectedMeetings?: boolean | null;
-  canSwitchConnectedMeetings?: boolean | null;
-  canSwitchToParentMeeting?: boolean | null;
+  canAlterConnectedMeetings?: boolean;
+  canSwitchConnectedMeetings?: boolean;
+  canSwitchToParentMeeting?: boolean;
 }
 export const PresetsUpdateRequestPermissionsConnectedMeetings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canAlterConnectedMeetings: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("can_alter_connected_meetings")),
+        S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
       ),
       canSwitchConnectedMeetings: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("can_switch_connected_meetings")),
+        S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
       ),
       canSwitchToParentMeeting: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("can_switch_to_parent_meeting")),
+        S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
       ),
     }),
   ).annotate({
@@ -12634,14 +12575,13 @@ export interface PresetsUpdateRequestPermissionsMediaAudio {
   /** Can produce audio */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaAudioCanProduce
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        S.NullOr(PresetsUpdateRequestPermissionsMediaAudioCanProduce).pipe(
+        PresetsUpdateRequestPermissionsMediaAudioCanProduce.pipe(
           T.Body("can_produce"),
         ),
       ),
@@ -12661,16 +12601,15 @@ export interface PresetsUpdateRequestPermissionsMediaScreenshare {
   /** Can produce screen share video */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaScreenshareCanProduce
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaScreenshare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        S.NullOr(
-          PresetsUpdateRequestPermissionsMediaScreenshareCanProduce,
-        ).pipe(T.Body("can_produce")),
+        PresetsUpdateRequestPermissionsMediaScreenshareCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
       ),
     }),
   ).annotate({
@@ -12688,14 +12627,13 @@ export interface PresetsUpdateRequestPermissionsMediaVideo {
   /** Can produce video */
   canProduce?:
     | PresetsUpdateRequestPermissionsMediaVideoCanProduce
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissionsMediaVideo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canProduce: S.optional(
-        S.NullOr(PresetsUpdateRequestPermissionsMediaVideoCanProduce).pipe(
+        PresetsUpdateRequestPermissionsMediaVideoCanProduce.pipe(
           T.Body("can_produce"),
         ),
       ),
@@ -12706,20 +12644,18 @@ export const PresetsUpdateRequestPermissionsMediaVideo =
 
 export interface PresetsUpdateRequestPermissionsMedia {
   /** Audio permissions */
-  audio?: PresetsUpdateRequestPermissionsMediaAudio | null;
+  audio?: PresetsUpdateRequestPermissionsMediaAudio;
   /** Screenshare permissions */
-  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare | null;
+  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare;
   /** Video permissions */
-  video?: PresetsUpdateRequestPermissionsMediaVideo | null;
+  video?: PresetsUpdateRequestPermissionsMediaVideo;
 }
 export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      audio: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMediaAudio)),
-      screenshare: S.optional(
-        S.NullOr(PresetsUpdateRequestPermissionsMediaScreenshare),
-      ),
-      video: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMediaVideo)),
+      audio: S.optional(PresetsUpdateRequestPermissionsMediaAudio),
+      screenshare: S.optional(PresetsUpdateRequestPermissionsMediaScreenshare),
+      video: S.optional(PresetsUpdateRequestPermissionsMediaVideo),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsMedia",
@@ -12734,21 +12670,18 @@ export const PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
 export interface PresetsUpdateRequestPermissionsPluginsConfigValue {
   accessControl?:
     | PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl
-    | (string & {})
-    | null;
-  handlesViewOnly?: boolean | null;
+    | (string & {});
+  handlesViewOnly?: boolean;
 }
 export const PresetsUpdateRequestPermissionsPluginsConfigValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accessControl: S.optional(
-        S.NullOr(
-          PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl,
-        ).pipe(T.Body("access_control")),
+        PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
       ),
-      handlesViewOnly: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("handles_view_only")),
-      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestPermissionsPluginsConfigValue",
@@ -12765,25 +12698,21 @@ export const PresetsUpdateRequestPermissionsPluginsConfigMap =
 
 export interface PresetsUpdateRequestPermissionsPlugins {
   /** Can close plugins that are already open */
-  canClose?: boolean | null;
+  canClose?: boolean;
   /** Can edit plugin config */
-  canEditConfig?: boolean | null;
+  canEditConfig?: boolean;
   /** Can start plugins */
-  canStart?: boolean | null;
+  canStart?: boolean;
   /** Plugin configuration keyed by plugin UUID. */
-  config?: PresetsUpdateRequestPermissionsPluginsConfigMap | null;
+  config?: PresetsUpdateRequestPermissionsPluginsConfigMap;
 }
 export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      canClose: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_close"))),
-      canEditConfig: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("can_edit_config")),
-      ),
-      canStart: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_start"))),
-      config: S.optional(
-        S.NullOr(PresetsUpdateRequestPermissionsPluginsConfigMap),
-      ),
+      canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
+      canEditConfig: S.optional(S.Boolean.pipe(T.Body("can_edit_config"))),
+      canStart: S.optional(S.Boolean.pipe(T.Body("can_start"))),
+      config: S.optional(PresetsUpdateRequestPermissionsPluginsConfigMap),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsPlugins",
@@ -12791,18 +12720,18 @@ export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
 
 export interface PresetsUpdateRequestPermissionsPolls {
   /** Can create polls */
-  canCreate?: boolean | null;
+  canCreate?: boolean;
   /** Can view polls */
-  canView?: boolean | null;
+  canView?: boolean;
   /** Can vote on polls */
-  canVote?: boolean | null;
+  canVote?: boolean;
 }
 export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      canCreate: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_create"))),
-      canView: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_view"))),
-      canVote: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_vote"))),
+      canCreate: S.optional(S.Boolean.pipe(T.Body("can_create"))),
+      canView: S.optional(S.Boolean.pipe(T.Body("can_view"))),
+      canVote: S.optional(S.Boolean.pipe(T.Body("can_vote"))),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestPermissionsPolls",
@@ -12830,118 +12759,99 @@ export const PresetsUpdateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestPermissions {
-  acceptStageRequests?: boolean | null;
+  acceptStageRequests?: boolean;
   /** Whether this participant can accept waiting requests */
-  acceptWaitingRequests?: boolean | null;
-  canAcceptProductionRequests?: boolean | null;
-  canChangeParticipantPermissions?: boolean | null;
-  canEditDisplayName?: boolean | null;
-  canLivestream?: boolean | null;
-  canRecord?: boolean | null;
-  canSpotlight?: boolean | null;
-  chat?: PresetsUpdateRequestPermissionsChat | null;
-  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings | null;
-  disableParticipantAudio?: boolean | null;
-  disableParticipantScreensharing?: boolean | null;
-  disableParticipantVideo?: boolean | null;
+  acceptWaitingRequests?: boolean;
+  canAcceptProductionRequests?: boolean;
+  canChangeParticipantPermissions?: boolean;
+  canEditDisplayName?: boolean;
+  canLivestream?: boolean;
+  canRecord?: boolean;
+  canSpotlight?: boolean;
+  chat?: PresetsUpdateRequestPermissionsChat;
+  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings;
+  disableParticipantAudio?: boolean;
+  disableParticipantScreensharing?: boolean;
+  disableParticipantVideo?: boolean;
   /** Whether this participant is visible to others or not */
-  hiddenParticipant?: boolean | null;
-  isRecorder?: boolean | null;
-  kickParticipant?: boolean | null;
+  hiddenParticipant?: boolean;
+  isRecorder?: boolean;
+  kickParticipant?: boolean;
   /** Media permissions */
-  media?: PresetsUpdateRequestPermissionsMedia | null;
-  pinParticipant?: boolean | null;
+  media?: PresetsUpdateRequestPermissionsMedia;
+  pinParticipant?: boolean;
   /** Plugin permissions */
-  plugins?: PresetsUpdateRequestPermissionsPlugins | null;
+  plugins?: PresetsUpdateRequestPermissionsPlugins;
   /** Poll permissions */
-  polls?: PresetsUpdateRequestPermissionsPolls | null;
+  polls?: PresetsUpdateRequestPermissionsPolls;
   /** Type of the recording peer */
-  recorderType?:
-    | PresetsUpdateRequestPermissionsRecorderType
-    | (string & {})
-    | null;
-  showParticipantList?: boolean | null;
-  stageAccess?:
-    | PresetsUpdateRequestPermissionsStageAccess
-    | (string & {})
-    | null;
-  stageEnabled?: boolean | null;
-  transcriptionEnabled?: boolean | null;
+  recorderType?: PresetsUpdateRequestPermissionsRecorderType | (string & {});
+  showParticipantList?: boolean;
+  stageAccess?: PresetsUpdateRequestPermissionsStageAccess | (string & {});
+  stageEnabled?: boolean;
+  transcriptionEnabled?: boolean;
   /** Waiting room type */
   waitingRoomType?:
     | PresetsUpdateRequestPermissionsWaitingRoomType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const PresetsUpdateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptStageRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("accept_stage_requests")),
+      S.Boolean.pipe(T.Body("accept_stage_requests")),
     ),
     acceptWaitingRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("accept_waiting_requests")),
+      S.Boolean.pipe(T.Body("accept_waiting_requests")),
     ),
     canAcceptProductionRequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("can_accept_production_requests")),
+      S.Boolean.pipe(T.Body("can_accept_production_requests")),
     ),
     canChangeParticipantPermissions: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("can_change_participant_permissions")),
+      S.Boolean.pipe(T.Body("can_change_participant_permissions")),
     ),
     canEditDisplayName: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("can_edit_display_name")),
+      S.Boolean.pipe(T.Body("can_edit_display_name")),
     ),
-    canLivestream: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("can_livestream")),
-    ),
-    canRecord: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_record"))),
-    canSpotlight: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_spotlight"))),
-    chat: S.optional(S.NullOr(PresetsUpdateRequestPermissionsChat)),
+    canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
+    canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
+    canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
+    chat: S.optional(PresetsUpdateRequestPermissionsChat),
     connectedMeetings: S.optional(
-      S.NullOr(PresetsUpdateRequestPermissionsConnectedMeetings).pipe(
+      PresetsUpdateRequestPermissionsConnectedMeetings.pipe(
         T.Body("connected_meetings"),
       ),
     ),
     disableParticipantAudio: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_audio")),
+      S.Boolean.pipe(T.Body("disable_participant_audio")),
     ),
     disableParticipantScreensharing: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_screensharing")),
+      S.Boolean.pipe(T.Body("disable_participant_screensharing")),
     ),
     disableParticipantVideo: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("disable_participant_video")),
+      S.Boolean.pipe(T.Body("disable_participant_video")),
     ),
-    hiddenParticipant: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("hidden_participant")),
-    ),
-    isRecorder: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recorder"))),
-    kickParticipant: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("kick_participant")),
-    ),
-    media: S.optional(S.NullOr(PresetsUpdateRequestPermissionsMedia)),
-    pinParticipant: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("pin_participant")),
-    ),
-    plugins: S.optional(S.NullOr(PresetsUpdateRequestPermissionsPlugins)),
-    polls: S.optional(S.NullOr(PresetsUpdateRequestPermissionsPolls)),
+    hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
+    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+    kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
+    media: S.optional(PresetsUpdateRequestPermissionsMedia),
+    pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
+    plugins: S.optional(PresetsUpdateRequestPermissionsPlugins),
+    polls: S.optional(PresetsUpdateRequestPermissionsPolls),
     recorderType: S.optional(
-      S.NullOr(PresetsUpdateRequestPermissionsRecorderType).pipe(
-        T.Body("recorder_type"),
-      ),
+      PresetsUpdateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
     ),
     showParticipantList: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("show_participant_list")),
+      S.Boolean.pipe(T.Body("show_participant_list")),
     ),
     stageAccess: S.optional(
-      S.NullOr(PresetsUpdateRequestPermissionsStageAccess).pipe(
-        T.Body("stage_access"),
-      ),
+      PresetsUpdateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
     ),
-    stageEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("stage_enabled"))),
+    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
     transcriptionEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("transcription_enabled")),
+      S.Boolean.pipe(T.Body("transcription_enabled")),
     ),
     waitingRoomType: S.optional(
-      S.NullOr(PresetsUpdateRequestPermissionsWaitingRoomType).pipe(
+      PresetsUpdateRequestPermissionsWaitingRoomType.pipe(
         T.Body("waiting_room_type"),
       ),
     ),
@@ -12966,70 +12876,68 @@ export const PresetsUpdateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
-  "1000"?: string | null;
-  "600"?: string | null;
-  "700"?: string | null;
-  "800"?: string | null;
-  "900"?: string | null;
+  "1000"?: string;
+  "600"?: string;
+  "700"?: string;
+  "800"?: string;
+  "900"?: string;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBackground =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "1000": S.optional(S.NullOr(S.String)),
-      "600": S.optional(S.NullOr(S.String)),
-      "700": S.optional(S.NullOr(S.String)),
-      "800": S.optional(S.NullOr(S.String)),
-      "900": S.optional(S.NullOr(S.String)),
+      "1000": S.optional(S.String),
+      "600": S.optional(S.String),
+      "700": S.optional(S.String),
+      "800": S.optional(S.String),
+      "900": S.optional(S.String),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
   }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
 
 export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
-  "300"?: string | null;
-  "400"?: string | null;
-  "500"?: string | null;
-  "600"?: string | null;
-  "700"?: string | null;
+  "300"?: string;
+  "400"?: string;
+  "500"?: string;
+  "600"?: string;
+  "700"?: string;
 }
 export const PresetsUpdateRequestUiDesignTokensColorsBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      "300": S.optional(S.NullOr(S.String)),
-      "400": S.optional(S.NullOr(S.String)),
-      "500": S.optional(S.NullOr(S.String)),
-      "600": S.optional(S.NullOr(S.String)),
-      "700": S.optional(S.NullOr(S.String)),
+      "300": S.optional(S.String),
+      "400": S.optional(S.String),
+      "500": S.optional(S.String),
+      "600": S.optional(S.String),
+      "700": S.optional(S.String),
     }),
   ).annotate({
     identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
   }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBrand>;
 
 export interface PresetsUpdateRequestUiDesignTokensColors {
-  background?: PresetsUpdateRequestUiDesignTokensColorsBackground | null;
-  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand | null;
-  danger?: string | null;
-  success?: string | null;
-  text?: string | null;
-  textOnBrand?: string | null;
-  videoBg?: string | null;
-  warning?: string | null;
+  background?: PresetsUpdateRequestUiDesignTokensColorsBackground;
+  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand;
+  danger?: string;
+  success?: string;
+  text?: string;
+  textOnBrand?: string;
+  videoBg?: string;
+  warning?: string;
 }
 export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       background: S.optional(
-        S.NullOr(PresetsUpdateRequestUiDesignTokensColorsBackground),
+        PresetsUpdateRequestUiDesignTokensColorsBackground,
       ),
-      brand: S.optional(
-        S.NullOr(PresetsUpdateRequestUiDesignTokensColorsBrand),
-      ),
-      danger: S.optional(S.NullOr(S.String)),
-      success: S.optional(S.NullOr(S.String)),
-      text: S.optional(S.NullOr(S.String)),
-      textOnBrand: S.optional(S.NullOr(S.String).pipe(T.Body("text_on_brand"))),
-      videoBg: S.optional(S.NullOr(S.String).pipe(T.Body("video_bg"))),
-      warning: S.optional(S.NullOr(S.String)),
+      brand: S.optional(PresetsUpdateRequestUiDesignTokensColorsBrand),
+      danger: S.optional(S.String),
+      success: S.optional(S.String),
+      text: S.optional(S.String),
+      textOnBrand: S.optional(S.String.pipe(T.Body("text_on_brand"))),
+      videoBg: S.optional(S.String.pipe(T.Body("video_bg"))),
+      warning: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PresetsUpdateRequestUiDesignTokensColors",
@@ -13042,53 +12950,45 @@ export type PresetsUpdateRequestUiDesignTokensTheme =
 export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokens {
-  borderRadius?:
-    | PresetsUpdateRequestUiDesignTokensBorderRadius
-    | (string & {})
-    | null;
-  borderWidth?:
-    | PresetsUpdateRequestUiDesignTokensBorderWidth
-    | (string & {})
-    | null;
-  colors?: PresetsUpdateRequestUiDesignTokensColors | null;
-  fontFamily?: string | null;
-  googleFont?: string | null;
-  logo?: string | null;
-  spacingBase?: number | null;
-  theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {}) | null;
+  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius | (string & {});
+  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth | (string & {});
+  colors?: PresetsUpdateRequestUiDesignTokensColors;
+  fontFamily?: string;
+  googleFont?: string;
+  logo?: string;
+  spacingBase?: number;
+  theme?: PresetsUpdateRequestUiDesignTokensTheme | (string & {});
 }
 export const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     borderRadius: S.optional(
-      S.NullOr(PresetsUpdateRequestUiDesignTokensBorderRadius).pipe(
+      PresetsUpdateRequestUiDesignTokensBorderRadius.pipe(
         T.Body("border_radius"),
       ),
     ),
     borderWidth: S.optional(
-      S.NullOr(PresetsUpdateRequestUiDesignTokensBorderWidth).pipe(
+      PresetsUpdateRequestUiDesignTokensBorderWidth.pipe(
         T.Body("border_width"),
       ),
     ),
-    colors: S.optional(S.NullOr(PresetsUpdateRequestUiDesignTokensColors)),
-    fontFamily: S.optional(S.NullOr(S.String).pipe(T.Body("font_family"))),
-    googleFont: S.optional(S.NullOr(S.String).pipe(T.Body("google_font"))),
-    logo: S.optional(S.NullOr(S.String)),
-    spacingBase: S.optional(S.NullOr(S.Number).pipe(T.Body("spacing_base"))),
-    theme: S.optional(S.NullOr(PresetsUpdateRequestUiDesignTokensTheme)),
+    colors: S.optional(PresetsUpdateRequestUiDesignTokensColors),
+    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+    logo: S.optional(S.String),
+    spacingBase: S.optional(S.Number.pipe(T.Body("spacing_base"))),
+    theme: S.optional(PresetsUpdateRequestUiDesignTokensTheme),
   }),
 ).annotate({
   identifier: "PresetsUpdateRequestUiDesignTokens",
 }) as any as S.Schema<PresetsUpdateRequestUiDesignTokens>;
 
 export interface PresetsUpdateRequestUi {
-  designTokens?: PresetsUpdateRequestUiDesignTokens | null;
+  designTokens?: PresetsUpdateRequestUiDesignTokens;
 }
 export const PresetsUpdateRequestUi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     designTokens: S.optional(
-      S.NullOr(PresetsUpdateRequestUiDesignTokens).pipe(
-        T.Body("design_tokens"),
-      ),
+      PresetsUpdateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
     ),
   }),
 ).annotate({
@@ -13101,21 +13001,21 @@ export interface PatchPresetRequest {
   /** The app identifier tag. */
   appId: string;
   presetId: string;
-  config?: PresetsUpdateRequestConfig | null;
+  config?: PresetsUpdateRequestConfig;
   /** Name of the preset */
-  name?: string | null;
-  permissions?: PresetsUpdateRequestPermissions | null;
-  ui?: PresetsUpdateRequestUi | null;
+  name?: string;
+  permissions?: PresetsUpdateRequestPermissions;
+  ui?: PresetsUpdateRequestUi;
 }
 export const PatchPresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     presetId: S.String.pipe(T.Label("preset_id")),
-    config: S.optional(S.NullOr(PresetsUpdateRequestConfig)),
-    name: S.optional(S.NullOr(S.String)),
-    permissions: S.optional(S.NullOr(PresetsUpdateRequestPermissions)),
-    ui: S.optional(S.NullOr(PresetsUpdateRequestUi)),
+    config: S.optional(PresetsUpdateRequestConfig),
+    name: S.optional(S.String),
+    permissions: S.optional(PresetsUpdateRequestPermissions),
+    ui: S.optional(PresetsUpdateRequestUi),
   })
     .pipe(
       T.Http({
@@ -14248,30 +14148,28 @@ export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType
-    | (string & {})
-    | null;
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number | null;
+  wordLimit?: number;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType,
-        ).pipe(T.Body("summary_type")),
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
       ),
       textFormat: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat,
-        ).pipe(T.Body("text_format")),
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
       ),
-      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestAiConfigSummarization",
@@ -14300,31 +14198,24 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList | null;
+  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
   language?:
     | MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage
-    | (string & {})
-    | null;
+    | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean | null;
+  profanityFilter?: boolean;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
-        ),
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
       ),
       language: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
-        ),
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
       ),
-      profanityFilter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
-      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestAiConfigTranscription",
@@ -14332,18 +14223,18 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
 
 export interface MeetingsReplaceMeetingByIdRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization | null;
+  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization;
   /** Transcription Configurations */
-  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription | null;
+  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription;
 }
 export const MeetingsReplaceMeetingByIdRequestAiConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarization: S.optional(
-        S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfigSummarization),
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarization,
       ),
       transcription: S.optional(
-        S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfigTranscription),
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscription,
       ),
     }),
   ).annotate({
@@ -14365,30 +14256,24 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
   codec?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec
-    | (string & {})
-    | null;
+    | (string & {});
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
       ),
       codec: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
       ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
@@ -14396,12 +14281,12 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string | null;
+  rtmpUrl?: string;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -14442,50 +14327,49 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig {
     | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType
     | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string | null;
+  accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the storage medium's bucket. */
-  bucket?: string | null;
+  bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string | null;
+  host?: string;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string | null;
+  password?: string;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string | null;
+  path?: string;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number | null;
+  port?: number;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string | null;
+  privateKey?: string;
   /** Region of the storage medium. */
-  region?: string | null;
+  region?: string;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string | null;
+  secret?: string;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string | null;
+  username?: string;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod,
-        ).pipe(T.Body("auth_method")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
       ),
-      bucket: S.optional(S.NullOr(S.String)),
-      host: S.optional(S.NullOr(S.String)),
-      password: S.optional(S.NullOr(S.String)),
-      path: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
-      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-      region: S.optional(S.NullOr(S.String)),
-      secret: S.optional(S.NullOr(S.String)),
-      username: S.optional(S.NullOr(S.String)),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig",
@@ -14504,15 +14388,15 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermar
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number | null;
+  height?: number;
   /** Width of the watermark in px */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.NullOr(S.Number)),
-      width: S.optional(S.NullOr(S.Number)),
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -14523,27 +14407,22 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWate
   /** Position of the watermark */
   position?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {})
-    | null;
+    | (string & {});
   /** Size of the watermark */
-  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize | null;
+  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
-  url?: string | null;
+  url?: string;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
       ),
       size: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -14554,33 +14433,28 @@ export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?:
     | MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec
-    | (string & {})
-    | null;
+    | (string & {});
   /** Controls whether to export video file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
   /** Height of the recording video in pixels */
-  height?: number | null;
+  height?: number;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark | null;
+  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark;
   /** Width of the recording video in pixels */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
       ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-      height: S.optional(S.NullOr(S.Number)),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
       watermark: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
-        ),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
       ),
-      width: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
@@ -14588,47 +14462,45 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
 
 export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig | null;
+  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string | null;
-  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig | null;
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number | null;
-  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig | null;
-  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig | null;
-  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig | null;
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig;
+  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig;
 }
 export const MeetingsReplaceMeetingByIdRequestRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig,
-        ).pipe(T.Body("audio_config")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
       ),
-      fileNamePrefix: S.optional(
-        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
-      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
       liveStreamingConfig: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig,
-        ).pipe(T.Body("live_streaming_config")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
       ),
-      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig,
-        ).pipe(T.Body("realtimekit_bucket_config")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
       ),
       storageConfig: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig,
-        ).pipe(T.Body("storage_config")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
       ),
       videoConfig: S.optional(
-        S.NullOr(
-          MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig,
-        ).pipe(T.Body("video_config")),
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
       ),
     }),
   ).annotate({
@@ -14642,23 +14514,23 @@ export interface ReplaceMeetingByIdMeetingRequest {
   appId: string;
   meetingId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig | null;
+  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean | null;
+  liveStreamOnStart?: boolean;
   /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean | null;
+  persistChat?: boolean;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean | null;
+  recordOnStart?: boolean;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig | null;
+  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number | null;
+  sessionKeepAliveTimeInSecs?: number;
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean | null;
+  summarizeOnEnd?: boolean;
   /** Title of the meeting */
-  title?: string | null;
+  title?: string;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean | null;
+  transcribeOnEnd?: boolean;
 }
 export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14666,32 +14538,24 @@ export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     aiConfig: S.optional(
-      S.NullOr(MeetingsReplaceMeetingByIdRequestAiConfig).pipe(
-        T.Body("ai_config"),
-      ),
+      MeetingsReplaceMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
     ),
     liveStreamOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
-    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
     recordingConfig: S.optional(
-      S.NullOr(MeetingsReplaceMeetingByIdRequestRecordingConfig).pipe(
+      MeetingsReplaceMeetingByIdRequestRecordingConfig.pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    summarizeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
-    ),
-    title: S.optional(S.NullOr(S.String)),
-    transcribeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
-    ),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
   })
     .pipe(
       T.Http({
@@ -15196,7 +15060,7 @@ export interface ReplaceWebhookWebhookRequest {
   /** URL this webhook will send events to */
   url: string;
   /** Set whether or not the webhook should be active when created */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15206,7 +15070,7 @@ export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     events: WebhooksReplaceWebhookRequestEventsList,
     name: S.String,
     url: S.String,
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -15284,15 +15148,15 @@ export const ReplaceWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface LivestreamsStartLivestreamingAMeetingRequestVideoConfig {
   /** Height of the livestreaming video in pixels */
-  height?: number | null;
+  height?: number;
   /** Width of the livestreaming video in pixels */
-  width?: number | null;
+  width?: number;
 }
 export const LivestreamsStartLivestreamingAMeetingRequestVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.NullOr(S.Number)),
-      width: S.optional(S.NullOr(S.Number)),
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "LivestreamsStartLivestreamingAMeetingRequestVideoConfig",
@@ -15304,8 +15168,8 @@ export interface StartLivestreamingAMeetingLivestreamRequest {
   /** The app identifier tag. */
   appId: string;
   meetingId: string;
-  name?: string | null;
-  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig | null;
+  name?: string;
+  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig;
 }
 export const StartLivestreamingAMeetingLivestreamRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15313,9 +15177,9 @@ export const StartLivestreamingAMeetingLivestreamRequest =
       accountId: S.String.pipe(T.Label("account_id")),
       appId: S.String.pipe(T.Label("app_id")),
       meetingId: S.String.pipe(T.Label("meeting_id")),
-      name: S.optional(S.NullOr(S.String)),
+      name: S.optional(S.String),
       videoConfig: S.optional(
-        S.NullOr(LivestreamsStartLivestreamingAMeetingRequestVideoConfig).pipe(
+        LivestreamsStartLivestreamingAMeetingRequestVideoConfig.pipe(
           T.Body("video_config"),
         ),
       ),
@@ -15395,28 +15259,18 @@ export const RecordingsStartRecordingsRequestAudioConfigCodec =
 
 export interface RecordingsStartRecordingsRequestAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?:
-    | RecordingsStartRecordingsRequestAudioConfigChannel
-    | (string & {})
-    | null;
+  channel?: RecordingsStartRecordingsRequestAudioConfigChannel | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?:
-    | RecordingsStartRecordingsRequestAudioConfigCodec
-    | (string & {})
-    | null;
+  codec?: RecordingsStartRecordingsRequestAudioConfigCodec | (string & {});
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
 }
 export const RecordingsStartRecordingsRequestAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      channel: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestAudioConfigChannel),
-      ),
-      codec: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestAudioConfigCodec),
-      ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      channel: S.optional(RecordingsStartRecordingsRequestAudioConfigChannel),
+      codec: S.optional(RecordingsStartRecordingsRequestAudioConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestAudioConfig",
@@ -15428,17 +15282,12 @@ export const RecordingsStartRecordingsRequestInteractiveConfigType =
 
 export interface RecordingsStartRecordingsRequestInteractiveConfig {
   /** The metadata is presented in the form of ID3 tags. */
-  type?:
-    | RecordingsStartRecordingsRequestInteractiveConfigType
-    | (string & {})
-    | null;
+  type?: RecordingsStartRecordingsRequestInteractiveConfigType | (string & {});
 }
 export const RecordingsStartRecordingsRequestInteractiveConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestInteractiveConfigType),
-      ),
+      type: S.optional(RecordingsStartRecordingsRequestInteractiveConfigType),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
@@ -15459,12 +15308,12 @@ export const RecordingsStartRecordingsRequestRealtimekitBucketConfig =
 
 export interface RecordingsStartRecordingsRequestRtmpOutConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string | null;
+  rtmpUrl?: string;
 }
 export const RecordingsStartRecordingsRequestRtmpOutConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestRtmpOutConfig",
@@ -15489,50 +15338,49 @@ export interface RecordingsStartRecordingsRequestStorageConfig {
   /** Type of storage media. */
   type: RecordingsStartRecordingsRequestStorageConfigType | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string | null;
+  accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | RecordingsStartRecordingsRequestStorageConfigAuthMethod
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the storage medium's bucket. */
-  bucket?: string | null;
+  bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string | null;
+  host?: string;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string | null;
+  password?: string;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string | null;
+  path?: string;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number | null;
+  port?: number;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string | null;
+  privateKey?: string;
   /** Region of the storage medium. */
-  region?: string | null;
+  region?: string;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string | null;
+  secret?: string;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string | null;
+  username?: string;
 }
 export const RecordingsStartRecordingsRequestStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: RecordingsStartRecordingsRequestStorageConfigType,
-      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestStorageConfigAuthMethod).pipe(
+        RecordingsStartRecordingsRequestStorageConfigAuthMethod.pipe(
           T.Body("auth_method"),
         ),
       ),
-      bucket: S.optional(S.NullOr(S.String)),
-      host: S.optional(S.NullOr(S.String)),
-      password: S.optional(S.NullOr(S.String)),
-      path: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
-      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-      region: S.optional(S.NullOr(S.String)),
-      secret: S.optional(S.NullOr(S.String)),
-      username: S.optional(S.NullOr(S.String)),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestStorageConfig",
@@ -15552,15 +15400,15 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
 
 export interface RecordingsStartRecordingsRequestVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number | null;
+  height?: number;
   /** Width of the watermark in px */
-  width?: number | null;
+  width?: number;
 }
 export const RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.NullOr(S.Number)),
-      width: S.optional(S.NullOr(S.Number)),
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfigWatermarkSize",
@@ -15570,23 +15418,22 @@ export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
   /** Position of the watermark */
   position?:
     | RecordingsStartRecordingsRequestVideoConfigWatermarkPosition
-    | (string & {})
-    | null;
+    | (string & {});
   /** Size of the watermark */
-  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize | null;
+  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize;
   /** URL of the watermark image */
-  url?: string | null;
+  url?: string;
 }
 export const RecordingsStartRecordingsRequestVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermarkPosition),
+        RecordingsStartRecordingsRequestVideoConfigWatermarkPosition,
       ),
       size: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermarkSize),
+        RecordingsStartRecordingsRequestVideoConfigWatermarkSize,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfigWatermark",
@@ -15594,31 +15441,26 @@ export const RecordingsStartRecordingsRequestVideoConfigWatermark =
 
 export interface RecordingsStartRecordingsRequestVideoConfig {
   /** Codec using which the recording will be encoded. */
-  codec?:
-    | RecordingsStartRecordingsRequestVideoConfigCodec
-    | (string & {})
-    | null;
+  codec?: RecordingsStartRecordingsRequestVideoConfigCodec | (string & {});
   /** Controls whether to export video file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
   /** Height of the recording video in pixels */
-  height?: number | null;
+  height?: number;
   /** Watermark to be added to the recording */
-  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark | null;
+  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark;
   /** Width of the recording video in pixels */
-  width?: number | null;
+  width?: number;
 }
 export const RecordingsStartRecordingsRequestVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      codec: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestVideoConfigCodec),
-      ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-      height: S.optional(S.NullOr(S.Number)),
+      codec: S.optional(RecordingsStartRecordingsRequestVideoConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
       watermark: S.optional(
-        S.NullOr(RecordingsStartRecordingsRequestVideoConfigWatermark),
+        RecordingsStartRecordingsRequestVideoConfigWatermark,
       ),
-      width: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "RecordingsStartRecordingsRequestVideoConfig",
@@ -15632,21 +15474,21 @@ export interface StartRecordingsRecordingRequest {
   /** ID of the meeting to record. */
   meetingId: string;
   /** By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode. */
-  allowMultipleRecordings?: boolean | null;
+  allowMultipleRecordings?: boolean;
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: RecordingsStartRecordingsRequestAudioConfig | null;
+  audioConfig?: RecordingsStartRecordingsRequestAudioConfig;
   /** Update the recording file name. */
-  fileNamePrefix?: string | null;
+  fileNamePrefix?: string;
   /** Allows you to add timed metadata to your recordings, which are digital markers inserted into a video file to provide contextual information at specific points in the content range. The ID3 tags containing this information are available to clients on the playback timeline in HLS format. The output files are generated in a compressed .tar format. */
-  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig | null;
+  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number | null;
-  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig | null;
-  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig | null;
-  storageConfig?: RecordingsStartRecordingsRequestStorageConfig | null;
+  maxSeconds?: number;
+  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig;
+  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig;
+  storageConfig?: RecordingsStartRecordingsRequestStorageConfig;
   /** Pass a custom url to record arbitary screen */
-  url?: string | null;
-  videoConfig?: RecordingsStartRecordingsRequestVideoConfig | null;
+  url?: string;
+  videoConfig?: RecordingsStartRecordingsRequestVideoConfig;
 }
 export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15654,42 +15496,36 @@ export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Body("meeting_id")),
     allowMultipleRecordings: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_multiple_recordings")),
+      S.Boolean.pipe(T.Body("allow_multiple_recordings")),
     ),
     audioConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestAudioConfig).pipe(
-        T.Body("audio_config"),
-      ),
+      RecordingsStartRecordingsRequestAudioConfig.pipe(T.Body("audio_config")),
     ),
-    fileNamePrefix: S.optional(
-      S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
-    ),
+    fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
     interactiveConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestInteractiveConfig).pipe(
+      RecordingsStartRecordingsRequestInteractiveConfig.pipe(
         T.Body("interactive_config"),
       ),
     ),
-    maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
+    maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
     realtimekitBucketConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestRealtimekitBucketConfig).pipe(
+      RecordingsStartRecordingsRequestRealtimekitBucketConfig.pipe(
         T.Body("realtimekit_bucket_config"),
       ),
     ),
     rtmpOutConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestRtmpOutConfig).pipe(
+      RecordingsStartRecordingsRequestRtmpOutConfig.pipe(
         T.Body("rtmp_out_config"),
       ),
     ),
     storageConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestStorageConfig).pipe(
+      RecordingsStartRecordingsRequestStorageConfig.pipe(
         T.Body("storage_config"),
       ),
     ),
-    url: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.String),
     videoConfig: S.optional(
-      S.NullOr(RecordingsStartRecordingsRequestVideoConfig).pipe(
-        T.Body("video_config"),
-      ),
+      RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
     ),
   })
     .pipe(
@@ -15969,21 +15805,18 @@ export const RecordingsStartTrackRecordingRequestLayersValueMediaKind =
 
 export interface RecordingsStartTrackRecordingRequestLayersValue {
   /** A file name prefix to apply for files generated from this layer */
-  fileNamePrefix?: string | null;
+  fileNamePrefix?: string;
   /** Media kind to record. Track recording currently supports audio only. */
   mediaKind?:
     | RecordingsStartTrackRecordingRequestLayersValueMediaKind
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const RecordingsStartTrackRecordingRequestLayersValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fileNamePrefix: S.optional(
-        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
-      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
       mediaKind: S.optional(
-        S.NullOr(RecordingsStartTrackRecordingRequestLayersValueMediaKind).pipe(
+        RecordingsStartTrackRecordingRequestLayersValueMediaKind.pipe(
           T.Body("media_kind"),
         ),
       ),
@@ -16015,20 +15848,18 @@ export interface StartTrackRecordingRecordingRequest {
   /** ID of the meeting to record. */
   meetingId: string;
   /** Optional audio layer configuration. If omitted, RealtimeKit records all participant audio using the default file name prefix. */
-  layers?: RecordingsStartTrackRecordingRequestLayersMap | null;
+  layers?: RecordingsStartTrackRecordingRequestLayersMap;
   /** Optional list of participant user IDs to record. Selective track recording (`user_ids`) is in early beta contact support to use this feature. */
-  userIds?: RecordingsStartTrackRecordingRequestUserIdsList | null;
+  userIds?: RecordingsStartTrackRecordingRequestUserIdsList;
 }
 export const StartTrackRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Body("meeting_id")),
-    layers: S.optional(S.NullOr(RecordingsStartTrackRecordingRequestLayersMap)),
+    layers: S.optional(RecordingsStartTrackRecordingRequestLayersMap),
     userIds: S.optional(
-      S.NullOr(RecordingsStartTrackRecordingRequestUserIdsList).pipe(
-        T.Body("user_ids"),
-      ),
+      RecordingsStartTrackRecordingRequestUserIdsList.pipe(T.Body("user_ids")),
     ),
   })
     .pipe(
@@ -16203,30 +16034,28 @@ export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
   /** Defines the style of the summary, such as general, team meeting, or sales call. */
   summaryType?:
     | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType
-    | (string & {})
-    | null;
+    | (string & {});
   /** Determines the text format of the summary, such as plain text or markdown. */
   textFormat?:
     | MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number | null;
+  wordLimit?: number;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summaryType: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType,
-        ).pipe(T.Body("summary_type")),
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
       ),
       textFormat: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat,
-        ).pipe(T.Body("text_format")),
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
       ),
-      wordLimit: S.optional(S.NullOr(S.Number).pipe(T.Body("word_limit"))),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestAiConfigSummarization",
@@ -16255,29 +16084,24 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
 
 export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList | null;
+  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
   /** Specifies the language code for transcription to ensure accurate results. */
   language?:
     | MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage
-    | (string & {})
-    | null;
+    | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean | null;
+  profanityFilter?: boolean;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       keywords: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
-        ),
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
       ),
       language: S.optional(
-        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage),
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage,
       ),
-      profanityFilter: S.optional(
-        S.NullOr(S.Boolean).pipe(T.Body("profanity_filter")),
-      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestAiConfigTranscription",
@@ -16285,18 +16109,18 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
 
 export interface MeetingsUpdateMeetingByIdRequestAiConfig {
   /** Summary Config */
-  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization | null;
+  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization;
   /** Transcription Configurations */
-  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription | null;
+  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription;
 }
 export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       summarization: S.optional(
-        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigSummarization),
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarization,
       ),
       transcription: S.optional(
-        S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfigTranscription),
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscription,
       ),
     }),
 ).annotate({
@@ -16319,30 +16143,24 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
   /** Audio signal pathway within an audio file that carries a specific sound source. */
   channel?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel
-    | (string & {})
-    | null;
+    | (string & {});
   /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
   codec?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec
-    | (string & {})
-    | null;
+    | (string & {});
   /** Controls whether to export audio file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
       ),
       codec: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
       ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig",
@@ -16350,12 +16168,12 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig {
   /** RTMP URL to stream to */
-  rtmpUrl?: string | null;
+  rtmpUrl?: string;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rtmpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("rtmp_url"))),
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
     }),
   ).annotate({
     identifier:
@@ -16396,50 +16214,49 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig {
     | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType
     | (string & {});
   /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string | null;
+  accessKey?: string;
   /** Authentication method used for "sftp" type storage medium */
   authMethod?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the storage medium's bucket. */
-  bucket?: string | null;
+  bucket?: string;
   /** SSH destination server host for SFTP type storage medium */
-  host?: string | null;
+  host?: string;
   /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string | null;
+  password?: string;
   /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string | null;
+  path?: string;
   /** SSH destination server port for SFTP type storage medium */
-  port?: number | null;
+  port?: number;
   /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string | null;
+  privateKey?: string;
   /** Region of the storage medium. */
-  region?: string | null;
+  region?: string;
   /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string | null;
+  secret?: string;
   /** SSH destination server username for SFTP type storage medium */
-  username?: string | null;
+  username?: string;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.NullOr(S.String).pipe(T.Body("access_key"))),
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
       authMethod: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod,
-        ).pipe(T.Body("auth_method")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
       ),
-      bucket: S.optional(S.NullOr(S.String)),
-      host: S.optional(S.NullOr(S.String)),
-      password: S.optional(S.NullOr(S.String)),
-      path: S.optional(S.NullOr(S.String)),
-      port: S.optional(S.NullOr(S.Number)),
-      privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-      region: S.optional(S.NullOr(S.String)),
-      secret: S.optional(S.NullOr(S.String)),
-      username: S.optional(S.NullOr(S.String)),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig",
@@ -16458,15 +16275,15 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
   /** Height of the watermark in px */
-  height?: number | null;
+  height?: number;
   /** Width of the watermark in px */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      height: S.optional(S.NullOr(S.Number)),
-      width: S.optional(S.NullOr(S.Number)),
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -16477,27 +16294,22 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWater
   /** Position of the watermark */
   position?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition
-    | (string & {})
-    | null;
+    | (string & {});
   /** Size of the watermark */
-  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize | null;
+  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
   /** URL of the watermark image */
-  url?: string | null;
+  url?: string;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       position: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
       ),
       size: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
       ),
-      url: S.optional(S.NullOr(S.String)),
+      url: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -16508,33 +16320,28 @@ export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
   /** Codec using which the recording will be encoded. */
   codec?:
     | MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec
-    | (string & {})
-    | null;
+    | (string & {});
   /** Controls whether to export video file seperately */
-  exportFile?: boolean | null;
+  exportFile?: boolean;
   /** Height of the recording video in pixels */
-  height?: number | null;
+  height?: number;
   /** Watermark to be added to the recording */
-  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark | null;
+  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark;
   /** Width of the recording video in pixels */
-  width?: number | null;
+  width?: number;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       codec: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
       ),
-      exportFile: S.optional(S.NullOr(S.Boolean).pipe(T.Body("export_file"))),
-      height: S.optional(S.NullOr(S.Number)),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
       watermark: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
-        ),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
       ),
-      width: S.optional(S.NullOr(S.Number)),
+      width: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig",
@@ -16542,47 +16349,45 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
 
 export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
   /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig | null;
+  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig;
   /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string | null;
-  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig | null;
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig;
   /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number | null;
-  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig | null;
-  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig | null;
-  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig | null;
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig;
+  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig;
 }
 export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioConfig: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig,
-        ).pipe(T.Body("audio_config")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
       ),
-      fileNamePrefix: S.optional(
-        S.NullOr(S.String).pipe(T.Body("file_name_prefix")),
-      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
       liveStreamingConfig: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig,
-        ).pipe(T.Body("live_streaming_config")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
       ),
-      maxSeconds: S.optional(S.NullOr(S.Number).pipe(T.Body("max_seconds"))),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
       realtimekitBucketConfig: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig,
-        ).pipe(T.Body("realtimekit_bucket_config")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
       ),
       storageConfig: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig,
-        ).pipe(T.Body("storage_config")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
       ),
       videoConfig: S.optional(
-        S.NullOr(
-          MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig,
-        ).pipe(T.Body("video_config")),
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
       ),
     }),
   ).annotate({
@@ -16599,25 +16404,25 @@ export interface UpdateMeetingByIdMeetingRequest {
   appId: string;
   meetingId: string;
   /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig | null;
+  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig;
   /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean | null;
+  liveStreamOnStart?: boolean;
   /** If a meeting is updated to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean | null;
+  persistChat?: boolean;
   /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean | null;
+  recordOnStart?: boolean;
   /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig | null;
+  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig;
   /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number | null;
+  sessionKeepAliveTimeInSecs?: number;
   /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdRequestStatus | (string & {}) | null;
+  status?: MeetingsUpdateMeetingByIdRequestStatus | (string & {});
   /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean | null;
+  summarizeOnEnd?: boolean;
   /** Title of the meeting */
-  title?: string | null;
+  title?: string;
   /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean | null;
+  transcribeOnEnd?: boolean;
 }
 export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16625,33 +16430,25 @@ export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
     aiConfig: S.optional(
-      S.NullOr(MeetingsUpdateMeetingByIdRequestAiConfig).pipe(
-        T.Body("ai_config"),
-      ),
+      MeetingsUpdateMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
     ),
     liveStreamOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("live_stream_on_start")),
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
     ),
-    persistChat: S.optional(S.NullOr(S.Boolean).pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("record_on_start")),
-    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
     recordingConfig: S.optional(
-      S.NullOr(MeetingsUpdateMeetingByIdRequestRecordingConfig).pipe(
+      MeetingsUpdateMeetingByIdRequestRecordingConfig.pipe(
         T.Body("recording_config"),
       ),
     ),
     sessionKeepAliveTimeInSecs: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("session_keep_alive_time_in_secs")),
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
     ),
-    status: S.optional(S.NullOr(MeetingsUpdateMeetingByIdRequestStatus)),
-    summarizeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("summarize_on_end")),
-    ),
-    title: S.optional(S.NullOr(S.String)),
-    transcribeOnEnd: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("transcribe_on_end")),
-    ),
+    status: S.optional(MeetingsUpdateMeetingByIdRequestStatus),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
   })
     .pipe(
       T.Http({

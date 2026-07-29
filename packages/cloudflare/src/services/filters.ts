@@ -70,23 +70,23 @@ export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface BulkUpdateRequestBodyItem {
   /** The unique identifier of the filter. */
-  id?: string | null;
+  id?: string;
   /** An informative summary of the filter. */
-  description?: string | null;
+  description?: string;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
+  expression?: string;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
+  paused?: boolean;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
+  ref?: string;
 }
 export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BulkUpdateRequestBodyItem",
@@ -159,23 +159,23 @@ export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestBodyItem {
   /** The unique identifier of the filter. */
-  id?: string | null;
+  id?: string;
   /** An informative summary of the filter. */
-  description?: string | null;
+  description?: string;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
+  expression?: string;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
+  paused?: boolean;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
+  ref?: string;
 }
 export const CreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestBodyItem",
@@ -415,22 +415,22 @@ export interface UpdateFilterRequest {
   /** The unique identifier of the filter. */
   filterId: string;
   /** An informative summary of the filter. */
-  description?: string | null;
+  description?: string;
   /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string | null;
+  expression?: string;
   /** When true, indicates that the filter is currently paused. */
-  paused?: boolean | null;
+  paused?: boolean;
   /** A short reference tag. Allows you to select related filters. */
-  ref?: string | null;
+  ref?: string;
 }
 export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
   })
     .pipe(
       T.Http({

@@ -86,14 +86,14 @@ export interface CopyAudioTrackRequest {
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
   label: string;
   /** An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. */
-  url?: string | null;
+  url?: string;
 }
 export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
     label: S.String,
-    url: S.optional(S.NullOr(S.String)),
+    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -193,11 +193,11 @@ export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface ClipCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string | null;
+  uid?: string;
 }
 export const ClipCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ClipCreateRequestWatermark",
@@ -213,24 +213,24 @@ export interface CreateClipRequest {
   /** Specifies the start time for the video clip in seconds. */
   startTimeSeconds: number;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: ClipCreateRequestAllowedOriginsList | null;
+  allowedOrigins?: ClipCreateRequestAllowedOriginsList;
   /** A user-defined identifier for the media creator. */
-  creator?: string | null;
+  creator?: string;
   /** A video's URL. Preferred over 'url'. */
-  input?: string | null;
+  input?: string;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** A name for the video. */
-  name?: string | null;
+  name?: string;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string | null;
+  scheduledDeletion?: string;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number | null;
+  thumbnailTimestampPct?: number;
   /** A video's URL (legacy field, use 'input' instead). */
-  url?: string | null;
-  watermark?: ClipCreateRequestWatermark | null;
+  url?: string;
+  watermark?: ClipCreateRequestWatermark;
 }
 export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -238,16 +238,16 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
     clippedFromVideoUID: S.String,
     endTimeSeconds: S.Number,
     startTimeSeconds: S.Number,
-    allowedOrigins: S.optional(S.NullOr(ClipCreateRequestAllowedOriginsList)),
-    creator: S.optional(S.NullOr(S.String)),
-    input: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    name: S.optional(S.NullOr(S.String)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    scheduledDeletion: S.optional(S.NullOr(S.String)),
-    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-    url: S.optional(S.NullOr(S.String)),
-    watermark: S.optional(S.NullOr(ClipCreateRequestWatermark)),
+    allowedOrigins: S.optional(ClipCreateRequestAllowedOriginsList),
+    creator: S.optional(S.String),
+    input: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    name: S.optional(S.String),
+    requireSignedURLs: S.optional(S.Boolean),
+    scheduledDeletion: S.optional(S.String),
+    thumbnailTimestampPct: S.optional(S.Number),
+    url: S.optional(S.String),
+    watermark: S.optional(ClipCreateRequestWatermark),
   })
     .pipe(
       T.Http({
@@ -480,11 +480,11 @@ export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 
 export interface CopyCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string | null;
+  uid?: string;
 }
 export const CopyCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CopyCreateRequestWatermark",
@@ -494,40 +494,40 @@ export interface CreateCopyRequest {
   /** The account identifier tag. */
   accountId: string;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: CopyCreateRequestAllowedOriginsList | null;
+  allowedOrigins?: CopyCreateRequestAllowedOriginsList;
   /** A user-defined identifier for the media creator. */
-  creator?: string | null;
+  creator?: string;
   /** A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`. */
-  input?: string | null;
+  input?: string;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** A video's name. Used for legacy compatibility. */
-  name?: string | null;
+  name?: string;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string | null;
+  scheduledDeletion?: string;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number | null;
+  thumbnailTimestampPct?: number;
   /** A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`. */
-  url?: string | null;
-  watermark?: CopyCreateRequestWatermark | null;
+  url?: string;
+  watermark?: CopyCreateRequestWatermark;
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
 export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    allowedOrigins: S.optional(S.NullOr(CopyCreateRequestAllowedOriginsList)),
-    creator: S.optional(S.NullOr(S.String)),
-    input: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    name: S.optional(S.NullOr(S.String)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    scheduledDeletion: S.optional(S.NullOr(S.String)),
-    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-    url: S.optional(S.NullOr(S.String)),
-    watermark: S.optional(S.NullOr(CopyCreateRequestWatermark)),
+    allowedOrigins: S.optional(CopyCreateRequestAllowedOriginsList),
+    creator: S.optional(S.String),
+    input: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    name: S.optional(S.String),
+    requireSignedURLs: S.optional(S.Boolean),
+    scheduledDeletion: S.optional(S.String),
+    thumbnailTimestampPct: S.optional(S.Number),
+    url: S.optional(S.String),
+    watermark: S.optional(CopyCreateRequestWatermark),
     uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
@@ -762,11 +762,11 @@ export const DirectUploadCreateRequestAllowedOriginsList =
 
 export interface DirectUploadCreateRequestWatermark {
   /** The unique identifier for the watermark profile. */
-  uid?: string | null;
+  uid?: string;
 }
 export const DirectUploadCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uid: S.optional(S.NullOr(S.String)),
+    uid: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DirectUploadCreateRequestWatermark",
@@ -778,20 +778,20 @@ export interface CreateDirectUploadRequest {
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
   maxDurationSeconds: number;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: DirectUploadCreateRequestAllowedOriginsList | null;
+  allowedOrigins?: DirectUploadCreateRequestAllowedOriginsList;
   /** A user-defined identifier for the media creator. */
-  creator?: string | null;
+  creator?: string;
   /** The date and time after upload when videos will not be accepted. */
-  expiry?: string | null;
+  expiry?: string;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string | null;
+  scheduledDeletion?: string;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number | null;
-  watermark?: DirectUploadCreateRequestWatermark | null;
+  thumbnailTimestampPct?: number;
+  watermark?: DirectUploadCreateRequestWatermark;
   /** A user-defined identifier for the media creator. */
   uploadCreator?: string;
 }
@@ -799,16 +799,14 @@ export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     maxDurationSeconds: S.Number,
-    allowedOrigins: S.optional(
-      S.NullOr(DirectUploadCreateRequestAllowedOriginsList),
-    ),
-    creator: S.optional(S.NullOr(S.String)),
-    expiry: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    scheduledDeletion: S.optional(S.NullOr(S.String)),
-    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-    watermark: S.optional(S.NullOr(DirectUploadCreateRequestWatermark)),
+    allowedOrigins: S.optional(DirectUploadCreateRequestAllowedOriginsList),
+    creator: S.optional(S.String),
+    expiry: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    scheduledDeletion: S.optional(S.String),
+    thumbnailTimestampPct: S.optional(S.Number),
+    watermark: S.optional(DirectUploadCreateRequestWatermark),
     uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
   })
     .pipe(
@@ -1026,25 +1024,25 @@ export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsCreateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList | null;
+  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean | null;
+  hideLiveViewerCount?: boolean;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateRequestRecordingMode | (string & {}) | null;
+  mode?: LiveInputsCreateRequestRecordingMode | (string & {});
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number | null;
+  timeoutSeconds?: number;
 }
 export const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      S.NullOr(LiveInputsCreateRequestRecordingAllowedOriginsList),
+      LiveInputsCreateRequestRecordingAllowedOriginsList,
     ),
-    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
-    mode: S.optional(S.NullOr(LiveInputsCreateRequestRecordingMode)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
+    hideLiveViewerCount: S.optional(S.Boolean),
+    mode: S.optional(LiveInputsCreateRequestRecordingMode),
+    requireSignedURLs: S.optional(S.Boolean),
+    timeoutSeconds: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "LiveInputsCreateRequestRecording",
@@ -1054,27 +1052,27 @@ export interface CreateLiveInputRequest {
   /** Identifier. */
   accountId: string;
   /** Sets the creator ID asssociated with this live input. */
-  defaultCreator?: string | null;
+  defaultCreator?: string;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number | null;
+  deleteRecordingAfterDays?: number;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean | null;
+  preferLowLatency?: boolean;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsCreateRequestRecording | null;
+  recording?: LiveInputsCreateRequestRecording;
 }
 export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultCreator: S.optional(S.NullOr(S.String)),
-    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
-    recording: S.optional(S.NullOr(LiveInputsCreateRequestRecording)),
+    defaultCreator: S.optional(S.String),
+    deleteRecordingAfterDays: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    meta: S.optional(S.Unknown),
+    preferLowLatency: S.optional(S.Boolean),
+    recording: S.optional(LiveInputsCreateRequestRecording),
   })
     .pipe(
       T.Http({
@@ -1296,7 +1294,7 @@ export interface CreateLiveInputOutputRequest {
   /** The URL an output uses to restream. */
   url: string;
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1304,7 +1302,7 @@ export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
     streamKey: S.String,
     url: S.String,
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({
@@ -1407,20 +1405,20 @@ export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
 
 export interface TokenCreateRequestAccessRulesItem {
   /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
-  action?: TokenCreateRequestAccessRulesItemAction | (string & {}) | null;
+  action?: TokenCreateRequestAccessRulesItemAction | (string & {});
   /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
-  country?: TokenCreateRequestAccessRulesItemCountryList | null;
+  country?: TokenCreateRequestAccessRulesItemCountryList;
   /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
-  ip?: TokenCreateRequestAccessRulesItemIpList | null;
+  ip?: TokenCreateRequestAccessRulesItemIpList;
   /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
-  type?: TokenCreateRequestAccessRulesItemType | (string & {}) | null;
+  type?: TokenCreateRequestAccessRulesItemType | (string & {});
 }
 export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemAction)),
-    country: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemCountryList)),
-    ip: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemIpList)),
-    type: S.optional(S.NullOr(TokenCreateRequestAccessRulesItemType)),
+    action: S.optional(TokenCreateRequestAccessRulesItemAction),
+    country: S.optional(TokenCreateRequestAccessRulesItemCountryList),
+    ip: S.optional(TokenCreateRequestAccessRulesItemIpList),
+    type: S.optional(TokenCreateRequestAccessRulesItemType),
   }),
 ).annotate({
   identifier: "TokenCreateRequestAccessRulesItem",
@@ -1434,11 +1432,11 @@ export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
 
 export interface TokenCreateRequestFlags {
   /** Whether to return the original video without transformations. */
-  original?: boolean | null;
+  original?: boolean;
 }
 export const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    original: S.optional(S.NullOr(S.Boolean)),
+    original: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "TokenCreateRequestFlags",
@@ -1450,31 +1448,31 @@ export interface CreateTokenRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
   /** The optional ID of a Stream signing key. If present, the `pem` field is also required. */
-  id?: string | null;
+  id?: string;
   /** The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated. */
-  accessRules?: TokenCreateRequestAccessRulesList | null;
+  accessRules?: TokenCreateRequestAccessRulesList;
   /** The optional boolean value that enables using signed tokens to access MP4 download links for a video. */
-  downloadable?: boolean | null;
+  downloadable?: boolean;
   /** The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing. */
-  exp?: number | null;
+  exp?: number;
   /** Optional flags for the signed token. */
-  flags?: TokenCreateRequestFlags | null;
+  flags?: TokenCreateRequestFlags;
   /** The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing. */
-  nbf?: number | null;
+  nbf?: number;
   /** The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required. */
-  pem?: string | null;
+  pem?: string;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
-    id: S.optional(S.NullOr(S.String)),
-    accessRules: S.optional(S.NullOr(TokenCreateRequestAccessRulesList)),
-    downloadable: S.optional(S.NullOr(S.Boolean)),
-    exp: S.optional(S.NullOr(S.Number)),
-    flags: S.optional(S.NullOr(TokenCreateRequestFlags)),
-    nbf: S.optional(S.NullOr(S.Number)),
-    pem: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
+    accessRules: S.optional(TokenCreateRequestAccessRulesList),
+    downloadable: S.optional(S.Boolean),
+    exp: S.optional(S.Number),
+    flags: S.optional(TokenCreateRequestFlags),
+    nbf: S.optional(S.Number),
+    pem: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1505,27 +1503,27 @@ export interface CreateWatermarkRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of the watermark profile. */
-  name?: string | null;
+  name?: string;
   /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number | null;
+  opacity?: number;
   /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number | null;
+  padding?: number;
   /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string | null;
+  position?: string;
   /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number | null;
+  scale?: number;
   /** URL of the watermark image to copy. */
-  url?: string | null;
+  url?: string;
 }
 export const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.NullOr(S.String)),
-    opacity: S.optional(S.NullOr(S.Number)),
-    padding: S.optional(S.NullOr(S.Number)),
-    position: S.optional(S.NullOr(S.String)),
-    scale: S.optional(S.NullOr(S.Number)),
-    url: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    opacity: S.optional(S.Number),
+    padding: S.optional(S.Number),
+    position: S.optional(S.String),
+    scale: S.optional(S.Number),
+    url: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -1864,17 +1862,17 @@ export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRequestAllowedOriginsList>;
 
 export interface EditRequestPublicDetails {
-  channelLink?: string | null;
-  logo?: string | null;
-  shareLink?: string | null;
-  title?: string | null;
+  channelLink?: string;
+  logo?: string;
+  shareLink?: string;
+  title?: string;
 }
 export const EditRequestPublicDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
-    logo: S.optional(S.NullOr(S.String)),
-    shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
-    title: S.optional(S.NullOr(S.String)),
+    channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
+    logo: S.optional(S.String),
+    shareLink: S.optional(S.String.pipe(T.Body("share_link"))),
+    title: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EditRequestPublicDetails",
@@ -1886,40 +1884,40 @@ export interface EditStreamRequest {
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
-  allowedOrigins?: EditRequestAllowedOriginsList | null;
+  allowedOrigins?: EditRequestAllowedOriginsList;
   /** A user-defined identifier for the media creator. */
-  creator?: string | null;
+  creator?: string;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown. */
-  maxDurationSeconds?: number | null;
+  maxDurationSeconds?: number;
   /** A user modifiable key-value store used to reference other systems of record for managing videos. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** Public details for the video including title, share link, channel link, and logo. */
-  publicDetails?: EditRequestPublicDetails | null;
+  publicDetails?: EditRequestPublicDetails;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
-  scheduledDeletion?: string | null;
+  scheduledDeletion?: string;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video. */
-  thumbnailTimestampPct?: number | null;
+  thumbnailTimestampPct?: number;
   /** The unique identifier for the video. Can be used to verify the video being updated. */
-  uid?: string | null;
+  uid?: string;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
-  uploadExpiry?: string | null;
+  uploadExpiry?: string;
 }
 export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
-    allowedOrigins: S.optional(S.NullOr(EditRequestAllowedOriginsList)),
-    creator: S.optional(S.NullOr(S.String)),
-    maxDurationSeconds: S.optional(S.NullOr(S.Number)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    publicDetails: S.optional(S.NullOr(EditRequestPublicDetails)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    scheduledDeletion: S.optional(S.NullOr(S.String)),
-    thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-    uid: S.optional(S.NullOr(S.String)),
-    uploadExpiry: S.optional(S.NullOr(S.String)),
+    allowedOrigins: S.optional(EditRequestAllowedOriginsList),
+    creator: S.optional(S.String),
+    maxDurationSeconds: S.optional(S.Number),
+    meta: S.optional(S.Unknown),
+    publicDetails: S.optional(EditRequestPublicDetails),
+    requireSignedURLs: S.optional(S.Boolean),
+    scheduledDeletion: S.optional(S.String),
+    thumbnailTimestampPct: S.optional(S.Number),
+    uid: S.optional(S.String),
+    uploadExpiry: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3627,17 +3625,17 @@ export interface PatchAudioTrackRequest {
   /** The unique identifier for an additional audio track. */
   audioIdentifier: string;
   /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean | null;
+  default?: boolean;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string | null;
+  label?: string;
 }
 export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
     audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
-    default: S.optional(S.NullOr(S.Boolean)),
-    label: S.optional(S.NullOr(S.String)),
+    default: S.optional(S.Boolean),
+    label: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3680,12 +3678,12 @@ export interface PutWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The URL where webhooks will be sent. */
-  notificationUrl?: string | null;
+  notificationUrl?: string;
 }
 export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    notificationUrl: S.optional(S.NullOr(S.String)),
+    notificationUrl: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -3828,25 +3826,25 @@ export const LiveInputsUpdateRequestRecordingMode = /*@__PURE__*/ S.String;
 
 export interface LiveInputsUpdateRequestRecording {
   /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsUpdateRequestRecordingAllowedOriginsList | null;
+  allowedOrigins?: LiveInputsUpdateRequestRecordingAllowedOriginsList;
   /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean | null;
+  hideLiveViewerCount?: boolean;
   /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsUpdateRequestRecordingMode | (string & {}) | null;
+  mode?: LiveInputsUpdateRequestRecordingMode | (string & {});
   /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean | null;
+  requireSignedURLs?: boolean;
   /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number | null;
+  timeoutSeconds?: number;
 }
 export const LiveInputsUpdateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(
-      S.NullOr(LiveInputsUpdateRequestRecordingAllowedOriginsList),
+      LiveInputsUpdateRequestRecordingAllowedOriginsList,
     ),
-    hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
-    mode: S.optional(S.NullOr(LiveInputsUpdateRequestRecordingMode)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    timeoutSeconds: S.optional(S.NullOr(S.Number)),
+    hideLiveViewerCount: S.optional(S.Boolean),
+    mode: S.optional(LiveInputsUpdateRequestRecordingMode),
+    requireSignedURLs: S.optional(S.Boolean),
+    timeoutSeconds: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "LiveInputsUpdateRequestRecording",
@@ -3858,28 +3856,28 @@ export interface UpdateLiveInputRequest {
   /** A unique identifier for a live input. */
   liveInputIdentifier: string;
   /** Sets the creator ID asssociated with this live input. */
-  defaultCreator?: string | null;
+  defaultCreator?: string;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number | null;
+  deleteRecordingAfterDays?: number;
   /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown | null;
+  meta?: unknown;
   /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean | null;
+  preferLowLatency?: boolean;
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsUpdateRequestRecording | null;
+  recording?: LiveInputsUpdateRequestRecording;
 }
 export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-    defaultCreator: S.optional(S.NullOr(S.String)),
-    deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    preferLowLatency: S.optional(S.NullOr(S.Boolean)),
-    recording: S.optional(S.NullOr(LiveInputsUpdateRequestRecording)),
+    defaultCreator: S.optional(S.String),
+    deleteRecordingAfterDays: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    meta: S.optional(S.Unknown),
+    preferLowLatency: S.optional(S.Boolean),
+    recording: S.optional(LiveInputsUpdateRequestRecording),
   })
     .pipe(
       T.Http({

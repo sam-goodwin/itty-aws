@@ -89,12 +89,12 @@ export class OrganizationNotFound extends T.applyErrorMatchers(
 
 export interface CreateRequestParent {
   id: string;
-  name?: string | null;
+  name?: string;
 }
 export const CreateRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestParent",
@@ -121,14 +121,14 @@ export const CreateRequestProfile = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateOrganizationRequest {
   name: string;
-  parent?: CreateRequestParent | null;
-  profile?: CreateRequestProfile | null;
+  parent?: CreateRequestParent;
+  profile?: CreateRequestProfile;
 }
 export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    parent: S.optional(S.NullOr(CreateRequestParent)),
-    profile: S.optional(S.NullOr(CreateRequestProfile)),
+    parent: S.optional(CreateRequestParent),
+    profile: S.optional(CreateRequestProfile),
   })
     .pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -612,11 +612,11 @@ export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestId {
   /** Filters out audit logs by their IDs. */
-  not?: LogsAuditListRequestIdNotList | null;
+  not?: LogsAuditListRequestIdNotList;
 }
 export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestIdNotList)),
+    not: S.optional(LogsAuditListRequestIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestId",
@@ -634,11 +634,11 @@ export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActionResult {
   /** Filters out audit logs by whether the action was successful or not. */
-  not?: LogsAuditListRequestActionResultNotList | null;
+  not?: LogsAuditListRequestActionResultNotList;
 }
 export const LogsAuditListRequestActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActionResultNotList)),
+    not: S.optional(LogsAuditListRequestActionResultNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActionResult",
@@ -660,11 +660,11 @@ export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
-  not?: LogsAuditListRequestActionTypeNotList | null;
+  not?: LogsAuditListRequestActionTypeNotList;
 }
 export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActionTypeNotList)),
+    not: S.optional(LogsAuditListRequestActionTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActionType",
@@ -687,11 +687,11 @@ export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
-  not?: LogsAuditListRequestActorContextNotList | null;
+  not?: LogsAuditListRequestActorContextNotList;
 }
 export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorContextNotList)),
+    not: S.optional(LogsAuditListRequestActorContextNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorContext",
@@ -704,11 +704,11 @@ export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorEmail {
   /** Filters out audit logs by the actor's email address. */
-  not?: LogsAuditListRequestActorEmailNotList | null;
+  not?: LogsAuditListRequestActorEmailNotList;
 }
 export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorEmailNotList)),
+    not: S.optional(LogsAuditListRequestActorEmailNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorEmail",
@@ -721,11 +721,11 @@ export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorId {
   /** Filters out audit logs by the actor's user ID. */
-  not?: LogsAuditListRequestActorIdNotList | null;
+  not?: LogsAuditListRequestActorIdNotList;
 }
 export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorIdNotList)),
+    not: S.optional(LogsAuditListRequestActorIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorId",
@@ -738,11 +738,11 @@ export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorIpAddress {
   /** Filters out audit logs IP address where the action was initiated. */
-  not?: LogsAuditListRequestActorIpAddressNotList | null;
+  not?: LogsAuditListRequestActorIpAddressNotList;
 }
 export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorIpAddressNotList)),
+    not: S.optional(LogsAuditListRequestActorIpAddressNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorIpAddress",
@@ -755,11 +755,11 @@ export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorTokenId {
   /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
-  not?: LogsAuditListRequestActorTokenIdNotList | null;
+  not?: LogsAuditListRequestActorTokenIdNotList;
 }
 export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTokenIdNotList)),
+    not: S.optional(LogsAuditListRequestActorTokenIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorTokenId",
@@ -772,11 +772,11 @@ export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorTokenName {
   /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
-  not?: LogsAuditListRequestActorTokenNameNotList | null;
+  not?: LogsAuditListRequestActorTokenNameNotList;
 }
 export const LogsAuditListRequestActorTokenName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTokenNameNotList)),
+    not: S.optional(LogsAuditListRequestActorTokenNameNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorTokenName",
@@ -797,11 +797,11 @@ export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
-  not?: LogsAuditListRequestActorTypeNotList | null;
+  not?: LogsAuditListRequestActorTypeNotList;
 }
 export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTypeNotList)),
+    not: S.optional(LogsAuditListRequestActorTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorType",
@@ -817,11 +817,11 @@ export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawCfRayId {
   /** Filters out audit logs by the response CF Ray ID. */
-  not?: LogsAuditListRequestRawCfRayIdNotList | null;
+  not?: LogsAuditListRequestRawCfRayIdNotList;
 }
 export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawCfRayIdNotList)),
+    not: S.optional(LogsAuditListRequestRawCfRayIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawCfRayId",
@@ -834,11 +834,11 @@ export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawMethod {
   /** Filters out audit logs by the HTTP method for the API call. */
-  not?: LogsAuditListRequestRawMethodNotList | null;
+  not?: LogsAuditListRequestRawMethodNotList;
 }
 export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawMethodNotList)),
+    not: S.optional(LogsAuditListRequestRawMethodNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawMethod",
@@ -851,11 +851,11 @@ export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawStatusCode {
   /** Filters out audit logs by the response status code that was returned. */
-  not?: LogsAuditListRequestRawStatusCodeNotList | null;
+  not?: LogsAuditListRequestRawStatusCodeNotList;
 }
 export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawStatusCodeNotList)),
+    not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawStatusCode",
@@ -868,11 +868,11 @@ export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawUri {
   /** Filters out audit logs by the request URI. */
-  not?: LogsAuditListRequestRawUriNotList | null;
+  not?: LogsAuditListRequestRawUriNotList;
 }
 export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawUriNotList)),
+    not: S.optional(LogsAuditListRequestRawUriNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawUri",
@@ -885,11 +885,11 @@ export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceId {
   /** Filters out audit logs by the resource ID. */
-  not?: LogsAuditListRequestResourceIdNotList | null;
+  not?: LogsAuditListRequestResourceIdNotList;
 }
 export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceIdNotList)),
+    not: S.optional(LogsAuditListRequestResourceIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceId",
@@ -902,11 +902,11 @@ export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceProduct {
   /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
-  not?: LogsAuditListRequestResourceProductNotList | null;
+  not?: LogsAuditListRequestResourceProductNotList;
 }
 export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceProductNotList)),
+    not: S.optional(LogsAuditListRequestResourceProductNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceProduct",
@@ -924,11 +924,11 @@ export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization. */
-  not?: LogsAuditListRequestResourceScopeNotList | null;
+  not?: LogsAuditListRequestResourceScopeNotList;
 }
 export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceScopeNotList)),
+    not: S.optional(LogsAuditListRequestResourceScopeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceScope",
@@ -941,11 +941,11 @@ export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceType {
   /** Filters out audit logs based on the unique type of resource changed by the action. */
-  not?: LogsAuditListRequestResourceTypeNotList | null;
+  not?: LogsAuditListRequestResourceTypeNotList;
 }
 export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceTypeNotList)),
+    not: S.optional(LogsAuditListRequestResourceTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceType",
@@ -958,87 +958,87 @@ export interface ListLogAuditsRequest {
   before: string;
   /** Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
-  id?: LogsAuditListRequestId | null;
-  actionResult?: LogsAuditListRequestActionResult | null;
-  actionType?: LogsAuditListRequestActionType | null;
-  actorContext?: LogsAuditListRequestActorContext | null;
-  actorEmail?: LogsAuditListRequestActorEmail | null;
-  actorId?: LogsAuditListRequestActorId | null;
-  actorIpAddress?: LogsAuditListRequestActorIpAddress | null;
-  actorTokenId?: LogsAuditListRequestActorTokenId | null;
-  actorTokenName?: LogsAuditListRequestActorTokenName | null;
-  actorType?: LogsAuditListRequestActorType | null;
+  id?: LogsAuditListRequestId;
+  actionResult?: LogsAuditListRequestActionResult;
+  actionType?: LogsAuditListRequestActionType;
+  actorContext?: LogsAuditListRequestActorContext;
+  actorEmail?: LogsAuditListRequestActorEmail;
+  actorId?: LogsAuditListRequestActorId;
+  actorIpAddress?: LogsAuditListRequestActorIpAddress;
+  actorTokenId?: LogsAuditListRequestActorTokenId;
+  actorTokenName?: LogsAuditListRequestActorTokenName;
+  actorType?: LogsAuditListRequestActorType;
   /** The cursor is an opaque token used to paginate through large sets of records. It indicates the position from which to continue when requesting the next set of records. A valid cursor value can be obtained from the cursor object in the result_info structure of a previous response. */
   cursor?: string;
   /** Sets sorting order. */
   direction?: LogsAuditListRequestDirection | (string & {});
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
-  rawCfRayId?: LogsAuditListRequestRawCfRayId | null;
-  rawMethod?: LogsAuditListRequestRawMethod | null;
-  rawStatusCode?: LogsAuditListRequestRawStatusCode | null;
-  rawUri?: LogsAuditListRequestRawUri | null;
-  resourceId?: LogsAuditListRequestResourceId | null;
-  resourceProduct?: LogsAuditListRequestResourceProduct | null;
-  resourceScope?: LogsAuditListRequestResourceScope | null;
-  resourceType?: LogsAuditListRequestResourceType | null;
+  rawCfRayId?: LogsAuditListRequestRawCfRayId;
+  rawMethod?: LogsAuditListRequestRawMethod;
+  rawStatusCode?: LogsAuditListRequestRawStatusCode;
+  rawUri?: LogsAuditListRequestRawUri;
+  resourceId?: LogsAuditListRequestResourceId;
+  resourceProduct?: LogsAuditListRequestResourceProduct;
+  resourceScope?: LogsAuditListRequestResourceScope;
+  resourceType?: LogsAuditListRequestResourceType;
 }
 export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     before: S.String.pipe(T.Query()),
     since: S.String.pipe(T.Query()),
-    id: S.optional(S.NullOr(LogsAuditListRequestId).pipe(T.DeepQuery("id"))),
+    id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
     actionResult: S.optional(
-      S.NullOr(LogsAuditListRequestActionResult).pipe(
+      LogsAuditListRequestActionResult.pipe(
         T.Body("action_result"),
         T.DeepQuery("action_result"),
       ),
     ),
     actionType: S.optional(
-      S.NullOr(LogsAuditListRequestActionType).pipe(
+      LogsAuditListRequestActionType.pipe(
         T.Body("action_type"),
         T.DeepQuery("action_type"),
       ),
     ),
     actorContext: S.optional(
-      S.NullOr(LogsAuditListRequestActorContext).pipe(
+      LogsAuditListRequestActorContext.pipe(
         T.Body("actor_context"),
         T.DeepQuery("actor_context"),
       ),
     ),
     actorEmail: S.optional(
-      S.NullOr(LogsAuditListRequestActorEmail).pipe(
+      LogsAuditListRequestActorEmail.pipe(
         T.Body("actor_email"),
         T.DeepQuery("actor_email"),
       ),
     ),
     actorId: S.optional(
-      S.NullOr(LogsAuditListRequestActorId).pipe(
+      LogsAuditListRequestActorId.pipe(
         T.Body("actor_id"),
         T.DeepQuery("actor_id"),
       ),
     ),
     actorIpAddress: S.optional(
-      S.NullOr(LogsAuditListRequestActorIpAddress).pipe(
+      LogsAuditListRequestActorIpAddress.pipe(
         T.Body("actor_ip_address"),
         T.DeepQuery("actor_ip_address"),
       ),
     ),
     actorTokenId: S.optional(
-      S.NullOr(LogsAuditListRequestActorTokenId).pipe(
+      LogsAuditListRequestActorTokenId.pipe(
         T.Body("actor_token_id"),
         T.DeepQuery("actor_token_id"),
       ),
     ),
     actorTokenName: S.optional(
-      S.NullOr(LogsAuditListRequestActorTokenName).pipe(
+      LogsAuditListRequestActorTokenName.pipe(
         T.Body("actor_token_name"),
         T.DeepQuery("actor_token_name"),
       ),
     ),
     actorType: S.optional(
-      S.NullOr(LogsAuditListRequestActorType).pipe(
+      LogsAuditListRequestActorType.pipe(
         T.Body("actor_type"),
         T.DeepQuery("actor_type"),
       ),
@@ -1047,49 +1047,49 @@ export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
     direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     rawCfRayId: S.optional(
-      S.NullOr(LogsAuditListRequestRawCfRayId).pipe(
+      LogsAuditListRequestRawCfRayId.pipe(
         T.Body("raw_cf_ray_id"),
         T.DeepQuery("raw_cf_ray_id"),
       ),
     ),
     rawMethod: S.optional(
-      S.NullOr(LogsAuditListRequestRawMethod).pipe(
+      LogsAuditListRequestRawMethod.pipe(
         T.Body("raw_method"),
         T.DeepQuery("raw_method"),
       ),
     ),
     rawStatusCode: S.optional(
-      S.NullOr(LogsAuditListRequestRawStatusCode).pipe(
+      LogsAuditListRequestRawStatusCode.pipe(
         T.Body("raw_status_code"),
         T.DeepQuery("raw_status_code"),
       ),
     ),
     rawUri: S.optional(
-      S.NullOr(LogsAuditListRequestRawUri).pipe(
+      LogsAuditListRequestRawUri.pipe(
         T.Body("raw_uri"),
         T.DeepQuery("raw_uri"),
       ),
     ),
     resourceId: S.optional(
-      S.NullOr(LogsAuditListRequestResourceId).pipe(
+      LogsAuditListRequestResourceId.pipe(
         T.Body("resource_id"),
         T.DeepQuery("resource_id"),
       ),
     ),
     resourceProduct: S.optional(
-      S.NullOr(LogsAuditListRequestResourceProduct).pipe(
+      LogsAuditListRequestResourceProduct.pipe(
         T.Body("resource_product"),
         T.DeepQuery("resource_product"),
       ),
     ),
     resourceScope: S.optional(
-      S.NullOr(LogsAuditListRequestResourceScope).pipe(
+      LogsAuditListRequestResourceScope.pipe(
         T.Body("resource_scope"),
         T.DeepQuery("resource_scope"),
       ),
     ),
     resourceType: S.optional(
-      S.NullOr(LogsAuditListRequestResourceType).pipe(
+      LogsAuditListRequestResourceType.pipe(
         T.Body("resource_type"),
         T.DeepQuery("resource_type"),
       ),
@@ -1286,17 +1286,17 @@ export const ListRequestIdList = /*@__PURE__*/ S.Array(
 
 export interface ListRequestContaining {
   /** Filter the list of organizations to the ones that contain this particular */
-  account?: string | null;
+  account?: string;
   /** Filter the list of organizations to the ones that contain this particular */
-  organization?: string | null;
+  organization?: string;
   /** Filter the list of organizations to the ones that contain this particular */
-  user?: string | null;
+  user?: string;
 }
 export const ListRequestContaining = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account: S.optional(S.NullOr(S.String)),
-    organization: S.optional(S.NullOr(S.String)),
-    user: S.optional(S.NullOr(S.String)),
+    account: S.optional(S.String),
+    organization: S.optional(S.String),
+    user: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRequestContaining",
@@ -1304,17 +1304,17 @@ export const ListRequestContaining = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListRequestName {
   /** (case-insensitive) Filter the list of organizations to where the name contains a particular */
-  contains?: string | null;
+  contains?: string;
   /** (case-insensitive) Filter the list of organizations to where the name ends with a particular */
-  endsWith?: string | null;
+  endsWith?: string;
   /** (case-insensitive) Filter the list of organizations to where the name starts with a */
-  startsWith?: string | null;
+  startsWith?: string;
 }
 export const ListRequestName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contains: S.optional(S.NullOr(S.String)),
-    endsWith: S.optional(S.NullOr(S.String)),
-    startsWith: S.optional(S.NullOr(S.String)),
+    contains: S.optional(S.String),
+    endsWith: S.optional(S.String),
+    startsWith: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRequestName",
@@ -1322,11 +1322,11 @@ export const ListRequestName = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListRequestParent {
   /** Filter the list of organizations to the ones that are a sub-organization */
-  id?: string | null;
+  id?: string;
 }
 export const ListRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRequestParent",
@@ -1335,24 +1335,24 @@ export const ListRequestParent = /*@__PURE__*/ S.suspend(() =>
 export interface ListOrganizationsRequest {
   /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements */
   id?: ListRequestIdList;
-  containing?: ListRequestContaining | null;
-  name?: ListRequestName | null;
+  containing?: ListRequestContaining;
+  name?: ListRequestName;
   /** The amount of items to return. Defaults to 10. */
   pageSize?: number;
   /** An opaque token returned from the last list response that when */
   pageToken?: string;
-  parent?: ListRequestParent | null;
+  parent?: ListRequestParent;
 }
 export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListRequestIdList.pipe(T.Query())),
     containing: S.optional(
-      S.NullOr(ListRequestContaining).pipe(T.DeepQuery("containing")),
+      ListRequestContaining.pipe(T.DeepQuery("containing")),
     ),
-    name: S.optional(S.NullOr(ListRequestName).pipe(T.DeepQuery("name"))),
+    name: S.optional(ListRequestName.pipe(T.DeepQuery("name"))),
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-    parent: S.optional(S.NullOr(ListRequestParent).pipe(T.DeepQuery("parent"))),
+    parent: S.optional(ListRequestParent.pipe(T.DeepQuery("parent"))),
   })
     .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1492,12 +1492,12 @@ export const MembersCreateRequestMemberStatus = /*@__PURE__*/ S.String;
 
 export interface MembersCreateRequestMember {
   user: MembersCreateRequestMemberUser;
-  status?: MembersCreateRequestMemberStatus | (string & {}) | null;
+  status?: MembersCreateRequestMemberStatus | (string & {});
 }
 export const MembersCreateRequestMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: MembersCreateRequestMemberUser,
-    status: S.optional(S.NullOr(MembersCreateRequestMemberStatus)),
+    status: S.optional(MembersCreateRequestMemberStatus),
   }),
 ).annotate({
   identifier: "MembersCreateRequestMember",
@@ -1691,11 +1691,11 @@ export const MembersListRequestStatusList = /*@__PURE__*/ S.Array(
 
 export interface MembersListRequestUser {
   /** Filter the list of memberships for a specific email that ends with a substring. */
-  email?: string | null;
+  email?: string;
 }
 export const MembersListRequestUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.String),
   }),
 ).annotate({
   identifier: "MembersListRequestUser",
@@ -1709,7 +1709,7 @@ export interface MembersListRequest {
   pageToken?: string;
   /** Filter the list of memberships by membership status. */
   status?: MembersListRequestStatusList;
-  user?: MembersListRequestUser | null;
+  user?: MembersListRequestUser;
 }
 export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1717,9 +1717,7 @@ export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
     pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
     pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
     status: S.optional(MembersListRequestStatusList.pipe(T.Query())),
-    user: S.optional(
-      S.NullOr(MembersListRequestUser).pipe(T.DeepQuery("user")),
-    ),
+    user: S.optional(MembersListRequestUser.pipe(T.DeepQuery("user"))),
   })
     .pipe(
       T.Http({
@@ -1799,18 +1797,18 @@ export const MembersListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface OrganizationAccountsGetRequestAccountPubname {
   /** (case-insensitive) Filter the list of accounts to where the account_pubname contains */
-  contains?: string | null;
+  contains?: string;
   /** (case-insensitive) Filter the list of accounts to where the account_pubname ends with */
-  endsWith?: string | null;
+  endsWith?: string;
   /** (case-insensitive) Filter the list of accounts to where the account_pubname starts with */
-  startsWith?: string | null;
+  startsWith?: string;
 }
 export const OrganizationAccountsGetRequestAccountPubname =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      contains: S.optional(S.NullOr(S.String)),
-      endsWith: S.optional(S.NullOr(S.String)),
-      startsWith: S.optional(S.NullOr(S.String)),
+      contains: S.optional(S.String),
+      endsWith: S.optional(S.String),
+      startsWith: S.optional(S.String),
     }),
   ).annotate({
     identifier: "OrganizationAccountsGetRequestAccountPubname",
@@ -1821,17 +1819,17 @@ export const OrganizationAccountsGetRequestDirection = /*@__PURE__*/ S.String;
 
 export interface OrganizationAccountsGetRequestName {
   /** (case-insensitive) Filter the list of accounts to where the name contains a particular */
-  contains?: string | null;
+  contains?: string;
   /** (case-insensitive) Filter the list of accounts to where the name ends with a particular */
-  endsWith?: string | null;
+  endsWith?: string;
   /** (case-insensitive) Filter the list of accounts to where the name starts with a */
-  startsWith?: string | null;
+  startsWith?: string;
 }
 export const OrganizationAccountsGetRequestName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contains: S.optional(S.NullOr(S.String)),
-    endsWith: S.optional(S.NullOr(S.String)),
-    startsWith: S.optional(S.NullOr(S.String)),
+    contains: S.optional(S.String),
+    endsWith: S.optional(S.String),
+    startsWith: S.optional(S.String),
   }),
 ).annotate({
   identifier: "OrganizationAccountsGetRequestName",
@@ -1842,10 +1840,10 @@ export const OrganizationAccountsGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface OrganizationAccountsGetRequest {
   organizationId: string;
-  accountPubname?: OrganizationAccountsGetRequestAccountPubname | null;
+  accountPubname?: OrganizationAccountsGetRequestAccountPubname;
   /** Sort direction for the order_by field. Valid values: `asc`, `desc`. */
   direction?: OrganizationAccountsGetRequestDirection | (string & {});
-  name?: OrganizationAccountsGetRequestName | null;
+  name?: OrganizationAccountsGetRequestName;
   /** Field to order results by. Currently supported values: `account_name`. */
   orderBy?: OrganizationAccountsGetRequestOrderBy | (string & {});
   /** The amount of items to return. Defaults to 10. */
@@ -1857,7 +1855,7 @@ export const OrganizationAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     accountPubname: S.optional(
-      S.NullOr(OrganizationAccountsGetRequestAccountPubname).pipe(
+      OrganizationAccountsGetRequestAccountPubname.pipe(
         T.Body("account_pubname"),
         T.DeepQuery("account_pubname"),
       ),
@@ -1866,7 +1864,7 @@ export const OrganizationAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
       OrganizationAccountsGetRequestDirection.pipe(T.Query()),
     ),
     name: S.optional(
-      S.NullOr(OrganizationAccountsGetRequestName).pipe(T.DeepQuery("name")),
+      OrganizationAccountsGetRequestName.pipe(T.DeepQuery("name")),
     ),
     orderBy: S.optional(
       OrganizationAccountsGetRequestOrderBy.pipe(T.Query("order_by")),
@@ -1985,12 +1983,12 @@ export const PutOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestParent {
   id: string;
-  name?: string | null;
+  name?: string;
 }
 export const UpdateRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestParent",
@@ -2018,15 +2016,15 @@ export const UpdateRequestProfile = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateOrganizationRequest {
   organizationId: string;
   name: string;
-  parent?: UpdateRequestParent | null;
-  profile?: UpdateRequestProfile | null;
+  parent?: UpdateRequestParent;
+  profile?: UpdateRequestProfile;
 }
 export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     name: S.String,
-    parent: S.optional(S.NullOr(UpdateRequestParent)),
-    profile: S.optional(S.NullOr(UpdateRequestProfile)),
+    parent: S.optional(UpdateRequestParent),
+    profile: S.optional(UpdateRequestProfile),
   })
     .pipe(
       T.Http({

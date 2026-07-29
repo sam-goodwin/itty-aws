@@ -83,13 +83,13 @@ export interface CreatePageTestRequest {
   /** A URL. */
   url: string;
   /** A test region. */
-  region?: PagesTestsCreateRequestRegion | (string & {}) | null;
+  region?: PagesTestsCreateRequestRegion | (string & {});
 }
 export const CreatePageTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     url: S.String.pipe(T.Label()),
-    region: S.optional(S.NullOr(PagesTestsCreateRequestRegion)),
+    region: S.optional(PagesTestsCreateRequestRegion),
   })
     .pipe(
       T.Http({

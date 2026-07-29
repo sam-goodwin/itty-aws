@@ -187,17 +187,17 @@ export interface CreateAnalyzeRequest {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: AnalyzeCreateRequestBundleMethod | (string & {}) | null;
+  bundleMethod?: AnalyzeCreateRequestBundleMethod | (string & {});
   /** The zone's SSL certificate or certificate and the intermediate(s). */
-  certificate?: string | null;
+  certificate?: string;
 }
 export const CreateAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     bundleMethod: S.optional(
-      S.NullOr(AnalyzeCreateRequestBundleMethod).pipe(T.Body("bundle_method")),
+      AnalyzeCreateRequestBundleMethod.pipe(T.Body("bundle_method")),
     ),
-    certificate: S.optional(S.NullOr(S.String)),
+    certificate: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -261,7 +261,7 @@ export interface CreateCertificatePackRequest {
   /** Validity Days selected for the order. */
   validityDays: CertificatePacksCreateRequestValidityDays | (number & {});
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
+  cloudflareBranding?: boolean;
 }
 export const CreateCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -279,7 +279,7 @@ export const CreateCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("validity_days"),
     ),
     cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
   })
     .pipe(
@@ -1756,14 +1756,14 @@ export interface PatchCertificatePackRequest {
   /** Identifier. */
   certificatePackId: string;
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
+  cloudflareBranding?: boolean;
 }
 export const PatchCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
     cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
   })
     .pipe(
@@ -2127,12 +2127,12 @@ export interface PatchUniversalSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
-  enabled?: boolean | null;
+  enabled?: boolean;
 }
 export const PatchUniversalSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
   })
     .pipe(
       T.Http({

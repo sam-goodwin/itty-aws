@@ -50,13 +50,13 @@ export interface CreateCustomCsrForAccountRequest {
   /** State or province name. */
   state: string;
   /** Optional description for the CSR. */
-  description?: string | null;
+  description?: string;
   /** Key algorithm to use for the CSR. Defaults to rsa2048 if not specified. */
-  keyType?: CreateRequestKeyType | (string & {}) | null;
+  keyType?: CreateRequestKeyType | (string & {});
   /** Human-readable name for the CSR. */
-  name?: string | null;
+  name?: string;
   /** Organizational unit name. */
-  organizationalUnit?: string | null;
+  organizationalUnit?: string;
 }
 export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -67,13 +67,11 @@ export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
     organization: S.String,
     sans: CreateRequestSansList,
     state: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    keyType: S.optional(
-      S.NullOr(CreateRequestKeyType).pipe(T.Body("key_type")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
+    name: S.optional(S.String),
     organizationalUnit: S.optional(
-      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
+      S.String.pipe(T.Body("organizational_unit")),
     ),
   })
     .pipe(
@@ -166,13 +164,13 @@ export interface CreateCustomCsrForZoneRequest {
   /** State or province name. */
   state: string;
   /** Optional description for the CSR. */
-  description?: string | null;
+  description?: string;
   /** Key algorithm to use for the CSR. Defaults to rsa2048 if not specified. */
-  keyType?: CreateRequestKeyType | (string & {}) | null;
+  keyType?: CreateRequestKeyType | (string & {});
   /** Human-readable name for the CSR. */
-  name?: string | null;
+  name?: string;
   /** Organizational unit name. */
-  organizationalUnit?: string | null;
+  organizationalUnit?: string;
 }
 export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -183,13 +181,11 @@ export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
     organization: S.String,
     sans: CreateRequestSansList,
     state: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    keyType: S.optional(
-      S.NullOr(CreateRequestKeyType).pipe(T.Body("key_type")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
+    name: S.optional(S.String),
     organizationalUnit: S.optional(
-      S.NullOr(S.String).pipe(T.Body("organizational_unit")),
+      S.String.pipe(T.Body("organizational_unit")),
     ),
   })
     .pipe(

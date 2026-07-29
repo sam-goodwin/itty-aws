@@ -115,12 +115,12 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface RulesUpdateRequestRulesItemParameters {
   /** Host to perform Cloud Connection to */
-  host?: string | null;
+  host?: string;
 }
 export const RulesUpdateRequestRulesItemParameters = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      host: S.optional(S.NullOr(S.String)),
+      host: S.optional(S.String),
     }),
 ).annotate({
   identifier: "RulesUpdateRequestRulesItemParameters",
@@ -134,23 +134,23 @@ export type RulesUpdateRequestRulesItemProvider =
 export const RulesUpdateRequestRulesItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
-  id?: string | null;
-  description?: string | null;
-  enabled?: boolean | null;
-  expression?: string | null;
+  id?: string;
+  description?: string;
+  enabled?: boolean;
+  expression?: string;
   /** Parameters of Cloud Connector Rule */
-  parameters?: RulesUpdateRequestRulesItemParameters | null;
+  parameters?: RulesUpdateRequestRulesItemParameters;
   /** Cloud Provider type */
-  provider?: RulesUpdateRequestRulesItemProvider | (string & {}) | null;
+  provider?: RulesUpdateRequestRulesItemProvider | (string & {});
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    expression: S.optional(S.NullOr(S.String)),
-    parameters: S.optional(S.NullOr(RulesUpdateRequestRulesItemParameters)),
-    provider: S.optional(S.NullOr(RulesUpdateRequestRulesItemProvider)),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    expression: S.optional(S.String),
+    parameters: S.optional(RulesUpdateRequestRulesItemParameters),
+    provider: S.optional(RulesUpdateRequestRulesItemProvider),
   }),
 ).annotate({
   identifier: "RulesUpdateRequestRulesItem",

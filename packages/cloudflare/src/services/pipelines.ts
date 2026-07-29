@@ -172,17 +172,17 @@ export class TableNotFound extends T.applyErrorMatchers(
 
 export interface CreateRequestDestinationBatch {
   /** Specifies rough maximum size of files. */
-  maxBytes?: number | null;
+  maxBytes?: number;
   /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS?: number | null;
+  maxDurationS?: number;
   /** Specifies rough maximum number of rows per file. */
-  maxRows?: number | null;
+  maxRows?: number;
 }
 export const CreateRequestDestinationBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_bytes"))),
-    maxDurationS: S.optional(S.NullOr(S.Number).pipe(T.Body("max_duration_s"))),
-    maxRows: S.optional(S.NullOr(S.Number).pipe(T.Body("max_rows"))),
+    maxBytes: S.optional(S.Number.pipe(T.Body("max_bytes"))),
+    maxDurationS: S.optional(S.Number.pipe(T.Body("max_duration_s"))),
+    maxRows: S.optional(S.Number.pipe(T.Body("max_rows"))),
   }),
 ).annotate({
   identifier: "CreateRequestDestinationBatch",
@@ -196,11 +196,11 @@ export const CreateRequestDestinationCompressionType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
-  type?: CreateRequestDestinationCompressionType | (string & {}) | null;
+  type?: CreateRequestDestinationCompressionType | (string & {});
 }
 export const CreateRequestDestinationCompression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.NullOr(CreateRequestDestinationCompressionType)),
+    type: S.optional(CreateRequestDestinationCompressionType),
   }),
 ).annotate({
   identifier: "CreateRequestDestinationCompression",
@@ -231,18 +231,18 @@ export interface CreateRequestDestinationPath {
   /** Specifies the R2 Bucket to store files. */
   bucket: string;
   /** Specifies the name pattern to for individual data files. */
-  filename?: string | null;
+  filename?: string;
   /** Specifies the name pattern for directory. */
-  filepath?: string | null;
+  filepath?: string;
   /** Specifies the base directory within the bucket. */
-  prefix?: string | null;
+  prefix?: string;
 }
 export const CreateRequestDestinationPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
-    filename: S.optional(S.NullOr(S.String)),
-    filepath: S.optional(S.NullOr(S.String)),
-    prefix: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.String),
+    filepath: S.optional(S.String),
+    prefix: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestDestinationPath",
@@ -288,15 +288,13 @@ export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
 
 export interface CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
-  origins?: CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList | null;
+  origins?: CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList;
 }
 export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       origins: S.optional(
-        S.NullOr(
-          CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
-        ),
+        CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
       ),
     }),
   ).annotate({
@@ -309,8 +307,8 @@ export interface CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPS
   format: CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat;
   type: string;
   /** Specifies whether authentication is required to send to this pipeline via HTTP. */
-  authentication?: boolean | null;
-  cors?: CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors | null;
+  authentication?: boolean;
+  cors?: CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors;
 }
 export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource =
   /*@__PURE__*/ S.suspend(() =>
@@ -318,11 +316,9 @@ export const CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
       format:
         CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat,
       type: S.String,
-      authentication: S.optional(S.NullOr(S.Boolean)),
+      authentication: S.optional(S.Boolean),
       cors: S.optional(
-        S.NullOr(
-          CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors,
-        ),
+        CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors,
       ),
     }),
   ).annotate({
@@ -624,25 +620,22 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrateg
 
 export interface SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming {
   /** The prefix to use in file name. i.e prefix-<uuid>.parquet */
-  prefix?: string | null;
+  prefix?: string;
   /** Filename generation strategy. */
   strategy?:
     | SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy
-    | (string & {})
-    | null;
+    | (string & {});
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
-  suffix?: string | null;
+  suffix?: string;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      prefix: S.optional(S.NullOr(S.String)),
+      prefix: S.optional(S.String),
       strategy: S.optional(
-        S.NullOr(
-          SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy,
-        ),
+        SinksCreateRequestConfigCloudflarePipelinesR2TableFileNamingStrategy,
       ),
-      suffix: S.optional(S.NullOr(S.String)),
+      suffix: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming",
@@ -650,12 +643,12 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming =
 
 export interface SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning {
   /** The pattern of the date string */
-  timePattern?: string | null;
+  timePattern?: string;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      timePattern: S.optional(S.NullOr(S.String).pipe(T.Body("time_pattern"))),
+      timePattern: S.optional(S.String.pipe(T.Body("time_pattern"))),
     }),
   ).annotate({
     identifier:
@@ -664,24 +657,20 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning =
 
 export interface SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
+  fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
+  inactivitySeconds?: number;
   /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
+  intervalSeconds?: number;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
       inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
+        S.Number.pipe(T.Body("inactivity_seconds")),
       ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
     }),
   ).annotate({
     identifier:
@@ -695,15 +684,15 @@ export interface SinksCreateRequestConfigCloudflarePipelinesR2Table {
   bucket: string;
   credentials: SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials;
   /** Controls filename prefix/suffix and strategy. */
-  fileNaming?: SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming | null;
+  fileNaming?: SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming;
   /** Jurisdiction this bucket is hosted in */
-  jurisdiction?: string | null;
+  jurisdiction?: string;
   /** Data-layout partitioning for sinks. */
-  partitioning?: SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning | null;
+  partitioning?: SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning;
   /** Subpath within the bucket to write to */
-  path?: string | null;
+  path?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy | null;
+  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2Table =
   /*@__PURE__*/ S.suspend(() =>
@@ -713,21 +702,19 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2Table =
       credentials:
         SinksCreateRequestConfigCloudflarePipelinesR2TableCredentials,
       fileNaming: S.optional(
-        S.NullOr(
-          SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming,
-        ).pipe(T.Body("file_naming")),
-      ),
-      jurisdiction: S.optional(S.NullOr(S.String)),
-      partitioning: S.optional(
-        S.NullOr(
-          SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning,
+        SinksCreateRequestConfigCloudflarePipelinesR2TableFileNaming.pipe(
+          T.Body("file_naming"),
         ),
       ),
-      path: S.optional(S.NullOr(S.String)),
+      jurisdiction: S.optional(S.String),
+      partitioning: S.optional(
+        SinksCreateRequestConfigCloudflarePipelinesR2TablePartitioning,
+      ),
+      path: S.optional(S.String),
       rollingPolicy: S.optional(
-        S.NullOr(
-          SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy,
-        ).pipe(T.Body("rolling_policy")),
+        SinksCreateRequestConfigCloudflarePipelinesR2TableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -736,24 +723,20 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2Table =
 
 export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy {
   /** Files will be rolled after reaching this number of bytes */
-  fileSizeBytes?: number | null;
+  fileSizeBytes?: number;
   /** Number of seconds of inactivity to wait before rolling over to a new file */
-  inactivitySeconds?: number | null;
+  inactivitySeconds?: number;
   /** Number of seconds to wait before rolling over to a new file */
-  intervalSeconds?: number | null;
+  intervalSeconds?: number;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      fileSizeBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("file_size_bytes")),
-      ),
+      fileSizeBytes: S.optional(S.Number.pipe(T.Body("file_size_bytes"))),
       inactivitySeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("inactivity_seconds")),
+        S.Number.pipe(T.Body("inactivity_seconds")),
       ),
-      intervalSeconds: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("interval_seconds")),
-      ),
+      intervalSeconds: S.optional(S.Number.pipe(T.Body("interval_seconds"))),
     }),
   ).annotate({
     identifier:
@@ -770,9 +753,9 @@ export interface SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable {
   /** Table name */
   tableName: string;
   /** Table namespace */
-  namespace?: string | null;
+  namespace?: string;
   /** Rolling policy for file sinks (when & why to close a file and open a new one). */
-  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy | null;
+  rollingPolicy?: SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy;
 }
 export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
   /*@__PURE__*/ S.suspend(() =>
@@ -781,11 +764,11 @@ export const SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTable =
       accountId: S.String.pipe(T.Body("account_id")),
       bucket: S.String,
       tableName: S.String.pipe(T.Body("table_name")),
-      namespace: S.optional(S.NullOr(S.String)),
+      namespace: S.optional(S.String),
       rollingPolicy: S.optional(
-        S.NullOr(
-          SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy,
-        ).pipe(T.Body("rolling_policy")),
+        SinksCreateRequestConfigCloudflarePipelinesR2DataCatalogTableRollingPolicy.pipe(
+          T.Body("rolling_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -829,30 +812,24 @@ export const SinksCreateRequestFormatJsonTimestampFormat =
 
 export interface SinksCreateRequestFormatJson {
   type: SinksCreateRequestFormatJsonType;
-  decimalEncoding?:
-    | SinksCreateRequestFormatJsonDecimalEncoding
-    | (string & {})
-    | null;
-  timestampFormat?:
-    | SinksCreateRequestFormatJsonTimestampFormat
-    | (string & {})
-    | null;
-  unstructured?: boolean | null;
+  decimalEncoding?: SinksCreateRequestFormatJsonDecimalEncoding | (string & {});
+  timestampFormat?: SinksCreateRequestFormatJsonTimestampFormat | (string & {});
+  unstructured?: boolean;
 }
 export const SinksCreateRequestFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SinksCreateRequestFormatJsonType,
     decimalEncoding: S.optional(
-      S.NullOr(SinksCreateRequestFormatJsonDecimalEncoding).pipe(
+      SinksCreateRequestFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      S.NullOr(SinksCreateRequestFormatJsonTimestampFormat).pipe(
+      SinksCreateRequestFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
+    unstructured: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SinksCreateRequestFormatJson",
@@ -872,21 +849,14 @@ export const SinksCreateRequestFormatParquetCompression =
 
 export interface SinksCreateRequestFormatParquet {
   type: SinksCreateRequestFormatParquetType;
-  compression?:
-    | SinksCreateRequestFormatParquetCompression
-    | (string & {})
-    | null;
-  rowGroupBytes?: number | null;
+  compression?: SinksCreateRequestFormatParquetCompression | (string & {});
+  rowGroupBytes?: number;
 }
 export const SinksCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SinksCreateRequestFormatParquetType,
-    compression: S.optional(
-      S.NullOr(SinksCreateRequestFormatParquetCompression),
-    ),
-    rowGroupBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("row_group_bytes")),
-    ),
+    compression: S.optional(SinksCreateRequestFormatParquetCompression),
+    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
   identifier: "SinksCreateRequestFormatParquet",
@@ -927,28 +897,26 @@ export interface SinksCreateRequestSchemaFormatJson {
   type: SinksCreateRequestSchemaFormatJsonType;
   decimalEncoding?:
     | SinksCreateRequestSchemaFormatJsonDecimalEncoding
-    | (string & {})
-    | null;
+    | (string & {});
   timestampFormat?:
     | SinksCreateRequestSchemaFormatJsonTimestampFormat
-    | (string & {})
-    | null;
-  unstructured?: boolean | null;
+    | (string & {});
+  unstructured?: boolean;
 }
 export const SinksCreateRequestSchemaFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SinksCreateRequestSchemaFormatJsonType,
     decimalEncoding: S.optional(
-      S.NullOr(SinksCreateRequestSchemaFormatJsonDecimalEncoding).pipe(
+      SinksCreateRequestSchemaFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      S.NullOr(SinksCreateRequestSchemaFormatJsonTimestampFormat).pipe(
+      SinksCreateRequestSchemaFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
+    unstructured: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SinksCreateRequestSchemaFormatJson",
@@ -970,20 +938,15 @@ export interface SinksCreateRequestSchemaFormatParquet {
   type: SinksCreateRequestSchemaFormatParquetType;
   compression?:
     | SinksCreateRequestSchemaFormatParquetCompression
-    | (string & {})
-    | null;
-  rowGroupBytes?: number | null;
+    | (string & {});
+  rowGroupBytes?: number;
 }
 export const SinksCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: SinksCreateRequestSchemaFormatParquetType,
-      compression: S.optional(
-        S.NullOr(SinksCreateRequestSchemaFormatParquetCompression),
-      ),
-      rowGroupBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("row_group_bytes")),
-      ),
+      compression: S.optional(SinksCreateRequestSchemaFormatParquetCompression),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
     }),
 ).annotate({
   identifier: "SinksCreateRequestSchemaFormatParquet",
@@ -1000,15 +963,15 @@ export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface SinksCreateRequestSchema {
-  fields?: SinksCreateRequestSchemaFieldsList | null;
-  format?: SinksCreateRequestSchemaFormat | null;
-  inferred?: boolean | null;
+  fields?: SinksCreateRequestSchemaFieldsList;
+  format?: SinksCreateRequestSchemaFormat;
+  inferred?: boolean;
 }
 export const SinksCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fields: S.optional(S.NullOr(SinksCreateRequestSchemaFieldsList)),
-    format: S.optional(S.NullOr(SinksCreateRequestSchemaFormat)),
-    inferred: S.optional(S.NullOr(S.Boolean)),
+    fields: S.optional(SinksCreateRequestSchemaFieldsList),
+    format: S.optional(SinksCreateRequestSchemaFormat),
+    inferred: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "SinksCreateRequestSchema",
@@ -1022,18 +985,18 @@ export interface CreateSinkRequest {
   /** Specifies the type of sink. */
   type: SinksCreateRequestType | (string & {});
   /** Defines the configuration of the R2 Sink. */
-  config?: SinksCreateRequestConfig | null;
-  format?: SinksCreateRequestFormat | null;
-  schema?: SinksCreateRequestSchema | null;
+  config?: SinksCreateRequestConfig;
+  format?: SinksCreateRequestFormat;
+  schema?: SinksCreateRequestSchema;
 }
 export const CreateSinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     type: SinksCreateRequestType,
-    config: S.optional(S.NullOr(SinksCreateRequestConfig)),
-    format: S.optional(S.NullOr(SinksCreateRequestFormat)),
-    schema: S.optional(S.NullOr(SinksCreateRequestSchema)),
+    config: S.optional(SinksCreateRequestConfig),
+    format: S.optional(SinksCreateRequestFormat),
+    schema: S.optional(SinksCreateRequestSchema),
   })
     .pipe(
       T.Http({
@@ -1495,28 +1458,26 @@ export interface StreamsCreateRequestFormatJson {
   type: StreamsCreateRequestFormatJsonType;
   decimalEncoding?:
     | StreamsCreateRequestFormatJsonDecimalEncoding
-    | (string & {})
-    | null;
+    | (string & {});
   timestampFormat?:
     | StreamsCreateRequestFormatJsonTimestampFormat
-    | (string & {})
-    | null;
-  unstructured?: boolean | null;
+    | (string & {});
+  unstructured?: boolean;
 }
 export const StreamsCreateRequestFormatJson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StreamsCreateRequestFormatJsonType,
     decimalEncoding: S.optional(
-      S.NullOr(StreamsCreateRequestFormatJsonDecimalEncoding).pipe(
+      StreamsCreateRequestFormatJsonDecimalEncoding.pipe(
         T.Body("decimal_encoding"),
       ),
     ),
     timestampFormat: S.optional(
-      S.NullOr(StreamsCreateRequestFormatJsonTimestampFormat).pipe(
+      StreamsCreateRequestFormatJsonTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
-    unstructured: S.optional(S.NullOr(S.Boolean)),
+    unstructured: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "StreamsCreateRequestFormatJson",
@@ -1536,21 +1497,14 @@ export const StreamsCreateRequestFormatParquetCompression =
 
 export interface StreamsCreateRequestFormatParquet {
   type: StreamsCreateRequestFormatParquetType;
-  compression?:
-    | StreamsCreateRequestFormatParquetCompression
-    | (string & {})
-    | null;
-  rowGroupBytes?: number | null;
+  compression?: StreamsCreateRequestFormatParquetCompression | (string & {});
+  rowGroupBytes?: number;
 }
 export const StreamsCreateRequestFormatParquet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: StreamsCreateRequestFormatParquetType,
-    compression: S.optional(
-      S.NullOr(StreamsCreateRequestFormatParquetCompression),
-    ),
-    rowGroupBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("row_group_bytes")),
-    ),
+    compression: S.optional(StreamsCreateRequestFormatParquetCompression),
+    rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
   }),
 ).annotate({
   identifier: "StreamsCreateRequestFormatParquet",
@@ -1572,11 +1526,11 @@ export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StreamsCreateRequestHttpCorsOriginsList>;
 
 export interface StreamsCreateRequestHttpCors {
-  origins?: StreamsCreateRequestHttpCorsOriginsList | null;
+  origins?: StreamsCreateRequestHttpCorsOriginsList;
 }
 export const StreamsCreateRequestHttpCors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    origins: S.optional(S.NullOr(StreamsCreateRequestHttpCorsOriginsList)),
+    origins: S.optional(StreamsCreateRequestHttpCorsOriginsList),
   }),
 ).annotate({
   identifier: "StreamsCreateRequestHttpCors",
@@ -1588,13 +1542,13 @@ export interface StreamsCreateRequestHttp {
   /** Indicates that the HTTP endpoint is enabled. */
   enabled: boolean;
   /** Specifies the CORS options for the HTTP endpoint. */
-  cors?: StreamsCreateRequestHttpCors | null;
+  cors?: StreamsCreateRequestHttpCors;
 }
 export const StreamsCreateRequestHttp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: S.Boolean,
     enabled: S.Boolean,
-    cors: S.optional(S.NullOr(StreamsCreateRequestHttpCors)),
+    cors: S.optional(StreamsCreateRequestHttpCors),
   }),
 ).annotate({
   identifier: "StreamsCreateRequestHttp",
@@ -1625,29 +1579,27 @@ export interface StreamsCreateRequestSchemaFormatJson {
   type: StreamsCreateRequestSchemaFormatJsonType;
   decimalEncoding?:
     | StreamsCreateRequestSchemaFormatJsonDecimalEncoding
-    | (string & {})
-    | null;
+    | (string & {});
   timestampFormat?:
     | StreamsCreateRequestSchemaFormatJsonTimestampFormat
-    | (string & {})
-    | null;
-  unstructured?: boolean | null;
+    | (string & {});
+  unstructured?: boolean;
 }
 export const StreamsCreateRequestSchemaFormatJson = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: StreamsCreateRequestSchemaFormatJsonType,
       decimalEncoding: S.optional(
-        S.NullOr(StreamsCreateRequestSchemaFormatJsonDecimalEncoding).pipe(
+        StreamsCreateRequestSchemaFormatJsonDecimalEncoding.pipe(
           T.Body("decimal_encoding"),
         ),
       ),
       timestampFormat: S.optional(
-        S.NullOr(StreamsCreateRequestSchemaFormatJsonTimestampFormat).pipe(
+        StreamsCreateRequestSchemaFormatJsonTimestampFormat.pipe(
           T.Body("timestamp_format"),
         ),
       ),
-      unstructured: S.optional(S.NullOr(S.Boolean)),
+      unstructured: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "StreamsCreateRequestSchemaFormatJson",
@@ -1670,20 +1622,17 @@ export interface StreamsCreateRequestSchemaFormatParquet {
   type: StreamsCreateRequestSchemaFormatParquetType;
   compression?:
     | StreamsCreateRequestSchemaFormatParquetCompression
-    | (string & {})
-    | null;
-  rowGroupBytes?: number | null;
+    | (string & {});
+  rowGroupBytes?: number;
 }
 export const StreamsCreateRequestSchemaFormatParquet = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: StreamsCreateRequestSchemaFormatParquetType,
       compression: S.optional(
-        S.NullOr(StreamsCreateRequestSchemaFormatParquetCompression),
+        StreamsCreateRequestSchemaFormatParquetCompression,
       ),
-      rowGroupBytes: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("row_group_bytes")),
-      ),
+      rowGroupBytes: S.optional(S.Number.pipe(T.Body("row_group_bytes"))),
     }),
 ).annotate({
   identifier: "StreamsCreateRequestSchemaFormatParquet",
@@ -1700,15 +1649,15 @@ export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface StreamsCreateRequestSchema {
-  fields?: StreamsCreateRequestSchemaFieldsList | null;
-  format?: StreamsCreateRequestSchemaFormat | null;
-  inferred?: boolean | null;
+  fields?: StreamsCreateRequestSchemaFieldsList;
+  format?: StreamsCreateRequestSchemaFormat;
+  inferred?: boolean;
 }
 export const StreamsCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fields: S.optional(S.NullOr(StreamsCreateRequestSchemaFieldsList)),
-    format: S.optional(S.NullOr(StreamsCreateRequestSchemaFormat)),
-    inferred: S.optional(S.NullOr(S.Boolean)),
+    fields: S.optional(StreamsCreateRequestSchemaFieldsList),
+    format: S.optional(StreamsCreateRequestSchemaFormat),
+    inferred: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "StreamsCreateRequestSchema",
@@ -1731,22 +1680,20 @@ export interface CreateStreamRequest {
   accountId: string;
   /** Specifies the name of the Stream. */
   name: string;
-  format?: StreamsCreateRequestFormat | null;
-  http?: StreamsCreateRequestHttp | null;
-  schema?: StreamsCreateRequestSchema | null;
-  workerBinding?: StreamsCreateRequestWorkerBinding | null;
+  format?: StreamsCreateRequestFormat;
+  http?: StreamsCreateRequestHttp;
+  schema?: StreamsCreateRequestSchema;
+  workerBinding?: StreamsCreateRequestWorkerBinding;
 }
 export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    format: S.optional(S.NullOr(StreamsCreateRequestFormat)),
-    http: S.optional(S.NullOr(StreamsCreateRequestHttp)),
-    schema: S.optional(S.NullOr(StreamsCreateRequestSchema)),
+    format: S.optional(StreamsCreateRequestFormat),
+    http: S.optional(StreamsCreateRequestHttp),
+    schema: S.optional(StreamsCreateRequestSchema),
     workerBinding: S.optional(
-      S.NullOr(StreamsCreateRequestWorkerBinding).pipe(
-        T.Body("worker_binding"),
-      ),
+      StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
     ),
   })
     .pipe(
@@ -4334,11 +4281,11 @@ export const StreamsUpdateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StreamsUpdateRequestHttpCorsOriginsList>;
 
 export interface StreamsUpdateRequestHttpCors {
-  origins?: StreamsUpdateRequestHttpCorsOriginsList | null;
+  origins?: StreamsUpdateRequestHttpCorsOriginsList;
 }
 export const StreamsUpdateRequestHttpCors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    origins: S.optional(S.NullOr(StreamsUpdateRequestHttpCorsOriginsList)),
+    origins: S.optional(StreamsUpdateRequestHttpCorsOriginsList),
   }),
 ).annotate({
   identifier: "StreamsUpdateRequestHttpCors",
@@ -4350,13 +4297,13 @@ export interface StreamsUpdateRequestHttp {
   /** Indicates that the HTTP endpoint is enabled. */
   enabled: boolean;
   /** Specifies the CORS options for the HTTP endpoint. */
-  cors?: StreamsUpdateRequestHttpCors | null;
+  cors?: StreamsUpdateRequestHttpCors;
 }
 export const StreamsUpdateRequestHttp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: S.Boolean,
     enabled: S.Boolean,
-    cors: S.optional(S.NullOr(StreamsUpdateRequestHttpCors)),
+    cors: S.optional(StreamsUpdateRequestHttpCors),
   }),
 ).annotate({
   identifier: "StreamsUpdateRequestHttp",
@@ -4379,18 +4326,16 @@ export interface PatchStreamRequest {
   accountId: string;
   /** Specifies the public ID of the stream. */
   streamId: string;
-  http?: StreamsUpdateRequestHttp | null;
-  workerBinding?: StreamsUpdateRequestWorkerBinding | null;
+  http?: StreamsUpdateRequestHttp;
+  workerBinding?: StreamsUpdateRequestWorkerBinding;
 }
 export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
-    http: S.optional(S.NullOr(StreamsUpdateRequestHttp)),
+    http: S.optional(StreamsUpdateRequestHttp),
     workerBinding: S.optional(
-      S.NullOr(StreamsUpdateRequestWorkerBinding).pipe(
-        T.Body("worker_binding"),
-      ),
+      StreamsUpdateRequestWorkerBinding.pipe(T.Body("worker_binding")),
     ),
   })
     .pipe(
@@ -4569,17 +4514,17 @@ export const PatchStreamResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestDestinationBatch {
   /** Specifies rough maximum size of files. */
-  maxBytes?: number | null;
+  maxBytes?: number;
   /** Specifies duration to wait to aggregate batches files. */
-  maxDurationS?: number | null;
+  maxDurationS?: number;
   /** Specifies rough maximum number of rows per file. */
-  maxRows?: number | null;
+  maxRows?: number;
 }
 export const UpdateRequestDestinationBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_bytes"))),
-    maxDurationS: S.optional(S.NullOr(S.Number).pipe(T.Body("max_duration_s"))),
-    maxRows: S.optional(S.NullOr(S.Number).pipe(T.Body("max_rows"))),
+    maxBytes: S.optional(S.Number.pipe(T.Body("max_bytes"))),
+    maxDurationS: S.optional(S.Number.pipe(T.Body("max_duration_s"))),
+    maxRows: S.optional(S.Number.pipe(T.Body("max_rows"))),
   }),
 ).annotate({
   identifier: "UpdateRequestDestinationBatch",
@@ -4593,11 +4538,11 @@ export const UpdateRequestDestinationCompressionType = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestDestinationCompression {
   /** Specifies the desired compression algorithm and format. */
-  type?: UpdateRequestDestinationCompressionType | (string & {}) | null;
+  type?: UpdateRequestDestinationCompressionType | (string & {});
 }
 export const UpdateRequestDestinationCompression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.NullOr(UpdateRequestDestinationCompressionType)),
+    type: S.optional(UpdateRequestDestinationCompressionType),
   }),
 ).annotate({
   identifier: "UpdateRequestDestinationCompression",
@@ -4610,18 +4555,18 @@ export interface UpdateRequestDestinationPath {
   /** Specifies the R2 Bucket to store files. */
   bucket: string;
   /** Specifies the name pattern to for individual data files. */
-  filename?: string | null;
+  filename?: string;
   /** Specifies the name pattern for directory. */
-  filepath?: string | null;
+  filepath?: string;
   /** Specifies the base directory within the bucket. */
-  prefix?: string | null;
+  prefix?: string;
 }
 export const UpdateRequestDestinationPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
-    filename: S.optional(S.NullOr(S.String)),
-    filepath: S.optional(S.NullOr(S.String)),
-    prefix: S.optional(S.NullOr(S.String)),
+    filename: S.optional(S.String),
+    filepath: S.optional(S.String),
+    prefix: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateRequestDestinationPath",
@@ -4656,7 +4601,7 @@ export interface UpdateRequestDestination {
   path: UpdateRequestDestinationPath;
   /** Specifies the type of destination. */
   type: UpdateRequestDestinationType | (string & {});
-  credentials?: UpdateRequestDestinationCredentials | null;
+  credentials?: UpdateRequestDestinationCredentials;
 }
 export const UpdateRequestDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4665,7 +4610,7 @@ export const UpdateRequestDestination = /*@__PURE__*/ S.suspend(() =>
     format: UpdateRequestDestinationFormat,
     path: UpdateRequestDestinationPath,
     type: UpdateRequestDestinationType,
-    credentials: S.optional(S.NullOr(UpdateRequestDestinationCredentials)),
+    credentials: S.optional(UpdateRequestDestinationCredentials),
   }),
 ).annotate({
   identifier: "UpdateRequestDestination",
@@ -4685,15 +4630,13 @@ export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
 
 export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
-  origins?: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList | null;
+  origins?: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList;
 }
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       origins: S.optional(
-        S.NullOr(
-          UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
-        ),
+        UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
       ),
     }),
   ).annotate({
@@ -4706,8 +4649,8 @@ export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPS
   format: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat;
   type: string;
   /** Specifies whether authentication is required to send to this pipeline via HTTP. */
-  authentication?: boolean | null;
-  cors?: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors | null;
+  authentication?: boolean;
+  cors?: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors;
 }
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource =
   /*@__PURE__*/ S.suspend(() =>
@@ -4715,11 +4658,9 @@ export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
       format:
         UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat,
       type: S.String,
-      authentication: S.optional(S.NullOr(S.Boolean)),
+      authentication: S.optional(S.Boolean),
       cors: S.optional(
-        S.NullOr(
-          UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors,
-        ),
+        UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors,
       ),
     }),
   ).annotate({

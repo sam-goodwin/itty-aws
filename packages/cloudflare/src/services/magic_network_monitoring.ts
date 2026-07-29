@@ -124,8 +124,8 @@ export interface CreateConfigRequest {
   defaultSampling: number;
   /** The account name. */
   name: string;
-  routerIps?: ConfigsCreateRequestRouterIpsList | null;
-  warpDevices?: ConfigsCreateRequestWarpDevicesList | null;
+  routerIps?: ConfigsCreateRequestRouterIpsList;
+  warpDevices?: ConfigsCreateRequestWarpDevicesList;
 }
 export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -133,12 +133,10 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     defaultSampling: S.Number.pipe(T.Body("default_sampling")),
     name: S.String,
     routerIps: S.optional(
-      S.NullOr(ConfigsCreateRequestRouterIpsList).pipe(T.Body("router_ips")),
+      ConfigsCreateRequestRouterIpsList.pipe(T.Body("router_ips")),
     ),
     warpDevices: S.optional(
-      S.NullOr(ConfigsCreateRequestWarpDevicesList).pipe(
-        T.Body("warp_devices"),
-      ),
+      ConfigsCreateRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
   })
     .pipe(
@@ -243,20 +241,17 @@ export interface CreateRuleRequest {
   /** MNM rule type. */
   type: RulesCreateRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidthThreshold?: number | null;
+  bandwidthThreshold?: number;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
-  duration?: RulesCreateRequestDuration | (string & {}) | null;
+  duration?: RulesCreateRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  packetThreshold?: number | null;
+  packetThreshold?: number;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
-  prefixMatch?: RulesCreateRequestPrefixMatch | (string & {}) | null;
+  prefixMatch?: RulesCreateRequestPrefixMatch | (string & {});
   /** Level of sensitivity set for zscore rules. */
-  zscoreSensitivity?:
-    | RulesCreateRequestZscoreSensitivity
-    | (string & {})
-    | null;
+  zscoreSensitivity?: RulesCreateRequestZscoreSensitivity | (string & {});
   /** Target of the zscore rule analysis. */
-  zscoreTarget?: RulesCreateRequestZscoreTarget | (string & {}) | null;
+  zscoreTarget?: RulesCreateRequestZscoreTarget | (string & {});
 }
 export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -266,22 +261,18 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     prefixes: RulesCreateRequestPrefixesList,
     type: RulesCreateRequestType,
     bandwidthThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold")),
+      S.Number.pipe(T.Body("bandwidth_threshold")),
     ),
-    duration: S.optional(S.NullOr(RulesCreateRequestDuration)),
-    packetThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("packet_threshold")),
-    ),
+    duration: S.optional(RulesCreateRequestDuration),
+    packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
     prefixMatch: S.optional(
-      S.NullOr(RulesCreateRequestPrefixMatch).pipe(T.Body("prefix_match")),
+      RulesCreateRequestPrefixMatch.pipe(T.Body("prefix_match")),
     ),
     zscoreSensitivity: S.optional(
-      S.NullOr(RulesCreateRequestZscoreSensitivity).pipe(
-        T.Body("zscore_sensitivity"),
-      ),
+      RulesCreateRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
     ),
     zscoreTarget: S.optional(
-      S.NullOr(RulesCreateRequestZscoreTarget).pipe(T.Body("zscore_target")),
+      RulesCreateRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
   })
     .pipe(
@@ -972,24 +963,22 @@ export const ConfigsEditRequestWarpDevicesList = /*@__PURE__*/ S.Array(
 export interface PatchConfigRequest {
   accountId: string;
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
-  defaultSampling?: number | null;
+  defaultSampling?: number;
   /** The account name. */
-  name?: string | null;
-  routerIps?: ConfigsEditRequestRouterIpsList | null;
-  warpDevices?: ConfigsEditRequestWarpDevicesList | null;
+  name?: string;
+  routerIps?: ConfigsEditRequestRouterIpsList;
+  warpDevices?: ConfigsEditRequestWarpDevicesList;
 }
 export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultSampling: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("default_sampling")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    defaultSampling: S.optional(S.Number.pipe(T.Body("default_sampling"))),
+    name: S.optional(S.String),
     routerIps: S.optional(
-      S.NullOr(ConfigsEditRequestRouterIpsList).pipe(T.Body("router_ips")),
+      ConfigsEditRequestRouterIpsList.pipe(T.Body("router_ips")),
     ),
     warpDevices: S.optional(
-      S.NullOr(ConfigsEditRequestWarpDevicesList).pipe(T.Body("warp_devices")),
+      ConfigsEditRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
   })
     .pipe(
@@ -1095,17 +1084,17 @@ export interface PatchRuleRequest {
   /** MNM rule type. */
   type: RulesEditRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidthThreshold?: number | null;
+  bandwidthThreshold?: number;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
-  duration?: RulesEditRequestDuration | (string & {}) | null;
+  duration?: RulesEditRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  packetThreshold?: number | null;
+  packetThreshold?: number;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
-  prefixMatch?: RulesEditRequestPrefixMatch | (string & {}) | null;
+  prefixMatch?: RulesEditRequestPrefixMatch | (string & {});
   /** Level of sensitivity set for zscore rules. */
-  zscoreSensitivity?: RulesEditRequestZscoreSensitivity | (string & {}) | null;
+  zscoreSensitivity?: RulesEditRequestZscoreSensitivity | (string & {});
   /** Target of the zscore rule analysis. */
-  zscoreTarget?: RulesEditRequestZscoreTarget | (string & {}) | null;
+  zscoreTarget?: RulesEditRequestZscoreTarget | (string & {});
 }
 export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1116,22 +1105,18 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
     prefixes: RulesEditRequestPrefixesList,
     type: RulesEditRequestType,
     bandwidthThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold")),
+      S.Number.pipe(T.Body("bandwidth_threshold")),
     ),
-    duration: S.optional(S.NullOr(RulesEditRequestDuration)),
-    packetThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("packet_threshold")),
-    ),
+    duration: S.optional(RulesEditRequestDuration),
+    packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
     prefixMatch: S.optional(
-      S.NullOr(RulesEditRequestPrefixMatch).pipe(T.Body("prefix_match")),
+      RulesEditRequestPrefixMatch.pipe(T.Body("prefix_match")),
     ),
     zscoreSensitivity: S.optional(
-      S.NullOr(RulesEditRequestZscoreSensitivity).pipe(
-        T.Body("zscore_sensitivity"),
-      ),
+      RulesEditRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
     ),
     zscoreTarget: S.optional(
-      S.NullOr(RulesEditRequestZscoreTarget).pipe(T.Body("zscore_target")),
+      RulesEditRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
   })
     .pipe(
@@ -1298,8 +1283,8 @@ export interface UpdateConfigRequest {
   defaultSampling: number;
   /** The account name. */
   name: string;
-  routerIps?: ConfigsUpdateRequestRouterIpsList | null;
-  warpDevices?: ConfigsUpdateRequestWarpDevicesList | null;
+  routerIps?: ConfigsUpdateRequestRouterIpsList;
+  warpDevices?: ConfigsUpdateRequestWarpDevicesList;
 }
 export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1307,12 +1292,10 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
     defaultSampling: S.Number.pipe(T.Body("default_sampling")),
     name: S.String,
     routerIps: S.optional(
-      S.NullOr(ConfigsUpdateRequestRouterIpsList).pipe(T.Body("router_ips")),
+      ConfigsUpdateRequestRouterIpsList.pipe(T.Body("router_ips")),
     ),
     warpDevices: S.optional(
-      S.NullOr(ConfigsUpdateRequestWarpDevicesList).pipe(
-        T.Body("warp_devices"),
-      ),
+      ConfigsUpdateRequestWarpDevicesList.pipe(T.Body("warp_devices")),
     ),
   })
     .pipe(
@@ -1417,20 +1400,17 @@ export interface UpdateRuleRequest {
   /** MNM rule type. */
   type: RulesUpdateRequestType | (string & {});
   /** The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  bandwidthThreshold?: number | null;
+  bandwidthThreshold?: number;
   /** The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"]. */
-  duration?: RulesUpdateRequestDuration | (string & {}) | null;
+  duration?: RulesUpdateRequestDuration | (string & {});
   /** The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum. */
-  packetThreshold?: number | null;
+  packetThreshold?: number;
   /** Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule. */
-  prefixMatch?: RulesUpdateRequestPrefixMatch | (string & {}) | null;
+  prefixMatch?: RulesUpdateRequestPrefixMatch | (string & {});
   /** Level of sensitivity set for zscore rules. */
-  zscoreSensitivity?:
-    | RulesUpdateRequestZscoreSensitivity
-    | (string & {})
-    | null;
+  zscoreSensitivity?: RulesUpdateRequestZscoreSensitivity | (string & {});
   /** Target of the zscore rule analysis. */
-  zscoreTarget?: RulesUpdateRequestZscoreTarget | (string & {}) | null;
+  zscoreTarget?: RulesUpdateRequestZscoreTarget | (string & {});
 }
 export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1440,22 +1420,18 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     prefixes: RulesUpdateRequestPrefixesList,
     type: RulesUpdateRequestType,
     bandwidthThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold")),
+      S.Number.pipe(T.Body("bandwidth_threshold")),
     ),
-    duration: S.optional(S.NullOr(RulesUpdateRequestDuration)),
-    packetThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("packet_threshold")),
-    ),
+    duration: S.optional(RulesUpdateRequestDuration),
+    packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
     prefixMatch: S.optional(
-      S.NullOr(RulesUpdateRequestPrefixMatch).pipe(T.Body("prefix_match")),
+      RulesUpdateRequestPrefixMatch.pipe(T.Body("prefix_match")),
     ),
     zscoreSensitivity: S.optional(
-      S.NullOr(RulesUpdateRequestZscoreSensitivity).pipe(
-        T.Body("zscore_sensitivity"),
-      ),
+      RulesUpdateRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
     ),
     zscoreTarget: S.optional(
-      S.NullOr(RulesUpdateRequestZscoreTarget).pipe(T.Body("zscore_target")),
+      RulesUpdateRequestZscoreTarget.pipe(T.Body("zscore_target")),
     ),
   })
     .pipe(

@@ -524,15 +524,15 @@ export interface PatchDmarcReportRequest {
   /** Identifier. */
   zoneId: string;
   /** Enable or disable DMARC reports for this zone */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Skip the DMARC setup wizard */
-  skipWizard?: boolean | null;
+  skipWizard?: boolean;
 }
 export const PatchDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+    enabled: S.optional(S.Boolean),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
   })
     .pipe(
       T.Http({

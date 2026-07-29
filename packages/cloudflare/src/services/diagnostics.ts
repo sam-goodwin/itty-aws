@@ -76,7 +76,7 @@ export interface CreateEndpointHealthcheckRequest {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
-  name?: string | null;
+  name?: string;
 }
 export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -85,7 +85,7 @@ export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -147,29 +147,25 @@ export const TraceroutesCreateRequestOptionsPacketType = /*@__PURE__*/ S.String;
 
 export interface TraceroutesCreateRequestOptions {
   /** Max TTL. */
-  maxTtl?: number | null;
+  maxTtl?: number;
   /** Type of packet sent. */
-  packetType?: TraceroutesCreateRequestOptionsPacketType | (string & {}) | null;
+  packetType?: TraceroutesCreateRequestOptionsPacketType | (string & {});
   /** Number of packets sent at each TTL. */
-  packetsPerTtl?: number | null;
+  packetsPerTtl?: number;
   /** For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol. */
-  port?: number | null;
+  port?: number;
   /** Set the time (in seconds) to wait for a response to a probe. */
-  waitTime?: number | null;
+  waitTime?: number;
 }
 export const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("max_ttl"))),
+    maxTtl: S.optional(S.Number.pipe(T.Body("max_ttl"))),
     packetType: S.optional(
-      S.NullOr(TraceroutesCreateRequestOptionsPacketType).pipe(
-        T.Body("packet_type"),
-      ),
+      TraceroutesCreateRequestOptionsPacketType.pipe(T.Body("packet_type")),
     ),
-    packetsPerTtl: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("packets_per_ttl")),
-    ),
-    port: S.optional(S.NullOr(S.Number)),
-    waitTime: S.optional(S.NullOr(S.Number).pipe(T.Body("wait_time"))),
+    packetsPerTtl: S.optional(S.Number.pipe(T.Body("packets_per_ttl"))),
+    port: S.optional(S.Number),
+    waitTime: S.optional(S.Number.pipe(T.Body("wait_time"))),
   }),
 ).annotate({
   identifier: "TraceroutesCreateRequestOptions",
@@ -180,15 +176,15 @@ export interface CreateTracerouteRequest {
   accountId: string;
   targets: TraceroutesCreateRequestTargetsList;
   /** If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes. */
-  colos?: TraceroutesCreateRequestColosList | null;
-  options?: TraceroutesCreateRequestOptions | null;
+  colos?: TraceroutesCreateRequestColosList;
+  options?: TraceroutesCreateRequestOptions;
 }
 export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     targets: TraceroutesCreateRequestTargetsList,
-    colos: S.optional(S.NullOr(TraceroutesCreateRequestColosList)),
-    options: S.optional(S.NullOr(TraceroutesCreateRequestOptions)),
+    colos: S.optional(TraceroutesCreateRequestColosList),
+    options: S.optional(TraceroutesCreateRequestOptions),
   })
     .pipe(
       T.Http({
@@ -536,7 +532,7 @@ export interface UpdateEndpointHealthcheckRequest {
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** Optional name associated with this check */
-  name?: string | null;
+  name?: string;
 }
 export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -546,7 +542,7 @@ export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
       T.Body("check_type"),
     ),
     endpoint: S.String,
-    name: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
   })
     .pipe(
       T.Http({

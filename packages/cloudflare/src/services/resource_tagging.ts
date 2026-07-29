@@ -3555,9 +3555,9 @@ export interface PutAccountTagRequest {
   /** Enum for base account-level resource types (those with no extra required fields). */
   resourceType: AccountTagsUpdateRequestResourceType;
   /** Worker ID is required only for worker_version resources */
-  workerId?: string | null;
+  workerId?: string;
   /** Contains key-value pairs of tags. */
-  tags?: AccountTagsUpdateRequestTagsMap | null;
+  tags?: AccountTagsUpdateRequestTagsMap;
   ifMatch?: string;
 }
 export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3567,8 +3567,8 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
     resourceType: AccountTagsUpdateRequestResourceType.pipe(
       T.Body("resource_type"),
     ),
-    workerId: S.optional(S.NullOr(S.String).pipe(T.Body("worker_id"))),
-    tags: S.optional(S.NullOr(AccountTagsUpdateRequestTagsMap)),
+    workerId: S.optional(S.String.pipe(T.Body("worker_id"))),
+    tags: S.optional(AccountTagsUpdateRequestTagsMap),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })
     .pipe(
@@ -4676,9 +4676,9 @@ export interface PutZoneTagRequest {
   /** Enum for base zone-level resource types (those with no extra required fields). */
   resourceType: ZoneTagsUpdateRequestResourceType;
   /** Contains key-value pairs of tags. */
-  tags?: ZoneTagsUpdateRequestTagsMap | null;
+  tags?: ZoneTagsUpdateRequestTagsMap;
   /** Access application ID is required only for access_application_policy resources */
-  accessApplicationId?: string | null;
+  accessApplicationId?: string;
   ifMatch?: string;
 }
 export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4688,9 +4688,9 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
     resourceType: ZoneTagsUpdateRequestResourceType.pipe(
       T.Body("resource_type"),
     ),
-    tags: S.optional(S.NullOr(ZoneTagsUpdateRequestTagsMap)),
+    tags: S.optional(ZoneTagsUpdateRequestTagsMap),
     accessApplicationId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("access_application_id")),
+      S.String.pipe(T.Body("access_application_id")),
     ),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
   })

@@ -181,12 +181,11 @@ export interface CreateRequestRegWhoRequest {
   /** The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests. */
   regWhoRequestedDataElements: CreateRequestRegWhoRequestRegWhoRequestedDataElementsList;
   /** Optional authorization statement or power of attorney per RDP 10.2.1.3. */
-  regWhoAuthorizationStatement?: string | null;
+  regWhoAuthorizationStatement?: string;
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?:
     | CreateRequestRegWhoRequestRegWhoRequestorType
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -205,10 +204,10 @@ export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("reg_who_requested_data_elements"),
       ),
     regWhoAuthorizationStatement: S.optional(
-      S.NullOr(S.String).pipe(T.Body("reg_who_authorization_statement")),
+      S.String.pipe(T.Body("reg_who_authorization_statement")),
     ),
     regWhoRequestorType: S.optional(
-      S.NullOr(CreateRequestRegWhoRequestRegWhoRequestorType).pipe(
+      CreateRequestRegWhoRequestRegWhoRequestorType.pipe(
         T.Body("reg_who_requestor_type"),
       ),
     ),
@@ -224,126 +223,110 @@ export interface CreateAbuseReportRequest {
   /** The report type for submitted reports. */
   act: CreateRequestAct | (string & {});
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  address1?: string | null;
+  address1?: string;
   /** The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  agentName?: string | null;
+  agentName?: string;
   /** Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports */
-  agree?: CreateRequestAgree | (number & {}) | null;
+  agree?: CreateRequestAgree | (number & {});
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  city?: string | null;
+  city?: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  country?: string | null;
+  country?: string;
   /** A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   email: string;
   /** Should match the value provided in `email` */
   email2: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  hostNotification?: CreateRequestHostNotification | null;
+  hostNotification?: CreateRequestHostNotification;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   name: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  originalWork?: string | null;
+  originalWork?: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
   ownerNotification: CreateRequestOwnerNotification;
   /** Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports */
-  signature?: string | null;
+  signature?: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  state?: string | null;
+  state?: string;
   /** A list of valid URLs separated by ‘\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   urls: string;
   /** Any additional comments about the infringement not exceeding 2000 characters */
-  comments?: string | null;
+  comments?: string;
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  company?: string | null;
+  company?: string;
   /** Text containing 2 characters */
-  reportedCountry?: string | null;
+  reportedCountry?: string;
   /** Text not exceeding 255 characters */
-  reportedUserAgent?: string | null;
+  reportedUserAgent?: string;
   /** Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
-  tele?: string | null;
+  tele?: string;
   /** Text not exceeding 255 characters */
-  title?: string | null;
+  title?: string;
   /** A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters. */
-  justification?: string | null;
+  justification?: string;
   /** Text not exceeding 1000 characters */
-  trademarkNumber?: string | null;
+  trademarkNumber?: string;
   /** Text not exceeding 1000 characters */
-  trademarkOffice?: string | null;
+  trademarkOffice?: string;
   /** Text not exceeding 1000 characters */
-  trademarkSymbol?: string | null;
+  trademarkSymbol?: string;
   /** A list of IP addresses separated by ‘\n’ (new line character). The list of destination IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  destinationIps?: string | null;
+  destinationIps?: string;
   /** A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols. */
-  portsProtocols?: string | null;
+  portsProtocols?: string;
   /** A list of IP addresses separated by ‘\n’ (new line character). The list of source IPs should not exceed 30 IP addresses. Each one of the IP addresses ought to be unique. */
-  sourceIps?: string | null;
+  sourceIps?: string;
   /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
-  ncmecNotification?: CreateRequestNcmecNotification | (string & {}) | null;
+  ncmecNotification?: CreateRequestNcmecNotification | (string & {});
   /** RDP-mandated fields for registrar WHOIS data disclosure requests. */
-  regWhoRequest?: CreateRequestRegWhoRequest | null;
+  regWhoRequest?: CreateRequestRegWhoRequest;
   /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
-  ncseiSubjectRepresentation?: boolean | null;
+  ncseiSubjectRepresentation?: boolean;
 }
 export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
     act: CreateRequestAct,
-    address1: S.optional(S.NullOr(S.String)),
-    agentName: S.optional(S.NullOr(S.String).pipe(T.Body("agent_name"))),
-    agree: S.optional(S.NullOr(CreateRequestAgree)),
-    city: S.optional(S.NullOr(S.String)),
-    country: S.optional(S.NullOr(S.String)),
+    address1: S.optional(S.String),
+    agentName: S.optional(S.String.pipe(T.Body("agent_name"))),
+    agree: S.optional(CreateRequestAgree),
+    city: S.optional(S.String),
+    country: S.optional(S.String),
     email: S.String,
     email2: S.String,
     hostNotification: S.optional(
-      S.NullOr(CreateRequestHostNotification).pipe(T.Body("host_notification")),
+      CreateRequestHostNotification.pipe(T.Body("host_notification")),
     ),
     name: S.String,
-    originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
+    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
     ownerNotification: CreateRequestOwnerNotification.pipe(
       T.Body("owner_notification"),
     ),
-    signature: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(S.String)),
+    signature: S.optional(S.String),
+    state: S.optional(S.String),
     urls: S.String,
-    comments: S.optional(S.NullOr(S.String)),
-    company: S.optional(S.NullOr(S.String)),
-    reportedCountry: S.optional(
-      S.NullOr(S.String).pipe(T.Body("reported_country")),
-    ),
-    reportedUserAgent: S.optional(
-      S.NullOr(S.String).pipe(T.Body("reported_user_agent")),
-    ),
-    tele: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    justification: S.optional(S.NullOr(S.String)),
-    trademarkNumber: S.optional(
-      S.NullOr(S.String).pipe(T.Body("trademark_number")),
-    ),
-    trademarkOffice: S.optional(
-      S.NullOr(S.String).pipe(T.Body("trademark_office")),
-    ),
-    trademarkSymbol: S.optional(
-      S.NullOr(S.String).pipe(T.Body("trademark_symbol")),
-    ),
-    destinationIps: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_ips")),
-    ),
-    portsProtocols: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ports_protocols")),
-    ),
-    sourceIps: S.optional(S.NullOr(S.String).pipe(T.Body("source_ips"))),
+    comments: S.optional(S.String),
+    company: S.optional(S.String),
+    reportedCountry: S.optional(S.String.pipe(T.Body("reported_country"))),
+    reportedUserAgent: S.optional(S.String.pipe(T.Body("reported_user_agent"))),
+    tele: S.optional(S.String),
+    title: S.optional(S.String),
+    justification: S.optional(S.String),
+    trademarkNumber: S.optional(S.String.pipe(T.Body("trademark_number"))),
+    trademarkOffice: S.optional(S.String.pipe(T.Body("trademark_office"))),
+    trademarkSymbol: S.optional(S.String.pipe(T.Body("trademark_symbol"))),
+    destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
+    portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
+    sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
     ncmecNotification: S.optional(
-      S.NullOr(CreateRequestNcmecNotification).pipe(
-        T.Body("ncmec_notification"),
-      ),
+      CreateRequestNcmecNotification.pipe(T.Body("ncmec_notification")),
     ),
     regWhoRequest: S.optional(
-      S.NullOr(CreateRequestRegWhoRequest).pipe(T.Body("reg_who_request")),
+      CreateRequestRegWhoRequest.pipe(T.Body("reg_who_request")),
     ),
     ncseiSubjectRepresentation: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("ncsei_subject_representation")),
+      S.Boolean.pipe(T.Body("ncsei_subject_representation")),
     ),
   })
     .pipe(

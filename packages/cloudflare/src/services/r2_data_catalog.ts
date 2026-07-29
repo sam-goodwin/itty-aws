@@ -1028,21 +1028,18 @@ export const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
 
 export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
-  state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {}) | null;
+  state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {});
   /** Updates the target file size optionally. */
   targetSizeMb?:
     | MaintenanceConfigsUpdateRequestCompactionTargetSizeMb
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const MaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      state: S.optional(
-        S.NullOr(MaintenanceConfigsUpdateRequestCompactionState),
-      ),
+      state: S.optional(MaintenanceConfigsUpdateRequestCompactionState),
       targetSizeMb: S.optional(
-        S.NullOr(MaintenanceConfigsUpdateRequestCompactionTargetSizeMb).pipe(
+        MaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
           T.Body("target_size_mb"),
         ),
       ),
@@ -1059,27 +1056,22 @@ export const MaintenanceConfigsUpdateRequestSnapshotExpirationState =
 
 export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
-  maxSnapshotAge?: string | null;
+  maxSnapshotAge?: string;
   /** Updates the minimum number of snapshots to retain optionally. */
-  minSnapshotsToKeep?: number | null;
+  minSnapshotsToKeep?: number;
   /** Updates the state optionally. */
   state?:
     | MaintenanceConfigsUpdateRequestSnapshotExpirationState
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const MaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxSnapshotAge: S.optional(
-        S.NullOr(S.String).pipe(T.Body("max_snapshot_age")),
-      ),
+      maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
       minSnapshotsToKeep: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("min_snapshots_to_keep")),
+        S.Number.pipe(T.Body("min_snapshots_to_keep")),
       ),
-      state: S.optional(
-        S.NullOr(MaintenanceConfigsUpdateRequestSnapshotExpirationState),
-      ),
+      state: S.optional(MaintenanceConfigsUpdateRequestSnapshotExpirationState),
     }),
   ).annotate({
     identifier: "MaintenanceConfigsUpdateRequestSnapshotExpiration",
@@ -1091,17 +1083,17 @@ export interface UpdateMaintenanceConfigRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
   /** Updates compaction configuration (all fields optional). */
-  compaction?: MaintenanceConfigsUpdateRequestCompaction | null;
+  compaction?: MaintenanceConfigsUpdateRequestCompaction;
   /** Updates snapshot expiration configuration (all fields optional). */
-  snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration | null;
+  snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
 export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    compaction: S.optional(S.NullOr(MaintenanceConfigsUpdateRequestCompaction)),
+    compaction: S.optional(MaintenanceConfigsUpdateRequestCompaction),
     snapshotExpiration: S.optional(
-      S.NullOr(MaintenanceConfigsUpdateRequestSnapshotExpiration).pipe(
+      MaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(
         T.Body("snapshot_expiration"),
       ),
     ),
@@ -1212,26 +1204,22 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
   /** Updates the state optionally. */
   state?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState
-    | (string & {})
-    | null;
+    | (string & {});
   /** Updates the target file size optionally. */
   targetSizeMb?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       state: S.optional(
-        S.NullOr(
-          NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState,
-        ),
+        NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState,
       ),
       targetSizeMb: S.optional(
-        S.NullOr(
-          NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb,
-        ).pipe(T.Body("target_size_mb")),
+        NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
+          T.Body("target_size_mb"),
+        ),
       ),
     }),
   ).annotate({
@@ -1245,28 +1233,23 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationSt
 
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
-  maxSnapshotAge?: string | null;
+  maxSnapshotAge?: string;
   /** Updates the minimum number of snapshots to retain optionally. */
-  minSnapshotsToKeep?: number | null;
+  minSnapshotsToKeep?: number;
   /** Updates the state optionally. */
   state?:
     | NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      maxSnapshotAge: S.optional(
-        S.NullOr(S.String).pipe(T.Body("max_snapshot_age")),
-      ),
+      maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
       minSnapshotsToKeep: S.optional(
-        S.NullOr(S.Number).pipe(T.Body("min_snapshots_to_keep")),
+        S.Number.pipe(T.Body("min_snapshots_to_keep")),
       ),
       state: S.optional(
-        S.NullOr(
-          NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState,
-        ),
+        NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState,
       ),
     }),
   ).annotate({
@@ -1282,9 +1265,9 @@ export interface UpdateNamespaceTableMaintenanceConfigRequest {
   namespace: string;
   tableName: string;
   /** Updates compaction configuration (all fields optional). */
-  compaction?: NamespacesTablesMaintenanceConfigsUpdateRequestCompaction | null;
+  compaction?: NamespacesTablesMaintenanceConfigsUpdateRequestCompaction;
   /** Updates snapshot expiration configuration (all fields optional). */
-  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration | null;
+  snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
 export const UpdateNamespaceTableMaintenanceConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1294,12 +1277,12 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
       namespace: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label("table_name")),
       compaction: S.optional(
-        S.NullOr(NamespacesTablesMaintenanceConfigsUpdateRequestCompaction),
+        NamespacesTablesMaintenanceConfigsUpdateRequestCompaction,
       ),
       snapshotExpiration: S.optional(
-        S.NullOr(
-          NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration,
-        ).pipe(T.Body("snapshot_expiration")),
+        NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(
+          T.Body("snapshot_expiration"),
+        ),
       ),
     })
       .pipe(

@@ -249,9 +249,9 @@ export interface CreateBucketRequest {
   /** Name of the bucket. */
   name: string;
   /** Location of the bucket. */
-  locationHint?: BucketsCreateRequestLocationHint | (string & {}) | null;
+  locationHint?: BucketsCreateRequestLocationHint | (string & {});
   /** Storage class for newly uploaded objects, unless specified otherwise. */
-  storageClass?: BucketsCreateRequestStorageClass | (string & {}) | null;
+  storageClass?: BucketsCreateRequestStorageClass | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsCreateRequestCfR2Jurisdiction | (string & {});
 }
@@ -259,8 +259,8 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    locationHint: S.optional(S.NullOr(BucketsCreateRequestLocationHint)),
-    storageClass: S.optional(S.NullOr(BucketsCreateRequestStorageClass)),
+    locationHint: S.optional(BucketsCreateRequestLocationHint),
+    storageClass: S.optional(BucketsCreateRequestStorageClass),
     jurisdiction: S.optional(
       BucketsCreateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
     ),
@@ -351,9 +351,9 @@ export interface CreateBucketDomainCustomRequest {
   /** Zone ID of the custom domain. */
   zoneId: string;
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  ciphers?: BucketsDomainsCustomCreateRequestCiphersList | null;
+  ciphers?: BucketsDomainsCustomCreateRequestCiphersList;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0. */
-  minTLS?: BucketsDomainsCustomCreateRequestMinTLS | (string & {}) | null;
+  minTLS?: BucketsDomainsCustomCreateRequestMinTLS | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?:
     | BucketsDomainsCustomCreateRequestCfR2Jurisdiction
@@ -366,8 +366,8 @@ export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.String,
     enabled: S.Boolean,
     zoneId: S.String,
-    ciphers: S.optional(S.NullOr(BucketsDomainsCustomCreateRequestCiphersList)),
-    minTLS: S.optional(S.NullOr(BucketsDomainsCustomCreateRequestMinTLS)),
+    ciphers: S.optional(BucketsDomainsCustomCreateRequestCiphersList),
+    minTLS: S.optional(BucketsDomainsCustomCreateRequestMinTLS),
     jurisdiction: S.optional(
       BucketsDomainsCustomCreateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -458,10 +458,10 @@ export interface SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema {
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor;
   /** Custom S3-compatible endpoint that must use https://. */
-  endpoint?: string | null;
-  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList | null;
-  pathPrefix?: string | null;
-  region?: string | null;
+  endpoint?: string;
+  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList;
+  pathPrefix?: string;
+  region?: string;
 }
 export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema =
   /*@__PURE__*/ S.suspend(() =>
@@ -469,14 +469,12 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema =
       bucket: S.String,
       secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
       vendor: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor,
-      endpoint: S.optional(S.NullOr(S.String)),
+      endpoint: S.optional(S.String),
       keys: S.optional(
-        S.NullOr(
-          SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList,
-        ),
+        SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList,
       ),
-      pathPrefix: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
+      pathPrefix: S.optional(S.String),
+      region: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema",
@@ -513,8 +511,8 @@ export interface SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor;
-  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList | null;
-  pathPrefix?: string | null;
+  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList;
+  pathPrefix?: string;
 }
 export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema =
   /*@__PURE__*/ S.suspend(() =>
@@ -523,11 +521,9 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema =
       secret: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret,
       vendor: SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor,
       keys: S.optional(
-        S.NullOr(
-          SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList,
-        ),
+        SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList,
       ),
-      pathPrefix: S.optional(S.NullOr(S.String)),
+      pathPrefix: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema",
@@ -571,10 +567,9 @@ export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema {
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction
-    | (string & {})
-    | null;
-  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList | null;
-  pathPrefix?: string | null;
+    | (string & {});
+  keys?: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList;
+  pathPrefix?: string;
 }
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema =
   /*@__PURE__*/ S.suspend(() =>
@@ -583,16 +578,12 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema =
       secret: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaSecret,
       vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor,
       jurisdiction: S.optional(
-        S.NullOr(
-          SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction,
-        ),
+        SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdiction,
       ),
       keys: S.optional(
-        S.NullOr(
-          SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList,
-        ),
+        SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList,
       ),
-      pathPrefix: S.optional(S.NullOr(S.String)),
+      pathPrefix: S.optional(S.String),
     }),
   ).annotate({
     identifier: "SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema",
@@ -637,17 +628,14 @@ export interface SuperSlurperJobsCreateRequestTarget {
   vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor;
   jurisdiction?:
     | SuperSlurperJobsCreateRequestTargetJurisdiction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SuperSlurperJobsCreateRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     secret: SuperSlurperJobsCreateRequestTargetSecret,
     vendor: SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaVendor,
-    jurisdiction: S.optional(
-      S.NullOr(SuperSlurperJobsCreateRequestTargetJurisdiction),
-    ),
+    jurisdiction: S.optional(SuperSlurperJobsCreateRequestTargetJurisdiction),
   }),
 ).annotate({
   identifier: "SuperSlurperJobsCreateRequestTarget",
@@ -655,16 +643,16 @@ export const SuperSlurperJobsCreateRequestTarget = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateSuperSlurperJobRequest {
   accountId: string;
-  overwrite?: boolean | null;
-  source?: SuperSlurperJobsCreateRequestSource | null;
-  target?: SuperSlurperJobsCreateRequestTarget | null;
+  overwrite?: boolean;
+  source?: SuperSlurperJobsCreateRequestSource;
+  target?: SuperSlurperJobsCreateRequestTarget;
 }
 export const CreateSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    overwrite: S.optional(S.NullOr(S.Boolean)),
-    source: S.optional(S.NullOr(SuperSlurperJobsCreateRequestSource)),
-    target: S.optional(S.NullOr(SuperSlurperJobsCreateRequestTarget)),
+    overwrite: S.optional(S.Boolean),
+    source: S.optional(SuperSlurperJobsCreateRequestSource),
+    target: S.optional(SuperSlurperJobsCreateRequestTarget),
   })
     .pipe(
       T.Http({
@@ -722,9 +710,9 @@ export interface CreateTemporaryCredentialRequest {
   /** How long the credentials will live for in seconds. */
   ttlSeconds: number;
   /** Optional object paths to scope the credentials to. */
-  objects?: TemporaryCredentialsCreateRequestObjectsList | null;
+  objects?: TemporaryCredentialsCreateRequestObjectsList;
   /** Optional prefix paths to scope the credentials to. */
-  prefixes?: TemporaryCredentialsCreateRequestPrefixesList | null;
+  prefixes?: TemporaryCredentialsCreateRequestPrefixesList;
 }
 export const CreateTemporaryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -733,10 +721,8 @@ export const CreateTemporaryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
     parentAccessKeyId: S.String,
     permission: TemporaryCredentialsCreateRequestPermission,
     ttlSeconds: S.Number,
-    objects: S.optional(S.NullOr(TemporaryCredentialsCreateRequestObjectsList)),
-    prefixes: S.optional(
-      S.NullOr(TemporaryCredentialsCreateRequestPrefixesList),
-    ),
+    objects: S.optional(TemporaryCredentialsCreateRequestObjectsList),
+    prefixes: S.optional(TemporaryCredentialsCreateRequestPrefixesList),
   })
     .pipe(
       T.Http({
@@ -3675,16 +3661,14 @@ export interface BucketsCorsUpdateRequestRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser. */
   origins: BucketsCorsUpdateRequestRulesItemAllowedOriginsList;
   /** Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders. */
-  headers?: BucketsCorsUpdateRequestRulesItemAllowedHeadersList | null;
+  headers?: BucketsCorsUpdateRequestRulesItemAllowedHeadersList;
 }
 export const BucketsCorsUpdateRequestRulesItemAllowed = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       methods: BucketsCorsUpdateRequestRulesItemAllowedMethodsList,
       origins: BucketsCorsUpdateRequestRulesItemAllowedOriginsList,
-      headers: S.optional(
-        S.NullOr(BucketsCorsUpdateRequestRulesItemAllowedHeadersList),
-      ),
+      headers: S.optional(BucketsCorsUpdateRequestRulesItemAllowedHeadersList),
     }),
 ).annotate({
   identifier: "BucketsCorsUpdateRequestRulesItemAllowed",
@@ -3700,20 +3684,20 @@ export interface BucketsCorsUpdateRequestRulesItem {
   /** Object specifying allowed origins, methods and headers for this CORS rule. */
   allowed: BucketsCorsUpdateRequestRulesItemAllowed;
   /** Identifier for this rule. */
-  id?: string | null;
+  id?: string;
   /** Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here. */
-  exposeHeaders?: BucketsCorsUpdateRequestRulesItemExposeHeadersList | null;
+  exposeHeaders?: BucketsCorsUpdateRequestRulesItemExposeHeadersList;
   /** Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified. */
-  maxAgeSeconds?: number | null;
+  maxAgeSeconds?: number;
 }
 export const BucketsCorsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed: BucketsCorsUpdateRequestRulesItemAllowed,
-    id: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
     exposeHeaders: S.optional(
-      S.NullOr(BucketsCorsUpdateRequestRulesItemExposeHeadersList),
+      BucketsCorsUpdateRequestRulesItemExposeHeadersList,
     ),
-    maxAgeSeconds: S.optional(S.NullOr(S.Number)),
+    maxAgeSeconds: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "BucketsCorsUpdateRequestRulesItem",
@@ -3736,7 +3720,7 @@ export interface PutBucketCorsRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  rules?: BucketsCorsUpdateRequestRulesList | null;
+  rules?: BucketsCorsUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsCorsUpdateRequestCfR2Jurisdiction | (string & {});
 }
@@ -3744,7 +3728,7 @@ export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    rules: S.optional(S.NullOr(BucketsCorsUpdateRequestRulesList)),
+    rules: S.optional(BucketsCorsUpdateRequestRulesList),
     jurisdiction: S.optional(
       BucketsCorsUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -3852,19 +3836,19 @@ export interface BucketsEventNotificationsUpdateRequestRulesItem {
   /** Array of R2 object actions that will trigger notifications. */
   actions: BucketsEventNotificationsUpdateRequestRulesItemActionsList;
   /** A description that can be used to identify the event notification rule after creation. */
-  description?: string | null;
+  description?: string;
   /** Notifications will be sent only for objects with this prefix. */
-  prefix?: string | null;
+  prefix?: string;
   /** Notifications will be sent only for objects with this suffix. */
-  suffix?: string | null;
+  suffix?: string;
 }
 export const BucketsEventNotificationsUpdateRequestRulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       actions: BucketsEventNotificationsUpdateRequestRulesItemActionsList,
-      description: S.optional(S.NullOr(S.String)),
-      prefix: S.optional(S.NullOr(S.String)),
-      suffix: S.optional(S.NullOr(S.String)),
+      description: S.optional(S.String),
+      prefix: S.optional(S.String),
+      suffix: S.optional(S.String),
     }),
   ).annotate({
     identifier: "BucketsEventNotificationsUpdateRequestRulesItem",
@@ -3966,15 +3950,13 @@ export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransiti
 
 export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
-  condition?: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition | null;
+  condition?: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition;
 }
 export const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       condition: S.optional(
-        S.NullOr(
-          BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition,
-        ),
+        BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition,
       ),
     }),
   ).annotate({
@@ -4035,15 +4017,13 @@ export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondit
 
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
-  condition?: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition | null;
+  condition?: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition;
 }
 export const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       condition: S.optional(
-        S.NullOr(
-          BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition,
-        ),
+        BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition,
       ),
     }),
   ).annotate({
@@ -4141,11 +4121,11 @@ export interface BucketsLifecycleUpdateRequestRulesItem {
   /** Whether or not this rule is in effect. */
   enabled: boolean;
   /** Transition to abort ongoing multipart uploads. */
-  abortMultipartUploadsTransition?: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition | null;
+  abortMultipartUploadsTransition?: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition;
   /** Transition to delete objects. */
-  deleteObjectsTransition?: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition | null;
+  deleteObjectsTransition?: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition;
   /** Transitions to change the storage class of objects. */
-  storageClassTransitions?: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList | null;
+  storageClassTransitions?: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList;
 }
 export const BucketsLifecycleUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -4154,17 +4134,13 @@ export const BucketsLifecycleUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(
       conditions: BucketsLifecycleUpdateRequestRulesItemConditions,
       enabled: S.Boolean,
       abortMultipartUploadsTransition: S.optional(
-        S.NullOr(
-          BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition,
-        ),
+        BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition,
       ),
       deleteObjectsTransition: S.optional(
-        S.NullOr(BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition),
+        BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition,
       ),
       storageClassTransitions: S.optional(
-        S.NullOr(
-          BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList,
-        ),
+        BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList,
       ),
     }),
 ).annotate({
@@ -4189,7 +4165,7 @@ export interface PutBucketLifecycleRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  rules?: BucketsLifecycleUpdateRequestRulesList | null;
+  rules?: BucketsLifecycleUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsLifecycleUpdateRequestCfR2Jurisdiction | (string & {});
 }
@@ -4197,7 +4173,7 @@ export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    rules: S.optional(S.NullOr(BucketsLifecycleUpdateRequestRulesList)),
+    rules: S.optional(BucketsLifecycleUpdateRequestRulesList),
     jurisdiction: S.optional(
       BucketsLifecycleUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -4298,14 +4274,14 @@ export interface BucketsLocksUpdateRequestRulesItem {
   /** Whether or not this rule is in effect. */
   enabled: boolean;
   /** Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
-  prefix?: string | null;
+  prefix?: string;
 }
 export const BucketsLocksUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     condition: BucketsLocksUpdateRequestRulesItemCondition,
     enabled: S.Boolean,
-    prefix: S.optional(S.NullOr(S.String)),
+    prefix: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BucketsLocksUpdateRequestRulesItem",
@@ -4328,7 +4304,7 @@ export interface PutBucketLockRequest {
   accountId: string;
   /** Name of the bucket. */
   bucketName: string;
-  rules?: BucketsLocksUpdateRequestRulesList | null;
+  rules?: BucketsLocksUpdateRequestRulesList;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsLocksUpdateRequestCfR2Jurisdiction | (string & {});
 }
@@ -4336,7 +4312,7 @@ export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    rules: S.optional(S.NullOr(BucketsLocksUpdateRequestRulesList)),
+    rules: S.optional(BucketsLocksUpdateRequestRulesList),
     jurisdiction: S.optional(
       BucketsLocksUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -4368,22 +4344,21 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider =
 
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyAws {
   /** ID of a Cloudflare API token. */
-  accessKeyId?: string | null;
+  accessKeyId?: string;
   provider?:
     | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {})
-    | null;
+    | (string & {});
   /** Value of a Cloudflare API token. */
-  secretAccessKey?: string | null;
+  secretAccessKey?: string;
 }
 export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accessKeyId: S.optional(S.NullOr(S.String)),
+      accessKeyId: S.optional(S.String),
       provider: S.optional(
-        S.NullOr(BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider),
+        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
       ),
-      secretAccessKey: S.optional(S.NullOr(S.String)),
+      secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyAws",
@@ -4391,22 +4366,21 @@ export const BucketsSippyUpdateRequestDestinationR2EnableSippyAws =
 
 export interface BucketsSippyUpdateRequestDestinationR2EnableSippyGcs {
   /** ID of a Cloudflare API token. */
-  accessKeyId?: string | null;
+  accessKeyId?: string;
   provider?:
     | BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider
-    | (string & {})
-    | null;
+    | (string & {});
   /** Value of a Cloudflare API token. */
-  secretAccessKey?: string | null;
+  secretAccessKey?: string;
 }
 export const BucketsSippyUpdateRequestDestinationR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accessKeyId: S.optional(S.NullOr(S.String)),
+      accessKeyId: S.optional(S.String),
       provider: S.optional(
-        S.NullOr(BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider),
+        BucketsSippyUpdateRequestDestinationR2EnableSippyAwsProvider,
       ),
-      secretAccessKey: S.optional(S.NullOr(S.String)),
+      secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "BucketsSippyUpdateRequestDestinationR2EnableSippyGcs",
@@ -4429,28 +4403,27 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider =
 
 export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
-  accessKeyId?: string | null;
+  accessKeyId?: string;
   /** Name of the AWS S3 bucket. */
-  bucket?: string | null;
+  bucket?: string;
   provider?:
     | BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider
-    | (string & {})
-    | null;
+    | (string & {});
   /** Name of the AWS availability zone. */
-  region?: string | null;
+  region?: string;
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
-  secretAccessKey?: string | null;
+  secretAccessKey?: string;
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyAws =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accessKeyId: S.optional(S.NullOr(S.String)),
-      bucket: S.optional(S.NullOr(S.String)),
+      accessKeyId: S.optional(S.String),
+      bucket: S.optional(S.String),
       provider: S.optional(
-        S.NullOr(BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider),
+        BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider,
       ),
-      region: S.optional(S.NullOr(S.String)),
-      secretAccessKey: S.optional(S.NullOr(S.String)),
+      region: S.optional(S.String),
+      secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyAws",
@@ -4462,24 +4435,23 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider =
 
 export interface BucketsSippyUpdateRequestSourceR2EnableSippyGcs {
   /** Name of the GCS bucket. */
-  bucket?: string | null;
+  bucket?: string;
   /** Client email of an IAM credential (ideally scoped to a single GCS bucket). */
-  clientEmail?: string | null;
+  clientEmail?: string;
   /** Private Key of an IAM credential (ideally scoped to a single GCS bucket). */
-  privateKey?: string | null;
+  privateKey?: string;
   provider?:
     | BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyGcs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bucket: S.optional(S.NullOr(S.String)),
-      clientEmail: S.optional(S.NullOr(S.String)),
-      privateKey: S.optional(S.NullOr(S.String)),
+      bucket: S.optional(S.String),
+      clientEmail: S.optional(S.String),
+      privateKey: S.optional(S.String),
       provider: S.optional(
-        S.NullOr(BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider),
+        BucketsSippyUpdateRequestSourceR2EnableSippyGcsProvider,
       ),
     }),
   ).annotate({
@@ -4492,25 +4464,24 @@ export const BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider =
 
 export interface BucketsSippyUpdateRequestSourceR2EnableSippyS3 {
   /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
-  accessKeyId?: string | null;
+  accessKeyId?: string;
   /** URL to the S3-compatible API of the bucket. */
-  bucketUrl?: string | null;
+  bucketUrl?: string;
   provider?:
     | BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider
-    | (string & {})
-    | null;
+    | (string & {});
   /** Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket). */
-  secretAccessKey?: string | null;
+  secretAccessKey?: string;
 }
 export const BucketsSippyUpdateRequestSourceR2EnableSippyS3 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accessKeyId: S.optional(S.NullOr(S.String)),
-      bucketUrl: S.optional(S.NullOr(S.String)),
+      accessKeyId: S.optional(S.String),
+      bucketUrl: S.optional(S.String),
       provider: S.optional(
-        S.NullOr(BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider),
+        BucketsSippyUpdateRequestSourceR2EnableSippyS3Provider,
       ),
-      secretAccessKey: S.optional(S.NullOr(S.String)),
+      secretAccessKey: S.optional(S.String),
     }),
   ).annotate({
     identifier: "BucketsSippyUpdateRequestSourceR2EnableSippyS3",
@@ -4540,9 +4511,9 @@ export interface PutBucketSippyRequest {
   /** Name of the bucket. */
   bucketName: string;
   /** R2 bucket to copy objects to. */
-  destination?: BucketsSippyUpdateRequestDestination | null;
+  destination?: BucketsSippyUpdateRequestDestination;
   /** AWS S3 bucket to copy objects from. */
-  source?: BucketsSippyUpdateRequestSource | null;
+  source?: BucketsSippyUpdateRequestSource;
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction | (string & {});
 }
@@ -4550,8 +4521,8 @@ export const PutBucketSippyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
-    destination: S.optional(S.NullOr(BucketsSippyUpdateRequestDestination)),
-    source: S.optional(S.NullOr(BucketsSippyUpdateRequestSource)),
+    destination: S.optional(BucketsSippyUpdateRequestDestination),
+    source: S.optional(BucketsSippyUpdateRequestSource),
     jurisdiction: S.optional(
       BucketsSippyUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -4746,14 +4717,13 @@ export interface SourceSuperSlurperConnectivityPrecheckRequest {
   secret: SuperSlurperConnectivityPrecheckSourceRequestSecret;
   vendor: SuperSlurperConnectivityPrecheckSourceRequestVendor;
   /** Custom S3-compatible endpoint that must use https://. */
-  endpoint?: string | null;
-  keys?: SuperSlurperConnectivityPrecheckSourceRequestKeysList | null;
-  pathPrefix?: string | null;
-  region?: string | null;
+  endpoint?: string;
+  keys?: SuperSlurperConnectivityPrecheckSourceRequestKeysList;
+  pathPrefix?: string;
+  region?: string;
   jurisdiction?:
     | SuperSlurperConnectivityPrecheckSourceRequestJurisdiction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SourceSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4762,14 +4732,12 @@ export const SourceSuperSlurperConnectivityPrecheckRequest =
       bucket: S.String,
       secret: SuperSlurperConnectivityPrecheckSourceRequestSecret,
       vendor: SuperSlurperConnectivityPrecheckSourceRequestVendor,
-      endpoint: S.optional(S.NullOr(S.String)),
-      keys: S.optional(
-        S.NullOr(SuperSlurperConnectivityPrecheckSourceRequestKeysList),
-      ),
-      pathPrefix: S.optional(S.NullOr(S.String)),
-      region: S.optional(S.NullOr(S.String)),
+      endpoint: S.optional(S.String),
+      keys: S.optional(SuperSlurperConnectivityPrecheckSourceRequestKeysList),
+      pathPrefix: S.optional(S.String),
+      region: S.optional(S.String),
       jurisdiction: S.optional(
-        S.NullOr(SuperSlurperConnectivityPrecheckSourceRequestJurisdiction),
+        SuperSlurperConnectivityPrecheckSourceRequestJurisdiction,
       ),
     })
       .pipe(
@@ -4839,8 +4807,7 @@ export interface TargetSuperSlurperConnectivityPrecheckRequest {
   vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
   jurisdiction?:
     | SuperSlurperConnectivityPrecheckTargetRequestJurisdiction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const TargetSuperSlurperConnectivityPrecheckRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4850,7 +4817,7 @@ export const TargetSuperSlurperConnectivityPrecheckRequest =
       secret: SuperSlurperConnectivityPrecheckTargetRequestSecret,
       vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor,
       jurisdiction: S.optional(
-        S.NullOr(SuperSlurperConnectivityPrecheckTargetRequestJurisdiction),
+        SuperSlurperConnectivityPrecheckTargetRequestJurisdiction,
       ),
     })
       .pipe(
@@ -4916,11 +4883,11 @@ export interface UpdateBucketDomainCustomRequest {
   /** Name of the custom domain. */
   domain: string;
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  ciphers?: BucketsDomainsCustomUpdateRequestCiphersList | null;
+  ciphers?: BucketsDomainsCustomUpdateRequestCiphersList;
   /** Whether to enable public bucket access at the specified custom domain. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to previous value. */
-  minTLS?: BucketsDomainsCustomUpdateRequestMinTLS | (string & {}) | null;
+  minTLS?: BucketsDomainsCustomUpdateRequestMinTLS | (string & {});
   /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
   jurisdiction?:
     | BucketsDomainsCustomUpdateRequestCfR2Jurisdiction
@@ -4931,9 +4898,9 @@ export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
     domain: S.String.pipe(T.Label()),
-    ciphers: S.optional(S.NullOr(BucketsDomainsCustomUpdateRequestCiphersList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    minTLS: S.optional(S.NullOr(BucketsDomainsCustomUpdateRequestMinTLS)),
+    ciphers: S.optional(BucketsDomainsCustomUpdateRequestCiphersList),
+    enabled: S.optional(S.Boolean),
+    minTLS: S.optional(BucketsDomainsCustomUpdateRequestMinTLS),
     jurisdiction: S.optional(
       BucketsDomainsCustomUpdateRequestCfR2Jurisdiction.pipe(
         T.Header("cf-r2-jurisdiction"),
@@ -5021,6 +4988,20 @@ export interface UploadBucketObjectRequest {
   body?: Blob | Uint8Array | ArrayBuffer | string;
   /** MIME type stored with the object. */
   contentType?: string;
+  /** Content disposition of the object. */
+  contentDisposition?: string;
+  /** Content encoding of the object. */
+  contentEncoding?: string;
+  /** Content language of the object. */
+  contentLanguage?: string;
+  /** Content length of the object in bytes. */
+  contentLength?: string;
+  /** Cache control directives for the object. */
+  cacheControl?: string;
+  /** Expiration date of the object. */
+  expires?: string;
+  /** Storage class for the object. */
+  cf_r2_storage_class?: string;
 }
 export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5039,6 +5020,17 @@ export const UploadBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
     objectName: S.String.pipe(T.Label("object_name")),
     body: S.optional(S.String.pipe(T.HttpBody())),
     contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
+    contentDisposition: S.optional(
+      S.String.pipe(T.Header("Content-Disposition")),
+    ),
+    contentEncoding: S.optional(S.String.pipe(T.Header("Content-Encoding"))),
+    contentLanguage: S.optional(S.String.pipe(T.Header("Content-Language"))),
+    contentLength: S.optional(S.String.pipe(T.Header("Content-Length"))),
+    cacheControl: S.optional(S.String.pipe(T.Header("Cache-Control"))),
+    expires: S.optional(S.String.pipe(T.Header("Expires"))),
+    cf_r2_storage_class: S.optional(
+      S.String.pipe(T.Header("cf-r2-storage-class")),
+    ),
   })
     .pipe(
       T.Http({

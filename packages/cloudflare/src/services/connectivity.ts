@@ -157,16 +157,16 @@ export const DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkR
 
 export interface DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork {
   tunnelId: string;
-  resolverIps?: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList | null;
+  resolverIps?: DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList;
 }
 export const DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetwork =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tunnelId: S.String.pipe(T.Body("tunnel_id")),
       resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
+        DirectoryServicesCreateRequestHostInfraHostnameHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
       ),
     }),
   ).annotate({
@@ -230,18 +230,15 @@ export interface CreateDirectoryServiceRequest {
   host: DirectoryServicesCreateRequestHost;
   name: string;
   type: DirectoryServicesCreateRequestType | (string & {});
-  createdAt?: string | null;
-  httpPort?: number | null;
-  httpsPort?: number | null;
-  serviceId?: string | null;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
+  serviceId?: string;
   /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesCreateRequestTlsSettings | null;
-  updatedAt?: string | null;
-  appProtocol?:
-    | DirectoryServicesCreateRequestAppProtocol
-    | (string & {})
-    | null;
-  tcpPort?: number | null;
+  tlsSettings?: DirectoryServicesCreateRequestTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesCreateRequestAppProtocol | (string & {});
+  tcpPort?: number;
 }
 export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,22 +246,18 @@ export const CreateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
     host: DirectoryServicesCreateRequestHost,
     name: S.String,
     type: DirectoryServicesCreateRequestType,
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
-    serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
     tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
+      DirectoryServicesCreateRequestTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     appProtocol: S.optional(
-      S.NullOr(DirectoryServicesCreateRequestAppProtocol).pipe(
-        T.Body("app_protocol"),
-      ),
+      DirectoryServicesCreateRequestAppProtocol.pipe(T.Body("app_protocol")),
     ),
-    tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   })
     .pipe(
       T.Http({
@@ -1805,16 +1798,16 @@ export const DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkR
 
 export interface DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork {
   tunnelId: string;
-  resolverIps?: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList | null;
+  resolverIps?: DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList;
 }
 export const DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetwork =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tunnelId: S.String.pipe(T.Body("tunnel_id")),
       resolverIps: S.optional(
-        S.NullOr(
-          DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList,
-        ).pipe(T.Body("resolver_ips")),
+        DirectoryServicesUpdateRequestHostInfraHostnameHostResolverNetworkResolverIpsList.pipe(
+          T.Body("resolver_ips"),
+        ),
       ),
     }),
   ).annotate({
@@ -1878,17 +1871,14 @@ export interface UpdateDirectoryServiceRequest {
   host: DirectoryServicesUpdateRequestHost;
   name: string;
   type: DirectoryServicesUpdateRequestType | (string & {});
-  createdAt?: string | null;
-  httpPort?: number | null;
-  httpsPort?: number | null;
+  createdAt?: string;
+  httpPort?: number;
+  httpsPort?: number;
   /** TLS settings for a connectivity service. */
-  tlsSettings?: DirectoryServicesUpdateRequestTlsSettings | null;
-  updatedAt?: string | null;
-  appProtocol?:
-    | DirectoryServicesUpdateRequestAppProtocol
-    | (string & {})
-    | null;
-  tcpPort?: number | null;
+  tlsSettings?: DirectoryServicesUpdateRequestTlsSettings;
+  updatedAt?: string;
+  appProtocol?: DirectoryServicesUpdateRequestAppProtocol | (string & {});
+  tcpPort?: number;
 }
 export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1897,21 +1887,17 @@ export const UpdateDirectoryServiceRequest = /*@__PURE__*/ S.suspend(() =>
     host: DirectoryServicesUpdateRequestHost,
     name: S.String,
     type: DirectoryServicesUpdateRequestType,
-    createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-    httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
-    httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
+    httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
     tlsSettings: S.optional(
-      S.NullOr(DirectoryServicesUpdateRequestTlsSettings).pipe(
-        T.Body("tls_settings"),
-      ),
+      DirectoryServicesUpdateRequestTlsSettings.pipe(T.Body("tls_settings")),
     ),
-    updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     appProtocol: S.optional(
-      S.NullOr(DirectoryServicesUpdateRequestAppProtocol).pipe(
-        T.Body("app_protocol"),
-      ),
+      DirectoryServicesUpdateRequestAppProtocol.pipe(T.Body("app_protocol")),
     ),
-    tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+    tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
   })
     .pipe(
       T.Http({

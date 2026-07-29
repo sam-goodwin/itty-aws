@@ -94,15 +94,15 @@ export interface CreateWidgetRequest {
   /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
-  botFightMode?: boolean | null;
+  botFightMode?: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
-  clearanceLevel?: WidgetsCreateRequestClearanceLevel | (string & {}) | null;
+  clearanceLevel?: WidgetsCreateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
-  ephemeralId?: boolean | null;
+  ephemeralId?: boolean;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
-  offlabel?: boolean | null;
+  offlabel?: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region?: WidgetsCreateRequestRegion | (string & {}) | null;
+  region?: WidgetsCreateRequestRegion | (string & {});
 }
 export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -115,17 +115,13 @@ export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
     domains: WidgetsCreateRequestDomainsList,
     mode: WidgetsCreateRequestMode,
     name: S.String,
-    botFightMode: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("bot_fight_mode")),
-    ),
+    botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
     clearanceLevel: S.optional(
-      S.NullOr(WidgetsCreateRequestClearanceLevel).pipe(
-        T.Body("clearance_level"),
-      ),
+      WidgetsCreateRequestClearanceLevel.pipe(T.Body("clearance_level")),
     ),
-    ephemeralId: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ephemeral_id"))),
-    offlabel: S.optional(S.NullOr(S.Boolean)),
-    region: S.optional(S.NullOr(WidgetsCreateRequestRegion)),
+    ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
+    offlabel: S.optional(S.Boolean),
+    region: S.optional(WidgetsCreateRequestRegion),
   })
     .pipe(
       T.Http({
@@ -525,14 +521,14 @@ export interface RotateSecretWidgetRequest {
   /** Widget item identifier tag. */
   sitekey: string;
   /** If `invalidate_immediately` is set to `false`, the previous secret will */
-  invalidateImmediately?: boolean | null;
+  invalidateImmediately?: boolean;
 }
 export const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
     invalidateImmediately: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("invalidate_immediately")),
+      S.Boolean.pipe(T.Body("invalidate_immediately")),
     ),
   })
     .pipe(
@@ -647,15 +643,15 @@ export interface UpdateWidgetRequest {
   /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
-  botFightMode?: boolean | null;
+  botFightMode?: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
-  clearanceLevel?: WidgetsUpdateRequestClearanceLevel | (string & {}) | null;
+  clearanceLevel?: WidgetsUpdateRequestClearanceLevel | (string & {});
   /** Return the Ephemeral ID in /siteverify (ENT only). */
-  ephemeralId?: boolean | null;
+  ephemeralId?: boolean;
   /** Do not show any Cloudflare branding on the widget (ENT only). */
-  offlabel?: boolean | null;
+  offlabel?: boolean;
   /** Region where this widget can be used. This cannot be changed after creation. */
-  region?: WidgetsUpdateRequestRegion | (string & {}) | null;
+  region?: WidgetsUpdateRequestRegion | (string & {});
 }
 export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -664,17 +660,13 @@ export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
     domains: WidgetsUpdateRequestDomainsList,
     mode: WidgetsUpdateRequestMode,
     name: S.String,
-    botFightMode: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("bot_fight_mode")),
-    ),
+    botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
     clearanceLevel: S.optional(
-      S.NullOr(WidgetsUpdateRequestClearanceLevel).pipe(
-        T.Body("clearance_level"),
-      ),
+      WidgetsUpdateRequestClearanceLevel.pipe(T.Body("clearance_level")),
     ),
-    ephemeralId: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ephemeral_id"))),
-    offlabel: S.optional(S.NullOr(S.Boolean)),
-    region: S.optional(S.NullOr(WidgetsUpdateRequestRegion)),
+    ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
+    offlabel: S.optional(S.Boolean),
+    region: S.optional(WidgetsUpdateRequestRegion),
   })
     .pipe(
       T.Http({

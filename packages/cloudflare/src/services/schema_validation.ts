@@ -90,16 +90,15 @@ export interface SettingsOperationsBulkEditRequestBodyValue {
   /** Mitigation actions are as follows: */
   mitigationAction?:
     | SettingsOperationsBulkEditRequestBodyValueMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
 }
 export const SettingsOperationsBulkEditRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mitigationAction: S.optional(
-        S.NullOr(
-          SettingsOperationsBulkEditRequestBodyValueMitigationAction,
-        ).pipe(T.Body("mitigation_action")),
+        SettingsOperationsBulkEditRequestBodyValueMitigationAction.pipe(
+          T.Body("mitigation_action"),
+        ),
       ),
     }),
   ).annotate({
@@ -639,15 +638,13 @@ export interface PatchSchemaRequest {
   /** UUID. */
   schemaId: string;
   /** Flag whether schema is enabled for validation. */
-  validationEnabled?: boolean | null;
+  validationEnabled?: boolean;
 }
 export const PatchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     schemaId: S.String.pipe(T.Label("schema_id")),
-    validationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("validation_enabled")),
-    ),
+    validationEnabled: S.optional(S.Boolean.pipe(T.Body("validation_enabled"))),
   })
     .pipe(
       T.Http({
@@ -710,8 +707,7 @@ export interface PatchSettingRequest {
   /** The default mitigation action used */
   validationDefaultMitigationAction?:
     | SettingsEditRequestValidationDefaultMitigationAction
-    | (string & {})
-    | null;
+    | (string & {});
   /** When set, this overrides both zone level and operation level mitigation actions. */
   validationOverrideMitigationAction?:
     | SettingsEditRequestValidationOverrideMitigationAction
@@ -722,7 +718,7 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     validationDefaultMitigationAction: S.optional(
-      S.NullOr(SettingsEditRequestValidationDefaultMitigationAction).pipe(
+      SettingsEditRequestValidationDefaultMitigationAction.pipe(
         T.Body("validation_default_mitigation_action"),
       ),
     ),

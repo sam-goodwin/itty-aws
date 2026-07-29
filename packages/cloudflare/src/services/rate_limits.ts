@@ -33,14 +33,14 @@ export const CreateRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface CreateRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string | null;
+  body?: string;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string | null;
+  contentType?: string;
 }
 export const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.NullOr(S.String)),
-    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    body: S.optional(S.String),
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "CreateRequestActionResponse",
@@ -48,17 +48,17 @@ export const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestAction {
   /** The action to perform. */
-  mode?: CreateRequestActionMode | (string & {}) | null;
+  mode?: CreateRequestActionMode | (string & {});
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: CreateRequestActionResponse | null;
+  response?: CreateRequestActionResponse;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number | null;
+  timeout?: number;
 }
 export const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(S.NullOr(CreateRequestActionMode)),
-    response: S.optional(S.NullOr(CreateRequestActionResponse)),
-    timeout: S.optional(S.NullOr(S.Number)),
+    mode: S.optional(CreateRequestActionMode),
+    response: S.optional(CreateRequestActionResponse),
+    timeout: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "CreateRequestAction",
@@ -69,17 +69,17 @@ export const CreateRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface CreateRequestMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string | null;
+  name?: string;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: CreateRequestMatchHeadersItemOp | (string & {}) | null;
+  op?: CreateRequestMatchHeadersItemOp | (string & {});
   /** The value of the response header, which must match exactly. */
-  value?: string | null;
+  value?: string;
 }
 export const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    op: S.optional(S.NullOr(CreateRequestMatchHeadersItemOp)),
-    value: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    op: S.optional(CreateRequestMatchHeadersItemOp),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestMatchHeadersItem",
@@ -115,17 +115,17 @@ export const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface CreateRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: CreateRequestMatchRequestMethodsList | null;
+  methods?: CreateRequestMatchRequestMethodsList;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: CreateRequestMatchRequestSchemesList | null;
+  schemes?: CreateRequestMatchRequestSchemesList;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string | null;
+  url?: string;
 }
 export const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(S.NullOr(CreateRequestMatchRequestMethodsList)),
-    schemes: S.optional(S.NullOr(CreateRequestMatchRequestSchemesList)),
-    url: S.optional(S.NullOr(S.String)),
+    methods: S.optional(CreateRequestMatchRequestMethodsList),
+    schemes: S.optional(CreateRequestMatchRequestSchemesList),
+    url: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestMatchRequest",
@@ -133,28 +133,26 @@ export const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean | null;
+  originTraffic?: boolean;
 }
 export const CreateRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
-    ),
+    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
   }),
 ).annotate({
   identifier: "CreateRequestMatchResponse",
 }) as any as S.Schema<CreateRequestMatchResponse>;
 
 export interface CreateRequestMatch {
-  headers?: CreateRequestMatchHeadersList | null;
-  request?: CreateRequestMatchRequest | null;
-  response?: CreateRequestMatchResponse | null;
+  headers?: CreateRequestMatchHeadersList;
+  request?: CreateRequestMatchRequest;
+  response?: CreateRequestMatchResponse;
 }
 export const CreateRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(S.NullOr(CreateRequestMatchHeadersList)),
-    request: S.optional(S.NullOr(CreateRequestMatchRequest)),
-    response: S.optional(S.NullOr(CreateRequestMatchResponse)),
+    headers: S.optional(CreateRequestMatchHeadersList),
+    request: S.optional(CreateRequestMatchRequest),
+    response: S.optional(CreateRequestMatchResponse),
   }),
 ).annotate({
   identifier: "CreateRequestMatch",
@@ -609,14 +607,14 @@ export const EditRequestActionMode = /*@__PURE__*/ S.String;
 
 export interface EditRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
-  body?: string | null;
+  body?: string;
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string | null;
+  contentType?: string;
 }
 export const EditRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.NullOr(S.String)),
-    contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+    body: S.optional(S.String),
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
   }),
 ).annotate({
   identifier: "EditRequestActionResponse",
@@ -624,17 +622,17 @@ export const EditRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestAction {
   /** The action to perform. */
-  mode?: EditRequestActionMode | (string & {}) | null;
+  mode?: EditRequestActionMode | (string & {});
   /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: EditRequestActionResponse | null;
+  response?: EditRequestActionResponse;
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number | null;
+  timeout?: number;
 }
 export const EditRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(S.NullOr(EditRequestActionMode)),
-    response: S.optional(S.NullOr(EditRequestActionResponse)),
-    timeout: S.optional(S.NullOr(S.Number)),
+    mode: S.optional(EditRequestActionMode),
+    response: S.optional(EditRequestActionResponse),
+    timeout: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "EditRequestAction",
@@ -645,17 +643,17 @@ export const EditRequestMatchHeadersItemOp = /*@__PURE__*/ S.String;
 
 export interface EditRequestMatchHeadersItem {
   /** The name of the response header to match. */
-  name?: string | null;
+  name?: string;
   /** The operator used when matching: `eq` means "equal" and `ne` means "not equal". */
-  op?: EditRequestMatchHeadersItemOp | (string & {}) | null;
+  op?: EditRequestMatchHeadersItemOp | (string & {});
   /** The value of the response header, which must match exactly. */
-  value?: string | null;
+  value?: string;
 }
 export const EditRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    op: S.optional(S.NullOr(EditRequestMatchHeadersItemOp)),
-    value: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    op: S.optional(EditRequestMatchHeadersItemOp),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EditRequestMatchHeadersItem",
@@ -690,17 +688,17 @@ export const EditRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
 
 export interface EditRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
-  methods?: EditRequestMatchRequestMethodsList | null;
+  methods?: EditRequestMatchRequestMethodsList;
   /** The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional. */
-  schemes?: EditRequestMatchRequestSchemesList | null;
+  schemes?: EditRequestMatchRequestSchemesList;
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
-  url?: string | null;
+  url?: string;
 }
 export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    methods: S.optional(S.NullOr(EditRequestMatchRequestMethodsList)),
-    schemes: S.optional(S.NullOr(EditRequestMatchRequestSchemesList)),
-    url: S.optional(S.NullOr(S.String)),
+    methods: S.optional(EditRequestMatchRequestMethodsList),
+    schemes: S.optional(EditRequestMatchRequestSchemesList),
+    url: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EditRequestMatchRequest",
@@ -708,28 +706,26 @@ export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EditRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. */
-  originTraffic?: boolean | null;
+  originTraffic?: boolean;
 }
 export const EditRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originTraffic: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("origin_traffic")),
-    ),
+    originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
   }),
 ).annotate({
   identifier: "EditRequestMatchResponse",
 }) as any as S.Schema<EditRequestMatchResponse>;
 
 export interface EditRequestMatch {
-  headers?: EditRequestMatchHeadersList | null;
-  request?: EditRequestMatchRequest | null;
-  response?: EditRequestMatchResponse | null;
+  headers?: EditRequestMatchHeadersList;
+  request?: EditRequestMatchRequest;
+  response?: EditRequestMatchResponse;
 }
 export const EditRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(S.NullOr(EditRequestMatchHeadersList)),
-    request: S.optional(S.NullOr(EditRequestMatchRequest)),
-    response: S.optional(S.NullOr(EditRequestMatchResponse)),
+    headers: S.optional(EditRequestMatchHeadersList),
+    request: S.optional(EditRequestMatchRequest),
+    response: S.optional(EditRequestMatchResponse),
   }),
 ).annotate({
   identifier: "EditRequestMatch",

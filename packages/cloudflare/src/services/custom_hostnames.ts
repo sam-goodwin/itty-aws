@@ -155,29 +155,27 @@ export const CreateRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  ciphers?: CreateRequestSslSettingsCiphersList | null;
+  ciphers?: CreateRequestSslSettingsCiphersList;
   /** Whether or not Early Hints is enabled. */
-  earlyHints?: CreateRequestSslSettingsEarlyHints | (string & {}) | null;
+  earlyHints?: CreateRequestSslSettingsEarlyHints | (string & {});
   /** Whether or not HTTP2 is enabled. */
-  http2?: CreateRequestSslSettingsHttp2 | (string & {}) | null;
+  http2?: CreateRequestSslSettingsHttp2 | (string & {});
   /** The minimum TLS version supported. */
-  minTlsVersion?: CreateRequestSslSettingsMinTlsVersion | (string & {}) | null;
+  minTlsVersion?: CreateRequestSslSettingsMinTlsVersion | (string & {});
   /** Whether or not TLS 1.3 is enabled. */
-  tls_1_3?: CreateRequestSslSettingsTls13 | (string & {}) | null;
+  tls_1_3?: CreateRequestSslSettingsTls13 | (string & {});
 }
 export const CreateRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ciphers: S.optional(S.NullOr(CreateRequestSslSettingsCiphersList)),
+    ciphers: S.optional(CreateRequestSslSettingsCiphersList),
     earlyHints: S.optional(
-      S.NullOr(CreateRequestSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+      CreateRequestSslSettingsEarlyHints.pipe(T.Body("early_hints")),
     ),
-    http2: S.optional(S.NullOr(CreateRequestSslSettingsHttp2)),
+    http2: S.optional(CreateRequestSslSettingsHttp2),
     minTlsVersion: S.optional(
-      S.NullOr(CreateRequestSslSettingsMinTlsVersion).pipe(
-        T.Body("min_tls_version"),
-      ),
+      CreateRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls_1_3: S.optional(S.NullOr(CreateRequestSslSettingsTls13)),
+    tls_1_3: S.optional(CreateRequestSslSettingsTls13),
   }),
 ).annotate({
   identifier: "CreateRequestSslSettings",
@@ -188,58 +186,51 @@ export const CreateRequestSslType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSsl {
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: CreateRequestSslBundleMethod | (string & {}) | null;
+  bundleMethod?: CreateRequestSslBundleMethod | (string & {});
   /** The Certificate Authority that will issue the certificate. */
-  certificateAuthority?:
-    | CreateRequestSslCertificateAuthority
-    | (string & {})
-    | null;
+  certificateAuthority?: CreateRequestSslCertificateAuthority | (string & {});
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
+  cloudflareBranding?: boolean;
   /** Array of custom certificate and key pairs (1 or 2 pairs allowed). */
-  customCertBundle?: CreateRequestSslCustomCertBundleList | null;
+  customCertBundle?: CreateRequestSslCustomCertBundleList;
   /** If a custom uploaded certificate is used. */
-  customCertificate?: string | null;
+  customCertificate?: string;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string | null;
+  customCsrId?: string;
   /** The key for a custom uploaded certificate. */
-  customKey?: string | null;
+  customKey?: string;
   /** Domain control validation (DCV) method used for this hostname. */
-  method?: CreateRequestSslMethod | (string & {}) | null;
+  method?: CreateRequestSslMethod | (string & {});
   /** SSL specific settings. */
-  settings?: CreateRequestSslSettings | null;
+  settings?: CreateRequestSslSettings;
   /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
-  type?: CreateRequestSslType | (string & {}) | null;
+  type?: CreateRequestSslType | (string & {});
   /** Indicates whether the certificate covers a wildcard. */
-  wildcard?: boolean | null;
+  wildcard?: boolean;
 }
 export const CreateRequestSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleMethod: S.optional(
-      S.NullOr(CreateRequestSslBundleMethod).pipe(T.Body("bundle_method")),
+      CreateRequestSslBundleMethod.pipe(T.Body("bundle_method")),
     ),
     certificateAuthority: S.optional(
-      S.NullOr(CreateRequestSslCertificateAuthority).pipe(
+      CreateRequestSslCertificateAuthority.pipe(
         T.Body("certificate_authority"),
       ),
     ),
     cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
     customCertBundle: S.optional(
-      S.NullOr(CreateRequestSslCustomCertBundleList).pipe(
-        T.Body("custom_cert_bundle"),
-      ),
+      CreateRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
     ),
-    customCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("custom_certificate")),
-    ),
-    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
-    customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
-    method: S.optional(S.NullOr(CreateRequestSslMethod)),
-    settings: S.optional(S.NullOr(CreateRequestSslSettings)),
-    type: S.optional(S.NullOr(CreateRequestSslType)),
-    wildcard: S.optional(S.NullOr(S.Boolean)),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    method: S.optional(CreateRequestSslMethod),
+    settings: S.optional(CreateRequestSslSettings),
+    type: S.optional(CreateRequestSslType),
+    wildcard: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "CreateRequestSsl",
@@ -251,18 +242,18 @@ export interface CreateCustomHostnameRequest {
   /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
-  customMetadata?: CreateRequestCustomMetadataMap | null;
+  customMetadata?: CreateRequestCustomMetadataMap;
   /** SSL properties used when creating the custom hostname. */
-  ssl?: CreateRequestSsl | null;
+  ssl?: CreateRequestSsl;
 }
 export const CreateCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String,
     customMetadata: S.optional(
-      S.NullOr(CreateRequestCustomMetadataMap).pipe(T.Body("custom_metadata")),
+      CreateRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
     ),
-    ssl: S.optional(S.NullOr(CreateRequestSsl)),
+    ssl: S.optional(CreateRequestSsl),
   })
     .pipe(
       T.Http({
@@ -1352,17 +1343,17 @@ export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListRequestHostname {
   /** Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters. */
-  contain?: string | null;
+  contain?: string;
   /** Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname', 'hostname.contain', or 'hostname.startsWith' parameters. */
-  exact?: string | null;
+  exact?: string;
   /** Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters. */
-  startsWith?: string | null;
+  startsWith?: string;
 }
 export const ListRequestHostname = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contain: S.optional(S.NullOr(S.String)),
-    exact: S.optional(S.NullOr(S.String)),
-    startsWith: S.optional(S.NullOr(S.String)),
+    contain: S.optional(S.String),
+    exact: S.optional(S.String),
+    startsWith: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRequestHostname",
@@ -1425,7 +1416,7 @@ export interface ListCustomHostnamesRequest {
   customOriginServer?: string;
   /** Direction to order hostnames. */
   direction?: ListRequestDirection | (string & {});
-  hostname?: ListRequestHostname | null;
+  hostname?: ListRequestHostname;
   /** Filter by the hostname's activation status. */
   hostnameStatus?: ListRequestHostnameStatus | (string & {});
   /** Field to order hostnames by. */
@@ -1452,9 +1443,7 @@ export const ListCustomHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Query("custom_origin_server")),
     ),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
-    hostname: S.optional(
-      S.NullOr(ListRequestHostname).pipe(T.DeepQuery("hostname")),
-    ),
+    hostname: S.optional(ListRequestHostname.pipe(T.DeepQuery("hostname"))),
     hostnameStatus: S.optional(
       ListRequestHostnameStatus.pipe(T.Query("hostname_status")),
     ),
@@ -1982,29 +1971,27 @@ export const EditRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface EditRequestSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
-  ciphers?: EditRequestSslSettingsCiphersList | null;
+  ciphers?: EditRequestSslSettingsCiphersList;
   /** Whether or not Early Hints is enabled. */
-  earlyHints?: EditRequestSslSettingsEarlyHints | (string & {}) | null;
+  earlyHints?: EditRequestSslSettingsEarlyHints | (string & {});
   /** Whether or not HTTP2 is enabled. */
-  http2?: EditRequestSslSettingsHttp2 | (string & {}) | null;
+  http2?: EditRequestSslSettingsHttp2 | (string & {});
   /** The minimum TLS version supported. */
-  minTlsVersion?: EditRequestSslSettingsMinTlsVersion | (string & {}) | null;
+  minTlsVersion?: EditRequestSslSettingsMinTlsVersion | (string & {});
   /** Whether or not TLS 1.3 is enabled. */
-  tls_1_3?: EditRequestSslSettingsTls13 | (string & {}) | null;
+  tls_1_3?: EditRequestSslSettingsTls13 | (string & {});
 }
 export const EditRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ciphers: S.optional(S.NullOr(EditRequestSslSettingsCiphersList)),
+    ciphers: S.optional(EditRequestSslSettingsCiphersList),
     earlyHints: S.optional(
-      S.NullOr(EditRequestSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+      EditRequestSslSettingsEarlyHints.pipe(T.Body("early_hints")),
     ),
-    http2: S.optional(S.NullOr(EditRequestSslSettingsHttp2)),
+    http2: S.optional(EditRequestSslSettingsHttp2),
     minTlsVersion: S.optional(
-      S.NullOr(EditRequestSslSettingsMinTlsVersion).pipe(
-        T.Body("min_tls_version"),
-      ),
+      EditRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
     ),
-    tls_1_3: S.optional(S.NullOr(EditRequestSslSettingsTls13)),
+    tls_1_3: S.optional(EditRequestSslSettingsTls13),
   }),
 ).annotate({
   identifier: "EditRequestSslSettings",
@@ -2015,58 +2002,49 @@ export const EditRequestSslType = /*@__PURE__*/ S.String;
 
 export interface EditRequestSsl {
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: EditRequestSslBundleMethod | (string & {}) | null;
+  bundleMethod?: EditRequestSslBundleMethod | (string & {});
   /** The Certificate Authority that will issue the certificate. */
-  certificateAuthority?:
-    | EditRequestSslCertificateAuthority
-    | (string & {})
-    | null;
+  certificateAuthority?: EditRequestSslCertificateAuthority | (string & {});
   /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
-  cloudflareBranding?: boolean | null;
+  cloudflareBranding?: boolean;
   /** Array of custom certificate and key pairs (1 or 2 pairs allowed). */
-  customCertBundle?: EditRequestSslCustomCertBundleList | null;
+  customCertBundle?: EditRequestSslCustomCertBundleList;
   /** If a custom uploaded certificate is used. */
-  customCertificate?: string | null;
+  customCertificate?: string;
   /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string | null;
+  customCsrId?: string;
   /** The key for a custom uploaded certificate. */
-  customKey?: string | null;
+  customKey?: string;
   /** Domain control validation (DCV) method used for this hostname. */
-  method?: EditRequestSslMethod | (string & {}) | null;
+  method?: EditRequestSslMethod | (string & {});
   /** SSL specific settings. */
-  settings?: EditRequestSslSettings | null;
+  settings?: EditRequestSslSettings;
   /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
-  type?: EditRequestSslType | (string & {}) | null;
+  type?: EditRequestSslType | (string & {});
   /** Indicates whether the certificate covers a wildcard. */
-  wildcard?: boolean | null;
+  wildcard?: boolean;
 }
 export const EditRequestSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleMethod: S.optional(
-      S.NullOr(EditRequestSslBundleMethod).pipe(T.Body("bundle_method")),
+      EditRequestSslBundleMethod.pipe(T.Body("bundle_method")),
     ),
     certificateAuthority: S.optional(
-      S.NullOr(EditRequestSslCertificateAuthority).pipe(
-        T.Body("certificate_authority"),
-      ),
+      EditRequestSslCertificateAuthority.pipe(T.Body("certificate_authority")),
     ),
     cloudflareBranding: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding")),
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
     customCertBundle: S.optional(
-      S.NullOr(EditRequestSslCustomCertBundleList).pipe(
-        T.Body("custom_cert_bundle"),
-      ),
+      EditRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
     ),
-    customCertificate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("custom_certificate")),
-    ),
-    customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
-    customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
-    method: S.optional(S.NullOr(EditRequestSslMethod)),
-    settings: S.optional(S.NullOr(EditRequestSslSettings)),
-    type: S.optional(S.NullOr(EditRequestSslType)),
-    wildcard: S.optional(S.NullOr(S.Boolean)),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    method: S.optional(EditRequestSslMethod),
+    settings: S.optional(EditRequestSslSettings),
+    type: S.optional(EditRequestSslType),
+    wildcard: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "EditRequestSsl" }) as any as S.Schema<EditRequestSsl>;
 
@@ -2076,28 +2054,26 @@ export interface PatchCustomHostnameRequest {
   /** Identifier. */
   customHostnameId: string;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
-  customMetadata?: EditRequestCustomMetadataMap | null;
+  customMetadata?: EditRequestCustomMetadataMap;
   /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
-  customOriginServer?: string | null;
+  customOriginServer?: string;
   /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
-  customOriginSni?: string | null;
+  customOriginSni?: string;
   /** SSL properties used when creating the custom hostname. */
-  ssl?: EditRequestSsl | null;
+  ssl?: EditRequestSsl;
 }
 export const PatchCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
     customMetadata: S.optional(
-      S.NullOr(EditRequestCustomMetadataMap).pipe(T.Body("custom_metadata")),
+      EditRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
     ),
     customOriginServer: S.optional(
-      S.NullOr(S.String).pipe(T.Body("custom_origin_server")),
+      S.String.pipe(T.Body("custom_origin_server")),
     ),
-    customOriginSni: S.optional(
-      S.NullOr(S.String).pipe(T.Body("custom_origin_sni")),
-    ),
-    ssl: S.optional(S.NullOr(EditRequestSsl)),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+    ssl: S.optional(EditRequestSsl),
   })
     .pipe(
       T.Http({

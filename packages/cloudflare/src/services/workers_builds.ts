@@ -2278,7 +2278,7 @@ export interface TriggersCreateRequest {
   /** Root directory path. */
   rootDirectory: string;
   triggerName: string;
-  buildCachingEnabled?: boolean | null;
+  buildCachingEnabled?: boolean;
 }
 export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2303,7 +2303,7 @@ export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
     rootDirectory: S.String.pipe(T.Body("root_directory")),
     triggerName: S.String.pipe(T.Body("trigger_name")),
     buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      S.Boolean.pipe(T.Body("build_caching_enabled")),
     ),
   }).pipe(
     T.Http({
@@ -2474,17 +2474,17 @@ export const TriggersCreateBuildRequestSeedRepoProvider =
 export interface TriggersCreateBuildRequestSeedRepoFilesItem {
   content: string;
   filename: string;
-  isBase64?: boolean | null;
+  isBase64?: boolean;
   /** Text to replace in the file */
-  replace?: string | null;
+  replace?: string;
 }
 export const TriggersCreateBuildRequestSeedRepoFilesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.String,
       filename: S.String,
-      isBase64: S.optional(S.NullOr(S.Boolean)),
-      replace: S.optional(S.NullOr(S.String)),
+      isBase64: S.optional(S.Boolean),
+      replace: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TriggersCreateBuildRequestSeedRepoFilesItem",
@@ -2504,7 +2504,7 @@ export interface TriggersCreateBuildRequestSeedRepo {
   path: string;
   provider: TriggersCreateBuildRequestSeedRepoProvider | (string & {});
   repository: string;
-  files?: TriggersCreateBuildRequestSeedRepoFilesList | null;
+  files?: TriggersCreateBuildRequestSeedRepoFilesList;
 }
 export const TriggersCreateBuildRequestSeedRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2513,7 +2513,7 @@ export const TriggersCreateBuildRequestSeedRepo = /*@__PURE__*/ S.suspend(() =>
     path: S.String,
     provider: TriggersCreateBuildRequestSeedRepoProvider,
     repository: S.String,
-    files: S.optional(S.NullOr(TriggersCreateBuildRequestSeedRepoFilesList)),
+    files: S.optional(TriggersCreateBuildRequestSeedRepoFilesList),
   }),
 ).annotate({
   identifier: "TriggersCreateBuildRequestSeedRepo",
@@ -2525,19 +2525,19 @@ export interface TriggersCreateBuildRequest {
   /** Trigger UUID. */
   triggerUuid: string;
   /** Git branch name (required if commit_hash not provided) */
-  branch?: string | null;
+  branch?: string;
   /** Git commit hash (required if branch not provided) */
-  commitHash?: string | null;
-  seedRepo?: TriggersCreateBuildRequestSeedRepo | null;
+  commitHash?: string;
+  seedRepo?: TriggersCreateBuildRequestSeedRepo;
 }
 export const TriggersCreateBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-    branch: S.optional(S.NullOr(S.String)),
-    commitHash: S.optional(S.NullOr(S.String).pipe(T.Body("commit_hash"))),
+    branch: S.optional(S.String),
+    commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
     seedRepo: S.optional(
-      S.NullOr(TriggersCreateBuildRequestSeedRepo).pipe(T.Body("seed_repo")),
+      TriggersCreateBuildRequestSeedRepo.pipe(T.Body("seed_repo")),
     ),
   }).pipe(
     T.Http({
@@ -2685,13 +2685,13 @@ export const TriggersEnvironmentVariablesListResponse = /*@__PURE__*/ S.suspend(
 
 export interface TriggersEnvironmentVariablesUpsertRequestBodyValue {
   isSecret: boolean;
-  value?: string | null;
+  value?: string;
 }
 export const TriggersEnvironmentVariablesUpsertRequestBodyValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       isSecret: S.Boolean.pipe(T.Body("is_secret")),
-      value: S.optional(S.NullOr(S.String)),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TriggersEnvironmentVariablesUpsertRequestBodyValue",
@@ -2998,57 +2998,43 @@ export interface TriggersUpdateRequest {
   accountId: string;
   /** Trigger UUID. */
   triggerUuid: string;
-  branchExcludes?: TriggersUpdateRequestBranchExcludesList | null;
-  branchIncludes?: TriggersUpdateRequestBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
+  branchExcludes?: TriggersUpdateRequestBranchExcludesList;
+  branchIncludes?: TriggersUpdateRequestBranchIncludesList;
+  buildCachingEnabled?: boolean;
+  buildCommand?: string;
   /** Build token UUID. */
-  buildTokenUuid?: string | null;
-  deployCommand?: string | null;
-  pathExcludes?: TriggersUpdateRequestPathExcludesList | null;
-  pathIncludes?: TriggersUpdateRequestPathIncludesList | null;
+  buildTokenUuid?: string;
+  deployCommand?: string;
+  pathExcludes?: TriggersUpdateRequestPathExcludesList;
+  pathIncludes?: TriggersUpdateRequestPathIncludesList;
   /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
+  rootDirectory?: string;
+  triggerName?: string;
 }
 export const TriggersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
     branchExcludes: S.optional(
-      S.NullOr(TriggersUpdateRequestBranchExcludesList).pipe(
-        T.Body("branch_excludes"),
-      ),
+      TriggersUpdateRequestBranchExcludesList.pipe(T.Body("branch_excludes")),
     ),
     branchIncludes: S.optional(
-      S.NullOr(TriggersUpdateRequestBranchIncludesList).pipe(
-        T.Body("branch_includes"),
-      ),
+      TriggersUpdateRequestBranchIncludesList.pipe(T.Body("branch_includes")),
     ),
     buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+      S.Boolean.pipe(T.Body("build_caching_enabled")),
     ),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    buildTokenUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
-    ),
-    deployCommand: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_command")),
-    ),
+    buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
+    buildTokenUuid: S.optional(S.String.pipe(T.Body("build_token_uuid"))),
+    deployCommand: S.optional(S.String.pipe(T.Body("deploy_command"))),
     pathExcludes: S.optional(
-      S.NullOr(TriggersUpdateRequestPathExcludesList).pipe(
-        T.Body("path_excludes"),
-      ),
+      TriggersUpdateRequestPathExcludesList.pipe(T.Body("path_excludes")),
     ),
     pathIncludes: S.optional(
-      S.NullOr(TriggersUpdateRequestPathIncludesList).pipe(
-        T.Body("path_includes"),
-      ),
+      TriggersUpdateRequestPathIncludesList.pipe(T.Body("path_includes")),
     ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+    rootDirectory: S.optional(S.String.pipe(T.Body("root_directory"))),
+    triggerName: S.optional(S.String.pipe(T.Body("trigger_name"))),
   }).pipe(
     T.Http({
       method: "PATCH",

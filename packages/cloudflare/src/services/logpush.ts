@@ -69,18 +69,18 @@ export interface CreateEdgeRequest {
   /** Identifier. */
   zoneId: string;
   /** Comma-separated list of fields. */
-  fields?: string | null;
+  fields?: string;
   /** Filters to drill down into specific events. */
-  filter?: string | null;
+  filter?: string;
   /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
-  sample?: number | null;
+  sample?: number;
 }
 export const CreateEdgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    fields: S.optional(S.NullOr(S.String)),
-    filter: S.optional(S.NullOr(S.String)),
-    sample: S.optional(S.NullOr(S.Number)),
+    fields: S.optional(S.String),
+    filter: S.optional(S.String),
+    sample: S.optional(S.Number),
   })
     .pipe(
       T.Http({
@@ -185,72 +185,57 @@ export const JobsCreateRequestOutputOptionsTimestampFormat =
 
 export interface JobsCreateRequestOutputOptions {
   /** String to be prepended before each batch. */
-  batchPrefix?: string | null;
+  batchPrefix?: string;
   /** String to be appended after each batch. */
-  batchSuffix?: string | null;
+  batchSuffix?: string;
   /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string | null;
+  fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsCreateRequestOutputOptionsFieldNamesList | null;
+  fieldNames?: JobsCreateRequestOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean | null;
+  mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsCreateRequestOutputOptionsOutputType | (string & {}) | null;
+  outputType?: JobsCreateRequestOutputOptionsOutputType | (string & {});
   /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string | null;
+  recordDelimiter?: string;
   /** String to be prepended before each record. */
-  recordPrefix?: string | null;
+  recordPrefix?: string;
   /** String to be appended after each record. */
-  recordSuffix?: string | null;
+  recordSuffix?: string;
   /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string | null;
+  recordTemplate?: string;
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number | null;
+  sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?:
     | JobsCreateRequestOutputOptionsTimestampFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  "cve-2021-44228"?: boolean | null;
+  "cve-2021-44228"?: boolean;
 }
 export const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-    batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-    fieldDelimiter: S.optional(
-      S.NullOr(S.String).pipe(T.Body("field_delimiter")),
-    ),
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
-      S.NullOr(JobsCreateRequestOutputOptionsFieldNamesList).pipe(
-        T.Body("field_names"),
-      ),
+      JobsCreateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
     ),
-    mergeSubrequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests")),
-    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
     outputType: S.optional(
-      S.NullOr(JobsCreateRequestOutputOptionsOutputType).pipe(
-        T.Body("output_type"),
-      ),
+      JobsCreateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
     ),
-    recordDelimiter: S.optional(
-      S.NullOr(S.String).pipe(T.Body("record_delimiter")),
-    ),
-    recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-    recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-    recordTemplate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("record_template")),
-    ),
-    sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
     timestampFormat: S.optional(
-      S.NullOr(JobsCreateRequestOutputOptionsTimestampFormat).pipe(
+      JobsCreateRequestOutputOptionsTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
-    "cve-2021-44228": S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228")),
-    ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsCreateRequestOutputOptions",
@@ -262,57 +247,51 @@ export interface CreateJobForAccountRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateRequestDataset | (string & {}) | null;
+  dataset?: JobsCreateRequestDataset | (string & {});
   /** Flag that indicates if the job is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
+  filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateRequestFrequency | (string & {}) | null;
+  frequency?: JobsCreateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateRequestKind | (string & {}) | null;
+  kind?: JobsCreateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string | null;
+  logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number | null;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number | null;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number | null;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
+  name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateRequestOutputOptions | null;
+  outputOptions?: JobsCreateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string | null;
+  ownershipChallenge?: string;
 }
 export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-    dataset: S.optional(S.NullOr(JobsCreateRequestDataset)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    filter: S.optional(S.NullOr(S.String)),
-    frequency: S.optional(S.NullOr(JobsCreateRequestFrequency)),
-    kind: S.optional(S.NullOr(JobsCreateRequestKind)),
-    logpullOptions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpull_options")),
-    ),
-    maxUploadBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_bytes")),
-    ),
+    dataset: S.optional(JobsCreateRequestDataset),
+    enabled: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+    frequency: S.optional(JobsCreateRequestFrequency),
+    kind: S.optional(JobsCreateRequestKind),
+    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_records")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+    name: S.optional(S.String),
     outputOptions: S.optional(
-      S.NullOr(JobsCreateRequestOutputOptions).pipe(T.Body("output_options")),
+      JobsCreateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_challenge")),
+      S.String.pipe(T.Body("ownership_challenge")),
     ),
   })
     .pipe(
@@ -532,57 +511,51 @@ export interface CreateJobForZoneRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?: JobsCreateRequestDataset | (string & {}) | null;
+  dataset?: JobsCreateRequestDataset | (string & {});
   /** Flag that indicates if the job is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
+  filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsCreateRequestFrequency | (string & {}) | null;
+  frequency?: JobsCreateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsCreateRequestKind | (string & {}) | null;
+  kind?: JobsCreateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string | null;
+  logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number | null;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number | null;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number | null;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
+  name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsCreateRequestOutputOptions | null;
+  outputOptions?: JobsCreateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string | null;
+  ownershipChallenge?: string;
 }
 export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
-    dataset: S.optional(S.NullOr(JobsCreateRequestDataset)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    filter: S.optional(S.NullOr(S.String)),
-    frequency: S.optional(S.NullOr(JobsCreateRequestFrequency)),
-    kind: S.optional(S.NullOr(JobsCreateRequestKind)),
-    logpullOptions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpull_options")),
-    ),
-    maxUploadBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_bytes")),
-    ),
+    dataset: S.optional(JobsCreateRequestDataset),
+    enabled: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+    frequency: S.optional(JobsCreateRequestFrequency),
+    kind: S.optional(JobsCreateRequestKind),
+    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_records")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+    name: S.optional(S.String),
     outputOptions: S.optional(
-      S.NullOr(JobsCreateRequestOutputOptions).pipe(T.Body("output_options")),
+      JobsCreateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_challenge")),
+      S.String.pipe(T.Body("ownership_challenge")),
     ),
   })
     .pipe(
@@ -1891,72 +1864,57 @@ export const JobsUpdateRequestOutputOptionsTimestampFormat =
 
 export interface JobsUpdateRequestOutputOptions {
   /** String to be prepended before each batch. */
-  batchPrefix?: string | null;
+  batchPrefix?: string;
   /** String to be appended after each batch. */
-  batchSuffix?: string | null;
+  batchSuffix?: string;
   /** String to join fields. This field be ignored when `record_template` is set. */
-  fieldDelimiter?: string | null;
+  fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
-  fieldNames?: JobsUpdateRequestOutputOptionsFieldNamesList | null;
+  fieldNames?: JobsUpdateRequestOutputOptionsFieldNamesList;
   /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
-  mergeSubrequests?: boolean | null;
+  mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
-  outputType?: JobsUpdateRequestOutputOptionsOutputType | (string & {}) | null;
+  outputType?: JobsUpdateRequestOutputOptionsOutputType | (string & {});
   /** String to be inserted in-between the records as separator. */
-  recordDelimiter?: string | null;
+  recordDelimiter?: string;
   /** String to be prepended before each record. */
-  recordPrefix?: string | null;
+  recordPrefix?: string;
   /** String to be appended after each record. */
-  recordSuffix?: string | null;
+  recordSuffix?: string;
   /** String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc. */
-  recordTemplate?: string | null;
+  recordTemplate?: string;
   /** Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data. */
-  sampleRate?: number | null;
+  sampleRate?: number;
   /** String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`. */
   timestampFormat?:
     | JobsUpdateRequestOutputOptionsTimestampFormat
-    | (string & {})
-    | null;
+    | (string & {});
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
-  "cve-2021-44228"?: boolean | null;
+  "cve-2021-44228"?: boolean;
 }
 export const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-    batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-    fieldDelimiter: S.optional(
-      S.NullOr(S.String).pipe(T.Body("field_delimiter")),
-    ),
+    batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+    batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+    fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
     fieldNames: S.optional(
-      S.NullOr(JobsUpdateRequestOutputOptionsFieldNamesList).pipe(
-        T.Body("field_names"),
-      ),
+      JobsUpdateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
     ),
-    mergeSubrequests: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests")),
-    ),
+    mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
     outputType: S.optional(
-      S.NullOr(JobsUpdateRequestOutputOptionsOutputType).pipe(
-        T.Body("output_type"),
-      ),
+      JobsUpdateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
     ),
-    recordDelimiter: S.optional(
-      S.NullOr(S.String).pipe(T.Body("record_delimiter")),
-    ),
-    recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-    recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-    recordTemplate: S.optional(
-      S.NullOr(S.String).pipe(T.Body("record_template")),
-    ),
-    sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+    recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+    recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+    recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+    recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+    sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
     timestampFormat: S.optional(
-      S.NullOr(JobsUpdateRequestOutputOptionsTimestampFormat).pipe(
+      JobsUpdateRequestOutputOptionsTimestampFormat.pipe(
         T.Body("timestamp_format"),
       ),
     ),
-    "cve-2021-44228": S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228")),
-    ),
+    "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
   }),
 ).annotate({
   identifier: "JobsUpdateRequestOutputOptions",
@@ -1968,59 +1926,51 @@ export interface UpdateJobForAccountRequest {
   /** Unique id of the job. */
   jobId: number;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string | null;
+  destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
+  filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateRequestFrequency | (string & {}) | null;
+  frequency?: JobsUpdateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateRequestKind | (string & {}) | null;
+  kind?: JobsUpdateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string | null;
+  logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number | null;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number | null;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number | null;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
+  name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateRequestOutputOptions | null;
+  outputOptions?: JobsUpdateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string | null;
+  ownershipChallenge?: string;
 }
 export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-    destinationConf: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_conf")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    filter: S.optional(S.NullOr(S.String)),
-    frequency: S.optional(S.NullOr(JobsUpdateRequestFrequency)),
-    kind: S.optional(S.NullOr(JobsUpdateRequestKind)),
-    logpullOptions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpull_options")),
-    ),
-    maxUploadBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_bytes")),
-    ),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    enabled: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+    frequency: S.optional(JobsUpdateRequestFrequency),
+    kind: S.optional(JobsUpdateRequestKind),
+    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_records")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+    name: S.optional(S.String),
     outputOptions: S.optional(
-      S.NullOr(JobsUpdateRequestOutputOptions).pipe(T.Body("output_options")),
+      JobsUpdateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_challenge")),
+      S.String.pipe(T.Body("ownership_challenge")),
     ),
   })
     .pipe(
@@ -2240,59 +2190,51 @@ export interface UpdateJobForZoneRequest {
   /** Unique id of the job. */
   jobId: number;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string | null;
+  destinationConf?: string;
   /** Flag that indicates if the job is enabled. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
+  filter?: string;
   /** This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. */
-  frequency?: JobsUpdateRequestFrequency | (string & {}) | null;
+  frequency?: JobsUpdateRequestFrequency | (string & {});
   /** The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: JobsUpdateRequestKind | (string & {}) | null;
+  kind?: JobsUpdateRequestKind | (string & {});
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
-  logpullOptions?: string | null;
+  logpullOptions?: string;
   /** The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. */
-  maxUploadBytes?: number | null;
+  maxUploadBytes?: number;
   /** The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. */
-  maxUploadIntervalSeconds?: number | null;
+  maxUploadIntervalSeconds?: number;
   /** The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. */
-  maxUploadRecords?: number | null;
+  maxUploadRecords?: number;
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
+  name?: string;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: JobsUpdateRequestOutputOptions | null;
+  outputOptions?: JobsUpdateRequestOutputOptions;
   /** Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string | null;
+  ownershipChallenge?: string;
 }
 export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
-    destinationConf: S.optional(
-      S.NullOr(S.String).pipe(T.Body("destination_conf")),
-    ),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    filter: S.optional(S.NullOr(S.String)),
-    frequency: S.optional(S.NullOr(JobsUpdateRequestFrequency)),
-    kind: S.optional(S.NullOr(JobsUpdateRequestKind)),
-    logpullOptions: S.optional(
-      S.NullOr(S.String).pipe(T.Body("logpull_options")),
-    ),
-    maxUploadBytes: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_bytes")),
-    ),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    enabled: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+    frequency: S.optional(JobsUpdateRequestFrequency),
+    kind: S.optional(JobsUpdateRequestKind),
+    logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+    maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
     maxUploadIntervalSeconds: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+      S.Number.pipe(T.Body("max_upload_interval_seconds")),
     ),
-    maxUploadRecords: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_upload_records")),
-    ),
-    name: S.optional(S.NullOr(S.String)),
+    maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+    name: S.optional(S.String),
     outputOptions: S.optional(
-      S.NullOr(JobsUpdateRequestOutputOptions).pipe(T.Body("output_options")),
+      JobsUpdateRequestOutputOptions.pipe(T.Body("output_options")),
     ),
     ownershipChallenge: S.optional(
-      S.NullOr(S.String).pipe(T.Body("ownership_challenge")),
+      S.String.pipe(T.Body("ownership_challenge")),
     ),
   })
     .pipe(

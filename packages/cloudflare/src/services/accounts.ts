@@ -325,11 +325,11 @@ export const CreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestUnit {
   /** Tenant unit ID */
-  id?: string | null;
+  id?: string;
 }
 export const CreateRequestUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateRequestUnit",
@@ -338,15 +338,15 @@ export const CreateRequestUnit = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAccountRequest {
   /** Account name */
   name: string;
-  type?: CreateRequestType | (string & {}) | null;
+  type?: CreateRequestType | (string & {});
   /** information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/ */
-  unit?: CreateRequestUnit | null;
+  unit?: CreateRequestUnit;
 }
 export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    type: S.optional(S.NullOr(CreateRequestType)),
-    unit: S.optional(S.NullOr(CreateRequestUnit)),
+    type: S.optional(CreateRequestType),
+    unit: S.optional(CreateRequestUnit),
   })
     .pipe(T.Http({ method: "POST", uri: "/accounts", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -507,19 +507,19 @@ export interface CreateMemberRequest {
   /** The contact email address of the user. */
   email: string;
   /** Array of roles associated with this member. */
-  roles?: MembersCreateRequestRolesList | null;
+  roles?: MembersCreateRequestRolesList;
   /** Status of the member invitation. If not provided during creation, defaults to 'pending'. */
-  status?: MembersCreateRequestStatus | (string & {}) | null;
+  status?: MembersCreateRequestStatus | (string & {});
   /** Array of policies associated with this member. */
-  policies?: MembersCreateRequestPoliciesList | null;
+  policies?: MembersCreateRequestPoliciesList;
 }
 export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
-    roles: S.optional(S.NullOr(MembersCreateRequestRolesList)),
-    status: S.optional(S.NullOr(MembersCreateRequestStatus)),
-    policies: S.optional(S.NullOr(MembersCreateRequestPoliciesList)),
+    roles: S.optional(MembersCreateRequestRolesList),
+    status: S.optional(MembersCreateRequestStatus),
+    policies: S.optional(MembersCreateRequestPoliciesList),
   })
     .pipe(
       T.Http({
@@ -891,31 +891,29 @@ export const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsCreateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsCreateRequestRatePlanId | (string & {}) | null;
+  id?: SubscriptionsCreateRequestRatePlanId | (string & {});
   /** The currency applied to the rate plan subscription. */
-  currency?: string | null;
+  currency?: string;
   /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean | null;
+  externallyManaged?: boolean;
   /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean | null;
+  isContract?: boolean;
   /** The full name of the rate plan. */
-  publicName?: string | null;
+  publicName?: string;
   /** The scope that this rate plan applies to. */
-  scope?: string | null;
+  scope?: string;
   /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsCreateRequestRatePlanSetsList | null;
+  sets?: SubscriptionsCreateRequestRatePlanSetsList;
 }
 export const SubscriptionsCreateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(SubscriptionsCreateRequestRatePlanId)),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
-    scope: S.optional(S.NullOr(S.String)),
-    sets: S.optional(S.NullOr(SubscriptionsCreateRequestRatePlanSetsList)),
+    id: S.optional(SubscriptionsCreateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsCreateRequestRatePlanSetsList),
   }),
 ).annotate({
   identifier: "SubscriptionsCreateRequestRatePlan",
@@ -925,16 +923,16 @@ export interface CreateSubscriptionRequest {
   /** Identifier */
   accountId: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsCreateRequestFrequency | (string & {}) | null;
+  frequency?: SubscriptionsCreateRequestFrequency | (string & {});
   /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsCreateRequestRatePlan | null;
+  ratePlan?: SubscriptionsCreateRequestRatePlan;
 }
 export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    frequency: S.optional(S.NullOr(SubscriptionsCreateRequestFrequency)),
+    frequency: S.optional(SubscriptionsCreateRequestFrequency),
     ratePlan: S.optional(
-      S.NullOr(SubscriptionsCreateRequestRatePlan).pipe(T.Body("rate_plan")),
+      SubscriptionsCreateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
   })
     .pipe(
@@ -1061,14 +1059,14 @@ export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
+  key?: string;
+  value?: string;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      key: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -1078,18 +1076,16 @@ export interface TokensCreateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta | null;
+  meta?: TokensCreateRequestPoliciesItemPermissionGroupsItemMeta;
   /** Name of the permission group. */
-  name?: string | null;
+  name?: string;
 }
 export const TokensCreateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      meta: S.optional(TokensCreateRequestPoliciesItemPermissionGroupsItemMeta),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensCreateRequestPoliciesItemPermissionGroupsItem",
@@ -1165,18 +1161,16 @@ export const TokensCreateRequestConditionRequestIpNotInList =
 
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensCreateRequestConditionRequestIpInList | null;
+  in?: TokensCreateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensCreateRequestConditionRequestIpNotInList | null;
+  notIn?: TokensCreateRequestConditionRequestIpNotInList;
 }
 export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(S.NullOr(TokensCreateRequestConditionRequestIpInList)),
+      in: S.optional(TokensCreateRequestConditionRequestIpInList),
       notIn: S.optional(
-        S.NullOr(TokensCreateRequestConditionRequestIpNotInList).pipe(
-          T.Body("not_in"),
-        ),
+        TokensCreateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
       ),
     }),
 ).annotate({
@@ -1185,14 +1179,12 @@ export const TokensCreateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensCreateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensCreateRequestConditionRequestIp | null;
+  requestIp?: TokensCreateRequestConditionRequestIp;
 }
 export const TokensCreateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      S.NullOr(TokensCreateRequestConditionRequestIp).pipe(
-        T.Body("request_ip"),
-      ),
+      TokensCreateRequestConditionRequestIp.pipe(T.Body("request_ip")),
     ),
   }),
 ).annotate({
@@ -1206,20 +1198,20 @@ export interface CreateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensCreateRequestPoliciesList;
-  condition?: TokensCreateRequestCondition | null;
+  condition?: TokensCreateRequestCondition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string | null;
+  expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string | null;
+  notBefore?: string;
 }
 export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     policies: TokensCreateRequestPoliciesList,
-    condition: S.optional(S.NullOr(TokensCreateRequestCondition)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
+    condition: S.optional(TokensCreateRequestCondition),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
   })
     .pipe(
       T.Http({
@@ -2658,11 +2650,11 @@ export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestId {
   /** Filters out audit logs by their IDs. */
-  not?: LogsAuditListRequestIdNotList | null;
+  not?: LogsAuditListRequestIdNotList;
 }
 export const LogsAuditListRequestId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestIdNotList)),
+    not: S.optional(LogsAuditListRequestIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestId",
@@ -2675,11 +2667,11 @@ export const LogsAuditListRequestAccountNameNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestAccountName {
   /** Filters out audit logs by the account name. */
-  not?: LogsAuditListRequestAccountNameNotList | null;
+  not?: LogsAuditListRequestAccountNameNotList;
 }
 export const LogsAuditListRequestAccountName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestAccountNameNotList)),
+    not: S.optional(LogsAuditListRequestAccountNameNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestAccountName",
@@ -2697,11 +2689,11 @@ export const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActionResult {
   /** Filters out audit logs by whether the action was successful or not. */
-  not?: LogsAuditListRequestActionResultNotList | null;
+  not?: LogsAuditListRequestActionResultNotList;
 }
 export const LogsAuditListRequestActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActionResultNotList)),
+    not: S.optional(LogsAuditListRequestActionResultNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActionResult",
@@ -2723,11 +2715,11 @@ export const LogsAuditListRequestActionTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
-  not?: LogsAuditListRequestActionTypeNotList | null;
+  not?: LogsAuditListRequestActionTypeNotList;
 }
 export const LogsAuditListRequestActionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActionTypeNotList)),
+    not: S.optional(LogsAuditListRequestActionTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActionType",
@@ -2750,11 +2742,11 @@ export const LogsAuditListRequestActorContextNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
-  not?: LogsAuditListRequestActorContextNotList | null;
+  not?: LogsAuditListRequestActorContextNotList;
 }
 export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorContextNotList)),
+    not: S.optional(LogsAuditListRequestActorContextNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorContext",
@@ -2767,11 +2759,11 @@ export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorEmail {
   /** Filters out audit logs by the actor's email address. */
-  not?: LogsAuditListRequestActorEmailNotList | null;
+  not?: LogsAuditListRequestActorEmailNotList;
 }
 export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorEmailNotList)),
+    not: S.optional(LogsAuditListRequestActorEmailNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorEmail",
@@ -2784,11 +2776,11 @@ export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorId {
   /** Filters out audit logs by the actor ID. This can be either the Account ID or User ID. */
-  not?: LogsAuditListRequestActorIdNotList | null;
+  not?: LogsAuditListRequestActorIdNotList;
 }
 export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorIdNotList)),
+    not: S.optional(LogsAuditListRequestActorIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorId",
@@ -2801,11 +2793,11 @@ export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorIpAddress {
   /** Filters out audit logs IP address where the action was initiated. */
-  not?: LogsAuditListRequestActorIpAddressNotList | null;
+  not?: LogsAuditListRequestActorIpAddressNotList;
 }
 export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorIpAddressNotList)),
+    not: S.optional(LogsAuditListRequestActorIpAddressNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorIpAddress",
@@ -2818,11 +2810,11 @@ export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorTokenId {
   /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
-  not?: LogsAuditListRequestActorTokenIdNotList | null;
+  not?: LogsAuditListRequestActorTokenIdNotList;
 }
 export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTokenIdNotList)),
+    not: S.optional(LogsAuditListRequestActorTokenIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorTokenId",
@@ -2835,11 +2827,11 @@ export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorTokenName {
   /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
-  not?: LogsAuditListRequestActorTokenNameNotList | null;
+  not?: LogsAuditListRequestActorTokenNameNotList;
 }
 export const LogsAuditListRequestActorTokenName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTokenNameNotList)),
+    not: S.optional(LogsAuditListRequestActorTokenNameNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorTokenName",
@@ -2861,11 +2853,11 @@ export const LogsAuditListRequestActorTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
-  not?: LogsAuditListRequestActorTypeNotList | null;
+  not?: LogsAuditListRequestActorTypeNotList;
 }
 export const LogsAuditListRequestActorType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestActorTypeNotList)),
+    not: S.optional(LogsAuditListRequestActorTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestActorType",
@@ -2878,11 +2870,11 @@ export const LogsAuditListRequestAuditLogIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestAuditLogId {
   /** Filters out audit logs by their IDs. */
-  not?: LogsAuditListRequestAuditLogIdNotList | null;
+  not?: LogsAuditListRequestAuditLogIdNotList;
 }
 export const LogsAuditListRequestAuditLogId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestAuditLogIdNotList)),
+    not: S.optional(LogsAuditListRequestAuditLogIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestAuditLogId",
@@ -2903,11 +2895,11 @@ export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawCfRayId {
   /** Filters out audit logs by the response CF Ray ID. */
-  not?: LogsAuditListRequestRawCfRayIdNotList | null;
+  not?: LogsAuditListRequestRawCfRayIdNotList;
 }
 export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawCfRayIdNotList)),
+    not: S.optional(LogsAuditListRequestRawCfRayIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawCfRayId",
@@ -2920,11 +2912,11 @@ export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawMethod {
   /** Filters out audit logs by the HTTP method for the API call. */
-  not?: LogsAuditListRequestRawMethodNotList | null;
+  not?: LogsAuditListRequestRawMethodNotList;
 }
 export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawMethodNotList)),
+    not: S.optional(LogsAuditListRequestRawMethodNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawMethod",
@@ -2937,11 +2929,11 @@ export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawStatusCode {
   /** Filters out audit logs by the response status code that was returned. */
-  not?: LogsAuditListRequestRawStatusCodeNotList | null;
+  not?: LogsAuditListRequestRawStatusCodeNotList;
 }
 export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawStatusCodeNotList)),
+    not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawStatusCode",
@@ -2954,11 +2946,11 @@ export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestRawUri {
   /** Filters out audit logs by the request URI. */
-  not?: LogsAuditListRequestRawUriNotList | null;
+  not?: LogsAuditListRequestRawUriNotList;
 }
 export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestRawUriNotList)),
+    not: S.optional(LogsAuditListRequestRawUriNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestRawUri",
@@ -2971,11 +2963,11 @@ export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceId {
   /** Filters out audit logs by the resource ID. */
-  not?: LogsAuditListRequestResourceIdNotList | null;
+  not?: LogsAuditListRequestResourceIdNotList;
 }
 export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceIdNotList)),
+    not: S.optional(LogsAuditListRequestResourceIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceId",
@@ -2988,11 +2980,11 @@ export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceProduct {
   /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
-  not?: LogsAuditListRequestResourceProductNotList | null;
+  not?: LogsAuditListRequestResourceProductNotList;
 }
 export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceProductNotList)),
+    not: S.optional(LogsAuditListRequestResourceProductNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceProduct",
@@ -3014,11 +3006,11 @@ export const LogsAuditListRequestResourceScopeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an user, an account, a zone, or a membership. */
-  not?: LogsAuditListRequestResourceScopeNotList | null;
+  not?: LogsAuditListRequestResourceScopeNotList;
 }
 export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceScopeNotList)),
+    not: S.optional(LogsAuditListRequestResourceScopeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceScope",
@@ -3031,11 +3023,11 @@ export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestResourceType {
   /** Filters out audit logs based on the unique type of resource changed by the action. */
-  not?: LogsAuditListRequestResourceTypeNotList | null;
+  not?: LogsAuditListRequestResourceTypeNotList;
 }
 export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestResourceTypeNotList)),
+    not: S.optional(LogsAuditListRequestResourceTypeNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestResourceType",
@@ -3048,11 +3040,11 @@ export const LogsAuditListRequestZoneIdNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestZoneId {
   /** Filters out audit logs by the zone ID. */
-  not?: LogsAuditListRequestZoneIdNotList | null;
+  not?: LogsAuditListRequestZoneIdNotList;
 }
 export const LogsAuditListRequestZoneId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestZoneIdNotList)),
+    not: S.optional(LogsAuditListRequestZoneIdNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestZoneId",
@@ -3065,11 +3057,11 @@ export const LogsAuditListRequestZoneNameNotList = /*@__PURE__*/ S.Array(
 
 export interface LogsAuditListRequestZoneName {
   /** Filters out audit logs by the zone name associated with the change. */
-  not?: LogsAuditListRequestZoneNameNotList | null;
+  not?: LogsAuditListRequestZoneNameNotList;
 }
 export const LogsAuditListRequestZoneName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    not: S.optional(S.NullOr(LogsAuditListRequestZoneNameNotList)),
+    not: S.optional(LogsAuditListRequestZoneNameNotList),
   }),
 ).annotate({
   identifier: "LogsAuditListRequestZoneName",
@@ -3082,18 +3074,18 @@ export interface ListLogAuditsRequest {
   before: string;
   /** Limits the returned results to logs newer than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
   since: string;
-  id?: LogsAuditListRequestId | null;
-  accountName?: LogsAuditListRequestAccountName | null;
-  actionResult?: LogsAuditListRequestActionResult | null;
-  actionType?: LogsAuditListRequestActionType | null;
-  actorContext?: LogsAuditListRequestActorContext | null;
-  actorEmail?: LogsAuditListRequestActorEmail | null;
-  actorId?: LogsAuditListRequestActorId | null;
-  actorIpAddress?: LogsAuditListRequestActorIpAddress | null;
-  actorTokenId?: LogsAuditListRequestActorTokenId | null;
-  actorTokenName?: LogsAuditListRequestActorTokenName | null;
-  actorType?: LogsAuditListRequestActorType | null;
-  auditLogId?: LogsAuditListRequestAuditLogId | null;
+  id?: LogsAuditListRequestId;
+  accountName?: LogsAuditListRequestAccountName;
+  actionResult?: LogsAuditListRequestActionResult;
+  actionType?: LogsAuditListRequestActionType;
+  actorContext?: LogsAuditListRequestActorContext;
+  actorEmail?: LogsAuditListRequestActorEmail;
+  actorId?: LogsAuditListRequestActorId;
+  actorIpAddress?: LogsAuditListRequestActorIpAddress;
+  actorTokenId?: LogsAuditListRequestActorTokenId;
+  actorTokenName?: LogsAuditListRequestActorTokenName;
+  actorType?: LogsAuditListRequestActorType;
+  auditLogId?: LogsAuditListRequestAuditLogId;
   /** The cursor is an opaque token used to paginate through large sets of records. It indicates the position from which to continue when requesting the next set of records. A valid cursor value can be obtained from the cursor object in the result_info structure of a previous response. */
   cursor?: string;
   /** Sets sorting order. */
@@ -3102,85 +3094,85 @@ export interface ListLogAuditsRequest {
   limit?: number;
   /** Filters audit logs by one or more predefined product categories. Each product category expands into a curated set of resource_product values and is unioned with any explicit resource_product filter. Matched case-insensitively; unknown product categories return 400. Repeatable. Use the audit log product categories endpoint to discover the available values. */
   productCategory?: LogsAuditListRequestProductCategoryList;
-  rawCfRayId?: LogsAuditListRequestRawCfRayId | null;
-  rawMethod?: LogsAuditListRequestRawMethod | null;
-  rawStatusCode?: LogsAuditListRequestRawStatusCode | null;
-  rawUri?: LogsAuditListRequestRawUri | null;
-  resourceId?: LogsAuditListRequestResourceId | null;
-  resourceProduct?: LogsAuditListRequestResourceProduct | null;
-  resourceScope?: LogsAuditListRequestResourceScope | null;
-  resourceType?: LogsAuditListRequestResourceType | null;
-  zoneId?: LogsAuditListRequestZoneId | null;
-  zoneName?: LogsAuditListRequestZoneName | null;
+  rawCfRayId?: LogsAuditListRequestRawCfRayId;
+  rawMethod?: LogsAuditListRequestRawMethod;
+  rawStatusCode?: LogsAuditListRequestRawStatusCode;
+  rawUri?: LogsAuditListRequestRawUri;
+  resourceId?: LogsAuditListRequestResourceId;
+  resourceProduct?: LogsAuditListRequestResourceProduct;
+  resourceScope?: LogsAuditListRequestResourceScope;
+  resourceType?: LogsAuditListRequestResourceType;
+  zoneId?: LogsAuditListRequestZoneId;
+  zoneName?: LogsAuditListRequestZoneName;
 }
 export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     before: S.String.pipe(T.Query()),
     since: S.String.pipe(T.Query()),
-    id: S.optional(S.NullOr(LogsAuditListRequestId).pipe(T.DeepQuery("id"))),
+    id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
     accountName: S.optional(
-      S.NullOr(LogsAuditListRequestAccountName).pipe(
+      LogsAuditListRequestAccountName.pipe(
         T.Body("account_name"),
         T.DeepQuery("account_name"),
       ),
     ),
     actionResult: S.optional(
-      S.NullOr(LogsAuditListRequestActionResult).pipe(
+      LogsAuditListRequestActionResult.pipe(
         T.Body("action_result"),
         T.DeepQuery("action_result"),
       ),
     ),
     actionType: S.optional(
-      S.NullOr(LogsAuditListRequestActionType).pipe(
+      LogsAuditListRequestActionType.pipe(
         T.Body("action_type"),
         T.DeepQuery("action_type"),
       ),
     ),
     actorContext: S.optional(
-      S.NullOr(LogsAuditListRequestActorContext).pipe(
+      LogsAuditListRequestActorContext.pipe(
         T.Body("actor_context"),
         T.DeepQuery("actor_context"),
       ),
     ),
     actorEmail: S.optional(
-      S.NullOr(LogsAuditListRequestActorEmail).pipe(
+      LogsAuditListRequestActorEmail.pipe(
         T.Body("actor_email"),
         T.DeepQuery("actor_email"),
       ),
     ),
     actorId: S.optional(
-      S.NullOr(LogsAuditListRequestActorId).pipe(
+      LogsAuditListRequestActorId.pipe(
         T.Body("actor_id"),
         T.DeepQuery("actor_id"),
       ),
     ),
     actorIpAddress: S.optional(
-      S.NullOr(LogsAuditListRequestActorIpAddress).pipe(
+      LogsAuditListRequestActorIpAddress.pipe(
         T.Body("actor_ip_address"),
         T.DeepQuery("actor_ip_address"),
       ),
     ),
     actorTokenId: S.optional(
-      S.NullOr(LogsAuditListRequestActorTokenId).pipe(
+      LogsAuditListRequestActorTokenId.pipe(
         T.Body("actor_token_id"),
         T.DeepQuery("actor_token_id"),
       ),
     ),
     actorTokenName: S.optional(
-      S.NullOr(LogsAuditListRequestActorTokenName).pipe(
+      LogsAuditListRequestActorTokenName.pipe(
         T.Body("actor_token_name"),
         T.DeepQuery("actor_token_name"),
       ),
     ),
     actorType: S.optional(
-      S.NullOr(LogsAuditListRequestActorType).pipe(
+      LogsAuditListRequestActorType.pipe(
         T.Body("actor_type"),
         T.DeepQuery("actor_type"),
       ),
     ),
     auditLogId: S.optional(
-      S.NullOr(LogsAuditListRequestAuditLogId).pipe(
+      LogsAuditListRequestAuditLogId.pipe(
         T.Body("audit_log_id"),
         T.DeepQuery("audit_log_id"),
       ),
@@ -3192,61 +3184,61 @@ export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
       LogsAuditListRequestProductCategoryList.pipe(T.Query("product_category")),
     ),
     rawCfRayId: S.optional(
-      S.NullOr(LogsAuditListRequestRawCfRayId).pipe(
+      LogsAuditListRequestRawCfRayId.pipe(
         T.Body("raw_cf_ray_id"),
         T.DeepQuery("raw_cf_ray_id"),
       ),
     ),
     rawMethod: S.optional(
-      S.NullOr(LogsAuditListRequestRawMethod).pipe(
+      LogsAuditListRequestRawMethod.pipe(
         T.Body("raw_method"),
         T.DeepQuery("raw_method"),
       ),
     ),
     rawStatusCode: S.optional(
-      S.NullOr(LogsAuditListRequestRawStatusCode).pipe(
+      LogsAuditListRequestRawStatusCode.pipe(
         T.Body("raw_status_code"),
         T.DeepQuery("raw_status_code"),
       ),
     ),
     rawUri: S.optional(
-      S.NullOr(LogsAuditListRequestRawUri).pipe(
+      LogsAuditListRequestRawUri.pipe(
         T.Body("raw_uri"),
         T.DeepQuery("raw_uri"),
       ),
     ),
     resourceId: S.optional(
-      S.NullOr(LogsAuditListRequestResourceId).pipe(
+      LogsAuditListRequestResourceId.pipe(
         T.Body("resource_id"),
         T.DeepQuery("resource_id"),
       ),
     ),
     resourceProduct: S.optional(
-      S.NullOr(LogsAuditListRequestResourceProduct).pipe(
+      LogsAuditListRequestResourceProduct.pipe(
         T.Body("resource_product"),
         T.DeepQuery("resource_product"),
       ),
     ),
     resourceScope: S.optional(
-      S.NullOr(LogsAuditListRequestResourceScope).pipe(
+      LogsAuditListRequestResourceScope.pipe(
         T.Body("resource_scope"),
         T.DeepQuery("resource_scope"),
       ),
     ),
     resourceType: S.optional(
-      S.NullOr(LogsAuditListRequestResourceType).pipe(
+      LogsAuditListRequestResourceType.pipe(
         T.Body("resource_type"),
         T.DeepQuery("resource_type"),
       ),
     ),
     zoneId: S.optional(
-      S.NullOr(LogsAuditListRequestZoneId).pipe(
+      LogsAuditListRequestZoneId.pipe(
         T.Body("zone_id"),
         T.DeepQuery("zone_id"),
       ),
     ),
     zoneName: S.optional(
-      S.NullOr(LogsAuditListRequestZoneName).pipe(
+      LogsAuditListRequestZoneName.pipe(
         T.Body("zone_name"),
         T.DeepQuery("zone_name"),
       ),
@@ -4348,16 +4340,14 @@ export const UpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestManagedBy {
   /** ID of the parent Organization, if one exists */
-  parentOrgId?: string | null;
+  parentOrgId?: string;
   /** Name of the parent Organization, if one exists */
-  parentOrgName?: string | null;
+  parentOrgName?: string;
 }
 export const UpdateRequestManagedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parentOrgId: S.optional(S.NullOr(S.String).pipe(T.Body("parent_org_id"))),
-    parentOrgName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("parent_org_name")),
-    ),
+    parentOrgId: S.optional(S.String.pipe(T.Body("parent_org_id"))),
+    parentOrgName: S.optional(S.String.pipe(T.Body("parent_org_name"))),
   }),
 ).annotate({
   identifier: "UpdateRequestManagedBy",
@@ -4365,18 +4355,14 @@ export const UpdateRequestManagedBy = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateRequestSettings {
   /** Sets an abuse contact email to notify for abuse reports. */
-  abuseContactEmail?: string | null;
+  abuseContactEmail?: string;
   /** Indicates whether membership in this account requires that */
-  enforceTwofactor?: boolean | null;
+  enforceTwofactor?: boolean;
 }
 export const UpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    abuseContactEmail: S.optional(
-      S.NullOr(S.String).pipe(T.Body("abuse_contact_email")),
-    ),
-    enforceTwofactor: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("enforce_twofactor")),
-    ),
+    abuseContactEmail: S.optional(S.String.pipe(T.Body("abuse_contact_email"))),
+    enforceTwofactor: S.optional(S.Boolean.pipe(T.Body("enforce_twofactor"))),
   }),
 ).annotate({
   identifier: "UpdateRequestSettings",
@@ -4389,22 +4375,20 @@ export interface UpdateAccountRequest {
   id: string;
   /** Account name */
   name: string;
-  type?: UpdateRequestType | (string & {}) | null;
+  type?: UpdateRequestType | (string & {});
   /** Parent container details */
-  managedBy?: UpdateRequestManagedBy | null;
+  managedBy?: UpdateRequestManagedBy;
   /** Account settings */
-  settings?: UpdateRequestSettings | null;
+  settings?: UpdateRequestSettings;
 }
 export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
     name: S.String,
-    type: S.optional(S.NullOr(UpdateRequestType)),
-    managedBy: S.optional(
-      S.NullOr(UpdateRequestManagedBy).pipe(T.Body("managed_by")),
-    ),
-    settings: S.optional(S.NullOr(UpdateRequestSettings)),
+    type: S.optional(UpdateRequestType),
+    managedBy: S.optional(UpdateRequestManagedBy.pipe(T.Body("managed_by"))),
+    settings: S.optional(UpdateRequestSettings),
   })
     .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4481,78 +4465,62 @@ export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccountResponse>;
 
 export interface MembersUpdateRequestRolesItemPermissionsAnalytics {
-  read?: boolean | null;
-  write?: boolean | null;
+  read?: boolean;
+  write?: boolean;
 }
 export const MembersUpdateRequestRolesItemPermissionsAnalytics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      read: S.optional(S.NullOr(S.Boolean)),
-      write: S.optional(S.NullOr(S.Boolean)),
+      read: S.optional(S.Boolean),
+      write: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "MembersUpdateRequestRolesItemPermissionsAnalytics",
   }) as any as S.Schema<MembersUpdateRequestRolesItemPermissionsAnalytics>;
 
 export interface MembersUpdateRequestRolesItemPermissions {
-  analytics?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  billing?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  cachePurge?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  dns?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  dnsRecords?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  lb?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  logs?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  organization?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  ssl?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  waf?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  zoneSettings?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
-  zones?: MembersUpdateRequestRolesItemPermissionsAnalytics | null;
+  analytics?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  billing?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  cachePurge?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  dns?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  dnsRecords?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  lb?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  logs?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  organization?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  ssl?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  waf?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  zoneSettings?: MembersUpdateRequestRolesItemPermissionsAnalytics;
+  zones?: MembersUpdateRequestRolesItemPermissionsAnalytics;
 }
 export const MembersUpdateRequestRolesItemPermissions = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      analytics: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
-      billing: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
+      analytics: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
+      billing: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
       cachePurge: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics).pipe(
+        MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(
           T.Body("cache_purge"),
         ),
       ),
-      dns: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
+      dns: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
       dnsRecords: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics).pipe(
+        MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(
           T.Body("dns_records"),
         ),
       ),
-      lb: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
-      logs: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
+      lb: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
+      logs: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
       organization: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
+        MembersUpdateRequestRolesItemPermissionsAnalytics,
       ),
-      ssl: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
-      waf: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
+      ssl: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
+      waf: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
       zoneSettings: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics).pipe(
+        MembersUpdateRequestRolesItemPermissionsAnalytics.pipe(
           T.Body("zone_settings"),
         ),
       ),
-      zones: S.optional(
-        S.NullOr(MembersUpdateRequestRolesItemPermissionsAnalytics),
-      ),
+      zones: S.optional(MembersUpdateRequestRolesItemPermissionsAnalytics),
     }),
 ).annotate({
   identifier: "MembersUpdateRequestRolesItemPermissions",
@@ -4562,17 +4530,17 @@ export interface MembersUpdateRequestRolesItem {
   /** Role identifier tag. */
   id: string;
   /** Description of role's permissions. */
-  description?: string | null;
+  description?: string;
   /** Role name. */
-  name?: string | null;
-  permissions?: MembersUpdateRequestRolesItemPermissions | null;
+  name?: string;
+  permissions?: MembersUpdateRequestRolesItemPermissions;
 }
 export const MembersUpdateRequestRolesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    permissions: S.optional(S.NullOr(MembersUpdateRequestRolesItemPermissions)),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    permissions: S.optional(MembersUpdateRequestRolesItemPermissions),
   }),
 ).annotate({
   identifier: "MembersUpdateRequestRolesItem",
@@ -4591,22 +4559,22 @@ export interface MembersUpdateRequestUser {
   /** The contact email address of the user. */
   email: string;
   /** Identifier */
-  id?: string | null;
+  id?: string;
   /** User's first name */
-  firstName?: string | null;
+  firstName?: string;
   /** User's last name */
-  lastName?: string | null;
+  lastName?: string;
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
-  twoFactorAuthenticationEnabled?: boolean | null;
+  twoFactorAuthenticationEnabled?: boolean;
 }
 export const MembersUpdateRequestUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
-    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
+    id: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
     twoFactorAuthenticationEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("two_factor_authentication_enabled")),
+      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
     ),
   }),
 ).annotate({
@@ -4658,7 +4626,7 @@ export const MembersUpdateRequestPoliciesItemResourceGroupsList =
 
 export interface MembersUpdateRequestPoliciesItem {
   /** Policy identifier. */
-  id?: string | null;
+  id?: string;
   /** Allow or deny operations against the resources. */
   access: MembersUpdateRequestPoliciesItemAccess | (string & {});
   /** A set of permission groups that are specified to the policy. */
@@ -4668,7 +4636,7 @@ export interface MembersUpdateRequestPoliciesItem {
 }
 export const MembersUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
     access: MembersUpdateRequestPoliciesItemAccess,
     permissionGroups: MembersUpdateRequestPoliciesItemPermissionGroupsList.pipe(
       T.Body("permission_groups"),
@@ -4693,25 +4661,25 @@ export interface UpdateMemberRequest {
   /** Membership identifier tag. */
   memberId: string;
   /** Membership identifier tag. */
-  id?: string | null;
+  id?: string;
   /** Roles assigned to this member. */
-  roles?: MembersUpdateRequestRolesList | null;
+  roles?: MembersUpdateRequestRolesList;
   /** A member's status in the account. */
-  status?: MembersUpdateRequestStatus | (string & {}) | null;
+  status?: MembersUpdateRequestStatus | (string & {});
   /** Details of the user associated to the membership. */
-  user?: MembersUpdateRequestUser | null;
+  user?: MembersUpdateRequestUser;
   /** Array of policies associated with this member. */
-  policies?: MembersUpdateRequestPoliciesList | null;
+  policies?: MembersUpdateRequestPoliciesList;
 }
 export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     memberId: S.String.pipe(T.Label("member_id")),
-    id: S.optional(S.NullOr(S.String)),
-    roles: S.optional(S.NullOr(MembersUpdateRequestRolesList)),
-    status: S.optional(S.NullOr(MembersUpdateRequestStatus)),
-    user: S.optional(S.NullOr(MembersUpdateRequestUser)),
-    policies: S.optional(S.NullOr(MembersUpdateRequestPoliciesList)),
+    id: S.optional(S.String),
+    roles: S.optional(MembersUpdateRequestRolesList),
+    status: S.optional(MembersUpdateRequestStatus),
+    user: S.optional(MembersUpdateRequestUser),
+    policies: S.optional(MembersUpdateRequestPoliciesList),
   })
     .pipe(
       T.Http({
@@ -5083,31 +5051,29 @@ export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
-  id?: SubscriptionsUpdateRequestRatePlanId | (string & {}) | null;
+  id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
   /** The currency applied to the rate plan subscription. */
-  currency?: string | null;
+  currency?: string;
   /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean | null;
+  externallyManaged?: boolean;
   /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean | null;
+  isContract?: boolean;
   /** The full name of the rate plan. */
-  publicName?: string | null;
+  publicName?: string;
   /** The scope that this rate plan applies to. */
-  scope?: string | null;
+  scope?: string;
   /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsUpdateRequestRatePlanSetsList | null;
+  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
 }
 export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanId)),
-    currency: S.optional(S.NullOr(S.String)),
-    externallyManaged: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("externally_managed")),
-    ),
-    isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
-    scope: S.optional(S.NullOr(S.String)),
-    sets: S.optional(S.NullOr(SubscriptionsUpdateRequestRatePlanSetsList)),
+    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
   }),
 ).annotate({
   identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -5119,17 +5085,17 @@ export interface UpdateSubscriptionRequest {
   /** Subscription identifier tag. */
   subscriptionIdentifier: string;
   /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsUpdateRequestFrequency | (string & {}) | null;
+  frequency?: SubscriptionsUpdateRequestFrequency | (string & {});
   /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsUpdateRequestRatePlan | null;
+  ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
 export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     subscriptionIdentifier: S.String.pipe(T.Label("subscription_identifier")),
-    frequency: S.optional(S.NullOr(SubscriptionsUpdateRequestFrequency)),
+    frequency: S.optional(SubscriptionsUpdateRequestFrequency),
     ratePlan: S.optional(
-      S.NullOr(SubscriptionsUpdateRequestRatePlan).pipe(T.Body("rate_plan")),
+      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
     ),
   })
     .pipe(
@@ -5256,14 +5222,14 @@ export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
-  key?: string | null;
-  value?: string | null;
+  key?: string;
+  value?: string;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      key: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.NullOr(S.String)),
+      key: S.optional(S.String),
+      value: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta",
@@ -5273,18 +5239,16 @@ export interface TokensUpdateRequestPoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
   /** Attributes associated to the permission group. */
-  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta | null;
+  meta?: TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta;
   /** Name of the permission group. */
-  name?: string | null;
+  name?: string;
 }
 export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      meta: S.optional(
-        S.NullOr(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
-      ),
-      name: S.optional(S.NullOr(S.String)),
+      meta: S.optional(TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta),
+      name: S.optional(S.String),
     }),
   ).annotate({
     identifier: "TokensUpdateRequestPoliciesItemPermissionGroupsItem",
@@ -5360,18 +5324,16 @@ export const TokensUpdateRequestConditionRequestIpNotInList =
 
 export interface TokensUpdateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
-  in?: TokensUpdateRequestConditionRequestIpInList | null;
+  in?: TokensUpdateRequestConditionRequestIpInList;
   /** List of IPv4/IPv6 CIDR addresses. */
-  notIn?: TokensUpdateRequestConditionRequestIpNotInList | null;
+  notIn?: TokensUpdateRequestConditionRequestIpNotInList;
 }
 export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      in: S.optional(S.NullOr(TokensUpdateRequestConditionRequestIpInList)),
+      in: S.optional(TokensUpdateRequestConditionRequestIpInList),
       notIn: S.optional(
-        S.NullOr(TokensUpdateRequestConditionRequestIpNotInList).pipe(
-          T.Body("not_in"),
-        ),
+        TokensUpdateRequestConditionRequestIpNotInList.pipe(T.Body("not_in")),
       ),
     }),
 ).annotate({
@@ -5380,14 +5342,12 @@ export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(
 
 export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
-  requestIp?: TokensUpdateRequestConditionRequestIp | null;
+  requestIp?: TokensUpdateRequestConditionRequestIp;
 }
 export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestIp: S.optional(
-      S.NullOr(TokensUpdateRequestConditionRequestIp).pipe(
-        T.Body("request_ip"),
-      ),
+      TokensUpdateRequestConditionRequestIp.pipe(T.Body("request_ip")),
     ),
   }),
 ).annotate({
@@ -5406,13 +5366,13 @@ export interface UpdateTokenRequest {
   name: string;
   /** List of access policies assigned to the token. */
   policies: TokensUpdateRequestPoliciesList;
-  condition?: TokensUpdateRequestCondition | null;
+  condition?: TokensUpdateRequestCondition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
-  expiresOn?: string | null;
+  expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
-  notBefore?: string | null;
+  notBefore?: string;
   /** Status of the token. */
-  status?: TokensUpdateRequestStatus | (string & {}) | null;
+  status?: TokensUpdateRequestStatus | (string & {});
 }
 export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5420,10 +5380,10 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
     tokenId: S.String.pipe(T.Label("token_id")),
     name: S.String,
     policies: TokensUpdateRequestPoliciesList,
-    condition: S.optional(S.NullOr(TokensUpdateRequestCondition)),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    notBefore: S.optional(S.NullOr(S.String).pipe(T.Body("not_before"))),
-    status: S.optional(S.NullOr(TokensUpdateRequestStatus)),
+    condition: S.optional(TokensUpdateRequestCondition),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
+    status: S.optional(TokensUpdateRequestStatus),
   })
     .pipe(
       T.Http({

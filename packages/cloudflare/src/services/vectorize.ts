@@ -150,14 +150,14 @@ export interface CreateIndexRequest {
   config: IndexesCreateRequestConfig;
   name: string;
   /** Specifies the description of the index. */
-  description?: string | null;
+  description?: string;
 }
 export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     config: IndexesCreateRequestConfig,
     name: S.String,
-    description: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
   })
     .pipe(
       T.Http({
@@ -273,13 +273,13 @@ export interface DeleteByIdsIndexRequest {
   accountId: string;
   indexName: string;
   /** A list of vector identifiers to delete from the index indicated by the path. */
-  ids?: IndexesDeleteByIdsRequestIdsList | null;
+  ids?: IndexesDeleteByIdsRequestIdsList;
 }
 export const DeleteByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-    ids: S.optional(S.NullOr(IndexesDeleteByIdsRequestIdsList)),
+    ids: S.optional(IndexesDeleteByIdsRequestIdsList),
   })
     .pipe(
       T.Http({
@@ -383,13 +383,13 @@ export interface GetByIdsIndexRequest {
   accountId: string;
   indexName: string;
   /** A list of vector identifiers to retrieve from the index indicated by the path. */
-  ids?: IndexesGetByIdsRequestIdsList | null;
+  ids?: IndexesGetByIdsRequestIdsList;
 }
 export const GetByIdsIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
-    ids: S.optional(S.NullOr(IndexesGetByIdsRequestIdsList)),
+    ids: S.optional(IndexesGetByIdsRequestIdsList),
   })
     .pipe(
       T.Http({
@@ -811,23 +811,23 @@ export interface QueryIndexRequest {
   /** The search vector that will be used to find the nearest neighbors. */
   vector: IndexesQueryRequestVectorList;
   /** A metadata filter expression used to limit nearest neighbor results. */
-  filter?: unknown | null;
+  filter?: unknown;
   /** Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors. */
-  returnMetadata?: IndexesQueryRequestReturnMetadata | (string & {}) | null;
+  returnMetadata?: IndexesQueryRequestReturnMetadata | (string & {});
   /** Whether to return the values associated with the closest vectors. */
-  returnValues?: boolean | null;
+  returnValues?: boolean;
   /** The number of nearest neighbors to find. */
-  topK?: number | null;
+  topK?: number;
 }
 export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     indexName: S.String.pipe(T.Label("index_name")),
     vector: IndexesQueryRequestVectorList,
-    filter: S.optional(S.NullOr(S.Unknown)),
-    returnMetadata: S.optional(S.NullOr(IndexesQueryRequestReturnMetadata)),
-    returnValues: S.optional(S.NullOr(S.Boolean)),
-    topK: S.optional(S.NullOr(S.Number)),
+    filter: S.optional(S.Unknown),
+    returnMetadata: S.optional(IndexesQueryRequestReturnMetadata),
+    returnValues: S.optional(S.Boolean),
+    topK: S.optional(S.Number),
   })
     .pipe(
       T.Http({

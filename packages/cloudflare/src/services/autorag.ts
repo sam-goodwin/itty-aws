@@ -136,15 +136,13 @@ export type AiSearchRequestModel =
 export const AiSearchRequestModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestRankingOptions {
-  ranker?: string | null;
-  scoreThreshold?: number | null;
+  ranker?: string;
+  scoreThreshold?: number;
 }
 export const AiSearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ranker: S.optional(S.NullOr(S.String)),
-    scoreThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
-    ),
+    ranker: S.optional(S.String),
+    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
   }),
 ).annotate({
   identifier: "AiSearchRequestRankingOptions",
@@ -154,13 +152,13 @@ export type AiSearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const AiSearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestReranking {
-  enabled?: boolean | null;
-  model?: AiSearchRequestRerankingModel | (string & {}) | null;
+  enabled?: boolean;
+  model?: AiSearchRequestRerankingModel | (string & {});
 }
 export const AiSearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    model: S.optional(S.NullOr(AiSearchRequestRerankingModel)),
+    enabled: S.optional(S.Boolean),
+    model: S.optional(AiSearchRequestRerankingModel),
   }),
 ).annotate({
   identifier: "AiSearchRequestReranking",
@@ -171,32 +169,30 @@ export interface AiSearchRequest {
   /** rag id */
   id: string;
   query: string;
-  filters?: AiSearchRequestFilters | null;
-  maxNumResults?: number | null;
-  model?: AiSearchRequestModel | (string & {}) | null;
-  rankingOptions?: AiSearchRequestRankingOptions | null;
-  reranking?: AiSearchRequestReranking | null;
-  rewriteQuery?: boolean | null;
-  stream?: boolean | null;
-  systemPrompt?: string | null;
+  filters?: AiSearchRequestFilters;
+  maxNumResults?: number;
+  model?: AiSearchRequestModel | (string & {});
+  rankingOptions?: AiSearchRequestRankingOptions;
+  reranking?: AiSearchRequestReranking;
+  rewriteQuery?: boolean;
+  stream?: boolean;
+  systemPrompt?: string;
 }
 export const AiSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
-    filters: S.optional(S.NullOr(AiSearchRequestFilters)),
-    maxNumResults: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
-    ),
-    model: S.optional(S.NullOr(AiSearchRequestModel)),
+    filters: S.optional(AiSearchRequestFilters),
+    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+    model: S.optional(AiSearchRequestModel),
     rankingOptions: S.optional(
-      S.NullOr(AiSearchRequestRankingOptions).pipe(T.Body("ranking_options")),
+      AiSearchRequestRankingOptions.pipe(T.Body("ranking_options")),
     ),
-    reranking: S.optional(S.NullOr(AiSearchRequestReranking)),
-    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
-    stream: S.optional(S.NullOr(S.Boolean)),
-    systemPrompt: S.optional(S.NullOr(S.String).pipe(T.Body("system_prompt"))),
+    reranking: S.optional(AiSearchRequestReranking),
+    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
+    stream: S.optional(S.Boolean),
+    systemPrompt: S.optional(S.String.pipe(T.Body("system_prompt"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -579,15 +575,13 @@ export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface SearchRequestRankingOptions {
-  ranker?: string | null;
-  scoreThreshold?: number | null;
+  ranker?: string;
+  scoreThreshold?: number;
 }
 export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ranker: S.optional(S.NullOr(S.String)),
-    scoreThreshold: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("score_threshold")),
-    ),
+    ranker: S.optional(S.String),
+    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
   }),
 ).annotate({
   identifier: "SearchRequestRankingOptions",
@@ -597,13 +591,13 @@ export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const SearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface SearchRequestReranking {
-  enabled?: boolean | null;
-  model?: SearchRequestRerankingModel | (string & {}) | null;
+  enabled?: boolean;
+  model?: SearchRequestRerankingModel | (string & {});
 }
 export const SearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    model: S.optional(S.NullOr(SearchRequestRerankingModel)),
+    enabled: S.optional(S.Boolean),
+    model: S.optional(SearchRequestRerankingModel),
   }),
 ).annotate({
   identifier: "SearchRequestReranking",
@@ -614,26 +608,24 @@ export interface SearchRequest {
   /** rag id */
   id: string;
   query: string;
-  filters?: SearchRequestFilters | null;
-  maxNumResults?: number | null;
-  rankingOptions?: SearchRequestRankingOptions | null;
-  reranking?: SearchRequestReranking | null;
-  rewriteQuery?: boolean | null;
+  filters?: SearchRequestFilters;
+  maxNumResults?: number;
+  rankingOptions?: SearchRequestRankingOptions;
+  reranking?: SearchRequestReranking;
+  rewriteQuery?: boolean;
 }
 export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
-    filters: S.optional(S.NullOr(SearchRequestFilters)),
-    maxNumResults: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("max_num_results")),
-    ),
+    filters: S.optional(SearchRequestFilters),
+    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
     rankingOptions: S.optional(
-      S.NullOr(SearchRequestRankingOptions).pipe(T.Body("ranking_options")),
+      SearchRequestRankingOptions.pipe(T.Body("ranking_options")),
     ),
-    reranking: S.optional(S.NullOr(SearchRequestReranking)),
-    rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+    reranking: S.optional(SearchRequestReranking),
+    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
   }).pipe(
     T.Http({
       method: "POST",

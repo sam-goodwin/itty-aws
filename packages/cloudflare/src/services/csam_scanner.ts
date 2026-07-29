@@ -111,20 +111,20 @@ export const EditRequestValueSourcesMap = /*@__PURE__*/ S.Record(
 
 export interface EditRequestValue {
   /** Notification email address for CSAM scan results. When changed, */
-  email?: string | null;
+  email?: string;
   /** Whether CSAM scanning is enabled for this zone. */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Set to true to trigger re-sending the email verification. */
-  resendEmail?: boolean | null;
+  resendEmail?: boolean;
   /** Map of scanning sources and their enabled state. */
-  sources?: EditRequestValueSourcesMap | null;
+  sources?: EditRequestValueSourcesMap;
 }
 export const EditRequestValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    resendEmail: S.optional(S.NullOr(S.Boolean).pipe(T.Body("resend_email"))),
-    sources: S.optional(S.NullOr(EditRequestValueSourcesMap)),
+    email: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    resendEmail: S.optional(S.Boolean.pipe(T.Body("resend_email"))),
+    sources: S.optional(EditRequestValueSourcesMap),
   }),
 ).annotate({
   identifier: "EditRequestValue",
@@ -134,15 +134,15 @@ export interface PatchCsamScannerRequest {
   /** Identifier for the zone. */
   zoneId: string;
   /** The feature identifier. */
-  id?: EditRequestId | (string & {}) | null;
+  id?: EditRequestId | (string & {});
   /** Writable CSAM Scanner feature configuration values. */
-  value?: EditRequestValue | null;
+  value?: EditRequestValue;
 }
 export const PatchCsamScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    id: S.optional(S.NullOr(EditRequestId)),
-    value: S.optional(S.NullOr(EditRequestValue)),
+    id: S.optional(EditRequestId),
+    value: S.optional(EditRequestValue),
   })
     .pipe(
       T.Http({

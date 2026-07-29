@@ -209,17 +209,17 @@ export interface CreateOauthClientRequest {
     | OauthClientsCreateRequestTokenEndpointAuthMethod
     | (string & {});
   /** Array of allowed CORS origins. */
-  allowedCorsOrigins?: OauthClientsCreateRequestAllowedCorsOriginsList | null;
+  allowedCorsOrigins?: OauthClientsCreateRequestAllowedCorsOriginsList;
   /** URL of the home page of the client. */
-  clientUri?: string | null;
+  clientUri?: string;
   /** URL of the client's logo. */
-  logoUri?: string | null;
+  logoUri?: string;
   /** URL that points to a privacy policy document. */
-  policyUri?: string | null;
+  policyUri?: string;
   /** Array of allowed post-logout redirect URIs. */
-  postLogoutRedirectUris?: OauthClientsCreateRequestPostLogoutRedirectUrisList | null;
+  postLogoutRedirectUris?: OauthClientsCreateRequestPostLogoutRedirectUrisList;
   /** URL that points to a terms of service document. */
-  tosUri?: string | null;
+  tosUri?: string;
 }
 export const CreateOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -240,19 +240,19 @@ export const CreateOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("token_endpoint_auth_method"),
       ),
     allowedCorsOrigins: S.optional(
-      S.NullOr(OauthClientsCreateRequestAllowedCorsOriginsList).pipe(
+      OauthClientsCreateRequestAllowedCorsOriginsList.pipe(
         T.Body("allowed_cors_origins"),
       ),
     ),
-    clientUri: S.optional(S.NullOr(S.String).pipe(T.Body("client_uri"))),
-    logoUri: S.optional(S.NullOr(S.String).pipe(T.Body("logo_uri"))),
-    policyUri: S.optional(S.NullOr(S.String).pipe(T.Body("policy_uri"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
     postLogoutRedirectUris: S.optional(
-      S.NullOr(OauthClientsCreateRequestPostLogoutRedirectUrisList).pipe(
+      OauthClientsCreateRequestPostLogoutRedirectUrisList.pipe(
         T.Body("post_logout_redirect_uris"),
       ),
     ),
-    tosUri: S.optional(S.NullOr(S.String).pipe(T.Body("tos_uri"))),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
   })
     .pipe(
       T.Http({
@@ -594,19 +594,17 @@ export interface CreateSsoRequest {
   /** Email domain of the new SSO connector */
   emailDomain: string;
   /** Begin the verification process after creation */
-  beginVerification?: boolean | null;
+  beginVerification?: boolean;
   /** Controls the display of FedRAMP language to the user during SSO login */
-  useFedrampLanguage?: boolean | null;
+  useFedrampLanguage?: boolean;
 }
 export const CreateSsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     emailDomain: S.String.pipe(T.Body("email_domain")),
-    beginVerification: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("begin_verification")),
-    ),
+    beginVerification: S.optional(S.Boolean.pipe(T.Body("begin_verification"))),
     useFedrampLanguage: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_fedramp_language")),
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
     ),
   })
     .pipe(
@@ -751,13 +749,13 @@ export interface CreateUserGroupRequest {
   /** Name of the User group. */
   name: string;
   /** Policies attached to the User group */
-  policies?: UserGroupsCreateRequestPoliciesList | null;
+  policies?: UserGroupsCreateRequestPoliciesList;
 }
 export const CreateUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
-    policies: S.optional(S.NullOr(UserGroupsCreateRequestPoliciesList)),
+    policies: S.optional(UserGroupsCreateRequestPoliciesList),
   })
     .pipe(
       T.Http({
@@ -2983,76 +2981,69 @@ export interface PatchOauthClientRequest {
   /** The unique identifier for an OAuth client. */
   oauthClientId: string;
   /** Array of allowed CORS origins. */
-  allowedCorsOrigins?: OauthClientsUpdateRequestAllowedCorsOriginsList | null;
+  allowedCorsOrigins?: OauthClientsUpdateRequestAllowedCorsOriginsList;
   /** Human-readable name of the OAuth client. */
-  clientName?: string | null;
+  clientName?: string;
   /** URL of the home page of the client. */
-  clientUri?: string | null;
+  clientUri?: string;
   /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
-  grantTypes?: OauthClientsUpdateRequestGrantTypesList | null;
+  grantTypes?: OauthClientsUpdateRequestGrantTypesList;
   /** URL of the client's logo. */
-  logoUri?: string | null;
+  logoUri?: string;
   /** URL that points to a privacy policy document. */
-  policyUri?: string | null;
+  policyUri?: string;
   /** Array of allowed post-logout redirect URIs. */
-  postLogoutRedirectUris?: OauthClientsUpdateRequestPostLogoutRedirectUrisList | null;
+  postLogoutRedirectUris?: OauthClientsUpdateRequestPostLogoutRedirectUrisList;
   /** Array of allowed redirect URIs for the client. */
-  redirectUris?: OauthClientsUpdateRequestRedirectUrisList | null;
+  redirectUris?: OauthClientsUpdateRequestRedirectUrisList;
   /** Array of OAuth response types the client is allowed to use. */
-  responseTypes?: OauthClientsUpdateRequestResponseTypesList | null;
+  responseTypes?: OauthClientsUpdateRequestResponseTypesList;
   /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
-  scopes?: OauthClientsUpdateRequestScopesList | null;
+  scopes?: OauthClientsUpdateRequestScopesList;
   /** The authentication method the client uses at the token endpoint. */
   tokenEndpointAuthMethod?:
     | OauthClientsUpdateRequestTokenEndpointAuthMethod
-    | (string & {})
-    | null;
+    | (string & {});
   /** URL that points to a terms of service document. */
-  tosUri?: string | null;
+  tosUri?: string;
   /** Promote the OAuth client from private to public visibility. Only `public` is accepted; demotion to `private` is not supported. Promotion requires a non-empty client name, logo URI, verified client URI host, and at least one non-identity scope. */
-  visibility?: OauthClientsUpdateRequestVisibility | (string & {}) | null;
+  visibility?: OauthClientsUpdateRequestVisibility | (string & {});
 }
 export const PatchOauthClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
     allowedCorsOrigins: S.optional(
-      S.NullOr(OauthClientsUpdateRequestAllowedCorsOriginsList).pipe(
+      OauthClientsUpdateRequestAllowedCorsOriginsList.pipe(
         T.Body("allowed_cors_origins"),
       ),
     ),
-    clientName: S.optional(S.NullOr(S.String).pipe(T.Body("client_name"))),
-    clientUri: S.optional(S.NullOr(S.String).pipe(T.Body("client_uri"))),
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
     grantTypes: S.optional(
-      S.NullOr(OauthClientsUpdateRequestGrantTypesList).pipe(
-        T.Body("grant_types"),
-      ),
+      OauthClientsUpdateRequestGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    logoUri: S.optional(S.NullOr(S.String).pipe(T.Body("logo_uri"))),
-    policyUri: S.optional(S.NullOr(S.String).pipe(T.Body("policy_uri"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
     postLogoutRedirectUris: S.optional(
-      S.NullOr(OauthClientsUpdateRequestPostLogoutRedirectUrisList).pipe(
+      OauthClientsUpdateRequestPostLogoutRedirectUrisList.pipe(
         T.Body("post_logout_redirect_uris"),
       ),
     ),
     redirectUris: S.optional(
-      S.NullOr(OauthClientsUpdateRequestRedirectUrisList).pipe(
-        T.Body("redirect_uris"),
-      ),
+      OauthClientsUpdateRequestRedirectUrisList.pipe(T.Body("redirect_uris")),
     ),
     responseTypes: S.optional(
-      S.NullOr(OauthClientsUpdateRequestResponseTypesList).pipe(
-        T.Body("response_types"),
-      ),
+      OauthClientsUpdateRequestResponseTypesList.pipe(T.Body("response_types")),
     ),
-    scopes: S.optional(S.NullOr(OauthClientsUpdateRequestScopesList)),
+    scopes: S.optional(OauthClientsUpdateRequestScopesList),
     tokenEndpointAuthMethod: S.optional(
-      S.NullOr(OauthClientsUpdateRequestTokenEndpointAuthMethod).pipe(
+      OauthClientsUpdateRequestTokenEndpointAuthMethod.pipe(
         T.Body("token_endpoint_auth_method"),
       ),
     ),
-    tosUri: S.optional(S.NullOr(S.String).pipe(T.Body("tos_uri"))),
-    visibility: S.optional(S.NullOr(OauthClientsUpdateRequestVisibility)),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
+    visibility: S.optional(OauthClientsUpdateRequestVisibility),
   })
     .pipe(
       T.Http({
@@ -3253,17 +3244,17 @@ export interface PatchSsoRequest {
   /** SSO Connector identifier tag. */
   ssoConnectorId: string;
   /** SSO Connector enabled state */
-  enabled?: boolean | null;
+  enabled?: boolean;
   /** Controls the display of FedRAMP language to the user during SSO login */
-  useFedrampLanguage?: boolean | null;
+  useFedrampLanguage?: boolean;
 }
 export const PatchSsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ssoConnectorId: S.String.pipe(T.Label("sso_connector_id")),
-    enabled: S.optional(S.NullOr(S.Boolean)),
+    enabled: S.optional(S.Boolean),
     useFedrampLanguage: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("use_fedramp_language")),
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
     ),
   })
     .pipe(
@@ -3407,16 +3398,16 @@ export interface UpdateResourceGroupRequest {
   /** Resource Group identifier tag. */
   resourceGroupId: string;
   /** Name of the resource group */
-  name?: string | null;
+  name?: string;
   /** A scope is a combination of scope objects which provides additional context. */
-  scope?: ResourceGroupsUpdateRequestScope | null;
+  scope?: ResourceGroupsUpdateRequestScope;
 }
 export const UpdateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceGroupId: S.String.pipe(T.Label("resource_group_id")),
-    name: S.optional(S.NullOr(S.String)),
-    scope: S.optional(S.NullOr(ResourceGroupsUpdateRequestScope)),
+    name: S.optional(S.String),
+    scope: S.optional(ResourceGroupsUpdateRequestScope),
   })
     .pipe(
       T.Http({
@@ -3552,7 +3543,7 @@ export const UserGroupsUpdateRequestPoliciesItemResourceGroupsList =
 
 export interface UserGroupsUpdateRequestPoliciesItem {
   /** Policy identifier. */
-  id?: string | null;
+  id?: string;
   /** Allow or deny operations against the resources. */
   access: UserGroupsUpdateRequestPoliciesItemAccess | (string & {});
   /** A set of permission groups that are specified to the policy. */
@@ -3562,7 +3553,7 @@ export interface UserGroupsUpdateRequestPoliciesItem {
 }
 export const UserGroupsUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.NullOr(S.String)),
+    id: S.optional(S.String),
     access: UserGroupsUpdateRequestPoliciesItemAccess,
     permissionGroups:
       UserGroupsUpdateRequestPoliciesItemPermissionGroupsList.pipe(
@@ -3588,16 +3579,16 @@ export interface UpdateUserGroupRequest {
   /** User Group identifier tag. */
   userGroupId: string;
   /** Name of the User group. */
-  name?: string | null;
+  name?: string;
   /** Policies attached to the User group */
-  policies?: UserGroupsUpdateRequestPoliciesList | null;
+  policies?: UserGroupsUpdateRequestPoliciesList;
 }
 export const UpdateUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     userGroupId: S.String.pipe(T.Label("user_group_id")),
-    name: S.optional(S.NullOr(S.String)),
-    policies: S.optional(S.NullOr(UserGroupsUpdateRequestPoliciesList)),
+    name: S.optional(S.String),
+    policies: S.optional(UserGroupsUpdateRequestPoliciesList),
   })
     .pipe(
       T.Http({

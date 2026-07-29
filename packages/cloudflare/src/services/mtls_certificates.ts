@@ -58,17 +58,17 @@ export interface CreateMtlsCertificateRequest {
   /** The uploaded root CA certificate. */
   certificates: string;
   /** Optional unique name for the certificate. Only used for human readability. */
-  name?: string | null;
+  name?: string;
   /** The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page. */
-  privateKey?: string | null;
+  privateKey?: string;
 }
 export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ca: S.Boolean,
     certificates: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
+    name: S.optional(S.String),
+    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
   })
     .pipe(
       T.Http({
