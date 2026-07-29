@@ -7101,17 +7101,15 @@ export const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export interface PutScriptAssetsConfig {
-  headers?: string;
-  redirects?: string;
   htmlHandling?: PutScriptAssetsConfigHtmlHandling | (string & {});
   notFoundHandling?: PutScriptAssetsConfigNotFoundHandling | (string & {});
   runWorkerFirst?: PutScriptAssetsConfigRunWorkerFirst;
   serveDirectly?: boolean;
+  headers?: string;
+  redirects?: string;
 }
 export const PutScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    headers: S.optional(S.String),
-    redirects: S.optional(S.String),
     htmlHandling: S.optional(
       PutScriptAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
     ),
@@ -7122,6 +7120,8 @@ export const PutScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>
       PutScriptAssetsConfigRunWorkerFirst.pipe(T.Body("run_worker_first")),
     ),
     serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
+    headers: S.optional(S.String.pipe(T.Body("_headers"))),
+    redirects: S.optional(S.String.pipe(T.Body("_redirects"))),
   }),
 ).annotate({
   identifier: "PutScriptAssetsConfig",

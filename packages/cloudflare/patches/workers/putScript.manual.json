@@ -248,12 +248,6 @@
       "value": {
         "type": "structure",
         "members": {
-          "headers": {
-            "target": "smithy.api#String"
-          },
-          "redirects": {
-            "target": "smithy.api#String"
-          },
           "html_handling": {
             "target": "com.cloudflare.workers#PutScriptAssetsConfigHtmlHandling"
           },
@@ -265,6 +259,12 @@
           },
           "serve_directly": {
             "target": "smithy.api#Boolean"
+          },
+          "_headers": {
+            "target": "smithy.api#String"
+          },
+          "_redirects": {
+            "target": "smithy.api#String"
           }
         }
       }
